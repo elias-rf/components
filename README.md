@@ -1,0 +1,3 @@
+# erLib
+
+Esta é uma biblioteca de uso geral com funções usando ES6, para auxiliar em conversões, validações, etc...

@@ -1,0 +1,21 @@
+{
+  "name": "report",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "description": "erReport Development",
+  "author": "ERF",
+  "private": true,
+  "dependencies": {
+    "chokidar": "^2.0.2",
+    "nunjucks": "^3.1.2",
+    "puppeteer": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.11.1"
+  }
+}

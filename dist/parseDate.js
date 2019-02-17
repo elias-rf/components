@@ -1,0 +1,32 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const dayjs = require("dayjs");
+const customParseFormat = require("dayjs/plugin/customParseFormat");
+dayjs.extend(customParseFormat);
+function parseDate(date, format) {
+    let fmt;
+    if (date === null) {
+        return null;
+    }
+    if (Object.prototype.toString.call(date) === '[object Date]') {
+        return date;
+    }
+    if (date.indexOf('/') >= 0) {
+        fmt = ['D/M/YYYY', 'D/M/YY', 'D/M'];
+    }
+    else {
+        fmt = ['M/D/YYYY', 'M/D/YY', 'M-D'];
+    }
+    if (format) {
+        fmt = [format];
+    }
+    for (let f of fmt) {
+        const rsp = dayjs(date, f);
+        if (rsp.isValid()) {
+            return rsp.toDate();
+        }
+    }
+    return null;
+}
+exports.default = parseDate;
+//# sourceMappingURL=parseDate.js.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"goToday.js","sourceRoot":"","sources":["../src/goToday.ts"],"names":[],"mappings":";;AAGA,SAAS,OAAO;IACZ,MAAM,GAAG,GAAG,IAAI,IAAI,EAAE,CAAC;IACvB,GAAG,CAAC,QAAQ,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC;IACzB,OAAO,GAAG,CAAC;AACf,CAAC;AAED,kBAAe,OAAO,CAAC"}
