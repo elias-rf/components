@@ -2,6 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const regexpExpressRegexp = /^\/\^\\\/(?:(:?[\w\\.-]*(?:\\\/:?[\w\\.-]*)*)|(\(\?:\(\[\^\\\/]\+\?\)\)))\\\/.*/;
 const regexpExpressParam = /\(\?:\(\[\^\\\/]\+\?\)\)/g;
+/**
+ * Returns all the verbs detected for the passed route
+ */
 const getRouteMethods = function (route) {
     const methods = [];
     for (const method in route.methods) {
@@ -11,9 +14,17 @@ const getRouteMethods = function (route) {
     }
     return methods;
 };
+/**
+ * Returns true if found regexp related with express params
+ */
 const hasParams = function (pathRegexp) {
     return regexpExpressParam.test(pathRegexp);
 };
+/**
+ * @param {Object} route Express route object to be parsed
+ * @param {string} basePath The basePath the route is on
+ * @return {Object} Endpoint info
+ */
 const parseExpressRoute = function (route, basePath) {
     return {
         path: basePath + (basePath && route.path === '/' ? '' : route.path),
@@ -57,9 +68,17 @@ var parseEndpoints = function (app, basePath, endpoints) {
     });
     return endpoints;
 };
+/**
+ * Returns an array of strings with all the detected endpoints
+ * @param {Object} app the express/route instance to get the endponts from
+ */
 const getEndpoints = function (app) {
     return parseEndpoints(app);
 };
+/**
+ * Returns an array of strings with all the detected endpoints
+ * @param {Object} app the express/route instance to get the endponts from
+ */
 const listEndpoints = function (app) {
     const endpoints = parseEndpoints(app);
     const rsp = {};
@@ -74,4 +93,3 @@ const listEndpoints = function (app) {
     return rsp;
 };
 exports.default = listEndpoints;
-//# sourceMappingURL=listEndpoints.js.map

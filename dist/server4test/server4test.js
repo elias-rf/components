@@ -28,6 +28,16 @@ function findFreePort() {
         server.listen(0, '127.0.0.1');
     });
 }
+/**
+ * Servidor mock para testes
+ * retorna um objecto
+ * { status,
+ *   { headers, path, method, query, body, files, withCredentials }
+ * }
+ *
+ * @param {Object} options Opções de inicialização
+ * @param {number} options.port Porta
+ */
 function server4test(options) {
     const self = this;
     this.port = 0;
@@ -110,4 +120,3 @@ server4test.prototype.stop = function () {
     });
 };
 module.exports = server4test;
-//# sourceMappingURL=server4test.js.map

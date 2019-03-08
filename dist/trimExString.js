@@ -1,4 +1,7 @@
 "use strict";
+/**
+ * Limpa strings asciiz
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 function trimExString(txt) {
     let rsp = '';
@@ -6,4 +9,3 @@ function trimExString(txt) {
     return rsp.trim();
 }
 exports.default = trimExString;
-//# sourceMappingURL=trimExString.js.map

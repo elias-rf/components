@@ -13,4 +13,3 @@ chokidar.watch(["reports", "data"]).on("change", arq => {
     fs.writeFileSync("html/" + file.name + ".html", html);
     toPdf(file.name + ".pdf", html);
 });
-//# sourceMappingURL=index.js.map

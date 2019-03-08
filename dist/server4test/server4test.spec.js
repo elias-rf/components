@@ -71,4 +71,3 @@ describe('server4test', () => {
         server.stop();
     }));
 });
-//# sourceMappingURL=server4test.spec.js.map

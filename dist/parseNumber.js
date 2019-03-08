@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const replaceStringAll_1 = require("./replaceStringAll");
+/**
+ * transforma uma string em número
+ */
 function parseNumber(numero, separadorGrupo = ',', separadorDecimal = '.') {
     if (typeof numero === 'number') {
         return numero;
@@ -13,4 +16,3 @@ function parseNumber(numero, separadorGrupo = ',', separadorDecimal = '.') {
     return parseInt(num, 10);
 }
 exports.default = parseNumber;
-//# sourceMappingURL=parseNumber.js.map

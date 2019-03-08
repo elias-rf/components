@@ -17,4 +17,3 @@ function hash(text, algoritm) {
     });
 }
 exports.default = hash;
-//# sourceMappingURL=hash.js.map

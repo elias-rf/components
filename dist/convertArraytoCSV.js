@@ -1,5 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Cria uma string no padrão CSV
+ *
+ * @param {string[]} header Cabeçalho do CSV [['field','label']]
+ * @param {object[]} dados  Corpo do CSV [{field:value}]
+ * @returns {string} Texto no formato CSV
+ */
 function convertArrayToCSV(header, dados) {
     const hdr = header.map(lbl => `"${lbl[1]}"`).join(';');
     const bdy = dados
@@ -15,4 +22,3 @@ function convertArrayToCSV(header, dados) {
     return rsp;
 }
 exports.default = convertArrayToCSV;
-//# sourceMappingURL=convertArraytoCSV.js.map

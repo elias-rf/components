@@ -1,5 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Recebe um número e retorna com decimais e separador de milhares
+ * @param number  numero: numero para formatar
+ * @param integer decimais: length of decimal
+ * @param integer grupos: length of whole part
+ * @param mixed   separadorGrupo: sections delimiter
+ * @param mixed   separadorDecimal: decimal delimiter
+ */
 function formatNumber(numero, decimais = 2, grupos = 3, separadorGrupo = '.', separadorDecimal = ',') {
     const numer = parseFloat(numero);
     if (Number.isNaN(numer)) {
@@ -12,4 +20,3 @@ function formatNumber(numero, decimais = 2, grupos = 3, separadorGrupo = '.', se
     return rsp;
 }
 exports.default = formatNumber;
-//# sourceMappingURL=formatNumber.js.map

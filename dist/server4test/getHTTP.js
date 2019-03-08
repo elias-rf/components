@@ -1,5 +1,16 @@
 var http = require('http');
 var https = require('https');
+/**
+ * Executa um GET em HTTP
+ *
+ * @param {Object} options Opções
+ * @param {string} options.host Endereço do servidor
+ * @param {number} options.port
+ * @param {string} options.path
+ * @param {string} options.method
+ * @param {Object} options.headers
+ * @returns {Promise<Response>}
+ */
 module.exports = function getHTTP(options) {
     return new Promise((resolve, reject) => {
         var port = options.port === 443 ? https : http;
@@ -20,4 +31,3 @@ module.exports = function getHTTP(options) {
         req.end();
     });
 };
-//# sourceMappingURL=getHTTP.js.map

@@ -3,6 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dayjs = require("dayjs");
 const customParseFormat = require("dayjs/plugin/customParseFormat");
 dayjs.extend(customParseFormat);
+/**
+ * Converte uma string representando uma data para Date
+ *
+ * @param {string} date data no formato 'dia/mes/ano'
+ * @param {string} format formato da data
+ * @returns {date} data
+ */
 function parseDate(date, format) {
     let fmt;
     if (date === null) {
@@ -11,6 +18,7 @@ function parseDate(date, format) {
     if (Object.prototype.toString.call(date) === '[object Date]') {
         return date;
     }
+    // considera dia/mes/ano ou mes-dia-ano
     if (date.indexOf('/') >= 0) {
         fmt = ['D/M/YYYY', 'D/M/YY', 'D/M'];
     }
@@ -29,4 +37,3 @@ function parseDate(date, format) {
     return null;
 }
 exports.default = parseDate;
-//# sourceMappingURL=parseDate.js.map

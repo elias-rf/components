@@ -1,6 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const calcMultiplicatorio_1 = require("./calcMultiplicatorio");
+/**
+ * Calcula os dígitos verificadores de um CPF
+ *
+ * @param {string} cpf CPF com ou sem formato
+ * @returns {string} Dígitos verificadores
+ * @example <caption>Exemplos com diferentes formatações</caption>
+ * calcCpfDv('003.709.877-21') // '21'
+ * @example
+ * calcCpfDv('00370987721') // '21'
+ * @example
+ * calcCpfDv('003709877') // '21'
+ */
 function calcDvCpf(cpf) {
     const multDig1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     const multDig2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -24,4 +36,3 @@ function calcDvCpf(cpf) {
     return `${dig1}${dig2}`;
 }
 exports.default = calcDvCpf;
-//# sourceMappingURL=calcDvCpf.js.map

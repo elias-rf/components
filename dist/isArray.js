@@ -5,4 +5,3 @@ function isArray(input) {
         Object.prototype.toString.call(input) === '[object Array]');
 }
 exports.default = isArray;
-//# sourceMappingURL=isArray.js.map

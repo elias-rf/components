@@ -26,4 +26,3 @@ function toPdf(fileName, html) {
     });
 }
 module.exports = toPdf;
-//# sourceMappingURL=toPdf.js.map

@@ -1,6 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const calcMultiplicatorio_1 = require("./calcMultiplicatorio");
+/**
+ * Calcula os dígitos verificadores de um CNPJ
+ *
+ * @param {string} cnpj CNPJ com ou sem formato
+ * @returns {string} Dígitos verificadores
+ * @example <caption>Exemplos com diferentes formatações</caption>
+ * cnpjDv('18.781.203/0001-28') // '28'
+ * @example
+ * cnpjDv('18781203000128') // '28'
+ * @example
+ * cnpjDv('187812030001') // '28'
+ */
 function calcDvCnpj(cnpj) {
     const multDig1 = [6, 7, 8, 9, 2, 3, 4, 5, 6, 7, 8, 9];
     const multDig2 = [5, 6, 7, 8, 9, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -14,6 +26,7 @@ function calcDvCnpj(cnpj) {
         .substring(0, 12)
         .split('')
         .map(i => parseInt(i, 10));
+    // numeros = numeros;
     dig1 = calcMultiplicatorio_1.default(numeros, multDig1).reduce((a, b) => a + b, 0);
     dig1 %= 11;
     dig1 = dig1 > 9 ? 0 : dig1;
@@ -23,4 +36,3 @@ function calcDvCnpj(cnpj) {
     return `${dig1}${dig2}`;
 }
 exports.default = calcDvCnpj;
-//# sourceMappingURL=calcDvCnpj.js.map

@@ -9,4 +9,3 @@ function randomString(max = 6) {
     return text;
 }
 exports.default = randomString;
-//# sourceMappingURL=randomString.js.map

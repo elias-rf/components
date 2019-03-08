@@ -1,12 +1,35 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+// ts-nolint
 const fsys = require("fs");
 const trimExString_1 = require("./trimExString");
+/**
+ * Calcula o offset para o registro atual
+ *
+ * @param {any} recNum
+ * @returns {number} Valor do offset
+ *
+ * @private
+ * @memberOf Dbf
+ */
 function recordOffset(recNum, header) {
     return (recNum - 1) * header.recSize + header.headerSize + 1;
 }
+/**
+ * Classe de acesso a banco de dados .dbf
+ *
+ * @class Dbf
+ * @constructor
+ */
 function dbfFactory(dbfFile, fs = fsys) {
-    let fd;
+    /**
+     * Creates an instance of Dbf.
+     *
+     * @param {string} dbfFile Nome do arquivo .dbf
+     *
+     * @memberOf Dbf
+     */
+    let fd; // descritor do arquivo dbf
     const headerDbf = {
         versao: 0,
         update: new Date(),
@@ -14,8 +37,8 @@ function dbfFactory(dbfFile, fs = fsys) {
         headerSize: 0,
         recSize: 0,
         numFields: 0,
-    };
-    const fields = [];
+    }; // header da tabela
+    const fields = []; // lista de campos da tabela
     const dbf = {
         header() {
             return headerDbf;
@@ -23,6 +46,14 @@ function dbfFactory(dbfFile, fs = fsys) {
         fields() {
             return fields;
         },
+        /**
+         * Abre o arquivo de forma sincrona
+         *
+         * @param {string} fileName Nome do arquivo .dbf
+         * @returns {array} Lista dos campos do arquivo
+         *
+         * @memberOf Dbf
+         */
         open(fileName) {
             const buf = Buffer.alloc(32, 0);
             fd = fs.openSync(fileName, 'r');
@@ -56,9 +87,24 @@ function dbfFactory(dbfFile, fs = fsys) {
             }
             return fields;
         },
+        /**
+         * Retorna o total de registros
+         *
+         * @returns {number} - Quantidade de registros
+         *
+         * @memberOf Dbf
+         */
         recordCount() {
             return headerDbf.recNum;
         },
+        /**
+         * Move ponteiro para um registro
+         *
+         * @param {number} recNum - Número do registro
+         * @param {recordCallback} cb - CallBack(registro)
+         *
+         * @memberOf Dbf
+         */
         moveTo(recNum) {
             return new Promise((resolve, reject) => {
                 if (recNum < 1) {
@@ -74,6 +120,7 @@ function dbfFactory(dbfFile, fs = fsys) {
                 let field = { nome: '', tipo: '', tamanho: 0, inicio: 0 };
                 let vlr = '';
                 const record = {};
+                // ponteiro = recNum;
                 fs.read(fd, buffer, 0, buffer.length, offset, (_err, _bytesRead, buf) => {
                     record['#'] = recNum;
                     for (let ct = 1; ct <= headerDbf.numFields; ct += 1) {
@@ -131,4 +178,3 @@ function dbfFactory(dbfFile, fs = fsys) {
     return dbf;
 }
 exports.default = dbfFactory;
-//# sourceMappingURL=dbfFactory.js.map

@@ -10,10 +10,14 @@ class Logger {
             fs.mkdirSync(logDir);
         }
         this.infoLogger = createLogger({
+            // change level if in dev environment versus production
             level: env === 'development' ? 'info' : 'debug',
             format: format.combine(format.timestamp({
                 format: 'YYYY-MM-DD HH:mm:ss',
-            }), format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)),
+            }), format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
+            // this is to log in json format
+            // format.json()
+            ),
             transports: [
                 new transports.Console({
                     levels: 'info',
@@ -27,6 +31,7 @@ class Logger {
             exitOnError: false,
         });
         this.errorLogger = createLogger({
+            // change level if in dev environment versus production
             format: format.combine(format.timestamp({
                 format: 'YYYY-MM-DD HH:mm:ss',
             }), format.printf(error => `${error.timestamp} ${error.level}: ${error.message}`)),
@@ -43,6 +48,7 @@ class Logger {
             exitOnError: false,
         });
         this.warnLogger = createLogger({
+            // change level if in dev environment versus production
             format: format.combine(format.timestamp({
                 format: 'YYYY-MM-DD HH:mm:ss',
             }), format.printf(warn => `${warn.timestamp} ${warn.level}: ${warn.message}`)),
@@ -59,6 +65,7 @@ class Logger {
             exitOnError: false,
         });
         this.allLogger = createLogger({
+            // change level if in dev environment versus production
             format: format.combine(format.timestamp({
                 format: 'YYYY-MM-DD HH:mm:ss',
             }), format.printf(silly => `${silly.timestamp} ${silly.level}: ${silly.message}`)),
@@ -93,4 +100,3 @@ class Logger {
     }
 }
 exports.default = Logger;
-//# sourceMappingURL=Logger.js.map

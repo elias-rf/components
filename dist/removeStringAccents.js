@@ -1,4 +1,10 @@
 "use strict";
+/**
+ * Retira acentos de uma string
+ *
+ * @param {string} texto Texto qualquer
+ * @returns {string} Texto sem acentos
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 function removeStringAccents(texto) {
     const accents = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
@@ -16,4 +22,3 @@ function removeStringAccents(texto) {
     return str.join('');
 }
 exports.default = removeStringAccents;
-//# sourceMappingURL=removeStringAccents.js.map
