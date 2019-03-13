@@ -128,7 +128,7 @@ class Logger {
     });
   }
 
-  log(message, severity = 'info', data) {
+  log(message, severity = 'info', data?) {
     if (severity === 'info') {
       this.infoLogger.log(severity, message, data);
       this.allLogger.log(severity, message, data);
@@ -141,11 +141,11 @@ class Logger {
     }
   }
 
-  error(message, data) {
+  error(message, data?) {
     this.log(message, 'error', data);
   }
 
-  warn(message, data) {
+  warn(message, data?) {
     this.log(message, 'warn', data);
   }
 }
