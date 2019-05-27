@@ -1,7 +1,7 @@
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import * as customParseFormat from 'dayjs/plugin/customParseFormat';
 
-dayjs.extend(customParseFormat);
+dayjs.extend(customParseFormat.default);
 
 /**
  * Converte uma string representando uma data para Date
@@ -29,8 +29,8 @@ function parseDate(date, format?) {
     fmt = [format];
   }
 
-  for (let f of fmt) {
-    const rsp = dayjs(date, <any>f);
+  for (const f of fmt) {
+    const rsp = dayjs(date, f);
     if (rsp.isValid()) {
       return rsp.toDate();
     }

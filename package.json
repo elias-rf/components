@@ -2,8 +2,8 @@
   "name": "@erf/utils",
   "version": "1.0.0",
   "description": "Funções diversas",
-  "private": false,
-  "main": "dist",
+  "private": true,
+  "main": "lib",
   "module": "src",
   "author": "ERF",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "build": "tsc",
     "prepublishOnly": "npm run build",
     "doc": "nodemon -w src ./node_modules/.bin/jsdoc -c jsdoc.js",
-    "lint": "eslint --fix src",
+    "lint": "tslint --fix src",
     "test": "jest"
   },
   "dependencies": {

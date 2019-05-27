@@ -4,7 +4,7 @@
 // **Reference:**
 // http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
 // http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html#sec6.1.1
-module.exports = {
+export default {
   // ## Informational 1xx
 
   // Request received, continuing process.

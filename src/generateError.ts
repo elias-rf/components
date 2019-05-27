@@ -1,4 +1,4 @@
-import httpStatus from "@erf/utils/dist/httpStatus";
+import httpStatus from "./httpStatus";
 
 interface APIError extends Error {
   status?: string | number;

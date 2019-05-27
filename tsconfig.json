@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "dist",
+    "outDir": "lib",
     "allowJs": true,
     "target": "es6",
-    "module": "commonjs"
+    "module": "commonjs",
+    "sourceMap": true
   },
   "include": ["src/**/*"]
 }
