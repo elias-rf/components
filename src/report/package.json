@@ -7,15 +7,15 @@
   "author": "ERF",
   "private": true,
   "dependencies": {
-    "chokidar": "^2.0.2",
-    "nunjucks": "^3.1.2",
-    "puppeteer": "^1.2.0"
+    "chokidar": "^2.1.2",
+    "nunjucks": "^3.2.0",
+    "puppeteer": "^1.13.0"
   },
   "devDependencies": {
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "prettier": "^1.11.1"
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.16.4"
   }
 }
