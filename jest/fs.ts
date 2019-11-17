@@ -251,7 +251,7 @@ function readSync(_fd, buf, offset, len, pos) {
 }
 
 const fs = {
-  //   export default {
+  //   module.exports = {
   readSync: jest.fn(readSync),
 
   read: jest.fn((_fd, buf, offset, len, pos, cb) => {
@@ -264,4 +264,4 @@ const fs = {
   closeSync: jest.fn(() => 1),
 };
 
-export default fs;
+module.exports = fs;
