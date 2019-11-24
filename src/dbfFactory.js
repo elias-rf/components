@@ -1,6 +1,6 @@
 // ts-nolint
 const fsys = require("fs");
-const trimExString = require("./trimExString");
+const trimExString = require("./string/trimExString");
 
 /**
  * Calcula o offset para o registro atual

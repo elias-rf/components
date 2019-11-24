@@ -1,10 +1,5 @@
 const httpStatus = require("./httpStatus");
 
-interface APIError extends Error {
-  status? | number;
-  statusText?;
-}
-
 /**
  * Return new validation error
  *
@@ -12,8 +7,8 @@ interface APIError extends Error {
  * @returns {Error|APIError}
  */
 module.exports = function generateError(message, status) {
-  const err: APIError = new Error(message);
+  const err = new Error(message);
   err.status = status;
   err.statusText = httpStatus[status];
   return err;
-}
+};

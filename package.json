@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "date-fns": "^2.7.0",
-    "dayjs": "^1.8.17",
     "formidable": "^1.2.1",
     "qs": "^6.9.1",
     "tslint": "^5.20.1",
