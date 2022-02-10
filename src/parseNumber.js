@@ -1,4 +1,4 @@
-const replaceStringAll = require("./string/replaceStringAll");
+const replaceStringAll = require("../string/replaceStringAll");
 /**
  * transforma uma string em número
  */
