@@ -1,4 +1,4 @@
-const formatDateBr = require("../formatDateBr");
+import formatDateBr from "../formatDateBr";
 
 describe("formatDateBr", () => {
   it("dever receber uma string", () => {

@@ -8,7 +8,7 @@ const dateFormat = require("./formatDate");
  * @returns {string} data formatada
  */
 function formatDateBr(date) {
-  return dateFormat(date, "dd/MM/yyyy");
+  return dateFormat(date, "DD/MM/YYYY");
 }
 
 module.exports = formatDateBr;
