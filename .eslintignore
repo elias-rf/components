@@ -1,8 +1,0 @@
-# Standard
-/.git
-/.vscode
-/.idea
-node_modules
-**/*_pb.js
-
-dist/**/*
