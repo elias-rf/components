@@ -1,4 +1,4 @@
-const dateFormat = require("./formatDate");
+import dateFormat from "./formatDate";
 
 /**
  *
@@ -7,8 +7,8 @@ const dateFormat = require("./formatDate");
  * @param {date} date
  * @returns {string} data formatada
  */
-function formatDateBr(date) {
+function formatDateBr(date: Date): string {
   return dateFormat(date, "DD/MM/YYYY");
 }
 
-module.exports = formatDateBr;
+export default formatDateBr;
