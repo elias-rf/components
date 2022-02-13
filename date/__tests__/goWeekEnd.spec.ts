@@ -1,5 +1,5 @@
 import dateEndOfWeek from "../goWeekEnd";
-
+import { test, it, describe, expect } from "vitest";
 describe("dateEndOfWeek", () => {
   it("domingo", () => {
     const dt = new Date("2017-01-29");

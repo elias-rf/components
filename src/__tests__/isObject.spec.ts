@@ -1,4 +1,5 @@
 import isObject from "../isObject";
+import { it, describe, expect } from "vitest";
 
 describe("isObject", () => {
   it("{} is true", () => {

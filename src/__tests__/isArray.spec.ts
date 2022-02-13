@@ -1,4 +1,5 @@
 import isArray from "../isArray";
+import { test, it, describe, expect } from "vitest";
 
 test("isArray recognizes Array objects", () => {
   expect(isArray([1, 2, 3])).toBeTruthy();

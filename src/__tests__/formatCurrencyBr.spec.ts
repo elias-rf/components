@@ -1,5 +1,5 @@
 import currencyToBr from "../formatCurrencyBr";
-
+import { it, describe, expect } from "vitest";
 const testes = [
   [-1234.1234, "-1.234,12"],
   [-1.0, "-1,00"],

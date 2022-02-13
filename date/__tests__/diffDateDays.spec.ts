@@ -1,5 +1,5 @@
 import dateDiffDays from "../diffDateDays";
-
+import { test, it, describe, expect } from "vitest";
 describe("dateDiff", () => {
   const dia = new Date("2000-02-15");
   it("Positivo dentro do mês", () => {

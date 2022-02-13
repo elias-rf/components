@@ -1,4 +1,5 @@
-const replaceStringAll = require("../replaceStringAll");
+import replaceStringAll from "../replaceStringAll";
+import { it, describe, expect } from "vitest";
 
 describe(__filename, () => {
   it("deve funcionar para 0 substituições", () => {

@@ -1,4 +1,5 @@
 import isNumber from "../isNumber";
+import { it, describe, expect } from "vitest";
 
 describe("isNumber", () => {
   it("{}", () => {

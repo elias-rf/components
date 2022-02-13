@@ -1,4 +1,5 @@
 import nullToZero from "../convertNullToZero";
+import { it, describe, expect } from "vitest";
 
 describe("nullToZero", () => {
   it("null -> 0", () => {

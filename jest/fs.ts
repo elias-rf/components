@@ -1,3 +1,5 @@
+import { vi } from "vitest";
+
 const hex = [
   0x03, // versão
   0x74,
@@ -252,16 +254,16 @@ function readSync(_fd, buf, offset, len, pos) {
 
 const fs = {
   //   module.exports = {
-  readSync: jest.fn(readSync),
+  readSync: vi.fn(readSync),
 
-  read: jest.fn((_fd, buf, offset, len, pos, cb) => {
+  read: vi.fn((_fd, buf, offset, len, pos, cb) => {
     const rsp = dbfMock.copy(buf, offset, pos, pos + len);
     cb(null, rsp, buf);
   }),
 
-  openSync: jest.fn(() => 1),
+  openSync: vi.fn(() => 1),
 
-  closeSync: jest.fn(() => 1),
+  closeSync: vi.fn(() => 1),
 };
 
-module.exports = fs;
+export default fs;

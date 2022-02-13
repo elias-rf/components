@@ -1,4 +1,5 @@
 import isCNPJ from "../isCNPJ";
+import { it, describe, expect } from "vitest";
 
 describe(__filename, () => {
   let atual;

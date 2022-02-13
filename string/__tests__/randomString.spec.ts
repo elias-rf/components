@@ -1,4 +1,5 @@
-const randomString = require("../randomString");
+import randomString from "../randomString";
+import { test, it, describe, expect } from "vitest";
 
 test("deve gerar uma string", () => {
   expect(randomString().length).toBe(6);

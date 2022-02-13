@@ -1,6 +1,6 @@
 import dbfFactory from "../dbfFactory";
 import fs from "../../jest/fs";
-
+import { it, describe, expect } from "vitest";
 describe("dbfFactory", () => {
   it("deve criar um objecto de dados", () => {
     const dbf = dbfFactory("", fs);

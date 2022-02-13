@@ -1,5 +1,5 @@
 import multiplicatorio from "../calcMultiplicatorio";
-
+import { test, it, describe, expect } from "vitest";
 /** @test multiplicatorio */
 describe("multiplicatorio", () => {
   let atual;

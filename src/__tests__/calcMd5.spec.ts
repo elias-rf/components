@@ -1,4 +1,5 @@
 import md5 from "../calcMd5";
+import { it, describe, expect } from "vitest";
 
 describe("md5", () => {
   it("deve gerar md5", () => {

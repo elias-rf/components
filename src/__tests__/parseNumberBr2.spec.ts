@@ -1,4 +1,5 @@
 import parseNumberBr from "../parseNumberBr";
+import { it, describe, expect } from "vitest";
 
 const testes = [
   ["-1.234,1234", -1234.1234],

@@ -1,4 +1,5 @@
 import isCPF from "../isCPF";
+import { it, describe, expect } from "vitest";
 
 describe(__filename, () => {
   let atual;

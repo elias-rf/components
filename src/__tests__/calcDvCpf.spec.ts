@@ -1,5 +1,5 @@
 import calcDvCpf from "../calcDvCpf";
-
+import { test, it, describe, expect } from "vitest";
 describe(__filename, () => {
   let atual;
   it("deve funcionar com formatação", () => {

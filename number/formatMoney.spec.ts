@@ -1,6 +1,5 @@
-
 import formatMoney from "./formatMoney.js";
-
+import { test, it, describe, expect } from "vitest";
 describe("formatMoney", function () {
   const tests = [
     { args: [1.2222, 2], expected: "1,22" },

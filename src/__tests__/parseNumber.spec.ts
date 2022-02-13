@@ -1,4 +1,5 @@
 import parseNumber from "../parseNumber";
+import { it, describe, expect } from "vitest";
 
 describe("numberParse", () => {
   it("string inteiro zero", () => {

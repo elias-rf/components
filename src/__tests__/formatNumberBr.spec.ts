@@ -1,4 +1,5 @@
 import formatNumberBr from "../formatNumberBr";
+import { it, describe, expect } from "vitest";
 
 const testes = [
   [-1234.1234, "-1.234,12"],
