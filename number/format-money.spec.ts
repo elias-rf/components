@@ -1,4 +1,4 @@
-import formatMoney from "./formatMoney.js";
+import formatMoney from "./format-money.js";
 import { test, it, describe, expect } from "vitest";
 describe("formatMoney", function () {
   const tests = [
