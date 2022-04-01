@@ -12,12 +12,9 @@
  * @param router
  */
 
-const routeCreate = (router) => (route) =>
-  route.middleware
-    ? router[route.method](route.path, ...route.middleware, route.action)
-    : router[route.method](route.path, route.action);
-
 export default function routesCreate(router, routes) {
-  routes.map(routeCreate(router));
+  for (const route of routes) {
+    router[route.method](route.path, route.action);
+  }
   return router;
 }
