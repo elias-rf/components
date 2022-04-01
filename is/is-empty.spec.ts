@@ -22,6 +22,7 @@ test("Primitives empty", () => {
 });
 
 test("Primitives not empty", () => {
+  expect(isEmpty(true)).toBe(false);
   expect(isEmpty(false)).toBe(false);
   expect(isEmpty(0)).toBe(false);
   expect(isEmpty(() => {})).toBe(false);
