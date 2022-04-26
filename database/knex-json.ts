@@ -23,6 +23,7 @@ const arrayMethods = [
   "decrement",
   "select",
   "from",
+  "sum",
 ];
 
 export default function knexJson(knex: Knex, sql: { [key: string]: any }) {
