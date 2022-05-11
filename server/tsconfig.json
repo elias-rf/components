@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "lib": ["esnext"],
+    "baseUrl": "./src",
+    "outDir": "./dist",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
+    "emitDeclarationOnly": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "isolatedModules": true,
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "paths": {
+      "@/config/*": ["config/*"],
+      "@/dal/*": ["dal/*"],
+      "@/features/*": ["features/*"],
+      "@/lib/*": ["lib/*"],
+      "@/public/*": ["public/*"],
+      "@/routes/*": ["routes/*"],
+      "@/schema/*": ["schema/*"],
+      "@/types/*": ["types/*"],
+      "@/utils/*": ["utils/*"]
+    }
+  },
+  "include": ["./src", "./src/index.d.ts", "index.d.ts"],
+  "exclude": ["node_modules/", "node_modules"]
+}

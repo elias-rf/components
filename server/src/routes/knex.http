@@ -1,0 +1,25 @@
+POST http://localhost:3000/api/knex/oftalmo
+Content-Type: application/json
+
+{
+  "from":"phonebook",
+  "where":[["id","<","105"]],
+  "orderBy":[["id","desc"]]
+}
+
+###### Login
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{"user":"elias","password":"jkl"}
+
+###### Logout
+POST http://localhost:3000/api/logout
+
+
+### Me
+GET http://localhost:3000/api/me
+
+### History HTML5
+GET http://localhost:3000/
+accept: text/html

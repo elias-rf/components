@@ -1,0 +1,72 @@
+### diaria
+POST http://localhost:3000/api/knex/sql/oftalmo
+Content-Type: application/json
+
+{
+  "from":"tOperacaoOrdemProducao",
+  "select":[{ "dia": "DataInicio" } ],
+  "sum":[{ "quantidade": "QtdConforme" }],
+  "where":[[ "fkOperacao", "operacao" ]],
+  "whereBetween": [["DataInicio", ["inicio", "fim"]]],
+  "orderBy":[["DataInicio","desc"]],
+  "groupBy":["DataInicio"]
+}
+
+### mensal
+POST http://localhost:3000/api/knex/sql/oftalmo
+Content-Type: application/json
+
+{"from":"tOperacaoOrdemProducao","select":[{"raw":"CONVERT(CHAR(7),[DataInicio],120) as mes"}],"sum":[{"quantidade":"QtdConforme"}],"orderByRaw":["CONVERT(CHAR(7),[DataInicio],120) desc"],"groupByRaw":["CONVERT(CHAR(7),[DataInicio],120)"],"where":[["fkOperacao","1010"]],"havingRaw":[["CONVERT(CHAR(7),[DataInicio],120)>=2021-03"]]}
+
+
+### modelo
+POST http://localhost:3000/api/knex/sql/oftalmo
+Content-Type: application/json
+
+{
+  "from":[{"raw":"((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp"}],
+  "select":[{"modelo": "tbl_Produto_Item.NomeProdutoItem"}],
+  "sum":[{"quantidade": "tOperacaoOrdemProducao.QtdConforme"}],
+  "where":[
+    ["fkOperacao", "operacao"],
+    ["DataInicio", "dia"],
+    ["fkCategoria", "produto"]
+  ],
+  "groupBy":[
+        "tbl_Produto_Item.NomeProdutoItem",
+        "tOperacaoOrdemProducao.DataInicio",
+        "tbl_Produto.fkCategoria"
+      ]
+}
+
+### produto
+POST http://localhost:3000/api/knex/sql/oftalmo
+Content-Type: application/json
+
+{
+  "from":[{"raw":
+    "((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp"
+  }],
+  "select":[{ "produto": "tbl_Produto.fkCategoria" }],
+  "sum":[{"quantidade": "tOperacaoOrdemProducao.QtdConforme"}],
+  "orderBy":[["tbl_Produto.fkCategoria", "asc"]],
+  "where":[["fkOperacao", "operacao"], ["DataInicio", "dia"]],
+  "groupBy":["tbl_Produto.fkCategoria", "tOperacaoOrdemProducao.DataInicio"]
+}
+
+### turno
+POST http://localhost:3000/api/knex/sql/oftalmo
+Content-Type: application/json
+
+{
+  "from":[{"raw":
+        "((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp"
+  }],
+  "select":[{ "raw":
+  "case when tOperacaoOrdemProducao.HoraInicio <='06:00:00' then 'T3' when tOperacaoOrdemProducao.HoraInicio <='14:00:00' then 'T1' when tOperacaoOrdemProducao.HoraInicio <='22:30:00' then 'T2' else 'T3' end as turno, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade"
+ }],
+  "sum":[{"quantidade": "tOperacaoOrdemProducao.QtdConforme"}],
+  "where":[["fkOperacao", "operacao"], ["DataInicio", "dia"]],
+  "groupByRaw":[          "case when tOperacaoOrdemProducao.HoraInicio <='06:00:00' then 'T3' when tOperacaoOrdemProducao.HoraInicio <='14:00:00' then 'T1' when tOperacaoOrdemProducao.HoraInicio <='22:30:00' then 'T2' else 'T3' end"
+]
+}

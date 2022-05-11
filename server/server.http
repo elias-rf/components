@@ -1,0 +1,138 @@
+### API root
+GET http://localhost:3000/
+
+### TESTE
+GET http://localhost:3000/api/oftalmo/operacaoDiaria/1010/2021-09-01/2021-09-30
+
+### Schemas
+OPTIONS http://localhost:3000/api/routes
+
+### Login
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{"user":"elias","password":"jkl"}
+
+### WhoAmI
+GET http://localhost:3000/api/whoami
+
+### Logout
+POST http://localhost:3000/api/logout
+
+### Schemas do Local
+OPTIONS http://localhost:3000/api/local
+
+### Schemas da tabela
+OPTIONS http://localhost:3000/api/oftalmo/phonebook
+
+### Schemas da tabela
+GET http://localhost:3000/api/oftalmo/phonebook
+
+
+### Autorizações com chave primária composta
+GET http://localhost:3000/api/local/authorization/1/usuarios
+
+### Authorization
+GET http://localhost:3000/api/local/authorization
+
+### Colunas da tabela
+GET http://localhost:3000/api/oftalmo/phonebook
+
+### Colunas da tabela
+GET http://localhost:3000/api/oftalmo/phonebook/count
+
+### api list
+GET http://localhost:3000/api/oftalmo/phonebook
+  ?order={"id":"asc"}
+  &select=id,name
+  &where={"id =":"105"}
+  &limit=2
+
+### api read
+GET http://localhost:3000/api/oftalmo/phonebook/99
+
+### api create
+POST http://localhost:3000/api/oftalmo/phonebook
+Content-Type: application/json
+
+{"id":99,"name":"fulano"}
+
+### api update
+PUT http://localhost:3000/api/oftalmo/phonebook/99
+Content-Type: application/json
+
+{ "name":"fulano2"}
+
+### api delete
+DELETE http://localhost:3000/api/oftalmo/phonebook/99
+
+### api list
+GET http://localhost:3000/api/local/subject
+
+### api list
+GET http://localhost:3000/api/oftalmo/user
+
+### api list
+GET http://localhost:3000/api/local/authorization?order={"idUser":"asc"}
+
+### api list
+GET http://localhost:3000/api/oftalmo/operacaoMensal?inicio=2021-01&operacao=2018
+
+### api list
+GET http://localhost:3000/api/oftalmo/operacaoDiario?inicio=2020-01-01&fim=2020-01-31&operacao=2018
+
+### api list
+GET http://localhost:3000/api/oftalmo/operacaoProduto?inicio=2021-02-02&operacao=2018
+
+### api list
+GET http://localhost:3000/api/oftalmo/operacaoTurno?inicio=2021-02-02&operacao=2018
+
+### api list
+GET http://localhost:3000/api/oftalmo/operacaoModelo?inicio=2021-02-02&operacao=2018&produto=liteflex
+
+### api list
+GET http://localhost:3000/api/plano/transferenciaMensal?inicio=2020-10
+
+### api list
+GET http://localhost:3000/api/plano/transferenciaDiario?inicio=2020-01-01&fim=2020-01-31
+
+### api list
+GET http://localhost:3000/api/plano/transferenciaModelo?inicio=2021-02-02
+
+###
+GET http://localhost:3000/api/oftalmo/operacaoMensal?mes=2020-02&operacao=1010
+
+###
+GET http://localhost:3000/api/oftalmo/user/1?where={"ativo =":"1"}
+
+###
+POST http://localhost:3000/api/qs
+Content-Type: application/json
+
+{
+  "where": {
+    "id": {"<=":99, ">=":1},
+    "name": {"=":"fulano"}
+  }
+}
+
+###
+GET http://localhost:3000/api/qs
+  ?q={"select":["f1","f2"],"order":[{"column":"id","order":"asc"}],"where":[["id","<=",99],["id",">=",1]]}
+
+
+### POST sheets
+POST https://sheets.googleapis.com/v4/spreadsheets/1ZhqWumaAKFWDvyiI0P8uNPbFa_UaTleWURS9WA9Tao8/values/A1:append
+Content-Type: application/json
+
+{
+    "range":"A1:A1",
+    "majorDimension":"ROWS",
+    "values":[
+        ["1"]
+    ]
+}
+
+
+
+AIzaSyDuouqo0Ju5M07XMqMjO9a7hIjEvS4U4Tw

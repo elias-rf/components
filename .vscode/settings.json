@@ -1,0 +1,17 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "oftalmo",
+      "database": "${workspaceFolder:intranet}/oftalmo.sqlite"
+    },
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "database": "${workspaceFolder:intranet}/plano.sqlite",
+      "name": "plano"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}

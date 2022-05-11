@@ -1,0 +1,17 @@
+### Login
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{"user":"elias","password":"jkl"}
+
+### Logout
+POST http://localhost:3000/api/logout
+
+### RELOAD
+GET http://localhost:3000/api/can
+
+###
+GET http://localhost:3000/api/plano/cliente
+
+###
+GET http://192.168.0.10:3000/api/can

@@ -1,0 +1,22 @@
+{
+  "name": "@vt/intranet",
+  "private": true,
+  "version": "1.1.0",
+  "workspaces": [
+    "./client",
+    "./server"
+  ],
+  "scripts": {
+    "start": "cd server && node dist/index.js",
+    "build": "cd server && npm run build && cd ../client && npm run build",
+    "update": "cd client && npm install && cd ../server && npm install && cd .. && git submodule update --remote",
+    "dev": "concurrently \"npm run dev -w server\" \"npm run dev -w client\" ",
+    "test": "concurrently \"npm run test:watch -w server\" \"npm run test:watch -w client\" ",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.21.1",
+    "@types/react-json-editor-ajrm": "^2.5.3",
+    "concurrently": "^7.1.0"
+  }
+}

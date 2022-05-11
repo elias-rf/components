@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "baseUrl": "./src",
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": false,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "paths": {
+      "@/types/*": ["/types/*"],
+      "@/features/*": ["features/*"],
+      "@/assets/*": ["assets/*"],
+      "@/config/*": ["config/*"],
+      "@/contexts/*": ["contexts/*"],
+      "@/dal/*": ["dal/*"],
+      "@/lib/*": ["lib/*"],
+      "@/utils/*": ["utils/*"],
+      "@/services/*": ["services/*"],
+      "@/store/*": ["store/*"]
+    }
+  },
+  "include": ["./src", "./src/index.d.ts", "index.d.ts"],
+  "exclude": ["node_modules/", "node_modules"]
+}
