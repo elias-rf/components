@@ -8,8 +8,8 @@ import findDuplicates from "@/utils/array/find-duplicates";
 import DataContext from "@/contexts/data-context";
 import type { ClientContext } from "../../contexts/data-context";
 import useFocus from "@/lib/hooks/use-focus";
-import ordemProducaoService from "../../features/ordem-producao/ordem-producao.service";
-import notaFiscalService from "../../features/nota-fiscal/nota-fiscal.service";
+import ordemProducaoService from "../../service/ordem-producao.service";
+import notaFiscalService from "../../service/nota-fiscal.service";
 
 function Transferencia() {
   const { clientKnex } = React.useContext(DataContext) as ClientContext;
@@ -99,7 +99,7 @@ function Transferencia() {
         autoComplete="off"
         field="qtd"
         value={qtd}
-        onChange={addQtd}
+        dispatch={addQtd}
         disabled={blockQtd}
       />
       <Label>Serial</Label>
@@ -108,7 +108,7 @@ function Transferencia() {
         autoComplete="off"
         field="item"
         value={item}
-        onChange={addList}
+        dispatch={addList}
         disabled={blockItem}
       />
       <Button

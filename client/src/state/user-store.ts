@@ -1,7 +1,7 @@
 import create from "zustand";
-import AuthService from "@/features/auth/auth.service";
+import AuthService from "../service/permissao.service";
 import knexRequest from "@/lib/knex/knex-request";
-import type { CurrentUser } from "types";
+import type { CurrentUser } from "../../index.d";
 import { devtools, combine } from "zustand/middleware";
 import isEmpty from "@/utils/is/is-empty";
 

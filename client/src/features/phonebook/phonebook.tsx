@@ -1,91 +1,78 @@
 import React from "react";
-import Table, { TableAction, tableActionTypes } from "../ui/table/table";
-import Form, { FormAction, formActionTypes } from "../ui/form/form";
-import type { Where, OrderBy, Schema, Pks } from "types";
+import Table from "../ui/table/table";
+import Form from "../ui/form/form";
+import type { Where, OrderBy, Pks, Schema, Action } from "../../../index.d";
 
-import DataContext, { ClientContext } from "@/contexts/data-context";
-import PhonebookService from "@/features/phonebook/phonebook.service";
+import Button from "../ui/form/button";
 
+type PhonebookProps = {
+  schema: Schema;
+  selected: Pks;
+  orderBy: OrderBy[];
+  where: Where[];
+  status: string;
+  list: any[];
+  record: any;
+  dispatch: (action: Action) => void;
+};
 /**
  * Componente para manipular Agenda de Ramais
  *
  * @returns {*} componente react
  */
-function Phonebook() {
-  const { clientKnex } = React.useContext(DataContext) as ClientContext;
-  const [data, setData] = React.useState([]);
-  const [schema, setSchema] = React.useState<Schema>({
-    pk: ["id"],
-    fields: [],
-  });
-  const [record, setRecord] = React.useState({});
-  const [selected, setSelected] = React.useState<Pks>([]);
-  const [orderBy, setOrderBy] = React.useState<OrderBy[]>([]);
-  const [where, setWhere] = React.useState<Where[]>([]);
-
-  const phonebook = PhonebookService(clientKnex);
-
-  React.useEffect(() => {
-    async function get() {
-      const sch: Schema = await phonebook.schema();
-      setSchema(sch);
-      const list = await phonebook.list(where, orderBy);
-      setData(list);
-    }
-    get();
-  }, []);
-
-  React.useEffect(() => {
-    async function get() {
-      const response = await phonebook.read(selected);
-      setData(response);
-    }
-  }, [selected]);
-
-  async function handleForm(action: FormAction) {
-    switch (action.type) {
-      case formActionTypes.change:
-        console.log(action.payload);
-        break;
-
-      default:
-        break;
-    }
-  }
-
-  function handleTable(action: TableAction) {
-    switch (action.type) {
-      case tableActionTypes.select:
-        setSelected(action.payload as string[]);
-        break;
-      case tableActionTypes.order:
-        setSelected(action.payload as string[]);
-        break;
-      case tableActionTypes.where:
-        setSelected(action.payload as string[]);
-        break;
-
-      default:
-        break;
-    }
-  }
-
+function Phonebook({
+  schema,
+  selected,
+  orderBy,
+  where,
+  status,
+  list,
+  record,
+  dispatch,
+}: PhonebookProps) {
   return (
-    <div>
-      <Form
-        schema={schema}
-        record={record}
-        dispatch={handleForm}
-      />
-      <Table
-        schema={schema}
-        data={data}
-        selected={selected}
-        orderBy={orderBy}
-        where={where}
-        dispatch={handleTable}
-      />
-    </div>
+    <>
+      <div className="mt-2">
+        <div className="space-x-2">
+          <Button
+            className="w-20 bg-green-300"
+            dispatch={dispatch}
+            name="novo"
+          >
+            Novo
+          </Button>
+          <Button
+            className="w-20 bg-blue-300"
+            dispatch={dispatch}
+            name="salvar"
+            disabled={["view", "new"].includes(status)}
+          >
+            Salvar
+          </Button>
+          <Button
+            className="w-20 bg-red-300"
+            dispatch={dispatch}
+            name="excluir"
+            disabled={["new", "edit", "create"].includes(status)}
+          >
+            Excluir
+          </Button>
+        </div>
+        <Form
+          schema={schema}
+          record={record}
+          dispatch={dispatch}
+        />
+        <Table
+          schema={schema}
+          data={list}
+          selected={selected}
+          orderBy={orderBy}
+          where={where}
+          dispatch={dispatch}
+        />
+      </div>
+    </>
   );
 }
 

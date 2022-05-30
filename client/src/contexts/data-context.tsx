@@ -1,5 +1,5 @@
-import type { KnexRequest } from "../lib/knex/knex-request";
 import React from "react";
+import type { KnexRequest } from "../lib/knex/knex-request";
 
 export type ClientContext = {
   clientKnex: KnexRequest;

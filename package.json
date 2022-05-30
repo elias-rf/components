@@ -18,5 +18,8 @@
     "@playwright/test": "^1.21.1",
     "@types/react-json-editor-ajrm": "^2.5.3",
     "concurrently": "^7.1.0"
+  },
+  "dependencies": {
+    "json-rpc-2.0": "^1.1.0"
   }
 }

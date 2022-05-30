@@ -1,6 +1,6 @@
 import Form from ".";
 import React from "react";
-import { Action, Schema } from "../../../types";
+import { Action, Schema } from "../../../..";
 import type { Story } from "@ladle/react";
 
 export default {

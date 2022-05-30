@@ -1,7 +1,7 @@
 import replaceStringAll from "./replaceStringAll";
 import { it, describe, expect } from "vitest";
 
-describe(__filename, () => {
+describe("replaceStringAll", () => {
   it("deve funcionar para 0 substituições", () => {
     expect(replaceStringAll("ABCD", ".", "")).toEqual("ABCD");
   });

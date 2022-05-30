@@ -1,20 +1,18 @@
-import * as React from "react";
-import * as JSURL from "jsurl";
+import React from "react";
+import qs from "qs";
 import type { NavigateOptions } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 
-export default function useQueryString<T>(
-  key: string
-): [T | undefined, (newQuery: T, options?: NavigateOptions) => void] {
+export default function useQueryString(key: string) {
   let [searchParams, setSearchParams] = useSearchParams();
-  let paramValue = searchParams.get(key);
+  let paramValue = searchParams.get(key) || "";
 
-  let value = React.useMemo(() => JSURL.parse(paramValue), [paramValue]);
+  let value = React.useMemo(() => qs.parse(paramValue), [paramValue]);
 
   let setValue = React.useCallback(
-    (newValue: T, options?: NavigateOptions) => {
+    (newValue: any, options?: NavigateOptions) => {
       let newSearchParams = new URLSearchParams(searchParams);
-      newSearchParams.set(key, JSURL.stringify(newValue));
+      newSearchParams.set(key, qs.stringify(newValue));
       setSearchParams(newSearchParams, options);
     },
     [key, searchParams, setSearchParams]

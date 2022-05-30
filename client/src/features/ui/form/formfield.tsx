@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 
 import LabelError from "./label-error";
 
-import { SchemaField } from "types";
+import { SchemaField } from "../../../../index.d";
 import Field, { fieldActionTypes } from "./field";
 
 export const formFieldActionTypes = {
@@ -37,7 +37,7 @@ export default function FormField({
   className,
 }: FormFieldProps) {
   return (
-    <div className={twMerge("flex flex-col my-2", className)}>
+    <div className={twMerge("flex flex-col", className)}>
       <label>{schema.label}</label>
       <Field
         type={schema?.type}

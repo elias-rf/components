@@ -50,27 +50,41 @@ export default function Controles() {
 
   return (
     <div className="max-h-screen overflow-auto">
-      <Tabs active={active} onChange={(id) => setActive(id)}>
-        <Tab id="operacao" title="Operação">
+      <Tabs
+        active={active}
+        onChange={(id) => setActive(id)}
+      >
+        <Tab
+          id="operacao"
+          title="Operação"
+        >
           <Operacao />
         </Tab>
-        <Tab id="fresagem" title="Fresagem">
+        <Tab
+          id="fresagem"
+          title="Fresagem"
+        >
           <Fresagem />
         </Tab>
-        <Tab id="est-int" title="Esterilização Int">
+        <Tab
+          id="est-int"
+          title="Esterilização Int"
+        >
           <EstInt />
         </Tab>
-        <Tab id="est-ext" title="Esterilização Ext">
+        <Tab
+          id="est-ext"
+          title="Esterilização Ext"
+        >
           <EstExt />
         </Tab>
-        <Tab id="transferencia" title="Transferência">
+        <Tab
+          id="transferencia"
+          title="Transferência"
+        >
           <Transferencia />
         </Tab>
       </Tabs>
-      {/* <div className="flex flex-row space-x-4">
-        <TreeView data={treeData} selected={selected} onSelect={setSelected} />
-        <div className="">{selected}</div>
-      </div> */}
     </div>
   );
 }

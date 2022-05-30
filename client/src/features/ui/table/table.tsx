@@ -1,10 +1,9 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import type { Where, OrderBy, Schema, SchemaField } from "types";
+import type { Where, OrderBy, Schema, SchemaField } from "../../../../index.d";
 import ShowChevronIcon from "./show-chevronIcon";
 import ShowSortableIcon from "./show-sortable-icon";
 import Textbox, { TextboxAction } from "../form/textbox";
-import isEmpty from "../../../utils/is/is-empty";
 import orderByUtil from "../../../lib/http/order-by";
 import whereUtil from "../../../lib/http/where";
 
@@ -116,7 +115,7 @@ export default function Table({
    * @returns {boolean} True se os dados podem ser filtrados
    */
   function hasWhere() {
-    return !isEmpty(where);
+    return where !== undefined;
   }
 
   /**
@@ -125,7 +124,7 @@ export default function Table({
    * @returns {boolean} True se os dados podem ser ordenados
    */
   function hasOrderBy() {
-    return !isEmpty(orderBy);
+    return orderBy !== undefined;
   }
 
   /**

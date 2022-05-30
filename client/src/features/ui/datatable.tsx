@@ -1,5 +1,5 @@
 import React from "react";
-import { Where, OrderBy, Schema } from "types";
+import { Where, OrderBy, Schema } from "../../../index.d";
 
 import Table, { Search } from "./table";
 import isEmpty from "../../utils/is/is-empty";
@@ -73,7 +73,11 @@ export default function Datatable({
   return (
     <div>
       {searchable ? (
-        <Search where={where} schema={dataSchema} onWhere={setWhere} />
+        <Search
+          where={where}
+          schema={dataSchema}
+          onWhere={setWhere}
+        />
       ) : null}
       <Table
         data={data}

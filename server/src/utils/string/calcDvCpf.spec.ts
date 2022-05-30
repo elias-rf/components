@@ -1,6 +1,6 @@
 import calcDvCpf from "./calcDvCpf";
 import { test, it, describe, expect } from "vitest";
-describe(__filename, () => {
+describe("calcDvCpf", () => {
   let atual;
   it("deve funcionar com formatação", () => {
     atual = calcDvCpf("003.709.877-21");
@@ -12,7 +12,7 @@ describe(__filename, () => {
     expect(atual).toEqual("21");
   });
 
-  it("deve funcionar sem formatação", () => {
+  it("deve funcionar sem formatação e sem dv", () => {
     atual = calcDvCpf("003709877");
     expect(atual).toEqual("21");
   });

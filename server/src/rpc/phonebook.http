@@ -1,0 +1,81 @@
+### List
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"listPhonebook",
+  "params":{
+    "limit":3,
+    "where":[["name","=","vago"]],
+    "orderBy":[["id","desc"]]
+  }
+}
+
+### Read
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"readPhonebook",
+  "params":{
+    "id":["171"]
+  }
+}
+
+### Create
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"createPhonebook",
+  "params":{
+    "rec": {
+      "id": "99",
+      "name": "vago",
+      "department": "vago",
+      "email": " vago"
+    }
+  }
+}
+
+### Update
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"updatePhonebook",
+  "params":{
+    "id": ["99"],
+    "rec": {
+      "name": "vago99",
+      "department": "vago",
+      "email": " vago"
+    }
+  }
+}
+
+### Delete
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"delPhonebook",
+  "params":{
+    "id": ["99"],
+    "rec": {
+      "name": "vago99",
+      "department": "vago",
+      "email": " vago"
+    }
+  }
+}

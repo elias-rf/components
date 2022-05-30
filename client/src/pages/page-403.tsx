@@ -4,10 +4,13 @@ import pg403 from "@/assets/images/403.gif";
 
 export default function Page404() {
   return (
-    <div className="flex items-center justify-center w-screen h-screen">
+    <div className="flex items-center justify-center w-full h-full">
       <div className="text-3xl text-center">
         Você não possui permissão!{" "}
-        <A className="text-blue-500" href="/">
+        <A
+          className="text-blue-500"
+          href="/"
+        >
           Voltar ao início
         </A>
         <div>

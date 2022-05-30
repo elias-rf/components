@@ -4,10 +4,10 @@ import day from "@/lib/day";
 
 import DataContext, { ClientContext } from "@/contexts/data-context";
 
-import TransferenciaMensalService from "@/features/transferencia/transferencia-mensal.service";
-import TransferenciaDiariaService from "@/features/transferencia/transferencia-diaria.service";
-import TransferenciaModeloService from "@/features/transferencia/transferencia-modelo.service";
-import type { Schema } from "types";
+import TransferenciaMensalService from "service/transferencia-mensal.service";
+import TransferenciaDiariaService from "service/transferencia-diaria.service";
+import TransferenciaModeloService from "service/transferencia-modelo.service";
+import type { Schema } from "../../../index.d";
 
 export default function Transferencia() {
   const { clientKnex } = React.useContext(DataContext) as ClientContext;
@@ -66,7 +66,10 @@ export default function Transferencia() {
             selected={diaCorrente}
             onSelect={setDiaCorrente}
           >
-            <Datatable data={modeloData} schema={modeloSchema} />
+            <Datatable
+              data={modeloData}
+              schema={modeloSchema}
+            />
           </Datatable>
         </Datatable>
       </div>

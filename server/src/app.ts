@@ -4,9 +4,10 @@ import bodyParser from "koa-bodyparser";
 import serve from "koa-static";
 import etag from "koa-etag";
 import historify from "koa-historify";
+import logger from "koa-pino-logger";
+
 import knexDbs from "./dal/connections";
 import router from "./routes";
-import logger from "koa-pino-logger";
 import authMiddle from "./middleware/auth-middle";
 
 const app = new Koa();

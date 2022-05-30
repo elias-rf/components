@@ -1,20 +1,32 @@
 import parseNumberBr from "./parseNumberBr";
 import { it, describe, expect } from "vitest";
 
-const testes = [
-  ["-1.234,1234", -1234.1234],
-  ["-1,0000", -1],
-  ["0,0000", 0],
-  ["1,0000", 1.0],
-  ["1,1235", 1.1235],
-  ["1.234,1200", 1234.12],
-  ["123.456.789,1200", 123456789.12],
-];
+describe("parseNumberBr2", () => {
+  it(`deve retornar -1234.1234`, () => {
+    expect(parseNumberBr("-1.234,1234")).toEqual(-1234.1234);
+  });
 
-describe(__filename, () => {
-  testes.forEach((item) => {
-    it(`deve retornar ${item[1]}`, () => {
-      expect(parseNumberBr(item[0])).toEqual(item[1]);
-    });
+  it(`deve retornar 0`, () => {
+    expect(parseNumberBr("0,0000")).toEqual(0);
+  });
+
+  it(`deve retornar -1`, () => {
+    expect(parseNumberBr("-1,0000")).toEqual(-1);
+  });
+
+  it(`deve retornar 1`, () => {
+    expect(parseNumberBr("1,0000")).toEqual(1);
+  });
+
+  it(`deve retornar  1.1235`, () => {
+    expect(parseNumberBr("1,1235")).toEqual(1.1235);
+  });
+
+  it(`deve retornar 1234.12`, () => {
+    expect(parseNumberBr("1.234,1200")).toEqual(1234.12);
+  });
+
+  it(`deve retornar 123456789.12`, () => {
+    expect(parseNumberBr("123.456.789,1200")).toEqual(123456789.12);
   });
 });

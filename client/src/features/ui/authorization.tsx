@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import useUserStore from "../../state/user-store";
-
+import Page from "./page";
+import Page403 from "../../pages/page-403";
 import SpinnerIcon from "./spinner-icon";
 
 interface AuthorizationProps {
@@ -24,6 +25,8 @@ export default function Authorization({
 
       if (rsp) {
         setCanFlag("ok");
+      } else {
+        setCanFlag(resource || location.pathname);
       }
     }
     go();
@@ -31,13 +34,17 @@ export default function Authorization({
 
   if (canFlag === "wait")
     return (
-      <>
-        OK
-        <SpinnerIcon />
-      </>
+      <Page>
+        <div className="flex items-center justify-center w-full h-full">
+          <SpinnerIcon
+            show={true}
+            className="w-20 h-20"
+          />
+        </div>
+      </Page>
     );
 
   if (canFlag === "ok") return <>{children}</>;
 
-  return <div>nao pode {canFlag}.</div>;
+  return <Page403 />;
 }

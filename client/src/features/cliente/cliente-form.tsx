@@ -2,7 +2,7 @@ import { Checkbox, Label, Textbox } from "@/features/ui/form";
 
 import PropTypes from "prop-types";
 import React from "react";
-import { ClienteRecord } from "@/features/cliente/cliente.service";
+import { ClienteRecord } from "service/cliente.service";
 
 interface ClienteFormProps {
   record: ClienteRecord;
@@ -53,11 +53,19 @@ export default function ClienteForm({
           </div>
           <div className="flex flex-col w-10 my-2">
             <Label>UF</Label>
-            <Textbox value={record.Uf} field="Uf" onChange={handleLoad} />
+            <Textbox
+              value={record.Uf}
+              field="Uf"
+              onChange={handleLoad}
+            />
           </div>
           <div className="flex flex-col my-2 w-36">
             <Label>CNPJ</Label>
-            <Textbox value={record.CGC} field="CGC" onChange={handleLoad} />
+            <Textbox
+              value={record.CGC}
+              field="CGC"
+              onChange={handleLoad}
+            />
           </div>
           <div className="flex flex-col w-20 my-2">
             <Label>Vendedor</Label>

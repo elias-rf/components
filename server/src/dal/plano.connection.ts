@@ -3,11 +3,11 @@ import knexLogger from "../lib/knex/knex-logger";
 import { optionsPlano } from "../config/knex";
 import config from "../config";
 
-let knex: Knex;
+let knexPlano: Knex;
 
 if (config.app.env === "test") {
-  knex = KnexObj(optionsPlano);
+  knexPlano = KnexObj(optionsPlano);
 } else {
-  knex = knexLogger(KnexObj(optionsPlano));
+  knexPlano = knexLogger(KnexObj(optionsPlano));
 }
-export default knex;
+export default knexPlano;

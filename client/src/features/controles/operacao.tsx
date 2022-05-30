@@ -6,13 +6,13 @@ import Textbox from "@/features/ui/form/textbox";
 import day from "@/lib/day";
 
 import DataContext, { ClientContext } from "@/contexts/data-context";
-import type { Action, Schema } from "types";
+import type { Action, Schema } from "../../../index.d";
 
-import OperacaoTurnoService from "@/features/operacao/operacao-turno.service";
-import OperacaoMensalService from "@/features/operacao/operacao-mensal.service";
-import OperacaoModeloService from "@/features/operacao/operacao-modelo.service";
-import OperacaoProdutoService from "@/features/operacao/operacao-produto.service";
-import OperacaoDiariaService from "@/features/operacao/operacao-diaria.service";
+import OperacaoTurnoService from "service/operacao-turno.service";
+import OperacaoMensalService from "service/operacao-mensal.service";
+import OperacaoModeloService from "service/operacao-modelo.service";
+import OperacaoProdutoService from "service/operacao-produto.service";
+import OperacaoDiariaService from "service/operacao-diaria.service";
 
 export default function Operacao() {
   const { clientKnex } = React.useContext(DataContext) as ClientContext;
@@ -74,6 +74,20 @@ export default function Operacao() {
     setOperacaoCorrente(action.payload.value);
   };
 
+  function handleDispatch(action: Action) {
+    switch (action.type) {
+      case "MES_CORRENTE":
+        setMesCorrente(action.payload.value);
+        break;
+      case "DIA_CORRENTE":
+        setDiaCorrente(action.payload.value);
+        break;
+      case "PRODUTO_CORRENTE":
+        setProdutoCorrente(action.payload.value);
+        break;
+    }
+  }
+
   return (
     <div className="flex">
       <div className="p-2">
@@ -90,7 +104,7 @@ export default function Operacao() {
           data={mensalData}
           schema={mensalSchema}
           selected={mesCorrente}
-          onSelect={setMesCorrente}
+          dispatch={handleDispatch}
         >
           <Datatable
             data={diariaData}

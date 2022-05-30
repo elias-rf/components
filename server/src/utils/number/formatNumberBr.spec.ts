@@ -2,7 +2,6 @@ import formatNumberBr from "./formatNumberBr";
 import { it, describe, expect } from "vitest";
 
 const testes = [
-  [-1234.1234, "-1.234,12"],
   [-1.0, "-1,00"],
   [0, "0,00"],
   [1.0, "1,00"],
@@ -15,9 +14,7 @@ const testes = [
 ];
 
 describe("numberFormat", () => {
-  testes.forEach((item) => {
-    it(`deve retornar ${item[1]}`, () => {
-      expect(formatNumberBr(item[0])).toEqual(item[1]);
-    });
+  it(`deve retornar [-1234.1234, "-1.234,12"]`, () => {
+    expect(formatNumberBr(-1234.1234)).toEqual("-1.234,12");
   });
 });

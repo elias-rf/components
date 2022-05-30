@@ -35,12 +35,12 @@ export default {
         <TreeView
           data={data}
           selected={selected}
-          onSelect={setSelected}
+          dispatch={setSelected}
         />
         <ListView
           data={data}
           selected={selected}
-          onSelect={setSelected}
+          dispatch={setSelected}
         ></ListView>
       </div>
     );

@@ -1,6 +1,6 @@
 import Search, { SearchAction } from "./search";
 import React from "react";
-import { Schema, Where } from "../../../types";
+import { Schema, Where } from "../../../..";
 
 export default {
   title: "Table/Search",

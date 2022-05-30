@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 import Badge from "../badge";
 import t from "prop-types";
-import { Where, Schema, SchemaField } from "types";
+import { Where, Schema, SchemaField } from "../../../../index.d";
 
 export const searchActionTypes: { where: "WHERE" } = { where: "WHERE" };
 

@@ -2,12 +2,12 @@ import Datatable from "@/features/ui/table/table";
 import React from "react";
 import day from "@/lib/day";
 
-import OperacaoTurnoService from "@/features/operacao/operacao-turno.service";
-import OperacaoMensalService from "@/features/operacao/operacao-mensal.service";
-import OperacaoModeloService from "@/features/operacao/operacao-modelo.service";
-import OperacaoProdutoService from "@/features/operacao/operacao-produto.service";
-import OperacaoDiariaService from "@/features/operacao/operacao-diaria.service";
-import { Schema } from "types";
+import OperacaoTurnoService from "service/operacao-turno.service";
+import OperacaoMensalService from "service/operacao-mensal.service";
+import OperacaoModeloService from "service/operacao-modelo.service";
+import OperacaoProdutoService from "service/operacao-produto.service";
+import OperacaoDiariaService from "service/operacao-diaria.service";
+import { Schema } from "../../../index.d";
 import DataContext, { ClientContext } from "@/contexts/data-context";
 
 export default function Operacao() {
@@ -87,9 +87,15 @@ export default function Operacao() {
               selected={produtoCorrente}
               onSelect={setProdutoCorrente}
             >
-              <Datatable data={modeloData} schema={modeloSchema}></Datatable>
+              <Datatable
+                data={modeloData}
+                schema={modeloSchema}
+              ></Datatable>
             </Datatable>
-            <Datatable data={turnoData} schema={turnoSchema}></Datatable>
+            <Datatable
+              data={turnoData}
+              schema={turnoSchema}
+            ></Datatable>
           </Datatable>
         </Datatable>
       </div>

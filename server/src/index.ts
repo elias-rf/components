@@ -1,7 +1,3 @@
-/**
- * Module dependencies.
- */
-
 import app from "./app";
 import * as http from "http";
 import logger from "./lib/logger";

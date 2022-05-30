@@ -4,12 +4,10 @@ import Datatable from "@/features/ui/table/table";
 import ClienteForm from "@/features/cliente/cliente-form";
 import DataContext, { ClientContext } from "@/contexts/data-context";
 import day from "@/lib/day";
-import ClienteService, {
-  ClienteRecord,
-} from "@/features/cliente/cliente.service";
-import VendaMensalService from "@/features/vendas/venda-mensal.service";
+import ClienteService, { ClienteRecord } from "service/cliente.service";
+import VendaMensalService from "service/venda-mensal.service";
 import isEmpty from "@/utils/is/is-empty";
-import type { Schema } from "types";
+import type { Schema } from "../../../index.d";
 import listVenda from "./listVenda";
 
 const vendasSchema: Schema = {
@@ -79,15 +77,27 @@ export default function ClienteList() {
   return (
     <>
       <div className="p-2 mt-4 border-gray-400 border-1">
-        <ClienteForm record={cliente} onChange={handleCliente} />
+        <ClienteForm
+          record={cliente}
+          onChange={handleCliente}
+        />
       </div>
       <div className="h-auto px-2 overflow-auto border-gray-400 border-1">
         <p className="mt-2 font-black">Quantidade</p>
-        <Datatable data={vendasQuantidade} schema={vendasSchema} />
+        <Datatable
+          data={vendasQuantidade}
+          schema={vendasSchema}
+        />
         <p className="mt-2 font-black">Valor Venda</p>
-        <Datatable data={vendasValor} schema={vendasSchema} />
+        <Datatable
+          data={vendasValor}
+          schema={vendasSchema}
+        />
         <p className="mt-2 font-black">Valor Médio</p>
-        <Datatable data={vendasMedia} schema={vendasSchema} />
+        <Datatable
+          data={vendasMedia}
+          schema={vendasSchema}
+        />
       </div>
     </>
   );

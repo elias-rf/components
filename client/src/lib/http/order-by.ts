@@ -1,4 +1,4 @@
-import { OrderBy } from "types";
+import { OrderBy } from "../../../index.d";
 import isEmpty from "../../utils/is/is-empty";
 
 const orderBy = {

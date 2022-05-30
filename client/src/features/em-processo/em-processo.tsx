@@ -4,12 +4,12 @@ import Table from "@/features/ui/table/table";
 import { Icon } from "@iconify/react";
 import linkIcon from "@iconify/icons-carbon/link";
 import DataContext, { ClientContext } from "@/contexts/data-context";
-import EmProcessoOperacaoService from "@/features/em-processo/em-processo-operacao.service";
-import EmProcessoOPService from "@/features/em-processo/em-processo-op.service";
-import EmProcessoModeloService from "@/features/em-processo/em-processo-modelo.service";
-import EmProcessoProdutoService from "@/features/em-processo/em-processo-produto.service";
-import EmProcessoDiariaService from "@/features/em-processo/em-processo-diaria.service";
-import type { Schema } from "types";
+import EmProcessoOperacaoService from "service/em-processo-operacao.service";
+import EmProcessoOPService from "service/em-processo-op.service";
+import EmProcessoModeloService from "service/em-processo-modelo.service";
+import EmProcessoProdutoService from "service/em-processo-produto.service";
+import EmProcessoDiariaService from "service/em-processo-diaria.service";
+import type { Schema } from "../../../index.d";
 
 interface LinkOPPros {
   op: string;
@@ -104,7 +104,10 @@ export default function EmProcesso() {
                   schema={diariaSchema}
                   selected={diaCorrente}
                 >
-                  <Table data={opData} schema={opSchema} />
+                  <Table
+                    data={opData}
+                    schema={opSchema}
+                  />
                 </Table>
               </Table>
             </Table>

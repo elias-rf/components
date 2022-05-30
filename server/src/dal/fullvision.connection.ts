@@ -3,12 +3,12 @@ import knexLogger from "../lib/knex/knex-logger";
 import { optionsFullvision } from "../config/knex";
 import config from "../config";
 
-let knex: Knex;
+let knexFullvision: Knex;
 
 if (config.app.env === "test") {
-  knex = KnexObj(optionsFullvision);
+  knexFullvision = KnexObj(optionsFullvision);
 } else {
-  knex = knexLogger(KnexObj(optionsFullvision));
+  knexFullvision = knexLogger(KnexObj(optionsFullvision));
 }
 
-export default knex;
+export default knexFullvision;

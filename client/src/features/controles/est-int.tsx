@@ -4,11 +4,11 @@ import day from "@/lib/day";
 
 import DataContext, { ClientContext } from "@/contexts/data-context";
 
-import EstIntMensalService from "@/features/esterilizacao-interna/est-int-mensal.service";
-import EstIntModeloService from "@/features/esterilizacao-interna/est-int-modelo.service";
-import EstIntProdutoService from "@/features/esterilizacao-interna/est-int-produto.service";
-import EstIntDiariaService from "@/features/esterilizacao-interna/est-int-diaria.service";
-import { Schema } from "types";
+import EstIntMensalService from "service/est-int-mensal.service";
+import EstIntModeloService from "service/est-int-modelo.service";
+import EstIntProdutoService from "service/est-int-produto.service";
+import EstIntDiariaService from "service/est-int-diaria.service";
+import { Schema } from "../../../index.d";
 
 export default function EstInt() {
   const { clientKnex } = React.useContext(DataContext) as ClientContext;
@@ -80,7 +80,10 @@ export default function EstInt() {
               selected={produtoCorrente}
               onSelect={setProdutoCorrente}
             >
-              <Datatable data={modeloData} schema={modeloSchema}></Datatable>
+              <Datatable
+                data={modeloData}
+                schema={modeloSchema}
+              ></Datatable>
             </Datatable>
           </Datatable>
         </Datatable>

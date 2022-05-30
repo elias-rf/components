@@ -1,4 +1,4 @@
-import type { Where } from "../types";
+import type { Where } from "../..";
 
 /**
  * Cria clausula Where para knex com chave composta

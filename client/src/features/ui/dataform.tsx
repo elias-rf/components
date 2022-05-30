@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Form, { Button } from "./form";
-import type { Schema } from "types";
+import type { Schema } from "../../../index.d";
 
 interface DataformProps {
   record: { [prop: string]: any };

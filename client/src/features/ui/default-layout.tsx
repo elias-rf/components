@@ -10,7 +10,11 @@ import manufacturer from "@iconify/icons-fluent/manufacturer-24-regular";
 import Menu, { MenuBody, MenuGroup, MenuItem, MenuTitle } from "./menu";
 import useUserStore from "../../state/user-store";
 
-export default function DefaultLayout() {
+export default function DefaultLayout({
+  children,
+}: {
+  children?: React.ReactNode;
+}) {
   const signOut = useUserStore((state) => state.signOut);
   const isAuthenticated = useUserStore((state) => state.isAuthenticated);
   const currentUser = useUserStore((state) => state.currentUser);
@@ -93,6 +97,7 @@ export default function DefaultLayout() {
       </div>
       <main className="flex-auto overflow-auto">
         <Outlet />
+        {children}
       </main>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import OrdemProducaoService from "@/features/ordem-producao/ordem-producao.service";
+import OrdemProducaoService from "service/ordem-producao.service";
 import DataContext, { ClientContext } from "@/contexts/data-context";
 import MasterDetail from "@/features/ui/master-detail";
 

@@ -1,4 +1,4 @@
-import { Action } from "../../../types";
+import { Action } from "../../../..";
 import Field from "./field";
 import type { Story } from "@ladle/react";
 

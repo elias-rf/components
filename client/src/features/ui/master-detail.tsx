@@ -1,7 +1,7 @@
 import React from "react";
 import Datatable from "./datatable";
 import Dataform from "./dataform";
-import { Where, OrderBy } from "types";
+import { Where, OrderBy } from "../../../index.d";
 
 interface MasterDetailProps {
   read: (id: string[]) => Promise<any>;
@@ -34,7 +34,11 @@ export default function MasterDetail({
         del={del}
         clear={clear}
       />
-      <Datatable schema={schema} list={list} searchable={searchable} />
+      <Datatable
+        schema={schema}
+        list={list}
+        searchable={searchable}
+      />
     </div>
   );
 }

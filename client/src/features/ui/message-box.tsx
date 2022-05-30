@@ -1,5 +1,5 @@
 import React from "react";
-import { Action } from "../../types";
+import { Action } from "../../..";
 
 import Button from "./form/button";
 import Modal from "./modal";

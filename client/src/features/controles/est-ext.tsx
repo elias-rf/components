@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import Datatable from "@/features/ui/table/table";
 import day from "@/lib/day";
 
-import EstExtMensalService from "@/features/esterilizacao-externa/est-ext-mensal.service";
-import EstExtModeloService from "@/features/esterilizacao-externa/est-ext-modelo.service";
-import EstExtProdutoService from "@/features/esterilizacao-externa/est-ext-produto.service";
-import EstExtDiariaService from "@/features/esterilizacao-externa/est-ext-diaria.service";
+import EstExtMensalService from "service/est-ext-mensal.service";
+import EstExtModeloService from "service/est-ext-modelo.service";
+import EstExtProdutoService from "service/est-ext-produto.service";
+import EstExtDiariaService from "service/est-ext-diaria.service";
 
 import DataContext, { ClientContext } from "@/contexts/data-context";
-import { Schema } from "types";
+import { Schema } from "../../../index.d";
 
 export default function EstExt() {
   const { clientKnex } = React.useContext(DataContext) as ClientContext;
@@ -80,7 +80,10 @@ export default function EstExt() {
               selected={produtoCorrente}
               onSelect={setProdutoCorrente}
             >
-              <Datatable data={modeloData} schema={modeloSchema}></Datatable>
+              <Datatable
+                data={modeloData}
+                schema={modeloSchema}
+              ></Datatable>
             </Datatable>
           </Datatable>
         </Datatable>

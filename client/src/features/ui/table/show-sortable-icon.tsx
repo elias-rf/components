@@ -1,6 +1,6 @@
 import React from "react";
 import orderByUtil from "../../../lib/http/order-by";
-import { OrderBy, SchemaField } from "types";
+import { OrderBy, SchemaField } from "../../../../index.d";
 import { InlineIcon } from "@iconify/react";
 import chevronSort from "@iconify/icons-carbon/chevron-sort";
 import chevronSortDown from "@iconify/icons-carbon/chevron-sort-down";

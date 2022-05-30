@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Dispatch } from "../../../types";
+import { Dispatch } from "../../../..";
 import isEmpty from "../../../utils/is/is-empty";
 
 export const textboxActionTypes: { change: "CHANGE" } = { change: "CHANGE" };

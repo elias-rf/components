@@ -1,4 +1,4 @@
-import { Where } from "types";
+import { Where } from "../../../index.d";
 import isEmpty from "../../utils/is/is-empty";
 
 const where = {

@@ -1,8 +1,8 @@
-import { Order } from "../../types";
+import { Order } from "../../..";
 import isEmpty from "../../utils/is/is-empty";
 
 function knexOrder(
-  order?: Order[]
+  order: Order[] = []
 ): { column: string; order: "asc" | "desc" }[] {
   if (isEmpty(order)) return [];
   return order.map((item) => {

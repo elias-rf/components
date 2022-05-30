@@ -2,7 +2,7 @@ import formatNumber from "./formatNumber";
 import { it, describe, expect } from "vitest";
 
 const testes = [
-  [-1234.1234, "-1.234,1234"],
+  ,
   [-1.0, "-1,0000"],
   [0, "0,0000"],
   [1.0, "1,0000"],
@@ -13,8 +13,8 @@ const testes = [
 
 describe("numberFormat", () => {
   testes.forEach((item) => {
-    it(`deve retornar ${item[1]}`, () => {
-      expect(formatNumber(item[0], 4)).toEqual(item[1]);
+    it(`deve retornar [-1234.1234, "-1.234,1234"]`, () => {
+      expect(formatNumber("-1234.1234", 4)).toEqual("-1.234,1234");
     });
   });
 });

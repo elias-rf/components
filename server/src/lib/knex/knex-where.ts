@@ -1,5 +1,5 @@
 import Knex from "knex";
-import { Where } from "../../types";
+import { Where } from "../../..";
 import isEmpty from "../../utils/is/is-empty";
 
 /*
@@ -92,7 +92,7 @@ function addCondition(builder: any, field: string, val: any) {
   return builder[functionOperatorMap[val[0]]].apply(builder, args);
 }
 
-function knexWhere(cond?: Where[]): Knex.QueryBuilder {
+function knexWhere(cond: Where[] = []): Knex.QueryBuilder {
   if (isEmpty(cond)) {
     return {};
   }

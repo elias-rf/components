@@ -1,6 +1,6 @@
 import FormField, { formFieldActionTypes } from "./formfield";
 import isEmpty from "../../../utils/is/is-empty";
-import { Schema, SchemaField } from "types";
+import { Schema, SchemaField } from "../../../../index.d";
 
 export const formActionTypes = { ...formFieldActionTypes };
 

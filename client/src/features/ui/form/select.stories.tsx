@@ -1,7 +1,7 @@
 import Select from "./select";
 import React from "react";
 import type { Story } from "@ladle/react";
-import { Action } from "../../../types";
+import { Action } from "../../../..";
 
 export default {
   title: "Form/Select",

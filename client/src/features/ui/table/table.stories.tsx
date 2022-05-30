@@ -1,6 +1,6 @@
 import Table, { Search } from ".";
 import React from "react";
-import { OrderBy, Schema, Where } from "../../../types";
+import { OrderBy, Schema, Where } from "../../../..";
 import { TableAction, tableActionTypes } from "./table";
 
 export default {

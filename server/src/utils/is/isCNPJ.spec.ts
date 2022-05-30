@@ -1,7 +1,7 @@
 import isCNPJ from "./isCNPJ";
 import { it, describe, expect } from "vitest";
 
-describe(__filename, () => {
+describe("isCNPJ", () => {
   let atual;
   it("recusa digitos iguais 0", () => {
     atual = isCNPJ("00.000.000/0000-00");

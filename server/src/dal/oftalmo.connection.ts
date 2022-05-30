@@ -3,12 +3,12 @@ import knexLogger from "../lib/knex/knex-logger";
 import { optionsOftalmo } from "../config/knex";
 import config from "../config";
 
-let knex: Knex;
+let knexOftalmo: Knex;
 
 if (config.app.env === "test") {
-  knex = KnexObj(optionsOftalmo);
+  knexOftalmo = KnexObj(optionsOftalmo);
 } else {
-  knex = knexLogger(KnexObj(optionsOftalmo));
+  knexOftalmo = knexLogger(KnexObj(optionsOftalmo));
 }
 
-export default knex;
+export default knexOftalmo;

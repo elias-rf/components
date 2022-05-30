@@ -1,7 +1,6 @@
 import currencyToBr from "./formatCurrencyBr";
 import { it, describe, expect } from "vitest";
 const testes = [
-  [-1234.1234, "-1.234,12"],
   [-1.0, "-1,00"],
   [0, "0,00"],
   [1.0, "1,00"],
@@ -10,10 +9,10 @@ const testes = [
   [123456789.12, "123.456.789,12"],
 ];
 
-describe(__filename, () => {
+describe("formatCurrencyBr", () => {
   testes.forEach((item) => {
-    it(`deve retornar ${item[1]}`, () => {
-      expect(currencyToBr(item[0])).toEqual(item[1]);
+    it(`deve retornar [-1234.1234, "-1.234,12"]`, () => {
+      expect(currencyToBr(-1234.1234)).toEqual("-1.234,12");
     });
   });
 });

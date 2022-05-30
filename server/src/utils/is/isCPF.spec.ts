@@ -1,7 +1,7 @@
 import isCPF from "./isCPF";
 import { it, describe, expect } from "vitest";
 
-describe(__filename, () => {
+describe("isCPF", () => {
   let atual;
   it("recusa digitos iguais 0", () => {
     atual = isCPF("000.000.000-00");

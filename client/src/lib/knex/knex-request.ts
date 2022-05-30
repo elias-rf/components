@@ -1,7 +1,7 @@
 import knexCache from "./knex-cache";
 import request from "../../utils/http/request";
 import stringify from "json-stable-stringify";
-import { KnexQuery } from "../../types";
+import { KnexQuery } from "../../..";
 
 const cache = knexCache();
 
@@ -17,7 +17,7 @@ export type KnexRequest = (
 async function knexRequest<KnexRequest>(
   db: string,
   query: KnexQuery,
-  noCache = false
+  noCache = true
 ) {
   let rsp: any;
   let cacheHit = "";
