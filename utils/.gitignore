@@ -1,0 +1,10 @@
+.env
+*.log
+*.pid
+*.seed
+cjs
+coverage
+doc
+logs
+node_modules
+npm-debug.log

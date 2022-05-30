@@ -412,18 +412,14 @@ const testData = {
   },
 };
 
-Object.keys(testData).forEach((driver) => {
-  const data = testData[<"mssql" | "mysql" | "pg">driver];
-  const conditions = data.conditions;
-  const knex = data.knex;
-
-  describe("SQL query generation from json query " + driver, () => {
-    conditions.forEach((v) => {
-      it("should " + v.name, () => {
-        var expectedOut = knex.where(knexWhere(v.input)) + "";
-        expect(v.output).toBe(expectedOut);
-      });
-    });
+describe("SQL query generation from json query mysql", () => {
+  const knex = Knex({ client: "mysql" });
+  it("Mysql: handle 'and' condition with raw statement", () => {
+    var expectedOut =
+      knex.where(knexWhere({ f1: { $raw: "< `use_limit`" }, f2: 20 })) + "";
+    expect("select * where (`f1` < `use_limit` and `f2` = 20)").toBe(
+      expectedOut
+    );
   });
 });
 
@@ -433,10 +429,10 @@ it("Deve receber arrays", () => {
     knex
       .where(
         knexWhere([
-          ["f1", "=", 1],
-          ["f2", ">=", 2],
+          ["f1", "=", "1"],
+          ["f2", ">=", "2"],
         ])
       )
       .toString() + "";
-  expect(expectedOut).toBe("select * where ([f1] = 1 and [f2] >= 2)");
+  expect(expectedOut).toBe("select * where ([f1] = '1' and [f2] >= '2')");
 });

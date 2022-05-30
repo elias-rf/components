@@ -92,7 +92,7 @@ function addCondition(builder: any, field: string, val: any) {
   return builder[functionOperatorMap[val[0]]].apply(builder, args);
 }
 
-function knexWhere(cond: Where[] = []): Knex.QueryBuilder {
+export default function knexWhere(cond: Where[] = []): Knex.QueryBuilder {
   if (isEmpty(cond)) {
     return {};
   }
@@ -114,5 +114,3 @@ function knexWhere(cond: Where[] = []): Knex.QueryBuilder {
     };
   }
 }
-
-export default knexWhere;

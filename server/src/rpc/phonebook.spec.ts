@@ -16,9 +16,9 @@ test("deve listar", async () => {
     })
     .response(["ok"]);
 
-  expect(
-    await phonebook.list({}, { currentUser: { idGroup: "0" } }, { knexDb })
-  ).toEqual(["ok"]);
+  expect(await phonebook.list({}, { currentUser: { idGroup: "0" } })).toEqual([
+    "ok",
+  ]);
   tracker.reset();
 });
 
@@ -36,11 +36,7 @@ test("deve ler", async () => {
     .response(["ok"]);
 
   expect(
-    await phonebook.read(
-      { id: ["1"] },
-      { currentUser: { idGroup: "0" } },
-      { knexDb }
-    )
+    await phonebook.read({ id: ["1"] }, { currentUser: { idGroup: "0" } })
   ).toEqual("ok");
   tracker.reset();
 });
@@ -59,11 +55,7 @@ test("não deve ler se id errado", async () => {
     .response(["ok"]);
 
   try {
-    const rsp = phonebook.read(
-      { id: [] },
-      { currentUser: { idGroup: "0" } },
-      { knexDb }
-    );
+    const rsp = phonebook.read({ id: [] }, { currentUser: { idGroup: "0" } });
   } catch (error: any) {
     expect(error.message).toEqual("id is required");
   }
@@ -86,8 +78,7 @@ test("deve excluir", async () => {
 
   const rsp = await phonebook.del(
     { id: ["1"] },
-    { currentUser: { idGroup: "0" } },
-    { knexDb }
+    { currentUser: { idGroup: "0" } }
   );
   expect(rsp).toEqual("ok");
   tracker.reset();
@@ -109,8 +100,7 @@ test("deve criar", async () => {
   expect(
     await phonebook.create(
       { rec: { id: "1" } },
-      { currentUser: { idGroup: "0" } },
-      { knexDb }
+      { currentUser: { idGroup: "0" } }
     )
   ).toEqual(["ok"]);
 });
@@ -131,8 +121,7 @@ test("deve alterar", async () => {
   expect(
     await phonebook.update(
       { id: ["1"], rec: { id: "1" } },
-      { currentUser: { idGroup: "0" } },
-      { knexDb }
+      { currentUser: { idGroup: "0" } }
     )
   ).toEqual(["ok"]);
 });
