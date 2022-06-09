@@ -12,18 +12,7 @@
     "moduleResolution": "node",
     "declaration": true,
     "isolatedModules": true,
-    "typeRoots": ["./node_modules/@types", "./src/types"],
-    "paths": {
-      "@/config/*": ["config/*"],
-      "@/dal/*": ["dal/*"],
-      "@/features/*": ["features/*"],
-      "@/lib/*": ["lib/*"],
-      "@/public/*": ["public/*"],
-      "@/routes/*": ["routes/*"],
-      "@/schema/*": ["schema/*"],
-      "@/types/*": ["types/*"],
-      "@/utils/*": ["utils/*"]
-    }
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
   "include": ["./src", "./src/index.d.ts", "index.d.ts"],
   "exclude": ["node_modules/", "node_modules"]

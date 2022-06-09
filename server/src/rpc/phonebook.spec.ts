@@ -1,127 +1,86 @@
-import { test, it, describe, expect } from "vitest";
-import * as phonebook from "./phonebook";
+import { Connections } from "dal/connections";
 import Knex from "knex";
 import { getTracker, MockClient, RawQuery } from "knex-mock-client";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
+import phonebookDal from "./phonebook";
 
-test("deve listar", async () => {
+describe("phonebook", () => {
   const knexDb = Knex({ client: MockClient });
-  let tracker = getTracker();
-  tracker.on
-    .any(({ method, sql, bindings }: RawQuery) => {
-      return (
-        method === "select" &&
-        sql === 'select * from "phonebook" limit ?' &&
-        bindings.includes(50)
-      );
-    })
-    .response(["ok"]);
+  const phonebook = phonebookDal({ oftalmo: knexDb } as Connections);
+  let tracker: ReturnType<typeof getTracker>;
 
-  expect(await phonebook.list({}, { currentUser: { idGroup: "0" } })).toEqual([
-    "ok",
-  ]);
-  tracker.reset();
-});
+  beforeEach(() => {
+    tracker = getTracker();
+  });
 
-test("deve ler", async () => {
-  const knexDb = Knex({ client: MockClient });
-  let tracker = getTracker();
-  tracker.on
-    .any(({ method, sql, bindings }: RawQuery) => {
-      return (
-        method === "select" &&
-        sql === 'select * from "phonebook" where "id" = ?' &&
-        bindings.includes("1")
-      );
-    })
-    .response(["ok"]);
+  afterEach(() => {
+    tracker.reset();
+  });
 
-  expect(
-    await phonebook.read({ id: ["1"] }, { currentUser: { idGroup: "0" } })
-  ).toEqual("ok");
-  tracker.reset();
-});
+  test("deve listar", async () => {
+    tracker.on.select("phonebook").response(["ok"]);
+    expect(await phonebook.list({})).toEqual(["ok"]);
+    expect(tracker.history.select[0].bindings).toEqual([50]);
+    expect(tracker.history.select[0].sql).toEqual(
+      'select * from "phonebook" limit ?'
+    );
+  });
 
-test("não deve ler se id errado", async () => {
-  const knexDb = Knex({ client: MockClient });
-  let tracker = getTracker();
-  tracker.on
-    .any(({ method, sql, bindings }: RawQuery) => {
-      return (
-        method === "select" &&
-        sql === 'select * from "phonebook" where "id" = ?' &&
-        bindings.includes("1")
-      );
-    })
-    .response(["ok"]);
+  test("deve ler", async () => {
+    tracker.on.select("phonebook").response(["ok"]);
 
-  try {
-    const rsp = phonebook.read({ id: [] }, { currentUser: { idGroup: "0" } });
-  } catch (error: any) {
-    expect(error.message).toEqual("id is required");
-  }
+    expect(await phonebook.read({ id: ["1"] })).toEqual("ok");
+    expect(tracker.history.select[0].bindings).toEqual(["1"]);
+    expect(tracker.history.select[0].sql).toEqual(
+      'select * from "phonebook" where "id" = ?'
+    );
+  });
 
-  tracker.reset();
-});
+  test("deve excluir", async () => {
+    tracker.on.delete("phonebook").response(["ok"]);
 
-test("deve excluir", async () => {
-  const knexDb = Knex({ client: MockClient });
-  let tracker = getTracker();
-  tracker.on
-    .any(({ method, sql, bindings }: RawQuery) => {
-      return (
-        method === "delete" &&
-        sql === 'delete from "phonebook" where "id" = ?' &&
-        bindings.includes("1")
-      );
-    })
-    .response(["ok"]);
-
-  const rsp = await phonebook.del(
-    { id: ["1"] },
-    { currentUser: { idGroup: "0" } }
-  );
-  expect(rsp).toEqual("ok");
-  tracker.reset();
-});
-
-test("deve criar", async () => {
-  const knexDb = Knex({ client: MockClient });
-  let tracker = getTracker();
-  tracker.on
-    .any(({ method, sql, bindings }: RawQuery) => {
-      return (
-        method === "insert" &&
-        sql === 'insert into "phonebook" ("id") values (?)' &&
-        bindings.includes("1")
-      );
-    })
-    .response(["ok"]);
-
-  expect(
-    await phonebook.create(
-      { rec: { id: "1" } },
+    const rsp = await phonebook.del(
+      { id: ["1"] },
       { currentUser: { idGroup: "0" } }
-    )
-  ).toEqual(["ok"]);
-});
+    );
+    expect(rsp).toEqual("ok");
+  });
 
-test("deve alterar", async () => {
-  const knexDb = Knex({ client: MockClient });
-  let tracker = getTracker();
-  tracker.on
-    .any(({ method, sql, bindings }: RawQuery) => {
-      return (
-        method === "update" &&
-        sql === 'update "phonebook" set "id" = ? where "id" = ?' &&
-        bindings.includes("1")
-      );
-    })
-    .response(["ok"]);
+  test("deve criar", async () => {
+    tracker.on
+      .insert(({ method, sql, bindings }: RawQuery) => {
+        return (
+          method === "insert" &&
+          sql === 'insert into "phonebook" ("id") values (?)' &&
+          bindings.includes("1")
+        );
+      })
+      .response(["ok"]);
 
-  expect(
-    await phonebook.update(
-      { id: ["1"], rec: { id: "1" } },
-      { currentUser: { idGroup: "0" } }
-    )
-  ).toEqual(["ok"]);
+    expect(
+      await phonebook.create(
+        { rec: { id: "1" } },
+        { currentUser: { idGroup: "0" } }
+      )
+    ).toEqual(["ok"]);
+  });
+
+  test("deve alterar", async () => {
+    tracker.on
+      .update(({ method, sql, bindings }: RawQuery) => {
+        return (
+          method === "update" &&
+          sql === 'update "phonebook" set "id" = ? where "id" = ?' &&
+          bindings.includes("1")
+        );
+      })
+      .response(["ok"]);
+
+    expect(
+      await phonebook.update(
+        { id: ["1"], rec: { id: "1" } },
+        { currentUser: { idGroup: "0" } }
+      )
+    ).toEqual(["ok"]);
+  });
 });

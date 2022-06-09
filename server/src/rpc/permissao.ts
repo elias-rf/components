@@ -1,12 +1,12 @@
-import { Order, Where, GenericObject, ListArgs } from "../..";
-import knexOftalmo from "@/dal/oftalmo.connection";
-import knexWhere from "@/lib/knex/knex-where";
-import knexOrder from "@/lib/knex/knex-order";
+import { ListArgs } from "../..";
+import { Id } from "../../../index.d";
+import knexOftalmo from "../dal/oftalmo.connection";
+import knexOrder from "../lib/knex/knex-order";
+import knexWhere from "../lib/knex/knex-where";
 
-type Id = string[];
 type Record = {
-  idSubject: string;
-  idGroup: string;
+  idSubject?: string;
+  idGroup?: string;
 };
 
 const table = "groupSubject";
@@ -16,7 +16,7 @@ export async function list({
   where,
   orderBy,
   limit = 1000,
-}: ListArgs): Promise<GenericObject[]> {
+}: ListArgs): Promise<Record[]> {
   const qry = await knexOftalmo(table)
     .limit(limit)
     .where(knexWhere(where))
@@ -24,12 +24,15 @@ export async function list({
   return qry;
 }
 
-export async function read({ id }: { id: Id }): Promise<GenericObject> {
+export async function read({ id }: { id: Id }): Promise<Record> {
+  if (!id || !id.length || !Array.isArray(id)) {
+    throw new Error("[id] is required");
+  }
   const qry = await knexOftalmo(table).where(pk[0], id[0]).where(pk[1], id[1]);
   if (Array.isArray(qry) && qry.length > 0) {
     return qry[0];
   }
-  return qry;
+  return {};
 }
 
 export async function del({ id }: { id: Id }): Promise<number> {

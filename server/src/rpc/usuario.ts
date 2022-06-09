@@ -1,8 +1,8 @@
-import { Order, Where, GenericObject, CurrentUser } from "../..";
-import knexOftalmo from "@/dal/oftalmo.connection";
-import knexWhere from "@/lib/knex/knex-where";
-import knexOrder from "@/lib/knex/knex-order";
 import { Knex } from "knex";
+import { CurrentUser, GenericObject, Order, Where } from "../..";
+import knexOftalmo from "../dal/oftalmo.connection";
+import knexOrder from "../lib/knex/knex-order";
+import knexWhere from "../lib/knex/knex-where";
 
 type Id = string[];
 type Record = {

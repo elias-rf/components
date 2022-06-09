@@ -6,9 +6,9 @@ export type Order = [string, "asc" | "desc"];
 
 export type Pagination = {};
 
-export interface CurrentUser {
-  idGroup: string;
-}
+export type CurrentUser = {
+  idGroup?: string;
+};
 
 export interface KnexDbs {
   [key: string]: Knex;

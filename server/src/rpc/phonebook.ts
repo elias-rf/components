@@ -1,9 +1,8 @@
-import type { Order, Where, GenericObject, CurrentUser } from "../..";
-import knexOftalmo from "../dal/oftalmo.connection";
-import knexWhere from "../lib/knex/knex-where";
+import { Connections } from "dal/connections";
+import type { CurrentUser, ListArgs } from "../..";
+import { Id } from "../../../index.d";
 import knexOrder from "../lib/knex/knex-order";
-
-import { Id } from "../../../index";
+import knexWhere from "../lib/knex/knex-where";
 
 type Record = {
   id?: string;
@@ -12,80 +11,78 @@ type Record = {
   email?: string;
 };
 
-const table = "phonebook";
-const pk = ["id"];
+export default function phonebook(connections: Connections) {
+  const knexOftalmo = connections.oftalmo;
+  const table = "phonebook";
+  const pk = ["id"];
+  return {
+    async list(
+      { where, orderBy, limit = 50 }: ListArgs,
+      ctx?: { currentUser: CurrentUser }
+    ): Promise<Record[]> {
+      const qry = await knexOftalmo(table)
+        .limit(limit)
+        .where(knexWhere(where))
+        .orderBy(knexOrder(orderBy));
+      return qry;
+    },
 
-export async function list(
-  {
-    where,
-    orderBy,
-    limit = 50,
-  }: {
-    where?: Where[];
-    orderBy?: Order[];
-    limit?: number;
-  },
-  { currentUser }: { currentUser: CurrentUser }
-): Promise<GenericObject[]> {
-  const qry = await knexOftalmo(table)
-    .limit(limit)
-    .where(knexWhere(where))
-    .orderBy(knexOrder(orderBy));
-  return qry;
-}
+    async read(
+      { id }: { id: Id },
+      ctx?: { currentUser: CurrentUser }
+    ): Promise<Record> {
+      if (!id || !id.length || !Array.isArray(id)) {
+        throw new Error("[id] is required");
+      }
+      const qry = await knexOftalmo(table).where(pk[0], id[0]);
+      if (Array.isArray(qry) && qry.length > 0) {
+        return qry[0];
+      }
+      return {};
+    },
 
-export async function read(
-  { id }: { id: Id },
-  { currentUser }: { currentUser: CurrentUser }
-): Promise<GenericObject> {
-  if (!id || !id.length || !Array.isArray(id)) {
-    throw new Error("[id] is required");
-  }
-  const qry = await knexOftalmo(table).where("id", id[0]);
-  if (Array.isArray(qry) && qry.length > 0) {
-    return qry[0];
-  }
-  return qry;
-}
+    async del(
+      { id }: { id: Id },
+      ctx?: { currentUser: CurrentUser }
+    ): Promise<number> {
+      if (!id || !id.length || !Array.isArray(id)) {
+        throw new Error("[id] is required");
+      }
+      const qry = await knexOftalmo(table).del().where(pk[0], id[0]);
+      if (Array.isArray(qry) && qry.length > 0) {
+        return qry[0];
+      }
+      return qry;
+    },
 
-export async function del(
-  { id }: { id: Id },
-  { currentUser }: { currentUser: CurrentUser }
-): Promise<number> {
-  if (!id || !id.length || !Array.isArray(id)) {
-    throw new Error("[id] is required");
-  }
-  const qry = await knexOftalmo(table).del().where("id", id[0]);
-  if (Array.isArray(qry) && qry.length > 0) {
-    return qry[0];
-  }
-  return qry;
-}
+    async create(
+      { rec }: { rec: Record },
+      ctx?: { currentUser: CurrentUser }
+    ): Promise<string[]> {
+      const qry = await knexOftalmo(table)
+        .insert(rec)
+        .returning([...pk]);
+      return qry;
+    },
 
-export async function create(
-  { rec }: { rec: Record },
-  { currentUser }: { currentUser: CurrentUser }
-): Promise<string[]> {
-  const qry = await knexOftalmo(table).insert(rec).returning(["id"]);
-  return qry;
-}
-
-export async function update(
-  {
-    id,
-    rec,
-  }: {
-    id: Id;
-    rec: Record;
-  },
-  { currentUser }: { currentUser: CurrentUser }
-): Promise<any> {
-  if (!id || !id.length || !Array.isArray(id)) {
-    throw new Error("[id] is required");
-  }
-  const qry = await knexOftalmo(table)
-    .update(rec)
-    .where("id", id[0])
-    .returning(["id"]);
-  return qry;
+    async update(
+      {
+        id,
+        rec,
+      }: {
+        id: Id;
+        rec: Record;
+      },
+      ctx?: { currentUser: CurrentUser }
+    ): Promise<any> {
+      if (!id || !id.length || !Array.isArray(id)) {
+        throw new Error("[id] is required");
+      }
+      const qry = await knexOftalmo(table)
+        .update(rec)
+        .where(pk[0], id[0])
+        .returning([...pk]);
+      return qry;
+    },
+  };
 }

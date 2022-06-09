@@ -1,75 +1,72 @@
-import { test, it, describe, expect } from "vitest";
-import * as esterilizacaoEsterna from "./esterilizacao-externa";
+import { Connections } from "dal/connections";
 import Knex from "knex";
-import { getTracker, MockClient, RawQuery } from "knex-mock-client";
+import { getTracker, MockClient } from "knex-mock-client";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
+import esterilizacaoEsternaRpc from "./esterilizacao-externa";
 
-test("diario", async () => {
+describe("esterilizacaoEsterna", () => {
   const knexDb = Knex({ client: MockClient });
-  let tracker = getTracker();
-  tracker.on
-    .any(({ method, sql, bindings }: RawQuery) => {
-      return (
-        method === "select" &&
-        sql ===
-          'select tEsterilizacaoexterna.Data AS dia, SUM(case when [NomeProdutoItem] is null then [testerilizacaoExterna].[quantidade] else [Produto_EstExt].[QtdEstExt_tmp] end) AS quantidade from tEsterilizacaoexterna LEFT JOIN (SELECT\ttOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoexterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt where tEsterilizacaoexterna.Data between ? and ? group by "tEsterilizacaoexterna"."Data" order by "tEsterilizacaoexterna"."Data" desc' &&
-        bindings.includes("2020-01-01") &&
-        bindings.includes("2020-01-31")
-      );
-    })
-    .response(["ok"]);
+  const estExterna = esterilizacaoEsternaRpc({
+    oftalmo: knexDb,
+  } as Connections);
+  let tracker: ReturnType<typeof getTracker>;
 
-  const rsp = await esterilizacaoEsterna.diario(
-    { inicio: "2020-01-01", fim: "2020-01-31" },
-    { currentUser: { idGroup: "0" } },
-    { knexDb }
-  );
+  beforeEach(() => {
+    tracker = getTracker();
+  });
 
-  expect(rsp).toEqual(["ok"]);
-});
+  afterEach(() => {
+    tracker.reset();
+  });
 
-test("mensal", async () => {
-  const knexDb = Knex({ client: MockClient });
-  let tracker = getTracker();
-  tracker.on
-    .any(({ method, sql, bindings }: RawQuery) => {
-      return (
-        method === "select" &&
-        sql ===
-          "select CONVERT(CHAR(7),tEsterilizacaoexterna.Data,120) AS mes, SUM(case when [NomeProdutoItem] is null then [testerilizacaoExterna].[quantidade] else [Produto_EstExt].[QtdEstExt_tmp] end) AS quantidade from tEsterilizacaoexterna LEFT JOIN (SELECT\ttOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoexterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt where CONVERT(CHAR(7),tEsterilizacaoexterna.Data,120)>=? group by CONVERT(CHAR(7),tEsterilizacaoexterna.Data,120) order by CONVERT(CHAR(7),tEsterilizacaoexterna.Data,120) desc" &&
-        bindings.includes("2020-01")
-      );
-    })
-    .response(["ok"]);
+  test("diario", async () => {
+    let tracker = getTracker();
+    tracker.on.select("tEsterilizacaoexterna").response(["ok"]);
 
-  const rsp = await esterilizacaoEsterna.mensal(
-    { mes: "2020-01" },
-    { currentUser: { idGroup: "0" } },
-    { knexDb }
-  );
+    const rsp = await estExterna.diario(
+      { inicio: "2020-01-01", fim: "2020-01-31" },
+      { currentUser: { idGroup: "0" } }
+    );
 
-  expect(rsp).toEqual(["ok"]);
-});
+    expect(rsp).toEqual(["ok"]);
+    expect(tracker.history.select[0].bindings).toEqual([
+      "2020-01-01",
+      "2020-01-31",
+    ]);
+    expect(tracker.history.select[0].sql).toEqual(
+      'select tEsterilizacaoexterna.Data AS dia, SUM(case when [NomeProdutoItem] is null then [testerilizacaoExterna].[quantidade] else [Produto_EstExt].[QtdEstExt_tmp] end) AS quantidade from tEsterilizacaoexterna LEFT JOIN (SELECT tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoexterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt where tEsterilizacaoexterna.Data between ? and ? group by "tEsterilizacaoexterna"."Data" order by "tEsterilizacaoexterna"."Data" desc'
+    );
+  });
 
-test("modelo", async () => {
-  const knexDb = Knex({ client: MockClient });
-  let tracker = getTracker();
-  tracker.on
-    .any(({ method, sql, bindings }: RawQuery) => {
-      return (
-        method === "select" &&
-        sql ===
-          `select isnull (NomeProdutoItem,'Metil') AS modelo, SUM(case when [NomeProdutoItem] is null then [testerilizacaoExterna].[quantidade] else [Produto_EstExt].[QtdEstExt_tmp] end) AS quantidade from tEsterilizacaoexterna LEFT JOIN (SELECT tbl_Produto.fkCategoria, tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoexterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt where "tEsterilizacaoexterna"."Data" = ? and IsNull([fkCategoria],'Metil')=? group by "NomeProdutoItem" order by "NomeProdutoItem" desc` &&
-        bindings.includes("2020-01-01") &&
-        bindings.includes("Metil")
-      );
-    })
-    .response(["ok"]);
+  test("mensal", async () => {
+    let tracker = getTracker();
+    tracker.on.select("tEsterilizacaoexterna").response(["ok"]);
 
-  const rsp = await esterilizacaoEsterna.modelo(
-    { data: "2020-01-01", produto: "Metil" },
-    { currentUser: { idGroup: "0" } },
-    { knexDb }
-  );
+    const rsp = await estExterna.mensal(
+      { mes: "2020-01" },
+      { currentUser: { idGroup: "0" } }
+    );
 
-  expect(rsp).toEqual(["ok"]);
+    expect(rsp).toEqual(["ok"]);
+    expect(tracker.history.select[0].bindings).toEqual(["2020-01"]);
+    expect(tracker.history.select[0].sql).toEqual(
+      "select CONVERT(CHAR(7),tEsterilizacaoexterna.Data,120) AS mes, SUM(case when [NomeProdutoItem] is null then [testerilizacaoExterna].[quantidade] else [Produto_EstExt].[QtdEstExt_tmp] end) AS quantidade from tEsterilizacaoexterna LEFT JOIN (SELECT\ttOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoexterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt where CONVERT(CHAR(7),tEsterilizacaoexterna.Data,120)>=? group by CONVERT(CHAR(7),tEsterilizacaoexterna.Data,120) order by CONVERT(CHAR(7),tEsterilizacaoexterna.Data,120) desc"
+    );
+  });
+
+  test("modelo", async () => {
+    let tracker = getTracker();
+    tracker.on.select("tEsterilizacaoexterna").response(["ok"]);
+
+    const rsp = await estExterna.modelo(
+      { data: "2020-01-01", produto: "Metil" },
+      { currentUser: { idGroup: "0" } }
+    );
+
+    expect(rsp).toEqual(["ok"]);
+    expect(tracker.history.select[0].bindings).toEqual(["2020-01-01", "Metil"]);
+    expect(tracker.history.select[0].sql).toEqual(
+      `select isnull (NomeProdutoItem,'Metil') AS modelo, SUM(case when [NomeProdutoItem] is null then [testerilizacaoExterna].[quantidade] else [Produto_EstExt].[QtdEstExt_tmp] end) AS quantidade from tEsterilizacaoexterna LEFT JOIN (SELECT tbl_Produto.fkCategoria, tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoexterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt where "tEsterilizacaoexterna"."Data" = ? and IsNull([fkCategoria],'Metil')=? group by "NomeProdutoItem" order by "NomeProdutoItem" desc`
+    );
+  });
 });

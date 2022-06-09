@@ -1,75 +1,73 @@
-import { test, it, describe, expect } from "vitest";
-import * as esterilizacaoInterna from "./esterilizacao-interna";
+import { Connections } from "dal/connections";
 import Knex from "knex";
-import { getTracker, MockClient, RawQuery } from "knex-mock-client";
+import { getTracker, MockClient, RawQuery, Tracker } from "knex-mock-client";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
+import esterilizacaoInternaRpc from "./esterilizacao-interna";
 
-test("diario", async () => {
+describe("esterilizacaoInterna", () => {
   const knexDb = Knex({ client: MockClient });
-  let tracker = getTracker();
-  tracker.on
-    .any(({ method, sql, bindings }: RawQuery) => {
-      return (
-        method === "select" &&
-        sql ===
-          'select DataInicio as dia, Sum(QtdConforme) AS qtdConforme from "tOperacaoOrdemProducao" where "DataInicio" between ? and ? and fkOperacao in (3058, 3158) group by "DataInicio" order by "DataInicio" desc' &&
-        bindings.includes("2020-01-01") &&
-        bindings.includes("2020-01-31")
-      );
-    })
-    .response(["ok"]);
+  const estInterna = esterilizacaoInternaRpc({
+    oftalmo: knexDb,
+  } as Connections);
+  let tracker: Tracker;
 
-  const rsp = await esterilizacaoInterna.diario(
-    { inicio: "2020-01-01", fim: "2020-01-31" },
-    { currentUser: { idGroup: "0" } },
-    { knexDb }
-  );
+  beforeEach(() => {
+    tracker = getTracker();
+  });
 
-  expect(rsp).toEqual(["ok"]);
-});
+  afterEach(() => {
+    tracker.reset();
+  });
 
-test("mensal", async () => {
-  const knexDb = Knex({ client: MockClient });
-  let tracker = getTracker();
-  tracker.on
-    .any(({ method, sql, bindings }: RawQuery) => {
-      return (
-        method === "select" &&
-        sql ===
-          'select CONVERT(CHAR(7),[DataInicio],120) AS mes, Sum(tOperacaoOrdemProducao.QtdConforme) AS qtdConforme from "tOperacaoOrdemProducao" where CONVERT(CHAR(7),[DataInicio],120)>=? and fkOperacao in (3058, 3158) group by CONVERT(CHAR(7),[DataInicio],120) order by CONVERT(CHAR(7),[DataInicio],120) desc' &&
-        bindings.includes("2020-01")
-      );
-    })
-    .response(["ok"]);
+  test("diario", async () => {
+    tracker.on.select("tOperacaoOrdemProducao").response(["ok"]);
 
-  const rsp = await esterilizacaoInterna.mensal(
-    { mes: "2020-01" },
-    { currentUser: { idGroup: "0" } },
-    { knexDb }
-  );
+    const rsp = await estInterna.diario(
+      { inicio: "2020-01-01", fim: "2020-01-31" },
+      { currentUser: { idGroup: "0" } }
+    );
 
-  expect(rsp).toEqual(["ok"]);
-});
+    expect(rsp).toEqual(["ok"]);
+    expect(tracker.history.select[0].bindings).toEqual([
+      "2020-01-01",
+      "2020-01-31",
+    ]);
+    expect(tracker.history.select[0].sql).toEqual(
+      'select DataInicio as dia, Sum(QtdConforme) AS quantidade from "tOperacaoOrdemProducao" where "DataInicio" between ? and ? and fkOperacao in (3058, 3158) group by "DataInicio" order by "DataInicio" desc'
+    );
+  });
 
-test("modelo", async () => {
-  const knexDb = Knex({ client: MockClient });
-  let tracker = getTracker();
-  tracker.on
-    .any(({ method, sql, bindings }: RawQuery) => {
-      return (
-        method === "select" &&
-        sql ===
-          'select tbl_Produto_Item.NomeProdutoItem as modelo, Sum(tOperacaoOrdemProducao.QtdConforme) AS qtdConforme from ((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp where "DataInicio" = ? and "fkCategoria" = ? and fkOperacao in (3058, 3158) group by tbl_Produto_Item.NomeProdutoItem, tOperacaoOrdemProducao.DataInicio, tbl_Produto.fkCategoria' &&
-        bindings.includes("2020-01-01") &&
-        bindings.includes("Metil")
-      );
-    })
-    .response(["ok"]);
+  test("mensal", async () => {
+    tracker.on.select("select").response(["ok"]);
 
-  const rsp = await esterilizacaoInterna.modelo(
-    { data: "2020-01-01", produto: "Metil" },
-    { currentUser: { idGroup: "0" } },
-    { knexDb }
-  );
+    const rsp = await estInterna.mensal({ mes: "2020-01" });
 
-  expect(rsp).toEqual(["ok"]);
+    expect(rsp).toEqual(["ok"]);
+    expect(tracker.history.select[0].bindings).toEqual(["2020-01"]);
+    expect(tracker.history.select[0].sql).toEqual(
+      'select CONVERT(CHAR(7),[DataInicio],120) AS mes, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade from "tOperacaoOrdemProducao" where CONVERT(CHAR(7),[DataInicio],120)>=? and fkOperacao in (3058, 3158) group by CONVERT(CHAR(7),[DataInicio],120) order by CONVERT(CHAR(7),[DataInicio],120) desc'
+    );
+  });
+
+  test("modelo", async () => {
+    let tracker = getTracker();
+    tracker.on
+      .any(({ method, sql, bindings }: RawQuery) => {
+        return (
+          method === "select" &&
+          sql ===
+            'select tbl_Produto_Item.NomeProdutoItem as modelo, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade from ((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp where "DataInicio" = ? and "fkCategoria" = ? and fkOperacao in (3058, 3158) group by tbl_Produto_Item.NomeProdutoItem, tOperacaoOrdemProducao.DataInicio, tbl_Produto.fkCategoria' &&
+          bindings.includes("2020-01-01") &&
+          bindings.includes("Metil")
+        );
+      })
+      .response(["ok"]);
+
+    const rsp = await estInterna.modelo(
+      { data: "2020-01-01", produto: "Metil" },
+      { currentUser: { idGroup: "0" } }
+    );
+
+    expect(rsp).toEqual(["ok"]);
+  });
 });

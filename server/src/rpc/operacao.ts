@@ -1,17 +1,16 @@
 import createError from "http-errors";
 import { CurrentUser } from "../..";
-
 import knexOftalmo from "../dal/oftalmo.connection";
 
 export async function diario(
   {
+    operacao,
     inicio,
     fim,
-    operacao,
   }: {
+    operacao: string;
     inicio: string;
     fim: string;
-    operacao: string;
   },
   { currentUser }: { currentUser: CurrentUser }
 ) {
@@ -20,7 +19,7 @@ export async function diario(
   if (!operacao) throw new createError.BadRequest("Operação não informada");
   const qry = await knexOftalmo("tOperacaoOrdemProducao")
     .select(
-      knexOftalmo.raw("DataInicio as dia, Sum(QtdConforme) AS qtdConforme")
+      knexOftalmo.raw("DataInicio as dia, Sum(QtdConforme) AS quantidade")
     )
     .orderBy("DataInicio", "desc")
     .groupBy("DataInicio")
@@ -31,11 +30,11 @@ export async function diario(
 
 export async function mensal(
   {
-    mes,
     operacao,
+    mes,
   }: {
-    mes: string;
     operacao: string;
+    mes: string;
   },
   { currentUser }: { currentUser: CurrentUser }
 ) {
@@ -44,7 +43,7 @@ export async function mensal(
   const qry = await knexOftalmo("tOperacaoOrdemProducao")
     .select(
       knexOftalmo.raw(
-        "CONVERT(CHAR(7),[DataInicio],120) AS mes, Sum(tOperacaoOrdemProducao.QtdConforme) AS qtdConforme"
+        "CONVERT(CHAR(7),[DataInicio],120) AS mes, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade"
       )
     )
     .orderByRaw("CONVERT(CHAR(7),[DataInicio],120) desc")
@@ -77,7 +76,7 @@ export async function modelo(
   )
     .select(
       knexOftalmo.raw(
-        "tbl_Produto_Item.NomeProdutoItem as modelo, Sum(tOperacaoOrdemProducao.QtdConforme) AS qtdConforme"
+        "tbl_Produto_Item.NomeProdutoItem as modelo, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade"
       )
     )
     .groupBy(
@@ -95,11 +94,11 @@ export async function modelo(
 
 export async function produto(
   {
-    data,
     operacao,
+    data,
   }: {
-    data: string;
     operacao: string;
+    data: string;
   },
   { currentUser }: { currentUser: CurrentUser }
 ) {
@@ -113,7 +112,7 @@ export async function produto(
   )
     .select(
       knexOftalmo.raw(
-        "tbl_Produto.fkCategoria as produto, Sum(tOperacaoOrdemProducao.QtdConforme) AS qtdConforme"
+        "tbl_Produto.fkCategoria as produto, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade"
       )
     )
     .orderBy("tbl_Produto.fkCategoria", "asc")
@@ -124,11 +123,11 @@ export async function produto(
 
 export async function turno(
   {
-    data,
     operacao,
+    data,
   }: {
-    data: string;
     operacao: string;
+    data: string;
   },
   { currentUser }: { currentUser: CurrentUser }
 ) {
@@ -141,7 +140,7 @@ export async function turno(
   )
     .select(
       knexOftalmo.raw(
-        "	case when tOperacaoOrdemProducao.HoraInicio <='06:00:00' then 'T3' when tOperacaoOrdemProducao.HoraInicio <='14:00:00' then 'T1' when tOperacaoOrdemProducao.HoraInicio <='22:30:00' then 'T2' else 'T3' end as turno, Sum(tOperacaoOrdemProducao.QtdConforme) AS qtdConforme"
+        "	case when tOperacaoOrdemProducao.HoraInicio <='06:00:00' then 'T3' when tOperacaoOrdemProducao.HoraInicio <='14:00:00' then 'T1' when tOperacaoOrdemProducao.HoraInicio <='22:30:00' then 'T2' else 'T3' end as turno, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade"
       )
     )
     .groupBy(

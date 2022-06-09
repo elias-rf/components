@@ -1,7 +1,7 @@
 import KnexObj, { Knex } from "knex";
-import knexLogger from "../lib/knex/knex-logger";
-import { optionsOftalmo } from "../config/knex";
 import config from "../config";
+import { optionsOftalmo } from "../config/knex";
+import knexLogger from "../lib/knex/knex-logger";
 
 let knexOftalmo: Knex;
 
