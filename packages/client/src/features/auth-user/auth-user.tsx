@@ -1,12 +1,9 @@
-import React from "react";
-import type { Action, OrderBy, Pks, Schema, Where } from "../../..";
-import Button from "../ui/form/button";
-import Form from "../ui/form/form";
-import Table from "../ui/table/table";
+import type { Action, Id, OrderBy, Schema, Where } from "@vt/types";
+import { Button, Form, Table } from "../../components";
 
 type AuthUserProps = {
   schema: Schema;
-  selected: Pks;
+  selected: Id;
   orderBy: OrderBy[];
   where: Where[];
   status: string;
@@ -19,7 +16,7 @@ type AuthUserProps = {
  *
  * @returns {*} componente react
  */
-export default function AuthUser({
+export function AuthUser({
   schema,
   selected,
   orderBy,

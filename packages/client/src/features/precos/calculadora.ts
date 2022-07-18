@@ -1,4 +1,4 @@
-import round from "../../utils/number/round";
+import { round } from "@vt/utils";
 
 // Calculadora de preços do comercial
 
@@ -18,7 +18,7 @@ function proporcao(qtd: number, quantidades: number[], valores: number[]) {
 
 export type Calculadora = {};
 
-const calculadora = {
+export const calculadora = {
   liteflex(qtd: number) {
     const quantidades = [1, 50, 500, 1000, 2000];
     // const valores = [50, 47.3, 44.5, 41.5, 39.5]; // 2021/12
@@ -43,7 +43,8 @@ const calculadora = {
   metil(qtd: number) {
     const quantidades = [1, 50, 100, 200, 500, 1000, 2000];
     // const valores = [32, 30, 29.5, 29, 28, 26, 24]; // 2021/12
-    const valores = [32, 30, 29.5, 29, 28, 27, 26]; // 2022/01
+    // const valores = [32, 30, 29.5, 29, 28, 27, 26]; // 2022/01
+    const valores = [38.4, 36, 35.4, 34.8, 33.6, 32.4, 31.2]; // 2022/01
     return proporcao(qtd, quantidades, valores);
   },
 
@@ -74,5 +75,3 @@ const calculadora = {
     return proporcao(qtd, quantidades, valores);
   },
 };
-
-export default calculadora;

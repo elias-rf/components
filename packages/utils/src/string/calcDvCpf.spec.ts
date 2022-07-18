@@ -1,5 +1,5 @@
-import calcDvCpf from "./calcDvCpf";
-import { test, it, describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { calcDvCpf } from "./calcDvCpf";
 describe("calcDvCpf", () => {
   let atual;
   it("deve funcionar com formatação", () => {

@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import Random from "./Random";
+import { describe, expect, it } from "vitest";
+import { Random } from "./Random";
 
 describe("random", () => {
   it("should return a random number", () => {

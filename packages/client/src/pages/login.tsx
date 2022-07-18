@@ -1,31 +1,26 @@
 import React from "react";
-
-import LoginComponent from "@/features/ui/login";
 import { useNavigate } from "react-router-dom";
-import useUserStore from "../state/user-store";
+import { Login as LoginComponent, LoginAction } from "../components";
+import { authenticationService } from "../service/authentication.service";
 
 /**
  * Componente para tela de login
  *
  * @returns {*} componente <LoginView />
  */
-function Login() {
-  const signIn = useUserStore((state) => state.signIn);
+export function Login() {
   const [error, setError] = React.useState("");
   const [spinner, setSpinner] = React.useState(false);
   const navigate = useNavigate();
 
-  async function onChange({
-    user,
-    password,
-  }: {
-    user: string;
-    password: string;
-  }) {
+  async function onChange(action: LoginAction) {
     setSpinner(true);
     setError("");
     try {
-      await signIn(user, password);
+      await authenticationService.login(
+        action.payload.user,
+        action.payload.password
+      );
       setSpinner(false);
       navigate("/");
     } catch (e: any) {
@@ -40,7 +35,7 @@ function Login() {
         <div>{error}</div>
         <LoginComponent
           title="Intranet Visiontech"
-          onChange={onChange}
+          dispatch={onChange}
           loading={spinner}
           error={error}
         />
@@ -48,5 +43,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

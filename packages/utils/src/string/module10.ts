@@ -1,4 +1,4 @@
-export default function module10(dado: string): string {
+export function module10(dado: string): string {
   var i;
   var mult = 2;
   var soma = 0;

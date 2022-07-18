@@ -4,7 +4,7 @@ function getCmd(cmd: string, stack: any[]) {
   );
 }
 
-export default function knexAdapter(dao: any) {
+export function knexAdapter(dao: any) {
   return (stack: any) => {
     let rsp = dao;
 

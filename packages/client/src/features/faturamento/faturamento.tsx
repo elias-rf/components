@@ -1,7 +1,5 @@
-import Datatable from "@/features/ui/table/table";
-import React from "react";
-import { Dispatch, Schema } from "../../..";
-import TreeView from "../ui/tree-view";
+import { Dispatch, Schema } from "@vt/types";
+import { Datatable, TreeView } from "../../components";
 
 export type FaturamentoProps = {
   data: any[];
@@ -22,7 +20,7 @@ function Switch({ selected, children }: { selected: string; children: any }) {
   }
 }
 
-export default function Faturamento({
+export function Faturamento({
   data,
   datatree,
   schema,

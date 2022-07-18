@@ -1,5 +1,4 @@
-import day from "@/lib/day";
-import formatMoney from "@/utils/number/format-money";
+import { day, formatMoney } from "@vt/utils";
 import React from "react";
 import {
   Line,
@@ -17,7 +16,6 @@ import VendaService from "../../service/venda.service";
  * @returns {*} componente react
  */
 function Vendas30dias() {
-  const vendaSvc = VendaService();
   const [vendas, setVendas] = React.useState({
     liteflex: [],
     hilite: [],
@@ -33,7 +31,7 @@ function Vendas30dias() {
     async function get() {
       const fim = day().format("YYYY-MM-DD");
       const inicio = day().subtract(90, "days").format("YYYY-MM-DD");
-      const cli = await vendaSvc.diario(inicio, fim, [
+      const cli = await VendaService.diario(inicio, fim, [
         "AC",
         "AL",
         "AM",

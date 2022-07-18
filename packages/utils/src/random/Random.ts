@@ -1,4 +1,4 @@
-function Random(seed?: number) {
+export function Random(seed?: number) {
   if (seed === undefined) {
     seed = new Date().getTime();
   }
@@ -73,5 +73,3 @@ function Random(seed?: number) {
   };
   return rnd;
 }
-
-export default Random;

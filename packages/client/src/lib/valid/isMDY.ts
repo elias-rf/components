@@ -1,6 +1,6 @@
-import day from "../day";
+import { day } from "../day";
 
-const isMDY = (message = "Valor deve ser ano-mes-dia") => {
+export const isMDY = (message = "Valor deve ser ano-mes-dia") => {
   return (value: any) => {
     if (day(value, "YYYY-MM-DD", true).isValid()) {
       return null;
@@ -8,5 +8,3 @@ const isMDY = (message = "Valor deve ser ano-mes-dia") => {
     return message;
   };
 };
-
-export default isMDY;

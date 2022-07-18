@@ -1,1 +1,0 @@
-Ações que usem HTTP ou dêem suporte para HTTP.

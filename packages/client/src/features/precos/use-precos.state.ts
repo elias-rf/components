@@ -1,7 +1,7 @@
+import { round } from "@vt/utils";
 import React from "react";
-import calculadora from "@/features/precos/calculadora";
-import { round } from "@/utils/number/round";
-import { moeda, inteiro } from "@/lib/text-box-formats";
+import { inteiro, moeda } from "../../lib/text-box-formats";
+import { calculadora } from "./calculadora";
 
 const produtos = ["hilite", "liteflex", "metil", "enlite"];
 
@@ -177,7 +177,7 @@ function calcPrecos(
   return state;
 }
 
-export default function usePrecosState() {
+export function usePrecosState() {
   const [state, setState] = React.useState(stateDefault);
 
   function setPrecos(

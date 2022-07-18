@@ -7,7 +7,7 @@ import isObject from "../is/is-object";
  * @param {Object} source Objeto origem
  * @returns {Object} Novo objeto
  */
-function mergeDeep(target: any, source: any): any {
+export function mergeDeep(target: any, source: any): any {
   let rsp = Object.assign({}, target);
   if (isObject(target) && isObject(source)) {
     Object.keys(source).forEach((key) => {
@@ -24,5 +24,3 @@ function mergeDeep(target: any, source: any): any {
   }
   return rsp;
 }
-
-export default mergeDeep;

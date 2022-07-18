@@ -1,6 +1,6 @@
-import { inteiro, moeda } from "@/lib/text-box-formats";
+import { inteiro, moeda } from "../../lib/text-box-formats";
 
-export default function listVenda(data: any[]) {
+export function listVenda(data: any[]) {
   const quantidade: { [idx: string]: string }[] = [];
   const valor: { [idx: string]: string }[] = [];
   const valormedio: { [idx: string]: string }[] = [];

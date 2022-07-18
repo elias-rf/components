@@ -1,7 +1,7 @@
-import useLocation from "./use-location";
 import qs from "qs";
+import useLocation from "./use-location";
 
-export default function useQueryParams() {
+export function useQueryParams() {
   const { replace, search } = useLocation();
 
   const getParams = () => {

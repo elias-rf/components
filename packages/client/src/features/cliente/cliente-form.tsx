@@ -1,15 +1,14 @@
-import { Checkbox, Label, Textbox } from "@/features/ui/form";
-import PropTypes from "prop-types";
-import React from "react";
-import { ClienteRecord } from "service/cliente.service";
-import { Action, Dispatch } from "../../..";
+import { Action, Dispatch } from "@vt/types";
+import { Input, Label, TextboxText } from "../../components";
+
+import { ClienteRecord } from "../../service/cliente.service";
 
 interface ClienteFormProps {
   record: ClienteRecord;
   dispatch: Dispatch;
 }
 
-export default function ClienteForm({
+export function ClienteForm({
   record = {} as ClienteRecord,
   dispatch,
 }: ClienteFormProps) {
@@ -26,7 +25,7 @@ export default function ClienteForm({
           <div className="flex flex-col w-24 my-2">
             <Label>Código</Label>
 
-            <Textbox
+            <TextboxText
               value={record.CdCliente}
               field="CdCliente"
               dispatch={handleLoad}
@@ -34,7 +33,7 @@ export default function ClienteForm({
           </div>
           <div className="flex flex-col my-2 w-[50rem]">
             <Label>Nome</Label>
-            <Textbox
+            <TextboxText
               value={record.RzSocial}
               field="RzSocial"
               dispatch={handleLoad}
@@ -42,7 +41,7 @@ export default function ClienteForm({
           </div>
           <div className="flex flex-col my-2 w-80">
             <Label>Cidade</Label>
-            <Textbox
+            <TextboxText
               value={record.Cidade}
               field="Cidade"
               dispatch={handleLoad}
@@ -50,7 +49,7 @@ export default function ClienteForm({
           </div>
           <div className="flex flex-col w-10 my-2">
             <Label>UF</Label>
-            <Textbox
+            <TextboxText
               value={record.Uf}
               field="Uf"
               dispatch={handleLoad}
@@ -58,7 +57,7 @@ export default function ClienteForm({
           </div>
           <div className="flex flex-col my-2 w-36">
             <Label>CNPJ</Label>
-            <Textbox
+            <TextboxText
               value={record.CGC}
               field="CGC"
               dispatch={handleLoad}
@@ -66,7 +65,7 @@ export default function ClienteForm({
           </div>
           <div className="flex flex-col w-20 my-2">
             <Label>Vendedor</Label>
-            <Textbox
+            <TextboxText
               value={record.CdVendedor}
               field="CdVendedor"
               dispatch={handleLoad}
@@ -74,7 +73,7 @@ export default function ClienteForm({
           </div>
           <div className="flex flex-col w-20 my-2">
             <Label>Ativo</Label>
-            <Checkbox
+            <Input
               value={record.FgAtivo === "S"}
               field="FgAtivo"
               dispatch={handleLoad}
@@ -85,14 +84,3 @@ export default function ClienteForm({
     </div>
   );
 }
-
-ClienteForm.propTypes = {
-  record: PropTypes.object,
-  fields: PropTypes.array,
-  onChange: PropTypes.func,
-};
-
-ClienteForm.defaultProps = {
-  onChange: () => {},
-  record: {},
-};

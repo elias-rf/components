@@ -1,5 +1,5 @@
-import md5 from "./calcMd5";
-import { it, describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { calcMd5 as md5 } from "./calcMd5";
 
 describe("md5", () => {
   it("deve gerar md5", () => {

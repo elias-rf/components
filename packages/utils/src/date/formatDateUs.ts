@@ -1,4 +1,4 @@
-import formatDate from "./formatDate";
+import { formatDate } from "./formatDate";
 
 /**
  *
@@ -7,7 +7,7 @@ import formatDate from "./formatDate";
  * @param {(string | Date)} date
  * @returns {string} data formatada
  */
-function formatDateUs(date) {
+function formatDateUs(date: any) {
   return formatDate(date, "YYYY-MM-DD");
 }
 

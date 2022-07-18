@@ -1,11 +1,11 @@
-import Authorization from "../../features/ui/authorization";
-import PrecosCliente from "../../features/precos/precos-cliente";
+import { Auth } from "../../features/auth";
+import { PrecosCliente } from "../../features/precos/precos-cliente";
 
 function Precos() {
   return (
-    <Authorization>
+    <Auth>
       <PrecosCliente />
-    </Authorization>
+    </Auth>
   );
 }
 

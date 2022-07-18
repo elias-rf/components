@@ -1,4 +1,4 @@
-import calcDvCnpj from "../string/calcDvCnpj";
+import { calcDvCnpj } from "../string/calcDvCnpj";
 
 /**
  * Valida um cnpj

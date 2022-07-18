@@ -2,7 +2,7 @@ import replaceStringAll from "./replaceStringAll";
 /**
  * transforma uma string em número
  */
-function parseNumber(
+export function parseNumber(
   numero: any,
   separadorGrupo = ",",
   separadorDecimal = "."
@@ -17,5 +17,3 @@ function parseNumber(
   }
   return parseInt(num, 10);
 }
-
-export default parseNumber;

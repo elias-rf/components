@@ -1,5 +1,4 @@
-import React from "react";
-import PageTitle from "@/features/ui/page-title";
+import { PageTitle } from "../../components";
 
 function Romaneio() {
   return (

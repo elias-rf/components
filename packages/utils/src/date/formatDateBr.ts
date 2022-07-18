@@ -1,4 +1,4 @@
-import dateFormat from "./formatDate";
+import { formatDate } from "./formatDate";
 
 /**
  *
@@ -8,7 +8,7 @@ import dateFormat from "./formatDate";
  * @returns {string} data formatada
  */
 function formatDateBr(date: Date): string {
-  return dateFormat(date, "DD/MM/YYYY");
+  return formatDate(date, "DD/MM/YYYY");
 }
 
 export default formatDateBr;

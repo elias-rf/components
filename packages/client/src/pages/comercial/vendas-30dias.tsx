@@ -1,7 +1,6 @@
+import { Page, PageTitle } from "../../components";
+import { Auth } from "../../features/auth";
 import Vendas from "../../features/vendas/vendas-30dias";
-import PageTitle from "@/features/ui/page-title";
-import Page from "@/features/ui/page";
-import Authorization from "@/features/ui/authorization";
 
 /**
  * Componente para manipular Agenda de Ramais
@@ -10,12 +9,12 @@ import Authorization from "@/features/ui/authorization";
  */
 function Vendas30dias() {
   return (
-    <Authorization>
+    <Auth>
       <Page>
         <PageTitle title="Vendas 30 Dias" />
         <Vendas />
       </Page>
-    </Authorization>
+    </Auth>
   );
 }
 

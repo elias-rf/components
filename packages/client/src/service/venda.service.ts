@@ -1,7 +1,8 @@
-import fetcherRpc from "@/lib/http/fetcher-rpc";
-import { Id } from "../../../..";
-import day from "../lib/day";
-import round from "../utils/number/round";
+import { Id } from "@vt/types";
+import { round } from "@vt/utils";
+
+import { day } from "../lib/day";
+import { fetcherRpc } from "../lib/http/fetcher-rpc";
 
 function getSum(lista: any[], produto: string, data: day.Dayjs) {
   const dataInicial = data.add(-30, "day").format("YYYY-MM-DD");
@@ -30,35 +31,13 @@ function getSum(lista: any[], produto: string, data: day.Dayjs) {
   };
 }
 
-const VendaService = () => ({
-  schemaDiario: async () => ({
-    pk: ["NmCategoria", "DtEmissao"],
-    fields: [
-      {
-        field: "DtEmissao",
-        label: "Dia",
-        type: "String",
-      },
-      {
-        field: "NmCategoria",
-        label: "Produto",
-        type: "String",
-      },
-      {
-        field: "qtd",
-        label: "Quantidade",
-        type: "Int",
-      },
-      {
-        field: "vlr",
-        label: "Valor",
-        type: "Float",
-      },
-    ],
-  }),
+const vendaService = {
+  async schemaDiario() {
+    return fetcherRpc("vendaSchemaDiario");
+  },
 
   async diario(inicio: string, fim: string, uf: string[]) {
-    const response = await fetcherRpc.request("vendaDiario", {
+    const response = await fetcherRpc("vendaDiario", {
       inicio,
       fim,
       uf,
@@ -98,45 +77,13 @@ const VendaService = () => ({
     return destino;
   },
 
-  schemaMensal: async () => ({
-    pk: ["anoMes", "CdCliente"],
-    fields: [
-      {
-        field: "anoMes",
-        label: "Mês",
-        type: "ID",
-      },
-      {
-        field: "CdCliente",
-        label: "Cód. Cliente",
-        type: "ID",
-      },
-      {
-        field: "cliente",
-        label: "Cliente",
-        type: "Cliente",
-      },
-      {
-        field: "NmCategoria",
-        label: "Produto",
-        type: "String",
-      },
-      {
-        field: "quantidade",
-        label: "Quantidade",
-        type: "Int",
-      },
-      {
-        field: "valor",
-        label: "Valor",
-        type: "Float",
-      },
-    ],
-  }),
-
-  mensal: async (inicio: string, fim: string, CdCliente: Id) => {
-    return fetcherRpc.request("vendaMensal", { inicio, fim, id: CdCliente });
+  async schemaMensal() {
+    return fetcherRpc("vendaSchemaMensal");
   },
-});
 
-export default VendaService;
+  async mensal(inicio: string, fim: string, CdCliente: Id) {
+    return fetcherRpc("vendaMensal", { inicio, fim, id: CdCliente });
+  },
+};
+
+export default vendaService;

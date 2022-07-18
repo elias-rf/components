@@ -1,8 +1,9 @@
 /// <reference types="vitest" />
+/// <reference types="vite/client" />
+
 import react from "@vitejs/plugin-react";
-import path from "path";
-import { defineConfig } from "vite";
 import notifier from "vite-plugin-notifier";
+import { defineConfig } from "vitest/config";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,14 +14,8 @@ export default defineConfig({
       "/api": "http://localhost:3000",
     },
   },
-  build: { outDir: "../public", emptyOutDir: true },
+  build: { outDir: "../../public", emptyOutDir: true },
   plugins: [react(), notifier()],
-  resolve: {
-    alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
-  },
-  define: {
-    APP_VERSION: JSON.stringify(process.env.npm_package_version),
-  },
   test: {
     environment: "happy-dom", // or 'jsdom', 'node'
   },

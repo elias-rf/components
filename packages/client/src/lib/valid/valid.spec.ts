@@ -1,5 +1,5 @@
-import valid, { isRequired } from "./index";
-import { it, test, describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { isRequired, valid } from "./index";
 
 describe("Validação", () => {
   it("isRequired", () => {

@@ -6,14 +6,15 @@
  * @param mixed   separadorGrupo: sections delimiter
  * @param mixed   separadorDecimal: decimal delimiter
  */
-function formatNumber(
-  numero: string,
+export function formatNumber(
+  numero: number,
   decimais = 2,
   grupos = 3,
   separadorGrupo = ".",
   separadorDecimal = ","
 ) {
-  const numer = parseFloat(numero);
+  const numer = parseFloat(numero.toString());
+
   if (Number.isNaN(numer)) {
     return "";
   }
@@ -23,5 +24,3 @@ function formatNumber(
   rsp = rsp.replace(new RegExp(regex, "g"), `$&${separadorGrupo}`);
   return rsp;
 }
-
-export default formatNumber;

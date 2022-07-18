@@ -1,7 +1,7 @@
-import { it, expect, describe } from "vitest";
+import { expect, it } from "vitest";
 
 import Knex from "knex";
-import knexJson from "./knex-json";
+import { knexJson } from "./knex-json";
 
 const knex = Knex({
   client: "mssql",

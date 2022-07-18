@@ -1,4 +1,4 @@
-import calcDvCpf from "../string/calcDvCpf";
+import { calcDvCpf } from "../string/calcDvCpf";
 
 /**
  * Valida um cpf

@@ -1,7 +1,7 @@
-import { expect, it, describe } from "vitest";
-import knexMock from "./knex";
-import knexAdapter from "./knexAdapter";
-import db from "./db";
+import { describe, expect, it } from "vitest";
+import { db } from "./db";
+import { knexMock } from "./knex";
+import { knexAdapter } from "./knexAdapter";
 
 const data = {
   tbl: [

@@ -1,4 +1,4 @@
-import Random from "../random/Random";
+import { Random } from "../random/Random";
 import data from "./data";
 
 function Faker(seed: number) {

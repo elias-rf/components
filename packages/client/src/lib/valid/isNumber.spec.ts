@@ -1,5 +1,5 @@
-import isNumber from "./isNumber";
-import { it, test, describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { isNumber } from "./isNumber";
 
 describe("number", () => {
   const msg = "Valor deve ser númerico";

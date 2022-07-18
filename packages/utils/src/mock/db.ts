@@ -6,7 +6,7 @@ import _ from "lodash";
  * @param tables
  * @returns
  */
-export default function db(tables: { [key: string]: any[] }) {
+export function db(tables: { [key: string]: any[] }) {
   let rsp: { [key: string]: any[] } | any[] = Object.assign({}, tables);
   const dao = {
     select: (flds: string[]) => {

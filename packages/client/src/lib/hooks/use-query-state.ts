@@ -1,6 +1,6 @@
-import useQueryParams from "./use-queryparams";
+import { useQueryParams } from "./use-queryparams";
 
-export default function useQueryState(key: string, defaultValue: any = "") {
+export function useQueryState(key: string, defaultValue: any = "") {
   const { getParams, setParams } = useQueryParams();
   const params = getParams();
   const state = params[key] || defaultValue;

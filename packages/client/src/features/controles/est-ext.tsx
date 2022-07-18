@@ -1,80 +1,18 @@
-import Datatable, { tableActionTypes } from "@/features/ui/table/table";
-import day from "@/lib/day";
+import { Action } from "@vt/types";
 import React from "react";
-import { useQuery } from "react-query";
-import { Action } from "../../..";
-import EstExtService from "../../service/esterilizacao-externa.service";
+import { tableActionTypes } from "../../components";
+import { day } from "../../lib/day";
+import { EsterilizacaoExternaDiario } from "./est-ext-diario";
+import { EsterilizacaoExternaMensal } from "./est-ext-mensal";
+import { EsterilizacaoExternaModelo } from "./est-ext-modelo";
+import { EsterilizacaoExternaProduto } from "./est-ext-produto";
 
-export default function EstExt() {
-  const estExtSvc = EstExtService();
-
+export function EstExt() {
   const [mesCorrente, setMesCorrente] = React.useState([]);
   const [diaCorrente, setDiaCorrente] = React.useState([]);
   const [produtoCorrente, setProdutoCorrente] = React.useState([]);
 
-  const mensalSchema = estExtSvc.schemaMensal();
-  const diariaSchema = estExtSvc.schemaDiario();
-  const modeloSchema = estExtSvc.schemaModelo();
-  const produtoSchema = estExtSvc.schemaProduto();
-
   const mesInicial = day().subtract(13, "month").format("YYYY-MM");
-
-  const mensalData = useQuery(
-    ["esterilizacaoExternaMensal", mesInicial],
-    ({ queryKey }) => {
-      const [_key, mesInicial] = queryKey as [string, string];
-      return estExtSvc.mensal(mesInicial);
-    },
-    {
-      staleTime: 1000 * 60 - 10, // 10 minutos
-    }
-  );
-
-  const diariaData = useQuery(
-    ["esterilizacaoExternaDiaria", mesCorrente],
-    ({ queryKey }) => {
-      const [_key, [mesCorrente]] = queryKey as [string, string];
-      if (mesCorrente === undefined) return [];
-      return estExtSvc.diario(
-        day(mesCorrente + "-01")
-          .startOf("month")
-          .format("YYYY-MM-DD"),
-        day(mesCorrente + "-01")
-          .endOf("month")
-          .format("YYYY-MM-DD")
-      );
-    },
-    {
-      staleTime: 1000 * 60 - 10, // 10 minutos
-    }
-  );
-
-  const produtoData = useQuery(
-    ["esterilizacaoExternaProduto", diaCorrente],
-    ({ queryKey }) => {
-      const [_key, [diaCorrente]] = queryKey as [string, string];
-      if (diaCorrente === undefined) return [];
-      return estExtSvc.produto(diaCorrente);
-    },
-    {
-      staleTime: 1000 * 60 - 10, // 10 minutos
-    }
-  );
-
-  const modeloData = useQuery(
-    ["esterilizacaoExternaModelo", [diaCorrente, produtoCorrente]],
-    ({ queryKey }) => {
-      const [_key, [[diaCorrente], [produtoCorrente]]] = queryKey as [
-        string,
-        string
-      ];
-      if (diaCorrente === undefined || produtoCorrente === undefined) return [];
-      return estExtSvc.modelo(diaCorrente, produtoCorrente);
-    },
-    {
-      staleTime: 1000 * 60 - 10, // 10 minutos
-    }
-  );
 
   function handleDispatchMensal(action: Action) {
     switch (action.type) {
@@ -102,31 +40,28 @@ export default function EstExt() {
   return (
     <div className="flex">
       <div className="p-2">
-        <Datatable
-          data={mensalData.data || []}
-          schema={mensalSchema}
-          selected={mesCorrente}
+        <EsterilizacaoExternaMensal
+          mesInicial={mesInicial}
+          mesCorrente={mesCorrente}
           dispatch={handleDispatchMensal}
         >
-          <Datatable
-            data={diariaData.data || []}
-            schema={diariaSchema}
-            selected={diaCorrente}
+          <EsterilizacaoExternaDiario
+            mesCorrente={mesCorrente}
+            diaCorrente={diaCorrente}
             dispatch={handleDispatchDiario}
           >
-            <Datatable
-              data={produtoData.data || []}
-              schema={produtoSchema}
-              selected={produtoCorrente}
+            <EsterilizacaoExternaProduto
+              diaCorrente={diaCorrente}
+              produtoCorrente={produtoCorrente}
               dispatch={handleDispatchProduto}
             >
-              <Datatable
-                data={modeloData.data || []}
-                schema={modeloSchema}
-              ></Datatable>
-            </Datatable>
-          </Datatable>
-        </Datatable>
+              <EsterilizacaoExternaModelo
+                diaCorrente={diaCorrente}
+                produtoCorrente={produtoCorrente}
+              ></EsterilizacaoExternaModelo>
+            </EsterilizacaoExternaProduto>
+          </EsterilizacaoExternaDiario>
+        </EsterilizacaoExternaMensal>
       </div>
     </div>
   );

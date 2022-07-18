@@ -1,155 +1,88 @@
-import isEmpty from "@/utils/is/is-empty";
-import { Schema } from "../..";
-import day from "../lib/day";
-import fetcherRpc from "../lib/http/fetcher-rpc";
+import { Schema } from "@vt/types";
+import { isEmpty } from "@vt/utils";
+import { day } from "../lib/day";
+import { fetcherRpc } from "../lib/http/fetcher-rpc";
 
-export default function OperacaoService() {
-  return {
-    schemaDiario(): Schema {
-      return {
-        pk: ["dia"],
-        fields: [
-          {
-            field: "dia",
-            label: "Dia",
-            type: "ID",
-          },
-          {
-            field: "diaSemana",
-            label: "Dia Semana",
-            type: "string",
-          },
-          {
-            field: "quantidade",
-            label: "Quantidade",
-            type: "string",
-          },
-        ],
-      };
-    },
+export const operacaoService = {
+  async schemaDiario(): Promise<Schema> {
+    return fetcherRpc("operacaoDiarioSchema");
+  },
 
-    async diario(
-      operacao: string,
-      inicio: string,
-      fim: string
-    ): Promise<any[]> {
-      if (isEmpty(operacao) || isEmpty(inicio) || isEmpty(fim)) {
-        return [];
-      }
-      const response = await fetcherRpc.request("operacaoDiario", {
-        operacao,
-        inicio,
-        fim,
-      });
-      return response.map((item: any) => {
-        item.diaSemana = day.utc(item.dia).format("ddd");
-        item.dia = day.utc(item.dia).format("YYYY-MM-DD");
-        return item;
-      });
-    },
+  async diario(operacao: string, inicio: string, fim: string): Promise<any[]> {
+    if (isEmpty(operacao) || isEmpty(inicio) || isEmpty(fim)) {
+      return [];
+    }
+    const response = await fetcherRpc("operacaoDiario", {
+      operacao,
+      inicio,
+      fim,
+    });
+    return response.map((item: any) => {
+      item.diaSemana = day.utc(item.dia).format("ddd");
+      item.dia = day.utc(item.dia).format("YYYY-MM-DD");
+      return item;
+    });
+  },
 
-    schemaMensal(): Schema {
-      return {
-        pk: ["mes"],
-        fields: [
-          {
-            field: "mes",
-            label: "Mês",
-            type: "ID",
-          },
-          {
-            field: "quantidade",
-            label: "Quantidade",
-            type: "int",
-          },
-        ],
-      };
-    },
+  async schemaMensal(): Promise<Schema> {
+    return fetcherRpc("operacaoMensalSchema");
+  },
 
-    async mensal(operacao: string, mes: string): Promise<any[]> {
-      if (isEmpty(operacao) || isEmpty(mes)) {
-        return [];
-      }
-      return fetcherRpc.request("operacaoMensal", { operacao, mes });
-    },
+  async mensal(operacao: string, mes: string): Promise<any[]> {
+    if (isEmpty(operacao) || isEmpty(mes)) {
+      return [];
+    }
+    return fetcherRpc("operacaoMensal", { operacao, mes });
+  },
 
-    schemaProduto(): Schema {
-      return {
-        pk: ["produto"],
-        fields: [
-          {
-            field: "produto",
-            label: "Produto",
-            type: "ID",
-          },
-          {
-            field: "quantidade",
-            label: "Quantidade",
-            type: "int",
-          },
-        ],
-      };
-    },
+  async schemaProduto(): Promise<Schema> {
+    return fetcherRpc("operacaoProdutoSchema");
+  },
 
-    async produto(operacao: string, data: string): Promise<any[]> {
-      if (isEmpty(operacao) || isEmpty(data)) {
-        return [];
-      }
-      return fetcherRpc.request("operacaoProduto", { operacao, data });
-    },
+  async produto(operacao: string, data: string): Promise<any[]> {
+    if (isEmpty(operacao) || isEmpty(data)) {
+      return [];
+    }
+    return fetcherRpc("operacaoProduto", { operacao, data });
+  },
 
-    schemaModelo(): Schema {
-      return {
-        pk: ["modelo"],
-        fields: [
-          {
-            field: "modelo",
-            label: "Modelo",
-            type: "ID",
-          },
-          {
-            field: "quantidade",
-            label: "Quantidade",
-            type: "int",
-          },
-        ],
-      };
-    },
+  async schemaModelo(): Promise<Schema> {
+    return {
+      pk: ["modelo"],
+      fields: [
+        {
+          field: "modelo",
+          label: "Modelo",
+          type: "ID",
+        },
+        {
+          field: "quantidade",
+          label: "Quantidade",
+          type: "int",
+        },
+      ],
+    };
+  },
 
-    async modelo(
-      operacao: string,
-      data: string,
-      produto: string
-    ): Promise<any[]> {
-      if (isEmpty(operacao) || isEmpty(data) || isEmpty(produto)) {
-        return [];
-      }
-      return fetcherRpc.request("operacaoModelo", { operacao, data, produto });
-    },
+  async modelo(
+    operacao: string,
+    data: string,
+    produto: string
+  ): Promise<any[]> {
+    if (isEmpty(operacao) || isEmpty(data) || isEmpty(produto)) {
+      return [];
+    }
+    return fetcherRpc("operacaoModelo", { operacao, data, produto });
+  },
 
-    schemaTurno(): Schema {
-      return {
-        pk: ["turno"],
-        fields: [
-          {
-            field: "turno",
-            label: "Mês",
-            type: "ID",
-          },
-          {
-            field: "quantidade",
-            label: "Quantidade",
-            type: "int",
-          },
-        ],
-      };
-    },
+  async schemaTurno(): Promise<Schema> {
+    return fetcherRpc("operacaoTurnoSchema");
+  },
 
-    async turno(operacao: string, data: string): Promise<any[]> {
-      if (isEmpty(operacao) || isEmpty(data)) {
-        return [];
-      }
-      return fetcherRpc.request("operacaoTurno", { operacao, data });
-    },
-  };
-}
+  async turno(operacao: string, data: string): Promise<any[]> {
+    if (isEmpty(operacao) || isEmpty(data)) {
+      return [];
+    }
+    return fetcherRpc("operacaoTurno", { operacao, data });
+  },
+};

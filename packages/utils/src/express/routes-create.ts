@@ -12,7 +12,7 @@
  * @param router
  */
 
-export default function routesCreate(router, routes) {
+export function routesCreate(router: any, routes: any) {
   for (const route of routes) {
     router[route.method](route.path, route.action);
   }

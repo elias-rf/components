@@ -3,23 +3,21 @@
   "private": true,
   "version": "1.1.0",
   "workspaces": [
-    "./server",
     "./packages/*"
   ],
   "scripts": {
     "start": "cd server && node dist/index.js",
-    "build": "cd server && npm run build && cd ../client && npm run build",
+    "build": "cd server && npm run build && cd ../packages/client && npm run build",
     "update": "cd client && npm install && cd ../server && npm install && cd .. && git submodule update --remote",
-    "dev": "concurrently \"npm run dev -w server\" \"npm run dev -w client\" ",
-    "test": "concurrently \"npm run test:watch -w server\" \"npm run test:watch -w client\" ",
-    "test:e2e": "playwright test"
+    "dev": "concurrently \"npm run dev -w @vt/server\" \"npm run dev -w @vt/client\" ",
+    "test": "concurrently \"npm run test:watch -w @vt/server\" \"npm run test:watch -w @vt/client\" ",
+    "test:e2e": "playwright test",
+    "storybook": "npm run storybook -w @vt/client"
   },
   "devDependencies": {
-    "@playwright/test": "^1.21.1",
-    "@types/react-json-editor-ajrm": "^2.5.3",
-    "concurrently": "^7.1.0"
+    "concurrently": "^7.2.2"
   },
   "dependencies": {
-    "json-rpc-2.0": "^1.1.0"
+    "json-rpc-2.0": "^1.3.0"
   }
 }

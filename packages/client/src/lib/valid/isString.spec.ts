@@ -1,5 +1,5 @@
-import isString from "./isString";
-import { it, test, describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { isString } from "./isString";
 
 describe("string", () => {
   const msg = "Valor deve ser texto";

@@ -1,5 +1,5 @@
-import formatNumberBr from "./formatNumberBr";
-import { it, describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { formatNumberBr } from "./formatNumberBr";
 
 const testes = [
   [-1.0, "-1,00"],

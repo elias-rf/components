@@ -1,5 +1,5 @@
-import isRequired from "./isRequired";
-import { it, test, describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { isRequired } from "./isRequired";
 
 describe("required", () => {
   it("default", () => {

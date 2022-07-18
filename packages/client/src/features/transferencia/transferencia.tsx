@@ -1,21 +1,13 @@
-import DataContext from "@/contexts/data-context";
-import Badge from "@/features/ui/badge";
-import { Label, Textbox } from "@/features/ui/form";
-import Button from "@/features/ui/form/button";
-import useFocus from "@/lib/hooks/use-focus";
-import useStateArray from "@/lib/hooks/use-state-array";
-import findDuplicates from "@/utils/array/find-duplicates";
+import { findDuplicates } from "@vt/utils";
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import type { ClientContext } from "../../contexts/data-context";
-import notaFiscalService from "../../service/nota-fiscal.service";
-import ordemProducaoService from "../../service/ordem-producao.service";
+import { Badge, Button, Label, Textbox } from "../../components";
+import { useFocus } from "../../lib/hooks/use-focus";
+import { useStateArray } from "../../lib/hooks/use-state-array";
+import { ordemProducaoService } from "../../service/ordem-producao.service";
+import { transferenciaService } from "../../service/transferencia.service";
 
-function Transferencia() {
-  const { clientKnex } = React.useContext(DataContext) as ClientContext;
-  const ordemProducaoSvc = ordemProducaoService(clientKnex);
-  const notaFiscalSvc = notaFiscalService(clientKnex);
-
+export function Transferencia() {
   const [focus, setFocus] = useFocus();
 
   const [qtd, setQtd] = React.useState<number>();
@@ -34,6 +26,7 @@ function Transferencia() {
   }, [lista]);
 
   function addQtd(e: any) {
+    console.log(`🚀 ~ file: transferencia.tsx ~ line 29 ~ addQtd ~ e`, e);
     if (e.value) {
       setQtd(parseInt(e.value));
       setBlockQtd(true);
@@ -42,8 +35,8 @@ function Transferencia() {
     }
   }
 
-  function addList(e: any) {
-    if (ordemProducaoSvc.isSerieValida(e.value)) {
+  async function addList(e: any) {
+    if (await ordemProducaoService.isControleValid(e.value)) {
       setItem(e.value);
       setLista.add(e.value);
       setMsg("");
@@ -67,29 +60,15 @@ function Transferencia() {
       setMsg("Apenas 1 ordem de produção deve ser transportada de cada vez");
       return;
     }
-
-    const kOp = ordens[0] + "00";
-
-    const jaCadastrado = await notaFiscalSvc.includes(kOp, "1");
-    if (jaCadastrado) {
-      setMsg("Ordem de produção já cadastrada");
-      return;
+    try {
+      await transferenciaService.create(lista);
+      setQtd(undefined);
+      setBlockQtd(false);
+      setBlockItem(true);
+      setLista.clear();
+    } catch (e: any) {
+      setMsg(e.message);
     }
-
-    const prod = await ordemProducaoSvc.getProdutoPlano(kOp);
-    const fab = await ordemProducaoSvc.getDataFabricacao(kOp);
-    const exp = await ordemProducaoSvc.getDataValidade(kOp);
-    await notaFiscalSvc.transferir(
-      kOp,
-      prod,
-      fab.format("YYYY-MM-DD"),
-      exp.format("YYYY-MM-DD"),
-      lista
-    );
-    setQtd(undefined);
-    setBlockQtd(false);
-    setBlockItem(true);
-    setLista.clear();
   }
 
   return (
@@ -100,7 +79,7 @@ function Transferencia() {
         autoComplete="off"
         field="qtd"
         value={qtd}
-        dispatch={addQtd}
+        onChange={addQtd}
         disabled={blockQtd}
       />
       <Label>Serial</Label>
@@ -109,7 +88,7 @@ function Transferencia() {
         autoComplete="off"
         field="item"
         value={item}
-        dispatch={addList}
+        onChange={addList}
         disabled={blockItem}
       />
       <Button
@@ -134,6 +113,7 @@ function Transferencia() {
         {lista.map((serie, idx) => (
           <Badge
             className="m-2"
+            isClosable={true}
             onClose={() => delList(idx)}
             name={serie}
             key={idx + serie}
@@ -146,5 +126,3 @@ function Transferencia() {
     </>
   );
 }
-
-export default Transferencia;

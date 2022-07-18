@@ -1,12 +1,10 @@
-import Page from "@/features/ui/page";
-import PageTitle from "@/features/ui/page-title";
-import knexRequest from "@/lib/knex/knex-request";
+import { Action } from "@vt/types";
 import React from "react";
 import { useQueryClient } from "react-query";
-import { Action } from "../../..";
-import Faturamento from "../../features/faturamento/faturamento";
-import Authorization from "../../features/ui/authorization";
-import FaturamentoService from "../../service/faturamento.service";
+import { Authorization, Page, PageTitle } from "../../components";
+import { Faturamento } from "../../features/faturamento/faturamento";
+import { knexRequest } from "../../lib/knex/knex-request";
+import { FaturamentoService } from "../../service/faturamento.service";
 
 export default function FaturamentoPage() {
   const faturamento = FaturamentoService(knexRequest);
@@ -22,10 +20,6 @@ export default function FaturamentoPage() {
     switch (action.type) {
       case "click":
         setSelected(action.payload);
-        console.log(
-          `🚀 ~ file: faturamento.tsx ~ line 26 ~ handleDispatch ~ action.payload`,
-          action.payload
-        );
         break;
       default:
         break;

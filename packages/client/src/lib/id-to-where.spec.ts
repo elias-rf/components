@@ -1,5 +1,5 @@
-import idToWhere from "./id-to-where";
-import { it, test, describe, expect } from "vitest";
+import { expect, it } from "vitest";
+import { idToWhere } from "./id-to-where";
 
 it("deve receber 1 array e 1 valor", () => {
   expect(idToWhere(["pk1"], 1)).toEqual({ pk1: 1 });

@@ -1,5 +1,5 @@
-import formatMoney from "./format-money.js";
-import { test, it, describe, expect } from "vitest";
+import { describe, expect, test } from "vitest";
+import { formatMoney } from "./format-money.js";
 describe("formatMoney", function () {
   test(`deve arredondar [1.2222, 2, "1,22"]`, () => {
     expect(formatMoney(1.2222, 2)).toEqual("1,22");

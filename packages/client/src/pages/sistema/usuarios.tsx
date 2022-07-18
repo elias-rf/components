@@ -1,20 +1,20 @@
-import AuthUser from "@/features/auth-user/auth-user";
-import Authorization from "@/features/ui/authorization";
-import { ButtonAction, buttonActionTypes } from "@/features/ui/form/button";
-import { formActionTypes } from "@/features/ui/form/form";
-import Page from "@/features/ui/page";
-import PageTitle from "@/features/ui/page-title";
-import { tableActionTypes } from "@/features/ui/table/table";
-import knexRequest from "@/lib/knex/knex-request";
+import { Action, Id, OrderBy, Where } from "@vt/types";
 import React from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { Action, OrderBy, Pks, Where } from "../../..";
-import AuthUserService, { UsuarioRecord } from "../../service/usuario.service";
+import {
+  ButtonAction,
+  buttonActionTypes,
+  Page,
+  PageTitle,
+  tableActionTypes,
+} from "../../components";
+import { Auth } from "../../features/auth";
+import { AuthUser } from "../../features/auth-user/auth-user";
+import { UsuarioRecord, usuarioService } from "../../service/usuario.service";
 
 export default function Usuarios() {
-  const authUser = AuthUserService(knexRequest);
-  const schema = authUser.schema();
-  const [selected, setSelected] = React.useState<Pks>([]);
+  const schema = usuarioService.schema();
+  const [selected, setSelected] = React.useState<Id>([]);
   const [orderBy, setOrderBy] = React.useState<OrderBy[]>([]);
   const [where, setWhere] = React.useState<Where[]>([]);
   const [status, setStatus] = React.useState("new"); // view, new, edit, create
@@ -25,7 +25,7 @@ export default function Usuarios() {
     ["auth-user", where, orderBy],
     ({ queryKey }) => {
       const [_key, where, orderBy] = queryKey as [string, Where[], OrderBy[]];
-      return authUser.list(where, orderBy);
+      return usuarioService.list(where, orderBy);
     },
     {
       staleTime: 1000 * 60, // 1 minuto
@@ -35,8 +35,8 @@ export default function Usuarios() {
   const record = useQuery(
     ["auth-user", selected],
     ({ queryKey }) => {
-      const [_key, pk] = queryKey as [string, Pks];
-      return authUser.read(pk);
+      const [_key, pk] = queryKey as [string, Id];
+      return usuarioService.read(pk);
     },
     {
       staleTime: 1000 * 60, // 1 minuto
@@ -44,20 +44,20 @@ export default function Usuarios() {
   );
 
   const recordUpdate = useMutation(
-    (args: [Pks, UsuarioRecord]) => authUser.update(...args),
+    (args: [Id, UsuarioRecord]) => usuarioService.update(...args),
     { onSuccess: () => queryClient.invalidateQueries(["auth-user"]) }
   );
   const recordCreate = useMutation(
-    (args: [UsuarioRecord]) => authUser.create(...args),
+    (args: [UsuarioRecord]) => usuarioService.create(...args),
     { onSuccess: () => queryClient.invalidateQueries(["phonebook"]) }
   );
-  const recordDel = useMutation((args: [Pks]) => authUser.del(...args), {
+  const recordDel = useMutation((args: [Id]) => usuarioService.del(...args), {
     onSuccess: () => queryClient.invalidateQueries(["phonebook"]),
   });
 
   React.useEffect(() => {
     if (!["edit", "create"].includes(status)) {
-      setForm(record.data || authUser.clear());
+      setForm(record.data || usuarioService.clear());
     }
   }, [status, record.data]);
 
@@ -94,7 +94,7 @@ export default function Usuarios() {
     switch (action.type) {
       case tableActionTypes.select:
         setStatus("view");
-        setSelected(action.payload as Pks);
+        setSelected(action.payload as Id);
         break;
       case tableActionTypes.order:
         setOrderBy(action.payload as OrderBy[]);
@@ -124,7 +124,7 @@ export default function Usuarios() {
   }
 
   return (
-    <Authorization>
+    <Auth>
       <Page>
         <PageTitle
           title="Cadastro de Usuários"
@@ -142,6 +142,6 @@ export default function Usuarios() {
           status={status}
         />
       </Page>
-    </Authorization>
+    </Auth>
   );
 }

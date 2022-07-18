@@ -1,15 +1,15 @@
-import isDate from "./isMDY";
-import { it, test, describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { isMDY } from "./isMDY";
 
 describe("number", () => {
   const msg = "Valor deve ser ano-mes-dia";
   it("true", () => {
-    const req = isDate();
+    const req = isMDY();
     expect(req("2021-02-01")).toBe(null);
   });
 
   it("false", () => {
-    const req = isDate();
+    const req = isMDY();
     expect(req(null)).toBe(msg);
     expect(req(undefined)).toBe(msg);
     expect(req("")).toBe(msg);
@@ -20,7 +20,7 @@ describe("number", () => {
   });
 
   it("custom message", () => {
-    const req = isDate("data");
+    const req = isMDY("data");
     expect(req(null)).toBe("data");
   });
 });

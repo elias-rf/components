@@ -1,4 +1,4 @@
-import numeralToBr from "../number/formatNumberBr";
+import { formatNumberBr } from "../number/formatNumberBr";
 
 /**
  * Recebe um número e retorna com 2 casa decimais e separador de milhares
@@ -6,7 +6,7 @@ import numeralToBr from "../number/formatNumberBr";
  * @return {string} - Texto formatado #.##0.00
  */
 function formatCurrencyBr(numero: number): string {
-  return numeralToBr(numero);
+  return formatNumberBr(numero);
 }
 
 export default formatCurrencyBr;

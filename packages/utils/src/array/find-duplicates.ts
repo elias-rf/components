@@ -1,4 +1,4 @@
-export default function findDuplicates(arry) {
+export function findDuplicates(arry: any) {
   const uniqueElements = new Set(arry);
   const filteredElements = arry.filter((item) => {
     if (uniqueElements.has(item)) {

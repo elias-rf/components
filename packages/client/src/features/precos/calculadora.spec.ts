@@ -1,5 +1,5 @@
-import { it, describe, expect } from "vitest";
-import calculadora from "./calculadora.js";
+import { describe, expect, it } from "vitest";
+import { calculadora } from "./calculadora.js";
 
 describe("calculadora", function () {
   describe("liteflex()", function () {

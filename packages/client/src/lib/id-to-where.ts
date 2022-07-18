@@ -5,7 +5,7 @@
  * @param {string|string[]} id Valor da chave
  * @returns {object} Objeto com {pk:id}
  */
-function idToWhere(
+export function idToWhere(
   pk: string[] | string,
   id: (string | number)[] | string | number
 ) {
@@ -16,5 +16,3 @@ function idToWhere(
 
   return response;
 }
-
-export default idToWhere;

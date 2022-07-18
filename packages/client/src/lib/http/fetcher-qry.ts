@@ -5,7 +5,7 @@ function handleErrors(response) {
   return response;
 }
 
-export default function fetcherQRY(...args) {
+export function fetcherQRY(...args) {
   return fetch(...args)
     .then(handleErrors)
     .then((res) => res.json());

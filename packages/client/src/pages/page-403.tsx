@@ -1,8 +1,7 @@
-import React from "react";
-import A from "@/features/ui/a";
-import pg403 from "@/assets/images/403.gif";
+import pg403 from "../assets/images/403.gif";
+import { A } from "../components";
 
-export default function Page404() {
+export default function Page403() {
   return (
     <div className="flex items-center justify-center w-full h-full">
       <div className="text-3xl text-center">

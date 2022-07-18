@@ -1,5 +1,5 @@
-import formatMoney from "../utils/number/format-money.js";
-import replaceAll from "./replace-all";
+import { formatMoney } from "@vt/utils";
+import { replaceAll } from "./replace-all";
 
 export const moeda = {
   format: (vlr: any) => {
@@ -9,7 +9,6 @@ export const moeda = {
     const num = replaceAll(vlr, /[^0-9,-]/g, "");
     const intl = replaceAll(num, ",", ".");
     const rsp = parseFloat(intl);
-
     if (isNaN(rsp)) {
       return 0.0;
     }

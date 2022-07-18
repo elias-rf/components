@@ -5,7 +5,7 @@
  * @returns {string} Texto sem acentos
  */
 
-export default function removeStringAccents(texto: string) {
+export function removeStringAccents(texto: string) {
   const accents =
     "ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž";
   const accentsOut =

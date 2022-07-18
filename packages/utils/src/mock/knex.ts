@@ -1,4 +1,4 @@
-export default function knexMock(response: any, error?: any) {
+export function knexMock(response: any, error?: any) {
   let called = 0;
   let calledStack: any[] = [];
   let mockStack: any[] = [];

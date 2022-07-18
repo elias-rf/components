@@ -1,5 +1,5 @@
-import { it, describe, expect } from "vitest";
-import findDuplicates from "./find-duplicates";
+import { describe, expect, it } from "vitest";
+import { findDuplicates } from "./find-duplicates";
 
 describe("findDuplicate", () => {
   it("deve achar duplicatas", () => {

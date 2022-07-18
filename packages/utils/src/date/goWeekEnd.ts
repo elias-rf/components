@@ -1,4 +1,4 @@
-import addDaysDate from "./addDaysDate";
+import addDaysDate from "./add-days-date";
 
 /**
  * Calcula o sábado da semanda indicada pela data

@@ -1,4 +1,4 @@
-function replaceAll(str: string, de: string, para: string) {
+export function replaceAll(str: string, de: string, para: string) {
   let rsp = str;
   do {
     str = rsp;
@@ -6,5 +6,3 @@ function replaceAll(str: string, de: string, para: string) {
   } while (rsp !== str);
   return rsp;
 }
-
-export default replaceAll;

@@ -1,5 +1,5 @@
-import parseNumberBr from "./parseNumberBr";
-import { it, describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { parseNumberBr } from "./parseNumberBr";
 
 describe("parseNumberBr2", () => {
   it(`deve retornar -1234.1234`, () => {

@@ -1,5 +1,5 @@
-import removeStringAccents from "./removeStringAccents";
-import { it, describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { removeStringAccents } from "./removeStringAccents";
 
 describe("removeStringAccents", () => {
   it(`"Abc"`, () => {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function useStateArray(value: any[]): [
+export function useStateArray(value: any[]): [
   any[],
   {
     add: (value: any) => void;

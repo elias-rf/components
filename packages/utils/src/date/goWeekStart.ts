@@ -1,4 +1,4 @@
-import dateAddDays from "./addDaysDate";
+import dateAddDays from "./add-days-date";
 /**
  * Calcula o domingo da semana indicada pela data
  */

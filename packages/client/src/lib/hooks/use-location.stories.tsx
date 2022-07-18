@@ -1,8 +1,7 @@
-import { Action } from "../../..";
-import Textbox from "../../features/ui/form/textbox";
-import { Button } from "@/features/ui/form";
 import type { Story } from "@ladle/react";
+import { Action } from "@vt/types";
 import React from "react";
+import { Button } from "../../components";
 import useLocation from "./use-location";
 
 export default {

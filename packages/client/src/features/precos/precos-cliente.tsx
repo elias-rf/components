@@ -1,12 +1,13 @@
 import React from "react";
+import { Textbox } from "../../components/textbox";
+import { inteiro, moeda } from "../../lib/text-box-formats";
+import { PrecosVendedor } from "./precos-vendedor";
+import { usePrecosState } from "./use-precos.state";
 
-import usePrecosState from "@/features/precos/use-precos.state";
-
-import { Textbox } from "@/features/ui/form";
-import { inteiro, moeda } from "@/lib/text-box-formats";
-import PrecosVendedor from "@/features/precos/precos-vendedor";
-
-const produtos = [
+const produtos: {
+  label: string;
+  grupo: "hilite" | "liteflex" | "metil" | "enlite" | "disponivel";
+}[] = [
   { grupo: "hilite", label: "HiLite" },
   { grupo: "liteflex", label: "LiteFlex" },
   { grupo: "metil", label: "Metil..." },
@@ -87,8 +88,13 @@ function Produto({
   );
 }
 
-function Precos() {
+export function PrecosCliente() {
   const [snap, setValue] = usePrecosState() as any;
+
+  // function recalc(event: any) {
+  //   const [group, item] = event.target.name.split(".");
+  //   setValue(group, item, event.target.value);
+  // }
 
   function recalc({ field, value }: { field: string; value: any }) {
     const [group, item] = field.split(".");
@@ -110,12 +116,18 @@ function Precos() {
           <table className="text-right">
             <tbody>
               <tr>
-                <td colSpan={2} className="py-1 pr-2">
+                <td
+                  colSpan={2}
+                  className="py-1 pr-2"
+                >
                   Qt.
                 </td>
                 <td className="px-2">Tabela</td>
                 <td className="px-2 font-bold">Ofertado</td>
-                <td rowSpan={11} className="px-2"></td>
+                <td
+                  rowSpan={11}
+                  className="px-2"
+                ></td>
                 <td
                   className="min-w-[150px] px-4 font-bold text-center align-top bg-white border-2 border-gray-400"
                   rowSpan={9}
@@ -138,7 +150,10 @@ function Precos() {
                     {moeda.format(snap.combo1.totalTabela)}
                   </p>
                 </td>
-                <td rowSpan={9} className="px-2"></td>
+                <td
+                  rowSpan={9}
+                  className="px-2"
+                ></td>
                 <td
                   className="min-w-[150px] px-4 font-bold text-center align-top bg-white border-2 border-gray-400 w-96"
                   rowSpan={9}
@@ -174,7 +189,10 @@ function Precos() {
               ))}
 
               <tr>
-                <td colSpan={2} className="py-2 pr-2">
+                <td
+                  colSpan={2}
+                  className="py-2 pr-2"
+                >
                   Totais
                 </td>
                 <td className="px-2 font-bold border border-black bg-yellow-50">
@@ -193,7 +211,10 @@ function Precos() {
                 </td>
               </tr>
               <tr>
-                <td colSpan={3} className="py-2 pr-3">
+                <td
+                  colSpan={3}
+                  className="py-2 pr-3"
+                >
                   Desconto
                   {" >"}
                 </td>
@@ -217,12 +238,13 @@ function Precos() {
       <div className="print:hidden">
         <div className="m-4">
           <div className="px-4 pb-4 my-2 bg-gray-300 border border-black w-min">
-            <PrecosVendedor dados={snap} produtos={produtos} />
+            <PrecosVendedor
+              dados={snap}
+              produtos={produtos}
+            />
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-export default Precos;

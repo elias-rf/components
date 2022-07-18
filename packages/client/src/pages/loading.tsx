@@ -1,10 +1,6 @@
-import DefaultLayout from "@/features/ui/default-layout";
-import Page from "@/features/ui/page";
-import PageTitle from "@/features/ui/page-title";
+import { Page, PageTitle } from "../components";
 
-export default function Loading() {
-  let circleCommonClasses = "h-2.5 w-2.5 bg-current   rounded-full";
-
+export function Loading() {
   return (
     <Page>
       <PageTitle

@@ -1,4 +1,5 @@
 import React from "react";
+
 import type { KnexRequest } from "../lib/knex/knex-request";
 
 export type ClientContext = {
@@ -6,8 +7,7 @@ export type ClientContext = {
   client: KnexRequest;
 };
 
-const DataContext = React.createContext<ClientContext | null>(null);
-export default DataContext;
+export const DataContext = React.createContext<ClientContext | null>(null);
 
 export function DataProvider({
   children,

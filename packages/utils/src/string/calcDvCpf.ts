@@ -1,4 +1,4 @@
-import multiplicatorio from "../array/calcMultiplicatorio";
+import { calcMultiplicatorio } from "../array/calc-multiplicatorio";
 
 /**
  * Calcula os dígitos verificadores de um CPF
@@ -12,7 +12,7 @@ import multiplicatorio from "../array/calcMultiplicatorio";
  * @example
  * calcCpfDv('003709877') // '21'
  */
-function calcDvCpf(cpf: string) {
+export function calcDvCpf(cpf: string) {
   const multDig1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const multDig2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   let dig1;
@@ -30,10 +30,10 @@ function calcDvCpf(cpf: string) {
     .split("")
     .map((i) => parseInt(i, 10));
 
-  dig1 = multiplicatorio(numeros, multDig1).reduce((a, b) => a + b, 0);
+  dig1 = calcMultiplicatorio(numeros, multDig1).reduce((a, b) => a + b, 0);
   dig1 %= 11;
   dig1 = dig1 > 9 ? 0 : dig1;
-  dig2 = multiplicatorio(numeros.concat(dig1), multDig2).reduce(
+  dig2 = calcMultiplicatorio(numeros.concat(dig1), multDig2).reduce(
     (a, b) => a + b,
     0
   );
@@ -41,5 +41,3 @@ function calcDvCpf(cpf: string) {
   dig2 = dig2 > 9 ? 0 : dig2;
   return `${dig1}${dig2}`;
 }
-
-export default calcDvCpf;

@@ -1,21 +1,18 @@
 import React from "react";
-import AuthService from "service/permissao.service";
-import DataContext from "@/contexts/data-context";
-import MasterDetail from "@/features/ui/master-detail";
-import PageTitle from "@/features/ui/page-title";
-import Page from "@/features/ui/page";
-import Authorization from "@/features/ui/authorization";
+import { Page, PageTitle } from "../../components";
+import { DataContext } from "../../contexts/data-context";
+import { Auth } from "../../features/auth";
+// import PermissaoService from "../../service/permissao.service";
 
 export default function Permissoes() {
   const { clientKnex } = React.useContext(DataContext) as any;
-  const { schema, list, read, create, del, clear } = AuthService(clientKnex);
 
   return (
-    <Authorization>
+    <Auth>
       <Page>
         <PageTitle title="Permissões" />
         <hr />
-        <MasterDetail
+        {/* <MasterDetail
           schema={schema}
           list={list}
           read={read}
@@ -23,8 +20,8 @@ export default function Permissoes() {
           del={del}
           clear={clear}
           searchable={false}
-        />
+        /> */}
       </Page>
-    </Authorization>
+    </Auth>
   );
 }

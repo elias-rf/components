@@ -5,5 +5,3 @@ export function round(number: number, decimalPlaces = 2): number {
       decimalPlaces.toString()
   );
 }
-
-export default round;

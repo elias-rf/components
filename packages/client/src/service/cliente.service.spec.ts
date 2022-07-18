@@ -1,24 +1,40 @@
-import { describe, expect, it } from "vitest";
-import ClienteService from "./cliente.service";
+import { fetchMock } from "@vt/utils";
+import { beforeEach, describe, expect, it } from "vitest";
+import { clienteService } from "./cliente.service";
 
-function fetch(url: string, options: any) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({
-        status: 200,
-        json: () => {
-          return Promise.resolve(options);
-        },
-      });
-    }, 1000);
-  });
-}
+global.fetch = fetchMock.fetch;
 
 describe("ClienteService", () => {
+  beforeEach(() => {
+    fetchMock.reset();
+  });
+
   it("schema ok", async () => {
-    global.fetch = fetch;
-    const clienteSvc = ClienteService();
-    const rsp = await clienteSvc.schema();
-    expect(rsp).toEqual({});
+    fetchMock.mock("/api/rpc", {
+      status: 200,
+      body: {
+        jsonrpc: "2.0",
+        id: 1,
+        result: {
+          pk: ["CdCliente"],
+          fields: [],
+        },
+      },
+    });
+    const rsp = await clienteService.schema();
+    expect(fetchMock.history(0)).toEqual({
+      url: "/api/rpc",
+      options: {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: '{"jsonrpc":"2.0","id":1,"method":"clienteSchema","params":{}}',
+      },
+    });
+    expect(rsp).toEqual({
+      pk: ["CdCliente"],
+      fields: [],
+    });
   });
 });

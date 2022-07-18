@@ -1,7 +1,5 @@
-import React from "react";
-import PageTitle from "@/features/ui/page-title";
-import Page from "@/features/ui/page";
-import OrdemProducao from "@/features/ordem-producao/ordem-producao";
+import { Page, PageTitle } from "../../components";
+import { OrdemProducao } from "../../features/ordem-producao/ordem-producao";
 
 /**
  * Componente para manipular Agenda de Ramais

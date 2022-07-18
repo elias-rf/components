@@ -1,5 +1,5 @@
-import randomString from "./randomString";
-import { test, it, describe, expect } from "vitest";
+import { expect, test } from "vitest";
+import { randomString } from "./randomString";
 
 test("deve gerar uma string", () => {
   expect(randomString().length).toBe(6);

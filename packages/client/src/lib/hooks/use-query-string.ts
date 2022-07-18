@@ -1,9 +1,9 @@
-import React from "react";
 import qs from "qs";
+import React from "react";
 import type { NavigateOptions } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 
-export default function useQueryString(key: string) {
+export function useQueryString(key: string) {
   let [searchParams, setSearchParams] = useSearchParams();
   let paramValue = searchParams.get(key) || "";
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-const useFocus = () => {
+export const useFocus = () => {
   const htmlElRef = <any>React.useRef(null);
   const setFocus = () => {
     console.log("focus");
@@ -9,5 +9,3 @@ const useFocus = () => {
 
   return [htmlElRef, setFocus];
 };
-
-export default useFocus;

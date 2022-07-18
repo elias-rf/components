@@ -1,124 +1,60 @@
-import isEmpty from "@/utils/is/is-empty";
-import { Schema } from "../..";
-import day from "../lib/day";
-import fetcherRpc from "../lib/http/fetcher-rpc";
+import { isEmpty } from "@vt/utils";
+import { day } from "../lib/day";
+import { fetcherRpc } from "../lib/http/fetcher-rpc";
 
-export default function EsterilizacaoInternaService() {
-  return {
-    schemaDiario(): Schema {
-      return {
-        pk: ["dia"],
-        fields: [
-          {
-            field: "dia",
-            label: "Dia",
-            type: "ID",
-          },
-          {
-            field: "diaSemana",
-            label: "Dia Semana",
-            type: "string",
-          },
-          {
-            field: "quantidade",
-            label: "Quantidade",
-            type: "string",
-          },
-        ],
-      };
-    },
+export const esterilizacaoInternaService = {
+  schemaDiario() {
+    return fetcherRpc("esterilizacaoInternaSchemaDiario", {});
+  },
 
-    async diario(inicio: string, fim: string): Promise<any[]> {
-      if (isEmpty(inicio) || isEmpty(fim)) {
-        return [];
-      }
-      const response = await fetcherRpc.request("esterilizacaoInternaDiario", {
-        inicio,
-        fim,
-      });
-      return response.map((item: any) => {
-        item.diaSemana = day.utc(item.dia).format("ddd");
-        item.dia = day.utc(item.dia).format("YYYY-MM-DD");
-        return item;
-      });
-    },
+  async diario(inicio: string, fim: string): Promise<any[]> {
+    if (isEmpty(inicio) || isEmpty(fim)) {
+      return [];
+    }
+    const response = await fetcherRpc("esterilizacaoInternaDiario", {
+      inicio,
+      fim,
+    });
+    return response.map((item: any) => {
+      item.diaSemana = day.utc(item.dia).format("ddd");
+      item.dia = day.utc(item.dia).format("YYYY-MM-DD");
+      return item;
+    });
+  },
 
-    schemaMensal(): Schema {
-      return {
-        pk: ["mes"],
-        fields: [
-          {
-            field: "mes",
-            label: "Mês",
-            type: "ID",
-          },
-          {
-            field: "quantidade",
-            label: "Quantidade",
-            type: "string",
-          },
-        ],
-      };
-    },
+  schemaMensal() {
+    return fetcherRpc("esterilizacaoInternaSchemaMensal", {});
+  },
 
-    async mensal(mes: string): Promise<any[]> {
-      if (isEmpty(mes)) {
-        return [];
-      }
-      return fetcherRpc.request("esterilizacaoInternaMensal", { mes });
-    },
+  async mensal(mes: string): Promise<any[]> {
+    if (isEmpty(mes)) {
+      return [];
+    }
+    return fetcherRpc("esterilizacaoInternaMensal", { mes });
+  },
 
-    schemaProduto(): Schema {
-      return {
-        pk: ["produto"],
-        fields: [
-          {
-            field: "produto",
-            label: "Produto",
-            type: "ID",
-          },
-          {
-            field: "quantidade",
-            label: "Quantidade",
-            type: "int",
-          },
-        ],
-      };
-    },
+  schemaProduto() {
+    return fetcherRpc("esterilizacaoInternaSchemaProduto", {});
+  },
 
-    async produto(data: string): Promise<any[]> {
-      if (isEmpty(data)) {
-        return [];
-      }
-      return fetcherRpc.request("esterilizacaoInternaProduto", { data });
-    },
+  async produto(data: string): Promise<any[]> {
+    if (isEmpty(data)) {
+      return [];
+    }
+    return fetcherRpc("esterilizacaoInternaProduto", { data });
+  },
 
-    schemaModelo(): Schema {
-      return {
-        pk: ["modelo"],
-        fields: [
-          {
-            field: "modelo",
-            label: "Modelo",
-            type: "ID",
-          },
-          {
-            field: "quantidade",
-            label: "Quantidade",
-            type: "int",
-          },
-        ],
-      };
-    },
+  schemaModelo() {
+    return fetcherRpc("esterilizacaoInternaSchemaModelo", {});
+  },
 
-    async modelo(data: string, produto: string): Promise<any[]> {
-      if (isEmpty(data) || isEmpty(produto)) {
-        return [];
-      }
-      return fetcherRpc.request("esterilizacaoInternaModelo", {
-        data,
-        produto,
-      });
-    },
-  };
-}
+  async modelo(data: string, produto: string): Promise<any[]> {
+    if (isEmpty(data) || isEmpty(produto)) {
+      return [];
+    }
+    return fetcherRpc("esterilizacaoInternaModelo", {
+      data,
+      produto,
+    });
+  },
+};

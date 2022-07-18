@@ -1,5 +1,5 @@
-import Datatable from "@/features/ui/table/table";
-import type { Dispatch, Schema } from "../../..";
+import type { Dispatch, Schema } from "@vt/types";
+import { Datatable } from "../../components";
 
 type FaturamentoAnualProps = {
   data: any[];
@@ -7,7 +7,7 @@ type FaturamentoAnualProps = {
   dispatch: Dispatch;
 };
 
-export default function FaturamentoAnual({
+export function FaturamentoAnual({
   data,
   schema,
   dispatch,

@@ -1,5 +1,5 @@
-import { expect, it, describe } from "vitest";
-import db from "./db";
+import { describe, expect, it } from "vitest";
+import { db } from "./db";
 
 const data = {
   tbl: [

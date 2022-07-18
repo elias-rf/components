@@ -1,4 +1,4 @@
-function formatMoney(
+export function formatMoney(
   amount: any,
   decimalCount = 2,
   decimal = ",",
@@ -30,5 +30,3 @@ function formatMoney(
     console.log(e);
   }
 }
-
-export default formatMoney;

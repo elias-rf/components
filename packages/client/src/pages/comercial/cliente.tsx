@@ -1,18 +1,15 @@
-import useQueryState from "@/lib/hooks/use-query-state";
+import { Action, Id } from "@vt/types";
 import React from "react";
 import { useQuery } from "react-query";
-import { Action } from "../../..";
-import { Id } from "../../../../..";
-import ClienteForm from "../../features/cliente/cliente-form";
-import Authorization from "../../features/ui/authorization";
-import Page from "../../features/ui/page";
-import PageTitle from "../../features/ui/page-title";
-import ClienteService, { ClienteRecord } from "../../service/cliente.service";
-import VendaService from "../../service/venda.service";
+import { Page, PageTitle } from "../../components";
+import { Auth } from "../../features/auth";
+import { ClienteForm } from "../../features/cliente/cliente-form";
+import { useQueryState } from "../../lib/hooks/use-query-state";
+import { ClienteRecord, clienteService } from "../../service/cliente.service";
 
 export default function Cliente() {
-  const cliente = ClienteService();
-  const venda = VendaService();
+  const cliente = clienteService;
+  // const venda = VendaService();
   const schema = cliente.schema();
 
   const [form, setForm] = React.useState<ClienteRecord>(cliente.clear());
@@ -45,7 +42,7 @@ export default function Cliente() {
   }
 
   return (
-    <Authorization>
+    <Auth>
       <Page>
         <PageTitle
           title="Cliente"
@@ -59,6 +56,6 @@ export default function Cliente() {
           />
         </div>
       </Page>
-    </Authorization>
+    </Auth>
   );
 }

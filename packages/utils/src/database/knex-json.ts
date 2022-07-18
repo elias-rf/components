@@ -1,5 +1,5 @@
 import { Knex } from "knex";
-import isEmpty from "../is/is-empty";
+import { isEmpty } from "../is/is-empty";
 
 // métodos chamados como array de array de argumentos [[arg1, arg2, arg3, arg4]]
 const arrayMethods = [
@@ -26,7 +26,7 @@ const arrayMethods = [
   "sum",
 ];
 
-export default function knexJson(knex: Knex, sql: { [key: string]: any }) {
+export function knexJson(knex: Knex, sql: { [key: string]: any }) {
   let qry = knex.queryBuilder();
   for (const prop in sql) {
     if (isEmpty(sql[prop])) {

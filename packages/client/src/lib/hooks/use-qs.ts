@@ -1,9 +1,9 @@
-import React from "react";
 import qs from "qs";
+import React from "react";
 import type { NavigateOptions } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export default function useQs(key: string, defaultValue: any = ""): [string] {
+export function useQs(key: string, defaultValue: any = ""): [string] {
   const location = useLocation();
   const navigate = useNavigate();
 

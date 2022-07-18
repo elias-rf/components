@@ -1,5 +1,5 @@
-import cnpjDv from "./calcDvCnpj";
-import { test, it, describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { calcDvCnpj as cnpjDv } from "./calcDvCnpj";
 describe("calcDvCnpj", () => {
   let atual;
   it("deve funcionar com formatação", () => {

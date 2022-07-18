@@ -2,30 +2,24 @@ import { JSONRPCClient } from "json-rpc-2.0";
 
 // JSONRPCClient needs to know how to send a JSON-RPC request.
 // Tell it by passing a function to its constructor. The function must take a JSON-RPC request and send it.
-const fetcher: JSONRPCClient = new JSONRPCClient((jsonRPCRequest) =>
-  fetch("/api/rpc", {
+const fetcher: JSONRPCClient = new JSONRPCClient(async (jsonRPCRequest) => {
+  const response = await fetch("/api/rpc", {
     method: "POST",
     headers: {
       "content-type": "application/json",
     },
     body: JSON.stringify(jsonRPCRequest),
-  }).then((response) => {
-    if (response.status === 200) {
-      // Use client.receive when you received a JSON-RPC response.
-      return response
-        .json()
-        .then((jsonRPCResponse) => fetcher.receive(jsonRPCResponse));
-    } else if (jsonRPCRequest.id !== undefined) {
-      return Promise.reject(new Error(response.statusText));
-    }
-  })
-);
+  });
+  if (response.status === 200) {
+    // Use client.receive when you received a JSON-RPC response.
+    return response.json().then((jsonRPCResponse) => {
+      return fetcher.receive(jsonRPCResponse);
+    });
+  } else if (jsonRPCRequest.id !== undefined) {
+    return Promise.reject(new Error(response.statusText));
+  }
+});
 
-const fetcherRpc = {
-  request(method: string, params: any) {
-    console.log({ method, params });
-    return fetcher.request(method, params);
-  },
-};
-
-export default fetcherRpc;
+export function fetcherRpc<T>(method: string, params: any = {}) {
+  return fetcher.request(method, params);
+}

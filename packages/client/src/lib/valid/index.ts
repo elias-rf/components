@@ -1,2 +1,2 @@
-export { default } from "./valid";
-export { default as isRequired } from "./isRequired";
+export * from "./isRequired";
+export * from "./valid";

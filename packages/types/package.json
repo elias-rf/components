@@ -1,0 +1,24 @@
+{
+  "name": "@vt/types",
+  "version": "1.0.0",
+  "description": "Types for the VT API",
+  "private": true,
+  "main": "index.ts",
+  "module": "src",
+  "author": "Elias Ribeiro Filho <eliasribeiro@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "doc": "nodemon -w src ./node_modules/.bin/jsdoc -c jsdoc.js",
+    "build": "node esbuild.config.js",
+    "test": "cross-env NODE_ENV=test vitest run",
+    "test:watch": "cross-env NODE_ENV=test vitest --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "esbuild": "^0.14.49",
+    "esbuild-node-externals": "^1.4.1",
+    "esbuild-runner": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "vitest": "^0.18.0"
+  }
+}

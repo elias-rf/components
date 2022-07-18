@@ -1,0 +1,35 @@
+### Login
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"login",
+  "params":{
+    "user":"elias",
+    "password":"jkl"
+  }
+}
+
+### Logout
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"logout",
+  "params":{}
+}
+
+### Me
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"me",
+  "params":{}
+}

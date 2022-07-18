@@ -1,4 +1,4 @@
-const isRequired = (message = "Valor deve ser informado") => {
+export const isRequired = (message = "Valor deve ser informado") => {
   return (value: any) => {
     if (value) {
       return null;
@@ -6,5 +6,3 @@ const isRequired = (message = "Valor deve ser informado") => {
     return message;
   };
 };
-
-export default isRequired;

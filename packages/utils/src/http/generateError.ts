@@ -6,10 +6,7 @@ import httpStatus from "./httpStatus";
  * @param {Error} errorData
  * @returns {Error|APIError}
  */
-export default function generateError(
-  message: string,
-  status: number | string
-) {
+export function generateError(message: string, status: number | string) {
   const err: any = new Error(message);
   err.status = status;
   err.statusText = httpStatus[status];

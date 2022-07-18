@@ -1,5 +1,5 @@
-import mergeDeep from "./mergeDeep";
-import { it, describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { mergeDeep } from "./mergeDeep";
 
 describe("mergeDeep", () => {
   it("can extend on 1 level", () => {

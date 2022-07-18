@@ -1,6 +1,6 @@
-import isEmpty from "@/utils/is/is-empty";
-import { Schema } from "../..";
-import fetcherRpc from "../lib/http/fetcher-rpc";
+import { Schema } from "@vt/types";
+import { isEmpty } from "@vt/utils";
+import { fetcherRpc } from "../lib/http/fetcher-rpc";
 
 const fields = [
   "LITEFLEX",
@@ -11,159 +11,52 @@ const fields = [
   "ANEL CAPSULAR",
 ];
 
-export default function TransferenciaService() {
-  return {
-    schemaDiario(): Schema {
-      return {
-        pk: ["dia"],
-        fields: [
-          {
-            field: "dia",
-            label: "Dia",
-            labelClass: "text-center",
-            fieldClass: "text-left",
-            type: "string",
-          },
-          {
-            field: "LITEFLEX",
-            label: "LiteFlex",
-            labelClass: "text-right",
-            fieldClass: "text-right",
-          },
-          {
-            field: "HILITE",
-            label: "HiLite",
-            labelClass: "text-right",
-            fieldClass: "text-right",
-          },
-          {
-            field: "ENLITE",
-            label: "EnLite",
-            labelClass: "text-right",
-            fieldClass: "text-right",
-          },
-          {
-            field: "METILCELULOSE",
-            label: "Metil",
-            labelClass: "text-right",
-            fieldClass: "text-right",
-          },
-          {
-            field: "CORNEAL RING",
-            label: "Corneal Ring",
-            labelClass: "text-right",
-            fieldClass: "text-right",
-          },
-          {
-            field: "ANEL CAPSULAR",
-            label: "Anel Capsular",
-            labelClass: "text-right",
-            fieldClass: "text-right",
-          },
-        ],
-      };
-    },
+export const transferenciaService = {
+  async schemaDiario() {
+    return fetcherRpc("transferenciaSchemaDiario", {});
+  },
+  async diario(inicio: string, fim: string): Promise<any[]> {
+    if (isEmpty(inicio) || isEmpty(fim)) {
+      return [];
+    }
+    const response: any = await fetcherRpc("transferenciaDiario", {
+      inicio,
+      fim,
+    });
+    return response;
+  },
 
-    async diario(inicio: string, fim: string): Promise<any[]> {
-      if (isEmpty(inicio) || isEmpty(fim)) {
-        return [];
-      }
-      const response: any = await fetcherRpc.request("transferenciaDiario", {
-        inicio,
-        fim,
-      });
-      return response;
-    },
+  async schemaMensal() {
+    return fetcherRpc("transferenciaSchemaMensal", {});
+  },
 
-    schemaMensal(): Schema {
-      return {
-        pk: ["mes"],
-        fields: [
-          {
-            field: "mes",
-            label: "Mês",
-            labelClass: "text-center",
-            fieldClass: "text-left",
-            type: "string",
-          },
-          {
-            field: "LITEFLEX",
-            label: "LiteFlex",
-            labelClass: "text-right",
-            fieldClass: "text-right",
-          },
-          {
-            field: "HILITE",
-            label: "HiLite",
-            labelClass: "text-right",
-            fieldClass: "text-right",
-          },
-          {
-            field: "ENLITE",
-            label: "EnLite",
-            labelClass: "text-right",
-            fieldClass: "text-right",
-          },
-          {
-            field: "METILCELULOSE",
-            label: "Metil",
-            labelClass: "text-right",
-            fieldClass: "text-right",
-          },
-          {
-            field: "CORNEAL RING",
-            label: "Corneal Ring",
-            labelClass: "text-right",
-            fieldClass: "text-right",
-          },
-          {
-            field: "ANEL CAPSULAR",
-            label: "Anel Capsular",
-            labelClass: "text-right",
-            fieldClass: "text-right",
-          },
-        ],
-      };
-    },
+  async mensal(mes: string): Promise<any[]> {
+    if (isEmpty(mes)) {
+      return [];
+    }
+    const response: any = await fetcherRpc("transferenciaMensal", {
+      mes,
+    });
 
-    async mensal(mes: string): Promise<any[]> {
-      if (isEmpty(mes)) {
-        return [];
-      }
-      const response: any = await fetcherRpc.request("transferenciaMensal", {
-        mes,
-      });
+    return response;
 
-      return response;
+    if (isEmpty(response)) {
+      return [];
+    }
+  },
 
-      if (isEmpty(response)) {
-        return [];
-      }
-    },
+  async schemaModelo(): Promise<Schema> {
+    return fetcherRpc("transferenciaSchemaModelo", {});
+  },
 
-    schemaModelo(): Schema {
-      return {
-        pk: ["modelo"],
-        fields: [
-          {
-            field: "modelo",
-            label: "Modelo",
-            type: "ID",
-          },
-          {
-            field: "quantidade",
-            label: "Quantidade",
-            type: "int",
-          },
-        ],
-      };
-    },
+  async modelo(data: string): Promise<any[]> {
+    if (isEmpty(data)) {
+      return [];
+    }
+    return fetcherRpc("transferenciaModelo", { data });
+  },
 
-    async modelo(data: string): Promise<any[]> {
-      if (isEmpty(data)) {
-        return [];
-      }
-      return fetcherRpc.request("transferenciaModelo", { data });
-    },
-  };
-}
+  async create(controles: string[]): Promise<any> {
+    return fetcherRpc("transferenciaCreate", { controles });
+  },
+};

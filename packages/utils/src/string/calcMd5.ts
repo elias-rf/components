@@ -9,8 +9,6 @@ import crypto from "crypto";
  * @example
  * calcMd5('Teste de escrita') // 'aa85b2fcd47ace498c8a4182ad25d2e0'
  */
-function calcMd5(text: string) {
+export function calcMd5(text: string) {
   return crypto.createHash("md5").update(text).digest("hex");
 }
-
-export default calcMd5;

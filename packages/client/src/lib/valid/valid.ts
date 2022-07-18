@@ -6,7 +6,10 @@ interface Validator {
   (message: string): ValidatorFunc;
 }
 
-const valid = (value: any, validator: ValidatorFunc | ValidatorFunc[]) => {
+export const valid = (
+  value: any,
+  validator: ValidatorFunc | ValidatorFunc[]
+) => {
   let validators: ValidatorFunc[] = [];
   if (!Array.isArray(validator)) {
     validators = [validator];
@@ -22,5 +25,3 @@ const valid = (value: any, validator: ValidatorFunc | ValidatorFunc[]) => {
   }
   return null;
 };
-
-export default valid;

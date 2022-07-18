@@ -1,4 +1,4 @@
-const isString = (message = "Valor deve ser texto") => {
+export const isString = (message = "Valor deve ser texto") => {
   return (value: any) => {
     if (typeof value === "string" || value instanceof String) {
       return null;
@@ -6,5 +6,3 @@ const isString = (message = "Valor deve ser texto") => {
     return message;
   };
 };
-
-export default isString;

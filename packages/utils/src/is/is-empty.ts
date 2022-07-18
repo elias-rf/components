@@ -1,6 +1,4 @@
-export default function isEmpty(
-  val: any
-): val is null | undefined | "" | [] | {} {
+export function isEmpty2(val: any): val is null | undefined | "" | [] | {} {
   // test results
   //---------------
   // []        true, empty array
@@ -40,4 +38,15 @@ export default function isEmpty(
   }
 
   return false;
+}
+
+export function isEmpty(val: any) {
+  if (
+    typeof val == "function" ||
+    typeof val == "number" ||
+    typeof val == "boolean" ||
+    Object.prototype.toString.call(val) === "[object Date]"
+  )
+    return false;
+  return val == null || !(Object.keys(val) || val).length;
 }

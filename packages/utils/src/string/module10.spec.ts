@@ -1,5 +1,5 @@
-import { it, describe, expect } from "vitest";
-import module10 from "./module10";
+import { describe, expect, it } from "vitest";
+import { module10 } from "./module10";
 
 describe("module10", () => {
   it("deve gerar dv", () => {
