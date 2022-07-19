@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "lib": ["esnext"],
+    "baseUrl": "./src",
+    "outDir": "./dist",
+    "strict": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
+    "emitDeclarationOnly": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "paths": {
+      "@utils": ["../utils/src/index"]
+    }
+  },
+  "include": ["./src", "../utils/src"],
+  "exclude": ["node_modules/", "node_modules"]
+}

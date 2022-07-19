@@ -3,11 +3,13 @@
   "private": true,
   "version": "1.1.0",
   "workspaces": [
-    "./packages/*"
+    "./server",
+    "./client",
+    "./utils"
   ],
   "scripts": {
     "start": "cd server && node dist/index.js",
-    "build": "cd server && npm run build && cd ../packages/client && npm run build",
+    "build": "npm run build --workspace=@vt/server --workspace=@vt/client",
     "update": "cd client && npm install && cd ../server && npm install && cd .. && git submodule update --remote",
     "dev": "concurrently \"npm run dev -w @vt/server\" \"npm run dev -w @vt/client\" ",
     "test": "concurrently \"npm run test:watch -w @vt/server\" \"npm run test:watch -w @vt/client\" ",
