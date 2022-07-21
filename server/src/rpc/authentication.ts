@@ -6,15 +6,9 @@ import jwtEncode from "../lib/jwt-encode";
 import passwordVerify from "../lib/password-verify";
 
 export interface AuthenticationRpc {
-  login: ({
-    user,
-    password,
-  }: {
-    user: string;
-    password: string;
-  }) => Promise<CurrentUser> | Error;
-  logout: () => Promise<Boolean>;
-  me: (_: void, ctx?: RpcContext) => Promise<CurrentUser>;
+  login(args: { user: string; password: string }): Promise<CurrentUser>;
+  logout(): Promise<Boolean>;
+  me(_: void, ctx?: RpcContext): Promise<CurrentUser>;
 }
 
 export function Authentication(connections: Connections): AuthenticationRpc {

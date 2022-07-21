@@ -96,7 +96,7 @@ export const ordemProducaoService = {
   },
 
   // Retorna numero de controle a partir da ordem de producao e numero de serie
-  async getControle(id: Id, serie: number) {
+  async getControle(id: Id, serie: string) {
     return fetcherRpc("ordemProducaoControle", {
       id,
       serie,

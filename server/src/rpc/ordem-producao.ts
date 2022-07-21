@@ -1,4 +1,4 @@
-import { CurrentUser, Id, ListArgs } from "../../../types";
+import { CurrentUser, Id, ListArgs, Schema } from "../../../types";
 import { day, isEmpty, module10 } from "../../../utils";
 import { Connections } from "../dal/connections";
 import { knexOrder } from "../lib/knex/knex-order";
@@ -33,13 +33,72 @@ type Record = {
   versao?: string;
 };
 
-export function OrdemProducao(connection: Connections) {
+export type OrdemProducaoRpc = {
+  ordemProducaoSchema(): any;
+  ordemProducaoList(
+    listArgs: ListArgs,
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<Record[]>;
+  ordemProducaoRead(
+    readArgs: { id: Id },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<Record>;
+  ordemProducaoCreate(
+    createArgs: { rec: Record },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<string[]>;
+  ordemProducaoUpdate(
+    updateArgs: {
+      id: Id;
+      rec: Record;
+    },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<any>;
+  ordemProducaoProdutoItem(
+    { id }: { id: Id },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<number>;
+  ordemProducaoProdutoPlano(
+    { id }: { id: Id },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<string>;
+  ordemProducaoProduto(
+    { id }: { id: Id },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<number>;
+  ordemProducaoDataFabricacao(
+    { id }: { id: Id },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<string>;
+  ordemProducaoDataValidade(
+    { id }: { id: Id },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<string>;
+  ordemProducaoVersao(
+    { id }: { id: Id },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<string>;
+  ordemProducaoControle(
+    { id, serie }: { id: Id; serie: string },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<string>;
+  ordemProducaoFromControle(
+    { controle }: { controle: string },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<string>;
+  ordemProducaoControleValido(
+    { controle }: { controle: string },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<boolean>;
+};
+
+export function OrdemProducao(connection: Connections): OrdemProducaoRpc {
   const knexOftalmo = connection.oftalmo;
   const table = "tOrdemProducao";
   const pk = ["kOp"];
 
   const rsp = {
-    ordemProducaoSchema(): any {
+    async ordemProducaoSchema(): Promise<Schema> {
       return {
         pk: ["kOp"],
         fields: [
@@ -340,8 +399,9 @@ export function OrdemProducao(connection: Connections) {
         }
       }
       if (Array.isArray(response) && response.length > 0) {
-        return day(response[0].dtini);
+        return day(response[0].dtini).toISOString();
       }
+      return "";
     },
 
     // Retorna data de validade
@@ -350,7 +410,12 @@ export function OrdemProducao(connection: Connections) {
       ctx?: { currentUser: CurrentUser }
     ) {
       const fabricacao = await rsp.ordemProducaoDataFabricacao({ id }, ctx);
-      const validade = day(fabricacao).add(5, "y");
+      if (fabricacao === "") {
+        throw new Error(
+          "Ordem de produção não possui 3059, 3060, 4020 ou 3160"
+        );
+      }
+      const validade = day(fabricacao).add(5, "y").toISOString();
       return validade;
     },
 
@@ -366,7 +431,7 @@ export function OrdemProducao(connection: Connections) {
     },
 
     // Retorna numero de controle a partir da ordem de producao e numero de serie
-    ordemProducaoControle(
+    async ordemProducaoControle(
       { id, serie }: { id: Id; serie: string },
       ctx?: { currentUser: CurrentUser }
     ) {
@@ -379,7 +444,7 @@ export function OrdemProducao(connection: Connections) {
     },
 
     // Retorna numero de controle a partir da ordem de producao e numero de serie
-    ordemProducaoFromControle(
+    async ordemProducaoFromControle(
       { controle }: { controle: string },
       ctx?: { currentUser: CurrentUser }
     ) {
@@ -387,7 +452,7 @@ export function OrdemProducao(connection: Connections) {
     },
 
     // Valida se número de série é válido
-    ordemProducaoControleValido(
+    async ordemProducaoControleValido(
       { controle }: { controle: string },
       ctx?: { currentUser: CurrentUser }
     ) {

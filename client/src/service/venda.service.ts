@@ -33,7 +33,7 @@ function getSum(lista: any[], produto: string, data: day.Dayjs) {
 
 const vendaService = {
   async schemaDiario() {
-    return fetcherRpc("vendaSchemaDiario");
+    return fetcherRpc("vendaDiarioSchema");
   },
 
   async diario(inicio: string, fim: string, uf: string[]) {
@@ -78,7 +78,7 @@ const vendaService = {
   },
 
   async schemaMensal() {
-    return fetcherRpc("vendaSchemaMensal");
+    return fetcherRpc("vendaMensalSchema");
   },
 
   async mensal(inicio: string, fim: string, CdCliente: Id) {

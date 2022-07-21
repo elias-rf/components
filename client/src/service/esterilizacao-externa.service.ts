@@ -5,7 +5,7 @@ import { fetcherRpc } from "../lib/http/fetcher-rpc";
 
 export const esterilizacaoExternaService = {
   async schemaDiario(): Promise<Schema> {
-    return fetcherRpc("esterilizacaoExternaSchemaDiario", {});
+    return fetcherRpc("esterilizacaoExternaSchemaDiario");
   },
 
   async diario(inicio: string, fim: string): Promise<any[]> {
@@ -24,7 +24,7 @@ export const esterilizacaoExternaService = {
   },
 
   async schemaMensal(): Promise<Schema> {
-    return fetcherRpc("esterilizacaoExternaSchemaMensal", {});
+    return fetcherRpc("esterilizacaoExternaSchemaMensal");
   },
 
   async mensal(mes: string): Promise<any[]> {
@@ -35,7 +35,7 @@ export const esterilizacaoExternaService = {
   },
 
   async schemaProduto(): Promise<Schema> {
-    return fetcherRpc("esterilizacaoExternaSchemaProduto", {});
+    return fetcherRpc("esterilizacaoExternaSchemaProduto");
   },
 
   async produto(data: string): Promise<any[]> {
@@ -46,7 +46,7 @@ export const esterilizacaoExternaService = {
   },
 
   async schemaModelo(): Promise<Schema> {
-    return fetcherRpc("esterilizacaoExternaSchemaModelo", {});
+    return fetcherRpc("esterilizacaoExternaSchemaModelo");
   },
 
   async modelo(data: string, produto: string): Promise<any[]> {

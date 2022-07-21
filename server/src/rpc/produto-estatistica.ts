@@ -28,7 +28,33 @@ type Record = {
   CdProduto?: string;
 };
 
-export function ProdutoEstatistica(connections: Connections) {
+export interface ProdutoEstatisticaRpc {
+  produtoEstatisticaList(
+    args: RpcListArgs,
+    ctx?: RpcContext
+  ): Promise<Record[]>;
+  produtoEstatisticaRead(
+    { id }: RpcReadArgs,
+    ctx?: RpcContext
+  ): Promise<Record>;
+  produtoEstatisticaDel({ id }: RpcDelArgs, ctx?: RpcContext): Promise<number>;
+  produtoEstatisticaCreate(
+    { rec }: RpcCreateArgs<Record>,
+    ctx?: RpcContext
+  ): Promise<Id>;
+  produtoEstatisticaUpdate(
+    { id, rec }: RpcUpdateArgs<Record>,
+    ctx?: RpcContext
+  ): Promise<Id>;
+  produtoEstatisticaIncrement(
+    { id, quantidade }: { id: Id; quantidade: number },
+    ctx?: RpcContext
+  ): Promise<Id>;
+}
+
+export function ProdutoEstatistica(
+  connections: Connections
+): ProdutoEstatisticaRpc {
   const knexPlano = connections.plano;
   const table = "EstatPro";
   const pk = ["CdEmpresa", "MesRef", "AnoRef", "CdProduto"];

@@ -1,5 +1,5 @@
 import { Connections } from "dal/connections";
-import { Id, ListArgs } from "../../../types";
+import { Id, ListArgs, Schema } from "../../../types";
 import {
   idSchema,
   limitSchema,
@@ -16,7 +16,16 @@ type Record = {
   idGroup?: string;
 };
 
-export function Permissao(connections: Connections) {
+export interface PermissaoRpc {
+  permissaoSchema(): Promise<Schema>;
+  permissaoList(listArgs: ListArgs): Promise<Record[]>;
+  permissaoRead({ id }: { id: Id }): Promise<Record>;
+  permissaoDel({ id }: { id: Id }): Promise<number>;
+  permissaoCreate({ rec }: { rec: Record }): Promise<string[]>;
+  permissaoUpdate({ id, rec }: { id: Id; rec: Record }): Promise<any>;
+}
+
+export function Permissao(connections: Connections): PermissaoRpc {
   const knexOftalmo = connections.oftalmo;
   const table = "groupSubject";
   const pk = ["idSubject", "idGroup"];

@@ -27,13 +27,35 @@ type Record = {
   Ativo: string;
 };
 
-export function Usuario(connections: Connections) {
+export interface UsuarioRpc {
+  usuarioSchema(): Promise<Schema>;
+  usuarioList(
+    args: {
+      where?: Where[];
+      orderBy?: OrderBy[];
+      limit?: number;
+    },
+    ctx?: RpcContext
+  ): Promise<GenericObject[]>;
+  usuarioRead(args: { id: Id }, ctx?: RpcContext): Promise<GenericObject>;
+  usuarioDel(args: { id: Id }, ctx?: RpcContext): Promise<number>;
+  usuarioCreate(args: { rec: Record }, ctx?: RpcContext): Promise<string[]>;
+  usuarioUpdate(
+    args: {
+      id: Id;
+      rec: Record;
+    },
+    ctx?: RpcContext
+  ): Promise<any>;
+}
+
+export function Usuario(connections: Connections): UsuarioRpc {
   const knexOftalmo = connections.oftalmo;
   const table = "tbl_seguranca_usuario";
   const pk = "kUsuario";
 
   return {
-    async schema(): Promise<Schema> {
+    async usuarioSchema(): Promise<Schema> {
       return {
         pk: ["kUsuario"],
         fields: [

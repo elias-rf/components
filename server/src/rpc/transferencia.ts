@@ -10,7 +10,33 @@ import { OrdemProducao } from "./ordem-producao";
 import { ProdutoControle } from "./produto-controle";
 import { ProdutoEstatistica } from "./produto-estatistica";
 
-export function Transferencia(connections: Connections) {
+export interface TransferenciaRpc {
+  transferenciaSchemaDiario(): Promise<any>;
+  transferenciaSchemaMensal(): Promise<any>;
+  transferenciaSchemaModelo(): Promise<any>;
+  transferenciaDiario(
+    { inicio, fim }: { inicio: string; fim: string },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<any>;
+  transferenciaMensal(
+    { mes }: { mes: string },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<any>;
+  transferenciaModelo(
+    { data }: { data: string },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<any>;
+  transferenciaDel(
+    { controles }: { controles: string[] },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<any>;
+  transferenciaCreate(
+    { controles }: { controles: string[] },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<boolean>;
+}
+
+export function Transferencia(connections: Connections): TransferenciaRpc {
   const knexPlano = connections.plano;
 
   return {
@@ -367,7 +393,7 @@ export function Transferencia(connections: Connections) {
         .ordemProducaoDataValidade({
           id: [kOp],
         })
-        .then((dt) => dt.format("YYYY-MM-DD"));
+        .then((dt) => dt?.format("YYYY-MM-DD"));
 
       const quantidade = controles.length;
 
@@ -508,8 +534,8 @@ export function Transferencia(connections: Connections) {
             DtAnalise: fabricacao || "",
             DtEntrada: hoje,
             DtFabricacao: fabricacao || "",
-            DtLimiteUso: expiracao,
-            DtValidade: expiracao,
+            DtLimiteUso: expiracao || "",
+            DtValidade: expiracao || "",
             FatorCorrecao: 0,
             Modelo: "1",
             NumNfEntrada: kOp,

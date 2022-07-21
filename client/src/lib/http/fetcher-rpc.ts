@@ -1,4 +1,5 @@
 import { JSONRPCClient } from "json-rpc-2.0";
+import { ApiRpc } from "../../../../server/src/rpc";
 
 // JSONRPCClient needs to know how to send a JSON-RPC request.
 // Tell it by passing a function to its constructor. The function must take a JSON-RPC request and send it.
@@ -20,6 +21,9 @@ const fetcher: JSONRPCClient = new JSONRPCClient(async (jsonRPCRequest) => {
   }
 });
 
-export function fetcherRpc<T>(method: string, params: any = {}) {
-  return fetcher.request(method, params);
+export function fetcherRpc<Method extends keyof ApiRpc>(
+  method: Method,
+  ...params: Parameters<ApiRpc[Method]>
+): ReturnType<ApiRpc[Method]> {
+  return fetcher.request(method, params[0] as any) as any;
 }

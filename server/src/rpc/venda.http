@@ -1,3 +1,16 @@
+### Analitico
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"vendaAnalitico",
+  "params":{
+    "inicio":"2020-01-01",
+    "fim":"2020-01-10"
+  }
+}
 ### Diario
 POST http://localhost:3000/api/rpc
 Content-Type: application/json

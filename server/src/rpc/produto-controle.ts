@@ -44,7 +44,21 @@ type Record = {
   TipoLote: string;
 };
 
-export function ProdutoControle(connections: Connections) {
+export interface ProdutoControleRpc {
+  produtoControleList(args: RpcListArgs, ctx?: RpcContext): Promise<Record[]>;
+  produtoControleRead({ id }: RpcReadArgs, ctx?: RpcContext): Promise<Record>;
+  produtoControleDel({ id }: RpcDelArgs, ctx?: RpcContext): Promise<number>;
+  produtoControleCreate(
+    { rec }: RpcCreateArgs<Record>,
+    ctx?: RpcContext
+  ): Promise<Id>;
+  produtoControleUpdate(
+    { id, rec }: RpcUpdateArgs<Record>,
+    ctx?: RpcContext
+  ): Promise<Id>;
+}
+
+export function ProdutoControle(connections: Connections): ProdutoControleRpc {
   const knexPlano = connections.plano;
   const table = "Lotes";
   const pk = ["CdFilial", "CdProduto", "CdLote"];

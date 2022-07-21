@@ -1,32 +1,42 @@
 import { JSONRPCServer, SimpleJSONRPCMethod } from "json-rpc-2.0";
 import { connections, Connections } from "../dal/connections";
 
-import { Authentication } from "./authentication";
-import { Cliente } from "./cliente";
-import { EsterilizacaoExterna } from "./esterilizacao-externa";
-import { EsterilizacaoInterna } from "./esterilizacao-interna";
-import { Estoque } from "./estoque";
-import { NfEntrada } from "./nf-entrada";
-import { NfEntradaControle } from "./nf-entrada-controle";
-import { NfEntradaItem } from "./nf-entrada-item";
-import { NfEntradaLog } from "./nf-entrada-log";
-import { Operacao } from "./operacao";
-import { OrdemProducao } from "./ordem-producao";
-import { Permissao } from "./permissao";
-import { Phonebook } from "./phonebook";
-import { ProdutoControle } from "./produto-controle";
-import { ProdutoEstatistica } from "./produto-estatistica";
-import { Transferencia } from "./transferencia";
-import { Usuario } from "./usuario";
-import { Venda } from "./venda";
+import { Authentication, AuthenticationRpc } from "./authentication";
+import { Cliente, ClienteRpc } from "./cliente";
+import { Echo, EchoRpc } from "./echo";
+import {
+  EsterilizacaoExterna,
+  EsterilizacaoExternaRpc,
+} from "./esterilizacao-externa";
+import {
+  EsterilizacaoInterna,
+  EsterilizacaoInternaRpc,
+} from "./esterilizacao-interna";
+import { Estoque, EstoqueRpc } from "./estoque";
+import { NfEntrada, NfEntradaRpc } from "./nf-entrada";
+import { NfEntradaControle, NfEntradaControleRpc } from "./nf-entrada-controle";
+import { NfEntradaItem, NfEntradaItemRpc } from "./nf-entrada-item";
+import { NfEntradaLog, NfEntradaLogRpc } from "./nf-entrada-log";
+import { Operacao, OperacaoRpc } from "./operacao";
+import { OrdemProducao, OrdemProducaoRpc } from "./ordem-producao";
+import { Permissao, PermissaoRpc } from "./permissao";
+import { Phonebook, PhonebookRpc } from "./phonebook";
+import { ProdutoControle, ProdutoControleRpc } from "./produto-controle";
+import {
+  ProdutoEstatistica,
+  ProdutoEstatisticaRpc,
+} from "./produto-estatistica";
+import { Transferencia, TransferenciaRpc } from "./transferencia";
+import { Usuario, UsuarioRpc } from "./usuario";
+import { Venda, VendaRpc } from "./venda";
 
 type LibRpc = (connections: Connections) => any;
 
 export const rpc = new JSONRPCServer();
 let indexMethods: string[] = [];
 
-function echo(arg1: any, arg2: any) {
-  return { arg1, arg2 };
+interface IndexRpc {
+  index(): Promise<string[]>;
 }
 
 function index() {
@@ -42,9 +52,29 @@ function register(lib: LibRpc) {
 }
 type Method = SimpleJSONRPCMethod<any>;
 
-rpc.addMethod("echo", <Method>echo);
-rpc.addMethod("index", <Method>index);
+export type ApiRpc = IndexRpc &
+  AuthenticationRpc &
+  ClienteRpc &
+  EchoRpc &
+  EsterilizacaoExternaRpc &
+  EsterilizacaoInternaRpc &
+  EstoqueRpc &
+  NfEntradaRpc &
+  NfEntradaControleRpc &
+  NfEntradaItemRpc &
+  NfEntradaLogRpc &
+  OperacaoRpc &
+  OrdemProducaoRpc &
+  PermissaoRpc &
+  PhonebookRpc &
+  ProdutoControleRpc &
+  ProdutoEstatisticaRpc &
+  TransferenciaRpc &
+  UsuarioRpc &
+  VendaRpc;
 
+rpc.addMethod("index", <Method>index);
+register(Echo);
 register(Authentication);
 register(Cliente);
 register(EsterilizacaoExterna);

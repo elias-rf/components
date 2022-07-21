@@ -21,7 +21,7 @@ import type { Connections } from "../dal/connections";
 import { knexOrder } from "../lib/knex/knex-order";
 import { knexWhere } from "../lib/knex/knex-where";
 
-type Record = {
+type ClienteRecord = {
   CdCliente?: string;
   RzSocial?: string;
   Cidade?: string;
@@ -32,18 +32,21 @@ type Record = {
 };
 
 export interface ClienteRpc {
-  clienteSchema: () => Promise<Schema>;
-  clienteList: (listArgs: RpcListArgs, ctx?: RpcContext) => Promise<Record[]>;
-  clienteRead: (readArgs: RpcReadArgs, ctx?: RpcContext) => Promise<Record>;
-  clienteDel: (delArgs: RpcDelArgs, ctx?: RpcContext) => Promise<number>;
-  clienteCreate: (
-    createArgs: RpcCreateArgs<Record>,
+  clienteSchema(): Promise<Schema>;
+  clienteList(
+    listArgs: RpcListArgs,
     ctx?: RpcContext
-  ) => Promise<Id>;
-  clienteUpdate: (
-    { id, rec }: RpcUpdateArgs<Record>,
+  ): Promise<ClienteRecord[]>;
+  clienteRead(readArgs: RpcReadArgs, ctx?: RpcContext): Promise<ClienteRecord>;
+  clienteDel(delArgs: RpcDelArgs, ctx?: RpcContext): Promise<number>;
+  clienteCreate(
+    createArgs: RpcCreateArgs<ClienteRecord>,
     ctx?: RpcContext
-  ) => Promise<Id>;
+  ): Promise<Id>;
+  clienteUpdate(
+    updateArgs: RpcUpdateArgs<ClienteRecord>,
+    ctx?: RpcContext
+  ): Promise<Id>;
 }
 
 export function Cliente(connections: Connections): ClienteRpc {
@@ -109,7 +112,7 @@ export function Cliente(connections: Connections): ClienteRpc {
     async clienteList(
       { where = [], orderBy = [], limit = 50 }: RpcListArgs,
       ctx?: RpcContext
-    ): Promise<Record[]> {
+    ): Promise<ClienteRecord[]> {
       validator(where, "where", whereSchema);
       validator(orderBy, "orderBy", orderBySchema);
       validator(limit, "limit", limitSchema);
@@ -122,7 +125,10 @@ export function Cliente(connections: Connections): ClienteRpc {
     },
 
     // READ
-    async clienteRead({ id }: RpcReadArgs, ctx?: RpcContext): Promise<Record> {
+    async clienteRead(
+      { id }: RpcReadArgs,
+      ctx?: RpcContext
+    ): Promise<ClienteRecord> {
       validator(id, "id", idSchema);
 
       const qry = await knexPlano(table)
@@ -131,7 +137,7 @@ export function Cliente(connections: Connections): ClienteRpc {
       if (Array.isArray(qry) && qry.length > 0) {
         return qry[0];
       }
-      return qry as Record;
+      return qry as ClienteRecord;
     },
 
     // DEL
@@ -147,7 +153,7 @@ export function Cliente(connections: Connections): ClienteRpc {
 
     // CREATE
     async clienteCreate(
-      { rec }: RpcCreateArgs<Record>,
+      { rec }: RpcCreateArgs<ClienteRecord>,
       ctx?: RpcContext
     ): Promise<Id> {
       validator(rec, "rec", recordSchema);
@@ -158,7 +164,7 @@ export function Cliente(connections: Connections): ClienteRpc {
 
     // UPDATE
     async clienteUpdate(
-      { id, rec }: RpcUpdateArgs<Record>,
+      { id, rec }: RpcUpdateArgs<ClienteRecord>,
       ctx?: RpcContext
     ): Promise<Id> {
       validator(id, "id", idSchema);

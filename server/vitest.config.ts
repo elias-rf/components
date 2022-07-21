@@ -5,5 +5,6 @@ export default defineConfig({
   test: {
     watch: true,
     outputTruncateLength: 200,
+    snapshotFormat: { escapeString: false },
   },
 });

@@ -1,18 +1,45 @@
 import { Connections } from "dal/connections";
-import type { CurrentUser, ListArgs } from "../../../types";
+import type { CurrentUser, ListArgs, Schema } from "../../../types";
 import { Id } from "../../../types";
 import { idSchema, idToWhere, recordSchema, validator } from "../../../utils";
 import { knexOrder } from "../lib/knex/knex-order";
 import { knexWhere } from "../lib/knex/knex-where";
 
-type Record = {
+type PhonebookRecord = {
   id?: string;
   name?: string;
   department?: string;
   email?: string;
 };
 
-export function Phonebook(connections: Connections) {
+export interface PhonebookRpc {
+  phonebookSchema(): Promise<Schema>;
+  phonebookList(
+    args: ListArgs,
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<PhonebookRecord[]>;
+  phonebookRead(
+    args: { id: Id },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<PhonebookRecord>;
+  phonebookDel(
+    args: { id: Id },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<number>;
+  phonebookCreate(
+    args: { rec: PhonebookRecord },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<PhonebookRecord>;
+  phonebookUpdate(
+    args: {
+      id: Id;
+      rec: PhonebookRecord;
+    },
+    ctx?: { currentUser: CurrentUser }
+  ): Promise<PhonebookRecord>;
+}
+
+export function Phonebook(connections: Connections): PhonebookRpc {
   const knexOftalmo = connections.oftalmo;
   const table = "phonebook";
   const pk = ["id"];
@@ -48,7 +75,7 @@ export function Phonebook(connections: Connections) {
     async phonebookList(
       { where = [], orderBy = [], limit = 50 }: ListArgs,
       ctx?: { currentUser: CurrentUser }
-    ): Promise<Record[]> {
+    ): Promise<PhonebookRecord[]> {
       const qry = await knexOftalmo(table)
         .limit(limit)
         .where(knexWhere(where))
@@ -60,7 +87,7 @@ export function Phonebook(connections: Connections) {
     async phonebookRead(
       { id }: { id: Id },
       ctx?: { currentUser: CurrentUser }
-    ): Promise<Record> {
+    ): Promise<PhonebookRecord> {
       validator(id, "id", idSchema);
       const qry = await knexOftalmo(table).where(idToWhere(pk, id));
       if (Array.isArray(qry) && qry.length > 0) {
@@ -84,11 +111,13 @@ export function Phonebook(connections: Connections) {
 
     // CREATE
     async phonebookCreate(
-      { rec }: { rec: Record },
+      { rec }: { rec: PhonebookRecord },
       ctx?: { currentUser: CurrentUser }
-    ): Promise<Record> {
+    ): Promise<PhonebookRecord> {
       validator(rec, "rec", recordSchema);
-      const qry: Record = await knexOftalmo(table).insert(rec).returning(pk);
+      const qry: PhonebookRecord = await knexOftalmo(table)
+        .insert(rec)
+        .returning(pk);
       return qry;
     },
 
@@ -99,13 +128,13 @@ export function Phonebook(connections: Connections) {
         rec,
       }: {
         id: Id;
-        rec: Record;
+        rec: PhonebookRecord;
       },
       ctx?: { currentUser: CurrentUser }
-    ): Promise<Record> {
+    ): Promise<PhonebookRecord> {
       validator(id, "id", idSchema);
       validator(rec, "rec", recordSchema);
-      const qry: Record = await knexOftalmo(table)
+      const qry: PhonebookRecord = await knexOftalmo(table)
         .update(rec)
         .where(idToWhere(pk, id))
         .returning(pk);
