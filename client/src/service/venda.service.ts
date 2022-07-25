@@ -84,6 +84,10 @@ const vendaService = {
   async mensal(inicio: string, fim: string, CdCliente: Id) {
     return fetcherRpc("vendaMensal", { inicio, fim, id: CdCliente });
   },
+
+  async analitico(inicio: string, fim: string) {
+    return fetcherRpc("vendaAnalitico", { inicio, fim });
+  },
 };
 
 export default vendaService;

@@ -8,6 +8,7 @@ describe("venda", () => {
   const knexDb = Knex({ client: MockClient });
   const rpc = Venda({
     plano: knexDb,
+    fullvision: knexDb,
   } as Connections);
   let tracker: Tracker;
 
@@ -27,7 +28,7 @@ describe("venda", () => {
       fim: "2020-01-31",
     });
 
-    expect(rsp).toEqual(["ok"]);
+    expect(rsp).toEqual(["ok", "ok"]);
     expect(tracker.history.select[0].bindings).toEqual([
       2,
       "S",
@@ -36,15 +37,11 @@ describe("venda", () => {
       "N",
       0,
       3158,
-      "E",
-      "S",
       "2020-01-01",
       "2020-01-31",
+      "E",
+      "S",
     ]);
-    console.log(
-      `🚀 ~ file: venda.spec.ts ~ line 44 ~ test ~ tracker.history.select[0].sql`,
-      tracker.history.select[0].sql
-    );
     expect(tracker.history.select[0].sql).toMatchSnapshot();
   });
 

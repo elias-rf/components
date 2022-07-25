@@ -1,4 +1,4 @@
-import type { Action, Id, OrderBy, Schema, Where } from "../../../../types";
+import type { Dispatch, Id, OrderBy, Schema, Where } from "../../../../types";
 import { Button, Form, Table } from "../../components";
 
 type AuthUserProps = {
@@ -9,7 +9,7 @@ type AuthUserProps = {
   status: string;
   list: any[];
   record: any;
-  dispatch: (action: Action) => void;
+  dispatch: Dispatch;
 };
 /**
  * Componente para manipular Agenda de Ramais

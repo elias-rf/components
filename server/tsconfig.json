@@ -9,7 +9,6 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
-    "emitDeclarationOnly": true,
     "moduleResolution": "node",
     "declaration": true,
     "paths": {
@@ -17,5 +16,6 @@
     }
   },
   "include": ["./src", "../utils/src"],
-  "exclude": ["node_modules/", "node_modules"]
+  "exclude": ["node_modules/", "node_modules"],
+  "extends": "../tsconfig.base.json"
 }

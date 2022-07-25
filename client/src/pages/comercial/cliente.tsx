@@ -1,5 +1,5 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { useQuery } from "react-query";
 import { Action, Id } from "../../../../types";
 import { Page, PageTitle } from "../../components";
 import { Auth } from "../../features/auth";

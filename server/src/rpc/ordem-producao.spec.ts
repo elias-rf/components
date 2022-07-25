@@ -91,7 +91,7 @@ describe("venda", () => {
       id: ["202001"],
     });
 
-    expect(rsp.toISOString()).toEqual("2020-01-01T03:00:00.000Z");
+    expect(rsp).toEqual("2020-01-01T03:00:00.000Z");
     expect(tracker.history.select[0].bindings).toEqual(["202001", "3059"]);
 
     expect(tracker.history.select[0].sql).toEqual(
@@ -108,7 +108,7 @@ describe("venda", () => {
       id: ["202001"],
     });
 
-    expect(rsp.toISOString()).toEqual("2025-01-01T03:00:00.000Z");
+    expect(rsp).toEqual("2025-01-01T03:00:00.000Z");
     expect(tracker.history.select[0].bindings).toEqual(["202001", "3059"]);
 
     expect(tracker.history.select[0].sql).toEqual(
@@ -132,7 +132,7 @@ describe("venda", () => {
   });
 
   test("getControle", async () => {
-    let rsp = rpc.ordemProducaoControle({
+    let rsp = await rpc.ordemProducaoControle({
       id: ["18007600"],
       serie: "6",
     });
@@ -140,19 +140,19 @@ describe("venda", () => {
   });
 
   test("fromControle", async () => {
-    let rsp = rpc.ordemProducaoFromControle({
+    let rsp = await rpc.ordemProducaoFromControle({
       controle: "180076000066",
     });
     expect(rsp).toEqual("18007600");
   });
 
   test("isControleValido", async () => {
-    let rsp = rpc.ordemProducaoControleValido({
+    let rsp = await rpc.ordemProducaoControleValido({
       controle: "180076000066",
     });
     expect(rsp).toEqual(true);
 
-    rsp = rpc.ordemProducaoControleValido({
+    rsp = await rpc.ordemProducaoControleValido({
       controle: "180076000067",
     });
     expect(rsp).toEqual(false);

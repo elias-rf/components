@@ -1,11 +1,16 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Table } from "../../components";
 import { esterilizacaoExternaService } from "../../service/esterilizacao-externa.service";
+
+type EsterilizacaoExternaModeloProp = {
+  diaCorrente: string[];
+  produtoCorrente: string[];
+};
 
 export function EsterilizacaoExternaModelo({
   diaCorrente,
   produtoCorrente,
-}: any) {
+}: EsterilizacaoExternaModeloProp) {
   const schema = useQuery(
     ["esterilizacaoExternaModeloSchema"],
     async () => esterilizacaoExternaService.schemaModelo(),

@@ -19,6 +19,6 @@
     "esbuild-node-externals": "^1.4.1",
     "esbuild-runner": "^2.2.1",
     "rimraf": "^3.0.2",
-    "vitest": "^0.18.0"
+    "vitest": "^0.18.1"
   }
 }

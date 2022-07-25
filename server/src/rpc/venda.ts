@@ -2,6 +2,22 @@ import { Connections } from "dal/connections";
 import { CurrentUser, Id, Schema } from "../../../types";
 import { idSchema, validator, z } from "../../../utils";
 
+type Record = {
+  origem: string;
+  NmCategoria: string;
+  DtEmissao: string;
+  NumNota: string;
+  Serie: string;
+  Tipo: string;
+  CdProduto: string;
+  Quantidade: number;
+  VlTotal: number;
+  Descricao: string;
+  CdVendedor: string;
+  NmVendedor: string;
+  uf: string;
+};
+
 export interface VendaRpc {
   vendaDiario(
     args: { inicio: string; fim: string; uf: string[] },
@@ -10,7 +26,7 @@ export interface VendaRpc {
   vendaAnalitico(
     args: { inicio: string; fim: string },
     ctx?: { currentUser: CurrentUser }
-  ): Promise<any>;
+  ): Promise<Record[]>;
   vendaDiarioSchema(): Promise<Schema>;
   vendaAnaliticoSchema(): Promise<Schema>;
   vendaMensal(
@@ -246,7 +262,6 @@ export function Venda(connection: Connections): VendaRpc {
     async vendaAnalitico({ inicio, fim }, ctx?) {
       validator(inicio, "inicio", z.string());
       validator(fim, "fim", z.string());
-      console.log(`🚀 ~ file: venda.ts ~ line 249 ~ vendaAnalitico ~ fim`, fim);
 
       const qryPlano = knexPlano("MestreNota")
         .select(knexPlano.raw("'VT' as origem"))
@@ -325,7 +340,8 @@ export function Venda(connection: Connections): VendaRpc {
         .where("mestrenota.cdcliente", "<>", 3158)
         .whereBetween("MestreNota.DtEmissao", [inicio, fim])
         .whereIn("MestreNota.Tipo", ["E", "S"]);
-      const resp = await Promise.all([qryPlano, qryFullvision]);
+
+      const resp: Record[][] = await Promise.all([qryPlano, qryFullvision]);
       return resp[0].concat(resp[1]);
     },
   };

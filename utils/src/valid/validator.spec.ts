@@ -1,11 +1,6 @@
 import { describe, expect, it } from "vitest";
-import {
-  idSchema,
-  orderBySchema,
-  validator,
-  whereSchema,
-  z,
-} from "./validator";
+import { idSchema, orderBySchema, validator, whereSchema } from "./validator";
+import { z } from "./zod";
 
 describe("validator", () => {
   it("deve validar id ok", async () => {

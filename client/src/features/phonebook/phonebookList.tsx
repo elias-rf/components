@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import type { Action, Id, OrderBy, Where } from "../../../../types";
 import { Table } from "../../components";
 import { phonebookService } from "../../service/phonebook.service";

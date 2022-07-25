@@ -21,6 +21,7 @@ export const menu = {
       icon: shoppingBag,
       items: [
         { title: "Calculadora de Preços", to: "/comercial/precos" },
+        { title: "Faturamento", to: "/comercial/faturamento" },
         { title: "Vendas 30 Dias", to: "/comercial/vendas30dias" },
       ],
     },

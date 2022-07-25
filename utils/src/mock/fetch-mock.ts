@@ -21,14 +21,13 @@ export const fetchMock = {
     return Promise.resolve({
       json: () => {
         if (!map.has(url)) {
-          console.log(
-            `🚀 ~ file: fetch-mock.ts ~ line 27 ~ fetch ~ `,
-            `${url} não encontrado`
-          );
           return `${url} não encontrado`;
         }
         const rsp = map.get(url).body;
-        rsp.id = JSON.parse(options.body).id;
+        if (options && options.body) {
+          const body = JSON.parse(options.body);
+          rsp.id = body.id || "";
+        }
         return Promise.resolve(rsp);
       },
       status: map.has(url) ? map.get(url)?.status : 404,

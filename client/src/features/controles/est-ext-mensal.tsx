@@ -1,13 +1,21 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
+import { Dispatch } from "../../../../types";
 import { Table } from "../../components";
 import { esterilizacaoExternaService } from "../../service/esterilizacao-externa.service";
+
+type EsterilizacaoExternaMensalProp = {
+  children: any;
+  mesCorrente: string[];
+  mesInicial: string;
+  dispatch: Dispatch;
+};
 
 export function EsterilizacaoExternaMensal({
   mesInicial,
   mesCorrente,
   children,
   dispatch,
-}: any) {
+}: EsterilizacaoExternaMensalProp) {
   const schema = useQuery(
     ["esterilizacaoExternaMensalSchema"],
     async () => esterilizacaoExternaService.schemaMensal(),

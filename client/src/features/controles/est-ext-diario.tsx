@@ -1,14 +1,22 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
+import { Dispatch } from "../../../../types";
 import { Table } from "../../components";
 import { day } from "../../lib/day";
 import { esterilizacaoExternaService } from "../../service/esterilizacao-externa.service";
+
+type EsterilizacaoExternaDiarioProp = {
+  children: any;
+  mesCorrente: string[];
+  diaCorrente: string[];
+  dispatch: Dispatch;
+};
 
 export function EsterilizacaoExternaDiario({
   children,
   mesCorrente,
   diaCorrente,
   dispatch,
-}: any) {
+}: EsterilizacaoExternaDiarioProp) {
   const schema = useQuery(
     ["esterilizacaoExternaDiarioSchema"],
     async () => esterilizacaoExternaService.schemaDiario(),

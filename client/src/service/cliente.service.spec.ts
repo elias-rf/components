@@ -29,7 +29,7 @@ describe("ClienteService", () => {
         headers: {
           "content-type": "application/json",
         },
-        body: '{"jsonrpc":"2.0","id":1,"method":"clienteSchema","params":{}}',
+        body: '{"jsonrpc":"2.0","id":1,"method":"clienteSchema"}',
       },
     });
     expect(rsp).toEqual({

@@ -1,20 +1,14 @@
 {
   "compilerOptions": {
     "allowJs": false,
-    "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
-    "esModuleInterop": false,
-    "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
-    "moduleResolution": "Node",
-    "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": false,
-    "strict": true,
     "strictNullChecks": true,
     "target": "ESNext",
     "typeRoots": ["./node_modules/@types"],
@@ -23,6 +17,7 @@
       "@utils": ["../utils/src/index"]
     }
   },
-  "include": ["./src", "../utils/src"],
-  "exclude": ["node_modules/", "node_modules"]
+  "include": ["./src"],
+  "exclude": ["node_modules"],
+  "extends": "../tsconfig.base.json"
 }

@@ -2,24 +2,21 @@
   "name": "@vt/intranet",
   "private": true,
   "version": "1.1.0",
-  "workspaces": [
-    "./server",
-    "./client",
-    "./utils"
-  ],
   "scripts": {
     "start": "cd server && node dist/index.js",
     "build": "npm run build --workspace=@vt/server --workspace=@vt/client",
     "update": "cd client && npm install && cd ../server && npm install && cd .. && git submodule update --remote",
-    "dev": "concurrently \"npm run dev -w @vt/server\" \"npm run dev -w @vt/client\" ",
-    "test": "concurrently \"npm run test:watch -w @vt/server\" \"npm run test:watch -w @vt/client\" ",
-    "test:e2e": "playwright test",
-    "storybook": "npm run storybook -w @vt/client"
+    "dev": "concurrently \"npm:dev:*\" ",
+    "test": "concurrently \"npm:test:*\" ",
+    "teste:e2e": "playwright test",
+    "storybook": "npm run storybook -w @vt/client",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "test:server": "cd server && npm run test:watch",
+    "test:client": "cd client && npm run test:watch",
+    "test:utils": "cd utils && npm run test:watch"
   },
   "devDependencies": {
-    "concurrently": "^7.2.2"
-  },
-  "dependencies": {
-    "json-rpc-2.0": "^1.3.0"
+    "concurrently": "^7.3.0"
   }
 }
