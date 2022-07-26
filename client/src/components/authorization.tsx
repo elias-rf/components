@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { CurrentUser } from "../../../types";
 import { isEmpty } from "../../../utils";
 
@@ -19,27 +19,30 @@ export function Authorization({
   can,
   currentUser,
 }: AuthorizationProps) {
-  const [canFlag, setCanFlag] = useState("wait");
+  const [loading, setLoading] = React.useState(true);
+  const [canUse, setCanUse] = React.useState(false);
 
   useEffect(() => {
     async function go() {
       const user = await currentUser();
       if (isEmpty(user)) {
-        setCanFlag(resource);
+        setCanUse(false);
+        setLoading(false);
         return;
       }
-      const rsp2 = await can(resource, user.idGroup);
-      const rsp = true;
+      const rsp = await can(resource, user.idGroup);
       if (rsp) {
-        setCanFlag("ok");
+        setCanUse(true);
       } else {
-        setCanFlag(resource);
+        setCanUse(false);
       }
+      setLoading(false);
     }
+    setLoading(true);
     go();
   }, []);
 
-  if (canFlag === "wait")
+  if (loading) {
     return (
       <Page>
         <div className="flex items-center justify-center w-full h-full">
@@ -50,8 +53,9 @@ export function Authorization({
         </div>
       </Page>
     );
+  }
 
-  if (canFlag === "ok") return <>{children}</>;
+  if (canUse) return <>{children}</>;
 
   return <Page403 />;
 }

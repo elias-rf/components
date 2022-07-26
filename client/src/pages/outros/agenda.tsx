@@ -7,7 +7,7 @@ import { useQueryState } from "../../lib/hooks/use-query-state";
 /**
  * Agenda de Ramais
  */
-function Agenda() {
+export default function Agenda() {
   const [selected, setSelected] = useQueryState("selected", []);
   const [orderBy, setOrderBy] = useQueryState("orderBy", []);
   const [where, setWhere] = useQueryState("where", []);
@@ -42,5 +42,3 @@ function Agenda() {
     </Page>
   );
 }
-
-export default Agenda;
