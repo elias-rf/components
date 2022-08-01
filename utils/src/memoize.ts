@@ -1,13 +1,19 @@
 import QuickLRU from "quick-lru";
-import { calcMd5 } from "./calc-md5";
+import { hashObject } from "./hash-object";
 const cache = new QuickLRU({ maxSize: 2 });
 
-export function memoize(callback: any) {
+const CINCO_MINUTOS = 5 * 60 * 1000;
+
+export function memoize(callback: any, maxAge: number = CINCO_MINUTOS) {
   function memoized(...args: any) {
-    const hash = calcMd5(args.toString());
-    if (cache.has(hash)) return cache.get(hash);
+    const hash = callback.name + hashObject(args);
+    if (cache.has(hash)) {
+      console.log("CACHED", hash);
+      return cache.get(hash);
+    }
+    console.log("MISSED", hash);
     const rsp = callback(...args);
-    cache.set(hash, rsp);
+    cache.set(hash, rsp, { maxAge });
     return rsp;
   }
   return memoized;
