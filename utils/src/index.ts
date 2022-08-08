@@ -14,6 +14,7 @@ export * from "./diffDateDays";
 export * from "./except";
 export * from "./Faker";
 export * from "./fetch-mock";
+export * from "./fetch-mock-rpc";
 export * from "./fill-object";
 export * from "./find-duplicates";
 export * from "./format-currency-br";

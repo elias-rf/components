@@ -1,6 +1,6 @@
 import QuickLRU from "quick-lru";
 import { hashObject } from "./hash-object";
-const cache = new QuickLRU({ maxSize: 2 });
+const cache = new QuickLRU({ maxSize: 500 });
 
 const CINCO_MINUTOS = 5 * 60 * 1000;
 
