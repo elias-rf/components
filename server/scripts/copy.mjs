@@ -3,7 +3,7 @@ import Knex from "knex";
 export async function copy(connection, table, pk, fields) {
   const origem = Knex(connection.origem);
   const destino = Knex(connection.destino);
-  const limit = 1000;
+  const limit = 100;
   let offset = 0;
   let count = 0;
   let data = [];
@@ -13,14 +13,14 @@ export async function copy(connection, table, pk, fields) {
     data = await origem
       .select(fields || "*")
       .from(table)
-      .limit(1000)
+      .limit(limit)
       .offset(offset)
-      .orderBy(pk, "desc");
+      .orderBy(pk, "asc");
 
     count = count + data.length;
     offset = offset + limit;
     try {
-      await destino.batchInsert(table, data, 100);
+      await destino.batchInsert(table, data, 10);
 
       console.log(table, "CREATED ", count);
 
