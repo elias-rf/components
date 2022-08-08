@@ -2,7 +2,7 @@ import { Connections } from "dal/connections";
 import Knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
-import { OrdemProducao } from "./ordem-producao";
+import { OrdemProducao } from "./ordem-producao.rpc";
 
 describe("venda", () => {
   const knexDb = Knex({ client: MockClient });
@@ -139,7 +139,7 @@ describe("venda", () => {
     expect(rsp).toEqual("180076000066");
   });
 
-  test("fromControle", async () => {
+  test.only("fromControle", async () => {
     let rsp = await rpc.ordemProducaoFromControle({
       controle: "180076000066",
     });
@@ -156,5 +156,17 @@ describe("venda", () => {
       controle: "180076000067",
     });
     expect(rsp).toEqual(false);
+  });
+
+  test("deve listar etiquetas externas impressas", async () => {
+    tracker.on.select("tEtiqueta").response([{ controle: "180076000066" }]);
+
+    let rsp = await rpc.ordemProducaoEtiquetaExterna({
+      id: "18007600",
+    });
+    expect(rsp).toEqual([{ controle: "180076000066" }]);
+    expect(tracker.history.select[0].sql).toEqual(
+      'select * from "tEtiqueta" where ("controle" like ?) order by "controle" asc limit ?'
+    );
   });
 });

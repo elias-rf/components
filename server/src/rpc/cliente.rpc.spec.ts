@@ -2,9 +2,9 @@ import { Connections } from "dal/connections";
 import Knex from "knex";
 import { getTracker, MockClient } from "knex-mock-client";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
-import { Cliente } from "./cliente";
+import { Cliente } from "./cliente.rpc";
 
-describe("rpc de autenticação", () => {
+describe("rpc de cliente", () => {
   const knexDb = Knex({ client: MockClient });
   const cliente = Cliente({ plano: knexDb } as Connections);
   let tracker: ReturnType<typeof getTracker>;
@@ -65,7 +65,7 @@ describe("rpc de autenticação", () => {
 
   test("create", async () => {
     tracker.on.insert("CadCli").response(["ok"]);
-    const rsp = await cliente.clienteCreate({ rec: { CdCliente: "10" } });
+    const rsp = await cliente.clienteCreate({ data: { CdCliente: "10" } });
     expect(rsp).toEqual(["ok"]);
     expect(tracker.history.insert[0].bindings).toEqual(["10"]);
     expect(tracker.history.insert[0].sql).toEqual(
@@ -77,7 +77,7 @@ describe("rpc de autenticação", () => {
     tracker.on.update("CadCli").response(["ok"]);
     const rsp = await cliente.clienteUpdate({
       id: ["10"],
-      rec: { CdCliente: "10" },
+      data: { CdCliente: "10" },
     });
     expect(rsp).toEqual(["ok"]);
     expect(tracker.history.update[0].bindings).toEqual(["10", "10"]);

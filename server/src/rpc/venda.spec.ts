@@ -2,7 +2,7 @@ import { Connections } from "dal/connections";
 import Knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
-import { Venda } from "./venda";
+import { Venda } from "./venda.rpc";
 
 describe("venda", () => {
   const knexDb = Knex({ client: MockClient });
@@ -30,7 +30,7 @@ describe("venda", () => {
 
     expect(rsp).toEqual(["ok", "ok"]);
     expect(tracker.history.select[0].bindings).toEqual([
-      2,
+      1,
       "S",
       "S",
       "S",

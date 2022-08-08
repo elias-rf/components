@@ -2,7 +2,7 @@ import { Connections } from "dal/connections";
 import Knex from "knex";
 import { getTracker, MockClient, RawQuery } from "knex-mock-client";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
-import { Phonebook } from "./phonebook";
+import { Phonebook } from "./phonebook.rpc";
 
 describe("phonebook", () => {
   const knexDb = Knex({ client: MockClient });

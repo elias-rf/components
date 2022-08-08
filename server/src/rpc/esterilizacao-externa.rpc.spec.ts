@@ -2,7 +2,7 @@ import { Connections } from "dal/connections";
 import Knex from "knex";
 import { getTracker, MockClient } from "knex-mock-client";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
-import { EsterilizacaoExterna } from "./esterilizacao-externa";
+import { EsterilizacaoExterna } from "./esterilizacao-externa.rpc";
 
 describe("esterilizacaoEsterna", () => {
   const knexDb = Knex({ client: MockClient });
@@ -25,7 +25,7 @@ describe("esterilizacaoEsterna", () => {
 
     const rsp = await estExterna.esterilizacaoExternaDiario(
       { inicio: "2020-01-01", fim: "2020-01-31" },
-      { currentUser: { idGroup: "0" } }
+      { currentUser: { kUsuario: "", nome: "", NomeUsuario: "", idGroup: "0" } }
     );
 
     expect(rsp).toEqual(["ok"]);
@@ -44,7 +44,7 @@ describe("esterilizacaoEsterna", () => {
 
     const rsp = await estExterna.esterilizacaoExternaMensal(
       { mes: "2020-01" },
-      { currentUser: { idGroup: "0" } }
+      { currentUser: { kUsuario: "", nome: "", NomeUsuario: "", idGroup: "0" } }
     );
 
     expect(rsp).toEqual(["ok"]);
@@ -60,7 +60,7 @@ describe("esterilizacaoEsterna", () => {
 
     const rsp = await estExterna.esterilizacaoExternaModelo(
       { data: "2020-01-01", produto: "Metil" },
-      { currentUser: { idGroup: "0" } }
+      { currentUser: { kUsuario: "", nome: "", NomeUsuario: "", idGroup: "0" } }
     );
 
     expect(rsp).toEqual(["ok"]);
