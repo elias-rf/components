@@ -1,7 +1,7 @@
 import { connections } from "../connections.mjs";
-import { copy } from "../copy.mjs";
+import { upsert } from "../upsert.mjs";
 
-await copy(connections.oftalmo, "tOrdemProducao", "kOp", [
+await upsert(connections.oftalmo, "tOrdemProducao", "kOp", [
   "kOP",
   "fkTipoOP",
   "DataEmissao",
@@ -14,7 +14,6 @@ await copy(connections.oftalmo, "tOrdemProducao", "kOp", [
   "Quantidade",
   "QtdEmProcesso",
   "fkLoteEstExt",
-  "fkLoteEstInt",
   "fkLoteEstInt",
   "QtdEstExt_tmp",
   "Obs",

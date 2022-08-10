@@ -1,7 +1,7 @@
 import { connections } from "../connections.mjs";
-import { copy } from "../copy.mjs";
+import { upsert } from "../upsert.mjs";
 
-await copy(connections.oftalmo, "diamante", "id", [
+await upsert(connections.oftalmo, "diamante", "id", [
   "id",
   "diamante",
   "tipo",

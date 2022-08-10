@@ -1,17 +1,21 @@
 import { connections } from "../connections.mjs";
-import { copy } from "../copy.mjs";
+import { upsert } from "../upsert.mjs";
 
-await copy(connections.plano, "diamante", "id", [
-  "id",
-  "diamante",
-  "tipo",
-  "raio",
-  "espessura",
-  "fkMaquina",
-  "fkFuncionario",
-  "dataEntrada",
-  "ordemInicial",
-  "dataSaida",
-  "ordemFinal",
-  "qtdCortes",
+await upsert(connections.plano, "diamante", "id", [
+  "CdFilial",
+  "NumNota",
+  "Serie",
+  "Modelo",
+  "DtEmissao",
+  "DtSaida",
+  "Tipo",
+  "CdCliente",
+  "CdVendedor",
+  "FgEstatistica",
+  "FgEstoque",
+  "VlTotal",
+  "VlProdutos",
+  "VlFrete",
+  "NumPedido",
+  "Nop",
 ]);

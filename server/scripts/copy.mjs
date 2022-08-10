@@ -7,6 +7,7 @@ export async function copy(connection, table, pk, fields) {
   let offset = 0;
   let count = 0;
   let data = [];
+
   await destino(table).truncate();
 
   do {

@@ -1,7 +1,7 @@
 import { connections } from "../connections.mjs";
-import { copy } from "../copy.mjs";
+import { upsert } from "../upsert.mjs";
 
-await copy(connections.oftalmo, "tOperacaoOrdemProducao", "kOperacaoOP", [
+await upsert(connections.oftalmo, "tOperacaoOrdemProducao", "kOperacaoOP", [
   "kOperacaoOP",
   "fkOP",
   "fkOperacao",
