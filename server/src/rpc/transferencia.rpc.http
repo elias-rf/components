@@ -65,8 +65,8 @@ Content-Type: application/json
   "id":"1",
   "method":"transferenciaDiario",
   "params":{
-    "inicio":"2020-01-01",
-    "fim":"2020-01-31",
+    "inicio":"2022-08-01",
+    "fim":"2022-08-31",
     "transferencia": "1010"
   }
 }

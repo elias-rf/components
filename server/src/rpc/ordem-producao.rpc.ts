@@ -75,7 +75,7 @@ export type OrdemProducaoRpc = {
     ctx?: { currentUser: CurrentUser }
   ): Promise<boolean>;
   ordemProducaoEtiquetaExterna(
-    { id }: { id: string },
+    { id }: { id: Id },
     ctx?: { currentUser: CurrentUser }
   ): Promise<EtiquetaExternaRecord[]>;
 };
@@ -157,7 +157,7 @@ export function OrdemProducao(connections: Connections): OrdemProducaoRpc {
     // Valida se número de série é válido
     async ordemProducaoEtiquetaExterna({ id }) {
       return etiquetaExternaModel.list(
-        [["controle", "like", id.substring(0, 6) + "%"]],
+        [["controle", "like", id[0].substring(0, 6) + "%"]],
         [["controle", "asc"]],
         200
       );

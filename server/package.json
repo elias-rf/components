@@ -2,13 +2,14 @@
   "name": "@er/server",
   "version": "1.1.0",
   "private": true,
-  "main": "src/index.mjs",
+  "main": "src/index.ts",
   "scripts": {
     "start": "node ./dist/index.js",
     "build": "node esbuild.config.js",
     "dev": "nodemon | pino-pretty",
     "test": "cross-env NODE_ENV=test vitest run",
-    "test:watch": "cross-env NODE_ENV=test vitest --watch"
+    "test:watch": "cross-env NODE_ENV=test vitest --watch",
+    "doc": "typedoc src/index.ts"
   },
   "dependencies": {
     "@er/utils": "*",
@@ -36,7 +37,7 @@
     "pino": "^8.4.0",
     "pino-http": "^8.2.0",
     "tedious": "^15.0.1",
-    "zod": "^3.17.10"
+    "zod": "^3.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
@@ -53,7 +54,7 @@
     "@types/koa-static": "^4.0.2",
     "@types/lru-cache": "^7.10.10",
     "cross-env": "^7.0.3",
-    "esbuild": "^0.14.53",
+    "esbuild": "^0.14.54",
     "esbuild-node-externals": "^1.4.1",
     "esbuild-runner": "^2.2.1",
     "knex-mock-client": "^1.8.4",
@@ -62,6 +63,6 @@
     "nodemon": "^2.0.19",
     "pino-pretty": "^8.1.0",
     "regenerator-runtime": "^0.13.9",
-    "vitest": "^0.20.3"
+    "vitest": "^0.21.1"
   }
 }
