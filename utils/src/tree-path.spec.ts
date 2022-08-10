@@ -1,8 +1,7 @@
-import { TreeData } from "@vt/types";
 import { describe, expect, it } from "vitest";
 import { treePath } from "./tree-path";
 
-const data: TreeData = [
+const data = [
   {
     key: "item1",
     label: "Item 1",

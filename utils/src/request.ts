@@ -57,7 +57,7 @@ function makeRequest({
   }
 
   // Do the API Request
-  return fetch(request.url, params).then((res) => {
+  return fetch(request.url, params).then((res: any) => {
     switch (responseType) {
       case "json":
         return res.json();

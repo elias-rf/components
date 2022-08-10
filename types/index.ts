@@ -1,12 +1,7 @@
 export type Where = [string, string, string];
+export type Select = string[];
 export type OrderBy = [string, "asc" | "desc"];
 export type Id = string[];
-
-export interface ListArgs {
-  limit?: number;
-  where?: Where[];
-  orderBy?: OrderBy[];
-}
 
 export interface CurrentUser {
   kUsuario: string;
@@ -57,31 +52,33 @@ export type UnknownArray = Array<unknown>;
 
 export type RpcContext = { currentUser: CurrentUser };
 
-export interface RpcListArgs {
-  limit?: number;
-  where?: Where[];
-  orderBy?: OrderBy[];
-}
-
-export interface RpcReadArgs {
-  id: Id;
-}
-
-export interface RpcDelArgs {
-  id: Id;
-}
-
-export interface RpcUpdateArgs<T> {
-  id: Id;
-  rec: T;
-}
-
-export interface RpcCreateArgs<T> {
-  rec: T;
-}
-
 export type TreeData = {
   key: string;
   label: string;
   child?: TreeData;
 }[];
+
+export interface ListArgs {
+  limit?: number;
+  where?: Where[];
+  orderBy?: OrderBy[];
+  select?: Select;
+}
+
+export interface ReadArgs {
+  id: Id;
+  select?: Select;
+}
+
+export interface DelArgs {
+  id: Id;
+}
+
+export interface UpdateArgs<T> {
+  id: Id;
+  data: T;
+}
+
+export interface CreateArgs<T> {
+  data: T;
+}

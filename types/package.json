@@ -1,5 +1,5 @@
 {
-  "name": "@vt/types",
+  "name": "@er/types",
   "version": "1.0.0",
   "description": "Types for the VT API",
   "private": true,
@@ -15,10 +15,10 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "esbuild": "^0.14.49",
+    "esbuild": "^0.14.53",
     "esbuild-node-externals": "^1.4.1",
     "esbuild-runner": "^2.2.1",
     "rimraf": "^3.0.2",
-    "vitest": "^0.18.1"
+    "vitest": "^0.20.3"
   }
 }

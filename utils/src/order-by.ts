@@ -1,4 +1,4 @@
-import { OrderBy } from "@vt/types";
+import { OrderBy } from "@er/types";
 import { isEmpty } from "./index";
 
 export const orderBy = {
