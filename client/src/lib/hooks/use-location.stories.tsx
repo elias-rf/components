@@ -1,24 +1,14 @@
 import type { Story } from "@ladle/react";
-import React from "react";
-import { Action } from "../../../../types";
-import { Button } from "../../components";
-import useLocation from "./use-location";
+import { Button } from "../../components/button";
+import { useLocation } from "./use-location";
 
 export default {
   title: "useLocation",
 };
 
-export const Default: Story = (props: any) => {
+export const Default: Story = () => {
   const loc1 = useLocation();
   const loc2 = useLocation();
-  const [selected, setSelected] = React.useState("ok");
-
-  function handleDispatch(action: Action) {
-    console.log(action);
-    if (action.payload.field === "selected") {
-      setSelected(action.payload.value);
-    }
-  }
 
   return (
     <>

@@ -7,13 +7,10 @@ import {
   RpcContext,
   UpdateArgs,
 } from "@er/types";
-import { Connections } from "dal/connections";
-import {
-  ProdutoEstatisticaModel,
-  ProdutoEstatisticaRecord,
-} from "../model/plano/produto-estatistica.model";
+import { TConnections } from "dal/connections";
+import { ProdutoEstatisticaModel, ProdutoEstatisticaRecord } from "../model";
 
-export interface ProdutoEstatisticaRpc {
+export interface TProdutoEstatisticaRpc {
   produtoEstatisticaList(
     listArgs: ListArgs,
     ctx?: RpcContext
@@ -37,9 +34,9 @@ export interface ProdutoEstatisticaRpc {
   ): Promise<Id>;
 }
 
-export function ProdutoEstatistica(
-  connections: Connections
-): ProdutoEstatisticaRpc {
+export function produtoEstatisticaRpc(
+  connections: TConnections
+): TProdutoEstatisticaRpc {
   const produtoEstatisticaModel = new ProdutoEstatisticaModel(connections);
   const table = "EstatPro";
   const pk = ["CdEmpresa", "MesRef", "AnoRef", "CdProduto"];

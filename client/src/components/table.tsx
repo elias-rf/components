@@ -1,60 +1,49 @@
+import type { Order, Schema, SchemaField, Where } from "@er/types";
+import { IEvent } from "@er/types";
+import { orderBy as orderByUtil } from "@er/utils/src/order-by";
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import type { Id, OrderBy, Schema, SchemaField, Where } from "../../../types";
-import { orderBy as orderByUtil } from "../../../utils";
 import { whereUtil } from "../lib/http/where-util";
 import { ShowChevronIcon } from "./show-chevronIcon";
 import { ShowSortableIcon } from "./show-sortable-icon";
-import { TextboxText, TextboxTextAction } from "./textbox-text";
+import { TextboxText } from "./textbox-text";
 
-export const tableActionTypes = {
-  order: "ORDER",
-  where: "WHERE",
-  select: "SELECT",
-};
-
-export type TableAction =
-  | { type: typeof tableActionTypes.select; payload: Id }
-  | { type: typeof tableActionTypes.where; payload: Where[] }
-  | { type: typeof tableActionTypes.order; payload: OrderBy[] };
-
-interface TableProps {
+interface ITableProps {
+  name?: string;
   data?: any[];
   schema?: Schema;
   selected?: string[];
-  orderBy?: OrderBy[];
+  order?: Order[];
   where?: Where[];
-  dispatch?: (action: TableAction) => void;
+  onWhere?: (event: IEvent) => void;
+  onOrder?: (event: IEvent) => void;
+  onSelect?: (event: IEvent) => void;
   children?: React.ReactNode;
   selectedClassName?: string;
   tableClassName?: string;
 }
 
-function createWhere(where: Where[]) {
-  return { type: tableActionTypes.where, payload: where };
-}
-function createOrder(order: OrderBy[]) {
-  return { type: tableActionTypes.order, payload: order };
-}
-
-function createSelected(selected: string[]) {
-  return { type: tableActionTypes.select, payload: selected };
-}
-
 /**
  * Componente Table
  */
-export function Table({
-  data = [],
-  schema,
-  selected,
-  orderBy,
-  where,
-  dispatch = () => {},
-  children,
-  selectedClassName = "bg-gray-300",
-  tableClassName,
-}: TableProps) {
+export function Table(props: ITableProps) {
+  const {
+    name = "",
+    data = [],
+    schema,
+    selected,
+    order: orderBy,
+    where,
+    onWhere = () => null,
+    onOrder = () => null,
+    onSelect = () => null,
+    children,
+    selectedClassName = "bg-gray-300",
+    tableClassName,
+  } = props;
+
+  const [whereAux, setWhereAux] = React.useState(where);
+
   let fields = schema?.fields ?? [];
   const pk = schema?.pk ?? [];
   fields = fields.filter((item) => item.visible !== false);
@@ -81,7 +70,7 @@ export function Table({
 
     if (recId == null || selected == null) return false;
     if (recId.length !== selected.length) return false;
-    for (var i = 0; i < recId.length; ++i) {
+    for (let i = 0; i < recId.length; ++i) {
       if (recId[i] != selected[i]) return false;
     }
     return true;
@@ -121,7 +110,7 @@ export function Table({
    * @return {*}
    */
   function getWhereValue(fieldName: string) {
-    return whereUtil.getValue(where || [], fieldName);
+    return whereUtil.getValue(whereAux || [], fieldName);
   }
 
   /**
@@ -131,9 +120,15 @@ export function Table({
    * @param {*} fieldSchema
    * @return {*}
    */
-  function handleOrder(orderBy: OrderBy[] = [], fieldSchema: SchemaField) {
-    if (hasOrderBy())
-      dispatch(createOrder(orderByUtil.setUnique(orderBy, fieldSchema?.field)));
+  function handleOrder(orderBy: Order[] = [], fieldSchema: SchemaField) {
+    if (hasOrderBy() && fieldSchema.sortable !== false)
+      onOrder({
+        name,
+        value: orderByUtil.setUnique(orderBy, fieldSchema?.field),
+        eventName: "order",
+        targetName: "Table",
+        targetProps: props,
+      });
   }
 
   /**
@@ -144,33 +139,45 @@ export function Table({
    */
   function handleSelect(rec: any) {
     if (isSelected(rec) && hasTree()) {
-      dispatch(createSelected([]));
+      onSelect({
+        name,
+        value: [],
+        eventName: "select",
+        targetName: "Table",
+        targetProps: props,
+      });
     } else {
-      dispatch(createSelected(pk.map((item) => rec[item])));
+      onSelect({
+        name,
+        value: pk.map((item) => rec[item]),
+        eventName: "select",
+        targetName: "Table",
+        targetProps: props,
+      });
     }
   }
 
   /**
    * Filtra os registros
    */
-  function handleWhere(action: TextboxTextAction) {
+  function handleWhere(event: IEvent) {
     let whr: Where[] = [];
-    if (where) {
-      whr = [...where];
+    if (whereAux) {
+      whr = [...whereAux];
     }
-    whr = whereUtil.setUnique(whr, action.payload.field, action.payload.value);
-    if (hasWhere()) {
-      dispatch(createWhere(whr));
-    }
+    whr = whereUtil.setUnique(whr, event.name, event.value);
+    setWhereAux(whr);
   }
 
-  const textbox = (
-    <TextboxText
-      field={""}
-      value={""}
-      dispatch={() => {}}
-    />
-  );
+  function handleWhereInput() {
+    onWhere({
+      name,
+      value: whereAux,
+      targetName: "Table",
+      targetProps: props,
+      eventName: "where",
+    });
+  }
 
   return (
     <table className={twMerge("w-full", tableClassName)}>
@@ -203,13 +210,14 @@ export function Table({
           {hasWhere()
             ? fields?.map((fld) => (
                 <th key={fld.label}>
-                  {React.cloneElement(textbox, {
-                    field: fld.field,
-                    value: getWhereValue(fld.field),
-                    key: fld.field,
-                    className: "w-full border-2 border-gray-300 px-1",
-                    dispatch: handleWhere,
-                  })}
+                  <TextboxText
+                    name={fld.field}
+                    value={getWhereValue(fld.field)}
+                    key={fld.field}
+                    className={"w-full border-2 border-gray-300 px-1"}
+                    onChange={handleWhere}
+                    onInput={handleWhereInput}
+                  />
                 </th>
               ))
             : null}

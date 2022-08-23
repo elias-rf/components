@@ -1,21 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import { useQuery } from "react-query";
 import { Action, Id } from "../../../../types";
-import { Page, PageTitle } from "../../components";
+import { Page } from "../../components/page";
+import { PageTitle } from "../../components/page-title";
 import { Auth } from "../../features/auth";
 import { ClienteForm } from "../../features/cliente/cliente-form";
 import { useQueryState } from "../../lib/hooks/use-query-state";
-import { ClienteRecord, clienteService } from "../../service/cliente.service";
+import { clienteService } from "../../service/cliente.service";
 
 export default function Cliente() {
   const cliente = clienteService;
-  // const venda = VendaService();
-  const schema = cliente.schema();
 
-  const [form, setForm] = React.useState<ClienteRecord>(cliente.clear());
   const [selected, setSelected] = useQueryState("selected", []);
-  const [orderBy, setOrderBy] = useQueryState("orderBy", []);
-  const [where, setWhere] = useQueryState("where", []);
 
   // download form data
   const record = useQuery(
@@ -43,7 +38,7 @@ export default function Cliente() {
 
   return (
     <Auth>
-      <Page>
+      <Page title="Cliente">
         <PageTitle
           title="Cliente"
           loading={record.isLoading}

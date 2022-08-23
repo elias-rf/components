@@ -1,4 +1,4 @@
-import { GenericObject } from "../../types";
+import { GenericObject } from "@er/types";
 
 export function db(data: GenericObject) {
   let dt = structuredClone(data);

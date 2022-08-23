@@ -1,4 +1,4 @@
-import { formatMoney } from "../../../utils";
+import { formatMoney } from "@er/utils/src/format-money";
 import { replaceAll } from "./replace-all";
 
 export const moeda = {

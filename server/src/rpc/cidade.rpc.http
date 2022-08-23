@@ -1,0 +1,27 @@
+### List
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"cidadeList",
+  "params":{
+    "limit":3,
+    "where":[["uf_old","=","ES"]],
+    "orderBy":[["cidade_id","asc"]]
+  }
+}
+
+### Read
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"cidadeRead",
+  "params":{
+    "pk":{"uf_old":"ES", "nome_cidade": "Afonso Cláudio"}
+  }
+}

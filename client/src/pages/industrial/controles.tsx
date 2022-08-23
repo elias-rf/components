@@ -1,11 +1,9 @@
-import React from "react";
-import { Page, PageTitle } from "../../components";
+import { Page } from "../../components/page";
+import { PageTitle } from "../../components/page-title";
 import { Auth } from "../../features/auth";
 import { Controles as Control } from "../../features/controles/controles";
 
-function Controles() {
-  const [active, setActive] = React.useState("pg1");
-
+export default function Controles() {
   return (
     <Auth>
       <Page>
@@ -15,5 +13,3 @@ function Controles() {
     </Auth>
   );
 }
-
-export default Controles;

@@ -1,0 +1,2 @@
+function o(e){if(e===void 0)return!0;if(typeof e=="function"||typeof e=="number"||typeof e=="boolean"||Object.prototype.toString.call(e)==="[object Date]")return!1;if(e==null||e.length===0)return!0;if(typeof e=="object"){var t=!0;for(var n in e)t=!1;return t}return!1}function r(e){return typeof e=="function"||typeof e=="number"||typeof e=="boolean"||Object.prototype.toString.call(e)==="[object Date]"?!1:e==null||!(Object.keys(e)||e).length}export{o as a,r as b};
+//# sourceMappingURL=chunk-ZMKP3N7X.js.map

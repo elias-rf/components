@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/round.ts"],
+  "sourcesContent": ["export function round(number: number, decimalPlaces = 2): number {\n  return Number(\n    Math.round(Number(number.toString() + \"e\" + decimalPlaces.toString())) +\n      \"e-\" +\n      decimalPlaces.toString()\n  );\n}\n"],
+  "mappings": "AAAO,SAASA,EAAMC,EAAgBC,EAAgB,EAAW,CAC/D,OAAO,OACL,KAAK,MAAM,OAAOD,EAAO,SAAS,EAAI,IAAMC,EAAc,SAAS,CAAC,CAAC,EACnE,KACAA,EAAc,SAAS,CAC3B,CACF",
+  "names": ["round", "number", "decimalPlaces"]
+}

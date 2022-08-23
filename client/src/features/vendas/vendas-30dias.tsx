@@ -1,3 +1,5 @@
+import { day } from "@er/utils/src/day";
+import { formatMoney } from "@er/utils/src/format-money";
 import React from "react";
 import {
   Line,
@@ -7,7 +9,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { day, formatMoney } from "../../../../utils";
 import VendaService from "../../service/venda.service";
 
 /**

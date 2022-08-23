@@ -1,16 +1,10 @@
+import { Schema, Where } from "@er/types";
 import React from "react";
-import { Schema, Where } from "../..";
-import Search, { SearchAction } from "./search";
+import { Search, SearchAction } from "./search";
 
 export default {
   title: "Table/Search",
 };
-
-let data = [
-  { id: "1", nome: "fulano", compra: 1.5 },
-  { id: "2", nome: "beltrano", compra: 2.4 },
-  { id: "3", nome: "cicrano", compra: 3.14 },
-];
 
 const schema: Schema = {
   pk: ["id"],
@@ -39,11 +33,7 @@ const schema: Schema = {
 };
 
 export const Procura = () => {
-  const [where, setWhere] = React.useState<Where[]>([["id", "<", "4"]]);
-
-  const options = {
-    selectedClass: "bg-gray-300",
-  };
+  const [where] = React.useState<Where[]>([["id", "<", "4"]]);
 
   function handleDispatch(action: SearchAction) {
     console.log(action);
@@ -51,7 +41,11 @@ export const Procura = () => {
 
   return (
     <div>
-      <Search where={where} schema={schema} dispatch={handleDispatch} />
+      <Search
+        where={where}
+        schema={schema}
+        dispatch={handleDispatch}
+      />
     </div>
   );
 };

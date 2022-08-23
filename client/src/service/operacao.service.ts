@@ -1,5 +1,5 @@
-import { Schema } from "../../../types";
-import { isEmpty } from "../../../utils";
+import { Schema } from "@er/types";
+import { isEmpty } from "@er/utils/src/is-empty";
 import { day } from "../lib/day";
 import { fetcherRpc } from "../lib/http/fetcher-rpc";
 

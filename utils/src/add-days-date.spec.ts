@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import addDaysDate from "./add-days-date";
+import { addDaysDate } from "./add-days-date";
 describe("dateAdd", () => {
   const dia = new Date("2000-02-15");
   it("Positivo dentro do mês", () => {

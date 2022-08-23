@@ -8,12 +8,8 @@ export default {
   component: Input,
 };
 
-const Template: Story<typeof Input> = (props: any) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+const Template: Story<typeof Input> = () => {
+  const { register, handleSubmit } = useForm();
   const [disp, setDisp] = React.useState({});
   const onSubmit = (data: any) => setDisp(data);
   return (

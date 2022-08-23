@@ -8,22 +8,20 @@ export default {
   argTypes: { dispatch: { action: "dispatch" } },
 };
 
-const Template: Story<typeof MessageBox> = (props: any) => {
+export const Default: Story<typeof MessageBox> = (props: any) => {
   const [disp, setDisp] = React.useState({});
   return (
     <>
-      <MessageBox {...props} dispatch={setDisp} />
+      <MessageBox
+        title="Titulo"
+        onInput={setDisp}
+        option1="OK"
+        option2="Cancel"
+        option3="Close"
+      >
+        Mensagem
+      </MessageBox>
       <div>{JSON.stringify(disp)}</div>
     </>
   );
-};
-
-export const Default = Template.bind({});
-
-Default.args = {
-  title: "Título",
-  children: `Mensagem`,
-  btn1: "OK",
-  btn2: "Cancel",
-  btn3: "Close",
 };

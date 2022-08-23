@@ -17,7 +17,10 @@ export function PageTitle({
   }, [title]);
 
   return (
-    <div className="inline-flex justify-between w-full mb-2 bg-gray-300 flex-nowrap">
+    <section
+      data-name={title}
+      className="inline-flex justify-between w-full mb-2 bg-gray-300 flex-nowrap"
+    >
       <div className="inline-flex flex-nowrap">
         <p className="ml-1 text-xl font-bold text-gray-700">{title}</p>
         <div className="mt-1 ml-1">
@@ -28,6 +31,6 @@ export function PageTitle({
         </div>
       </div>
       <div>{children}</div>
-    </div>
+    </section>
   );
 }

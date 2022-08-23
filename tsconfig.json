@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./utils" },
+    { "path": "./client" },
+    { "path": "./server" }
+  ]
+}

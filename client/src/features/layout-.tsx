@@ -1,6 +1,10 @@
 import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { DefaultLayout, LayoutAction, layoutActionTypes } from "../components";
+import {
+  DefaultLayout,
+  LayoutAction,
+  layoutActionTypes,
+} from "../components/default-layout";
 import { menu } from "../menu";
 import { authenticationService } from "../service/authentication.service";
 import { userStore } from "../state/user-store";

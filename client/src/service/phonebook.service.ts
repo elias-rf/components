@@ -1,14 +1,11 @@
+import { TPhonebookRecord } from "@er/server/src/model/oftalmo/phonebook.model";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
-export type PhonebookRecord = {
-  id: string;
-  name: string;
-  department: string;
-  email: string;
-};
+export type { TPhonebookRecord };
 
 export const phonebookService = {
-  ...rpcFactory("phonebook"),
+  ...rpcFactory<TPhonebookRecord>("phonebook"),
+
   clear() {
     return {
       id: "",

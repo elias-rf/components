@@ -1,6 +1,6 @@
+import { Schema } from "@er/types";
 import type { Story } from "@ladle/react";
 import React from "react";
-import { Schema } from "../../../types";
 import { Form } from "./form";
 
 export default {

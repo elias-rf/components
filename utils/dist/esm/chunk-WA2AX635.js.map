@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/goToday.ts"],
+  "sourcesContent": ["/**\n * Retorna o dia de hoje \u00E0s 0:00 horas\n */\nfunction goToday() {\n  const rsp = new Date();\n  rsp.setHours(0, 0, 0, 0);\n  return rsp;\n}\n\nexport default goToday;\n"],
+  "mappings": "AAGA,SAASA,GAAU,CACjB,IAAMC,EAAM,IAAI,KAChB,OAAAA,EAAI,SAAS,EAAG,EAAG,EAAG,CAAC,EAChBA,CACT,CAEA,IAAOC,EAAQF",
+  "names": ["goToday", "rsp", "goToday_default"]
+}

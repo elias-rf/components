@@ -1,8 +1,9 @@
-import { Page, PageTitle } from "../components";
+import { Page } from "../components/page";
+import { PageTitle } from "../components/page-title";
 
 export function Loading() {
   return (
-    <Page>
+    <Page title="Loading">
       <PageTitle
         title={"Aguarde..."}
         loading={true}

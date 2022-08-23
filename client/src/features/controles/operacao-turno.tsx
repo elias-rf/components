@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import { isEmpty } from "../../../../utils";
-import { Table } from "../../components";
+import { isEmpty } from "@er/utils/src/is-empty";
+import { useQuery } from "react-query";
+import { Table } from "../../components/table";
 import { operacaoService } from "../../service/operacao.service";
 
 export function OperacaoTurno({ operacao, dia }: any) {

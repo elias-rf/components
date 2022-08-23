@@ -1,7 +1,7 @@
+import { Action } from "@er/types";
 import folderIcon from "@iconify/icons-carbon/folder";
 import { Icon } from "@iconify/react";
 import React from "react";
-import { Action } from "../../../types";
 import { UpView } from "./up-view";
 // import treePath from "./tree-path";
 
@@ -33,7 +33,7 @@ function Folder({ item, handleSelect }: { item: any; handleSelect: any }) {
 }
 
 export function ListView({ data, selected = "/", dispatch }: ListViewProps) {
-  const [selectedData, setSelectedData] = React.useState<any[]>([]);
+  const [selectedData] = React.useState<any[]>([]);
 
   function handleSelect(key: string) {
     dispatch({ type: "click", payload: selected + "/" + key });

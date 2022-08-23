@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/is-array.ts"],
+  "sourcesContent": ["function isArray(input?: any): boolean {\n  return (\n    input instanceof Array ||\n    Object.prototype.toString.call(input) === \"[object Array]\"\n  );\n}\n\nexport default isArray;\n"],
+  "mappings": "AAAA,SAASA,EAAQC,EAAsB,CACrC,OACEA,aAAiB,OACjB,OAAO,UAAU,SAAS,KAAKA,CAAK,IAAM,gBAE9C,CAEA,IAAOC,EAAQF",
+  "names": ["isArray", "input", "is_array_default"]
+}

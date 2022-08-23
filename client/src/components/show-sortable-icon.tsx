@@ -1,9 +1,9 @@
+import { Order, SchemaField } from "@er/types";
+import { orderBy as orderByUtil } from "@er/utils/src/order-by";
 import chevronSort from "@iconify/icons-carbon/chevron-sort";
 import chevronSortDown from "@iconify/icons-carbon/chevron-sort-down";
 import chevronSortUp from "@iconify/icons-carbon/chevron-sort-up";
 import { InlineIcon } from "@iconify/react";
-import { OrderBy, SchemaField } from "../../../types";
-import { orderBy as orderByUtil } from "../../../utils";
 
 export function SortableIcon() {
   return (
@@ -57,7 +57,7 @@ export function SortableDescIcon() {
 }
 
 interface ShowSortableIconProps {
-  orderBy: OrderBy[];
+  orderBy: Order[];
   fieldSchema: SchemaField;
 }
 

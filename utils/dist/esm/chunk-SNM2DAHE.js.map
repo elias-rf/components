@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/is-empty.ts"],
+  "sourcesContent": ["// test results\n//---------------\n// []        true, empty array\n// {}        true, empty object\n// null      true\n// undefined true\n// \"\"        true, empty string\n// ''        true, empty string\n// 0         false, number\n// true      false, boolean\n// false     false, boolean\n// Date      false\n// function  false\n\nexport function isEmpty(val: any) {\n  if (\n    typeof val == \"function\" ||\n    typeof val == \"number\" ||\n    typeof val == \"boolean\" ||\n    Object.prototype.toString.call(val) === \"[object Date]\"\n  )\n    return false;\n  return val == null || !(Object.keys(val) || val).length;\n}\n"],
+  "mappings": "AAcO,SAASA,EAAQC,EAAU,CAChC,OACE,OAAOA,GAAO,YACd,OAAOA,GAAO,UACd,OAAOA,GAAO,WACd,OAAO,UAAU,SAAS,KAAKA,CAAG,IAAM,gBAEjC,GACFA,GAAO,MAAQ,EAAE,OAAO,KAAKA,CAAG,GAAKA,GAAK,MACnD",
+  "names": ["isEmpty", "val"]
+}

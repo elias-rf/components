@@ -1,8 +1,8 @@
 import type { RpcContext, Schema } from "@er/types";
-import { Connections } from "dal/connections";
-import { EsterilizacaoInternaModel } from "../model/oftalmo/esterilizacao-interna.model";
+import { TConnections } from "dal/connections";
+import { EsterilizacaoInternaModel } from "../model";
 
-export interface EsterilizacaoInternaRpc {
+export interface TEsterilizacaoInternaRpc {
   esterilizacaoInternaSchemaDiario: () => Promise<Schema>;
   esterilizacaoInternaSchemaMensal: () => Promise<Schema>;
   esterilizacaoInternaSchemaProduto: () => Promise<Schema>;
@@ -25,9 +25,9 @@ export interface EsterilizacaoInternaRpc {
   ) => Promise<{ modelo: string; quantidade: number }[]>;
 }
 
-export function EsterilizacaoInterna(
-  connections: Connections
-): EsterilizacaoInternaRpc {
+export function esterilizacaoInternaRpc(
+  connections: TConnections
+): TEsterilizacaoInternaRpc {
   const esterilizacaoInterna = new EsterilizacaoInternaModel(connections);
   return {
     // SCHEMA DIARIO

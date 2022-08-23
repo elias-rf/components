@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/randomString.ts"],
+  "sourcesContent": ["export function randomString(max = 6) {\n  let text = \"\";\n  const possible =\n    \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\";\n\n  for (let i = 0; i < max; i += 1) {\n    text += possible.charAt(Math.floor(Math.random() * possible.length));\n  }\n  return text;\n}\n"],
+  "mappings": "AAAO,SAASA,EAAaC,EAAM,EAAG,CACpC,IAAIC,EAAO,GACLC,EACJ,iEAEF,QAASC,EAAI,EAAGA,EAAIH,EAAKG,GAAK,EAC5BF,GAAQC,EAAS,OAAO,KAAK,MAAM,KAAK,OAAO,EAAIA,EAAS,MAAM,CAAC,EAErE,OAAOD,CACT",
+  "names": ["randomString", "max", "text", "possible", "i"]
+}

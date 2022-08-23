@@ -6,6 +6,7 @@ export const orderBySchema = z
   .array();
 
 export const idSchema = z.string().array();
+export const pksSchema = z.record(z.string()).array();
 export const limitSchema = z.number().positive();
 export const recordSchema = z.record(z.any());
 

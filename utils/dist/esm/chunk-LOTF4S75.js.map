@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/convert-array-to-csv.ts"],
+  "sourcesContent": ["/**\n * Cria uma string no padr\u00E3o CSV\n *\n * @param {string[]} header Cabe\u00E7alho do CSV [['field','label']]\n * @param {object[]} dados  Corpo do CSV [{field:value}]\n * @returns {string} Texto no formato CSV\n */\nfunction convertArrayToCSV(header: string[][], dados: object[]): string {\n  const hdr = header.map((lbl) => `\"${lbl[1]}\"`).join(\";\");\n  const bdy = dados\n    .map((rec: any) => {\n      const lin: string[] = [];\n      header.forEach((h) => {\n        lin.push(`\"${rec[h[0]]}\"`);\n      });\n      return lin.join(\";\");\n    })\n    .join(\"\\r\\n\");\n  const rsp = hdr.concat(\"\\r\\n\", bdy);\n  return rsp;\n}\n\nexport default convertArrayToCSV;\n"],
+  "mappings": "AAOA,SAASA,EAAkBC,EAAoBC,EAAyB,CACtE,IAAMC,EAAMF,EAAO,IAAKG,GAAQ,IAAIA,EAAI,KAAK,EAAE,KAAK,GAAG,EACjDC,EAAMH,EACT,IAAKI,GAAa,CACjB,IAAMC,EAAgB,CAAC,EACvB,OAAAN,EAAO,QAASO,GAAM,CACpBD,EAAI,KAAK,IAAID,EAAIE,EAAE,MAAM,CAC3B,CAAC,EACMD,EAAI,KAAK,GAAG,CACrB,CAAC,EACA,KAAK;AAAA,CAAM,EAEd,OADYJ,EAAI,OAAO;AAAA,EAAQE,CAAG,CAEpC,CAEA,IAAOI,EAAQT",
+  "names": ["convertArrayToCSV", "header", "dados", "hdr", "lbl", "bdy", "rec", "lin", "h", "convert_array_to_csv_default"]
+}

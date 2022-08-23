@@ -1,5 +1,5 @@
 import qs from "qs";
-import useLocation from "./use-location";
+import { useLocation } from "./use-location";
 
 export function useQueryParams() {
   const { replace, search } = useLocation();

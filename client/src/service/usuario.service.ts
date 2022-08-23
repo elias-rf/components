@@ -1,17 +1,12 @@
+import { TUsuarioRecord } from "@er/server/src/model/oftalmo/usuario.model";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
-export type UsuarioRecord = {
-  kUsuario: string;
-  NomeUsuario: string;
-  nome: string;
-  idGroup: string;
-  Ativo: number;
-};
+export type { TUsuarioRecord };
 
 export const usuarioService = {
-  ...rpcFactory("usuario"),
+  ...rpcFactory<TUsuarioRecord>("usuario"),
 
-  clear: (): UsuarioRecord => {
+  clear() {
     return {
       kUsuario: "",
       NomeUsuario: "",

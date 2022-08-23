@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/generateError.ts"],
+  "sourcesContent": ["import httpStatus from \"./httpStatus\";\n\n/**\n * Return new validation error\n *\n * @param {Error} errorData\n * @returns {Error|APIError}\n */\nexport function generateError(message: string, status: number | string) {\n  const err: any = new Error(message);\n  err.status = status;\n  err.statusText = httpStatus[status];\n  return err;\n}\n"],
+  "mappings": "wCAQO,SAASA,EAAcC,EAAiBC,EAAyB,CACtE,IAAMC,EAAW,IAAI,MAAMF,CAAO,EAClC,OAAAE,EAAI,OAASD,EACbC,EAAI,WAAaC,EAAWF,GACrBC,CACT",
+  "names": ["generateError", "message", "status", "err", "httpStatus_default"]
+}

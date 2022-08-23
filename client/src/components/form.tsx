@@ -1,16 +1,16 @@
+import { Action, Schema, SchemaField } from "@er/types";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Action, Schema, SchemaField } from "../../../types";
 import { Formfield } from "./formfield";
 
-interface FormProps {
+type TFormProps = {
   dispatch: (action: Action) => void;
   record?: any;
   schema?: Schema;
-}
+};
 
 // tailwind-kit.com
-const Form = ({ dispatch, record = {}, schema }: FormProps) => {
+export function Form({ dispatch, record = {}, schema }: TFormProps) {
   let fields: SchemaField[] = schema?.fields ?? [];
   const [disp, setDisp] = React.useState({});
 
@@ -44,6 +44,4 @@ const Form = ({ dispatch, record = {}, schema }: FormProps) => {
       <div>{JSON.stringify(disp)}</div>
     </>
   );
-};
-
-export { Form };
+}

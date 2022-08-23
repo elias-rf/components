@@ -7,13 +7,10 @@ import type {
   RpcContext,
   UpdateArgs,
 } from "@er/types";
-import type { Connections } from "../dal/connections";
-import {
-  EtiquetaExternaModel,
-  EtiquetaExternaRecord,
-} from "../model/oftalmo/etiqueta-externa.model";
+import type { TConnections } from "../dal/connections";
+import { EtiquetaExternaModel, EtiquetaExternaRecord } from "../model";
 
-export interface EtiquetaExternaRpc {
+export interface TEtiquetaExternaRpc {
   etiquetaExternaList(
     listArgs: ListArgs,
     ctx?: RpcContext
@@ -33,7 +30,9 @@ export interface EtiquetaExternaRpc {
   ): Promise<Id>;
 }
 
-export function EtiquetaExterna(connections: Connections): EtiquetaExternaRpc {
+export function etiquetaExternaRpc(
+  connections: TConnections
+): TEtiquetaExternaRpc {
   const etiquetaexternaModel = new EtiquetaExternaModel(connections);
 
   return {

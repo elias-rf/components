@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/routes-create.ts"],
+  "sourcesContent": ["/**\n * Cria rotas para express usando array no seguinte formato:\n * [\n *   {\n *     method:'get',\n *     path:'/',\n *     action: controller,\n *     middleware:[mid1, mid2]\n *   },\n *   ...\n * ]\n * @param router\n */\n\nexport function routesCreate(router: any, routes: any) {\n  for (const route of routes) {\n    router[route.method](route.path, route.action);\n  }\n  return router;\n}\n"],
+  "mappings": "AAcO,SAASA,EAAaC,EAAaC,EAAa,CACrD,QAAWC,KAASD,EAClBD,EAAOE,EAAM,QAAQA,EAAM,KAAMA,EAAM,MAAM,EAE/C,OAAOF,CACT",
+  "names": ["routesCreate", "router", "routes", "route"]
+}

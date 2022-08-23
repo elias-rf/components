@@ -1,9 +1,9 @@
-import dateAddDays from "./add-days-date";
+import { addDaysDate } from "./add-days-date";
 /**
  * Calcula o domingo da semana indicada pela data
  */
 function goWeekStart(date: Date) {
-  return dateAddDays(date, -date.getUTCDay());
+  return addDaysDate(date, -date.getUTCDay());
 }
 
 export default goWeekStart;

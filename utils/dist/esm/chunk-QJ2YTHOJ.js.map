@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/get-type.ts"],
+  "sourcesContent": ["export function getType(obj: any): string {\n  return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();\n}\n"],
+  "mappings": "AAAO,SAASA,EAAQC,EAAkB,CACxC,OAAO,OAAO,UAAU,SAAS,KAAKA,CAAG,EAAE,MAAM,EAAG,EAAE,EAAE,YAAY,CACtE",
+  "names": ["getType", "obj"]
+}

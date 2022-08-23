@@ -1,14 +1,14 @@
 import { useLocation } from "react-router-dom";
-import { Authorization } from "../components";
+import { Authorization } from "../components/authorization";
 import { authenticationService } from "../service/authentication.service";
-import { permissaoService } from "../service/permissao.service";
+import { groupSubjectService } from "../service/group-subject.service";
 
 export function Auth({ children }: { children: React.ReactNode }) {
   const location = useLocation();
 
   return (
     <Authorization
-      can={permissaoService.can}
+      can={groupSubjectService.can}
       currentUser={authenticationService.me}
       resource={location.pathname}
     >

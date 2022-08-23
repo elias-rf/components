@@ -1,5 +1,5 @@
 import pg403 from "../assets/images/403.gif";
-import { A } from "../components";
+import { A } from "../components/a";
 
 export default function Page403() {
   return (

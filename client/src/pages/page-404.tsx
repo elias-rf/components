@@ -1,5 +1,5 @@
 import pg404 from "../assets/images/404.gif";
-import { A } from "../components";
+import { A } from "../components/a";
 
 export default function Page404() {
   return (

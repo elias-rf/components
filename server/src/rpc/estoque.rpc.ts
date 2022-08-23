@@ -6,23 +6,26 @@ import {
   ReadArgs,
   RpcContext,
   UpdateArgs,
-} from "../../../types";
-import { Connections } from "../dal/connections";
-import { EstoqueModel, EstoqueRecord } from "../model/plano/estoque.model";
+} from "@er/types";
+import { TConnections } from "../dal/connections";
+import { EstoqueModel, TEstoqueRecord } from "../model";
 
-export interface EstoqueRpc {
+export interface TEstoqueRpc {
   estoqueList: (
     listArgs: ListArgs,
     ctx?: RpcContext
-  ) => Promise<EstoqueRecord[]>;
-  estoqueRead: (readArgs: ReadArgs, ctx?: RpcContext) => Promise<EstoqueRecord>;
+  ) => Promise<TEstoqueRecord[]>;
+  estoqueRead: (
+    readArgs: ReadArgs,
+    ctx?: RpcContext
+  ) => Promise<TEstoqueRecord>;
   estoqueDel: ({ id }: DelArgs, ctx?: RpcContext) => Promise<number>;
   estoqueCreate: (
-    { data }: CreateArgs<EstoqueRecord>,
+    { data }: CreateArgs<TEstoqueRecord>,
     ctx?: RpcContext
   ) => Promise<Id>;
   estoqueUpdate: (
-    { id, data }: UpdateArgs<EstoqueRecord>,
+    { id, data }: UpdateArgs<TEstoqueRecord>,
     ctx?: RpcContext
   ) => Promise<Id>;
   estoqueIncrement: (
@@ -31,7 +34,7 @@ export interface EstoqueRpc {
   ) => Promise<{ EstAtual: number }[]>;
 }
 
-export function Estoque(connections: Connections): EstoqueRpc {
+export function estoqueRpc(connections: TConnections): TEstoqueRpc {
   const estoqueModel = new EstoqueModel(connections);
 
   return {

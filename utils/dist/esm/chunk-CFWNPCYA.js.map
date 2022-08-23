@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/is-cnpj.ts"],
+  "sourcesContent": ["import { calcDvCnpj } from \"./calc-dv-cnpj\";\n\n/**\n * Valida um cnpj\n *\n * @param {string} str CNPJ com ou sem formato\n * @returns {boolean} True se for v\u00E1lido\n */\nfunction isCNPJ(cnpj: string) {\n  const dv = calcDvCnpj(cnpj);\n  return dv === cnpj.substr(-2, 2);\n}\n\nexport default isCNPJ;\n"],
+  "mappings": "wCAQA,SAASA,EAAOC,EAAc,CAE5B,OADWC,EAAWD,CAAI,IACZA,EAAK,OAAO,GAAI,CAAC,CACjC,CAEA,IAAOE,EAAQH",
+  "names": ["isCNPJ", "cnpj", "calcDvCnpj", "is_cnpj_default"]
+}

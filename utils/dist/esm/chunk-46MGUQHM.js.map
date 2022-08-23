@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/id-to-where.ts"],
+  "sourcesContent": ["/**\n * Cria clausula Where para knex com chave composta\n *\n * @param {string|string[]} pk Chave prim\u00E1ria\n * @param {string|string[]} values Valor da chave\n * @returns {object} Objeto com {pk:id}\n */\nexport function idToWhere(\n  pk: string | string[],\n  values: string | string[]\n): {} {\n  const response: any = {};\n  let pkArray = Array.isArray(pk) ? pk : [pk];\n  let idArray = Array.isArray(values) ? values : [values];\n  for (let i = 0; i < pkArray.length; i++) {\n    response[pkArray[i]] = idArray[i];\n  }\n  return response;\n}\n"],
+  "mappings": "AAOO,SAASA,EACdC,EACAC,EACI,CACJ,IAAMC,EAAgB,CAAC,EACnBC,EAAU,MAAM,QAAQH,CAAE,EAAIA,EAAK,CAACA,CAAE,EACtCI,EAAU,MAAM,QAAQH,CAAM,EAAIA,EAAS,CAACA,CAAM,EACtD,QAASI,EAAI,EAAGA,EAAIF,EAAQ,OAAQE,IAClCH,EAASC,EAAQE,IAAMD,EAAQC,GAEjC,OAAOH,CACT",
+  "names": ["idToWhere", "pk", "values", "response", "pkArray", "idArray", "i"]
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/formatDateUs.ts"],
+  "sourcesContent": ["import { formatDate } from \"./formatDate\";\n\n/**\n *\n *\n * @export\n * @param {(string | Date)} date\n * @returns {string} data formatada\n */\nfunction formatDateUs(date: any) {\n  return formatDate(date, \"YYYY-MM-DD\");\n}\n\nexport default formatDateUs;\n"],
+  "mappings": "wCASA,SAASA,EAAaC,EAAW,CAC/B,OAAOC,EAAWD,EAAM,YAAY,CACtC,CAEA,IAAOE,EAAQH",
+  "names": ["formatDateUs", "date", "formatDate", "formatDateUs_default"]
+}

@@ -1,55 +1,34 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import type { IEvent, SchemaField } from "@er/types";
+import { isEmpty } from "@er/utils/src/is-empty";
 import React from "react";
-import { useForm } from "react-hook-form";
-import type { Action, Id } from "../../../../types";
-import { isEmpty } from "../../../../utils";
-import { Button, Formfield } from "../../components";
+import { Button } from "../../components/button";
+import { Formfield } from "../../components/formfield";
 import {
-  PhonebookRecord,
+  usePhonebookCreate,
+  usePhonebookDel,
+  usePhonebookRead,
+  usePhonebookSchema,
+  usePhonebookUpdate,
+} from "../../hooks/use-phonebook.hook";
+import { useForm } from "../../lib/hooks/use-form.hook";
+import { useQueryState } from "../../lib/hooks/use-query-state";
+import {
   phonebookService,
+  TPhonebookRecord,
 } from "../../service/phonebook.service";
 
-type PhonebookFormProps = {
-  selected: Id;
-};
-
-export function PhonebookForm({ selected }: PhonebookFormProps) {
-  const queryClient = useQueryClient();
-  const [form, setForm] = React.useState({} as PhonebookRecord);
+export function PhonebookForm() {
+  const [selected] = useQueryState("selected", []);
   const [status, setStatus] = React.useState("new");
-  const {
-    register,
-    handleSubmit,
-    reset,
-    setValue,
-    formState: { errors, isDirty, isSubmitting, touchedFields, submitCount },
-  } = useForm();
+  const form = useForm<TPhonebookRecord>(phonebookService.clear());
+  const record = usePhonebookRead(selected);
+  const recordDel = usePhonebookDel();
+  const recordUpdate = usePhonebookUpdate();
+  const recordCreate = usePhonebookCreate();
+  const schema = usePhonebookSchema();
 
-  // leitura inicial do schema
-  const schema = useQuery(
-    ["phonebookSchema"],
-    async () => phonebookService.schema(),
-    { staleTime: Infinity }
-  );
-
-  // leitura inicial do registro
-  const record = useQuery(
-    ["phonebook", selected],
-    ({ queryKey }) => {
-      const [_key, id] = queryKey as [string, Id];
-      if (isEmpty(id)) return [];
-      return phonebookService.read(id);
-    },
-    {
-      staleTime: 1000 * 60, // 1 minuto
-    }
-  );
-
-  // atualiza o registro no formulário
   function showRecord(rec: any) {
-    Object.entries(rec).forEach(([key, value]) => {
-      setValue(key, value, { shouldDirty: false });
-    });
+    form.set(rec);
     if (isEmpty(rec.id)) {
       setStatus("new");
     } else {
@@ -58,94 +37,67 @@ export function PhonebookForm({ selected }: PhonebookFormProps) {
   }
 
   React.useEffect(() => {
-    reset();
+    form.reset();
     if (record.data) {
       showRecord(record.data);
     }
   }, [record.data]);
 
-  function handleDispatch(action: Action) {
-    if (action.type === "CLICK") {
-      if (action.payload.name === "novo") {
-        showRecord(phonebookService.clear());
-      }
-      if (action.payload.name === "excluir") {
-        recordDel.mutate([selected]);
-        showRecord(phonebookService.clear());
-      }
+  function handleClick(e: IEvent) {
+    if (e.name === "novo") {
+      showRecord(phonebookService.clear());
+    }
+    if (e.name === "excluir") {
+      recordDel.mutate([selected]);
+      showRecord(phonebookService.clear());
+    }
+    if (e.name === "salvar") {
+      if (status === "update") recordUpdate.mutate([selected, form.record()]);
+      if (status === "new") recordCreate.mutate([form.record()]);
+      showRecord(phonebookService.clear());
     }
   }
 
-  const recordUpdate = useMutation(
-    (args: [Id, PhonebookRecord]) => phonebookService.update(...args),
-    { onSuccess: () => queryClient.invalidateQueries(["phonebook"]) }
-  );
-
-  const recordCreate = useMutation(
-    (args: [PhonebookRecord]) => phonebookService.create(...args),
-    { onSuccess: () => queryClient.invalidateQueries(["phonebook"]) }
-  );
-
-  const recordDel = useMutation((args: [Id]) => phonebookService.del(...args), {
-    onSuccess: () => queryClient.invalidateQueries(["phonebook"]),
-  });
-
-  const onSubmit = (data: any) => {
-    if (status === "new") {
-      recordCreate.mutate([data]);
-      showRecord(phonebookService.clear());
-    }
-    if (status === "update") {
-      recordUpdate.mutate([[data.id.toString()], data]);
-    }
-  };
-
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mt-2">
-          <div className="space-x-2">
-            <Button
-              className="w-20 bg-green-300"
-              dispatch={handleDispatch}
-              name="novo"
-              type="button"
-            >
-              Novo
-            </Button>
-            <Button
-              className="w-20 bg-blue-300"
-              dispatch={handleDispatch}
-              name="salvar"
-              disabled={!isDirty}
-              type="submit"
-            >
-              Salvar
-            </Button>
-            <Button
-              className="w-20 bg-red-300"
-              dispatch={handleDispatch}
-              name="excluir"
-              disabled={isDirty}
-              type="button"
-            >
-              Excluir
-            </Button>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {schema?.data?.fields.map((fld: any) => {
-              return (
-                <Formfield
-                  key={fld.field}
-                  label={fld.label}
-                  {...register(fld.field)}
-                  type={fld.type}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </form>
-    </>
+    <section
+      data-name="PhonebookForm"
+      className="mt-2"
+    >
+      <div className="space-x-2">
+        <Button
+          className="w-20 bg-green-300"
+          onClick={handleClick}
+          name="novo"
+          type="button"
+        >
+          Novo
+        </Button>
+        <Button
+          className="w-20 bg-blue-300"
+          onClick={handleClick}
+          name="salvar"
+          disabled={!form.isDirty()}
+        >
+          Salvar
+        </Button>
+        <Button
+          className="w-20 bg-red-300"
+          onClick={handleClick}
+          name="excluir"
+          disabled={form.isDirty()}
+        >
+          Excluir
+        </Button>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {schema.data?.fields.map((fld: SchemaField) => (
+          <Formfield
+            label={fld.label}
+            key={fld.field}
+            {...form.field(fld.field as any).register()}
+          />
+        ))}
+      </div>
+    </section>
   );
 }

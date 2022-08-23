@@ -7,11 +7,8 @@ import {
   RpcContext,
   UpdateArgs,
 } from "@er/types";
-import { Connections } from "dal/connections";
-import {
-  ProdutoControleModel,
-  ProdutoControleRecord,
-} from "../model/plano/produto-controle.model";
+import { TConnections } from "dal/connections";
+import { ProdutoControleModel, TProdutoControle } from "../model";
 
 type Record = {
   Aspecto: string;
@@ -37,27 +34,29 @@ type Record = {
   TipoLote: string;
 };
 
-export interface ProdutoControleRpc {
+export interface TProdutoControleRpc {
   produtoControleList(
     args: ListArgs,
     ctx?: RpcContext
-  ): Promise<ProdutoControleRecord[]>;
+  ): Promise<TProdutoControle[]>;
   produtoControleRead(
     { id }: ReadArgs,
     ctx?: RpcContext
-  ): Promise<ProdutoControleRecord>;
+  ): Promise<TProdutoControle>;
   produtoControleDel({ id }: DelArgs, ctx?: RpcContext): Promise<number>;
   produtoControleCreate(
-    { data }: CreateArgs<ProdutoControleRecord>,
+    { data }: CreateArgs<TProdutoControle>,
     ctx?: RpcContext
   ): Promise<Id>;
   produtoControleUpdate(
-    { id, data }: UpdateArgs<ProdutoControleRecord>,
+    { id, data }: UpdateArgs<TProdutoControle>,
     ctx?: RpcContext
   ): Promise<Id>;
 }
 
-export function ProdutoControle(connections: Connections): ProdutoControleRpc {
+export function produtoControleRpc(
+  connections: TConnections
+): TProdutoControleRpc {
   const produtoControle = new ProdutoControleModel(connections);
 
   return {

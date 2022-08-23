@@ -1,15 +1,23 @@
 {
-  "name": "@vt/intranet",
+  "name": "@er/intranet",
   "private": true,
   "version": "1.1.0",
+  "workspaces": [
+    "./server",
+    "./client",
+    "./types",
+    "./utils"
+  ],
   "scripts": {
     "start": "cd server && node dist/index.js",
-    "build": "npm run build --workspace=@vt/server --workspace=@vt/client",
+    "build": "npm run lerna run build",
     "update": "cd client && npm install && cd ../server && npm install && cd .. && git submodule update --remote",
     "dev": "concurrently \"npm:dev:*\" ",
-    "test": "concurrently \"npm:test:*\" ",
+    "test": "npm lerna run test",
+    "test:watch": "vitest watch",
+    "test:ui": "vitest --ui",
     "teste:e2e": "playwright test",
-    "storybook": "npm run storybook -w @vt/client",
+    "storybook": "npm run storybook -w @er/client",
     "dev:server": "cd server && npm run dev",
     "dev:client": "cd client && npm run dev",
     "test:server": "cd server && npm run test:watch",
@@ -17,6 +25,18 @@
     "test:utils": "cd utils && npm run test:watch"
   },
   "devDependencies": {
-    "concurrently": "^7.3.0"
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "@vitest/ui": "^0.22.1",
+    "concurrently": "^7.3.0",
+    "eslint": "^8.22.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "lerna": "^5.4.3",
+    "nx": "^14.5.7",
+    "typedoc": "^0.23.10",
+    "vite": "^3.0.8",
+    "vitest": "^0.22.1"
   }
 }

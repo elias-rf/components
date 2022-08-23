@@ -1,14 +1,14 @@
-import { Connections } from "dal/connections";
+import { TConnections } from "dal/connections";
 import Knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
-import { OrdemProducao } from "./ordem-producao.rpc";
+import { ordemProducaoRpc } from "./ordem-producao.rpc";
 
 describe("venda", () => {
   const knexDb = Knex({ client: MockClient });
-  const rpc = OrdemProducao({
+  const rpc = ordemProducaoRpc({
     oftalmo: knexDb,
-  } as Connections);
+  } as TConnections);
   let tracker: Tracker;
 
   beforeEach(() => {
@@ -132,7 +132,7 @@ describe("venda", () => {
   });
 
   test("getControle", async () => {
-    let rsp = await rpc.ordemProducaoControle({
+    const rsp = await rpc.ordemProducaoControle({
       id: ["18007600"],
       serie: "6",
     });
@@ -140,7 +140,7 @@ describe("venda", () => {
   });
 
   test.only("fromControle", async () => {
-    let rsp = await rpc.ordemProducaoFromControle({
+    const rsp = await rpc.ordemProducaoFromControle({
       controle: "180076000066",
     });
     expect(rsp).toEqual("18007600");
@@ -161,8 +161,8 @@ describe("venda", () => {
   test("deve listar etiquetas externas impressas", async () => {
     tracker.on.select("tEtiqueta").response([{ controle: "180076000066" }]);
 
-    let rsp = await rpc.ordemProducaoEtiquetaExterna({
-      id: "18007600",
+    const rsp = await rpc.ordemProducaoEtiquetaExterna({
+      id: ["18007600"],
     });
     expect(rsp).toEqual([{ controle: "180076000066" }]);
     expect(tracker.history.select[0].sql).toEqual(

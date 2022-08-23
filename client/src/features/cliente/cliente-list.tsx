@@ -1,10 +1,10 @@
-import type { Action, Id, OrderBy, Schema, Where } from "../../../../types";
+import type { Action, Id, Order, Schema, Where } from "../../../../types";
 import { Datatable } from "../../components";
 
 type PhonebookProps = {
   schema: Schema;
   selected: Id;
-  orderBy: OrderBy[];
+  orderBy: Order[];
   where: Where[];
   status: string;
   list: any[];
@@ -12,16 +12,7 @@ type PhonebookProps = {
   dispatch: (action: Action) => void;
 };
 
-export function ClienteList({
-  schema,
-  selected,
-  orderBy,
-  where,
-  status,
-  list,
-  record,
-  dispatch,
-}: PhonebookProps) {
+export function ClienteList({ schema, list }: PhonebookProps) {
   return (
     <>
       <div className="h-auto px-2 overflow-auto border-gray-400 border-1">

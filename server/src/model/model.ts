@@ -1,5 +1,4 @@
-import { Knex } from "knex";
-import type { Id, OrderBy, Where } from "../../../types";
+import type { Id, Order, Select, Where } from "@er/types";
 import {
   idSchema,
   idToWhere,
@@ -8,7 +7,8 @@ import {
   recordSchema,
   validator,
   whereSchema,
-} from "../../../utils/src";
+} from "@er/utils/src";
+import { Knex } from "knex";
 import { knexOrder } from "../lib/knex/knex-order";
 import { knexWhere } from "../lib/knex/knex-where";
 
@@ -36,9 +36,9 @@ export class Model<Record> {
   // LIST
   async list(
     where: Where[] = [],
-    orderBy: OrderBy[] = [],
-    limit: number = 50,
-    select?: string[]
+    orderBy: Order[] = [],
+    limit = 50,
+    select?: Select
   ): Promise<Record[]> {
     validator(where, "where", whereSchema);
     validator(orderBy, "orderBy", orderBySchema);

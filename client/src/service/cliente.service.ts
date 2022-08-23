@@ -1,17 +1,10 @@
+import { TClienteRecord } from "@er/server/src/model/plano/cliente.model";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
-export type ClienteRecord = {
-  CdCliente: string;
-  RzSocial: string;
-  Cidade: string;
-  Uf: string;
-  CGC: string;
-  CdVendedor: string;
-  FgAtivo: string;
-};
+export type { TClienteRecord };
 
 export const clienteService = {
-  ...rpcFactory("cliente"),
+  ...rpcFactory<TClienteRecord>("cliente"),
 
   clear() {
     return {

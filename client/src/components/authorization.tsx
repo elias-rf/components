@@ -1,6 +1,6 @@
+import { CurrentUser } from "@er/types";
+import { isEmpty } from "@er/utils/src/is-empty";
 import React, { useEffect } from "react";
-import { CurrentUser } from "../../../types";
-import { isEmpty } from "../../../utils";
 
 import Page403 from "../pages/page-403";
 import { Page } from "./page";
@@ -30,12 +30,8 @@ export function Authorization({
         setLoading(false);
         return;
       }
-      const rsp = await can(resource, user.idGroup);
-      if (rsp) {
-        setCanUse(true);
-      } else {
-        setCanUse(false);
-      }
+      const rsp = await can(user.idGroup, resource);
+      setCanUse(rsp);
       setLoading(false);
     }
     setLoading(true);
@@ -44,7 +40,7 @@ export function Authorization({
 
   if (loading) {
     return (
-      <Page>
+      <Page title="Authorization">
         <div className="flex items-center justify-center w-full h-full">
           <SpinnerIcon
             show={true}

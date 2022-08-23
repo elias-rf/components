@@ -1,20 +1,17 @@
+import { fetchMockRpc } from "@er/utils/src";
 import { beforeEach, describe, expect, it } from "vitest";
-import { fetchMock } from "../../../utils";
 import { clienteService } from "./cliente.service";
 
-global.fetch = fetchMock.fetch;
+globalThis.fetch = fetchMockRpc.fetch;
 
 describe("ClienteService", () => {
   beforeEach(() => {
-    fetchMock.reset();
+    fetchMockRpc.reset();
   });
 
   it("schema ok", async () => {
-    fetchMock.mock("/api/rpc", {
-      status: 200,
+    fetchMockRpc.mock("clienteSchema", {
       body: {
-        jsonrpc: "2.0",
-        id: 1,
         result: {
           pk: ["CdCliente"],
           fields: [],
@@ -22,7 +19,7 @@ describe("ClienteService", () => {
       },
     });
     const rsp = await clienteService.schema();
-    expect(fetchMock.history(0)).toEqual({
+    expect(fetchMockRpc.history(0)).toEqual({
       url: "/api/rpc",
       options: {
         method: "POST",

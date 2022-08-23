@@ -14,7 +14,7 @@ interface SelectProps {
   [prop: string]: any;
 }
 
-function createChange(field: string = "", value: any) {
+function createChange(field = "", value: any) {
   return { type: selectActionTypes.change, payload: { field, value } };
 }
 
@@ -24,7 +24,6 @@ export function Select({
   dispatch,
   options,
   value,
-  onChange,
   ...others
 }: SelectProps) {
   const handleOnChange = (event: any) => {
@@ -43,7 +42,10 @@ export function Select({
       {children
         ? children
         : options.map((opt: { value: any; title: string }) => (
-            <option value={opt.value} key={opt.value}>
+            <option
+              value={opt.value}
+              key={opt.value}
+            >
               {opt.title}
             </option>
           ))}

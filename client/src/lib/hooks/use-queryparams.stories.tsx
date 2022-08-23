@@ -1,16 +1,14 @@
-import { Action } from "../../..";
-import { Button } from "@/features/ui/form";
 import type { Story } from "@ladle/react";
-import React from "react";
-import useQueryparams from "./use-queryparams";
+import { Button } from "../../components/button";
+import { useQueryParams } from "./use-queryparams";
 
 export default {
   title: "useQueryparams",
 };
 
-export const Default: Story = (props: any) => {
-  const loc1 = useQueryparams();
-  const loc2 = useQueryparams();
+export const Default: Story = () => {
+  const loc1 = useQueryParams();
+  const loc2 = useQueryParams();
 
   return (
     <>

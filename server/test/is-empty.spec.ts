@@ -1,5 +1,5 @@
+import { isEmpty } from "@er/utils/src/is-empty";
 import { expect, test } from "vitest";
-import { isEmpty } from "../../utils";
 
 test("Array", () => {
   expect(isEmpty([])).toBe(true);

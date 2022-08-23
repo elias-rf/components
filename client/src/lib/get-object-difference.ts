@@ -1,4 +1,3 @@
-import { isEqual } from "lodash";
 /*
  * Compare two objects by reducing an array of keys in obj1, having the
  * keys in obj2 as the initial value of the result. Key points:
@@ -11,7 +10,10 @@ import { isEqual } from "lodash";
  * — If the loop finds a key that are both in obj1 and obj2, it compares
  * the value. If it’s the same value, the key is removed from the result.
  */
-export function getObjectDifference(obj1, obj2) {
+export function getObjectDifference(
+  obj1: {},
+  obj2: { [x: string]: any; hasOwnProperty?: any }
+) {
   const diff = Object.keys(obj1).reduce((result, key) => {
     if (!obj2.hasOwnProperty(key)) {
       result.push(key);

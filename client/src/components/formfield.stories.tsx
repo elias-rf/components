@@ -8,12 +8,11 @@ export default {
   component: Formfield,
 };
 
-const Template: Story<typeof Formfield> = (props: any) => {
+const Template: Story<typeof Formfield> = () => {
   const [disp, setDisp] = React.useState({});
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const onSubmit = (data: any) => setDisp(data);

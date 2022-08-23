@@ -1,41 +1,38 @@
+import { IEvent } from "@er/types";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-export const buttonActionTypes: { click: "CLICK" } = { click: "CLICK" };
-export type ButtonAction = {
-  type: typeof buttonActionTypes.click;
-  payload: { name: string };
-};
-
-type ButtonProps = {
+type TButtonProps = {
   [prop: string]: any;
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
-  dispatch?: (action: ButtonAction) => void;
   name?: string;
+  onClick?: (e: IEvent) => void;
 };
-
-function createClick(name: string = "") {
-  return { type: buttonActionTypes.click, payload: { name } };
-}
 
 /**
  * Component Button
- *
- * @param {*} { children, onClick, disabled, className, ...other } Props
- * @returns {*} component
  */
-export function Button({
-  children,
-  dispatch = () => {},
-  disabled = false,
-  className,
-  name,
-  ...other
-}: ButtonProps) {
-  function handleClick() {
-    dispatch(createClick(name));
+export function Button(props: TButtonProps) {
+  const {
+    children,
+    disabled = false,
+    className,
+    onClick = () => null,
+    name = "",
+    ...other
+  } = props;
+
+  function handleClick(e: React.SyntheticEvent) {
+    onClick({
+      name,
+      value: children,
+      targetProps: props,
+      targetName: "Button",
+      eventName: "click",
+      event: e,
+    });
   }
 
   return (
@@ -47,7 +44,6 @@ export function Button({
       )}
       disabled={disabled}
       onClick={handleClick}
-      name={name}
       {...other}
     >
       {children}

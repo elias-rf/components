@@ -1,52 +1,31 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { IEvent, SchemaField } from "@er/types";
+import { isEmpty } from "@er/utils/src/is-empty";
 import React from "react";
-import { useForm } from "react-hook-form";
-import type { Action, Id } from "../../../../types";
-import { isEmpty } from "../../../../utils/src";
-import { Button, Formfield } from "../../components";
-import { UsuarioRecord, usuarioService } from "../../service/usuario.service";
+import { Button } from "../../components/button";
+import { Formfield } from "../../components/formfield";
+import {
+  useUsuarioCreate,
+  useUsuarioDel,
+  useUsuarioRead,
+  useUsuarioSchema,
+  useUsuarioUpdate,
+} from "../../hooks/use-usuario.hook";
+import { useForm } from "../../lib/hooks/use-form.hook";
+import { useQueryState } from "../../lib/hooks/use-query-state";
+import { TUsuarioRecord, usuarioService } from "../../service/usuario.service";
 
-type UsuarioFormProps = {
-  selected: Id;
-};
-
-export function UsuarioForm({ selected }: UsuarioFormProps) {
-  const queryClient = useQueryClient();
-  const [form, setForm] = React.useState({} as UsuarioRecord);
+export function UsuarioForm() {
+  const [selected] = useQueryState("selected", []);
   const [status, setStatus] = React.useState("new");
-  const {
-    register,
-    handleSubmit,
-    reset,
-    setValue,
-    formState: { errors, isDirty, isSubmitting, touchedFields, submitCount },
-  } = useForm();
+  const form = useForm<TUsuarioRecord>(usuarioService.clear());
+  const record = useUsuarioRead(selected);
+  const recordDel = useUsuarioDel();
+  const recordUpdate = useUsuarioUpdate();
+  const recordCreate = useUsuarioCreate();
+  const schema = useUsuarioSchema();
 
-  // leitura inicial do schema
-  const schema = useQuery(
-    ["usuarioSchema"],
-    async () => usuarioService.schema(),
-    { staleTime: Infinity }
-  );
-
-  // leitura inicial do registro
-  const record = useQuery(
-    ["usuario", selected],
-    ({ queryKey }) => {
-      const [_key, id] = queryKey as [string, Id];
-      if (isEmpty(id)) return [];
-      return usuarioService.read(id);
-    },
-    {
-      staleTime: 1000 * 60, // 1 minuto
-    }
-  );
-
-  // atualiza o registro no formulário
   function showRecord(rec: any) {
-    Object.entries(rec).forEach(([key, value]) => {
-      setValue(key, value, { shouldDirty: false });
-    });
+    form.set(rec);
     if (isEmpty(rec.id)) {
       setStatus("new");
     } else {
@@ -55,94 +34,70 @@ export function UsuarioForm({ selected }: UsuarioFormProps) {
   }
 
   React.useEffect(() => {
-    reset();
+    form.reset();
     if (record.data) {
       showRecord(record.data);
     }
   }, [record.data]);
 
-  function handleDispatch(action: Action) {
-    if (action.type === "CLICK") {
-      if (action.payload.name === "novo") {
-        showRecord(usuarioService.clear());
-      }
-      if (action.payload.name === "excluir") {
-        recordDel.mutate([selected]);
-        showRecord(usuarioService.clear());
-      }
+  function handleClick(e: IEvent) {
+    if (e.name === "novo") {
+      showRecord(usuarioService.clear());
+    }
+    if (e.name === "excluir") {
+      recordDel.mutate([selected]);
+      showRecord(usuarioService.clear());
+    }
+    if (e.name === "salvar") {
+      if (status === "update") recordUpdate.mutate([selected, form.record()]);
+      if (status === "new") recordCreate.mutate([form.record()]);
+      showRecord(usuarioService.clear());
     }
   }
 
-  const recordUpdate = useMutation(
-    (args: [Id, UsuarioRecord]) => usuarioService.update(...args),
-    { onSuccess: () => queryClient.invalidateQueries(["usuario"]) }
-  );
-
-  const recordCreate = useMutation(
-    (args: [UsuarioRecord]) => usuarioService.create(...args),
-    { onSuccess: () => queryClient.invalidateQueries(["usuario"]) }
-  );
-
-  const recordDel = useMutation((args: [Id]) => usuarioService.del(...args), {
-    onSuccess: () => queryClient.invalidateQueries(["usuario"]),
-  });
-
-  const onSubmit = (data: any) => {
-    if (status === "new") {
-      recordCreate.mutate([data]);
-      showRecord(usuarioService.clear());
-    }
-    if (status === "update") {
-      recordUpdate.mutate([[data.id.toString()], data]);
-    }
-  };
-
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mt-2">
-          <div className="space-x-2">
-            <Button
-              className="w-20 bg-green-300"
-              dispatch={handleDispatch}
-              name="novo"
-              type="button"
-            >
-              Novo
-            </Button>
-            <Button
-              className="w-20 bg-blue-300"
-              dispatch={handleDispatch}
-              name="salvar"
-              disabled={!isDirty}
-              type="submit"
-            >
-              Salvar
-            </Button>
-            <Button
-              className="w-20 bg-red-300"
-              dispatch={handleDispatch}
-              name="excluir"
-              disabled={isDirty}
-              type="button"
-            >
-              Excluir
-            </Button>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {schema?.data?.fields.map((fld: any) => {
-              return (
-                <Formfield
-                  key={fld.field}
-                  label={fld.label}
-                  {...register(fld.field)}
-                  type={fld.type}
-                />
-              );
-            })}
-          </div>
+    <section
+      className="mt-2"
+      title="PhonebookForm"
+    >
+      <div className="mt-2">
+        <div className="space-x-2">
+          <Button
+            className="w-20 bg-green-300"
+            onClick={handleClick}
+            name="novo"
+            type="button"
+          >
+            Novo
+          </Button>
+          <Button
+            className="w-20 bg-blue-300"
+            onClick={handleClick}
+            name="salvar"
+            disabled={!form.isDirty()}
+            type="submit"
+          >
+            Salvar
+          </Button>
+          <Button
+            className="w-20 bg-red-300"
+            onClick={handleClick}
+            name="excluir"
+            disabled={form.isDirty()}
+          >
+            Excluir
+          </Button>
         </div>
-      </form>
-    </>
+        <div className="flex flex-wrap gap-2">
+          {schema.data?.fields.map((fld: SchemaField) => (
+            <Formfield
+              label={fld.label}
+              key={fld.field}
+              {...form.field(fld.field as any).register()}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

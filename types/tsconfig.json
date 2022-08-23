@@ -1,20 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es2021",
-    "lib": ["esnext"],
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "lib": ["esnext"],
+    "moduleResolution": "node",
     "outDir": "./lib",
+    "rootDir": "./src",
     "strict": true,
     "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
-    "importHelpers": true,
-    "emitDeclarationOnly": false,
-    "moduleResolution": "node",
-    "declaration": true,
-    "isolatedModules": true
+    "target": "es2021"
   },
-  "include": ["./src"],
   "exclude": ["node_modules/", "node_modules"],
-  "extends": "../tsconfig.base.json"
+  "extends": "../tsconfig.base.json",
+  "include": ["./src"]
 }

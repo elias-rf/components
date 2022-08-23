@@ -1,35 +1,31 @@
+import { IEvent } from "@er/types";
 import React from "react";
-import { Action } from "../../../types";
 
-import { Button, buttonActionTypes } from "./button";
+import { Button } from "./button";
 import { Modal } from "./modal";
 
-export const messageBoxActionTypes = { ...buttonActionTypes };
-export type MessageBoxAction = {
-  type: typeof messageBoxActionTypes.click;
-  payload: { name: string };
-};
-
-interface MessageBoxProps {
+interface IMessageBoxProps {
   children: React.ReactNode;
   title: string;
-  dispatch: (action: MessageBoxAction) => void;
-  btn1: string;
-  btn2: string;
-  btn3: string;
+  option1: string;
+  option2: string;
+  option3: string;
+  onInput: (event: IEvent) => void;
 }
 
-export function MessageBox({
-  children,
-  title,
-  dispatch,
-  btn1,
-  btn2,
-  btn3,
-}: MessageBoxProps) {
-  function handleClick(action: Action) {
-    dispatch(action.payload.name);
+export function MessageBox(props: IMessageBoxProps) {
+  const { children, title, option1, option2, option3, onInput } = props;
+
+  function handleClick(e: IEvent) {
+    onInput({
+      name: title,
+      value: e.name,
+      targetName: "MessageBox",
+      targetProps: props,
+      eventName: "input",
+    });
   }
+
   return (
     <>
       <Modal show={children !== ""}>
@@ -45,28 +41,28 @@ export function MessageBox({
           <div className="flex-auto p-2">{children}</div>
           {/*footer*/}
           <div className="flex items-center justify-end p-2 space-x-2">
-            {btn1 ? (
+            {option1 ? (
               <Button
-                dispatch={dispatch}
-                name="btn1"
+                onClick={handleClick}
+                name="option1"
               >
-                {btn1}
+                {option1}
               </Button>
             ) : null}
-            {btn2 ? (
+            {option2 ? (
               <Button
-                dispatch={dispatch}
-                name="btn2"
+                onClick={handleClick}
+                name="option2"
               >
-                {btn2}
+                {option2}
               </Button>
             ) : null}
-            {btn3 ? (
+            {option3 ? (
               <Button
-                dispatch={dispatch}
-                name="btn3"
+                onClick={handleClick}
+                name="option3"
               >
-                {btn3}
+                {option3}
               </Button>
             ) : null}
           </div>

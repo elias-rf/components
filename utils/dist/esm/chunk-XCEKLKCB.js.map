@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/find-duplicates.ts"],
+  "sourcesContent": ["export function findDuplicates(arry: any) {\n  const uniqueElements = new Set(arry);\n  const filteredElements = arry.filter((item: any) => {\n    if (uniqueElements.has(item)) {\n      uniqueElements.delete(item);\n    } else {\n      return item;\n    }\n  });\n\n  return [...new Set(filteredElements)];\n}\n"],
+  "mappings": "AAAO,SAASA,EAAeC,EAAW,CACxC,IAAMC,EAAiB,IAAI,IAAID,CAAI,EAC7BE,EAAmBF,EAAK,OAAQG,GAAc,CAClD,GAAIF,EAAe,IAAIE,CAAI,EACzBF,EAAe,OAAOE,CAAI,MAE1B,QAAOA,CAEX,CAAC,EAED,MAAO,CAAC,GAAG,IAAI,IAAID,CAAgB,CAAC,CACtC",
+  "names": ["findDuplicates", "arry", "uniqueElements", "filteredElements", "item"]
+}

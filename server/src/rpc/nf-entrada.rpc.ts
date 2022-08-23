@@ -6,34 +6,28 @@ import type {
   ReadArgs,
   RpcContext,
   UpdateArgs,
-} from "../../../types";
-import type { Connections } from "../dal/connections";
-import {
-  NfEntradaModel,
-  NfEntradaRecord,
-} from "../model/plano/nf-entrada.model";
+} from "@er/types";
+import type { TConnections } from "../dal/connections";
+import { NfEntradaModel, TNfEntrada } from "../model";
 
-export interface NfEntradaRpc {
+export interface TNfEntradaRpc {
   nfEntradaList: (
     listArgs: ListArgs,
     ctx?: RpcContext
-  ) => Promise<NfEntradaRecord[]>;
-  nfEntradaRead: (
-    readArgs: ReadArgs,
-    ctx?: RpcContext
-  ) => Promise<NfEntradaRecord>;
+  ) => Promise<TNfEntrada[]>;
+  nfEntradaRead: (readArgs: ReadArgs, ctx?: RpcContext) => Promise<TNfEntrada>;
   nfEntradaDel: (delArgs: DelArgs, ctx?: RpcContext) => Promise<number>;
   nfEntradaCreate: (
-    createArgs: CreateArgs<NfEntradaRecord>,
+    createArgs: CreateArgs<TNfEntrada>,
     ctx?: RpcContext
   ) => Promise<Id>;
   nfEntradaUpdate: (
-    { id, data }: UpdateArgs<NfEntradaRecord>,
+    { id, data }: UpdateArgs<TNfEntrada>,
     ctx?: RpcContext
   ) => Promise<Id>;
 }
 
-export function NfEntrada(connections: Connections): NfEntradaRpc {
+export function nfEntradaRpc(connections: TConnections): TNfEntradaRpc {
   const nfEntradaModel = new NfEntradaModel(connections);
 
   return {

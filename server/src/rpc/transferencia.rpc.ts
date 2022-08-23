@@ -1,9 +1,8 @@
 import { CurrentUser } from "@er/types";
-import { Connections } from "dal/connections";
-import { NfEntradaModel } from "../model/plano/nf-entrada.model";
-import { NfSaidaModel } from "../model/plano/nf-saida.model";
+import { TConnections } from "dal/connections";
+import { NfEntradaModel, NfSaidaModel } from "../model";
 
-export interface TransferenciaRpc {
+export interface TTransferenciaRpc {
   transferenciaDiarioSchema(): Promise<any>;
   transferenciaMensalSchema(): Promise<any>;
   transferenciaModeloSchema(): Promise<any>;
@@ -26,7 +25,7 @@ export interface TransferenciaRpc {
   ): Promise<boolean>;
 }
 
-export function Transferencia(connections: Connections): TransferenciaRpc {
+export function transferenciaRpc(connections: TConnections): TTransferenciaRpc {
   const knexPlano = connections.plano;
   const nfSaidaModel = new NfSaidaModel(connections);
   const nfEntradaModel = new NfEntradaModel(connections);

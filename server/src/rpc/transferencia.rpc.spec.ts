@@ -1,4 +1,4 @@
-import { Connections } from "dal/connections";
+import { TConnections } from "dal/connections";
 import Knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
@@ -8,7 +8,7 @@ describe("venda", () => {
   const knexDb = Knex({ client: MockClient });
   const rpc = Transferencia({
     plano: knexDb,
-  } as Connections);
+  } as TConnections);
   let tracker: Tracker;
 
   beforeEach(() => {

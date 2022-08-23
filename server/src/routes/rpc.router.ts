@@ -1,11 +1,11 @@
-import { Context, Next } from "koa";
+import { Context } from "koa";
 import { rpc } from "../rpc/index";
 
 export const rpcRouter = [
   {
     method: "post",
     path: "/rpc",
-    action: async (ctx: Context, next: Next) => {
+    action: async (ctx: Context) => {
       const method = ctx.request.body;
       const response = await rpc.receive(method, {
         currentUser: ctx.state.currentUser,

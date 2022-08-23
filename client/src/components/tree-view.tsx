@@ -1,8 +1,8 @@
+import { Action } from "@er/types";
 import chevronDown from "@iconify/icons-carbon/chevron-down";
 import chevronRight from "@iconify/icons-carbon/chevron-right";
 import { InlineIcon } from "@iconify/react";
 import { twMerge } from "tailwind-merge";
-import { Action } from "../../../types";
 
 type TreeViewItem = {
   key: string;

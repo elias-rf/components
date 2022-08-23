@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { Table } from "../../components";
+import { useQuery } from "react-query";
+import { Table } from "../../components/table";
 import { esterilizacaoInternaService } from "../../service/esterilizacao-interna.service";
 
 export function EsterilizacaoInternaModelo({

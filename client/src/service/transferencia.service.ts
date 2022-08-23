@@ -1,5 +1,5 @@
-import { Schema } from "../../../types";
-import { isEmpty } from "../../../utils";
+import { Schema } from "@er/types";
+import { isEmpty } from "@er/utils/src/is-empty";
 import { fetcherRpc } from "../lib/http/fetcher-rpc";
 
 const fields = [
@@ -13,7 +13,7 @@ const fields = [
 
 export const transferenciaService = {
   async schemaDiario() {
-    return fetcherRpc("transferenciaSchemaDiario");
+    return fetcherRpc("transferenciaDiarioSchema");
   },
   async diario(inicio: string, fim: string): Promise<any[]> {
     if (isEmpty(inicio) || isEmpty(fim)) {
@@ -27,7 +27,7 @@ export const transferenciaService = {
   },
 
   async schemaMensal() {
-    return fetcherRpc("transferenciaSchemaMensal");
+    return fetcherRpc("transferenciaMensalSchema");
   },
 
   async mensal(mes: string): Promise<any[]> {
@@ -46,7 +46,7 @@ export const transferenciaService = {
   },
 
   async schemaModelo(): Promise<Schema> {
-    return fetcherRpc("transferenciaSchemaModelo");
+    return fetcherRpc("transferenciaModeloSchema");
   },
 
   async modelo(data: string): Promise<any[]> {

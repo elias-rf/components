@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function getCurrentLocation() {
   return {
@@ -9,7 +9,7 @@ function getCurrentLocation() {
 
 const listeners: any[] = [];
 
-function useLocation() {
+export function useLocation() {
   const [{ pathname, search }, setLocation] = useState(getCurrentLocation());
 
   /** All components using the 'useLocation' hook will update. */
@@ -54,7 +54,6 @@ export default useLocation;
 
 // function App() {
 //   const { push, replace, pathname, search } = useLocation()
-
 //   return (
 //     <div>
 //       <div>

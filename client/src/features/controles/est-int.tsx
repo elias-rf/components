@@ -1,6 +1,5 @@
 import React from "react";
 import { Action } from "../../../../types";
-import { tableActionTypes } from "../../components";
 import { day } from "../../lib/day";
 import { EsterilizacaoInternaDiario } from "./est-int-diario";
 import { EsterilizacaoInternaMensal } from "./est-int-mensal";
@@ -15,26 +14,26 @@ export function EstInt() {
   const mesInicial = day().subtract(13, "month").format("YYYY-MM");
 
   function handleDispatchMensal(action: Action) {
-    switch (action.type) {
-      case tableActionTypes.select:
-        setMesCorrente(action.payload);
-        break;
-    }
+    // switch (action.type) {
+    //   case tableActionTypes.select:
+    //     setMesCorrente(action.payload);
+    //     break;
+    // }
   }
   function handleDispatchDiario(action: Action) {
-    switch (action.type) {
-      case tableActionTypes.select:
-        setDiaCorrente(action.payload);
-        break;
-    }
+    // switch (action.type) {
+    //   case tableActionTypes.select:
+    //     setDiaCorrente(action.payload);
+    //     break;
+    // }
   }
 
   function handleDispatchProduto(action: Action) {
-    switch (action.type) {
-      case tableActionTypes.select:
-        setProdutoCorrente(action.payload);
-        break;
-    }
+    // switch (action.type) {
+    //   case tableActionTypes.select:
+    //     setProdutoCorrente(action.payload);
+    //     break;
+    // }
   }
 
   return (

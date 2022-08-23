@@ -1,13 +1,15 @@
-import React from "react";
-import { Input } from "./input";
+import { Textbox } from "./textbox";
 
-const Field = React.forwardRef(({ type, ...props }: any, ref) => {
+export function Field({ type, ...props }: any) {
   switch (type) {
     case "boolean":
-      return <Input type="checkbox" ref={ref} {...props} />;
+      return (
+        <Textbox
+          type="checkbox"
+          {...props}
+        />
+      );
     default:
-      return <Input ref={ref} {...props} />;
+      return <Textbox {...props} />;
   }
-});
-
-export { Field };
+}

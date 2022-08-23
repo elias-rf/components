@@ -1,8 +1,8 @@
 import React from "react";
 
-export function Lx(props: any) {
+export function Lx() {
   const [loading, setLoading] = React.useState(true);
-  const [user, setUser] = React.useState("");
+  const [user] = React.useState("");
   React.useEffect(() => {
     setTimeout(() => setLoading(false), 3000);
   }, []);

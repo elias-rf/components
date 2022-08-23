@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/calc-multiplicatorio.ts"],
+  "sourcesContent": ["/**\n * Multiplica cada item de um array pelo item da mesma posi\u00E7\u00E3o em outro\n *\n * @param array1 Array com os itens\n * @param array2 Array com os itens\n * @returns Novo array com resultado, length ser\u00E1 o menor dos 2\n * @example\n * calcMultiplicatorio([2,3],[4,5]) // [8,15]\n */\nexport function calcMultiplicatorio(\n  array1: number[],\n  array2: number[]\n): number[] {\n  if (array1.length <= array2.length) {\n    return array1.map((valor, index) => valor * array2[index]);\n  }\n  return array2.map((valor, index) => valor * array1[index]);\n}\n"],
+  "mappings": "AASO,SAASA,EACdC,EACAC,EACU,CACV,OAAID,EAAO,QAAUC,EAAO,OACnBD,EAAO,IAAI,CAACE,EAAOC,IAAUD,EAAQD,EAAOE,EAAM,EAEpDF,EAAO,IAAI,CAACC,EAAOC,IAAUD,EAAQF,EAAOG,EAAM,CAC3D",
+  "names": ["calcMultiplicatorio", "array1", "array2", "valor", "index"]
+}

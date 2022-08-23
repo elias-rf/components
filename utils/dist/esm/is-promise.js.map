@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/is-promise.ts"],
+  "sourcesContent": ["export function isPromise(arg: any) {\n  if (typeof arg === \"object\" && typeof arg.then === \"function\") return true;\n  return false;\n}\n"],
+  "mappings": "4BAAO,SAASA,EAAUC,EAAU,CAClC,OAAI,OAAOA,GAAQ,UAAY,OAAOA,EAAI,MAAS,UAErD",
+  "names": ["isPromise", "arg"]
+}

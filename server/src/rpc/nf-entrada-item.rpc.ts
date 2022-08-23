@@ -1,4 +1,3 @@
-import { Connections } from "dal/connections";
 import {
   CreateArgs,
   DelArgs,
@@ -7,33 +6,31 @@ import {
   ReadArgs,
   RpcContext,
   UpdateArgs,
-} from "../../../types";
-import {
-  NfEntradaItemModel,
-  NfEntradaItemRecord,
-} from "../model/plano/nf-entrada-item.model";
+} from "@er/types";
+import { TConnections } from "dal/connections";
+import { NfEntradaItemModel, TNfEntradaItem } from "../model";
 
-export interface NfEntradaItemRpc {
+export interface TNfEntradaItemRpc {
   nfEntradaItemList: (
     listArgs: ListArgs,
     ctx?: RpcContext
-  ) => Promise<NfEntradaItemRecord[]>;
+  ) => Promise<TNfEntradaItem[]>;
   nfEntradaItemRead: (
     readArgs: ReadArgs,
     ctx?: RpcContext
-  ) => Promise<NfEntradaItemRecord>;
+  ) => Promise<TNfEntradaItem>;
   nfEntradaItemDel: (delArgs: DelArgs, ctx?: RpcContext) => Promise<number>;
   nfEntradaItemCreate: (
-    createArgs: CreateArgs<NfEntradaItemRecord>,
+    createArgs: CreateArgs<TNfEntradaItem>,
     ctx?: RpcContext
   ) => Promise<Id>;
   nfEntradaItemUpdate: (
-    updateArgs: UpdateArgs<NfEntradaItemRecord>,
+    updateArgs: UpdateArgs<TNfEntradaItem>,
     ctx?: RpcContext
   ) => Promise<Id>;
 }
 
-export function NfEntradaItem(connections: Connections): NfEntradaItemRpc {
+export function nfEntradaItemRpc(connections: TConnections): TNfEntradaItemRpc {
   const nfEntradaItem = new NfEntradaItemModel(connections);
 
   return {

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/db-array.ts"],
+  "sourcesContent": ["import { GenericObject } from \"@er/types\";\n\nexport function db(data: GenericObject) {\n  let dt = structuredClone(data);\n  const methods = {\n    del(where: (rec: any) => boolean) {\n      dt = dt.filter((rec: GenericObject) => !where(rec));\n      return methods;\n    },\n    list(where: (rec: any) => boolean) {\n      dt = dt.filter((rec: GenericObject) => where(rec));\n      return methods;\n    },\n    insert(rec: GenericObject) {\n      dt.push(rec);\n      return methods;\n    },\n    run() {\n      return dt;\n    },\n  };\n  return methods;\n}\n"],
+  "mappings": "AAEO,SAASA,EAAGC,EAAqB,CACtC,IAAIC,EAAK,gBAAgBD,CAAI,EACvBE,EAAU,CACd,IAAIC,EAA8B,CAChC,OAAAF,EAAKA,EAAG,OAAQG,GAAuB,CAACD,EAAMC,CAAG,CAAC,EAC3CF,CACT,EACA,KAAKC,EAA8B,CACjC,OAAAF,EAAKA,EAAG,OAAQG,GAAuBD,EAAMC,CAAG,CAAC,EAC1CF,CACT,EACA,OAAOE,EAAoB,CACzB,OAAAH,EAAG,KAAKG,CAAG,EACJF,CACT,EACA,KAAM,CACJ,OAAOD,CACT,CACF,EACA,OAAOC,CACT",
+  "names": ["db", "data", "dt", "methods", "where", "rec"]
+}

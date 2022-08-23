@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/has-any-property.ts"],
+  "sourcesContent": ["// Check if the object has any property.\nexport function hasAnyProperty<T>(obj: T): number {\n  return Object.keys(obj).filter((kev) => obj[key as keyof T]).length;\n}\n"],
+  "mappings": "AACO,SAASA,EAAkBC,EAAgB,CAChD,OAAO,OAAO,KAAKA,CAAG,EAAE,OAAQC,GAAQD,EAAI,IAAe,EAAE,MAC/D",
+  "names": ["hasAnyProperty", "obj", "kev"]
+}

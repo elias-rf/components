@@ -7,8 +7,6 @@ interface MenuBodyProps {
   show?: boolean;
 }
 
-// "flex-grow lg:block lg:overflow-y-auto" | show?"block" : "hidden";
-
 export function MenuBody({ children, show, version }: MenuBodyProps) {
   return (
     <nav

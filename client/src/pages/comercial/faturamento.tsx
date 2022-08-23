@@ -1,4 +1,5 @@
-import { Page, PageTitle } from "../../components";
+import { Page } from "../../components/page";
+import { PageTitle } from "../../components/page-title";
 import { Auth } from "../../features/auth";
 import { Vendas } from "../../features/vendas/vendas/vendas";
 

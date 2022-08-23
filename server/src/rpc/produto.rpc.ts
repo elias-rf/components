@@ -7,33 +7,33 @@ import type {
   UpdateArgs,
 } from "@er/types";
 import { Id } from "@er/types";
-import { Connections } from "../dal/connections";
-import { ProdutoModel, ProdutoRecord } from "../model/oftalmo/produto.model";
+import { TConnections } from "../dal/connections";
+import { ProdutoModel, TProduto } from "../model";
 
-export interface ProdutoRpc {
+export interface TProdutoRpc {
   produtoList(
     args: ListArgs,
     ctx?: { currentUser: CurrentUser }
-  ): Promise<ProdutoRecord[]>;
+  ): Promise<TProduto[]>;
   produtoRead(
     args: ReadArgs,
     ctx?: { currentUser: CurrentUser }
-  ): Promise<ProdutoRecord>;
+  ): Promise<TProduto>;
   produtoDel(
     args: DelArgs,
     ctx?: { currentUser: CurrentUser }
   ): Promise<number>;
   produtoCreate(
-    args: CreateArgs<ProdutoRecord>,
+    args: CreateArgs<TProduto>,
     ctx?: { currentUser: CurrentUser }
   ): Promise<Id>;
   produtoUpdate(
-    args: UpdateArgs<ProdutoRecord>,
+    args: UpdateArgs<TProduto>,
     ctx?: { currentUser: CurrentUser }
   ): Promise<Id>;
 }
 
-export function Produto(connections: Connections): ProdutoRpc {
+export function produtoRpc(connections: TConnections): TProdutoRpc {
   const produtoModel = new ProdutoModel(connections);
   return {
     // LIST

@@ -7,20 +7,19 @@ export default {
   component: Login,
 };
 
-const Template: Story<typeof Login> = (props: any) => {
+export const Default: Story<typeof Login> = (props: any) => {
   const [disp, setDisp] = React.useState({});
   return (
     <>
-      <Login {...props} dispatch={setDisp} />
+      <Login
+        title={"Login Teste"}
+        loading={false}
+        error={"Erro de teste"}
+        onInput={(e) =>
+          setDisp({ name: e.name, value: e.value, event: e.eventName })
+        }
+      />
       <div>{JSON.stringify(disp)}</div>
     </>
   );
-};
-
-export const Default = Template.bind({});
-
-Default.args = {
-  title: "Botão1",
-  loading: false,
-  error: `Botão1`,
 };

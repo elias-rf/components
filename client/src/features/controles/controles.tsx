@@ -1,6 +1,7 @@
 import React from "react";
 
-import { Tab, Tabs } from "../../components";
+import { Tab } from "../../components/tab";
+import { Tabs } from "../../components/tabs";
 
 import { EstExt } from "./est-ext";
 import { EstInt } from "./est-int";

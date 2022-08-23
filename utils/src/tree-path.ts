@@ -1,4 +1,4 @@
-import { TreeData } from "../../types";
+import { TreeData } from "@er/types";
 
 function procura(path: string, tree: any[]): any {
   if (path.length === 0) {

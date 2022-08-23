@@ -7,11 +7,8 @@ import {
   RpcContext,
   UpdateArgs,
 } from "@er/types";
-import { Connections } from "../dal/connections";
-import {
-  NfEntradaLogModel,
-  NfEntradaLogRecord,
-} from "../model/plano/nf-entrada-log.model";
+import { TConnections } from "../dal/connections";
+import { NfEntradaLogModel, TNfEntradaLog } from "../model";
 
 type Record = {
   CdFilial?: number;
@@ -24,27 +21,27 @@ type Record = {
   Operacao: string;
 };
 
-export interface NfEntradaLogRpc {
+export interface TNfEntradaLogRpc {
   nfEntradaLogList: (
     listArgs: ListArgs,
     ctx?: RpcContext
-  ) => Promise<NfEntradaLogRecord[]>;
+  ) => Promise<TNfEntradaLog[]>;
   nfEntradaLogRead: (
     readArgs: ReadArgs,
     ctx?: RpcContext
-  ) => Promise<NfEntradaLogRecord>;
+  ) => Promise<TNfEntradaLog>;
   nfEntradaLogDel: (delArgs: DelArgs, ctx?: RpcContext) => Promise<number>;
   nfEntradaLogCreate: (
-    createArgs: CreateArgs<NfEntradaLogRecord>,
+    createArgs: CreateArgs<TNfEntradaLog>,
     ctx?: RpcContext
   ) => Promise<Id>;
   nfEntradaLogUpdate: (
-    { id, data }: UpdateArgs<NfEntradaLogRecord>,
+    { id, data }: UpdateArgs<TNfEntradaLog>,
     ctx?: RpcContext
   ) => Promise<Id>;
 }
 
-export function NfEntradaLog(connections: Connections): NfEntradaLogRpc {
+export function nfEntradaLogRpc(connections: TConnections): TNfEntradaLogRpc {
   const nfEntradaLog = new NfEntradaLogModel(connections);
 
   return {
@@ -52,7 +49,7 @@ export function NfEntradaLog(connections: Connections): NfEntradaLogRpc {
     async nfEntradaLogList(
       { where = [], orderBy = [], limit = 50, select },
       ctx
-    ): Promise<NfEntradaLogRecord[]> {
+    ): Promise<TNfEntradaLog[]> {
       return nfEntradaLog.list(where, orderBy, limit, select);
     },
 

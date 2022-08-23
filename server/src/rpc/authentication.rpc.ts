@@ -1,14 +1,16 @@
 import type { CurrentUser, RpcContext } from "@er/types";
-import type { Connections } from "../dal/connections";
-import { UsuarioModel } from "../model/oftalmo/usuario.model";
+import type { TConnections } from "../dal/connections";
+import { UsuarioModel } from "../model";
 
-export interface AuthenticationRpc {
+export interface TAuthenticationRpc {
   login(args: { user: string; password: string }): Promise<CurrentUser>;
-  logout(): Promise<Boolean>;
+  logout(): Promise<boolean>;
   me(_: void, ctx?: RpcContext): Promise<CurrentUser>;
 }
 
-export function Authentication(connections: Connections): AuthenticationRpc {
+export function authenticationRpc(
+  connections: TConnections
+): TAuthenticationRpc {
   return {
     // LOGIN
     async login({ user, password }) {

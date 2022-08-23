@@ -1,21 +1,34 @@
+import { fetchMockRpc } from "@er/utils/src/fetch-mock-rpc";
 import { beforeEach, describe, expect, it } from "vitest";
-import { fetchMock } from "../../../utils";
 import { ordemProducaoService } from "./ordem-producao.service";
 
-global.fetch = fetchMock.fetch;
+globalThis.fetch = fetchMockRpc.fetch;
 
-describe("ordemProducao", () => {
+const RECORD_OP = {
+  kOp: 1,
+  fkProdutoItem: 12,
+};
+
+const RECORD_PI = { idVisiontech: "22 ", fkProduto: 25 };
+
+describe("ordemProducaoService", () => {
   beforeEach(() => {
-    fetchMock.reset();
+    fetchMockRpc.reset();
+  });
+
+  it("deve ler registro", async () => {
+    fetchMockRpc.mock("ordemProducaoRead", {
+      body: {
+        result: RECORD_OP,
+      },
+    });
+    const rsp = await ordemProducaoService.read(["1"]);
+    expect(rsp).toEqual(RECORD_OP);
   });
 
   it("deve baixar schema", async () => {
-    fetchMock.reset();
-    fetchMock.mock("/api/rpc", {
-      status: 200,
+    fetchMockRpc.mock("ordemProducaoSchema", {
       body: {
-        jsonrpc: "2.0",
-        id: 1,
         result: {
           pk: ["kOp"],
           fields: [],
@@ -27,66 +40,42 @@ describe("ordemProducao", () => {
   });
 
   it("deve retornar um produto item", async () => {
-    fetchMock.mock("/api/rpc", {
-      status: 200,
-      body: {
-        jsonrpc: "2.0",
-        id: 2,
-        result: 123,
-      },
+    fetchMockRpc.mock("ordemProducaoProdutoItem", {
+      body: { result: RECORD_PI },
     });
     const produtoItem = await ordemProducaoService.getProdutoItem(["1"]);
-    expect(produtoItem).toEqual(123);
+    expect(produtoItem).toEqual(RECORD_PI);
   });
 
   it("deve retornar um produto plano", async () => {
-    fetchMock.mock("/api/rpc", {
-      status: 200,
-      body: {
-        jsonrpc: "2.0",
-        id: 1,
-        result: "123",
-      },
+    fetchMockRpc.mock("ordemProducaoProdutoPlano", {
+      body: { result: RECORD_PI },
     });
 
     const produtoItem = await ordemProducaoService.getProdutoPlano(["1"]);
-    expect(produtoItem).toEqual("123");
+
+    expect(produtoItem).toEqual(RECORD_PI);
   });
 
   it("deve retornar um produto", async () => {
-    fetchMock.mock("/api/rpc", {
-      status: 200,
-      body: {
-        jsonrpc: "2.0",
-        id: 1,
-        result: 123,
-      },
+    fetchMockRpc.mock("ordemProducaoProduto", {
+      body: { result: RECORD_PI },
     });
     const produtoItem = await ordemProducaoService.getProduto(["1"]);
-    expect(produtoItem).toEqual(123);
+    expect(produtoItem).toEqual(RECORD_PI);
   });
 
   it("deve retornar um numero de controle", async () => {
-    fetchMock.mock("/api/rpc", {
-      status: 200,
-      body: {
-        jsonrpc: "2.0",
-        id: 1,
-        result: "000001000017",
-      },
+    fetchMockRpc.mock("ordemProducaoControle", {
+      body: { result: "000001000017" },
     });
-    const produtoItem = await ordemProducaoService.getControle(["100"], 1);
+    const produtoItem = await ordemProducaoService.getControle(["100"], "1");
     expect(produtoItem).toEqual("000001000017");
   });
 
   it("deve validar numero de controle", async () => {
-    fetchMock.mock("/api/rpc", {
-      status: 200,
-      body: {
-        jsonrpc: "2.0",
-        id: 1,
-        result: true,
-      },
+    fetchMockRpc.mock("ordemProducaoControleValido", {
+      body: { result: true },
     });
     const produtoItem = await ordemProducaoService.isControleValid(
       "000001000017"

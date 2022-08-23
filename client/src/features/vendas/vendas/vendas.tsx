@@ -1,8 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
+import { Action } from "@er/types";
+import { day } from "@er/utils/src/day";
 import React from "react";
-import { Action } from "../../../../../types";
-import { day } from "../../../../../utils";
-import { Table } from "../../../components";
+import { useQuery } from "react-query";
+import { Table } from "../../../components/table";
 import vendaService from "../../../service/venda.service";
 import {
   mensal,
@@ -19,7 +19,7 @@ export function Vendas() {
   const [mesCorrente, setMesCorrente] = React.useState([]);
   const [produtoCorrente, setProdutoCorrente] = React.useState([]);
   const [vendedorCorrente, setVendedorCorrente] = React.useState([]);
-  const [ufCorrente, setUfCorrente] = React.useState([]);
+  const [_ufCorrente, setUfCorrente] = React.useState([]);
 
   const diaInicial = day()
     .subtract(13, "month")

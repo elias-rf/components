@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/format-money.ts"],
+  "sourcesContent": ["export function formatMoney(\n  amount: any,\n  decimalCount = 2,\n  decimal = \",\",\n  thousands = \".\"\n) {\n  try {\n    decimalCount = Math.abs(decimalCount);\n    decimalCount = isNaN(decimalCount) ? 2 : decimalCount;\n\n    const negativeSign = amount < 0 ? \"-\" : \"\";\n\n    let i = parseInt(\n      (amount = Math.abs(Number(amount) || 0).toFixed(decimalCount))\n    ).toString();\n    let j = i.length > 3 ? i.length % 3 : 0;\n\n    return (\n      negativeSign +\n      (j ? i.substr(0, j) + thousands : \"\") +\n      i.substr(j).replace(/(\\d{3})(?=\\d)/g, \"$1\" + thousands) +\n      (decimalCount\n        ? decimal +\n          Math.abs(amount - parseInt(i))\n            .toFixed(decimalCount)\n            .slice(2)\n        : \"\")\n    );\n  } catch (e) {\n    console.log(e);\n  }\n}\n"],
+  "mappings": "AAAO,SAASA,EACdC,EACAC,EAAe,EACfC,EAAU,IACVC,EAAY,IACZ,CACA,GAAI,CACFF,EAAe,KAAK,IAAIA,CAAY,EACpCA,EAAe,MAAMA,CAAY,EAAI,EAAIA,EAEzC,IAAMG,EAAeJ,EAAS,EAAI,IAAM,GAEpCK,EAAI,SACLL,EAAS,KAAK,IAAI,OAAOA,CAAM,GAAK,CAAC,EAAE,QAAQC,CAAY,CAC9D,EAAE,SAAS,EACPK,EAAID,EAAE,OAAS,EAAIA,EAAE,OAAS,EAAI,EAEtC,OACED,GACCE,EAAID,EAAE,OAAO,EAAGC,CAAC,EAAIH,EAAY,IAClCE,EAAE,OAAOC,CAAC,EAAE,QAAQ,iBAAkB,KAAOH,CAAS,GACrDF,EACGC,EACA,KAAK,IAAIF,EAAS,SAASK,CAAC,CAAC,EAC1B,QAAQJ,CAAY,EACpB,MAAM,CAAC,EACV,GAER,OAASM,EAAP,CACA,QAAQ,IAAIA,CAAC,CACf,CACF",
+  "names": ["formatMoney", "amount", "decimalCount", "decimal", "thousands", "negativeSign", "i", "j", "e"]
+}

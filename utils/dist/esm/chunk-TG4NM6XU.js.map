@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/pick.ts"],
+  "sourcesContent": ["// It picks some field from an object and converts it to a new object.\nexport function pick<T>(obj: T, props: Array<string>): Object {\n  return Object.keys(obj)\n    .filter((key) => props.includes(key))\n    .reduce((result: { [key: string]: any }, key): Object => {\n      result[key] = obj[key as keyof T];\n      return result;\n    }, {});\n}\n"],
+  "mappings": "AACO,SAASA,EAAQC,EAAQC,EAA8B,CAC5D,OAAO,OAAO,KAAKD,CAAG,EACnB,OAAQE,GAAQD,EAAM,SAASC,CAAG,CAAC,EACnC,OAAO,CAACC,EAAgCD,KACvCC,EAAOD,GAAOF,EAAIE,GACXC,GACN,CAAC,CAAC,CACT",
+  "names": ["pick", "obj", "props", "key", "result"]
+}

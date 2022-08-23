@@ -7,8 +7,8 @@ import {
   RpcContext,
   UpdateArgs,
 } from "@er/types";
-import { Connections } from "../dal/connections";
-import { NfEntradaControleModel } from "../model/plano/nf-entrada-controle.model";
+import { TConnections } from "../dal/connections";
+import { NfEntradaControleModel } from "../model";
 
 type NfEntradaControleRecord = {
   CdFilial?: string;
@@ -21,7 +21,7 @@ type NfEntradaControleRecord = {
   Quantidade?: string;
 };
 
-export interface NfEntradaControleRpc {
+export interface TNfEntradaControleRpc {
   nfEntradaControleList: (
     listArgs: ListArgs,
     ctx?: RpcContext
@@ -41,9 +41,9 @@ export interface NfEntradaControleRpc {
   ) => Promise<Id>;
 }
 
-export function NfEntradaControle(
-  connections: Connections
-): NfEntradaControleRpc {
+export function nfEntradaControleRpc(
+  connections: TConnections
+): TNfEntradaControleRpc {
   const nfEntradaControle = new NfEntradaControleModel(connections);
   return {
     // LIST

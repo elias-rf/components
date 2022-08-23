@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/hash-object.ts"],
+  "sourcesContent": ["import { isPlainObject } from \"./is-plain-object\";\n/**\n * Default query keys hash function.\n * Hashes the value into a stable hash.\n */\nexport function hashObject(queryKey: any): string {\n  return JSON.stringify(queryKey, (_, val) =>\n    isPlainObject(val)\n      ? Object.keys(val)\n          .sort()\n          .reduce((result, key) => {\n            result[key] = val[key];\n            return result;\n          }, {} as any)\n      : val\n  );\n}\n"],
+  "mappings": "wCAKO,SAASA,EAAWC,EAAuB,CAChD,OAAO,KAAK,UAAUA,EAAU,CAACC,EAAGC,IAClCC,EAAcD,CAAG,EACb,OAAO,KAAKA,CAAG,EACZ,KAAK,EACL,OAAO,CAACE,EAAQC,KACfD,EAAOC,GAAOH,EAAIG,GACXD,GACN,CAAC,CAAQ,EACdF,CACN,CACF",
+  "names": ["hashObject", "queryKey", "_", "val", "isPlainObject", "result", "key"]
+}

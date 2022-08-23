@@ -7,26 +7,26 @@ import type {
   RpcContext,
   Schema,
   UpdateArgs,
-} from "../../../types";
-import type { Connections } from "../dal/connections";
-import { ClienteModel, ClienteRecord } from "../model/plano/cliente.model";
+} from "@er/types";
+import type { TConnections } from "../dal/connections";
+import { ClienteModel, TClienteRecord } from "../model";
 
-export interface ClienteRpc {
+export interface TClienteRpc {
   clienteSchema(): Promise<Schema>;
-  clienteList(listArgs: ListArgs, ctx?: RpcContext): Promise<ClienteRecord[]>;
-  clienteRead(readArgs: ReadArgs, ctx?: RpcContext): Promise<ClienteRecord>;
+  clienteList(listArgs: ListArgs, ctx?: RpcContext): Promise<TClienteRecord[]>;
+  clienteRead(readArgs: ReadArgs, ctx?: RpcContext): Promise<TClienteRecord>;
   clienteDel(delArgs: DelArgs, ctx?: RpcContext): Promise<number>;
   clienteCreate(
-    createArgs: CreateArgs<ClienteRecord>,
+    createArgs: CreateArgs<TClienteRecord>,
     ctx?: RpcContext
   ): Promise<Id>;
   clienteUpdate(
-    updateArgs: UpdateArgs<ClienteRecord>,
+    updateArgs: UpdateArgs<TClienteRecord>,
     ctx?: RpcContext
   ): Promise<Id>;
 }
 
-export function Cliente(connections: Connections): ClienteRpc {
+export function clienteRpc(connections: TConnections): TClienteRpc {
   const clienteModel = new ClienteModel(connections);
 
   return {
@@ -36,7 +36,7 @@ export function Cliente(connections: Connections): ClienteRpc {
     },
 
     // LIST
-    async clienteList({ where, orderBy, limit, select }, ctx?) {
+    async clienteList({ where, orderBy, limit, select }) {
       return clienteModel.list(where, orderBy, limit, select);
     },
 

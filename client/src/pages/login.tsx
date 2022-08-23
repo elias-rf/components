@@ -1,6 +1,7 @@
+import { IEvent } from "@er/types";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Login as LoginComponent, LoginAction } from "../components";
+import { Login as LoginComponent } from "../components/login";
 import { authenticationService } from "../service/authentication.service";
 
 /**
@@ -13,14 +14,11 @@ export function Login() {
   const [spinner, setSpinner] = React.useState(false);
   const navigate = useNavigate();
 
-  async function onChange(action: LoginAction) {
+  async function handleInput(event: IEvent) {
     setSpinner(true);
     setError("");
     try {
-      await authenticationService.login(
-        action.payload.user,
-        action.payload.password
-      );
+      await authenticationService.login(event.value.user, event.value.password);
       setSpinner(false);
       navigate("/");
     } catch (e: any) {
@@ -35,7 +33,7 @@ export function Login() {
         <div>{error}</div>
         <LoginComponent
           title="Intranet Visiontech"
-          dispatch={onChange}
+          onInput={handleInput}
           loading={spinner}
           error={error}
         />

@@ -7,18 +7,14 @@
   "module": "src",
   "author": "Elias Ribeiro Filho <eliasribeiro@gmail.com>",
   "license": "MIT",
-  "scripts": {
-    "doc": "nodemon -w src ./node_modules/.bin/jsdoc -c jsdoc.js",
-    "build": "node esbuild.config.js",
-    "test": "cross-env NODE_ENV=test vitest run",
-    "test:watch": "cross-env NODE_ENV=test vitest --watch"
+  "typesVersions": {
+    "*": {
+      "*": [
+        "index.ts"
+      ]
+    }
   },
+  "scripts": {},
   "dependencies": {},
-  "devDependencies": {
-    "esbuild": "^0.14.53",
-    "esbuild-node-externals": "^1.4.1",
-    "esbuild-runner": "^2.2.1",
-    "rimraf": "^3.0.2",
-    "vitest": "^0.20.3"
-  }
+  "devDependencies": {}
 }

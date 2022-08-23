@@ -1,67 +1,71 @@
-import { useForm } from "react-hook-form";
+import { IEvent } from "@er/types";
+import { useField } from "../lib/hooks/use-field.hook";
 import { Button } from "./button";
-import { Input } from "./input";
 import { SpinnerIcon } from "./spinner-icon";
-
-export const loginActionTypes = { submit: "SUBMIT" };
-
-export type LoginAction = {
-  type: typeof loginActionTypes.submit;
-  payload: { user: string; password: string };
-};
+import { Textbox } from "./textbox";
 
 interface LoginProps {
-  dispatch: (action: LoginAction) => void;
+  onInput?: (e: IEvent) => void;
   title?: string;
   loading?: boolean;
   error?: string;
 }
 
-export function Login({
-  dispatch,
-  title = "Login",
-  loading = false,
-  error,
-}: LoginProps) {
+export function Login(props: LoginProps) {
   const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+    title = "Login",
+    loading = false,
+    error,
+    onInput = () => null,
+  } = props;
 
-  const onSubmit = (data: any) =>
-    dispatch({ type: loginActionTypes.submit, payload: data });
+  const fieldUser = useField("");
+  const fieldPassword = useField("");
+
+  const handleLogin = () =>
+    onInput({
+      name: title,
+      value: { user: fieldUser.value, password: fieldPassword.value },
+      targetName: "Login",
+      targetProps: props,
+      eventName: "input",
+    });
 
   return (
     <div className="flex items-center justify-center w-screen h-screen bg-gray-200">
       <div className="flex flex-col w-64 px-4 py-4 bg-white border border-gray-400 rounded-lg">
         <div className="mb-4 text-2xl font-semibold text-center">{title}</div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col mb-2">
-            <Input {...register("user")} placeholder="Nome" />
-          </div>
-          <div className="flex flex-col mb-6">
-            <Input
-              type="password"
-              {...register("password")}
-              placeholder="Senha"
-            />
-          </div>
-          <div className="flex flex-col mb-2">
-            <div className="relative flex">
-              <Button type="submit" name="login">
-                <div className="inline-flex flex-nowrap">
-                  Login
-                  <div className="mt-1 ml-1">
-                    <SpinnerIcon show={loading} />
-                  </div>
+        <div className="flex flex-col mb-2">
+          <Textbox
+            {...fieldUser.register()}
+            name="nome"
+            placeholder="Nome"
+          />
+        </div>
+        <div className="flex flex-col mb-6">
+          <Textbox
+            type="password"
+            {...fieldPassword.register()}
+            name="password"
+            placeholder="Senha"
+          />
+        </div>
+        <div className="flex flex-col mb-2">
+          <div className="relative flex">
+            <Button
+              name="login"
+              onClick={handleLogin}
+            >
+              <div className="inline-flex flex-nowrap">
+                Login
+                <div className="mt-1 ml-1">
+                  <SpinnerIcon show={loading} />
                 </div>
-              </Button>
-            </div>
+              </div>
+            </Button>
           </div>
-          <div className="flex flex-col text-red-600">{error}</div>
-        </form>
+        </div>
+        <div className="flex flex-col text-red-600">{error}</div>
       </div>
     </div>
   );

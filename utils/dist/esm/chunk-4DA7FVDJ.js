@@ -1,0 +1,2 @@
+var r=new Map,o=[],d={mock(e,t){t.status=t.status||200,r.has(e)&&r.delete(e),r.set(e,t)},history(e){return e!==void 0?o[e]:o},map(){return JSON.stringify(Object.fromEntries(r),null,2)},reset(){r.clear(),o=[]},fetch(e,t){o.push({url:e,options:t});let a=200,s="";if(t&&t.body){let n=JSON.parse(t.body);if(!r.has(n.method))return Promise.reject(`${n.method} n\xE3o encontrado`);s=r.get(n.method).body,s.jsonrpc="2.0",s.id=n.id||"",s.method=n.method}return Promise.resolve({json:()=>Promise.resolve(s),status:a})}};export{d as a};
+//# sourceMappingURL=chunk-4DA7FVDJ.js.map

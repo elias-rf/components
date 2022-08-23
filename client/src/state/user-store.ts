@@ -1,6 +1,6 @@
 import create from "zustand";
 
-import type { CurrentUser } from "../../../types";
+import type { CurrentUser } from "@er/types";
 
 const initialState: CurrentUser = {
   kUsuario: "",

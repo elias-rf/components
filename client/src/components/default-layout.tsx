@@ -18,7 +18,7 @@ export type LayoutAction =
       payload: { to: string };
     };
 
-type DefaultLayoutProps = {
+type TDefaultLayoutProps = {
   children?: React.ReactNode;
   signOut: () => Promise<void>;
   isAuthenticated: boolean;
@@ -27,19 +27,20 @@ type DefaultLayoutProps = {
 };
 
 export function DefaultLayout({
-  signOut,
   isAuthenticated,
   dispatch,
   menu,
   children,
-}: DefaultLayoutProps) {
-  async function logoutHandle() {
-    await signOut();
-  }
-
+}: TDefaultLayoutProps) {
   return (
-    <div className="flex flex-col h-screen lg:flex-row">
-      <div className="print:hidden">
+    <section
+      data-name="DefaultLayout"
+      className="flex flex-col h-screen lg:flex-row"
+    >
+      <nav
+        data-name="DefaultLayout_Menu"
+        className="print:hidden"
+      >
         <div className="flex-initial">
           <Menu>
             <MenuTitle
@@ -82,8 +83,13 @@ export function DefaultLayout({
             )}
           </Menu>
         </div>
-      </div>
-      <main className="flex-auto overflow-auto">{children}</main>
-    </div>
+      </nav>
+      <section
+        data-name="DefaultLayout_Main"
+        className="flex-auto overflow-auto"
+      >
+        {children}
+      </section>
+    </section>
   );
 }

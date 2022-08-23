@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/is-number.ts"],
+  "sourcesContent": ["/**\n * Verifica se o item \u00E9 um Number\n */\n\nfunction isNumber(item: any) {\n  if (Object.prototype.toString.call(item) === \"[object Number]\") {\n    if (Number.isNaN(item)) {\n      return false;\n    }\n    return true;\n  }\n  return false;\n}\n\nexport default isNumber;\n"],
+  "mappings": "AAIA,SAASA,EAASC,EAAW,CAC3B,OAAI,OAAO,UAAU,SAAS,KAAKA,CAAI,IAAM,kBACvC,QAAO,MAAMA,CAAI,EAKhB,EACT,CAEA,IAAOC,EAAQF",
+  "names": ["isNumber", "item", "is_number_default"]
+}

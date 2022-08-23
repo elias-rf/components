@@ -1,7 +1,7 @@
+import { Schema, SchemaField, Where } from "@er/types";
 import React, { useState } from "react";
-import { Schema, SchemaField, Where } from "../../../types";
 import { Badge } from "./badge";
-import { Button, ButtonAction } from "./button";
+import { Button } from "./button";
 import { Select } from "./select";
 import { SelectAction } from "./select_";
 import { TextboxText, TextboxTextAction } from "./textbox-text";
@@ -89,7 +89,7 @@ export function Search({
     return rsp || "";
   }
 
-  function handleAdd(action: ButtonAction) {
+  function handleAdd() {
     let flag = true;
     whr.forEach((flt) => {
       if (flt[0] === fieldSelect && flt[1] === equalitySelect) {

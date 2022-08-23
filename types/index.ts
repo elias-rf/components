@@ -1,7 +1,10 @@
-export type Where = [string, string, string];
-export type Select = string[];
-export type OrderBy = [string, "asc" | "desc"];
-export type Id = string[];
+export type RecFields<Rec> = keyof Rec;
+export type Where<Rec> = [RecFields<Rec>, string, any];
+export type Select<Rec> = RecFields<Rec>[];
+export type Order<Rec> = [RecFields<Rec>, "asc" | "desc"];
+export type Id<Rec> = RecFields<Rec>[];
+export type Ids<Rec> = RecFields<Rec>[];
+export type Pks<Rec> = Record<RecFields<Rec>, string | number>;
 
 export interface CurrentUser {
   kUsuario: string;
@@ -11,31 +14,36 @@ export interface CurrentUser {
   token?: string;
 }
 
-export interface SchemaField {
-  label?: string;
+export type SchemaFieldType =
+  | "string"
+  | "float"
+  | "boolean"
+  | "int"
+  | "currency"
+  | "date"
+  | "datetime"
+  | "selection"
+  | "tag";
+
+export type SchemaField = {
   field: string;
-  type?:
-    | "string"
-    | "float"
-    | "boolean"
-    | "int"
-    | "ID"
-    | "currency"
-    | "date"
-    | "datetime"
-    | "selection"
-    | "tag";
-  value?: string | boolean;
+  name: string;
+  label?: string;
+  type?: SchemaFieldType;
   visible?: boolean;
   fieldClass?: string;
   labelClass?: string;
   sortable?: boolean;
   required?: boolean;
-  default?: any;
-}
+  defaultValue?: any;
+  primaryKey?: boolean;
+  allowNull?: boolean;
+  autoIncrement?: boolean;
+  size?: number;
+  scale?: number;
+};
 
 export type Schema = {
-  pk: Id;
   fields: SchemaField[];
 };
 
@@ -58,27 +66,45 @@ export type TreeData = {
   child?: TreeData;
 }[];
 
-export interface ListArgs {
+export interface ListArgs<Rec> {
   limit?: number;
-  where?: Where[];
-  orderBy?: OrderBy[];
-  select?: Select;
+  where?: Where<Rec>[];
+  orderBy?: Order<Rec>[];
+  select?: Select<Rec>;
 }
 
-export interface ReadArgs {
-  id: Id;
-  select?: Select;
+export interface ReadArgs<Rec> {
+  pk: Pks<Rec>;
+  select?: Select<Rec>;
 }
 
-export interface DelArgs {
-  id: Id;
+export interface DelArgs<Rec> {
+  pk: Pks<Rec>;
 }
 
-export interface UpdateArgs<T> {
-  id: Id;
-  data: T;
+export interface UpdateArgs<Rec> {
+  pk: Pks<Rec>;
+  data: Rec;
 }
 
-export interface CreateArgs<T> {
-  data: T;
+export interface CreateArgs<Rec> {
+  data: Rec;
 }
+
+export interface IEvent {
+  name: string;
+  value: any;
+  targetProps: any;
+  targetName: string;
+  eventName: string;
+  event?: React.SyntheticEvent;
+}
+
+export type TEntity = Schema & {
+  database: string;
+  table: string;
+};
+
+export type TEntitySchema = {
+  [table: string]: TEntity;
+};

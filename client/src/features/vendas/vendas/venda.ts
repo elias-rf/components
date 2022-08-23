@@ -1,5 +1,6 @@
+import { day } from "@er/utils/src/day";
+import { formatMoney } from "@er/utils/src/format-money";
 import { Schema } from "../../../../../types";
-import { day, formatMoney } from "../../../../../utils";
 
 export type Record = {
   origem: string;

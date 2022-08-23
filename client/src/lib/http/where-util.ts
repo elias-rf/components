@@ -1,5 +1,5 @@
-import { Where } from "../../../../types";
-import { isEmpty } from "../../../../utils";
+import { Where } from "@er/types";
+import { isEmpty } from "@er/utils/src/is-empty";
 
 export const whereUtil = {
   setUnique(whr: Where[], field: string, value: any): Where[] {

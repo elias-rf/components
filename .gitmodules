@@ -1,6 +1,0 @@
-[submodule "client/src/utils"]
-	path = client/src/utils
-	url = https://github.com/elias-rf/utils.git
-[submodule "server/src/utils"]
-	path = server/src/utils
-	url = https://github.com/elias-rf/utils.git

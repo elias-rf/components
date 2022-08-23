@@ -1,5 +1,5 @@
+import type { CurrentUser } from "@er/types";
 import jwt from "jsonwebtoken";
-import type { CurrentUser } from "../../../types";
 /**
  * codifica um token JWT com os dados do usuario
  *

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/goWeekEnd.ts"],
+  "sourcesContent": ["import { addDaysDate } from \"./add-days-date\";\n\n/**\n * Calcula o s\u00E1bado da semanda indicada pela data\n */\nfunction goWeekEnd(date: Date) {\n  return addDaysDate(date, 6 - date.getUTCDay());\n}\n\nexport default goWeekEnd;\n"],
+  "mappings": "wCAKA,SAASA,EAAUC,EAAY,CAC7B,OAAOC,EAAYD,EAAM,EAAIA,EAAK,UAAU,CAAC,CAC/C,CAEA,IAAOE,EAAQH",
+  "names": ["goWeekEnd", "date", "addDaysDate", "goWeekEnd_default"]
+}

@@ -1,4 +1,3 @@
-const uglify = (p) => p;
 const FUNCTION_COMPRESS_OPTIONS = { parse: { bare_returns: true } };
 const FUNCTION_COMPRESS_NAMED = "const f=";
 const FUNCTION_COMPRESS_NAMED_LENGTH = FUNCTION_COMPRESS_NAMED.length;
@@ -8,6 +7,25 @@ const SYMBOL_STRIP = /Symbol\((.*)\)/;
 const IRREGULAR_KEY = /^[^a-zA-Z]/;
 const SQUARED_IN_KEY = /^\w[\d\w_]*$/;
 const STRIP_TRAILING_SEMICOLON = /;+$/;
+
+type TOptions = {
+  safe?: boolean;
+  endline?: string;
+  spacing?: string;
+  keyQuote?: string;
+  valueQuote?: string;
+  keySpace?: boolean;
+  replace?: (key: string, value: any) => any;
+  filter?: (key: string, value: any) => any;
+  discard?: boolean;
+  compress?: boolean;
+};
+
+const uglify = {
+  minify(p: any) {
+    return p;
+  },
+};
 
 /**
  *
@@ -23,7 +41,7 @@ const STRIP_TRAILING_SEMICOLON = /;+$/;
  * @param {Boolean} options.discard discard null and undefined values; default false
  * @param {Boolean} options.compress compress data like function, Date, Buffer; default false
  */
-export const stringify = function (data, options) {
+export function stringify(data: any, options?: TOptions) {
   const _done = {
     values: [],
     paths: [],
@@ -32,20 +50,20 @@ export const stringify = function (data, options) {
     object: 0,
     array: 0,
   };
-  let _keySpace;
+  let _keySpace: any;
 
-  function validate(options) {
+  function validate(options?: TOptions) {
     if (!options) {
       // default options
       options = {
         endline: "\n",
         spacing: "  ",
-        keyQuote: null,
+        keyQuote: undefined,
         keySpace: true,
         valueQuote: '"',
         safe: false,
-        replace: null,
-        filter: null,
+        replace: undefined,
+        filter: undefined,
         discard: false,
         compress: false,
       };
@@ -77,17 +95,17 @@ export const stringify = function (data, options) {
     return options;
   }
 
-  function replace(str, find, replace) {
+  function replace(str: string, find: string, replace: string) {
     if (str.indexOf(find) === -1) {
       return str;
     }
     return str.split(find).join(replace);
   }
 
-  function circularity(val, path) {
+  function circularity(val: any, path: any) {
     const i = _done.values.indexOf(val);
     if (i !== -1 && path.indexOf(_done.paths[i]) === 0) {
-      if (!options.safe) {
+      if (!options?.safe) {
         throw new Error("Circular reference @ " + path);
       }
       return true;
@@ -98,8 +116,8 @@ export const stringify = function (data, options) {
   }
 
   const _serialize = {
-    function: function (obj) {
-      if (options.compress) {
+    function: function (obj: any) {
+      if (options?.compress) {
         let _min;
         try {
           _min = uglify.minify(obj.toString(), FUNCTION_COMPRESS_OPTIONS);
@@ -123,19 +141,19 @@ export const stringify = function (data, options) {
       }
       return obj.toString();
     },
-    number: function (n) {
+    number: function (n: any) {
       return n;
     },
-    string: function (str) {
+    string: function (str: any) {
       if (str.indexOf("\n") !== -1) {
         str = str.split("\n").join("\\n");
       }
       if (str.indexOf("\t") !== -1) {
         str = str.split("\t").join("\\t");
       }
-      return quote(str, options.valueQuote);
+      return quote(str, options?.valueQuote);
     },
-    boolean: function (value) {
+    boolean: function (value: any) {
       return value ? "true" : "false";
     },
     null: function () {
@@ -144,43 +162,43 @@ export const stringify = function (data, options) {
     undefined: function () {
       return "undefined";
     },
-    deferred: function (val) {
+    deferred: function (val: any) {
       return val.toString();
     },
-    date: function (date) {
-      if (options.compress) {
+    date: function (date: any) {
+      if (options?.compress) {
         return "new Date(" + date.getTime() + ")";
       }
       return (
         "new Date(" +
-        options.valueQuote +
+        options?.valueQuote +
         date.toISOString() +
-        options.valueQuote +
+        options?.valueQuote +
         ")"
       );
     },
-    regexp: function (obj) {
+    regexp: function (obj: any) {
       return obj.toString();
     },
-    buffer: function (obj) {
+    buffer: function (obj: any) {
       return (
         "Buffer.from(" +
-        options.valueQuote +
+        options?.valueQuote +
         obj.toString("base64") +
-        options.valueQuote +
+        options?.valueQuote +
         ")"
       );
     },
-    symbol: function (symbol) {
+    symbol: function (symbol: any) {
       return (
         "Symbol(" +
-        options.valueQuote +
+        options?.valueQuote +
         symbol.toString().match(SYMBOL_STRIP)[1] +
-        options.valueQuote +
+        options?.valueQuote +
         ")"
       );
     },
-    map: function (map) {
+    map: function (map: any) {
       const entries = [];
       for (const entry of map) {
         entries.push(entry);
@@ -190,7 +208,7 @@ export const stringify = function (data, options) {
       }
       return `new Map(${_serialize.array(entries, 2)})`;
     },
-    set: function (set) {
+    set: function (set: any) {
       const entries = [];
       for (const entry of set) {
         entries.push(entry);
@@ -200,18 +218,18 @@ export const stringify = function (data, options) {
       }
       return `new Set(${_serialize.array(entries, 2)})`;
     },
-    object: function (obj, deep, path = "{}") {
+    object: function (obj: any, deep: any, path = "{}") {
       _counter.object++;
 
       const _spacing0 = spacing(deep);
-      const _spacing1 = _spacing0 + options.spacing;
+      const _spacing1 = _spacing0 + options?.spacing;
 
       if (circularity(obj, path)) {
         return (
-          options.endline +
+          options?.endline +
           _spacing1 +
           "[Circularity]" +
-          options.endline +
+          options?.endline +
           _spacing0
         );
       }
@@ -231,10 +249,10 @@ export const stringify = function (data, options) {
           _item.key.match(IRREGULAR_KEY) ||
           !_item.key.match(SQUARED_IN_KEY)
         ) {
-          _item.key = quote(key, options.keyQuote || '"');
+          _item.key = quote(key, options?.keyQuote || '"');
         }
         _out.push(
-          options.endline +
+          options?.endline +
             _spacing1 +
             _item.key +
             ":" +
@@ -242,55 +260,55 @@ export const stringify = function (data, options) {
             _item.value
         );
       }
-      return "{" + _out.join(",") + options.endline + _spacing0 + "}";
+      return "{" + _out.join(",") + options?.endline + _spacing0 + "}";
     },
-    array: function (array, deep, path = "[]") {
+    array: function (array: any, deep: any, path = "[]"): any {
       _counter.array++;
       if (circularity(array, path)) {
         return "[Circularity]";
       }
 
       const _spacing0 = spacing(deep);
-      const _spacing1 = _spacing0 + options.spacing;
+      const _spacing1 = _spacing0 + options?.spacing;
 
       const _out = [];
       for (let i = 0; i < array.length; i++) {
         const _path = path + "." + i;
         const _item = item(null, array[i], deep + 1, _path);
         if (_item) {
-          _out.push(options.endline + _spacing1 + _item.value);
+          _out.push(options?.endline + _spacing1 + _item.value);
         }
       }
-      return "[" + _out.join(",") + options.endline + _spacing0 + "]";
+      return "[" + _out.join(",") + options?.endline + _spacing0 + "]";
     },
   };
 
-  function spacing(deep) {
+  function spacing(deep: any) {
     let spacing = "";
     for (let i = 0; i < deep - 1; i++) {
-      spacing += options.spacing;
+      spacing += options?.spacing;
     }
     return spacing;
   }
 
-  function quote(value, quote) {
+  function quote(value: any, quote: any) {
     return quote + replace(value, quote, "\\" + quote) + quote;
   }
 
-  function item(key, value, deep = 1, path) {
-    if (options.discard && (value === undefined || value === null)) {
+  function item(key: any, value: any, deep = 1, path?: any) {
+    if (options?.discard && (value === undefined || value === null)) {
       return null;
     }
 
-    if (options.filter && !options.filter(key, value)) {
+    if (options?.filter && !options?.filter(key, value)) {
       return null;
     }
 
-    if (options.replace) {
+    if (options?.replace) {
       ({ key, value } = options.replace(key, value));
     }
 
-    let _type = typeof value;
+    let _type: string = typeof value;
     if (_type === "object") {
       if (value instanceof Array) {
         _type = "array";
@@ -316,16 +334,16 @@ export const stringify = function (data, options) {
 
   options = validate(options);
   const _item = item(null, data);
-  return _item.value;
-};
+  return _item?.value;
+}
 
 // deferred type
-stringify.deferred = function (val) {
+stringify.deferred = function (val: any) {
   this.val = val;
   return new stringify._deferred(val);
 };
 
-stringify._deferred = function (val) {
+stringify._deferred = function (val: any) {
   this.val = val;
 };
 

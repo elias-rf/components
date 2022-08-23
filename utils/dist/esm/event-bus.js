@@ -1,0 +1,2 @@
+import"./chunk-ON5OQYWL.js";function f(E){let t={},a=(e,n)=>(t[e]===void 0&&(t[e]=[]),t[e]?.push(n),()=>{s(e,n)}),s=(e,n)=>{let o=t[e]?.indexOf(n)??-1;t[e]?.splice(o>>>0,1),e!=="*"&&s("*",n)},d=(e,n)=>{let o=y=>{n(y),s(e,o)};a(e,o)},r=(e,n)=>{t[e]?.forEach(o=>{try{o(n)}catch(y){E?.onError(y)}}),e!=="*"&&r("*",n)};return{on:a,off:s,once:d,emit:r}}export{f as eventBus};
+//# sourceMappingURL=event-bus.js.map

@@ -1,77 +1,96 @@
-import React, { useEffect } from "react";
-import { isEmpty } from "../../../utils";
+import { CustomEvent } from "@er/types";
+import React from "react";
 
-export const textboxTextActionTypes = { change: "CHANGE" };
-
-export type TextboxTextAction = {
-  type: typeof textboxTextActionTypes.change;
-  payload: { field: string; value: any };
-};
-
-type TextboxTextProps = {
+type TTextboxTextProps = {
   [prop: string]: any;
-  dispatch?: (action: TextboxTextAction) => void;
-  onChange?: (e: any) => void;
-  onBlur?: (e: any) => void;
-  field: string;
   list?: string;
+  name: string;
+  onBlur?: (e: CustomEvent) => void;
+  onChange?: (e: CustomEvent) => void;
+  onInput?: (e: CustomEvent) => void;
   value: any;
 };
 
-function createChange(field: string = "", value: any) {
-  return { type: textboxTextActionTypes.change, payload: { field, value } };
-}
+export function TextboxText(props: TTextboxTextProps) {
+  const {
+    name = "",
+    onChange = () => null,
+    onBlur = () => null,
+    onInput = () => null,
+    value = "",
+    list,
+    ...others
+  } = props;
 
-export function TextboxText({
-  field,
-  dispatch,
-  onChange = () => {},
-  onBlur = () => {},
-  value,
-  list,
-  inputRef,
-  ...others
-}: TextboxTextProps) {
-  const [valueAux, setValueAux] = React.useState("");
+  const [dispInput, setDispInput] = React.useState(false);
 
-  useEffect(() => {
-    if (isEmpty(value)) {
-      setValueAux("");
-    } else {
-      setValueAux(value);
-    }
-  }, [value]);
-
-  const handleOnChange = (e: any) => {
-    setValueAux(e.target.value);
-    onChange(event);
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange({
+      name,
+      value: e.target.value,
+      targetName: "TextboxText",
+      targetProps: props,
+      eventName: "change",
+      event: e,
+    });
+    if (dispInput) setDispInput(false);
   };
 
-  const handleOnBlur = () => {
-    if (valueAux !== value) {
-      dispatch(createChange(field, valueAux));
-      onBlur(event);
+  const handleOnBlur = (e: React.SyntheticEvent) => {
+    onBlur({
+      name,
+      value: value,
+      targetName: "TextboxText",
+      targetProps: props,
+      eventName: "blur",
+      event: e,
+    });
+    if (!dispInput) {
+      onInput({
+        name,
+        value: value,
+        targetName: "TextboxText",
+        targetProps: props,
+        eventName: "input",
+      });
+      setDispInput(true);
     }
   };
 
-  const handleKeyPress = (e: any) => {
-    if (e.key === "Enter") {
-      if (valueAux !== value) {
-        dispatch(createChange(field, valueAux));
+  const handleEnter = (event: any) => {
+    if (event.key.toLowerCase() === "enter") {
+      if (!dispInput) {
+        onInput({
+          name,
+          value: value,
+          targetName: "TextboxText",
+          targetProps: props,
+          eventName: "input",
+        });
+        setDispInput(true);
       }
+      const form = event.target.form;
+      if (form) {
+        const index = [...form].indexOf(event.target);
+        if (form.elements.length === index + 1) {
+          form.elements[0].focus();
+        } else {
+          form.elements[index + 1].focus();
+        }
+      }
+      event.preventDefault();
     }
   };
 
   return (
     <input
-      name={field}
-      value={valueAux}
+      name={name}
+      value={value || ""}
       onChange={handleOnChange}
-      onKeyPress={handleKeyPress}
+      onKeyDown={handleEnter}
       onBlur={handleOnBlur}
-      aria-label={field}
+      aria-label={name}
       list={list}
-      ref={inputRef}
       className="w-full h-6 px-2 py-1 text-gray-700 border border-gray-400 focus:border-gray-600"
       {...others}
     />

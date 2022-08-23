@@ -8,14 +8,9 @@ export default {
   component: Select,
 };
 
-const Template: Story<typeof Select> = (props: any) => {
+const Template: Story<typeof Select> = () => {
   const [disp, setDisp] = React.useState({});
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data: any) => setDisp(data);
 
   return (

@@ -1,8 +1,12 @@
-import { isEmpty } from "../../../utils";
+import { EsterilizacaoInternaRecord } from "@er/server/src/model/oftalmo/esterilizacao-interna.model";
+import { isEmpty } from "@er/utils/src/is-empty";
 import { day } from "../lib/day";
 import { fetcherRpc } from "../lib/http/fetcher-rpc";
+import { rpcFactory } from "../lib/http/rpc.factory";
 
 export const esterilizacaoInternaService = {
+  ...rpcFactory<EsterilizacaoInternaRecord>("esterilizacaoExterna"),
+
   schemaDiario() {
     return fetcherRpc("esterilizacaoInternaSchemaDiario");
   },

@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { Table } from "../../components";
+import { useQuery } from "react-query";
+import { Table } from "../../components/table";
 import { day } from "../../lib/day";
 import { transferenciaService } from "../../service/transferencia.service";
 
@@ -18,7 +18,7 @@ export function TransferenciaDiario({
   const diario = useQuery(
     ["transferenciaDiario", [mesCorrente]],
     ({ queryKey }) => {
-      const [_key, [inicio, fim]] = queryKey as [string, string[]];
+      const [_key] = queryKey as [string, string[]];
       return transferenciaService.diario(
         day(mesCorrente[0] + "-01")
           .startOf("month")

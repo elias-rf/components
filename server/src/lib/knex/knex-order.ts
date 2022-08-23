@@ -1,13 +1,13 @@
-import { OrderBy } from "../../../../types";
-import { isEmpty } from "../../../../utils";
+import { Order } from "@er/types";
+import { isEmpty } from "@er/utils/src/is-empty";
 
 export function knexOrder(
-  order: OrderBy[] = []
+  order: Order[] = []
 ): { column: string; order: "asc" | "desc" }[] {
   if (isEmpty(order)) return [];
   return order.map((item) => {
-    let column = item[0];
-    let order = item[1];
+    const column = item[0];
+    const order = item[1];
     return { column, order };
   });
 }

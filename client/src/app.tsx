@@ -1,9 +1,10 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import React, { Suspense } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ClearLayout } from "./components";
+import { ClearLayout } from "./components/clear-layout";
 import { Layout } from "./features/layout-";
+import { Dashboard } from "./pages/dashboard";
 import { Home } from "./pages/home";
 import { Loading } from "./pages/loading";
 import { Login } from "./pages/login";
@@ -30,9 +31,7 @@ const Controles = React.lazy(
 const OrdemProducao = React.lazy(
   async () => import("./pages/industrial/ordem-producao")
 );
-// const EmProcesso = React.lazy(
-//   async () => import("./pages/industrial/em-processo")
-// );
+
 const Transferencia = React.lazy(
   async () => import("./pages/industrial/transferencia")
 );
@@ -62,6 +61,10 @@ export function App() {
               <Route
                 path="/"
                 element={<Home />}
+              />
+              <Route
+                path="/dashboard"
+                element={<Dashboard />}
               />
               <Route path="comercial">
                 <Route

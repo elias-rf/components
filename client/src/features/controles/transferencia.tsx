@@ -1,6 +1,5 @@
 import React from "react";
 import type { Action } from "../../../../types";
-import { tableActionTypes } from "../../components";
 import { TransferenciaDiario } from "./transferencia-diario";
 import { TransferenciaMensal } from "./transferencia-mensal";
 import { TransferenciaModelo } from "./transferencia-modelo";

@@ -1,21 +1,16 @@
 import { CreateArgs, DelArgs, ListArgs, ReadArgs, UpdateArgs } from "@er/types";
-import { Connections } from "dal/connections";
-import {
-  ProdutoPlanoModel,
-  ProdutoPlanoRecord,
-} from "../model/plano/produto-plano.model";
+import { TConnections } from "dal/connections";
+import { ProdutoPlanoModel, TProdutoPlano } from "../model";
 
-export interface ProdutoPlanoRpc {
-  produtoPlanoList(listArgs: ListArgs): Promise<ProdutoPlanoRecord[]>;
-  produtoPlanoRead(readArgs: ReadArgs): Promise<ProdutoPlanoRecord>;
+export interface TProdutoPlanoRpc {
+  produtoPlanoList(listArgs: ListArgs): Promise<TProdutoPlano[]>;
+  produtoPlanoRead(readArgs: ReadArgs): Promise<TProdutoPlano>;
   produtoPlanoDel(delArgs: DelArgs): Promise<number>;
-  produtoPlanoCreate(
-    createArgs: CreateArgs<ProdutoPlanoRecord>
-  ): Promise<string[]>;
-  produtoPlanoUpdate(updateArgs: UpdateArgs<ProdutoPlanoRecord>): Promise<any>;
+  produtoPlanoCreate(createArgs: CreateArgs<TProdutoPlano>): Promise<string[]>;
+  produtoPlanoUpdate(updateArgs: UpdateArgs<TProdutoPlano>): Promise<any>;
 }
 
-export function ProdutoPlano(connections: Connections): ProdutoPlanoRpc {
+export function produtoPlanoRpc(connections: TConnections): TProdutoPlanoRpc {
   const produtoPlanoModel = new ProdutoPlanoModel(connections);
 
   return {

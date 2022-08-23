@@ -7,49 +7,46 @@ import {
   Schema,
   UpdateArgs,
 } from "@er/types";
-import { Connections } from "../dal/connections";
-import {
-  EtiquetaExternaModel,
-  EtiquetaExternaRecord,
-} from "../model/oftalmo/etiqueta-externa.model";
+import { TConnections } from "../dal/connections";
+import { EtiquetaExternaModel } from "../model";
 import {
   OrdemProducaoModel,
-  OrdemProducaoRecord,
-} from "../model/oftalmo/ordem-producao.model";
-import { ProdutoItemRecord } from "../model/oftalmo/produto-item.model";
-import { ProdutoRecord } from "../model/oftalmo/produto.model";
-import { ProdutoPlanoRecord } from "../model/plano/produto-plano.model";
+  TOrdemProducao,
+} from "../model/ordem-producao.model";
+import { TProdutoItem } from "../model/produto-item.model";
+import { TProdutoPlano } from "../model/produto-plano.model";
+import { TProduto } from "../model/produto.model";
 
-export type OrdemProducaoRpc = {
+export type TOrdemProducaoRpc = {
   ordemProducaoSchema(): Promise<Schema>;
   ordemProducaoList(
-    listArgs: ListArgs,
+    args: ListArgs,
     ctx?: { currentUser: CurrentUser }
-  ): Promise<OrdemProducaoRecord[]>;
+  ): Promise<TOrdemProducao[]>;
   ordemProducaoRead(
     readArgs: ReadArgs,
     ctx?: { currentUser: CurrentUser }
-  ): Promise<OrdemProducaoRecord>;
+  ): Promise<TOrdemProducao>;
   ordemProducaoCreate(
-    createArgs: CreateArgs<OrdemProducaoRecord>,
+    createArgs: CreateArgs<TOrdemProducao>,
     ctx?: { currentUser: CurrentUser }
   ): Promise<string[]>;
   ordemProducaoUpdate(
-    updateArgs: UpdateArgs<OrdemProducaoRecord>,
+    updateArgs: UpdateArgs<TOrdemProducao>,
     ctx?: { currentUser: CurrentUser }
   ): Promise<any>;
   ordemProducaoProdutoItem(
     { id, select }: { id: Id; select?: string[] },
     ctx?: { currentUser: CurrentUser }
-  ): Promise<ProdutoItemRecord>;
+  ): Promise<TProdutoItem>;
   ordemProducaoProdutoPlano(
     { id, select }: { id: Id; select?: string[] },
     ctx?: { currentUser: CurrentUser }
-  ): Promise<ProdutoPlanoRecord>;
+  ): Promise<TProdutoPlano>;
   ordemProducaoProduto(
     { id, select }: { id: Id; select?: string[] },
     ctx?: { currentUser: CurrentUser }
-  ): Promise<ProdutoRecord>;
+  ): Promise<TProduto>;
   ordemProducaoDataFabricacao(
     { id }: { id: Id },
     ctx?: { currentUser: CurrentUser }
@@ -80,7 +77,7 @@ export type OrdemProducaoRpc = {
   ): Promise<EtiquetaExternaRecord[]>;
 };
 
-export function OrdemProducao(connections: Connections): OrdemProducaoRpc {
+export function ordemProducaoRpc(connections: TConnections): TOrdemProducaoRpc {
   const ordemProducaoModel = new OrdemProducaoModel(connections);
   const etiquetaExternaModel = new EtiquetaExternaModel(connections);
 

@@ -1,7 +1,6 @@
-import React from "react";
 import { twMerge } from "tailwind-merge";
 
-const Input = React.forwardRef((props: any, ref) => {
+export function Input(props: any) {
   return (
     <input
       className={twMerge(
@@ -9,10 +8,7 @@ const Input = React.forwardRef((props: any, ref) => {
         props.className
       )}
       lang={navigator.language}
-      ref={ref}
       {...props}
     />
   );
-});
-
-export { Input };
+}

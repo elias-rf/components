@@ -8,17 +8,18 @@ export default {
   argTypes: { dispatch: { action: "dispatch" } },
 };
 
-const Template: Story<typeof Button> = (props: any) => {
+export const Default: Story<typeof Button> = (props: any) => {
   const [disp, setDisp] = React.useState({});
   return (
     <>
-      <Button {...props} dispatch={setDisp} />
+      <Button
+        {...props}
+        onClick={(e) => setDisp([e.name, e.eventName])}
+      />
       <div>{JSON.stringify(disp)}</div>
     </>
   );
 };
-
-export const Default = Template.bind({});
 
 Default.args = {
   name: "Botão1",
@@ -26,7 +27,18 @@ Default.args = {
   children: `Botão1`,
 };
 
-export const Class: Story<typeof Button> = Template.bind({});
+export const Class: Story<typeof Button> = (props: any) => {
+  const [disp, setDisp] = React.useState({});
+  return (
+    <>
+      <Button
+        {...props}
+        onClick={(e) => setDisp([e.name, e.eventName, e.targetProps])}
+      />
+      <div>{JSON.stringify(disp)}</div>
+    </>
+  );
+};
 
 Class.args = {
   name: "Botão1",

@@ -8,4 +8,5 @@ export const connections = {
   fullvision,
 };
 
-export type Connections = typeof connections;
+export type TConnections = typeof connections;
+export type TDbs = keyof TConnections;

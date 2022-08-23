@@ -2,7 +2,6 @@
 /// <reference types="vite/client" />
 
 import react from "@vitejs/plugin-react";
-import notifier from "vite-plugin-notifier";
 import { defineConfig } from "vitest/config";
 
 // https://vitejs.dev/config/
@@ -15,8 +14,11 @@ export default defineConfig({
     },
   },
   build: { outDir: "../public", emptyOutDir: true },
-  plugins: [react(), notifier()],
+  plugins: [react()],
   test: {
-    environment: "happy-dom", // or 'jsdom', 'node'
+    watch: false,
+    environment: "jsdom", // or 'jsdom', 'node'
+    outputTruncateLength: 200,
+    snapshotFormat: { escapeString: false },
   },
 });

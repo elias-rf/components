@@ -3,20 +3,20 @@
   "version": "1.0.0",
   "description": "Funções diversas",
   "private": true,
-  "main": "src",
-  "module": "src/index.js",
+  "main": "dist/cjs/index.cjs.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "author": "Elias Ribeiro Filho <eliasribeiro@gmail.com>",
   "license": "MIT",
   "scripts": {
     "doc": "nodemon -w src ./node_modules/.bin/jsdoc -c jsdoc.js",
-    "build": "esbuild ./src/index.js --bundle --platform=node --outfile=lib/index.js",
-    "build2": "node esbuild.config.js",
+    "build": "node esbuild.config.mjs",
     "test": "cross-env NODE_ENV=test vitest run",
     "test:watch": "cross-env NODE_ENV=test vitest --watch",
     "typecheck": "tsc"
   },
   "dependencies": {
-    "dayjs": "^1.11.4",
+    "dayjs": "^1.11.5",
     "quick-lru": "6.1.1",
     "qs": "^6.11.0",
     "zod": "^3.18.0"
@@ -24,11 +24,11 @@
   "devDependencies": {
     "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
-    "esbuild": "^0.14.54",
+    "esbuild": "^0.15.5",
     "esbuild-node-externals": "^1.4.1",
     "esbuild-runner": "^2.2.1",
     "ink-docstrap": "^1.3.2",
     "rimraf": "^3.0.2",
-    "vitest": "^0.21.1"
+    "vitest": "^0.22.0"
   }
 }

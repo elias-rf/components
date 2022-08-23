@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/is-browser.ts"],
+  "sourcesContent": ["const isBrowser = typeof window !== \"undefined\";\n\nexport default isBrowser;\n"],
+  "mappings": "AAAA,IAAMA,EAAY,OAAO,OAAW,IAE7BC,EAAQD",
+  "names": ["isBrowser", "is_browser_default"]
+}

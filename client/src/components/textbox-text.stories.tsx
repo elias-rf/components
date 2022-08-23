@@ -8,25 +8,38 @@ export default {
   argTypes: { dispatch: { action: "dispatch" } },
 };
 
-const Template: Story<typeof TextboxText> = (props: any) => {
+export const Default: Story<typeof TextboxText> = (props: any) => {
+  const [v1, setV1] = React.useState("");
+  const [v2, setV2] = React.useState("");
+
   const [disp, setDisp] = React.useState({});
   return (
-    <>
+    <form>
       <TextboxText
-        {...props}
-        onBlur={(e) => console.log("Blur", e.target.value)}
-        onChange={(e) => console.log("Change", e.target.value)}
+        value={v1}
+        name={"text1"}
+        onBlur={(e) =>
+          setDisp({ name: e.name, value: e.value, event: e.eventName })
+        }
+        onChange={(e) => {
+          setDisp({ name: e.name, value: e.value, event: e.eventName });
+          setV1(e.value);
+        }}
+        dispatch={setDisp}
+      />
+      <TextboxText
+        value={v2}
+        name={"text2"}
+        onBlur={(e) => {
+          setDisp({ name: e.name, value: e.value, event: e.eventName });
+        }}
+        onChange={(e) => {
+          setDisp({ name: e.name, value: e.value, event: e.eventName });
+          setV2(e.value);
+        }}
         dispatch={setDisp}
       />
       <div>{JSON.stringify(disp)}</div>
-    </>
+    </form>
   );
-};
-
-export const Default = Template.bind({});
-
-Default.args = {
-  value: "valor",
-  field: "textbox1",
-  disabled: false,
 };

@@ -1,71 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { findDuplicates } from "../../../../utils";
-import { Badge, Button, Label, Textbox } from "../../components";
-import { useFocus } from "../../lib/hooks/use-focus";
-import { useStateArray } from "../../lib/hooks/use-state-array";
+import { Badge } from "../../components/badge";
+import { Button } from "../../components/button";
+import { Input } from "../../components/input";
+import { Label } from "../../components/label";
+import { useField } from "../../lib/hooks/use-field.hook";
 import { ordemProducaoService } from "../../service/ordem-producao.service";
 import { transferenciaService } from "../../service/transferencia.service";
 
-export function Transferencia() {
-  const [focus, setFocus] = useFocus();
+type TLista = {
+  controle: string;
+  lido: boolean;
+  transferido: boolean;
+};
 
-  const [qtd, setQtd] = React.useState<number>();
-  const [lista, setLista] = useStateArray([]);
-  const [qtdValid, setQtdValid] = React.useState<number>(0);
-  const [blockQtd, setBlockQtd] = React.useState(false);
-  const [blockItem, setBlockItem] = React.useState(true);
-  const [item, setItem] = React.useState("");
-  const [duplicates, setDuplicates] = React.useState<any[]>([]);
+export function Transferencia() {
+  const fieldOp = useField(""); // 18818400  188184000029
+  const fieldControle = useField("");
+  const fieldQuantidade = useField("");
+  const [lista, setLista] = useState<TLista[]>([]);
   const [msg, setMsg] = React.useState<string>("");
 
   React.useEffect(() => {
-    const dup = findDuplicates(lista);
-    setDuplicates(dup);
-    setQtdValid(lista.length - dup.length * 2);
-  }, [lista]);
-
-  function addQtd(e: any) {
-    console.log(`🚀 ~ file: transferencia.tsx ~ line 29 ~ addQtd ~ e`, e);
-    if (e.value) {
-      setQtd(parseInt(e.value));
-      setBlockQtd(true);
-      setBlockItem(false);
-      setTimeout(() => setFocus(), 10);
+    if (fieldControle.value.length === 12) {
+      const setado = read(fieldControle.value);
+      if (setado) {
+        setMsg("");
+      } else {
+        setMsg(fieldControle.value + " não encontrado");
+      }
+      fieldControle.reset();
     }
+  }, [fieldControle]);
+
+  async function readControles() {
+    const rsp = await ordemProducaoService.listEtiquetas([fieldOp.value]);
+    const resp = rsp.map((item) => ({
+      controle: item.controle || "",
+      lido: false,
+      transferido: false,
+    }));
+    setLista(resp);
   }
 
-  async function addList(e: any) {
-    if (await ordemProducaoService.isControleValid(e.value)) {
-      setItem(e.value);
-      setLista.add(e.value);
-      setMsg("");
-      setTimeout(() => setItem(""), 10);
-    }
+  function read(controle: string) {
+    let flag = false;
+    const lst = lista.map((item) => {
+      if (item.controle === controle) {
+        item.lido = true;
+        flag = true;
+      }
+      return item;
+    });
+    setLista(lst);
+    return flag;
   }
 
-  function delList(idx: any) {
-    setLista.delIndex(idx);
-    setMsg("");
+  function readLength() {
+    return lista.filter((item) => item.lido).length;
+  }
+
+  function unread(controle: string) {
+    const lst = lista.map((item) => {
+      if (item.controle === controle) {
+        item.lido = false;
+      }
+      return item;
+    });
+    setLista(lst);
   }
 
   async function transfer() {
-    // lista todas as ordens de produção entradas
-    const ordens = lista.reduce((previous, current) => {
-      const ord = current.substring(0, 6);
-      if (!previous.includes(ord)) previous.push(ord);
-      return previous;
-    }, []);
-    if (ordens.length !== 1) {
-      setMsg("Apenas 1 ordem de produção deve ser transportada de cada vez");
+    if (readLength() !== parseInt(fieldQuantidade.value)) {
+      setMsg("Quantidade lida está incorreta");
       return;
     }
     try {
-      await transferenciaService.create(lista);
-      setQtd(undefined);
-      setBlockQtd(false);
-      setBlockItem(true);
-      setLista.clear();
+      await transferenciaService.create(lista.map((item) => item.controle));
     } catch (e: any) {
       setMsg(e.message);
     }
@@ -73,53 +84,48 @@ export function Transferencia() {
 
   return (
     <>
+      <Label>Ordem Produção</Label>
+      <Input
+        autoComplete="off"
+        field="op"
+        {...fieldOp.register()}
+      />
       <Label>Quantidade Física</Label>
-      <Textbox
-        autoFocus
+      <Input
         autoComplete="off"
-        field="qtd"
-        value={qtd}
-        onChange={addQtd}
-        disabled={blockQtd}
+        {...fieldQuantidade.register()}
       />
+      <Button onClick={readControles}>Buscar</Button>
       <Label>Serial</Label>
-      <Textbox
-        inputRef={focus}
+      <Input
         autoComplete="off"
-        field="item"
-        value={item}
-        onChange={addList}
-        disabled={blockItem}
+        {...fieldControle.register()}
       />
-      <Button
-        className={twMerge(
-          "invisible",
-          qtdValid === qtd && duplicates.length === 0 ? "visible" : ""
-        )}
-        dispatch={transfer}
-      >
-        Transferir
-      </Button>
+      <Button dispatch={transfer}>Transferir</Button>
       <div
         className={twMerge(
           "text-3xl font-bold text-red-500",
-          qtdValid === qtd && duplicates.length === 0 ? "text-blue-500" : ""
+          readLength() === parseInt(fieldQuantidade.value)
+            ? "text-blue-500"
+            : ""
         )}
       >
-        {qtdValid} unidades
+        {readLength()} unidades
         <div className="text-3xl font-bold text-red-500">{msg}</div>
       </div>
       <div className="flex flex-wrap">
-        {lista.map((serie, idx) => (
+        {lista.map((item, idx) => (
           <Badge
             className="m-2"
             isClosable={true}
-            onClose={() => delList(idx)}
-            name={serie}
-            key={idx + serie}
-            labelClassName={duplicates.includes(serie) ? "bg-red-400" : ""}
+            onClose={() => unread(item.controle)}
+            name={item.controle}
+            key={idx + item.controle}
+            labelClassName={
+              "font-mono text-sm " + (item.lido ? "bg-red-400" : "")
+            }
           >
-            {serie}
+            {item.controle}
           </Badge>
         ))}
       </div>

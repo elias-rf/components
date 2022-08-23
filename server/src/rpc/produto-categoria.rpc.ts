@@ -1,25 +1,22 @@
 import { CreateArgs, DelArgs, ListArgs, ReadArgs, UpdateArgs } from "@er/types";
-import { Connections } from "dal/connections";
-import {
-  ProdutoCategoriaModel,
-  ProdutoCategoriaRecord,
-} from "../model/plano/produto-categoria.model";
+import { TConnections } from "dal/connections";
+import { ProdutoCategoriaModel, TProdutoCategoria } from "../model";
 
-export interface ProdutoCategoriaRpc {
-  produtoCategoriaList(listArgs: ListArgs): Promise<ProdutoCategoriaRecord[]>;
-  produtoCategoriaRead(readArgs: ReadArgs): Promise<ProdutoCategoriaRecord>;
+export interface TProdutoCategoriaRpc {
+  produtoCategoriaList(listArgs: ListArgs): Promise<TProdutoCategoria[]>;
+  produtoCategoriaRead(readArgs: ReadArgs): Promise<TProdutoCategoria>;
   produtoCategoriaDel(delArgs: DelArgs): Promise<number>;
   produtoCategoriaCreate(
-    createArgs: CreateArgs<ProdutoCategoriaRecord>
+    createArgs: CreateArgs<TProdutoCategoria>
   ): Promise<string[]>;
   produtoCategoriaUpdate(
-    updateArgs: UpdateArgs<ProdutoCategoriaRecord>
+    updateArgs: UpdateArgs<TProdutoCategoria>
   ): Promise<any>;
 }
 
-export function ProdutoCategoria(
-  connections: Connections
-): ProdutoCategoriaRpc {
+export function produtoCategoriaRpc(
+  connections: TConnections
+): TProdutoCategoriaRpc {
   const produtoCategoriaModel = new ProdutoCategoriaModel(connections);
 
   return {

@@ -1,4 +1,4 @@
-import isObject from "./is-object";
+import { isObject } from "./type-guard";
 
 /**
  * Executa um merge de dois objetos

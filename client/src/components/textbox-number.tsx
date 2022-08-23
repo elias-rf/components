@@ -1,82 +1,90 @@
-import React, { useEffect } from "react";
-import { formatMoney, isEmpty, parseNumberBr } from "../../../utils";
+import { CustomEvent } from "@er/types";
+import { formatNumber } from "@er/utils/src/format-number";
+import { parseNumber } from "@er/utils/src/parse-number";
+import React from "react";
 
-export const textboxNumberActionTypes = { change: "CHANGE" };
-
-export type TextboxNumberAction = {
-  type: typeof textboxNumberActionTypes.change;
-  payload: { field: string; value: any };
-};
-
-type TextboxNumberProps = {
-  [prop: string]: any;
-  dispatch?: (action: TextboxNumberAction) => void;
-  onChange?: (e: any) => void;
-  onBlur?: (e: any) => void;
-  field: string;
-  list?: string;
-  value: any;
-};
-
-function createChange(field: string = "", value: any) {
-  return { type: textboxNumberActionTypes.change, payload: { field, value } };
+function posCaret(num: string, newNum: string) {
+  const n1 = parseNumber(num).toString().length;
+  const n2 = parseNumber(newNum).toString().length;
+  if (num.length === 0) {
+    return 0;
+  }
+  if (parseNumber(num) === parseNumber(newNum)) {
+    return 0;
+  }
+  if (newNum.length - num.length === 2) {
+    return 1;
+  }
+  if (newNum.length - num.length === -2 && n2 - n1 === 1) {
+    return 1;
+  }
+  return 0;
 }
 
-export function TextboxNumber({
-  field,
-  dispatch,
-  onChange = () => {},
-  onBlur = () => {},
-  value,
-  list,
-  inputRef,
-  ...others
-}: TextboxNumberProps) {
-  const [valueAux, setValueAux] = React.useState(formatMoney(value));
+interface ITextboxNumberProps {
+  [prop: string]: any;
+  onChange?: (e: CustomEvent) => void;
+  onBlur?: (e: CustomEvent) => void;
+  name: string;
+  list?: string;
+  value: any;
+}
 
-  useEffect(() => {
-    if (isEmpty(value)) {
-      setValueAux("0,00");
-    } else {
-      setValueAux(formatMoney(value));
+export function TextboxNumber(props: ITextboxNumberProps) {
+  const {
+    name,
+    dispatch,
+    onChange = () => null,
+    onBlur = () => null,
+    value,
+    list,
+    ...others
+  } = props;
+
+  const [formatedValue, setFormatedValue] = React.useState<string>(
+    value ? formatNumber(value) : ""
+  );
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const element = e.target;
+    const value = element.value;
+    const caret = element.selectionStart || 0;
+    const valueAsNumber = parseNumber(value);
+    const valueAsText = formatNumber(valueAsNumber);
+    const newCaret = caret + posCaret(formatedValue, valueAsText);
+    window.requestAnimationFrame(() => {
+      element.selectionStart = newCaret;
+      element.selectionEnd = newCaret;
+    });
+
+    if (value === "") {
+      setFormatedValue("");
+      return onChange({
+        name,
+        value: undefined,
+        targetName: "TextboxTextNumber",
+        targetProps: props,
+        eventName: "change",
+        event: e,
+      });
     }
-  }, [value]);
 
-  const handleOnChange = (event: any) => {
-    setValueAux(event.target.value);
-    // event.target.value = parseNumberBr(valueAux);
-    onChange(event);
-  };
-
-  const handleOnBlur = (event: any) => {
-    if (valueAux !== value) {
-      dispatch(createChange(field, parseNumberBr(valueAux)));
-      setValueAux(formatMoney(parseNumberBr(valueAux)));
-      // event.target.value = parseNumberBr(valueAux);
-      onBlur(event);
-    }
-  };
-
-  const handleKeyPress = (event: any) => {
-    if (event.key === "Enter") {
-      if (valueAux !== value) {
-        dispatch(createChange(field, parseNumberBr(valueAux)));
-      }
-    }
+    setFormatedValue(valueAsText);
+    return onChange({
+      name,
+      value: valueAsNumber,
+      targetName: "TextboxTextNumber",
+      targetProps: props,
+      eventName: "change",
+      event: e,
+    });
   };
 
   return (
     <input
-      name={field}
-      value={valueAux}
-      onChange={handleOnChange}
-      onKeyPress={handleKeyPress}
-      onBlur={handleOnBlur}
-      aria-label={field}
-      list={list}
-      ref={inputRef}
-      className="w-full h-6 px-2 py-1 text-gray-700 border border-gray-400 focus:border-gray-600"
-      {...others}
+      type="text"
+      value={formatedValue}
+      onChange={handleChange}
     />
   );
 }

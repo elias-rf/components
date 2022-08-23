@@ -1,14 +1,12 @@
-import { Action } from "../../..";
-import { Button } from "@/features/ui/form";
 import type { Story } from "@ladle/react";
-import React from "react";
-import useQueryState from "./use-query-state";
+import { Button } from "../../components/button";
+import { useQueryState } from "./use-query-state";
 
 export default {
   title: "useQueryState",
 };
 
-export const Default: Story = (props: any) => {
+export const Default: Story = () => {
   const [story] = useQueryState("story");
   const [v1, setV1] = useQueryState("v1", "00");
   const [v2, setV2] = useQueryState("v2", 0);

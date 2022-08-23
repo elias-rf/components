@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { db } from "./db";
+import { db } from "./db-knex";
 import { knexAdapter } from "./knexAdapter";
 
 const data = {

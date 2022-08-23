@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/remove-falsy-key.ts"],
+  "sourcesContent": ["// This function removes any key with falsy value from a JavaScript object.\nexport function removeFalsyKey<T>(obj: T) {\n  const newObj: Partial<T> = {};\n\n  Object.keys(obj).forEach((key: string) => {\n    if (Boolean(obj[key as keyof T])) {\n      newObj[key as keyof T] = obj[key as keyof T];\n    }\n  });\n  return newObj;\n}\n"],
+  "mappings": "AACO,SAASA,EAAkBC,EAAQ,CACxC,IAAMC,EAAqB,CAAC,EAE5B,cAAO,KAAKD,CAAG,EAAE,QAASE,GAAgB,CACpC,QAAQF,EAAIE,EAAe,IAC7BD,EAAOC,GAAkBF,EAAIE,GAEjC,CAAC,EACMD,CACT",
+  "names": ["removeFalsyKey", "obj", "newObj", "key"]
+}

@@ -1,10 +1,8 @@
-import type { Connections } from "../dal/connections";
-
-export interface EchoRpc {
+export interface TEchoRpc {
   echo(arg1: any, arg2: any): Promise<any>;
 }
 
-export function Echo(_: Connections): EchoRpc {
+export function echoRpc(): TEchoRpc {
   return {
     async echo(arg1: any, arg2: any) {
       return { arg1, arg2 };

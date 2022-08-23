@@ -1,47 +1,66 @@
 import { JSONRPCServer, SimpleJSONRPCMethod } from "json-rpc-2.0";
-import { connections, Connections } from "../dal/connections";
-
-import { Authentication, AuthenticationRpc } from "./authentication.rpc";
-import { Cliente, ClienteRpc } from "./cliente.rpc";
-import { Echo, EchoRpc } from "./echo.rpc";
+import { connections, TConnections } from "../dal/connections";
+// @index(['./**/*.ts','!./**/*.spec.ts'], (f, _) => `import {${_.camelCase(f.name)}, T${_.pascalCase(f.name)}} from '${f.path}'`)
+import { agendaTelefoneRpc, TAgendaTelefoneRpc } from "./agenda-telefone.rpc";
+import { authenticationRpc, TAuthenticationRpc } from "./authentication.rpc";
+import { cidadeRpc, TCidadeRpc } from "./cidade.rpc";
+import { clienteRpc, TClienteRpc } from "./cliente.rpc";
+import { diamanteRpc, TDiamanteRpc } from "./diamante.rpc";
+import { echoRpc, TEchoRpc } from "./echo.rpc";
 import {
-  EsterilizacaoExterna,
-  EsterilizacaoExternaRpc,
+  esterilizacaoExternaRpc,
+  TEsterilizacaoExternaRpc,
 } from "./esterilizacao-externa.rpc";
 import {
-  EsterilizacaoInterna,
-  EsterilizacaoInternaRpc,
+  esterilizacaoInternaRpc,
+  TEsterilizacaoInternaRpc,
 } from "./esterilizacao-interna.rpc";
-import { Estoque, EstoqueRpc } from "./estoque.rpc";
-import { EtiquetaExterna, EtiquetaExternaRpc } from "./etiqueta-externa.rpc";
-import { EtiquetaInterna, EtiquetaInternaRpc } from "./etiqueta-interna.rpc";
+import { estoqueRpc, TEstoqueRpc } from "./estoque.rpc";
 import {
-  NfEntradaControle,
-  NfEntradaControleRpc,
+  etiquetaExternaRpc,
+  TEtiquetaExternaRpc,
+} from "./etiqueta-externa.rpc";
+import {
+  etiquetaInternaRpc,
+  TEtiquetaInternaRpc,
+} from "./etiqueta-interna.rpc";
+import { groupSubjectRpc, TGroupSubjectRpc } from "./group-subject.rpc";
+import { maquinaRpc, TMaquinaRpc } from "./maquina.rpc";
+import {
+  nfEntradaControleRpc,
+  TNfEntradaControleRpc,
 } from "./nf-entrada-controle.rpc";
-import { NfEntradaItem, NfEntradaItemRpc } from "./nf-entrada-item.rpc";
-import { NfEntradaLog, NfEntradaLogRpc } from "./nf-entrada-log.rpc";
-import { NfEntrada, NfEntradaRpc } from "./nf-entrada.rpc";
-import { OperacaoProducao, OperacaoRpc } from "./operacao-producao.rpc";
-import { OrdemProducao, OrdemProducaoRpc } from "./ordem-producao.rpc";
-import { Permissao, PermissaoRpc } from "./permissao.rpc";
-import { Phonebook, PhonebookRpc } from "./phonebook.rpc";
-import { ProdutoCategoria, ProdutoCategoriaRpc } from "./produto-categoria.rpc";
-import { ProdutoControle, ProdutoControleRpc } from "./produto-controle.rpc";
+import { nfEntradaItemRpc, TNfEntradaItemRpc } from "./nf-entrada-item.rpc";
+import { nfEntradaLogRpc, TNfEntradaLogRpc } from "./nf-entrada-log.rpc";
+import { nfEntradaRpc, TNfEntradaRpc } from "./nf-entrada.rpc";
 import {
-  ProdutoEstatistica,
-  ProdutoEstatisticaRpc,
+  operacaoProducaoRpc,
+  TOperacaoProducaoRpc,
+} from "./operacao-producao.rpc";
+import { ordemProducaoRpc, TOrdemProducaoRpc } from "./ordem-producao.rpc";
+import {
+  produtoCategoriaRpc,
+  TProdutoCategoriaRpc,
+} from "./produto-categoria.rpc";
+import {
+  produtoControleRpc,
+  TProdutoControleRpc,
+} from "./produto-controle.rpc";
+import {
+  produtoEstatisticaRpc,
+  TProdutoEstatisticaRpc,
 } from "./produto-estatistica.rpc";
-import { ProdutoPlano, ProdutoPlanoRpc } from "./produto-plano.rpc";
-import { Produto, ProdutoRpc } from "./produto.rpc";
-import { Transferencia, TransferenciaRpc } from "./transferencia.rpc";
-import { Usuario, UsuarioRpc } from "./usuario.rpc";
-import { Venda, VendaRpc } from "./venda.rpc";
+import { produtoPlanoRpc, TProdutoPlanoRpc } from "./produto-plano.rpc";
+import { produtoRpc, TProdutoRpc } from "./produto.rpc";
+import { transferenciaRpc, TTransferenciaRpc } from "./transferencia.rpc";
+import { TUsuarioRpc, usuarioRpc } from "./usuario.rpc";
+import { TVendaRpc, vendaRpc } from "./venda.rpc";
+// @endindex
 
-type LibRpc = (connections: Connections) => any;
+type LibRpc = (connections: TConnections) => any;
 
 export const rpc = new JSONRPCServer();
-let indexMethods: string[] = [];
+const indexMethods: string[] = [];
 
 interface IndexRpc {
   index(): Promise<string[]>;
@@ -60,54 +79,65 @@ function register(lib: LibRpc) {
 }
 type Method = SimpleJSONRPCMethod<any>;
 
-export type ApiRpc = IndexRpc &
-  AuthenticationRpc &
-  ClienteRpc &
-  EchoRpc &
-  EsterilizacaoExternaRpc &
-  EsterilizacaoInternaRpc &
-  EstoqueRpc &
-  EtiquetaExternaRpc &
-  EtiquetaInternaRpc &
-  NfEntradaRpc &
-  NfEntradaControleRpc &
-  NfEntradaItemRpc &
-  NfEntradaLogRpc &
-  OperacaoRpc &
-  OrdemProducaoRpc &
-  PermissaoRpc &
-  PhonebookRpc &
-  ProdutoCategoriaRpc &
-  ProdutoControleRpc &
-  ProdutoEstatisticaRpc &
-  ProdutoPlanoRpc &
-  ProdutoRpc &
-  TransferenciaRpc &
-  UsuarioRpc &
-  VendaRpc;
+export type ApiRpc =
+  // @index(['./**/*.ts','!./**/*.spec.ts'], (f, _) => `T${_.pascalCase(f.name)} &`)
+  TAgendaTelefoneRpc &
+    TAuthenticationRpc &
+    TCidadeRpc &
+    TClienteRpc &
+    TDiamanteRpc &
+    TEchoRpc &
+    TEsterilizacaoExternaRpc &
+    TEsterilizacaoInternaRpc &
+    TEstoqueRpc &
+    TEtiquetaExternaRpc &
+    TEtiquetaInternaRpc &
+    TGroupSubjectRpc &
+    TMaquinaRpc &
+    TNfEntradaControleRpc &
+    TNfEntradaItemRpc &
+    TNfEntradaLogRpc &
+    TNfEntradaRpc &
+    TOperacaoProducaoRpc &
+    TOrdemProducaoRpc &
+    TProdutoCategoriaRpc &
+    TProdutoControleRpc &
+    TProdutoEstatisticaRpc &
+    TProdutoPlanoRpc &
+    TProdutoRpc &
+    TTransferenciaRpc &
+    TUsuarioRpc &
+    TVendaRpc &
+    // @endindex
+    IndexRpc;
 
 rpc.addMethod("index", <Method>index);
-register(Echo);
-register(Authentication);
-register(Cliente);
-register(EsterilizacaoExterna);
-register(EsterilizacaoInterna);
-register(Estoque);
-register(EtiquetaExterna);
-register(EtiquetaInterna);
-register(NfEntrada);
-register(NfEntradaControle);
-register(NfEntradaItem);
-register(NfEntradaLog);
-register(OperacaoProducao);
-register(OrdemProducao);
-register(Permissao);
-register(Phonebook);
-register(ProdutoControle);
-register(ProdutoCategoria);
-register(ProdutoEstatistica);
-register(ProdutoPlano);
-register(Produto);
-register(Transferencia);
-register(Usuario);
-register(Venda);
+// @index(['./**/*.ts','!./**/*.spec.ts'], (f, _) => `register(${_.camelCase(f.name)});`)
+register(agendaTelefoneRpc);
+register(authenticationRpc);
+register(cidadeRpc);
+register(clienteRpc);
+register(diamanteRpc);
+register(echoRpc);
+register(esterilizacaoExternaRpc);
+register(esterilizacaoInternaRpc);
+register(estoqueRpc);
+register(etiquetaExternaRpc);
+register(etiquetaInternaRpc);
+register(groupSubjectRpc);
+register(maquinaRpc);
+register(nfEntradaControleRpc);
+register(nfEntradaItemRpc);
+register(nfEntradaLogRpc);
+register(nfEntradaRpc);
+register(operacaoProducaoRpc);
+register(ordemProducaoRpc);
+register(produtoCategoriaRpc);
+register(produtoControleRpc);
+register(produtoEstatisticaRpc);
+register(produtoPlanoRpc);
+register(produtoRpc);
+register(transferenciaRpc);
+register(usuarioRpc);
+register(vendaRpc);
+// @endindex

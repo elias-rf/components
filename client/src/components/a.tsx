@@ -2,14 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
-interface AProps {
+type TAProps = {
   href: string;
-  onClick?: () => void;
+  onClick?: (e: React.SyntheticEvent) => void;
   children: React.ReactElement | string;
   className?: string;
-}
+};
 
-export function A({ href, onClick, children, className, ...others }: AProps) {
+export function A({
+  href,
+  onClick = () => null,
+  children,
+  className,
+  ...others
+}: TAProps) {
   return (
     <Link
       to={href}

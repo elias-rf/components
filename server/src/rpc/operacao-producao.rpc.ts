@@ -1,8 +1,8 @@
 import { RpcContext, Schema } from "@er/types";
-import { Connections } from "dal/connections";
-import { OperacaoProducaoModel } from "../model/oftalmo/operacao-producao.model";
+import { TConnections } from "dal/connections";
+import { OperacaoProducaoModel } from "../model";
 
-export interface OperacaoRpc {
+export interface TOperacaoProducaoRpc {
   operacaoDiarioSchema: () => Promise<Schema>;
   operacaoMensalSchema: () => Promise<Schema>;
   operacaoProdutoSchema: () => Promise<Schema>;
@@ -29,7 +29,9 @@ export interface OperacaoRpc {
   ) => Promise<{ modelo: string; quantidade: number }[]>;
 }
 
-export function OperacaoProducao(connections: Connections): OperacaoRpc {
+export function operacaoProducaoRpc(
+  connections: TConnections
+): TOperacaoProducaoRpc {
   const operacaoProducao = new OperacaoProducaoModel(connections);
 
   return {

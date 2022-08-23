@@ -1,8 +1,8 @@
-import { Connections } from "dal/connections";
-import { CurrentUser, Id, Schema } from "../../../types";
-import { NfSaidaModel, NfSaidaRecord } from "../model/plano/nf-saida.model";
+import { CurrentUser, Id, Schema } from "@er/types";
+import { TConnections } from "dal/connections";
+import { NfSaidaModel, TNfSaida } from "../model";
 
-export interface VendaRpc {
+export interface TVendaRpc {
   vendaDiario(
     args: { inicio: string; fim: string; uf: string[] },
     ctx?: { currentUser: CurrentUser }
@@ -10,7 +10,7 @@ export interface VendaRpc {
   vendaAnalitico(
     args: { inicio: string; fim: string },
     ctx?: { currentUser: CurrentUser }
-  ): Promise<NfSaidaRecord[]>;
+  ): Promise<TNfSaida[]>;
   vendaDiarioSchema(): Promise<Schema>;
   vendaAnaliticoSchema(): Promise<Schema>;
   vendaMensal(
@@ -20,7 +20,7 @@ export interface VendaRpc {
   vendaMensalSchema(): Promise<Schema>;
 }
 
-export function Venda(connections: Connections): VendaRpc {
+export function vendaRpc(connections: TConnections): TVendaRpc {
   const nfSaidaModel = new NfSaidaModel(connections);
 
   return {

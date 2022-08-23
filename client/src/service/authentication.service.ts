@@ -1,17 +1,7 @@
-import { CurrentUser } from "../../../types";
-import { isEmpty } from "../../../utils";
+import { CurrentUser } from "@er/types";
+import { isEmpty } from "@er/utils/src/is-empty";
 import { fetcherRpc } from "../lib/http/fetcher-rpc";
 import { userStore } from "../state/user-store";
-
-export type ClienteRecord = {
-  CdCliente: string;
-  RzSocial: string;
-  Cidade: string;
-  Uf: string;
-  CGC: string;
-  CdVendedor: string;
-  FgAtivo: string;
-};
 
 function setStore(currentUser: CurrentUser) {
   userStore.setState({

@@ -7,13 +7,10 @@ import type {
   RpcContext,
   UpdateArgs,
 } from "@er/types";
-import type { Connections } from "../dal/connections";
-import {
-  EtiquetaInternaModel,
-  EtiquetaInternaRecord,
-} from "../model/oftalmo/etiqueta-interna.model";
+import type { TConnections } from "../dal/connections";
+import { EtiquetaInternaModel, EtiquetaInternaRecord } from "../model";
 
-export interface EtiquetaInternaRpc {
+export interface TEtiquetaInternaRpc {
   etiquetaInternaList(
     listArgs: ListArgs,
     ctx?: RpcContext
@@ -33,7 +30,9 @@ export interface EtiquetaInternaRpc {
   ): Promise<Id>;
 }
 
-export function EtiquetaInterna(connections: Connections): EtiquetaInternaRpc {
+export function etiquetaInternaRpc(
+  connections: TConnections
+): TEtiquetaInternaRpc {
   const etiquetainternaModel = new EtiquetaInternaModel(connections);
 
   return {
