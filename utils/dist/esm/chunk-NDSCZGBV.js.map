@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/parse-number.ts"],
-  "sourcesContent": ["/**\n * transforma uma string em n\u00FAmero\n */\nexport function parseNumber(\n  numero: any,\n  separadorGrupo = \".\",\n  separadorDecimal = \",\"\n) {\n  if (typeof numero === \"number\") {\n    return numero;\n  }\n  let num = numero.replaceAll(separadorGrupo, \"\");\n  num = num.replaceAll(separadorDecimal, \".\");\n  if (num.lastIndexOf(\".\") >= 0) {\n    return parseFloat(num);\n  }\n  return parseInt(num, 10);\n}\n"],
-  "mappings": "AAGO,SAASA,EACdC,EACAC,EAAiB,IACjBC,EAAmB,IACnB,CACA,GAAI,OAAOF,GAAW,SACpB,OAAOA,EAET,IAAIG,EAAMH,EAAO,WAAWC,EAAgB,EAAE,EAE9C,OADAE,EAAMA,EAAI,WAAWD,EAAkB,GAAG,EACtCC,EAAI,YAAY,GAAG,GAAK,EACnB,WAAWA,CAAG,EAEhB,SAASA,EAAK,EAAE,CACzB",
-  "names": ["parseNumber", "numero", "separadorGrupo", "separadorDecimal", "num"]
-}

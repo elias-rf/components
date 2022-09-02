@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/order-by.ts"],
-  "sourcesContent": ["import { Order } from \"@er/types\";\nimport { isEmpty } from \"./index\";\n\nexport const orderBy = {\n  setUnique(order: Order[], field: string) {\n    if (!Array.isArray(order) || isEmpty(field)) {\n      return [];\n    }\n    let orderBy: Order = order[0];\n    if (orderBy && orderBy[0] === field) {\n      orderBy[1] = orderBy[1] === \"asc\" ? \"desc\" : \"asc\";\n    } else {\n      orderBy = [field, \"asc\"];\n    }\n    return [orderBy];\n  },\n\n  getSort(order: Order[], field: string) {\n    if (isEmpty(field) || isEmpty(order)) return [];\n    for (const ord of order) {\n      if (ord && ord[0] === field) {\n        const rsp = ord[1];\n        return rsp;\n      }\n    }\n    return null;\n  },\n};\n"],
-  "mappings": "wCAGO,IAAMA,GAAU,CACrB,UAAUC,EAAgBC,EAAe,CACvC,GAAI,CAAC,MAAM,QAAQD,CAAK,GAAKE,EAAQD,CAAK,EACxC,MAAO,CAAC,EAEV,IAAIF,EAAiBC,EAAM,GAC3B,OAAID,GAAWA,EAAQ,KAAOE,EAC5BF,EAAQ,GAAKA,EAAQ,KAAO,MAAQ,OAAS,MAE7CA,EAAU,CAACE,EAAO,KAAK,EAElB,CAACF,CAAO,CACjB,EAEA,QAAQC,EAAgBC,EAAe,CACrC,GAAIC,EAAQD,CAAK,GAAKC,EAAQF,CAAK,EAAG,MAAO,CAAC,EAC9C,QAAWG,KAAOH,EAChB,GAAIG,GAAOA,EAAI,KAAOF,EAEpB,OADYE,EAAI,GAIpB,OAAO,IACT,CACF",
-  "names": ["orderBy", "order", "field", "isEmpty", "ord"]
-}

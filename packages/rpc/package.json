@@ -1,0 +1,27 @@
+{
+  "name": "@er/rpc",
+  "version": "1.0.0",
+  "description": "Remote Procedure Call",
+  "private": true,
+  "main": "dist/cjs/index.cjs.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "author": "Elias Ribeiro Filho <eliasribeiro@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "test": "cross-env NODE_ENV=test vitest run",
+    "test:watch": "cross-env NODE_ENV=test vitest --watch",
+    "typecheck": "tsc"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.15.5",
+    "esbuild-node-externals": "^1.4.1",
+    "esbuild-runner": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "vitest": "^0.22.1"
+  }
+}

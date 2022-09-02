@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/is-date.ts"],
-  "sourcesContent": ["/**\n * verifica se \u00E9 do tipo Date\n *\n * @param {any} date\n * @returns {boolean} verdadeiro se o tipo \u00E9 Date\n */\nexport function isDate(date: any) {\n  return Object.prototype.toString.call(date) === \"[object Date]\";\n}\n"],
-  "mappings": "AAMO,SAASA,EAAOC,EAAW,CAChC,OAAO,OAAO,UAAU,SAAS,KAAKA,CAAI,IAAM,eAClD",
-  "names": ["isDate", "date"]
-}

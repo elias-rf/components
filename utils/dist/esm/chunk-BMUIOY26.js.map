@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/except.ts"],
-  "sourcesContent": ["// Except helper function is quite opposite of pick. Except function will return a new object without passed keys from the given object.\nexport function except<T>(obj: T, except: Array<string>): Partial<T> {\n  return Object.keys(obj)\n    .filter((key) => !except.includes(key))\n    .reduce((result: Partial<T>, key): Partial<T> => {\n      result[key] = obj[key as keyof T];\n      return result;\n    }, {});\n}\n"],
-  "mappings": "AACO,SAASA,EAAUC,EAAQD,EAAmC,CACnE,OAAO,OAAO,KAAKC,CAAG,EACnB,OAAQC,GAAQ,CAACF,EAAO,SAASE,CAAG,CAAC,EACrC,OAAO,CAACC,EAAoBD,KAC3BC,EAAOD,GAAOD,EAAIC,GACXC,GACN,CAAC,CAAC,CACT",
-  "names": ["except", "obj", "key", "result"]
-}

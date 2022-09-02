@@ -1,2 +1,0 @@
-import{a as e}from"./chunk-FU5GES7S.js";function a(l){let o=[6,7,8,9,2,3,4,5,6,7,8,9],s=[5,6,7,8,9,2,3,4,5,6,7,8,9],t,c,i=l.replace(/[^\d]+/g,"");if(i.substr(0,12)==="000000000000")return null;let u=i.substring(0,12).split("").map(n=>parseInt(n,10));return t=e(u,o).reduce((n,r)=>n+r,0),t%=11,t=t>9?0:t,c=e(u.concat(t),s).reduce((n,r)=>n+r,0),c%=11,c=c>9?0:c,`${t}${c}`}export{a};
-//# sourceMappingURL=chunk-7KZ3F2KS.js.map

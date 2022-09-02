@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/is-any-property-exist.ts"],
-  "sourcesContent": ["// It checks if any given properties exist in an object.\nexport function isAnyPropertyExist(obj: any, props: Array<string>): number {\n  return props.filter((key) => getProperty(obj, key)).length;\n}\n"],
-  "mappings": "AACO,SAASA,EAAmBC,EAAUC,EAA8B,CACzE,OAAOA,EAAM,OAAQC,GAAQ,YAAYF,EAAKE,CAAG,CAAC,EAAE,MACtD",
-  "names": ["isAnyPropertyExist", "obj", "props", "key"]
-}

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/fill-object.ts"],
-  "sourcesContent": ["// FillObject fills an object with another object. This is the function I use every day.\nexport function fillObject<T>(model: T, attrs: Partial<T> = {}): T {\n  Object.keys(attrs).forEach((attr) => {\n    model[attr] = attrs[attr];\n  });\n  return model;\n}\n"],
-  "mappings": "AACO,SAASA,EAAcC,EAAUC,EAAoB,CAAC,EAAM,CACjE,cAAO,KAAKA,CAAK,EAAE,QAASC,GAAS,CACnCF,EAAME,GAAQD,EAAMC,EACtB,CAAC,EACMF,CACT",
-  "names": ["fillObject", "model", "attrs", "attr"]
-}

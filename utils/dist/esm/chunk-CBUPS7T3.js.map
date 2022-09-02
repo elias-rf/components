@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/groupToMap.ts"],
-  "sourcesContent": ["export function groupToMap<GroupKey, Elem>(\n  array: Array<Elem>,\n  callback: (value: Elem, index: number, array: Array<Elem>) => GroupKey\n): Map<GroupKey, Array<Elem>> {\n  const result = new Map();\n  for (const [index, elem] of array.entries()) {\n    const groupKey = callback(elem, index, array);\n    let group = result.get(groupKey);\n    if (group === undefined) {\n      group = [];\n      result.set(groupKey, group);\n    }\n    group.push(elem);\n  }\n  return result;\n}\n"],
-  "mappings": "AAAO,SAASA,EACdC,EACAC,EAC4B,CAC5B,IAAMC,EAAS,IAAI,IACnB,OAAW,CAACC,EAAOC,CAAI,IAAKJ,EAAM,QAAQ,EAAG,CAC3C,IAAMK,EAAWJ,EAASG,EAAMD,EAAOH,CAAK,EACxCM,EAAQJ,EAAO,IAAIG,CAAQ,EAC3BC,IAAU,SACZA,EAAQ,CAAC,EACTJ,EAAO,IAAIG,EAAUC,CAAK,GAE5BA,EAAM,KAAKF,CAAI,CACjB,CACA,OAAOF,CACT",
-  "names": ["groupToMap", "array", "callback", "result", "index", "elem", "groupKey", "group"]
-}

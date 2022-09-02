@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/parse-url.ts"],
-  "sourcesContent": ["import { URL } from \"node:url\";\n\nexport function parseUrl(urlString: string) {\n  const myUrl = new URL(urlString);\n  const rsp = {\n    client: myUrl.protocol.substring(0, myUrl.protocol.length - 1),\n    connection: {\n      host: myUrl.hostname,\n      port: parseInt(myUrl.port) || 1433,\n      user: myUrl.username || \"\",\n      password: myUrl.password,\n      database: \"\",\n    },\n  };\n  return rsp;\n}\n"],
-  "mappings": "4BAAA,OAAS,OAAAA,MAAW,WAEb,SAASC,EAASC,EAAmB,CAC1C,IAAMC,EAAQ,IAAIH,EAAIE,CAAS,EAW/B,MAVY,CACV,OAAQC,EAAM,SAAS,UAAU,EAAGA,EAAM,SAAS,OAAS,CAAC,EAC7D,WAAY,CACV,KAAMA,EAAM,SACZ,KAAM,SAASA,EAAM,IAAI,GAAK,KAC9B,KAAMA,EAAM,UAAY,GACxB,SAAUA,EAAM,SAChB,SAAU,EACZ,CACF,CAEF",
-  "names": ["URL", "parseUrl", "urlString", "myUrl"]
-}

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/validator.ts"],
-  "sourcesContent": ["import { z } from \"./zod\";\n\nexport const whereSchema = z.string().array().length(3).array();\nexport const orderBySchema = z\n  .tuple([z.string(), z.enum([\"asc\", \"desc\"])])\n  .array();\n\nexport const idSchema = z.string().array();\nexport const pksSchema = z.record(z.string()).array();\nexport const limitSchema = z.number().positive();\nexport const recordSchema = z.record(z.any());\n\nexport function validator(\n  data: any,\n  label: string,\n  schema: any,\n  error = false\n) {\n  const response = schema.safeParse(data);\n  if (response.success === true) {\n    return null;\n  }\n  const msg = `${label}: ${response.error.issues[0].message}`;\n  if (error) {\n    return msg;\n  }\n  throw msg;\n}\n"],
-  "mappings": "wCAEO,IAAMA,EAAcC,EAAE,OAAO,EAAE,MAAM,EAAE,OAAO,CAAC,EAAE,MAAM,EACjDC,EAAgBD,EAC1B,MAAM,CAACA,EAAE,OAAO,EAAGA,EAAE,KAAK,CAAC,MAAO,MAAM,CAAC,CAAC,CAAC,EAC3C,MAAM,EAEIE,EAAWF,EAAE,OAAO,EAAE,MAAM,EAC5BG,EAAYH,EAAE,OAAOA,EAAE,OAAO,CAAC,EAAE,MAAM,EACvCI,EAAcJ,EAAE,OAAO,EAAE,SAAS,EAClCK,EAAeL,EAAE,OAAOA,EAAE,IAAI,CAAC,EAErC,SAASM,EACdC,EACAC,EACAC,EACAC,EAAQ,GACR,CACA,IAAMC,EAAWF,EAAO,UAAUF,CAAI,EACtC,GAAII,EAAS,UAAY,GACvB,OAAO,KAET,IAAMC,EAAM,GAAGJ,MAAUG,EAAS,MAAM,OAAO,GAAG,UAClD,GAAID,EACF,OAAOE,EAET,MAAMA,CACR",
-  "names": ["whereSchema", "z", "orderBySchema", "idSchema", "pksSchema", "limitSchema", "recordSchema", "validator", "data", "label", "schema", "error", "response", "msg"]
-}

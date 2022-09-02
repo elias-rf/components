@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/convert-null-to-zero.ts"],
-  "sourcesContent": ["/**\n * Converte null ou undefined para novo valor\n *\n * @param {any} value Valor analizado\n * @param {number} [newIfZero=0] Valor default se nulo\n * @returns {any} Valor analizado ou valor default se nulo\n */\nfunction convertNullToZero(value: any, newIfZero: any = 0) {\n  if (value === null || value === undefined) {\n    return newIfZero;\n  }\n  return value;\n}\n\nexport default convertNullToZero;\n"],
-  "mappings": "AAOA,SAASA,EAAkBC,EAAYC,EAAiB,EAAG,CACzD,OAAID,GACKC,CAGX,CAEA,IAAOC,EAAQH",
-  "names": ["convertNullToZero", "value", "newIfZero", "convert_null_to_zero_default"]
-}

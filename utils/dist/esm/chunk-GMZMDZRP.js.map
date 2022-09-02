@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/removeStringAccents.ts"],
-  "sourcesContent": ["/**\n * Retira acentos de uma string\n *\n * @param {string} texto Texto qualquer\n * @returns {string} Texto sem acentos\n */\n\nexport function removeStringAccents(texto: string) {\n  const accents =\n    \"\u00C0\u00C1\u00C2\u00C3\u00C4\u00C5\u00E0\u00E1\u00E2\u00E3\u00E4\u00E5\u00D2\u00D3\u00D4\u00D5\u00D5\u00D6\u00D8\u00F2\u00F3\u00F4\u00F5\u00F6\u00F8\u00C8\u00C9\u00CA\u00CB\u00E8\u00E9\u00EA\u00EB\u00F0\u00C7\u00E7\u00D0\u00CC\u00CD\u00CE\u00CF\u00EC\u00ED\u00EE\u00EF\u00D9\u00DA\u00DB\u00DC\u00F9\u00FA\u00FB\u00FC\u00D1\u00F1\u0160\u0161\u0178\u00FF\u00FD\u017D\u017E\";\n  const accentsOut =\n    \"AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz\";\n  const str = texto.split(\"\");\n  const strLen = str.length;\n  let i;\n  let x;\n  for (i = 0; i < strLen; i += 1) {\n    x = accents.indexOf(str[i]);\n    if (x !== -1) {\n      str[i] = accentsOut[x];\n    }\n  }\n  return str.join(\"\");\n}\n"],
-  "mappings": "AAOO,SAASA,EAAoBC,EAAe,CACjD,IAAMC,EACJ,qQACIC,EACJ,iEACIC,EAAMH,EAAM,MAAM,EAAE,EACpBI,EAASD,EAAI,OACfE,EACAC,EACJ,IAAKD,EAAI,EAAGA,EAAID,EAAQC,GAAK,EAC3BC,EAAIL,EAAQ,QAAQE,EAAIE,EAAE,EACtBC,IAAM,KACRH,EAAIE,GAAKH,EAAWI,IAGxB,OAAOH,EAAI,KAAK,EAAE,CACpB",
-  "names": ["removeStringAccents", "texto", "accents", "accentsOut", "str", "strLen", "i", "x"]
-}

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/formatDateBr.ts"],
-  "sourcesContent": ["import { formatDate } from \"./formatDate\";\n\n/**\n *\n *\n * @export\n * @param {date} date\n * @returns {string} data formatada\n */\nfunction formatDateBr(date: Date): string {\n  return formatDate(date, \"DD/MM/YYYY\");\n}\n\nexport default formatDateBr;\n"],
-  "mappings": "wCASA,SAASA,EAAaC,EAAoB,CACxC,OAAOC,EAAWD,EAAM,YAAY,CACtC,CAEA,IAAOE,EAAQH",
-  "names": ["formatDateBr", "date", "formatDate", "formatDateBr_default"]
-}

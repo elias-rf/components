@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/tree-path.ts"],
-  "sourcesContent": ["import { TreeData } from \"@er/types\";\n\nfunction procura(path: string, tree: any[]): any {\n  if (path.length === 0) {\n    return tree;\n  }\n  return tree.find((item: any) => {\n    if (item.key === path) {\n      return true;\n    }\n    return false;\n  });\n}\n\n// Retorna uma sub arvore indicada pelo path\nexport function treePath(data: TreeData, path: string) {\n  const pathArray = path.split(\"/\");\n  if (pathArray[0] === \"\") {\n    pathArray.shift();\n  }\n  if (pathArray.length === 0) {\n    pathArray.push(\"\");\n  }\n\n  const rsp = pathArray.reduce((acc, curr) => {\n    if (curr === \"\") {\n      return acc;\n    }\n    const resp = procura(curr, acc);\n    return resp.child;\n  }, data);\n  return rsp || [];\n}\n"],
-  "mappings": "AAEA,SAASA,EAAQC,EAAcC,EAAkB,CAC/C,OAAID,EAAK,SAAW,EACXC,EAEFA,EAAK,KAAMC,GACZA,EAAK,MAAQF,CAIlB,CACH,CAGO,SAASG,EAASC,EAAgBJ,EAAc,CACrD,IAAMK,EAAYL,EAAK,MAAM,GAAG,EAChC,OAAIK,EAAU,KAAO,IACnBA,EAAU,MAAM,EAEdA,EAAU,SAAW,GACvBA,EAAU,KAAK,EAAE,EAGPA,EAAU,OAAO,CAACC,EAAKC,IAC7BA,IAAS,GACJD,EAEIP,EAAQQ,EAAMD,CAAG,EAClB,MACXF,CAAI,GACO,CAAC,CACjB",
-  "names": ["procura", "path", "tree", "item", "treePath", "data", "pathArray", "acc", "curr"]
-}

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/format-number.ts"],
-  "sourcesContent": ["/**\n * Recebe um n\u00FAmero e retorna com decimais e separador de milhares\n * @param number  numero: numero para formatar\n * @param integer decimais: length of decimal\n * @param integer grupos: length of whole part\n * @param mixed   separadorGrupo: sections delimiter\n * @param mixed   separadorDecimal: decimal delimiter\n */\nexport function formatNumber(\n  numero: number,\n  decimais = 2,\n  grupos = 3,\n  separadorGrupo = \".\",\n  separadorDecimal = \",\"\n) {\n  const numer = parseFloat(numero.toString());\n\n  if (Number.isNaN(numer)) {\n    return \"\";\n  }\n  const regex = `\\\\d(?=(\\\\d{${grupos}})+${decimais > 0 ? \"\\\\D\" : \"$\"})`;\n  const num = numer.toFixed(decimais);\n  let rsp = num.replace(\".\", separadorDecimal);\n  rsp = rsp.replace(new RegExp(regex, \"g\"), `$&${separadorGrupo}`);\n  return rsp;\n}\n"],
-  "mappings": "AAQO,SAASA,EACdC,EACAC,EAAW,EACXC,EAAS,EACTC,EAAiB,IACjBC,EAAmB,IACnB,CACA,IAAMC,EAAQ,WAAWL,EAAO,SAAS,CAAC,EAE1C,GAAI,OAAO,MAAMK,CAAK,EACpB,MAAO,GAET,IAAMC,EAAQ,cAAcJ,OAAYD,EAAW,EAAI,MAAQ,OAE3DM,EADQF,EAAM,QAAQJ,CAAQ,EACpB,QAAQ,IAAKG,CAAgB,EAC3C,OAAAG,EAAMA,EAAI,QAAQ,IAAI,OAAOD,EAAO,GAAG,EAAG,KAAKH,GAAgB,EACxDI,CACT",
-  "names": ["formatNumber", "numero", "decimais", "grupos", "separadorGrupo", "separadorDecimal", "numer", "regex", "rsp"]
-}

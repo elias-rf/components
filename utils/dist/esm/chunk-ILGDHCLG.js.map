@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/calc-md5.ts"],
-  "sourcesContent": ["import crypto from \"crypto\";\n\n/**\n * Calcula o hash md5 de uma string.<br>\n * Somente no ambiente server pois usa uma biblioteca do node\n * @param {string} text Texto usado para calcular o hash\n * @returns {string} Hash md5 32chars\n * @requires node.crypto\n * @example\n * calcMd5('Teste de escrita') // 'aa85b2fcd47ace498c8a4182ad25d2e0'\n */\nexport function calcMd5(text: string) {\n  return crypto.createHash(\"md5\").update(text).digest(\"hex\");\n}\n"],
-  "mappings": "AAAA,OAAOA,MAAY,SAWZ,SAASC,EAAQC,EAAc,CACpC,OAAOF,EAAO,WAAW,KAAK,EAAE,OAAOE,CAAI,EAAE,OAAO,KAAK,CAC3D",
-  "names": ["crypto", "calcMd5", "text"]
-}

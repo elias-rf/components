@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/goWeekStart.ts"],
-  "sourcesContent": ["import { addDaysDate } from \"./add-days-date\";\n/**\n * Calcula o domingo da semana indicada pela data\n */\nfunction goWeekStart(date: Date) {\n  return addDaysDate(date, -date.getUTCDay());\n}\n\nexport default goWeekStart;\n"],
-  "mappings": "wCAIA,SAASA,EAAYC,EAAY,CAC/B,OAAOC,EAAYD,EAAM,CAACA,EAAK,UAAU,CAAC,CAC5C,CAEA,IAAOE,EAAQH",
-  "names": ["goWeekStart", "date", "addDaysDate", "goWeekStart_default"]
-}

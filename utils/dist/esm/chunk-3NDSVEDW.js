@@ -1,2 +1,0 @@
-import{a as t}from"./chunk-RYBEUBOH.js";import{a as e}from"./chunk-VRLG3M6D.js";function r(m){let a=t(m);return{nome:()=>{let n=e.femaleName.concat(e.maleName);return n[a.range(0,n.length-1)]+" "+e.lastName[a.range(0,e.lastName.length-1)]},email:()=>{let n=e.femaleName.concat(e.maleName);return n[a.range(0,n.length-1)].toLowerCase()+e.lastName[a.range(0,e.lastName.length-1)].toLowerCase()+"@"+e.email[a.range(0,e.email.length-1)]}}}var s=r;export{s as a};
-//# sourceMappingURL=chunk-3NDSVEDW.js.map

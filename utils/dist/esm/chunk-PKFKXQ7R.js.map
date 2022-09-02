@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/trimExString.ts"],
-  "sourcesContent": ["/**\n * Limpa strings asciiz\n */\n\nfunction trimExString(txt: string) {\n  let rsp = \"\";\n  [rsp] = txt.split(\"\\0\");\n  return rsp.trim();\n}\n\nexport default trimExString;\n"],
-  "mappings": "AAIA,SAASA,EAAaC,EAAa,CACjC,IAAIC,EAAM,GACV,OAACA,CAAG,EAAID,EAAI,MAAM,IAAI,EACfC,EAAI,KAAK,CAClB,CAEA,IAAOC,EAAQH",
-  "names": ["trimExString", "txt", "rsp", "trimExString_default"]
-}

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/goDayStart.ts"],
-  "sourcesContent": ["/**\n * Zera o componente de hora de uma data\n */\nfunction goDayStart(date: Date) {\n  const rsp = date;\n  rsp.setUTCHours(0, 0, 0, 0);\n  return rsp;\n}\n\nexport default goDayStart;\n"],
-  "mappings": "AAGA,SAASA,EAAWC,EAAY,CAC9B,IAAMC,EAAMD,EACZ,OAAAC,EAAI,YAAY,EAAG,EAAG,EAAG,CAAC,EACnBA,CACT,CAEA,IAAOC,EAAQH",
-  "names": ["goDayStart", "date", "rsp", "goDayStart_default"]
-}

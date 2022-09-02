@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/replaceStringAll.ts"],
-  "sourcesContent": ["/**\n * Substitui todas as ocorr\u00EAncia de um texto em outro\n *\n * @param {string} texto - Texto completo\n * @param {string} subStr - Texto procurado\n * @param {string} newSubStr - Texto substituto\n * @returns texto limpo\n */\nfunction replaceStringAll(\n  texto: string,\n  procurar: string,\n  substituir: string\n): string {\n  return texto.split(procurar).join(substituir);\n}\n\nexport default replaceStringAll;\n"],
-  "mappings": "AAQA,SAASA,EACPC,EACAC,EACAC,EACQ,CACR,OAAOF,EAAM,MAAMC,CAAQ,EAAE,KAAKC,CAAU,CAC9C,CAEA,IAAOC,EAAQJ",
-  "names": ["replaceStringAll", "texto", "procurar", "substituir", "replaceStringAll_default"]
-}

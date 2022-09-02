@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/hash.ts"],
-  "sourcesContent": ["import crypto from \"crypto\";\n\nexport async function hash(text: string, algoritm: string) {\n  const h = crypto.createHash(algoritm);\n  h.update(text);\n  return h.digest(\"hex\");\n}\n"],
-  "mappings": "AAAA,OAAOA,MAAY,SAEnB,eAAsBC,EAAKC,EAAcC,EAAkB,CACzD,IAAMC,EAAIJ,EAAO,WAAWG,CAAQ,EACpC,OAAAC,EAAE,OAAOF,CAAI,EACNE,EAAE,OAAO,KAAK,CACvB",
-  "names": ["crypto", "hash", "text", "algoritm", "h"]
-}

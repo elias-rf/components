@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/formatDate.ts"],
-  "sourcesContent": ["import { day } from \"./day\";\n/**\n * formata uma data para qualquer formato indicado\n *\n */\nexport function formatDate(date: Date, fmt: string): string {\n  return day(date).format(fmt);\n}\n"],
-  "mappings": "wCAKO,SAASA,EAAWC,EAAYC,EAAqB,CAC1D,SAAO,EAAAC,SAAIF,CAAI,EAAE,OAAOC,CAAG,CAC7B",
-  "names": ["formatDate", "date", "fmt", "day"]
-}

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "importHelpers": true,
+    "lib": ["esnext"],
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "paths": {
+      "@utils": ["../utils/src"]
+    },
+    "rootDir": "./src",
+    "noEmit": false,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "es2021"
+  },
+  "exclude": ["node_modules/", "node_modules"],
+  "extends": "../../tsconfig.base.json",
+  "include": ["./src"]
+}

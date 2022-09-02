@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/add-days-date.ts"],
-  "sourcesContent": ["/**\n * Adiciona uma quantidade de dias para uma data\n *\n * @export\n * @param date data inicial\n * @param days quantidade de dias positiva ou negativa para somar\n * @returns nova data com o resultado\n * @example\n * addDaysDate('2000-02-15', 40) // '2000-03-26'\n * @example\n * addDaysDate('2000-02-15', -20) // '2000-01-26'\n */\n\nexport function addDaysDate(date: Date, days: number): Date {\n  const MILISEG_DIA = 24 * 3600 * 1000;\n  return new Date(date.valueOf() + days * MILISEG_DIA);\n}\n"],
-  "mappings": "AAaO,SAASA,EAAYC,EAAYC,EAAoB,CAE1D,OAAO,IAAI,KAAKD,EAAK,QAAQ,EAAIC,EAAO,KAAW,CACrD",
-  "names": ["addDaysDate", "date", "days"]
-}

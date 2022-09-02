@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/is-cpf.ts"],
-  "sourcesContent": ["import { calcDvCpf } from \"./calc-dv-cpf\";\n\n/**\n * Valida um cpf\n *\n * @param {string} cpf\n * @returns {boolean}\n */\nfunction isCPF(cpf: string) {\n  const dv = calcDvCpf(cpf);\n  return dv === cpf.substr(-2, 2);\n}\n\nexport default isCPF;\n"],
-  "mappings": "wCAQA,SAASA,EAAMC,EAAa,CAE1B,OADWC,EAAUD,CAAG,IACVA,EAAI,OAAO,GAAI,CAAC,CAChC,CAEA,IAAOE,EAAQH",
-  "names": ["isCPF", "cpf", "calcDvCpf", "is_cpf_default"]
-}

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/is-string.ts"],
-  "sourcesContent": ["const isString = (val: unknown): val is string => typeof val === \"string\";\n\nexport default isString;\n"],
-  "mappings": "AAAA,IAAMA,EAAYC,GAAgC,OAAOA,GAAQ,SAE1DC,EAAQF",
-  "names": ["isString", "val", "is_string_default"]
-}

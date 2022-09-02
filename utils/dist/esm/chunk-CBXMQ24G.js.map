@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/module10.ts"],
-  "sourcesContent": ["export function module10(dado: string): string {\n  var i;\n  var mult = 2;\n  var soma = 0;\n  var s = \"\";\n\n  for (i = dado.length - 1; i >= 0; i--) {\n    s = mult * parseInt(dado.charAt(i)) + s;\n    if (--mult < 1) {\n      mult = 2;\n    }\n  }\n  for (i = 0; i < s.length; i++) {\n    soma = soma + parseInt(s.charAt(i));\n  }\n  soma = soma % 10;\n  if (soma != 0) {\n    soma = 10 - soma;\n  }\n  return soma.toString();\n}\n"],
-  "mappings": "AAAO,SAASA,EAASC,EAAsB,CAC7C,IAAIC,EACAC,EAAO,EACPC,EAAO,EACPC,EAAI,GAER,IAAKH,EAAID,EAAK,OAAS,EAAGC,GAAK,EAAGA,IAChCG,EAAIF,EAAO,SAASF,EAAK,OAAOC,CAAC,CAAC,EAAIG,EAClC,EAAEF,EAAO,IACXA,EAAO,GAGX,IAAKD,EAAI,EAAGA,EAAIG,EAAE,OAAQH,IACxBE,EAAOA,EAAO,SAASC,EAAE,OAAOH,CAAC,CAAC,EAEpC,OAAAE,EAAOA,EAAO,GACVA,GAAQ,IACVA,EAAO,GAAKA,GAEPA,EAAK,SAAS,CACvB",
-  "names": ["module10", "dado", "i", "mult", "soma", "s"]
-}

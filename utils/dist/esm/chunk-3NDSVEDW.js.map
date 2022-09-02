@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/Faker.ts"],
-  "sourcesContent": ["import data from \"./data\";\nimport { Random } from \"./random\";\n\nfunction Faker(seed: number) {\n  const rnd = Random(seed);\n  const fk = {\n    nome: () => {\n      const name = data.femaleName.concat(data.maleName);\n      return (\n        name[rnd.range(0, name.length - 1)] +\n        \" \" +\n        data.lastName[rnd.range(0, data.lastName.length - 1)]\n      );\n    },\n    email: () => {\n      const name = data.femaleName.concat(data.maleName);\n      return (\n        name[rnd.range(0, name.length - 1)].toLowerCase() +\n        data.lastName[rnd.range(0, data.lastName.length - 1)].toLowerCase() +\n        \"@\" +\n        data.email[rnd.range(0, data.email.length - 1)]\n      );\n    },\n  };\n  return fk;\n}\n\nexport default Faker;\n"],
-  "mappings": "gFAGA,SAASA,EAAMC,EAAc,CAC3B,IAAMC,EAAMC,EAAOF,CAAI,EAoBvB,MAnBW,CACT,KAAM,IAAM,CACV,IAAMG,EAAOC,EAAK,WAAW,OAAOA,EAAK,QAAQ,EACjD,OACED,EAAKF,EAAI,MAAM,EAAGE,EAAK,OAAS,CAAC,GACjC,IACAC,EAAK,SAASH,EAAI,MAAM,EAAGG,EAAK,SAAS,OAAS,CAAC,EAEvD,EACA,MAAO,IAAM,CACX,IAAMD,EAAOC,EAAK,WAAW,OAAOA,EAAK,QAAQ,EACjD,OACED,EAAKF,EAAI,MAAM,EAAGE,EAAK,OAAS,CAAC,GAAG,YAAY,EAChDC,EAAK,SAASH,EAAI,MAAM,EAAGG,EAAK,SAAS,OAAS,CAAC,GAAG,YAAY,EAClE,IACAA,EAAK,MAAMH,EAAI,MAAM,EAAGG,EAAK,MAAM,OAAS,CAAC,EAEjD,CACF,CAEF,CAEA,IAAOC,EAAQN",
-  "names": ["Faker", "seed", "rnd", "Random", "name", "data_default", "Faker_default"]
-}

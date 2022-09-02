@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/is-function.ts"],
-  "sourcesContent": ["const isFunction = <T extends Function>(val: any): val is T =>\n  typeof val === \"function\";\n\nexport default isFunction;\n"],
-  "mappings": "AAAA,IAAMA,EAAkCC,GACtC,OAAOA,GAAQ,WAEVC,EAAQF",
-  "names": ["isFunction", "val", "is_function_default"]
-}

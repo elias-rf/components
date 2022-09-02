@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/group.ts"],
-  "sourcesContent": ["export function group<GroupKey extends string | symbol, Elem>(\n  array: Array<Elem>,\n  callback: (value: Elem, index: number, array: Array<Elem>) => GroupKey\n): { [k: GroupKey]: Array<Elem> } {\n  const result = Object.create(null);\n  for (const [index, elem] of array.entries()) {\n    const groupKey = callback(elem, index, array);\n    if (!(groupKey in result)) {\n      result[groupKey] = [];\n    }\n    result[groupKey].push(elem);\n  }\n  return result;\n}\n"],
-  "mappings": "AAAO,SAASA,EACdC,EACAC,EACgC,CAChC,IAAMC,EAAS,OAAO,OAAO,IAAI,EACjC,OAAW,CAACC,EAAOC,CAAI,IAAKJ,EAAM,QAAQ,EAAG,CAC3C,IAAMK,EAAWJ,EAASG,EAAMD,EAAOH,CAAK,EACtCK,KAAYH,IAChBA,EAAOG,GAAY,CAAC,GAEtBH,EAAOG,GAAU,KAAKD,CAAI,CAC5B,CACA,OAAOF,CACT",
-  "names": ["group", "array", "callback", "result", "index", "elem", "groupKey"]
-}

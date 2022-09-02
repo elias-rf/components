@@ -1,2 +1,0 @@
-import{a as i}from"./chunk-FU5GES7S.js";function a(n){let u=[1,2,3,4,5,6,7,8,9],o=[0,1,2,3,4,5,6,7,8,9],t,r,c=n;if(c=c.replace(/[^\d]+/g,""),c.substr(0,9)==="000000000"||c.substr(0,9)==="111111111")return null;let l=c.substring(0,9).split("").map(e=>parseInt(e,10));return t=i(l,u).reduce((e,s)=>e+s,0),t%=11,t=t>9?0:t,r=i(l.concat(t),o).reduce((e,s)=>e+s,0),r%=11,r=r>9?0:r,`${t}${r}`}export{a};
-//# sourceMappingURL=chunk-PN3DFOHM.js.map

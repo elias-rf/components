@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/is-boolean.ts"],
-  "sourcesContent": ["const isBoolean = (val: any): val is boolean => typeof val === \"boolean\";\n\nexport default isBoolean;\n"],
-  "mappings": "AAAA,IAAMA,EAAaC,GAA6B,OAAOA,GAAQ,UAExDC,EAAQF",
-  "names": ["isBoolean", "val", "is_boolean_default"]
-}

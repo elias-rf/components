@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/is-object.ts"],
-  "sourcesContent": ["/**\n * Verifica se o item \u00E9 um objecto\n */\nfunction isObject(item: any): boolean {\n  if (Object.prototype.toString.call(item) === \"[object Object]\") {\n    if (item === null) {\n      return false;\n    }\n    return true;\n  }\n  return false;\n}\n\nexport default isObject;\n"],
-  "mappings": "AAGA,SAASA,EAASC,EAAoB,CACpC,OAAI,OAAO,UAAU,SAAS,KAAKA,CAAI,IAAM,kBACvCA,IAAS,KAKR,EACT,CAEA,IAAOC,EAAQF",
-  "names": ["isObject", "item", "is_object_default"]
-}
