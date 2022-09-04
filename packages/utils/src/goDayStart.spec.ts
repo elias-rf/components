@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "@jest/globals";
 import startOfDay from "./goDayStart";
 describe("dateToday", () => {
   it("deve retornar dia inicial", () => {

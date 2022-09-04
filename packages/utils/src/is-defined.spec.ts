@@ -1,4 +1,4 @@
-import { expect, it } from "vitest";
+import { expect, it } from "@jest/globals";
 import { isDefined } from "./is-defined";
 
 it("deve ser defined", () => {

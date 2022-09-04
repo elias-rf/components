@@ -1,4 +1,5 @@
-import { expect, it } from "vitest";
+// @ts-nocheck
+import { expect, it } from "@jest/globals";
 import { isWhere } from "./is-where";
 
 it("deve validar where", () => {

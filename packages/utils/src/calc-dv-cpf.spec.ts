@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "@jest/globals";
 import { calcDvCpf } from "./calc-dv-cpf";
 describe("calcDvCpf", () => {
   let atual;

@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "@jest/globals";
 import { calcDvCnpj as cnpjDv } from "./calc-dv-cnpj";
 describe("calcDvCnpj", () => {
   let atual;

@@ -1,13 +1,13 @@
 import type {
   CreateArgs,
   DelArgs,
+  GenericObject,
   ListArgs,
   Pks,
   ReadArgs,
   Schema,
   SchemaField,
   TEntity,
-  TEntitySchema,
   UpdateArgs,
 } from "@er/types";
 
@@ -19,7 +19,7 @@ import {
   renameSelect,
   renameWhere,
 } from "@er/utils/src/rename-fields";
-
+import { similarity } from "@er/utils/src/similarity";
 import { TConnections, TDbs } from "../dal/connections";
 import { isData } from "../lib/is-data";
 import { isId } from "../lib/is-id";
@@ -33,29 +33,32 @@ import { pksFromSchema } from "../lib/pksFromSchema";
 import { validateThrow } from "../lib/validate-throw";
 import { entitySchema } from "../schema";
 
-export class Entity<Rec> {
+export class Entity {
   entity: TEntity;
+  entityName: string;
   knex;
   table;
   fields;
-  pks: Pks<Rec>;
-  fieldList: (keyof Rec)[];
-  nameList: (keyof Rec)[];
+  pks: Pks;
+  fieldList: string[];
+  nameList: string[];
 
-  constructor(connections: TConnections, entityName: keyof TEntitySchema) {
+  constructor(connections: TConnections, entityName: string) {
     if (!Object.hasOwn(entitySchema, entityName))
-      throw new Error(`${entityName} não é uma entidade cadastrada no schema`);
-    this.entity = entitySchema[entityName] as TEntity;
+      throw new Error(
+        `${entityName} não é uma entidade cadastrada no schema. Talvez seja: ${similarity(
+          entityName,
+          Object.keys(entitySchema)
+        )}`
+      );
+    this.entityName = entityName;
+    this.entity = entitySchema[entityName];
     this.knex = connections[this.entity.database as TDbs];
     this.table = this.entity.table;
-    this.pks = pksFromSchema<Rec>(this.entity.fields);
+    this.pks = pksFromSchema(this.entity.fields);
     this.fields = this.entity.fields;
-    this.fieldList = this.fields.map(
-      (fld: SchemaField) => fld.field
-    ) as (keyof Rec)[];
-    this.nameList = this.fields.map(
-      (fld: SchemaField) => fld.name
-    ) as (keyof Rec)[];
+    this.fieldList = this.fields.map((fld: SchemaField) => fld.field);
+    this.nameList = this.fields.map((fld: SchemaField) => fld.name);
   }
 
   // SCHEMA
@@ -69,22 +72,22 @@ export class Entity<Rec> {
     order = [],
     limit = 50,
     select = this.nameList,
-  }: ListArgs<Rec> = {}): Promise<Rec[]> {
+  }: ListArgs = {}): Promise<GenericObject[]> {
     validateThrow(isOrder(order, this.nameList));
     validateThrow(isWhere(where, this.nameList));
     validateThrow(isLimit(limit));
     validateThrow(isSelect(select, this.nameList));
 
-    const data: Rec[] = await this.knex(this.table)
+    const data: GenericObject[] = await this.knex(this.table)
       .select(renameSelect(select, this.nameList, this.fieldList))
       .limit(limit)
       .where(knexWhere(renameWhere(where, this.nameList, this.fieldList)))
       .orderBy(knexOrder(renameOrder(order, this.nameList, this.fieldList)));
-    return renameDataArray<Rec>(data, this.fieldList, this.nameList);
+    return renameDataArray<GenericObject>(data, this.fieldList, this.nameList);
   }
 
   // READ
-  async read({ id, select = this.nameList }: ReadArgs<Rec>): Promise<Rec> {
+  async read({ id, select = this.nameList }: ReadArgs): Promise<GenericObject> {
     validateThrow(isId(id, this.pks));
     validateThrow(isSelect(select, this.nameList));
 
@@ -92,12 +95,16 @@ export class Entity<Rec> {
       .select(renameSelect(select, this.nameList, this.fieldList))
       .where(renamePk(id, this.nameList, this.fieldList));
 
-    const [rec] = renameDataArray<Rec>(data, this.fieldList, this.nameList);
-    return rec || ({} as Rec);
+    const [rec] = renameDataArray<GenericObject>(
+      data,
+      this.fieldList,
+      this.nameList
+    );
+    return rec || ({} as GenericObject);
   }
 
   // DEL
-  async del({ id }: DelArgs<Rec>): Promise<number> {
+  async del({ id }: DelArgs): Promise<number> {
     validateThrow(isId(id, this.pks));
 
     const qry = await this.knex(this.table)
@@ -110,17 +117,17 @@ export class Entity<Rec> {
   }
 
   // CREATE
-  async create({ data }: CreateArgs<Rec>): Promise<Rec> {
+  async create({ data }: CreateArgs): Promise<GenericObject> {
     validateThrow(isData(data, this.nameList));
 
     const [qry] = await this.knex(this.table)
-      .insert(renameData(data, this.nameList, this.fieldList))
+      .insert(renameData<GenericObject>(data, this.nameList, this.fieldList))
       .returning(this.fieldList as any);
-    return renameData<Rec>(qry, this.fieldList, this.nameList);
+    return renameData(qry, this.fieldList, this.nameList);
   }
 
   // UPDATE
-  async update({ id, data }: UpdateArgs<Rec>): Promise<Rec> {
+  async update({ id, data }: UpdateArgs): Promise<GenericObject> {
     validateThrow(isId(id, this.pks));
     validateThrow(isData(data, this.nameList));
 
@@ -128,6 +135,6 @@ export class Entity<Rec> {
       .update(renameData(data, this.nameList, this.fieldList))
       .where(renamePk(id, this.nameList, this.fieldList))
       .returning(this.fieldList as any);
-    return renameData<Rec>(qry[0], this.fieldList, this.nameList);
+    return renameData(qry[0], this.fieldList, this.nameList);
   }
 }

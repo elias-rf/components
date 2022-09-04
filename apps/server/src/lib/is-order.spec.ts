@@ -1,4 +1,5 @@
-import { expect, it } from "vitest";
+// @ts-nocheck
+import { expect, it } from "@jest/globals";
 import { isOrder } from "./is-order";
 
 it("deve validar order", () => {

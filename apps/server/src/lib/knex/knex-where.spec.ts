@@ -1,6 +1,6 @@
 import { Where } from "@er/types/*";
+import { expect, it } from "@jest/globals";
 import Knex from "knex";
-import { expect, it } from "vitest";
 import { knexWhere } from "./knex-where";
 
 it("Deve receber arrays", () => {
@@ -60,18 +60,12 @@ it("Deve receber or", () => {
   const knex = Knex({ client: "mssql" });
 
   const where: Where[] = [
-    [
-      "or",
-      [
-        ["f1", "=", 1],
-        ["f1", "=", 2],
-      ],
-    ],
-    ["f2", "=", 1],
+    ["f1", "=", 1],
+    ["f1", "=", 2],
   ];
 
   const expectedOut = knex.from("table").where(knexWhere(where)).toString();
   expect(expectedOut).toBe(
-    "select * from [table] where ([f1] = 1 or [f1] = 2 and [f2] = 1)"
+    "select * from [table] where ([f1] = 1 and [f1] = 2)"
   );
 });

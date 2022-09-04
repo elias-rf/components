@@ -6,7 +6,7 @@ import { isString } from "@er/utils/src/is-string";
 import { isUndefined } from "@er/utils/src/is-undefined";
 
 export function isOrder<Rec>(
-  order: Order<Rec>[],
+  order: Order[],
   nameList: (keyof Rec)[]
 ): string | null {
   if (isNull(order) || isUndefined(order)) return "Order deve ser informado";

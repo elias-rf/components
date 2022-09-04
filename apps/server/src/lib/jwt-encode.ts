@@ -8,14 +8,12 @@ import jwt from "jsonwebtoken";
  * @param {string} [expiration] Prazo de expiração default "8h"
  * @returns
  */
-function jwtEncode(
+export function jwtEncode(
   user: CurrentUser,
-  secret: string = "SenhaSecreta",
+  secret = "SenhaSecreta",
   expiration = "8h"
 ) {
   return jwt.sign(user, secret, {
     expiresIn: expiration,
   });
 }
-
-export default jwtEncode;

@@ -5,10 +5,7 @@ import { isObject } from "@er/utils/src/is-object";
 import { isString } from "@er/utils/src/is-string";
 import { isUndefined } from "@er/utils/src/is-undefined";
 
-export function isWhere<Rec>(
-  where: Where<Rec>[],
-  nameList: (keyof Rec)[]
-): string | null {
+export function isWhere(where: Where[], nameList: string[]): string | null {
   if (isNull(where) || isUndefined(where)) return "Where deve ser informado";
   if (!isArray(where) && (isObject(where) || isString(where)))
     return "Where deve ser um array";

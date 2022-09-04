@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "@jest/globals";
 import dateDiffDays from "./diffDateDays";
 describe("dateDiff", () => {
   const dia = new Date("2000-02-15");

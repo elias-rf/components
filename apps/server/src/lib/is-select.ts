@@ -7,7 +7,8 @@ export function isSelect<Rec>(
   if (!isNonEmptyArray(select)) return "Select deve ser um array de campos";
   for (const fld of select) {
     if (!nameList.includes(fld)) {
-      return `${fld.toString()} não é um campo válido`;
+      console.log(`🚀 ~ file: is-select.ts ~ line 10 ~ nameList`, nameList);
+      return `${fld.toString()} não é um campo válido: ${nameList}`;
     }
   }
   return null;

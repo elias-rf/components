@@ -1,5 +1,5 @@
 import { Context } from "koa";
-import { rpc } from "../rpc/index";
+import { rpc } from "../api/rpc";
 
 export const rpcRouter = [
   {

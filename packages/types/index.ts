@@ -1,11 +1,11 @@
-export type Where<Rec> = [keyof Rec, string, any];
-export type Select<Rec> = (keyof Rec)[];
-export type Order<Rec> = [keyof Rec, "asc" | "desc"];
-export type Pks<Rec> = (keyof Rec)[];
-export type Ids<Rec> = { [fields in keyof Rec]: string };
+export type Where = [string, string, any];
+export type Select = string[];
+export type Order = [string, "asc" | "desc"];
+export type Pks = string[];
+export type Ids = { [fields: string]: any };
 
 export interface CurrentUser {
-  usuario_id: string;
+  usuario_id: number;
   nome_login: string;
   nome: string;
   grupo_id: string;
@@ -62,29 +62,29 @@ export type TreeData = {
   child?: TreeData;
 }[];
 
-export type ListArgs<Rec> = {
+export type ListArgs = {
   limit?: number;
-  where?: Where<Rec>[];
-  order?: Order<Rec>[];
-  select?: Select<Rec>;
+  where?: Where[];
+  order?: Order[];
+  select?: Select;
 };
 
-export type ReadArgs<Rec> = {
-  id: Ids<Rec>;
-  select?: Select<Rec>;
+export type ReadArgs = {
+  id: Ids;
+  select?: Select;
 };
 
-export type DelArgs<Rec> = {
-  id: Ids<Rec>;
+export type DelArgs = {
+  id: Ids;
 };
 
-export type UpdateArgs<Rec> = {
-  id: Ids<Rec>;
-  data: Rec;
+export type UpdateArgs = {
+  id: Ids;
+  data: GenericObject;
 };
 
-export type CreateArgs<Rec> = {
-  data: Rec;
+export type CreateArgs = {
+  data: GenericObject;
 };
 
 export interface IEvent {

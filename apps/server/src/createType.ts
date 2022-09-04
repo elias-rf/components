@@ -14,13 +14,25 @@ function saveType(typeName: string, type: string) {
 }
 
 function createType(schemaName: string, schema: TEntity) {
-  let rsp = `export type T${pascalCase(schemaName)} = {\n`;
+  let rsp = `export type T${pascalCase(schemaName)}Id = {\n`;
   for (const fld in schema.fields) {
-    rsp += `  ${schema.fields[fld].name}?: ${convertType(
-      schema.fields[fld].type
-    )};\n`;
+    if (schema.fields[fld].primaryKey)
+      rsp += `  ${schema.fields[fld].name}${
+        schema.fields[fld].autoIncrement ? "?" : ""
+      }: ${convertType(schema.fields[fld].type)};\n`;
   }
-  rsp += "}";
+  rsp += "}\n\n";
+
+  rsp += `export type T${pascalCase(schemaName)}Base = {\n`;
+  for (const fld in schema.fields) {
+    if (!schema.fields[fld].primaryKey)
+      rsp += `  ${schema.fields[fld].name}?: ${convertType(
+        schema.fields[fld].type
+      )};\n`;
+  }
+  rsp += `}\n\n export type T${pascalCase(schemaName)} = Partial<T${pascalCase(
+    schemaName
+  )}Id | T${pascalCase(schemaName)}Base>`;
   return rsp;
 }
 
@@ -28,5 +40,6 @@ console.log(__dirname);
 
 for (const schema in entitySchema) {
   console.log(schema);
+  // if (schema === "agenda_telefone")
   saveType(schema, createType(schema, entitySchema[schema]));
 }

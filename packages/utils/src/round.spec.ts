@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "@jest/globals";
 import { round } from "./round";
 describe("Arredondamento de números", () => {
   it("deve arredondar retirando dígitos", () => {

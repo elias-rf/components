@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "@jest/globals";
 import { formatMoney } from "./format-money.js";
 describe("formatMoney", function () {
   test(`deve arredondar [1.2222, 2, "1,22"]`, () => {

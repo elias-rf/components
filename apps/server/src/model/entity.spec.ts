@@ -1,7 +1,6 @@
+import { afterEach, beforeEach, describe, expect, it } from "@jest/globals";
 import Knex from "knex";
 import { getTracker, MockClient } from "knex-mock-client";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { TAgendaTelefone } from "../type/agenda-telefone.type";
 import { Entity } from "./entity";
 
 const rec1 = {
@@ -21,10 +20,7 @@ const rec2 = {
 describe("entityModel", () => {
   const knexDb = Knex({ client: MockClient });
   const connections = { oftalmo: knexDb, plano: knexDb, fullvision: knexDb };
-  const entityModel = new Entity<TAgendaTelefone>(
-    connections,
-    "agenda_telefone"
-  );
+  const entityModel = new Entity(connections, "agenda_telefone");
   let tracker: ReturnType<typeof getTracker>;
 
   beforeEach(() => {
@@ -34,6 +30,14 @@ describe("entityModel", () => {
   afterEach(() => {
     tracker.reset();
   });
+
+  // it("entidade desconhecida", () => {
+  //   function lx() {
+  //     return new Entity(connections, "agenda_telefones");
+  //   }
+
+  //   expect(() => lx()).toThrow();
+  // });
 
   it("deve retornar Schema", async () => {
     tracker.on.select("Table").response(["ok"]);
@@ -157,7 +161,7 @@ describe("entityModel", () => {
   it("deve criar default", async () => {
     tracker.on.any("phonebook").response(["ok"]);
     await entityModel.create({
-      data: { agenda_telefone_id: "99", nome: "Fulano" },
+      data: { agenda_telefone_id: 99, nome: "Fulano" },
     });
 
     expect(tracker.history.any[0].sql).toEqual(
@@ -170,7 +174,7 @@ describe("entityModel", () => {
     await entityModel.update({
       id: { agenda_telefone_id: "100" },
       data: {
-        agenda_telefone_id: "99",
+        agenda_telefone_id: 99,
         nome: "Fulano",
       },
     });

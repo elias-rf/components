@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "@jest/globals";
 import convertArrayToCSV from "./convert-array-to-csv";
 /**
  * @test {arrayToCSV}

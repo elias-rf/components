@@ -1,7 +1,7 @@
-import { expect, it } from "vitest";
+import { expect, it } from "@jest/globals";
 import { isId } from "./is-id";
 import { validateThrow } from "./validate-throw";
 
 it("validate-throw", () => {
-  expect(() => validateThrow(isId(1))).toThrow();
+  expect(() => validateThrow(isId({ fldx: 1 }, ["fld_id"]))).toThrow();
 });

@@ -1,4 +1,4 @@
-import { expect, it } from "vitest";
+import { expect, it } from "@jest/globals";
 import { isNumber } from "./is-number";
 
 it("deve ser number", () => {

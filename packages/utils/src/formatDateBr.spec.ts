@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "@jest/globals";
 import formatDateBr from "./formatDateBr";
 describe("formatDateBr", () => {
   it("dever receber uma string", () => {
