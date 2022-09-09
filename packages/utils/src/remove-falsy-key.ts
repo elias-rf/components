@@ -1,10 +1,10 @@
 // This function removes any key with falsy value from a JavaScript object.
-export function removeFalsyKey<T>(obj: T) {
-  const newObj: Partial<T> = {};
+export function removeFalsyKey(obj: Record<string, any>) {
+  const newObj: Record<string, any> = {};
 
   Object.keys(obj).forEach((key: string) => {
-    if (Boolean(obj[key as keyof T])) {
-      newObj[key as keyof T] = obj[key as keyof T];
+    if (obj[key]) {
+      newObj[key] = obj[key];
     }
   });
   return newObj;

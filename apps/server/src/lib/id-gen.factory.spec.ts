@@ -1,4 +1,4 @@
-import { describe, expect, it } from "@jest/globals";
+import { describe, expect, it } from "vitest";
 import { reqIdGenFactory } from "./id-gen.factory";
 describe("idGenFactory", () => {
   const idGen = reqIdGenFactory();

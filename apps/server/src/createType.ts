@@ -1,7 +1,7 @@
 import { TEntity } from "@er/types";
 import { paramCase, pascalCase } from "change-case";
 import fs from "fs";
-import { entitySchema } from "./schema";
+import { entitySchema } from "./api/entity-schema";
 
 function convertType(type: any) {
   if (["int", "float", "currency"].includes(type)) return "number";

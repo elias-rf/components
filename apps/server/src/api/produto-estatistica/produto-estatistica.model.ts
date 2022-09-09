@@ -1,7 +1,7 @@
 import { Ids } from "@er/types";
 import { renamePk } from "@er/utils/src/rename-fields";
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../model/entity";
+import { Entity } from "../../lib/entity";
 
 export class ProdutoEstatisticaModel extends Entity {
   constructor(connections: TConnections) {

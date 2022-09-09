@@ -1,4 +1,4 @@
-import { calcMd5 } from "@er/utils/src";
+import { calcMd5 } from "@er/utils/src/calc-md5";
 import type { Knex } from "knex";
 import { cache } from "./cache_";
 

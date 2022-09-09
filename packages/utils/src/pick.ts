@@ -1,9 +1,12 @@
 // It picks some field from an object and converts it to a new object.
-export function pick<T>(obj: T, props: Array<string>): Object {
+export function pick(
+  obj: Record<string, any>,
+  props: Array<string>
+): Record<string, any> {
   return Object.keys(obj)
     .filter((key) => props.includes(key))
-    .reduce((result: { [key: string]: any }, key): Object => {
-      result[key] = obj[key as keyof T];
+    .reduce((result: { [key: string]: any }, key): Record<string, any> => {
+      result[key] = obj[key];
       return result;
     }, {});
 }

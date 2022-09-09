@@ -1,16 +1,9 @@
-import {
-  afterEach,
-  beforeAll,
-  describe,
-  expect,
-  jest,
-  test,
-} from "@jest/globals";
 import knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
+import { afterEach, beforeAll, describe, expect, test, vi } from "vitest";
 import { connections } from "./connections";
 
-jest.mock("./connections", () => ({
+vi.mock("./connections", () => ({
   connections: {
     plano: knex({ client: MockClient }),
     oftalmo: knex({ client: MockClient }),

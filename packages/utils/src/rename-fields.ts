@@ -1,93 +1,114 @@
-import { GenericObject } from "@er/types/*";
+import { TEntity } from "@er/types";
+import { fieldsFromEntity } from "./fields-from-entity";
 import { isArray } from "./is-array";
 import { isEmpty } from "./is-empty";
 import { isObject } from "./is-object";
+import { namesFromEntity } from "./names-from-entity";
 
-export function renameString(
-  name = "",
-  nameList: (keyof any)[],
-  targetList: (keyof any)[]
-) {
-  const idx = nameList.indexOf(name);
+function renameString(name = "", sourceList: string[], targetList: string[]) {
+  const idx = sourceList.indexOf(name);
   if (idx >= 0) return targetList[idx] as string;
-  return name;
+  throw new Error(`${name} não é um nome válido: ${sourceList.toString()}`);
 }
 
-export function renameWhere(
-  tupleArray: any[],
-  sourceList: (keyof any)[],
-  targetList: (keyof any)[]
-) {
+function renameObject(data: any, sourceList: string[], targetList: string[]) {
+  if (!isObject(data)) return data;
+  const rsp: any = {};
+  Object.keys(data).map((prop) => {
+    const newProp = renameString(prop, sourceList, targetList);
+    rsp[newProp] = data[prop];
+  });
+  return rsp;
+}
+
+export function renameToFieldTuple(tupleArray: any[], entity: TEntity) {
   if (isEmpty(tupleArray)) return tupleArray;
+  const nameList = namesFromEntity(entity);
+  const fieldList = fieldsFromEntity(entity);
   return tupleArray.map((whr) => {
-    whr[0] = renameString(whr[0], sourceList, targetList);
+    whr[0] = renameString(whr[0], nameList, fieldList);
     return whr;
   });
 }
 
-export function renameOrder(
-  tupleArray: any[],
-  sourceList: (keyof any)[],
-  targetList: (keyof any)[]
-) {
+export function renameToNameTuple(tupleArray: any[], entity: TEntity) {
   if (isEmpty(tupleArray)) return tupleArray;
+  const nameList = namesFromEntity(entity);
+  const fieldList = fieldsFromEntity(entity);
   return tupleArray.map((whr) => {
-    whr[0] = renameString(whr[0], sourceList, targetList);
+    whr[0] = renameString(whr[0], fieldList, nameList);
     return whr;
   });
 }
 
-export function renameSelect(
-  nameArray: (keyof any)[],
-  sourceList: (keyof any)[],
-  targetList: (keyof any)[]
-) {
-  if (isEmpty(nameArray)) return nameArray;
-  return nameArray.map((field) => {
-    const fieldIdx = sourceList.indexOf(field);
-    if (fieldIdx > -1) {
-      // throw new Error(`Campo ${field} não encontrado`);
-      field = targetList[fieldIdx];
+export function renameToFieldString(data: string, entity: TEntity) {
+  const nameList = namesFromEntity(entity);
+  const fieldList = fieldsFromEntity(entity);
+  return renameString(data, nameList, fieldList);
+}
+
+export function renameToNameString(data: string, entity: TEntity) {
+  const nameList = namesFromEntity(entity);
+  const fieldList = fieldsFromEntity(entity);
+  return renameString(data, fieldList, nameList);
+}
+
+export function renameToNameArray(data: any, entity: TEntity) {
+  if (isEmpty(data)) return data;
+  const nameList = namesFromEntity(entity);
+  const fieldList = fieldsFromEntity(entity);
+  return data.map((field: any) => {
+    const fieldIdx = fieldList.indexOf(field);
+    if (fieldIdx === -1) {
+      throw new Error(`${field} não é um nome válido: ${fieldList.toString()}`);
     }
+    field = nameList[fieldIdx];
     return field;
   });
 }
 
-export function renamePk<Rec extends GenericObject>(
-  data: Rec,
-  sourceList: (keyof any)[],
-  targetList: (keyof any)[]
-): Rec {
-  if (!isObject(data)) return data;
-  const rsp = {} as Rec;
-  Object.keys(data).map((prop) => {
-    const newProp: keyof Rec = renameString(prop, sourceList, targetList);
-    rsp[newProp] = data[prop];
+export function renameToFieldArray(data: any, entity: TEntity) {
+  if (isEmpty(data)) return data;
+  const nameList = namesFromEntity(entity);
+  const fieldList = fieldsFromEntity(entity);
+  return data.map((field: any) => {
+    const fieldIdx = nameList.indexOf(field);
+    if (fieldIdx === -1) {
+      throw new Error(`${field} não é um nome válido: ${nameList.toString()}`);
+    }
+    field = fieldList[fieldIdx];
+    return field;
   });
-  return rsp;
 }
 
-export function renameData<Rec extends GenericObject>(
-  data: Rec,
-  sourceList: (keyof any)[],
-  targetList: (keyof any)[]
-): Rec {
+export function renameToNameObject(data: any, entity: TEntity) {
   if (!isObject(data)) return data;
-  const rsp = {} as Rec;
-  Object.keys(data).map((prop) => {
-    const newProp: keyof Rec = renameString(prop, sourceList, targetList);
-    rsp[newProp] = data[prop];
-  });
-  return rsp;
+  const nameList = namesFromEntity(entity);
+  const fieldList = fieldsFromEntity(entity);
+  return renameObject(data, fieldList, nameList);
 }
 
-export function renameDataArray<Rec extends GenericObject>(
-  data: Rec[],
-  sourceList: (keyof any)[],
-  targetList: (keyof any)[]
-): Rec[] {
+export function renameToFieldObject(data: any, entity: TEntity) {
+  if (!isObject(data)) return data;
+  const nameList = namesFromEntity(entity);
+  const fieldList = fieldsFromEntity(entity);
+  return renameObject(data, nameList, fieldList);
+}
+
+export function renameToNameArrayObject(data: any[], entity: TEntity) {
   if (!isArray(data)) return data;
+  const nameList = namesFromEntity(entity);
+  const fieldList = fieldsFromEntity(entity);
   return data.map((rec) => {
-    return renamePk<Rec>(rec, sourceList, targetList);
+    return renameObject(rec, fieldList, nameList);
+  });
+}
+
+export function renameToFieldArrayObject(data: any[], entity: TEntity) {
+  if (!isArray(data)) return data;
+  const nameList = namesFromEntity(entity);
+  const fieldList = fieldsFromEntity(entity);
+  return data.map((rec) => {
+    return renameObject(rec, nameList, fieldList);
   });
 }

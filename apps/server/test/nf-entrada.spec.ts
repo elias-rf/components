@@ -78,13 +78,14 @@ describe("nfEntrada", () => {
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(null));
   });
-  it("nfEntradaTransferenciaCreate", async () => {
+
+  it.skip("nfEntradaTransferenciaCreate", async () => {
     tracker.on.any("NfMestre").response([]);
     const rsp = await apiRequest(app, "nfEntradaTransferenciaCreate", {
       controles: ["180076000124", "180076000033"],
     });
     expect(rsp.status).toEqual(200);
     console.log(rsp.body);
-    // expect(rsp.body).toEqual(rpcResponse(null));
+    expect(rsp.body).toEqual(rpcResponse(null));
   });
 });

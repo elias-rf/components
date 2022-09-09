@@ -3,7 +3,7 @@ import { day } from "@er/utils/src/day";
 import { isEmpty } from "@er/utils/src/is-empty";
 import { module10 } from "@er/utils/src/module10";
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../model/entity";
+import { Entity } from "../../lib/entity";
 import { OrdemProducaoOperacaoModel } from "../ordem-producao-operacao/ordem-producao-operacao.model";
 import { ProdutoItemModel } from "../produto-item/produto-item.model";
 import { ProdutoPlanoModel } from "../produto-plano/produto-plano.model";
@@ -50,20 +50,19 @@ export class OrdemProducaoModel extends Entity {
       select,
     });
   }
-  async produtoPlano(id: Ids, select?: Select) {
-    const { fkProdutoItem } = await this.read({
+
+  async produtoPlano({ id, select }: { id: Ids; select?: Select }) {
+    const { produto_item_id } = await this.read({
       id,
-      select: ["fkProdutoItem"],
+      select: ["produto_item_id"],
     });
-    let { idVisiontech } = await this.produtoItemModel.read({
+
+    return await this.produtoItemModel.produtoPlano({
       id: {
-        fkProdutoItem,
+        produto_item_id,
       },
+      select,
     });
-    if (!idVisiontech === undefined) {
-      idVisiontech = idVisiontech?.trim();
-    }
-    return this.produtoPlanoModel.read({ id: { idVisiontech } });
   }
 
   // Retorna data de fabricacao

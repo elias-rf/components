@@ -4,7 +4,9 @@ import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import { app } from "../src/app";
 import { apiRequest, rpcResponse } from "./aux";
 
-describe("cidade", () => {
+const NAME = "cidade";
+
+describe(NAME, () => {
   let tracker: Tracker;
   vi.mock("../src/dal/connections", () => ({
     connections: {
@@ -32,15 +34,15 @@ describe("cidade", () => {
     tracker.reset();
   });
 
-  it("cidadeSchema", async () => {
+  it(`${NAME}Schema`, async () => {
     const rsp = await apiRequest(app, "cidadeSchema", {});
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(expect.any(Array)));
   });
 
-  it("cidadeRead", async () => {
+  it(`${NAME}Read`, async () => {
     tracker.on.select("cidadesERF").response([recordFields]);
-    const rsp = await apiRequest(app, "cidadeRead", {
+    const rsp = await apiRequest(app, `${NAME}Read`, {
       id: { uf_old: "ES", nome_cidade: "Anchieta" },
     });
     expect(rsp.status).toEqual(200);
@@ -52,36 +54,36 @@ describe("cidade", () => {
     );
   });
 
-  it("cidadeList", async () => {
+  it(`${NAME}List`, async () => {
     tracker.on.select("cidadesERF").response([recordFields]);
-    const rsp = await apiRequest(app, "cidadeList", {
+    const rsp = await apiRequest(app, `${NAME}List`, {
       where: [["uf_old", "=", "ES"]],
     });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse([recordNames]));
   });
 
-  it("cidadeDel", async () => {
+  it(`${NAME}Del`, async () => {
     tracker.on.delete("cidadesERF").response(1);
-    const rsp = await apiRequest(app, "cidadeDel", {
+    const rsp = await apiRequest(app, `${NAME}Del`, {
       id: { uf_old: "ES", nome_cidade: "Anchieta" },
     });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(1));
   });
 
-  it("cidadeCreate", async () => {
-    tracker.on.any("cidadesERF").response([recordFields]);
-    const rsp = await apiRequest(app, "cidadeCreate", {
+  it(`${NAME}Create`, async () => {
+    tracker.on.insert("cidadesERF").response([recordFields]);
+    const rsp = await apiRequest(app, `${NAME}Create`, {
       data: { uf_old: "ES", nome_cidade: "Anchieta" },
     });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(recordNames));
   });
 
-  it("cidadeUpdate", async () => {
-    tracker.on.any("cidadesERF").response([recordFields]);
-    const rsp = await apiRequest(app, "cidadeUpdate", {
+  it(`${NAME}Update`, async () => {
+    tracker.on.update("cidadesERF").response([recordFields]);
+    const rsp = await apiRequest(app, `${NAME}Update`, {
       id: { uf_old: "ES", nome_cidade: "Anchieta" },
       data: { uf_old: "ES", nome_cidade: "Anchieta" },
     });

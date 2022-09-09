@@ -1,6 +1,6 @@
-import { afterEach, beforeEach, describe, expect, test } from "@jest/globals";
 import Knex from "knex";
 import { getTracker, MockClient } from "knex-mock-client";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { TConnections } from "../../dal/connections";
 import { UsuarioModel } from "./usuario.model";
 
@@ -89,7 +89,7 @@ describe("rpc de autenticação", () => {
       data: { usuario_id: 10 },
     });
     expect(rsp).toEqual("ok");
-    expect(tracker.history.update[0].bindings).toEqual([10, "10"]);
+    expect(tracker.history.update[0].bindings).toEqual([10, 10]);
     expect(tracker.history.update[0].sql).toEqual(
       'update "tbl_Seguranca_Usuario" set "kUsuario" = ? where "kUsuario" = ?'
     );

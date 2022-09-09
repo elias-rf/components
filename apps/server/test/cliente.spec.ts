@@ -60,7 +60,7 @@ describe("cliente", () => {
   });
 
   it("clienteDel", async () => {
-    tracker.on.delete("CadCli").response(1);
+    tracker.on.delete("CadCli").response([1]);
     const rsp = await apiRequest(app, "clienteDel", {
       id: { cliente_id: "171" },
     });

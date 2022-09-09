@@ -14,7 +14,7 @@ export const app = new Koa();
 app.use(authMiddle);
 
 app.context.knexDbs = connections;
-app.use(logger());
+if (process.env.NODE_ENV !== "test") app.use(logger());
 app.use(etag());
 app.use(bodyParser());
 app.use(serve(join(__dirname, "../../public")));

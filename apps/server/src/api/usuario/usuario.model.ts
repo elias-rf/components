@@ -1,9 +1,9 @@
 import { CurrentUser, Schema } from "@er/types";
 import { config } from "../../config";
 import { TConnections } from "../../dal/connections";
+import { Entity } from "../../lib/entity";
 import { jwtEncode } from "../../lib/jwt-encode";
 import { passwordVerify } from "../../lib/password-verify";
-import { Entity } from "../../model/entity";
 import { TUsuario } from "./usuario.type";
 
 export class UsuarioModel extends Entity {

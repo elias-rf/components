@@ -1,4 +1,4 @@
-import { expect, it } from "@jest/globals";
+import { expect, it } from "vitest";
 import { cache } from "./cache_";
 
 it("deve criar um cache", () => {

@@ -1,8 +1,7 @@
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../model/entity";
-import { TPagar, TPagarId } from "./pagar.type";
+import { Entity } from "../../lib/entity";
 
-export class PagarModel extends Entity<TPagarId, TPagar> {
+export class PagarModel extends Entity {
   constructor(connections: TConnections) {
     super(connections, "pagar");
   }

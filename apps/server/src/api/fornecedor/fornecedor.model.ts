@@ -1,8 +1,7 @@
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../model/entity";
-import { TFornecedor, TFornecedorId } from "./fornecedor.type";
+import { Entity } from "../../lib/entity";
 
-export class FornecedorModel extends Entity<TFornecedorId, TFornecedor> {
+export class FornecedorModel extends Entity {
   constructor(connections: TConnections) {
     super(connections, "fornecedor");
   }

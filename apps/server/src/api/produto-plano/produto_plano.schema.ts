@@ -5,6 +5,15 @@ export const produto_plano: TEntity = {
   table: "CadPro",
   fields: [
     {
+      field: "CdProduto",
+      label: "CdProduto",
+      name: "produto_plano_id",
+      type: "string",
+      size: 15,
+      primaryKey: true,
+      allowNull: false,
+    },
+    {
       field: "AcresFinanc",
       label: "AcresFinanc",
       name: "AcresFinanc",
@@ -528,25 +537,16 @@ export const produto_plano: TEntity = {
       size: 1024,
     },
     {
-      field: "CdProduto",
-      label: "CdProduto",
-      name: "CadPro_id",
-      type: "string",
-      size: 15,
-      primaryKey: true,
-      allowNull: false,
-    },
-    {
       field: "CdDepartamento",
       label: "CdDepartamento",
-      name: "CdDepartamento",
+      name: "departamento_id",
       type: "int",
       size: 2,
     },
     {
       field: "CdFornecedor",
       label: "CdFornecedor",
-      name: "CdFornecedor",
+      name: "fornecedor_id",
       type: "int",
       size: 9,
     },
@@ -657,7 +657,7 @@ export const produto_plano: TEntity = {
     {
       field: "CdFabricante",
       label: "CdFabricante",
-      name: "CdFabricante",
+      name: "fabricante_id",
       type: "int",
       size: 9,
     },

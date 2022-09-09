@@ -16,8 +16,10 @@ export default defineConfig({
   build: { outDir: "../public", emptyOutDir: true },
   plugins: [react()],
   test: {
+    globals: true,
     environment: "jsdom", // or 'jsdom', 'node'
     outputTruncateLength: 200,
     snapshotFormat: { escapeString: false },
+    setupFiles: ["./src/setup-tests.ts"],
   },
 });

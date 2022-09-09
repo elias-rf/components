@@ -7,7 +7,7 @@ import {
   RpcContext,
   UpdateArgs,
 } from "@er/types";
-import { TConnections } from "dal/connections";
+import { TConnections } from "../../dal/connections";
 import { ProdutoEstatisticaModel } from "../produto-estatistica/produto-estatistica.model";
 import {
   TProdutoEstatistica,

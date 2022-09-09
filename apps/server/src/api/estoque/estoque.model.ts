@@ -1,25 +1,25 @@
 import { Pks } from "@er/types";
+import { isId } from "@er/utils/src/is-id";
 import { isNumber } from "@er/utils/src/is-number";
-import { renamePk } from "@er/utils/src/rename-fields";
+import { renameToFieldTuple } from "@er/utils/src/rename-fields";
 import { TConnections } from "../../dal/connections";
-import { isId } from "../../lib/is-id";
+import { Entity } from "../../lib/entity";
 import { validateIsThrow } from "../../lib/validate-is-throw";
 import { validateThrow } from "../../lib/validate-throw";
-import { Entity } from "../../model/entity";
 
 export class EstoqueModel extends Entity {
   constructor(connections: TConnections) {
     super(connections, "estoque");
   }
 
-  increment(id: Pks, quantidade: number) {
+  increment({ id, quantidade }: { id: Pks; quantidade: number }) {
     validateIsThrow(isNumber(quantidade), "produto dever ser string");
-    validateThrow(isId(id, this.pks));
+    validateThrow(isId(id, this.entity));
 
     return super
       .knex(super.table)
       .increment("EstAtual", quantidade)
-      .where(renamePk(id, this.nameList, this.fieldList))
+      .where(renameToFieldTuple(id, this.entity))
       .returning(["EstAtual"]);
   }
 }

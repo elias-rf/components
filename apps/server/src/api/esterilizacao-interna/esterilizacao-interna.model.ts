@@ -2,12 +2,8 @@ import { Schema } from "@er/types";
 import { isString } from "@er/utils/src/is-string";
 
 import { TConnections } from "../../dal/connections";
+import { Entity } from "../../lib/entity";
 import { validateIsThrow } from "../../lib/validate-is-throw";
-import { Entity } from "../../model/entity";
-import {
-  TEsterilizacaoInterna,
-  TEsterilizacaoInternaId,
-} from "./esterilizacao-interna.type";
 
 export type TEsterilizacaoInternaDia = {
   dia: string;
@@ -30,10 +26,7 @@ export type TEsterilizacaoInternaModelo = {
   quantidade: string;
 };
 
-export class EsterilizacaoInternaModel extends Entity<
-  TEsterilizacaoInternaId,
-  TEsterilizacaoInterna
-> {
+export class EsterilizacaoInternaModel extends Entity {
   constructor(connections: TConnections) {
     super(connections, "esterilizacao_interna");
   }
@@ -116,7 +109,7 @@ export class EsterilizacaoInternaModel extends Entity<
   }
 
   // DIARIO
-  async diario(inicio: string, fim: string) {
+  async diario({ inicio, fim }: { inicio: string; fim: string }) {
     validateIsThrow(isString(inicio), "inicio dever ser string");
     validateIsThrow(isString(fim), "fim dever ser string");
     const qry = await this.knex("tOperacaoOrdemProducao")
@@ -131,7 +124,7 @@ export class EsterilizacaoInternaModel extends Entity<
   }
 
   // MENSAL
-  async mensal(mes: string) {
+  async mensal({ mes }: { mes: string }) {
     validateIsThrow(isString(mes), "mes dever ser string");
 
     const qry = this.knex("tOperacaoOrdemProducao")
@@ -149,7 +142,7 @@ export class EsterilizacaoInternaModel extends Entity<
   }
 
   // MODELO
-  async modelo(data: string, produto: string) {
+  async modelo({ data, produto }: { data: string; produto: string }) {
     validateIsThrow(isString(data), "data dever ser string");
     validateIsThrow(isString(produto), "produto dever ser string");
 
@@ -177,7 +170,7 @@ export class EsterilizacaoInternaModel extends Entity<
   }
 
   // PRODUTO
-  async produto(data: string) {
+  async produto({ data }: { data: string }) {
     validateIsThrow(isString(data), "produto dever ser string");
 
     const qry = await this.knex(

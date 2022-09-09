@@ -62,14 +62,14 @@ export const ordem_producao: TEntity = {
     {
       field: "LoteFabricante",
       label: "LoteFabricante",
-      name: "LoteFabricante",
+      name: "lote_fabricante",
       type: "string",
       size: 150,
     },
     {
       field: "NomeUsuario",
       label: "NomeUsuario",
-      name: "NomeUsuario",
+      name: "usuario",
       type: "string",
       size: 50,
       allowNull: false,

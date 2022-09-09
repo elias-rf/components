@@ -1,4 +1,4 @@
-import { describe, expect, it } from "@jest/globals";
+import { describe, expect, it } from "vitest";
 import { calcMd5 as md5 } from "./calc-md5";
 
 describe("md5", () => {

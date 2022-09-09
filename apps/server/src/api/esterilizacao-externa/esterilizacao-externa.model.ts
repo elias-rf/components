@@ -1,8 +1,8 @@
 import { Schema } from "@er/types";
 import { isString } from "@er/utils/src/is-string";
 import { TConnections } from "../../dal/connections";
+import { Entity } from "../../lib/entity";
 import { validateIsThrow } from "../../lib/validate-is-throw";
-import { Entity } from "../../model/entity";
 
 export type TEsterilizacaoExternaDia = {
   dia: string;

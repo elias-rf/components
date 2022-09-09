@@ -1,11 +1,7 @@
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../model/entity";
-import { TEtiquetaInterna, TEtiquetaInternaId } from "./etiqueta-interna.type";
+import { Entity } from "../../lib/entity";
 
-export class EtiquetaInternaModel extends Entity<
-  TEtiquetaInternaId,
-  TEtiquetaInterna
-> {
+export class EtiquetaInternaModel extends Entity {
   constructor(connections: TConnections) {
     super(connections, "etiqueta_interna");
   }

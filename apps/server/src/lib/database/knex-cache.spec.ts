@@ -1,5 +1,5 @@
-import { expect, it } from "@jest/globals";
 import Knex from "knex";
+import { expect, it } from "vitest";
 
 const knex = Knex({
   client: "sqlite3",

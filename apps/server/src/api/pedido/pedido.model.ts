@@ -1,8 +1,7 @@
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../model/entity";
-import { TPedido, TPedidoId } from "./pedido.type";
+import { Entity } from "../../lib/entity";
 
-export class PedidoModel extends Entity<TPedidoId, TPedido> {
+export class PedidoModel extends Entity {
   constructor(connections: TConnections) {
     super(connections, "pedido");
   }

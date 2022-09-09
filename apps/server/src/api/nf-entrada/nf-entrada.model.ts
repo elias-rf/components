@@ -1,7 +1,7 @@
 import { day } from "@er/utils/src/day";
 import { isEmpty } from "@er/utils/src/is-empty";
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../model/entity";
+import { Entity } from "../../lib/entity";
 import { EstoqueModel } from "../estoque/estoque.model";
 import { NfEntradaControleModel } from "../nf-entrada-controle/nf-entrada-controle.model";
 import { NfEntradaItemModel } from "../nf-entrada-item/nf-entrada-item.model";
@@ -51,7 +51,17 @@ export class NfEntradaModel extends Entity {
         );
     }
 
-    const produto = await this.ordemProducao.produtoPlano({ op_id: kOp });
+    console.log(
+      `🚀 ~ file: nf-entrada.model.ts ~ line 43 ~ NfEntradaModel ~ kOp`,
+      kOp
+    );
+    const produto = await this.ordemProducao.produtoPlano({
+      ordem_producao_id: kOp,
+    });
+    console.log(
+      `🚀 ~ file: nf-entrada.model.ts ~ line 57 ~ NfEntradaModel ~ produto`,
+      produto
+    );
     if (isEmpty(produto)) {
       throw new Error(`Ordem de produção ${kOp} não possui vinculo com Plano`);
     }

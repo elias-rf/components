@@ -1,4 +1,4 @@
-import { describe, expect, it } from "@jest/globals";
+import { describe, expect, it } from "vitest";
 import { parseUrl } from "./parse-url";
 describe("parseUrl", () => {
   it("deve ter defaults", () => {

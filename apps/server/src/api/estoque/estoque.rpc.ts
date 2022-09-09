@@ -9,31 +9,19 @@ import {
 } from "@er/types";
 import { TConnections } from "../../dal/connections";
 import { EstoqueModel } from "../estoque/estoque.model";
-import { TEstoque, TEstoqueId } from "../estoque/estoque.type";
+import { TEstoque } from "../estoque/estoque.type";
 
 export interface TEstoqueRpc {
-  estoqueList: (
-    listArgs: ListArgs<TEstoque>,
-    ctx?: RpcContext
-  ) => Promise<TEstoque[]>;
-  estoqueRead: (
-    readArgs: ReadArgs<TEstoqueId, TEstoque>,
-    ctx?: RpcContext
-  ) => Promise<TEstoque>;
-  estoqueDel: (
-    { id }: DelArgs<TEstoqueId>,
-    ctx?: RpcContext
-  ) => Promise<number>;
-  estoqueCreate: (
-    { data }: CreateArgs<TEstoque>,
-    ctx?: RpcContext
-  ) => Promise<TEstoque>;
+  estoqueList: (listArgs: ListArgs, ctx?: RpcContext) => Promise<TEstoque[]>;
+  estoqueRead: (readArgs: ReadArgs, ctx?: RpcContext) => Promise<TEstoque>;
+  estoqueDel: ({ id }: DelArgs, ctx?: RpcContext) => Promise<number>;
+  estoqueCreate: ({ data }: CreateArgs, ctx?: RpcContext) => Promise<TEstoque>;
   estoqueUpdate: (
-    { id, data }: UpdateArgs<TEstoqueId, TEstoque>,
+    { id, data }: UpdateArgs,
     ctx?: RpcContext
   ) => Promise<TEstoque>;
   estoqueIncrement: (
-    { id, quantidade }: { id: Ids<TEstoque>; quantidade: number },
+    { id, quantidade }: { id: Ids; quantidade: number },
     ctx?: RpcContext
   ) => Promise<{ EstAtual: number }[]>;
 }

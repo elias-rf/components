@@ -14,7 +14,9 @@
       ]
     }
   },
-  "scripts": {},
+  "scripts": {
+    "build": "echo \"Error: no build specified\" && exit 0"
+  },
   "dependencies": {},
   "devDependencies": {}
 }

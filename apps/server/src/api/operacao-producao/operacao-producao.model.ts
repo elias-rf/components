@@ -1,16 +1,9 @@
 import { Schema } from "@er/types";
 
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../model/entity";
-import {
-  TOperacaoProducao,
-  TOperacaoProducaoId,
-} from "./operacao-producao.type";
+import { Entity } from "../../lib/entity";
 
-export class OperacaoProducaoModel extends Entity<
-  TOperacaoProducaoId,
-  TOperacaoProducao
-> {
+export class OperacaoProducaoModel extends Entity {
   constructor(connections: TConnections) {
     super(connections, "operacao_producao");
   }

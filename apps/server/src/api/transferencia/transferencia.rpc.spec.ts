@@ -1,6 +1,6 @@
-import { afterEach, beforeEach, describe, expect, test } from "@jest/globals";
 import Knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { TConnections } from "../../dal/connections";
 import { transferenciaRpc } from "./transferencia.rpc";
 

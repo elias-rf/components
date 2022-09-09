@@ -1,8 +1,7 @@
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../model/entity";
-import { TGroupSubject, TGroupSubjectId } from "./group-subject.type";
+import { Entity } from "../../lib/entity";
 
-export class GroupSubjectModel extends Entity<TGroupSubjectId, TGroupSubject> {
+export class GroupSubjectModel extends Entity {
   constructor(connections: TConnections) {
     super(connections, "group_subject");
   }

@@ -1,6 +1,6 @@
 import { Schema } from "@er/types";
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../model/entity";
+import { Entity } from "../../lib/entity";
 import { NfSaidaFvModel } from "../nf-saida-fv/nf-saida-fv.model";
 
 export type TVendas = {

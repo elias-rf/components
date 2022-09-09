@@ -65,6 +65,10 @@ import {
   TProdutoEstatisticaRpc,
 } from "./produto-estatistica/produto-estatistica.rpc";
 import {
+  produtoItemRpc,
+  TProdutoItemRpc,
+} from "./produto-item/produto-item.rpc";
+import {
   produtoPlanoRpc,
   TProdutoPlanoRpc,
 } from "./produto-plano/produto-plano.rpc";
@@ -122,6 +126,7 @@ export type ApiRpc =
     TProdutoCategoriaRpc &
     TProdutoControleRpc &
     TProdutoEstatisticaRpc &
+    TProdutoItemRpc &
     TProdutoPlanoRpc &
     TProdutoRpc &
     TTransferenciaRpc &
@@ -153,6 +158,7 @@ register(ordemProducaoRpc);
 register(produtoCategoriaRpc);
 register(produtoControleRpc);
 register(produtoEstatisticaRpc);
+register(produtoItemRpc);
 register(produtoPlanoRpc);
 register(produtoRpc);
 register(transferenciaRpc);

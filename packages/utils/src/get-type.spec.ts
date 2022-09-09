@@ -1,4 +1,4 @@
-import { describe, expect, it } from "@jest/globals";
+import { describe, expect, it } from "vitest";
 import { getType } from "./get-type";
 
 describe("getType", () => {
@@ -34,12 +34,15 @@ describe("getType", () => {
     expect(getType(/123/g)).toBe("regexp");
   });
   it("should return the type of the function", () => {
-    expect(getType(() => {})).toBe("function");
-    expect(getType(function () {})).toBe("function");
+    expect(getType(() => null)).toBe("function");
+    expect(
+      getType(function () {
+        return null;
+      })
+    ).toBe("function");
   });
   it("should return the type of the undefined", () => {
     expect(getType(undefined)).toBe("undefined");
-    expect(getType()).toBe("undefined");
   });
   it("should return the type of the string", () => {
     expect(getType("")).toBe("string");

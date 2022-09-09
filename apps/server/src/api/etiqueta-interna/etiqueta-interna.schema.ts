@@ -7,7 +7,7 @@ export const etiqueta_interna: TEntity = {
     {
       field: "NumControle",
       label: "Cód",
-      name: "controle_id",
+      name: "etiqueta_interna_id",
       type: "string",
       size: 18,
       primaryKey: true,

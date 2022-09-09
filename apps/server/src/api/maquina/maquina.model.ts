@@ -1,8 +1,7 @@
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../model/entity";
-import { TMaquina, TMaquinaId } from "./maquina.type";
+import { Entity } from "../../lib/entity";
 
-export class MaquinaModel extends Entity<TMaquinaId, TMaquina> {
+export class MaquinaModel extends Entity {
   constructor(connections: TConnections) {
     super(connections, "maquina");
   }

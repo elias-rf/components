@@ -1,5 +1,5 @@
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../model/entity";
+import { Entity } from "../../lib/entity";
 
 export class AgendaTelefoneModel extends Entity {
   constructor(connections: TConnections) {

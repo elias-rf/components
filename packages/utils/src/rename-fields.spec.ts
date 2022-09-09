@@ -1,136 +1,159 @@
-import { describe, expect, it } from "@jest/globals";
+import { TEntity } from "@er/types/*";
+import { describe, expect, it } from "vitest";
 import {
-  renameDataArray,
-  renamePk,
-  renameSelect,
-  renameString,
-  renameWhere,
+  renameToFieldArray,
+  renameToFieldArrayObject,
+  renameToFieldObject,
+  renameToFieldString,
+  renameToFieldTuple,
 } from "./rename-fields";
 
-const nameList = ["nome", "endereço", "idade"];
-const fieldList = ["name", "address", "age"];
+const entity: TEntity = {
+  database: "oftalmo",
+  table: "phonebook",
+  fields: [
+    {
+      allowNull: false,
+      field: "id",
+      label: "Ramal",
+      name: "agenda_telefone_id",
+      primaryKey: true,
+      type: "int",
+    },
+    {
+      allowNull: false,
+      field: "name",
+      label: "Nome",
+      name: "nome",
+      type: "string",
+    },
+    {
+      field: "department",
+      label: "Setor",
+      name: "setor",
+      type: "string",
+    },
+    {
+      field: "email",
+      label: "Email",
+      name: "email",
+      type: "string",
+    },
+  ],
+};
 
 describe("renameFields", () => {
-  it("deve receber undefined", () => {
-    expect(1).toBe(1);
-    // expect(renameString(undefined, nameList, fieldList)).toEqual(undefined);
-    // expect(renameTupleArray(undefined, nameList, fieldList)).toEqual(undefined);
-    // expect(renameArray(undefined, nameList, fieldList)).toEqual(undefined);
-    // expect(renameObject(undefined, nameList, fieldList)).toEqual(undefined);
-    // expect(renameObjectArray(undefined, nameList, fieldList)).toEqual(
-    //   undefined
-    // );
-  });
-
-  it("deve renomear string", () => {
-    expect(renameString("nome", nameList, fieldList)).toBe("name");
-    expect(renameString("nomes", nameList, fieldList)).toBe("nomes");
-  });
-
-  it("deve renomear where", () => {
-    expect(renameWhere([["nome", "=", "fulano"]], nameList, fieldList)).toEqual(
-      [["name", "=", "fulano"]]
+  it("deve renomear string para field", () => {
+    expect(renameToFieldString("nome", entity)).toBe("name");
+    expect(() => renameToFieldString("nomes", entity)).toThrow(
+      "nomes não é um nome válido: agenda_telefone_id,nome,setor,email"
     );
-
-    expect(
-      renameWhere([["nomes", "=", "fulano"]], nameList, fieldList)
-    ).toEqual([["nomes", "=", "fulano"]]);
   });
-  it("deve renomear where complexo", () => {
+
+  it("deve renomear where para field", () => {
+    expect(renameToFieldTuple([["nome", "=", "fulano"]], entity)).toEqual([
+      ["name", "=", "fulano"],
+    ]);
+
+    expect(() =>
+      renameToFieldTuple([["nomes", "=", "fulano"]], entity)
+    ).toThrow(
+      "nomes não é um nome válido: agenda_telefone_id,nome,setor,email"
+    );
+  });
+  it("deve renomear where complexo para field", () => {
     expect(
-      renameWhere(
+      renameToFieldTuple(
         [
           ["nome", "=", "fulano"],
-          ["idade", ">", "18"],
+          ["setor", ">", "18"],
         ],
-        nameList,
-        fieldList
+        entity
       )
     ).toEqual([
       ["name", "=", "fulano"],
-      ["age", ">", "18"],
+      ["department", ">", "18"],
     ]);
 
-    expect(
-      renameWhere(
+    expect(() =>
+      renameToFieldTuple(
         [
           ["nomes", "=", "fulano"],
-          ["idade", ">", "18"],
+          ["setor", ">", "18"],
         ],
-        nameList,
-        fieldList
+        entity
       )
-    ).toEqual([
-      ["nomes", "=", "fulano"],
-      ["age", ">", "18"],
-    ]);
+    ).toThrow(
+      "nomes não é um nome válido: agenda_telefone_id,nome,setor,email"
+    );
   });
 
-  it("deve renomear order", () => {
-    expect(renameWhere([["nome", "desc"]], nameList, fieldList)).toEqual([
+  it("deve renomear order para field", () => {
+    expect(renameToFieldTuple([["nome", "desc"]], entity)).toEqual([
       ["name", "desc"],
     ]);
-    expect(renameWhere([["nomes", "desc"]], nameList, fieldList)).toEqual([
-      ["nomes", "desc"],
-    ]);
+    expect(() => renameToFieldTuple([["nomes", "desc"]], entity)).toThrow(
+      "nomes não é um nome válido: agenda_telefone_id,nome,setor,email"
+    );
   });
-  it("deve renomear order complexo", () => {
+  it("deve renomear order complexo para field", () => {
     expect(
-      renameWhere(
+      renameToFieldTuple(
         [
           ["nome", "asc"],
-          ["idade", "desc"],
+          ["setor", "desc"],
         ],
-        nameList,
-        fieldList
+        entity
       )
     ).toEqual([
       ["name", "asc"],
-      ["age", "desc"],
+      ["department", "desc"],
     ]);
 
-    expect(
-      renameWhere(
+    expect(() =>
+      renameToFieldTuple(
         [
           ["nomes", "asc"],
-          ["idade", "desc"],
+          ["setor", "desc"],
         ],
-        nameList,
-        fieldList
+        entity
       )
-    ).toEqual([
-      ["nomes", "asc"],
-      ["age", "desc"],
-    ]);
+    ).toThrow(
+      "nomes não é um nome válido: agenda_telefone_id,nome,setor,email"
+    );
   });
 
-  it("deve renomear select", () => {
-    expect(renameSelect(["nome", "idade"], nameList, fieldList)).toEqual([
+  it("deve renomear select para field", () => {
+    expect(renameToFieldArray(["nome", "setor"], entity)).toEqual([
       "name",
-      "age",
+      "department",
     ]);
-    expect(renameSelect(["nomes", "idade"], nameList, fieldList)).toEqual([
-      "nomes",
-      "age",
-    ]);
+    expect(() => renameToFieldArray(["nomes", "setor"], entity)).toThrow(
+      "nomes não é um nome válido: agenda_telefone_id,nome,setor,email"
+    );
   });
 
-  it("deve renomear object", () => {
-    expect(
-      renamePk({ nome: "fulano", idade: 23 }, nameList, fieldList)
-    ).toEqual({ name: "fulano", age: 23 });
+  it("deve renomear object para field", () => {
+    expect(renameToFieldObject({ nome: "fulano", setor: 23 }, entity)).toEqual({
+      name: "fulano",
+      department: 23,
+    });
 
-    expect(
-      renamePk({ nomes: "fulano", idade: 23 }, nameList, fieldList)
-    ).toEqual({ nomes: "fulano", age: 23 });
+    expect(() =>
+      renameToFieldObject({ nomes: "fulano", setor: 23 }, entity)
+    ).toThrow(
+      "nomes não é um nome válido: agenda_telefone_id,nome,setor,email"
+    );
   });
-  it("deve renomear array de object", () => {
+  it("deve renomear array de object para field", () => {
     expect(
-      renameDataArray([{ nome: "fulano", idade: 23 }], nameList, fieldList)
-    ).toEqual([{ name: "fulano", age: 23 }]);
+      renameToFieldArrayObject([{ nome: "fulano", setor: 23 }], entity)
+    ).toEqual([{ name: "fulano", department: 23 }]);
 
-    expect(
-      renameDataArray([{ nomes: "fulano", idade: 23 }], nameList, fieldList)
-    ).toEqual([{ nomes: "fulano", age: 23 }]);
+    expect(() =>
+      renameToFieldArrayObject([{ nomes: "fulano", setor: 23 }], entity)
+    ).toThrow(
+      "nomes não é um nome válido: agenda_telefone_id,nome,setor,email"
+    );
   });
 });

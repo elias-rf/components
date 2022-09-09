@@ -1,5 +1,5 @@
 export function validateIsThrow(response: boolean, message: string) {
-  if (response) {
+  if (!response) {
     throw new Error(message);
   }
 }

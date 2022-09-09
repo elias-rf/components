@@ -1,4 +1,4 @@
 // Check if the object has any property.
-export function hasAnyProperty<T>(obj: T): number {
-  return Object.keys(obj).filter((kev) => obj[key as keyof T]).length;
+export function hasAnyProperty<T extends Record<string, any>>(obj: T): number {
+  return Object.keys(obj).filter((key) => obj[key as keyof T]).length;
 }

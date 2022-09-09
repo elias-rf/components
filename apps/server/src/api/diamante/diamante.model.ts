@@ -1,8 +1,7 @@
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../model/entity";
-import type { TDiamante, TDiamanteId } from "./diamante.type";
+import { Entity } from "../../lib/entity";
 
-export class DiamanteModel extends Entity<TDiamanteId, TDiamante> {
+export class DiamanteModel extends Entity {
   constructor(connections: TConnections) {
     super(connections, "diamante");
   }
