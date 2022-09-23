@@ -1,6 +1,6 @@
 import type { Story } from "@ladle/react";
-import React from "react";
-import { Badge } from "./badge";
+import { action } from "@ladle/react";
+import { Badge, TBadgeProps } from "./badge";
 
 export default {
   title: "Badge",
@@ -8,16 +8,10 @@ export default {
   argTypes: { dispatch: { action: "dispatch" } },
 };
 
-export const Default: Story<typeof Badge> = (props: any) => {
-  const [disp, setDisp] = React.useState({});
+export const Default: Story<TBadgeProps> = (props: any) => {
   return (
     <>
-      <Badge
-        {...props}
-        onClick={(e) => setDisp([e.name, e.eventName, e.value, e.targetName])}
-        onClose={(e) => setDisp([e.name, e.eventName, e.value, e.targetName])}
-      />
-      <div>{JSON.stringify(disp)}</div>
+      <Badge {...props} />
     </>
   );
 };
@@ -25,6 +19,67 @@ export const Default: Story<typeof Badge> = (props: any) => {
 Default.args = {
   name: "Badge1",
   children: `Badge_1`,
-  isClicable: true,
-  isClosable: true,
+  large: false,
+};
+Default.argTypes = {
+  color: {
+    options: ["default", "red", "green", "yellow", "indigo", "purple", "pink"],
+    control: { type: "select" },
+  },
+};
+
+export const Clicable: Story<TBadgeProps> = (props: any) => {
+  return (
+    <>
+      <Badge
+        {...props}
+        onClick={action("onClick")}
+      />
+    </>
+  );
+};
+
+Clicable.args = {
+  name: "Badge1",
+  children: `Badge_1`,
+  large: false,
+};
+Clicable.argTypes = {
+  color: {
+    options: [
+      "default",
+      "dark",
+      "red",
+      "green",
+      "yellow",
+      "indigo",
+      "purple",
+      "pink",
+    ],
+    control: { type: "select" },
+  },
+};
+
+export const Closable: Story<TBadgeProps> = (props: any) => {
+  return (
+    <>
+      <Badge
+        {...props}
+        onClick={action("onClick")}
+        onClose={action("onClose")}
+      />
+    </>
+  );
+};
+
+Closable.args = {
+  name: "Badge1",
+  children: `Badge_1`,
+  large: false,
+};
+Closable.argTypes = {
+  color: {
+    options: ["default", "red", "green", "yellow", "indigo", "purple", "pink"],
+    control: { type: "select" },
+  },
 };

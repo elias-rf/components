@@ -1,7 +1,16 @@
 import knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
-import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
 import { app } from "../src/app";
+import { setTracker } from "../src/lib/set-tracker";
 import { apiRequest, rpcResponse } from "./aux";
 
 describe("diamante", () => {
@@ -13,76 +22,109 @@ describe("diamante", () => {
       fullvision: knex({ client: MockClient }),
     },
   }));
-  const recordNames = {
-    diamante_id: "A",
-    diamante: "B",
-    tipo: "C",
-  };
-  const recordFields = {
-    id: "A",
-    diamante: "B",
-    tipo: "C",
-  };
 
   beforeAll(() => {
     tracker = getTracker();
+    setTracker(tracker);
   });
 
   afterEach(() => {
+    tracker.resetHistory();
+  });
+
+  afterAll(() => {
     tracker.reset();
   });
 
   it("diamanteSchema", async () => {
-    const rsp = await apiRequest(app, "diamanteSchema", {});
+    const rsp = await apiRequest(app, "crudSchema", { table: "diamante" });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(expect.any(Array)));
   });
 
   it("diamanteRead", async () => {
-    tracker.on.select("diamante").response([recordFields]);
-    const rsp = await apiRequest(app, "diamanteRead", {
+    const rsp = await apiRequest(app, "crudRead", {
+      table: "diamante",
       id: { diamante_id: "1" },
+      select: ["diamante_id"],
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse(recordNames));
-    expect(tracker.history.select.length).toEqual(1);
-    expect(tracker.history.select[0].bindings).toEqual(["1"]);
+    expect(rsp.body).toEqual(
+      rpcResponse({
+        diamante_id: "A",
+      })
+    );
+    expect(tracker.history.any[0].bindings).toEqual(["1"]);
+    expect(tracker.history.any[0].sql).toEqual(
+      'select "id" from "diamante" where "id" = ?'
+    );
   });
 
   it("diamanteList", async () => {
-    tracker.on.select("diamante").response([recordFields]);
-    const rsp = await apiRequest(app, "diamanteList", {
-      where: [["diamante_id", "=", "1"]],
+    const rsp = await apiRequest(app, "crudList", {
+      table: "diamante",
+      where: [["diamante_id", "=", "A"]],
+      select: ["diamante_id"],
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse([recordNames]));
+    expect(rsp.body).toEqual(
+      rpcResponse([
+        {
+          diamante_id: "A",
+        },
+      ])
+    );
+    expect(tracker.history.any[0].bindings).toEqual(["A", 50]);
+    expect(tracker.history.any[0].sql).toEqual(
+      'select "id" from "diamante" where ("id" = ?) limit ?'
+    );
   });
 
   it("diamanteDel", async () => {
-    tracker.on.delete("diamante").response(1);
-    const rsp = await apiRequest(app, "diamanteDel", {
+    const rsp = await apiRequest(app, "crudDel", {
+      table: "diamante",
       id: { diamante_id: "1" },
     });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(1));
+    expect(tracker.history.any[0].bindings).toEqual(["1"]);
+    expect(tracker.history.any[0].sql).toEqual(
+      'delete from "diamante" where "id" = ?'
+    );
   });
 
   it("diamanteCreate", async () => {
-    tracker.on.any("diamante").response([recordFields]);
-    const rsp = await apiRequest(app, "diamanteCreate", {
+    const rsp = await apiRequest(app, "crudCreate", {
+      table: "diamante",
       data: { diamante_id: "1" },
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse(recordNames));
+    expect(rsp.body).toEqual(
+      rpcResponse({
+        diamante_id: "A",
+      })
+    );
+    expect(tracker.history.any[0].bindings).toEqual(["1"]);
+    expect(tracker.history.any[0].sql).toEqual(
+      'insert into "diamante" ("id") values (?)'
+    );
   });
 
   it("diamanteUpdate", async () => {
-    tracker.on.any("diamante").response([recordFields]);
-    const rsp = await apiRequest(app, "diamanteUpdate", {
-      id: { diamante_id: "1" },
-      data: { diamante_id: "A", diamante: "B" },
+    const rsp = await apiRequest(app, "crudUpdate", {
+      table: "diamante",
+      id: { diamante_id: "A" },
+      data: { diamante_id: "B" },
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse(recordNames));
+    expect(rsp.body).toEqual(
+      rpcResponse({
+        diamante_id: "B",
+      })
+    );
+    expect(tracker.history.any[0].bindings).toEqual(["B", "A"]);
+    expect(tracker.history.any[0].sql).toEqual(
+      'update "diamante" set "id" = ? where "id" = ?'
+    );
   });
 });

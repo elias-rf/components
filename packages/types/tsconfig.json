@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "declaration": true,
     "emitDeclarationOnly": false,
     "forceConsistentCasingInFileNames": true,
@@ -9,13 +9,13 @@
     "isolatedModules": true,
     "lib": ["esnext"],
     "moduleResolution": "node",
-    "outDir": "./lib",
-    "rootDir": "./src",
+    "outDir": "./",
+    "rootDir": "./",
     "strict": true,
     "strictNullChecks": true,
     "target": "es2021"
   },
   "exclude": ["node_modules/", "node_modules"],
   "extends": "../../tsconfig.base.json",
-  "include": ["./src"]
+  "include": ["./index.ts"]
 }

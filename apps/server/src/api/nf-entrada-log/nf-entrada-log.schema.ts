@@ -45,7 +45,7 @@ export const nf_entrada_log: TEntity = {
     {
       field: "Data",
       label: "Data",
-      name: "Data",
+      name: "data",
       type: "datetime",
       size: 8,
       scale: 3,
@@ -70,7 +70,7 @@ export const nf_entrada_log: TEntity = {
     {
       field: "Modelo",
       label: "Modelo",
-      name: "modelo",
+      name: "modelo_id",
       type: "string",
       size: 3,
       allowNull: false,

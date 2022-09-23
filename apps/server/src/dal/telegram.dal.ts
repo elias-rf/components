@@ -84,7 +84,7 @@ export function update(idUser: string, rec: TelegramUser) {
     (x) => x.idUser.toString() === idUser.toString()
   );
   // rec.dateUpdated = new Date().toISOString();
-  Object.assign(record, rec);
+  Object.assign(record || {}, rec);
   saveData();
 }
 

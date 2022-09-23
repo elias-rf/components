@@ -1,7 +1,16 @@
 import knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
-import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
 import { app } from "../src/app";
+import { setTracker } from "../src/lib/set-tracker";
 import { apiRequest, rpcResponse, rpcResponseError } from "./aux";
 
 describe("agendaTelefone", () => {
@@ -13,77 +22,98 @@ describe("agendaTelefone", () => {
       fullvision: knex({ client: MockClient }),
     },
   }));
-  const recordNames = {
-    agenda_telefone_id: 171,
-    nome: "vago78",
-    setor: "qualidade",
-    email: "vago",
-  };
-  const recordFields = {
-    id: 171,
-    name: "vago78",
-    department: "qualidade",
-    email: "vago",
-  };
 
   beforeAll(() => {
     tracker = getTracker();
+    setTracker(tracker);
   });
 
   afterEach(() => {
+    tracker.resetHistory();
+  });
+
+  afterAll(() => {
     tracker.reset();
   });
 
   it("agendaTelefoneSchema", async () => {
-    const rsp = await apiRequest(app, "agendaTelefoneSchema", {});
+    const rsp = await apiRequest(app, "crudSchema", {
+      table: "agenda_telefone",
+    });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(expect.any(Array)));
   });
 
   it("agendaTelefoneRead", async () => {
-    tracker.on.select("phonebook").response([recordFields]);
-    const rsp = await apiRequest(app, "agendaTelefoneRead", {
+    const rsp = await apiRequest(app, "crudRead", {
+      table: "agenda_telefone",
       id: { agenda_telefone_id: "171" },
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse(recordNames));
-    expect(tracker.history.select.length).toEqual(1);
-    expect(tracker.history.select[0].bindings).toEqual(["171"]);
-    expect(tracker.history.select[0].sql).toEqual(
+    expect(rsp.body).toEqual(
+      rpcResponse({
+        agenda_telefone_id: 171,
+      })
+    );
+    expect(tracker.history.any[0].bindings).toEqual(["171"]);
+    expect(tracker.history.any[0].sql).toEqual(
       'select "id", "name", "department", "email" from "phonebook" where "id" = ?'
     );
   });
 
   it("agendaTelefoneList", async () => {
-    tracker.on.select("phonebook").response([recordFields]);
-    const rsp = await apiRequest(app, "agendaTelefoneList", {
+    const rsp = await apiRequest(app, "crudList", {
+      table: "agenda_telefone",
       where: [["agenda_telefone_id", "=", "171"]],
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse([recordNames]));
+    expect(rsp.body).toEqual(
+      rpcResponse([
+        {
+          agenda_telefone_id: 171,
+        },
+      ])
+    );
+    expect(tracker.history.any[0].bindings).toEqual(["171", 50]);
+    expect(tracker.history.any[0].sql).toEqual(
+      'select "id", "name", "department", "email" from "phonebook" where ("id" = ?) limit ?'
+    );
   });
 
   it("agendaTelefoneDel", async () => {
-    tracker.on.delete("phonebook").response(1);
-    const rsp = await apiRequest(app, "agendaTelefoneDel", {
+    const rsp = await apiRequest(app, "crudDel", {
+      table: "agenda_telefone",
       id: { agenda_telefone_id: "171" },
     });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(1));
+    expect(tracker.history.any[0].bindings).toEqual(["171"]);
+    expect(tracker.history.any[0].sql).toEqual(
+      'delete from "phonebook" where "id" = ?'
+    );
   });
 
   it("agendaTelefoneCreate", async () => {
-    tracker.on.any("phonebook").response([recordFields]);
-    const rsp = await apiRequest(app, "agendaTelefoneCreate", {
+    const rsp = await apiRequest(app, "crudCreate", {
+      table: "agenda_telefone",
       data: { agenda_telefone_id: "171" },
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse(recordNames));
+    expect(rsp.body).toEqual(
+      rpcResponse({
+        agenda_telefone_id: 171,
+      })
+    );
+    expect(tracker.history.any[0].bindings).toEqual(["171"]);
+    expect(tracker.history.any[0].sql).toEqual(
+      'insert into "phonebook" ("id") values (?)'
+    );
   });
 
   it("agendaTelefoneCreate no params", async () => {
-    tracker.on.any("phonebook").response([recordFields]);
-    const rsp = await apiRequest(app, "agendaTelefoneCreate", {});
+    const rsp = await apiRequest(app, "crudCreate", {
+      table: "agenda_telefone",
+    });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(
       rpcResponseError(0, "Select deve ser um array ou objeto")
@@ -91,18 +121,27 @@ describe("agendaTelefone", () => {
   });
 
   it("agendaTelefoneUpdate", async () => {
-    tracker.on.any("phonebook").response([recordFields]);
-    const rsp = await apiRequest(app, "agendaTelefoneUpdate", {
+    const rsp = await apiRequest(app, "crudUpdate", {
+      table: "agenda_telefone",
       id: { agenda_telefone_id: "171" },
       data: { agenda_telefone_id: "172" },
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse(recordNames));
+    expect(rsp.body).toEqual(
+      rpcResponse({
+        agenda_telefone_id: 172,
+      })
+    );
+    expect(tracker.history.any[0].bindings).toEqual(["172", "171"]);
+    expect(tracker.history.any[0].sql).toEqual(
+      'update "phonebook" set "id" = ? where "id" = ?'
+    );
   });
 
   it("agendaTelefoneUpdate no params", async () => {
-    tracker.on.any("phonebook").response([recordFields]);
-    const rsp = await apiRequest(app, "agendaTelefoneUpdate", {});
+    const rsp = await apiRequest(app, "crudUpdate", {
+      table: "agenda_telefone",
+    });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponseError(0, "Id deve ser informado"));
   });

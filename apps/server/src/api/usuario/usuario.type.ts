@@ -9,5 +9,5 @@ export type TUsuario = {
   nome?: string;
   setor?: string;
   nivel?: number;
-  grupo_id?: string;
+  group_id?: string;
 };

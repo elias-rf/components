@@ -1,7 +1,16 @@
 import knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
-import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
 import { app } from "../src/app";
+import { setTracker } from "../src/lib/set-tracker";
 import { apiRequest, rpcResponseError } from "./aux";
 
 describe("Api", () => {
@@ -16,9 +25,14 @@ describe("Api", () => {
 
   beforeAll(() => {
     tracker = getTracker();
+    setTracker(tracker);
   });
 
   afterEach(() => {
+    tracker.resetHistory();
+  });
+
+  afterAll(() => {
     tracker.reset();
   });
 

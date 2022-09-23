@@ -12,7 +12,6 @@
       "@utils": ["../utils/src/index"]
     },
     "rootDir": "./src",
-    "noEmit": false,
     "strict": true,
     "strictNullChecks": true,
     "target": "es2021"

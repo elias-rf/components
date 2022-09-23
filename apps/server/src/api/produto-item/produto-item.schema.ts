@@ -35,14 +35,14 @@ export const produto_item: TEntity = {
     {
       field: "ForaDeLinha",
       label: "Fora De Linha",
-      name: "ForaDeLinha",
+      name: "fora_linha",
       type: "int",
       allowNull: false,
     },
     {
       field: "GrupoCredito",
       label: "Grupo Credito",
-      name: "GrupoCredito",
+      name: "grupo_credito",
       type: "string",
     },
   ],

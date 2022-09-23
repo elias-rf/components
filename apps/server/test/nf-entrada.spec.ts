@@ -23,28 +23,31 @@ describe("nfEntrada", () => {
   });
 
   it("nfEntradaSchema", async () => {
-    const rsp = await apiRequest(app, "nfEntradaSchema", {});
+    const rsp = await apiRequest(app, "crudSchema", { table: "nf_entrada" });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(expect.any(Array)));
   });
 
   it("nfEntradaRead", async () => {
     tracker.on.select("NfMestre").response([]);
-    const rsp = await apiRequest(app, "nfEntradaRead", {
-      id: { nota_id: "171" },
+    const rsp = await apiRequest(app, "crudRead", {
+      table: "nf_entrada",
+      id: { filial_id: 1, nota_id: "171", serie_id: "X", modelo_id: 1 },
+      select: ["nota_id"],
     });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse({}));
     expect(tracker.history.select.length).toEqual(1);
-    expect(tracker.history.select[0].bindings).toEqual(["171"]);
+    expect(tracker.history.select[0].bindings).toEqual([1, "171", "X", 1]);
     expect(tracker.history.select[0].sql).toEqual(
-      `select "CdEmpresa", "NroNf", "Serie", "Modelo", "CdFornecedor", "DtEmi", "DtEntr", "Nop", "NopFiscal", "TotNF", "BaseSubstituicao", "IPIBasCalc", "IPIVlr", "IPIFrete", "ICMSAliq", "ICMSBasCalc", "ICMSVlr", "ICMSRetido", "ICMSOperPropria", "ICMSFrete", "Frete", "Seguro", "DtValidacao", "VlMercadorias", "ConPag", "Tipo", "Horario", "FgIPICompoeBase", "VlNfComplementar", "FgIPICompoeBaseSub", "FgEstoque", "IdParametro", "GrupoFiscal", "FgConferencia", "VlRepasseICMS", "FgSomaICMSSub", "DtConferencia", "SgUsuario", "dsObservacao", "FgUtilizaPercRedBCIcms", "VlDespAcessorias", "NumNotaRelacionada", "VlNotaRelacionada", "FgDespesasCompoeTotal", "NumChaveNfe", "FgXML", "FgGNRE", "FgStatusGNRE", "VlGNRE", "DtValidacaoNota", "DtRecolhimentoGNRE", "IndicadorFormaPgto", "VlPIS", "VlCofins", "VlPISSubstituido", "VlCofinsSubstituido", "FgFreteCompoeBaseICMS", "FgFreteCompoeBaseIPI", "FgFreteCompoeTotal", "FgFreteCompoeVlProdutos", "FgDespesasCompoeBaseICMS", "FgDespesasCompoeBaseIPI", "FgDespesasCompoeVlProdutos", "FgSeguroCompoeVlProdutos", "FgSeguroCompoeBaseICMS", "FgSeguroCompoeBaseIPI", "FgSeguroCompoeTotal", "NumPedido", "FgLogEtiquetasLote", "FgUtilizaVlICMSSTProdutos", "SituacaoDoc", "VlDesconto", "VlFreteConhecTransp", "NumNotaConhecTransp", "FgFreteCompoeBasePIS", "FgFreteCompoeBaseCOFINS", "VlTotalFCPST", "FgFCPSTCompoeVlTotalProdutos", "FgFCPSTCompoeVlTotalNota", "FgFCPSTCompoeVlCustoProduto" from "NfMestre" where "NroNf" = ?`
+      `select "NroNf" from "NfMestre" where "CdEmpresa" = ? and "NroNf" = ? and "Serie" = ? and "Modelo" = ?`
     );
   });
 
   it("nfEntradaList", async () => {
     tracker.on.select("NfMestre").response([]);
-    const rsp = await apiRequest(app, "nfEntradaList", {
+    const rsp = await apiRequest(app, "crudList", {
+      table: "nf_entrada",
       where: [["nota_id", "=", "171"]],
     });
     expect(rsp.status).toEqual(200);
@@ -53,8 +56,9 @@ describe("nfEntrada", () => {
 
   it("nfEntradaDel", async () => {
     tracker.on.delete("NfMestre").response(1);
-    const rsp = await apiRequest(app, "nfEntradaDel", {
-      id: { nota_id: "171" },
+    const rsp = await apiRequest(app, "crudDel", {
+      table: "nf_entrada",
+      id: { filial_id: 1, nota_id: "171", serie_id: "X", modelo_id: 1 },
     });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(1));
@@ -62,7 +66,8 @@ describe("nfEntrada", () => {
 
   it("nfEntradaCreate", async () => {
     tracker.on.any("NfMestre").response([]);
-    const rsp = await apiRequest(app, "nfEntradaCreate", {
+    const rsp = await apiRequest(app, "crudCreate", {
+      table: "nf_entrada",
       data: { nota_id: "171" },
     });
     expect(rsp.status).toEqual(200);
@@ -71,21 +76,12 @@ describe("nfEntrada", () => {
 
   it("nfEntradaUpdate", async () => {
     tracker.on.any("NfMestre").response([]);
-    const rsp = await apiRequest(app, "nfEntradaUpdate", {
-      id: { nota_id: "171" },
+    const rsp = await apiRequest(app, "crudUpdate", {
+      table: "nf_entrada",
+      id: { filial_id: 1, nota_id: "171", serie_id: "X", modelo_id: 1 },
       data: { nota_id: "172" },
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse(null));
-  });
-
-  it.skip("nfEntradaTransferenciaCreate", async () => {
-    tracker.on.any("NfMestre").response([]);
-    const rsp = await apiRequest(app, "nfEntradaTransferenciaCreate", {
-      controles: ["180076000124", "180076000033"],
-    });
-    expect(rsp.status).toEqual(200);
-    console.log(rsp.body);
     expect(rsp.body).toEqual(rpcResponse(null));
   });
 });

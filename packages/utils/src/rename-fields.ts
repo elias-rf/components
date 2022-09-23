@@ -26,8 +26,12 @@ export function renameToFieldTuple(tupleArray: any[], entity: TEntity) {
   const nameList = namesFromEntity(entity);
   const fieldList = fieldsFromEntity(entity);
   return tupleArray.map((whr) => {
-    whr[0] = renameString(whr[0], nameList, fieldList);
-    return whr;
+    try {
+      whr[0] = renameString(whr[0], nameList, fieldList);
+      return whr;
+    } catch (error: any) {
+      throw new Error(`${entity.table} ${error.message}`);
+    }
   });
 }
 
@@ -36,8 +40,12 @@ export function renameToNameTuple(tupleArray: any[], entity: TEntity) {
   const nameList = namesFromEntity(entity);
   const fieldList = fieldsFromEntity(entity);
   return tupleArray.map((whr) => {
-    whr[0] = renameString(whr[0], fieldList, nameList);
-    return whr;
+    try {
+      whr[0] = renameString(whr[0], fieldList, nameList);
+      return whr;
+    } catch (error: any) {
+      throw new Error(`${entity.table} ${error.message}`);
+    }
   });
 }
 
@@ -71,44 +79,72 @@ export function renameToFieldArray(data: any, entity: TEntity) {
   if (isEmpty(data)) return data;
   const nameList = namesFromEntity(entity);
   const fieldList = fieldsFromEntity(entity);
-  return data.map((field: any) => {
-    const fieldIdx = nameList.indexOf(field);
-    if (fieldIdx === -1) {
-      throw new Error(`${field} não é um nome válido: ${nameList.toString()}`);
-    }
-    field = fieldList[fieldIdx];
-    return field;
-  });
+  try {
+    return data.map((field: any) => {
+      const fieldIdx = nameList.indexOf(field);
+      if (fieldIdx === -1) {
+        throw new Error(
+          `${field} não é um nome válido: ${nameList.toString()}`
+        );
+      }
+      field = fieldList[fieldIdx];
+      return field;
+    });
+  } catch (error: any) {
+    throw new Error(`${entity.table} ${error.message}`);
+  }
 }
 
 export function renameToNameObject(data: any, entity: TEntity) {
   if (!isObject(data)) return data;
   const nameList = namesFromEntity(entity);
   const fieldList = fieldsFromEntity(entity);
-  return renameObject(data, fieldList, nameList);
+  try {
+    const rsp = renameObject(data, fieldList, nameList);
+    return rsp;
+  } catch (error: any) {
+    throw new Error(`${entity.table} ${error.message}`);
+  }
 }
 
 export function renameToFieldObject(data: any, entity: TEntity) {
   if (!isObject(data)) return data;
   const nameList = namesFromEntity(entity);
   const fieldList = fieldsFromEntity(entity);
-  return renameObject(data, nameList, fieldList);
+  try {
+    const rsp = renameObject(data, nameList, fieldList);
+    return rsp;
+  } catch (error: any) {
+    throw new Error(`${entity.table} ${error.message}`);
+  }
 }
 
 export function renameToNameArrayObject(data: any[], entity: TEntity) {
   if (!isArray(data)) return data;
   const nameList = namesFromEntity(entity);
   const fieldList = fieldsFromEntity(entity);
-  return data.map((rec) => {
-    return renameObject(rec, fieldList, nameList);
-  });
+
+  try {
+    const rsp = data.map((rec) => {
+      return renameObject(rec, fieldList, nameList);
+    });
+    return rsp;
+  } catch (error: any) {
+    throw new Error(`${entity.table} ${error.message}`);
+  }
 }
 
 export function renameToFieldArrayObject(data: any[], entity: TEntity) {
   if (!isArray(data)) return data;
   const nameList = namesFromEntity(entity);
   const fieldList = fieldsFromEntity(entity);
-  return data.map((rec) => {
-    return renameObject(rec, nameList, fieldList);
-  });
+
+  try {
+    const rsp = data.map((rec) => {
+      return renameObject(rec, nameList, fieldList);
+    });
+    return rsp;
+  } catch (error: any) {
+    throw new Error(`${entity.table} ${error.message}`);
+  }
 }

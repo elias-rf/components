@@ -8,8 +8,9 @@ import { OrdemProducaoOperacaoModel } from "../ordem-producao-operacao/ordem-pro
 import { ProdutoItemModel } from "../produto-item/produto-item.model";
 import { ProdutoPlanoModel } from "../produto-plano/produto-plano.model";
 import { ProdutoModel } from "../produto/produto.model";
+import { TOrdemProducao } from "./ordem-producao.type";
 
-export class OrdemProducaoModel extends Entity {
+export class OrdemProducaoModel extends Entity<TOrdemProducao> {
   produtoItemModel: ProdutoItemModel;
   produtoModel: ProdutoModel;
   produtoPlanoModel: ProdutoPlanoModel;
@@ -38,15 +39,12 @@ export class OrdemProducaoModel extends Entity {
   }
 
   async produto({ id, select }: { id: Ids; select?: Select }) {
-    const { fkProdutoItem } = await this.read({
+    const produto = await this.produtoItem({
       id,
-      select: ["fkProdutoItem"],
-    });
-    const { fkProduto } = await this.produtoItemModel.read({
-      id: { produto_item_id: fkProdutoItem || "" },
+      select: ["produto_id"],
     });
     return this.produtoModel.read({
-      id: { produto_id: fkProduto || "" },
+      id: { produto_id: produto.produto_id || "" },
       select,
     });
   }
@@ -66,76 +64,79 @@ export class OrdemProducaoModel extends Entity {
   }
 
   // Retorna data de fabricacao
-  async dataFabricacao(id: Ids) {
+  async dataFabricacao({ id }: { id: Ids }) {
     let response = await this.ordemProducaoOperacaoModel.list({
       where: [
-        ["fkOperacao", "=", "3059"],
-        ["fkOp", "=", id[0]],
+        ["operacao_id", "=", "3059"],
+        ["ordem_producao_id", "=", id.ordem_producao_id],
       ],
-      order: [["DataHoraInicio", "desc"]],
+      order: [["data_hora_inicio", "desc"]],
+      select: ["data_hora_inicio"],
     });
 
-    if (isEmpty(response[0].DataInicio)) {
+    if (isEmpty(response[0].data_hora_inicio)) {
       response = await this.ordemProducaoOperacaoModel.list({
         where: [
-          ["fkOperacao", "=", "3060"],
-          ["fkOp", "=", id[0]],
+          ["operacao_id", "=", "3060"],
+          ["ordem_producao_id", "=", id.ordem_producao_id],
         ],
         order: [["DataHoraInicio", "desc"]],
+        select: ["data_hora_inicio"],
       });
-      if (isEmpty(response[0].DataInicio)) {
-        response = await this.ordemProducaoOperacaoModel.list({
-          where: [
-            ["fkOperacao", "=", "4020"],
-            ["fkOp", "=", id[0]],
-          ],
-          order: [["DataHoraInicio", "desc"]],
-        });
-      }
-      if (isEmpty(response[0].DataInicio)) {
-        response = await this.ordemProducaoOperacaoModel.list({
-          where: [
-            ["fkOperacao", "=", "3160"],
-            ["fkOp", "=", id[0]],
-          ],
-          order: [["DataHoraInicio", "desc"]],
-        });
-      }
-      if (isEmpty(response[0].DataInicio)) {
-        throw new Error(
-          "Ordem de produção não possui 3059, 3060, 4020 ou 3160"
-        );
-      }
     }
+    if (isEmpty(response[0].data_hora_inicio)) {
+      response = await this.ordemProducaoOperacaoModel.list({
+        where: [
+          ["operacao_id", "=", "4020"],
+          ["ordem_producao_id", "=", id.ordem_producao_id],
+        ],
+        order: [["DataHoraInicio", "desc"]],
+        select: ["data_hora_inicio"],
+      });
+    }
+    if (isEmpty(response[0].data_hora_inicio)) {
+      response = await this.ordemProducaoOperacaoModel.list({
+        where: [
+          ["operacao_id", "=", "3160"],
+          ["ordem_producao_id", "=", id.ordem_producao_id],
+        ],
+        order: [["DataHoraInicio", "desc"]],
+        select: ["data_hora_inicio"],
+      });
+    }
+    if (isEmpty(response[0].data_hora_inicio)) {
+      throw new Error("Ordem de produção não possui 3059, 3060, 4020 ou 3160");
+    }
+
     if (Array.isArray(response) && response.length > 0) {
-      return day(response[0].DataInicio).toISOString();
+      return day(response[0].data_hora_inicio).format("YYYY-MM-DD");
     }
     return "";
   }
 
   // Retorna data de validade
-  async dataValidade(id: Ids) {
-    const fabricacao = await this.dataFabricacao(id);
+  async dataValidade({ id }: { id: Ids }) {
+    const fabricacao = await this.dataFabricacao({ id });
     if (fabricacao === "") {
       throw new Error("Ordem de produção não possui 3059, 3060, 4020 ou 3160");
     }
-    const validade = day(fabricacao).add(5, "y").toISOString();
+    const validade = day(fabricacao).add(5, "y").format("YYYY-MM-DD");
     return validade;
   }
 
   // Retorna data de validade
-  async versao(id: Ids) {
+  async versao({ id }: { id: Ids }) {
     const rec = await this.read({
-      id: { ordem_producao_id: id },
+      id,
       select: ["versao"],
     });
-    return rec.versao || "";
+    return rec.versao || -1;
   }
 
   // Retorna numero de controle a partir da ordem de producao e numero de serie
-  async controle(id: Ids, serie: string) {
+  async controle({ id, serie }: { id: Ids; serie: string | number }) {
     const serial = "000000"
-      .concat((parseInt(id[0]) / 100).toString())
+      .concat((parseInt(id.ordem_producao_id) / 100).toString())
       .slice(-6)
       .concat("00000".concat(serie.toString()).slice(-5));
     const dv = module10(serial);

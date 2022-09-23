@@ -1,14 +1,30 @@
-import { CurrentUser, Schema } from "@er/types";
+import { CurrentUser, GenericObject, ReadArgs, Schema } from "@er/types";
 import { config } from "../../config";
 import { TConnections } from "../../dal/connections";
 import { Entity } from "../../lib/entity";
 import { jwtEncode } from "../../lib/jwt-encode";
 import { passwordVerify } from "../../lib/password-verify";
+import { GroupSubjectModel } from "../group-subject/group-subject.model";
 import { TUsuario } from "./usuario.type";
 
-export class UsuarioModel extends Entity {
+export class UsuarioModel extends Entity<TUsuario> {
+  groupSubject: GroupSubjectModel;
+
   constructor(connections: TConnections) {
     super(connections, "usuario");
+    this.groupSubject = new GroupSubjectModel(connections);
+  }
+
+  async listSubject({
+    id,
+    select = this.groupSubject.nameList,
+  }: ReadArgs): Promise<GenericObject[]> {
+    const group_id = await this.read({ id, select: ["group_id"] });
+
+    return this.groupSubject.list({
+      where: [["group_id", "=", group_id]],
+      select,
+    });
   }
 
   async login({ user, password }: { user: string; password: string }) {
@@ -45,7 +61,7 @@ export class UsuarioModel extends Entity {
       usuario_id: record.usuario_id || 0,
       nome_login: record.nome_login || "",
       nome: record.nome || "",
-      grupo_id: record.grupo_id || "",
+      group_id: record.group_id || "",
     };
     resp.token = jwtEncode(resp, config.auth.secret, config.auth.expiration);
     return resp;

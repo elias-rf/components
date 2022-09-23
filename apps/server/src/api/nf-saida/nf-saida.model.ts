@@ -2,6 +2,7 @@ import { Schema } from "@er/types";
 import { TConnections } from "../../dal/connections";
 import { Entity } from "../../lib/entity";
 import { NfSaidaFvModel } from "../nf-saida-fv/nf-saida-fv.model";
+import { TNfSaida } from "./nf-saida.type";
 
 export type TVendas = {
   origem: string;
@@ -19,7 +20,7 @@ export type TVendas = {
   uf: string;
 };
 
-export class NfSaidaModel extends Entity {
+export class NfSaidaModel extends Entity<TNfSaida> {
   nfSaidaFvModel: NfSaidaFvModel;
   constructor(connections: TConnections) {
     super(connections, "nf_saida");
@@ -39,20 +40,19 @@ export class NfSaidaModel extends Entity {
     )
       .select(
         this.knex.raw(
-          "CONVERT(CHAR(10),[mestrenota].[DtEmissao],120) AS dia, CategPro.NmCategoria, Sum(ItemNota.Quantidade) AS quantidade"
+          "CONVERT(CHAR(10),[MestreNota].[DtEmissao],120) AS dia, CategPro.NmCategoria, Sum(ItemNota.Quantidade) AS quantidade"
         )
       )
-      .orderByRaw("[mestrenota].[DtEmissao] desc")
-      .groupByRaw("[mestrenota].[DtEmissao], CategPro.NmCategoria")
+      .orderByRaw("[MestreNota].[DtEmissao] desc")
+      .groupByRaw("[MestreNota].[DtEmissao], CategPro.NmCategoria")
       .where(
-        this.knex.raw("[mestrenota].[DtEmissao] between ? and ?", [inicio, fim])
+        this.knex.raw("[MestreNota].[DtEmissao] between ? and ?", [inicio, fim])
       )
       .andWhere(
         this.knex.raw(
           "MestreNota.CdFilial= 1 AND NatOpe.Nop= 5151 AND MestreNota.Tipo<> 'C' AND MestreNota.NotadeComplemento= 'N'"
         )
       );
-
     for (const item of qry) {
       aux[item.dia] = {
         ...aux[item.dia],
@@ -130,17 +130,17 @@ export class NfSaidaModel extends Entity {
     )
       .select(
         this.knex.raw(
-          "CONVERT(CHAR(7),[mestrenota].[DtEmissao],120) AS mes, CategPro.NmCategoria, Sum(ItemNota.Quantidade) AS quantidade"
+          "CONVERT(CHAR(7),[MestreNota].[DtEmissao],120) AS mes, CategPro.NmCategoria, Sum(ItemNota.Quantidade) AS quantidade"
         )
       )
-      .orderByRaw("CONVERT(CHAR(7),[mestrenota].[DtEmissao],120) desc")
+      .orderByRaw("CONVERT(CHAR(7),[MestreNota].[DtEmissao],120) desc")
       .groupBy(
         this.knex.raw(
-          "CONVERT(CHAR(7),[mestrenota].[DtEmissao],120), CategPro.NmCategoria"
+          "CONVERT(CHAR(7),[MestreNota].[DtEmissao],120), CategPro.NmCategoria"
         )
       )
       .where(
-        this.knex.raw("CONVERT(CHAR(7),[mestrenota].[DtEmissao],120)>=?", [mes])
+        this.knex.raw("CONVERT(CHAR(7),[MestreNota].[DtEmissao],120)>=?", [mes])
       )
       .andWhere(
         this.knex.raw(
@@ -293,7 +293,7 @@ export class NfSaidaModel extends Entity {
       })
       .where("ItemNota.Sequencia", ">", 0)
       .where("MestreNota.Tipo", "<>", "C")
-      .where("mestrenota.cdcliente", "<>", 3158)
+      .where("MestreNota.cdcliente", "<>", 3158)
       .whereBetween("MestreNota.DtEmissao", [inicio, fim])
       .whereRaw(
         "ItemNota.CdFilial = MestreNota.CdFilial and ItemNota.Serie = MestreNota.Serie and ItemNota.Modelo = MestreNota.Modelo and ItemNota.NumNota = MestreNota.NumNota and CadPro.CdCategoria = CategPro.CdCategoria and NatOpe.Nop = MestreNota.Nop and CadVen.CdVendedor = MestreNota.CdVendedor and CadCli.CdCliente = MestreNota.CdCliente and CadPro.CdProduto = ItemNota.CdProduto and Cadcli.Cidade = cidadeserf.NmCidadeIBGE"
@@ -370,7 +370,7 @@ export class NfSaidaModel extends Entity {
       .groupBy("CdCliente", "NmCategoria")
       .groupByRaw("CONVERT(char(7), dbo.MestreNota.DtEmissao, 126)")
 
-      .orderByRaw("CONVERT(CHAR(7),[mestrenota].[DtEmissao],126) DESC");
+      .orderByRaw("CONVERT(CHAR(7),[MestreNota].[DtEmissao],126) DESC");
 
     return qry;
   }
@@ -506,11 +506,11 @@ export class NfSaidaModel extends Entity {
         "ItemNota.ImprimeComponentes": "N",
       })
       .where("ItemNota.Sequencia", "<>", 0)
-      .where("mestrenota.cdcliente", "<>", 3158)
+      .where("MestreNota.cdcliente", "<>", 3158)
       .whereBetween("MestreNota.DtEmissao", [inicio, fim])
       .whereIn("MestreNota.Tipo", ["E", "S"]);
 
-    const qryFullvision = this.nfSaidaFvModel.vendaAnalitico(inicio, fim);
+    const qryFullvision = this.nfSaidaFvModel.vendaAnalitico({ inicio, fim });
 
     const resp: TVendas[][] = await Promise.all([qryPlano, qryFullvision]);
     return resp[0].concat(resp[1]);

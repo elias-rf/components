@@ -1,4 +1,4 @@
-import { TCliente } from "@er/server/src/type/cliente.type";
+import { TCliente } from "@er/server/src/api/cliente/cliente.type";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
 export type { TCliente };

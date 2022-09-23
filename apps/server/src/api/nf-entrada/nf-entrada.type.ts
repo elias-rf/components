@@ -1,11 +1,8 @@
-export type TNfEntradaId = {
+export type TNfEntrada = {
   filial_id: number;
   nota_id: number;
   serie_id: string;
   modelo_id: string;
-}
-
-export type TNfEntradaBase = {
   fornecedor_id?: number;
   data_emissao?: string;
   data_entrada?: string;
@@ -82,6 +79,4 @@ export type TNfEntradaBase = {
   FgFCPSTCompoeVlTotalProdutos?: string;
   FgFCPSTCompoeVlTotalNota?: string;
   FgFCPSTCompoeVlCustoProduto?: string;
-}
-
- export type TNfEntrada = Partial<TNfEntradaId | TNfEntradaBase>
+};

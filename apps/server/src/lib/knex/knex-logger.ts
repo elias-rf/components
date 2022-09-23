@@ -18,7 +18,7 @@ export function knexLogger(knex: Knex) {
     queries.delete(queryId);
     if (!query) throw new TypeError("Query disappeared");
     const { sql, bindings, startTime } = query;
-    const duration = (hrtime.bigint() - startTime) / 1000000n;
+    const duration = (hrtime.bigint() - startTime) / BigInt(1000000);
     return { query: toSql(sql, bindings), duration };
   }
 

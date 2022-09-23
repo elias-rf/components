@@ -1,8 +1,5 @@
-export type TMaquinaId = {
+export type TMaquina = {
   maquina_id: number;
-}
-
-export type TMaquinaBase = {
   nome?: number;
   serie?: number;
   divisao_id?: number;
@@ -10,6 +7,4 @@ export type TMaquinaBase = {
   descricao?: number;
   frequencia?: string;
   is_ativo?: boolean;
-}
-
- export type TMaquina = Partial<TMaquinaId | TMaquinaBase>
+};

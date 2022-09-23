@@ -42,7 +42,7 @@ describe("authentication", () => {
     expect(rsp.body).toEqual(
       rpcResponse({
         nome_login: "fulano",
-        grupo_id: "dev",
+        group_id: "dev",
         nome: "Fulano",
         usuario_id: 1,
         token: expect.any(String),
@@ -51,7 +51,7 @@ describe("authentication", () => {
     expect(tracker.history.select.length).toEqual(1);
     expect(tracker.history.select[0].bindings).toEqual(["fulano", 50]);
     expect(tracker.history.select[0].sql).toEqual(
-      'select "kUsuario", "NomeUsuario", "fkGrupo", "email", "fkFuncionario", "Ativo", "hash", "nome", "setor", "nivel", "idGroup" from "tbl_Seguranca_Usuario" where ("NomeUsuario" = ?) limit ?'
+      'select "kUsuario", "NomeUsuario", "email", "fkFuncionario", "Ativo", "hash", "nome", "setor", "nivel", "idGroup" from "tbl_Seguranca_Usuario" where ("NomeUsuario" = ?) limit ?'
     );
   });
 });

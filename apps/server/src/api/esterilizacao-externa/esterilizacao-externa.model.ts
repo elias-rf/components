@@ -3,6 +3,7 @@ import { isString } from "@er/utils/src/is-string";
 import { TConnections } from "../../dal/connections";
 import { Entity } from "../../lib/entity";
 import { validateIsThrow } from "../../lib/validate-is-throw";
+import { TEsterilizacaoExterna } from "./esterilizacao-externa.type";
 
 export type TEsterilizacaoExternaDia = {
   dia: string;
@@ -25,7 +26,7 @@ export type TEsterilizacaoExternaModelo = {
   quantidade: string;
 };
 
-export class EsterilizacaoExternaModel extends Entity {
+export class EsterilizacaoExternaModel extends Entity<TEsterilizacaoExterna> {
   constructor(connections: TConnections) {
     super(connections, "esterilizacao_externa");
   }

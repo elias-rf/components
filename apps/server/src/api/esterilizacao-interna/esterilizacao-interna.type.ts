@@ -1,8 +1,5 @@
-export type TEsterilizacaoInternaId = {
+export type TEsterilizacaoInterna = {
   esterilizacao_interna_id: number;
-}
-
-export type TEsterilizacaoInternaBase = {
   data_envio?: string;
   is_fechado?: number;
   resultado?: string;
@@ -11,6 +8,4 @@ export type TEsterilizacaoInternaBase = {
   data_fechamento?: string;
   usuario_id_fechamento?: number;
   data_autoclave?: string;
-}
-
- export type TEsterilizacaoInterna = Partial<TEsterilizacaoInternaId | TEsterilizacaoInternaBase>
+};

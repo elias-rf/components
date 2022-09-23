@@ -7,7 +7,7 @@ export const produto_controle: TEntity = {
     {
       field: "CdLote",
       label: "CdLote",
-      name: "CdLote",
+      name: "controle",
       type: "string",
       size: 18,
       allowNull: false,
@@ -15,7 +15,7 @@ export const produto_controle: TEntity = {
     {
       field: "CdProduto",
       label: "CdProduto",
-      name: "CdProduto",
+      name: "produto_id",
       type: "string",
       size: 15,
       allowNull: false,
@@ -23,7 +23,7 @@ export const produto_controle: TEntity = {
     {
       field: "CdFornecedor",
       label: "CdFornecedor",
-      name: "CdFornecedor",
+      name: "fornecedor_id",
       type: "float",
       size: 8,
       scale: 4,
@@ -32,14 +32,14 @@ export const produto_controle: TEntity = {
     {
       field: "CdNRA",
       label: "CdNRA",
-      name: "CdNRA",
+      name: "nra_id",
       type: "string",
       size: 6,
     },
     {
       field: "DtFabricacao",
       label: "DtFabricacao",
-      name: "DtFabricacao",
+      name: "data_fabricacao",
       type: "datetime",
       size: 8,
       scale: 3,
@@ -47,7 +47,7 @@ export const produto_controle: TEntity = {
     {
       field: "DtValidade",
       label: "DtValidade",
-      name: "DtValidade",
+      name: "data_validade",
       type: "datetime",
       size: 8,
       scale: 3,
@@ -55,7 +55,7 @@ export const produto_controle: TEntity = {
     {
       field: "DtAnalise",
       label: "DtAnalise",
-      name: "DtAnalise",
+      name: "data_analise",
       type: "datetime",
       size: 8,
       scale: 3,
@@ -63,14 +63,14 @@ export const produto_controle: TEntity = {
     {
       field: "Aspecto",
       label: "Aspecto",
-      name: "Aspecto",
+      name: "aspecto",
       type: "string",
       size: 40,
     },
     {
       field: "FatorCorrecao",
       label: "FatorCorrecao",
-      name: "FatorCorrecao",
+      name: "fator_correcao",
       type: "float",
       size: 8,
       scale: 4,
@@ -78,28 +78,28 @@ export const produto_controle: TEntity = {
     {
       field: "Densidade",
       label: "Densidade",
-      name: "Densidade",
+      name: "densidade",
       type: "float",
       size: 4,
     },
     {
       field: "PercentualDiluicao",
       label: "PercentualDiluicao",
-      name: "PercentualDiluicao",
+      name: "percentual_diluicao",
       type: "float",
       size: 4,
     },
     {
       field: "SituacaoLote",
       label: "SituacaoLote",
-      name: "SituacaoLote",
+      name: "situacao_lote",
       type: "string",
       size: 1,
     },
     {
       field: "SerieNfEntrada",
       label: "SerieNfEntrada",
-      name: "SerieNfEntrada",
+      name: "serie_id",
       type: "string",
       size: 3,
       allowNull: false,
@@ -107,7 +107,7 @@ export const produto_controle: TEntity = {
     {
       field: "QtdeAdquirida",
       label: "QtdeAdquirida",
-      name: "QtdeAdquirida",
+      name: "quantidade_adquirida",
       type: "float",
       size: 8,
       scale: 4,
@@ -115,7 +115,7 @@ export const produto_controle: TEntity = {
     {
       field: "NumNfEntrada",
       label: "NumNfEntrada",
-      name: "NumNfEntrada",
+      name: "nota_id",
       type: "float",
       size: 8,
       scale: 4,
@@ -124,7 +124,7 @@ export const produto_controle: TEntity = {
     {
       field: "SaldoPeso",
       label: "SaldoPeso",
-      name: "SaldoPeso",
+      name: "saldo_peso",
       type: "float",
       size: 8,
       scale: 4,
@@ -132,7 +132,7 @@ export const produto_controle: TEntity = {
     {
       field: "DtEntrada",
       label: "DtEntrada",
-      name: "DtEntrada",
+      name: "data_entrada",
       type: "datetime",
       size: 8,
       scale: 3,
@@ -140,7 +140,7 @@ export const produto_controle: TEntity = {
     {
       field: "DtLimiteUso",
       label: "DtLimiteUso",
-      name: "DtLimiteUso",
+      name: "data_limite_uso",
       type: "datetime",
       size: 8,
       scale: 3,
@@ -148,7 +148,7 @@ export const produto_controle: TEntity = {
     {
       field: "TipoLote",
       label: "TipoLote",
-      name: "TipoLote",
+      name: "tipo_lote",
       type: "string",
       size: 1,
     },
@@ -162,7 +162,7 @@ export const produto_controle: TEntity = {
     {
       field: "CdFilial",
       label: "CdFilial",
-      name: "CdFilial",
+      name: "filial_id",
       type: "float",
       size: 8,
       scale: 4,
@@ -171,7 +171,7 @@ export const produto_controle: TEntity = {
     {
       field: "Modelo",
       label: "Modelo",
-      name: "Modelo",
+      name: "modelo_id",
       type: "string",
       size: 3,
       allowNull: false,
@@ -179,7 +179,7 @@ export const produto_controle: TEntity = {
     {
       field: "NumLote",
       label: "NumLote",
-      name: "NumLote",
+      name: "controle",
       type: "string",
       size: 18,
     },

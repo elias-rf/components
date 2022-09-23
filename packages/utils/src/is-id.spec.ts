@@ -20,6 +20,7 @@ const entity: TEntity = {
       label: "Nome",
       name: "nome",
       type: "string",
+      primaryKey: true,
     },
     {
       field: "department",
@@ -42,8 +43,11 @@ it("deve validar Id", () => {
   expect(isId({}, entity)).toBe("Id deve ser informado");
   expect(isId([], entity)).toBe("Id deve ser informado");
   expect(isId("field", entity)).toBe("Id deve ser informado");
-  expect(isId({ agenda_telefone_id: 1 }, entity)).toEqual(null);
+  expect(isId({ agenda_telefone_id: 1, nome: "fulano" }, entity)).toEqual(null);
   expect(isId({ fld: 1 }, entity)).toEqual(
-    "fld não é uma das chaves válidas para [id][phonebook]: agenda_telefone_id"
+    "[agenda_telefone_id,nome] não foi informado para [id][phonebook]: agenda_telefone_id,nome"
+  );
+  expect(isId({ agenda_telefone_id: 1 }, entity)).toEqual(
+    "[nome] não foi informado para [id][phonebook]: agenda_telefone_id,nome"
   );
 });

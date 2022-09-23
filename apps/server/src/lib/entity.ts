@@ -9,7 +9,6 @@ import type {
   TEntity,
   UpdateArgs,
 } from "@er/types";
-
 import { fieldsFromEntity } from "@er/utils/src/fields-from-entity";
 import { isData } from "@er/utils/src/is-data";
 import { isId } from "@er/utils/src/is-id";
@@ -30,9 +29,10 @@ import {
 } from "@er/utils/src/rename-fields";
 import { entitySchema } from "../api/entity-schema";
 import { TConnections, TDbs } from "../dal/connections";
+import { recordClear } from "./record-clear";
 import { validateThrow } from "./validate-throw";
 
-export class Entity {
+export class Entity<T extends GenericObject> {
   entity: TEntity;
   entityName: string;
   knex;
@@ -71,13 +71,13 @@ export class Entity {
     order = [],
     limit = 50,
     select = this.nameList,
-  }: ListArgs = {}): Promise<GenericObject[]> {
+  }: ListArgs = {}): Promise<T[]> {
     validateThrow(isOrder(order, this.entity));
     validateThrow(isWhere(where, this.entity));
     validateThrow(isLimit(limit));
     validateThrow(isSelect(select, this.entity));
 
-    const data: GenericObject[] = await this.knex(this.table)
+    const data: T[] = await this.knex(this.table)
       .select(renameToFieldArray(select, this.entity))
       .limit(limit)
       .where(knexWhere(renameToFieldTuple(where, this.entity)))
@@ -86,7 +86,7 @@ export class Entity {
   }
 
   // READ
-  async read({ id, select = this.nameList }: ReadArgs): Promise<GenericObject> {
+  async read({ id, select = this.nameList }: ReadArgs): Promise<T> {
     validateThrow(isId(id, this.entity));
     validateThrow(isSelect(select, this.entity));
 
@@ -95,7 +95,7 @@ export class Entity {
       .where(renameToFieldObject(id, this.entity));
 
     const [rec] = renameToNameArrayObject(data, this.entity);
-    return rec || ({} as GenericObject);
+    return rec || ({} as T);
   }
 
   // DEL
@@ -112,7 +112,7 @@ export class Entity {
   }
 
   // CREATE
-  async create({ data }: CreateArgs): Promise<GenericObject> {
+  async create({ data }: CreateArgs): Promise<T> {
     validateThrow(isData(data, this.entity));
 
     const [qry] = await this.knex(this.table)
@@ -122,14 +122,19 @@ export class Entity {
   }
 
   // UPDATE
-  async update({ id, data }: UpdateArgs): Promise<GenericObject> {
+  async update({ id, data }: UpdateArgs): Promise<T> {
     validateThrow(isId(id, this.entity));
     validateThrow(isData(data, this.entity));
 
     const qry = await this.knex(this.table)
       .update(renameToFieldObject(data, this.entity))
-      .where(renameToFieldObject(data, this.entity))
+      .where(renameToFieldObject(id, this.entity))
       .returning(this.fieldList as any);
     return renameToNameObject(qry[0], this.entity);
+  }
+
+  // RECORD CLEAR
+  async clear(): Promise<GenericObject> {
+    return recordClear(this.entity);
   }
 }

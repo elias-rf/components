@@ -10,7 +10,7 @@
     "jsx": "react-jsx",
     "module": "CommonJS",
     "moduleResolution": "node",
-    "noEmit": false,
+    "noEmit": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "rootDir": ".",

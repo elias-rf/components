@@ -1,5 +1,5 @@
 import { RpcContext, Schema } from "@er/types";
-import { TConnections } from "dal/connections";
+import { TConnections } from "../../dal/connections";
 import { OperacaoProducaoModel } from "../operacao-producao/operacao-producao.model";
 
 export interface TOperacaoProducaoRpc {
@@ -36,28 +36,28 @@ export function operacaoProducaoRpc(
 
   return {
     // DIARIO
-    async operacaoDiario({ operacao, inicio, fim }) {
-      return operacaoProducao.diario(operacao, inicio, fim);
+    async operacaoDiario(args) {
+      return operacaoProducao.diario(args);
     },
 
     // MENSAL
-    async operacaoMensal({ operacao, mes }) {
-      return operacaoProducao.mensal(operacao, mes);
+    async operacaoMensal(args) {
+      return operacaoProducao.mensal(args);
     },
 
     // MODELO
-    async operacaoModelo({ data, operacao, produto }) {
-      return operacaoProducao.modelo(data, operacao, produto);
+    async operacaoModelo(args) {
+      return operacaoProducao.modelo(args);
     },
 
     // PRODUTO
-    async operacaoProduto({ operacao, data }) {
-      return operacaoProducao.produto(operacao, data);
+    async operacaoProduto(args) {
+      return operacaoProducao.produto(args);
     },
 
     // TURNO
-    async operacaoTurno({ operacao, data }) {
-      return operacaoProducao.turno(operacao, data);
+    async operacaoTurno(args) {
+      return operacaoProducao.turno(args);
     },
 
     async operacaoTurnoSchema() {

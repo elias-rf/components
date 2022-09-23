@@ -1,5 +1,5 @@
 import type { RpcContext, Schema } from "@er/types";
-import { TConnections } from "dal/connections";
+import { TConnections } from "../../dal/connections";
 import { EsterilizacaoInternaModel } from "../esterilizacao-interna/esterilizacao-interna.model";
 
 export interface TEsterilizacaoInternaRpc {
@@ -51,23 +51,23 @@ export function esterilizacaoInternaRpc(
     },
 
     // DIARIO
-    async esterilizacaoInternaDiario({ inicio, fim }) {
-      return esterilizacaoInterna.diario(inicio, fim);
+    async esterilizacaoInternaDiario(args) {
+      return esterilizacaoInterna.diario(args);
     },
 
     // MENSAL
-    async esterilizacaoInternaMensal({ mes }) {
-      return esterilizacaoInterna.mensal(mes);
+    async esterilizacaoInternaMensal(args) {
+      return esterilizacaoInterna.mensal(args);
     },
 
     // MODELO
-    async esterilizacaoInternaModelo({ data, produto }) {
-      return esterilizacaoInterna.modelo(data, produto);
+    async esterilizacaoInternaModelo(args) {
+      return esterilizacaoInterna.modelo(args);
     },
 
     // PRODUTO
-    async esterilizacaoInternaProduto({ data }) {
-      return esterilizacaoInterna.produto(data);
+    async esterilizacaoInternaProduto(args) {
+      return esterilizacaoInterna.produto(args);
     },
   };
 }

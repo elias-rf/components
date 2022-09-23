@@ -1,17 +1,17 @@
 import { Action, Dispatch } from "@er/types/*";
-import { Input } from "../../components/input";
+import { Input } from "../../components/input/input";
 import { Label } from "../../components/label";
 import { TextboxText } from "../../components/textbox-text";
 
-import { TClienteRecord } from "../../service/cliente.service";
+import { TCliente } from "../../service/cliente.service";
 
 interface ClienteFormProps {
-  record: TClienteRecord;
+  record: TCliente;
   dispatch: Dispatch;
 }
 
 export function ClienteForm({
-  record = {} as TClienteRecord,
+  record = {} as TCliente,
   dispatch,
 }: ClienteFormProps) {
   const handleLoad = async (action: Action) => {

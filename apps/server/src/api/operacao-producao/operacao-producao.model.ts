@@ -1,15 +1,23 @@
 import { Schema } from "@er/types";
-
 import { TConnections } from "../../dal/connections";
 import { Entity } from "../../lib/entity";
+import { TOperacaoProducao } from "./operacao-producao.type";
 
-export class OperacaoProducaoModel extends Entity {
+export class OperacaoProducaoModel extends Entity<TOperacaoProducao> {
   constructor(connections: TConnections) {
     super(connections, "operacao_producao");
   }
 
   // DIARIO
-  async diario(operacao: string, inicio: string, fim: string) {
+  async diario({
+    operacao,
+    inicio,
+    fim,
+  }: {
+    operacao: string;
+    inicio: string;
+    fim: string;
+  }) {
     const qry = await this.knex("tOperacaoOrdemProducao")
       .select(
         this.knex.raw("DataInicio as dia, Sum(QtdConforme) AS quantidade")
@@ -22,7 +30,7 @@ export class OperacaoProducaoModel extends Entity {
   }
 
   // MENSAL
-  async mensal(operacao: string, mes: string) {
+  async mensal({ operacao, mes }: { operacao: string; mes: string }) {
     const qry = await this.knex("tOperacaoOrdemProducao")
       .select(
         this.knex.raw(
@@ -37,7 +45,15 @@ export class OperacaoProducaoModel extends Entity {
   }
 
   // MODELO
-  async modelo(data: string, operacao: string, produto: string) {
+  async modelo({
+    data,
+    operacao,
+    produto,
+  }: {
+    data: string;
+    operacao: string;
+    produto: string;
+  }) {
     const qry = await this.knex(
       this.knex.raw(
         "((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp"
@@ -62,7 +78,7 @@ export class OperacaoProducaoModel extends Entity {
   }
 
   // PRODUTO
-  async produto(operacao: string, data: string) {
+  async produto({ operacao, data }: { operacao: string; data: string }) {
     const qry = await this.knex(
       this.knex.raw(
         "((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp"
@@ -80,7 +96,7 @@ export class OperacaoProducaoModel extends Entity {
   }
 
   // TURNO
-  async turno(operacao: string, data: string) {
+  async turno({ operacao, data }: { operacao: string; data: string }) {
     const qry = await this.knex(
       this.knex.raw(
         "((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp"
@@ -88,7 +104,7 @@ export class OperacaoProducaoModel extends Entity {
     )
       .select(
         this.knex.raw(
-          "	case when tOperacaoOrdemProducao.HoraInicio <='06:00:00' then 'T3' when tOperacaoOrdemProducao.HoraInicio <='14:00:00' then 'T1' when tOperacaoOrdemProducao.HoraInicio <='22:30:00' then 'T2' else 'T3' end as turno, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade"
+          "case when tOperacaoOrdemProducao.HoraInicio <='06:00:00' then 'T3' when tOperacaoOrdemProducao.HoraInicio <='14:00:00' then 'T1' when tOperacaoOrdemProducao.HoraInicio <='22:30:00' then 'T2' else 'T3' end as turno, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade"
         )
       )
       .groupBy(

@@ -13,7 +13,7 @@ export default defineConfig({
       "/api": "http://localhost:3000",
     },
   },
-  build: { outDir: "../public", emptyOutDir: true },
+  build: { outDir: "../../public", emptyOutDir: true },
   plugins: [react()],
   test: {
     globals: true,

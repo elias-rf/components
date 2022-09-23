@@ -1,8 +1,5 @@
-export type TProdutoPlanoId = {
-  CadPro_id: string;
-}
-
-export type TProdutoPlanoBase = {
+export type TProdutoPlano = {
+  produto_plano_id?: string;
   AcresFinanc?: number;
   AliqIrrf?: number;
   CkTabela?: string;
@@ -202,6 +199,4 @@ export type TProdutoPlanoBase = {
   DescontoI?: number;
   DescontoJ?: number;
   FgCombo?: string;
-}
-
- export type TProdutoPlano = Partial<TProdutoPlanoId | TProdutoPlanoBase>
+};

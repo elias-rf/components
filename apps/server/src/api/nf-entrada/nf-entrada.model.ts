@@ -9,8 +9,9 @@ import { NfEntradaLogModel } from "../nf-entrada-log/nf-entrada-log.model";
 import { OrdemProducaoModel } from "../ordem-producao/ordem-producao.model";
 import { ProdutoControleModel } from "../produto-controle/produto-controle.model";
 import { ProdutoEstatisticaModel } from "../produto-estatistica/produto-estatistica.model";
+import { TNfEntrada } from "./nf-entrada.type";
 
-export class NfEntradaModel extends Entity {
+export class NfEntradaModel extends Entity<TNfEntrada> {
   ordemProducao: OrdemProducaoModel;
   nfEntradaControle: NfEntradaControleModel;
   nfEntradaItem: NfEntradaItemModel;
@@ -32,86 +33,89 @@ export class NfEntradaModel extends Entity {
 
   // Transfere produtos acabados da matriz para filial
   async nfEntradaTransferenciaCreate({
-    controles,
+    controle,
   }: {
-    controles: string[];
+    controle: string[];
   }): Promise<boolean> {
     // validateIsThrow(isNonEmptyArray(controles), "Controles devem ser array");
-    const kOp = await this.ordemProducao.fromControle({
-      controle: controles[0],
+    const ordem_producao_id = await this.ordemProducao.fromControle({
+      controle: controle[0],
     });
 
-    for (const controle of controles) {
-      const valid = await this.ordemProducao.isControleValid({ controle });
-      if (!valid) throw new Error(`Controle ${controle} inválido`);
-      const op = await this.ordemProducao.fromControle({ controle });
-      if (kOp !== op)
-        throw new Error(
-          `Controle ${controle} pertence a outra ordem de produção`
-        );
+    for (const ctrl of controle) {
+      const valid = await this.ordemProducao.isControleValid({
+        controle: ctrl,
+      });
+      if (!valid) throw new Error(`Controle ${ctrl} inválido`);
+      const op_id = await this.ordemProducao.fromControle({ controle: ctrl });
+      if (ordem_producao_id !== op_id)
+        throw new Error(`Controle ${ctrl} pertence a outra ordem de produção`);
     }
-
-    console.log(
-      `🚀 ~ file: nf-entrada.model.ts ~ line 43 ~ NfEntradaModel ~ kOp`,
-      kOp
-    );
-    const produto = await this.ordemProducao.produtoPlano({
-      ordem_producao_id: kOp,
+    const { produto_plano_id } = await this.ordemProducao.produtoPlano({
+      id: { ordem_producao_id },
+      select: ["produto_plano_id"],
     });
-    console.log(
-      `🚀 ~ file: nf-entrada.model.ts ~ line 57 ~ NfEntradaModel ~ produto`,
-      produto
-    );
-    if (isEmpty(produto)) {
-      throw new Error(`Ordem de produção ${kOp} não possui vinculo com Plano`);
+
+    if (isEmpty(produto_plano_id)) {
+      throw new Error(
+        `Ordem de produção ${ordem_producao_id} não possui vinculo com Plano`
+      );
     }
 
     const fabricacao = await this.ordemProducao
-      .dataFabricacao([kOp])
+      .dataFabricacao({ id: { ordem_producao_id } })
       .then((dt) => {
         if (isEmpty(dt)) {
           throw new Error(
-            `Ordem de produção ${kOp} não possui data de fabricação`
+            `Ordem de produção ${ordem_producao_id} não possui data de fabricação`
           );
         }
         return day(dt).format("YYYY-MM-DD");
       });
 
-    const expiracao = await this.ordemProducao
-      .dataValidade([kOp])
-      .then((dt: any) => dt?.format("YYYY-MM-DD"));
+    const expiracao = await this.ordemProducao.dataValidade({
+      id: { ordem_producao_id },
+    });
 
-    const quantidade = controles.length;
+    const quantidade = controle.length;
 
     const hoje = day().format("YYYY-MM-DD");
     const agora = day().format("HH:mm:ss");
 
     const nf = await this.read({
-      id: { filial_id: "1", nota_id: kOp, serie_id: "XX", modelo_id: "1" },
+      id: {
+        filial_id: "0",
+        nota_id: ordem_producao_id,
+        serie_id: "XX",
+        modelo_id: "1",
+      },
+      select: ["nota_id"],
     });
 
     if (!isEmpty(nf)) {
-      throw new Error(`Ordem de produção ${kOp} já está cadastrada`);
+      throw new Error(
+        `Ordem de produção ${ordem_producao_id} já está cadastrada`
+      );
     }
 
-    this.create({
+    await this.create({
       data: {
-        filial_id: 1,
-        NroNf: kOp,
-        Serie: "XX",
-        Modelo: "1",
-        CdFornecedor: 1,
-        DtEmi: `${hoje} ${agora}`,
-        DtEntr: `${hoje} ${agora}`,
-        Nop: 1102,
-        NopFiscal: 1102,
-        TotNf: quantidade * 2,
+        filial_id: -1,
+        nota_id: ordem_producao_id,
+        serie_id: "XX",
+        modelo_id: "1",
+        fornecedor_id: 1,
+        data_emissao: `${hoje} ${agora}`,
+        data_entrada: `${hoje} ${agora}`,
+        cfop: 1102,
+        cfop_fiscal: 1102,
+        total_nf: quantidade * 2,
         BaseSubstituicao: 0,
         IPIBasCalc: 0,
         IPIVlr: 0,
         IPIFrete: 0,
         ICMSBasCalc: 0,
-        IcmsVlr: 0,
+        ICMSVlr: 0,
         ICMSRetido: 0,
         ICMSOperPropria: 0,
         ICMSFrete: 0,
@@ -158,103 +162,112 @@ export class NfEntradaModel extends Entity {
 
     await this.nfEntradaItem.create({
       data: {
-        CdEmpresa: 1,
-        NroNF: kOp,
-        Serie: "XX",
-        Modelo: "1",
-        CdFornecedor: 1,
-        CdProduto: produto.CdProduto,
-        FgCusto: "S",
-        FgEtiqueta: "N",
-        PercIcms: 0,
-        PercIpi: 0,
-        Quantidade: quantidade,
-        TipoMovimentacao: "N",
-        VlAcrescItem: 0,
-        VlDescItem: 0,
-        VlrIcms: 0,
-        VlrIpi: 0,
-        VlTotItem: quantidade * 2,
-        TipoTributacao: "T",
-        VlBaseSub: 0,
-        VlIcmsSub: 0,
-        DtEntr: `${hoje} ${agora}`,
-        FgEstoque: "S",
-        VlRepasseICMSItem: 0,
-        FgICMSJaRecolhido: 0,
-        PrecPMC: 0,
-        VlRelacionado: 0,
-        FgCompoeBaseSub: "S",
-        Nop: 0,
-        NopFiscalItem: 0,
-        VlBaseCalculoICMS: 0,
-        VlBrutoUnitario: 2,
-        VlLiquidoUnitario: 2,
-        CdBaseCalculoCreditoPISCOFINS: 0,
-        CdTipoCreditoPISCOFINS: 0,
-        CdContribuicaoApuradaPISCOFINS: 0,
-        Sequencia: 1,
-        VlBaseCalculoIPI: 0,
-        FgConferido: " ",
+        filial_id: 1,
+        nota_id: ordem_producao_id,
+        serie_id: "XX",
+        modelo_id: "1",
+        fornecedor_id: 1,
+        produto_id: produto_plano_id,
+        is_custo: "S",
+        is_etiqueta: "N",
+        percentual_icms: 0,
+        percentual_ipi: 0,
+        quantidade: quantidade,
+        movimentacao: "N",
+        valor_acrescimo: 0,
+        valor_desconto: 0,
+        valor_icms: 0,
+        valor_ipi: 0,
+        valor_total: quantidade * 2,
+        tipo_tributacao: "T",
+        valor_base_substituicao: 0,
+        valor_icms_substituicao: 0,
+        data_entrada: `${hoje} ${agora}`,
+        is_estoque: "S",
+        valor_repasse_icms: 0,
+        is_icms_recolhido: 0,
+        preco_pmc: 0,
+        valor_relacionado: 0,
+        is_compoe_base_substituicao: "S",
+        cfop: 0,
+        cfop_fiscal_item: 0,
+        valor_base_calculo_icms: 0,
+        valor_bruto_unitario: 2,
+        valor_liquido_unitario: 2,
+        base_calculo_credito_pis_cofins: 0,
+        tipo_credito_pis_cofins: 0,
+        contribuicao_apurada_pis_cofins: 0,
+        sequencia: 1,
+        valor_base_calculo_ipi: 0,
+        is_conferido: " ",
       },
     });
 
-    await this.estoque.increment(["1", produto.CdProduto || ""], quantidade);
+    await this.estoque.increment({
+      id: { filial_id: "1", produto_id: produto_plano_id || "" },
+      quantidade,
+    });
 
-    await this.produtoEstatistica.increment(
-      ["1", day().format("MM"), day().format("YY"), produto.CdProduto || ""],
-      quantidade
-    );
+    await this.produtoEstatistica.increment({
+      id: {
+        filial_id: "1",
+        mes: day().format("MM"),
+        ano: day().format("YY"),
+        produto_id: produto_plano_id || "",
+      },
+      quantidade,
+    });
 
-    for (const ctrl of controles) {
+    for (const ctrl of controle) {
       await this.produtoControle.create({
         data: {
-          Aspecto: " ",
-          CdFilial: 1,
-          CdFornecedor: 1,
-          CdLote: ctrl,
-          CdNRA: " ",
-          CdProduto: produto.CdProduto || "",
-          Densidade: 0,
-          DtAnalise: fabricacao || "",
-          DtEntrada: hoje,
-          DtFabricacao: fabricacao || "",
-          DtLimiteUso: expiracao || "",
-          DtValidade: expiracao || "",
-          FatorCorrecao: 0,
-          Modelo: "1",
-          NumNfEntrada: kOp,
-          PercentualDiluicao: 0,
-          QtdeAdquirida: 1,
-          SaldoPeso: 1,
-          SerieNfEntrada: "XX",
-          SituacaoLote: "A",
-          TipoLote: "C",
+          filial_id: 1,
+          nota_id: produto_plano_id,
+          serie_id: "XX",
+          modelo_id: "1",
+          fornecedor_id: 1,
+          aspecto: " ",
+          controle: ctrl,
+          nra_id: " ",
+          produto_id: produto_plano_id || "",
+          densidade: 0,
+          data_analise: fabricacao || "",
+          data_entrada: hoje,
+          data_fabricacao: fabricacao || "",
+          data_limite_uso: expiracao || "",
+          data_validade: expiracao || "",
+          fator_correcao: 0,
+          percentual_diluicao: 0,
+          quantidade_adquirida: 1,
+          saldo_peso: 1,
+          situacao_lote: "A",
+          tipo_lote: "C",
         },
       });
       await this.nfEntradaControle.create({
         data: {
-          NumNota: kOp,
-          Serie: "XX",
-          Modelo: "1",
-          CdFornecedor: "1",
-          NumLote: ctrl,
-          CdProduto: produto.CdProduto || "",
-          Quantidade: "1",
-          CdFilial: "1",
+          filial_id: "1",
+          nota_id: ordem_producao_id,
+          serie_id: "XX",
+          fornecedor_id: "1",
+          modelo_id: "1",
+          controle: ctrl,
+          produto_id: produto_plano_id || "",
+          quantidade: "1",
         },
       });
     }
+
     await this.nfEntradaLog.create({
       data: {
-        CdFilial: "1",
-        NumNota: kOp,
-        Serie: "XX",
-        Modelo: "1",
-        CdFornecedor: "1",
-        Data: `${hoje} ${agora}`,
-        Usuario: "ERIBEIRO",
-        Operacao: "INCLUSAO DA CONFERENCIA",
+        filial_id: "1",
+        nota_id: ordem_producao_id,
+        serie_id: "XX",
+        modelo_id: "1",
+        fornecedor_id: "1",
+        data: `${hoje} ${agora}`,
+        usuario: "ERIBEIRO",
+        operacao: "INCLUSAO DA CONFERENCIA",
       },
     });
 

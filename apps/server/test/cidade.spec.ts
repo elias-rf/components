@@ -1,7 +1,16 @@
 import knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
-import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
 import { app } from "../src/app";
+import { setTracker } from "../src/lib/set-tracker";
 import { apiRequest, rpcResponse } from "./aux";
 
 const NAME = "cidade";
@@ -15,79 +24,93 @@ describe(NAME, () => {
       fullvision: knex({ client: MockClient }),
     },
   }));
-  const recordNames = {
-    uf_old: "ES",
-    nome_cidade: "Anchieta",
-    uf: "ES",
-  };
-  const recordFields = {
-    ufOld: "ES",
-    NmCidadeIBGE: "Anchieta",
-    uf: "ES",
-  };
 
   beforeAll(() => {
     tracker = getTracker();
+    setTracker(tracker);
   });
 
   afterEach(() => {
+    tracker.resetHistory();
+  });
+
+  afterAll(() => {
     tracker.reset();
   });
 
-  it(`${NAME}Schema`, async () => {
-    const rsp = await apiRequest(app, "cidadeSchema", {});
+  it(`cidadeSchema`, async () => {
+    const rsp = await apiRequest(app, "crudSchema", { table: "cidade" });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(expect.any(Array)));
   });
 
-  it(`${NAME}Read`, async () => {
-    tracker.on.select("cidadesERF").response([recordFields]);
-    const rsp = await apiRequest(app, `${NAME}Read`, {
+  it(`cidadeRead`, async () => {
+    const rsp = await apiRequest(app, `crudRead`, {
+      table: "cidade",
       id: { uf_old: "ES", nome_cidade: "Anchieta" },
+      select: ["uf_old"],
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse(recordNames));
-    expect(tracker.history.select.length).toEqual(1);
-    expect(tracker.history.select[0].bindings).toEqual(["ES", "Anchieta"]);
-    expect(tracker.history.select[0].sql).toEqual(
-      'select "CdCidadeIBGE", "NmCidadeIBGE", "CdUFIBGE", "uf", "ufOld" from "cidadesERF" where "ufOld" = ? and "NmCidadeIBGE" = ?'
+    expect(rsp.body).toEqual(
+      rpcResponse({
+        uf_old: "ES",
+      })
+    );
+    expect(tracker.history.any[0].bindings).toEqual(["ES", "Anchieta"]);
+    expect(tracker.history.any[0].sql).toEqual(
+      'select "ufOld" from "cidadesERF" where "ufOld" = ? and "NmCidadeIBGE" = ?'
     );
   });
 
-  it(`${NAME}List`, async () => {
-    tracker.on.select("cidadesERF").response([recordFields]);
-    const rsp = await apiRequest(app, `${NAME}List`, {
+  it(`cidadeList`, async () => {
+    const rsp = await apiRequest(app, `crudList`, {
+      table: "cidade",
       where: [["uf_old", "=", "ES"]],
+      select: ["uf_old"],
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse([recordNames]));
+    expect(rsp.body).toEqual(
+      rpcResponse([
+        {
+          uf_old: "ES",
+        },
+      ])
+    );
   });
 
-  it(`${NAME}Del`, async () => {
-    tracker.on.delete("cidadesERF").response(1);
-    const rsp = await apiRequest(app, `${NAME}Del`, {
+  it(`cidadeDel`, async () => {
+    const rsp = await apiRequest(app, `crudDel`, {
+      table: "cidade",
       id: { uf_old: "ES", nome_cidade: "Anchieta" },
     });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(1));
   });
 
-  it(`${NAME}Create`, async () => {
-    tracker.on.insert("cidadesERF").response([recordFields]);
-    const rsp = await apiRequest(app, `${NAME}Create`, {
+  it(`cidadeCreate`, async () => {
+    const rsp = await apiRequest(app, `crudCreate`, {
+      table: "cidade",
       data: { uf_old: "ES", nome_cidade: "Anchieta" },
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse(recordNames));
+    expect(rsp.body).toEqual(
+      rpcResponse({
+        uf_old: "ES",
+      })
+    );
   });
 
-  it(`${NAME}Update`, async () => {
-    tracker.on.update("cidadesERF").response([recordFields]);
-    const rsp = await apiRequest(app, `${NAME}Update`, {
+  it(`cidadeUpdate`, async () => {
+    const rsp = await apiRequest(app, `crudUpdate`, {
+      table: "cidade",
       id: { uf_old: "ES", nome_cidade: "Anchieta" },
-      data: { uf_old: "ES", nome_cidade: "Anchieta" },
+      data: { uf_old: "MG" },
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse(recordNames));
+    expect(rsp.body).toEqual(
+      rpcResponse({
+        uf_old: "MG",
+      })
+    );
   });
 });

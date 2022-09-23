@@ -1,9 +1,10 @@
-import { Ids } from "@er/types";
+import { Schema } from "@er/types";
 
 import { TConnections } from "../../dal/connections";
 import { Entity } from "../../lib/entity";
+import { TNfSaidaFv } from "./nf-saida-fv.type";
 
-export type VendasFvRecord = {
+export type TVendasFv = {
   origem: string;
   NmCategoria: string;
   DtEmissao: string;
@@ -19,13 +20,21 @@ export type VendasFvRecord = {
   uf: string;
 };
 
-export class NfSaidaFvModel extends Entity {
+export class NfSaidaFvModel extends Entity<TNfSaidaFv> {
   constructor(connections: TConnections) {
     super(connections, "nf_saida_fv");
   }
 
   // DIARIO
-  async vendaDiario(inicio: string, fim: string, uf: string[]) {
+  async vendaDiario({
+    inicio,
+    fim,
+    uf,
+  }: {
+    inicio: string;
+    fim: string;
+    uf: string[];
+  }) {
     const qry = this.knex(
       this.knex.raw(
         "MestreNota, ItemNota, CadVen, NatOpe, CadPro, CadCli, CategPro, CidadesERF"
@@ -61,36 +70,45 @@ export class NfSaidaFvModel extends Entity {
     return qry;
   }
 
-  async vendaDiarioSchema() {
-    return {
-      pk: ["NmCategoria", "DtEmissao"],
-      fields: [
-        {
-          field: "DtEmissao",
-          name: "Dia",
-          type: "string",
-        },
-        {
-          field: "NmCategoria",
-          name: "Produto",
-          type: "string",
-        },
-        {
-          field: "qtd",
-          name: "Quantidade",
-          type: "int",
-        },
-        {
-          field: "vlr",
-          label: "Valor",
-          type: "float",
-        },
-      ],
-    };
+  async vendaDiarioSchema(): Promise<Schema> {
+    return [
+      {
+        field: "DtEmissao",
+        name: "Dia",
+        label: "Dia",
+        type: "string",
+      },
+      {
+        field: "NmCategoria",
+        name: "Produto",
+        label: "Produto",
+        type: "string",
+      },
+      {
+        field: "qtd",
+        name: "Quantidade",
+        label: "Quantidade",
+        type: "int",
+      },
+      {
+        field: "vlr",
+        name: "Valor",
+        label: "Valor",
+        type: "float",
+      },
+    ];
   }
 
   // MENSAL
-  async vendaMensal(inicio: string, fim: string, id: Ids) {
+  async vendaMensal({
+    inicio,
+    fim,
+    cliente_id,
+  }: {
+    inicio: string;
+    fim: string;
+    cliente_id: number;
+  }) {
     const qry = this.knex(
       this.knex.raw("MestreNota, ItemNota, CadVen, NatOpe, CadPro, CategPro")
     )
@@ -112,7 +130,7 @@ export class NfSaidaFvModel extends Entity {
       .where("ItemNota.Sequencia", ">", 0)
       .where("MestreNota.Tipo", "<>", "C")
       .whereBetween("MestreNota.DtEmissao", [inicio, fim])
-      .where({ "MestreNota.CdCliente": id[0] })
+      .where({ "MestreNota.CdCliente": cliente_id })
       .whereRaw(
         "ItemNota.CdFilial = MestreNota.CdFilial and ItemNota.Serie = MestreNota.Serie and ItemNota.Modelo = MestreNota.Modelo and ItemNota.NumNota = MestreNota.NumNota and CadPro.CdCategoria = CategPro.CdCategoria and NatOpe.Nop = MestreNota.Nop and CadVen.CdVendedor = MestreNota.CdVendedor and CadPro.CdProduto = ItemNota.CdProduto"
       )
@@ -125,108 +143,119 @@ export class NfSaidaFvModel extends Entity {
     return qry;
   }
 
-  async vendaMensalSchema() {
-    return {
-      pk: ["anoMes", "CdCliente"],
-      fields: [
-        {
-          field: "anoMes",
-          label: "Mês",
-          type: "ID",
-        },
-        {
-          field: "CdCliente",
-          label: "Cód. Cliente",
-          type: "ID",
-        },
-        {
-          field: "NmCategoria",
-          label: "Produto",
-          type: "string",
-        },
-        {
-          field: "quantidade",
-          label: "Quantidade",
-          type: "int",
-        },
-        {
-          field: "valor",
-          label: "Valor",
-          type: "float",
-        },
-      ],
-    };
+  async vendaMensalSchema(): Promise<Schema> {
+    return [
+      {
+        field: "anoMes",
+        name: "anoMes",
+        label: "Mês",
+        type: "string",
+      },
+      {
+        field: "CdCliente",
+        name: "cliente_id",
+        label: "Cód. Cliente",
+        type: "int",
+      },
+      {
+        field: "NmCategoria",
+        name: "NmCategoria",
+        label: "Produto",
+        type: "string",
+      },
+      {
+        field: "quantidade",
+        name: "quantidade",
+        label: "Quantidade",
+        type: "int",
+      },
+      {
+        field: "valor",
+        name: "valor",
+        label: "Valor",
+        type: "float",
+      },
+    ];
   }
 
-  async vendaAnaliticoSchema() {
-    return {
-      pk: ["anoMes", "CdCliente"],
-      fields: [
-        {
-          field: "NmCategoria",
-          label: "Categoria",
-          type: "string",
-        },
-        {
-          field: "DtEmissao",
-          label: "Emissão",
-          type: "date",
-        },
-        {
-          field: "NumNota",
-          label: "Nota Fiscal",
-          type: "string",
-        },
-        {
-          field: "Serie",
-          label: "Série",
-          type: "string",
-        },
-        {
-          field: "Tipo",
-          label: "Tipo",
-          type: "string",
-        },
-        {
-          field: "CdProduto",
-          label: "Cód Produto",
-          type: "float",
-        },
-        {
-          field: "Quantidade",
-          label: "Quantidade",
-          type: "float",
-        },
-        {
-          field: "VlTotal",
-          label: "Valor",
-          type: "float",
-        },
-        {
-          field: "Descricao",
-          label: "Produto",
-          type: "float",
-        },
-        {
-          field: "CdVendedor",
-          label: "Cód Vendedor",
-          type: "int",
-        },
-        {
-          field: "NmVendedor",
-          label: "Vendedor",
-          type: "string",
-        },
-        {
-          field: "uf",
-          label: "UF",
-          type: "string",
-        },
-      ],
-    };
+  async vendaAnaliticoSchema(): Promise<Schema> {
+    return [
+      {
+        field: "NmCategoria",
+        name: "NmCategoria",
+        label: "Categoria",
+        type: "string",
+      },
+      {
+        field: "DtEmissao",
+        name: "DtEmissao",
+        label: "Emissão",
+        type: "date",
+      },
+      {
+        field: "NumNota",
+        name: "NumNota",
+        label: "Nota Fiscal",
+        type: "string",
+      },
+      {
+        field: "Serie",
+        name: "Serie",
+        label: "Série",
+        type: "string",
+      },
+      {
+        field: "Tipo",
+        name: "Tipo",
+        label: "Tipo",
+        type: "string",
+      },
+      {
+        field: "CdProduto",
+        name: "CdProduto",
+        label: "Cód Produto",
+        type: "float",
+      },
+      {
+        field: "Quantidade",
+        name: "Quantidade",
+        label: "Quantidade",
+        type: "float",
+      },
+      {
+        field: "VlTotal",
+        name: "VlTotal",
+        label: "Valor",
+        type: "float",
+      },
+      {
+        field: "Descricao",
+        name: "Descricao",
+        label: "Produto",
+        type: "float",
+      },
+      {
+        field: "CdVendedor",
+        name: "CdVendedor",
+        label: "Cód Vendedor",
+        type: "int",
+      },
+      {
+        field: "NmVendedor",
+        name: "NmVendedor",
+        label: "Vendedor",
+        type: "string",
+      },
+      {
+        field: "uf",
+        name: "uf",
+        label: "UF",
+        type: "string",
+      },
+    ];
   }
 
-  async vendaAnalitico(inicio: string, fim: string) {
+  async vendaAnalitico({ inicio, fim }: { inicio: string; fim: string }) {
     return this.knex("MestreNota")
       .select(this.knex.raw("'FV' as origem"))
       .select([

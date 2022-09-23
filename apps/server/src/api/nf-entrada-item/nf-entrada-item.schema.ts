@@ -32,6 +32,7 @@ export const nf_entrada_item: TEntity = {
       primaryKey: true,
       type: "string",
     },
+    //------
     {
       field: "CdFornecedor",
       label: "Cód Fornecedor",
@@ -191,13 +192,13 @@ export const nf_entrada_item: TEntity = {
     {
       field: "VlBrutoUnitario",
       label: "Grupo",
-      name: "valor_bruto_unnitario",
+      name: "valor_bruto_unitario",
       type: "string",
     },
     {
       field: "VlLiquidoUnitario",
       label: "Recurso",
-      name: "valor_liquido_unnitario",
+      name: "valor_liquido_unitario",
       type: "string",
     },
     {

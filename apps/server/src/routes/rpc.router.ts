@@ -1,3 +1,4 @@
+import { JSONRPCRequest } from "json-rpc-2.0";
 import { Context } from "koa";
 import { rpc } from "../api/rpc";
 
@@ -6,14 +7,14 @@ export const rpcRouter = [
     method: "post",
     path: "/rpc",
     action: async (ctx: Context) => {
-      const method = ctx.request.body;
+      const method = ctx.request.body as unknown as JSONRPCRequest;
       const response = await rpc.receive(method, {
         currentUser: ctx.state.currentUser,
       } as any);
       if (response) {
         ctx.body = response;
 
-        switch (method.method) {
+        switch (method?.method) {
           case "login":
             // seta cookie se for login
             ctx.cookies.set("token", response.result.token, {

@@ -8,7 +8,7 @@ export interface CurrentUser {
   usuario_id: number;
   nome_login: string;
   nome: string;
-  grupo_id: string;
+  group_id: string;
   token?: string;
 }
 
@@ -63,34 +63,25 @@ export type TreeData = {
 }[];
 
 export type ListArgs = {
+  table?: string;
   limit?: number;
   where?: Where[];
   order?: Order[];
   select?: Select;
 };
 
-export type ReadArgs = {
-  id: Ids;
-  select?: Select;
-};
+export type ReadArgs = { table?: string; id: Ids; select?: Select };
 
-export type DelArgs = {
-  id: Ids;
-};
+export type DelArgs = { table?: string; id: Ids };
 
-export type UpdateArgs = {
-  id: Ids;
-  data: GenericObject;
-};
+export type UpdateArgs = { table?: string; id: Ids; data: GenericObject };
 
-export type CreateArgs = {
-  data: GenericObject;
-};
+export type CreateArgs = { table?: string; data: GenericObject };
 
 export interface IEvent {
   name: string;
-  value: any;
-  targetProps: any;
+  value?: any;
+  targetProps?: any;
   targetName: string;
   eventName: string;
   event?: React.SyntheticEvent;

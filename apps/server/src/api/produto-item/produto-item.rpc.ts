@@ -1,7 +1,37 @@
-import { CreateArgs, DelArgs, ListArgs, ReadArgs, UpdateArgs } from "@er/types";
+import {
+  CreateArgs,
+  DelArgs,
+  ListArgs,
+  ReadArgs,
+  RpcContext,
+  UpdateArgs,
+} from "@er/types";
 import { TConnections } from "../../dal/connections";
 import { ProdutoItemModel } from "./produto-item.model";
 import { TProdutoItem } from "./produto-item.type";
+
+export interface TProdutoItemRpc {
+  produtoItemEstatisticaList(
+    listArgs: ListArgs,
+    ctx?: RpcContext
+  ): Promise<TProdutoItem[]>;
+  produtoItemEstatisticaRead(
+    readArgs: ReadArgs,
+    ctx?: RpcContext
+  ): Promise<TProdutoItem>;
+  produtoItemEstatisticaDel(
+    delArgs: DelArgs,
+    ctx?: RpcContext
+  ): Promise<number>;
+  produtoItemEstatisticaCreate(
+    createArgs: CreateArgs,
+    ctx?: RpcContext
+  ): Promise<TProdutoItem>;
+  produtoItemEstatisticaUpdate(
+    updateArgs: UpdateArgs,
+    ctx?: RpcContext
+  ): Promise<TProdutoItem>;
+}
 
 export function produtoItemRpc(connections: TConnections) {
   const produtoItemModel = new ProdutoItemModel(connections);

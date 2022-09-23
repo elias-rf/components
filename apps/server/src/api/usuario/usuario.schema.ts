@@ -23,13 +23,6 @@ export const usuario: TEntity = {
       allowNull: false,
     },
     {
-      field: "fkGrupo",
-      label: "fkGrupo",
-      name: "fkGrupo",
-      type: "int",
-      size: 4,
-    },
-    {
       field: "email",
       label: "email",
       name: "email",
@@ -82,7 +75,7 @@ export const usuario: TEntity = {
     {
       field: "idGroup",
       label: "Grupo",
-      name: "grupo_id",
+      name: "group_id",
       type: "string",
       size: 50,
     },

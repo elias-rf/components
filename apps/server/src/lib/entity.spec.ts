@@ -1,21 +1,8 @@
 import Knex from "knex";
 import { getTracker, MockClient } from "knex-mock-client";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { Entity } from "./entity";
-
-const rec1 = {
-  id: 1,
-  name: "Fulano",
-  department: "adm",
-  email: "fulano@mail.com",
-};
-
-const rec2 = {
-  id: 2,
-  name: "Cicrano",
-  department: "dev",
-  email: "cicrano@mail.com",
-};
+import { setTracker } from "./set-tracker";
 
 describe("entityModel", () => {
   const knexDb = Knex({ client: MockClient });
@@ -23,17 +10,22 @@ describe("entityModel", () => {
   const entityModel = new Entity(connections, "agenda_telefone");
   let tracker: ReturnType<typeof getTracker>;
 
-  beforeEach(() => {
+  beforeAll(() => {
     tracker = getTracker();
+    setTracker(tracker);
   });
 
   afterEach(() => {
+    tracker.resetHistory();
+  });
+
+  afterAll(() => {
     tracker.reset();
   });
 
   it("deve retornar Schema", async () => {
-    tracker.on.select("Table").response(["ok"]);
-    expect(await entityModel.schema()).toEqual([
+    const schema = await entityModel.schema();
+    expect(schema).toEqual([
       {
         field: "id",
         name: "agenda_telefone_id",
@@ -54,31 +46,30 @@ describe("entityModel", () => {
     ]);
   });
 
+  it("deve criar registro limpo", async () => {
+    const response = await entityModel.clear();
+    expect(response).toEqual({
+      agenda_telefone_id: 0,
+      email: null,
+      nome: "",
+      setor: null,
+    });
+  });
+
   it("deve listar default", async () => {
-    tracker.on.select("phonebook").response([rec1, rec2]);
     const rsp = await entityModel.list();
 
-    expect(tracker.history.select[0].sql).toEqual(
+    expect(tracker.history.any[0].sql).toEqual(
       'select "id", "name", "department", "email" from "phonebook" limit ?'
     );
     expect(rsp).toEqual([
       {
-        agenda_telefone_id: 1,
-        nome: "Fulano",
-        setor: "adm",
-        email: "fulano@mail.com",
-      },
-      {
-        agenda_telefone_id: 2,
-        nome: "Cicrano",
-        setor: "dev",
-        email: "cicrano@mail.com",
+        agenda_telefone_id: 171,
       },
     ]);
   });
 
   it("deve listar com filtro", async () => {
-    tracker.on.select("phonebook").response(["ok"]);
     await entityModel.list({
       where: [
         ["nome", "=", "ana"],
@@ -86,25 +77,23 @@ describe("entityModel", () => {
       ],
     });
 
-    expect(tracker.history.select[0].sql).toEqual(
+    expect(tracker.history.any[0].sql).toEqual(
       'select "id", "name", "department", "email" from "phonebook" where ("name" = ? and "id" < ?) limit ?'
     );
   });
 
   it("deve listar com select", async () => {
-    tracker.on.select("phonebook").response(["ok"]);
     await entityModel.list({
       limit: 10,
       select: ["agenda_telefone_id", "nome"],
     });
 
-    expect(tracker.history.select[0].sql).toEqual(
+    expect(tracker.history.any[0].sql).toEqual(
       'select "id", "name" from "phonebook" limit ?'
     );
   });
 
   it("deve listar com order", async () => {
-    tracker.on.select("phonebook").response(["ok"]);
     await entityModel.list({
       order: [
         ["agenda_telefone_id", "desc"],
@@ -112,22 +101,20 @@ describe("entityModel", () => {
       ],
     });
 
-    expect(tracker.history.select[0].sql).toEqual(
+    expect(tracker.history.any[0].sql).toEqual(
       'select "id", "name", "department", "email" from "phonebook" order by "id" desc, "name" asc limit ?'
     );
   });
 
   it("deve ler default", async () => {
-    tracker.on.select("phonebook").response(["ok"]);
     await entityModel.read({ id: { agenda_telefone_id: "100" } });
 
-    expect(tracker.history.select[0].sql).toEqual(
+    expect(tracker.history.any[0].sql).toEqual(
       'select "id", "name", "department", "email" from "phonebook" where "id" = ?'
     );
   });
 
-  it.only("deve evitar list.where errado", async () => {
-    tracker.on.select("phonebook").response(["ok"]);
+  it("deve evitar list.where errado", async () => {
     await expect(
       entityModel.list({ where: [["id", "=", "1"]] })
     ).rejects.toThrow(
@@ -135,29 +122,25 @@ describe("entityModel", () => {
     );
   });
 
-  it.only("deve evitar create.data errado", async () => {
-    tracker.on.select("phonebook").response(["ok"]);
+  it("deve evitar create.data errado", async () => {
     await expect(entityModel.create({ data: { id: "1" } })).rejects.toThrow(
       "id não é um campo válido para [data][phonebook]: agenda_telefone_id,nome,setor,email"
     );
   });
 
-  it.only("deve evitar list.order errado", async () => {
-    tracker.on.select("phonebook").response(["ok"]);
+  it("deve evitar list.order errado", async () => {
     await expect(entityModel.list({ order: [["id", "asc"]] })).rejects.toThrow(
       "id não é um campo válido para [order][phonebook]: agenda_telefone_id,nome,setor,email"
     );
   });
 
-  it.only("deve evitar read.id errado", async () => {
-    tracker.on.select("phonebook").response(["ok"]);
+  it("deve evitar read.id errado", async () => {
     await expect(entityModel.read({ id: { id: "100" } })).rejects.toThrow(
-      "id não é uma das chaves válidas para [id][phonebook]: agenda_telefone_id"
+      "[agenda_telefone_id] não foi informado para [id][phonebook]: agenda_telefone_id"
     );
   });
 
-  it.only("deve evitar read.select errado", async () => {
-    tracker.on.select("phonebook").response(["ok"]);
+  it("deve evitar read.select errado", async () => {
     await expect(
       entityModel.read({ id: { agenda_telefone_id: "100", select: ["id"] } })
     ).rejects.toThrow(
@@ -166,28 +149,25 @@ describe("entityModel", () => {
   });
 
   it("deve ler com select", async () => {
-    tracker.on.select("phonebook").response(["ok"]);
     await entityModel.read({
       id: { agenda_telefone_id: "100" },
       select: ["agenda_telefone_id", "nome"],
     });
 
-    expect(tracker.history.select[0].sql).toEqual(
+    expect(tracker.history.any[0].sql).toEqual(
       'select "id", "name" from "phonebook" where "id" = ?'
     );
   });
 
   it("deve apagar default", async () => {
-    tracker.on.delete("phonebook").response(["ok"]);
     await entityModel.del({ id: { agenda_telefone_id: "100" } });
 
-    expect(tracker.history.delete[0].sql).toEqual(
+    expect(tracker.history.any[0].sql).toEqual(
       'delete from "phonebook" where "id" = ?'
     );
   });
 
   it("deve criar default", async () => {
-    tracker.on.any("phonebook").response(["ok"]);
     await entityModel.create({
       data: { agenda_telefone_id: 99, nome: "Fulano" },
     });
@@ -198,17 +178,15 @@ describe("entityModel", () => {
   });
 
   it("deve alterar default", async () => {
-    tracker.on.any("phonebook").response(["ok"]);
     await entityModel.update({
       id: { agenda_telefone_id: "100" },
       data: {
         agenda_telefone_id: 99,
-        nome: "Fulano",
       },
     });
 
     expect(tracker.history.any[0].sql).toEqual(
-      'update "phonebook" set "id" = ?, "name" = ? where "id" = ?'
+      'update "phonebook" set "id" = ? where "id" = ?'
     );
   });
 });

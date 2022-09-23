@@ -1,9 +1,4 @@
-export type TGroupSubjectId = {
+export type TGroupSubject = {
   group_id: string;
-}
-
-export type TGroupSubjectBase = {
   subject_id?: string;
-}
-
- export type TGroupSubject = Partial<TGroupSubjectId | TGroupSubjectBase>
+};

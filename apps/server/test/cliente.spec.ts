@@ -1,7 +1,16 @@
 import knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
-import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
 import { app } from "../src/app";
+import { setTracker } from "../src/lib/set-tracker";
 import { apiRequest, rpcResponse, rpcResponseError } from "./aux";
 
 describe("cliente", () => {
@@ -14,54 +23,61 @@ describe("cliente", () => {
     },
   }));
 
-  const recordNames = {
-    cliente_id: 171,
-  };
-  const recordFields = {
-    CdCliente: 171,
-  };
-
   beforeAll(() => {
     tracker = getTracker();
+    setTracker(tracker);
   });
 
   afterEach(() => {
+    tracker.resetHistory();
+  });
+
+  afterAll(() => {
     tracker.reset();
   });
 
   it("clienteSchema", async () => {
-    const rsp = await apiRequest(app, "clienteSchema", {});
+    const rsp = await apiRequest(app, "crudSchema", { table: "cliente" });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(expect.any(Array)));
   });
 
   it("clienteRead", async () => {
-    tracker.on.select("CadCli").response([recordFields]);
-    const rsp = await apiRequest(app, "clienteRead", {
-      id: { cliente_id: "171" },
+    const rsp = await apiRequest(app, "crudRead", {
+      table: "cliente",
+      id: { cliente_id: -10 },
       select: ["cliente_id"],
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse(recordNames));
-    expect(tracker.history.select.length).toEqual(1);
-    expect(tracker.history.select[0].bindings).toEqual(["171"]);
-    expect(tracker.history.select[0].sql).toEqual(
+    expect(rsp.body).toEqual(
+      rpcResponse({
+        cliente_id: 10,
+      })
+    );
+    expect(tracker.history.any[0].bindings).toEqual([-10]);
+    expect(tracker.history.any[0].sql).toEqual(
       'select "CdCliente" from "CadCli" where "CdCliente" = ?'
     );
   });
 
   it("clienteList", async () => {
-    tracker.on.select("CadCli").response([recordFields]);
-    const rsp = await apiRequest(app, "clienteList", {
-      where: [["cliente_id", "=", "171"]],
+    const rsp = await apiRequest(app, "crudList", {
+      table: "cliente",
+      where: [["cliente_id", "=", -10]],
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse([recordNames]));
+    expect(rsp.body).toEqual(
+      rpcResponse([
+        {
+          cliente_id: 10,
+        },
+      ])
+    );
   });
 
   it("clienteDel", async () => {
-    tracker.on.delete("CadCli").response([1]);
-    const rsp = await apiRequest(app, "clienteDel", {
+    const rsp = await apiRequest(app, "crudDel", {
+      table: "cliente",
       id: { cliente_id: "171" },
     });
     expect(rsp.status).toEqual(200);
@@ -69,17 +85,20 @@ describe("cliente", () => {
   });
 
   it("clienteCreate", async () => {
-    tracker.on.any("CadCli").response([recordFields]);
-    const rsp = await apiRequest(app, "clienteCreate", {
-      data: { cliente_id: "171" },
+    const rsp = await apiRequest(app, "crudCreate", {
+      table: "cliente",
+      data: { cliente_id: -10 },
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse(recordNames));
+    expect(rsp.body).toEqual(
+      rpcResponse({
+        cliente_id: 10,
+      })
+    );
   });
 
   it("clienteCreate no params", async () => {
-    tracker.on.any("CadCli").response([recordFields]);
-    const rsp = await apiRequest(app, "clienteCreate", {});
+    const rsp = await apiRequest(app, "crudCreate", { table: "cliente" });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(
       rpcResponseError(0, "Select deve ser um array ou objeto")
@@ -87,19 +106,16 @@ describe("cliente", () => {
   });
 
   it("clienteUpdate", async () => {
-    tracker.on.any("CadCli").response([recordFields]);
-    const rsp = await apiRequest(app, "clienteUpdate", {
+    const rsp = await apiRequest(app, "crudUpdate", {
+      table: "cliente",
       id: { cliente_id: "171" },
       data: { cliente_id: "172" },
     });
     expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponse(recordNames));
-  });
-
-  it("clienteUpdate no params", async () => {
-    tracker.on.any("CadCli").response([recordFields]);
-    const rsp = await apiRequest(app, "clienteUpdate", {});
-    expect(rsp.status).toEqual(200);
-    expect(rsp.body).toEqual(rpcResponseError(0, "Id deve ser informado"));
+    expect(rsp.body).toEqual(
+      rpcResponse({
+        cliente_id: 2,
+      })
+    );
   });
 });

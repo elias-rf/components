@@ -20,32 +20,23 @@ import { TOrdemProducao } from "./ordem-producao.type";
 
 export type TOrdemProducaoRpc = {
   ordemProducaoSchema(): Promise<Schema>;
-  ordemProducaoList(
-    args: ListArgs,
-    ctx?: { currentUser: CurrentUser }
-  ): Promise<TOrdemProducao[]>;
-  ordemProducaoRead(
-    readArgs: ReadArgs,
-    ctx?: { currentUser: CurrentUser }
-  ): Promise<TOrdemProducao>;
-  ordemProducaoCreate(
-    createArgs: CreateArgs,
-    ctx?: { currentUser: CurrentUser }
-  ): Promise<TOrdemProducao>;
+  ordemProducaoList(args: ListArgs): Promise<TOrdemProducao[]>;
+  ordemProducaoRead(readArgs: ReadArgs): Promise<TOrdemProducao>;
+  ordemProducaoCreate(createArgs: CreateArgs): Promise<TOrdemProducao>;
   ordemProducaoUpdate(
     updateArgs: UpdateArgs,
     ctx?: { currentUser: CurrentUser }
   ): Promise<any>;
   ordemProducaoProdutoItem(
-    { id, select }: { id: Ids; select?: Select[] },
+    { id, select }: { id: Ids; select?: Select },
     ctx?: { currentUser: CurrentUser }
   ): Promise<TProdutoItem>;
   ordemProducaoProdutoPlano(
-    { id, select }: { id: Ids; select?: Select[] },
+    { id, select }: { id: Ids; select?: Select },
     ctx?: { currentUser: CurrentUser }
   ): Promise<TProdutoPlano>;
   ordemProducaoProduto(
-    { id, select }: { id: Ids; select?: Select[] },
+    { id, select }: { id: Ids; select?: Select },
     ctx?: { currentUser: CurrentUser }
   ): Promise<TProduto>;
   ordemProducaoDataFabricacao(
@@ -59,7 +50,7 @@ export type TOrdemProducaoRpc = {
   ordemProducaoVersao(
     { id }: { id: Ids },
     ctx?: { currentUser: CurrentUser }
-  ): Promise<string>;
+  ): Promise<number>;
   ordemProducaoControle(
     { id, serie }: { id: Ids; serie: string },
     ctx?: { currentUser: CurrentUser }
@@ -88,18 +79,18 @@ export function ordemProducaoRpc(connections: TConnections): TOrdemProducaoRpc {
     },
 
     // LIST
-    ordemProducaoList(args) {
-      return ordemProducaoModel.list(args);
+    async ordemProducaoList(args) {
+      return ordemProducaoModel.list(args) as Promise<TOrdemProducao[]>;
     },
 
     // READ
     async ordemProducaoRead(args) {
-      return ordemProducaoModel.read(args);
+      return ordemProducaoModel.read(args) as Promise<TOrdemProducao>;
     },
 
     // CREATE
     async ordemProducaoCreate(args) {
-      return ordemProducaoModel.create(args);
+      return ordemProducaoModel.create(args) as Promise<TOrdemProducao>;
     },
 
     // UPDATE
@@ -154,14 +145,16 @@ export function ordemProducaoRpc(connections: TConnections): TOrdemProducaoRpc {
 
     // Retorna etiquetas externas emitidas para ordem de producao
     async ordemProducaoEtiquetaExterna({ id }) {
-      if (isUndefined(id)) return [];
-      return etiquetaExternaModel.list({
+      let response: TEtiquetaExterna[];
+      if (isUndefined(id)) response = [];
+      response = await etiquetaExternaModel.list({
         where: [
           ["etiqueta_externa_id", "like", id["kOp"]?.substring(0, 6) + "%"],
         ],
         order: [["etiqueta_externa_id", "asc"]],
         limit: 200,
       });
+      return response;
     },
   };
 }

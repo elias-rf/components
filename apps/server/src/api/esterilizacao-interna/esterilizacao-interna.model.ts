@@ -4,6 +4,7 @@ import { isString } from "@er/utils/src/is-string";
 import { TConnections } from "../../dal/connections";
 import { Entity } from "../../lib/entity";
 import { validateIsThrow } from "../../lib/validate-is-throw";
+import { TEsterilizacaoInterna } from "./esterilizacao-interna.type";
 
 export type TEsterilizacaoInternaDia = {
   dia: string;
@@ -26,7 +27,7 @@ export type TEsterilizacaoInternaModelo = {
   quantidade: string;
 };
 
-export class EsterilizacaoInternaModel extends Entity {
+export class EsterilizacaoInternaModel extends Entity<TEsterilizacaoInterna> {
   constructor(connections: TConnections) {
     super(connections, "esterilizacao_interna");
   }

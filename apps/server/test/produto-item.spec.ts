@@ -30,13 +30,14 @@ describe("produtoItem", () => {
   });
 
   it(`produtoItemSchema`, async () => {
-    const rsp = await apiRequest(app, "cidadeSchema", {});
+    const rsp = await apiRequest(app, "crudSchema", { table: "produto_item" });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(expect.any(Array)));
   });
 
   it(`produtoItemRead`, async () => {
-    const rsp = await apiRequest(app, `produtoItemRead`, {
+    const rsp = await apiRequest(app, `crudRead`, {
+      table: "produto_item",
       id: { produto_item_id: 1 },
       select: ["produto_item_id"],
     });
@@ -52,7 +53,8 @@ describe("produtoItem", () => {
   });
 
   it(`produtoItemList`, async () => {
-    const rsp = await apiRequest(app, `produtoItemList`, {
+    const rsp = await apiRequest(app, `crudList`, {
+      table: "produto_item",
       where: [["produto_item_id", "=", 1]],
     });
     expect(rsp.status).toEqual(200);
@@ -62,7 +64,8 @@ describe("produtoItem", () => {
   });
 
   it(`produtoItemDel`, async () => {
-    const rsp = await apiRequest(app, `produtoItemDel`, {
+    const rsp = await apiRequest(app, `crudDel`, {
+      table: "produto_item",
       id: { produto_item_id: 1 },
     });
     expect(rsp.status).toEqual(200);
@@ -70,7 +73,8 @@ describe("produtoItem", () => {
   });
 
   it(`produtoItemCreate`, async () => {
-    const rsp = await apiRequest(app, `produtoItemCreate`, {
+    const rsp = await apiRequest(app, `crudCreate`, {
+      table: "produto_item",
       data: { produto_item_id: 2 },
     });
     expect(rsp.status).toEqual(200);
@@ -78,7 +82,8 @@ describe("produtoItem", () => {
   });
 
   it(`produtoItemUpdate`, async () => {
-    const rsp = await apiRequest(app, `produtoItemUpdate`, {
+    const rsp = await apiRequest(app, `crudUpdate`, {
+      table: "produto_item",
       id: { produto_item_id: 1 },
       data: { produto_plano_id: " 2 " },
     });

@@ -1,14 +1,11 @@
-export type TOrdemProducaoOperacaoId = {
+export type TOrdemProducaoOperacao = {
   tOperacaoOrdemProducao_id: number;
-}
-
-export type TOrdemProducaoOperacaoBase = {
   fkOp?: number;
   fkOperacaoLP?: number;
   fkOperacao?: number;
   fkFuncionario?: number;
   fkMaquina?: string;
-  DataHoraInicio?: string;
+  data_hora_inicio?: string;
   DataInicio?: string;
   HoraInicio?: string;
   DataHoraFim?: string;
@@ -26,6 +23,4 @@ export type TOrdemProducaoOperacaoBase = {
   ClasseOP?: number;
   EspPriAlca?: string;
   EspSegAlca?: string;
-}
-
- export type TOrdemProducaoOperacao = Partial<TOrdemProducaoOperacaoId | TOrdemProducaoOperacaoBase>
+};

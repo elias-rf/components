@@ -9,34 +9,28 @@ import {
 } from "@er/types";
 import { TConnections } from "../../dal/connections";
 import { ProdutoEstatisticaModel } from "../produto-estatistica/produto-estatistica.model";
-import {
-  TProdutoEstatistica,
-  TProdutoEstatisticaId,
-} from "../produto-estatistica/produto-estatistica.type";
+import { TProdutoEstatistica } from "../produto-estatistica/produto-estatistica.type";
 
 export interface TProdutoEstatisticaRpc {
   produtoEstatisticaList(
-    listArgs: ListArgs<TProdutoEstatistica>,
+    listArgs: ListArgs,
     ctx?: RpcContext
   ): Promise<TProdutoEstatistica[]>;
   produtoEstatisticaRead(
-    readArgs: ReadArgs<TProdutoEstatisticaId, TProdutoEstatistica>,
+    readArgs: ReadArgs,
     ctx?: RpcContext
   ): Promise<TProdutoEstatistica>;
-  produtoEstatisticaDel(
-    delArgs: DelArgs<TProdutoEstatisticaId>,
-    ctx?: RpcContext
-  ): Promise<number>;
+  produtoEstatisticaDel(delArgs: DelArgs, ctx?: RpcContext): Promise<number>;
   produtoEstatisticaCreate(
-    createArgs: CreateArgs<TProdutoEstatistica>,
+    createArgs: CreateArgs,
     ctx?: RpcContext
   ): Promise<TProdutoEstatistica>;
   produtoEstatisticaUpdate(
-    updateArgs: UpdateArgs<TProdutoEstatisticaId, TProdutoEstatistica>,
+    updateArgs: UpdateArgs,
     ctx?: RpcContext
   ): Promise<TProdutoEstatistica>;
   produtoEstatisticaIncrement(
-    { id, quantidade }: { id: Ids<TProdutoEstatistica>; quantidade: number },
+    { id, quantidade }: { id: Ids; quantidade: number },
     ctx?: RpcContext
   ): Promise<TProdutoEstatistica>;
 }
@@ -73,8 +67,8 @@ export function produtoEstatisticaRpc(
     },
 
     // INCREMENT
-    async produtoEstatisticaIncrement({ id, quantidade }) {
-      return produtoEstatisticaModel.increment(id, quantidade);
+    async produtoEstatisticaIncrement(args) {
+      return produtoEstatisticaModel.increment(args);
     },
   };
 }

@@ -104,7 +104,7 @@ describe("rpc de cliente", () => {
     expect(knexMockHistory(tracker)).toEqual({
       update: [
         {
-          bindings: [11, 11],
+          bindings: [11, 10],
           sql: 'update "tbl_Produto_Item" set "kProdutoItem" = ? where "kProdutoItem" = ?',
         },
       ],

@@ -8,29 +8,17 @@ import {
   Schema,
   UpdateArgs,
 } from "@er/types";
-import { TConnections } from "dal/connections";
+import { TConnections } from "../../dal/connections";
 import { UsuarioModel } from "../usuario/usuario.model";
-import { TUsuario, TUsuarioId } from "../usuario/usuario.type";
+import { TUsuario } from "../usuario/usuario.type";
 
 export interface TUsuarioRpc {
   usuarioSchema(): Promise<Schema>;
-  usuarioList(
-    listArgs: ListArgs<TUsuario>,
-    ctx?: RpcContext
-  ): Promise<TUsuario[]>;
-  usuarioRead(
-    readArgs: ReadArgs<TUsuarioId, TUsuario>,
-    ctx?: RpcContext
-  ): Promise<TUsuario>;
-  usuarioDel(delArgs: DelArgs<TUsuarioId>, ctx?: RpcContext): Promise<number>;
-  usuarioCreate(
-    creatArgs: CreateArgs<TUsuario>,
-    ctx?: RpcContext
-  ): Promise<TUsuario>;
-  usuarioUpdate(
-    updateArgs: UpdateArgs<TUsuarioId, TUsuario>,
-    ctx?: RpcContext
-  ): Promise<TUsuario>;
+  usuarioList(listArgs: ListArgs, ctx?: RpcContext): Promise<TUsuario[]>;
+  usuarioRead(readArgs: ReadArgs, ctx?: RpcContext): Promise<TUsuario>;
+  usuarioDel(delArgs: DelArgs, ctx?: RpcContext): Promise<number>;
+  usuarioCreate(creatArgs: CreateArgs, ctx?: RpcContext): Promise<TUsuario>;
+  usuarioUpdate(updateArgs: UpdateArgs, ctx?: RpcContext): Promise<TUsuario>;
   login(args: { user: string; password: string }): Promise<CurrentUser>;
   logout(): Promise<boolean>;
   me(_: void, ctx?: RpcContext): Promise<CurrentUser>;
@@ -83,8 +71,8 @@ export function usuarioRpc(connections: TConnections): TUsuarioRpc {
     async me(_: void, ctx) {
       return (
         ctx?.currentUser || {
-          grupo_id: "",
-          usuario_id: "",
+          group_id: "",
+          usuario_id: 0,
           nome: "",
           nome_login: "",
         }

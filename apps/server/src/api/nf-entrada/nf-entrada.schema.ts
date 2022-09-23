@@ -40,6 +40,7 @@ export const nf_entrada: TEntity = {
       allowNull: false,
       primaryKey: true,
     },
+    //-----
     {
       field: "CdFornecedor",
       label: "CdFornecedor",
@@ -75,14 +76,14 @@ export const nf_entrada: TEntity = {
     {
       field: "NopFiscal",
       label: "NopFiscal",
-      name: "NopFiscal",
+      name: "cfop_fiscal",
       type: "int",
       size: 2,
     },
     {
       field: "TotNF",
       label: "TotNF",
-      name: "TotNF",
+      name: "total_nf",
       type: "float",
       size: 8,
       scale: 4,
