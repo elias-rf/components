@@ -1,20 +1,20 @@
 import type { Story } from "@ladle/react";
-import { Input } from "./input";
+import { Label } from "./label";
 
 export default {
-  title: "Form/Input",
-  component: Input,
+  title: "Form/Label",
+  component: Label,
 };
 
-const Template: Story<typeof Input> = ({ disabled, name, status }) => {
+const Template: Story<typeof Label> = ({ name, status }) => {
   return (
     <>
-      <Input
+      <Label
         name={name}
-        disabled={disabled}
         status={status}
-      />
-      {disabled}
+      >
+        Teste
+      </Label>
     </>
   );
 };

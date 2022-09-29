@@ -61,6 +61,56 @@ describe("rpc de cliente", () => {
     });
   });
 
+  it("decrement", async () => {
+    const rsp = await crud.decrement({
+      table: "agenda_telefone",
+      where: [["agenda_telefone_id", "=", -10]],
+      decrement: { agenda_telefone_id: 2 },
+    });
+    expect(rsp).toEqual([{ agenda_telefone_id: 172 }]);
+    expect(knexMockHistory(tracker)).toEqual({
+      any: [
+        {
+          bindings: [2, -10],
+          sql: 'update "phonebook" set "id" = "id" - ? where ("id" = ?)',
+        },
+      ],
+    });
+  });
+
+  it("increment", async () => {
+    const rsp = await crud.increment({
+      table: "agenda_telefone",
+      where: [["agenda_telefone_id", "=", -10]],
+      increment: { agenda_telefone_id: 2 },
+    });
+    expect(rsp).toEqual([{ agenda_telefone_id: 172 }]);
+    expect(knexMockHistory(tracker)).toEqual({
+      any: [
+        {
+          bindings: [2, -10],
+          sql: 'update "phonebook" set "id" = "id" + ? where ("id" = ?)',
+        },
+      ],
+    });
+  });
+
+  it("count", async () => {
+    const rsp = await crud.count({
+      table: "agenda_telefone",
+      where: [["agenda_telefone_id", "=", -10]],
+    });
+    expect(rsp).toEqual([{ id: 171 }]);
+    expect(knexMockHistory(tracker)).toEqual({
+      any: [
+        {
+          bindings: [-10],
+          sql: 'select count(*) as "count" from "phonebook" where ("id" = ?)',
+        },
+      ],
+    });
+  });
+
   it("read", async () => {
     const rsp = await crud.read({
       table: "agenda_telefone",
@@ -135,5 +185,23 @@ describe("rpc de cliente", () => {
         },
       ],
     });
+  });
+
+  it("clear", async () => {
+    const rsp = await crud.clear({
+      table: "agenda_telefone",
+    });
+    expect(rsp).toEqual({
+      agenda_telefone_id: 0,
+      email: null,
+      nome: "",
+      setor: null,
+    });
+  });
+  it("nameList", async () => {
+    const rsp = await crud.nameList({
+      table: "agenda_telefone",
+    });
+    expect(rsp).toEqual(["agenda_telefone_id", "nome", "setor", "email"]);
   });
 });

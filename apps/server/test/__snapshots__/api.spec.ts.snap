@@ -5,12 +5,6 @@ exports[`Api > indice 1`] = `
   "id": 1,
   "jsonrpc": "2.0",
   "result": [
-    "clienteCreate",
-    "clienteDel",
-    "clienteList",
-    "clienteRead",
-    "clienteSchema",
-    "clienteUpdate",
     "crudClear",
     "crudCreate",
     "crudDel",

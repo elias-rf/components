@@ -4,26 +4,18 @@ import { isEmpty } from "@er/utils/src/is-empty";
 import { module10 } from "@er/utils/src/module10";
 import { TConnections } from "../../dal/connections";
 import { Entity } from "../../lib/entity";
-import { OrdemProducaoOperacaoModel } from "../ordem-producao-operacao/ordem-producao-operacao.model";
+import { CrudModel } from "../crud/crud.model";
 import { ProdutoItemModel } from "../produto-item/produto-item.model";
-import { ProdutoPlanoModel } from "../produto-plano/produto-plano.model";
-import { ProdutoModel } from "../produto/produto.model";
 import { TOrdemProducao } from "./ordem-producao.type";
 
 export class OrdemProducaoModel extends Entity<TOrdemProducao> {
   produtoItemModel: ProdutoItemModel;
-  produtoModel: ProdutoModel;
-  produtoPlanoModel: ProdutoPlanoModel;
-  ordemProducaoOperacaoModel: OrdemProducaoOperacaoModel;
+  crud: CrudModel;
 
   constructor(connections: TConnections) {
     super(connections, "ordem_producao");
     this.produtoItemModel = new ProdutoItemModel(connections);
-    this.produtoModel = new ProdutoModel(connections);
-    this.produtoPlanoModel = new ProdutoPlanoModel(connections);
-    this.ordemProducaoOperacaoModel = new OrdemProducaoOperacaoModel(
-      connections
-    );
+    this.crud = new CrudModel(connections);
   }
 
   // Retorna Produto item
@@ -43,7 +35,8 @@ export class OrdemProducaoModel extends Entity<TOrdemProducao> {
       id,
       select: ["produto_id"],
     });
-    return this.produtoModel.read({
+    return this.crud.read({
+      table: "produto",
       id: { produto_id: produto.produto_id || "" },
       select,
     });
@@ -65,7 +58,8 @@ export class OrdemProducaoModel extends Entity<TOrdemProducao> {
 
   // Retorna data de fabricacao
   async dataFabricacao({ id }: { id: Ids }) {
-    let response = await this.ordemProducaoOperacaoModel.list({
+    let response = await this.crud.list({
+      table: "ordem_producao_operacao",
       where: [
         ["operacao_id", "=", "3059"],
         ["ordem_producao_id", "=", id.ordem_producao_id],
@@ -75,7 +69,8 @@ export class OrdemProducaoModel extends Entity<TOrdemProducao> {
     });
 
     if (isEmpty(response[0].data_hora_inicio)) {
-      response = await this.ordemProducaoOperacaoModel.list({
+      response = await this.crud.list({
+        table: "ordem_producao_operacao",
         where: [
           ["operacao_id", "=", "3060"],
           ["ordem_producao_id", "=", id.ordem_producao_id],
@@ -85,7 +80,8 @@ export class OrdemProducaoModel extends Entity<TOrdemProducao> {
       });
     }
     if (isEmpty(response[0].data_hora_inicio)) {
-      response = await this.ordemProducaoOperacaoModel.list({
+      response = await this.crud.list({
+        table: "ordem_producao_operacao",
         where: [
           ["operacao_id", "=", "4020"],
           ["ordem_producao_id", "=", id.ordem_producao_id],
@@ -95,7 +91,8 @@ export class OrdemProducaoModel extends Entity<TOrdemProducao> {
       });
     }
     if (isEmpty(response[0].data_hora_inicio)) {
-      response = await this.ordemProducaoOperacaoModel.list({
+      response = await this.crud.list({
+        table: "ordem_producao_operacao",
         where: [
           ["operacao_id", "=", "3160"],
           ["ordem_producao_id", "=", id.ordem_producao_id],

@@ -1,15 +1,11 @@
-import { z } from "@er/utils/src";
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+import { z } from "zod";
 import { useStateValidate } from "./use-state-validate";
 
 describe("useStateValidate", () => {
-  it.only("deve inicializar hook", () => {
+  it("deve inicializar hook", () => {
     const body: any = renderHook(() => useStateValidate("Valor"));
-    console.log(
-      `🚀 ~ file: use-state-validate.spec.ts ~ line 9 ~ it.only ~ body`,
-      body
-    );
     expect(body.result.current[0]).toEqual({
       value: "Valor",
       isDirty: false,

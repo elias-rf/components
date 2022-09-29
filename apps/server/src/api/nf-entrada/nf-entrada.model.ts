@@ -2,33 +2,24 @@ import { day } from "@er/utils/src/day";
 import { isEmpty } from "@er/utils/src/is-empty";
 import { TConnections } from "../../dal/connections";
 import { Entity } from "../../lib/entity";
+import { CrudModel } from "../crud/crud.model";
 import { EstoqueModel } from "../estoque/estoque.model";
-import { NfEntradaControleModel } from "../nf-entrada-controle/nf-entrada-controle.model";
-import { NfEntradaItemModel } from "../nf-entrada-item/nf-entrada-item.model";
-import { NfEntradaLogModel } from "../nf-entrada-log/nf-entrada-log.model";
 import { OrdemProducaoModel } from "../ordem-producao/ordem-producao.model";
-import { ProdutoControleModel } from "../produto-controle/produto-controle.model";
 import { ProdutoEstatisticaModel } from "../produto-estatistica/produto-estatistica.model";
 import { TNfEntrada } from "./nf-entrada.type";
 
 export class NfEntradaModel extends Entity<TNfEntrada> {
   ordemProducao: OrdemProducaoModel;
-  nfEntradaControle: NfEntradaControleModel;
-  nfEntradaItem: NfEntradaItemModel;
-  nfEntradaLog: NfEntradaLogModel;
   estoque: EstoqueModel;
   produtoEstatistica: ProdutoEstatisticaModel;
-  produtoControle: ProdutoControleModel;
+  crud: CrudModel;
 
   constructor(connections: TConnections) {
     super(connections, "nf_entrada");
     this.ordemProducao = new OrdemProducaoModel(connections);
-    this.nfEntradaControle = new NfEntradaControleModel(connections);
-    this.nfEntradaItem = new NfEntradaItemModel(connections);
-    this.nfEntradaLog = new NfEntradaLogModel(connections);
     this.estoque = new EstoqueModel(connections);
     this.produtoEstatistica = new ProdutoEstatisticaModel(connections);
-    this.produtoControle = new ProdutoControleModel(connections);
+    this.crud = new CrudModel(connections);
   }
 
   // Transfere produtos acabados da matriz para filial
@@ -160,7 +151,8 @@ export class NfEntradaModel extends Entity<TNfEntrada> {
       },
     });
 
-    await this.nfEntradaItem.create({
+    await this.crud.create({
+      table: "nf_entrada_item",
       data: {
         filial_id: 1,
         nota_id: ordem_producao_id,
@@ -219,7 +211,8 @@ export class NfEntradaModel extends Entity<TNfEntrada> {
     });
 
     for (const ctrl of controle) {
-      await this.produtoControle.create({
+      await this.crud.create({
+        table: "produto_controle",
         data: {
           filial_id: 1,
           nota_id: produto_plano_id,
@@ -244,7 +237,8 @@ export class NfEntradaModel extends Entity<TNfEntrada> {
           tipo_lote: "C",
         },
       });
-      await this.nfEntradaControle.create({
+      await this.crud.create({
+        table: "nf_entrada_controle",
         data: {
           filial_id: "1",
           nota_id: ordem_producao_id,
@@ -258,7 +252,8 @@ export class NfEntradaModel extends Entity<TNfEntrada> {
       });
     }
 
-    await this.nfEntradaLog.create({
+    await this.crud.create({
+      table: "nf_entrada_log",
       data: {
         filial_id: "1",
         nota_id: ordem_producao_id,

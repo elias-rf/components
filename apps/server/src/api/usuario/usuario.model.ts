@@ -4,24 +4,25 @@ import { TConnections } from "../../dal/connections";
 import { Entity } from "../../lib/entity";
 import { jwtEncode } from "../../lib/jwt-encode";
 import { passwordVerify } from "../../lib/password-verify";
-import { GroupSubjectModel } from "../group-subject/group-subject.model";
+import { CrudModel } from "../crud/crud.model";
 import { TUsuario } from "./usuario.type";
 
 export class UsuarioModel extends Entity<TUsuario> {
-  groupSubject: GroupSubjectModel;
+  crud: CrudModel;
 
   constructor(connections: TConnections) {
     super(connections, "usuario");
-    this.groupSubject = new GroupSubjectModel(connections);
+    this.crud = new CrudModel(connections);
   }
 
   async listSubject({
     id,
-    select = this.groupSubject.nameList,
+    select = this.crud.nameList({ table: "group_subject" }),
   }: ReadArgs): Promise<GenericObject[]> {
     const group_id = await this.read({ id, select: ["group_id"] });
 
-    return this.groupSubject.list({
+    return this.crud.list({
+      table: "group_subject",
       where: [["group_id", "=", group_id]],
       select,
     });

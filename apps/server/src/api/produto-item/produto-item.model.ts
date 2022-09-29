@@ -1,7 +1,7 @@
 import { Ids, Select } from "@er/types";
 import { TConnections } from "../../dal/connections";
 import { Entity } from "../../lib/entity";
-import { ProdutoPlanoModel } from "../produto-plano/produto-plano.model";
+import { CrudModel } from "../crud/crud.model";
 import { TProdutoPlano } from "../produto-plano/produto-plano.type";
 import { TProdutoItem } from "./produto-item.type";
 
@@ -12,11 +12,11 @@ import { TProdutoItem } from "./produto-item.type";
  */
 
 export class ProdutoItemModel extends Entity<TProdutoItem> {
-  produtoPlanoModel: ProdutoPlanoModel;
+  crudModel: CrudModel;
 
   constructor(connections: TConnections) {
     super(connections, "produto_item");
-    this.produtoPlanoModel = new ProdutoPlanoModel(connections);
+    this.crudModel = new CrudModel(connections);
   }
 
   async produtoPlano({
@@ -32,7 +32,11 @@ export class ProdutoItemModel extends Entity<TProdutoItem> {
     });
     if (produto_plano_id) {
       produto_plano_id = produto_plano_id?.trim();
-      return this.produtoPlanoModel.read({ id: { produto_plano_id }, select });
+      return this.crudModel.read({
+        table: "produto_plano",
+        id: { produto_plano_id },
+        select,
+      });
     }
     return [] as TProdutoPlano;
   }

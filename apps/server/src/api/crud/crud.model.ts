@@ -5,7 +5,9 @@ import type {
   ListArgs,
   ReadArgs,
   Schema,
+  Select,
   UpdateArgs,
+  Where,
 } from "@er/types";
 import { fieldsFromEntity } from "@er/utils/src/fields-from-entity";
 import { isData } from "@er/utils/src/is-data";
@@ -13,6 +15,7 @@ import { isId } from "@er/utils/src/is-id";
 import { isLimit } from "@er/utils/src/is-limit";
 import { isOrder } from "@er/utils/src/is-order";
 import { isSelect } from "@er/utils/src/is-select";
+import { isTable } from "@er/utils/src/is-table";
 import { isWhere } from "@er/utils/src/is-where";
 import { knexOrder } from "@er/utils/src/knex-order";
 import { knexWhere } from "@er/utils/src/knex-where";
@@ -38,16 +41,92 @@ export class CrudModel {
 
   // SCHEMA
   async schema({ table = "" }): Promise<Schema> {
-    if (!Object.hasOwn(entitySchema, table)) {
-      throw new Error(
-        `${table} não é uma entidade cadastrada no schema. Talvez seja: ${Object.keys(
-          entitySchema
-        )}`
-      );
-    }
+    validateThrow(isTable(table, entitySchema));
     const entity = entitySchema[table];
 
     return entity.fields;
+  }
+
+  // INCREMENT
+  async decrement({
+    table = "",
+    where = [],
+    decrement = {},
+    select,
+  }: {
+    table?: string;
+    where?: Where[];
+    decrement?: GenericObject;
+    select?: Select;
+  } = {}): Promise<GenericObject[]> {
+    validateThrow(isTable(table, entitySchema));
+    const knex = this.connections[entitySchema[table].database as TDbs];
+    const tbl = entitySchema[table].table;
+    const entity = entitySchema[table];
+    if (select === undefined) {
+      select = namesFromEntity(entity);
+    }
+    validateThrow(isWhere(where, entitySchema[table]));
+    validateThrow(isSelect(select, entitySchema[table]));
+
+    const data: GenericObject[] = await knex(tbl)
+      .hintComment("NO_ICP(accounts)")
+      .where(knexWhere(renameToFieldTuple(where, entity)))
+      .decrement(renameToFieldObject(decrement, entity))
+      .returning(select);
+    return renameToNameArrayObject(data, entitySchema[table]);
+  }
+
+  // INCREMENT
+  async increment({
+    table = "",
+    where = [],
+    increment = {},
+    select,
+  }: {
+    table?: string;
+    where?: Where[];
+    increment?: GenericObject;
+    select?: Select;
+  } = {}): Promise<GenericObject[]> {
+    validateThrow(isTable(table, entitySchema));
+    const knex = this.connections[entitySchema[table].database as TDbs];
+    const tbl = entitySchema[table].table;
+    const entity = entitySchema[table];
+    if (select === undefined) {
+      select = namesFromEntity(entity);
+    }
+    validateThrow(isWhere(where, entitySchema[table]));
+    validateThrow(isSelect(select, entitySchema[table]));
+
+    const data: GenericObject[] = await knex(tbl)
+      .hintComment("NO_ICP(accounts)")
+      .where(knexWhere(renameToFieldTuple(where, entity)))
+      .increment(renameToFieldObject(increment, entity))
+      .returning(select);
+    return renameToNameArrayObject(data, entitySchema[table]);
+  }
+
+  // COUNT
+  async count({
+    table = "",
+    where = [],
+  }: {
+    table?: string;
+    where?: Where[];
+    increment?: GenericObject;
+    select?: Select;
+  } = {}): Promise<GenericObject[]> {
+    validateThrow(isTable(table, entitySchema));
+    const knex = this.connections[entitySchema[table].database as TDbs];
+    const tbl = entitySchema[table].table;
+    const entity = entitySchema[table];
+    validateThrow(isWhere(where, entitySchema[table]));
+
+    const data: GenericObject[] = await knex(tbl)
+      .where(knexWhere(renameToFieldTuple(where, entity)))
+      .count({ count: "*" });
+    return data;
   }
 
   // LIST
@@ -58,13 +137,7 @@ export class CrudModel {
     limit = 50,
     select,
   }: ListArgs = {}): Promise<GenericObject[]> {
-    if (!Object.hasOwn(entitySchema, table)) {
-      throw new Error(
-        `${table} não é uma entidade cadastrada no schema. Talvez seja: ${Object.keys(
-          entitySchema
-        )}`
-      );
-    }
+    validateThrow(isTable(table, entitySchema));
     const knex = this.connections[entitySchema[table].database as TDbs];
     const tbl = entitySchema[table].table;
     const entity = entitySchema[table];
@@ -86,13 +159,7 @@ export class CrudModel {
 
   // READ
   async read({ table = "", id, select }: ReadArgs): Promise<GenericObject> {
-    if (!Object.hasOwn(entitySchema, table)) {
-      throw new Error(
-        `${table} não é uma entidade cadastrada no schema. Talvez seja: ${Object.keys(
-          entitySchema
-        )}`
-      );
-    }
+    validateThrow(isTable(table, entitySchema));
     const knex = this.connections[entitySchema[table].database as TDbs];
     const tbl = entitySchema[table].table;
     const entity = entitySchema[table];
@@ -112,17 +179,10 @@ export class CrudModel {
 
   // DEL
   async del({ table = "", id }: DelArgs): Promise<number> {
-    if (!Object.hasOwn(entitySchema, table)) {
-      throw new Error(
-        `${table} não é uma entidade cadastrada no schema. Talvez seja: ${Object.keys(
-          entitySchema
-        )}`
-      );
-    }
+    validateThrow(isTable(table, entitySchema));
     const knex = this.connections[entitySchema[table].database as TDbs];
     const tbl = entitySchema[table].table;
     const entity = entitySchema[table];
-
     validateThrow(isId(id, entity));
 
     const qry = await knex(tbl).del().where(renameToFieldObject(id, entity));
@@ -134,19 +194,11 @@ export class CrudModel {
 
   // CREATE
   async create({ table = "", data }: CreateArgs): Promise<GenericObject> {
-    if (!Object.hasOwn(entitySchema, table)) {
-      throw new Error(
-        `${table} não é uma entidade cadastrada no schema. Talvez seja: ${Object.keys(
-          entitySchema
-        )}`
-      );
-    }
+    validateThrow(isTable(table, entitySchema));
     const knex = this.connections[entitySchema[table].database as TDbs];
     const tbl = entitySchema[table].table;
     const entity = entitySchema[table];
-
     const fieldList = fieldsFromEntity(entity);
-
     validateThrow(isData(data, entity));
 
     const [qry] = await knex(tbl)
@@ -157,18 +209,11 @@ export class CrudModel {
 
   // UPDATE
   async update({ table = "", id, data }: UpdateArgs): Promise<GenericObject> {
-    if (!Object.hasOwn(entitySchema, table)) {
-      throw new Error(
-        `${table} não é uma entidade cadastrada no schema. Talvez seja: ${Object.keys(
-          entitySchema
-        )}`
-      );
-    }
+    validateThrow(isTable(table, entitySchema));
     const knex = this.connections[entitySchema[table].database as TDbs];
     const tbl = entitySchema[table].table;
     const entity = entitySchema[table];
     const fieldList = fieldsFromEntity(entity);
-
     validateThrow(isId(id, entity));
     validateThrow(isData(data, entity));
 
@@ -181,15 +226,14 @@ export class CrudModel {
 
   // RECORD CLEAR
   async clear({ table = "" }): Promise<GenericObject> {
-    if (!Object.hasOwn(entitySchema, table)) {
-      throw new Error(
-        `${table} não é uma entidade cadastrada no schema. Talvez seja: ${Object.keys(
-          entitySchema
-        )}`
-      );
-    }
+    validateThrow(isTable(table, entitySchema));
     const entity = entitySchema[table];
-
     return recordClear(entity);
+  }
+
+  nameList({ table = "" }) {
+    validateThrow(isTable(table, entitySchema));
+    const entity = entitySchema[table];
+    return namesFromEntity(entity);
   }
 }

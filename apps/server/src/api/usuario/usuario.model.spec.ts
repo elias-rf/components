@@ -1,3 +1,4 @@
+import { knexMockHistory } from "@er/utils/src/knex-mock-history";
 import Knex from "knex";
 import { getTracker, MockClient } from "knex-mock-client";
 import {
@@ -43,10 +44,14 @@ describe("rpc de autenticação", () => {
   test("lista sem argumentos", async () => {
     const rsp = await usuario.list();
     expect(rsp).toEqual([{ group_id: "dev", usuario_id: 1 }]);
-    expect(tracker.history.any[0].bindings).toEqual([50]);
-    expect(tracker.history.any[0].sql).toEqual(
-      'select "kUsuario", "NomeUsuario", "email", "fkFuncionario", "Ativo", "hash", "nome", "setor", "nivel", "idGroup" from "tbl_Seguranca_Usuario" limit ?'
-    );
+    expect(knexMockHistory(tracker)).toEqual({
+      any: [
+        {
+          bindings: [50],
+          sql: 'select "kUsuario", "NomeUsuario", "email", "fkFuncionario", "Ativo", "hash", "nome", "setor", "nivel", "idGroup" from "tbl_Seguranca_Usuario" limit ?',
+        },
+      ],
+    });
   });
 
   test("lista com argumentos", async () => {
@@ -55,10 +60,14 @@ describe("rpc de autenticação", () => {
       select: ["usuario_id"],
     });
     expect(rsp).toEqual([{ group_id: "dev", usuario_id: 1 }]);
-    expect(tracker.history.any[0].bindings).toEqual(["SP", 50]);
-    expect(tracker.history.any[0].sql).toEqual(
-      'select "kUsuario" from "tbl_Seguranca_Usuario" where ("kUsuario" = ?) limit ?'
-    );
+    expect(knexMockHistory(tracker)).toEqual({
+      any: [
+        {
+          bindings: ["SP", 50],
+          sql: 'select "kUsuario" from "tbl_Seguranca_Usuario" where ("kUsuario" = ?) limit ?',
+        },
+      ],
+    });
   });
 
   test("read", async () => {
@@ -67,28 +76,40 @@ describe("rpc de autenticação", () => {
       select: ["usuario_id"],
     });
     expect(rsp).toEqual({ group_id: "dev", usuario_id: 1 });
-    expect(tracker.history.any[0].bindings).toEqual(["10"]);
-    expect(tracker.history.any[0].sql).toEqual(
-      'select "kUsuario" from "tbl_Seguranca_Usuario" where "kUsuario" = ?'
-    );
+    expect(knexMockHistory(tracker)).toEqual({
+      any: [
+        {
+          bindings: ["10"],
+          sql: 'select "kUsuario" from "tbl_Seguranca_Usuario" where "kUsuario" = ?',
+        },
+      ],
+    });
   });
 
   test("del", async () => {
     const rsp = await usuario.del({ id: { usuario_id: "10" } });
     expect(rsp).toEqual(1);
-    expect(tracker.history.any[0].bindings).toEqual(["10"]);
-    expect(tracker.history.any[0].sql).toEqual(
-      'delete from "tbl_Seguranca_Usuario" where "kUsuario" = ?'
-    );
+    expect(knexMockHistory(tracker)).toEqual({
+      any: [
+        {
+          bindings: ["10"],
+          sql: 'delete from "tbl_Seguranca_Usuario" where "kUsuario" = ?',
+        },
+      ],
+    });
   });
 
   test("create", async () => {
     const rsp = await usuario.create({ data: { usuario_id: 10 } });
     expect(rsp).toEqual({ group_id: "dev", usuario_id: 1 });
-    expect(tracker.history.any[0].bindings).toEqual([10]);
-    expect(tracker.history.any[0].sql).toEqual(
-      'insert into "tbl_Seguranca_Usuario" ("kUsuario") values (?)'
-    );
+    expect(knexMockHistory(tracker)).toEqual({
+      any: [
+        {
+          bindings: [10],
+          sql: 'insert into "tbl_Seguranca_Usuario" ("kUsuario") values (?)',
+        },
+      ],
+    });
   });
 
   test("update", async () => {
@@ -97,10 +118,14 @@ describe("rpc de autenticação", () => {
       data: { usuario_id: 10 },
     });
     expect(rsp).toEqual({ usuario_id: 2 });
-    expect(tracker.history.any[0].bindings).toEqual([10, "10"]);
-    expect(tracker.history.any[0].sql).toEqual(
-      'update "tbl_Seguranca_Usuario" set "kUsuario" = ? where "kUsuario" = ?'
-    );
+    expect(knexMockHistory(tracker)).toEqual({
+      any: [
+        {
+          bindings: [10, "10"],
+          sql: 'update "tbl_Seguranca_Usuario" set "kUsuario" = ? where "kUsuario" = ?',
+        },
+      ],
+    });
   });
 
   test("listSubject", async () => {
@@ -109,9 +134,17 @@ describe("rpc de autenticação", () => {
       select: ["subject_id"],
     });
     expect(rsp).toEqual([{ subject_id: "form", group_id: "dev" }]);
-    expect(tracker.history.any[0].bindings).toEqual(["10"]);
-    expect(tracker.history.any[0].sql).toEqual(
-      'select "idGroup" from "tbl_Seguranca_Usuario" where "kUsuario" = ?'
-    );
+    expect(knexMockHistory(tracker)).toEqual({
+      any: [
+        {
+          bindings: ["10"],
+          sql: 'select "idGroup" from "tbl_Seguranca_Usuario" where "kUsuario" = ?',
+        },
+        {
+          bindings: [{ group_id: "dev", usuario_id: 1 }, 50],
+          sql: 'select "idSubject" from "groupSubject" where ("idGroup" = ?) limit ?',
+        },
+      ],
+    });
   });
 });

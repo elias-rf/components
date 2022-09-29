@@ -77,6 +77,7 @@ Closable.args = {
   children: `Badge_1`,
   large: false,
 };
+
 Closable.argTypes = {
   color: {
     options: ["default", "red", "green", "yellow", "indigo", "purple", "pink"],

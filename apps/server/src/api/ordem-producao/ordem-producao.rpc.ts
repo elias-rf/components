@@ -10,7 +10,7 @@ import {
 } from "@er/types";
 import { isUndefined } from "@er/utils/src/is-undefined";
 import { TConnections } from "../../dal/connections";
-import { EtiquetaExternaModel } from "../etiqueta-externa/etiqueta-externa.model";
+import { CrudModel } from "../crud/crud.model";
 import { TEtiquetaExterna } from "../etiqueta-externa/etiqueta-externa.type";
 import { TProdutoItem } from "../produto-item/produto-item.type";
 import { TProdutoPlano } from "../produto-plano/produto-plano.type";
@@ -71,7 +71,7 @@ export type TOrdemProducaoRpc = {
 
 export function ordemProducaoRpc(connections: TConnections): TOrdemProducaoRpc {
   const ordemProducaoModel = new OrdemProducaoModel(connections);
-  const etiquetaExternaModel = new EtiquetaExternaModel(connections);
+  const crud = new CrudModel(connections);
 
   return {
     async ordemProducaoSchema() {
@@ -147,13 +147,14 @@ export function ordemProducaoRpc(connections: TConnections): TOrdemProducaoRpc {
     async ordemProducaoEtiquetaExterna({ id }) {
       let response: TEtiquetaExterna[];
       if (isUndefined(id)) response = [];
-      response = await etiquetaExternaModel.list({
+      response = (await crud.list({
+        table: "etiqueta_externa",
         where: [
           ["etiqueta_externa_id", "like", id["kOp"]?.substring(0, 6) + "%"],
         ],
         order: [["etiqueta_externa_id", "asc"]],
         limit: 200,
-      });
+      })) as TEtiquetaExterna[];
       return response;
     },
   };
