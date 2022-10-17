@@ -1,9 +1,24 @@
 {
-  "references": [
-    { "path": "./packages/types" },
-    { "path": "./packages/utils" },
-    { "path": "./apps/server" },
-    { "path": "./apps/client" }
-  ],
-  "files": []
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "emitDeclarationOnly": false,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["esnext"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "es2020",
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"]
+  },
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.spec.ts"],
+  "extends": "./tsconfig.base.json"
 }

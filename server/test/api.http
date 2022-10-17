@@ -1,0 +1,70 @@
+### agendaTelefoneSchema
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"list",
+  "params":{}
+}
+
+### agendaTelefoneRead
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "agendaTelefoneRead",
+  "params": {"pk": {"agenda_telefone_id":"171"}}
+}
+
+### agendaTelefoneList
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "agendaTelefoneList",
+  "params": {"where": [["agenda_telefone_id","=","171"]]}
+}
+
+### agendaTelefoneCreate
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "agendaTelefoneCreate",
+  "params":  {"data":{
+      "agenda_telefone_id": 99,
+      "nome": "vago78",
+      "setor": "qualidade",
+      "email": " vago"
+    }}
+}
+
+### agendaTelefoneUpdate
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "crudUpdate",
+  "params": {"table":"agenda_telefone","id": {"agenda_telefone_id":"99"}, "data":{"nome":"Fulano"}}
+}
+
+### agendaTelefoneDelete
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "agendaTelefoneDel",
+  "params": {"pk": {"agenda_telefone_id":"99"}}
+}
