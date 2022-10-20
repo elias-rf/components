@@ -17,7 +17,7 @@ type TButtonProps = {
   disabled?: boolean;
   size?: "xs" | "sm" | "bs" | "lg" | "xl";
   name?: string;
-  onClick?: (e: IEvent) => void;
+  onClick?: (event: IEvent) => void;
 };
 
 const buttonTheme = {
@@ -70,14 +70,14 @@ export function Button(props: TButtonProps) {
     ...other
   } = props;
 
-  function handleClick(e: React.SyntheticEvent) {
+  function handleClick(event: React.SyntheticEvent) {
     onClick({
       name,
       value: children,
       targetProps: props,
       targetName: "Button",
       eventName: "click",
-      event: e,
+      event: event,
     });
   }
 

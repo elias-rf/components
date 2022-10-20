@@ -1,37 +1,36 @@
 import React from "react";
-import { CustomEvent } from "../../types";
+import { IEvent } from "../../../types";
 
-type TTextboxTextProps = {
+type TTextboxProps = {
   [prop: string]: any;
   list?: string;
   name: string;
-  onBlur?: (e: CustomEvent) => void;
-  onChange?: (e: CustomEvent) => void;
-  onInput?: (e: CustomEvent) => void;
+  onBlur?: (e: IEvent) => void;
+  onChange?: (e: IEvent) => void;
+  onInput?: (e: IEvent) => void;
   value: any;
 };
 
-export function TextboxText(props: TTextboxTextProps) {
-  const {
-    name = "",
-    onChange = () => null,
-    onBlur = () => null,
-    onInput = () => null,
-    value = "",
-    list,
-    ...others
-  } = props;
-
+/**
+ *
+ */
+export function Textbox({
+  name = "",
+  onChange = () => null,
+  onBlur = () => null,
+  onInput = () => null,
+  value = "",
+  list,
+  ...others
+}: TTextboxProps) {
   const [dispInput, setDispInput] = React.useState(false);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange({
       name,
       value: e.target.value,
-      targetName: "TextboxText",
-      targetProps: props,
-      eventName: "change",
-      event: e,
+      targetName: "Textbox",
+      eventName: "onChange",
     });
     if (dispInput) setDispInput(false);
   };
@@ -39,9 +38,8 @@ export function TextboxText(props: TTextboxTextProps) {
   const handleOnBlur = (e: React.SyntheticEvent) => {
     onBlur({
       name,
-      value: value,
-      targetName: "TextboxText",
-      targetProps: props,
+      value,
+      targetName: "Textbox",
       eventName: "blur",
       event: e,
     });
@@ -49,8 +47,7 @@ export function TextboxText(props: TTextboxTextProps) {
       onInput({
         name,
         value: value,
-        targetName: "TextboxText",
-        targetProps: props,
+        targetName: "Textbox",
         eventName: "input",
       });
       setDispInput(true);
@@ -62,9 +59,8 @@ export function TextboxText(props: TTextboxTextProps) {
       if (!dispInput) {
         onInput({
           name,
-          value: value,
-          targetName: "TextboxText",
-          targetProps: props,
+          value,
+          targetName: "Textbox",
           eventName: "input",
         });
         setDispInput(true);

@@ -1,72 +1,58 @@
-import type { RpcContext, Schema } from "../../../types";
+import type { Schema } from "../../../types";
 import { TConnections } from "../../dal/connections";
-import { EsterilizacaoInternaModel } from "../esterilizacao-interna/esterilizacao-interna.model";
+import { esterilizacaoInternaModel } from "../esterilizacao-interna/esterilizacao-interna.model";
 
-export interface TEsterilizacaoInternaRpc {
-  esterilizacaoInternaSchemaDiario: () => Promise<Schema>;
-  esterilizacaoInternaSchemaMensal: () => Promise<Schema>;
-  esterilizacaoInternaSchemaProduto: () => Promise<Schema>;
-  esterilizacaoInternaSchemaModelo: () => Promise<Schema>;
-  esterilizacaoInternaDiario: (
-    args: { inicio: string; fim: string },
-    ctx?: RpcContext
-  ) => Promise<{ dia: string; quantidade: number }[]>;
-  esterilizacaoInternaMensal: (
-    args: { mes: string },
-    ctx?: RpcContext
-  ) => Promise<{ mes: string; quantidade: number }[]>;
-  esterilizacaoInternaProduto: (
-    args: { data: string },
-    ctx?: RpcContext
-  ) => Promise<{ produto: string; quantidade: number }[]>;
-  esterilizacaoInternaModelo: (
-    args: { data: string; produto: string },
-    ctx?: RpcContext
-  ) => Promise<{ modelo: string; quantidade: number }[]>;
-}
+export function esterilizacaoInternaRpc(connections: TConnections) {
+  const esterilizacaoInterna = esterilizacaoInternaModel(connections);
 
-export function esterilizacaoInternaRpc(
-  connections: TConnections
-): TEsterilizacaoInternaRpc {
-  const esterilizacaoInterna = new EsterilizacaoInternaModel(connections);
   return {
     // SCHEMA DIARIO
-    async esterilizacaoInternaSchemaDiario() {
+    async esterilizacaoInternaSchemaDiario(): Promise<Schema> {
       return esterilizacaoInterna.schemaDiario();
     },
 
     // SCHEMA MENSAL
-    async esterilizacaoInternaSchemaMensal() {
+    async esterilizacaoInternaSchemaMensal(): Promise<Schema> {
       return esterilizacaoInterna.schemaMensal();
     },
 
     // SCHEMA PRODUTO
-    async esterilizacaoInternaSchemaProduto() {
+    async esterilizacaoInternaSchemaProduto(): Promise<Schema> {
       return esterilizacaoInterna.schemaProduto();
     },
 
     // SCHEMA MODELO
-    async esterilizacaoInternaSchemaModelo() {
+    async esterilizacaoInternaSchemaModelo(): Promise<Schema> {
       return esterilizacaoInterna.schemaModelo();
     },
 
     // DIARIO
-    async esterilizacaoInternaDiario(args) {
+    async esterilizacaoInternaDiario(args: {
+      inicio: string;
+      fim: string;
+    }): Promise<{ dia: string; quantidade: number }[]> {
       return esterilizacaoInterna.diario(args);
     },
 
     // MENSAL
-    async esterilizacaoInternaMensal(args) {
+    async esterilizacaoInternaMensal(args: {
+      mes: string;
+    }): Promise<{ mes: string; quantidade: number }[]> {
       return esterilizacaoInterna.mensal(args);
     },
 
     // MODELO
-    async esterilizacaoInternaModelo(args) {
+    async esterilizacaoInternaModelo(args: {
+      data: string;
+      produto: string;
+    }): Promise<{ modelo: string; quantidade: number }[]> {
       return esterilizacaoInterna.modelo(args);
     },
 
     // PRODUTO
-    async esterilizacaoInternaProduto(args) {
+    async esterilizacaoInternaProduto(args: {
+      data: string;
+    }): Promise<{ produto: string; quantidade: number }[]> {
       return esterilizacaoInterna.produto(args);
     },
   };

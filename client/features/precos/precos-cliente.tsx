@@ -1,5 +1,6 @@
 import React from "react";
-import { Textbox } from "../../components/textbox";
+import { IEvent } from "../../../types";
+import { Textbox } from "../../components/textbox/textbox";
 import { inteiro, moeda } from "../../lib/text-box-formats";
 import { PrecosVendedor } from "./precos-vendedor";
 import { usePrecosState } from "./use-precos.state";
@@ -14,17 +15,6 @@ const produtos: {
   { grupo: "enlite", label: "Enlite" },
 ];
 
-const style = {
-  produto: "px-3 py-2 text-xl font-bold text-left text-white bg-blue-900",
-  quantidade:
-    "text-xl pr-1 w-32 font-bold text-right bg-blue-100 border-transparent",
-  tabela: "text-xl pr-1 w-40 text-right bg-yellow-50 border-transparent",
-  ofertado:
-    "text-xl pr-1 w-40 font-bold text-right bg-yellow-400 border-transparent",
-  combo:
-    "text-2xl pr-1 w-40 font-bold text-right bg-yellow-400 border-transparent",
-};
-
 function Produto({
   produto,
   recalc,
@@ -32,17 +22,25 @@ function Produto({
 }: {
   produto: any;
   snap: any;
-  recalc: (args: any) => void;
+  recalc: (args: IEvent) => void;
 }) {
   return (
     <React.Fragment key={produto.grupo}>
       <tr className="border border-black">
-        <td className={style.produto}>{produto.label}</td>
+        <td
+          className={
+            "px-3 py-2 text-xl font-bold text-left text-white bg-blue-900"
+          }
+        >
+          {produto.label}
+        </td>
         <td className="bg-blue-100">
           <Textbox
-            className={style.quantidade}
+            className={
+              "text-xl pr-1 w-32 font-bold text-right bg-blue-100 border-transparent"
+            }
             value={inteiro.format(snap[produto.grupo].quantidade)}
-            field={`${produto.grupo}.quantidade`}
+            name={`${produto.grupo}.quantidade`}
             format={inteiro}
             onChange={recalc}
             autoComplete={"off"}
@@ -52,13 +50,17 @@ function Produto({
           <Textbox
             onDoubleClick={() =>
               recalc({
-                field: `${produto.grupo}.tabela`,
+                name: `${produto.grupo}.tabela`,
                 value: moeda.format(snap[produto.grupo].precoPadrao),
+                targetName: "Textbox",
+                eventName: "onDoubleClick",
               })
             }
-            className={style.tabela}
+            className={
+              "text-xl pr-1 w-40 text-right bg-yellow-50 border-transparent"
+            }
             value={moeda.format(snap[produto.grupo].tabela)}
-            field={`${produto.grupo}.tabela`}
+            name={`${produto.grupo}.tabela`}
             onChange={recalc}
             format={moeda}
             autoComplete={"off"}
@@ -68,13 +70,17 @@ function Produto({
           <Textbox
             onDoubleClick={() =>
               recalc({
-                field: `${produto.grupo}.ofertado`,
+                name: `${produto.grupo}.ofertado`,
                 value: moeda.format(snap[produto.grupo].precoMinimo),
+                targetName: "Textbox",
+                eventName: "onDoubleClick",
               })
             }
-            className={style.ofertado}
+            className={
+              "text-xl pr-1 w-40 font-bold text-right bg-yellow-400 border-transparent"
+            }
             value={moeda.format(snap[produto.grupo].ofertado)}
-            field={`${produto.grupo}.ofertado`}
+            name={`${produto.grupo}.ofertado`}
             onChange={recalc}
             format={moeda}
             autoComplete={"off"}
@@ -91,13 +97,8 @@ function Produto({
 export function PrecosCliente() {
   const [snap, setValue] = usePrecosState() as any;
 
-  // function recalc(event: any) {
-  //   const [group, item] = event.target.name.split(".");
-  //   setValue(group, item, event.target.value);
-  // }
-
-  function recalc({ field, value }: { field: string; value: any }) {
-    const [group, item] = field.split(".");
+  function recalc({ name, value }: IEvent) {
+    const [group, item] = name.split(".");
     setValue(group, item, value);
   }
 
@@ -116,18 +117,12 @@ export function PrecosCliente() {
           <table className="text-right">
             <tbody>
               <tr>
-                <td
-                  colSpan={2}
-                  className="py-1 pr-2"
-                >
+                <td colSpan={2} className="py-1 pr-2">
                   Qt.
                 </td>
                 <td className="px-2">Tabela</td>
                 <td className="px-2 font-bold">Ofertado</td>
-                <td
-                  rowSpan={11}
-                  className="px-2"
-                ></td>
+                <td rowSpan={11} className="px-2"></td>
                 <td
                   className="min-w-[150px] px-4 font-bold text-center align-top bg-white border-2 border-gray-400"
                   rowSpan={9}
@@ -150,10 +145,7 @@ export function PrecosCliente() {
                     {moeda.format(snap.combo1.totalTabela)}
                   </p>
                 </td>
-                <td
-                  rowSpan={9}
-                  className="px-2"
-                ></td>
+                <td rowSpan={9} className="px-2"></td>
                 <td
                   className="min-w-[150px] px-4 font-bold text-center align-top bg-white border-2 border-gray-400 w-96"
                   rowSpan={9}
@@ -189,10 +181,7 @@ export function PrecosCliente() {
               ))}
 
               <tr>
-                <td
-                  colSpan={2}
-                  className="py-2 pr-2"
-                >
+                <td colSpan={2} className="py-2 pr-2">
                   Totais
                 </td>
                 <td className="px-2 font-bold border border-black bg-yellow-50">
@@ -211,10 +200,7 @@ export function PrecosCliente() {
                 </td>
               </tr>
               <tr>
-                <td
-                  colSpan={3}
-                  className="py-2 pr-3"
-                >
+                <td colSpan={3} className="py-2 pr-3">
                   Desconto
                   {" >"}
                 </td>
@@ -238,10 +224,7 @@ export function PrecosCliente() {
       <div className="print:hidden">
         <div className="m-4">
           <div className="px-4 pb-4 my-2 bg-gray-300 border border-black w-min">
-            <PrecosVendedor
-              dados={snap}
-              produtos={produtos}
-            />
+            <PrecosVendedor dados={snap} produtos={produtos} />
           </div>
         </div>
       </div>

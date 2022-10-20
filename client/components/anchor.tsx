@@ -9,7 +9,7 @@ type TAProps = {
   className?: string;
 };
 
-export function A({
+export function Anchor({
   href,
   onClick = () => null,
   children,

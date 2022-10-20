@@ -5,8 +5,9 @@ Content-Type: application/json
 {
   "jsonrpc":"2.0",
   "id":"1",
-  "method":"cidadeList",
+  "method":"crudList",
   "params":{
+    "table":"cidade",
     "limit":3,
     "where":[["uf_old","=","ES"]],
     "orderBy":[["cidade_id","asc"]]

@@ -1,10 +1,9 @@
-import { Id, Order, Where } from "@er/types";
-import { isEmpty } from "@er/utils/src/is-empty";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import {
-  phonebookService,
-  TPhonebookRecord,
-} from "../service/agenda-telefone.service";
+import { Ids, Order, Where } from "../../types";
+import { isEmpty } from "../../utils/is-empty";
+import { agendaTelefoneService } from "../service/agenda-telefone.service";
+
+import { TAgendaTelefone } from "../../types/agenda-telefone.type";
 
 const UM_MINUTO = 60 * 1000;
 
@@ -16,7 +15,7 @@ export function usePhonebookList(where: Where[], orderBy: Order[]) {
     [PHONEBOOK, where, orderBy],
     ({ queryKey }) => {
       const [_key, where, orderBy] = queryKey as [string, Where[], Order[]];
-      return phonebookService.list(where, orderBy);
+      return agendaTelefoneService.list(where, orderBy);
     },
     {
       staleTime: UM_MINUTO,
@@ -24,13 +23,13 @@ export function usePhonebookList(where: Where[], orderBy: Order[]) {
   );
 }
 
-export function usePhonebookRead(id: Id) {
+export function usePhonebookRead(id: Ids) {
   return useQuery(
     [PHONEBOOK, id],
     ({ queryKey }) => {
-      const [_key, id] = queryKey as [string, Id];
+      const [_key, id] = queryKey as [string, Ids];
       if (isEmpty(id)) return {};
-      return phonebookService.read(id);
+      return agendaTelefoneService.read(id);
     },
     {
       staleTime: UM_MINUTO,
@@ -39,15 +38,19 @@ export function usePhonebookRead(id: Id) {
 }
 
 export function usePhonebookSchema() {
-  return useQuery([PHONEBOOK_SCHEMA], async () => phonebookService.schema(), {
-    staleTime: Infinity,
-  });
+  return useQuery(
+    [PHONEBOOK_SCHEMA],
+    async () => agendaTelefoneService.schema(),
+    {
+      staleTime: Infinity,
+    }
+  );
 }
 
 export function usePhonebookCreate() {
   const cache = useQueryClient();
   return useMutation(
-    (args: [TPhonebookRecord]) => phonebookService.create(...args),
+    (args: [TAgendaTelefone]) => agendaTelefoneService.create(...args),
     {
       onSuccess: () => cache.invalidateQueries([PHONEBOOK]),
     }
@@ -57,8 +60,8 @@ export function usePhonebookCreate() {
 export function usePhonebookDel() {
   const cache = useQueryClient();
   return useMutation(
-    (args: [Id]) => {
-      return phonebookService.del(...args);
+    (args: [Ids]) => {
+      return agendaTelefoneService.del(...args);
     },
     {
       onSuccess: () => cache.invalidateQueries([PHONEBOOK]),
@@ -69,8 +72,8 @@ export function usePhonebookDel() {
 export function usePhonebookUpdate() {
   const cache = useQueryClient();
   return useMutation(
-    (args: [Id, TPhonebookRecord]) => {
-      return phonebookService.update(...args);
+    (args: [Ids, TAgendaTelefone]) => {
+      return agendaTelefoneService.update(...args);
     },
     {
       onSuccess: () => cache.invalidateQueries([PHONEBOOK]),

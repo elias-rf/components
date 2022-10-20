@@ -1,7 +1,7 @@
 import { Action, Dispatch } from "../../../types";
 import { Input } from "../../components/input/input";
 import { Label } from "../../components/label";
-import { TextboxText } from "../../components/textbox-text";
+import { Textbox } from "../../components/textbox/textbox";
 
 import { TCliente } from "../../service/cliente.service";
 
@@ -26,8 +26,7 @@ export function ClienteForm({
         <div className="flex flex-row flex-wrap space-x-4">
           <div className="flex flex-col w-24 my-2">
             <Label>Código</Label>
-
-            <TextboxText
+            <Textbox
               value={record.CdCliente}
               field="CdCliente"
               dispatch={handleLoad}
@@ -35,7 +34,7 @@ export function ClienteForm({
           </div>
           <div className="flex flex-col my-2 w-[50rem]">
             <Label>Nome</Label>
-            <TextboxText
+            <Textbox
               value={record.RzSocial}
               field="RzSocial"
               dispatch={handleLoad}
@@ -43,7 +42,7 @@ export function ClienteForm({
           </div>
           <div className="flex flex-col my-2 w-80">
             <Label>Cidade</Label>
-            <TextboxText
+            <Textbox
               value={record.Cidade}
               field="Cidade"
               dispatch={handleLoad}
@@ -51,23 +50,15 @@ export function ClienteForm({
           </div>
           <div className="flex flex-col w-10 my-2">
             <Label>UF</Label>
-            <TextboxText
-              value={record.Uf}
-              field="Uf"
-              dispatch={handleLoad}
-            />
+            <Textbox value={record.Uf} field="Uf" dispatch={handleLoad} />
           </div>
           <div className="flex flex-col my-2 w-36">
             <Label>CNPJ</Label>
-            <TextboxText
-              value={record.CGC}
-              field="CGC"
-              dispatch={handleLoad}
-            />
+            <TextboxText value={record.CGC} field="CGC" dispatch={handleLoad} />
           </div>
           <div className="flex flex-col w-20 my-2">
             <Label>Vendedor</Label>
-            <TextboxText
+            <Textbox
               value={record.CdVendedor}
               field="CdVendedor"
               dispatch={handleLoad}

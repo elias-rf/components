@@ -1,5 +1,5 @@
 ### Index
-POST http://localhost:3000/rpc
+POST http://localhost:3000/api/rpc
 Content-Type: application/json
 
 {
@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ### Echo
-POST http://localhost:3000/rpc
+POST http://localhost:3000/api/rpc
 Content-Type: application/json
 
 {

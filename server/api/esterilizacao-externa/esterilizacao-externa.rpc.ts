@@ -1,72 +1,53 @@
-import type { RpcContext, Schema } from "../../../types";
+import type { Schema } from "../../../types";
 import { TConnections } from "../../dal/connections";
-import { EsterilizacaoExternaModel } from "../esterilizacao-externa/esterilizacao-externa.model";
+import { esterilizacaoExternaModel } from "./esterilizacao-externa.model";
 
-export type TEsterilizacaoExternaRpc = {
-  esterilizacaoExternaSchemaDiario: () => Promise<Schema>;
-  esterilizacaoExternaSchemaMensal: () => Promise<Schema>;
-  esterilizacaoExternaSchemaProduto: () => Promise<Schema>;
-  esterilizacaoExternaSchemaModelo: () => Promise<Schema>;
-  esterilizacaoExternaDiario: (
-    args: { inicio: string; fim: string },
-    ctx?: RpcContext
-  ) => Promise<{ dia: string; quantidade: number }[]>;
-  esterilizacaoExternaMensal: (
-    args: { mes: string },
-    ctx?: RpcContext
-  ) => Promise<{ mes: string; quantidade: number }[]>;
-  esterilizacaoExternaProduto: (
-    args: { data: string },
-    ctx?: RpcContext
-  ) => Promise<{ produto: string; quantidade: number }[]>;
-  esterilizacaoExternaModelo: (
-    args: { data: string; produto: string },
-    ctx?: RpcContext
-  ) => Promise<{ modelo: string; quantidade: number }[]>;
-};
-
-export function esterilizacaoExternaRpc(
-  connections: TConnections
-): TEsterilizacaoExternaRpc {
-  const esterilizacaoExterna = new EsterilizacaoExternaModel(connections);
+export function esterilizacaoExternaRpc(connections: TConnections) {
+  const esterilizacaoExterna = esterilizacaoExternaModel(connections);
   return {
     // SCHEMA DIARIO
-    async esterilizacaoExternaSchemaDiario() {
+    async esterilizacaoExternaSchemaDiario(): Promise<Schema> {
       return esterilizacaoExterna.schemaDiario();
     },
 
     // SCHEMA MENSAL
-    async esterilizacaoExternaSchemaMensal() {
+    async esterilizacaoExternaSchemaMensal(): Promise<Schema> {
       return esterilizacaoExterna.schemaMensal();
     },
 
     // SCHEMA PRODUTO
-    async esterilizacaoExternaSchemaProduto() {
+    async esterilizacaoExternaSchemaProduto(): Promise<Schema> {
       return esterilizacaoExterna.schemaProduto();
     },
 
     // SCHEMA MODELO
-    async esterilizacaoExternaSchemaModelo() {
+    async esterilizacaoExternaSchemaModelo(): Promise<Schema> {
       return esterilizacaoExterna.schemaModelo();
     },
 
     // DIARIO
-    async esterilizacaoExternaDiario(args) {
+    async esterilizacaoExternaDiario(args: {
+      inicio: string;
+      fim: string;
+    }): Promise<any[]> {
       return esterilizacaoExterna.diario(args);
     },
 
     // MENSAL
-    async esterilizacaoExternaMensal(args) {
+    async esterilizacaoExternaMensal(args: { mes: string }): Promise<any[]> {
       return esterilizacaoExterna.mensal(args);
     },
 
     // MODELO
-    async esterilizacaoExternaModelo(args) {
+    async esterilizacaoExternaModelo(args: {
+      data: string;
+      produto: string;
+    }): Promise<any[]> {
       return esterilizacaoExterna.modelo(args);
     },
 
     // PRODUTO
-    async esterilizacaoExternaProduto(args) {
+    async esterilizacaoExternaProduto(args: { data: string }): Promise<any[]> {
       return esterilizacaoExterna.produto(args);
     },
   };

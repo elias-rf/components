@@ -1,35 +1,20 @@
-import type { Story } from "@ladle/react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Label } from "./label";
 
 export default {
-  title: "Form/Label",
+  title: "Components/Label",
   component: Label,
-};
+} as ComponentMeta<typeof Label>;
 
-const Template: Story<typeof Label> = ({ name, status }) => {
+export const Default: ComponentStory<typeof Label> = (props) => {
   return (
     <>
-      <Label
-        name={name}
-        status={status}
-      >
-        Teste
-      </Label>
+      <Label {...props} />
     </>
   );
 };
 
-export const Default = Template.bind({});
-
 Default.args = {
-  value: "valor",
   name: "textbox1",
-  disabled: false,
-};
-
-Default.argTypes = {
-  status: {
-    options: ["success", "error", ""],
-    control: { type: "select" },
-  },
+  children: "Label",
 };

@@ -2,7 +2,7 @@ import { IEvent } from "../../types";
 import { useField } from "../lib/hooks/use-field.hook";
 import { Button } from "./button";
 import { SpinnerIcon } from "./spinner-icon";
-import { Textbox } from "./textbox";
+import { Textbox } from "./textbox/textbox";
 
 interface LoginProps {
   onInput?: (e: IEvent) => void;
@@ -36,11 +36,7 @@ export function Login(props: LoginProps) {
       <div className="flex flex-col w-64 px-4 py-4 bg-white border border-gray-400 rounded-lg">
         <div className="mb-4 text-2xl font-semibold text-center">{title}</div>
         <div className="flex flex-col mb-2">
-          <Textbox
-            {...fieldUser.register()}
-            name="nome"
-            placeholder="Nome"
-          />
+          <Textbox {...fieldUser.register()} name="nome" placeholder="Nome" />
         </div>
         <div className="flex flex-col mb-6">
           <Textbox
@@ -52,10 +48,7 @@ export function Login(props: LoginProps) {
         </div>
         <div className="flex flex-col mb-2">
           <div className="relative flex">
-            <Button
-              name="login"
-              onClick={handleLogin}
-            >
+            <Button name="login" onClick={handleLogin}>
               <div className="inline-flex flex-nowrap">
                 Login
                 <div className="mt-1 ml-1">

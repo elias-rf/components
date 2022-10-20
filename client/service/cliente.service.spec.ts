@@ -10,7 +10,8 @@ describe("ClienteService", () => {
   });
 
   it("schema ok", async () => {
-    fetchMockRpc.mock("clienteSchema", {
+    fetchMockRpc.mock("crudSchema", {
+      status: 200,
       body: {
         result: {
           pk: ["CdCliente"],
@@ -19,6 +20,10 @@ describe("ClienteService", () => {
       },
     });
     const rsp = await clienteService.schema();
+    expect(rsp).toEqual({
+      pk: ["CdCliente"],
+      fields: [],
+    });
     expect(fetchMockRpc.history(0)).toEqual({
       url: "/api/rpc",
       options: {
@@ -26,12 +31,8 @@ describe("ClienteService", () => {
         headers: {
           "content-type": "application/json",
         },
-        body: '{"jsonrpc":"2.0","id":1,"method":"clienteSchema"}',
+        body: '{"jsonrpc":"2.0","id":1,"method":"crudSchema","params":{"table":"cliente"}}',
       },
-    });
-    expect(rsp).toEqual({
-      pk: ["CdCliente"],
-      fields: [],
     });
   });
 });

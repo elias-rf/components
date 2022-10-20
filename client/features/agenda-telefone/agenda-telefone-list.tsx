@@ -2,7 +2,7 @@ import { Table } from "../../components/table";
 import {
   usePhonebookList,
   usePhonebookSchema,
-} from "../../hooks/use-phonebook.hook";
+} from "../../hooks/use-agenda-telefone.hook";
 import { useQueryState } from "../../lib/hooks/use-query-state";
 
 export function PhonebookList() {

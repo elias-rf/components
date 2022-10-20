@@ -1,185 +1,23 @@
-import type { Story } from "@ladle/react";
-import { action } from "@ladle/react";
-import { Button } from "../button";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Button } from "./button";
 
 export default {
-  title: "Button",
+  title: "Components/Button",
   component: Button,
-  argTypes: { dispatch: { action: "dispatch" } },
-};
+  argTypes: { onClick: { action: "onClick" } },
+} as ComponentMeta<typeof Button>;
 
-export const Default: Story<typeof Button> = () => {
+export const Default: ComponentStory<typeof Button> = (args) => {
   return (
-    <div>
-      <div className="flex space-x-2 space-y-2">
-        <div></div>
-        <Button
-          name="default"
-          color="default"
-          onClick={action("onClick")}
-        >
-          Default
-        </Button>
-        <Button
-          name="alternative"
-          color="alternative"
-          onClick={action("onClick")}
-        >
-          alternative
-        </Button>
-        <Button
-          name="dark"
-          color="dark"
-          onClick={action("onClick")}
-        >
-          dark
-        </Button>
-        <Button
-          name="light"
-          color="light"
-          onClick={action("onClick")}
-        >
-          light
-        </Button>
-        <Button
-          name="green"
-          color="green"
-          onClick={action("onClick")}
-        >
-          green
-        </Button>
-        <Button
-          name="red"
-          color="red"
-          onClick={action("onClick")}
-        >
-          red
-        </Button>
-        <Button
-          name="yellow"
-          color="yellow"
-          onClick={action("onClick")}
-        >
-          yellow
-        </Button>
-        <Button
-          name="purple"
-          color="purple"
-          onClick={action("onClick")}
-        >
-          purple
-        </Button>
-      </div>
-      <div className="flex space-x-2 space-y-2">
-        <div></div>
-        <Button
-          name="default"
-          color="default"
-          disabled
-          onClick={action("onClick")}
-        >
-          Default
-        </Button>
-        <Button
-          name="alternative"
-          color="alternative"
-          disabled
-          onClick={action("onClick")}
-        >
-          alternative
-        </Button>
-        <Button
-          name="dark"
-          color="dark"
-          disabled
-          onClick={action("onClick")}
-        >
-          dark
-        </Button>
-        <Button
-          name="light"
-          color="light"
-          disabled
-          onClick={action("onClick")}
-        >
-          light
-        </Button>
-        <Button
-          name="green"
-          color="green"
-          disabled
-          onClick={action("onClick")}
-        >
-          green
-        </Button>
-        <Button
-          name="red"
-          color="red"
-          disabled
-          onClick={action("onClick")}
-        >
-          red
-        </Button>
-        <Button
-          name="yellow"
-          color="yellow"
-          disabled
-          onClick={action("onClick")}
-        >
-          yellow
-        </Button>
-        <Button
-          name="purple"
-          color="purple"
-          disabled
-          onClick={action("onClick")}
-        >
-          purple
-        </Button>
-      </div>
-      <div className="flex space-x-2 space-y-2">
-        <div></div>
-        <Button
-          name="xs"
-          color="default"
-          size="xs"
-          onClick={action("onClick")}
-        >
-          xs
-        </Button>
-        <Button
-          name="sm"
-          color="default"
-          size="sm"
-          onClick={action("onClick")}
-        >
-          sm
-        </Button>
-        <Button
-          name="bs"
-          color="default"
-          size="bs"
-          onClick={action("onClick")}
-        >
-          bs
-        </Button>
-        <Button
-          name="lg"
-          color="default"
-          size="lg"
-          onClick={action("onClick")}
-        >
-          lg
-        </Button>
-        <Button
-          name="xl"
-          color="default"
-          size="xl"
-          onClick={action("onClick")}
-        >
-          xl
-        </Button>
-      </div>
+    <div className="flex space-x-2 space-y-2">
+      <Button {...args}>{args.children}</Button>
     </div>
   );
+};
+
+Default.args = {
+  size: "bs",
+  color: "dark",
+  name: "teste",
+  children: "botão",
 };

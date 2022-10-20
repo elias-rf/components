@@ -1,74 +1,27 @@
 import type { CurrentUser } from "../../../types";
-import {
-  CreateArgs,
-  DelArgs,
-  ListArgs,
-  ReadArgs,
-  RpcContext,
-  Schema,
-  UpdateArgs,
-} from "../../../types";
-import { TUsuario } from "../../../types/usuario.type";
+import { RpcContext } from "../../../types";
 import { TConnections } from "../../dal/connections";
-import { UsuarioModel } from "../usuario/usuario.model";
+import { usuarioModel } from "../usuario/usuario.model";
 
-export interface TUsuarioRpc {
-  usuarioSchema(): Promise<Schema>;
-  usuarioList(listArgs: ListArgs, ctx?: RpcContext): Promise<TUsuario[]>;
-  usuarioRead(readArgs: ReadArgs, ctx?: RpcContext): Promise<TUsuario>;
-  usuarioDel(delArgs: DelArgs, ctx?: RpcContext): Promise<number>;
-  usuarioCreate(creatArgs: CreateArgs, ctx?: RpcContext): Promise<TUsuario>;
-  usuarioUpdate(updateArgs: UpdateArgs, ctx?: RpcContext): Promise<TUsuario>;
-  login(args: { user: string; password: string }): Promise<CurrentUser>;
-  logout(): Promise<boolean>;
-  me(_: void, ctx?: RpcContext): Promise<CurrentUser>;
-}
-
-export function usuarioRpc(connections: TConnections): TUsuarioRpc {
-  const usuarioModel = new UsuarioModel(connections);
+export function usuarioRpc(connections: TConnections) {
+  const usuario = usuarioModel(connections);
 
   return {
-    async usuarioSchema(): Promise<Schema> {
-      return usuarioModel.schema();
-    },
-    // LIST
-    async usuarioList(args = {}) {
-      return usuarioModel.list(args);
-    },
-
-    // READ
-    async usuarioRead(args) {
-      return usuarioModel.read(args);
-    },
-
-    // DEL
-    async usuarioDel(args) {
-      return usuarioModel.del(args);
-    },
-
-    // CREATE
-    async usuarioCreate(args) {
-      return usuarioModel.create(args);
-    },
-
-    // UPDATE
-    async usuarioUpdate(args) {
-      return usuarioModel.update(args);
-    },
-
     // LOGIN
-    async login({ user, password }) {
-      const usuario = new UsuarioModel(connections);
-      return usuario.login({ user, password });
+    async login(args: {
+      user: string;
+      password: string;
+    }): Promise<CurrentUser> {
+      return usuario.login(args);
     },
 
     // LOGOUT
-    async logout() {
+    async logout(): Promise<boolean> {
       return true;
     },
 
     // ME
-    async me(_: void, ctx) {
+    async me(_: void, ctx: RpcContext): Promise<CurrentUser> {
       return (
         ctx?.currentUser || {
           group_id: "",

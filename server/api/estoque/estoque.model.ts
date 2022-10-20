@@ -1,27 +1,26 @@
 import { Ids } from "../../../types";
-import { TEstoque } from "../../../types/estoque.type";
 import { isId } from "../../../utils/is-id";
 import { isNumber } from "../../../utils/is-number";
 import { renameToFieldObject } from "../../../utils/rename-fields";
 import { TConnections } from "../../dal/connections";
-import { Entity } from "../../lib/entity";
 import { validateIsThrow } from "../../lib/validate-is-throw";
 import { validateThrow } from "../../lib/validate-throw";
+import { entitySchema } from "../entity-schema";
 
-export class EstoqueModel extends Entity<TEstoque> {
-  constructor(connections: TConnections) {
-    super(connections, "estoque");
-  }
+export function estoqueModel(connections: TConnections) {
+  const knex = connections.plano;
+  const entity = entitySchema.estoque;
 
-  async increment({ id, quantidade }: { id: Ids; quantidade: number }) {
-    validateIsThrow(isNumber(quantidade), "quantidade dever ser numérica");
-    validateThrow(isId(id, this.entity));
+  return {
+    async increment({ id, quantidade }: { id: Ids; quantidade: number }) {
+      validateIsThrow(isNumber(quantidade), "quantidade dever ser numérica");
+      validateThrow(isId(id, entity));
 
-    const qry = await this.knex(this.table)
-      .increment("EstAtual", quantidade)
-      .where(renameToFieldObject(id, this.entity))
-      .returning(["EstAtual"]);
-
-    return qry;
-  }
+      const qry = await knex("estoque")
+        .increment("EstAtual", quantidade)
+        .where(renameToFieldObject(id, entity))
+        .returning(["EstAtual"]);
+      return qry;
+    },
+  };
 }

@@ -1,65 +1,14 @@
-import {
-  CreateArgs,
-  DelArgs,
-  ListArgs,
-  ReadArgs,
-  RpcContext,
-  UpdateArgs,
-} from "../../../types";
-import { TProdutoItem } from "../../../types/produto-item.type";
+import { Ids, Select } from "../../../types";
 import { TConnections } from "../../dal/connections";
-import { ProdutoItemModel } from "./produto-item.model";
-
-export interface TProdutoItemRpc {
-  produtoItemEstatisticaList(
-    listArgs: ListArgs,
-    ctx?: RpcContext
-  ): Promise<TProdutoItem[]>;
-  produtoItemEstatisticaRead(
-    readArgs: ReadArgs,
-    ctx?: RpcContext
-  ): Promise<TProdutoItem>;
-  produtoItemEstatisticaDel(
-    delArgs: DelArgs,
-    ctx?: RpcContext
-  ): Promise<number>;
-  produtoItemEstatisticaCreate(
-    createArgs: CreateArgs,
-    ctx?: RpcContext
-  ): Promise<TProdutoItem>;
-  produtoItemEstatisticaUpdate(
-    updateArgs: UpdateArgs,
-    ctx?: RpcContext
-  ): Promise<TProdutoItem>;
-}
+import { produtoItemModel } from "./produto-item.model";
 
 export function produtoItemRpc(connections: TConnections) {
-  const produtoItemModel = new ProdutoItemModel(connections);
+  const produtoItem = produtoItemModel(connections);
 
   return {
-    // LIST
-    async produtoItemList(args: ListArgs): Promise<TProdutoItem[]> {
-      return produtoItemModel.list(args);
-    },
-
-    // READ
-    async produtoItemRead(args: ReadArgs): Promise<TProdutoItem> {
-      return produtoItemModel.read(args);
-    },
-
-    // DEL
-    async produtoItemDel(args: DelArgs): Promise<number> {
-      return produtoItemModel.del(args);
-    },
-
-    // CREATE
-    async produtoItemCreate(args: CreateArgs): Promise<TProdutoItem> {
-      return produtoItemModel.create(args);
-    },
-
-    // UPDATE
-    async produtoItemUpdate(args: UpdateArgs): Promise<TProdutoItem> {
-      return produtoItemModel.update(args);
+    // PRODUTO PLANO
+    async produtoItemPlano(args: { id: Ids; select?: Select }) {
+      return produtoItem.produtoPlano(args);
     },
   };
 }

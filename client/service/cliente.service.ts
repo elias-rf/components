@@ -1,20 +1,8 @@
 import { TCliente } from "../../types/cliente.type";
-import { rpcFactory } from "../lib/http/rpc.factory";
+import { crudFactory } from "../lib/http/crud.factory";
 
 export type { TCliente };
 
 export const clienteService = {
-  ...rpcFactory<TCliente>("cliente"),
-
-  clear() {
-    return {
-      CdCliente: "",
-      RzSocial: "",
-      Cidade: "",
-      Uf: "",
-      CGC: "",
-      CdVendedor: "",
-      FgAtivo: "",
-    };
-  },
+  ...crudFactory<TCliente>("cliente"),
 };

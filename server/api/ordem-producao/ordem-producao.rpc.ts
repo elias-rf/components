@@ -15,8 +15,8 @@ import { TProdutoPlano } from "../../../types/produto-plano.type";
 import { TProduto } from "../../../types/produto.type";
 import { isUndefined } from "../../../utils/is-undefined";
 import { TConnections } from "../../dal/connections";
-import { CrudModel } from "../crud/crud.model";
-import { OrdemProducaoModel } from "./ordem-producao.model";
+import { crudModel } from "../crud/crud.model";
+import { ordemProducaoModel } from "./ordem-producao.model";
 
 export type TOrdemProducaoRpc = {
   ordemProducaoSchema(): Promise<Schema>;
@@ -69,82 +69,58 @@ export type TOrdemProducaoRpc = {
   ): Promise<TEtiquetaExterna[]>;
 };
 
-export function ordemProducaoRpc(connections: TConnections): TOrdemProducaoRpc {
-  const ordemProducaoModel = new OrdemProducaoModel(connections);
-  const crud = new CrudModel(connections);
+export function ordemProducaoRpc(connections: TConnections) {
+  const ordemProducao = ordemProducaoModel(connections);
+  const crud = crudModel(connections);
 
   return {
-    async ordemProducaoSchema() {
-      return ordemProducaoModel.schema();
-    },
-
-    // LIST
-    async ordemProducaoList(args) {
-      return ordemProducaoModel.list(args) as Promise<TOrdemProducao[]>;
-    },
-
-    // READ
-    async ordemProducaoRead(args) {
-      return ordemProducaoModel.read(args) as Promise<TOrdemProducao>;
-    },
-
-    // CREATE
-    async ordemProducaoCreate(args) {
-      return ordemProducaoModel.create(args) as Promise<TOrdemProducao>;
-    },
-
-    // UPDATE
-    async ordemProducaoUpdate(args) {
-      return ordemProducaoModel.update(args);
-    },
-
     // Retorna produtoItem a partir da ordem de producao
-    async ordemProducaoProdutoItem(args) {
-      return ordemProducaoModel.produtoItem(args);
+    async ordemProducaoProdutoItem(args: { id: Ids; select?: Select }) {
+      return ordemProducao.produtoItem(args);
     },
 
     // Retorna produto do plano a partir da ordem de producao
-    async ordemProducaoProdutoPlano(args) {
-      return ordemProducaoModel.produtoPlano(args);
+    async ordemProducaoProdutoPlano(args: { id: Ids; select?: Select }) {
+      return ordemProducao.produtoPlano(args);
     },
 
     // Retorna produto do plano a partir da ordem de producao
-    async ordemProducaoProduto(args) {
-      return ordemProducaoModel.produto(args);
+    async ordemProducaoProduto(args: { id: Ids; select?: Select }) {
+      return ordemProducao.produto(args);
     },
 
     // Retorna data de fabricacao
-    async ordemProducaoDataFabricacao(args) {
-      return ordemProducaoModel.dataFabricacao(args);
+    async ordemProducaoDataFabricacao(args: { id: Ids }) {
+      return ordemProducao.dataFabricacao(args);
     },
 
     // Retorna data de validade
-    async ordemProducaoDataValidade(args) {
-      return ordemProducaoModel.dataValidade(args);
+    async ordemProducaoDataValidade(args: { id: Ids }) {
+      return ordemProducao.dataValidade(args);
     },
 
     // Retorna data de validade
-    async ordemProducaoVersao({ id }) {
-      return ordemProducaoModel.versao({ id });
+    async ordemProducaoVersao({ id }: { id: Ids }) {
+      return ordemProducao.versao({ id });
     },
 
     // Retorna numero de controle a partir da ordem de producao e numero de serie
-    async ordemProducaoControle(args) {
-      return ordemProducaoModel.controle(args);
+    async ordemProducaoControle(args: { id: Ids; serie: string }) {
+      return ordemProducao.controle(args);
     },
 
     // Retorna numero de controle a partir da ordem de producao e numero de serie
-    async ordemProducaoFromControle(args) {
-      return ordemProducaoModel.fromControle(args);
+    async ordemProducaoFromControle(args: { controle: string }) {
+      return ordemProducao.fromControle(args);
     },
 
     // Valida se número de série é válido
-    async ordemProducaoControleValido(args) {
-      return ordemProducaoModel.isControleValid(args);
+    async ordemProducaoControleValido(args: { controle: string }) {
+      return ordemProducao.isControleValid(args);
     },
 
     // Retorna etiquetas externas emitidas para ordem de producao
-    async ordemProducaoEtiquetaExterna({ id }) {
+    async ordemProducaoEtiquetaExterna({ id }: { id: Ids }) {
       let response: TEtiquetaExterna[];
       if (isUndefined(id)) response = [];
       response = (await crud.list({

@@ -1,5 +1,5 @@
 import { Ids, Order, Schema, Select, Where } from "../../types";
-import { fetcherRpc } from "../api//fetcher-rpc";
+import { fetcherRpc } from "../api/fetcher-rpc";
 
 type TRpcFactory<Rec> = {
   schema(): Promise<Schema>;

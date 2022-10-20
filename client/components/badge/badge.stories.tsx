@@ -1,17 +1,17 @@
-import type { Story } from "@ladle/react";
-import { action } from "@ladle/react";
-import { Badge, TBadgeProps } from "./badge";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Badge } from "./badge";
 
 export default {
-  title: "Badge",
+  title: "Components/Badge",
   component: Badge,
-  argTypes: { dispatch: { action: "dispatch" } },
-};
+  argTypes: { onClick: { action: "onClick" }, onClose: { action: "onClose" } },
+} as ComponentMeta<typeof Badge>;
 
-export const Default: Story<TBadgeProps> = (props: any) => {
+export const Default: ComponentStory<typeof Badge> = (props) => {
+  const { onClick, onClose, ...args } = props;
   return (
     <>
-      <Badge {...props} />
+      <Badge {...args} />
     </>
   );
 };
@@ -28,13 +28,12 @@ Default.argTypes = {
   },
 };
 
-export const Clicable: Story<TBadgeProps> = (props: any) => {
+export const Clicable: ComponentStory<typeof Badge> = (props: any) => {
+  const { onClose, ...args } = props;
+
   return (
     <>
-      <Badge
-        {...props}
-        onClick={action("onClick")}
-      />
+      <Badge {...args} />
     </>
   );
 };
@@ -60,14 +59,10 @@ Clicable.argTypes = {
   },
 };
 
-export const Closable: Story<TBadgeProps> = (props: any) => {
+export const Closable: ComponentStory<typeof Badge> = (props: any) => {
   return (
     <>
-      <Badge
-        {...props}
-        onClick={action("onClick")}
-        onClose={action("onClose")}
-      />
+      <Badge {...props} />
     </>
   );
 };

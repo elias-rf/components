@@ -1,7 +1,7 @@
 import { Page } from "../../components/page";
 import { PageTitle } from "../../components/page-title";
-import { PhonebookForm } from "../../features/phonebook/phonebookForm";
-import { PhonebookList } from "../../features/phonebook/phonebookList";
+import { PhonebookForm } from "../../features/agenda-telefone/agenda-telefone-form";
+import { PhonebookList } from "../../features/agenda-telefone/agenda-telefone-list";
 
 /**
  * Agenda de Ramais

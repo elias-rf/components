@@ -1,17 +1,6 @@
 import { TAgendaTelefone } from "../../types/agenda-telefone.type";
-import { rpcFactory } from "../lib/http/rpc.factory";
-
-export type { TAgendaTelefone };
+import { crudFactory } from "../lib/http/crud.factory";
 
 export const agendaTelefoneService = {
-  ...rpcFactory<TAgendaTelefone>("phonebook"),
-
-  clear() {
-    return {
-      id: "",
-      name: "",
-      department: "",
-      email: "",
-    };
-  },
+  ...crudFactory<TAgendaTelefone>("agenda_telefone"),
 };

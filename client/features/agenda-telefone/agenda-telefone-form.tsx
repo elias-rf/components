@@ -1,5 +1,6 @@
 import React from "react";
 import type { IEvent, SchemaField } from "../../../types";
+import { TAgendaTelefone } from "../../../types/agenda-telefone.type";
 import { isEmpty } from "../../../utils/is-empty";
 import { Button } from "../../components/button";
 import { Formfield } from "../../components/formfield";
@@ -9,18 +10,15 @@ import {
   usePhonebookRead,
   usePhonebookSchema,
   usePhonebookUpdate,
-} from "../../hooks/use-phonebook.hook";
+} from "../../hooks/use-agenda-telefone.hook";
 import { useForm } from "../../lib/hooks/use-form.hook";
 import { useQueryState } from "../../lib/hooks/use-query-state";
-import {
-  phonebookService,
-  TPhonebookRecord,
-} from "../../service/agenda-telefone.service";
+import { agendaTelefoneService } from "../../service/agenda-telefone.service";
 
 export function PhonebookForm() {
   const [selected] = useQueryState("selected", []);
   const [status, setStatus] = React.useState("new");
-  const form = useForm<TPhonebookRecord>(phonebookService.clear());
+  const form = useForm<TAgendaTelefone>(agendaTelefoneService.clear());
   const record = usePhonebookRead(selected);
   const recordDel = usePhonebookDel();
   const recordUpdate = usePhonebookUpdate();
@@ -45,24 +43,21 @@ export function PhonebookForm() {
 
   function handleClick(e: IEvent) {
     if (e.name === "novo") {
-      showRecord(phonebookService.clear());
+      showRecord(agendaTelefoneService.clear());
     }
     if (e.name === "excluir") {
       recordDel.mutate([selected]);
-      showRecord(phonebookService.clear());
+      showRecord(agendaTelefoneService.clear());
     }
     if (e.name === "salvar") {
       if (status === "update") recordUpdate.mutate([selected, form.record()]);
       if (status === "new") recordCreate.mutate([form.record()]);
-      showRecord(phonebookService.clear());
+      showRecord(agendaTelefoneService.clear());
     }
   }
 
   return (
-    <section
-      data-name="PhonebookForm"
-      className="mt-2"
-    >
+    <section data-name="PhonebookForm" className="mt-2">
       <div className="space-x-2">
         <Button
           className="w-20 bg-green-300"

@@ -1,17 +1,14 @@
 import pg404 from "../assets/images/404.gif";
-import { A } from "../components/a";
+import { Anchor } from "../components/anchor";
 
 export default function Page404() {
   return (
     <div className="flex items-center justify-center w-screen h-screen">
       <div className="text-3xl text-center">
         Não encontrei a página!{" "}
-        <A
-          className="text-blue-500"
-          href="/"
-        >
+        <Anchor className="text-blue-500" href="/">
           Voltar ao início
-        </A>
+        </Anchor>
         <div>
           <img
             src={pg404}
