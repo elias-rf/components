@@ -4,11 +4,11 @@ import { afterAll, afterEach, beforeAll, describe, expect, test } from "vitest";
 import { knexMockHistory } from "../../../utils/knex-mock-history";
 import { TConnections } from "../../dal/connections";
 import { setTracker } from "../../lib/set-tracker";
-import { EsterilizacaoExternaModel } from "./esterilizacao-externa.model";
+import { esterilizacaoExternaModel } from "./esterilizacao-externa.model";
 
 describe("esterilizacaoEsterna", () => {
   const knexDb = Knex({ client: MockClient });
-  const estExterna = new EsterilizacaoExternaModel({
+  const estExterna = esterilizacaoExternaModel({
     oftalmo: knexDb,
   } as TConnections);
   let tracker: Tracker;

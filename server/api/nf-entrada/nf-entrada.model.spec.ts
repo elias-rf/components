@@ -4,11 +4,11 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { knexMockHistory } from "../../../utils/knex-mock-history";
 import { TConnections } from "../../dal/connections";
 import { setTracker } from "../../lib/set-tracker";
-import { NfEntradaModel } from "./nf-entrada.model";
+import { nfEntradaModel } from "./nf-entrada.model";
 
 describe("nfEntradaModel", () => {
   const knexDb = Knex({ client: MockClient });
-  const nfEntrada = new NfEntradaModel({
+  const nfEntrada = nfEntradaModel({
     oftalmo: knexDb,
     plano: knexDb,
     fullvision: knexDb,
@@ -26,111 +26,6 @@ describe("nfEntradaModel", () => {
 
   afterAll(() => {
     tracker.reset();
-  });
-
-  it("nfEntradaSchema", async () => {
-    const rsp = await nfEntrada.schema();
-    expect(rsp).toEqual(expect.anything());
-  });
-
-  it("nfEntradaRead", async () => {
-    const rsp = await nfEntrada.read({
-      id: { filial_id: 1, nota_id: "-100", serie_id: "X", modelo_id: 1 },
-      select: ["nota_id"],
-    });
-    expect(rsp).toEqual({
-      filial_id: 1,
-      nota_id: "-100",
-      serie_id: "X",
-      modelo_id: 1,
-    });
-    expect(knexMockHistory(tracker)).toEqual({
-      any: [
-        {
-          bindings: [1, "-100", "X", 1],
-          sql: `select "NroNf" from "NfMestre" where "CdEmpresa" = ? and "NroNf" = ? and "Serie" = ? and "Modelo" = ?`,
-        },
-      ],
-    });
-  });
-
-  it("nfEntradaList", async () => {
-    const rsp = await nfEntrada.list({
-      where: [["nota_id", "=", "-100"]],
-      select: ["nota_id"],
-    });
-    expect(rsp).toEqual([
-      {
-        filial_id: 1,
-        nota_id: "-100",
-        serie_id: "X",
-        modelo_id: 1,
-      },
-    ]);
-    expect(knexMockHistory(tracker)).toEqual({
-      any: [
-        {
-          bindings: ["-100", 50],
-          sql: `select "NroNf" from "NfMestre" where ("NroNf" = ?) limit ?`,
-        },
-      ],
-    });
-  });
-
-  it("nfEntradaDel", async () => {
-    const rsp = await nfEntrada.del({
-      id: { filial_id: 1, nota_id: "-100", serie_id: "X", modelo_id: 1 },
-    });
-    expect(rsp).toEqual(1);
-    expect(knexMockHistory(tracker)).toEqual({
-      any: [
-        {
-          bindings: [1, "-100", "X", 1],
-          sql: `delete from "NfMestre" where "CdEmpresa" = ? and "NroNf" = ? and "Serie" = ? and "Modelo" = ?`,
-        },
-      ],
-    });
-  });
-
-  it("nfEntradaCreate", async () => {
-    const rsp = await nfEntrada.create({
-      data: { nota_id: "-100" },
-    });
-    expect(rsp).toEqual({
-      filial_id: 1,
-      nota_id: "-100",
-      serie_id: "X",
-      modelo_id: 1,
-    });
-    expect(knexMockHistory(tracker)).toEqual({
-      any: [
-        {
-          bindings: ["-100"],
-          sql: `insert into "NfMestre" ("NroNf") values (?)`,
-        },
-      ],
-    });
-  });
-
-  it("nfEntradaUpdate", async () => {
-    const rsp = await nfEntrada.update({
-      id: { filial_id: 1, nota_id: "-100", serie_id: "X", modelo_id: 1 },
-      data: { nota_id: "100" },
-    });
-    expect(rsp).toEqual({
-      filial_id: 1,
-      nota_id: "-100",
-      serie_id: "X",
-      modelo_id: 1,
-    });
-    expect(knexMockHistory(tracker)).toEqual({
-      any: [
-        {
-          bindings: ["100", 1, "-100", "X", 1],
-          sql: `update "NfMestre" set "NroNf" = ? where "CdEmpresa" = ? and "NroNf" = ? and "Serie" = ? and "Modelo" = ?`,
-        },
-      ],
-    });
   });
 
   it("nfEntradaTransferenciaCreate", async () => {

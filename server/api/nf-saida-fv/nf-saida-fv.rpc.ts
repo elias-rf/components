@@ -1,100 +1,44 @@
-import type {
-  CreateArgs,
-  DelArgs,
-  ListArgs,
-  ReadArgs,
-  RpcContext,
-  Schema,
-  UpdateArgs,
-} from "../../../types";
-import { TNfSaidaFv } from "../../../types/nf-saida-fv.type";
+import type { Schema } from "../../../types";
 import type { TConnections } from "../../dal/connections";
-import { NfSaidaFvModel } from "./nf-saida-fv.model";
+import { nfSaidaFvModel } from "./nf-saida-fv.model";
 
-export interface TNfSaidaFvRpc {
-  nfSaidaFvSchema: () => Promise<Schema>;
-  nfSaidaFvList: (
-    listArgs: ListArgs,
-    ctx?: RpcContext
-  ) => Promise<TNfSaidaFv[]>;
-  nfSaidaFvRead: (readArgs: ReadArgs, ctx?: RpcContext) => Promise<TNfSaidaFv>;
-  nfSaidaFvDel: (delArgs: DelArgs, ctx?: RpcContext) => Promise<number>;
-  nfSaidaFvCreate: (
-    createArgs: CreateArgs,
-    ctx?: RpcContext
-  ) => Promise<TNfSaidaFv>;
-  nfSaidaFvUpdate: (
-    { id, data }: UpdateArgs,
-    ctx?: RpcContext
-  ) => Promise<TNfSaidaFv>;
-  vendaFvDiario: (args: {
-    inicio: string;
-    fim: string;
-    uf: string[];
-  }) => Promise<any[]>;
-  vendaFvDiarioSchema: () => Promise<Schema>;
-  vendaFvMensal: (args: {
-    inicio: string;
-    fim: string;
-    cliente_id: number;
-  }) => Promise<any[]>;
-  vendaFvMensalSchema: () => Promise<Schema>;
-  vendaFvAnalitico: (args: { inicio: string; fim: string }) => Promise<any[]>;
-  vendaFvAnaliticoSchema: () => Promise<Schema>;
-}
+export type TNfSaidaFvRpc = ReturnType<typeof nfSaidaFvRpc>;
 
-export function nfSaidaFvRpc(connections: TConnections): TNfSaidaFvRpc {
-  const nfSaidaFv = new NfSaidaFvModel(connections);
+export function nfSaidaFvRpc(connections: TConnections) {
+  const nfSaidaFv = nfSaidaFvModel(connections);
 
   return {
-    async nfSaidaFvSchema() {
-      return nfSaidaFv.schema();
-    },
-    // LIST
-    async nfSaidaFvList(args) {
-      return nfSaidaFv.list(args);
-    },
-
-    // READ
-    async nfSaidaFvRead(args) {
-      return nfSaidaFv.read(args);
-    },
-
-    // DEL
-    async nfSaidaFvDel(args): Promise<number> {
-      return nfSaidaFv.del(args);
-    },
-
-    // CREATE
-    async nfSaidaFvCreate(args) {
-      return nfSaidaFv.create(args);
-    },
-
-    // UPDATE
-    async nfSaidaFvUpdate(args) {
-      return nfSaidaFv.update(args);
-    },
-
     // VENDA DIARIO
-    async vendaFvDiario(args) {
+    async vendaFvDiario(args: {
+      inicio: string;
+      fim: string;
+      uf: string[];
+    }): Promise<any[]> {
       return nfSaidaFv.vendaDiario(args);
     },
-    async vendaFvDiarioSchema() {
+    async vendaFvDiarioSchema(): Promise<Schema> {
       return nfSaidaFv.vendaDiarioSchema();
     },
 
     // VENDA MENSAL
-    async vendaFvMensal(args) {
+    async vendaFvMensal(args: {
+      inicio: string;
+      fim: string;
+      cliente_id: number;
+    }): Promise<any[]> {
       return nfSaidaFv.vendaMensal(args);
     },
-    async vendaFvMensalSchema() {
+    async vendaFvMensalSchema(): Promise<Schema> {
       return nfSaidaFv.vendaMensalSchema();
     },
     // VENDA ANALITICO
-    async vendaFvAnalitico(args) {
+    async vendaFvAnalitico(args: {
+      inicio: string;
+      fim: string;
+    }): Promise<any[]> {
       return nfSaidaFv.vendaAnalitico(args);
     },
-    async vendaFvAnaliticoSchema() {
+    async vendaFvAnaliticoSchema(): Promise<Schema> {
       return nfSaidaFv.vendaAnaliticoSchema();
     },
   };

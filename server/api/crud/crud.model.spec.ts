@@ -4,11 +4,11 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { knexMockHistory } from "../../../utils/knex-mock-history";
 import { TConnections } from "../../dal/connections";
 import { setTracker } from "../../lib/set-tracker";
-import { CrudModel } from "./crud.model";
+import { crudModel } from "./crud.model";
 
 describe("rpc de cliente", () => {
   const knexDb = Knex({ client: MockClient });
-  const crud = new CrudModel({
+  const crud = crudModel({
     plano: knexDb,
     oftalmo: knexDb,
     fullvision: knexDb,
@@ -39,27 +39,29 @@ describe("rpc de cliente", () => {
     await expect(
       crud.list({
         table: "agenda_telefone",
-        order: [1, 2],
+        order: [
+          ["1", "desc"],
+          ["2", "desc"],
+        ],
       })
-    ).rejects.toThrow("Order deve ser um array de tuplas");
+    ).rejects.toThrow(
+      "1 não é um campo válido para [order][phonebook]: agenda_telefone_id,nome,setor,email"
+    );
   });
+
   it("lista com where errada", async () => {
     await expect(
       crud.list({
         table: "agenda_telefone",
         order: [["agenda_telefone_id", "desc"]],
-        where: [1, 2],
+        where: [
+          ["1", "=", 1],
+          ["2", "=", 2],
+        ],
       })
-    ).rejects.toThrow("Where deve ser um array de tuplas");
-  });
-  it("lista com where errada", async () => {
-    await expect(
-      crud.list({
-        table: "agenda_telefone",
-        order: [["agenda_telefone_id", "desc"]],
-        where: [1, 2],
-      })
-    ).rejects.toThrow("Where deve ser um array de tuplas");
+    ).rejects.toThrow(
+      "1 não é um campo válido para [where][phonebook]: agenda_telefone_id,nome,setor,email"
+    );
   });
 
   it("lista sem argumentos", async () => {

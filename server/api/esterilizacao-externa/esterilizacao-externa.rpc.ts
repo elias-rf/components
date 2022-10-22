@@ -2,6 +2,10 @@ import type { Schema } from "../../../types";
 import { TConnections } from "../../dal/connections";
 import { esterilizacaoExternaModel } from "./esterilizacao-externa.model";
 
+export type TEsterilizacaoExternaRpc = ReturnType<
+  typeof esterilizacaoExternaRpc
+>;
+
 export function esterilizacaoExternaRpc(connections: TConnections) {
   const esterilizacaoExterna = esterilizacaoExternaModel(connections);
   return {

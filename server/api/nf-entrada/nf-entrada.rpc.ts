@@ -1,6 +1,8 @@
 import type { TConnections } from "../../dal/connections";
 import { nfEntradaModel } from "../nf-entrada/nf-entrada.model";
 
+export type TNfEntradaRpc = ReturnType<typeof nfEntradaRpc>;
+
 export function nfEntradaRpc(connections: TConnections) {
   const nfEntrada = nfEntradaModel(connections);
 

@@ -16,7 +16,7 @@ export function estoqueModel(connections: TConnections) {
       validateIsThrow(isNumber(quantidade), "quantidade dever ser numérica");
       validateThrow(isId(id, entity));
 
-      const qry = await knex("estoque")
+      const qry = await knex(entity.table)
         .increment("EstAtual", quantidade)
         .where(renameToFieldObject(id, entity))
         .returning(["EstAtual"]);

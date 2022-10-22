@@ -10,6 +10,8 @@ import type {
 import { TConnections } from "../../dal/connections";
 import { crudModel } from "./crud.model";
 
+export type TCrudRpc = ReturnType<typeof crudRpc>;
+
 export function crudRpc(connections: TConnections) {
   const crud = crudModel(connections);
   return {

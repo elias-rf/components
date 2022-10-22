@@ -1,14 +1,14 @@
 import Knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
-import { knexMockHistory } from "../../../utils/knex-mock-history";
-import { TConnections } from "../../dal/connections";
-import { setTracker } from "../../lib/set-tracker";
-import { CrudModel } from "../crud/crud.model";
+import { knexMockHistory } from "../../utils/knex-mock-history";
+import { TConnections } from "../dal/connections";
+import { setTracker } from "../lib/set-tracker";
+import { crudModel } from "./crud/crud.model";
 
 describe("rpc de cliente", () => {
   const knexDb = Knex({ client: MockClient });
-  const crud = new CrudModel({ plano: knexDb } as TConnections);
+  const crud = crudModel({ plano: knexDb } as TConnections);
   let tracker: Tracker;
 
   beforeAll(() => {

@@ -4,11 +4,11 @@ import { afterAll, afterEach, beforeAll, describe, expect, test } from "vitest";
 import { knexMockHistory } from "../../../utils/knex-mock-history";
 import { TConnections } from "../../dal/connections";
 import { setTracker } from "../../lib/set-tracker";
-import { EsterilizacaoInternaModel } from "./esterilizacao-interna.model";
+import { esterilizacaoInternaModel } from "./esterilizacao-interna.model";
 
 describe("esterilizacaoInterna", () => {
   const knexDb = Knex({ client: MockClient });
-  const estInterna = new EsterilizacaoInternaModel({
+  const estInterna = esterilizacaoInternaModel({
     oftalmo: knexDb,
     plano: knexDb,
     fullvision: knexDb,

@@ -4,11 +4,11 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { knexMockHistory } from "../../../utils/knex-mock-history";
 import { TConnections } from "../../dal/connections";
 import { setTracker } from "../../lib/set-tracker";
-import { NfSaidaModel } from "./nf-saida.model";
+import { nfSaidaModel } from "./nf-saida.model";
 
 describe("nfSaidaModel", () => {
   const knexDb = Knex({ client: MockClient });
-  const nfSaida = new NfSaidaModel({
+  const nfSaida = nfSaidaModel({
     oftalmo: knexDb,
     plano: knexDb,
     fullvision: knexDb,

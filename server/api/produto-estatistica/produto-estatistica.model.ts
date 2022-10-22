@@ -14,10 +14,11 @@ export function produtoEstatisticaModel(connections: TConnections) {
       id: Ids;
       quantidade: number;
     }): Promise<Ids> {
+      const entity = entitySchema.produto_estatistica;
       // validateIsThrow(isNumber(quantidade), "quantidade dever ser numérica");
       // validateThrow(isId(id, this.entity));
 
-      return await knex("produto_estatistica")
+      return await knex(entity.table)
         .increment("Entradas", quantidade)
         .where(renameToFieldObject(id, entitySchema.produto_estatistica))
         .returning(["Entradas"]);

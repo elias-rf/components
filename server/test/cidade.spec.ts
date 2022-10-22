@@ -14,9 +14,7 @@ import { app } from "../app";
 import { setTracker } from "../lib/set-tracker";
 import { apiRequest, rpcResponse } from "./aux";
 
-const NAME = "cidade";
-
-describe(NAME, () => {
+describe("cidade", () => {
   let tracker: Tracker;
   vi.mock("../dal/connections", () => ({
     connections: {

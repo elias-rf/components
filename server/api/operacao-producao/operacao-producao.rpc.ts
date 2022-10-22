@@ -1,78 +1,68 @@
-import { RpcContext, Schema } from "../../../types";
+import { Schema } from "../../../types";
 import { TConnections } from "../../dal/connections";
 import { OperacaoProducaoModel } from "../operacao-producao/operacao-producao.model";
 
-export interface TOperacaoProducaoRpc {
-  operacaoDiarioSchema: () => Promise<Schema>;
-  operacaoMensalSchema: () => Promise<Schema>;
-  operacaoProdutoSchema: () => Promise<Schema>;
-  operacaoTurnoSchema: () => Promise<Schema>;
-  operacaoDiario: (
-    args: { operacao: string; inicio: string; fim: string },
-    ctx?: RpcContext
-  ) => Promise<{ dia: string; quantidade: number }[]>;
-  operacaoMensal: (
-    args: { operacao: string; mes: string },
-    ctx?: RpcContext
-  ) => Promise<{ mes: string; quantidade: number }[]>;
-  operacaoProduto: (
-    args: { operacao: string; data: string },
-    ctx?: RpcContext
-  ) => Promise<{ produto: string; quantidade: number }[]>;
-  operacaoTurno: (
-    args: { operacao: string; data: string },
-    ctx?: RpcContext
-  ) => Promise<{ produto: string; quantidade: number }[]>;
-  operacaoModelo: (
-    args: { operacao: string; data: string; produto: string },
-    ctx?: RpcContext
-  ) => Promise<{ modelo: string; quantidade: number }[]>;
-}
+export type TOperacaoProducaoRpc = ReturnType<typeof operacaoProducaoRpc>;
 
-export function operacaoProducaoRpc(
-  connections: TConnections
-): TOperacaoProducaoRpc {
+export function operacaoProducaoRpc(connections: TConnections) {
   const operacaoProducao = new OperacaoProducaoModel(connections);
 
   return {
     // DIARIO
-    async operacaoDiario(args) {
+    async operacaoDiario(args: {
+      operacao: string;
+      inicio: string;
+      fim: string;
+    }): Promise<{ dia: string; quantidade: number }[]> {
       return operacaoProducao.diario(args);
     },
 
     // MENSAL
-    async operacaoMensal(args) {
+    async operacaoMensal(args: {
+      operacao: string;
+      mes: string;
+    }): Promise<{ mes: string; quantidade: number }[]> {
       return operacaoProducao.mensal(args);
     },
 
     // MODELO
-    async operacaoModelo(args) {
+    async operacaoModelo(args: {
+      operacao: string;
+      data: string;
+      produto: string;
+    }): Promise<{ modelo: string; quantidade: number }[]> {
       return operacaoProducao.modelo(args);
     },
 
     // PRODUTO
-    async operacaoProduto(args) {
+    async operacaoProduto(args: {
+      operacao: string;
+      data: string;
+    }): Promise<{ produto: string; quantidade: number }[]> {
       return operacaoProducao.produto(args);
     },
 
     // TURNO
-    async operacaoTurno(args) {
+    async operacaoTurno(args: {
+      operacao: string;
+      data: string;
+    }): Promise<{ produto: string; quantidade: number }[]> {
       return operacaoProducao.turno(args);
     },
 
-    async operacaoTurnoSchema() {
+    async operacaoTurnoSchema(): Promise<Schema> {
       return operacaoProducao.turnoSchema();
     },
 
-    async operacaoProdutoSchema() {
+    async operacaoProdutoSchema(): Promise<Schema> {
       return operacaoProducao.produtoSchema();
     },
 
-    async operacaoMensalSchema() {
+    async operacaoMensalSchema(): Promise<Schema> {
       return operacaoProducao.mensalSchema();
     },
 
-    async operacaoDiarioSchema() {
+    async operacaoDiarioSchema(): Promise<Schema> {
       return operacaoProducao.diarioSchema();
     },
   };

@@ -3,6 +3,8 @@ import { RpcContext } from "../../../types";
 import { TConnections } from "../../dal/connections";
 import { usuarioModel } from "../usuario/usuario.model";
 
+export type TUsuarioRpc = ReturnType<typeof usuarioRpc>;
+
 export function usuarioRpc(connections: TConnections) {
   const usuario = usuarioModel(connections);
 

@@ -4,11 +4,11 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { knexMockHistory } from "../../../utils/knex-mock-history";
 import { TConnections } from "../../dal/connections";
 import { setTracker } from "../../lib/set-tracker";
-import { OrdemProducaoModel } from "./ordem-producao.model";
+import { ordemProducaoModel } from "./ordem-producao.model";
 
 describe("ordemProducaoModel", () => {
   const knexDb = Knex({ client: MockClient });
-  const ordemProducao = new OrdemProducaoModel({
+  const ordemProducao = ordemProducaoModel({
     oftalmo: knexDb,
     plano: knexDb,
     fullvision: knexDb,
@@ -26,90 +26,6 @@ describe("ordemProducaoModel", () => {
 
   afterAll(() => {
     tracker.reset();
-  });
-
-  it("lista com argumentos", async () => {
-    const rsp = await ordemProducao.list({
-      where: [["ordem_producao_id", "=", "1"]],
-      select: ["ordem_producao_id"],
-    });
-    expect(rsp).toEqual([
-      {
-        ordem_producao_id: 100,
-        produto_item_id: 1,
-        versao: 1,
-      },
-    ]);
-    expect(knexMockHistory(tracker)).toEqual({
-      any: [
-        {
-          bindings: ["1", 50],
-          sql: `select "kOp" from "tOrdemProducao" where ("kOp" = ?) limit ?`,
-        },
-      ],
-    });
-  });
-
-  it("read", async () => {
-    const rsp = await ordemProducao.read({
-      id: { ordem_producao_id: "10" },
-      select: ["ordem_producao_id"],
-    });
-    expect(rsp).toEqual({
-      ordem_producao_id: 100,
-      produto_item_id: 1,
-      versao: 1,
-    });
-    expect(knexMockHistory(tracker)).toEqual({
-      any: [
-        {
-          bindings: ["10"],
-          sql: 'select "kOp" from "tOrdemProducao" where "kOp" = ?',
-        },
-      ],
-    });
-  });
-
-  it("del", async () => {
-    const rsp = await ordemProducao.del({ id: { ordem_producao_id: 10 } });
-    expect(rsp).toEqual(1);
-    expect(knexMockHistory(tracker)).toEqual({
-      any: [
-        {
-          bindings: [10],
-          sql: 'delete from "tOrdemProducao" where "kOp" = ?',
-        },
-      ],
-    });
-  });
-
-  it("create", async () => {
-    const rsp = await ordemProducao.create({ data: { ordem_producao_id: 10 } });
-    expect(rsp).toEqual({ ordem_producao_id: 100 });
-    expect(knexMockHistory(tracker)).toEqual({
-      any: [
-        {
-          bindings: [10],
-          sql: 'insert into "tOrdemProducao" ("kOp") values (?)',
-        },
-      ],
-    });
-  });
-
-  it("update", async () => {
-    const rsp = await ordemProducao.update({
-      id: { ordem_producao_id: 10 },
-      data: { ordem_producao_id: 10 },
-    });
-    expect(rsp).toEqual({ ordem_producao_id: 200 });
-    expect(knexMockHistory(tracker)).toEqual({
-      any: [
-        {
-          bindings: [10, 10],
-          sql: 'update "tOrdemProducao" set "kOp" = ? where "kOp" = ?',
-        },
-      ],
-    });
   });
 
   it("produtoItem", async () => {

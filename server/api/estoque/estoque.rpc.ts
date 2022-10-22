@@ -2,6 +2,8 @@ import { Ids } from "../../../types";
 import { TConnections } from "../../dal/connections";
 import { estoqueModel } from "../estoque/estoque.model";
 
+export type TEstoqueRpc = ReturnType<typeof estoqueRpc>;
+
 export function estoqueRpc(connections: TConnections) {
   const estoque = estoqueModel(connections);
 
