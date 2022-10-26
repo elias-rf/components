@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Table } from "../../components/table";
+import { Table } from "../../components/table/table";
 import { day } from "../../lib/day";
 import { transferenciaService } from "../../service/transferencia.service";
 
@@ -23,11 +23,7 @@ export function TransferenciaMensal({ children, dispatch, mesCorrente }: any) {
   );
 
   return (
-    <Table
-      data={mensal.data || []}
-      schema={schema.data}
-      selected={mesCorrente}
-    >
+    <Table data={mensal.data || []} schema={schema.data} selected={mesCorrente}>
       {children}
     </Table>
   );

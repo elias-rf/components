@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const ECFDocumentoNaoFiscal: TEntity = {
   database: "plano",
   table: "ECFDocumentoNaoFiscal",
-  fields: [
+  schema: [
     {
       field: "NumSerie",
       label: "NumSerie",

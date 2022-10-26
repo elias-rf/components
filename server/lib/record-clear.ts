@@ -17,7 +17,7 @@ function fieldClear(field: SchemaField) {
 
 export function recordClear(entity: TEntity) {
   const rsp: { [field: string]: any } = {};
-  const fields = entity.fields;
+  const fields = entity.schema;
   for (const field of fields) {
     rsp[field.name] = fieldClear(field);
   }

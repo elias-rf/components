@@ -1,7 +1,7 @@
 import { Action, Id } from "@er/types/*";
 import { useQuery } from "@tanstack/react-query";
-import { Page } from "../../components/page";
-import { PageTitle } from "../../components/page-title";
+import { Page } from "../../components/page/page";
+import { PageTitle } from "../../components/page/page-title";
 import { Auth } from "../../features/auth";
 import { ClienteForm } from "../../features/cliente/cliente-form";
 import { useQueryState } from "../../lib/hooks/use-query-state";
@@ -39,10 +39,7 @@ export default function Cliente() {
   return (
     <Auth>
       <Page title="Cliente">
-        <PageTitle
-          title="Cliente"
-          loading={record.isLoading}
-        />
+        <PageTitle title="Cliente" loading={record.isLoading} />
         <hr />
         <div className="p-2 mt-4 border-gray-400 border-1">
           <ClienteForm

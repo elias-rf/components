@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { isEmpty } from "../../../utils/is-empty";
-import { Table } from "../../components/table";
+import { isEmpty } from "../../../utils/identify/is-empty";
+import { Table } from "../../components/table/table";
 import { day } from "../../lib/day";
 import { operacaoService } from "../../service/operacao.service";
 
@@ -38,11 +38,7 @@ export function OperacaoDiario({
   );
 
   return (
-    <Table
-      data={diario.data || []}
-      schema={schema.data}
-      selected={diaCorrente}
-    >
+    <Table data={diario.data || []} schema={schema.data} selected={diaCorrente}>
       {children}
     </Table>
   );

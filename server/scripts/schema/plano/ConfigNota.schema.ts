@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const ConfigNota: TEntity = {
   database: "plano",
   table: "ConfigNota",
-  fields: [
+  schema: [
     {
       field: "Serie",
       label: "Serie",

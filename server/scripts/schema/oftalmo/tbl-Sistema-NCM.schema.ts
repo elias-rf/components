@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const tbl_Sistema_NCM: TEntity = {
   database: "oftalmo",
   table: "tbl_Sistema_NCM",
-  fields: [
+  schema: [
     {
       field: "KNCM",
       label: "KNCM",

@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const ConfiguracaoCFOPXML: TEntity = {
   database: "plano",
   table: "ConfiguracaoCFOPXML",
-  fields: [
+  schema: [
     {
       field: "CdEmpresa",
       label: "CdEmpresa",

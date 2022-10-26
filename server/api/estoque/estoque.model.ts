@@ -1,7 +1,7 @@
 import { Ids } from "../../../types";
-import { isId } from "../../../utils/is-id";
-import { isNumber } from "../../../utils/is-number";
-import { renameToFieldObject } from "../../../utils/rename-fields";
+import { isNumber } from "../../../utils/identify/is-number";
+import { renameToFieldObject } from "../../../utils/schema/rename-fields";
+import { isId } from "../../../utils/validate/is-id";
 import { TConnections } from "../../dal/connections";
 import { validateIsThrow } from "../../lib/validate-is-throw";
 import { validateThrow } from "../../lib/validate-throw";

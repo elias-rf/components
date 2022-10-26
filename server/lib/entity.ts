@@ -9,24 +9,24 @@ import type {
   TEntity,
   UpdateArgs,
 } from "../../types";
-import { fieldsFromEntity } from "../../utils/fields-from-entity";
-import { isData } from "../../utils/is-data";
-import { isId } from "../../utils/is-id";
-import { isLimit } from "../../utils/is-limit";
-import { isOrder } from "../../utils/is-order";
-import { isSelect } from "../../utils/is-select";
-import { isWhere } from "../../utils/is-where";
-import { knexOrder } from "../../utils/knex-order";
-import { knexWhere } from "../../utils/knex-where";
-import { namesFromEntity } from "../../utils/names-from-entity";
-import { pksFromEntity } from "../../utils/pks-from-entity";
+import { knexOrder } from "../../utils/data/knex-order";
+import { knexWhere } from "../../utils/data/knex-where";
+import { fieldsFromEntity } from "../../utils/schema/fields-from-entity";
+import { namesFromEntity } from "../../utils/schema/names-from-entity";
+import { pksFromEntity } from "../../utils/schema/pks-from-entity";
 import {
   renameToFieldArray,
   renameToFieldObject,
   renameToFieldTuple,
   renameToNameArrayObject,
   renameToNameObject,
-} from "../../utils/rename-fields";
+} from "../../utils/schema/rename-fields";
+import { isData } from "../../utils/validate/is-data";
+import { isId } from "../../utils/validate/is-id";
+import { isLimit } from "../../utils/validate/is-limit";
+import { isOrder } from "../../utils/validate/is-order";
+import { isSelect } from "../../utils/validate/is-select";
+import { isWhere } from "../../utils/validate/is-where";
 import { entitySchema } from "../api/entity-schema";
 import { TConnections, TDbs } from "../dal/connections";
 import { recordClear } from "./record-clear";
@@ -55,7 +55,7 @@ export class Entity<T extends GenericObject> {
     this.knex = connections[this.entity.database as TDbs];
     this.table = this.entity.table;
     this.pks = pksFromEntity(this.entity);
-    this.fields = this.entity.fields;
+    this.fields = this.entity.schema;
     this.fieldList = fieldsFromEntity(this.entity);
     this.nameList = namesFromEntity(this.entity);
   }

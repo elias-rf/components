@@ -1,13 +1,13 @@
-import { Where } from "@er/types";
-import { isEmpty } from "@er/utils/src/is-empty";
+import { Where } from "../../../types";
+import { isEmpty } from "../../../utils/identify/is-empty";
 
 export const whereUtil = {
-  setUnique(whr: Where[], field: string, value: any): Where[] {
+  setUnique(where: Where[], field: string, value: any): Where[] {
     let flag = false;
-    if (!Array.isArray(whr) || isEmpty(field)) {
+    if (!Array.isArray(where) || isEmpty(field)) {
       return [];
     }
-    let rsp = whr.map((wh) => {
+    let rsp = where.map((wh) => {
       if (!Array.isArray(wh)) return;
       if (wh[0] === field) {
         flag = true;
@@ -25,10 +25,10 @@ export const whereUtil = {
     rsp = rsp.filter((wh) => Array.isArray(wh));
     return rsp as Where[];
   },
-
-  getValue(whr: Where[], field: string) {
-    if (isEmpty(field) || isEmpty(whr)) return null;
-    for (const wh of whr as Where[]) {
+  /** Retorna o valor para o campo da lista de where */
+  getValue(where: Where[], field: string) {
+    if (isEmpty(field) || isEmpty(where)) return null;
+    for (const wh of where as Where[]) {
       if (wh && wh[0] === field) {
         const rsp = wh[2];
         return rsp;

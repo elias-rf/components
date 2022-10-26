@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Tab } from "../../components/tab";
-import { Tabs } from "../../components/tabs";
+import { Tab } from "../../components/tabs/tab";
+import { Tabs } from "../../components/tabs/tabs";
 
 import { EstExt } from "./est-ext";
 import { EstInt } from "./est-int";
@@ -13,32 +13,17 @@ export function Controles() {
 
   return (
     <div className="max-h-screen overflow-auto">
-      <Tabs
-        active={active}
-        onChange={(id) => setActive(id)}
-      >
-        <Tab
-          id="operacao"
-          title="Operação"
-        >
+      <Tabs active={active} onChange={(id) => setActive(id)}>
+        <Tab id="operacao" title="Operação">
           <Operacao />
         </Tab>
-        <Tab
-          id="est-int"
-          title="Esterilização Int"
-        >
+        <Tab id="est-int" title="Esterilização Int">
           <EstInt />
         </Tab>
-        <Tab
-          id="est-ext"
-          title="Esterilização Ext"
-        >
+        <Tab id="est-ext" title="Esterilização Ext">
           <EstExt />
         </Tab>
-        <Tab
-          id="transferencia"
-          title="Transferência"
-        >
+        <Tab id="transferencia" title="Transferência">
           <Transferencia />
         </Tab>
       </Tabs>

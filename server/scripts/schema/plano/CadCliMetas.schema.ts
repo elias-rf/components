@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const CadCliMetas: TEntity = {
   database: "plano",
   table: "CadCliMetas",
-  fields: [
+  schema: [
     {
       field: "CdCliente",
       label: "CdCliente",

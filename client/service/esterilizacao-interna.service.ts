@@ -1,5 +1,5 @@
 import { TEsterilizacaoInterna } from "../../types/esterilizacao-interna.type";
-import { isEmpty } from "../../utils/is-empty";
+import { isEmpty } from "../../utils/identify/is-empty";
 import { day } from "../lib/day";
 import { fetcherRpc } from "../lib/http/fetcher-rpc";
 import { rpcFactory } from "../lib/http/rpc.factory";

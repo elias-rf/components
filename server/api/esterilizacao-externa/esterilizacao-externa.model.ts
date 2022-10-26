@@ -1,5 +1,5 @@
 import { Schema } from "../../../types";
-import { isString } from "../../../utils/is-string";
+import { isString } from "../../../utils/identify/is-string";
 import { TConnections } from "../../dal/connections";
 import { validateIsThrow } from "../../lib/validate-is-throw";
 

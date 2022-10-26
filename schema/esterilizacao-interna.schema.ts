@@ -3,7 +3,7 @@ import { TEntity } from "../types";
 export const esterilizacao_interna: TEntity = {
   database: "oftalmo",
   table: "tEsterilizacaoInterna",
-  fields: [
+  schema: [
     {
       field: "kLoteEstInt",
       label: "Cód",

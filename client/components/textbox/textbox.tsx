@@ -23,32 +23,32 @@ export function Textbox({
   list,
   ...others
 }: TTextboxProps) {
+  // input já foi disparado
   const [dispInput, setDispInput] = React.useState(false);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange({
       name,
       value: e.target.value,
-      targetName: "Textbox",
-      eventName: "onChange",
+      component: "Textbox",
+      event: "onChange",
     });
     if (dispInput) setDispInput(false);
   };
 
-  const handleOnBlur = (e: React.SyntheticEvent) => {
+  const handleOnBlur = () => {
     onBlur({
       name,
       value,
-      targetName: "Textbox",
-      eventName: "blur",
-      event: e,
+      component: "Textbox",
+      event: "blur",
     });
     if (!dispInput) {
       onInput({
         name,
         value: value,
-        targetName: "Textbox",
-        eventName: "input",
+        component: "Textbox",
+        event: "input",
       });
       setDispInput(true);
     }
@@ -60,8 +60,8 @@ export function Textbox({
         onInput({
           name,
           value,
-          targetName: "Textbox",
-          eventName: "input",
+          component: "Textbox",
+          event: "input",
         });
         setDispInput(true);
       }

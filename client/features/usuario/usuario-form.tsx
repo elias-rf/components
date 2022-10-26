@@ -1,6 +1,6 @@
 import React from "react";
 import { IEvent, SchemaField } from "../../../types";
-import { isEmpty } from "../../../utils/is-empty";
+import { isEmpty } from "../../../utils/identify/is-empty";
 import { Button } from "../../components/button";
 import { Formfield } from "../../components/formfield";
 import {
@@ -56,10 +56,7 @@ export function UsuarioForm() {
   }
 
   return (
-    <section
-      className="mt-2"
-      title="PhonebookForm"
-    >
+    <section className="mt-2" title="PhonebookForm">
       <div className="mt-2">
         <div className="space-x-2">
           <Button

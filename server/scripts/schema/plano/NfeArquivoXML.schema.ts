@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const NfeArquivoXML: TEntity = {
   database: "plano",
   table: "NfeArquivoXML",
-  fields: [
+  schema: [
     {
       field: "CdFilial",
       label: "CdFilial",

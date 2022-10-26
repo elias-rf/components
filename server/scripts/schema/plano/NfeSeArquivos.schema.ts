@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const NfeSeArquivos: TEntity = {
   database: "plano",
   table: "NfeSeArquivos",
-  fields: [
+  schema: [
     {
       field: "CdFilial",
       label: "CdFilial",

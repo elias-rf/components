@@ -1,11 +1,11 @@
-import { Table } from "../../components/table";
+import { Table } from "../../components/table/table";
 import {
   usePhonebookList,
   usePhonebookSchema,
 } from "../../hooks/use-agenda-telefone.hook";
 import { useQueryState } from "../../lib/hooks/use-query-state";
 
-export function PhonebookList() {
+export function AgendaTelefoneList() {
   const [selected, setSelected] = useQueryState("selected", []);
   const [order, setOrder] = useQueryState("orderBy", []);
   const [where, setWhere] = useQueryState("where", []);

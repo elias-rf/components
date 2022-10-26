@@ -1,5 +1,5 @@
-import { Page } from "../../components/page";
-import { PageTitle } from "../../components/page-title";
+import { Page } from "../../components/page/page";
+import { PageTitle } from "../../components/page/page-title";
 import { Auth } from "../../features/auth";
 import { Controles as Control } from "../../features/controles/controles";
 

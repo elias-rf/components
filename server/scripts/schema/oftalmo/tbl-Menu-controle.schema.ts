@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const tbl_Menu_controle: TEntity = {
   database: "oftalmo",
   table: "tbl_Menu_controle",
-  fields: [
+  schema: [
     {
       field: "Item",
       label: "Item",

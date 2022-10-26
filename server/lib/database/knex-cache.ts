@@ -1,5 +1,5 @@
 import type { Knex } from "knex";
-import { calcMd5 } from "../../../utils/calc-md5";
+import { calcMd5 } from "../../../utils/string/calc-md5";
 import { cache } from "./cache_";
 
 function generateKey(query: string) {

@@ -1,5 +1,5 @@
 import { RawQuery, Tracker } from "knex-mock-client";
-import { difference } from "../../../utils/difference";
+import { difference } from "../../../utils/array/difference";
 import { cidadeQuery } from "./cidade.query";
 import { clienteQuery } from "./cliente.query";
 import { diamanteQuery } from "./diamante.query";
@@ -76,6 +76,7 @@ function search({ method, sql, bindings }: RawQuery) {
   return rsp;
 }
 
+/** Mock para knex com respostas pré estabelecidas */
 export function setTracker(tracker: Tracker) {
   tracker.on
     .any((rawQuery: RawQuery) => search(rawQuery) !== undefined)

@@ -15,14 +15,14 @@ describe("ClienteService", () => {
       body: {
         result: {
           pk: ["CdCliente"],
-          fields: [],
+          schema: [],
         },
       },
     });
     const rsp = await clienteService.schema();
     expect(rsp).toEqual({
       pk: ["CdCliente"],
-      fields: [],
+      schema: [],
     });
     expect(fetchMockRpc.history(0)).toEqual({
       url: "/api/rpc",

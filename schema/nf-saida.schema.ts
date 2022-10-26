@@ -3,7 +3,7 @@ import { TEntity } from "../types";
 export const nf_saida: TEntity = {
   database: "plano",
   table: "MestreNota",
-  fields: [
+  schema: [
     {
       field: "CdFilial",
       label: "CdFilial",

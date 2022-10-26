@@ -12,7 +12,7 @@ const schema: TSchema = {
     database: "ms",
     table: "phonebook",
     pk: ["id"],
-    fields: [
+    schema: [
       { field: "id", name: "ramal", label: "Ramal", type: "number", size: 1 },
     ],
   },

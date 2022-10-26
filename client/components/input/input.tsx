@@ -15,8 +15,8 @@ export function Input(props: TInputProps) {
     console.log(e.target.value);
     onChange({
       name,
-      targetName: "Input",
-      eventName: "onChange",
+      component: "Input",
+      event: "onChange",
       value: e.target.value,
     });
   }

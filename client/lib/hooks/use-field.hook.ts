@@ -1,5 +1,5 @@
-import { IEvent } from "@er/types";
 import { useState } from "react";
+import { IEvent } from "../../../types";
 
 type Options = {
   validate?: (v: any) => string;

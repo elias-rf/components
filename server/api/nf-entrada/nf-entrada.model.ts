@@ -1,5 +1,5 @@
-import { day } from "../../../utils/day";
-import { isEmpty } from "../../../utils/is-empty";
+import { day } from "../../../utils/date/day";
+import { isEmpty } from "../../../utils/identify/is-empty";
 import type { TConnections } from "../../dal/connections";
 import { crudModel } from "../crud/crud.model";
 import { estoqueModel } from "../estoque/estoque.model";

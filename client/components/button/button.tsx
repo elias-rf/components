@@ -70,14 +70,12 @@ export function Button(props: TButtonProps) {
     ...other
   } = props;
 
-  function handleClick(event: React.SyntheticEvent) {
+  function handleClick() {
     onClick({
       name,
       value: children,
-      targetProps: props,
-      targetName: "Button",
-      eventName: "click",
-      event: event,
+      component: "Button",
+      event: "click",
     });
   }
 

@@ -1,8 +1,8 @@
 import { GenericObject, Ids, Select } from "../../../types";
 import { TProdutoPlano } from "../../../types/produto-plano.type";
-import { day } from "../../../utils/day";
-import { isEmpty } from "../../../utils/is-empty";
-import { module10 } from "../../../utils/module10";
+import { day } from "../../../utils/date/day";
+import { isEmpty } from "../../../utils/identify/is-empty";
+import { module10 } from "../../../utils/string/module10";
 import { TConnections } from "../../dal/connections";
 import { crudModel } from "../crud/crud.model";
 import { produtoItemModel } from "../produto-item/produto-item.model";

@@ -1,7 +1,7 @@
 import React from "react";
 import type { IEvent, SchemaField } from "../../../types";
 import { TAgendaTelefone } from "../../../types/agenda-telefone.type";
-import { isEmpty } from "../../../utils/is-empty";
+import { isEmpty } from "../../../utils/identify/is-empty";
 import { Button } from "../../components/button";
 import { Formfield } from "../../components/formfield";
 import {
@@ -15,7 +15,7 @@ import { useForm } from "../../lib/hooks/use-form.hook";
 import { useQueryState } from "../../lib/hooks/use-query-state";
 import { agendaTelefoneService } from "../../service/agenda-telefone.service";
 
-export function PhonebookForm() {
+export function AgendaTelefoneForm() {
   const [selected] = useQueryState("selected", []);
   const [status, setStatus] = React.useState("new");
   const form = useForm<TAgendaTelefone>(agendaTelefoneService.clear());

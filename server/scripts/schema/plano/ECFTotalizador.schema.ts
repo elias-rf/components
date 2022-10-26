@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const ECFTotalizador: TEntity = {
   database: "plano",
   table: "ECFTotalizador",
-  fields: [
+  schema: [
     {
       field: "CNPJFilial",
       label: "CNPJFilial",

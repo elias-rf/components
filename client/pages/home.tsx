@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.svg";
-import { Page } from "../components/page";
+import { Page } from "../components/page/page";
 import { authenticationService } from "../service/authentication.service";
 import { userStore } from "../state/user-store";
 
@@ -22,10 +22,7 @@ export function Home() {
   }, []);
   return (
     <Page title="Home">
-      <img
-        src={logo}
-        alt="logo"
-      />
+      <img src={logo} alt="logo" />
     </Page>
   );
 }

@@ -11,7 +11,7 @@ export const Default: ComponentStory<typeof Input> = (props) => {
   const [vlr, setVlr] = React.useState("");
   return (
     <>
-      <Input value={vlr} onChange={(e) => setVlr(e.value)} {...props} />
+      <Input {...props} value={vlr} onChange={(e) => setVlr(e.value)} />
     </>
   );
 };

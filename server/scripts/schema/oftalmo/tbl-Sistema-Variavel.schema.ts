@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const tbl_Sistema_Variavel: TEntity = {
   database: "oftalmo",
   table: "tbl_Sistema_Variavel",
-  fields: [
+  schema: [
     {
       field: "kVar",
       label: "kVar",

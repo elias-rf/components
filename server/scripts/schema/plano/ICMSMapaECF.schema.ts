@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const ICMSMapaECF: TEntity = {
   database: "plano",
   table: "ICMSMapaECF",
-  fields: [
+  schema: [
     {
       field: "CdFilial",
       label: "CdFilial",

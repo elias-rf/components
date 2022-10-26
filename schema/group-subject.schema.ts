@@ -3,7 +3,7 @@ import { TEntity } from "../types";
 export const group_subject: TEntity = {
   database: "oftalmo",
   table: "groupSubject",
-  fields: [
+  schema: [
     {
       field: "idGroup",
       label: "Grupo",

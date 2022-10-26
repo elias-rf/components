@@ -3,7 +3,7 @@ import { TEntity } from "../types";
 export const nf_saida_fv: TEntity = {
   database: "fullvision",
   table: "MestreNota",
-  fields: [
+  schema: [
     {
       field: "CdFilial",
       label: "Filial",

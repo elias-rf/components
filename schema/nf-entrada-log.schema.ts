@@ -3,7 +3,7 @@ import { TEntity } from "../types";
 export const nf_entrada_log: TEntity = {
   database: "plano",
   table: "NfLogConferencia",
-  fields: [
+  schema: [
     {
       field: "CdFilial",
       label: "CdFilial",

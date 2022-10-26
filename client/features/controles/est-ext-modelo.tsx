@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Table } from "../../components/table";
+import { Table } from "../../components/table/table";
 import { esterilizacaoExternaService } from "../../service/esterilizacao-externa.service";
 
 type EsterilizacaoExternaModeloProp = {
@@ -32,10 +32,5 @@ export function EsterilizacaoExternaModelo({
     }
   );
 
-  return (
-    <Table
-      data={modelo.data || []}
-      schema={schema.data}
-    ></Table>
-  );
+  return <Table data={modelo.data || []} schema={schema.data}></Table>;
 }

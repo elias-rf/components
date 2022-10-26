@@ -3,7 +3,7 @@ import { TEntity } from "../types";
 export const nf_cfop: TEntity = {
   database: "plano",
   table: "NatOpe",
-  fields: [
+  schema: [
     {
       field: "Nop",
       label: "CFOP",

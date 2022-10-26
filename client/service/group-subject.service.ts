@@ -1,5 +1,5 @@
 import { TGroupSubject } from "../../types/group-subject.type";
-import { isEmpty } from "../../utils/is-empty";
+import { isEmpty } from "../../utils/identify/is-empty";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
 export type { TGroupSubject };

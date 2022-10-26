@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Table } from "../../components/table";
+import { Table } from "../../components/table/table";
 import { operacaoService } from "../../service/operacao.service";
 
 export function OperacaoMensal({
@@ -27,11 +27,7 @@ export function OperacaoMensal({
   );
 
   return (
-    <Table
-      data={mensal.data || []}
-      schema={schema.data}
-      selected={mesCorrente}
-    >
+    <Table data={mensal.data || []} schema={schema.data} selected={mesCorrente}>
       {children}
     </Table>
   );

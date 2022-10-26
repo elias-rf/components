@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const ArqDupHistorico: TEntity = {
   database: "plano",
   table: "ArqDupHistorico",
-  fields: [
+  schema: [
     {
       field: "CdFilial",
       label: "CdFilial",

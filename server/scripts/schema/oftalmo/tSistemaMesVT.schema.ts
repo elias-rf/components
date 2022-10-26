@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const tSistemaMesVT: TEntity = {
   database: "oftalmo",
   table: "tSistemaMesVT",
-  fields: [
+  schema: [
     {
       field: "Dia",
       label: "Dia",

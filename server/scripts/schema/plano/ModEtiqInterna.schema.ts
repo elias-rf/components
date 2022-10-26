@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const ModEtiqInterna: TEntity = {
   database: "plano",
   table: "ModEtiqInterna",
-  fields: [
+  schema: [
     {
       field: "Codigo",
       label: "Codigo",

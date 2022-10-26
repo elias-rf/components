@@ -7,8 +7,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { day } from "../../../utils/day";
-import { formatMoney } from "../../../utils/format-money";
+import { day } from "../../../utils/date/day";
+import { formatMoney } from "../../../utils/format/format-money";
 import VendaService from "../../service/venda.service";
 
 /**
@@ -73,14 +73,8 @@ function Vendas30dias() {
     <>
       <div className="py-2">
         <h2 className="text-lg text-center">Liteflex</h2>
-        <ResponsiveContainer
-          width={width}
-          height={height}
-        >
-          <LineChart
-            data={vendas?.liteflex}
-            syncId="implante"
-          >
+        <ResponsiveContainer width={width} height={height}>
+          <LineChart data={vendas?.liteflex} syncId="implante">
             <Line
               type="monotone"
               yAxisId="right"
@@ -96,10 +90,7 @@ function Vendas30dias() {
               name="Quantidade"
             />
             <YAxis yAxisId="left" />
-            <YAxis
-              yAxisId="right"
-              orientation="right"
-            />
+            <YAxis yAxisId="right" orientation="right" />
             <XAxis dataKey="dia" />
             <Tooltip
               formatter={(value: number, name: string) =>
@@ -111,10 +102,7 @@ function Vendas30dias() {
       </div>
       <div className="py-2">
         <h2 className="text-lg text-center">Hilite</h2>
-        <ResponsiveContainer
-          width={width}
-          height={height}
-        >
+        <ResponsiveContainer width={width} height={height}>
           <LineChart data={vendas?.hilite}>
             <Line
               type="monotone"
@@ -131,10 +119,7 @@ function Vendas30dias() {
               name="Quantidade"
             />
             <YAxis yAxisId="left" />
-            <YAxis
-              yAxisId="right"
-              orientation="right"
-            />
+            <YAxis yAxisId="right" orientation="right" />
             <XAxis dataKey="dia" />
             <Tooltip
               formatter={(value: number, name: string) =>
@@ -146,14 +131,8 @@ function Vendas30dias() {
       </div>
       <div className="py-2">
         <h2 className="text-lg text-center">Enlite</h2>
-        <ResponsiveContainer
-          width={width}
-          height={height}
-        >
-          <LineChart
-            data={vendas?.enlite}
-            syncId="implante"
-          >
+        <ResponsiveContainer width={width} height={height}>
+          <LineChart data={vendas?.enlite} syncId="implante">
             <Line
               type="monotone"
               yAxisId="right"
@@ -169,10 +148,7 @@ function Vendas30dias() {
               name="Quantidade"
             />
             <YAxis yAxisId="left" />
-            <YAxis
-              yAxisId="right"
-              orientation="right"
-            />
+            <YAxis yAxisId="right" orientation="right" />
             <XAxis dataKey="dia" />
             <Tooltip
               formatter={(value: number, name: string) =>
@@ -184,10 +160,7 @@ function Vendas30dias() {
       </div>
       <div className="py-2">
         <h2 className="text-lg text-center">Metil</h2>
-        <ResponsiveContainer
-          width={width}
-          height={height}
-        >
+        <ResponsiveContainer width={width} height={height}>
           <LineChart data={vendas?.metil}>
             <Line
               type="monotone"
@@ -204,10 +177,7 @@ function Vendas30dias() {
               name="Quantidade"
             />
             <YAxis yAxisId="left" />
-            <YAxis
-              yAxisId="right"
-              orientation="right"
-            />
+            <YAxis yAxisId="right" orientation="right" />
             <XAxis dataKey="dia" />
             <Tooltip
               formatter={(value: number, name: string) =>
@@ -219,10 +189,7 @@ function Vendas30dias() {
       </div>
       <div className="py-2">
         <h2 className="text-lg text-center">Corneal Ring</h2>
-        <ResponsiveContainer
-          width={width}
-          height={height}
-        >
+        <ResponsiveContainer width={width} height={height}>
           <LineChart data={vendas?.anel}>
             <Line
               type="monotone"
@@ -239,10 +206,7 @@ function Vendas30dias() {
               name="Quantidade"
             />
             <YAxis yAxisId="left" />
-            <YAxis
-              yAxisId="right"
-              orientation="right"
-            />
+            <YAxis yAxisId="right" orientation="right" />
             <XAxis dataKey="dia" />
             <Tooltip
               formatter={(value: number, name: string) =>
@@ -254,10 +218,7 @@ function Vendas30dias() {
       </div>
       <div className="py-2">
         <h2 className="text-lg text-center">Liteflex + Enlite</h2>
-        <ResponsiveContainer
-          width={width}
-          height={height}
-        >
+        <ResponsiveContainer width={width} height={height}>
           <LineChart data={vendas?.enliteLiteflex}>
             <Line
               type="monotone"
@@ -274,10 +235,7 @@ function Vendas30dias() {
               name="Quantidade"
             />
             <YAxis yAxisId="left" />
-            <YAxis
-              yAxisId="right"
-              orientation="right"
-            />
+            <YAxis yAxisId="right" orientation="right" />
             <XAxis dataKey="dia" />
             <Tooltip
               formatter={(value: number, name: string) =>

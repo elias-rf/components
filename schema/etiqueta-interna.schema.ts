@@ -3,7 +3,7 @@ import { TEntity } from "../types";
 export const etiqueta_interna: TEntity = {
   database: "oftalmo",
   table: "tbl_producao_etiqueta",
-  fields: [
+  schema: [
     {
       field: "NumControle",
       label: "Cód",

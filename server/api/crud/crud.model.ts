@@ -9,24 +9,24 @@ import type {
   UpdateArgs,
   Where,
 } from "../../../types";
-import { fieldsFromEntity } from "../../../utils/fields-from-entity";
-import { isData } from "../../../utils/is-data";
-import { isId } from "../../../utils/is-id";
-import { isLimit } from "../../../utils/is-limit";
-import { isOrder } from "../../../utils/is-order";
-import { isSelect } from "../../../utils/is-select";
-import { isTable } from "../../../utils/is-table";
-import { isWhere } from "../../../utils/is-where";
-import { knexOrder } from "../../../utils/knex-order";
-import { knexWhere } from "../../../utils/knex-where";
-import { namesFromEntity } from "../../../utils/names-from-entity";
+import { knexOrder } from "../../../utils/data/knex-order";
+import { knexWhere } from "../../../utils/data/knex-where";
+import { fieldsFromEntity } from "../../../utils/schema/fields-from-entity";
+import { namesFromEntity } from "../../../utils/schema/names-from-entity";
 import {
   renameToFieldArray,
   renameToFieldObject,
   renameToFieldTuple,
   renameToNameArrayObject,
   renameToNameObject,
-} from "../../../utils/rename-fields";
+} from "../../../utils/schema/rename-fields";
+import { isData } from "../../../utils/validate/is-data";
+import { isId } from "../../../utils/validate/is-id";
+import { isLimit } from "../../../utils/validate/is-limit";
+import { isOrder } from "../../../utils/validate/is-order";
+import { isSelect } from "../../../utils/validate/is-select";
+import { isTable } from "../../../utils/validate/is-table";
+import { isWhere } from "../../../utils/validate/is-where";
 import { TConnections, TDbs } from "../../dal/connections";
 import { recordClear } from "../../lib/record-clear";
 import { validateThrow } from "../../lib/validate-throw";
@@ -38,8 +38,7 @@ export function crudModel(connections: TConnections) {
     async schema({ table = "" }): Promise<Schema> {
       validateThrow(isTable(table, entitySchema));
       const entity = entitySchema[table];
-
-      return entity.fields;
+      return entity.schema;
     },
 
     // INCREMENT
@@ -62,13 +61,13 @@ export function crudModel(connections: TConnections) {
         select = namesFromEntity(entity);
       }
       validateThrow(isWhere(where, entitySchema[table]));
-      validateThrow(isSelect(select, entitySchema[table]));
+      validateThrow(isSelect(select as string[], entitySchema[table]));
 
       const data: GenericObject[] = await knex(tbl)
         .hintComment("NO_ICP(accounts)")
         .where(knexWhere(renameToFieldTuple(where, entity)))
         .decrement(renameToFieldObject(decrement, entity))
-        .returning(select);
+        .returning(select as string[]);
       return renameToNameArrayObject(data, entitySchema[table]);
     },
 
@@ -92,13 +91,13 @@ export function crudModel(connections: TConnections) {
         select = namesFromEntity(entity);
       }
       validateThrow(isWhere(where, entitySchema[table]));
-      validateThrow(isSelect(select, entitySchema[table]));
+      validateThrow(isSelect(select as string[], entitySchema[table]));
 
       const data: GenericObject[] = await knex(tbl)
         .hintComment("NO_ICP(accounts)")
         .where(knexWhere(renameToFieldTuple(where, entity)))
         .increment(renameToFieldObject(increment, entity))
-        .returning(select);
+        .returning(select as string[]);
       return renameToNameArrayObject(data, entitySchema[table]);
     },
 
@@ -142,7 +141,7 @@ export function crudModel(connections: TConnections) {
       validateThrow(isOrder(order, entitySchema[table]));
       validateThrow(isWhere(where, entitySchema[table]));
       validateThrow(isLimit(limit));
-      validateThrow(isSelect(select, entitySchema[table]));
+      validateThrow(isSelect(select as string[], entitySchema[table]));
 
       const data: GenericObject[] = await knex(tbl)
         .select(renameToFieldArray(select, entity))
@@ -162,7 +161,7 @@ export function crudModel(connections: TConnections) {
         select = namesFromEntity(entity);
       }
       validateThrow(isId(id, entity));
-      validateThrow(isSelect(select, entity));
+      validateThrow(isSelect(select as string[], entity));
 
       const data = await knex(tbl)
         .select(renameToFieldArray(select, entity))

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Dispatch } from "../../../types";
-import { Table } from "../../components/table";
+import { Table } from "../../components/table/table";
 import { esterilizacaoExternaService } from "../../service/esterilizacao-externa.service";
 
 type EsterilizacaoExternaMensalProp = {

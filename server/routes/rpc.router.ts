@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import express from "express";
 import { jwtDecode } from "../../utils/api/jwt-decode";
-import { resetCookie, setCookie } from "../../utils/cookie";
+import { resetCookie, setCookie } from "../../utils/network/cookie";
 import { rpc } from "../api/rpc";
 import { config } from "../config";
 

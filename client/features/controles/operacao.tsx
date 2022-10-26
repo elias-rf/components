@@ -1,7 +1,7 @@
 import React from "react";
 import type { Action } from "../../../types";
 import { Label } from "../../components/label";
-import { Select } from "../../components/select";
+import { Select } from "../../components/select/select";
 import { day } from "../../lib/day";
 import { OperacaoDiario } from "./operacao-diario";
 import { OperacaoMensal } from "./operacao-mensal";

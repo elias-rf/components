@@ -20,9 +20,8 @@ export function MessageBox(props: IMessageBoxProps) {
     onInput({
       name: title,
       value: e.name,
-      targetName: "MessageBox",
-      targetProps: props,
-      eventName: "input",
+      component: "MessageBox",
+      event: "input",
     });
   }
 
@@ -42,26 +41,17 @@ export function MessageBox(props: IMessageBoxProps) {
           {/*footer*/}
           <div className="flex items-center justify-end p-2 space-x-2">
             {option1 ? (
-              <Button
-                onClick={handleClick}
-                name="option1"
-              >
+              <Button onClick={handleClick} name="option1">
                 {option1}
               </Button>
             ) : null}
             {option2 ? (
-              <Button
-                onClick={handleClick}
-                name="option2"
-              >
+              <Button onClick={handleClick} name="option2">
                 {option2}
               </Button>
             ) : null}
             {option3 ? (
-              <Button
-                onClick={handleClick}
-                name="option3"
-              >
+              <Button onClick={handleClick} name="option3">
                 {option3}
               </Button>
             ) : null}

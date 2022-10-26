@@ -1,7 +1,7 @@
 import knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
-import { knexMockHistory } from "../../utils/knex-mock-history";
+import { knexMockHistory } from "../../utils/data/knex-mock-history";
 import { app } from "../app";
 import { apiRequest, rpcResponse, rpcResponseError } from "./aux";
 

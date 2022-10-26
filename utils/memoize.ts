@@ -1,5 +1,5 @@
 import QuickLRU from "quick-lru";
-import { hashObject } from "./hash-object";
+import { hashObject } from "./object/hash-object";
 
 export const memoizeCache = new QuickLRU({ maxSize: 500 });
 

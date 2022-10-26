@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const tMaquinaCheckList: TEntity = {
   database: "oftalmo",
   table: "tMaquinaCheckList",
-  fields: [
+  schema: [
     {
       field: "fkMaquina",
       label: "fkMaquina",

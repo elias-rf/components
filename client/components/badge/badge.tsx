@@ -41,8 +41,9 @@ function CloseButton(props: { name: string; onClose?: (e: IEvent) => void }) {
     if (onClose) {
       onClose({
         name,
-        targetName: "Badge",
-        eventName: "close",
+        component: "Badge",
+        event: "close",
+        value: "",
       });
     }
   }
@@ -82,8 +83,9 @@ export function Badge(props: TBadgeProps) {
     if (onClick) {
       onClick({
         name,
-        targetName: "Badge",
-        eventName: "click",
+        component: "Badge",
+        event: "click",
+        value: children,
       });
     }
   }

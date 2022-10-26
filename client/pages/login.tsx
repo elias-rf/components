@@ -1,7 +1,7 @@
 import { IEvent } from "@er/types";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Login as LoginComponent } from "../components/login";
+import { Login as LoginComponent } from "../components/login/login";
 import { authenticationService } from "../service/authentication.service";
 
 /**

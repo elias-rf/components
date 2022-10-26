@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const tCorrecaoNaoConformidade: TEntity = {
   database: "oftalmo",
   table: "tCorrecaoNaoConformidade",
-  fields: [
+  schema: [
     {
       field: "kCorrecao",
       label: "kCorrecao",

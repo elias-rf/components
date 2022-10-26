@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const lixo: TEntity = {
   database: "plano",
   table: "lixo",
-  fields: [
+  schema: [
     {
       field: "lote",
       label: "lote",

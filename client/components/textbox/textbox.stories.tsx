@@ -18,7 +18,7 @@ export const Default: ComponentStory<typeof Textbox> = (props) => {
 
   function handleBlur(e: IEvent) {
     setVlr(e.value);
-    props.onBlur(e);
+    if (props.onBlur) props.onBlur(e);
   }
 
   function handleInput(e: IEvent) {

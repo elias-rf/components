@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const ObsMapaECF: TEntity = {
   database: "plano",
   table: "ObsMapaECF",
-  fields: [
+  schema: [
     {
       field: "CdFilial",
       label: "CdFilial",

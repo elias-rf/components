@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const tbl_Sistema_AutoNumber: TEntity = {
   database: "oftalmo",
   table: "tbl_Sistema_AutoNumber",
-  fields: [
+  schema: [
     {
       field: "Tabela",
       label: "Tabela",

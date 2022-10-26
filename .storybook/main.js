@@ -1,7 +1,7 @@
 module.exports = {
   stories: [
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+    // "../stories/**/*.stories.mdx",
+    // "../stories/**/*.stories.@(js|jsx|ts|tsx)",
     "../client/components/**/*.stories.@(js|jsx|ts|tsx)",
     "../client/features/**/*.stories.@(js|jsx|ts|tsx)",
   ],
@@ -9,6 +9,8 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
+    "storybook-addon-monitor",
+    "storybook-addon-mock",
   ],
   framework: "@storybook/react",
   core: {
@@ -21,5 +23,9 @@ module.exports = {
   async viteFinal(config) {
     // console.log(`🚀 ~ file: main.js ~ line 20 ~ viteFinal ~ config`, config);
     return config;
+  },
+  reactOptions: {
+    fastRefresh: true,
+    strictMode: true,
   },
 };

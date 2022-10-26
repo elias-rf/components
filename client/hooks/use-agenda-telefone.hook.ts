@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Ids, Order, Where } from "../../types";
-import { isEmpty } from "../../utils/is-empty";
+import { isEmpty } from "../../utils/identify/is-empty";
 import { agendaTelefoneService } from "../service/agenda-telefone.service";
 
 import { TAgendaTelefone } from "../../types/agenda-telefone.type";

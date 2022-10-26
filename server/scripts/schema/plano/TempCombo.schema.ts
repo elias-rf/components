@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const TempCombo: TEntity = {
   database: "plano",
   table: "TempCombo",
-  fields: [
+  schema: [
     {
       field: "Estacao",
       label: "Estacao",

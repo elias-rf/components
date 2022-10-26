@@ -1,5 +1,5 @@
 import { Schema } from "../../types";
-import { isEmpty } from "../../utils/is-empty";
+import { isEmpty } from "../../utils/identify/is-empty";
 import { fetcherRpc } from "../lib/http/fetcher-rpc";
 
 // const fields = [

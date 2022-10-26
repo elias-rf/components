@@ -3,7 +3,7 @@ import chevronSortDown from "@iconify/icons-carbon/chevron-sort-down";
 import chevronSortUp from "@iconify/icons-carbon/chevron-sort-up";
 import { InlineIcon } from "@iconify/react";
 import { Order, SchemaField } from "../../types";
-import { orderBy as orderByUtil } from "../../utils/src/order-by";
+import { orderByUtil } from "../../utils/schema/order-by";
 
 export function SortableIcon() {
   return (

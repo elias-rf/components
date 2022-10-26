@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const Kardex: TEntity = {
   database: "plano",
   table: "Kardex",
-  fields: [
+  schema: [
     {
       field: "CdEmitente",
       label: "CdEmitente",

@@ -3,7 +3,7 @@ import { TEntity } from "../types";
 export const agenda_telefone: TEntity = {
   database: "oftalmo",
   table: "phonebook",
-  fields: [
+  schema: [
     {
       allowNull: false,
       field: "id",

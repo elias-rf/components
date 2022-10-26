@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Table } from "../../components/table";
+import { Table } from "../../components/table/table";
 import { day } from "../../lib/day";
 import { esterilizacaoInternaService } from "../../service/esterilizacao-interna.service";
 

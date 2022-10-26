@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const EmailVidalink: TEntity = {
   database: "plano",
   table: "EmailVidalink",
-  fields: [
+  schema: [
     {
       field: "Email",
       label: "Email",

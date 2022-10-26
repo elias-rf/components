@@ -1,11 +1,8 @@
-import { PageTitle } from "../../components/page-title";
+import { PageTitle } from "../../components/page/page-title";
 function Romaneio() {
   return (
     <div>
-      <PageTitle
-        title="Romaneio"
-        loading={false}
-      >
+      <PageTitle title="Romaneio" loading={false}>
         Romaneio
       </PageTitle>
     </div>

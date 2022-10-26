@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const ComprovanteSitef: TEntity = {
   database: "plano",
   table: "ComprovanteSitef",
-  fields: [
+  schema: [
     {
       field: "NumNota",
       label: "NumNota",

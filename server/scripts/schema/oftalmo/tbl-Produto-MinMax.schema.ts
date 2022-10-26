@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const tbl_Produto_MinMax: TEntity = {
   database: "oftalmo",
   table: "tbl_Produto_MinMax",
-  fields: [
+  schema: [
     {
       field: "fkProdutoItem",
       label: "fkProdutoItem",

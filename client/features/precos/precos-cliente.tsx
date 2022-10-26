@@ -52,8 +52,8 @@ function Produto({
               recalc({
                 name: `${produto.grupo}.tabela`,
                 value: moeda.format(snap[produto.grupo].precoPadrao),
-                targetName: "Textbox",
-                eventName: "onDoubleClick",
+                component: "Textbox",
+                event: "onDoubleClick",
               })
             }
             className={
@@ -72,8 +72,8 @@ function Produto({
               recalc({
                 name: `${produto.grupo}.ofertado`,
                 value: moeda.format(snap[produto.grupo].precoMinimo),
-                targetName: "Textbox",
-                eventName: "onDoubleClick",
+                component: "Textbox",
+                event: "onDoubleClick",
               })
             }
             className={

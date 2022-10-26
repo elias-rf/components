@@ -1,5 +1,5 @@
 import { Ids } from "../../../types";
-import { renameToFieldObject } from "../../../utils/rename-fields";
+import { renameToFieldObject } from "../../../utils/schema/rename-fields";
 import { TConnections } from "../../dal/connections";
 import { entitySchema } from "../entity-schema";
 

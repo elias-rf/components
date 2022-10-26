@@ -15,19 +15,19 @@ function saveType(typeName: string, type: string) {
 
 function createType(schemaName: string, schema: TEntity) {
   let rsp = `export type T${pascalCase(schemaName)}Id = {\n`;
-  for (const fld in schema.fields) {
-    if (schema.fields[fld].primaryKey)
-      rsp += `  ${schema.fields[fld].name}${
-        schema.fields[fld].autoIncrement ? "?" : ""
-      }: ${convertType(schema.fields[fld].type)};\n`;
+  for (const fld in schema.schema) {
+    if (schema.schema[fld].primaryKey)
+      rsp += `  ${schema.schema[fld].name}${
+        schema.schema[fld].autoIncrement ? "?" : ""
+      }: ${convertType(schema.schema[fld].type)};\n`;
   }
   rsp += "}\n\n";
 
   rsp += `export type T${pascalCase(schemaName)}Base = {\n`;
-  for (const fld in schema.fields) {
-    if (!schema.fields[fld].primaryKey)
-      rsp += `  ${schema.fields[fld].name}?: ${convertType(
-        schema.fields[fld].type
+  for (const fld in schema.schema) {
+    if (!schema.schema[fld].primaryKey)
+      rsp += `  ${schema.schema[fld].name}?: ${convertType(
+        schema.schema[fld].type
       )};\n`;
   }
   rsp += `}\n\n export type T${pascalCase(schemaName)} = Partial<T${pascalCase(

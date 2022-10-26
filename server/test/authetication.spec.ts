@@ -9,7 +9,7 @@ import {
   it,
   vi,
 } from "vitest";
-import { knexMockHistory } from "../../utils/knex-mock-history";
+import { knexMockHistory } from "../../utils/data/knex-mock-history";
 import { app } from "../app";
 import { setTracker } from "../lib/set-tracker";
 import { apiRequest, rpcResponse } from "./aux";

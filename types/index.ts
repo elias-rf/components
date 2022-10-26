@@ -80,17 +80,15 @@ export type CreateArgs = { table?: string; data: GenericObject };
 
 export interface IEvent {
   name: string;
-  value?: any;
-  targetProps?: any;
-  targetName: string;
-  eventName: string;
-  event?: any;
+  component: string;
+  event: string;
+  value: any;
 }
 
 export type TEntity = {
   database: string;
   table: string;
-  fields: Schema;
+  schema: Schema;
 };
 
 export type TEntitySchema = {

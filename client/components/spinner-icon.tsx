@@ -12,6 +12,7 @@ export function SpinnerIcon({ show = false, className }: SpinnerIconProps) {
 
   return (
     <Icon
+      inline={true}
       icon={spinnerIos20Filled}
       className={twMerge("animate-spin", className)}
     />

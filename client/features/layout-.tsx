@@ -4,7 +4,7 @@ import {
   DefaultLayout,
   LayoutAction,
   layoutActionTypes,
-} from "../components/default-layout";
+} from "../components/layout/default-layout";
 import { menu } from "../menu";
 import { authenticationService } from "../service/authentication.service";
 import { userStore } from "../state/user-store";

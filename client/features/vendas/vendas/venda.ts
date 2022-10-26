@@ -1,6 +1,6 @@
 import { Schema } from "../../../../types";
-import { day } from "../../../../utils/day";
-import { formatMoney } from "../../../../utils/format-money";
+import { day } from "../../../../utils/date/day";
+import { formatMoney } from "../../../../utils/format/format-money";
 
 export type Record = {
   origem: string;
@@ -32,7 +32,7 @@ function sortProdutoAsc(a: any, b: any) {
 
 export const mesSchema: Schema = {
   pk: ["mes"],
-  fields: [
+  schema: [
     { field: "mes", label: "Mes" },
     { field: "valor", label: "Faturamento", fieldClass: "text-right" },
   ],
@@ -56,7 +56,7 @@ export function mensal(data?: Record[]) {
 
 export const produtoSchema: Schema = {
   pk: ["produto"],
-  fields: [
+  schema: [
     { field: "produto", label: "Produto" },
     { field: "valor", label: "Faturamento", fieldClass: "text-right" },
     { field: "quantidade", label: "Quantidade", fieldClass: "text-right" },
@@ -95,7 +95,7 @@ export function mensalProduto(mesCorrente: string[], data?: Record[]) {
 
 export const vendedorSchema: Schema = {
   pk: ["vendedor"],
-  fields: [
+  schema: [
     { field: "vendedor", label: "Vendedor" },
     { field: "valor", label: "Faturamento", fieldClass: "text-right" },
   ],
@@ -160,7 +160,7 @@ export function mensalVendedorProduto(
 
 export const ufSchema: Schema = {
   pk: ["uf"],
-  fields: [
+  schema: [
     { field: "uf", label: "Estado" },
     { field: "valor", label: "Faturamento", fieldClass: "text-right" },
   ],

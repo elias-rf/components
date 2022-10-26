@@ -1,4 +1,4 @@
-import { round } from "../../../utils/round";
+import { round } from "../../../utils/number/round";
 
 // Calculadora de preços do comercial
 

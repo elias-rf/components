@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const EtiqCli: TEntity = {
   database: "plano",
   table: "EtiqCli",
-  fields: [
+  schema: [
     {
       field: "CdCliente",
       label: "CdCliente",

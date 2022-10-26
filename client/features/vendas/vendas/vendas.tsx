@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Action } from "../../../../types";
-import { day } from "../../../../utils/day";
-import { Table } from "../../../components/table";
+import { day } from "../../../../utils/date/day";
+import { Table } from "../../../components/table/table";
 import vendaService from "../../../service/venda.service";
 import {
   mensal,

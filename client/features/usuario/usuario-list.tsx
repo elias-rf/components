@@ -1,4 +1,4 @@
-import { Table } from "../../components/table";
+import { Table } from "../../components/table/table";
 import { useUsuarioList, useUsuarioSchema } from "../../hooks/use-usuario.hook";
 import { useQueryState } from "../../lib/hooks/use-query-state";
 

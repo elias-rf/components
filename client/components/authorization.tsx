@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { CurrentUser } from "../../types";
-import { isEmpty } from "../../utils/is-empty";
+import { isEmpty } from "../../utils/identify/is-empty";
 
 import Page403 from "../pages/page-403";
-import { Page } from "./page";
+import { Page } from "./page/page";
 import { SpinnerIcon } from "./spinner-icon";
 
 interface AuthorizationProps {
@@ -30,7 +30,7 @@ export function Authorization({
         setLoading(false);
         return;
       }
-      const rsp = await can(user.idGroup, resource);
+      const rsp = await can(user.group_id, resource);
       setCanUse(rsp);
       setLoading(false);
     }
@@ -42,10 +42,7 @@ export function Authorization({
     return (
       <Page title="Authorization">
         <div className="flex items-center justify-center w-full h-full">
-          <SpinnerIcon
-            show={true}
-            className="w-20 h-20"
-          />
+          <SpinnerIcon show={true} className="w-20 h-20" />
         </div>
       </Page>
     );

@@ -29,7 +29,7 @@ function convertType(type) {
   }
 }
 
-const rsp = { database: "", table: "", fields: [] };
+const rsp = { database: "", table: "", schema: [] };
 
 const uri = process.argv[2];
 const [db, table] = uri.split(".");

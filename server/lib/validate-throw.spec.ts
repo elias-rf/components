@@ -1,12 +1,12 @@
 import { expect, it } from "vitest";
 import { TEntity } from "../../types";
-import { isId } from "../../utils/is-id";
+import { isId } from "../../utils/validate/is-id";
 import { validateThrow } from "./validate-throw";
 
 const entity: TEntity = {
   database: "oftalmo",
   table: "phonebook",
-  fields: [
+  schema: [
     {
       allowNull: false,
       field: "id",

@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const TabelaSelic: TEntity = {
   database: "plano",
   table: "TabelaSelic",
-  fields: [
+  schema: [
     {
       field: "DtBase",
       label: "DtBase",

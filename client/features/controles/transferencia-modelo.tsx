@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Table } from "../../components/table";
+import { Table } from "../../components/table/table";
 import { transferenciaService } from "../../service/transferencia.service";
 
 export function TransferenciaModelo({ diaCorrente, dispatch, children }: any) {
@@ -21,10 +21,7 @@ export function TransferenciaModelo({ diaCorrente, dispatch, children }: any) {
   );
 
   return (
-    <Table
-      data={modelo.data || []}
-      schema={schema.data}
-    >
+    <Table data={modelo.data || []} schema={schema.data}>
       {children}
     </Table>
   );

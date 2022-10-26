@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const tEtiquetaPortaPrinter: TEntity = {
   database: "oftalmo",
   table: "tEtiquetaPortaPrinter",
-  fields: [
+  schema: [
     {
       field: "Port",
       label: "Port",

@@ -3,7 +3,7 @@ import { Sidebar } from "./sidebar";
 import { SidebarItem } from "./sidebar-item";
 
 export default {
-  title: "Components/Sidebar",
+  title: "Components/Sidebar/Sidebar",
   component: Sidebar,
 } as ComponentMeta<typeof Sidebar>;
 

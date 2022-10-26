@@ -1,10 +1,9 @@
-import { Id, Order, Where } from "@er/types";
-import { isEmpty } from "@er/utils/src/is-empty";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { TUsuarioRecord, usuarioService } from "../service/usuario.service";
+import { Ids, Order, Where } from "../../types";
+import { isEmpty } from "../../utils/identify/is-empty";
+import { TUsuario, usuarioService } from "../service/usuario.service";
 
 const UM_MINUTO = 60 * 1000;
-
 const USUARIO = "usuario";
 const USUARIO_SCHEMA = "usuarioSchema";
 
@@ -21,11 +20,11 @@ export function useUsuarioList(where: Where[], orderBy: Order[]) {
   );
 }
 
-export function useUsuarioRead(id: Id) {
+export function useUsuarioRead(id: Ids) {
   return useQuery(
     [USUARIO, id],
     ({ queryKey }) => {
-      const [_key, id] = queryKey as [string, Id];
+      const [_key, id] = queryKey as [string, Ids];
       if (isEmpty(id)) return {};
       return usuarioService.read(id);
     },
@@ -43,18 +42,15 @@ export function useUsuarioSchema() {
 
 export function useUsuarioCreate() {
   const cache = useQueryClient();
-  return useMutation(
-    (args: [TUsuarioRecord]) => usuarioService.create(...args),
-    {
-      onSuccess: () => cache.invalidateQueries([USUARIO]),
-    }
-  );
+  return useMutation((args: [TUsuario]) => usuarioService.create(...args), {
+    onSuccess: () => cache.invalidateQueries([USUARIO]),
+  });
 }
 
 export function useUsuarioDel() {
   const cache = useQueryClient();
   return useMutation(
-    (args: [Id]) => {
+    (args: [Ids]) => {
       return usuarioService.del(...args);
     },
     {
@@ -66,7 +62,7 @@ export function useUsuarioDel() {
 export function useUsuarioUpdate() {
   const cache = useQueryClient();
   return useMutation(
-    (args: [Id, TUsuarioRecord]) => {
+    (args: [Ids, TUsuario]) => {
       return usuarioService.update(...args);
     },
     {

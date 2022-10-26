@@ -1,6 +1,6 @@
 import React from "react";
 import type { IEvent, SchemaField } from "../../../types";
-import { isEmpty } from "../../../utils/is-empty";
+import { isEmpty } from "../../../utils/identify/is-empty";
 import { Button } from "../../components/button";
 import { Formfield } from "../../components/formfield";
 import {
@@ -59,10 +59,7 @@ export function GroupSubjectForm() {
   }
 
   return (
-    <section
-      data-name="GroupSubjectForm"
-      className="mt-2"
-    >
+    <section data-name="GroupSubjectForm" className="mt-2">
       <div className="space-x-2">
         {status}
         <Button

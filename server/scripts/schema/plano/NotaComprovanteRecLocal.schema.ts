@@ -3,7 +3,7 @@ import { TEntity } from "../../../../types";
 export const NotaComprovanteRecLocal: TEntity = {
   database: "plano",
   table: "NotaComprovanteRecLocal",
-  fields: [
+  schema: [
     {
       field: "CdEmpresa",
       label: "CdEmpresa",

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Table } from "../../components/table";
+import { Table } from "../../components/table/table";
 import { esterilizacaoInternaService } from "../../service/esterilizacao-interna.service";
 
 export function EsterilizacaoInternaModelo({
@@ -27,10 +27,5 @@ export function EsterilizacaoInternaModelo({
     }
   );
 
-  return (
-    <Table
-      data={modelo.data || []}
-      schema={schema.data}
-    ></Table>
-  );
+  return <Table data={modelo.data || []} schema={schema.data}></Table>;
 }

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { isEmpty } from "../../../utils/is-empty";
-import { Table } from "../../components/table";
+import { isEmpty } from "../../../utils/identify/is-empty";
+import { Table } from "../../components/table/table";
 import { operacaoService } from "../../service/operacao.service";
 
 export function OperacaoModelo({ operacao, dia, produto }: any) {
@@ -24,10 +24,5 @@ export function OperacaoModelo({ operacao, dia, produto }: any) {
     }
   );
 
-  return (
-    <Table
-      data={modelo.data || []}
-      schema={schema.data}
-    ></Table>
-  );
+  return <Table data={modelo.data || []} schema={schema.data}></Table>;
 }

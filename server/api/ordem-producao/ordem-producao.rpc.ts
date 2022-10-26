@@ -13,7 +13,7 @@ import { TOrdemProducao } from "../../../types/ordem-producao.type";
 import { TProdutoItem } from "../../../types/produto-item.type";
 import { TProdutoPlano } from "../../../types/produto-plano.type";
 import { TProduto } from "../../../types/produto.type";
-import { isUndefined } from "../../../utils/is-undefined";
+import { isUndefined } from "../../../utils/identify/is-undefined";
 import { TConnections } from "../../dal/connections";
 import { crudModel } from "../crud/crud.model";
 import { ordemProducaoModel } from "./ordem-producao.model";

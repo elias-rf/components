@@ -1,7 +1,7 @@
 import Knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
-import { knexMockHistory } from "../../../utils/knex-mock-history";
+import { knexMockHistory } from "../../../utils/data/knex-mock-history";
 import { TConnections } from "../../dal/connections";
 import { setTracker } from "../../lib/set-tracker";
 import { OperacaoProducaoModel } from "./operacao-producao.model";

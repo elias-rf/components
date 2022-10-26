@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { PageTitle } from "../../components/page-title";
+import { PageTitle } from "../../components/page/page-title";
 import { day } from "../../lib/day";
 import { transferenciaService } from "../../service/transferencia.service";
 

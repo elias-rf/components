@@ -1,7 +1,7 @@
-import { Page } from "../../components/page";
-import { PageTitle } from "../../components/page-title";
-import { PhonebookForm } from "../../features/agenda-telefone/agenda-telefone-form";
-import { PhonebookList } from "../../features/agenda-telefone/agenda-telefone-list";
+import { Page } from "../../components/page/page";
+import { PageTitle } from "../../components/page/page-title";
+import { AgendaTelefoneForm } from "../../features/agenda-telefone/agenda-telefone-form";
+import { AgendaTelefoneList } from "../../features/agenda-telefone/agenda-telefone-list";
 
 /**
  * Agenda de Ramais
@@ -12,8 +12,8 @@ export default function Agenda() {
       <PageTitle title="Agenda de Ramais" />
       <hr />
       <section className="flex flex-col gap-2">
-        <PhonebookForm />
-        <PhonebookList />
+        <AgendaTelefoneForm />
+        <AgendaTelefoneList />
       </section>
     </Page>
   );

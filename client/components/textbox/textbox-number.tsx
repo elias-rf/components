@@ -1,6 +1,6 @@
 import React from "react";
 import { IEvent } from "../../../types";
-import { formatNumber } from "../../../utils/format-number";
+import { formatNumber } from "../../../utils/format/format-number";
 import { parseNumber } from "../../../utils/parse-number";
 
 function posCaret(num: string, newNum: string) {
@@ -64,8 +64,8 @@ export function TextboxNumber({
       onChange({
         name,
         value: undefined,
-        targetName: "TextboxNumber",
-        eventName: "onChange",
+        component: "TextboxNumber",
+        event: "onChange",
       });
       return;
     }
@@ -74,25 +74,24 @@ export function TextboxNumber({
     onChange({
       name,
       value: valueAsNumber,
-      targetName: "TextboxNumber",
-      eventName: "onChange",
+      component: "TextboxNumber",
+      event: "onChange",
     });
   };
 
-  const handleOnBlur = (e: React.SyntheticEvent) => {
+  const handleOnBlur = () => {
     onBlur({
       name,
       value,
-      targetName: "Textbox",
-      eventName: "blur",
-      event: e,
+      component: "Textbox",
+      event: "blur",
     });
     if (!dispInput) {
       onInput({
         name,
         value: value,
-        targetName: "Textbox",
-        eventName: "input",
+        component: "Textbox",
+        event: "input",
       });
       setDispInput(true);
     }
@@ -104,8 +103,8 @@ export function TextboxNumber({
         onInput({
           name,
           value,
-          targetName: "Textbox",
-          eventName: "input",
+          component: "Textbox",
+          event: "input",
         });
         setDispInput(true);
       }
