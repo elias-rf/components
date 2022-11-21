@@ -18,6 +18,7 @@ export type TUseForm<T> = {
 
 export function useForm<Record>(formFields: FormFields): TUseForm<Record> {
   const fields: Fields = {};
+
   for (const fld in formFields) {
     if (
       typeof formFields[fld] === "string" ||
@@ -29,6 +30,7 @@ export function useForm<Record>(formFields: FormFields): TUseForm<Record> {
       fields[fld] = formFields[fld] as UseField;
     }
   }
+  console.log(`🚀 ~ file: use-form.hook.ts ~ line 21 ~ fields`, fields);
 
   function set(record: { [field: string]: any }) {
     for (const fld in fields) {

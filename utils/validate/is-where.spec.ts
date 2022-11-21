@@ -1,11 +1,11 @@
 import { expect, it } from "vitest";
-import { TEntity } from "../../types";
+import { TTable } from "../../types";
 import { isWhere } from "./is-where";
 
-const entity: TEntity = {
+const entity: TTable = {
   database: "oftalmo",
   table: "phonebook",
-  schema: [
+  fields: [
     {
       allowNull: false,
       field: "id",

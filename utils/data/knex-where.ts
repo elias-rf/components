@@ -1,4 +1,4 @@
-import { Where } from "../../types";
+import { TWhere } from "../../types";
 
 /*
 [
@@ -28,7 +28,7 @@ function where(type: string, builder: any, whereArray: any) {
   });
 }
 
-export function knexWhere(whereArray: Where[] = []) {
+export function knexWhere(whereArray: TWhere[] = []) {
   return (builder: any) => {
     where("where", builder, whereArray);
   };

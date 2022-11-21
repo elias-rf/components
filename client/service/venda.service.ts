@@ -1,7 +1,7 @@
-import { Ids } from "../../types";
-import { round } from "../../utils/round";
+import { TIds } from "../../types";
+import { fetcherRpc } from "../../utils/api/fetcher-rpc";
+import { round } from "../../utils/number/round";
 import { day } from "../lib/day";
-import { fetcherRpc } from "../lib/http/fetcher-rpc";
 
 function getSum(lista: any[], produto: string, data: day.Dayjs) {
   const dataInicial = data.add(-30, "day").format("YYYY-MM-DD");
@@ -80,7 +80,7 @@ const vendaService = {
     return fetcherRpc("vendaMensalSchema");
   },
 
-  async mensal(inicio: string, fim: string, CdCliente: Ids) {
+  async mensal(inicio: string, fim: string, CdCliente: TIds) {
     return fetcherRpc("vendaMensal", { inicio, fim, id: CdCliente });
   },
 

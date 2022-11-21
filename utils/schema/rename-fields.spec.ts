@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { TEntity } from "../../types";
+import { TTable } from "../../types";
 import {
   renameToFieldArray,
   renameToFieldArrayObject,
@@ -8,10 +8,10 @@ import {
   renameToFieldTuple,
 } from "./rename-fields";
 
-const entity: TEntity = {
+const entity: TTable = {
   database: "oftalmo",
   table: "phonebook",
-  schema: [
+  fields: [
     {
       allowNull: false,
       field: "id",

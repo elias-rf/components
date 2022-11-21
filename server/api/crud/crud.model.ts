@@ -1,18 +1,17 @@
 import type {
-  CreateArgs,
-  DelArgs,
-  GenericObject,
-  ListArgs,
-  ReadArgs,
-  Schema,
-  Select,
-  UpdateArgs,
-  Where,
+  TCreateArgs,
+  TDelArgs,
+  TGenericObject,
+  TListArgs,
+  TReadArgs,
+  TSelect,
+  TUpdateArgs,
+  TWhere,
 } from "../../../types";
 import { knexOrder } from "../../../utils/data/knex-order";
 import { knexWhere } from "../../../utils/data/knex-where";
-import { fieldsFromEntity } from "../../../utils/schema/fields-from-entity";
-import { namesFromEntity } from "../../../utils/schema/names-from-entity";
+import { fieldsFromTable } from "../../../utils/schema/fields-from-table";
+import { namesFromTable } from "../../../utils/schema/names-from-table";
 import {
   renameToFieldArray,
   renameToFieldObject,
@@ -30,18 +29,22 @@ import { isWhere } from "../../../utils/validate/is-where";
 import { TConnections, TDbs } from "../../dal/connections";
 import { recordClear } from "../../lib/record-clear";
 import { validateThrow } from "../../lib/validate-throw";
-import { entitySchema } from "../entity-schema";
+import { db } from "../db";
 
 export function crudModel(connections: TConnections) {
   return {
-    // SCHEMA
-    async schema({ table = "" }): Promise<Schema> {
-      validateThrow(isTable(table, entitySchema));
-      const entity = entitySchema[table];
-      return entity.schema;
+    /**
+     * SCHEMA
+     */
+    async schema({ table = "" }): Promise<TFieldServer[]> {
+      validateThrow(isTable(table, db));
+      const entity = db[table];
+      return entity.fields;
     },
 
-    // INCREMENT
+    /**
+     * INCREMENT
+     */
     async decrement({
       table = "",
       where = [],
@@ -49,29 +52,31 @@ export function crudModel(connections: TConnections) {
       select,
     }: {
       table?: string;
-      where?: Where[];
-      decrement?: GenericObject;
-      select?: Select;
-    } = {}): Promise<GenericObject[]> {
-      validateThrow(isTable(table, entitySchema));
-      const knex = connections[entitySchema[table].database as TDbs];
-      const tbl = entitySchema[table].table;
-      const entity = entitySchema[table];
+      where?: TWhere[];
+      decrement?: TGenericObject;
+      select?: TSelect;
+    } = {}): Promise<TGenericObject[]> {
+      validateThrow(isTable(table, db));
+      const knex = connections[db[table].database as TDbs];
+      const tbl = db[table].table;
+      const entity = db[table];
       if (select === undefined) {
-        select = namesFromEntity(entity);
+        select = namesFromTable(entity);
       }
-      validateThrow(isWhere(where, entitySchema[table]));
-      validateThrow(isSelect(select as string[], entitySchema[table]));
+      validateThrow(isWhere(where, db[table]));
+      validateThrow(isSelect(select as string[], db[table]));
 
-      const data: GenericObject[] = await knex(tbl)
+      const data: TGenericObject[] = await knex(tbl)
         .hintComment("NO_ICP(accounts)")
         .where(knexWhere(renameToFieldTuple(where, entity)))
         .decrement(renameToFieldObject(decrement, entity))
         .returning(select as string[]);
-      return renameToNameArrayObject(data, entitySchema[table]);
+      return renameToNameArrayObject(data, db[table]);
     },
 
-    // INCREMENT
+    /**
+     * INCREMENT
+     */
     async increment({
       table = "",
       where = [],
@@ -79,88 +84,95 @@ export function crudModel(connections: TConnections) {
       select,
     }: {
       table?: string;
-      where?: Where[];
-      increment?: GenericObject;
-      select?: Select;
-    } = {}): Promise<GenericObject[]> {
-      validateThrow(isTable(table, entitySchema));
-      const knex = connections[entitySchema[table].database as TDbs];
-      const tbl = entitySchema[table].table;
-      const entity = entitySchema[table];
+      where?: TWhere[];
+      increment?: TGenericObject;
+      select?: TSelect;
+    } = {}): Promise<TGenericObject[]> {
+      validateThrow(isTable(table, db));
+      const knex = connections[db[table].database as TDbs];
+      const tbl = db[table].table;
+      const entity = db[table];
       if (select === undefined) {
-        select = namesFromEntity(entity);
+        select = namesFromTable(entity);
       }
-      validateThrow(isWhere(where, entitySchema[table]));
-      validateThrow(isSelect(select as string[], entitySchema[table]));
+      validateThrow(isWhere(where, db[table]));
+      validateThrow(isSelect(select as string[], db[table]));
 
-      const data: GenericObject[] = await knex(tbl)
+      const data: TGenericObject[] = await knex(tbl)
         .hintComment("NO_ICP(accounts)")
         .where(knexWhere(renameToFieldTuple(where, entity)))
         .increment(renameToFieldObject(increment, entity))
         .returning(select as string[]);
-      return renameToNameArrayObject(data, entitySchema[table]);
+      return renameToNameArrayObject(data, db[table]);
     },
 
-    // COUNT
+    /**
+     * COUNT
+     */
     async count({
       table = "",
       where = [],
     }: {
       table?: string;
-      where?: Where[];
-      increment?: GenericObject;
-      select?: Select;
-    } = {}): Promise<GenericObject[]> {
-      validateThrow(isTable(table, entitySchema));
-      const knex = connections[entitySchema[table].database as TDbs];
-      const tbl = entitySchema[table].table;
-      const entity = entitySchema[table];
-      validateThrow(isWhere(where, entitySchema[table]));
+      where?: TWhere[];
+      increment?: TGenericObject;
+      select?: TSelect;
+    } = {}): Promise<TGenericObject[]> {
+      validateThrow(isTable(table, db));
+      const knex = connections[db[table].database as TDbs];
+      const tbl = db[table].table;
+      const entity = db[table];
+      validateThrow(isWhere(where, db[table]));
 
-      const data: GenericObject[] = await knex(tbl)
+      const data: TGenericObject[] = await knex(tbl)
         .where(knexWhere(renameToFieldTuple(where, entity)))
         .count({ count: "*" });
       return data;
     },
 
-    // LIST
+    /**
+     * LIST
+     */
     async list({
       table = "",
       where = [],
       order = [],
       limit = 50,
       select,
-    }: ListArgs = {}): Promise<GenericObject[]> {
-      validateThrow(isTable(table, entitySchema));
-      const knex = connections[entitySchema[table].database as TDbs];
-      const tbl = entitySchema[table].table;
-      const entity = entitySchema[table];
+    }: TListArgs = {}): Promise<TGenericObject[]> {
+      validateThrow(isTable(table, db));
+      const knex = connections[db[table].database as TDbs];
+      const tbl = db[table].table;
+      const entity = db[table];
       if (select === undefined) {
-        select = namesFromEntity(entity);
+        select = namesFromTable(entity);
       }
-      validateThrow(isOrder(order, entitySchema[table]));
-      validateThrow(isWhere(where, entitySchema[table]));
+      validateThrow(isOrder(order, db[table]));
+      validateThrow(isWhere(where, db[table]));
       validateThrow(isLimit(limit));
-      validateThrow(isSelect(select as string[], entitySchema[table]));
+      validateThrow(isSelect(select as string[], db[table]));
 
-      const data: GenericObject[] = await knex(tbl)
+      const data: TGenericObject[] = await knex(tbl)
         .select(renameToFieldArray(select, entity))
         .limit(limit)
         .where(knexWhere(renameToFieldTuple(where, entity)))
         .orderBy(knexOrder(renameToFieldTuple(order, entity)));
-      return renameToNameArrayObject(data, entitySchema[table]);
+      return renameToNameArrayObject(data, db[table]);
     },
 
-    // READ
-    async read({ table = "", id, select }: ReadArgs): Promise<GenericObject> {
-      validateThrow(isTable(table, entitySchema));
-      const knex = connections[entitySchema[table].database as TDbs];
-      const tbl = entitySchema[table].table;
-      const entity = entitySchema[table];
+    /**
+     * READ
+     */
+    async read({ table = "", id, select }: TReadArgs): Promise<TGenericObject> {
+      validateThrow(isTable(table, db));
+      validateThrow(isId(id, db[table].fields));
+      const knex = connections[db[table].database as TDbs];
+      const tbl = db[table].table;
+      const entity = db[table];
       if (select === undefined) {
-        select = namesFromEntity(entity);
+        select = namesFromTable(entity);
       }
-      validateThrow(isId(id, entity));
+      validateThrow(isId(id, db[table].fields));
       validateThrow(isSelect(select as string[], entity));
 
       const data = await knex(tbl)
@@ -168,16 +180,18 @@ export function crudModel(connections: TConnections) {
         .where(renameToFieldObject(id, entity));
 
       const [rec] = renameToNameArrayObject(data, entity);
-      return rec || ({} as GenericObject);
+      return rec || ({} as TGenericObject);
     },
 
-    // DEL
-    async del({ table = "", id }: DelArgs): Promise<number> {
-      validateThrow(isTable(table, entitySchema));
-      const knex = connections[entitySchema[table].database as TDbs];
-      const tbl = entitySchema[table].table;
-      const entity = entitySchema[table];
-      validateThrow(isId(id, entity));
+    /**
+     * DEL
+     */
+    async del({ table = "", id }: TDelArgs): Promise<number> {
+      validateThrow(isTable(table, db));
+      const knex = connections[db[table].database as TDbs];
+      const tbl = db[table].table;
+      const entity = db[table];
+      validateThrow(isId(id, db[table].fields));
 
       const qry = await knex(tbl).del().where(renameToFieldObject(id, entity));
       if (Array.isArray(qry) && qry.length > 0) {
@@ -187,12 +201,12 @@ export function crudModel(connections: TConnections) {
     },
 
     // CREATE
-    async create({ table = "", data }: CreateArgs): Promise<GenericObject> {
-      validateThrow(isTable(table, entitySchema));
-      const knex = connections[entitySchema[table].database as TDbs];
-      const tbl = entitySchema[table].table;
-      const entity = entitySchema[table];
-      const fieldList = fieldsFromEntity(entity);
+    async create({ table = "", data }: TCreateArgs): Promise<TGenericObject> {
+      validateThrow(isTable(table, db));
+      const knex = connections[db[table].database as TDbs];
+      const tbl = db[table].table;
+      const entity = db[table];
+      const fieldList = fieldsFromTable(entity);
       validateThrow(isData(data, entity));
 
       const [qry] = await knex(tbl)
@@ -202,13 +216,17 @@ export function crudModel(connections: TConnections) {
     },
 
     // UPDATE
-    async update({ table = "", id, data }: UpdateArgs): Promise<GenericObject> {
-      validateThrow(isTable(table, entitySchema));
-      const knex = connections[entitySchema[table].database as TDbs];
-      const tbl = entitySchema[table].table;
-      const entity = entitySchema[table];
-      const fieldList = fieldsFromEntity(entity);
-      validateThrow(isId(id, entity));
+    async update({
+      table = "",
+      id,
+      data,
+    }: TUpdateArgs): Promise<TGenericObject> {
+      validateThrow(isTable(table, db));
+      const knex = connections[db[table].database as TDbs];
+      const tbl = db[table].table;
+      const entity = db[table];
+      const fieldList = fieldsFromTable(entity);
+      validateThrow(isId(id, db[table].fields));
       validateThrow(isData(data, entity));
 
       const qry = await knex(tbl)
@@ -219,16 +237,16 @@ export function crudModel(connections: TConnections) {
     },
 
     // RECORD CLEAR
-    async clear({ table = "" }): Promise<GenericObject> {
-      validateThrow(isTable(table, entitySchema));
-      const entity = entitySchema[table];
+    async clear({ table = "" }): Promise<TGenericObject> {
+      validateThrow(isTable(table, db));
+      const entity = db[table];
       return recordClear(entity);
     },
 
     nameList({ table = "" }) {
-      validateThrow(isTable(table, entitySchema));
-      const entity = entitySchema[table];
-      return namesFromEntity(entity);
+      validateThrow(isTable(table, db));
+      const entity = db[table];
+      return namesFromTable(entity);
     },
   };
 }

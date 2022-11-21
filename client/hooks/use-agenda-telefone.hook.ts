@@ -1,20 +1,19 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Ids, Order, Where } from "../../types";
-import { isEmpty } from "../../utils/identify/is-empty";
-import { agendaTelefoneService } from "../service/agenda-telefone.service";
+import { TIds, TOrder, TWhere } from "../../types";
+import { isEmpty } from "../../utils/identify/is_empty";
+import { agendaTelefoneService } from "../service/agenda_telefone.service";
 
-import { TAgendaTelefone } from "../../types/agenda-telefone.type";
+import { TAgendaTelefone } from "../../types/agenda_telefone.type";
 
 const UM_MINUTO = 60 * 1000;
 
 const PHONEBOOK = "phonebook";
 const PHONEBOOK_SCHEMA = "phonebookSchema";
 
-export function usePhonebookList(where: Where[], orderBy: Order[]) {
+export function usePhonebookList(where: TWhere[], orderBy: TOrder[]) {
   return useQuery(
     [PHONEBOOK, where, orderBy],
     ({ queryKey }) => {
-      const [_key, where, orderBy] = queryKey as [string, Where[], Order[]];
+      const [_key, where, orderBy] = queryKey as [string, TWhere[], TOrder[]];
       return agendaTelefoneService.list(where, orderBy);
     },
     {
@@ -23,11 +22,11 @@ export function usePhonebookList(where: Where[], orderBy: Order[]) {
   );
 }
 
-export function usePhonebookRead(id: Ids) {
+export function usePhonebookRead(id: TIds) {
   return useQuery(
     [PHONEBOOK, id],
     ({ queryKey }) => {
-      const [_key, id] = queryKey as [string, Ids];
+      const [_key, id] = queryKey as [string, TIds];
       if (isEmpty(id)) return {};
       return agendaTelefoneService.read(id);
     },
@@ -60,7 +59,7 @@ export function usePhonebookCreate() {
 export function usePhonebookDel() {
   const cache = useQueryClient();
   return useMutation(
-    (args: [Ids]) => {
+    (args: [TIds]) => {
       return agendaTelefoneService.del(...args);
     },
     {
@@ -72,7 +71,7 @@ export function usePhonebookDel() {
 export function usePhonebookUpdate() {
   const cache = useQueryClient();
   return useMutation(
-    (args: [Ids, TAgendaTelefone]) => {
+    (args: [TIds, TAgendaTelefone]) => {
       return agendaTelefoneService.update(...args);
     },
     {

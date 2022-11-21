@@ -17,6 +17,9 @@ export function setCookie(
   res.setHeader("Set-Cookie", serialize(name, value, options));
 }
 
+/**
+ * This resets `cookie` on `res` object
+ */
 export function resetCookie(res: Response, name: string) {
   res.setHeader(
     "Set-Cookie",

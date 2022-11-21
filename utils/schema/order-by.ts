@@ -1,23 +1,23 @@
-import { Order } from "../../types";
-import { isEmpty } from "../identify/is-empty";
+import type { TOrder } from "../../types";
+import { isEmpty } from "../identify/is_empty";
 
 export const orderByUtil = {
-  setUnique(orderBy: Order[], field: string) {
-    if (!Array.isArray(orderBy) || isEmpty(field)) {
+  setUnique(order: TOrder[], field: string) {
+    if (!Array.isArray(order) || isEmpty(field)) {
       return [];
     }
-    let orderByAux: Order = orderBy[0];
-    if (orderByAux && orderByAux[0] === field) {
-      orderByAux[1] = orderByAux[1] === "asc" ? "desc" : "asc";
+    let orderAux: TOrder = order[0];
+    if (orderAux && orderAux[0] === field) {
+      orderAux[1] = orderAux[1] === "asc" ? "desc" : "asc";
     } else {
-      orderByAux = [field, "asc"];
+      orderAux = [field, "asc"];
     }
-    return [orderByAux];
+    return [orderAux];
   },
 
-  getSort(orderBy: Order[], field: string) {
-    if (isEmpty(field) || isEmpty(orderBy)) return [];
-    for (const ord of orderBy) {
+  getSort(order: TOrder[], field: string) {
+    if (isEmpty(field) || isEmpty(order)) return null;
+    for (const ord of order) {
       if (ord && ord[0] === field) {
         const rsp = ord[1];
         return rsp;

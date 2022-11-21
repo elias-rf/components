@@ -1,6 +1,5 @@
-import { Schema } from "../../types";
-import { isEmpty } from "../../utils/identify/is-empty";
-import { fetcherRpc } from "../lib/http/fetcher-rpc";
+import { fetcherRpc } from "../../utils/api/fetcher-rpc";
+import { isEmpty } from "../../utils/identify/is_empty";
 
 // const fields = [
 //   "LITEFLEX",
@@ -45,7 +44,7 @@ export const transferenciaService = {
     }
   },
 
-  async schemaModelo(): Promise<Schema> {
+  async schemaModelo(): Promise<TFieldClient[]> {
     return fetcherRpc("transferenciaModeloSchema");
   },
 

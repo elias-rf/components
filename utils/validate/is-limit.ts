@@ -1,4 +1,4 @@
-import { isNumber } from "../identify/is-number";
+import { isNumber } from "../identify/is_number";
 
 export function isLimit(limit: number): string | null {
   if (!isNumber(limit)) return "Limit deve ser um número";

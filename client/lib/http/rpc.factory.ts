@@ -1,28 +1,28 @@
-import { Ids, Order, Schema, Select, Where } from "../../../types";
-import { fetcherRpc } from "./fetcher-rpc";
+import { TIds, TOrder, TSelect, TWhere } from "../../../types";
+import { fetcherRpc } from "../../../utils/api/fetcher-rpc";
 
 type TRpcFactory<Rec> = {
-  schema(): Promise<Schema>;
+  schema(): Promise<TFieldClient[]>;
   list(
-    where?: Where[],
-    orderBy?: Order[],
+    where?: TWhere[],
+    orderBy?: TOrder[],
     limit?: number,
-    select?: Select
+    select?: TSelect
   ): Promise<Rec[]>;
-  read(id: Ids): Promise<Rec>;
+  read(id: TIds): Promise<Rec>;
   create(data: Rec): Promise<Rec>;
-  update(id: Ids, data: Rec): Promise<Rec>;
-  del(id: Ids): Promise<number>;
+  update(id: TIds, data: Rec): Promise<Rec>;
+  del(id: TIds): Promise<number>;
 };
 
 export function rpcFactory<Rec>(rpcRoot: string): TRpcFactory<Rec> {
   return {
     async schema() {
-      return fetcherRpc<any>(`${rpcRoot}Schema`) as Promise<Schema>;
+      return fetcherRpc(`${rpcRoot}Schema`) as Promise<TFieldClient[]>;
     },
 
     async list(where?, orderBy?, limit = 500, select?) {
-      return fetcherRpc<any>(`${rpcRoot}List`, {
+      return fetcherRpc(`${rpcRoot}List`, {
         where,
         orderBy,
         limit,
@@ -31,24 +31,24 @@ export function rpcFactory<Rec>(rpcRoot: string): TRpcFactory<Rec> {
     },
 
     async read(id) {
-      return fetcherRpc<any>(`${rpcRoot}Read`, { id }) as Promise<Rec>;
+      return fetcherRpc(`${rpcRoot}Read`, { id }) as Promise<Rec>;
     },
 
     async create(data) {
-      return fetcherRpc<any>(`${rpcRoot}Create`, {
+      return fetcherRpc(`${rpcRoot}Create`, {
         data,
       }) as Promise<Rec>;
     },
 
     async update(id, data) {
-      return fetcherRpc<any>(`${rpcRoot}Update`, {
+      return fetcherRpc(`${rpcRoot}Update`, {
         id,
         data,
       }) as Promise<Rec>;
     },
 
     async del(id) {
-      return fetcherRpc<any>(`${rpcRoot}Del`, { id }) as Promise<number>;
+      return fetcherRpc(`${rpcRoot}Del`, { id }) as Promise<number>;
     },
   };
 }

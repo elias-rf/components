@@ -1,9 +1,9 @@
-import { TEntity } from "../types";
+import { TTable } from "../types";
 
-export const nf_cfop: TEntity = {
+export const nf_cfop: TTable = {
   database: "plano",
   table: "NatOpe",
-  schema: [
+  fields: [
     {
       field: "Nop",
       label: "CFOP",

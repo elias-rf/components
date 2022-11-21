@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IEvent } from "../../../types";
+import { TEvent } from "../../../types";
 
 type Options = {
   validate?: (v: any) => string;
@@ -12,8 +12,8 @@ export type UseField = {
   isValid: boolean;
   error: string;
   register: () => {
-    onBlur: (e: IEvent) => void;
-    onChange: (e: IEvent) => void;
+    onBlur: (e: TEvent) => void;
+    onChange: (e: TEvent) => void;
     value: any;
   };
   set: (value: any) => void;
@@ -55,7 +55,7 @@ export function useField(
     }
   }
 
-  function handleChange(e: IEvent) {
+  function handleChange(e: TEvent) {
     const newVlr = e.value || "";
     setVlr(newVlr);
     set(newVlr);

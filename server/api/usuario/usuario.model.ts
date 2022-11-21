@@ -1,7 +1,7 @@
-import { CurrentUser, GenericObject, ReadArgs, Schema } from "../../../types";
-import { TUsuario } from "../../../types/usuario.type";
+import type { TCurrentUser, TGenericObject, TReadArgs } from "../../../types";
+import type { TUsuario } from "../../../types/usuario.type";
 import { config } from "../../config";
-import { TConnections } from "../../dal/connections";
+import type { TConnections } from "../../dal/connections";
 import { jwtEncode } from "../../lib/jwt-encode";
 import { passwordVerify } from "../../lib/password-verify";
 import { crudModel } from "../crud/crud.model";
@@ -13,7 +13,7 @@ export function usuarioModel(connections: TConnections) {
     async listSubject({
       id,
       select = crud.nameList({ table: "group_subject" }),
-    }: ReadArgs): Promise<GenericObject[]> {
+    }: TReadArgs): Promise<TGenericObject[]> {
       const group_id = await crud.read({
         table: "usuario",
         id,
@@ -60,7 +60,7 @@ export function usuarioModel(connections: TConnections) {
         throw new Error("Senha incorreta");
       }
 
-      const resp: CurrentUser = {
+      const resp: TCurrentUser = {
         usuario_id: record.usuario_id || 0,
         nome_login: record.nome_login || "",
         nome: record.nome || "",
@@ -70,7 +70,7 @@ export function usuarioModel(connections: TConnections) {
       return resp;
     },
 
-    async schema(): Promise<Schema> {
+    async schema(): Promise<TFieldServer[]> {
       return [
         {
           field: "kUsuario",

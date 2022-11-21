@@ -1,6 +1,4 @@
-export type TSidebarItemTitle = {
-  children: any;
-};
+import { TSidebarItemTitle } from "./sidebar.types";
 
 export function SidebarItemTitle({ children }: TSidebarItemTitle) {
   if (typeof children === "string") {

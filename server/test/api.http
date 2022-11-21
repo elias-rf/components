@@ -5,8 +5,19 @@ Content-Type: application/json
 {
   "jsonrpc":"2.0",
   "id":"1",
-  "method":"list",
-  "params":{}
+  "method":"crudSchema",
+  "params":{"table":"agenda_telefone"}
+}
+
+### agendaTelefoneClear
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "crudClear",
+  "params": {"table": "agenda_telefone"}
 }
 
 ### agendaTelefoneRead
@@ -27,8 +38,8 @@ Content-Type: application/json
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "method": "agendaTelefoneList",
-  "params": {"where": [["agenda_telefone_id","=","171"]]}
+  "method": "crudList",
+  "params": {"table":"agenda_telefone"}
 }
 
 ### agendaTelefoneCreate

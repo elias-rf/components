@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const EmailVidalink: TEntity = {
+export const EmailVidalink: TTable = {
   database: "plano",
   table: "EmailVidalink",
-  schema: [
+  fields: [
     {
       field: "Email",
       label: "Email",

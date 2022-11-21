@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const ConfiguracaoNFCeSAT: TEntity = {
+export const ConfiguracaoNFCeSAT: TTable = {
   database: "plano",
   table: "ConfiguracaoNFCeSAT",
-  schema: [
+  fields: [
     {
       field: "CdEmpresa",
       label: "CdEmpresa",

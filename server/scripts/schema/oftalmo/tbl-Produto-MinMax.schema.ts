@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const tbl_Produto_MinMax: TEntity = {
+export const tbl_Produto_MinMax: TTable = {
   database: "oftalmo",
   table: "tbl_Produto_MinMax",
-  schema: [
+  fields: [
     {
       field: "fkProdutoItem",
       label: "fkProdutoItem",

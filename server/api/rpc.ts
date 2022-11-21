@@ -2,75 +2,57 @@ import { rpcServer } from "../../utils/rpc/rpc-server";
 import { connections, TConnections } from "../dal/connections";
 
 // @index(['./**/*.rpc.ts','!./**/*.spec.ts','!./**/*.old.rpc.ts'], (f, _) => `import {${_.camelCase(f.name)}, T${_.pascalCase(f.name)}} from '${f.path}'`)
-import { crudRpc, TCrudRpc } from "./crud/crud.rpc";
-import { echoRpc, TEchoRpc } from "./echo/echo.rpc";
-import {
-  esterilizacaoExternaRpc,
-  TEsterilizacaoExternaRpc,
-} from "./esterilizacao-externa/esterilizacao-externa.rpc";
-import {
-  esterilizacaoInternaRpc,
-  TEsterilizacaoInternaRpc,
-} from "./esterilizacao-interna/esterilizacao-interna.rpc";
-import { estoqueRpc, TEstoqueRpc } from "./estoque/estoque.rpc";
-import { nfEntradaRpc, TNfEntradaRpc } from "./nf-entrada/nf-entrada.rpc";
-import { nfSaidaFvRpc, TNfSaidaFvRpc } from "./nf-saida-fv/nf-saida-fv.rpc";
-import { nfSaidaRpc, TNfSaidaRpc } from "./nf-saida/nf-saida.rpc";
-import {
-  operacaoProducaoRpc,
-  TOperacaoProducaoRpc,
-} from "./operacao-producao/operacao-producao.rpc";
-import {
-  ordemProducaoRpc,
-  TOrdemProducaoRpc,
-} from "./ordem-producao/ordem-producao.rpc";
-import {
-  produtoEstatisticaRpc,
-  TProdutoEstatisticaRpc,
-} from "./produto-estatistica/produto-estatistica.rpc";
-import {
-  produtoItemRpc,
-  TProdutoItemRpc,
-} from "./produto-item/produto-item.rpc";
-import { TUsuarioRpc, usuarioRpc } from "./usuario/usuario.rpc";
+import { crudRpc } from "./crud/crud.rpc";
+import { echoRpc } from "./echo/echo.rpc";
+import { esterilizacaoExternaRpc } from "./esterilizacao_externa/esterilizacao_externa.rpc";
+import { esterilizacaoInternaRpc } from "./esterilizacao_interna/esterilizacao_interna.rpc";
+import { estoqueRpc } from "./estoque/estoque.rpc";
+import { nfEntradaRpc } from "./nf_entrada/nf_entrada.rpc";
+import { nfSaidaRpc } from "./nf_saida/nf_saida.rpc";
+import { nfSaidaFvRpc } from "./nf_saida_fv/nf_saida_fv.rpc";
+import { operacaoProducaoRpc } from "./operacao_producao/operacao_producao.rpc";
+import { ordemProducaoRpc } from "./ordem_producao/ordem_producao.rpc";
+import { produtoEstatisticaRpc } from "./produto_estatistica/produto_estatistica.rpc";
+import { produtoItemRpc } from "./produto_item/produto_item.rpc";
+import { usuarioRpc } from "./usuario/usuario.rpc";
 // @endindex
 
-type LibRpc = (connections: TConnections) => any;
+type TLibRpc = (connections: TConnections) => any;
 
 export const rpc = rpcServer();
 
-interface IndexRpc {
-  index(): Promise<string[]>;
-}
+// type TIndexRpc = {
+//   index(): Promise<string[]>;
+// };
 
 function index() {
   return rpc.list().sort();
 }
 
-function register(lib: LibRpc) {
+function register(lib: TLibRpc) {
   const libRpc = lib(connections);
   Object.keys(libRpc).forEach((key) => {
     rpc.addMethod(key, libRpc[key]);
   });
 }
 
-export type ApiRpc =
-  // @index(['./**/*.rpc.ts','!./**/*.spec.ts','!./**/*.old.rpc.ts'], (f, _) => `T${_.pascalCase(f.name)} &`)
-  TCrudRpc &
-    TEchoRpc &
-    TEsterilizacaoExternaRpc &
-    TEsterilizacaoInternaRpc &
-    TEstoqueRpc &
-    TNfEntradaRpc &
-    TNfSaidaFvRpc &
-    TNfSaidaRpc &
-    TOperacaoProducaoRpc &
-    TOrdemProducaoRpc &
-    TProdutoEstatisticaRpc &
-    TProdutoItemRpc &
-    TUsuarioRpc &
-    // @endindex
-    IndexRpc;
+// export type TApiRpc =
+//   // @index(['./**/*.rpc.ts','!./**/*.spec.ts','!./**/*.old.rpc.ts'], (f, _) => `T${_.pascalCase(f.name)} &`)
+//   TCrudRpc &
+//     TEchoRpc &
+//     TEsterilizacaoExternaRpc &
+//     TEsterilizacaoInternaRpc &
+//     TEstoqueRpc &
+//     TNfEntradaRpc &
+//     TNfSaidaFvRpc &
+//     TNfSaidaRpc &
+//     TOperacaoProducaoRpc &
+//     TOrdemProducaoRpc &
+//     TProdutoEstatisticaRpc &
+//     TProdutoItemRpc &
+//     TUsuarioRpc &
+//     // @endindex
+//     TIndexRpc;
 
 rpc.addMethod("index", index);
 // @index(['./**/*.rpc.ts','!./**/*.spec.ts','!./**/*.old.rpc.ts'], (f, _) => `register(${_.camelCase(f.name)});`)

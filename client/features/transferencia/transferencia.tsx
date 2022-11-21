@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { Badge } from "../../components/badge";
 import { Button } from "../../components/button";
+import { Label } from "../../components/form";
 import { Input } from "../../components/input";
-import { Label } from "../../components/label";
 import { useField } from "../../lib/hooks/use-field.hook";
 import { ordemProducaoService } from "../../service/ordem-producao.service";
 import { transferenciaService } from "../../service/transferencia.service";
@@ -35,7 +35,7 @@ export function Transferencia() {
 
   async function readControles() {
     const rsp = await ordemProducaoService.listEtiquetas([fieldOp.value]);
-    const resp = rsp.map((item) => ({
+    const resp = rsp.map((item: any) => ({
       controle: item.controle || "",
       lido: false,
       transferido: false,
@@ -84,23 +84,13 @@ export function Transferencia() {
 
   return (
     <>
-      <Label>Ordem Produção</Label>
-      <Input
-        autoComplete="off"
-        field="op"
-        {...fieldOp.register()}
-      />
-      <Label>Quantidade Física</Label>
-      <Input
-        autoComplete="off"
-        {...fieldQuantidade.register()}
-      />
+      <Label name="op">Ordem Produção</Label>
+      <Input autoComplete="off" name="op" {...fieldOp.register()} />
+      <Label name="qtd">Quantidade Física</Label>
+      <Input autoComplete="off" name="qtd" {...fieldQuantidade.register()} />
       <Button onClick={readControles}>Buscar</Button>
-      <Label>Serial</Label>
-      <Input
-        autoComplete="off"
-        {...fieldControle.register()}
-      />
+      <Label name="serial">Serial</Label>
+      <Input autoComplete="off" name="serial" {...fieldControle.register()} />
       <Button dispatch={transfer}>Transferir</Button>
       <div
         className={twMerge(
@@ -116,14 +106,10 @@ export function Transferencia() {
       <div className="flex flex-wrap">
         {lista.map((item, idx) => (
           <Badge
-            className="m-2"
-            isClosable={true}
-            onClose={() => unread(item.controle)}
+            onCloseEvent={() => unread(item.controle)}
             name={item.controle}
             key={idx + item.controle}
-            labelClassName={
-              "font-mono text-sm " + (item.lido ? "bg-red-400" : "")
-            }
+            className={"font-mono text-sm " + (item.lido ? "bg-red-400" : "")}
           >
             {item.controle}
           </Badge>

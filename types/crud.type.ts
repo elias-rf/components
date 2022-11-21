@@ -1,3 +1,3 @@
-import { GenericObject } from ".";
+import { TGenericObject } from ".";
 
-export type TCrud = GenericObject;
+export type TCrud = TGenericObject;

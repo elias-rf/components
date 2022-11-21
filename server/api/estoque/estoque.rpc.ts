@@ -1,4 +1,4 @@
-import { Ids } from "../../../types";
+import { TIds } from "../../../types";
 import { TConnections } from "../../dal/connections";
 import { estoqueModel } from "../estoque/estoque.model";
 
@@ -9,8 +9,9 @@ export function estoqueRpc(connections: TConnections) {
 
   return {
     // INCREMENT
-    async estoqueIncrement(args: { id: Ids; quantidade: number }) {
-      return estoque.increment(args);
+    // prettier-ignore
+    async estoqueIncrement({ id, quantidade }: { id: TIds; quantidade: number }) {
+      return estoque.increment({ id, quantidade });
     },
   };
 }

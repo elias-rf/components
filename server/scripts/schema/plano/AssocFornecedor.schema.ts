@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const AssocFornecedor: TEntity = {
+export const AssocFornecedor: TTable = {
   database: "plano",
   table: "AssocFornecedor",
-  schema: [
+  fields: [
     {
       field: "CdProduto",
       label: "CdProduto",

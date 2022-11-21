@@ -1,27 +1,17 @@
-import { IEvent } from "../../../types";
-
-interface SelectProps {
-  field?: string;
-  children: React.ReactNode;
-  options?: any;
-  value: string;
-  onChange: (event: IEvent) => void;
-  [prop: string]: any;
-}
+import { TSelectProps } from "./select.types";
 
 export function Select({
   field = "",
   children,
-  onChange,
-  options,
+  onChangeEvent,
   value,
   ...others
-}: SelectProps) {
+}: TSelectProps) {
   const handleOnChange = (event: any) => {
-    onChange({
+    onChangeEvent({
       name: field,
       value: event.target.value,
-      event: "onChange",
+      event: "onChangeEvent",
       component: "Select",
     });
   };

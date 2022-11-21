@@ -1,6 +1,4 @@
-export type TSidebarItemShortcut = {
-  children: any;
-};
+import { TSidebarItemShortcut } from "./sidebar.types";
 
 export function SidebarItemShortcut({ children }: TSidebarItemShortcut) {
   if (typeof children === "string") {

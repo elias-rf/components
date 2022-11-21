@@ -4,13 +4,14 @@ module.exports = {
     // "../stories/**/*.stories.@(js|jsx|ts|tsx)",
     "../client/components/**/*.stories.@(js|jsx|ts|tsx)",
     "../client/features/**/*.stories.@(js|jsx|ts|tsx)",
+    "../client/pages/**/*.stories.@(js|jsx|ts|tsx)",
+    "../client/lib/hooks/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    "storybook-addon-monitor",
-    "storybook-addon-mock",
+    "storybook-tailwind-dark-mode",
   ],
   framework: "@storybook/react",
   core: {
@@ -21,7 +22,9 @@ module.exports = {
   },
   staticDirs: ["../public"],
   async viteFinal(config) {
-    // console.log(`🚀 ~ file: main.js ~ line 20 ~ viteFinal ~ config`, config);
+    config.server.proxy = {
+      "/api": "http://localhost:3000",
+    };
     return config;
   },
   reactOptions: {

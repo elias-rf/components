@@ -1,26 +1,25 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
+import { TabsContext } from "./Tabs.context";
+import { TTabProps } from "./tabs.types";
 
-export interface TabProps {
-  active?: string;
-  id: string;
-  title: string;
-  onChange?: (id: string) => void;
-  children: React.ReactNode;
-}
+export function Tab({ id, title }: TTabProps) {
+  const state = React.useContext(TabsContext);
 
-export function Tab({ active, id, title, onChange }: TabProps) {
-  const handleOnChange = () => {
-    if (onChange) {
-      onChange(id);
-    }
-  };
+  function handleOnChange() {
+    state.onChangeEvent({
+      component: "Tabs",
+      event: "onChangeEvent",
+      value: id,
+      name: title,
+    });
+  }
 
   return (
     <li
       className={twMerge(
         "py-1 px-4 border-gray-300 border-solid border-t border-l border-r rounded-t-lg",
-        active === id ? "bg-white -mb-px" : "text-gray-500 bg-gray-200"
+        state.active === id ? "bg-white -mb-px" : "text-gray-500 bg-gray-200"
       )}
       key={id}
       onClick={handleOnChange}

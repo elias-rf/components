@@ -1,6 +1,6 @@
-import type { Ids } from "../../types";
-import { isEmpty } from "../../utils/identify/is-empty";
-import { fetcherRpc } from "../lib/http/fetcher-rpc";
+import type { TIds } from "../../types";
+import { fetcherRpc } from "../../utils/api/fetcher-rpc";
+import { isEmpty } from "../../utils/identify/is_empty";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
 export const ordemProducaoService = {
@@ -38,37 +38,37 @@ export const ordemProducaoService = {
   },
 
   // Retorna produtoItem a partir da ordem de producao
-  async getProdutoItem(id: Ids) {
+  async getProdutoItem(id: TIds) {
     return fetcherRpc("ordemProducaoProdutoItem", { id });
   },
 
   // Retorna produto do plano a partir da ordem de producao
-  async getProdutoPlano(id: Ids) {
+  async getProdutoPlano(id: TIds) {
     return fetcherRpc("ordemProducaoProdutoPlano", { id });
   },
 
   // Retorna produto a partir da ordem de producao
-  async getProduto(id: Ids) {
+  async getProduto(id: TIds) {
     return fetcherRpc("ordemProducaoProduto", { id });
   },
 
   // Retorna data de fabricacao
-  async getDataFabricacao(id: Ids) {
+  async getDataFabricacao(id: TIds) {
     return fetcherRpc("ordemProducaoDataFabricacao", { id });
   },
 
   // Retorna data de validade
-  async getDataValidade(id: Ids) {
+  async getDataValidade(id: TIds) {
     return fetcherRpc("ordemProducaoDataValidade", { id });
   },
 
   // Retorna data de validade
-  async getVersao(id: Ids) {
+  async getVersao(id: TIds) {
     return fetcherRpc("ordemProducaoVersao", { id });
   },
 
   // Retorna numero de controle a partir da ordem de producao e numero de serie
-  async getControle(id: Ids, serie: string) {
+  async getControle(id: TIds, serie: string) {
     return fetcherRpc("ordemProducaoControle", { id, serie });
   },
 
@@ -83,7 +83,7 @@ export const ordemProducaoService = {
   },
 
   // Lista etiquetas
-  listEtiquetas(id: Ids) {
+  listEtiquetas(id: TIds) {
     if (isEmpty(id)) return [];
     return fetcherRpc("ordemProducaoEtiquetaExterna", { id });
   },

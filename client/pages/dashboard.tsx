@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Page } from "../components/page/page";
-import { TransferenciaMes } from "../features/dashboard/transferencia-mes";
+import { TransferenciaMes } from "../features/dashboard/transferencia_mes";
 import { authenticationService } from "../service/authentication.service";
 import { userStore } from "../state/user-store";
 
@@ -18,7 +18,7 @@ export function Dashboard() {
   }, [authenticated]);
 
   return (
-    <Page title="Dashboard">
+    <Page>
       <TransferenciaMes />
     </Page>
   );

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import { IEvent } from "../../../types";
+import { TEvent } from "../../../types";
 import { Select } from "./select";
 import { SelectOptions } from "./select-options";
 
@@ -12,7 +12,7 @@ export default {
 
 export const Default: ComponentStory<typeof Select> = (props: any) => {
   const [vlr, setVlr] = React.useState("vlr1");
-  function handleOnChange(e: IEvent) {
+  function handleOnChange(e: TEvent) {
     setVlr(e.value);
     props.onChange(e);
   }
@@ -34,3 +34,5 @@ Default.args = {
   ],
   disabled: false,
 };
+
+Default.storyName = "Select";

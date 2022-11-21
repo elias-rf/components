@@ -1,21 +1,20 @@
 import React from "react";
-import type { Action } from "../../../types";
-import { TransferenciaDiario } from "./transferencia-diario";
-import { TransferenciaMensal } from "./transferencia-mensal";
-import { TransferenciaModelo } from "./transferencia-modelo";
+import { TransferenciaDiario } from "./transferencia_diario";
+import { TransferenciaMensal } from "./transferencia_mensal";
+import { TransferenciaModelo } from "./transferencia_modelo";
 
 export function Transferencia() {
   const [mesCorrente, setMesCorrente] = React.useState([]);
   const [diaCorrente, setDiaCorrente] = React.useState([]);
 
-  function handleDispatchMensal(action: Action) {
+  function handleDispatchMensal(action: any) {
     switch (action.type) {
       case tableActionTypes.select:
         setMesCorrente(action.payload);
         break;
     }
   }
-  function handleDispatchDiario(action: Action) {
+  function handleDispatchDiario(action: any) {
     switch (action.type) {
       case tableActionTypes.select:
         setDiaCorrente(action.payload);

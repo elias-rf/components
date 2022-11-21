@@ -1,4 +1,3 @@
-import { Schema } from "../../../../types";
 import { day } from "../../../../utils/date/day";
 import { formatMoney } from "../../../../utils/format/format-money";
 
@@ -30,7 +29,7 @@ function sortProdutoAsc(a: any, b: any) {
   return 0;
 }
 
-export const mesSchema: Schema = {
+export const mesSchema: TFieldClient[] = {
   pk: ["mes"],
   schema: [
     { field: "mes", label: "Mes" },
@@ -54,7 +53,7 @@ export function mensal(data?: Record[]) {
   return resp.sort(sortMesDesc);
 }
 
-export const produtoSchema: Schema = {
+export const produtoSchema: TFieldClient[] = {
   pk: ["produto"],
   schema: [
     { field: "produto", label: "Produto" },
@@ -93,7 +92,7 @@ export function mensalProduto(mesCorrente: string[], data?: Record[]) {
   return resp.sort(sortProdutoAsc);
 }
 
-export const vendedorSchema: Schema = {
+export const vendedorSchema: TFieldClient[] = {
   pk: ["vendedor"],
   schema: [
     { field: "vendedor", label: "Vendedor" },
@@ -158,7 +157,7 @@ export function mensalVendedorProduto(
   return resp.sort(sortProdutoAsc);
 }
 
-export const ufSchema: Schema = {
+export const ufSchema: TFieldClient[] = {
   pk: ["uf"],
   schema: [
     { field: "uf", label: "Estado" },

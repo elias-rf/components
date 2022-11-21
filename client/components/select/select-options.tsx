@@ -1,16 +1,6 @@
-type OptionsProps =
-  | {
-      title: string;
-      value: any;
-    }[]
-  | { [title: string]: any }
-  | [string, any][];
+import { TOptionsProps, TSelectOptionsProps } from "./select.types";
 
-type SelectOptionsProps = {
-  options: OptionsProps;
-};
-
-function normalizeOptions(options: OptionsProps): [string, any][] {
+function normalizeOptions(options: TOptionsProps): [string, any][] {
   if (Array.isArray(options)) {
     const rsp = options.map((opt) => {
       if (Array.isArray(opt)) {
@@ -28,7 +18,7 @@ function normalizeOptions(options: OptionsProps): [string, any][] {
   return [];
 }
 
-export function SelectOptions({ options }: SelectOptionsProps) {
+export function SelectOptions({ options }: TSelectOptionsProps) {
   const opt = normalizeOptions(options);
   return (
     <>

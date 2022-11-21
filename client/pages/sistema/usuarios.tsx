@@ -1,13 +1,13 @@
 import { Page } from "../../components/page/page";
-import { PageTitle } from "../../components/page/page-title";
+import { PageTitle } from "../../components/page/page_title";
 import { Auth } from "../../features/auth";
-import { UsuarioForm } from "../../features/usuario/usuario-form";
-import { UsuarioList } from "../../features/usuario/usuario-list";
+import { UsuarioForm } from "../../features/usuario/usuario_form";
+import { UsuarioList } from "../../features/usuario/usuario_list";
 
 export default function Usuarios() {
   return (
     <Auth>
-      <Page title="Usuarios">
+      <Page>
         <PageTitle title="Cadastro de Usuários" />
         <hr />
         <div className="flex flex-col gap-2">

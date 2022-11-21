@@ -1,8 +1,7 @@
-import { Schema } from "../../types";
 import { TEsterilizacaoExterna } from "../../types/esterilizacao-externa.type";
-import { isEmpty } from "../../utils/identify/is-empty";
+import { fetcherRpc } from "../../utils/api/fetcher-rpc";
+import { isEmpty } from "../../utils/identify/is_empty";
 import { day } from "../lib/day";
-import { fetcherRpc } from "../lib/http/fetcher-rpc";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
 export type { TEsterilizacaoExterna };
@@ -10,7 +9,7 @@ export type { TEsterilizacaoExterna };
 export const esterilizacaoExternaService = {
   ...rpcFactory<TEsterilizacaoExterna>("esterilizacaoExterna"),
 
-  async schemaDiario(): Promise<Schema> {
+  async schemaDiario(): Promise<TFieldClient[]> {
     return fetcherRpc("esterilizacaoExternaSchemaDiario");
   },
 
@@ -29,7 +28,7 @@ export const esterilizacaoExternaService = {
     });
   },
 
-  async schemaMensal(): Promise<Schema> {
+  async schemaMensal(): Promise<TFieldClient[]> {
     return fetcherRpc("esterilizacaoExternaSchemaMensal");
   },
 
@@ -40,7 +39,7 @@ export const esterilizacaoExternaService = {
     return fetcherRpc("esterilizacaoExternaMensal", { mes });
   },
 
-  async schemaProduto(): Promise<Schema> {
+  async schemaProduto(): Promise<TFieldClient[]> {
     return fetcherRpc("esterilizacaoExternaSchemaProduto");
   },
 
@@ -51,7 +50,7 @@ export const esterilizacaoExternaService = {
     return fetcherRpc("esterilizacaoExternaProduto", { data });
   },
 
-  async schemaModelo(): Promise<Schema> {
+  async schemaModelo(): Promise<TFieldClient[]> {
     return fetcherRpc("esterilizacaoExternaSchemaModelo");
   },
 

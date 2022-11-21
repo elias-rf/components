@@ -1,6 +1,5 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Ids, Order, Where } from "../../types";
-import { isEmpty } from "../../utils/identify/is-empty";
+import { TIds, TOrder, TWhere } from "../../types";
+import { isEmpty } from "../../utils/identify/is_empty";
 import {
   groupSubjectService,
   TGroupSubject,
@@ -11,11 +10,11 @@ const UM_MINUTO = 60 * 1000;
 const GROUP_SUBJECT = "groupSubject";
 const GROUP_SUBJECT_SCHEMA = "groupSubjectSchema";
 
-export function useGroupSubjectList(where: Where[], orderBy: Order[]) {
+export function useGroupSubjectList(where: TWhere[], orderBy: TOrder[]) {
   return useQuery(
     [GROUP_SUBJECT, where, orderBy],
     ({ queryKey }) => {
-      const [_key, where, orderBy] = queryKey as [string, Where[], Order[]];
+      const [_key, where, orderBy] = queryKey as [string, TWhere[], TOrder[]];
       return groupSubjectService.list(where, orderBy);
     },
     {
@@ -24,11 +23,11 @@ export function useGroupSubjectList(where: Where[], orderBy: Order[]) {
   );
 }
 
-export function useGroupSubjectRead(id: Ids) {
+export function useGroupSubjectRead(id: TIds) {
   return useQuery(
     [GROUP_SUBJECT, id],
     ({ queryKey }) => {
-      const [_key, id] = queryKey as [string, Ids];
+      const [_key, id] = queryKey as [string, TIds];
       if (isEmpty(id)) return {};
       return groupSubjectService.read(id);
     },
@@ -61,7 +60,7 @@ export function useGroupSubjectCreate() {
 export function useGroupSubjectDel() {
   const cache = useQueryClient();
   return useMutation(
-    (args: [Ids]) => {
+    (args: [TIds]) => {
       return groupSubjectService.del(...args);
     },
     {
@@ -73,7 +72,7 @@ export function useGroupSubjectDel() {
 export function useGroupSubjectUpdate() {
   const cache = useQueryClient();
   return useMutation(
-    (args: [Ids, TGroupSubject]) => {
+    (args: [TIds, TGroupSubject]) => {
       return groupSubjectService.update(...args);
     },
     {

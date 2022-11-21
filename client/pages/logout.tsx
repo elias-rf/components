@@ -1,4 +1,7 @@
-import { Navigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { SpinnerIcon } from "../components/spinner/spinner-icon";
+import { authenticationService } from "../service/authentication.service";
 
 /**
  * Componente para tela de login
@@ -6,12 +9,17 @@ import { Navigate } from "react-router-dom";
  * @returns {*} componente <LoginView />
  */
 export function Logout() {
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    async function logout() {
+      await authenticationService.logout();
+      navigate("/");
+    }
+    logout();
+  }, []);
   return (
     <div className="flex justify-center">
-      <Navigate
-        to="/"
-        replace={true}
-      />
+      <SpinnerIcon show={true} />
     </div>
   );
 }

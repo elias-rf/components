@@ -11,7 +11,7 @@ export const Default: ComponentStory<typeof Input> = (props) => {
   const [vlr, setVlr] = React.useState("");
   return (
     <>
-      <Input {...props} value={vlr} onChange={(e) => setVlr(e.value)} />
+      <Input {...props} value={vlr} onChangeEvent={(e) => setVlr(e.value)} />
     </>
   );
 };
@@ -20,3 +20,5 @@ Default.args = {
   name: "textbox1",
   disabled: false,
 };
+
+Default.storyName = "Input";

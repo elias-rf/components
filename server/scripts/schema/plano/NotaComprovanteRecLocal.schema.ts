@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const NotaComprovanteRecLocal: TEntity = {
+export const NotaComprovanteRecLocal: TTable = {
   database: "plano",
   table: "NotaComprovanteRecLocal",
-  schema: [
+  fields: [
     {
       field: "CdEmpresa",
       label: "CdEmpresa",

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import { IEvent, Schema, Where } from "../../../types";
+import { TEvent, TFieldClient, TWhere } from "../../../types";
 import { Search } from "./search";
 
 export default {
@@ -12,10 +12,9 @@ export default {
   },
 } as ComponentMeta<typeof Search>;
 
-const schema: Schema = [
+const schema: TFieldClient[] = [
   {
     label: "ID",
-    field: "id",
     name: "id",
     type: "int",
     labelClass: "text-left",
@@ -23,7 +22,6 @@ const schema: Schema = [
   },
   {
     label: "Nome",
-    field: "nome",
     name: "nome",
     labelClass: "text-center",
     fieldClass: "text-center",
@@ -31,17 +29,16 @@ const schema: Schema = [
   },
   {
     label: "Valor de compra",
-    field: "compra",
     name: "compra",
     labelClass: "text-right",
     fieldClass: "text-right",
   },
 ];
 
-export const Default: ComponentStory<typeof Search> = (props) => {
-  const [where, setWhere] = React.useState<Where[]>([["id", "<", "4"]]);
+export const Default: ComponentStory<typeof Search> = (props: any) => {
+  const [where, setWhere] = React.useState<TWhere[]>([["id", "<", "4"]]);
 
-  function handleOnWhere(event: IEvent) {
+  function handleOnWhere(event: TEvent) {
     setWhere(event.value);
     props.onWhere(event);
     props.showWhere(event.value);
@@ -49,8 +46,7 @@ export const Default: ComponentStory<typeof Search> = (props) => {
 
   return (
     <div>
-      {JSON.stringify(where)}
-      <Search where={where} schema={schema} onWhere={handleOnWhere} />
+      <Search where={where} schema={schema} onWhereEvent={handleOnWhere} />
     </div>
   );
 };

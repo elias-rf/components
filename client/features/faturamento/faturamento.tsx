@@ -1,11 +1,10 @@
-import { Dispatch, Schema } from "../../../types";
 import { Datatable, TreeView } from "../../components";
 
 export type FaturamentoProps = {
   data: any[];
   datatree: any[];
-  schema: Schema;
-  dispatch: Dispatch;
+  schema: TFieldClient[];
+  dispatch: any;
   selected: string;
 };
 
@@ -30,16 +29,8 @@ export function Faturamento({
   return (
     <>
       <div className="flex space-x-6">
-        <TreeView
-          data={datatree}
-          selected={selected}
-          dispatch={dispatch}
-        />
-        <Datatable
-          data={data}
-          schema={schema}
-          dispatch={dispatch}
-        />
+        <TreeView data={datatree} selected={selected} dispatch={dispatch} />
+        <Datatable data={data} schema={schema} dispatch={dispatch} />
       </div>
     </>
   );

@@ -1,24 +1,24 @@
-import { Ids, Order, Schema, Select, Where } from "../../types";
+import { TIds, TOrder, TSelect, TWhere } from "../../types";
 import { fetcherRpc } from "../api/fetcher-rpc";
 
 type TRpcFactory<Rec> = {
-  schema(): Promise<Schema>;
+  schema(): Promise<TField[]>;
   list(
-    where?: Where[],
-    orderBy?: Order[],
+    where?: TWhere[],
+    orderBy?: TOrder[],
     limit?: number,
-    select?: Select
+    select?: TSelect
   ): Promise<Rec[]>;
-  read(id: Ids): Promise<Rec>;
+  read(id: TIds): Promise<Rec>;
   create(data: Rec): Promise<Rec>;
-  update(id: Ids, data: Rec): Promise<Rec>;
-  del(id: Ids): Promise<number>;
+  update(id: TIds, data: Rec): Promise<Rec>;
+  del(id: TIds): Promise<number>;
 };
 
 export function rpcFactory<Rec>(rpcRoot: string): TRpcFactory<Rec> {
   return {
     async schema() {
-      return fetcherRpc(`${rpcRoot}Schema`) as Promise<Schema>;
+      return fetcherRpc(`${rpcRoot}Schema`) as Promise<TField[]>;
     },
 
     async list(where?, orderBy?, limit = 500, select?) {

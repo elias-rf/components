@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const ConfiguracaoCFOPXML: TEntity = {
+export const ConfiguracaoCFOPXML: TTable = {
   database: "plano",
   table: "ConfiguracaoCFOPXML",
-  schema: [
+  fields: [
     {
       field: "CdEmpresa",
       label: "CdEmpresa",

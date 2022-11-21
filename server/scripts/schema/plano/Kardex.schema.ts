@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const Kardex: TEntity = {
+export const Kardex: TTable = {
   database: "plano",
   table: "Kardex",
-  schema: [
+  fields: [
     {
       field: "CdEmitente",
       label: "CdEmitente",

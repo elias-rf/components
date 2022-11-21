@@ -1,9 +1,9 @@
-import { TEntity } from "../types";
+import { TTable } from "../types";
 
-export const nf_saida: TEntity = {
+export const nf_saida: TTable = {
   database: "plano",
   table: "MestreNota",
-  schema: [
+  fields: [
     {
       field: "CdFilial",
       label: "CdFilial",
@@ -43,7 +43,7 @@ export const nf_saida: TEntity = {
     {
       field: "DtEmissao",
       label: "DtEmissao",
-      name: "DtEmissao",
+      name: "data_emissao",
       type: "datetime",
       size: 8,
       scale: 3,
@@ -58,7 +58,7 @@ export const nf_saida: TEntity = {
     {
       field: "CdCliente",
       label: "CdCliente",
-      name: "CdCliente",
+      name: "cliente_id",
       type: "float",
       size: 8,
       scale: 4,
@@ -66,7 +66,7 @@ export const nf_saida: TEntity = {
     {
       field: "CdVendedor",
       label: "CdVendedor",
-      name: "CdVendedor",
+      name: "vendedor_id",
       type: "float",
       size: 8,
       scale: 4,
@@ -88,7 +88,7 @@ export const nf_saida: TEntity = {
     {
       field: "VlTotal",
       label: "VlTotal",
-      name: "VlTotal",
+      name: "valor_total",
       type: "float",
       size: 8,
       scale: 4,
@@ -96,7 +96,7 @@ export const nf_saida: TEntity = {
     {
       field: "VlBaseCalculo",
       label: "VlBaseCalculo",
-      name: "VlBaseCalculo",
+      name: "valor_base_calculo",
       type: "float",
       size: 8,
       scale: 4,
@@ -120,7 +120,7 @@ export const nf_saida: TEntity = {
     {
       field: "VlIcms",
       label: "VlIcms",
-      name: "VlIcms",
+      name: "valor_icms",
       type: "float",
       size: 8,
       scale: 4,
@@ -152,7 +152,7 @@ export const nf_saida: TEntity = {
     {
       field: "VlFrete",
       label: "VlFrete",
-      name: "VlFrete",
+      name: "valor_frete",
       type: "float",
       size: 8,
       scale: 4,
@@ -160,7 +160,7 @@ export const nf_saida: TEntity = {
     {
       field: "VlSeguro",
       label: "VlSeguro",
-      name: "VlSeguro",
+      name: "valor_seguro",
       type: "float",
       size: 8,
       scale: 4,
@@ -199,7 +199,7 @@ export const nf_saida: TEntity = {
     {
       field: "NumPedido",
       label: "NumPedido",
-      name: "NumPedido",
+      name: "pedido_id",
       type: "int",
       size: 4,
     },
@@ -228,7 +228,7 @@ export const nf_saida: TEntity = {
     {
       field: "Horario",
       label: "Horario",
-      name: "Horario",
+      name: "horario",
       type: "datetime",
       size: 8,
       scale: 3,
@@ -250,7 +250,7 @@ export const nf_saida: TEntity = {
     {
       field: "VlDesconto",
       label: "VlDesconto",
-      name: "VlDesconto",
+      name: "valor_desconto",
       type: "float",
       size: 8,
       scale: 4,
@@ -295,7 +295,7 @@ export const nf_saida: TEntity = {
     {
       field: "VlTroco",
       label: "VlTroco",
-      name: "VlTroco",
+      name: "valor_troco",
       type: "float",
       size: 8,
       scale: 4,

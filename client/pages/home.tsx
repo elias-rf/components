@@ -21,7 +21,7 @@ export function Home() {
     authenticationService.isAuthenticated();
   }, []);
   return (
-    <Page title="Home">
+    <Page>
       <img src={logo} alt="logo" />
     </Page>
   );

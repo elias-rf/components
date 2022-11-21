@@ -1,19 +1,28 @@
 import React, { useState } from "react";
-import { IEvent, Schema, SchemaField, Where } from "../../../types";
+import { TEvent, TFieldClient, TWhere } from "../../../types";
 import { Badge } from "../badge";
 import { Button } from "../button";
+import { Textbox } from "../form/textbox";
 import { Select } from "../select/select";
-import { Textbox } from "../textbox/textbox";
 
-type SearchProps = {
-  schema: Schema;
-  where: Where[];
-  onWhere: (event: IEvent) => void;
+export type TSearchEvent = TEvent & {
+  component: "Search";
+  event: "onWhereEvent";
 };
 
-export function Search({ schema = [], where = [], onWhere }: SearchProps) {
-  const [whr, setWhr] = useState<Where[]>([]); // where de trabalho
-  const [fieldSelect, setFieldSelect] = useState(schema[0]?.field); // campo selecionado, default 1o campo.
+type TSearchProps = {
+  schema: TFieldClient[];
+  where: TWhere[];
+  onWhereEvent: (event: TSearchEvent) => void;
+};
+
+export function Search({
+  schema = [],
+  where = [],
+  onWhereEvent,
+}: TSearchProps) {
+  const [whr, setWhr] = useState<TWhere[]>([]); // where de trabalho
+  const [fieldSelect, setFieldSelect] = useState(schema[0]?.name); // campo selecionado, default 1o campo.
   const [equalitySelect, setEqualitySelect] = useState("="); // igualdade selecionada, default =
   const [valueInput, setValueInput] = useState(""); // valor selecionado, default ""
 
@@ -35,8 +44,8 @@ export function Search({ schema = [], where = [], onWhere }: SearchProps) {
       null: "(vazio)",
     };
 
-    const aux: SchemaField | undefined = schema.find(
-      (item: { field: string }) => item.field === field
+    const aux: TFieldClient | undefined = schema.find(
+      (item: { name: string }) => item.name === field
     );
 
     const tipo = aux?.type;
@@ -59,7 +68,7 @@ export function Search({ schema = [], where = [], onWhere }: SearchProps) {
 
   // retorna o nome do campo
   function getFieldTitle(field: string) {
-    const aux = schema.find((col: { field: string }) => col.field === field);
+    const aux = schema.find((col: { name: string }) => col.name === field);
     const rsp = aux?.label;
     return rsp || "";
   }
@@ -83,16 +92,16 @@ export function Search({ schema = [], where = [], onWhere }: SearchProps) {
     });
     if (flag) whr.push([fieldSelect, equalitySelect, valueInput]);
     setWhr(whr);
-    onWhere({
+    onWhereEvent({
       name: "",
       component: "Search",
       value: whr,
-      event: "onWhere",
+      event: "onWhereEvent",
     });
     setValueInput("");
   }
 
-  function handleSelectField(event: IEvent) {
+  function handleSelectField(event: TEvent) {
     setFieldSelect(event.value);
     if (Object.keys(getEqualitys(event.value)).includes(equalitySelect)) {
       return;
@@ -100,7 +109,7 @@ export function Search({ schema = [], where = [], onWhere }: SearchProps) {
     setEqualitySelect("=");
   }
 
-  function handleInput(e: IEvent) {
+  function handleInput(e: TEvent) {
     setValueInput(e.value);
   }
 
@@ -108,11 +117,11 @@ export function Search({ schema = [], where = [], onWhere }: SearchProps) {
     const aux = [...whr];
     aux.splice(idx, 1);
     setWhr(aux);
-    onWhere({
+    onWhereEvent({
       name: "",
       component: "Search",
       value: aux,
-      event: "onWhere",
+      event: "onWhereEvent",
     });
   }
 
@@ -129,8 +138,8 @@ export function Search({ schema = [], where = [], onWhere }: SearchProps) {
         {whr.map((item, idx) => (
           <div className="px-1 pb-1" key={idx}>
             <Badge
-              onClose={() => handleDel(idx)}
-              onClick={() => handleEdit(idx)}
+              onCloseEvent={() => handleDel(idx)}
+              onClickEvent={() => handleEdit(idx)}
             >
               {`${getFieldTitle(item[0])} ${getEqualityName(item[1])} ${
                 item[2]
@@ -144,12 +153,12 @@ export function Search({ schema = [], where = [], onWhere }: SearchProps) {
         <div className="self-center p-1">
           <Select
             value={fieldSelect}
-            onChange={handleSelectField}
+            onChangeEvent={handleSelectField}
             style={{ width: "10rem" }}
           >
-            {schema.map((column: { field: string; label?: string }) => (
-              <option value={column.field} key={column.field}>
-                {column.label || column.field}
+            {schema.map((column: { name: string; label?: string }) => (
+              <option value={column.name} key={column.name}>
+                {column.label || column.name}
               </option>
             ))}
           </Select>
@@ -157,7 +166,7 @@ export function Search({ schema = [], where = [], onWhere }: SearchProps) {
         <div className="self-center p-1">
           <Select
             value={equalitySelect}
-            onChange={(e: IEvent) => setEqualitySelect(e.value)}
+            onChangeEvent={(e: TEvent) => setEqualitySelect(e.value)}
             style={{ width: "10rem" }}
           >
             {Object.entries(getEqualitys(fieldSelect)).map(
@@ -174,11 +183,11 @@ export function Search({ schema = [], where = [], onWhere }: SearchProps) {
             name="valor"
             value={valueInput}
             field={"valor"}
-            onChange={handleInput}
+            onChangeEvent={handleInput}
           />
         </div>
         <div className="p-1">
-          <Button size="xs" onClick={handleAdd}>
+          <Button size="xs" onClickEvent={handleAdd}>
             Filtrar
           </Button>
         </div>

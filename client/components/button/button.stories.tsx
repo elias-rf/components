@@ -21,3 +21,5 @@ Default.args = {
   name: "teste",
   children: "botão",
 };
+
+Default.storyName = "Button";

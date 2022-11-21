@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const ICMSMapaECF: TEntity = {
+export const ICMSMapaECF: TTable = {
   database: "plano",
   table: "ICMSMapaECF",
-  schema: [
+  fields: [
     {
       field: "CdFilial",
       label: "CdFilial",

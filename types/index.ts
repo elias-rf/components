@@ -1,96 +1,141 @@
-export type Where = [string, string, any];
-export type Select = string[];
-export type Order = [string, "asc" | "desc"];
-export type Pks = string[];
-export type Ids = { [fields: string]: any };
+/**
+ * Tipos para Queries
+ */
 
-export interface CurrentUser {
+/** SQL.WHERE */
+export type TWhere = [string, string, any];
+
+/** SQL.SELECT */
+export type TSelect = string[];
+
+/** SQL.ORDERBY */
+export type TOrder = [string, "asc" | "desc"];
+
+/** Array com nome dos campos chave primária */
+export type TPks = string[];
+
+/** Objeto que representa registro único */
+export type TIds = { [fields: string]: any };
+
+/** Objeto com chave primária de um registro */
+export type TSelected = { [fields: string]: any };
+
+/** Dados do usuário logado */
+export type TCurrentUser = {
   usuario_id: number;
   nome_login: string;
   nome: string;
   group_id: string;
   token?: string;
-}
+};
 
-export type SchemaFieldType =
-  | "string"
-  | "float"
-  | "boolean"
-  | "int"
-  | "currency"
+/** Tipos aceitos por Input */
+export type TInputType =
+  | "button"
+  | "checkbox"
+  | "color"
   | "date"
-  | "datetime"
-  | "selection"
-  | "tag";
+  | "number"
+  | "password"
+  | "text";
 
-export type SchemaField = {
-  field: string;
-  name: string;
-  label?: string;
-  type?: SchemaFieldType;
-  visible?: boolean;
-  fieldClass?: string;
-  labelClass?: string;
-  sortable?: boolean;
-  required?: boolean;
-  defaultValue?: any;
-  primaryKey?: boolean;
-  allowNull?: boolean;
-  autoIncrement?: boolean;
-  size?: number;
-  scale?: number;
-};
+/** Objeto genérico */
+export type TGenericObject = { [key: string]: any };
 
-export type Schema = SchemaField[];
+/** Registro genérico */
+export type TUnknownObject = Record<PropertyKey, unknown>;
 
-export type Action = {
-  type: string;
-  payload?: any;
-};
+/** Array genérico */
+export type TUnknownArray = unknown[];
 
-export type Dispatch = (action: Action) => void;
+/** Contexto para RPC */
+export type TRpcContext = { currentUser: TCurrentUser };
 
-export type GenericObject = { [key: string]: any };
-export type UnknownObject = Record<PropertyKey, unknown>;
-export type UnknownArray = Array<unknown>;
-
-export type RpcContext = { currentUser: CurrentUser };
-
+/** Dados para component arvore */
 export type TreeData = {
   key: string;
   label: string;
   child?: TreeData;
 }[];
 
-export type ListArgs = {
+/** Argumentos para modelo de listagem */
+export type TListArgs = {
   table?: string;
   limit?: number;
-  where?: Where[];
-  order?: Order[];
-  select?: Select;
+  where?: TWhere[];
+  order?: TOrder[];
+  select?: TSelect;
 };
 
-export type ReadArgs = { table?: string; id: Ids; select?: Select };
+/** Argumentos para modelo de registro */
+export type TReadArgs = { table?: string; id: TIds; select?: TSelect };
 
-export type DelArgs = { table?: string; id: Ids };
+/** Argumentos para modelo de exclusão */
+export type TDelArgs = { table?: string; id: TIds };
 
-export type UpdateArgs = { table?: string; id: Ids; data: GenericObject };
+/** Argumentos para modelo de alteração */
+export type TUpdateArgs = { table?: string; id: TIds; data: TGenericObject };
 
-export type CreateArgs = { table?: string; data: GenericObject };
+/** Argumentos para modelo de criação */
+export type TCreateArgs = { table?: string; data: TGenericObject };
 
-export interface IEvent {
+/** Eventos para componentes */
+export type TEvent = {
   name: string;
   component: string;
   event: string;
   value: any;
-}
-
-export type TEntity = {
-  database: string;
-  table: string;
-  schema: Schema;
 };
 
-export type TEntitySchema = {
-  [table: string]: TEntity;
+/**
+ * Tipos para Banco de Dados
+ */
+
+/** Tipos de campos */
+export type TFieldType =
+  | "string"
+  | "float"
+  | "int"
+  | "boolean"
+  | "currency"
+  | "date"
+  | "datetime"
+  | "selection"
+  | "tag";
+
+/** Definição de características para um campo comuns no server e client */
+type TField = {
+  name: string; // nome usado para queries
+  type?: TFieldType; // tipo do dado
+  required?: boolean; // não pode ser vazio
+  defaultValue?: any; // valor inicial
+  primaryKey?: boolean; // é chave do registro
+  allowNull?: boolean; // pode ser nulo
+  autoIncrement?: boolean; // é incrementado pelo banco de dados
+  size?: number; // tamanho em caracteres
+  scale?: number; // tamanho em decimais
+};
+
+export type TFieldClient = TField & {
+  label?: string; // rotulo para usuário
+  visible?: boolean; // visivel em forms e tables
+  sortable?: boolean; // por ser usado para ordernar
+  fieldClass?: string; // classe para o campo
+  labelClass?: string; // classe para o label
+};
+
+export type TFieldServer = TField & {
+  field: string; // campo no banco de dados
+};
+
+/** Tabela de banco de dados */
+export type TTable = {
+  database: string;
+  table: string;
+  fields: TFieldServer[];
+};
+
+/** Tabelas de banco de dados */
+export type TDb = {
+  [table: string]: TTable;
 };

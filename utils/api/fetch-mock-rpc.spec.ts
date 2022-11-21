@@ -3,7 +3,7 @@ import { fetchMockRpc } from "./fetch-mock-rpc";
 
 global.fetch = fetchMockRpc.fetch;
 
-describe("fetch", () => {
+describe("fetchMockRpc", () => {
   beforeEach(() => {
     fetchMockRpc.reset();
   });

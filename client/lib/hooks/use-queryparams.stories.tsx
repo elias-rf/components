@@ -1,12 +1,12 @@
-import type { Story } from "@ladle/react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Button } from "../../components/button";
 import { useQueryParams } from "./use-queryparams";
 
 export default {
-  title: "useQueryparams",
-};
+  title: "hooks/useQueryparams",
+} as ComponentMeta<typeof Button>;
 
-export const Default: Story = () => {
+export const Default: ComponentStory<typeof Button> = () => {
   const loc1 = useQueryParams();
   const loc2 = useQueryParams();
 
@@ -14,14 +14,14 @@ export const Default: Story = () => {
     <>
       <div>Location 1</div>
       <Button
-        dispatch={() =>
+        onClickEvent={() =>
           loc1.setParams({ story: "usequeryparams--default", v1: 1 })
         }
       >
         V1=1
       </Button>
       <Button
-        dispatch={() =>
+        onClickEvent={() =>
           loc1.setParams({ story: "usequeryparams--default", v2: 2 })
         }
       >
@@ -30,14 +30,14 @@ export const Default: Story = () => {
       <div>{JSON.stringify(loc1.getParams())}</div>
       <div>Location 2</div>
       <Button
-        dispatch={() =>
+        onClickEvent={() =>
           loc2.setParams({ story: "usequeryparams--default", v1: 1 })
         }
       >
         V1=1
       </Button>
       <Button
-        dispatch={() =>
+        onClickEvent={() =>
           loc2.setParams({ story: "usequeryparams--default", v2: 2 })
         }
       >

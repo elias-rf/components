@@ -1,5 +1,5 @@
-import type { CurrentUser } from "../../../types";
-import { RpcContext } from "../../../types";
+import type { TCurrentUser } from "../../../types";
+import { TRpcContext } from "../../../types";
 import { TConnections } from "../../dal/connections";
 import { usuarioModel } from "../usuario/usuario.model";
 
@@ -10,11 +10,12 @@ export function usuarioRpc(connections: TConnections) {
 
   return {
     // LOGIN
-    async login(args: {
+    // prettier-ignore
+    async login({ user, password }: {
       user: string;
       password: string;
-    }): Promise<CurrentUser> {
-      return usuario.login(args);
+    }): Promise<TCurrentUser> {
+      return usuario.login({ user, password });
     },
 
     // LOGOUT
@@ -23,7 +24,7 @@ export function usuarioRpc(connections: TConnections) {
     },
 
     // ME
-    async me(_: void, ctx: RpcContext): Promise<CurrentUser> {
+    async me(_: void, ctx: TRpcContext): Promise<TCurrentUser> {
       return (
         ctx?.currentUser || {
           group_id: "",

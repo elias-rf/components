@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const tbl_op_liopu_processo: TEntity = {
+export const tbl_op_liopu_processo: TTable = {
   database: "oftalmo",
   table: "tbl_op_liopu_processo",
-  schema: [
+  fields: [
     {
       field: "fkoplio",
       label: "fkoplio",

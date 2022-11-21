@@ -1,10 +1,9 @@
-import { Schema } from "../../types";
-import { isEmpty } from "../../utils/identify/is-empty";
+import { fetcherRpc } from "../../utils/api/fetcher-rpc";
+import { isEmpty } from "../../utils/identify/is_empty";
 import { day } from "../lib/day";
-import { fetcherRpc } from "../lib/http/fetcher-rpc";
 
 export const operacaoService = {
-  async schemaDiario(): Promise<Schema> {
+  async schemaDiario(): Promise<TFieldClient[]> {
     return fetcherRpc("operacaoDiarioSchema");
   },
 
@@ -24,7 +23,7 @@ export const operacaoService = {
     });
   },
 
-  async schemaMensal(): Promise<Schema> {
+  async schemaMensal(): Promise<TFieldClient[]> {
     return fetcherRpc("operacaoMensalSchema");
   },
 
@@ -35,7 +34,7 @@ export const operacaoService = {
     return fetcherRpc("operacaoMensal", { operacao, mes });
   },
 
-  async schemaProduto(): Promise<Schema> {
+  async schemaProduto(): Promise<TFieldClient[]> {
     return fetcherRpc("operacaoProdutoSchema");
   },
 
@@ -46,7 +45,7 @@ export const operacaoService = {
     return fetcherRpc("operacaoProduto", { operacao, data });
   },
 
-  async schemaModelo(): Promise<Schema> {
+  async schemaModelo(): Promise<TFieldClient[]> {
     return [
       {
         field: "modelo",
@@ -74,7 +73,7 @@ export const operacaoService = {
     return fetcherRpc("operacaoModelo", { operacao, data, produto });
   },
 
-  async schemaTurno(): Promise<Schema> {
+  async schemaTurno(): Promise<TFieldClient[]> {
     return fetcherRpc("operacaoTurnoSchema");
   },
 

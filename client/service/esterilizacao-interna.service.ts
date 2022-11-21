@@ -1,7 +1,7 @@
 import { TEsterilizacaoInterna } from "../../types/esterilizacao-interna.type";
-import { isEmpty } from "../../utils/identify/is-empty";
+import { fetcherRpc } from "../../utils/api/fetcher-rpc";
+import { isEmpty } from "../../utils/identify/is_empty";
 import { day } from "../lib/day";
-import { fetcherRpc } from "../lib/http/fetcher-rpc";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
 export const esterilizacaoInternaService = {

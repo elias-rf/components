@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { fetchMockRpc } from "../../../utils/fetch-mock-rpc";
+import { fetchMockRpc } from "../../../utils/api/fetch-mock-rpc";
 import { crudFactory } from "./crud.factory";
 
 globalThis.fetch = fetchMockRpc.fetch;

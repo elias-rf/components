@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const lixo: TEntity = {
+export const lixo: TTable = {
   database: "plano",
   table: "lixo",
-  schema: [
+  fields: [
     {
       field: "lote",
       label: "lote",

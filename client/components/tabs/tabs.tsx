@@ -1,24 +1,12 @@
 import React from "react";
+import { TabsContext } from "./Tabs.context";
+import { TTabsProps } from "./tabs.types";
 
-interface TabsProps {
-  onChange: (id: string) => void;
-  active: string;
-  children: React.ReactElement[];
-}
-
-export function Tabs({ onChange, active, children }: TabsProps) {
+export function Tabs({ onChangeEvent, active, children }: TTabsProps) {
   return (
-    <>
+    <TabsContext.Provider value={{ active, onChangeEvent }}>
       <div className="border-b border-gray-300">
-        <ul className="flex cursor-pointer">
-          {React.Children.map(children, (child) => {
-            return React.cloneElement(child, {
-              active: active,
-              onChange: onChange,
-              key: child.props.id,
-            });
-          })}
-        </ul>
+        <ul className="flex cursor-pointer">{children}</ul>
       </div>
       {React.Children.map(children, (child) => {
         if (child.props.id === active) {
@@ -26,6 +14,6 @@ export function Tabs({ onChange, active, children }: TabsProps) {
         }
         return null;
       })}
-    </>
+    </TabsContext.Provider>
   );
 }

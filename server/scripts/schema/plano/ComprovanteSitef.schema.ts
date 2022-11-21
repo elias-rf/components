@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const ComprovanteSitef: TEntity = {
+export const ComprovanteSitef: TTable = {
   database: "plano",
   table: "ComprovanteSitef",
-  schema: [
+  fields: [
     {
       field: "NumNota",
       label: "NumNota",

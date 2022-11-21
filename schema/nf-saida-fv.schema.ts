@@ -1,9 +1,9 @@
-import { TEntity } from "../types";
+import { TTable } from "../types";
 
-export const nf_saida_fv: TEntity = {
+export const nf_saida_fv: TTable = {
   database: "fullvision",
   table: "MestreNota",
-  schema: [
+  fields: [
     {
       field: "CdFilial",
       label: "Filial",

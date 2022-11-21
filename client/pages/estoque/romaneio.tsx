@@ -1,4 +1,4 @@
-import { PageTitle } from "../../components/page/page-title";
+import { PageTitle } from "../../components/page/page_title";
 function Romaneio() {
   return (
     <div>

@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const TabelaSelic: TEntity = {
+export const TabelaSelic: TTable = {
   database: "plano",
   table: "TabelaSelic",
-  schema: [
+  fields: [
     {
       field: "DtBase",
       label: "DtBase",

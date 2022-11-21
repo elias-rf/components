@@ -3,8 +3,8 @@ import React from "react";
 import { Tab } from "../../components/tabs/tab";
 import { Tabs } from "../../components/tabs/tabs";
 
-import { EstExt } from "./est-ext";
-import { EstInt } from "./est-int";
+import { EstExt } from "./est_ext";
+import { EstInt } from "./est_int";
 import { Operacao } from "./operacao";
 import { Transferencia } from "./transferencia";
 
@@ -13,7 +13,7 @@ export function Controles() {
 
   return (
     <div className="max-h-screen overflow-auto">
-      <Tabs active={active} onChange={(id) => setActive(id)}>
+      <Tabs active={active} onChangeEvent={(event) => setActive(event.value)}>
         <Tab id="operacao" title="Operação">
           <Operacao />
         </Tab>

@@ -1,12 +1,12 @@
-import { TEntity } from "../../types";
+import { TTable } from "../../types";
 import { isArray } from "../identify/is-array";
 import { isObject } from "../identify/is-object";
-import { namesFromEntity } from "../schema/names-from-entity";
+import { namesFromTable } from "../schema/names-from-table";
 
-export function isData<Rec>(data: Rec, entity: TEntity): string | null {
+export function isData<Rec>(data: Rec, entity: TTable): string | null {
   if (!isArray(data) && !isObject(data))
     return "Select deve ser um array ou objeto";
-  const nameList = namesFromEntity(entity);
+  const nameList = namesFromTable(entity);
 
   for (const fld in data) {
     if (!nameList.includes(fld)) {

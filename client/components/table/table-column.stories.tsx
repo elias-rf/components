@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import { IEvent, Schema } from "../../../types";
+import { TEvent, TFieldClient } from "../../../types";
 import { TableColumn } from "./table-column";
 
 export default {
@@ -12,36 +12,33 @@ export default {
   },
 } as ComponentMeta<typeof TableColumn>;
 
-const schema: Schema = [
+const schema: TFieldClient[] = [
   {
     label: "ID",
-    field: "id",
-    name: "id",
+    name: "nid",
     type: "string",
     labelClass: "text-left",
     fieldClass: "text-left",
   },
   {
     label: "Nome",
-    field: "nome",
-    name: "nome",
+    name: "nnome",
     labelClass: "text-center",
     fieldClass: "text-center",
     sortable: false,
   },
   {
     label: "Valor de compra",
-    name: "compra",
-    field: "compra",
+    name: "ncompra",
     labelClass: "text-right",
     fieldClass: "text-right",
   },
 ];
 
-export const Default: ComponentStory<typeof TableColumn> = (props) => {
+export const Default: ComponentStory<typeof TableColumn> = (props: any) => {
   const [orderBy, setOrderBy] = React.useState([]);
 
-  function handleOnOrder(e: IEvent) {
+  function handleOnOrder(e: TEvent) {
     setOrderBy(e.value);
     props.showOrderBy(e.value);
     if (props.onOrder) props.onOrder(e);
@@ -55,8 +52,8 @@ export const Default: ComponentStory<typeof TableColumn> = (props) => {
             <TableColumn
               key={fld.name}
               schemaField={fld}
-              orderBy={orderBy}
-              onOrder={handleOnOrder}
+              order={orderBy}
+              onOrderEvent={handleOnOrder}
             />
           ))}
         </tr>

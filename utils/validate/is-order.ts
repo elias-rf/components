@@ -1,16 +1,16 @@
-import { Order, TEntity } from "../../types";
+import { TOrder, TTable } from "../../types";
 import { isArray } from "../identify/is-array";
 import { isNull } from "../identify/is-null";
 import { isObject } from "../identify/is-object";
 import { isString } from "../identify/is-string";
 import { isUndefined } from "../identify/is-undefined";
-import { namesFromEntity } from "../schema/names-from-entity";
+import { namesFromTable } from "../schema/names-from-table";
 
-export function isOrder(order: Order[], entity: TEntity): string | null {
+export function isOrder(order: TOrder[], table: TTable): string | null {
   if (isNull(order) || isUndefined(order)) return "Order deve ser informado";
   if (!isArray(order) && (isObject(order) || isString(order)))
     return "Order deve ser um array";
-  const nameList = namesFromEntity(entity);
+  const nameList = namesFromTable(table);
 
   for (const item of order) {
     if (!isArray(item)) return "Order deve ser um array de tuplas";
@@ -20,7 +20,7 @@ export function isOrder(order: Order[], entity: TEntity): string | null {
       return "Order dever ser asc ou desc";
     if (!nameList.includes(item[0] as any)) {
       return `${item[0].toString()} não é um campo válido para [order][${
-        entity.table
+        table.table
       }]: ${nameList}`;
     }
   }

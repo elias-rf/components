@@ -1,6 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { Action } from "../../../../types";
 import { day } from "../../../../utils/date/day";
 import { Table } from "../../../components/table/table";
 import vendaService from "../../../service/venda.service";
@@ -38,16 +36,16 @@ export function Vendas() {
     }
   );
 
-  function handleMensal(action: Action) {
+  function handleMensal(action: any) {
     setMesCorrente(action.payload);
   }
-  function handleProduto(action: Action) {
+  function handleProduto(action: any) {
     setProdutoCorrente(action.payload);
   }
-  function handleVendedor(action: Action) {
+  function handleVendedor(action: any) {
     setVendedorCorrente(action.payload);
   }
-  function handleUf(action: Action) {
+  function handleUf(action: any) {
     setUfCorrente(action.payload);
   }
 

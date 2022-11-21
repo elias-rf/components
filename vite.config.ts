@@ -2,6 +2,7 @@
 /// <reference types="vite/client" />
 
 import react from "@vitejs/plugin-react";
+import path from "node:path";
 import { defineConfig } from "vitest/config";
 
 // https://vitejs.dev/config/
@@ -21,5 +22,11 @@ export default defineConfig({
     outputTruncateLength: 200,
     snapshotFormat: { escapeString: false },
     setupFiles: ["./setup-tests.ts"],
+  },
+  resolve: {
+    alias: {
+      "@utils": path.resolve(__dirname, "./utils/"),
+      "@types": path.resolve(__dirname, "./types/"),
+    },
   },
 });

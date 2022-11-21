@@ -4,14 +4,14 @@ import { twMerge } from "tailwind-merge";
 
 type TAProps = {
   href: string;
-  onClick?: (e: React.SyntheticEvent) => void;
+  onClickEvent?: (e: React.SyntheticEvent) => void;
   children: React.ReactElement | string;
   className?: string;
 };
 
 export function Anchor({
   href,
-  onClick = () => null,
+  onClickEvent = () => null,
   children,
   className,
   ...others
@@ -19,7 +19,7 @@ export function Anchor({
   return (
     <Link
       to={href}
-      onClick={onClick}
+      onClick={onClickEvent}
       className={twMerge("block w-full", className)}
       {...others}
     >

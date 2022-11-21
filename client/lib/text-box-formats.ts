@@ -1,13 +1,12 @@
 import { formatMoney } from "../../utils/format/format-money";
-import { replaceAll } from "./replace-all";
 
 export const moeda = {
   format: (vlr: any) => {
     return formatMoney(vlr);
   },
-  parse: (vlr: any) => {
-    const num = replaceAll(vlr, /[^0-9,-]/g, "");
-    const intl = replaceAll(num, ",", ".");
+  parse: (vlr: string) => {
+    const num = vlr.replaceAll(/[^0-9,-]/g, "");
+    const intl = num.replaceAll(",", ".");
     const rsp = parseFloat(intl);
     if (isNaN(rsp)) {
       return 0.0;
@@ -21,8 +20,8 @@ export const moedaReal = {
     return "R$ " + formatMoney(vlr);
   },
   parse: (vlr: any) => {
-    const num = replaceAll(vlr, /[^0-9,-]/g, "");
-    const intl = replaceAll(num, ",", ".");
+    const num = vlr.replaceAll(/[^0-9,-]/g, "");
+    const intl = num.replaceAll(",", ".");
     const rsp = parseFloat(intl);
     if (isNaN(rsp)) {
       return 0.0;
@@ -37,8 +36,8 @@ export const inteiro = {
   },
   parse: (vlr: any) => {
     if (typeof vlr === "string") {
-      const num = replaceAll(vlr, /[^0-9,-]/g, "");
-      const intl = replaceAll(num, ",", ".");
+      const num = vlr.replaceAll(/[^0-9,-]/g, "");
+      const intl = num.replaceAll(",", ".");
       const rsp = parseInt(intl);
       if (isNaN(rsp)) {
         return 0;

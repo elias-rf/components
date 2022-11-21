@@ -10,7 +10,7 @@ import {
   vi,
 } from "vitest";
 import { app } from "../app";
-import { setTracker } from "../lib/set-tracker";
+import { setTracker } from "../lib/set_tracker";
 import { apiRequest, rpcResponse, rpcResponseError } from "./aux";
 
 describe("cliente", () => {

@@ -1,5 +1,5 @@
 import { getUniqueId } from "./get-unique-id";
-import type { RpcRequest } from "./rpc-server";
+import type { TRpcRequest } from "./rpc-server";
 
 export type RpcResponse = {
   jsonrpc: "2.0";
@@ -12,12 +12,13 @@ export type RpcResponse = {
   };
 };
 
+/** codifica requests e decodifica responses no padrão RPC */
 export function rpcClient() {
   return {
-    request(method: string, params: any): RpcRequest {
+    request(method: string, params: any): TRpcRequest {
       return { jsonrpc: "2.0", id: getUniqueId(), method, params };
     },
-    notify(method: string, params: any): RpcRequest {
+    notify(method: string, params: any): TRpcRequest {
       return { jsonrpc: "2.0", method, params };
     },
     response(resp: RpcResponse) {

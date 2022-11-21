@@ -1,13 +1,5 @@
-import React from "react";
 import { SidebarItemShortcut } from "./sidebar-item-shortcut";
-
-export type TSidebarItem = {
-  children: {
-    icon?: React.ReactNode;
-    title: string;
-    shortcut?: React.ReactNode;
-  };
-};
+import { TSidebarItem } from "./sidebar.types";
 
 function SpaceIcon() {
   return (

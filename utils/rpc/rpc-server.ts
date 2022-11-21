@@ -1,8 +1,9 @@
+import { getParamsSintetic } from "../identify/get_params";
 import { RpcResponse } from "./rpc-client";
 
 const methods = new Map();
 
-export type RpcRequest = {
+export type TRpcRequest = {
   jsonrpc: "2.0";
   id?: number | string;
   method: string;
@@ -18,15 +19,15 @@ export function rpcServer() {
     addMethod(method: string, body: (params: any) => any) {
       methods.set(method, body);
     },
-    async receive(rpc: RpcRequest, context?: any) {
+    async receive(rpc: TRpcRequest, context?: any) {
       let response: Partial<RpcResponse> = { jsonrpc: "2.0", id: rpc.id };
       if (rpc.jsonrpc !== "2.0") {
         response.error = createError(-32600, "invalid request");
       }
       if (methods.has(rpc.method)) {
-        const body = methods.get(rpc.method);
+        const funct = methods.get(rpc.method);
         try {
-          response.result = await body(rpc.params, context);
+          response.result = await funct(rpc.params, context);
         } catch (error: any) {
           response.error = createError(
             error.cause || error.name,
@@ -39,7 +40,16 @@ export function rpcServer() {
       if (response.id) return response;
     },
     list() {
-      return Array.from(methods.keys());
+      const resp: string[] = [];
+      methods.forEach((funct, method) => {
+        resp.push(
+          `${method} (${getParamsSintetic(funct)
+            .toString()
+            .replaceAll("\n", "")
+            .replaceAll(" ", "")})`
+        );
+      });
+      return resp;
     },
   };
 }

@@ -1,13 +1,12 @@
 import React from "react";
-import type { Action } from "../../../types";
-import { Label } from "../../components/label";
+import { Label } from "../../components/form";
 import { Select } from "../../components/select/select";
 import { day } from "../../lib/day";
-import { OperacaoDiario } from "./operacao-diario";
-import { OperacaoMensal } from "./operacao-mensal";
-import { OperacaoModelo } from "./operacao-modelo";
-import { OperacaoProduto } from "./operacao-produto";
-import { OperacaoTurno } from "./operacao-turno";
+import { OperacaoDiario } from "./operacao_diario";
+import { OperacaoMensal } from "./operacao_mensal";
+import { OperacaoModelo } from "./operacao_modelo";
+import { OperacaoProduto } from "./operacao_produto";
+import { OperacaoTurno } from "./operacao_turno";
 
 export function Operacao() {
   const [mesCorrente, setMesCorrente] = React.useState([]);
@@ -17,7 +16,7 @@ export function Operacao() {
 
   const mesInicial = day().subtract(13, "month").format("YYYY-MM");
 
-  function handleDispatchMensal(action: Action) {
+  function handleDispatchMensal(action: any) {
     // switch (action.type) {
     //   case tableActionTypes.select:
     //     setMesCorrente(action.payload);
@@ -25,7 +24,7 @@ export function Operacao() {
     // }
   }
 
-  function handleDispatchDiario(action: Action) {
+  function handleDispatchDiario(action: any) {
     // switch (action.type) {
     //   case tableActionTypes.select:
     //     setDiaCorrente(action.payload);
@@ -33,7 +32,7 @@ export function Operacao() {
     // }
   }
 
-  function handleDispatchProduto(action: Action) {
+  function handleDispatchProduto(action: any) {
     // switch (action.type) {
     //   case tableActionTypes.select:
     //     setProdutoCorrente(action.payload);

@@ -9,9 +9,9 @@ import {
   it,
   test,
 } from "vitest";
-import { knexMockHistory } from "../../../utils/data/knex-mock-history";
+import { knexMockHistory } from "../../../utils/data/knex_mock_history";
 import { TConnections } from "../../dal/connections";
-import { setTracker } from "../../lib/set-tracker";
+import { setTracker } from "../../lib/set_tracker";
 import { usuarioModel } from "./usuario.model";
 
 describe("rpc de autenticação", () => {

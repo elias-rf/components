@@ -1,0 +1,53 @@
+### Index
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"index",
+  "params":{}
+}
+
+### Echo
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"echo",
+  "params":{
+    "inicio":"2020-01-01",
+    "fim":"2020-01-31",
+    "operacao": "1010"
+  }
+}
+
+### Cliente
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"crudList",
+  "params":{"table":"cliente","where":[["cliente_id","=",206]]}
+}
+
+### NFSaida
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"crudList",
+  "params":{
+    "table":"nf_saida",
+    "limit":1000,
+    "select":["nota_id","cliente_id"],
+    "order":[["cliente_id","asc"]],
+    "where":[["nota_id",">",55500]]
+  }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import TreeView from "../features/ui/tree-view";
+import { TreeView } from "./tree_view";
 
 const data = [
   {
@@ -32,7 +32,7 @@ export function Default() {
     <TreeView
       data={data}
       selected={selected}
-      onSelect={setSelected}
+      onSelectEvent={(e) => setSelected(e.value)}
     />
   );
 }

@@ -1,6 +1,6 @@
 import { Id, Order, Where } from "@er/types";
 import { isEmpty } from "@er/utils/src/is-empty";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+
 import {
   esterilizacaoExternaService,
   TEsterilizacaoExternaRecord,

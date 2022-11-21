@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const Feriados: TEntity = {
+export const Feriados: TTable = {
   database: "plano",
   table: "Feriados",
-  schema: [
+  fields: [
     {
       field: "CdCidade",
       label: "CdCidade",

@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const Estorno: TEntity = {
+export const Estorno: TTable = {
   database: "plano",
   table: "Estorno",
-  schema: [
+  fields: [
     {
       field: "CdFilial",
       label: "CdFilial",

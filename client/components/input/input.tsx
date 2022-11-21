@@ -1,22 +1,14 @@
 import { twMerge } from "tailwind-merge";
-import { IEvent } from "../../../types";
-
-export type TInputProps = {
-  name: string;
-  disabled: boolean;
-  status: "success" | "error" | "";
-  value: string;
-  onChange: (event: IEvent) => void;
-};
+import { TInputProps } from "./input.types";
 
 export function Input(props: TInputProps) {
-  const { name, disabled, status = "", onChange, ...others } = props;
+  const { name, disabled, status = "", onChangeEvent, ...others } = props;
   function handleChange(e: any): void {
     console.log(e.target.value);
-    onChange({
+    onChangeEvent({
       name,
       component: "Input",
-      event: "onChange",
+      event: "onChangeEvent",
       value: e.target.value,
     });
   }

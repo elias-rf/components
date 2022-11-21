@@ -1,11 +1,10 @@
 import type {
-  CreateArgs,
-  DelArgs,
-  GenericObject,
-  ListArgs,
-  ReadArgs,
-  Schema,
-  UpdateArgs,
+  TCreateArgs,
+  TDelArgs,
+  TGenericObject,
+  TListArgs,
+  TReadArgs,
+  TUpdateArgs,
 } from "../../../types";
 import { TConnections } from "../../dal/connections";
 import { crudModel } from "./crud.model";
@@ -15,38 +14,48 @@ export type TCrudRpc = ReturnType<typeof crudRpc>;
 export function crudRpc(connections: TConnections) {
   const crud = crudModel(connections);
   return {
-    async crudSchema(args: { table: string }): Promise<Schema> {
-      return crud.schema(args);
+    async crudSchema({ table }: { table: string }): Promise<TFieldServer[]> {
+      return crud.schema({ table });
     },
 
     // LIST
-    async crudList(args: ListArgs): Promise<GenericObject[]> {
-      return crud.list(args);
+    async crudList({
+      table,
+      where,
+      order,
+      select,
+      limit,
+    }: TListArgs): Promise<TGenericObject[]> {
+      return crud.list({ table, where, order, select, limit });
     },
 
     // READ
-    async crudRead(args: ReadArgs): Promise<GenericObject> {
-      return crud.read(args);
+    async crudRead({ table, id, select }: TReadArgs): Promise<TGenericObject> {
+      return crud.read({ table, id, select });
     },
 
     // DEL
-    async crudDel(args: DelArgs): Promise<number> {
-      return crud.del(args);
+    async crudDel({ table, id }: TDelArgs): Promise<number> {
+      return crud.del({ table, id });
     },
 
     // CREATE
-    async crudCreate(args: CreateArgs): Promise<GenericObject> {
-      return crud.create(args);
+    async crudCreate({ table, data }: TCreateArgs): Promise<TGenericObject> {
+      return crud.create({ table, data });
     },
 
     // UPDATE
-    async crudUpdate(args: UpdateArgs): Promise<GenericObject> {
-      return crud.update(args);
+    async crudUpdate({
+      table,
+      id,
+      data,
+    }: TUpdateArgs): Promise<TGenericObject> {
+      return crud.update({ table, id, data });
     },
 
     // CLEAR
-    async crudClear(args: { table: string }): Promise<GenericObject> {
-      return crud.clear(args);
+    async crudClear({ table }: { table: string }): Promise<TGenericObject> {
+      return crud.clear({ table });
     },
   };
 }

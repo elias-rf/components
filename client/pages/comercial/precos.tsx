@@ -1,5 +1,5 @@
 import { Auth } from "../../features/auth";
-import { PrecosCliente } from "../../features/precos/precos-cliente";
+import { PrecosCliente } from "../../features/precos/precos_cliente";
 
 function Precos() {
   return (

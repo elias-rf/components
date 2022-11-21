@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { isEmpty } from "./is-empty";
+import { isEmpty } from "./is_empty";
 
 describe("isEmpty", () => {
   test("Array", () => {

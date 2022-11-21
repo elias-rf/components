@@ -1,22 +1,21 @@
 import { twMerge } from "tailwind-merge";
-import { IEvent, Order, SchemaField } from "../../../types";
+import { TFieldClient, TOrder } from "../../../types";
 import { orderByUtil } from "../../../utils/schema/order-by";
-import { ShowSortableIcon } from "../show-sortable-icon";
+import { ShowSortableIcon } from "./show-sortable-icon";
+import { TTableColumn } from "./table.types";
 
-type TTableColumn = {
-  schemaField: SchemaField;
-  orderBy: Order[];
-  onOrder?: (event: IEvent) => void;
-};
-
-export function TableColumn({ schemaField, orderBy, onOrder }: TTableColumn) {
-  function handleOnOrder(orderBy: Order[] = [], schemaField: SchemaField) {
-    if (onOrder && schemaField.sortable !== false)
-      onOrder({
+export function TableColumn({
+  schemaField,
+  order,
+  onOrderEvent,
+}: TTableColumn) {
+  function handleOnOrder(order: TOrder[] = [], schemaField: TFieldClient) {
+    if (onOrderEvent && schemaField.sortable !== false)
+      onOrderEvent({
         name: "",
-        value: orderByUtil.setUnique(orderBy, schemaField?.field),
-        event: "order",
-        component: "Table",
+        value: orderByUtil.setUnique(order, schemaField?.name),
+        event: "onOrderEvent",
+        component: "TableColumn",
       });
   }
 
@@ -25,14 +24,14 @@ export function TableColumn({ schemaField, orderBy, onOrder }: TTableColumn) {
       className={twMerge(
         "sticky top-0 p-1 border-b-1 border-gray-300 bg-gray-100",
         schemaField.labelClass,
-        schemaField.sortable !== false && onOrder ? "cursor-pointer" : null
+        schemaField.sortable !== false && onOrderEvent ? "cursor-pointer" : null
       )}
-      onClick={() => handleOnOrder(orderBy, schemaField)}
+      onClick={() => handleOnOrder(order, schemaField)}
     >
       <div className="flex items-center">
-        {schemaField.label}
-        {onOrder ? (
-          <ShowSortableIcon orderBy={orderBy || []} fieldSchema={schemaField} />
+        {schemaField.label || schemaField.name}
+        {onOrderEvent ? (
+          <ShowSortableIcon order={order || []} fieldSchema={schemaField} />
         ) : null}
       </div>
     </th>

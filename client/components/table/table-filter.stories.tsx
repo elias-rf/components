@@ -1,21 +1,17 @@
+import { action } from "@storybook/addon-actions";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import { IEvent, Schema, Where } from "../../../types";
+import { TEvent, TFieldClient, TWhere } from "../../../types";
 import { TableFilter } from "./table-filter";
 
 export default {
   title: "Components/Table/TableFilter",
   component: TableFilter,
-  argTypes: {
-    onWhere: { action: "onWhere" },
-    showWhere: { monitor: "where" },
-  },
 } as ComponentMeta<typeof TableFilter>;
 
-const schema: Schema = [
+const schema: TFieldClient[] = [
   {
     label: "ID",
-    field: "id",
     name: "id",
     type: "string",
     labelClass: "text-left",
@@ -23,7 +19,6 @@ const schema: Schema = [
   },
   {
     label: "Nome",
-    field: "nome",
     name: "nome",
     labelClass: "text-center",
     fieldClass: "text-center",
@@ -32,19 +27,17 @@ const schema: Schema = [
   {
     label: "Valor de compra",
     name: "compra",
-    field: "compra",
     labelClass: "text-right",
     fieldClass: "text-right",
   },
 ];
 
-export const Default: ComponentStory<typeof TableFilter> = (props) => {
-  const [where, setWhere] = React.useState<Where[]>([["id", "<", "4"]]);
+export const Default: ComponentStory<typeof TableFilter> = () => {
+  const [where, setWhere] = React.useState<TWhere[]>([["id", "=", "4"]]);
 
-  function handleOnWhere(e: IEvent) {
+  function handleOnWhere(e: TEvent) {
     setWhere(e.value);
-    if (props.onWhere) props.onWhere(e);
-    props.showWhere(e.value);
+    action("where")(e);
   }
 
   return (
@@ -56,7 +49,7 @@ export const Default: ComponentStory<typeof TableFilter> = (props) => {
               key={fld.name}
               schemaField={fld}
               where={where}
-              onWhere={handleOnWhere}
+              onWhereEvent={handleOnWhere}
             />
           ))}
         </tr>

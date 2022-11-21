@@ -1,19 +1,18 @@
 import type {
-  CreateArgs,
-  DelArgs,
-  GenericObject,
-  ListArgs,
-  Pks,
-  ReadArgs,
-  Schema,
-  TEntity,
-  UpdateArgs,
+  TCreateArgs,
+  TDelArgs,
+  TGenericObject,
+  TListArgs,
+  TPks,
+  TReadArgs,
+  TTable,
+  TUpdateArgs,
 } from "../../types";
 import { knexOrder } from "../../utils/data/knex-order";
 import { knexWhere } from "../../utils/data/knex-where";
-import { fieldsFromEntity } from "../../utils/schema/fields-from-entity";
-import { namesFromEntity } from "../../utils/schema/names-from-entity";
-import { pksFromEntity } from "../../utils/schema/pks-from-entity";
+import { fieldsFromTable } from "../../utils/schema/fields-from-table";
+import { namesFromTable } from "../../utils/schema/names-from-table";
+import { pksFromTable } from "../../utils/schema/pks-from-table";
 import {
   renameToFieldArray,
   renameToFieldObject,
@@ -27,41 +26,41 @@ import { isLimit } from "../../utils/validate/is-limit";
 import { isOrder } from "../../utils/validate/is-order";
 import { isSelect } from "../../utils/validate/is-select";
 import { isWhere } from "../../utils/validate/is-where";
-import { entitySchema } from "../api/entity-schema";
+import { db } from "../api/db";
 import { TConnections, TDbs } from "../dal/connections";
 import { recordClear } from "./record-clear";
 import { validateThrow } from "./validate-throw";
 
-export class Entity<T extends GenericObject> {
-  entity: TEntity;
+export class Entity<T extends TGenericObject> {
+  entity: TTable;
   entityName: string;
   knex;
   table;
   fields;
-  pks: Pks;
+  pks: TPks;
   fieldList: string[];
   nameList: string[];
 
   constructor(connections: TConnections, entityName: string) {
-    if (!Object.hasOwn(entitySchema, entityName)) {
+    if (!Object.hasOwn(db, entityName)) {
       throw new Error(
         `${entityName} não é uma entidade cadastrada no schema. Talvez seja: ${Object.keys(
-          entitySchema
+          db
         )}`
       );
     }
     this.entityName = entityName;
-    this.entity = entitySchema[entityName];
+    this.entity = db[entityName];
     this.knex = connections[this.entity.database as TDbs];
     this.table = this.entity.table;
-    this.pks = pksFromEntity(this.entity);
-    this.fields = this.entity.schema;
-    this.fieldList = fieldsFromEntity(this.entity);
-    this.nameList = namesFromEntity(this.entity);
+    this.pks = pksFromTable(this.entity);
+    this.fields = this.entity.fields;
+    this.fieldList = fieldsFromTable(this.entity);
+    this.nameList = namesFromTable(this.entity);
   }
 
   // SCHEMA
-  async schema(): Promise<Schema> {
+  async schema(): Promise<TFieldServer[]> {
     return this.fields;
   }
 
@@ -71,7 +70,7 @@ export class Entity<T extends GenericObject> {
     order = [],
     limit = 50,
     select = this.nameList,
-  }: ListArgs = {}): Promise<T[]> {
+  }: TListArgs = {}): Promise<T[]> {
     validateThrow(isOrder(order, this.entity));
     validateThrow(isWhere(where, this.entity));
     validateThrow(isLimit(limit));
@@ -86,8 +85,8 @@ export class Entity<T extends GenericObject> {
   }
 
   // READ
-  async read({ id, select = this.nameList }: ReadArgs): Promise<T> {
-    validateThrow(isId(id, this.entity));
+  async read({ id, select = this.nameList }: TReadArgs): Promise<T> {
+    validateThrow(isId(id, this.entity.fields));
     validateThrow(isSelect(select, this.entity));
 
     const data = await this.knex(this.table)
@@ -99,8 +98,8 @@ export class Entity<T extends GenericObject> {
   }
 
   // DEL
-  async del({ id }: DelArgs): Promise<number> {
-    validateThrow(isId(id, this.entity));
+  async del({ id }: TDelArgs): Promise<number> {
+    validateThrow(isId(id, this.entity.fields));
 
     const qry = await this.knex(this.table)
       .del()
@@ -112,7 +111,7 @@ export class Entity<T extends GenericObject> {
   }
 
   // CREATE
-  async create({ data }: CreateArgs): Promise<T> {
+  async create({ data }: TCreateArgs): Promise<T> {
     validateThrow(isData(data, this.entity));
 
     const [qry] = await this.knex(this.table)
@@ -122,8 +121,8 @@ export class Entity<T extends GenericObject> {
   }
 
   // UPDATE
-  async update({ id, data }: UpdateArgs): Promise<T> {
-    validateThrow(isId(id, this.entity));
+  async update({ id, data }: TUpdateArgs): Promise<T> {
+    validateThrow(isId(id, this.entity.fields));
     validateThrow(isData(data, this.entity));
 
     const qry = await this.knex(this.table)
@@ -134,7 +133,7 @@ export class Entity<T extends GenericObject> {
   }
 
   // RECORD CLEAR
-  async clear(): Promise<GenericObject> {
+  async clear(): Promise<TGenericObject> {
     return recordClear(this.entity);
   }
 }

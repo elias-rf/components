@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const ECFTotalizador: TEntity = {
+export const ECFTotalizador: TTable = {
   database: "plano",
   table: "ECFTotalizador",
-  schema: [
+  fields: [
     {
       field: "CNPJFilial",
       label: "CNPJFilial",

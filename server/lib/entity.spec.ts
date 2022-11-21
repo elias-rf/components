@@ -2,7 +2,7 @@ import Knex from "knex";
 import { getTracker, MockClient } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { Entity } from "./entity";
-import { setTracker } from "./set-tracker";
+import { setTracker } from "./set_tracker";
 
 describe("entityModel", () => {
   const knexDb = Knex({ client: MockClient });
@@ -136,7 +136,7 @@ describe("entityModel", () => {
 
   it("deve evitar read.id errado", async () => {
     await expect(entityModel.read({ id: { id: "100" } })).rejects.toThrow(
-      "[agenda_telefone_id] não foi informado para [id][phonebook]: agenda_telefone_id"
+      "[agenda_telefone_id] não foi informado para [id]: agenda_telefone_id"
     );
   });
 
@@ -144,7 +144,7 @@ describe("entityModel", () => {
     await expect(
       entityModel.read({ id: { agenda_telefone_id: "100", select: ["id"] } })
     ).rejects.toThrow(
-      "select não é uma das chaves válidas para [id][phonebook]: agenda_telefone_id"
+      "select não é uma das chaves válidas para [id]: agenda_telefone_id"
     );
   });
 

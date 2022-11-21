@@ -1,6 +1,6 @@
-import { IEvent } from "@er/types";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { TEvent } from "../../types";
 import { Login as LoginComponent } from "../components/login/login";
 import { authenticationService } from "../service/authentication.service";
 
@@ -14,7 +14,7 @@ export function Login() {
   const [spinner, setSpinner] = React.useState(false);
   const navigate = useNavigate();
 
-  async function handleInput(event: IEvent) {
+  async function handleInput(event: TEvent) {
     setSpinner(true);
     setError("");
     try {
@@ -33,7 +33,7 @@ export function Login() {
         <div>{error}</div>
         <LoginComponent
           title="Intranet Visiontech"
-          onInput={handleInput}
+          onInputEvent={handleInput}
           loading={spinner}
           error={error}
         />

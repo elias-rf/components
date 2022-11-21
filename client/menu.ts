@@ -4,6 +4,7 @@ import shoppingBag from "@iconify/icons-carbon/shopping-bag";
 import userAvatar from "@iconify/icons-carbon/user-avatar";
 import manufacturer from "@iconify/icons-fluent/manufacturer-24-regular";
 
+/** menu do sistema */
 export const menu = {
   versao: "1.0.1",
   title: { title: "Visiontech", to: "/" },

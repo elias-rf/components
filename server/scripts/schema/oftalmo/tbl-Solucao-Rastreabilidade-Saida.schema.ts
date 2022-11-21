@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const tbl_Solucao_Rastreabilidade_Saida: TEntity = {
+export const tbl_Solucao_Rastreabilidade_Saida: TTable = {
   database: "oftalmo",
   table: "tbl_Solucao_Rastreabilidade_Saida",
-  schema: [
+  fields: [
     {
       field: "kRastreabilidade",
       label: "kRastreabilidade",

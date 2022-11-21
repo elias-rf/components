@@ -6,11 +6,12 @@ export const fetchMock = {
     response.status = response.status || 200;
     map.set(matcher, response);
   },
-  get(matcher: string, response: any) {},
-  post(matcher: string, response: any) {},
   history(index?: number) {
     if (index !== undefined) return history_[index];
     return history_;
+  },
+  map() {
+    return JSON.stringify(Object.fromEntries(map), null, 2);
   },
   reset() {
     map.clear();

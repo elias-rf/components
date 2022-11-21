@@ -1,0 +1,21 @@
+### Diario
+POST http://localhost:3000/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"transferenciaDiario",
+  "params":{"inicio":"2022-10-01", "fim":"2022-10-20"}
+}
+
+### VendaMensal
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"vendaMensal",
+  "params":{"inicio":"2022-01-01", "fim":"2022-10-20","cliente":"189"}
+}

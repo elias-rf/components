@@ -1,15 +1,16 @@
 import create from "zustand";
 
-import type { CurrentUser } from "../../types";
+import type { TCurrentUser } from "../../types";
 
-const initialState: CurrentUser = {
-  kUsuario: "",
+const initialState: TCurrentUser = {
+  usuario_id: 0,
+  nome_login: "",
   nome: "",
-  NomeUsuario: "",
-  idGroup: "",
+  group_id: "",
 };
 
-export const userStore = create((set) => ({
+/** store para o usuário corrente */
+export const userStore = create(() => ({
   currentUser: initialState,
   isAuthenticated: false,
 }));

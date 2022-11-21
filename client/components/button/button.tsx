@@ -1,24 +1,5 @@
-import React from "react";
 import { twMerge } from "tailwind-merge";
-import { IEvent } from "../../../types";
-
-type TButtonProps = {
-  [prop: string]: any;
-  children: React.ReactNode;
-  color?:
-    | "default"
-    | "alternative"
-    | "dark"
-    | "light"
-    | "green"
-    | "red"
-    | "yellow"
-    | "purple";
-  disabled?: boolean;
-  size?: "xs" | "sm" | "bs" | "lg" | "xl";
-  name?: string;
-  onClick?: (event: IEvent) => void;
-};
+import { TButtonProps } from "./button.types";
 
 const buttonTheme = {
   default:
@@ -59,23 +40,21 @@ const buttonSize = {
 /**
  * Component Button
  */
-export function Button(props: TButtonProps) {
-  const {
-    children,
-    disabled = false,
-    color = "default",
-    size = "bs",
-    onClick = () => null,
-    name = "",
-    ...other
-  } = props;
-
+export function Button({
+  className,
+  children,
+  disabled = false,
+  color = "default",
+  size = "bs",
+  onClickEvent = () => null,
+  name = "",
+}: TButtonProps) {
   function handleClick() {
-    onClick({
+    onClickEvent({
       name,
       value: children,
       component: "Button",
-      event: "click",
+      event: "onClickEvent",
     });
   }
 
@@ -85,11 +64,11 @@ export function Button(props: TButtonProps) {
         "focus:ring-4 font-medium rounded-lg text-center",
         buttonSize[size],
         buttonTheme[color],
-        disabled ? `cursor-not-allowed ${buttonThemeDisabled[color]}` : ""
+        disabled ? `cursor-not-allowed opacity-50` : "",
+        className
       )}
       disabled={disabled}
       onClick={handleClick}
-      {...other}
     >
       {children}
     </button>

@@ -1,6 +1,6 @@
-import { SchemaField, TEntity } from "../../types";
+import { TFieldServer, TTable } from "../../types";
 
-function fieldClear(field: SchemaField) {
+function fieldClear(field: TFieldServer) {
   if (field.defaultValue) return field.defaultValue;
   if (field.allowNull !== false) return null;
   if (
@@ -15,9 +15,9 @@ function fieldClear(field: SchemaField) {
   );
 }
 
-export function recordClear(entity: TEntity) {
+export function recordClear(entity: TTable) {
   const rsp: { [field: string]: any } = {};
-  const fields = entity.schema;
+  const fields = entity.fields;
   for (const field of fields) {
     rsp[field.name] = fieldClear(field);
   }

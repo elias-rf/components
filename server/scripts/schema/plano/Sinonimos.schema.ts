@@ -1,9 +1,9 @@
-import { TEntity } from "../../../../types";
+import { TTable } from "../../../../types";
 
-export const Sinonimos: TEntity = {
+export const Sinonimos: TTable = {
   database: "plano",
   table: "Sinonimos",
-  schema: [
+  fields: [
     {
       field: "Sinonimo",
       label: "Sinonimo",

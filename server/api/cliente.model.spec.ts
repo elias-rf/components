@@ -1,9 +1,9 @@
 import Knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
-import { knexMockHistory } from "../../utils/data/knex-mock-history";
+import { knexMockHistory } from "../../utils/data/knex_mock_history";
 import { TConnections } from "../dal/connections";
-import { setTracker } from "../lib/set-tracker";
+import { setTracker } from "../lib/set_tracker";
 import { crudModel } from "./crud/crud.model";
 
 describe("rpc de cliente", () => {
