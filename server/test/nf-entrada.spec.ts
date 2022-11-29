@@ -3,7 +3,12 @@ import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import { knexMockHistory } from "../../utils/data/knex_mock_history";
 import { app } from "../app";
-import { apiRequest, rpcResponse, rpcResponseError } from "./aux";
+import {
+  apiRequestMutation,
+  apiRequestQuery,
+  rpcResponse,
+  rpcResponseError,
+} from "./aux";
 
 describe("nfEntrada", () => {
   let tracker: Tracker;
@@ -24,14 +29,16 @@ describe("nfEntrada", () => {
   });
 
   it("nfEntradaSchema", async () => {
-    const rsp = await apiRequest(app, "crudSchema", { table: "nf_entrada" });
+    const rsp = await apiRequestQuery(app, "crudSchema", {
+      table: "nf_entrada",
+    });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(expect.any(Array)));
   });
 
   it("nfEntradaRead", async () => {
     tracker.on.select("NfMestre").response([]);
-    const rsp = await apiRequest(app, "crudRead", {
+    const rsp = await apiRequestQuery(app, "crudRead", {
       table: "nf_entrada",
       id: { filial_id: 1, nota_id: "171", serie_id: "X", modelo_id: 1 },
       select: ["nota_id"],
@@ -47,7 +54,7 @@ describe("nfEntrada", () => {
 
   it("nfEntradaList", async () => {
     tracker.on.select("NfMestre").response([]);
-    const rsp = await apiRequest(app, "crudList", {
+    const rsp = await apiRequestQuery(app, "crudList", {
       table: "nf_entrada",
       where: [["nota_id", "=", "171"]],
     });
@@ -57,7 +64,7 @@ describe("nfEntrada", () => {
 
   it("nfEntradaDel", async () => {
     tracker.on.delete("NfMestre").response(1);
-    const rsp = await apiRequest(app, "crudDel", {
+    const rsp = await apiRequestMutation(app, "crudDel", {
       table: "nf_entrada",
       id: { filial_id: 1, nota_id: "171", serie_id: "X", modelo_id: 1 },
     });
@@ -67,7 +74,7 @@ describe("nfEntrada", () => {
 
   it("nfEntradaCreate", async () => {
     // tracker.on.any("NfMestre").response([]);
-    const rsp = await apiRequest(app, "crudCreate", {
+    const rsp = await apiRequestMutation(app, "crudCreate", {
       table: "nf_entrada",
       data: { nota_id: "171" },
     });
@@ -82,7 +89,7 @@ describe("nfEntrada", () => {
 
   it("nfEntradaUpdate", async () => {
     tracker.on.any("NfMestre").response([{ NroNf: "172" }]);
-    const rsp = await apiRequest(app, "crudUpdate", {
+    const rsp = await apiRequestMutation(app, "crudUpdate", {
       table: "nf_entrada",
       id: { filial_id: 1, nota_id: "171", serie_id: "X", modelo_id: 1 },
       data: { nota_id: "172" },

@@ -1,4 +1,4 @@
-import { TConnections } from "../../dal/connections";
+import { TConnections, TFieldClient } from "../../../types";
 import { nfSaidaFvModel } from "../nf_saida_fv/nf_saida_fv.model";
 
 export type TVendas = {
@@ -24,7 +24,7 @@ export function nfSaidaModel(connections: TConnections) {
 
   return {
     // DIARIO
-    async transferenciaDiario({
+    async nfSaidaTransferenciaDiario({
       inicio,
       fim,
     }: {
@@ -71,48 +71,49 @@ export function nfSaidaModel(connections: TConnections) {
     },
 
     // SCHEMA DIARIO
-    async transferenciaDiarioSchema(): Promise<TFieldServer[]> {
+    async nfSaidaTransferenciaDiarioSchema(): Promise<TFieldClient[]> {
       return [
         {
-          field: "dia",
-          name: "Dia",
+          name: "dia",
+          label: "Dia",
           labelClass: "text-center",
           fieldClass: "text-left",
           type: "string",
+          primaryKey: true,
         },
         {
-          field: "LITEFLEX",
-          name: "LiteFlex",
+          name: "LITEFLEX",
+          label: "LiteFlex",
           labelClass: "text-right",
           fieldClass: "text-right",
         },
         {
-          field: "HILITE",
-          name: "HiLite",
+          name: "HILITE",
+          label: "HiLite",
           labelClass: "text-right",
           fieldClass: "text-right",
         },
         {
-          field: "ENLITE",
-          name: "EnLite",
+          name: "ENLITE",
+          label: "EnLite",
           labelClass: "text-right",
           fieldClass: "text-right",
         },
         {
-          field: "METILCELULOSE",
-          name: "Metil",
+          name: "METILCELULOSE",
+          label: "Metil",
           labelClass: "text-right",
           fieldClass: "text-right",
         },
         {
-          field: "CORNEAL RING",
-          name: "Corneal Ring",
+          name: "CORNEAL RING",
+          label: "Corneal Ring",
           labelClass: "text-right",
           fieldClass: "text-right",
         },
         {
-          field: "ANEL CAPSULAR",
-          name: "Anel Capsular",
+          name: "ANEL CAPSULAR",
+          label: "Anel Capsular",
           labelClass: "text-right",
           fieldClass: "text-right",
         },
@@ -120,7 +121,7 @@ export function nfSaidaModel(connections: TConnections) {
     },
 
     // TRANSFERENCIA MENSAL
-    async transferenciaMensal({ mes }: { mes: string }) {
+    async nfSaidaTransferenciaMensal({ mes }: { mes: string }) {
       // validateIsThrow(isString(mes), "mes dever ser string");
 
       const aux: any = {};
@@ -166,7 +167,7 @@ export function nfSaidaModel(connections: TConnections) {
     },
 
     // TRANSFERENCIA MODELO
-    async transferenciaModelo({ data }: { data: string }) {
+    async nfSaidaTransferenciaModelo({ data }: { data: string }) {
       // validateIsThrow(isString(data), "data dever ser string");
 
       const qry = await knex(
@@ -192,18 +193,19 @@ export function nfSaidaModel(connections: TConnections) {
     },
 
     // TRANSFERENCIA SCHEMA MODELO
-    async transferenciaModeloSchema(): Promise<TFieldServer[]> {
+    async nfSaidaTransferenciaModeloSchema(): Promise<TFieldClient[]> {
       return [
         {
-          field: "modelo",
-          name: "Modelo",
+          name: "modelo",
+          label: "Modelo",
           labelClass: "text-center",
           fieldClass: "text-left",
           type: "string",
+          primaryKey: true,
         },
         {
-          field: "quantidade",
-          name: "Quantidade",
+          name: "quantidade",
+          label: "Quantidade",
           labelClass: "text-right",
           fieldClass: "text-right",
         },
@@ -211,48 +213,49 @@ export function nfSaidaModel(connections: TConnections) {
     },
 
     // TRANSFERENCIA SCHEMA MENSAL
-    async transferenciaMensalSchema(): Promise<TFieldServer[]> {
+    async nfSaidaTransferenciaMensalSchema(): Promise<TFieldClient[]> {
       return [
         {
-          field: "mes",
-          name: "Mês",
+          name: "mes",
+          label: "Mês",
           labelClass: "text-center",
           fieldClass: "text-left",
           type: "string",
+          primaryKey: true,
         },
         {
-          field: "LITEFLEX",
-          name: "LiteFlex",
+          name: "LITEFLEX",
+          label: "LiteFlex",
           labelClass: "text-right",
           fieldClass: "text-right",
         },
         {
-          field: "HILITE",
-          name: "HiLite",
+          name: "HILITE",
+          label: "HiLite",
           labelClass: "text-right",
           fieldClass: "text-right",
         },
         {
-          field: "ENLITE",
-          name: "EnLite",
+          name: "ENLITE",
+          label: "EnLite",
           labelClass: "text-right",
           fieldClass: "text-right",
         },
         {
-          field: "METILCELULOSE",
-          name: "Metil",
+          name: "METILCELULOSE",
+          label: "Metil",
           labelClass: "text-right",
           fieldClass: "text-right",
         },
         {
-          field: "CORNEAL RING",
-          name: "Corneal Ring",
+          name: "CORNEAL RING",
+          label: "Corneal Ring",
           labelClass: "text-right",
           fieldClass: "text-right",
         },
         {
-          field: "ANEL CAPSULAR",
-          name: "Anel Capsular",
+          name: "ANEL CAPSULAR",
+          label: "Anel Capsular",
           labelClass: "text-right",
           fieldClass: "text-right",
         },
@@ -260,7 +263,7 @@ export function nfSaidaModel(connections: TConnections) {
     },
 
     // VENDA DIARIO
-    async vendaDiario({
+    async nfSaidaVendaDiario({
       inicio,
       fim,
       uf,
@@ -309,33 +312,34 @@ export function nfSaidaModel(connections: TConnections) {
     },
 
     // VENDA DIARIO SCHEMA
-    async vendaDiarioSchema(): Promise<TFieldServer[]> {
+    async nfSaidaVendaDiarioSchema(): Promise<TFieldClient[]> {
       return [
         {
-          field: "DtEmissao",
-          name: "Dia",
+          name: "DtEmissao",
+          label: "Dia",
+          type: "string",
+          primaryKey: true,
+        },
+        {
+          name: "NmCategoria",
+          label: "Produto",
           type: "string",
         },
         {
-          field: "NmCategoria",
-          name: "Produto",
-          type: "string",
-        },
-        {
-          field: "qtd",
-          name: "Quantidade",
+          name: "qtd",
+          label: "Quantidade",
           type: "int",
         },
         {
-          field: "vlr",
-          name: "Valor",
+          name: "vlr",
+          label: "Valor",
           type: "float",
         },
       ];
     },
 
     // VENDA MENSAL
-    async vendaMensal({
+    async nfSaidaVendaMensal({
       inicio,
       fim,
       cliente,
@@ -412,104 +416,112 @@ export function nfSaidaModel(connections: TConnections) {
     },
 
     // VENDA MENSAL SCHEMA
-    async vendaMensalSchema(): Promise<TFieldServer[]> {
+    async nfSaidaVendaMensalSchema(): Promise<TFieldClient[]> {
       return [
         {
-          field: "anoMes",
-          name: "Mês",
+          name: "anoMes",
+          label: "Mês",
           type: "string",
+          primaryKey: true,
         },
         {
-          field: "CdCliente",
-          name: "Cód. Cliente",
+          name: "CdCliente",
+          label: "Cód. Cliente",
           type: "int",
         },
         {
-          field: "NmCategoria",
-          name: "Produto",
+          name: "NmCategoria",
+          label: "Produto",
           type: "string",
         },
         {
-          field: "quantidade",
-          name: "Quantidade",
+          name: "quantidade",
+          label: "Quantidade",
           type: "int",
         },
         {
-          field: "valor",
-          name: "Valor",
+          name: "valor",
+          label: "Valor",
           type: "float",
         },
       ];
     },
 
     // VENDA ANALITICO SCHEMA
-    async vendaAnaliticoSchema(): Promise<TFieldServer[]> {
+    async nfSaidaVendaAnaliticoSchema(): Promise<TFieldClient[]> {
       return [
         {
-          field: "NmCategoria",
-          name: "Categoria",
+          name: "NmCategoria",
+          label: "Categoria",
           type: "string",
+          primaryKey: true,
         },
         {
-          field: "DtEmissao",
-          name: "Emissão",
+          name: "DtEmissao",
+          label: "Emissão",
           type: "date",
         },
         {
-          field: "NumNota",
-          name: "Nota Fiscal",
+          name: "NumNota",
+          label: "Nota Fiscal",
           type: "string",
         },
         {
-          field: "Serie",
-          name: "Série",
+          name: "Serie",
+          label: "Série",
           type: "string",
         },
         {
-          field: "Tipo",
           name: "Tipo",
+          label: "Tipo",
           type: "string",
         },
         {
-          field: "CdProduto",
-          name: "Cód Produto",
+          name: "CdProduto",
+          label: "Cód Produto",
           type: "float",
         },
         {
-          field: "Quantidade",
           name: "Quantidade",
+          label: "Quantidade",
           type: "float",
         },
         {
-          field: "VlTotal",
-          name: "Valor",
+          name: "VlTotal",
+          label: "Valor",
           type: "float",
         },
         {
-          field: "Descricao",
-          name: "Produto",
+          name: "Descricao",
+          label: "Produto",
           type: "float",
         },
         {
-          field: "CdVendedor",
-          name: "Cód Vendedor",
+          name: "CdVendedor",
+          label: "Cód Vendedor",
           type: "int",
         },
         {
-          field: "NmVendedor",
-          name: "Vendedor",
+          name: "NmVendedor",
+          label: "Vendedor",
           type: "string",
         },
         {
-          field: "uf",
-          name: "UF",
+          name: "uf",
+          label: "UF",
           type: "string",
         },
       ];
     },
 
     // VENDA ANALITICO
-    async vendaAnalitico({ inicio, fim }: { inicio: string; fim: string }) {
+    async nfSaidaVendaAnalitico({
+      inicio,
+      fim,
+    }: {
+      inicio: string;
+      fim: string;
+    }) {
       const qryPlano = knex("MestreNota")
         .select(knex.raw("'VT' as origem"))
         .select([
@@ -549,7 +561,7 @@ export function nfSaidaModel(connections: TConnections) {
         .whereBetween("MestreNota.DtEmissao", [inicio, fim])
         .whereIn("MestreNota.Tipo", ["E", "S"]);
 
-      const qryFullvision = nfSaidaFv.vendaAnalitico({ inicio, fim });
+      const qryFullvision = nfSaidaFv.nfSaidaFvVendaAnalitico({ inicio, fim });
 
       const resp: TVendas[][] = await Promise.all([qryPlano, qryFullvision]);
       return resp[0].concat(resp[1]);

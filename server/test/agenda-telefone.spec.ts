@@ -12,7 +12,12 @@ import {
 import { knexMockHistory } from "../../utils/data/knex_mock_history";
 import { app } from "../app";
 import { setTracker } from "../lib/set_tracker";
-import { apiRequest, rpcResponse, rpcResponseError } from "./aux";
+import {
+  apiRequestMutation,
+  apiRequestQuery,
+  rpcResponse,
+  rpcResponseError,
+} from "./aux";
 
 describe("agendaTelefone", () => {
   let tracker: Tracker;
@@ -38,7 +43,7 @@ describe("agendaTelefone", () => {
   });
 
   it("agendaTelefoneSchema", async () => {
-    const rsp = await apiRequest(app, "crudSchema", {
+    const rsp = await apiRequestQuery(app, "crudSchema", {
       table: "agenda_telefone",
     });
     expect(rsp.status).toEqual(200);
@@ -46,7 +51,7 @@ describe("agendaTelefone", () => {
   });
 
   it("agendaTelefoneRead", async () => {
-    const rsp = await apiRequest(app, "crudRead", {
+    const rsp = await apiRequestQuery(app, "crudRead", {
       table: "agenda_telefone",
       id: { agenda_telefone_id: "171" },
     });
@@ -67,7 +72,7 @@ describe("agendaTelefone", () => {
   });
 
   it("agendaTelefoneList", async () => {
-    const rsp = await apiRequest(app, "crudList", {
+    const rsp = await apiRequestQuery(app, "crudList", {
       table: "agenda_telefone",
       where: [["agenda_telefone_id", "=", "171"]],
     });
@@ -90,7 +95,7 @@ describe("agendaTelefone", () => {
   });
 
   it("agendaTelefoneDel", async () => {
-    const rsp = await apiRequest(app, "crudDel", {
+    const rsp = await apiRequestMutation(app, "crudDel", {
       table: "agenda_telefone",
       id: { agenda_telefone_id: "171" },
     });
@@ -103,7 +108,7 @@ describe("agendaTelefone", () => {
   });
 
   it("agendaTelefoneCreate", async () => {
-    const rsp = await apiRequest(app, "crudCreate", {
+    const rsp = await apiRequestMutation(app, "crudCreate", {
       table: "agenda_telefone",
       data: { agenda_telefone_id: "171" },
     });
@@ -120,7 +125,7 @@ describe("agendaTelefone", () => {
   });
 
   it("agendaTelefoneCreate no params", async () => {
-    const rsp = await apiRequest(app, "crudCreate", {
+    const rsp = await apiRequestMutation(app, "crudCreate", {
       table: "agenda_telefone",
     });
     expect(rsp.status).toEqual(200);
@@ -130,7 +135,7 @@ describe("agendaTelefone", () => {
   });
 
   it("agendaTelefoneUpdate", async () => {
-    const rsp = await apiRequest(app, "crudUpdate", {
+    const rsp = await apiRequestMutation(app, "crudUpdate", {
       table: "agenda_telefone",
       id: { agenda_telefone_id: "171" },
       data: { agenda_telefone_id: "172" },
@@ -148,7 +153,7 @@ describe("agendaTelefone", () => {
   });
 
   it("agendaTelefoneUpdate no params", async () => {
-    const rsp = await apiRequest(app, "crudUpdate", {
+    const rsp = await apiRequestMutation(app, "crudUpdate", {
       table: "agenda_telefone",
     });
     expect(rsp.status).toEqual(200);

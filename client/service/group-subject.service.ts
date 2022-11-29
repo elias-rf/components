@@ -5,34 +5,19 @@ import { rpcFactory } from "../lib/http/rpc.factory";
 export type { TGroupSubject };
 
 export const groupSubjectService = {
-  ...rpcFactory<TGroupSubject>("groupSubject"),
+  ...rpcFactory<TGroupSubject>("group_subject"),
 
-  async can(idGroup: string, idSubject: string) {
-    const response = await groupSubjectService.read([idGroup, idSubject]);
+  async can(group_id: string, subject_id: string) {
+    const response = await groupSubjectService.read({ group_id, subject_id });
     const permitted = !isEmpty(response);
-
-    // Cadastra novas permissões para o grupo dev
-    // if (idGroup === "dev") {
-    //   if (!permitted) {
-    //     console.log(
-    //       `🚀 ~ file: group-subject.service.ts ~ line 26 ~ can ~ permitted`,
-    //       permitted
-    //     );
-    //     await groupSubjectService.create({
-    //       idGroup,
-    //       idSubject,
-    //     });
-    //   }
-    //   permitted = true;
-    // }
 
     return permitted;
   },
 
   clear() {
     return {
-      idGroup: "",
-      idSubject: "",
+      group_id: "",
+      subject_id: "",
     };
   },
 };

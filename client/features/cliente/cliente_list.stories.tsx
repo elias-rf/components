@@ -8,7 +8,7 @@ import { ClienteList } from "./cliente_list";
 const queryClient = new QueryClient();
 
 export default {
-  title: "Features/Cliente",
+  title: "features/cliente",
   component: ClienteList,
   argTypes: {
     showOrderBy: { monitor: "order" },

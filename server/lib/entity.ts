@@ -1,6 +1,8 @@
 import type {
+  TConnections,
   TCreateArgs,
   TDelArgs,
+  TFieldServer,
   TGenericObject,
   TListArgs,
   TPks,
@@ -27,7 +29,7 @@ import { isOrder } from "../../utils/validate/is-order";
 import { isSelect } from "../../utils/validate/is-select";
 import { isWhere } from "../../utils/validate/is-where";
 import { db } from "../api/db";
-import { TConnections, TDbs } from "../dal/connections";
+import { TDbs } from "../dal/connections";
 import { recordClear } from "./record-clear";
 import { validateThrow } from "./validate-throw";
 

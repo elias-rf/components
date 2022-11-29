@@ -1,0 +1,19 @@
+### Index
+GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"crud"}
+Content-Type: application/json
+
+### Schema
+GET http://localhost:3000/api/rpc
+?rpc={"jsonrpc":"2.0","id":"2","method":"crudSchema","params":{"table":"agenda_telefone"}}
+
+### Cliente
+GET http://localhost:3000/api/rpc
+?rpc={"jsonrpc":"2.0","id":"2","method":"crudList","params":{"table":"cliente","where":[["cliente_id","=",206]]}}
+
+### Cliente
+GET http://localhost:3000/api/rpc
+?rpc={"jsonrpc":"2.0","id":"2","method":"crudRead","params":{"table":"cliente","id":{"cliente_id":206}}}
+
+### NFSaida
+GET http://localhost:3000/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"crudList","params":{"table":"nf_saida","limit":100,"select":["nota_id","cliente_id"],"order":[["cliente_id","asc"]],"where":[["nota_id",">",55500]]}}

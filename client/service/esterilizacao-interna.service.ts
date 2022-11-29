@@ -8,14 +8,14 @@ export const esterilizacaoInternaService = {
   ...rpcFactory<TEsterilizacaoInterna>("esterilizacaoExterna"),
 
   schemaDiario() {
-    return fetcherRpc("esterilizacaoInternaSchemaDiario");
+    return fetcherRpc.query("esterilizacaoInternaSchemaDiario");
   },
 
   async diario(inicio: string, fim: string): Promise<any[]> {
     if (isEmpty(inicio) || isEmpty(fim)) {
       return [];
     }
-    const response = await fetcherRpc("esterilizacaoInternaDiario", {
+    const response = await fetcherRpc.query("esterilizacaoInternaDiario", {
       inicio,
       fim,
     });
@@ -27,36 +27,36 @@ export const esterilizacaoInternaService = {
   },
 
   schemaMensal() {
-    return fetcherRpc("esterilizacaoInternaSchemaMensal");
+    return fetcherRpc.query("esterilizacaoInternaSchemaMensal");
   },
 
   async mensal(mes: string): Promise<any[]> {
     if (isEmpty(mes)) {
       return [];
     }
-    return fetcherRpc("esterilizacaoInternaMensal", { mes });
+    return fetcherRpc.query("esterilizacaoInternaMensal", { mes });
   },
 
   schemaProduto() {
-    return fetcherRpc("esterilizacaoInternaSchemaProduto");
+    return fetcherRpc.query("esterilizacaoInternaSchemaProduto");
   },
 
   async produto(data: string): Promise<any[]> {
     if (isEmpty(data)) {
       return [];
     }
-    return fetcherRpc("esterilizacaoInternaProduto", { data });
+    return fetcherRpc.query("esterilizacaoInternaProduto", { data });
   },
 
   schemaModelo() {
-    return fetcherRpc("esterilizacaoInternaSchemaModelo");
+    return fetcherRpc.query("esterilizacaoInternaSchemaModelo");
   },
 
   async modelo(data: string, produto: string): Promise<any[]> {
     if (isEmpty(data) || isEmpty(produto)) {
       return [];
     }
-    return fetcherRpc("esterilizacaoInternaModelo", {
+    return fetcherRpc.query("esterilizacaoInternaModelo", {
       data,
       produto,
     });

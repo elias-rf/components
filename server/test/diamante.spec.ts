@@ -11,7 +11,7 @@ import {
 } from "vitest";
 import { app } from "../app";
 import { setTracker } from "../lib/set_tracker";
-import { apiRequest, rpcResponse } from "./aux";
+import { apiRequestMutation, apiRequestQuery, rpcResponse } from "./aux";
 
 describe("diamante", () => {
   let tracker: Tracker;
@@ -37,13 +37,13 @@ describe("diamante", () => {
   });
 
   it("diamanteSchema", async () => {
-    const rsp = await apiRequest(app, "crudSchema", { table: "diamante" });
+    const rsp = await apiRequestQuery(app, "crudSchema", { table: "diamante" });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(expect.any(Array)));
   });
 
   it("diamanteRead", async () => {
-    const rsp = await apiRequest(app, "crudRead", {
+    const rsp = await apiRequestQuery(app, "crudRead", {
       table: "diamante",
       id: { diamante_id: "1" },
       select: ["diamante_id"],
@@ -61,7 +61,7 @@ describe("diamante", () => {
   });
 
   it("diamanteList", async () => {
-    const rsp = await apiRequest(app, "crudList", {
+    const rsp = await apiRequestQuery(app, "crudList", {
       table: "diamante",
       where: [["diamante_id", "=", "A"]],
       select: ["diamante_id"],
@@ -81,7 +81,7 @@ describe("diamante", () => {
   });
 
   it("diamanteDel", async () => {
-    const rsp = await apiRequest(app, "crudDel", {
+    const rsp = await apiRequestMutation(app, "crudDel", {
       table: "diamante",
       id: { diamante_id: "1" },
     });
@@ -94,7 +94,7 @@ describe("diamante", () => {
   });
 
   it("diamanteCreate", async () => {
-    const rsp = await apiRequest(app, "crudCreate", {
+    const rsp = await apiRequestMutation(app, "crudCreate", {
       table: "diamante",
       data: { diamante_id: "1" },
     });
@@ -111,7 +111,7 @@ describe("diamante", () => {
   });
 
   it("diamanteUpdate", async () => {
-    const rsp = await apiRequest(app, "crudUpdate", {
+    const rsp = await apiRequestMutation(app, "crudUpdate", {
       table: "diamante",
       id: { diamante_id: "A" },
       data: { diamante_id: "B" },

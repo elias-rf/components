@@ -1,6 +1,5 @@
-import { TIds } from "../../../types";
+import { TConnections, TIds } from "../../../types";
 import { renameToFieldObject } from "../../../utils/schema/rename-fields";
-import { TConnections } from "../../dal/connections";
 import { db } from "../db";
 
 export function produtoEstatisticaModel(connections: TConnections) {

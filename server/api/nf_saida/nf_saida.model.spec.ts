@@ -1,8 +1,8 @@
 import Knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
+import { TConnections } from "../../../types";
 import { knexMockHistory } from "../../../utils/data/knex_mock_history";
-import { TConnections } from "../../dal/connections";
 import { setTracker } from "../../lib/set_tracker";
 import { nfSaidaModel } from "./nf_saida.model";
 
@@ -29,7 +29,7 @@ describe("nfSaidaModel", () => {
   });
 
   it("transferenciaDiario", async () => {
-    const rsp = await nfSaida.transferenciaDiario({
+    const rsp = await nfSaida.nfSaidaTransferenciaDiario({
       inicio: "2020-01-01",
       fim: "2020-01-31",
     });
@@ -45,7 +45,7 @@ describe("nfSaidaModel", () => {
   });
 
   it("transferenciaMensal", async () => {
-    const rsp = await nfSaida.transferenciaMensal({
+    const rsp = await nfSaida.nfSaidaTransferenciaMensal({
       mes: "2020-01",
     });
     expect(rsp).toEqual([{ mes: "2020-01", categoria: 10 }]);
@@ -60,10 +60,11 @@ describe("nfSaidaModel", () => {
   });
 
   it("transferenciaModelo", async () => {
-    const rsp = await nfSaida.transferenciaModelo({
+    const rsp = await nfSaida.nfSaidaTransferenciaModelo({
       data: "2020-01-01",
     });
     expect(rsp).toEqual([{ modelo: "modelo", quantidade: 10 }]);
+
     expect(knexMockHistory(tracker)).toEqual({
       any: [
         {
@@ -75,12 +76,13 @@ describe("nfSaidaModel", () => {
   });
 
   it("vendaDiario", async () => {
-    const rsp = await nfSaida.vendaDiario({
+    const rsp = await nfSaida.nfSaidaVendaDiario({
       inicio: "2020-01-01",
       fim: "2020-01-31",
       uf: ["MG"],
     });
     expect(rsp).toEqual([{ categoria: "categoria", DtEmissao: "2020-01-01" }]);
+
     expect(knexMockHistory(tracker)).toEqual({
       any: [
         {
@@ -104,7 +106,7 @@ describe("nfSaidaModel", () => {
   });
 
   it("vendaMensal", async () => {
-    const rsp = await nfSaida.vendaMensal({
+    const rsp = await nfSaida.nfSaidaVendaMensal({
       inicio: "2020-01-01",
       fim: "2020-01-31",
       cliente: 123,
@@ -133,14 +135,14 @@ describe("nfSaidaModel", () => {
             "2020-01-31",
             123,
           ],
-          sql: `select "CategPro"."NmCategoria", "MestreNota"."CdCliente", CONVERT(char(7), MestreNota.DtEmissao, 126) AS anoMes, sum(case MestreNota.tipo when 'E' then ItemNota.Quantidade * -1 when 'S' then ItemNota.Quantidade end) as quantidade, sum(itemNota.VlLiquido * (case MestreNota.tipo when 'E' then ItemNota.Quantidade * -1 when 'S' then ItemNota.Quantidade end)) AS valor from MestreNota, ItemNota, CadVen, NatOpe, CadPro, CategPro where "MestreNota"."FgEstatistica" = ? and "MestreNota"."CdFilial" = ? and "CadPro"."FgEstatistica" = ? and "CadVen"."FgControle" = ? and "ItemNota"."ImprimeComponentes" = ? and "ItemNota"."Sequencia" > ? and "MestreNota"."Tipo" <> ? and "MestreNota"."DtEmissao" between ? and ? and "MestreNota"."CdCliente" = ? and ItemNota.CdFilial = MestreNota.CdFilial and ItemNota.Serie = MestreNota.Serie and ItemNota.Modelo = MestreNota.Modelo and ItemNota.NumNota = MestreNota.NumNota and CadPro.CdCategoria = CategPro.CdCategoria and NatOpe.Nop = MestreNota.Nop and CadVen.CdVendedor = MestreNota.CdVendedor and CadPro.CdProduto = ItemNota.CdProduto group by "CdCliente", "NmCategoria", CONVERT(char(7), dbo.MestreNota.DtEmissao, 126) order by CONVERT(CHAR(7),[MestreNota].[DtEmissao],126) DESC`,
+          sql: `select "CategPro"."NmCategoria", "MestreNota"."CdCliente", CONVERT(char(7), MestreNota.DtEmissao, 126) AS anoMes, sum(case MestreNota.tipo when 'E' then ItemNota.Quantidade * -1 when 'S' then ItemNota.Quantidade end) as quantidade, sum(itemNota.VlLiquido * (case MestreNota.tipo when 'E' then ItemNota.Quantidade * -1 when 'S' then ItemNota.Quantidade end)) AS valor from "MestreNota" inner join "ItemNota" on "MestreNota"."CdFilial" = "ItemNota"."CdFilial" and "MestreNota"."Serie" = "ItemNota"."Serie" and "MestreNota"."Modelo" = "ItemNota"."Modelo" and "MestreNota"."NumNota" = "ItemNota"."NumNota" inner join "NatOpe" on "NatOpe"."Nop" = "MestreNota"."Nop" inner join "CadVen" on "CadVen"."CdVendedor" = "MestreNota"."CdVendedor" inner join "CadPro" on "CadPro"."CdProduto" = "ItemNota"."CdProduto" inner join "CategPro" on "CadPro"."CdCategoria" = "CategPro"."CdCategoria" where "MestreNota"."FgEstatistica" = ? and "MestreNota"."CdFilial" = ? and "CadPro"."FgEstatistica" = ? and "CadVen"."FgControle" = ? and "ItemNota"."ImprimeComponentes" = ? and "ItemNota"."Sequencia" > ? and "MestreNota"."Tipo" <> ? and "MestreNota"."DtEmissao" between ? and ? and "MestreNota"."CdCliente" = ? group by "CdCliente", "NmCategoria", CONVERT(char(7), dbo.MestreNota.DtEmissao, 126)`,
         },
       ],
     });
   });
 
   it("vendaAnalitico", async () => {
-    const rsp = await nfSaida.vendaAnalitico({
+    const rsp = await nfSaida.nfSaidaVendaAnalitico({
       inicio: "2020-01-01",
       fim: "2020-01-31",
     });
@@ -156,6 +158,7 @@ describe("nfSaidaModel", () => {
         origem: "FV",
       },
     ]);
+
     expect(knexMockHistory(tracker)).toEqual({
       any: [
         {

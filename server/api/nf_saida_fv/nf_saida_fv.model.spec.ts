@@ -1,8 +1,8 @@
 import Knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
+import { TConnections } from "../../../types";
 import { knexMockHistory } from "../../../utils/data/knex_mock_history";
-import { TConnections } from "../../dal/connections";
 import { setTracker } from "../../lib/set_tracker";
 import { nfSaidaFvModel } from "./nf_saida_fv.model";
 
@@ -29,7 +29,7 @@ describe("nfSaidaFvModel", () => {
   });
 
   it("vendaDiario", async () => {
-    const rsp = await nfSaida.vendaDiario({
+    const rsp = await nfSaida.nfSaidaFvVendaDiario({
       inicio: "2020-01-01",
       fim: "2020-01-31",
       uf: ["MG"],
@@ -59,7 +59,7 @@ describe("nfSaidaFvModel", () => {
   });
 
   it("vendaMensal", async () => {
-    const rsp = await nfSaida.vendaMensal({
+    const rsp = await nfSaida.nfSaidaFvVendaMensal({
       inicio: "2020-01-01",
       fim: "2020-01-31",
       cliente_id: 123,
@@ -95,7 +95,7 @@ describe("nfSaidaFvModel", () => {
   });
 
   it("vendaAnalitico", async () => {
-    const rsp = await nfSaida.vendaAnalitico({
+    const rsp = await nfSaida.nfSaidaFvVendaAnalitico({
       inicio: "2020-01-01",
       fim: "2020-01-31",
     });

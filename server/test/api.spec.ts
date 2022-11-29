@@ -11,7 +11,7 @@ import {
 } from "vitest";
 import { app } from "../app";
 import { setTracker } from "../lib/set_tracker";
-import { apiRequest, rpcResponseError } from "./aux";
+import { apiRequestQuery, rpcResponseError } from "./aux";
 
 describe("Api", () => {
   let tracker: Tracker;
@@ -37,13 +37,13 @@ describe("Api", () => {
   });
 
   it("method desconhecido", async () => {
-    const rsp = await apiRequest(app, "agendaTelefoneSchemaDesc", {});
+    const rsp = await apiRequestQuery(app, "agendaTelefoneSchemaDesc", {});
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponseError(-32601, "Method not found"));
   });
 
   it("indice", async () => {
-    const rsp = await apiRequest(app, "index", {});
+    const rsp = await apiRequestQuery(app, "index", {});
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toMatchSnapshot();
   });

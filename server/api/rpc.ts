@@ -1,5 +1,6 @@
+import { TConnections } from "../../types";
 import { rpcServer } from "../../utils/rpc/rpc-server";
-import { connections, TConnections } from "../dal/connections";
+import { connections } from "../dal/connections";
 
 // @index(['./**/*.rpc.ts','!./**/*.spec.ts','!./**/*.old.rpc.ts'], (f, _) => `import {${_.camelCase(f.name)}, T${_.pascalCase(f.name)}} from '${f.path}'`)
 import { crudRpc } from "./crud/crud.rpc";
@@ -21,40 +22,25 @@ type TLibRpc = (connections: TConnections) => any;
 
 export const rpc = rpcServer();
 
-// type TIndexRpc = {
-//   index(): Promise<string[]>;
-// };
-
-function index() {
-  return rpc.list().sort();
+function index(procedure: string) {
+  return rpc.list(procedure);
 }
 
 function register(lib: TLibRpc) {
   const libRpc = lib(connections);
-  Object.keys(libRpc).forEach((key) => {
-    rpc.addMethod(key, libRpc[key]);
-  });
+  if (Object.hasOwn(libRpc, "mutation")) {
+    Object.keys(libRpc?.mutation).forEach((key) => {
+      rpc.addMethod("mutation", key, libRpc.mutation[key]);
+    });
+  }
+  if (Object.hasOwn(libRpc, "query")) {
+    Object.keys(libRpc?.query).forEach((key) => {
+      rpc.addMethod("query", key, libRpc.query[key]);
+    });
+  }
 }
 
-// export type TApiRpc =
-//   // @index(['./**/*.rpc.ts','!./**/*.spec.ts','!./**/*.old.rpc.ts'], (f, _) => `T${_.pascalCase(f.name)} &`)
-//   TCrudRpc &
-//     TEchoRpc &
-//     TEsterilizacaoExternaRpc &
-//     TEsterilizacaoInternaRpc &
-//     TEstoqueRpc &
-//     TNfEntradaRpc &
-//     TNfSaidaFvRpc &
-//     TNfSaidaRpc &
-//     TOperacaoProducaoRpc &
-//     TOrdemProducaoRpc &
-//     TProdutoEstatisticaRpc &
-//     TProdutoItemRpc &
-//     TUsuarioRpc &
-//     // @endindex
-//     TIndexRpc;
-
-rpc.addMethod("index", index);
+rpc.addMethod("query", "index", index);
 // @index(['./**/*.rpc.ts','!./**/*.spec.ts','!./**/*.old.rpc.ts'], (f, _) => `register(${_.camelCase(f.name)});`)
 register(crudRpc);
 register(echoRpc);

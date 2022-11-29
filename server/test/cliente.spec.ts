@@ -11,7 +11,12 @@ import {
 } from "vitest";
 import { app } from "../app";
 import { setTracker } from "../lib/set_tracker";
-import { apiRequest, rpcResponse, rpcResponseError } from "./aux";
+import {
+  apiRequestMutation,
+  apiRequestQuery,
+  rpcResponse,
+  rpcResponseError,
+} from "./aux";
 
 describe("cliente", () => {
   let tracker: Tracker;
@@ -37,13 +42,13 @@ describe("cliente", () => {
   });
 
   it("clienteSchema", async () => {
-    const rsp = await apiRequest(app, "crudSchema", { table: "cliente" });
+    const rsp = await apiRequestQuery(app, "crudSchema", { table: "cliente" });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(expect.any(Array)));
   });
 
   it("clienteRead", async () => {
-    const rsp = await apiRequest(app, "crudRead", {
+    const rsp = await apiRequestQuery(app, "crudRead", {
       table: "cliente",
       id: { cliente_id: -10 },
       select: ["cliente_id"],
@@ -61,7 +66,7 @@ describe("cliente", () => {
   });
 
   it("clienteList", async () => {
-    const rsp = await apiRequest(app, "crudList", {
+    const rsp = await apiRequestQuery(app, "crudList", {
       table: "cliente",
       where: [["cliente_id", "=", -10]],
     });
@@ -76,7 +81,7 @@ describe("cliente", () => {
   });
 
   it("clienteDel", async () => {
-    const rsp = await apiRequest(app, "crudDel", {
+    const rsp = await apiRequestMutation(app, "crudDel", {
       table: "cliente",
       id: { cliente_id: "171" },
     });
@@ -85,7 +90,7 @@ describe("cliente", () => {
   });
 
   it("clienteCreate", async () => {
-    const rsp = await apiRequest(app, "crudCreate", {
+    const rsp = await apiRequestMutation(app, "crudCreate", {
       table: "cliente",
       data: { cliente_id: -10 },
     });
@@ -98,7 +103,9 @@ describe("cliente", () => {
   });
 
   it("clienteCreate no params", async () => {
-    const rsp = await apiRequest(app, "crudCreate", { table: "cliente" });
+    const rsp = await apiRequestMutation(app, "crudCreate", {
+      table: "cliente",
+    });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(
       rpcResponseError("Error", "Select deve ser um array ou objeto")
@@ -106,7 +113,7 @@ describe("cliente", () => {
   });
 
   it("clienteUpdate", async () => {
-    const rsp = await apiRequest(app, "crudUpdate", {
+    const rsp = await apiRequestMutation(app, "crudUpdate", {
       table: "cliente",
       id: { cliente_id: "171" },
       data: { cliente_id: "172" },

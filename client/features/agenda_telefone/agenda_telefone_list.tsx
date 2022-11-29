@@ -29,12 +29,11 @@ export function AgendaTelefoneList({
   });
 
   const list = useQuery({
-    queryKey: ["agenda_telefone", "get", where, order],
-    queryFn: ({ queryKey }) =>
-      agendaTelefoneService.list(
-        queryKey[2] as TWhere[],
-        queryKey[3] as TOrder[]
-      ),
+    queryKey: ["agenda_telefone", where, order],
+    queryFn: ({ queryKey }) => {
+      const [_key1, where, order] = queryKey as [string, TWhere[], TOrder[]];
+      return agendaTelefoneService.list(where, order);
+    },
   });
 
   return (

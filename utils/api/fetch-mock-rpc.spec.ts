@@ -16,6 +16,7 @@ describe("fetchMockRpc", () => {
       body: { result: [{ CAD: 2.42 }] },
     });
     const responseRead = await fetch("/api/rpc", {
+      method: "POST",
       body: JSON.stringify({
         jsonrpc: "2.0",
         id: 1,
@@ -35,11 +36,13 @@ describe("fetchMockRpc", () => {
       {
         url: "/api/rpc",
         options: {
+          method: "POST",
           body: '{"jsonrpc":"2.0","id":1,"method":"read","params":{"foo":"foo"}}',
         },
       },
     ]);
     const responseList = await fetch("/api/rpc", {
+      method: "POST",
       body: JSON.stringify({
         jsonrpc: "2.0",
         id: 1,
@@ -59,12 +62,14 @@ describe("fetchMockRpc", () => {
       {
         url: "/api/rpc",
         options: {
+          method: "POST",
           body: '{"jsonrpc":"2.0","id":1,"method":"read","params":{"foo":"foo"}}',
         },
       },
       {
         url: "/api/rpc",
         options: {
+          method: "POST",
           body: '{"jsonrpc":"2.0","id":1,"method":"list","params":{"foo":"foo"}}',
         },
       },

@@ -1,4 +1,4 @@
-import { TIds, TOrder, TSelect, TWhere } from "../../../types";
+import { TFieldClient, TIds, TOrder, TSelect, TWhere } from "../../../types";
 import { fetcherRpc } from "../../../utils/api/fetcher-rpc";
 
 type TCrudFactory<Rec> = {
@@ -19,14 +19,16 @@ type TCrudFactory<Rec> = {
 export function crudFactory<Rec>(table: string): TCrudFactory<Rec> {
   return {
     async schema() {
-      return fetcherRpc(`crudSchema`, { table }) as Promise<TFieldClient[]>;
+      return fetcherRpc.query(`crudSchema`, { table }) as Promise<
+        TFieldClient[]
+      >;
     },
     async clear() {
-      return fetcherRpc(`crudClear`, { table }) as Promise<Rec>;
+      return fetcherRpc.query(`crudClear`, { table }) as Promise<Rec>;
     },
 
     async list(where?, order?, limit = 500, select?) {
-      return fetcherRpc(`crudList`, {
+      return fetcherRpc.query(`crudList`, {
         table,
         where,
         order,
@@ -36,19 +38,23 @@ export function crudFactory<Rec>(table: string): TCrudFactory<Rec> {
     },
 
     async read(id) {
-      return fetcherRpc(`crudRead`, { table, id }) as Promise<Rec>;
+      return fetcherRpc.query(`crudRead`, { table, id }) as Promise<Rec>;
     },
 
     async create(data) {
-      return fetcherRpc(`crudCreate`, { table, data }) as Promise<Rec>;
+      return fetcherRpc.mutation(`crudCreate`, { table, data }) as Promise<Rec>;
     },
 
     async update(id, data) {
-      return fetcherRpc(`crudUpdate`, { table, id, data }) as Promise<Rec>;
+      return fetcherRpc.mutation(`crudUpdate`, {
+        table,
+        id,
+        data,
+      }) as Promise<Rec>;
     },
 
     async del(id) {
-      return fetcherRpc(`crudDel`, { table, id }) as Promise<number>;
+      return fetcherRpc.mutation(`crudDel`, { table, id }) as Promise<number>;
     },
   };
 }

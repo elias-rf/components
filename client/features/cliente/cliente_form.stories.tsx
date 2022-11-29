@@ -7,7 +7,7 @@ import { ClienteForm } from "./cliente_form";
 const queryClient = new QueryClient();
 
 export default {
-  title: "Features/Cliente",
+  title: "features/cliente",
   component: ClienteForm,
   args: {
     selected: { cliente_id: 1 },

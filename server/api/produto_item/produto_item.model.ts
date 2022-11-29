@@ -1,6 +1,5 @@
-import { TIds, TSelect } from "../../../types";
+import { TConnections, TIds, TSelect } from "../../../types";
 import { TProdutoPlano } from "../../../types/produto_plano.type";
-import { TConnections } from "../../dal/connections";
 import { crudModel } from "../crud/crud.model";
 
 /**

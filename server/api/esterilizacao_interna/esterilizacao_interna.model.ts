@@ -1,26 +1,24 @@
+import { TConnections, TFieldClient } from "../../../types";
 import { isString } from "../../../utils/identify/is-string";
-import { TConnections } from "../../dal/connections";
 import { validateIsThrow } from "../../lib/validate-is-throw";
 
 export function esterilizacaoInternaModel(connections: TConnections) {
   const knex = connections.oftalmo;
   return {
-    async schemaDiario(): Promise<TFieldServer[]> {
+    async schemaDiario(): Promise<TFieldClient[]> {
       return [
         {
-          field: "dia",
           name: "dia",
           label: "Dia",
           type: "string",
+          primaryKey: true,
         },
         {
-          field: "diaSemana",
           name: "dia_semana",
           label: "Dia Semana",
           type: "string",
         },
         {
-          field: "quantidade",
           name: "quantidade",
           label: "Quantidade",
           type: "string",
@@ -29,16 +27,15 @@ export function esterilizacaoInternaModel(connections: TConnections) {
     },
 
     // SCHEMA MENSAL
-    async schemaMensal(): Promise<TFieldServer[]> {
+    async schemaMensal(): Promise<TFieldClient[]> {
       return [
         {
-          field: "mes",
           name: "mes",
           label: "Mês",
           type: "string",
+          primaryKey: true,
         },
         {
-          field: "quantidade",
           name: "quantidade",
           label: "Quantidade",
           type: "string",
@@ -47,16 +44,15 @@ export function esterilizacaoInternaModel(connections: TConnections) {
     },
 
     // SCHEMA PRODUTO
-    async schemaProduto(): Promise<TFieldServer[]> {
+    async schemaProduto(): Promise<TFieldClient[]> {
       return [
         {
-          field: "produto",
           name: "produto",
           label: "Produto",
           type: "string",
+          primaryKey: true,
         },
         {
-          field: "quantidade",
           name: "quantidade",
           label: "Quantidade",
           type: "int",
@@ -65,16 +61,15 @@ export function esterilizacaoInternaModel(connections: TConnections) {
     },
 
     // SCHEMA MODELO
-    async schemaModelo(): Promise<TFieldServer[]> {
+    async schemaModelo(): Promise<TFieldClient[]> {
       return [
         {
-          field: "modelo",
           name: "modelo",
           label: "Modelo",
           type: "string",
+          primaryKey: true,
         },
         {
-          field: "quantidade",
           name: "quantidade",
           label: "Quantidade",
           type: "int",

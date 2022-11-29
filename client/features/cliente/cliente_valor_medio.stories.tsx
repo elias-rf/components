@@ -7,7 +7,7 @@ import { ClienteValorMedio } from "./cliente_valor_medio";
 const queryClient = new QueryClient();
 
 export default {
-  title: "Features/Cliente",
+  title: "features/cliente",
   component: ClienteValorMedio,
   args: {
     id: { cliente_id: 189 },

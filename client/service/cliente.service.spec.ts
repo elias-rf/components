@@ -154,13 +154,12 @@ describe("clienteService", () => {
       schema: [],
     });
     expect(fetchMockRpc.history(0)).toEqual({
-      url: "/api/rpc",
+      url: '/api/rpc?rpc={"jsonrpc":"2.0","id":1,"method":"crudSchema","params":{"table":"cliente"}}',
       options: {
-        method: "POST",
+        method: "GET",
         headers: {
           "content-type": "application/json",
         },
-        body: '{"jsonrpc":"2.0","id":1,"method":"crudSchema","params":{"table":"cliente"}}',
       },
     });
   });
@@ -195,7 +194,7 @@ describe("clienteService", () => {
   });
 
   it("vendaMensalQuantidade ok", async () => {
-    fetchMockRpc.mock("vendaMensal", {
+    fetchMockRpc.mock("nfSaidaVendaMensal", {
       status: 200,
       body: {
         result: data,
@@ -233,19 +232,18 @@ describe("clienteService", () => {
       },
     ]);
     expect(fetchMockRpc.history(0)).toEqual({
-      url: "/api/rpc",
+      url: '/api/rpc?rpc={"jsonrpc":"2.0","id":2,"method":"nfSaidaVendaMensal","params":{"inicio":"2020-01-01","fim":"2020-12-31","cliente":123}}',
       options: {
-        method: "POST",
+        method: "GET",
         headers: {
           "content-type": "application/json",
         },
-        body: '{"jsonrpc":"2.0","id":2,"method":"vendaMensal","params":{"inicio":"2020-01-01","fim":"2020-12-31","cliente":123}}',
       },
     });
   });
 
   it("vendaMensalValor ok", async () => {
-    fetchMockRpc.mock("vendaMensal", {
+    fetchMockRpc.mock("nfSaidaVendaMensal", {
       status: 200,
       body: {
         result: data,
@@ -283,19 +281,18 @@ describe("clienteService", () => {
       },
     ]);
     expect(fetchMockRpc.history(0)).toEqual({
-      url: "/api/rpc",
+      url: '/api/rpc?rpc={"jsonrpc":"2.0","id":3,"method":"nfSaidaVendaMensal","params":{"inicio":"2020-01-01","fim":"2020-12-31","cliente":123}}',
       options: {
-        method: "POST",
+        method: "GET",
         headers: {
           "content-type": "application/json",
         },
-        body: '{"jsonrpc":"2.0","id":3,"method":"vendaMensal","params":{"inicio":"2020-01-01","fim":"2020-12-31","cliente":123}}',
       },
     });
   });
 
   it("vendaMensalMedio ok", async () => {
-    fetchMockRpc.mock("vendaMensal", {
+    fetchMockRpc.mock("nfSaidaVendaMensal", {
       status: 200,
       body: {
         result: data,
@@ -333,13 +330,12 @@ describe("clienteService", () => {
       },
     ]);
     expect(fetchMockRpc.history(0)).toEqual({
-      url: "/api/rpc",
+      url: '/api/rpc?rpc={"jsonrpc":"2.0","id":4,"method":"nfSaidaVendaMensal","params":{"inicio":"2020-01-01","fim":"2020-12-31","cliente":123}}',
       options: {
-        method: "POST",
+        method: "GET",
         headers: {
           "content-type": "application/json",
         },
-        body: '{"jsonrpc":"2.0","id":4,"method":"vendaMensal","params":{"inicio":"2020-01-01","fim":"2020-12-31","cliente":123}}',
       },
     });
   });

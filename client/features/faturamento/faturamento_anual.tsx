@@ -1,3 +1,4 @@
+import { TFieldClient } from "../../../types";
 import { Table } from "../../components/table/table";
 
 type FaturamentoAnualProps = {

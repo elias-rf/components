@@ -1,9 +1,8 @@
-import { TGenericObject, TIds, TSelect } from "../../../types";
+import { TConnections, TGenericObject, TIds, TSelect } from "../../../types";
 import { TProdutoPlano } from "../../../types/produto_plano.type";
 import { day } from "../../../utils/date/day";
 import { isEmpty } from "../../../utils/identify/is_empty";
 import { module10 } from "../../../utils/string/module10";
-import { TConnections } from "../../dal/connections";
 import { crudModel } from "../crud/crud.model";
 import { produtoItemModel } from "../produto_item/produto_item.model";
 

@@ -6,7 +6,7 @@ import Agenda from "./agenda";
 const queryClient = new QueryClient();
 
 export default {
-  title: "Pages/Agenda",
+  title: "Pages/Outros/Agenda",
   component: Agenda,
   argTypes: {
     showOrderBy: { monitor: "order" },
@@ -27,7 +27,9 @@ export const Default: ComponentStory<typeof Agenda> = () => {
     <QueryClientProvider client={queryClient}>
       <Suspense fallback={<div>loading...</div>}>
         <Agenda />
-      </Suspense>{" "}
+      </Suspense>
     </QueryClientProvider>
   );
 };
+
+Default.storyName = "Agenda";

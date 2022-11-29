@@ -8,7 +8,7 @@ import { AgendaTelefoneList } from "./agenda_telefone_list";
 const queryClient = new QueryClient();
 
 export default {
-  title: "Features/Agenda Telefone",
+  title: "features/agenda_telefone",
   component: AgendaTelefoneList,
   argTypes: {
     showOrderBy: { monitor: "order" },
@@ -53,7 +53,7 @@ export const List: ComponentStory<typeof AgendaTelefoneList> = (props: any) => {
           onWhereEvent={handleWhere}
           onOrderEvent={handleOrder}
         />
-      </Suspense>{" "}
+      </Suspense>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

@@ -25,9 +25,13 @@ export function rpcResponseError(code: any, message: any) {
   };
 }
 
-export async function apiRequest(app: any, method: any, params: any) {
+export async function apiRequestMutation(app: any, method: any, params: any) {
   return request(app)
     .post("/api/rpc")
     .set("Content-Type", "application/json")
     .send(rpcRequest(method, params));
+}
+
+export async function apiRequestQuery(app: any, method: any, params: any) {
+  return request(app).get("/api/rpc?rpc=" + rpcRequest(method, params));
 }

@@ -23,8 +23,8 @@ export const Default: ComponentStory<typeof Button> = () => {
       >
         V2=2
       </Button>
-      <div>{loc1.pathname}</div>
-      <div>{loc1.search}</div>
+      <div>Pathname: {loc1.pathname}</div>
+      <div>Search: {loc1.search}</div>
       <div>Location 2</div>
       <Button
         onClickEvent={() => loc2.replace("?story=uselocation--default&v1=1")}
@@ -36,8 +36,8 @@ export const Default: ComponentStory<typeof Button> = () => {
       >
         V2=2
       </Button>
-      <div>{loc2.pathname}</div>
-      <div>{loc2.search}</div>
+      <div>Pathname: {loc2.pathname}</div>
+      <div>Search: {loc2.search}</div>
     </>
   );
 };

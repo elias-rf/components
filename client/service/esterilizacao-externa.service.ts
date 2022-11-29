@@ -1,3 +1,4 @@
+import { TFieldClient } from "../../types";
 import { TEsterilizacaoExterna } from "../../types/esterilizacao-externa.type";
 import { fetcherRpc } from "../../utils/api/fetcher-rpc";
 import { isEmpty } from "../../utils/identify/is_empty";
@@ -10,14 +11,14 @@ export const esterilizacaoExternaService = {
   ...rpcFactory<TEsterilizacaoExterna>("esterilizacaoExterna"),
 
   async schemaDiario(): Promise<TFieldClient[]> {
-    return fetcherRpc("esterilizacaoExternaSchemaDiario");
+    return fetcherRpc.query("esterilizacaoExternaSchemaDiario");
   },
 
   async diario(inicio: string, fim: string): Promise<any[]> {
     if (isEmpty(inicio) || isEmpty(fim)) {
       return [];
     }
-    const response = await fetcherRpc("esterilizacaoExternaDiario", {
+    const response = await fetcherRpc.query("esterilizacaoExternaDiario", {
       inicio,
       fim,
     });
@@ -29,36 +30,36 @@ export const esterilizacaoExternaService = {
   },
 
   async schemaMensal(): Promise<TFieldClient[]> {
-    return fetcherRpc("esterilizacaoExternaSchemaMensal");
+    return fetcherRpc.query("esterilizacaoExternaSchemaMensal");
   },
 
   async mensal(mes: string): Promise<any[]> {
     if (isEmpty(mes)) {
       return [];
     }
-    return fetcherRpc("esterilizacaoExternaMensal", { mes });
+    return fetcherRpc.query("esterilizacaoExternaMensal", { mes });
   },
 
   async schemaProduto(): Promise<TFieldClient[]> {
-    return fetcherRpc("esterilizacaoExternaSchemaProduto");
+    return fetcherRpc.query("esterilizacaoExternaSchemaProduto");
   },
 
   async produto(data: string): Promise<any[]> {
     if (isEmpty(data)) {
       return [];
     }
-    return fetcherRpc("esterilizacaoExternaProduto", { data });
+    return fetcherRpc.query("esterilizacaoExternaProduto", { data });
   },
 
   async schemaModelo(): Promise<TFieldClient[]> {
-    return fetcherRpc("esterilizacaoExternaSchemaModelo");
+    return fetcherRpc.query("esterilizacaoExternaSchemaModelo");
   },
 
   async modelo(data: string, produto: string): Promise<any[]> {
     if (isEmpty(data) || isEmpty(produto)) {
       return [];
     }
-    return fetcherRpc("esterilizacaoExternaModelo", {
+    return fetcherRpc.query("esterilizacaoExternaModelo", {
       data,
       produto,
     });

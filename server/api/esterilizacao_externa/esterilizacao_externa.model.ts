@@ -1,44 +1,41 @@
+import { TConnections, TFieldClient } from "../../../types";
 import { isString } from "../../../utils/identify/is-string";
-import { TConnections } from "../../dal/connections";
 import { validateIsThrow } from "../../lib/validate-is-throw";
 
 export function esterilizacaoExternaModel(connections: TConnections) {
   const knex = connections.oftalmo;
 
   return {
-    async schemaDiario(): Promise<TFieldServer[]> {
+    async schemaDiario(): Promise<TFieldClient[]> {
       return [
         {
-          field: "dia",
+          name: "dia",
           label: "Dia",
-          name: "Dia",
+          type: "string",
+          primaryKey: true,
+        },
+        {
+          name: "diaSemana",
+          label: "Dia Semana",
           type: "string",
         },
         {
-          field: "diaSemana",
-          label: "dia_semana",
-          name: "Dia Semana",
-          type: "string",
-        },
-        {
-          field: "quantidade",
-          label: "Quantidade",
           name: "quantidade",
+          label: "Quantidade",
           type: "string",
         },
       ];
     },
 
-    async schemaMensal(): Promise<TFieldServer[]> {
+    async schemaMensal(): Promise<TFieldClient[]> {
       return [
         {
-          field: "mes",
           name: "mes",
           label: "Mês",
           type: "string",
+          primaryKey: true,
         },
         {
-          field: "quantidade",
           name: "quantidade",
           label: "Quantidade",
           type: "string",
@@ -46,16 +43,15 @@ export function esterilizacaoExternaModel(connections: TConnections) {
       ];
     },
 
-    async schemaProduto(): Promise<TFieldServer[]> {
+    async schemaProduto(): Promise<TFieldClient[]> {
       return [
         {
-          field: "produto",
           name: "produto",
           label: "Produto",
           type: "string",
+          primaryKey: true,
         },
         {
-          field: "quantidade",
           name: "quantidade",
           label: "Quantidade",
           type: "int",
@@ -64,16 +60,17 @@ export function esterilizacaoExternaModel(connections: TConnections) {
     },
 
     // SCHEMA MODELO
-    async schemaModelo(): Promise<TFieldServer[]> {
+    async schemaModelo(): Promise<TFieldClient[]> {
       return [
         {
-          field: "modelo",
-          name: "Modelo",
+          name: "modelo",
+          label: "Modelo",
           type: "string",
+          primaryKey: true,
         },
         {
-          field: "quantidade",
-          name: "Quantidade",
+          name: "quantidade",
+          label: "Quantidade",
           type: "string",
         },
       ];

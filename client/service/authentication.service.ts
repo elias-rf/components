@@ -13,21 +13,21 @@ function setStore(currentUser: TCurrentUser) {
 /** api de autenticação do usuário */
 export const authenticationService = {
   async isAuthenticated(): Promise<boolean> {
-    const user = await fetcherRpc("me");
+    const user = await fetcherRpc.query("me");
     setStore(user);
     return user.usuario_id !== 0;
   },
   async login(user: string, password: string): Promise<TCurrentUser> {
-    const currentUser = await fetcherRpc("login", { user, password });
+    const currentUser = await fetcherRpc.mutation("login", { user, password });
     setStore(currentUser);
     return currentUser;
   },
   async logout() {
     setStore({ group_id: "", usuario_id: 0, nome: "", nome_login: "" });
-    return fetcherRpc("logout");
+    return fetcherRpc.mutation("logout");
   },
   async me(): Promise<TCurrentUser> {
-    const currentUser = await fetcherRpc("me");
+    const currentUser = await fetcherRpc.query("me");
     setStore(currentUser);
     return currentUser;
   },

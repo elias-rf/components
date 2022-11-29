@@ -1,8 +1,8 @@
 import Knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, test } from "vitest";
+import { TConnections } from "../../../types";
 import { knexMockHistory } from "../../../utils/data/knex_mock_history";
-import { TConnections } from "../../dal/connections";
 import { setTracker } from "../../lib/set_tracker";
 import { esterilizacaoExternaModel } from "./esterilizacao_externa.model";
 

@@ -6,7 +6,7 @@ import Cliente from "./cliente";
 const queryClient = new QueryClient();
 
 export default {
-  title: "Pages/Cliente",
+  title: "Pages/Comercial/Cliente",
   component: Cliente,
   parameters: {
     docs: {
@@ -26,3 +26,5 @@ export const Default: ComponentStory<typeof Cliente> = () => {
     </QueryClientProvider>
   );
 };
+
+Default.storyName = "Cliente";

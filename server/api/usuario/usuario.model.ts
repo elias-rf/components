@@ -1,7 +1,12 @@
-import type { TCurrentUser, TGenericObject, TReadArgs } from "../../../types";
+import type {
+  TConnections,
+  TCurrentUser,
+  TFieldClient,
+  TGenericObject,
+  TReadArgs,
+} from "../../../types";
 import type { TUsuario } from "../../../types/usuario.type";
 import { config } from "../../config";
-import type { TConnections } from "../../dal/connections";
 import { jwtEncode } from "../../lib/jwt-encode";
 import { passwordVerify } from "../../lib/password-verify";
 import { crudModel } from "../crud/crud.model";
@@ -70,31 +75,31 @@ export function usuarioModel(connections: TConnections) {
       return resp;
     },
 
-    async schema(): Promise<TFieldServer[]> {
+    async schema(): Promise<TFieldClient[]> {
       return [
         {
-          field: "kUsuario",
-          name: "Código do usuário",
+          name: "kUsuario",
+          label: "Código do usuário",
           type: "int",
         },
         {
-          field: "NomeUsuario",
-          name: "Login",
+          name: "NomeUsuario",
+          label: "Login",
           type: "string",
         },
         {
-          field: "idGroup",
-          name: "Grupo de segurança",
+          name: "idGroup",
+          label: "Grupo de segurança",
           type: "string",
         },
         {
-          field: "Ativo",
-          name: "Cadastro ativo",
+          name: "Ativo",
+          label: "Cadastro ativo",
           type: "boolean",
         },
         {
-          field: "nome",
-          name: "Nome",
+          name: "nome",
+          label: "Nome",
           type: "string",
         },
       ];

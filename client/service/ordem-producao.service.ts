@@ -39,52 +39,52 @@ export const ordemProducaoService = {
 
   // Retorna produtoItem a partir da ordem de producao
   async getProdutoItem(id: TIds) {
-    return fetcherRpc("ordemProducaoProdutoItem", { id });
+    return fetcherRpc.query("ordemProducaoProdutoItem", { id });
   },
 
   // Retorna produto do plano a partir da ordem de producao
   async getProdutoPlano(id: TIds) {
-    return fetcherRpc("ordemProducaoProdutoPlano", { id });
+    return fetcherRpc.query("ordemProducaoProdutoPlano", { id });
   },
 
   // Retorna produto a partir da ordem de producao
   async getProduto(id: TIds) {
-    return fetcherRpc("ordemProducaoProduto", { id });
+    return fetcherRpc.query("ordemProducaoProduto", { id });
   },
 
   // Retorna data de fabricacao
   async getDataFabricacao(id: TIds) {
-    return fetcherRpc("ordemProducaoDataFabricacao", { id });
+    return fetcherRpc.query("ordemProducaoDataFabricacao", { id });
   },
 
   // Retorna data de validade
   async getDataValidade(id: TIds) {
-    return fetcherRpc("ordemProducaoDataValidade", { id });
+    return fetcherRpc.query("ordemProducaoDataValidade", { id });
   },
 
   // Retorna data de validade
   async getVersao(id: TIds) {
-    return fetcherRpc("ordemProducaoVersao", { id });
+    return fetcherRpc.query("ordemProducaoVersao", { id });
   },
 
   // Retorna numero de controle a partir da ordem de producao e numero de serie
   async getControle(id: TIds, serie: string) {
-    return fetcherRpc("ordemProducaoControle", { id, serie });
+    return fetcherRpc.query("ordemProducaoControle", { id, serie });
   },
 
   // Retorna ordem de producao a partir de um controle
   fromControle({ controle }: { controle: string }) {
-    return fetcherRpc("ordemProducaoFromControle", { controle });
+    return fetcherRpc.query("ordemProducaoFromControle", { controle });
   },
 
   // Valida se número de série é válido
   isControleValid(controle: string) {
-    return fetcherRpc("ordemProducaoControleValido", { controle });
+    return fetcherRpc.query("ordemProducaoControleValido", { controle });
   },
 
   // Lista etiquetas
   listEtiquetas(id: TIds) {
     if (isEmpty(id)) return [];
-    return fetcherRpc("ordemProducaoEtiquetaExterna", { id });
+    return fetcherRpc.query("ordemProducaoEtiquetaExterna", { id });
   },
 };

@@ -2,7 +2,7 @@ import knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { app } from "../app";
-import { apiRequest, rpcResponse } from "./aux";
+import { apiRequestMutation, apiRequestQuery, rpcResponse } from "./aux";
 
 describe("produtoItem", () => {
   let tracker: Tracker;
@@ -30,13 +30,15 @@ describe("produtoItem", () => {
   });
 
   it(`produtoItemSchema`, async () => {
-    const rsp = await apiRequest(app, "crudSchema", { table: "produto_item" });
+    const rsp = await apiRequestQuery(app, "crudSchema", {
+      table: "produto_item",
+    });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(expect.any(Array)));
   });
 
   it(`produtoItemRead`, async () => {
-    const rsp = await apiRequest(app, `crudRead`, {
+    const rsp = await apiRequestQuery(app, `crudRead`, {
       table: "produto_item",
       id: { produto_item_id: 1 },
       select: ["produto_item_id"],
@@ -53,7 +55,7 @@ describe("produtoItem", () => {
   });
 
   it(`produtoItemList`, async () => {
-    const rsp = await apiRequest(app, `crudList`, {
+    const rsp = await apiRequestQuery(app, `crudList`, {
       table: "produto_item",
       where: [["produto_item_id", "=", 1]],
     });
@@ -64,7 +66,7 @@ describe("produtoItem", () => {
   });
 
   it(`produtoItemDel`, async () => {
-    const rsp = await apiRequest(app, `crudDel`, {
+    const rsp = await apiRequestMutation(app, `crudDel`, {
       table: "produto_item",
       id: { produto_item_id: 1 },
     });
@@ -73,7 +75,7 @@ describe("produtoItem", () => {
   });
 
   it(`produtoItemCreate`, async () => {
-    const rsp = await apiRequest(app, `crudCreate`, {
+    const rsp = await apiRequestMutation(app, `crudCreate`, {
       table: "produto_item",
       data: { produto_item_id: 2 },
     });
@@ -82,7 +84,7 @@ describe("produtoItem", () => {
   });
 
   it(`produtoItemUpdate`, async () => {
-    const rsp = await apiRequest(app, "crudUpdate", {
+    const rsp = await apiRequestMutation(app, "crudUpdate", {
       table: "produto_item",
       id: { produto_item_id: 1 },
       data: { produto_plano_id: " 2 " },

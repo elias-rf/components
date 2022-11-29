@@ -16,7 +16,7 @@ import VendaService from "../../service/venda.service";
  *
  * @returns {*} componente react
  */
-function Vendas30dias() {
+export function Vendas30dias() {
   const [vendas, setVendas] = React.useState({
     liteflex: [],
     hilite: [],
@@ -248,5 +248,3 @@ function Vendas30dias() {
     </>
   );
 }
-
-export default Vendas30dias;

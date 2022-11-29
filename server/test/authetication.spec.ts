@@ -12,7 +12,7 @@ import {
 import { knexMockHistory } from "../../utils/data/knex_mock_history";
 import { app } from "../app";
 import { setTracker } from "../lib/set_tracker";
-import { apiRequest, rpcResponse } from "./aux";
+import { apiRequestMutation, rpcResponse } from "./aux";
 
 describe("authentication", () => {
   let tracker: Tracker;
@@ -47,7 +47,7 @@ describe("authentication", () => {
     //     idGroup: "dev",
     //   },
     // ]);
-    const rsp = await apiRequest(app, "login", {
+    const rsp = await apiRequestMutation(app, "login", {
       user: "fulano",
       password: "123",
     });

@@ -1,90 +1,107 @@
-import type { TConnections } from "../../dal/connections";
+import { TConnections, TFieldClient } from "../../../types";
 import { nfSaidaModel } from "./nf_saida.model";
 
 export function nfSaidaRpc(connections: TConnections) {
   const nfSaida = nfSaidaModel(connections);
 
   return {
-    // TRANSFERENCIA DIARIO
-    async transferenciaDiario({
-      inicio,
-      fim,
-    }: {
-      inicio: string;
-      fim: string;
-    }): Promise<any[]> {
-      return nfSaida.transferenciaDiario({ inicio, fim });
-    },
-    async transferenciaDiarioSchema(): Promise<TFieldServer[]> {
-      return nfSaida.transferenciaDiarioSchema();
-    },
+    query: {
+      // TRANSFERENCIA DIARIO
+      async nfSaidaTransferenciaDiario({
+        inicio,
+        fim,
+      }: {
+        inicio: string;
+        fim: string;
+      }): Promise<any[]> {
+        return nfSaida.nfSaidaTransferenciaDiario({ inicio, fim });
+      },
+      async nfSaidaTransferenciaDiarioSchema(): Promise<TFieldClient[]> {
+        return nfSaida.nfSaidaTransferenciaDiarioSchema();
+      },
 
-    // TRANSFERENCIA MENSAL
-    async transferenciaMensal({ mes }: { mes: string }): Promise<any[]> {
-      return nfSaida.transferenciaMensal({ mes });
-    },
-    async transferenciaMensalSchema(): Promise<TFieldServer[]> {
-      return nfSaida.transferenciaMensalSchema();
-    },
+      // TRANSFERENCIA MENSAL
+      async nfSaidaTransferenciaMensal({
+        mes,
+      }: {
+        mes: string;
+      }): Promise<any[]> {
+        return nfSaida.nfSaidaTransferenciaMensal({ mes });
+      },
+      async nfSaidaTransferenciaMensalSchema(): Promise<TFieldClient[]> {
+        return nfSaida.nfSaidaTransferenciaMensalSchema();
+      },
 
-    // TRANSFERENCIA MODELO
-    async transferenciaModelo({ data }: { data: string }): Promise<any[]> {
-      return nfSaida.transferenciaModelo({ data });
-    },
-    async transferenciaModeloSchema(): Promise<TFieldServer[]> {
-      return nfSaida.transferenciaModeloSchema();
-    },
+      // TRANSFERENCIA MODELO
+      async nfSaidaTransferenciaModelo({
+        data,
+      }: {
+        data: string;
+      }): Promise<any[]> {
+        return nfSaida.nfSaidaTransferenciaModelo({ data });
+      },
+      async transferenciaModeloSchema(): Promise<TFieldClient[]> {
+        return nfSaida.nfSaidaTransferenciaModeloSchema();
+      },
 
-    // VENDA DIARIO
-    async vendaDiario({
-      inicio,
-      fim,
-      uf,
-    }: {
-      inicio: string;
-      fim: string;
-      uf: string[];
-    }): Promise<any[]> {
-      return nfSaida.vendaDiario({
+      // VENDA DIARIO
+      async nfSaidaVendaDiario({
         inicio,
         fim,
         uf,
-      });
-    },
-    async vendaDiarioSchema(): Promise<TFieldServer[]> {
-      return nfSaida.vendaDiarioSchema();
-    },
+      }: {
+        inicio: string;
+        fim: string;
+        uf: string[];
+      }): Promise<any[]> {
+        return nfSaida.nfSaidaVendaDiario({
+          inicio,
+          fim,
+          uf,
+        });
+      },
+      async nfSaidaVendaDiarioSchema(): Promise<TFieldClient[]> {
+        return nfSaida.nfSaidaVendaDiarioSchema();
+      },
 
-    /*** VENDA MENSAL ***/
-    async vendaMensal({
-      inicio,
-      fim,
-      cliente,
-    }: {
-      inicio: string;
-      fim: string;
-      cliente: number;
-    }): Promise<any[]> {
-      return nfSaida.vendaMensal({ inicio, fim, cliente });
-    },
+      /*** VENDA MENSAL ***/
+      async nfSaidaVendaMensal({
+        inicio,
+        fim,
+        cliente,
+      }: {
+        inicio: string;
+        fim: string;
+        cliente: number;
+      }): Promise<any[]> {
+        return nfSaida.nfSaidaVendaMensal({ inicio, fim, cliente });
+      },
 
-    /*** VENDA MENSAL SCHEMA ***/
-    async vendaMensalSchema(): Promise<TFieldServer[]> {
-      return nfSaida.vendaMensalSchema();
-    },
+      /*** VENDA MENSAL SCHEMA ***/
+      async nfSaidaVendaMensalSchema(): Promise<TFieldClient[]> {
+        return nfSaida.nfSaidaVendaMensalSchema();
+      },
 
-    // VENDA ANALITICO
-    async vendaAnalitico({
-      inicio,
-      fim,
-    }: {
-      inicio: string;
-      fim: string;
-    }): Promise<any[]> {
-      return nfSaida.vendaAnalitico({ inicio, fim });
-    },
-    async vendaAnaliticoSchema(): Promise<TFieldServer[]> {
-      return nfSaida.vendaAnaliticoSchema();
+      // VENDA ANALITICO
+      async nfSaidaVendaAnalitico({
+        inicio,
+        fim,
+      }: {
+        inicio: string;
+        fim: string;
+      }): Promise<any[]> {
+        return nfSaida.nfSaidaVendaAnalitico({ inicio, fim });
+      },
+
+      // VENDA ANALITICO SCHEMA
+      async nfSaidaVendaAnaliticoSchema(): Promise<TFieldClient[]> {
+        return nfSaida.nfSaidaVendaAnaliticoSchema();
+      },
+
+      // TRANSFERENCIA MODELO SCHEMA
+      async nfSaidaTransferenciaModeloSchema(): Promise<TFieldClient[]> {
+        return nfSaida.nfSaidaTransferenciaModeloSchema();
+      },
     },
   };
 }

@@ -1,4 +1,4 @@
-import { TConnections } from "../../dal/connections";
+import { TConnections, TFieldClient } from "../../../types";
 
 export type TVendasFv = {
   origem: string;
@@ -20,7 +20,7 @@ export function nfSaidaFvModel(connections: TConnections) {
   const knex = connections.plano;
   return {
     // DIARIO
-    async vendaDiario({
+    async nfSaidaFvVendaDiario({
       inicio,
       fim,
       uf,
@@ -64,28 +64,24 @@ export function nfSaidaFvModel(connections: TConnections) {
       return qry;
     },
 
-    async vendaDiarioSchema(): Promise<TFieldServer[]> {
+    async nfSaidaFvVendaDiarioSchema(): Promise<TFieldClient[]> {
       return [
         {
-          field: "DtEmissao",
           name: "Dia",
           label: "Dia",
           type: "string",
         },
         {
-          field: "NmCategoria",
           name: "Produto",
           label: "Produto",
           type: "string",
         },
         {
-          field: "qtd",
           name: "Quantidade",
           label: "Quantidade",
           type: "int",
         },
         {
-          field: "vlr",
           name: "Valor",
           label: "Valor",
           type: "float",
@@ -94,7 +90,7 @@ export function nfSaidaFvModel(connections: TConnections) {
     },
 
     // MENSAL
-    async vendaMensal({
+    async nfSaidaFvVendaMensal({
       inicio,
       fim,
       cliente_id,
@@ -137,34 +133,29 @@ export function nfSaidaFvModel(connections: TConnections) {
       return qry;
     },
 
-    async vendaMensalSchema(): Promise<TFieldServer[]> {
+    async nfSaidaFvVendaMensalSchema(): Promise<TFieldClient[]> {
       return [
         {
-          field: "anoMes",
           name: "anoMes",
           label: "Mês",
           type: "string",
         },
         {
-          field: "CdCliente",
           name: "cliente_id",
           label: "Cód. Cliente",
           type: "int",
         },
         {
-          field: "NmCategoria",
           name: "NmCategoria",
           label: "Produto",
           type: "string",
         },
         {
-          field: "quantidade",
           name: "quantidade",
           label: "Quantidade",
           type: "int",
         },
         {
-          field: "valor",
           name: "valor",
           label: "Valor",
           type: "float",
@@ -172,76 +163,64 @@ export function nfSaidaFvModel(connections: TConnections) {
       ];
     },
 
-    async vendaAnaliticoSchema(): Promise<TFieldServer[]> {
+    async nfSaidaFvVendaAnaliticoSchema(): Promise<TFieldClient[]> {
       return [
         {
-          field: "NmCategoria",
           name: "NmCategoria",
           label: "Categoria",
           type: "string",
         },
         {
-          field: "DtEmissao",
           name: "DtEmissao",
           label: "Emissão",
           type: "date",
         },
         {
-          field: "NumNota",
           name: "NumNota",
           label: "Nota Fiscal",
           type: "string",
         },
         {
-          field: "Serie",
           name: "Serie",
           label: "Série",
           type: "string",
         },
         {
-          field: "Tipo",
           name: "Tipo",
           label: "Tipo",
           type: "string",
         },
         {
-          field: "CdProduto",
           name: "CdProduto",
           label: "Cód Produto",
           type: "float",
         },
         {
-          field: "Quantidade",
           name: "Quantidade",
           label: "Quantidade",
           type: "float",
         },
         {
-          field: "VlTotal",
           name: "VlTotal",
           label: "Valor",
           type: "float",
         },
         {
-          field: "Descricao",
           name: "Descricao",
           label: "Produto",
           type: "float",
         },
         {
-          field: "CdVendedor",
           name: "CdVendedor",
           label: "Cód Vendedor",
           type: "int",
         },
         {
-          field: "NmVendedor",
           name: "NmVendedor",
           label: "Vendedor",
           type: "string",
         },
         {
-          field: "uf",
           name: "uf",
           label: "UF",
           type: "string",
@@ -249,7 +228,13 @@ export function nfSaidaFvModel(connections: TConnections) {
       ];
     },
 
-    async vendaAnalitico({ inicio, fim }: { inicio: string; fim: string }) {
+    async nfSaidaFvVendaAnalitico({
+      inicio,
+      fim,
+    }: {
+      inicio: string;
+      fim: string;
+    }) {
       return knex("MestreNota")
         .select(knex.raw("'FV' as origem"))
         .select([

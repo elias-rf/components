@@ -1,0 +1,30 @@
+### Index
+GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"esterilizacaoExterna"}
+Content-Type: application/json
+
+
+
+### Diario
+GET http://localhost:3000/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"esterilizacaoExternaDiario","params":{"inicio":"2020-01-01","fim":"2020-01-31"}}
+
+### Mensal
+GET http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"esterilizacaoExternaMensal",
+  "params":{
+    "mes":"2021-06"
+  }
+}
+
+### Produto
+GET http://localhost:3000/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"esterilizacaoExternaProduto","params":{"data":"2020-01-10"}}
+
+### Modelo
+GET http://localhost:3000/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"esterilizacaoExternaModelo","params":{"data":"2021-01-10","produto":"LiteFlex"}}

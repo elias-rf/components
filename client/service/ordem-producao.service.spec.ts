@@ -17,7 +17,7 @@ describe("ordemProducaoService", () => {
   });
 
   it("deve ler registro", async () => {
-    fetchMockRpc.mock("ordemProducaoRead", {
+    fetchMockRpc.mock("crudRead", {
       body: {
         result: RECORD_OP,
       },
@@ -27,7 +27,7 @@ describe("ordemProducaoService", () => {
   });
 
   it("deve baixar schema", async () => {
-    fetchMockRpc.mock("ordemProducaoSchema", {
+    fetchMockRpc.mock("crudSchema", {
       body: {
         result: ["kOp"],
       },

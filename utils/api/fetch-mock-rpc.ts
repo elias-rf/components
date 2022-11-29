@@ -52,7 +52,7 @@ export const fetchMockRpc = {
   fetch(url: any, options?: any): Promise<any> {
     history_.push({ url, options });
     let _rsp: any = "";
-    if (options && options.body) {
+    if (options && options.method === "POST" && options.body) {
       const body = JSON.parse(options.body);
       const { method } = body;
       if (!map.has(method)) {
@@ -63,6 +63,19 @@ export const fetchMockRpc = {
       _rsp.id = body.id || "";
       _rsp.method = body.method;
     }
+
+    if (options && options.method === "GET") {
+      const body = JSON.parse(url.split("?rpc=")[1]);
+      const { method } = body;
+      if (!map.has(method)) {
+        return Promise.reject(`${body.method} não encontrado`);
+      }
+      _rsp = map.get(method).body;
+      _rsp.jsonrpc = "2.0";
+      _rsp.id = body.id || "";
+      _rsp.method = body.method;
+    }
+
     return Promise.resolve({
       json: () => {
         return Promise.resolve(_rsp);

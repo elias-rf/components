@@ -1,6 +1,8 @@
 import {
+  TConnections,
   TCreateArgs,
   TCurrentUser,
+  TFieldClient,
   TIds,
   TListArgs,
   TReadArgs,
@@ -13,12 +15,11 @@ import { TProduto } from "../../../types/produto.type";
 import { TProdutoItem } from "../../../types/produto_item.type";
 import { TProdutoPlano } from "../../../types/produto_plano.type";
 import { isUndefined } from "../../../utils/identify/is-undefined";
-import { TConnections } from "../../dal/connections";
 import { crudModel } from "../crud/crud.model";
 import { ordemProducaoModel } from "./ordem_producao.model";
 
 export type TOrdemProducaoRpc = {
-  ordemProducaoSchema(): Promise<TFieldServerServer[]>;
+  ordemProducaoSchema(): Promise<TFieldClient[]>;
   ordemProducaoList(args: TListArgs): Promise<TOrdemProducao[]>;
   ordemProducaoRead(readArgs: TReadArgs): Promise<TOrdemProducao>;
   ordemProducaoCreate(createArgs: TCreateArgs): Promise<TOrdemProducao>;
@@ -73,73 +74,74 @@ export function ordemProducaoRpc(connections: TConnections) {
   const crud = crudModel(connections);
 
   return {
-    // Retorna produtoItem a partir da ordem de producao
-    async ordemProducaoProdutoItem({
-      id,
-      select,
-    }: {
-      id: TIds;
-      select?: TSelect;
-    }) {
-      return ordemProducao.produtoItem({ id, select });
-    },
+    query: {
+      // Retorna produtoItem a partir da ordem de producao
+      async ordemProducaoProdutoItem({
+        id,
+        select,
+      }: {
+        id: TIds;
+        select?: TSelect;
+      }) {
+        return ordemProducao.produtoItem({ id, select });
+      },
 
-    // Retorna produto do plano a partir da ordem de producao
-    async ordemProducaoProdutoPlano({
-      id,
-      select,
-    }: {
-      id: TIds;
-      select?: TSelect;
-    }) {
-      return ordemProducao.produtoPlano({ id, select });
-    },
+      // Retorna produto do plano a partir da ordem de producao
+      async ordemProducaoProdutoPlano({
+        id,
+        select,
+      }: {
+        id: TIds;
+        select?: TSelect;
+      }) {
+        return ordemProducao.produtoPlano({ id, select });
+      },
 
-    // Retorna produto do plano a partir da ordem de producao
-    // prettier-ignore
-    async ordemProducaoProduto({id, select}: { id: TIds; select?: TSelect }) {
+      // Retorna produto do plano a partir da ordem de producao
+      // prettier-ignore
+      async ordemProducaoProduto({id, select}: { id: TIds; select?: TSelect }) {
       return ordemProducao.produto({ id, select });
     },
 
-    // Retorna data de fabricacao
-    // prettier-ignore
-    async ordemProducaoDataFabricacao({id, }: { id: TIds }) {
+      // Retorna data de fabricacao
+      // prettier-ignore
+      async ordemProducaoDataFabricacao({id, }: { id: TIds }) {
       return ordemProducao.dataFabricacao({ id });
     },
 
-    // Retorna data de validade
-    // prettier-ignore
-    async ordemProducaoDataValidade({id, }: { id: TIds }) {
+      // Retorna data de validade
+      // prettier-ignore
+      async ordemProducaoDataValidade({id, }: { id: TIds }) {
       return ordemProducao.dataValidade({ id });
     },
 
-    // Retorna data de validade
-    // prettier-ignore
-    async ordemProducaoVersao({ id }: { id: TIds }) {
+      // Retorna data de validade
+      // prettier-ignore
+      async ordemProducaoVersao({ id }: { id: TIds }) {
       return ordemProducao.versao({ id });
     },
 
-    // Retorna numero de controle a partir da ordem de producao e numero de serie
-    // prettier-ignore
-    async ordemProducaoControle({id,serie }: { id: TIds; serie: string }) {
+      // Retorna numero de controle a partir da ordem de producao e numero de serie
+      // prettier-ignore
+      async ordemProducaoControle({id,serie }: { id: TIds; serie: string }) {
       return ordemProducao.controle({ id, serie });
     },
 
-    // Retorna numero de controle a partir da ordem de producao e numero de serie
-    // prettier-ignore
-    async ordemProducaoFromControle({controle}: { controle: string }) {
+      // Retorna numero de controle a partir da ordem de producao e numero de serie
+      // prettier-ignore
+      async ordemProducaoFromControle({controle}: { controle: string }) {
       return ordemProducao.fromControle({ controle });
     },
 
-    // Valida se número de série é válido
-    // prettier-ignore
-    async ordemProducaoControleValido({controle}: { controle: string }) {
+      // Valida se número de série é válido
+      // prettier-ignore
+      async ordemProducaoControleValido({controle}: { controle: string }) {
       return ordemProducao.isControleValid({ controle });
     },
 
-    // Retorna etiquetas externas emitidas para ordem de producao
-    // prettier-ignore
-    async ordemProducaoEtiquetaExterna({ id }: { id: TIds }) {
+      // Retorna etiquetas externas emitidas para ordem de producao
+      // prettier-ignore
+      async ordemProducaoEtiquetaExterna({ id }: { id: TIds }) {
       let response: TEtiquetaExterna[];
       if (isUndefined(id)) response = [];
       response = (await crud.list({
@@ -151,6 +153,7 @@ export function ordemProducaoRpc(connections: TConnections) {
         limit: 200,
       })) as TEtiquetaExterna[];
       return response;
+    },
     },
   };
 }

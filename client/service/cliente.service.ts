@@ -29,7 +29,7 @@ function getSchema({ inicio, fim }: { inicio: string; fim: string }) {
 export const clienteService = {
   ...crudFactory<TCliente>("cliente"),
   async vendaMensal(args: { inicio: string; fim: string; cliente: number }) {
-    return fetcherRpc("vendaMensal", args);
+    return fetcherRpc.query("nfSaidaVendaMensal", args);
   },
 
   async vendaMensalQuantidadeSchema({
@@ -41,6 +41,7 @@ export const clienteService = {
   }) {
     return getSchema({ inicio, fim });
   },
+
   async vendaMensalValorSchema({
     inicio,
     fim,
@@ -50,6 +51,7 @@ export const clienteService = {
   }) {
     return getSchema({ inicio, fim });
   },
+
   async vendaMensalValorMedioSchema({
     inicio,
     fim,
@@ -65,7 +67,7 @@ export const clienteService = {
     fim: string;
     cliente: number;
   }) {
-    const data = await fetcherRpc("vendaMensal", args);
+    const data = await fetcherRpc.query("nfSaidaVendaMensal", args);
     const rsp: any = {};
     data.forEach(
       ({
@@ -94,7 +96,7 @@ export const clienteService = {
     fim: string;
     cliente: number;
   }) {
-    const data = await fetcherRpc("vendaMensal", args);
+    const data = await fetcherRpc.query("nfSaidaVendaMensal", args);
     const rsp: any = {};
     data.forEach(
       ({
@@ -123,7 +125,7 @@ export const clienteService = {
     fim: string;
     cliente: number;
   }) {
-    const data = await fetcherRpc("vendaMensal", args);
+    const data = await fetcherRpc.query("nfSaidaVendaMensal", args);
     const rsp: any = {};
     data.forEach(
       ({

@@ -1,10 +1,11 @@
+import { TFieldServer } from "../../types";
 import { difference } from "../array/difference";
 import { isNonEmptyObject } from "../identify/is-non-empty-object";
 import { pksFromFields } from "../schema/pks-from-fields";
 
 export function isId(
   id: { [field: string]: any },
-  fields: TField[]
+  fields: TFieldServer[]
 ): string | null {
   if (!isNonEmptyObject(id)) return "Id deve ser informado";
   const pkList = pksFromFields(fields);

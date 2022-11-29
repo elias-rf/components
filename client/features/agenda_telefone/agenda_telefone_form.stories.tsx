@@ -7,7 +7,7 @@ import { AgendaTelefoneForm } from "./agenda_telefone_form";
 const queryClient = new QueryClient();
 
 export default {
-  title: "Features/Agenda Telefone",
+  title: "features/agenda_telefone",
   component: AgendaTelefoneForm,
   args: {
     id: { agenda_telefone_id: 100 },

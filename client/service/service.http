@@ -42,6 +42,17 @@ Content-Type: application/json
   "params":{"uf":["MG"], "inicio":"2021-11-01", "fim":"2022-10-31"}
 }
 
+### Login
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"189",
+  "method":"login",
+  "params":{"user":"elias", "password":"jkl"}
+}
+
 ### Index
 POST http://localhost:3000/api/rpc
 Content-Type: application/json

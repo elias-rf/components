@@ -10,6 +10,5 @@ it("deve ser number", () => {
   expect(isNumberOrNaN(false)).toBeFalsy();
   expect(isNumberOrNaN([])).toBeFalsy();
   expect(isNumberOrNaN({})).toBeFalsy();
-  expect(isNumberOrNaN(() => {})).toBeFalsy();
-  expect(isNumberOrNaN(Number.NaN)).toBeFalsy();
+  expect(isNumberOrNaN(Number.NaN)).toBeTruthy();
 });

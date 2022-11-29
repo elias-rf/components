@@ -9,7 +9,26 @@ const rpc = rpcClient();
  * @param {*} [params] Parâmetros do método RPC
  * @return {*}
  */
-export async function fetcherRpc(method: string, params?: any) {
+async function query(method: string, params?: any) {
+  const response = await fetch(
+    "/api/rpc?rpc=" + JSON.stringify(rpc.request(method, params)),
+    {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    }
+  );
+  if (response.status === 200) {
+    const data = await response.json();
+    const rsp = rpc.response(data);
+    return rsp;
+  }
+
+  return Promise.reject(new Error(response.statusText));
+}
+
+async function mutation(method: string, params?: any) {
   const response = await fetch("/api/rpc", {
     method: "POST",
     headers: {
@@ -25,3 +44,8 @@ export async function fetcherRpc(method: string, params?: any) {
 
   return Promise.reject(new Error(response.statusText));
 }
+
+export const fetcherRpc = {
+  query,
+  mutation,
+};

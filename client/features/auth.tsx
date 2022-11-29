@@ -1,5 +1,5 @@
-import { useLocation } from "react-router-dom";
 import { Authorization } from "../components/authorization";
+import { useLocation } from "../lib/hooks/use-location";
 import { authenticationService } from "../service/authentication.service";
 import { groupSubjectService } from "../service/group-subject.service";
 

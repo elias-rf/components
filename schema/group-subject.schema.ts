@@ -16,6 +16,7 @@ export const group_subject: TTable = {
       field: "idSubject",
       label: "Recurso",
       name: "subject_id",
+      primaryKey: true,
       type: "string",
       allowNull: false,
     },

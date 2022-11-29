@@ -18,13 +18,12 @@ describe("crudFactory", () => {
     });
     const rsp = await crud.schema();
     expect(fetchMockRpc.history(0)).toEqual({
-      url: "/api/rpc",
+      url: '/api/rpc?rpc={"jsonrpc":"2.0","id":1,"method":"crudSchema","params":{"table":"cliente"}}',
       options: {
-        method: "POST",
+        method: "GET",
         headers: {
           "content-type": "application/json",
         },
-        body: '{"jsonrpc":"2.0","id":1,"method":"crudSchema","params":{"table":"cliente"}}',
       },
     });
     expect(rsp).toEqual([{}]);
@@ -38,13 +37,12 @@ describe("crudFactory", () => {
     });
     const rsp = await crud.clear();
     expect(fetchMockRpc.history(0)).toEqual({
-      url: "/api/rpc",
+      url: `/api/rpc?rpc={"jsonrpc":"2.0","id":2,"method":"crudClear","params":{"table":"cliente"}}`,
       options: {
-        method: "POST",
+        method: "GET",
         headers: {
           "content-type": "application/json",
         },
-        body: '{"jsonrpc":"2.0","id":2,"method":"crudClear","params":{"table":"cliente"}}',
       },
     });
     expect(rsp).toEqual([{}]);

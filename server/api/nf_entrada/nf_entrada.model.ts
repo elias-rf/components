@@ -1,6 +1,6 @@
+import { TConnections } from "../../../types";
 import { day } from "../../../utils/date/day";
 import { isEmpty } from "../../../utils/identify/is_empty";
-import type { TConnections } from "../../dal/connections";
 import { crudModel } from "../crud/crud.model";
 import { estoqueModel } from "../estoque/estoque.model";
 import { ordemProducaoModel } from "../ordem_producao/ordem_producao.model";

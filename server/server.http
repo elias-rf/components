@@ -23,3 +23,17 @@ Content-Type: application/json
     "operacao": "1010"
   }
 }
+
+### Echo
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"operacaoMensal",
+  "params":{
+    "mes":"2020-01",
+    "operacao": "1010"
+  }
+}

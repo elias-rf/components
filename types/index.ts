@@ -1,3 +1,5 @@
+import { Knex } from "knex";
+
 /**
  * Tipos para Queries
  */
@@ -48,9 +50,19 @@ export type TUnknownObject = Record<PropertyKey, unknown>;
 /** Array genérico */
 export type TUnknownArray = unknown[];
 
-/** Contexto para RPC */
-export type TRpcContext = { currentUser: TCurrentUser };
+/** connections */
 
+export type TConnections = {
+  oftalmo: Knex;
+  plano: Knex;
+  fullvision: Knex;
+};
+
+/** Contexto para RPC */
+export type TRpcContext = {
+  currentUser: TCurrentUser;
+  connections: TConnections;
+};
 /** Dados para component arvore */
 export type TreeData = {
   key: string;
@@ -132,7 +144,7 @@ export type TFieldServer = TField & {
 export type TTable = {
   database: string;
   table: string;
-  fields: TFieldServer[];
+  fields: TFieldServer[] & TFieldClient[];
 };
 
 /** Tabelas de banco de dados */

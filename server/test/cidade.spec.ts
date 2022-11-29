@@ -12,7 +12,7 @@ import {
 import { knexMockHistory } from "../../utils/data/knex_mock_history";
 import { app } from "../app";
 import { setTracker } from "../lib/set_tracker";
-import { apiRequest, rpcResponse } from "./aux";
+import { apiRequestMutation, apiRequestQuery, rpcResponse } from "./aux";
 
 describe("cidade", () => {
   let tracker: Tracker;
@@ -38,13 +38,13 @@ describe("cidade", () => {
   });
 
   it(`cidadeSchema`, async () => {
-    const rsp = await apiRequest(app, "crudSchema", { table: "cidade" });
+    const rsp = await apiRequestQuery(app, "crudSchema", { table: "cidade" });
     expect(rsp.status).toEqual(200);
     expect(rsp.body).toEqual(rpcResponse(expect.any(Array)));
   });
 
   it(`cidadeRead`, async () => {
-    const rsp = await apiRequest(app, `crudRead`, {
+    const rsp = await apiRequestQuery(app, `crudRead`, {
       table: "cidade",
       id: { uf_old: "ES", nome_cidade: "Anchieta" },
       select: ["uf_old"],
@@ -63,7 +63,7 @@ describe("cidade", () => {
   });
 
   it(`cidadeList`, async () => {
-    const rsp = await apiRequest(app, `crudList`, {
+    const rsp = await apiRequestQuery(app, `crudList`, {
       table: "cidade",
       where: [["uf_old", "=", "ES"]],
       select: ["uf_old"],
@@ -79,7 +79,7 @@ describe("cidade", () => {
   });
 
   it(`cidadeDel`, async () => {
-    const rsp = await apiRequest(app, `crudDel`, {
+    const rsp = await apiRequestMutation(app, `crudDel`, {
       table: "cidade",
       id: { uf_old: "ES", nome_cidade: "Anchieta" },
     });
@@ -88,7 +88,7 @@ describe("cidade", () => {
   });
 
   it(`cidadeCreate`, async () => {
-    const rsp = await apiRequest(app, `crudCreate`, {
+    const rsp = await apiRequestMutation(app, `crudCreate`, {
       table: "cidade",
       data: { uf_old: "ES", nome_cidade: "Anchieta" },
     });
@@ -101,7 +101,7 @@ describe("cidade", () => {
   });
 
   it(`cidadeUpdate`, async () => {
-    const rsp = await apiRequest(app, `crudUpdate`, {
+    const rsp = await apiRequestMutation(app, `crudUpdate`, {
       table: "cidade",
       id: { uf_old: "ES", nome_cidade: "Anchieta" },
       data: { uf_old: "MG" },

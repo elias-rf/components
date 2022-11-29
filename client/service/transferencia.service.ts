@@ -1,3 +1,4 @@
+import { TFieldClient } from "../../types";
 import { fetcherRpc } from "../../utils/api/fetcher-rpc";
 import { isEmpty } from "../../utils/identify/is_empty";
 
@@ -12,13 +13,13 @@ import { isEmpty } from "../../utils/identify/is_empty";
 
 export const transferenciaService = {
   async schemaDiario() {
-    return fetcherRpc("transferenciaDiarioSchema");
+    return fetcherRpc.query("nfSaidaTransferenciaDiarioSchema");
   },
   async diario(inicio: string, fim: string): Promise<any[]> {
     if (isEmpty(inicio) || isEmpty(fim)) {
       return [];
     }
-    const response: any = await fetcherRpc("transferenciaDiario", {
+    const response: any = await fetcherRpc.query("nfSaidaTransferenciaDiario", {
       inicio,
       fim,
     });
@@ -26,36 +27,36 @@ export const transferenciaService = {
   },
 
   async schemaMensal() {
-    return fetcherRpc("transferenciaMensalSchema");
+    return fetcherRpc.query("nfSaidaTransferenciaMensalSchema");
   },
 
   async mensal(mes: string): Promise<any[]> {
     if (isEmpty(mes)) {
       return [];
     }
-    const response: any = await fetcherRpc("transferenciaMensal", {
+    const response: any = await fetcherRpc.query("nfSaidaTransferenciaMensal", {
       mes,
     });
-
-    return response;
 
     if (isEmpty(response)) {
       return [];
     }
+
+    return response;
   },
 
   async schemaModelo(): Promise<TFieldClient[]> {
-    return fetcherRpc("transferenciaModeloSchema");
+    return fetcherRpc.query("nfSaidaTransferenciaModeloSchema");
   },
 
   async modelo(data: string): Promise<any[]> {
     if (isEmpty(data)) {
       return [];
     }
-    return fetcherRpc("transferenciaModelo", { data });
+    return fetcherRpc.query("nfSaidaTransferenciaModelo", { data });
   },
 
   async create(controles: string[]): Promise<any> {
-    return fetcherRpc("transferenciaCreate", { controles });
+    return fetcherRpc.mutation("nfEntradaTransferenciaCreate", { controles });
   },
 };
