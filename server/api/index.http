@@ -1,15 +1,18 @@
-### Index
-GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index"}
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
 
 ### Index
-GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"me"}
+GET {{host}}/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index"}
+
+### Index
+GET {{host}}/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"usuarioMe"}
 
 ### Echo
-GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"echo","params":{"inicio":"2020-02-01"}}
-
+GET {{host}}/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"echo","params":{"inicio":"2020-02-01"}}
 
 ### Echo
-POST http://localhost:3000/api/rpc
+POST {{host}}/api/rpc
 Content-Type: application/json
 
 {

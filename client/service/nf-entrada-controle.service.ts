@@ -1,16 +1,7 @@
+import { TNfEntradaControleRpc } from "../../types/nf-entrada-controle.type";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
-type NfEntradaControleRecord = {
-  CdFilial?: string;
-  NumNota?: string;
-  Serie?: string;
-  Modelo?: string;
-  CdFornecedor?: string;
-  CdProduto?: string;
-  NumLote?: string;
-  Quantidade?: string;
-};
+const SERVICE = "nf_entrada_controle";
 
-export const estoqueService = {
-  ...rpcFactory("nfEntradaControle"),
-};
+export const nfEntradaControleService =
+  rpcFactory<TNfEntradaControleRpc>(SERVICE);

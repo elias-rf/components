@@ -5,13 +5,13 @@ import { Knex } from "knex";
  */
 
 /** SQL.WHERE */
-export type TWhere = [string, string, any];
+export type TWhere<Fields = string> = [Fields, string, any];
 
 /** SQL.SELECT */
-export type TSelect = string[];
+export type TSelect<Fields = string> = Fields[];
 
 /** SQL.ORDERBY */
-export type TOrder = [string, "asc" | "desc"];
+export type TOrder<Fields = string> = [Fields, "asc" | "desc"];
 
 /** Array com nome dos campos chave primária */
 export type TPks = string[];
@@ -58,11 +58,6 @@ export type TConnections = {
   fullvision: Knex;
 };
 
-/** Contexto para RPC */
-export type TRpcContext = {
-  currentUser: TCurrentUser;
-  connections: TConnections;
-};
 /** Dados para component arvore */
 export type TreeData = {
   key: string;
@@ -72,7 +67,7 @@ export type TreeData = {
 
 /** Argumentos para modelo de listagem */
 export type TListArgs = {
-  table?: string;
+  table: string;
   limit?: number;
   where?: TWhere[];
   order?: TOrder[];
@@ -80,16 +75,25 @@ export type TListArgs = {
 };
 
 /** Argumentos para modelo de registro */
-export type TReadArgs = { table?: string; id: TIds; select?: TSelect };
+export type TReadArgs = { table: string; id: TIds; select?: TSelect };
 
 /** Argumentos para modelo de exclusão */
-export type TDelArgs = { table?: string; id: TIds };
+export type TDelArgs = { table: string; id: TIds };
 
 /** Argumentos para modelo de alteração */
-export type TUpdateArgs = { table?: string; id: TIds; data: TGenericObject };
+export type TUpdateArgs = {
+  table: string;
+  id: TIds;
+  data: TGenericObject;
+  select?: TSelect;
+};
 
 /** Argumentos para modelo de criação */
-export type TCreateArgs = { table?: string; data: TGenericObject };
+export type TCreateArgs = {
+  table: string;
+  data: TGenericObject;
+  select?: TSelect;
+};
 
 /** Eventos para componentes */
 export type TEvent = {
@@ -126,6 +130,7 @@ type TField = {
   autoIncrement?: boolean; // é incrementado pelo banco de dados
   size?: number; // tamanho em caracteres
   scale?: number; // tamanho em decimais
+  readOnly?: boolean; // apenas leitura
 };
 
 export type TFieldClient = TField & {
@@ -144,10 +149,34 @@ export type TFieldServer = TField & {
 export type TTable = {
   database: string;
   table: string;
-  fields: TFieldServer[] & TFieldClient[];
+  fields: (TFieldServer & TFieldClient)[];
 };
 
 /** Tabelas de banco de dados */
 export type TDb = {
   [table: string]: TTable;
+};
+
+/** Contexto para RPC */
+export type TRpcContext = {
+  currentUser: TCurrentUser;
+  connections: TConnections;
+};
+
+export type RpcResponse = {
+  jsonrpc: "2.0";
+  id: number | string;
+  result?: any;
+  error?: {
+    code: number | string;
+    message: string;
+    data?: any;
+  };
+};
+
+export type TRpcRequest = {
+  jsonrpc: "2.0";
+  id?: number | string;
+  method: string;
+  params?: any;
 };

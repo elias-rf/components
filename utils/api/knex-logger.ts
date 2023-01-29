@@ -28,11 +28,11 @@ export function knexLogger(knex: Knex) {
   });
 
   knex.on("query-error", (_error, { __knexQueryUid: queryId }) => {
-    logger.error(getQuery(queryId));
+    logger(getQuery(queryId));
   });
 
   knex.on("query-response", (_response, { __knexQueryUid: queryId }) => {
-    logger.info(getQuery(queryId));
+    logger(getQuery(queryId));
   });
 
   return knex;

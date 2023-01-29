@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { TTable } from "../../types";
+import { TFieldServer } from "../../types";
 import {
   renameToFieldArray,
   renameToFieldArrayObject,
@@ -8,39 +8,31 @@ import {
   renameToFieldTuple,
 } from "./rename-fields";
 
-const entity: TTable = {
-  database: "oftalmo",
-  table: "phonebook",
-  fields: [
-    {
-      allowNull: false,
-      field: "id",
-      label: "Ramal",
-      name: "agenda_telefone_id",
-      primaryKey: true,
-      type: "int",
-    },
-    {
-      allowNull: false,
-      field: "name",
-      label: "Nome",
-      name: "nome",
-      type: "string",
-    },
-    {
-      field: "department",
-      label: "Setor",
-      name: "setor",
-      type: "string",
-    },
-    {
-      field: "email",
-      label: "Email",
-      name: "email",
-      type: "string",
-    },
-  ],
-};
+const entity: TFieldServer[] = [
+  {
+    allowNull: false,
+    field: "id",
+    name: "agenda_telefone_id",
+    primaryKey: true,
+    type: "int",
+  },
+  {
+    allowNull: false,
+    field: "name",
+    name: "nome",
+    type: "string",
+  },
+  {
+    field: "department",
+    name: "setor",
+    type: "string",
+  },
+  {
+    field: "email",
+    name: "email",
+    type: "string",
+  },
+];
 
 describe("renameFields", () => {
   it("deve renomear string para field", () => {

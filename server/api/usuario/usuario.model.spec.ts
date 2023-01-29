@@ -9,8 +9,8 @@ import {
   it,
   test,
 } from "vitest";
-import { knexMockHistory } from "../../../utils/data/knex_mock_history";
-import { TConnections } from "../../dal/connections";
+import { TConnections } from "../../../types";
+import { knexMockHistory } from "../../../utils/data/knex-mock-history";
 import { setTracker } from "../../lib/set_tracker";
 import { usuarioModel } from "./usuario.model";
 

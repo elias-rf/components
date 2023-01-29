@@ -7,7 +7,7 @@ export const produto_categoria: TTable = {
     {
       field: "CdCategoria",
       label: "CdCategoria",
-      name: "CategPro_id",
+      name: "produto_categoria_id",
       type: "string",
       size: 6,
       primaryKey: true,
@@ -16,7 +16,7 @@ export const produto_categoria: TTable = {
     {
       field: "NmCategoria",
       label: "NmCategoria",
-      name: "NmCategoria",
+      name: "categoria",
       type: "string",
       size: 30,
     },

@@ -1,13 +1,11 @@
 ### Index
-POST http://localhost:3000/api/rpc
-Content-Type: application/json
+GET http://localhost:3333/api/rpc?rpc={"jsonrpc":"2.0","id":"1","method":"index"}
 
-{
-  "jsonrpc":"2.0",
-  "id":"1",
-  "method":"index",
-  "params":{}
-}
+### Index
+GET http://localhost:3333/api/rpc?rpc={"jsonrpc":"2.0","id":"1","method":"esterilizacaoExternaSchemaDiario","params":{"table":"group"}}
+
+### Index
+GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"1","method":"groupSubjectRead","params":{"id":{"group_id":"dev","subject_id":"/sistema/usuario"}}}
 
 ### Index
 POST http://localhost:3000/api/rpc

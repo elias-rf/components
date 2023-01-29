@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { fetchMockRpc } from "../../../utils/api/fetch-mock-rpc";
 import { useForm } from "../../lib/hooks/use_form";
-import { agendaTelefoneService } from "../../service/agenda_telefone.service";
+import { agendaTelefoneService } from "../../service/agenda-telefone.service";
 import { LabelError } from "../label_error";
 import { Form } from "./form";
 import { Label } from "./label";
@@ -47,17 +47,19 @@ fetchMockRpc.mock("crudSchema", {
   },
 });
 
-export default {
-  title: "Components/Form/Form",
+const meta: Meta<typeof Form> = {
   component: Form,
   argTypes: {
     showValues: { monitor: "fields" },
   },
-} as ComponentMeta<typeof Form>;
+};
 
-export const Default: ComponentStory<typeof Form> = (props: any) => {
-  const { values, errors, onChange, onInput, schema } = useForm(
-    agendaTelefoneService.schema()
+export default meta;
+type Story = StoryObj<typeof Form>;
+
+function FormState(props: any) {
+  const { values, errors, onChangeEvent, onInputEvent, schema } = useForm(
+    agendaTelefoneService.query.agendaTelefoneSchema
   );
 
   return (
@@ -69,8 +71,8 @@ export const Default: ComponentStory<typeof Form> = (props: any) => {
             <Textbox
               type="text"
               name={field.name}
-              onChange={onChange}
-              onInput={onInput}
+              onChange={onChangeEvent}
+              onInput={onInputEvent}
               value={values[field.name]}
             />
             <LabelError>{errors[field.name]}</LabelError>
@@ -80,6 +82,8 @@ export const Default: ComponentStory<typeof Form> = (props: any) => {
       <button onClick={() => props.showValues(values)}>Atualizar</button>
     </div>
   );
-};
+}
 
-Default.storyName = "Form";
+export const Default: Story = {
+  render: (props) => <FormState {...props} />,
+};

@@ -1,5 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import { TEvent, TIds } from "../../../../types";
+import React from "react";
+import { TEvent, TFieldClient } from "../../../../types";
+import { cache } from "../../../../utils/cache";
 import { Table } from "../../../components/table/table";
 import { esterilizacaoInternaService } from "../../../service/esterilizacao-interna.service";
 
@@ -16,26 +17,37 @@ export function EsterilizacaoInternaMensal({
   onSelectEvent,
   children,
 }: EsterilizacaoInternaMensalProp) {
-  const schema = useQuery({
-    queryKey: ["esterilizacaoInternaMensalSchema"],
-    queryFn: async () => esterilizacaoInternaService.schemaMensal(),
-    staleTime: Infinity,
-  });
+  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
+  const [data, setData] = React.useState<TFieldClient[]>([]);
 
-  const mensal = useQuery({
-    queryKey: ["esterilizacaoInternaMensal", mesInicial],
-    queryFn: ({ queryKey }) => {
-      const [_key, mesInicial] = queryKey as [string, TIds];
-      return esterilizacaoInternaService.mensal(mesInicial.mes);
-    },
-    staleTime: 1000 * 60 - 10, // 10 minutos
-  });
+  React.useEffect(() => {
+    async function getSchema() {
+      const rsp = await cache.fetch({
+        key: "esterilizacaoInternaService.schemaMensal",
+        callback: esterilizacaoInternaService.schemaMensal,
+      });
+      setSchema(rsp);
+    }
+    getSchema();
+  }, []);
+
+  React.useEffect(() => {
+    async function getData() {
+      const rsp = await cache.fetch({
+        key: "esterilizacaoInternaService.mensal",
+        callback: esterilizacaoInternaService.mensal,
+        args: [mesInicial.mes],
+      });
+      setData(rsp);
+    }
+    getData();
+  }, [mesInicial]);
 
   return (
     <Table
       name="mensal"
-      data={mensal.data || []}
-      schema={schema.data || []}
+      data={data}
+      schema={schema}
       selected={mesCorrente}
       onSelectEvent={onSelectEvent}
     >

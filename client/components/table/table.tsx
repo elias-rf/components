@@ -1,7 +1,7 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import type { TEvent } from "../../../types";
-import { pksFromFields } from "../../../utils/schema/pks-from-fields";
+import { pksFromFieldsClient } from "../../../utils/schema/pks-from-fields";
 import { isSelected } from "../../lib/is-selected";
 import { ShowChevronIcon } from "../show_chevronIcon";
 import { TableCell } from "./table-cell";
@@ -27,7 +27,7 @@ export function Table({
   tableClassName,
 }: TTableProps) {
   let fields = schema ?? [];
-  const pk = pksFromFields(schema);
+  const pk = pksFromFieldsClient(schema);
   fields = fields.filter((item) => item.visible !== false);
 
   /**

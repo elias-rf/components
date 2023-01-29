@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { TEvent, TIds } from "../../../../types";
+import React from "react";
+import { TEvent, TFieldClient } from "../../../../types";
 import { Table } from "../../../components/table/table";
 import { esterilizacaoExternaService } from "../../../service/esterilizacao-externa.service";
 
@@ -14,35 +14,38 @@ export function EsterilizacaoExternaModelo({
   produtoCorrente,
   onSelectEvent,
 }: EsterilizacaoExternaModeloProp) {
-  const schema = useQuery({
-    queryKey: ["esterilizacaoExternaModeloSchema"],
-    queryFn: async () => esterilizacaoExternaService.schemaModelo(),
-    staleTime: Infinity,
-  });
+  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
+  const [data, setData] = React.useState<TFieldClient[]>([]);
 
-  const modelo = useQuery({
-    queryKey: ["esterilizacaoExternaModelo", diaCorrente, produtoCorrente],
-    queryFn: ({ queryKey }) => {
-      const [_key, diaCorrente, produtoCorrente] = queryKey as [
-        string,
-        TIds,
-        TIds
-      ];
-      if (diaCorrente === undefined || produtoCorrente === undefined) return [];
-      return esterilizacaoExternaService.modelo(
-        diaCorrente.dia,
-        produtoCorrente.produto
+  React.useEffect(() => {
+    async function getSchema() {
+      const rsp = await esterilizacaoExternaService.schemaModelo();
+      setSchema(rsp);
+    }
+    getSchema();
+  }, []);
+
+  React.useEffect(() => {
+    async function getData() {
+      if (diaCorrente === undefined || produtoCorrente === undefined) {
+        setData([]);
+        return;
+      }
+
+      const rsp = await esterilizacaoExternaService.modelo(
+        diaCorrente.dia || "",
+        produtoCorrente.produto || ""
       );
-    },
-
-    staleTime: 1000 * 60 - 10, // 10 minutos
-  });
+      setData(rsp);
+    }
+    getData();
+  }, [diaCorrente, produtoCorrente]);
 
   return (
     <Table
       name="modelo"
-      data={modelo.data || []}
-      schema={schema.data || []}
+      data={data}
+      schema={schema}
       onSelectEvent={onSelectEvent}
     ></Table>
   );

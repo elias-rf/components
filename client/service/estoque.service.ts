@@ -1,11 +1,17 @@
-import type { TIds } from "../../types";
-import { TEstoque } from "../../types/estoque.type";
+import { TEstoqueRpc } from "../../types/estoque.type";
 import { fetcherRpc } from "../../utils/api/fetcher-rpc";
+import { deepmerge } from "../../utils/object/deepmerge";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
-export const estoqueService = {
-  ...rpcFactory<TEstoque>("estoque"),
-  async increment(id: TIds, quantidade: number) {
-    return fetcherRpc("estoqueIncrement", { id, quantidade });
-  },
-};
+const SERVICE = "estoque";
+
+export const estoqueService: TEstoqueRpc = deepmerge(
+  rpcFactory<TEstoqueRpc>(SERVICE),
+  {
+    mutation: {
+      async increment(args) {
+        return fetcherRpc.mutation("estoqueIncrement", args);
+      },
+    },
+  } as TEstoqueRpc
+);

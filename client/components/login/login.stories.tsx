@@ -1,23 +1,24 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Login } from "./login";
 
-export default {
-  title: "Components/Login",
+const meta: Meta<typeof Login> = {
   component: Login,
-  argTypes: { onInput: { action: "onInput" } },
-} as ComponentMeta<typeof Login>;
-
-export const Default: ComponentStory<typeof Login> = (props) => {
-  return (
-    <>
-      <Login {...props} />
-    </>
-  );
+  argTypes: { onInputEvent: { action: "onInputEvent" } },
+  args: {
+    title: "Login Teste",
+    error: "Erro de teste",
+  },
 };
 
-Default.args = {
-  title: "Login Teste",
-  error: "Erro de teste",
-};
+export default meta;
+type Story = StoryObj<typeof Login>;
 
-Default.storyName = "Login";
+export const Default: Story = {
+  render: (props) => {
+    return (
+      <>
+        <Login {...props} />
+      </>
+    );
+  },
+};

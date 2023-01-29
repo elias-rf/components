@@ -1,0 +1,38 @@
+### Schema
+POST http://localhost:3000/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"crudSchema",
+  "params":{"table":"cliente"}
+}
+
+### list()
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"list()",
+  "params":{
+    "limit":3,
+    "where":[["CdCliente","<=","10"]],
+    "orderBy":[["CdCliente","desc"]]
+  }
+}
+
+### read()
+POST http://localhost:3000/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"read()",
+  "params":{
+    "id":["10"]
+  }
+}

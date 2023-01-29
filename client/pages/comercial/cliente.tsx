@@ -39,17 +39,32 @@ export default function Cliente() {
       <PageTitle title="Cliente" />
       <hr />
       <section className="flex flex-col gap-2">
-        <Tabs active={tabActive} onChangeEvent={handleOnChangeTabs}>
-          <Tab id="form" title="Cadastro">
+        <Tabs
+          active={tabActive}
+          onChangeEvent={handleOnChangeTabs}
+        >
+          <Tab
+            id="form"
+            title="Cadastro"
+          >
             <ClienteForm selected={selected} />
           </Tab>
-          <Tab id="quantidade" title="Quantidade">
+          <Tab
+            id="quantidade"
+            title="Quantidade"
+          >
             <ClienteQuantidade id={selected} />
           </Tab>
-          <Tab id="faturamento" title="Faturamento">
+          <Tab
+            id="faturamento"
+            title="Faturamento"
+          >
             <ClienteValor id={selected} />
           </Tab>
-          <Tab id="preco" title="Preço Médio">
+          <Tab
+            id="preco"
+            title="Preço Médio"
+          >
             <ClienteValorMedio id={selected} />
           </Tab>
         </Tabs>

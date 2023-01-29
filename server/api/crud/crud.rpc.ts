@@ -2,7 +2,7 @@ import type {
   TConnections,
   TCreateArgs,
   TDelArgs,
-  TFieldServer,
+  TFieldClient,
   TGenericObject,
   TListArgs,
   TReadArgs,
@@ -16,12 +16,12 @@ export function crudRpc(connections: TConnections) {
   const crud = crudModel(connections);
   return {
     query: {
-      async crudSchema({ table }: { table: string }): Promise<TFieldServer[]> {
+      async schema({ table }: { table: string }): Promise<TFieldClient[]> {
         return crud.schema({ table });
       },
 
       // LIST
-      async crudList({
+      async list({
         table,
         where,
         order,
@@ -32,16 +32,12 @@ export function crudRpc(connections: TConnections) {
       },
 
       // READ
-      async crudRead({
-        table,
-        id,
-        select,
-      }: TReadArgs): Promise<TGenericObject> {
+      async read({ table, id, select }: TReadArgs): Promise<TGenericObject> {
         return crud.read({ table, id, select });
       },
 
       // CLEAR
-      async crudClear({ table }: { table: string }): Promise<TGenericObject> {
+      async clear({ table }: { table: string }): Promise<TGenericObject> {
         return crud.clear({ table });
       },
     },

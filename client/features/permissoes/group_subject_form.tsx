@@ -1,99 +1,147 @@
 import React from "react";
-import type { TEvent, TFieldClient } from "../../../types";
+import type { TFieldClient, TSelected } from "../../../types";
+import { cache } from "../../../utils/cache";
 import { isEmpty } from "../../../utils/identify/is_empty";
+import { isNumber } from "../../../utils/identify/is_number";
 import { Button } from "../../components/button";
-import { Formfield } from "../../components/form/formfield";
-import {
-  useGroupSubjectCreate,
-  useGroupSubjectDel,
-  useGroupSubjectRead,
-  useGroupSubjectSchema,
-  useGroupSubjectUpdate,
-} from "../../hooks/use-group-subject.hook";
+import { TButtonEvent } from "../../components/button/button.types";
+import { Label } from "../../components/form/label";
+import { LabelError } from "../../components/label_error";
+import { SpinnerIcon } from "../../components/spinner";
+import { Textbox } from "../../components/textbox";
 import { useForm } from "../../lib/hooks/use-form.hook";
-import { useQueryState } from "../../lib/hooks/use-query-state";
-import {
-  groupSubjectService,
-  TGroupSubjectRecord,
-} from "../../service/group-subject.service";
+import { groupSubjectService } from "../../service/group-subject.service";
 
-export function GroupSubjectForm() {
-  const [selected] = useQueryState("selected", []);
+type TGroupSubjectFormProps = {
+  id: TSelected;
+};
+
+export function GroupSubjectForm({ id }: TGroupSubjectFormProps) {
+  const [clear, setClear] = React.useState({});
+  const [fetching, setFetching] = React.useState(false);
   const [status, setStatus] = React.useState("new");
-  const form = useForm<TGroupSubjectRecord>(groupSubjectService.clear());
-  const record = useGroupSubjectRead(selected);
-  const recordDel = useGroupSubjectDel();
-  const recordUpdate = useGroupSubjectUpdate();
-  const recordCreate = useGroupSubjectCreate();
-  const schema = useGroupSubjectSchema();
+  const { values, setValues, errors, onChange, onInput, isDirty, schema } =
+    useForm(
+      cache.fetch({
+        key: "groupSubjectService.schema",
+        callback: groupSubjectService.schema,
+        expiresInSeconds: 3600,
+        debug: true,
+      })
+    );
+
+  React.useEffect(() => {
+    async function getClear() {
+      const rsp = await cache.fetch({
+        key: "groupSubjectService.clear",
+        callback: groupSubjectService.clear,
+        expiresInSeconds: 3600,
+        debug: true,
+      });
+      setClear(rsp);
+    }
+    getClear();
+  }, []);
+
+  React.useEffect(() => {
+    async function getRecord() {
+      if (isEmpty(id) || !isNumber(id.agenda_telefone_id)) showRecord(clear);
+      setFetching(true);
+      const rsp = await cache.fetch({
+        key: "groupSubjectService.read",
+        callback: groupSubjectService.read,
+        args: [id],
+        expiresInSeconds: 10,
+        debug: true,
+      });
+      showRecord(rsp);
+      setFetching(false);
+    }
+    getRecord();
+  }, [id]);
 
   function showRecord(rec: any) {
-    form.set(rec);
-    if (isEmpty(rec[schema.data?.pk[0] || 999])) {
+    setValues(rec);
+    if (isEmpty(rec.id)) {
       setStatus("new");
     } else {
       setStatus("update");
     }
   }
 
-  React.useEffect(() => {
-    form.reset();
-    if (record.data) {
-      showRecord(record.data);
-    }
-  }, [record.data]);
-
-  function handleClick(e: TEvent) {
+  function handleClick(e: TButtonEvent) {
     if (e.name === "novo") {
-      showRecord(groupSubjectService.clear());
+      showRecord(clear);
     }
     if (e.name === "excluir") {
-      recordDel.mutate([selected]);
-      showRecord(groupSubjectService.clear());
+      // recordDel.mutate([selected]);
+      console.log("del", id);
+      showRecord(clear);
     }
     if (e.name === "salvar") {
-      if (status === "update") recordUpdate.mutate([selected, form.record()]);
-      if (status === "new") recordCreate.mutate([form.record()]);
-      showRecord(groupSubjectService.clear());
+      if (status === "update") console.log("update", values); // recordUpdate.mutate([selected, form.record()]);
+      if (status === "new") console.log("create", values); // recordCreate.mutate([form.record()]);
+      showRecord(clear);
     }
   }
 
   return (
-    <section data-name="GroupSubjectForm" className="mt-2">
+    <section
+      data-name="PhonebookForm"
+      className="mt-2"
+    >
       <div className="space-x-2">
-        {status}
         <Button
-          className="w-20 bg-green-300"
-          onClick={handleClick}
+          className="w-20"
+          size="sm"
+          color="green"
+          onClickEvent={handleClick}
           name="novo"
-          type="button"
         >
           Novo
         </Button>
         <Button
-          className="w-20 bg-blue-300"
-          onClick={handleClick}
+          className="w-20"
+          size="sm"
+          color="default"
+          onClickEvent={handleClick}
           name="salvar"
-          disabled={!form.isDirty()}
+          disabled={!isDirty}
         >
           Salvar
         </Button>
         <Button
-          className="w-20 bg-red-300"
-          onClick={handleClick}
+          className="w-20"
+          size="sm"
+          color="red"
+          onClickEvent={handleClick}
           name="excluir"
-          disabled={form.isDirty()}
+          disabled={isDirty}
         >
           Excluir
         </Button>
+        <div className="inline-block">
+          <SpinnerIcon
+            show={fetching}
+            className="text-xl"
+          />
+        </div>
       </div>
       <div className="flex flex-wrap gap-2">
-        {schema.data?.fields.map((fld: TFieldClient) => (
-          <Formfield
-            label={fld.label}
-            key={fld.field}
-            {...form.field(fld.field as any).register()}
-          />
+        {schema?.map((field: TFieldClient) => (
+          <React.Fragment key={field.name}>
+            <div className="my-2">
+              <Label name={field.name}>{field.label || ""}</Label>
+              <Textbox
+                type="text"
+                name={field.name}
+                onChange={onChange}
+                onInput={onInput}
+                value={values[field.name] || ""}
+              />
+              <LabelError>{errors[field.name]}</LabelError>
+            </div>
+          </React.Fragment>
         ))}
       </div>
     </section>

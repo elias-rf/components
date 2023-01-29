@@ -1,4 +1,8 @@
-POST http://localhost:3000/api/rpc
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
+POST {{host}}/api/rpc
 Content-Type: application/json
 
 {
@@ -10,4 +14,4 @@ Content-Type: application/json
 
 
 ### Echo
-GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"echo","params":{"inicio":"2020-02-01"}}
+GET {{host}}/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"echo","params":{"inicio":"2020-02-01"}}

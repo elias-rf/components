@@ -1,5 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import type { TIds, TOrder, TWhere } from "../../../types";
+import React from "react";
+import type { TFieldClient, TIds, TOrder, TWhere } from "../../../types";
+import { TCliente } from "../../../types/cliente.type";
+import { cache } from "../../../utils/cache";
 import { Table } from "../../components/table/table";
 import { TTableEvent } from "../../components/table/table.types";
 import { clienteService } from "../../service/cliente.service";
@@ -23,21 +25,39 @@ export function ClienteList({
   order,
   onOrderEvent,
 }: TClienteListProps) {
-  const schema = useQuery({
-    queryKey: ["cliente", "schema"],
-    queryFn: clienteService.schema,
-  });
+  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
+  const [data, setData] = React.useState<TCliente[]>([]);
 
-  const list = useQuery({
-    queryKey: ["cliente", "get", where, order],
-    queryFn: ({ queryKey }) =>
-      clienteService.list(queryKey[2] as TWhere[], queryKey[3] as TOrder[]),
-  });
+  React.useEffect(() => {
+    async function getSchema() {
+      const rsp = await cache.fetch({
+        key: "clienteService.schema",
+        callback: clienteService.query.clienteSchema,
+        expiresInSeconds: 3600,
+        debug: true,
+      });
+      setSchema(rsp);
+    }
+    getSchema();
+  }, []);
+
+  React.useEffect(() => {
+    async function getData() {
+      const rsp = await cache.fetch({
+        key: "clienteService.list",
+        callback: clienteService.list,
+        args: [where, order],
+        debug: true,
+      });
+      setData(rsp);
+    }
+    getData();
+  }, [where, order]);
 
   return (
     <Table
-      schema={schema.data || []}
-      data={list.data || []}
+      schema={schema}
+      data={data}
       selected={selected}
       order={order}
       where={where}

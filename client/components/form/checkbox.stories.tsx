@@ -1,14 +1,17 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { TEvent } from "../../../types";
 import { Checkbox } from "./checkbox";
 
-export default {
-  title: "Components/Form/Checkbox",
+const meta: Meta<typeof Checkbox> = {
+  // title: "Components/Form/Checkbox",
   component: Checkbox,
-} as ComponentMeta<typeof Checkbox>;
+};
 
-export const Default: ComponentStory<typeof Checkbox> = (props: any) => {
+export default meta;
+type Story = StoryObj<typeof Checkbox>;
+
+function CheckboxState(props: any) {
   const [vlr, setVlr] = React.useState(true);
 
   function handleBlur(e: TEvent) {
@@ -35,10 +38,9 @@ export const Default: ComponentStory<typeof Checkbox> = (props: any) => {
       onInputEvent={handleInput}
     />
   );
+}
+
+export const Default: Story = {
+  name: "Checkbox",
+  render: (props) => <CheckboxState {...props} />,
 };
-
-// Default.args = {
-//   name: "textbox1",
-// };
-
-Default.storyName = "Checkbox";

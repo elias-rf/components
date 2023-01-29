@@ -1,44 +1,65 @@
-export type TProdutoId = {
-  tbl_Produto_id: number;
-}
+import { TFieldClient, TOrder, TSelect, TWhere } from ".";
 
-export type TProdutoBase = {
-  fkCategoria?: string;
-  NomeComercial?: string;
-  NomeInternacional?: string;
-  BarCode?: number;
+export type TProdutoPk = {
+  produto_id?: number;
+};
+export type TProdutoCol = {
+  categoria_id?: string;
+  nome_comercial?: string;
   Fabricante?: string;
   OBS?: string;
   DescricaoTecnica?: string;
   DescricaoGenerica?: string;
-  CST?: number;
-  Unidade?: string;
   GrupoCredito?: string;
-  PesoBruto?: number;
-  VlrMin?: number;
-  Moeda?: number;
-  NBM?: string;
-  FOB?: number;
-  Qtd?: number;
-  Diametro?: string;
-  DiametroTotal?: string;
-  Furo?: number;
-  Separacao?: number;
-  PrazoAquisicao?: number;
-  fkNCM?: number;
-  fkUnidade?: number;
-  ForaDeLinha?: number;
-  Auditoria?: number;
-  ItemEstoque?: number;
-  fkLinhaDeProducao?: number;
-  EsterilizacaoETO?: number;
-  IsCatalogo?: number;
-  ValorCusto?: number;
-  TaxaIPI?: number;
-  PRO_Ferrara?: number;
   fkSubCategoria?: number;
-  CategoriaPREVISA?: string;
-  OrigemCST?: number;
-}
+};
+export type TProduto = TProdutoPk | TProdutoCol;
 
- export type TProduto = Partial<TProdutoId | TProdutoBase>
+export type TProdutoFields =
+  | keyof Required<TProdutoPk>
+  | keyof Required<TProdutoCol>;
+
+export type TProdutoIds = {
+  [pk in keyof Required<TProdutoPk>]: any;
+};
+export type TProdutoSelect = TSelect<TProdutoFields>;
+export type TProdutoWhere = TWhere<TProdutoFields>;
+export type TProdutoOrder = TOrder<TProdutoFields>;
+
+export type TProdutoSchema = () => Promise<TFieldClient[]>;
+export type TProdutoClear = () => Promise<TProduto>;
+export type TProdutoList = (args: {
+  where?: TWhere<TProdutoFields>[];
+  order?: TOrder<TProdutoFields>[];
+  limit?: number;
+  select?: TSelect<TProdutoFields>;
+}) => Promise<TProduto[]>;
+export type TProdutoRead = (args: {
+  id: TProdutoIds;
+  select?: TSelect<TProdutoFields>;
+}) => Promise<TProduto>;
+
+export type TProdutoCreate = (args: {
+  data: TProduto;
+  select?: TSelect<TProdutoFields>;
+}) => Promise<TProduto>;
+export type TProdutoUpdate = (args: {
+  id: TProdutoIds;
+  data: TProduto;
+  select?: TSelect<TProdutoFields>;
+}) => Promise<TProduto>;
+export type TProdutoDel = (args: { id: TProdutoIds }) => Promise<number>;
+
+export type TProdutoRpc = {
+  query: {
+    schema: TProdutoSchema;
+    clear: TProdutoClear;
+    list: TProdutoList;
+    read: TProdutoRead;
+  };
+  mutation: {
+    create: TProdutoCreate;
+    update: TProdutoUpdate;
+    del: TProdutoDel;
+  };
+};

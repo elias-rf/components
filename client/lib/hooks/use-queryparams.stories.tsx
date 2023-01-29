@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { ComponentStory } from "@storybook/react";
 import { Button } from "../../components/button";
 import { useQueryParams } from "./use-queryparams";
 
 export default {
-  title: "hooks/useQueryparams",
-} as ComponentMeta<typeof Button>;
+  component: Button,
+};
 
 export const Default: ComponentStory<typeof Button> = () => {
   const loc1 = useQueryParams();

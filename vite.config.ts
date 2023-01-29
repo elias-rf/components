@@ -1,6 +1,8 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
+/** @type {import('vite').UserConfig} */
+
 import react from "@vitejs/plugin-react";
 import path from "node:path";
 import { defineConfig } from "vitest/config";
@@ -14,14 +16,14 @@ export default defineConfig({
       "/api": "http://localhost:3000",
     },
   },
-  build: { outDir: "./public", emptyOutDir: true },
+  build: { outDir: "./public", emptyOutDir: true, target: "esnext" },
   plugins: [react()],
   test: {
     globals: true,
     environment: "jsdom", // or 'jsdom', 'node'
-    outputTruncateLength: 200,
     snapshotFormat: { escapeString: false },
     setupFiles: ["./setup-tests.ts"],
+    outputTruncateLength: 3500,
   },
   resolve: {
     alias: {

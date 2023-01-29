@@ -7,9 +7,10 @@ export const vendedor_meta: TTable = {
     {
       field: "id",
       label: "id",
-      name: "id",
+      name: "vendedor_id",
       type: "int",
       allowNull: false,
+      primaryKey: true,
     },
     {
       field: "uf",

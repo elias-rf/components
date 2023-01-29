@@ -1,10 +1,10 @@
 import type { Request, Response } from "express";
 import express from "express";
-import { TCurrentUser } from "../../types";
+import { TCurrentUser, TRpcRequest } from "../../types";
 import { jwtDecode } from "../../utils/api/jwt-decode";
 import { resetCookie, setCookie } from "../../utils/network/cookie";
-import { TRpcRequest } from "../../utils/rpc/rpc-server";
-import { rpc } from "../api/rpc";
+
+import { rpc } from "../api";
 import { config } from "../config";
 import { connections } from "../dal/connections";
 
@@ -12,6 +12,10 @@ export const router = express.Router();
 
 function getCurrentUser(req: Request) {
   const { cookies } = req;
+  console.log(
+    `🚀 ~ file: rpc.router.ts:15 ~ getCurrentUser ~ cookies`,
+    cookies
+  );
   const token = cookies.token;
   const currentUser = token ? jwtDecode(token, config.auth.secret || "") : {};
   return currentUser as TCurrentUser;
@@ -34,7 +38,7 @@ router.get("/", async (req: Request, res: Response) => {
 
   if (response) {
     switch (rpcCall?.method) {
-      case "login":
+      case "usuarioLogin":
         if (response.result?.token)
           // seta cookie se for login
           setCookie(res, "token", response.result.token, {
@@ -42,7 +46,7 @@ router.get("/", async (req: Request, res: Response) => {
             maxAge: 36000, // 10 horas
           });
         break;
-      case "logout":
+      case "usuarioLogout":
         // reseta cookie se for logout
         resetCookie(res, "token");
         break;
@@ -65,7 +69,7 @@ router.post("/", async (req: Request, res: Response) => {
   });
   if (response) {
     switch (body?.method) {
-      case "login":
+      case "usuarioLogin":
         if (response.result?.token)
           // seta cookie se for login
           setCookie(res, "token", response.result.token, {
@@ -73,7 +77,7 @@ router.post("/", async (req: Request, res: Response) => {
             maxAge: 36000, // 10 horas
           });
         break;
-      case "logout":
+      case "usuarioLogout":
         // reseta cookie se for logout
         resetCookie(res, "token");
         break;

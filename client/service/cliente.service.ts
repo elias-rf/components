@@ -1,9 +1,58 @@
 import { TFieldClient } from "../../types";
-import { TCliente } from "../../types/cliente.type";
+import { TClienteRpc } from "../../types/cliente.type";
 import { fetcherRpc } from "../../utils/api/fetcher-rpc";
-import { formatMoney } from "../../utils/format/format-money";
+import { cache } from "../../utils/cache";
+import { deepmerge } from "../../utils/object/deepmerge";
 import { day } from "../lib/day";
-import { crudFactory } from "../lib/http/crud.factory";
+import { rpcFactory } from "../lib/http/rpc.factory";
+
+const SERVICE = "cliente";
+
+export const clienteService: TClienteRpc = deepmerge(
+  rpcFactory<TClienteRpc>(SERVICE),
+  {
+    query: {
+      async vendaMensalQuantidadeSchema(args) {
+        return getSchema(args);
+      },
+
+      async vendaMensalValorSchema(args) {
+        return getSchema(args);
+      },
+
+      async vendaMensalValorMedioSchema(args) {
+        return getSchema(args);
+      },
+
+      async vendaMensalQuantidade(args) {
+        return cache.fetch({
+          key: "cliente.nfSaidaVendaMensal",
+          callback: fetcherRpc.query,
+          args: ["clienteVendaMensalQuantidade", args],
+          debug: true,
+        });
+      },
+
+      async vendaMensalValor(args) {
+        return cache.fetch({
+          key: "cliente.nfSaidaVendaMensal",
+          callback: fetcherRpc.query,
+          args: ["clienteVendaMensalValor", args],
+          debug: true,
+        });
+      },
+
+      async vendaMensalValorMedio(args) {
+        return cache.fetch({
+          key: "cliente.nfSaidaVendaMensal",
+          callback: fetcherRpc.query,
+          args: ["clienteVendaMensalValorMedio", args],
+          debug: true,
+        });
+      },
+    },
+  } as TClienteRpc
+);
 
 function getSchema({ inicio, fim }: { inicio: string; fim: string }) {
   const rsp: TFieldClient[] = [
@@ -25,129 +74,3 @@ function getSchema({ inicio, fim }: { inicio: string; fim: string }) {
   }
   return rsp;
 }
-
-export const clienteService = {
-  ...crudFactory<TCliente>("cliente"),
-  async vendaMensal(args: { inicio: string; fim: string; cliente: number }) {
-    return fetcherRpc.query("nfSaidaVendaMensal", args);
-  },
-
-  async vendaMensalQuantidadeSchema({
-    inicio,
-    fim,
-  }: {
-    inicio: string;
-    fim: string;
-  }) {
-    return getSchema({ inicio, fim });
-  },
-
-  async vendaMensalValorSchema({
-    inicio,
-    fim,
-  }: {
-    inicio: string;
-    fim: string;
-  }) {
-    return getSchema({ inicio, fim });
-  },
-
-  async vendaMensalValorMedioSchema({
-    inicio,
-    fim,
-  }: {
-    inicio: string;
-    fim: string;
-  }) {
-    return getSchema({ inicio, fim });
-  },
-
-  async vendaMensalQuantidade(args: {
-    inicio: string;
-    fim: string;
-    cliente: number;
-  }) {
-    const data = await fetcherRpc.query("nfSaidaVendaMensal", args);
-    const rsp: any = {};
-    data.forEach(
-      ({
-        anoMes,
-        NmCategoria,
-        quantidade,
-      }: {
-        anoMes: string;
-        NmCategoria: string;
-        quantidade: number;
-        valor: number;
-      }) => {
-        rsp[NmCategoria] = rsp[NmCategoria] || {};
-        rsp[NmCategoria][anoMes] = quantidade;
-      }
-    );
-    const resp = [];
-    for (const item in rsp) {
-      resp.push({ categoria: item, ...rsp[item] });
-    }
-    return resp;
-  },
-
-  async vendaMensalValor(args: {
-    inicio: string;
-    fim: string;
-    cliente: number;
-  }) {
-    const data = await fetcherRpc.query("nfSaidaVendaMensal", args);
-    const rsp: any = {};
-    data.forEach(
-      ({
-        anoMes,
-        NmCategoria,
-        valor,
-      }: {
-        anoMes: string;
-        NmCategoria: string;
-        quantidade: number;
-        valor: number;
-      }) => {
-        rsp[NmCategoria] = rsp[NmCategoria] || {};
-        rsp[NmCategoria][anoMes] = formatMoney(valor, 0);
-      }
-    );
-    const resp = [];
-    for (const item in rsp) {
-      resp.push({ categoria: item, ...rsp[item] });
-    }
-    return resp;
-  },
-
-  async vendaMensalValorMedio(args: {
-    inicio: string;
-    fim: string;
-    cliente: number;
-  }) {
-    const data = await fetcherRpc.query("nfSaidaVendaMensal", args);
-    const rsp: any = {};
-    data.forEach(
-      ({
-        anoMes,
-        NmCategoria,
-        valor,
-        quantidade,
-      }: {
-        anoMes: string;
-        NmCategoria: string;
-        quantidade: number;
-        valor: number;
-      }) => {
-        rsp[NmCategoria] = rsp[NmCategoria] || {};
-        rsp[NmCategoria][anoMes] =
-          quantidade > 0 ? formatMoney(valor / quantidade, 2) : "0,00";
-      }
-    );
-    const resp = [];
-    for (const item in rsp) {
-      resp.push({ categoria: item, ...rsp[item] });
-    }
-    return resp;
-  },
-};

@@ -7,7 +7,7 @@ export const vendedor: TTable = {
     {
       field: "CdVendedor",
       label: "CdVendedor",
-      name: "CadVen_id",
+      name: "vendedor_id",
       type: "float",
       size: 8,
       scale: 4,
@@ -17,7 +17,7 @@ export const vendedor: TTable = {
     {
       field: "NmVendedor",
       label: "NmVendedor",
-      name: "NmVendedor",
+      name: "vendedor",
       type: "string",
       size: 70,
       allowNull: false,
@@ -25,7 +25,7 @@ export const vendedor: TTable = {
     {
       field: "Endereco",
       label: "Endereco",
-      name: "Endereco",
+      name: "endereco",
       type: "string",
       size: 70,
       allowNull: false,
@@ -33,21 +33,21 @@ export const vendedor: TTable = {
     {
       field: "Cidade",
       label: "Cidade",
-      name: "Cidade",
+      name: "cidade",
       type: "string",
       size: 30,
     },
     {
       field: "Uf",
       label: "Uf",
-      name: "Uf",
+      name: "uf",
       type: "string",
       size: 2,
     },
     {
       field: "CPF",
       label: "CPF",
-      name: "CPF",
+      name: "cpf",
       type: "float",
       size: 8,
       scale: 4,
@@ -55,7 +55,7 @@ export const vendedor: TTable = {
     {
       field: "Identidade",
       label: "Identidade",
-      name: "Identidade",
+      name: "identidade",
       type: "string",
       size: 18,
       allowNull: false,
@@ -63,21 +63,21 @@ export const vendedor: TTable = {
     {
       field: "Telefone",
       label: "Telefone",
-      name: "Telefone",
+      name: "telefone",
       type: "string",
       size: 20,
     },
     {
       field: "FgControle",
       label: "FgControle",
-      name: "FgControle",
+      name: "eh_controle",
       type: "string",
       size: 1,
     },
     {
       field: "Meta",
       label: "Meta",
-      name: "Meta",
+      name: "meta",
       type: "float",
       size: 8,
       scale: 4,
@@ -85,7 +85,7 @@ export const vendedor: TTable = {
     {
       field: "Venda",
       label: "Venda",
-      name: "Venda",
+      name: "venda",
       type: "float",
       size: 8,
       scale: 4,
@@ -117,7 +117,7 @@ export const vendedor: TTable = {
     {
       field: "Cargo",
       label: "Cargo",
-      name: "Cargo",
+      name: "cargo",
       type: "string",
       size: 30,
     },
@@ -132,14 +132,14 @@ export const vendedor: TTable = {
     {
       field: "FgAtivo",
       label: "FgAtivo",
-      name: "FgAtivo",
+      name: "eh_ativo",
       type: "string",
       size: 1,
     },
     {
       field: "Bairro",
       label: "Bairro",
-      name: "Bairro",
+      name: "bairro",
       type: "string",
       size: 32,
     },
@@ -153,7 +153,7 @@ export const vendedor: TTable = {
     {
       field: "Email",
       label: "Email",
-      name: "Email",
+      name: "email",
       type: "string",
       size: 128,
     },
@@ -192,7 +192,7 @@ export const vendedor: TTable = {
     {
       field: "Cep",
       label: "Cep",
-      name: "Cep",
+      name: "cep",
       type: "float",
       size: 8,
       scale: 4,

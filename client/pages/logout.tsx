@@ -12,7 +12,7 @@ export function Logout() {
   const navigate = useNavigate();
   React.useEffect(() => {
     async function logout() {
-      await authenticationService.logout();
+      await authenticationService.mutation.logout();
       navigate("/");
     }
     logout();

@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import type { TFieldClient, TSelected } from "../../../types";
+import { cache } from "../../../utils/cache";
 import { isEmpty } from "../../../utils/identify/is_empty";
 import { isNumber } from "../../../utils/identify/is_number";
 import { Label } from "../../components/form";
@@ -13,27 +13,39 @@ type TClienteFormProps = {
 };
 
 export function ClienteForm({ selected }: TClienteFormProps) {
-  const record = useQuery({
-    queryKey: ["cliente", "get", selected],
-    queryFn: async ({ queryKey }) => {
-      const selected = queryKey[2] as TSelected;
-      if (isEmpty(selected) || !isNumber(selected.cliente_id)) return {};
-      return clienteService.read(queryKey[2] as TSelected);
-    },
-    onSuccess: (data: any) => {
-      showRecord(data);
-    },
-  });
+  const { values, setValues, onChange, onInput, schema } = useForm(
+    cache.fetch({
+      key: "clienteService.schema",
+      callback: clienteService.schema,
+      expiresInSeconds: 3600,
+      debug: true,
+    })
+  );
 
-  const { values, setValues, errors, onChange, onInput, isDirty, schema } =
-    useForm(clienteService.schema());
+  React.useEffect(() => {
+    async function getRecord() {
+      if (isEmpty(selected) || !isNumber(selected.cliente_id)) showRecord({});
+      const data = await cache.fetch({
+        key: "agendaTelefoneService.read",
+        callback: clienteService.read,
+        args: [selected],
+        expiresInSeconds: 10,
+        debug: true,
+      });
+      showRecord(data);
+    }
+    getRecord();
+  }, [selected]);
 
   function showRecord(rec: any) {
     setValues(rec);
   }
 
   return (
-    <section data-name="PhonebookForm" className="mt-2">
+    <section
+      data-name="PhonebookForm"
+      className="mt-2"
+    >
       <div className="flex flex-col">
         <div className="flex flex-wrap gap-2">
           {schema?.map((field: TFieldClient) => (

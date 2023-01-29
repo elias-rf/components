@@ -16,7 +16,7 @@ export const estoque: TTable = {
     {
       field: "CdProduto",
       label: "Produto",
-      name: "produto_id",
+      name: "produto_plano_id",
       primaryKey: true,
       type: "string",
       size: 15,

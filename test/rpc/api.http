@@ -1,0 +1,9 @@
+### index
+GET http://localhost:3333/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"index"}
+
+
+
+### agendaTelefoneSchema
+GET http://localhost:3333/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"agendaTelefoneSchema","params": {"id": {"agenda_telefone_id":"1"}}}

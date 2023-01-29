@@ -1,3 +1,4 @@
+import { TFieldClient } from "../../../../types";
 import { day } from "../../../../utils/date/day";
 import { formatMoney } from "../../../../utils/format/format-money";
 
@@ -29,13 +30,10 @@ function sortProdutoAsc(a: any, b: any) {
   return 0;
 }
 
-export const mesSchema: TFieldClient[] = {
-  pk: ["mes"],
-  schema: [
-    { field: "mes", label: "Mes" },
-    { field: "valor", label: "Faturamento", fieldClass: "text-right" },
-  ],
-};
+export const mesSchema: TFieldClient[] = [
+  { name: "mes", label: "Mes" },
+  { name: "valor", label: "Faturamento", fieldClass: "text-right" },
+];
 
 export function mensal(data?: Record[]) {
   if (data === undefined) return [];
@@ -53,15 +51,12 @@ export function mensal(data?: Record[]) {
   return resp.sort(sortMesDesc);
 }
 
-export const produtoSchema: TFieldClient[] = {
-  pk: ["produto"],
-  schema: [
-    { field: "produto", label: "Produto" },
-    { field: "valor", label: "Faturamento", fieldClass: "text-right" },
-    { field: "quantidade", label: "Quantidade", fieldClass: "text-right" },
-    { field: "valorMedio", label: "Valor Médio", fieldClass: "text-right" },
-  ],
-};
+export const produtoSchema = [
+  { field: "produto", label: "Produto", primaryKey: true },
+  { field: "valor", label: "Faturamento", fieldClass: "text-right" },
+  { field: "quantidade", label: "Quantidade", fieldClass: "text-right" },
+  { field: "valorMedio", label: "Valor Médio", fieldClass: "text-right" },
+];
 
 export function mensalProduto(mesCorrente: string[], data?: Record[]) {
   if (data === undefined) return [];
@@ -92,13 +87,10 @@ export function mensalProduto(mesCorrente: string[], data?: Record[]) {
   return resp.sort(sortProdutoAsc);
 }
 
-export const vendedorSchema: TFieldClient[] = {
-  pk: ["vendedor"],
-  schema: [
-    { field: "vendedor", label: "Vendedor" },
-    { field: "valor", label: "Faturamento", fieldClass: "text-right" },
-  ],
-};
+export const vendedorSchema = [
+  { field: "vendedor", label: "Vendedor", primaryKey: true },
+  { field: "valor", label: "Faturamento", fieldClass: "text-right" },
+];
 
 export function mensalVendedor(mesCorrente: string[], data?: Record[]) {
   if (data === undefined) return [];
@@ -157,13 +149,10 @@ export function mensalVendedorProduto(
   return resp.sort(sortProdutoAsc);
 }
 
-export const ufSchema: TFieldClient[] = {
-  pk: ["uf"],
-  schema: [
-    { field: "uf", label: "Estado" },
-    { field: "valor", label: "Faturamento", fieldClass: "text-right" },
-  ],
-};
+export const ufSchema = [
+  { field: "uf", label: "Estado", primaryKey: true },
+  { field: "valor", label: "Faturamento", fieldClass: "text-right" },
+];
 
 export function mensalVendedorUf(
   mesCorrente: string[],

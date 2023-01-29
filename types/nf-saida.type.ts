@@ -1,45 +1,46 @@
-export type TNfSaidaId = {
+import { TFieldClient, TOrder, TSelect, TWhere } from ".";
+
+export type TNfSaidaPk = {
   filial_id?: number;
   nota_id?: number;
   serie_id?: string;
   modelo_id?: string;
 };
-
-export type TNfSaidaBase = {
-  DtEmissao?: string;
+export type TNfSaidaCol = {
+  data_emissao?: string;
   Tipo?: string;
-  CdCliente?: number;
-  CdVendedor?: number;
+  cliente_id?: number;
+  vendedor_id?: number;
   FgEstatistica?: string;
   FgEstoque?: string;
-  VlTotal?: number;
-  VlBaseCalculo?: number;
+  valor_total?: number;
+  valor_base_calculo?: number;
   BaseSubstituicao?: number;
   IcmsSubstituicao?: number;
-  VlIcms?: number;
+  valor_icms?: number;
   VlIRRF?: number;
   VlISS?: number;
   VlProdutos?: number;
-  VlFrete?: number;
-  VlSeguro?: number;
+  valor_frete?: number;
+  valor_seguro?: number;
   VlAcessorias?: number;
   VlIPI?: number;
   Servico?: string;
   VlServico?: number;
-  NumPedido?: number;
+  pedido_id?: number;
   OrdemCompra?: string;
   NumNotaOrigem?: number;
   DtUltAlteracao?: string;
-  Horario?: string;
+  horario?: string;
   FgRatearDescontoAcrescimo?: string;
   FgDesconto?: string;
-  VlDesconto?: number;
+  valor_desconto?: number;
   NumCupomFiscalOrigem?: number;
   NumPDVOrigem?: number;
   CdFilialAssociada?: number;
   CdVendedorExtra?: number;
   NotadeComplemento?: string;
-  VlTroco?: number;
+  valor_troco?: number;
   VlBaseCalculoIRRF?: number;
   PercAliqIRRF?: number;
   VlBaseCalculoIN381?: number;
@@ -93,5 +94,101 @@ export type TNfSaidaBase = {
   CPFCNPJAdquirente?: number;
   percComissao?: number;
 };
+export type TNfSaida = TNfSaidaPk | TNfSaidaCol;
 
-export type TNfSaida = Partial<TNfSaidaId | TNfSaidaBase>;
+export type TNfSaidaFields =
+  | keyof Required<TNfSaidaPk>
+  | keyof Required<TNfSaidaCol>;
+
+export type TNfSaidaIds = {
+  [pk in keyof Required<TNfSaidaPk>]: any;
+};
+export type TNfSaidaSelect = TSelect<TNfSaidaFields>;
+export type TNfSaidaWhere = TWhere<TNfSaidaFields>;
+export type TNfSaidaOrder = TOrder<TNfSaidaFields>;
+
+export type TNfSaidaSchema = () => Promise<TFieldClient[]>;
+export type TNfSaidaClear = () => Promise<TNfSaida>;
+export type TNfSaidaList = (args: {
+  where?: TWhere<TNfSaidaFields>[];
+  order?: TOrder<TNfSaidaFields>[];
+  limit?: number;
+  select?: TSelect<TNfSaidaFields>;
+}) => Promise<TNfSaida[]>;
+export type TNfSaidaRead = (args: {
+  id: TNfSaidaIds;
+  select?: TSelect<TNfSaidaFields>;
+}) => Promise<TNfSaida>;
+
+export type TNfSaidaCreate = (args: { data: TNfSaida }) => Promise<TNfSaida>;
+export type TNfSaidaUpdate = (args: {
+  id: TNfSaidaIds;
+  data: TNfSaida;
+}) => Promise<TNfSaida>;
+export type TNfSaidaDel = (args: { id: TNfSaidaIds }) => Promise<number>;
+
+type ProdutoQtd = {
+  LITEFLEX?: number;
+  METILCELULOSE?: number;
+  "CORNEAL RING"?: number;
+  ENLITE?: number;
+  "ANEL CAPSULAR"?: number;
+};
+
+export type TNfSaidaRpc = {
+  query: {
+    schema: TNfSaidaSchema;
+    clear: TNfSaidaClear;
+    list: TNfSaidaList;
+    read: TNfSaidaRead;
+    transferenciaDiario(args: {
+      inicio: string;
+      fim: string;
+    }): Promise<({ dia: string } & ProdutoQtd)[]>;
+    transferenciaDiarioSchema(): Promise<TFieldClient[]>;
+    transferenciaMensal(args: {
+      mes: string;
+    }): Promise<({ mes: string } & ProdutoQtd)[]>;
+    transferenciaMensalSchema(): Promise<TFieldClient[]>;
+    transferenciaModelo({
+      data,
+    }: {
+      data: string;
+    }): Promise<{ modelo: string; quantidade: number }[]>;
+    vendaDiario(args: { inicio: string; fim: string; uf: string[] }): Promise<
+      {
+        NmCategoria: string;
+        DtEmissao: string;
+        quantidade: number;
+        valor: number;
+      }[]
+    >;
+    vendaDiarioSchema(): Promise<TFieldClient[]>;
+    vendaMensalCliente({
+      inicio,
+      fim,
+      cliente,
+    }: {
+      inicio: string;
+      fim: string;
+      cliente: number;
+    }): Promise<
+      {
+        NmCategoria: string;
+        CdCliente: number;
+        anoMes: string;
+        quantidade: number;
+        valor: number;
+      }[]
+    >;
+    vendaMensalClienteSchema(): Promise<TFieldClient[]>;
+    vendaAnalitico(args: { inicio: string; fim: string }): Promise<TNfSaida[]>;
+    vendaAnaliticoSchema(): Promise<TFieldClient[]>;
+    transferenciaModeloSchema(): Promise<TFieldClient[]>;
+  };
+  // mutation: {
+  //   nfSaidaCreate: TNfSaidaCreate;
+  //   update: TNfSaidaUpdate;
+  //   del: TNfSaidaDel;
+  // };
+};

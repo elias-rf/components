@@ -2,7 +2,7 @@ import { TTable } from "../types";
 
 export const etiqueta_externa: TTable = {
   database: "oftalmo",
-  table: "tbl_producao_etiqueta",
+  table: "tEtiqueta",
   fields: [
     {
       field: "controle",

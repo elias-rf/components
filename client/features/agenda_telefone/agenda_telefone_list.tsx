@@ -1,17 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
+import React from "react";
 import { TIds, TOrder, TWhere } from "../../../types";
+import { TAgendaTelefoneFields } from "../../../types/agenda-telefone.type";
 import { Table } from "../../components/table/table";
 import { TTableEvent } from "../../components/table/table.types";
-import { agendaTelefoneService } from "../../service/agenda_telefone.service";
+import { agendaTelefoneStore } from "../../service/agenda-telefone.service";
 
 export type TAgendaTelefoneListEvent = TTableEvent;
 
 type TAgendaTelefoneListProps = {
   selected: TIds;
   onSelectEvent: (event: TAgendaTelefoneListEvent) => void;
-  where: TWhere[];
+  where: TWhere<TAgendaTelefoneFields>[];
   onWhereEvent: (event: TAgendaTelefoneListEvent) => void;
-  order: TOrder[];
+  order: TOrder<TAgendaTelefoneFields>[];
   onOrderEvent: (event: TAgendaTelefoneListEvent) => void;
 };
 
@@ -23,29 +24,31 @@ export function AgendaTelefoneList({
   order,
   onOrderEvent,
 }: TAgendaTelefoneListProps) {
-  const schema = useQuery({
-    queryKey: ["agenda_telefone", "schema"],
-    queryFn: agendaTelefoneService.schema,
-  });
+  const getSchema = agendaTelefoneStore((state) => state.getSchema);
+  const dataSchema = agendaTelefoneStore((state) => state.dataSchema);
+  const getList = agendaTelefoneStore((state) => state.getList);
+  const dataList = agendaTelefoneStore((state) => state.dataList);
 
-  const list = useQuery({
-    queryKey: ["agenda_telefone", where, order],
-    queryFn: ({ queryKey }) => {
-      const [_key1, where, order] = queryKey as [string, TWhere[], TOrder[]];
-      return agendaTelefoneService.list(where, order);
-    },
-  });
+  React.useEffect(() => {
+    getSchema();
+  }, [getSchema]);
+
+  React.useEffect(() => {
+    getList({ where, order });
+  }, [where, order, getList]);
 
   return (
-    <Table
-      schema={schema.data || []}
-      data={list.data || []}
-      selected={selected}
-      order={order}
-      where={where}
-      onSelectEvent={(e) => onSelectEvent(e)}
-      onWhereEvent={(e) => onWhereEvent(e)}
-      onOrderEvent={(e) => onOrderEvent(e)}
-    />
+    <>
+      <Table
+        schema={dataSchema}
+        data={dataList}
+        selected={selected}
+        order={order}
+        where={where}
+        onSelectEvent={(e) => onSelectEvent(e)}
+        onWhereEvent={(e) => onWhereEvent(e)}
+        onOrderEvent={(e) => onOrderEvent(e)}
+      />
+    </>
   );
 }

@@ -1,8 +1,9 @@
-export type TVendedorId = {
-  CadVen_id: number;
-}
+import { TFieldClient, TOrder, TSelect, TWhere } from ".";
 
-export type TVendedorBase = {
+export type TVendedorPk = {
+  CadVen_id?: number;
+};
+export type TVendedorCol = {
   NmVendedor?: string;
   Endereco?: string;
   Cidade?: string;
@@ -30,6 +31,50 @@ export type TVendedorBase = {
   NmFantasia?: string;
   FgFuncionarioOS?: string;
   FgTecnicoOS?: string;
-}
+};
+export type TVendedor = TVendedorPk | TVendedorCol;
 
- export type TVendedor = Partial<TVendedorId | TVendedorBase>
+export type TVendedorFields =
+  | keyof Required<TVendedorPk>
+  | keyof Required<TVendedorCol>;
+
+export type TVendedorIds = {
+  [pk in keyof Required<TVendedorPk>]: any;
+};
+export type TVendedorSelect = TSelect<TVendedorFields>;
+export type TVendedorWhere = TWhere<TVendedorFields>;
+export type TVendedorOrder = TOrder<TVendedorFields>;
+
+export type TVendedorSchema = () => Promise<TFieldClient[]>;
+export type TVendedorClear = () => Promise<TVendedor>;
+export type TVendedorList = (args: {
+  where?: TWhere<TVendedorFields>[];
+  order?: TOrder<TVendedorFields>[];
+  limit?: number;
+  select?: TSelect<TVendedorFields>;
+}) => Promise<TVendedor[]>;
+export type TVendedorRead = (args: {
+  id: TVendedorIds;
+  select?: TSelect<TVendedorFields>;
+}) => Promise<TVendedor>;
+
+export type TVendedorCreate = (args: { data: TVendedor }) => Promise<TVendedor>;
+export type TVendedorUpdate = (args: {
+  id: TVendedorIds;
+  data: TVendedor;
+}) => Promise<TVendedor>;
+export type TVendedorDel = (args: { id: TVendedorIds }) => Promise<number>;
+
+export type TVendedorRpc = {
+  query: {
+    vendedorSchema: TVendedorSchema;
+    clear: TVendedorClear;
+    list: TVendedorList;
+    read: TVendedorRead;
+  };
+  mutation: {
+    create: TVendedorCreate;
+    update: TVendedorUpdate;
+    del: TVendedorDel;
+  };
+};

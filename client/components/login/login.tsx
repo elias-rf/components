@@ -1,8 +1,20 @@
+import { TEvent } from "../../../types";
 import { useField } from "../../lib/hooks/use-field.hook";
 import { Button } from "../button";
 import { Textbox } from "../form/textbox";
 import { SpinnerIcon } from "../spinner/spinner-icon";
-import { TLoginProps } from "./login.types";
+
+export type TLoginEvent = TEvent & {
+  component: "Login";
+  event: "onInputEvent";
+};
+
+export type TLoginProps = {
+  onInputEvent?: (event: TLoginEvent) => void;
+  title?: string;
+  loading?: boolean;
+  error?: string;
+};
 
 export function Login(props: TLoginProps) {
   const {
@@ -45,11 +57,17 @@ export function Login(props: TLoginProps) {
         </div>
         <div className="flex flex-col mb-2">
           <div className="relative flex">
-            <Button name="login" onClickEvent={handleLogin}>
+            <Button
+              name="login"
+              onClickEvent={handleLogin}
+            >
               <div className="inline-flex flex-nowrap">
                 Login
                 <div className="self-center ml-1">
-                  <SpinnerIcon show={loading} className="-mr-4" />
+                  <SpinnerIcon
+                    show={loading}
+                    className="-mr-4"
+                  />
                 </div>
               </div>
             </Button>

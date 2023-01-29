@@ -1,19 +1,21 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { TEvent } from "../../../types";
 import { TextboxNumber } from "./textbox-number";
 
-export default {
-  title: "Components/TextboxNumber",
+const meta: Meta<typeof TextboxNumber> = {
   component: TextboxNumber,
   argTypes: {
     onBlurEvent: { action: "onBlur" },
     onChangeEvent: { action: "onChange" },
     onInputEvent: { action: "onInput" },
   },
-} as ComponentMeta<typeof TextboxNumber>;
+};
 
-export const Default: ComponentStory<typeof TextboxNumber> = (props: any) => {
+export default meta;
+type Story = StoryObj<typeof TextboxNumber>;
+
+function TextboxNumberState(props: any) {
   const [vlr, setVlr] = React.useState(123456789);
 
   function handleBlur(e: TEvent) {
@@ -40,12 +42,13 @@ export const Default: ComponentStory<typeof TextboxNumber> = (props: any) => {
       onInput={handleInput}
     />
   );
-};
+}
 
-Default.args = {
-  value: "1",
-  name: "textbox1",
-  disabled: false,
+export const Default: Story = {
+  args: {
+    value: "1",
+    name: "textbox1",
+    disabled: false,
+  },
+  render: (props) => <TextboxNumberState {...props} />,
 };
-
-Default.storyName = "TextboxNumber";

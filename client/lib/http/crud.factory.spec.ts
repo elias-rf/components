@@ -16,9 +16,9 @@ describe("crudFactory", () => {
         result: [{}],
       },
     });
-    const rsp = await crud.schema();
+    const rsp = await crud.query.schema();
     expect(fetchMockRpc.history(0)).toEqual({
-      url: '/api/rpc?rpc={"jsonrpc":"2.0","id":1,"method":"crudSchema","params":{"table":"cliente"}}',
+      url: 'http://localhost:3333/api/rpc?rpc={"jsonrpc":"2.0","id":1,"method":"crudSchema","params":{"table":"cliente"}}',
       options: {
         method: "GET",
         headers: {
@@ -35,9 +35,9 @@ describe("crudFactory", () => {
         result: [{}],
       },
     });
-    const rsp = await crud.clear();
+    const rsp = await crud.query.clear();
     expect(fetchMockRpc.history(0)).toEqual({
-      url: `/api/rpc?rpc={"jsonrpc":"2.0","id":2,"method":"crudClear","params":{"table":"cliente"}}`,
+      url: `http://localhost:3333/api/rpc?rpc={"jsonrpc":"2.0","id":2,"method":"crudClear","params":{"table":"cliente"}}`,
       options: {
         method: "GET",
         headers: {

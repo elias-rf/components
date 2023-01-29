@@ -8,7 +8,7 @@ import { Vendas30dias as Vendas } from "../../features/vendas/vendas_30dias";
  *
  * @returns {*} componente react
  */
-function Vendas30dias() {
+export default function Vendas30dias() {
   return (
     <Auth>
       <Page>
@@ -18,5 +18,3 @@ function Vendas30dias() {
     </Auth>
   );
 }
-
-export default Vendas30dias;

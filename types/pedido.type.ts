@@ -1,9 +1,11 @@
-export type TPedidoId = {
-  CdFilial?: number;
-  CdEmitente?: number;
-};
+import { TFieldClient, TOrder, TSelect, TWhere } from ".";
 
-export type TPedidoBase = {
+export type TPedidoPk = {
+  CdEmitente?: number;
+  CdFilial?: number;
+  NumPedido?: number;
+};
+export type TPedidoCol = {
   CdTipoVenda?: number;
   CdTransportadora?: number;
   CdVendedor?: number;
@@ -21,7 +23,6 @@ export type TPedidoBase = {
   NmConfirmacao?: string;
   NmFavorecido?: string;
   Nop?: number;
-  NumPedido?: number;
   NumPedidoEmitente?: string;
   NumRecibo?: number;
   Obs?: string;
@@ -94,5 +95,49 @@ export type TPedidoBase = {
   VlTotalPesoBruto?: number;
   VlDescontoCombo?: number;
 };
+export type TPedido = TPedidoPk | TPedidoCol;
 
-export type TPedido = Partial<TPedidoId | TPedidoBase>;
+export type TPedidoFields =
+  | keyof Required<TPedidoPk>
+  | keyof Required<TPedidoCol>;
+
+export type TPedidoIds = {
+  [pk in keyof Required<TPedidoPk>]: any;
+};
+export type TPedidoSelect = TSelect<TPedidoFields>;
+export type TPedidoWhere = TWhere<TPedidoFields>;
+export type TPedidoOrder = TOrder<TPedidoFields>;
+
+export type TPedidoSchema = () => Promise<TFieldClient[]>;
+export type TPedidoClear = () => Promise<TPedido>;
+export type TPedidoList = (args: {
+  where?: TWhere<TPedidoFields>[];
+  order?: TOrder<TPedidoFields>[];
+  limit?: number;
+  select?: TSelect<TPedidoFields>;
+}) => Promise<TPedido[]>;
+export type TPedidoRead = (args: {
+  id: TPedidoIds;
+  select?: TSelect<TPedidoFields>;
+}) => Promise<TPedido>;
+
+export type TPedidoCreate = (args: { data: TPedido }) => Promise<TPedido>;
+export type TPedidoUpdate = (args: {
+  id: TPedidoIds;
+  data: TPedido;
+}) => Promise<TPedido>;
+export type TPedidoDel = (args: { id: TPedidoIds }) => Promise<number>;
+
+export type TPedidoRpc = {
+  query: {
+    pedidoSchema: TPedidoSchema;
+    clear: TPedidoClear;
+    list: TPedidoList;
+    read: TPedidoRead;
+  };
+  mutation: {
+    pedidoCreate: TPedidoCreate;
+    update: TPedidoUpdate;
+    del: TPedidoDel;
+  };
+};

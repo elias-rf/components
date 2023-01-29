@@ -47,5 +47,26 @@ export const cliente: TTable = {
       name: "is_ativo",
       type: "string",
     },
+    {
+      field: "EMail",
+      label: "Email",
+      name: "email",
+      type: "string",
+      allowNull: false,
+    },
+    {
+      field: "NumIdentidade",
+      label: "Identidade",
+      name: "identidade",
+      type: "string",
+      allowNull: false,
+    },
+    {
+      field: "DtCadastro",
+      label: "Data de Cadastro",
+      name: "data_cadastro",
+      type: "string",
+      allowNull: false,
+    },
   ],
 };

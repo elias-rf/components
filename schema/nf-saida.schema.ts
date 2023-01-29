@@ -51,7 +51,7 @@ export const nf_saida: TTable = {
     {
       field: "Tipo",
       label: "Tipo",
-      name: "Tipo",
+      name: "tipo",
       type: "string",
       size: 1,
     },
@@ -74,14 +74,14 @@ export const nf_saida: TTable = {
     {
       field: "FgEstatistica",
       label: "FgEstatistica",
-      name: "FgEstatistica",
+      name: "eh_estatistica",
       type: "string",
       size: 1,
     },
     {
       field: "FgEstoque",
       label: "FgEstoque",
-      name: "FgEstoque",
+      name: "eh_estoque",
       type: "string",
       size: 1,
     },
@@ -206,7 +206,7 @@ export const nf_saida: TTable = {
     {
       field: "OrdemCompra",
       label: "OrdemCompra",
-      name: "OrdemCompra",
+      name: "compra_id",
       type: "string",
       size: 20,
     },
@@ -243,7 +243,7 @@ export const nf_saida: TTable = {
     {
       field: "FgDesconto",
       label: "FgDesconto",
-      name: "FgDesconto",
+      name: "eh_desconto",
       type: "string",
       size: 1,
     },
@@ -288,7 +288,7 @@ export const nf_saida: TTable = {
     {
       field: "NotadeComplemento",
       label: "NotadeComplemento",
-      name: "NotadeComplemento",
+      name: "nota_complemento",
       type: "string",
       size: 1,
     },
@@ -374,14 +374,14 @@ export const nf_saida: TTable = {
     {
       field: "CdTipoVenda",
       label: "CdTipoVenda",
-      name: "CdTipoVenda",
+      name: "tipo_venda_id",
       type: "int",
       size: 2,
     },
     {
       field: "CdFuncionario",
       label: "CdFuncionario",
-      name: "CdFuncionario",
+      name: "funcionario_id",
       type: "float",
       size: 8,
       scale: 4,
@@ -389,21 +389,21 @@ export const nf_saida: TTable = {
     {
       field: "CdUsuario",
       label: "CdUsuario",
-      name: "CdUsuario",
+      name: "usuario_id",
       type: "string",
       size: 10,
     },
     {
       field: "Nop",
       label: "Nop",
-      name: "Nop",
+      name: "cfop",
       type: "int",
       size: 4,
     },
     {
       field: "NopFiscal",
       label: "NopFiscal",
-      name: "NopFiscal",
+      name: "cfop_fiscal",
       type: "int",
       size: 4,
     },
@@ -559,7 +559,7 @@ export const nf_saida: TTable = {
     {
       field: "TipoNota",
       label: "TipoNota",
-      name: "TipoNota",
+      name: "tipoNota",
       type: "string",
       size: 1,
     },
@@ -580,14 +580,14 @@ export const nf_saida: TTable = {
     {
       field: "FgVendaConsumidor",
       label: "FgVendaConsumidor",
-      name: "FgVendaConsumidor",
+      name: "eh_venda_consumidor",
       type: "string",
       size: 1,
     },
     {
       field: "FgDiferencialAliquota",
       label: "FgDiferencialAliquota",
-      name: "FgDiferencialAliquota",
+      name: "eh_diferencial_aliquota",
       type: "string",
       size: 1,
     },
@@ -617,7 +617,7 @@ export const nf_saida: TTable = {
     {
       field: "FgImportacao",
       label: "FgImportacao",
-      name: "FgImportacao",
+      name: "eh_importacao",
       type: "string",
       size: 1,
     },
@@ -631,7 +631,7 @@ export const nf_saida: TTable = {
     {
       field: "FgNfTerceiros",
       label: "FgNfTerceiros",
-      name: "FgNfTerceiros",
+      name: "eh_nf_terceiro",
       type: "string",
       size: 1,
     },

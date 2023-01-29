@@ -1,16 +1,18 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { LabelError } from "../label_error";
 import { Formfield } from "./formfield";
 import { Label } from "./label";
 import { Textbox } from "./textbox";
 
-export default {
-  title: "Components/Form/Formfield",
+const meta: Meta<typeof Formfield> = {
   component: Formfield,
-} as ComponentMeta<typeof Formfield>;
+};
 
-export const Default: ComponentStory<typeof Formfield> = () => {
+export default meta;
+type Story = StoryObj<typeof Formfield>;
+
+function FormfieldState() {
   const [vlr, setVlr] = React.useState("");
   return (
     <Formfield>
@@ -23,6 +25,8 @@ export const Default: ComponentStory<typeof Formfield> = () => {
       <LabelError>ERRO</LabelError>
     </Formfield>
   );
-};
+}
 
-Default.storyName = "Formfield";
+export const Default: Story = {
+  render: () => <FormfieldState />,
+};

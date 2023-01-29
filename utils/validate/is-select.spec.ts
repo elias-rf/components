@@ -1,71 +1,38 @@
-import { expect, it } from "vitest";
-import { TTable } from "../../types";
+import { describe, expect, it } from "vitest";
+import { entity } from "./aux";
 import { isSelect } from "./is-select";
 
-const entity: TTable = {
-  database: "oftalmo",
-  table: "phonebook",
-  fields: [
-    {
-      allowNull: false,
-      field: "id",
-      label: "Ramal",
-      name: "agenda_telefone_id",
-      primaryKey: true,
-      type: "int",
-    },
-    {
-      allowNull: false,
-      field: "name",
-      label: "Nome",
-      name: "nome",
-      type: "string",
-    },
-    {
-      field: "department",
-      label: "Setor",
-      name: "setor",
-      type: "string",
-    },
-    {
-      field: "email",
-      label: "Email",
-      name: "email",
-      type: "string",
-    },
-  ],
-};
+describe("isSelect", () => {
+  it("deve invalidar select mal formatados", () => {
+    // @ts-expect-error: Unreachable code error
+    expect(isSelect(undefined, entity)).toBe(
+      "select deve ser um array de campos"
+    );
+    // @ts-expect-error: Unreachable code error
+    expect(isSelect(null, entity)).toBe("select deve ser um array de campos");
+    // @ts-expect-error: Unreachable code error
+    expect(isSelect({}, entity)).toBe("select deve ser um array de campos");
+    // @ts-expect-error: Unreachable code error
+    expect(isSelect("field", entity)).toBe(
+      "select deve ser um array de campos"
+    );
+    // @ts-expect-error: Unreachable code error
+    expect(isSelect({ field: 1 }, entity)).toBe(
+      "select deve ser um array de campos"
+    );
+    expect(isSelect([], entity)).toBe("select deve ser um array de campos");
+  });
 
-it("deve validar select", () => {
-  // @ts-expect-error: Unreachable code error
-  expect(isSelect(undefined, entity)).toBe(
-    "Select deve ser um array de campos"
-  );
-  // @ts-expect-error: Unreachable code error
-  expect(isSelect(null, entity)).toBe("Select deve ser um array de campos");
-  // @ts-expect-error: Unreachable code error
-  expect(isSelect({}, entity)).toBe("Select deve ser um array de campos");
-  // @ts-expect-error: Unreachable code error
-  expect(isSelect("field", entity)).toBe("Select deve ser um array de campos");
-  // @ts-expect-error: Unreachable code error
-  expect(isSelect({ field: 1 }, entity)).toBe(
-    "Select deve ser um array de campos"
-  );
-  // @ts-expect-error: Unreachable code error
-  expect(isSelect([{ field: 1 }], entity)).toBe(
-    "Select deve ser um array de campos"
-  );
-  expect(isSelect([], entity)).toBe("Select deve ser um array de campos");
-  // @ts-expect-error: Unreachable code error
-  expect(isSelect([["field", "ascii"]], entity)).toBe(
-    "Select deve ser um array de campos"
-  );
-  // @ts-expect-error: Unreachable code error
-  expect(isSelect([["field"]], entity)).toBe(
-    "Select deve ser um array de campos"
-  );
-  expect(isSelect(["field2", "asc"], entity)).toBe(
-    "field2 não é um campo válido para [select][phonebook]: agenda_telefone_id,nome,setor,email"
-  );
-  expect(isSelect(["nome"], entity)).toBe(null);
+  it("deve validar select", () => {
+    expect(isSelect(["fld_1"], entity)).toBe(null);
+  });
+
+  it("deve invalidar select com campo errado", () => {
+    expect(isSelect(["fld_0", "fld_1"], entity)).toBe(
+      "fld_0 não é select válido use: fld_2,fld_3,fld_4"
+    );
+    expect(isSelect(["fld_0", "fld_00", "fld_1"], entity)).toBe(
+      "fld_0,fld_00 não são select válidos use: fld_2,fld_3,fld_4"
+    );
+  });
 });

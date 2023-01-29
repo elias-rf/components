@@ -16,15 +16,14 @@ function proporcao(qtd: number, quantidades: number[], valores: number[]) {
   return valores[valores.length - 1];
 }
 
-export type Calculadora = {};
-
 export const calculadora = {
   liteflex(qtd: number) {
     const quantidades = [1, 50, 500, 1000, 2000];
     // const valores = [50, 47.3, 44.5, 41.5, 39.5]; // 2021/12
     // const valores = [50, 47.5, 44.7, 41.8, 39.8]; // 2022/01
     // const valores = [50, 47.8, 45.0, 42.2, 40.2]; // 2022/02
-    const valores = [55.0, 53.0, 47.5, 44.5, 42.0]; // 2022/03
+    // const valores = [55.0, 53.0, 47.5, 44.5, 42.0]; // 2022/03
+    const valores = [58.0, 56.0, 50, 47.5, 45.0]; // 2023/02
     return proporcao(qtd, quantidades, valores);
   },
 
@@ -51,7 +50,8 @@ export const calculadora = {
   liteflexEnlite(qtd: number) {
     const quantidades = [1, 500, 1000, 2000];
     // const valores = [72.2, 63.18, 59.38, 56.53]; // 2021/12
-    const valores = [76.95, 68.16, 63.6, 59.04]; // 2022/03
+    // const valores = [76.95, 68.16, 63.6, 59.04]; // 2022/03
+    const valores = [79.95, 71.16, 66.6, 62.04]; // 2023/02
     return proporcao(qtd, quantidades, valores);
   },
 
@@ -65,13 +65,13 @@ export const calculadora = {
   liteflexEnliteMetil(qtd: number) {
     const quantidades = [1, 500, 1000, 2000];
     // const valores = [99.9, 87.4, 81.9, 72.2]; // 2021/12
-    const valores = [104.53, 90.17, 85.6, 76.09]; // 2022/03
+    const valores = [110.93, 95.57, 81, 81.29]; // 2022/03
     return proporcao(qtd, quantidades, valores);
   },
 
   hiliteEnliteMetil(qtd: number) {
     const quantidades = [1, 50, 100, 200];
-    const valores = [143.4, 121.4, 116.4, 108.1]; // 2021/12
+    const valores = [149.8, 127.4, 122.4, 112.9]; // 2021/12
     return proporcao(qtd, quantidades, valores);
   },
 };

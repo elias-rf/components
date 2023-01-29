@@ -1,7 +1,15 @@
-import { TIds } from "../../types";
+import { TFieldClient, TIds } from "../../types";
 import { fetcherRpc } from "../../utils/api/fetcher-rpc";
 import { round } from "../../utils/number/round";
 import { day } from "../lib/day";
+
+type TVendaService = {
+  schemaDiario(): Promise<TFieldClient[]>;
+  diario(args: { inicio: string; fim: string; uf: string[] }): Promise<any>;
+  schemaMensal(): Promise<TFieldClient[]>;
+  mensal(args: { inicio: string; fim: string; CdCliente: TIds }): Promise<any>;
+  analitico(args: { inicio: string; fim: string }): Promise<any>;
+};
 
 function getSum(lista: any[], produto: string, data: day.Dayjs) {
   const dataInicial = data.add(-30, "day").format("YYYY-MM-DD");
@@ -30,17 +38,13 @@ function getSum(lista: any[], produto: string, data: day.Dayjs) {
   };
 }
 
-const vendaService = {
+export const vendaService: TVendaService = {
   async schemaDiario() {
-    return fetcherRpc("vendaDiarioSchema");
+    return fetcherRpc.query("nfSaidaVendaDiarioSchema");
   },
 
-  async diario(inicio: string, fim: string, uf: string[]) {
-    const response = await fetcherRpc("vendaDiario", {
-      inicio,
-      fim,
-      uf,
-    });
+  async diario(args) {
+    const response = await fetcherRpc.query("nfSaidaVendaDiario", args);
 
     const origem = response;
     const destino: any = {
@@ -53,7 +57,7 @@ const vendaService = {
     };
 
     for (let dia = 45; dia >= 0; dia--) {
-      const diaFinal = day(fim).subtract(dia, "day");
+      const diaFinal = day(args.fim).subtract(dia, "day");
       destino.liteflex.push(getSum(origem, "LITEFLEX", diaFinal));
       destino.metil.push(getSum(origem, "METILCELULOSE", diaFinal));
       destino.enlite.push(getSum(origem, "ENLITE", diaFinal));
@@ -77,16 +81,14 @@ const vendaService = {
   },
 
   async schemaMensal() {
-    return fetcherRpc("vendaMensalSchema");
+    return fetcherRpc.query("nfSaidaVendaMensalSchema");
   },
 
-  async mensal(inicio: string, fim: string, CdCliente: TIds) {
-    return fetcherRpc("vendaMensal", { inicio, fim, id: CdCliente });
+  async mensal(args) {
+    return fetcherRpc.query("nfSaidaVendaMensal", args);
   },
 
-  async analitico(inicio: string, fim: string) {
-    return fetcherRpc("vendaAnalitico", { inicio, fim });
+  async analitico(args) {
+    return fetcherRpc.query("nfSaidaVendaAnalitico", args);
   },
 };
-
-export default vendaService;

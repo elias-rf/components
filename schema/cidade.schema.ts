@@ -5,36 +5,38 @@ export const cidade: TTable = {
   table: "cidadesERF",
   fields: [
     {
-      field: "CdCidadeIBGE",
-      label: "Cód",
-      name: "cidade_id",
-      type: "int",
-    },
-    {
       field: "NmCidadeIBGE",
       label: "Máquina",
       name: "nome_cidade",
       primaryKey: true,
-      type: "int",
-    },
-    {
-      field: "CdUFIBGE",
-      label: "Série",
-      name: "uf_id",
-      type: "int",
-    },
-    {
-      field: "uf",
-      label: "Cód Divisao",
-      name: "uf",
-      type: "int",
+      type: "string",
     },
     {
       field: "ufOld",
       label: "Cód Setor",
       name: "uf_old",
       primaryKey: true,
+      type: "string",
+    },
+    {
+      field: "CdCidadeIBGE",
+      label: "Cód",
+      name: "cidade_id",
+      type: "string",
+    },
+
+    {
+      field: "CdUFIBGE",
+      label: "Série",
+      name: "uf_id",
       type: "int",
+      allowNull: false,
+    },
+    {
+      field: "uf",
+      label: "Cód Divisao",
+      name: "uf",
+      type: "string",
     },
   ],
 };

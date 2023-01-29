@@ -1,22 +1,23 @@
-### Index
-POST http://localhost:3000/api/rpc
-Content-Type: application/json
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
 
-{
-  "jsonrpc":"2.0",
-  "id":"1",
-  "method":"index",
-  "params":{}
-}
+### Index
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"index"}
+
+### Index
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"index", "params":"ordem"}
 
 ### Echo
-POST http://localhost:3000/api/rpc
+POST {{host}}/api/rpc
 Content-Type: application/json
 
 {
   "jsonrpc":"2.0",
   "id":"1",
-  "method":"echo",
+  "method":"echoRequest",
   "params":{
     "inicio":"2020-01-01",
     "fim":"2020-01-31",
@@ -25,15 +26,5 @@ Content-Type: application/json
 }
 
 ### Echo
-POST http://localhost:3000/api/rpc
-Content-Type: application/json
-
-{
-  "jsonrpc":"2.0",
-  "id":"1",
-  "method":"operacaoMensal",
-  "params":{
-    "mes":"2020-01",
-    "operacao": "1010"
-  }
-}
+GET {{host}}/api/rpc
+?rpc={  "jsonrpc":"2.0","id":"1","method":"echoRequest","params":{"inicio":"2020-01-01","fim":"2020-01-31","operacao": "1020"}}

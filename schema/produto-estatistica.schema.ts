@@ -34,7 +34,7 @@ export const produto_estatistica: TTable = {
     {
       field: "CdProduto",
       label: "CdProduto",
-      name: "produto_id",
+      name: "produto_plano_id",
       type: "string",
       size: 15,
       allowNull: false,
@@ -115,7 +115,7 @@ export const produto_estatistica: TTable = {
     {
       field: "VlVendas",
       label: "VlVendas",
-      name: "valor_venda",
+      name: "valor_vendas",
       type: "float",
       size: 8,
       scale: 4,

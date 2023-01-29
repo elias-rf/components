@@ -1,17 +1,38 @@
-import { TTable } from "../../types";
-import { isArray } from "../identify/is-array";
+import { TFieldServer } from "../../types";
 import { isObject } from "../identify/is-object";
-import { namesFromTable } from "../schema/names-from-table";
+import { namesFromFields } from "../schema/names-from-fields";
 
-export function isData<Rec>(data: Rec, entity: TTable): string | null {
-  if (!isArray(data) && !isObject(data))
-    return "Select deve ser um array ou objeto";
-  const nameList = namesFromTable(entity);
+/**
+ * Validar se são dados para gravação de um registro informado pelo usuário
+ */
+export function isData<Rec>(data: Rec, fields: TFieldServer[]): string | null {
+  if (!isObject(data)) return "Data deve ser um objeto";
 
-  for (const fld in data) {
-    if (!nameList.includes(fld)) {
-      return `${fld} não é um campo válido para [data][${entity.table}]: ${nameList}`;
+  const nameListOk = namesFromFields(
+    fields.filter((fld) => fld.readOnly !== true && fld.autoIncrement !== true)
+  );
+
+  const fieldsInvalidos = [];
+  let fieldsLivres = nameListOk;
+
+  for (const field in data) {
+    if (!nameListOk.includes(field)) {
+      fieldsInvalidos.push(field);
     }
+    fieldsLivres = fieldsLivres.filter((f) => f !== field);
   }
+
+  if (fieldsInvalidos.length === 1) {
+    return `${fieldsInvalidos} não é um campo válido${
+      fieldsLivres.length > 0 ? ", use: " : "."
+    }${fieldsLivres}`;
+  }
+
+  if (fieldsInvalidos.length > 1) {
+    return `${fieldsInvalidos} não são campos válidos${
+      fieldsLivres.length > 0 ? ", use: " : "."
+    }${fieldsLivres}`;
+  }
+
   return null;
 }

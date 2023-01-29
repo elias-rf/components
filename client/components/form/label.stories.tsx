@@ -1,22 +1,23 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Label } from "./label";
 
-export default {
-  title: "Components/Form/Label",
+const meta: Meta<typeof Label> = {
   component: Label,
-} as ComponentMeta<typeof Label>;
-
-export const Default: ComponentStory<typeof Label> = (args) => {
-  return (
-    <>
-      <Label {...args} />
-    </>
-  );
 };
 
-Default.args = {
-  name: "textbox1",
-  children: "Label",
-};
+export default meta;
+type Story = StoryObj<typeof Label>;
 
-Default.storyName = "Label";
+export const Default: Story = {
+  args: {
+    name: "textbox1",
+    children: "Label",
+  },
+  render: (props) => {
+    return (
+      <>
+        <Label {...props} />
+      </>
+    );
+  },
+};

@@ -2,10 +2,19 @@ import { describe, expect, it } from "vitest";
 import { hashObject } from "./hash-object";
 
 describe("hashObject", () => {
+  it("deve trabalhar com undefined", () => {
+    expect(hashObject()).toEqual("");
+  });
+  it("deve trabalhar com null", () => {
+    expect(hashObject()).toEqual("");
+  });
   it("deve trabalhar com valor simples", () => {
     expect(hashObject(12)).toEqual("12");
   });
+  it("deve trabalhar com array", () => {
+    expect(hashObject([1, 2, 3, 4])).toEqual("[1,2,3,4]");
+  });
   it("deve trabalhar com valor complexo", () => {
-    expect(hashObject([{ n: 12 }])).toEqual('[{"n":12}]');
+    expect(hashObject([1, { n: 12, a: 3 }])).toEqual('[1,{"a":3,"n":12}]');
   });
 });

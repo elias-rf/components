@@ -2,20 +2,23 @@ module.exports = {
   stories: [
     // "../stories/**/*.stories.mdx",
     // "../stories/**/*.stories.@(js|jsx|ts|tsx)",
-    "../client/components/**/*.stories.@(js|jsx|ts|tsx)",
-    "../client/features/**/*.stories.@(js|jsx|ts|tsx)",
-    "../client/pages/**/*.stories.@(js|jsx|ts|tsx)",
-    "../client/lib/hooks/**/*.stories.@(js|jsx|ts|tsx)",
+    "../client",
+    // "../client/components/**/*.stories.@(js|jsx|ts|tsx)",
+    // "../client/features/**/*.stories.@(js|jsx|ts|tsx)",
+    // "../client/pages/**/*.stories.@(js|jsx|ts|tsx)",
+    // "../client/lib/hooks/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    "storybook-tailwind-dark-mode",
   ],
-  framework: "@storybook/react",
-  core: {
-    builder: "@storybook/builder-vite",
+  framework: {
+    name: "@storybook/react-vite",
+    options: {
+      fastRefresh: true,
+      strictMode: true,
+    },
   },
   features: {
     storyStoreV7: true,
@@ -30,5 +33,8 @@ module.exports = {
   reactOptions: {
     fastRefresh: true,
     strictMode: true,
+  },
+  docs: {
+    autodocs: true,
   },
 };

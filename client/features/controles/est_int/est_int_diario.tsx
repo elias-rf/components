@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { TEvent, TIds } from "../../../../types";
+import React from "react";
+import { TEvent, TFieldClient } from "../../../../types";
 import { Table } from "../../../components/table/table";
 import { day } from "../../../lib/day";
 import { esterilizacaoInternaService } from "../../../service/esterilizacao-interna.service";
@@ -17,18 +17,24 @@ export function EsterilizacaoInternaDiario({
   diaCorrente,
   onSelectEvent,
 }: EsterilizacaoInternaDiarioProps) {
-  const schema = useQuery({
-    queryKey: ["esterilizacaoInternaDiarioSchema"],
-    queryFn: async () => esterilizacaoInternaService.schemaDiario(),
-    staleTime: Infinity,
-  });
+  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
+  const [data, setData] = React.useState<TFieldClient[]>([]);
 
-  const diario = useQuery({
-    queryKey: ["esterilizacaoInternaDiario", mesCorrente],
-    queryFn: ({ queryKey }) => {
-      const [_key, mesCorrente] = queryKey as [string, TIds];
-      if (mesCorrente.mes === undefined) return [];
-      return esterilizacaoInternaService.diario(
+  React.useEffect(() => {
+    async function getSchema() {
+      const rsp = await esterilizacaoInternaService.schemaDiario();
+      setSchema(rsp);
+    }
+    getSchema();
+  }, []);
+
+  React.useEffect(() => {
+    async function getData() {
+      if (mesCorrente.mes === undefined) {
+        setData([]);
+        return;
+      }
+      const rsp = await esterilizacaoInternaService.diario(
         day(mesCorrente.mes + "-01")
           .startOf("month")
           .format("YYYY-MM-DD"),
@@ -36,15 +42,16 @@ export function EsterilizacaoInternaDiario({
           .endOf("month")
           .format("YYYY-MM-DD")
       );
-    },
-    staleTime: 1000 * 60 - 10, // 10 minutos
-  });
+      setData(rsp);
+    }
+    getData();
+  }, [mesCorrente]);
 
   return (
     <Table
       name="diario"
-      data={diario.data || []}
-      schema={schema.data || []}
+      data={data}
+      schema={schema}
       selected={diaCorrente}
       onSelectEvent={onSelectEvent}
     >

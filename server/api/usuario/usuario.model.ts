@@ -15,10 +15,7 @@ export function usuarioModel(connections: TConnections) {
   const crud = crudModel(connections);
 
   return {
-    async listSubject({
-      id,
-      select = crud.nameList({ table: "group_subject" }),
-    }: TReadArgs): Promise<TGenericObject[]> {
+    async listSubject({ id, select }: TReadArgs): Promise<TGenericObject[]> {
       const group_id = await crud.read({
         table: "usuario",
         id,

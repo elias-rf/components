@@ -1,7 +1,7 @@
 import React from "react";
 import { day } from "../../../../utils/date/day";
 import { Table } from "../../../components/table/table";
-import vendaService from "../../../service/venda.service";
+import { vendaService } from "../../../service/venda.service";
 import {
   mensal,
   mensalProduto,
@@ -13,11 +13,13 @@ import {
   ufSchema,
   vendedorSchema,
 } from "./venda";
+
 export function Vendas() {
   const [mesCorrente, setMesCorrente] = React.useState([]);
   const [produtoCorrente, setProdutoCorrente] = React.useState([]);
   const [vendedorCorrente, setVendedorCorrente] = React.useState([]);
   const [_ufCorrente, setUfCorrente] = React.useState([]);
+  const [venda, setVenda] = React.useState([]);
 
   const diaInicial = day()
     .subtract(13, "month")
@@ -25,16 +27,13 @@ export function Vendas() {
     .format("YYYY-MM-DD");
   const diaFinal = day().format("YYYY-MM-DD");
 
-  const venda = useQuery(
-    ["vendaAnalitico", [diaInicial, diaFinal]],
-    ({ queryKey }) => {
-      const [_key, [diaInicial, diaFinal]] = queryKey as [string, string[]];
-      return vendaService.analitico(diaInicial, diaFinal);
-    },
-    {
-      staleTime: 1000 * 60 - 60, // 60 minutos
+  React.useEffect(() => {
+    async function getVenda() {
+      const rsp = await vendaService.analitico(diaInicial, diaFinal);
+      setVenda(rsp);
     }
-  );
+    getVenda();
+  }, [diaInicial, diaFinal]);
 
   function handleMensal(action: any) {
     setMesCorrente(action.payload);

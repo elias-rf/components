@@ -1,0 +1,15 @@
+### ME
+GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"me"}
+Content-Type: application/json
+
+### Schema
+GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":2,"method":"ordemProducaoSchema"}
+Content-Type: application/json
+
+### Index
+GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"ordemProducao"}
+Content-Type: application/json
+
+### ProdutoItem
+GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":2,"method":"ordemProducaoProdutoItem","params":{"id":{"ordem_producao_id":1}}}
+Content-Type: application/json

@@ -1,7 +1,6 @@
+import { TProdutoControleRpc } from "../../types/produto-controle.type";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
-const produtoControleService = {
-  ...rpcFactory("produtoControle"),
-};
-
-export default produtoControleService;
+const SERVICE = "produtoControle";
+export const produtoControleService: TProdutoControleRpc =
+  rpcFactory<TProdutoControleRpc>(SERVICE);

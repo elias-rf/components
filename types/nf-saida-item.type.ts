@@ -1,12 +1,13 @@
-export type TNfSaidaItemId = {
-  CdFilial?: number;
-  NumNota?: number;
-  Serie?: string;
-  Modelo?: string;
-};
+import { TFieldClient, TOrder, TSelect, TWhere } from ".";
 
-export type TNfSaidaItemBase = {
-  CdProduto?: string;
+export type TNfSaidaItemPk = {
+  filial_id?: number;
+  nota_id?: number;
+  serie_id?: string;
+  modelo_id?: string;
+};
+export type TNfSaidaItemCol = {
+  produto_id?: string;
   Sequencia?: number;
   CdProdutoAssociado?: string;
   CdRefEstoque?: string;
@@ -126,5 +127,53 @@ export type TNfSaidaItemBase = {
   AliquotaSTRetido?: number;
   VlICMSSubstituto?: number;
 };
+export type TNfSaidaItem = TNfSaidaItemPk | TNfSaidaItemCol;
 
-export type TNfSaidaItem = Partial<TNfSaidaItemId | TNfSaidaItemBase>;
+export type TNfSaidaItemFields =
+  | keyof Required<TNfSaidaItemPk>
+  | keyof Required<TNfSaidaItemCol>;
+
+export type TNfSaidaItemIds = {
+  [pk in keyof Required<TNfSaidaItemPk>]: any;
+};
+export type TNfSaidaItemSelect = TSelect<TNfSaidaItemFields>;
+export type TNfSaidaItemWhere = TWhere<TNfSaidaItemFields>;
+export type TNfSaidaItemOrder = TOrder<TNfSaidaItemFields>;
+
+export type TNfSaidaItemSchema = () => Promise<TFieldClient[]>;
+export type TNfSaidaItemClear = () => Promise<TNfSaidaItem>;
+export type TNfSaidaItemList = (args: {
+  where?: TWhere<TNfSaidaItemFields>[];
+  order?: TOrder<TNfSaidaItemFields>[];
+  limit?: number;
+  select?: TSelect<TNfSaidaItemFields>;
+}) => Promise<TNfSaidaItem[]>;
+export type TNfSaidaItemRead = (args: {
+  id: TNfSaidaItemIds;
+  select?: TSelect<TNfSaidaItemFields>;
+}) => Promise<TNfSaidaItem>;
+
+export type TNfSaidaItemCreate = (args: {
+  data: TNfSaidaItem;
+}) => Promise<TNfSaidaItem>;
+export type TNfSaidaItemUpdate = (args: {
+  id: TNfSaidaItemIds;
+  data: TNfSaidaItem;
+}) => Promise<TNfSaidaItem>;
+export type TNfSaidaItemDel = (args: {
+  id: TNfSaidaItemIds;
+}) => Promise<number>;
+
+export type TNfSaidaItemRpc = {
+  query: {
+    schema: TNfSaidaItemSchema;
+    clear: TNfSaidaItemClear;
+    list: TNfSaidaItemList;
+    read: TNfSaidaItemRead;
+  };
+  // mutation: {
+  //   nfSaidaItemCreate: TNfSaidaItemCreate;
+  //   update: TNfSaidaItemUpdate;
+  //   del: TNfSaidaItemDel;
+  // };
+};

@@ -1,5 +1,6 @@
+import { TNfEntradaLogRpc } from "../../types/nf-entrada-log.type";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
-export const nfEntradaLogService = {
-  ...rpcFactory("nfEntradaLog"),
-};
+const SERVICE = "nf_entrada_log";
+
+export const nfEntradaLogService = rpcFactory<TNfEntradaLogRpc>(SERVICE);

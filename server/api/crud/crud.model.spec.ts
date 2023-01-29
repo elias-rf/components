@@ -2,7 +2,7 @@ import Knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { TConnections } from "../../../types";
-import { knexMockHistory } from "../../../utils/data/knex_mock_history";
+import { knexMockHistory } from "../../../utils/data/knex-mock-history";
 import { setTracker } from "../../lib/set_tracker";
 import { crudModel } from "./crud.model";
 
@@ -45,7 +45,7 @@ describe("rpc de cliente", () => {
         ],
       })
     ).rejects.toThrow(
-      "1 não é um campo válido para [order][phonebook]: agenda_telefone_id,nome,setor,email"
+      "1,2 não são válidos para order use: agenda_telefone_id,email,nome,setor"
     );
   });
 
@@ -60,7 +60,7 @@ describe("rpc de cliente", () => {
         ],
       })
     ).rejects.toThrow(
-      "1 não é um campo válido para [where][phonebook]: agenda_telefone_id,nome,setor,email"
+      "1,2 não são campos válidos para where use: agenda_telefone_id,email,nome,setor"
     );
   });
 
@@ -234,8 +234,8 @@ describe("rpc de cliente", () => {
       setor: null,
     });
   });
-  it("nameList", async () => {
-    const rsp = await crud.nameList({
+  it("list() () => {
+    const rsp = await crud.list()
       table: "agenda_telefone",
     });
     expect(rsp).toEqual(["agenda_telefone_id", "nome", "setor", "email"]);

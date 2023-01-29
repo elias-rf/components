@@ -1,12 +1,11 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Badge } from "./badge";
 
-export default {
-  title: "Components/Badge",
+const meta: Meta<typeof Badge> = {
   component: Badge,
   argTypes: {
-    onClickEvent: { action: "onClick" },
-    onCloseEvent: { action: "onClose" },
+    onClickEvent: { action: "onClickEvent" },
+    onCloseEvent: { action: "onCloseEvent" },
     color: {
       options: [
         "default",
@@ -28,52 +27,61 @@ export default {
     color: "default",
     className: "",
   },
-} as ComponentMeta<typeof Badge>;
-
-export const Default: ComponentStory<typeof Badge> = (props: any) => {
-  return (
-    <>
-      <Badge
-        name={props.name}
-        large={props.large}
-        color={props.color}
-        className={props.className}
-      >
-        {props.children}
-      </Badge>
-    </>
-  );
 };
 
-export const Clicable: ComponentStory<typeof Badge> = (props: any) => {
-  return (
-    <>
-      <Badge
-        name={props.name}
-        large={props.large}
-        color={props.color}
-        onClickEvent={props.onClickEvent}
-        className={props.className}
-      >
-        {props.children}
-      </Badge>
-    </>
-  );
+export default meta;
+type Story = StoryObj<typeof Badge>;
+
+export const Default: Story = {
+  render: (props: any) => {
+    return (
+      <>
+        <Badge
+          name={props.name}
+          large={props.large}
+          color={props.color}
+          className={props.className}
+        >
+          {props.children}
+        </Badge>
+      </>
+    );
+  },
 };
 
-export const Closable: ComponentStory<typeof Badge> = (props: any) => {
-  return (
-    <>
-      <Badge
-        name={props.name}
-        large={props.large}
-        color={props.color}
-        onClickEvent={props.onClickEvent}
-        onCloseEvent={props.onCloseEvent}
-        className={props.className}
-      >
-        {props.children}
-      </Badge>
-    </>
-  );
+export const Clicable: Story = {
+  render: (props: any) => {
+    return (
+      <>
+        <Badge
+          name={props.name}
+          large={props.large}
+          color={props.color}
+          onClickEvent={props.onClickEvent}
+          className={props.className}
+        >
+          {props.children}
+        </Badge>
+      </>
+    );
+  },
+};
+
+export const Closable: Story = {
+  render: (props: any) => {
+    return (
+      <>
+        <Badge
+          name={props.name}
+          large={props.large}
+          color={props.color}
+          onClickEvent={props.onClickEvent}
+          onCloseEvent={props.onCloseEvent}
+          className={props.className}
+        >
+          {props.children}
+        </Badge>
+      </>
+    );
+  },
 };

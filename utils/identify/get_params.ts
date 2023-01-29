@@ -49,7 +49,13 @@ function decode(cache: string[], string: string, skipEval: boolean) {
   }
   return skipEval ? string : eval("(" + string + ")");
 }
-
+/**
+ * Parse dos parametros de uma função
+ *
+ * @export
+ * @param {*} fn função a ser parseada
+ * @return {*}  {{ param: string; default?: any }[]}
+ */
 export function getParams(fn: any): { param: string; default?: any }[] {
   const cache: string[] = [];
 

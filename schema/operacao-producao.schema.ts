@@ -7,7 +7,7 @@ export const operacao_producao: TTable = {
     {
       field: "kOperacao",
       label: "kOperacao",
-      name: "tOperacaoDeProducao_id",
+      name: "operacao_producao_id",
       type: "int",
       size: 4,
       primaryKey: true,
@@ -16,7 +16,7 @@ export const operacao_producao: TTable = {
     {
       field: "Operacao",
       label: "Operacao",
-      name: "Operacao",
+      name: "operacao",
       type: "string",
       size: 50,
       allowNull: false,
@@ -24,7 +24,7 @@ export const operacao_producao: TTable = {
     {
       field: "EhRetrabalho",
       label: "EhRetrabalho",
-      name: "EhRetrabalho",
+      name: "eh_retrabalho",
       type: "int",
       size: 1,
       allowNull: false,
@@ -33,7 +33,7 @@ export const operacao_producao: TTable = {
     {
       field: "Especial",
       label: "Especial",
-      name: "Especial",
+      name: "especial",
       type: "int",
       size: 1,
       allowNull: false,
@@ -42,14 +42,14 @@ export const operacao_producao: TTable = {
     {
       field: "Descricao",
       label: "Descricao",
-      name: "Descricao",
+      name: "descricao",
       type: "string",
       size: 200,
     },
     {
       field: "Amostragem",
       label: "Amostragem",
-      name: "Amostragem",
+      name: "amostragem",
       type: "int",
       size: 1,
       defaultValue: "0",

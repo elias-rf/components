@@ -11,6 +11,7 @@ export const pedido: TTable = {
       type: "float",
       size: 8,
       scale: 4,
+      primaryKey: true,
     },
     {
       field: "CdFilial",
@@ -19,6 +20,7 @@ export const pedido: TTable = {
       type: "int",
       size: 4,
       allowNull: false,
+      primaryKey: true,
     },
     {
       field: "CdTipoVenda",
@@ -151,6 +153,7 @@ export const pedido: TTable = {
       size: 8,
       scale: 4,
       allowNull: false,
+      primaryKey: true,
     },
     {
       field: "NumPedidoEmitente",

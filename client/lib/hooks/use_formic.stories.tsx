@@ -1,15 +1,17 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Checkbox } from "../../components/form";
 import { Textbox } from "../../components/textbox";
 import { useFormic } from "./use_formic";
 
-export default {
-  title: "Hooks/useFormic",
+const meta: Meta<typeof Textbox> = {
   component: Textbox,
   argTypes: { onClick: { action: "onClick" } },
-} as ComponentMeta<typeof Textbox>;
+};
 
-export const Default: ComponentStory<typeof Textbox> = () => {
+export default meta;
+type Story = StoryObj<typeof Textbox>;
+
+function TextboxFormic() {
   const formic = useFormic({
     initialValues: { nome: "", idade: "10", habilitado: true },
     onSubmit: (values) => console.log(values),
@@ -37,4 +39,8 @@ export const Default: ComponentStory<typeof Textbox> = () => {
       <div>{JSON.stringify(formic.values)}</div>
     </div>
   );
+}
+
+export const Default: Story = {
+  render: () => <TextboxFormic />,
 };

@@ -1,12 +1,11 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { PrecosCliente } from "./precos_cliente";
 
-export default {
-  title: "Features/Precos",
+const meta: Meta<typeof PrecosCliente> = {
   component: PrecosCliente,
   argTypes: { onClick: { action: "onClick" }, onClose: { action: "onClose" } },
-} as ComponentMeta<typeof PrecosCliente>;
-
-export const Default: ComponentStory<typeof PrecosCliente> = () => {
-  return <PrecosCliente />;
 };
+export default meta;
+type Story = StoryObj<typeof PrecosCliente>;
+
+export const Default: Story = {};

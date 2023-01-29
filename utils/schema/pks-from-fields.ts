@@ -1,7 +1,18 @@
-import { TFieldServer, TPks } from "../../types";
+import { TFieldClient, TFieldServer, TPks } from "../../types";
 
-/** busca nomes dos pks em uma lista de fields */
-export function pksFromFields(fields: TFieldServer[] = []) {
+/** busca fields primaryKey em um schema */
+export function pksFromFieldsServer(fields: TFieldServer[] = []) {
+  const pks: TPks = [];
+  for (const field of fields) {
+    if (field.primaryKey) {
+      pks.push(field.field);
+    }
+  }
+  return pks;
+}
+
+/** busca names primaryKey em um schema */
+export function pksFromFieldsClient(fields: TFieldClient[] = []) {
   const pks: TPks = [];
   for (const field of fields) {
     if (field.primaryKey) {

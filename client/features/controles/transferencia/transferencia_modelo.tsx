@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { TIds } from "../../../../types";
+import React from "react";
+import { TFieldClient } from "../../../../types";
 import { Table } from "../../../components/table/table";
 import { transferenciaService } from "../../../service/transferencia.service";
 
@@ -12,23 +12,31 @@ export function TransferenciaModelo({
   diaCorrente,
   children,
 }: TransferenciaModeloProps) {
-  const schema = useQuery({
-    queryKey: ["transferenciaModeloSchema"],
-    queryFn: async () => transferenciaService.schemaModelo(),
-    staleTime: Infinity,
-  });
+  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
+  const [data, setData] = React.useState<TFieldClient[]>([]);
 
-  const modelo = useQuery({
-    queryKey: ["transferenciaModelo", diaCorrente],
-    queryFn: ({ queryKey }) => {
-      const [_key, diaCorrente] = queryKey as [string, TIds];
-      return transferenciaService.modelo(diaCorrente.dia);
-    },
-    staleTime: 1000 * 60 - 10, // 10 minutos
-  });
+  React.useEffect(() => {
+    async function getSchema() {
+      const rsp = await transferenciaService.schemaModelo();
+      setSchema(rsp);
+    }
+    getSchema();
+  }, []);
+
+  React.useEffect(() => {
+    async function getData() {
+      const rsp = await transferenciaService.modelo(diaCorrente.dia || "");
+      setData(rsp);
+    }
+    getData();
+  }, [diaCorrente]);
 
   return (
-    <Table name="modelo" data={modelo.data || []} schema={schema.data || []}>
+    <Table
+      name="modelo"
+      data={data}
+      schema={schema}
+    >
       {children}
     </Table>
   );

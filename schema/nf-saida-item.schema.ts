@@ -43,7 +43,7 @@ export const nf_saida_item: TTable = {
     {
       field: "CdProduto",
       label: "CdProduto",
-      name: "produto_id",
+      name: "produto_plano_id",
       type: "string",
       size: 15,
       allowNull: false,
@@ -51,7 +51,7 @@ export const nf_saida_item: TTable = {
     {
       field: "Sequencia",
       label: "Sequencia",
-      name: "Sequencia",
+      name: "sequencia",
       type: "int",
       size: 4,
       allowNull: false,
@@ -73,7 +73,7 @@ export const nf_saida_item: TTable = {
     {
       field: "Quantidade",
       label: "Quantidade",
-      name: "Quantidade",
+      name: "quantidade",
       type: "float",
       size: 8,
       scale: 4,
@@ -81,7 +81,7 @@ export const nf_saida_item: TTable = {
     {
       field: "QtdeAtendida",
       label: "QtdeAtendida",
-      name: "QtdeAtendida",
+      name: "quantidade_atendida",
       type: "float",
       size: 8,
       scale: 4,
@@ -129,7 +129,7 @@ export const nf_saida_item: TTable = {
     {
       field: "VlLiquido",
       label: "VlLiquido",
-      name: "VlLiquido",
+      name: "valor_liquido",
       type: "int",
       size: 13,
       scale: 10,
@@ -153,28 +153,28 @@ export const nf_saida_item: TTable = {
     {
       field: "FgEstoque",
       label: "FgEstoque",
-      name: "FgEstoque",
+      name: "eh_estoque",
       type: "string",
       size: 1,
     },
     {
       field: "FgKit",
       label: "FgKit",
-      name: "FgKit",
+      name: "eh_kit",
       type: "string",
       size: 1,
     },
     {
       field: "FgPeso",
       label: "FgPeso",
-      name: "FgPeso",
+      name: "eh_peso",
       type: "string",
       size: 1,
     },
     {
       field: "ImprimeComponentes",
       label: "ImprimeComponentes",
-      name: "ImprimeComponentes",
+      name: "imprime_componente",
       type: "string",
       size: 1,
     },
@@ -346,7 +346,7 @@ export const nf_saida_item: TTable = {
     {
       field: "FgEtiqueta",
       label: "FgEtiqueta",
-      name: "FgEtiqueta",
+      name: "eh_etiqueta",
       type: "string",
       size: 1,
     },
@@ -452,14 +452,14 @@ export const nf_saida_item: TTable = {
     {
       field: "Nop",
       label: "Nop",
-      name: "Nop",
+      name: "cfop",
       type: "int",
       size: 4,
     },
     {
       field: "NopFiscalItem",
       label: "NopFiscalItem",
-      name: "NopFiscalItem",
+      name: "cfop_fiscal",
       type: "int",
       size: 4,
     },

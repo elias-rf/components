@@ -246,7 +246,7 @@ export const ordem_producao: TTable = {
     {
       field: "QtdEstExt_tmp",
       label: "QtdEstExt_tmp",
-      name: "QtdEstExt_tmp",
+      name: "esterilizacao_externa_quantidade",
       type: "int",
       size: 4,
     },
@@ -340,7 +340,7 @@ export const ordem_producao: TTable = {
     {
       field: "emProcesso",
       label: "emProcesso",
-      name: "em_processo",
+      name: "eh_em_processo",
       type: "int",
       size: 1,
     },

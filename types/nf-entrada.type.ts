@@ -1,14 +1,18 @@
-export type TNfEntrada = {
-  filial_id: number;
-  nota_id: number;
-  serie_id: string;
-  modelo_id: string;
+import { TFieldClient, TOrder, TSelect, TWhere } from ".";
+
+export type TNfEntradaPk = {
+  filial_id?: number;
+  nota_id?: number;
+  serie_id?: string;
+  modelo_id?: string;
+};
+export type TNfEntradaCol = {
   fornecedor_id?: number;
   data_emissao?: string;
   data_entrada?: string;
   cfop?: number;
-  NopFiscal?: number;
-  TotNF?: number;
+  cfop_fiscal?: number;
+  total_nf?: number;
   BaseSubstituicao?: number;
   IPIBasCalc?: number;
   IPIVlr?: number;
@@ -79,4 +83,53 @@ export type TNfEntrada = {
   FgFCPSTCompoeVlTotalProdutos?: string;
   FgFCPSTCompoeVlTotalNota?: string;
   FgFCPSTCompoeVlCustoProduto?: string;
+};
+export type TNfEntrada = TNfEntradaPk | TNfEntradaCol;
+
+export type TNfEntradaFields =
+  | keyof Required<TNfEntradaPk>
+  | keyof Required<TNfEntradaCol>;
+
+export type TNfEntradaIds = {
+  [pk in keyof Required<TNfEntradaPk>]: any;
+};
+export type TNfEntradaSelect = TSelect<TNfEntradaFields>;
+export type TNfEntradaWhere = TWhere<TNfEntradaFields>;
+export type TNfEntradaOrder = TOrder<TNfEntradaFields>;
+
+export type TNfEntradaSchema = () => Promise<TFieldClient[]>;
+export type TNfEntradaClear = () => Promise<TNfEntrada>;
+export type TNfEntradaList = (args: {
+  where?: TWhere<TNfEntradaFields>[];
+  order?: TOrder<TNfEntradaFields>[];
+  limit?: number;
+  select?: TSelect<TNfEntradaFields>;
+}) => Promise<TNfEntrada[]>;
+export type TNfEntradaRead = (args: {
+  id: TNfEntradaIds;
+  select?: TSelect<TNfEntradaFields>;
+}) => Promise<TNfEntrada>;
+
+export type TNfEntradaCreate = (args: {
+  data: TNfEntrada;
+}) => Promise<TNfEntrada>;
+export type TNfEntradaUpdate = (args: {
+  id: TNfEntradaIds;
+  data: TNfEntrada;
+}) => Promise<TNfEntrada>;
+export type TNfEntradaDel = (args: { id: TNfEntradaIds }) => Promise<number>;
+
+export type TNfEntradaRpc = {
+  query: {
+    schema: TNfEntradaSchema;
+    clear: TNfEntradaClear;
+    list: TNfEntradaList;
+    read: TNfEntradaRead;
+  };
+  mutation: {
+    create: TNfEntradaCreate;
+    update: TNfEntradaUpdate;
+    del: TNfEntradaDel;
+    transferenciaCreate(args: { controles: string[] }): Promise<boolean>;
+  };
 };

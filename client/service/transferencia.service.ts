@@ -11,18 +11,28 @@ import { isEmpty } from "../../utils/identify/is_empty";
 //   "ANEL CAPSULAR",
 // ];
 
-export const transferenciaService = {
+type TTransferenciaService = {
+  schemaDiario(): Promise<TFieldClient>;
+  diario(args: { inicio: string; fim: string }): Promise<any[]>;
+  schemaMensal(): Promise<TFieldClient>;
+  mensal(args: { mes: string }): Promise<any[]>;
+  schemaModelo(): Promise<TFieldClient[]>;
+  modelo(args: { data: string }): Promise<any[]>;
+  create(args: { controles: string[] }): Promise<any>;
+};
+
+export const transferenciaService: TTransferenciaService = {
   async schemaDiario() {
     return fetcherRpc.query("nfSaidaTransferenciaDiarioSchema");
   },
-  async diario(inicio: string, fim: string): Promise<any[]> {
-    if (isEmpty(inicio) || isEmpty(fim)) {
+  async diario(args): Promise<any[]> {
+    if (isEmpty(args.inicio) || isEmpty(args.fim)) {
       return [];
     }
-    const response: any = await fetcherRpc.query("nfSaidaTransferenciaDiario", {
-      inicio,
-      fim,
-    });
+    const response: any = await fetcherRpc.query(
+      "nfSaidaTransferenciaDiario",
+      args
+    );
     return response;
   },
 
@@ -30,13 +40,14 @@ export const transferenciaService = {
     return fetcherRpc.query("nfSaidaTransferenciaMensalSchema");
   },
 
-  async mensal(mes: string): Promise<any[]> {
-    if (isEmpty(mes)) {
+  async mensal(args) {
+    if (isEmpty(args.mes)) {
       return [];
     }
-    const response: any = await fetcherRpc.query("nfSaidaTransferenciaMensal", {
-      mes,
-    });
+    const response: any = await fetcherRpc.query(
+      "nfSaidaTransferenciaMensal",
+      args
+    );
 
     if (isEmpty(response)) {
       return [];
@@ -45,18 +56,18 @@ export const transferenciaService = {
     return response;
   },
 
-  async schemaModelo(): Promise<TFieldClient[]> {
+  async schemaModelo() {
     return fetcherRpc.query("nfSaidaTransferenciaModeloSchema");
   },
 
-  async modelo(data: string): Promise<any[]> {
-    if (isEmpty(data)) {
+  async modelo(args) {
+    if (isEmpty(args.data)) {
       return [];
     }
-    return fetcherRpc.query("nfSaidaTransferenciaModelo", { data });
+    return fetcherRpc.query("nfSaidaTransferenciaModelo", args);
   },
 
-  async create(controles: string[]): Promise<any> {
-    return fetcherRpc.mutation("nfEntradaTransferenciaCreate", { controles });
+  async create(args) {
+    return fetcherRpc.mutation("nfEntradaTransferenciaCreate", args);
   },
 };

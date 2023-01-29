@@ -1,6 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { ReactNode } from "react";
-import { TEvent, TIds } from "../../../../types";
+import React, { ReactNode } from "react";
+import { TEvent, TFieldClient } from "../../../../types";
 import { Table } from "../../../components/table/table";
 import { day } from "../../../lib/day";
 import { transferenciaService } from "../../../service/transferencia.service";
@@ -17,17 +16,20 @@ export function TransferenciaDiario({
   onSelectEvent,
   children,
 }: TransferenciaDiarioProps) {
-  const schema = useQuery({
-    queryKey: ["transferenciaDiarioSchema"],
-    queryFn: async () => transferenciaService.schemaDiario(),
-    staleTime: Infinity,
-  });
+  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
+  const [data, setData] = React.useState<TFieldClient[]>([]);
 
-  const diario = useQuery({
-    queryKey: ["transferenciaDiario", mesCorrente],
-    queryFn: ({ queryKey }) => {
-      const [_key, mesCorrente] = queryKey as [string, TIds];
-      return transferenciaService.diario(
+  React.useEffect(() => {
+    async function getSchema() {
+      const rsp = await transferenciaService.schemaDiario();
+      setSchema(rsp);
+    }
+    getSchema();
+  }, []);
+
+  React.useEffect(() => {
+    async function getData() {
+      const rsp = await transferenciaService.diario(
         day(mesCorrente.mes + "-01")
           .startOf("month")
           .format("YYYY-MM-DD"),
@@ -35,15 +37,16 @@ export function TransferenciaDiario({
           .endOf("month")
           .format("YYYY-MM-DD")
       );
-    },
-    staleTime: 1000 * 60 - 10, // 10 minutos
-  });
+      setData(rsp);
+    }
+    getData();
+  }, [mesCorrente]);
 
   return (
     <Table
       name="diario"
-      data={diario.data || []}
-      schema={schema.data}
+      data={data}
+      schema={schema}
       selected={diaCorrente}
       onSelectEvent={onSelectEvent}
     >

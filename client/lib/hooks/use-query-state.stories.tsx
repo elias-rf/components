@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { ComponentStory } from "@storybook/react";
 import { Button } from "../../components/button";
 import { useQueryState } from "./use-query-state";
 
 export default {
-  title: "hooks/useQueryState",
-} as ComponentMeta<typeof Button>;
+  component: Button,
+};
 
 export const Default: ComponentStory<typeof Button> = () => {
   const [story] = useQueryState("story");

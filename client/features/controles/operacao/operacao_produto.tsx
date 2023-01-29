@@ -1,6 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { ReactNode } from "react";
-import { TEvent, TIds } from "../../../../types";
+import React, { ReactNode } from "react";
+import { TEvent, TFieldClient } from "../../../../types";
 import { isEmpty } from "../../../../utils/identify/is_empty";
 import { Table } from "../../../components/table/table";
 import { operacaoService } from "../../../service/operacao.service";
@@ -20,27 +19,37 @@ export function OperacaoProduto({
   produtoCorrente,
   onSelectEvent,
 }: OperacaoProdutoProps) {
-  const schema = useQuery({
-    queryKey: ["operacaoProdutoSchema"],
-    queryFn: async () => operacaoService.schemaProduto(),
-    staleTime: Infinity,
-  });
+  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
+  const [data, setData] = React.useState<TFieldClient[]>([]);
 
-  const produto = useQuery({
-    queryKey: ["operacaoProduto", operacao, dia],
-    queryFn: ({ queryKey }) => {
-      const [_key, operacao, dia] = queryKey as [string, TIds, TIds];
-      if (isEmpty(operacao.operacao) || isEmpty(dia.dia)) return [];
-      return operacaoService.produto(operacao.operacao, dia.dia);
-    },
-    staleTime: 1000 * 60 * 10, // 10 minutos
-  });
+  React.useEffect(() => {
+    async function getSchema() {
+      const rsp = await operacaoService.schemaProduto();
+      setSchema(rsp);
+    }
+    getSchema();
+  }, []);
+
+  React.useEffect(() => {
+    async function getData() {
+      if (isEmpty(operacao.operacao) || isEmpty(dia.dia)) {
+        setData([]);
+        return;
+      }
+      const rsp = await operacaoService.produto(
+        operacao.operacao || "",
+        dia.dia || ""
+      );
+      setData(rsp);
+    }
+    getData();
+  }, [dia, operacao]);
 
   return (
     <Table
       name="produto"
-      data={produto.data || []}
-      schema={schema.data || []}
+      data={data}
+      schema={schema}
       selected={produtoCorrente}
       onSelectEvent={onSelectEvent}
     >

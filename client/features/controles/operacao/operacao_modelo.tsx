@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { TEvent, TIds } from "../../../../types";
+import React from "react";
+import { TEvent, TFieldClient } from "../../../../types";
 import { isEmpty } from "../../../../utils/identify/is_empty";
 import { Table } from "../../../components/table/table";
 import { operacaoService } from "../../../service/operacao.service";
@@ -13,42 +13,43 @@ type OperacaoModelProps = {
 };
 
 export function OperacaoModelo({ operacao, dia, produto }: OperacaoModelProps) {
-  const schema = useQuery({
-    queryKey: ["operacaoModeloSchema"],
-    queryFn: async () => operacaoService.schemaModelo(),
-    staleTime: Infinity,
-  });
+  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
+  const [data, setData] = React.useState<TFieldClient[]>([]);
 
-  const modelo = useQuery({
-    queryKey: ["operacaoModelo", operacao, dia, produto],
-    queryFn: ({ queryKey }) => {
-      const [_key, operacao, dia, produto] = queryKey as [
-        string,
-        TIds,
-        TIds,
-        TIds
-      ];
+  React.useEffect(() => {
+    async function getSchema() {
+      const rsp = await operacaoService.schemaModelo();
+      setSchema(rsp);
+    }
+    getSchema();
+  }, []);
+
+  React.useEffect(() => {
+    async function getData() {
       if (
         isEmpty(operacao.operacao) ||
         isEmpty(dia.dia) ||
         isEmpty(produto.produto)
       ) {
-        return [];
+        setData([]);
+        return;
       }
-      return operacaoService.modelo(
-        operacao.operacao,
-        dia.dia,
-        produto.produto
+
+      const rsp = await operacaoService.modelo(
+        operacao.operacao || "",
+        dia.dia || "",
+        produto.produto || ""
       );
-    },
-    staleTime: 1000 * 60 * 10, // 10 minutos
-  });
+      setData(rsp);
+    }
+    getData();
+  }, [dia, operacao, produto]);
 
   return (
     <Table
       name="modelo"
-      data={modelo.data || []}
-      schema={schema.data || []}
+      data={data}
+      schema={schema}
     ></Table>
   );
 }

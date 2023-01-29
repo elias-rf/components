@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { TEvent, TIds } from "../../../../types";
+import React from "react";
+import { TEvent, TFieldClient } from "../../../../types";
 import { Table } from "../../../components/table/table";
 import { esterilizacaoExternaService } from "../../../service/esterilizacao-externa.service";
 
@@ -16,28 +16,36 @@ export function EsterilizacaoExternaProduto({
   produtoCorrente,
   onSelectEvent,
 }: EsterilizacaoExternaProdutoProp) {
-  const schema = useQuery({
-    queryKey: ["esterilizacaoExternaProdutoSchema"],
-    queryFn: async () => esterilizacaoExternaService.schemaProduto(),
-    staleTime: Infinity,
-  });
+  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
+  const [data, setData] = React.useState<TFieldClient[]>([]);
 
-  const produto = useQuery({
-    queryKey: ["esterilizacaoExternaProduto", diaCorrente],
-    queryFn: ({ queryKey }) => {
-      const [_key, diaCorrente] = queryKey as [string, TIds];
-      if (diaCorrente.dia === undefined) return [];
-      return esterilizacaoExternaService.produto(diaCorrente.dia);
-    },
+  React.useEffect(() => {
+    async function getSchema() {
+      const rsp = await esterilizacaoExternaService.schemaProduto();
+      setSchema(rsp);
+    }
+    getSchema();
+  }, []);
 
-    staleTime: 1000 * 60 - 10, // 10 minutos
-  });
+  React.useEffect(() => {
+    async function getData() {
+      if (diaCorrente.dia === undefined) {
+        setData([]);
+        return;
+      }
+      const rsp = await esterilizacaoExternaService.produto(
+        diaCorrente.dia || ""
+      );
+      setData(rsp);
+    }
+    getData();
+  }, [diaCorrente]);
 
   return (
     <Table
       name="produto"
-      data={produto.data || []}
-      schema={schema.data || []}
+      data={data}
+      schema={schema}
       selected={produtoCorrente}
       onSelectEvent={onSelectEvent}
     >

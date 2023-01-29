@@ -1,33 +1,27 @@
+import { TOrdemProducaoOperacaoRpc } from "../../types/ordem-producao-operacao.type";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
-export type IProdutoItemRecord = {
-  kProdutoItem?: string;
-  NomeProdutoItem?: string;
-  fkProduto?: string;
-  idVisiontech?: string;
-};
+const SERVICE = "ordemProducaoOperacao";
+export const ordemProducaoOperacaoService: TOrdemProducaoOperacaoRpc =
+  rpcFactory<TOrdemProducaoOperacaoRpc>(SERVICE);
 
-export const ordemProducaoOperacaoService = {
-  ...rpcFactory("ordemProducaoOperacao"),
-
-  clear() {
-    return {
-      kOperacaoOp: "",
-      fkOp: "",
-      fkOperacaoLP: "",
-      fkOperacao: "",
-      fkFuncionario: "",
-      fkMaquina: "",
-      DataHoraInicio: "",
-      DataHoraFim: "",
-      QtdInicial: "",
-      QtdConforme: "",
-      QtdRetrabalho: "",
-      fkOperacaoRetrab: "",
-      Complemento: "",
-      fkOPFilha: "",
-      EspPriAlca: "",
-      EspSegAlca: "",
-    };
-  },
-};
+// clear() {
+//   return {
+//     kOperacaoOp: "",
+//     fkOp: "",
+//     fkOperacaoLP: "",
+//     fkOperacao: "",
+//     fkFuncionario: "",
+//     fkMaquina: "",
+//     DataHoraInicio: "",
+//     DataHoraFim: "",
+//     QtdInicial: "",
+//     QtdConforme: "",
+//     QtdRetrabalho: "",
+//     fkOperacaoRetrab: "",
+//     Complemento: "",
+//     fkOPFilha: "",
+//     EspPriAlca: "",
+//     EspSegAlca: "",
+//   };
+// },

@@ -1,18 +1,18 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { SpinnerIcon } from "./spinner-icon";
 
-export default {
-  title: "Components/SpinnerIcon",
+const meta: Meta<typeof SpinnerIcon> = {
   component: SpinnerIcon,
-} as ComponentMeta<typeof SpinnerIcon>;
-
-export const Default: ComponentStory<typeof SpinnerIcon> = (props: any) => (
-  <SpinnerIcon {...props} />
-);
-
-Default.args = {
-  show: true,
-  className: "text-4xl text-red-400",
 };
 
-Default.storyName = "SpinnerIcon";
+export default meta;
+type Story = StoryObj<typeof SpinnerIcon>;
+
+export const Default: Story = {
+  name: "SpinnerIcon",
+  args: {
+    show: true,
+    className: "text-4xl text-red-400",
+  },
+  render: (props: any) => <SpinnerIcon {...props} />,
+};

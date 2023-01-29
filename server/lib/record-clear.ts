@@ -1,4 +1,4 @@
-import { TFieldServer, TTable } from "../../types";
+import { TFieldServer } from "../../types";
 
 function fieldClear(field: TFieldServer) {
   if (field.defaultValue) return field.defaultValue;
@@ -15,9 +15,8 @@ function fieldClear(field: TFieldServer) {
   );
 }
 
-export function recordClear(entity: TTable) {
+export function recordClear(fields: TFieldServer[]) {
   const rsp: { [field: string]: any } = {};
-  const fields = entity.fields;
   for (const field of fields) {
     rsp[field.name] = fieldClear(field);
   }

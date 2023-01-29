@@ -16,7 +16,7 @@ export const pagar: TTable = {
     {
       field: "NumDoc",
       label: "NumDoc",
-      name: "NumDoc",
+      name: "doc_id",
       primaryKey: true,
       type: "int",
       size: 4,
@@ -25,7 +25,7 @@ export const pagar: TTable = {
     {
       field: "CodFor",
       label: "CodFor",
-      name: "CodFor",
+      name: "fornecedor_id",
       type: "float",
       size: 8,
       scale: 4,
@@ -34,7 +34,7 @@ export const pagar: TTable = {
     {
       field: "SeqDoc",
       label: "SeqDoc",
-      name: "SeqDoc",
+      name: "item_doc",
       type: "int",
       size: 2,
       allowNull: false,
@@ -42,7 +42,7 @@ export const pagar: TTable = {
     {
       field: "Serie",
       label: "Serie",
-      name: "Serie",
+      name: "serie",
       type: "string",
       size: 3,
       allowNull: false,
@@ -50,7 +50,7 @@ export const pagar: TTable = {
     {
       field: "DatEmi",
       label: "DatEmi",
-      name: "DatEmi",
+      name: "data_emissao",
       type: "datetime",
       size: 8,
       scale: 3,
@@ -58,7 +58,7 @@ export const pagar: TTable = {
     {
       field: "DatVen",
       label: "DatVen",
-      name: "DatVen",
+      name: "data_venda",
       type: "datetime",
       size: 8,
       scale: 3,
@@ -66,7 +66,7 @@ export const pagar: TTable = {
     {
       field: "DatPag",
       label: "DatPag",
-      name: "DatPag",
+      name: "data_pagamento",
       type: "datetime",
       size: 8,
       scale: 3,
@@ -81,7 +81,7 @@ export const pagar: TTable = {
     {
       field: "Aceite",
       label: "Aceite",
-      name: "Aceite",
+      name: "aceite",
       type: "string",
       size: 1,
     },

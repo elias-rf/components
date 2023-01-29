@@ -6,8 +6,6 @@ const br = new Intl.NumberFormat("pt-BR", {
   maximumFractionDigits: 2,
 });
 
-type Grupos = "hilite" | "liteflex" | "metil" | "enlite" | "disponivel";
-
 interface Items {
   precoPadrao: number;
   precoSugerido: number;
@@ -22,7 +20,7 @@ interface Tablela2Props {
   }[];
   produtos: {
     label: string;
-    grupo: Grupos;
+    grupo: "hilite" | "liteflex" | "metil" | "enlite" | "disponivel";
   }[];
 }
 
@@ -69,7 +67,10 @@ export function PrecosVendedor({ dados, produtos }: Tablela2Props) {
           </React.Fragment>
         ))}
         <tr>
-          <td colSpan={4} className="py-2 pr-4">
+          <td
+            colSpan={4}
+            className="py-2 pr-4"
+          >
             Disponível
             {" >"}
           </td>

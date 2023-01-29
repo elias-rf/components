@@ -1,8 +1,10 @@
 // @ts-check
-import dotenv from "dotenv";
+import dotenv from "dotenv-flow";
 import tls from "tls";
 
 dotenv.config();
+// const envFile = process.env.NODE_ENV ? `.env.${process.env.NODE_END}` : ".env";
+// dotenv.config({ path: envFile });
 
 tls.DEFAULT_MIN_VERSION = "TLSv1";
 

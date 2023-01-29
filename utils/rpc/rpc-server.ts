@@ -1,16 +1,8 @@
-import { TRpcContext } from "../../types";
+import { RpcResponse, TRpcContext, TRpcRequest } from "../../types";
 import { getParamsSintetic } from "../identify/get_params";
-import { RpcResponse } from "./rpc-client";
 
 const mutationMethods = new Map();
 const queryMethods = new Map();
-
-export type TRpcRequest = {
-  jsonrpc: "2.0";
-  id?: number | string;
-  method: string;
-  params?: any;
-};
 
 function createError(code: any, message: string) {
   return { code, message };
@@ -83,10 +75,10 @@ export function rpcServer() {
       const mtt: string[] = [];
       queryMethods.forEach((funct, method) => {
         qry.push(
-          `${method} (${getParamsSintetic(funct)
+          `${method}(${getParamsSintetic(funct)
             .toString()
             .replaceAll("\n", "")
-            .replaceAll(" ", "")})`
+            .replaceAll(" ", "")}) ${funct.info || ""}`
         );
       });
       mutationMethods.forEach((funct, method) => {

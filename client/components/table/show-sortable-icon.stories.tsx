@@ -1,10 +1,13 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ShowSortableIcon } from "./show-sortable-icon";
 
-export default {
+const meta: Meta<typeof ShowSortableIcon> = {
   title: "Components/Table/ShowSortableIcon",
   component: ShowSortableIcon,
-} as ComponentMeta<typeof ShowSortableIcon>;
+};
+
+export default meta;
+type Story = StoryObj<typeof ShowSortableIcon>;
 
 const schema = {
   name: "id",
@@ -12,22 +15,39 @@ const schema = {
   sortable: true,
 };
 
-export const Descendente: ComponentStory<typeof ShowSortableIcon> = () => (
-  <ShowSortableIcon order={[["id", "desc"]]} fieldSchema={schema} />
-);
-export const Ascendente: ComponentStory<typeof ShowSortableIcon> = () => (
-  <ShowSortableIcon order={[["id", "asc"]]} fieldSchema={schema} />
-);
-export const NaoSelecionado: ComponentStory<typeof ShowSortableIcon> = () => (
-  <ShowSortableIcon order={[["lx", "desc"]]} fieldSchema={schema} />
-);
+export const Descendente: Story = {
+  render: () => (
+    <ShowSortableIcon
+      order={[["id", "desc"]]}
+      fieldSchema={schema}
+    />
+  ),
+};
+export const Ascendente: Story = {
+  render: () => (
+    <ShowSortableIcon
+      order={[["id", "asc"]]}
+      fieldSchema={schema}
+    />
+  ),
+};
+export const NaoSelecionado: Story = {
+  render: () => (
+    <ShowSortableIcon
+      order={[["lx", "desc"]]}
+      fieldSchema={schema}
+    />
+  ),
+};
 
-export const NaoSelecionavel = () => (
-  <ShowSortableIcon
-    order={[["id", "desc"]]}
-    fieldSchema={{
-      name: "id",
-      sortable: false,
-    }}
-  />
-);
+export const NaoSelecionavel: Story = {
+  render: () => (
+    <ShowSortableIcon
+      order={[["id", "desc"]]}
+      fieldSchema={{
+        name: "id",
+        sortable: false,
+      }}
+    />
+  ),
+};

@@ -1,7 +1,7 @@
 import { paramCase, pascalCase } from "change-case";
 import fs from "fs";
+import { db } from "../schema";
 import { TTable } from "../types";
-import { db } from "./api/db";
 
 function convertType(type: any) {
   if (["int", "float", "currency"].includes(type)) return "number";

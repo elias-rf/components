@@ -1,10 +1,11 @@
-export type TPedidoItemId = {
-  CdFilial?: number;
-  CdProduto?: string;
-  NumPedido?: number;
-};
+import { TFieldClient, TOrder, TSelect, TWhere } from ".";
 
-export type TPedidoItemBase = {
+export type TPedidoItemPk = {
+  filial_id?: number;
+  pedido_id?: number;
+};
+export type TPedidoItemCol = {
+  CdProduto?: string;
   Tipo?: string;
   DtPrevEntrega?: string;
   Sequencia?: number;
@@ -64,5 +65,51 @@ export type TPedidoItemBase = {
   VlAcrescimoProduto?: number;
   VlUnitarioNovo?: number;
 };
+export type TPedidoItem = TPedidoItemPk | TPedidoItemCol;
 
-export type TPedidoItem = Partial<TPedidoItemId | TPedidoItemBase>;
+export type TPedidoItemFields =
+  | keyof Required<TPedidoItemPk>
+  | keyof Required<TPedidoItemCol>;
+
+export type TPedidoItemIds = {
+  [pk in keyof Required<TPedidoItemPk>]: any;
+};
+export type TPedidoItemSelect = TSelect<TPedidoItemFields>;
+export type TPedidoItemWhere = TWhere<TPedidoItemFields>;
+export type TPedidoItemOrder = TOrder<TPedidoItemFields>;
+
+export type TPedidoItemSchema = () => Promise<TFieldClient[]>;
+export type TPedidoItemClear = () => Promise<TPedidoItem>;
+export type TPedidoItemList = (args: {
+  where?: TWhere<TPedidoItemFields>[];
+  order?: TOrder<TPedidoItemFields>[];
+  limit?: number;
+  select?: TSelect<TPedidoItemFields>;
+}) => Promise<TPedidoItem[]>;
+export type TPedidoItemRead = (args: {
+  id: TPedidoItemIds;
+  select?: TSelect<TPedidoItemFields>;
+}) => Promise<TPedidoItem>;
+
+export type TPedidoItemCreate = (args: {
+  data: TPedidoItem;
+}) => Promise<TPedidoItem>;
+export type TPedidoItemUpdate = (args: {
+  id: TPedidoItemIds;
+  data: TPedidoItem;
+}) => Promise<TPedidoItem>;
+export type TPedidoItemDel = (args: { id: TPedidoItemIds }) => Promise<number>;
+
+export type TPedidoItemRpc = {
+  query: {
+    pedidoItemSchema: TPedidoItemSchema;
+    clear: TPedidoItemClear;
+    list: TPedidoItemList;
+    read: TPedidoItemRead;
+  };
+  mutation: {
+    pedidoItemCreate: TPedidoItemCreate;
+    update: TPedidoItemUpdate;
+    del: TPedidoItemDel;
+  };
+};

@@ -1,7 +1,7 @@
+import { TProdutoEstatisticaRpc } from "../../types/produto-estatistica.type";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
-const produtoEstatisticaService = {
-  ...rpcFactory("produtoEstatistica"),
-};
+const SERVICE = "produtoEstatistica";
 
-export default produtoEstatisticaService;
+export const produtoEstatisticaService: TProdutoEstatisticaRpc =
+  rpcFactory<TProdutoEstatisticaRpc>(SERVICE);

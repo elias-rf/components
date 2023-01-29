@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { TEvent, TIds } from "../../../../types";
+import React from "react";
+import { TEvent, TFieldClient, TIds } from "../../../../types";
 import { isEmpty } from "../../../../utils/identify/is_empty";
 import { Table } from "../../../components/table/table";
 import { day } from "../../../lib/day";
@@ -20,18 +20,24 @@ export function OperacaoDiario({
   children,
   onSelectEvent,
 }: OperacaoDiarioProp) {
-  const schema = useQuery({
-    queryKey: ["operacao_diario", "schema"],
-    queryFn: operacaoService.schemaDiario,
-    staleTime: Infinity,
-  });
+  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
+  const [data, setData] = React.useState<TFieldClient[]>([]);
 
-  const diario = useQuery({
-    queryKey: ["operacao_diario", operacao, mes],
-    queryFn: ({ queryKey }) => {
-      const [_key, operacao, mes] = queryKey as [string, TIds, TIds];
-      if (isEmpty(operacao.operacao) || isEmpty(mes.mes)) return [];
-      return operacaoService.diario(
+  React.useEffect(() => {
+    async function getSchema() {
+      const rsp = await operacaoService.schemaDiario();
+      setSchema(rsp);
+    }
+    getSchema();
+  }, []);
+
+  React.useEffect(() => {
+    async function getData() {
+      if (isEmpty(operacao.operacao) || isEmpty(mes.mes)) {
+        setData([]);
+        return;
+      }
+      const rsp = await operacaoService.diario(
         operacao.operacao,
         day(mes.mes + "-01")
           .startOf("month")
@@ -40,15 +46,16 @@ export function OperacaoDiario({
           .endOf("month")
           .format("YYYY-MM-DD")
       );
-    },
-    staleTime: 1000 * 60 * 10, // 10 minutos
-  });
+      setData(rsp);
+    }
+    getData();
+  }, [mes, operacao]);
 
   return (
     <Table
       name="diario"
-      data={diario.data || []}
-      schema={schema.data || []}
+      data={data}
+      schema={schema}
       selected={diaCorrente}
       onSelectEvent={onSelectEvent}
     >

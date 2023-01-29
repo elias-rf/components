@@ -1,8 +1,8 @@
 import day from "dayjs";
-import "dayjs/locale/pt-br.js";
-import advancedFormat from "dayjs/plugin/advancedFormat.js";
-import customParseFormat from "dayjs/plugin/customParseFormat.js";
-import utc from "dayjs/plugin/utc.js";
+import "dayjs/locale/pt-br";
+import advancedFormat from "dayjs/plugin/advancedFormat";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import utc from "dayjs/plugin/utc";
 
 day.extend(customParseFormat);
 day.extend(advancedFormat);

@@ -1,8 +1,8 @@
 import Knex from "knex";
 import { getTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, test } from "vitest";
-import { knexMockHistory } from "../../../utils/data/knex_mock_history";
-import { TConnections } from "../../dal/connections";
+import { TConnections } from "../../../types";
+import { knexMockHistory } from "../../../utils/data/knex-mock-history";
 import { setTracker } from "../../lib/set_tracker";
 import { estoqueModel } from "./estoque.model";
 
@@ -29,8 +29,8 @@ describe("estoque", () => {
   });
 
   test("increment", async () => {
-    const rsp = await estoque.increment({
-      id: { produto_id: "metil", filial_id: 1 },
+    const rsp = await estoque.mutation.estoqueIncrement({
+      id: { produto_plano_id: "metil", filial_id: 1 },
       quantidade: 2,
     });
 

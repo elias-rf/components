@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { TEvent, TIds } from "../../../../types";
+import React from "react";
+import { TEvent, TFieldClient } from "../../../../types";
 import { isEmpty } from "../../../../utils/identify/is_empty";
 import { Table } from "../../../components/table/table";
 import { operacaoService } from "../../../service/operacao.service";
@@ -15,27 +15,36 @@ export function OperacaoTurno({
   dia,
   onSelectEvent,
 }: OperacaoTurnoProps) {
-  const schema = useQuery({
-    queryKey: ["operacaoTurnoSchema"],
-    queryFn: async () => operacaoService.schemaTurno(),
-    staleTime: Infinity,
-  });
+  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
+  const [data, setData] = React.useState<TFieldClient[]>([]);
 
-  const turno = useQuery({
-    queryKey: ["operacaoTurno", operacao, dia],
-    queryFn: ({ queryKey }) => {
-      const [_key, operacao, dia] = queryKey as [string, TIds, TIds];
-      if (isEmpty(operacao.operacao) || isEmpty(dia.dia)) return [];
-      return operacaoService.turno(operacao.operacao, dia.dia);
-    },
+  React.useEffect(() => {
+    async function getSchema() {
+      const rsp = await operacaoService.schemaTurno();
+      setSchema(rsp);
+    }
+    getSchema();
+  }, []);
 
-    staleTime: 1000 * 60 * 10, // 10 minutos
-  });
+  React.useEffect(() => {
+    async function getData() {
+      if (isEmpty(operacao.operacao) || isEmpty(dia.dia)) {
+        setData([]);
+        return;
+      }
+      const rsp = await operacaoService.turno(
+        operacao.operacao || "",
+        dia.dia || ""
+      );
+      setData(rsp);
+    }
+    getData();
+  }, [dia, operacao]);
 
   return (
     <Table
-      data={turno.data || []}
-      schema={schema.data || []}
+      data={data}
+      schema={schema}
       onSelectEvent={onSelectEvent}
     ></Table>
   );

@@ -1,21 +1,25 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { MenuGroup } from "./menu_group";
 
-export default {
-  title: "Components/Menu/MenuGroup",
+const meta: Meta<typeof MenuGroup> = {
+  title: "Components/Menu/MenuItem",
   component: MenuGroup,
-  argTypes: { onClick: { action: "onClick" }, onClose: { action: "onClose" } },
-} as ComponentMeta<typeof MenuGroup>;
+};
 
-export const Default: ComponentStory<typeof MenuGroup> = () => {
-  return (
-    <>
-      <MenuGroup title="group1">
-        <div>Itens de menu 1</div>
-      </MenuGroup>
-      <MenuGroup title="group2">
-        <div>Itens de menu 2</div>
-      </MenuGroup>
-    </>
-  );
+export default meta;
+type Story = StoryObj<typeof MenuGroup>;
+
+export const Primary: Story = {
+  render: () => {
+    return (
+      <>
+        <MenuGroup title="group1">
+          <div>Itens de menu 1</div>
+        </MenuGroup>
+        <MenuGroup title="group2">
+          <div>Itens de menu 2</div>
+        </MenuGroup>
+      </>
+    );
+  },
 };

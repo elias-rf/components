@@ -1,21 +1,16 @@
+import { TProdutoItemRpc } from "../../types/produto-item.type";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
-export type IProdutoItemRecord = {
-  kProdutoItem?: string;
-  NomeProdutoItem?: string;
-  fkProduto?: string;
-  idVisiontech?: string;
-};
+const SERVICE = "produtoItem";
 
-export const produtoItemService = {
-  ...rpcFactory("produtoItem"),
+export const produtoItemService: TProdutoItemRpc =
+  rpcFactory<TProdutoItemRpc>(SERVICE);
 
-  clear() {
-    return {
-      kProdutoItem: "",
-      NomeProdutoItem: "",
-      fkProduto: "",
-      idVisiontech: "",
-    };
-  },
-};
+// clear() {
+//   return {
+//     kProdutoItem: "",
+//     NomeProdutoItem: "",
+//     fkProduto: "",
+//     idVisiontech: "",
+//   };
+// },

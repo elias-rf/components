@@ -1,90 +1,86 @@
-import type { TIds } from "../../types";
+import { TOrdemProducaoRpc } from "../../types/ordem-producao.type";
 import { fetcherRpc } from "../../utils/api/fetcher-rpc";
 import { isEmpty } from "../../utils/identify/is_empty";
+import { deepmerge } from "../../utils/object/deepmerge";
 import { rpcFactory } from "../lib/http/rpc.factory";
 
-export const ordemProducaoService = {
-  ...rpcFactory("ordemProducao"),
+const SERVICE = "ordemProducao";
 
-  clear() {
-    return {
-      kOp: "",
-      DataEmissao: "",
-      DataFechamento: "",
-      DataUltimoLancamento: "",
-      Expiracao: "",
-      IndiceRefracao: "",
-      IndiceRefracao2: "",
-      LoteFabricante: "",
-      NomeUsuario: "",
-      Obs: "",
-      QtdEmProcesso: "",
-      QtdEstExt_tmp: "",
-      Quantidade: "",
-      Selecao: "",
-      Travado: "",
-      emProcesso: "",
-      fkLoteEstExt: "",
-      fkLoteEstInt: "",
-      fkOPMestre: "",
-      fkOpPai: "",
-      fkOperacaoEmProcesso: "",
-      fkPrimeiraOperacao: "",
-      fkProdutoItem: "",
-      fkTipoOP: "",
-      loteTamboreamento: "",
-      versao: "",
-    };
-  },
+export const ordemProducaoService: TOrdemProducaoRpc = deepmerge(
+  rpcFactory<TOrdemProducaoRpc>(SERVICE),
+  {
+    query: {
+      // Retorna produtoItem a partir da ordem de producao
+      async produtoItem(args) {
+        return fetcherRpc.query("ordemProducaoProdutoItem", args);
+      },
 
-  // Retorna produtoItem a partir da ordem de producao
-  async getProdutoItem(id: TIds) {
-    return fetcherRpc.query("ordemProducaoProdutoItem", { id });
-  },
+      // Retorna produto do plano a partir da ordem de producao
+      async produtoPlano(args) {
+        return fetcherRpc.query("ordemProducaoProdutoPlano", args);
+      },
 
-  // Retorna produto do plano a partir da ordem de producao
-  async getProdutoPlano(id: TIds) {
-    return fetcherRpc.query("ordemProducaoProdutoPlano", { id });
-  },
+      // Retorna data de fabricacao
+      async dataFabricacao(args) {
+        return fetcherRpc.query("ordemProducaoDataFabricacao", args);
+      },
 
-  // Retorna produto a partir da ordem de producao
-  async getProduto(id: TIds) {
-    return fetcherRpc.query("ordemProducaoProduto", { id });
-  },
+      // Retorna data de validade
+      async dataValidade(args) {
+        return fetcherRpc.query("ordemProducaoDataValidade", args);
+      },
 
-  // Retorna data de fabricacao
-  async getDataFabricacao(id: TIds) {
-    return fetcherRpc.query("ordemProducaoDataFabricacao", { id });
-  },
+      // Retorna numero de controle a partir da ordem de producao e numero de serie
+      async controle(args) {
+        return fetcherRpc.query("ordemProducaoControle", args);
+      },
 
-  // Retorna data de validade
-  async getDataValidade(id: TIds) {
-    return fetcherRpc.query("ordemProducaoDataValidade", { id });
-  },
+      // Retorna ordem de producao a partir de um controle
+      async fromControle(args) {
+        return fetcherRpc.query("ordemProducaoFromControle", args);
+      },
 
-  // Retorna data de validade
-  async getVersao(id: TIds) {
-    return fetcherRpc.query("ordemProducaoVersao", { id });
-  },
+      // Valida se número de série é válido
+      async ehControleValido(args) {
+        return fetcherRpc.query("ordemProducaoEhControleValido", args);
+      },
 
-  // Retorna numero de controle a partir da ordem de producao e numero de serie
-  async getControle(id: TIds, serie: string) {
-    return fetcherRpc.query("ordemProducaoControle", { id, serie });
-  },
+      // Lista etiquetas
+      async etiquetaExterna(args) {
+        if (isEmpty(args.id)) return [];
+        return fetcherRpc.query("ordemProducaoEtiquetaExterna", args);
+      },
+    },
 
-  // Retorna ordem de producao a partir de um controle
-  fromControle({ controle }: { controle: string }) {
-    return fetcherRpc.query("ordemProducaoFromControle", { controle });
-  },
-
-  // Valida se número de série é válido
-  isControleValid(controle: string) {
-    return fetcherRpc.query("ordemProducaoControleValido", { controle });
-  },
-
-  // Lista etiquetas
-  listEtiquetas(id: TIds) {
-    if (isEmpty(id)) return [];
-    return fetcherRpc.query("ordemProducaoEtiquetaExterna", { id });
-  },
-};
+    // clear() {
+    //   return {
+    //     kOp: "",
+    //     DataEmissao: "",
+    //     DataFechamento: "",
+    //     DataUltimoLancamento: "",
+    //     Expiracao: "",
+    //     IndiceRefracao: "",
+    //     IndiceRefracao2: "",
+    //     LoteFabricante: "",
+    //     NomeUsuario: "",
+    //     Obs: "",
+    //     QtdEmProcesso: "",
+    //     QtdEstExt_tmp: "",
+    //     Quantidade: "",
+    //     Selecao: "",
+    //     Travado: "",
+    //     emProcesso: "",
+    //     fkLoteEstExt: "",
+    //     fkLoteEstInt: "",
+    //     fkOPMestre: "",
+    //     fkOpPai: "",
+    //     fkOperacaoEmProcesso: "",
+    //     fkPrimeiraOperacao: "",
+    //     fkProdutoItem: "",
+    //     fkTipoOP: "",
+    //     loteTamboreamento: "",
+    //     versao: "",
+    //   };
+    // },
+  } as TOrdemProducaoRpc
+);

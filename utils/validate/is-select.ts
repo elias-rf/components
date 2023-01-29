@@ -1,18 +1,27 @@
-import { TSelect, TTable } from "../../types";
+import { TFieldServer, TSelect } from "../../types";
 import { isNonEmptyArray } from "../identify/is-non-empty-array";
-import { isString } from "../identify/is-string";
-import { namesFromTable } from "../schema/names-from-table";
+import { namesFromFields } from "../schema/names-from-fields";
 
-export function isSelect(select: TSelect, entity: TTable): string | null {
-  if (!isNonEmptyArray(select)) return "Select deve ser um array de campos";
-  const nameList = namesFromTable(entity);
+export function isSelect(
+  select: TSelect,
+  fields: TFieldServer[]
+): string | null {
+  if (!isNonEmptyArray(select)) return "select deve ser um array de campos";
+
+  const nameList = namesFromFields(fields);
+  const fieldsInvalidos = [];
+  let fieldsLivres = nameList.sort();
+
   for (const fld of select) {
-    if (!isString(fld)) return "Select deve ser um array de campos";
     if (!nameList.includes(fld)) {
-      return `${fld.toString()} não é um campo válido para [select][${
-        entity.table
-      }]: ${nameList}`;
+      fieldsInvalidos.push(fld);
     }
+    fieldsLivres = fieldsLivres.filter((f) => f !== fld);
+  }
+  if (fieldsInvalidos.length > 0) {
+    return `${fieldsInvalidos} não ${
+      fieldsInvalidos.length === 1 ? "é select válido" : "são select válidos"
+    } use: ${fieldsLivres}`;
   }
   return null;
 }

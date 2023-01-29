@@ -16,12 +16,14 @@ export const esterilizacao_externa: TTable = {
       label: "Data Envio",
       name: "data_envio",
       type: "date",
+      allowNull: false,
     },
     {
       field: "DataRetorno",
       label: "Data Retorno",
       name: "data_retorno",
       type: "date",
+      allowNull: false,
     },
     {
       field: "Quantidade",
@@ -38,8 +40,9 @@ export const esterilizacao_externa: TTable = {
     {
       field: "Fechado",
       label: "Fechado",
-      name: "is_fechado",
+      name: "eh_fechado",
       type: "int",
+      allowNull: false,
     },
     {
       field: "Resultado",

@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { TEvent, TIds } from "../../../../types";
+import { TEvent, TFieldClient, TIds } from "../../../../types";
+import { cache } from "../../../../utils/cache";
 import { Table } from "../../../components/table/table";
 import { operacaoService } from "../../../service/operacao.service";
 
@@ -19,31 +19,37 @@ export function OperacaoMensal({
   children,
   onSelectEvent,
 }: OperacaoMensalProps) {
-  const schema = useQuery({
-    queryKey: ["operacaoMensal", "schema"],
-    queryFn: operacaoService.schemaMensal,
-    staleTime: Infinity,
-  });
+  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
+  const [data, setData] = React.useState<TFieldClient[]>([]);
 
-  const mensal = useQuery({
-    queryKey: ["operacaoMensal", "get", operacao, mesInicial],
-    queryFn: ({ queryKey }) => {
-      const [_key1, _key2, operacao, mesInicial] = queryKey as [
-        string,
-        string,
-        TIds,
-        TIds
-      ];
-      return operacaoService.mensal(operacao.operacao, mesInicial.mes);
-    },
-    staleTime: 1000 * 60 - 10, // 10 minutos
-  });
+  React.useEffect(() => {
+    async function getSchema() {
+      const rsp = await cache.fetch({
+        key: "operacaoService.schemaMensal",
+        callback: operacaoService.schemaMensal,
+      });
+      setSchema(rsp);
+    }
+    getSchema();
+  }, []);
+
+  React.useEffect(() => {
+    async function getData() {
+      const rsp = await cache.fetch({
+        key: "operacaoService.mensal",
+        callback: operacaoService.mensal,
+        args: [operacao.operacao, mesInicial.mes],
+      });
+      setData(rsp);
+    }
+    getData();
+  }, [mesInicial, operacao]);
 
   return (
     <Table
       name="mensal"
-      data={mensal.data || []}
-      schema={schema.data || []}
+      data={data}
+      schema={schema}
       selected={mesCorrente}
       onSelectEvent={onSelectEvent}
     >

@@ -1,99 +1,137 @@
 import React from "react";
-import { TEvent, TFieldClient } from "../../../types";
+import type { TFieldClient, TSelected } from "../../../types";
 import { isEmpty } from "../../../utils/identify/is_empty";
 import { Button } from "../../components/button";
-import { Formfield } from "../../components/form/formfield";
-import {
-  useUsuarioCreate,
-  useUsuarioDel,
-  useUsuarioRead,
-  useUsuarioSchema,
-  useUsuarioUpdate,
-} from "../../hooks/use-usuario.hook";
-import { useForm } from "../../lib/hooks/use-form.hook";
-import { useQueryState } from "../../lib/hooks/use-query-state";
-import { TUsuarioRecord, usuarioService } from "../../service/usuario.service";
+import { TButtonEvent } from "../../components/button/button.types";
+import { Label } from "../../components/form/label";
+import { Textbox } from "../../components/form/textbox";
+import { LabelError } from "../../components/label_error";
+import { SpinnerIcon } from "../../components/spinner";
+import { useForm } from "../../lib/hooks/use_form";
+import { usuarioService } from "../../service/usuario.service";
 
-export function UsuarioForm() {
-  const [selected] = useQueryState("selected", []);
+type TUsuarioFormProps = {
+  id: TSelected;
+};
+
+export function UsuarioForm({ id }: TUsuarioFormProps) {
+  const [clear, setClear] = React.useState({});
+  const [fetching, setFetching] = React.useState(false);
   const [status, setStatus] = React.useState("new");
-  const form = useForm<TUsuarioRecord>(usuarioService.clear());
-  const record = useUsuarioRead(selected);
-  const recordDel = useUsuarioDel();
-  const recordUpdate = useUsuarioUpdate();
-  const recordCreate = useUsuarioCreate();
-  const schema = useUsuarioSchema();
-
-  function showRecord(rec: any) {
-    form.set(rec);
-    if (isEmpty(rec.id)) {
-      setStatus("new");
-    } else {
-      setStatus("update");
-    }
-  }
+  const {
+    values,
+    setValues,
+    errors,
+    onChangeEvent,
+    onInputEvent,
+    isDirty,
+    schema,
+  } = useForm(usuarioService.schema());
 
   React.useEffect(() => {
-    form.reset();
-    if (record.data) {
-      showRecord(record.data);
+    async function getClear() {
+      const rsp = await usuarioService.clear();
+      setClear(rsp);
     }
-  }, [record.data]);
+    getClear();
+  }, []);
 
-  function handleClick(e: TEvent) {
+  React.useEffect(() => {
+    async function getRecord() {
+      if (isEmpty(id) || id.usuario_id === 0) return showRecord(clear);
+      setFetching(true);
+      const rsp = await usuarioService.read({ id });
+      showRecord(rsp);
+      setFetching(false);
+    }
+    getRecord();
+  }, [id]);
+
+  function showRecord(rec: any) {
+    let status = "update";
+    setValues(rec);
+    if (isEmpty(rec.usuario_id)) {
+      status = "new";
+    }
+    setStatus(status);
+  }
+
+  function handleClick(e: TButtonEvent) {
     if (e.name === "novo") {
-      showRecord(usuarioService.clear());
+      showRecord(clear);
     }
     if (e.name === "excluir") {
-      recordDel.mutate([selected]);
-      showRecord(usuarioService.clear());
+      // recordDel.mutate([selected]);
+      console.log("del", id);
+      showRecord(clear);
     }
     if (e.name === "salvar") {
-      if (status === "update") recordUpdate.mutate([selected, form.record()]);
-      if (status === "new") recordCreate.mutate([form.record()]);
-      showRecord(usuarioService.clear());
+      if (status === "update") console.log("update", values); // recordUpdate.mutate([selected, form.record()]);
+      if (status === "new") console.log("create", values); // recordCreate.mutate([form.record()]);
+      showRecord(clear);
     }
   }
 
   return (
-    <section className="mt-2" title="PhonebookForm">
-      <div className="mt-2">
-        <div className="space-x-2">
-          <Button
-            className="w-20 bg-green-300"
-            onClick={handleClick}
-            name="novo"
-            type="button"
-          >
-            Novo
-          </Button>
-          <Button
-            className="w-20 bg-blue-300"
-            onClick={handleClick}
-            name="salvar"
-            disabled={!form.isDirty()}
-            type="submit"
-          >
-            Salvar
-          </Button>
-          <Button
-            className="w-20 bg-red-300"
-            onClick={handleClick}
-            name="excluir"
-            disabled={form.isDirty()}
-          >
-            Excluir
-          </Button>
+    <section
+      data-name="PhonebookForm"
+      className="mt-2"
+    >
+      <div className="space-x-2">
+        <Button
+          className="w-20"
+          size="sm"
+          color="green"
+          onClickEvent={handleClick}
+          name="novo"
+        >
+          Novo
+        </Button>
+        <Button
+          className="w-20"
+          size="sm"
+          color="default"
+          onClickEvent={handleClick}
+          name="salvar"
+          disabled={!isDirty}
+        >
+          Salvar
+        </Button>
+        <Button
+          className="w-20"
+          size="sm"
+          color="red"
+          onClickEvent={handleClick}
+          name="excluir"
+          disabled={isDirty}
+        >
+          Excluir
+        </Button>
+        <div className="inline-block">
+          <SpinnerIcon
+            show={fetching}
+            className="text-xl"
+          />
         </div>
-        <div className="flex flex-wrap gap-2">
-          {schema.data?.fields.map((fld: TFieldClient) => (
-            <Formfield
-              label={fld.label}
-              key={fld.field}
-              {...form.field(fld.field as any).register()}
-            />
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {schema
+          ?.filter((field) => field.visible !== false)
+          .map((field: TFieldClient) => (
+            <React.Fragment key={field.name}>
+              <div className="my-2">
+                <Label name={field.name}>{field.label || ""}</Label>
+                <Textbox
+                  type="text"
+                  name={field.name}
+                  onChange={onChangeEvent}
+                  onInput={onInputEvent}
+                  value={values[field.name] || ""}
+                />
+                <LabelError>{errors[field.name]}</LabelError>
+              </div>
+            </React.Fragment>
           ))}
-        </div>
       </div>
     </section>
   );

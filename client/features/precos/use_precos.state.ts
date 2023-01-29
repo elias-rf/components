@@ -45,12 +45,12 @@ function calcPrecos(
   state: any,
   group: keyof typeof calculadora,
   item: string,
-  value: number
+  value: number | string
 ) {
   if (item === "quantidade") {
     value = inteiro.parse(value);
   } else {
-    value = moeda.parse(value);
+    value = moeda.parse(value as string);
   }
 
   state[group][item] = value;

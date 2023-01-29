@@ -20,7 +20,7 @@ export const esterilizacao_interna: TTable = {
     {
       field: "Fechado",
       label: "Fechado",
-      name: "is_fechado",
+      name: "eh_fechado",
       type: "int",
     },
     {

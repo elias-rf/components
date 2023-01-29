@@ -12,8 +12,8 @@ export type UseField = {
   isValid: boolean;
   error: string;
   register: () => {
-    onBlur: (e: TEvent) => void;
-    onChange: (e: TEvent) => void;
+    onBlurEvent: (e: TEvent) => void;
+    onChangeEvent: (e: TEvent) => void;
     value: any;
   };
   set: (value: any) => void;
@@ -65,7 +65,7 @@ export function useField(
   }
 
   function register() {
-    return { onBlur: handleBlur, onChange: handleChange, value: vlr };
+    return { onBlurEvent: handleBlur, onChangeEvent: handleChange, value: vlr };
   }
 
   return {

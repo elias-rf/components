@@ -1,29 +1,35 @@
-### Index
-GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"log"}
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
 
+### Index
+GET {{host}}/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"usuario"}
+
+### Me
+GET {{host}}/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"usuarioMe"}
 
 ### Login
-POST http://localhost:3000/api/rpc
+POST {{host}}/api/rpc
 Content-Type: application/json
 
 {
   "jsonrpc":"2.0",
   "id":"1",
-  "method":"login",
+  "method":"usuarioLogin",
   "params":{
-    "user":"elias",
-    "password":"jkl"
+    "user":"user",
+    "password":"123"
   }
 }
 
 ### Logout
-POST http://localhost:3000/api/rpc
+POST {{host}}/api/rpc
 Content-Type: application/json
 
 {
   "jsonrpc":"2.0",
   "id":"1",
-  "method":"logout",
+  "method":"usuarioLogout",
   "params":{}
 }
 

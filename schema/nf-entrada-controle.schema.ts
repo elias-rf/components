@@ -48,7 +48,7 @@ export const nf_entrada_controle: TTable = {
     {
       field: "CdProduto",
       label: "Cód Produto",
-      name: "produto_id",
+      name: "produto_plano_id",
       type: "string",
       size: 15,
       allowNull: false,

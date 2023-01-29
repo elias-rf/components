@@ -13,6 +13,7 @@ export const usuario: TTable = {
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
+      readOnly: true,
     },
     {
       field: "NomeUsuario",
@@ -24,7 +25,7 @@ export const usuario: TTable = {
     },
     {
       field: "email",
-      label: "email",
+      label: "Email",
       name: "email",
       type: "string",
       size: 50,
@@ -35,6 +36,7 @@ export const usuario: TTable = {
       name: "empregado_id",
       type: "int",
       size: 4,
+      visible: false,
     },
     {
       field: "Ativo",
@@ -50,6 +52,7 @@ export const usuario: TTable = {
       name: "hash",
       type: "string",
       size: 255,
+      visible: false,
     },
     {
       field: "nome",
@@ -64,6 +67,7 @@ export const usuario: TTable = {
       name: "setor",
       type: "string",
       size: 50,
+      visible: false,
     },
     {
       field: "nivel",
@@ -71,6 +75,7 @@ export const usuario: TTable = {
       name: "nivel",
       type: "int",
       size: 4,
+      visible: false,
     },
     {
       field: "idGroup",

@@ -33,7 +33,8 @@ export function isPlainObject(o: any): boolean {
  * Default query keys hash function.
  * Hashes the value into a stable hash.
  */
-export function hashObject(queryKey: any): string {
+export function hashObject(queryKey?: any): string {
+  if (queryKey === undefined) return "";
   return JSON.stringify(queryKey, (_, val) =>
     isObject(val)
       ? Object.keys(val)

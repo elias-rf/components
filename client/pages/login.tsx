@@ -18,7 +18,7 @@ export function Login() {
     setSpinner(true);
     setError("");
     try {
-      await authenticationService.login(event.value.user, event.value.password);
+      await authenticationService.mutation.login(event.value);
       setSpinner(false);
       navigate("/");
     } catch (e: any) {

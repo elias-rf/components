@@ -10,14 +10,14 @@ interface IMessageBoxProps {
   option1: string;
   option2: string;
   option3: string;
-  onInput: (event: TEvent) => void;
+  onInputEvent: (event: TEvent) => void;
 }
 
 export function MessageBox(props: IMessageBoxProps) {
-  const { children, title, option1, option2, option3, onInput } = props;
+  const { children, title, option1, option2, option3, onInputEvent } = props;
 
   function handleClick(e: TEvent) {
-    onInput({
+    onInputEvent({
       name: title,
       value: e.name,
       component: "MessageBox",
@@ -41,17 +41,26 @@ export function MessageBox(props: IMessageBoxProps) {
           {/*footer*/}
           <div className="flex items-center justify-end p-2 space-x-2">
             {option1 ? (
-              <Button onClickEvent={handleClick} name="option1">
+              <Button
+                onClickEvent={handleClick}
+                name="option1"
+              >
                 {option1}
               </Button>
             ) : null}
             {option2 ? (
-              <Button onClickEvent={handleClick} name="option2">
+              <Button
+                onClickEvent={handleClick}
+                name="option2"
+              >
                 {option2}
               </Button>
             ) : null}
             {option3 ? (
-              <Button onClickEvent={handleClick} name="option3">
+              <Button
+                onClickEvent={handleClick}
+                name="option3"
+              >
                 {option3}
               </Button>
             ) : null}
