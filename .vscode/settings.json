@@ -15,5 +15,6 @@
   ],
   "sqltools.useNodeRuntime": true,
   "editor.suggest.snippetsPreventQuickSuggestions": false,
-  "aiXcoder.showTrayIcon": true
+  "aiXcoder.showTrayIcon": true,
+  "testing.automaticallyOpenPeekView": "never"
 }

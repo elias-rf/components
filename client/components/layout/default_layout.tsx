@@ -1,10 +1,22 @@
+import { TEvent } from "../../../types";
 import { Menu } from "../menu/menu";
 import { TMenuItemEvent, TMenuTitleEvent } from "../menu/menu.types";
 import { MenuBody } from "../menu/menu_body";
 import { MenuGroup } from "../menu/menu_group";
 import { MenuItem } from "../menu/menu_item";
 import { MenuTitle } from "../menu/menu_title";
-import { TDefaultLayoutProps } from "./default_layout.types";
+
+export type TDefaultLayoutEvent = TEvent & {
+  component: "DefaultLayout";
+  event: "onClickEvent";
+};
+
+export type TDefaultLayoutProps = {
+  children?: React.ReactNode;
+  isAuthenticated: boolean;
+  onClickEvent: (e: TDefaultLayoutEvent) => void;
+  menu: any;
+};
 
 /** componente layout com menu */
 export function DefaultLayout({
@@ -25,12 +37,18 @@ export function DefaultLayout({
   return (
     <section
       data-name="DefaultLayout"
-      className="flex flex-col h-screen lg:flex-row"
+      className={"flex flex-col h-screen lg:flex-row"}
     >
-      <nav data-name="DefaultLayout_Menu" className="print:hidden">
-        <div className="flex-initial">
+      <nav
+        data-name="DefaultLayout_Menu"
+        className={"print:hidden"}
+      >
+        <div className={"flex-initial"}>
           <Menu>
-            <MenuTitle to={menu.title.to} onClickEvent={handleOnClick}>
+            <MenuTitle
+              to={menu.title.to}
+              onClickEvent={handleOnClick}
+            >
               {menu.title.title}
             </MenuTitle>
             {isAuthenticated ? (
@@ -55,8 +73,11 @@ export function DefaultLayout({
               </MenuBody>
             ) : (
               <MenuBody version={menu.versao}>
-                <div className="pl-2">
-                  <MenuItem to={"/login"} onClickEvent={handleOnClick}>
+                <div className={"pl-2"}>
+                  <MenuItem
+                    to={"/login"}
+                    onClickEvent={handleOnClick}
+                  >
                     Login
                   </MenuItem>
                 </div>
@@ -67,7 +88,7 @@ export function DefaultLayout({
       </nav>
       <section
         data-name="DefaultLayout_Main"
-        className="flex-auto overflow-auto"
+        className={"flex-auto overflow-auto"}
       >
         {children}
       </section>

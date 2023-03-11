@@ -12,7 +12,7 @@ export function SortableIcon() {
       fill="currentColor"
       strokeWidth="0"
       viewBox="0 0 320 512"
-      className="inline text-gray-300 hover:text-gray-600"
+      className={"inline text-gray-300 hover:text-gray-600"}
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ export function SortableAscIcon() {
       fill="currentColor"
       strokeWidth="0"
       viewBox="0 0 320 512"
-      className="inline"
+      className={"inline"}
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ export function SortableDescIcon() {
       fill="currentColor"
       strokeWidth="0"
       viewBox="0 0 320 512"
-      className="inline"
+      className={"inline"}
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"

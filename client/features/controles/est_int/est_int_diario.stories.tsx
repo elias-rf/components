@@ -13,8 +13,8 @@ export const Est_Int_Diario: Story = {
   render: () => {
     return (
       <EsterilizacaoInternaDiario
-        mesCorrente={{ mes: "2021-01" }}
-        diaCorrente={{ dia: "2021-01-02" }}
+        mesCorrente={{ mes: "2020-01" }}
+        diaCorrente={{ dia: "2020-01-01" }}
         onSelectEvent={(event: TEvent) => console.log(event)}
       />
     );

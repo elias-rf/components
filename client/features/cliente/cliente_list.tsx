@@ -1,21 +1,22 @@
 import React from "react";
-import type { TFieldClient, TIds, TOrder, TWhere } from "../../../types";
-import { TCliente } from "../../../types/cliente.type";
-import { cache } from "../../../utils/cache";
+import { clienteStore } from "../../../model/cliente/cliente.store";
+import { TClienteFields } from "../../../model/cliente/cliente.type";
+import type { TIds, TOrder, TWhere } from "../../../types";
 import { Table } from "../../components/table/table";
 import { TTableEvent } from "../../components/table/table.types";
-import { clienteService } from "../../service/cliente.service";
 
 export type TClienteListEvent = TTableEvent;
 
 type TClienteListProps = {
   selected: TIds;
   onSelectEvent: (event: TClienteListEvent) => void;
-  where: TWhere[];
+  where: TWhere<TClienteFields>[];
   onWhereEvent: (event: TClienteListEvent) => void;
-  order: TOrder[];
+  order: TOrder<TClienteFields>[];
   onOrderEvent: (event: TClienteListEvent) => void;
 };
+
+const { getSchema, getList } = clienteStore.getState();
 
 export function ClienteList({
   selected,
@@ -25,39 +26,21 @@ export function ClienteList({
   order,
   onOrderEvent,
 }: TClienteListProps) {
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
-  const [data, setData] = React.useState<TCliente[]>([]);
+  const dataSchema = clienteStore((state) => state.dataSchema);
+  const dataList = clienteStore((state) => state.dataList);
 
   React.useEffect(() => {
-    async function getSchema() {
-      const rsp = await cache.fetch({
-        key: "clienteService.schema",
-        callback: clienteService.query.clienteSchema,
-        expiresInSeconds: 3600,
-        debug: true,
-      });
-      setSchema(rsp);
-    }
     getSchema();
   }, []);
 
   React.useEffect(() => {
-    async function getData() {
-      const rsp = await cache.fetch({
-        key: "clienteService.list",
-        callback: clienteService.list,
-        args: [where, order],
-        debug: true,
-      });
-      setData(rsp);
-    }
-    getData();
+    getList({ where, order });
   }, [where, order]);
 
   return (
     <Table
-      schema={schema}
-      data={data}
+      schema={dataSchema}
+      data={dataList}
       selected={selected}
       order={order}
       where={where}

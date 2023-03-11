@@ -3,10 +3,13 @@ import { Anchor } from "../components/anchor";
 
 export default function Page404() {
   return (
-    <div className="flex items-center justify-center w-screen h-screen">
-      <div className="text-3xl text-center">
+    <div className={"flex items-center justify-center w-screen h-screen"}>
+      <div className={"text-3xl text-center"}>
         Não encontrei a página!{" "}
-        <Anchor className="text-blue-500" href="/">
+        <Anchor
+          className={"text-blue-500"}
+          href="/"
+        >
           Voltar ao início
         </Anchor>
         <div>

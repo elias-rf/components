@@ -9,6 +9,6 @@ type Story = StoryObj<typeof Operacao>;
 
 export const Operacao_: Story = {
   render: () => {
-    return <Operacao />;
+    return <Operacao dia="2020-01-01" />;
   },
 };

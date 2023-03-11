@@ -134,9 +134,12 @@ export function Search({
 
   return (
     <div>
-      <div className="flex flex-wrap">
+      <div className={"flex flex-wrap"}>
         {whr.map((item, idx) => (
-          <div className="px-1 pb-1" key={idx}>
+          <div
+            className={"px-1 pb-1"}
+            key={idx}
+          >
             <Badge
               onCloseEvent={() => handleDel(idx)}
               onClickEvent={() => handleEdit(idx)}
@@ -149,21 +152,24 @@ export function Search({
         ))}
       </div>
 
-      <div className="flex">
-        <div className="self-center p-1">
+      <div className={"flex"}>
+        <div className={"self-center p-1"}>
           <Select
             value={fieldSelect}
             onChangeEvent={handleSelectField}
             style={{ width: "10rem" }}
           >
             {schema.map((column: { name: string; label?: string }) => (
-              <option value={column.name} key={column.name}>
+              <option
+                value={column.name}
+                key={column.name}
+              >
                 {column.label || column.name}
               </option>
             ))}
           </Select>
         </div>
-        <div className="self-center p-1">
+        <div className={"self-center p-1"}>
           <Select
             value={equalitySelect}
             onChangeEvent={(e: TEvent) => setEqualitySelect(e.value)}
@@ -171,14 +177,17 @@ export function Search({
           >
             {Object.entries(getEqualitys(fieldSelect)).map(
               ([key, value]: any) => (
-                <option value={key} key={key}>
+                <option
+                  value={key}
+                  key={key}
+                >
                   {value}
                 </option>
               )
             )}
           </Select>
         </div>
-        <div className="self-center p-1">
+        <div className={"self-center p-1"}>
           <Textbox
             name="valor"
             value={valueInput}
@@ -186,8 +195,11 @@ export function Search({
             onChangeEvent={handleInput}
           />
         </div>
-        <div className="p-1">
-          <Button size="xs" onClickEvent={handleAdd}>
+        <div className={"p-1"}>
+          <Button
+            size="xs"
+            onClickEvent={handleAdd}
+          >
             Filtrar
           </Button>
         </div>

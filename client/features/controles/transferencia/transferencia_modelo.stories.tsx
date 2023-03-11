@@ -9,6 +9,6 @@ type Story = StoryObj<typeof TransferenciaModelo>;
 
 export const Transferencia_Modelo: Story = {
   render: () => {
-    return <TransferenciaModelo diaCorrente={{ dia: "2021-01-04" }} />;
+    return <TransferenciaModelo diaCorrente={{ dia: "2020-01-01" }} />;
   },
 };

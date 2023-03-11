@@ -3,10 +3,13 @@ import { Anchor } from "../components/anchor";
 
 export default function Page403() {
   return (
-    <div className="flex items-center justify-center w-full h-full">
-      <div className="text-3xl text-center">
+    <div className={"flex items-center justify-center w-full h-full"}>
+      <div className={"text-3xl text-center"}>
         Você não possui permissão!{" "}
-        <Anchor className="text-blue-500" href="/">
+        <Anchor
+          className={"text-blue-500"}
+          href="/"
+        >
           Voltar ao início
         </Anchor>
         <div>

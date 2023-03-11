@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { fetchMockRpc } from "../../../utils/api/fetch-mock-rpc";
+import { fetchMockRpc } from "../../../mocks/fetch-mock-rpc";
 import { crudFactory } from "./crud.factory";
 
 globalThis.fetch = fetchMockRpc.fetch;
@@ -23,6 +23,7 @@ describe("crudFactory", () => {
         method: "GET",
         headers: {
           "content-type": "application/json",
+          Authentication: "",
         },
       },
     });
@@ -42,6 +43,7 @@ describe("crudFactory", () => {
         method: "GET",
         headers: {
           "content-type": "application/json",
+          Authentication: "",
         },
       },
     });

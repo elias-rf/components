@@ -4,11 +4,11 @@
 
 ### Index
 GET {{host}}/api/rpc
-?rpc={"jsonrpc":"2.0","id":"1","method":"index"}
+?rpc={"jsonrpc":"2.0","id":"1","method":"help"}
 
 ### Index
 GET {{host}}/api/rpc
-?rpc={"jsonrpc":"2.0","id":"1","method":"index", "params":"ordem"}
+?rpc={"jsonrpc":"2.0","id":"1","method":"help", "params":"agendaTelefone"}
 
 ### Echo
 POST {{host}}/api/rpc
@@ -28,3 +28,7 @@ Content-Type: application/json
 ### Echo
 GET {{host}}/api/rpc
 ?rpc={  "jsonrpc":"2.0","id":"1","method":"echoRequest","params":{"inicio":"2020-01-01","fim":"2020-01-31","operacao": "1020"}}
+
+### agendaTelefoneSchema
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"agendaTelefoneSchema"}

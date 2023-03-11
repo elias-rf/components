@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
-import { TEvent, TFieldClient } from "../../../../types";
+import { nfSaidaStore } from "../../../../model/nf-saida/nf-saida.store";
+import { TEvent } from "../../../../types";
+import { day } from "../../../../utils/date/day";
 import { Table } from "../../../components/table/table";
-import { day } from "../../../lib/day";
-import { transferenciaService } from "../../../service/transferencia.service";
 
 type TransferenciaDiarioProps = {
   mesCorrente: { mes?: string };
@@ -10,43 +10,42 @@ type TransferenciaDiarioProps = {
   onSelectEvent?: (event: TEvent) => void;
   children?: ReactNode;
 };
+
 export function TransferenciaDiario({
   mesCorrente,
   diaCorrente,
   onSelectEvent,
   children,
 }: TransferenciaDiarioProps) {
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
-  const [data, setData] = React.useState<TFieldClient[]>([]);
+  const [dataTransferenciaDiarioSchema, getTransferenciaDiarioSchema] =
+    nfSaidaStore((state) => [
+      state.dataTransferenciaDiarioSchema,
+      state.getTransferenciaDiarioSchema,
+    ]);
+  const [dataTransferenciaDiario, getTransferenciaDiario] = nfSaidaStore(
+    (state) => [state.dataTransferenciaDiario, state.getTransferenciaDiario]
+  );
 
   React.useEffect(() => {
-    async function getSchema() {
-      const rsp = await transferenciaService.schemaDiario();
-      setSchema(rsp);
-    }
-    getSchema();
+    getTransferenciaDiarioSchema();
   }, []);
 
   React.useEffect(() => {
-    async function getData() {
-      const rsp = await transferenciaService.diario(
-        day(mesCorrente.mes + "-01")
-          .startOf("month")
-          .format("YYYY-MM-DD"),
-        day(mesCorrente.mes + "-01")
-          .endOf("month")
-          .format("YYYY-MM-DD")
-      );
-      setData(rsp);
-    }
-    getData();
+    getTransferenciaDiario({
+      inicio: day(mesCorrente.mes + "-01")
+        .startOf("month")
+        .format("YYYY-MM-DD"),
+      fim: day(mesCorrente.mes + "-01")
+        .endOf("month")
+        .format("YYYY-MM-DD"),
+    });
   }, [mesCorrente]);
 
   return (
     <Table
       name="diario"
-      data={data}
-      schema={schema}
+      data={dataTransferenciaDiario}
+      schema={dataTransferenciaDiarioSchema}
       selected={diaCorrente}
       onSelectEvent={onSelectEvent}
     >

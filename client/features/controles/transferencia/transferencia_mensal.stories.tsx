@@ -9,6 +9,11 @@ type Story = StoryObj<typeof TransferenciaMensal>;
 
 export const Transferencia_Mensal: Story = {
   render: () => {
-    return <TransferenciaMensal mesCorrente={{ mes: "2021-01" }} />;
+    return (
+      <TransferenciaMensal
+        mesCorrente={{ mes: "2020-01" }}
+        dia="2020-01-01"
+      />
+    );
   },
 };

@@ -21,10 +21,16 @@ export function MenuGroup({ icon, title, children }: TMenuGroupProps) {
     <div>
       <button
         onClick={handleOpen}
-        className="flex justify-between w-full focus:bg-gray-200 focus:outline-none focus:text-gray-900 hover:bg-gray-200 hover:text-gray-900"
+        className={
+          "flex justify-between w-full focus:bg-gray-200 focus:outline-none focus:text-gray-900 hover:bg-gray-200 hover:text-gray-900"
+        }
       >
-        <div className="px-2 py-1">
-          <InlineIcon icon={icon || ""} inline={true} className="inline mr-1" />
+        <div className={"px-2 py-1"}>
+          <InlineIcon
+            icon={icon || ""}
+            inline={true}
+            className={"inline mr-1"}
+          />
 
           <span>{title}</span>
         </div>
@@ -38,7 +44,7 @@ export function MenuGroup({ icon, title, children }: TMenuGroupProps) {
         </div>
       </button>
       {currentGroup === title ? (
-        <div className="w-full">
+        <div className={"w-full"}>
           <div>{children}</div>
         </div>
       ) : null}

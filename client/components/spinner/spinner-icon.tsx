@@ -1,6 +1,5 @@
 import spinnerIos20Filled from "@iconify/icons-fluent/spinner-ios-20-filled";
 import { Icon } from "@iconify/react";
-import { twMerge } from "tailwind-merge";
 
 interface SpinnerIconProps {
   show?: boolean;
@@ -14,7 +13,7 @@ export function SpinnerIcon({ show = false, className }: SpinnerIconProps) {
     <Icon
       inline={true}
       icon={spinnerIos20Filled}
-      className={twMerge("animate-spin", className)}
+      className={("animate-spin", className)}
     />
   );
 }

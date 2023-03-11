@@ -1,0 +1,73 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
+### Index
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"index", "params":"cliente"}
+
+### clienteClear
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"clienteClear"}
+
+### clienteSchema
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"clienteSchema"}
+
+### read()
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"clienteRead","params": {"id": {"cliente_id":"1"}}}
+
+### list()
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"clienteList","params":{"where": [["cliente_id","<=","171"]],"order":[["cliente_id","desc"]]}}
+
+### clienteCreate
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "clienteCreate",
+  "params":  {"data":{
+      "agenda_telefone_id": 99,
+      "nome": "vago78",
+      "setor": "qualidade",
+      "email": " vago"
+    }}
+}
+
+### clienteUpdate
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "clienteUpdate",
+  "params": {"id": {"agenda_telefone_id":"99"}, "data":{"nome":"Fulano"}}
+}
+
+### clienteDelete
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "clienteDel",
+  "params": {"id": {"agenda_telefone_id":"99"}}
+}
+
+### read()
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"clienteRead","params": {"id": {"cliente_id":"99"}}}
+
+### read()
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"clienteVendaMensalQuantidade","params":{"cliente":1,"inicio":"2020-01-01", "fim":"2020-01-01"}}
+
+### clienteVendaMensalQuantidadeSchema()
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"clienteVendaMensalQuantidadeSchema","params":{"inicio":"2020-01-31", "fim":"2020-02-01"}}

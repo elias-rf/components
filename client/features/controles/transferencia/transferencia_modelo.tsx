@@ -1,7 +1,6 @@
 import React from "react";
-import { TFieldClient } from "../../../../types";
+import { nfSaidaStore } from "../../../../model/nf-saida/nf-saida.store";
 import { Table } from "../../../components/table/table";
-import { transferenciaService } from "../../../service/transferencia.service";
 
 type TransferenciaModeloProps = {
   diaCorrente: { dia?: string };
@@ -12,30 +11,28 @@ export function TransferenciaModelo({
   diaCorrente,
   children,
 }: TransferenciaModeloProps) {
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
-  const [data, setData] = React.useState<TFieldClient[]>([]);
+  const [dataTransferenciaModeloSchema, getTransferenciaModeloSchema] =
+    nfSaidaStore((state) => [
+      state.dataTransferenciaModeloSchema,
+      state.getTransferenciaModeloSchema,
+    ]);
+  const [dataTransferenciaModelo, getTransferenciaModelo] = nfSaidaStore(
+    (state) => [state.dataTransferenciaModelo, state.getTransferenciaModelo]
+  );
 
   React.useEffect(() => {
-    async function getSchema() {
-      const rsp = await transferenciaService.schemaModelo();
-      setSchema(rsp);
-    }
-    getSchema();
+    getTransferenciaModeloSchema();
   }, []);
 
   React.useEffect(() => {
-    async function getData() {
-      const rsp = await transferenciaService.modelo(diaCorrente.dia || "");
-      setData(rsp);
-    }
-    getData();
+    getTransferenciaModelo({ data: diaCorrente.dia || "" });
   }, [diaCorrente]);
 
   return (
     <Table
       name="modelo"
-      data={data}
-      schema={schema}
+      data={dataTransferenciaModelo}
+      schema={dataTransferenciaModeloSchema}
     >
       {children}
     </Table>

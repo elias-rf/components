@@ -1,6 +1,5 @@
 import { TEvent, TFieldClient, TIds } from "../../../types";
 import { Table } from "../../components/table";
-// import { Datatable, TreeView } from "../../components";
 
 export type FaturamentoProps = {
   data: any[];
@@ -30,7 +29,7 @@ export function Faturamento({
 }: FaturamentoProps) {
   return (
     <>
-      <div className="flex space-x-6">
+      <div className={"flex space-x-6"}>
         <Table
           data={data}
           schema={schema}

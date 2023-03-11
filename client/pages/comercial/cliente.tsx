@@ -1,4 +1,5 @@
 import React from "react";
+import { TClienteIds } from "../../../model/cliente/cliente.type";
 import { Page } from "../../components/page/page";
 import { PageTitle } from "../../components/page/page_title";
 import { Tab, Tabs } from "../../components/tabs";
@@ -14,7 +15,9 @@ import { ClienteValorMedio } from "../../features/cliente/cliente_valor_medio";
 
 export default function Cliente() {
   const [tabActive, setTabActive] = React.useState("form");
-  const [selected, setSelected] = React.useState([]);
+  const [selected, setSelected] = React.useState<TClienteIds>({
+    cliente_id: 0,
+  });
   const [where, setWhere] = React.useState([]);
   const [order, setOrder] = React.useState([]);
 
@@ -38,7 +41,7 @@ export default function Cliente() {
     <Page>
       <PageTitle title="Cliente" />
       <hr />
-      <section className="flex flex-col gap-2">
+      <section className={"flex flex-col gap-2"}>
         <Tabs
           active={tabActive}
           onChangeEvent={handleOnChangeTabs}
@@ -47,7 +50,7 @@ export default function Cliente() {
             id="form"
             title="Cadastro"
           >
-            <ClienteForm selected={selected} />
+            <ClienteForm id={selected} />
           </Tab>
           <Tab
             id="quantidade"
@@ -68,7 +71,7 @@ export default function Cliente() {
             <ClienteValorMedio id={selected} />
           </Tab>
         </Tabs>
-        <div className="mt-4">
+        <div className={"mt-4"}>
           <ClienteList
             selected={selected}
             where={where}

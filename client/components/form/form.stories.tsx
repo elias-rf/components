@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { fetchMockRpc } from "../../../utils/api/fetch-mock-rpc";
+import { fetchMockRpc } from "../../../mocks/fetch-mock-rpc";
+import { agendaTelefoneService } from "../../../model/agenda-telefone/agenda-telefone.service";
 import { useForm } from "../../lib/hooks/use_form";
-import { agendaTelefoneService } from "../../service/agenda-telefone.service";
 import { LabelError } from "../label_error";
 import { Form } from "./form";
 import { Label } from "./label";
@@ -12,7 +12,6 @@ import { Textbox } from "./textbox";
 // @ts-ignore
 // eslint-disable-next-line
 fetch = fetchMockRpc.fetch;
-
 fetchMockRpc.mock("crudSchema", {
   body: {
     result: [
@@ -59,7 +58,7 @@ type Story = StoryObj<typeof Form>;
 
 function FormState(props: any) {
   const { values, errors, onChangeEvent, onInputEvent, schema } = useForm(
-    agendaTelefoneService.query.agendaTelefoneSchema
+    agendaTelefoneService.query.schema
   );
 
   return (

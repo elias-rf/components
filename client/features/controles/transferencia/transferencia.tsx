@@ -4,7 +4,11 @@ import { TransferenciaDiario } from "./transferencia_diario";
 import { TransferenciaMensal } from "./transferencia_mensal";
 import { TransferenciaModelo } from "./transferencia_modelo";
 
-export function Transferencia() {
+type TransferenciaProp = {
+  dia?: string;
+};
+
+export function Transferencia({ dia }: TransferenciaProp) {
   const [mesCorrente, setMesCorrente] = React.useState({});
   const [diaCorrente, setDiaCorrente] = React.useState({});
 
@@ -14,10 +18,11 @@ export function Transferencia() {
   }
 
   return (
-    <div className="flex">
-      <div className="p-2">
+    <div className={"flex"}>
+      <div className={"p-2"}>
         <TransferenciaMensal
           mesCorrente={mesCorrente}
+          dia={dia}
           onSelectEvent={handleOnChangeEvent}
         >
           <TransferenciaDiario
@@ -29,7 +34,7 @@ export function Transferencia() {
           </TransferenciaDiario>
         </TransferenciaMensal>
       </div>
-      <div className="p-2"></div>
+      <div className={"p-2"}></div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
-import { TEvent, TFieldClient } from "../../../../types";
+import { esterilizacaoExternaStore } from "../../../../model/esterilizacao-externa/esterilizacao-externa.store";
+import { TEvent } from "../../../../types";
 import { Table } from "../../../components/table/table";
-import { esterilizacaoExternaService } from "../../../service/esterilizacao-externa.service";
 
 type EsterilizacaoExternaModeloProp = {
   diaCorrente: { dia?: string };
@@ -9,43 +9,34 @@ type EsterilizacaoExternaModeloProp = {
   onSelectEvent: (event: TEvent) => void;
 };
 
+const { getSchemaModelo, getModelo } = esterilizacaoExternaStore.getState();
+
 export function EsterilizacaoExternaModelo({
   diaCorrente,
   produtoCorrente,
   onSelectEvent,
 }: EsterilizacaoExternaModeloProp) {
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
-  const [data, setData] = React.useState<TFieldClient[]>([]);
+  const dataSchemaModelo = esterilizacaoExternaStore(
+    (state) => state.dataSchemaModelo
+  );
+  const dataModelo = esterilizacaoExternaStore((state) => state.dataModelo);
 
   React.useEffect(() => {
-    async function getSchema() {
-      const rsp = await esterilizacaoExternaService.schemaModelo();
-      setSchema(rsp);
-    }
-    getSchema();
+    getSchemaModelo();
   }, []);
 
   React.useEffect(() => {
-    async function getData() {
-      if (diaCorrente === undefined || produtoCorrente === undefined) {
-        setData([]);
-        return;
-      }
-
-      const rsp = await esterilizacaoExternaService.modelo(
-        diaCorrente.dia || "",
-        produtoCorrente.produto || ""
-      );
-      setData(rsp);
-    }
-    getData();
+    getModelo({
+      data: diaCorrente.dia || "",
+      produto: produtoCorrente.produto || "",
+    });
   }, [diaCorrente, produtoCorrente]);
 
   return (
     <Table
       name="modelo"
-      data={data}
-      schema={schema}
+      data={dataModelo}
+      schema={dataSchemaModelo}
       onSelectEvent={onSelectEvent}
     ></Table>
   );

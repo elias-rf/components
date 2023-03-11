@@ -11,9 +11,9 @@ export const Operacao_Mensal: Story = {
   render: () => {
     return (
       <OperacaoMensal
-        operacao={{ operacao: "1010" }}
-        mesInicial={{ mes: "2021-01" }}
-        mesCorrente={{ mes: "2021-01" }}
+        operacao={{ operacao: "3059" }}
+        mesInicial={{ mes: "2020-01" }}
+        mesCorrente={{ mes: "2020-01" }}
       />
     );
   },

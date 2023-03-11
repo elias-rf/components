@@ -1,0 +1,34 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
+### Index
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"index", "params":"esterilizacaoExterna"}
+
+### esterilizacaoExternaDiario
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"esterilizacaoExternaDiario", "params":{"inicio":"2020-01-01","fim":"2020-01-31"}}
+
+### esterilizacaoExternaSchemaDiario
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"esterilizacaoExternaSchemaDiario", "params":{"inicio":"2020-01-01","fim":"2020-01-31"}}
+
+### Echo
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id":"1",
+  "method":"echoRequest",
+  "params":{
+    "inicio":"2020-01-01",
+    "fim":"2020-01-31",
+    "operacao": "1010"
+  }
+}
+
+### Echo
+GET {{host}}/api/rpc
+?rpc={  "jsonrpc":"2.0","id":"1","method":"echoRequest","params":{"inicio":"2020-01-01","fim":"2020-01-31","operacao": "1020"}}

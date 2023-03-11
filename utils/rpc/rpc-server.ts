@@ -8,14 +8,17 @@ function createError(code: any, message: string) {
   return { code, message };
 }
 
+function getHelp(funct: any, method: string) {
+  return `${method}(${getParamsSintetic(funct)
+    .toString()
+    .replaceAll("\n", "")
+    .replaceAll(" ", "")}) ${funct.info || ""} - ${funct.help}`;
+}
+
 export function rpcServer() {
   const rsp = {
     /** Acrescenta um método para a lista RPC */
-    addMethod(
-      type: string,
-      nameFunction: string,
-      bodyFunction: (params: any) => any
-    ) {
+    addMethod(type: string, nameFunction: any, bodyFunction: any) {
       if (type === "mutation" && bodyFunction) {
         mutationMethods.set(nameFunction, bodyFunction);
       }
@@ -40,7 +43,7 @@ export function rpcServer() {
           );
         }
       } else {
-        response.error = createError(-32601, "Method not found");
+        response.error = createError(-32601, "Method not found: " + rpc.method);
       }
       if (response.id) return response;
     },
@@ -61,12 +64,12 @@ export function rpcServer() {
           );
         }
       } else {
-        response.error = createError(-32601, "Method not found");
+        response.error = createError(-32601, "Method not found: " + rpc.method);
       }
       if (response.id) return response;
     },
-    /** Lista com todos os métodos cadastrados */
-    list(procedure?: string) {
+    /** Ajuda com todos os métodos cadastrados */
+    help(procedure?: string) {
       const resp: { query: string[]; mutation: string[] } = {
         query: [],
         mutation: [],
@@ -74,20 +77,10 @@ export function rpcServer() {
       const qry: string[] = [];
       const mtt: string[] = [];
       queryMethods.forEach((funct, method) => {
-        qry.push(
-          `${method}(${getParamsSintetic(funct)
-            .toString()
-            .replaceAll("\n", "")
-            .replaceAll(" ", "")}) ${funct.info || ""}`
-        );
+        qry.push(getHelp(funct, method));
       });
       mutationMethods.forEach((funct, method) => {
-        mtt.push(
-          `${method} (${getParamsSintetic(funct)
-            .toString()
-            .replaceAll("\n", "")
-            .replaceAll(" ", "")})`
-        );
+        mtt.push(getHelp(funct, method));
       });
       if (procedure) {
         const fltProc = (item: string) => item.startsWith(procedure);

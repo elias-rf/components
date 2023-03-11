@@ -1,15 +1,19 @@
 import React from "react";
 import { TEvent } from "../../../../types";
+import { day } from "../../../../utils/date/day";
 import { Label } from "../../../components/form";
 import { Select } from "../../../components/select/select";
-import { day } from "../../../lib/day";
 import { OperacaoDiario } from "./operacao_diario";
 import { OperacaoMensal } from "./operacao_mensal";
 import { OperacaoModelo } from "./operacao_modelo";
 import { OperacaoProduto } from "./operacao_produto";
 import { OperacaoTurno } from "./operacao_turno";
 
-export function Operacao() {
+type OperacaoProp = {
+  dia?: string;
+};
+
+export function Operacao({ dia }: OperacaoProp) {
   const [mesCorrente, setMesCorrente] = React.useState<{ mes?: string }>({});
   const [diaCorrente, setDiaCorrente] = React.useState<{ dia?: string }>({});
   const [produtoCorrente, setProdutoCorrente] = React.useState<{
@@ -21,7 +25,7 @@ export function Operacao() {
     operacao: "3058",
   });
 
-  const mesInicial = { mes: day().subtract(13, "month").format("YYYY-MM") };
+  const mesInicial = { mes: day(dia).subtract(13, "month").format("YYYY-MM") };
 
   function handleOnChangeEvent(event: TEvent) {
     if (event.name === "mensal") setMesCorrente(event.value);
@@ -34,9 +38,9 @@ export function Operacao() {
   }
 
   return (
-    <div className="flex">
-      <div className="p-2">
-        <div className="mb-2 space-x-2">
+    <div className={"flex"}>
+      <div className={"p-2"}>
+        <div className={"mb-2 space-x-2"}>
           <Label name="operacao">Operação</Label>
           <Select
             name="operacao"

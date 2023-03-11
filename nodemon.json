@@ -1,5 +1,5 @@
 {
-  "watch": ["server", "utils"],
+  "watch": ["server", "utils", "model"],
   "ignore": ["server/**/*.test.ts", "server/**/*.spec.ts"],
   "ext": "ts,mjs,js,json",
   "exec": "node -r esbuild-runner/register ./server/index.ts",

@@ -7,6 +7,8 @@ import { Knex } from "knex";
 /** SQL.WHERE */
 export type TWhere<Fields = string> = [Fields, string, any];
 
+export type TAggregate<Fields = string> = { [fieldName: string]: Fields };
+
 /** SQL.SELECT */
 export type TSelect<Fields = string> = Fields[];
 
@@ -24,10 +26,10 @@ export type TSelected = { [fields: string]: any };
 
 /** Dados do usuário logado */
 export type TCurrentUser = {
-  usuario_id: number;
-  nome_login: string;
-  nome: string;
-  group_id: string;
+  usuario_id?: number;
+  nome_login?: string;
+  nome?: string;
+  group_id?: string;
   token?: string;
 };
 
@@ -52,10 +54,10 @@ export type TUnknownArray = unknown[];
 
 /** connections */
 
+export type TConnectionsName = "oftalmo" | "plano" | "fullvision";
+
 export type TConnections = {
-  oftalmo: Knex;
-  plano: Knex;
-  fullvision: Knex;
+  [cnn in TConnectionsName]: Knex;
 };
 
 /** Dados para component arvore */
@@ -67,22 +69,24 @@ export type TreeData = {
 
 /** Argumentos para modelo de listagem */
 export type TListArgs = {
-  table: string;
   limit?: number;
   where?: TWhere[];
   order?: TOrder[];
   select?: TSelect;
+  sum?: TAggregate;
+  min?: TAggregate;
+  max?: TAggregate;
+  group?: TSelect;
 };
 
 /** Argumentos para modelo de registro */
-export type TReadArgs = { table: string; id: TIds; select?: TSelect };
+export type TReadArgs = { id: TIds; select?: TSelect };
 
 /** Argumentos para modelo de exclusão */
-export type TDelArgs = { table: string; id: TIds };
+export type TDelArgs = { id: TIds };
 
 /** Argumentos para modelo de alteração */
 export type TUpdateArgs = {
-  table: string;
   id: TIds;
   data: TGenericObject;
   select?: TSelect;
@@ -90,7 +94,6 @@ export type TUpdateArgs = {
 
 /** Argumentos para modelo de criação */
 export type TCreateArgs = {
-  table: string;
   data: TGenericObject;
   select?: TSelect;
 };
@@ -147,9 +150,16 @@ export type TFieldServer = TField & {
 
 /** Tabela de banco de dados */
 export type TTable = {
-  database: string;
+  database: TConnectionsName;
   table: string;
   fields: (TFieldServer & TFieldClient)[];
+  associates?: {
+    [table: string]: {
+      type: "1" | "00";
+      source: string[];
+      target: string[];
+    };
+  };
 };
 
 /** Tabelas de banco de dados */
@@ -160,6 +170,7 @@ export type TDb = {
 /** Contexto para RPC */
 export type TRpcContext = {
   currentUser: TCurrentUser;
+  token: string;
   connections: TConnections;
 };
 
@@ -179,4 +190,15 @@ export type TRpcRequest = {
   id?: number | string;
   method: string;
   params?: any;
+};
+
+export type TDatastore = {
+  [key: string]: {
+    connection: string;
+    host: string;
+    port: string;
+    user: string;
+    password: string;
+    database: string;
+  };
 };

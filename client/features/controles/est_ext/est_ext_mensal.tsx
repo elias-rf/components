@@ -1,8 +1,7 @@
 import React from "react";
-import { TEvent, TFieldClient } from "../../../../types";
-import { cache } from "../../../../utils/cache";
+import { esterilizacaoExternaStore } from "../../../../model/esterilizacao-externa/esterilizacao-externa.store";
+import { TEvent } from "../../../../types";
 import { Table } from "../../../components/table/table";
-import { esterilizacaoExternaService } from "../../../service/esterilizacao-externa.service";
 
 type EsterilizacaoExternaMensalProp = {
   children?: React.ReactNode;
@@ -11,43 +10,32 @@ type EsterilizacaoExternaMensalProp = {
   onSelectEvent?: (event: TEvent) => void;
 };
 
+const { getSchemaMensal, getMensal } = esterilizacaoExternaStore.getState();
+
 export function EsterilizacaoExternaMensal({
   mesInicial,
   mesCorrente,
   onSelectEvent,
   children,
 }: EsterilizacaoExternaMensalProp) {
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
-  const [data, setData] = React.useState<TFieldClient[]>([]);
+  const dataSchemaMensal = esterilizacaoExternaStore(
+    (state) => state.dataSchemaMensal
+  );
+  const dataMensal = esterilizacaoExternaStore((state) => state.dataMensal);
 
   React.useEffect(() => {
-    async function getSchema() {
-      const rsp = await cache.fetch({
-        key: "esterilizacaoExternaService.schemaMensal",
-        callback: esterilizacaoExternaService.schemaMensal,
-      });
-      setSchema(rsp);
-    }
-    getSchema();
+    getSchemaMensal();
   }, []);
 
   React.useEffect(() => {
-    async function getData() {
-      const rsp = await cache.fetch({
-        key: "esterilizacaoExternaService.mensal",
-        callback: esterilizacaoExternaService.mensal,
-        args: [mesInicial.mes],
-      });
-      setData(rsp);
-    }
-    getData();
+    getMensal(mesInicial);
   }, [mesInicial]);
 
   return (
     <Table
       name="mensal"
-      data={data}
-      schema={schema}
+      data={dataMensal}
+      schema={dataSchemaMensal}
       selected={mesCorrente}
       onSelectEvent={onSelectEvent}
     >

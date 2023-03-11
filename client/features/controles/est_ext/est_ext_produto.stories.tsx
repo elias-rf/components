@@ -13,8 +13,8 @@ export const Est_Ext_Produto: Story = {
   render: () => {
     return (
       <EsterilizacaoExternaProduto
-        diaCorrente={{ dia: "2021-01-04" }}
-        produtoCorrente={{ produto: "Metil" }}
+        diaCorrente={{ dia: "2020-01-01" }}
+        produtoCorrente={{ produto: "cat1" }}
         onSelectEvent={(event: TEvent) => console.log(event)}
       />
     );

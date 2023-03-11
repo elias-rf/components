@@ -1,15 +1,15 @@
 import { describe, expect, it } from "vitest";
-import { db } from "../../schema";
+import { tables } from "../../model/tables";
 import { recordClear } from "./record-clear";
 
 describe("record-clear", () => {
   it("deve percorrer todos os schemas sem erros", () => {
-    for (const table in db) {
-      expect(recordClear(db[table].fields)).toEqual(expect.anything());
+    for (const table in tables) {
+      expect(recordClear(tables[table].fields)).toEqual(expect.anything());
     }
   });
   it("deve percorrer todos os schemas sem erros", () => {
-    expect(recordClear(db.agenda_telefone.fields)).toEqual({
+    expect(recordClear(tables.agenda_telefone.fields)).toEqual({
       agenda_telefone_id: 0,
       email: null,
       nome: "",

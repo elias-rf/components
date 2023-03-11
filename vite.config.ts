@@ -4,8 +4,14 @@
 /** @type {import('vite').UserConfig} */
 
 import react from "@vitejs/plugin-react";
+import dotenv from "dotenv-flow";
 import path from "node:path";
 import { defineConfig } from "vitest/config";
+
+dotenv.config();
+
+const serverPort = process.env.PORT || 3000;
+console.log("PROXY http://localhost:" + serverPort);
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,7 +19,7 @@ export default defineConfig({
     port: 3001,
     host: "0.0.0.0",
     proxy: {
-      "/api": "http://localhost:3000",
+      "/api": "http://localhost:" + serverPort,
     },
   },
   build: { outDir: "./public", emptyOutDir: true, target: "esnext" },
@@ -22,13 +28,12 @@ export default defineConfig({
     globals: true,
     environment: "jsdom", // or 'jsdom', 'node'
     snapshotFormat: { escapeString: false },
-    setupFiles: ["./setup-tests.ts"],
+    setupFiles: [path.resolve(__dirname, "./setup-tests.ts")],
     outputTruncateLength: 3500,
   },
   resolve: {
     alias: {
-      "@utils": path.resolve(__dirname, "./utils/"),
-      "@types": path.resolve(__dirname, "./types/"),
+      "@root": path.resolve(__dirname, "./"),
     },
   },
 });

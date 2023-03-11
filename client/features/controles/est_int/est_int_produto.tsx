@@ -1,7 +1,7 @@
 import React from "react";
-import { TEvent, TFieldClient } from "../../../../types";
+import { esterilizacaoInternaStore } from "../../../../model/esterilizacao-interna/esterilizacao-interna.store";
+import { TEvent } from "../../../../types";
 import { Table } from "../../../components/table";
-import { esterilizacaoInternaService } from "../../../service/esterilizacao-interna.service";
 
 type EsterilizacaoInternaProdutoProp = {
   children?: any;
@@ -10,42 +10,34 @@ type EsterilizacaoInternaProdutoProp = {
   onSelectEvent?: (event: TEvent) => void;
 };
 
+const { getSchemaProduto, getProduto } = esterilizacaoInternaStore.getState();
+
 export function EsterilizacaoInternaProduto({
   diaCorrente,
   children,
   produtoCorrente,
   onSelectEvent,
 }: EsterilizacaoInternaProdutoProp) {
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
-  const [data, setData] = React.useState<TFieldClient[]>([]);
+  const dataSchemaProduto = esterilizacaoInternaStore(
+    (state) => state.dataSchemaProduto
+  );
+  const dataProduto = esterilizacaoInternaStore((state) => state.dataProduto);
 
   React.useEffect(() => {
-    async function getSchema() {
-      const rsp = await esterilizacaoInternaService.schemaProduto();
-      setSchema(rsp);
-    }
-    getSchema();
+    getSchemaProduto();
   }, []);
 
   React.useEffect(() => {
-    async function getData() {
-      if (diaCorrente.dia === undefined) {
-        setData([]);
-        return;
-      }
-      const rsp = await esterilizacaoInternaService.produto(
-        diaCorrente.dia || ""
-      );
-      setData(rsp);
-    }
-    getData();
+    getProduto({
+      data: diaCorrente.dia || "",
+    });
   }, [diaCorrente]);
 
   return (
     <Table
       name="produto"
-      data={data}
-      schema={schema}
+      data={dataProduto}
+      schema={dataSchemaProduto}
       selected={produtoCorrente}
       onSelectEvent={onSelectEvent}
     >

@@ -1,8 +1,7 @@
 import React from "react";
-import { TEvent, TFieldClient } from "../../../../types";
-import { cache } from "../../../../utils/cache";
+import { esterilizacaoInternaStore } from "../../../../model/esterilizacao-interna/esterilizacao-interna.store";
+import { TEvent } from "../../../../types";
 import { Table } from "../../../components/table/table";
-import { esterilizacaoInternaService } from "../../../service/esterilizacao-interna.service";
 
 type EsterilizacaoInternaMensalProp = {
   children?: React.ReactNode;
@@ -10,6 +9,7 @@ type EsterilizacaoInternaMensalProp = {
   mesInicial: { mes: string };
   onSelectEvent?: (event: TEvent) => void;
 };
+const { getSchemaMensal, getMensal } = esterilizacaoInternaStore.getState();
 
 export function EsterilizacaoInternaMensal({
   mesInicial,
@@ -17,37 +17,24 @@ export function EsterilizacaoInternaMensal({
   onSelectEvent,
   children,
 }: EsterilizacaoInternaMensalProp) {
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
-  const [data, setData] = React.useState<TFieldClient[]>([]);
+  const dataSchemaMensal = esterilizacaoInternaStore(
+    (state) => state.dataSchemaMensal
+  );
+  const dataMensal = esterilizacaoInternaStore((state) => state.dataMensal);
 
   React.useEffect(() => {
-    async function getSchema() {
-      const rsp = await cache.fetch({
-        key: "esterilizacaoInternaService.schemaMensal",
-        callback: esterilizacaoInternaService.schemaMensal,
-      });
-      setSchema(rsp);
-    }
-    getSchema();
+    getSchemaMensal();
   }, []);
 
   React.useEffect(() => {
-    async function getData() {
-      const rsp = await cache.fetch({
-        key: "esterilizacaoInternaService.mensal",
-        callback: esterilizacaoInternaService.mensal,
-        args: [mesInicial.mes],
-      });
-      setData(rsp);
-    }
-    getData();
+    getMensal(mesInicial);
   }, [mesInicial]);
 
   return (
     <Table
       name="mensal"
-      data={data}
-      schema={schema}
+      data={dataMensal}
+      schema={dataSchemaMensal}
       selected={mesCorrente}
       onSelectEvent={onSelectEvent}
     >

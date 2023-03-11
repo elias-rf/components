@@ -1,9 +1,8 @@
 import React from "react";
-import { TEvent, TFieldClient } from "../../../../types";
-import { cache } from "../../../../utils/cache";
+import { esterilizacaoExternaStore } from "../../../../model/esterilizacao-externa/esterilizacao-externa.store";
+import { TEvent } from "../../../../types";
+import { day } from "../../../../utils/date/day";
 import { Table } from "../../../components/table/table";
-import { day } from "../../../lib/day";
-import { esterilizacaoExternaService } from "../../../service/esterilizacao-externa.service";
 
 type EsterilizacaoExternaDiarioProp = {
   children?: React.ReactNode;
@@ -11,6 +10,7 @@ type EsterilizacaoExternaDiarioProp = {
   diaCorrente: { dia?: string };
   onSelectEvent: (event: TEvent) => void;
 };
+const { getSchema, getDiario } = esterilizacaoExternaStore.getState();
 
 export function EsterilizacaoExternaDiario({
   children,
@@ -18,46 +18,31 @@ export function EsterilizacaoExternaDiario({
   diaCorrente,
   onSelectEvent,
 }: EsterilizacaoExternaDiarioProp) {
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
-  const [data, setData] = React.useState<TFieldClient[]>([]);
+  const dataSchemaDiario = esterilizacaoExternaStore(
+    (state) => state.dataSchemaDiario
+  );
+  const dataDiario = esterilizacaoExternaStore((state) => state.dataDiario);
 
   React.useEffect(() => {
-    async function getSchema() {
-      const rsp = await cache.fetch({
-        key: "esterilizacaoExternaService.schemaDiario",
-        callback: esterilizacaoExternaService.schemaDiario,
-        expiresInSeconds: 3600,
-        debug: true,
-      });
-      setSchema(rsp);
-    }
     getSchema();
   }, []);
 
   React.useEffect(() => {
-    async function getData() {
-      if (mesCorrente.mes === undefined) {
-        setData([]);
-        return;
-      }
-      const rsp = await esterilizacaoExternaService.diario(
-        day(mesCorrente.mes + "-01")
-          .startOf("month")
-          .format("YYYY-MM-DD"),
-        day(mesCorrente.mes + "-01")
-          .endOf("month")
-          .format("YYYY-MM-DD")
-      );
-      setData(rsp);
-    }
-    getData();
+    getDiario({
+      inicio: day(mesCorrente.mes + "-01")
+        .startOf("month")
+        .format("YYYY-MM-DD"),
+      fim: day(mesCorrente.mes + "-01")
+        .endOf("month")
+        .format("YYYY-MM-DD"),
+    });
   }, [mesCorrente]);
 
   return (
     <Table
       name="diario"
-      data={data}
-      schema={schema}
+      data={dataDiario}
+      schema={dataSchemaDiario}
       selected={diaCorrente}
       onSelectEvent={onSelectEvent}
     >

@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { TCurrentUser } from "../../types";
 
 /**
  * decodifica um token JWT com os dados do usuario
@@ -11,7 +12,7 @@ import jwt from "jsonwebtoken";
 export function jwtDecode(token: string, secret: string) {
   try {
     const rsp = jwt.verify(token, secret);
-    return rsp;
+    return rsp as TCurrentUser;
   } catch (err) {
     return null;
   }

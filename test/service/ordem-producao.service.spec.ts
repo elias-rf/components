@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { ordemProducaoService } from "../../client/service/ordem-producao.service";
+import { ordemProducaoServiceFactory } from "../../model/ordem-producao/ordem-producao.service";
+
+const ordemProducaoService = ordemProducaoServiceFactory();
 
 describe("ordemProducaoService", () => {
   it("ordemProducaoRead", async () => {

@@ -4,7 +4,7 @@ import { ClienteValorMedio } from "./cliente_valor_medio";
 const meta: Meta<typeof ClienteValorMedio> = {
   component: ClienteValorMedio,
   args: {
-    id: { cliente_id: 189 },
+    id: { cliente_id: 1 },
   },
 };
 
@@ -13,6 +13,11 @@ type Story = StoryObj<typeof ClienteValorMedio>;
 
 export const ValorMedio: Story = {
   render: (props: any) => {
-    return <ClienteValorMedio id={props.id} />;
+    return (
+      <ClienteValorMedio
+        id={props.id}
+        dia="2020-02-01"
+      />
+    );
   },
 };

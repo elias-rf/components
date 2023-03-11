@@ -22,7 +22,9 @@ export function Select({
       aria-label={field}
       value={value}
       onChange={handleOnChange}
-      className="w-full h-6 px-1 text-gray-700 border border-gray-400 focus:border-gray-600"
+      className={
+        "w-full h-6 px-1 text-gray-700 border border-gray-400 focus:border-gray-600"
+      }
       {...others}
     >
       {children}

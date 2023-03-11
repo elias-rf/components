@@ -105,7 +105,7 @@ describe("ordemProducao", () => {
   it("ordemProducaoControle", async () => {
     const rsp = await fetcherRpc.query("ordemProducaoControle", {
       id: { ordem_producao_id: "100" },
-      serie: 1,
+      serie: "1",
     });
 
     expect(rsp).toEqual("000001000017");

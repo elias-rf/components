@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { usuarioStore } from "../../model/usuario/usuario.store";
 import { SpinnerIcon } from "../components/spinner/spinner-icon";
-import { authenticationService } from "../service/authentication.service";
 
 /**
  * Componente para tela de login
@@ -9,16 +9,18 @@ import { authenticationService } from "../service/authentication.service";
  * @returns {*} componente <LoginView />
  */
 export function Logout() {
+  const setLogout = usuarioStore((state) => state.setLogout);
+
   const navigate = useNavigate();
   React.useEffect(() => {
     async function logout() {
-      await authenticationService.mutation.logout();
+      await setLogout();
       navigate("/");
     }
     logout();
   }, []);
   return (
-    <div className="flex justify-center">
+    <div className={"flex justify-center"}>
       <SpinnerIcon show={true} />
     </div>
   );

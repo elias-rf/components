@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { usuarioService } from "../../client/service/usuario.service";
+import { usuarioServiceFactory } from "../../model/usuario/usuario.service";
+
+const usuarioService = usuarioServiceFactory();
 
 describe("usuarioService", () => {
   it("usuarioSchema", async () => {
@@ -37,5 +39,31 @@ describe("usuarioService", () => {
       select: ["usuario_id", "nome"],
     });
     expect(rsp).toEqual({ usuario_id: 2, nome: "User" });
+  });
+
+  it("me", async () => {
+    const rsp = await usuarioService.query.me();
+    expect(rsp).toEqual({});
+  });
+
+  it("login", async () => {
+    const rsp = await usuarioService.mutation.login({
+      user: "user",
+      password: "123",
+    });
+
+    expect(rsp).toEqual({
+      usuario_id: 2,
+      nome_login: "user",
+      nome: "User",
+      group_id: "dev",
+      token: expect.any(String),
+    });
+  });
+
+  it("logout", async () => {
+    const rsp = await usuarioService.mutation.logout();
+
+    expect(rsp).toEqual(true);
   });
 });

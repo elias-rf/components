@@ -12,8 +12,8 @@ export const Est_Ext_Mensal: Story = {
   render: () => {
     return (
       <EsterilizacaoExternaMensal
-        mesInicial={{ mes: "2021-01" }}
-        mesCorrente={{ mes: "2021-01" }}
+        mesInicial={{ mes: "2020-01" }}
+        mesCorrente={{ mes: "2020-01" }}
         onSelectEvent={(event) => console.log(event)}
       />
     );

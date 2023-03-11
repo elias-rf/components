@@ -1,16 +1,17 @@
 import React from "react";
+import { TUsuarioFields } from "../../../model/usuario/usuario.type";
 import { TOrder, TSelected, TWhere } from "../../../types";
 import { Page } from "../../components/page/page";
 import { PageTitle } from "../../components/page/page_title";
-import { TAgendaTelefoneListEvent } from "../../features/agenda_telefone/agenda_telefone_list";
+import { TAgendaTelefoneListEvent } from "../../features/agenda_telefone/agenda-telefone-list";
 import { Auth } from "../../features/auth";
 import { UsuarioForm } from "../../features/usuario/usuario_form";
 import { UsuarioList } from "../../features/usuario/usuario_list";
 
 export default function Usuarios() {
   const [selected, setSelected] = React.useState<TSelected>([]);
-  const [where, setWhere] = React.useState<TWhere[]>([]);
-  const [order, setOrder] = React.useState<TOrder[]>([]);
+  const [where, setWhere] = React.useState<TWhere<TUsuarioFields>[]>([]);
+  const [order, setOrder] = React.useState<TOrder<TUsuarioFields>[]>([]);
 
   function handleEvent(event: TAgendaTelefoneListEvent) {
     if (event.event === "onSelectEvent") {
@@ -29,7 +30,7 @@ export default function Usuarios() {
       <Page>
         <PageTitle title="Cadastro de Usuários" />
         <hr />
-        <div className="flex flex-col gap-2">
+        <div className={"flex flex-col gap-2"}>
           <UsuarioForm id={selected} />
           <UsuarioList
             selected={selected}

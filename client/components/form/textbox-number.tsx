@@ -121,7 +121,9 @@ export function TextboxNumber({
       onBlur={handleOnBlur}
       aria-label={name}
       list={list}
-      className="w-full h-6 px-2 py-1 text-gray-700 border border-gray-400 focus:border-gray-600"
+      className={
+        "w-full h-6 px-2 py-1 text-gray-700 border border-gray-400 focus:border-gray-600"
+      }
       {...others}
     />
   );

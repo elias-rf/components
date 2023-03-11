@@ -1,7 +1,7 @@
 import React from "react";
+import { nfSaidaStore } from "../../../../model/nf-saida/nf-saida.store";
 import { day } from "../../../../utils/date/day";
 import { Table } from "../../../components/table/table";
-import { vendaService } from "../../../service/venda.service";
 import {
   mensal,
   mensalProduto,
@@ -14,12 +14,15 @@ import {
   vendedorSchema,
 } from "./venda";
 
+const nfSaidaStore = nfSaidaStore();
+
 export function Vendas() {
+  const getVendaAnalitico = nfSaidaStore((state) => state.getVendaAnalitico);
+  const dataVendaAnalitico = nfSaidaStore((state) => state.dataVendaAnalitico);
   const [mesCorrente, setMesCorrente] = React.useState([]);
   const [produtoCorrente, setProdutoCorrente] = React.useState([]);
   const [vendedorCorrente, setVendedorCorrente] = React.useState([]);
   const [_ufCorrente, setUfCorrente] = React.useState([]);
-  const [venda, setVenda] = React.useState([]);
 
   const diaInicial = day()
     .subtract(13, "month")
@@ -28,11 +31,7 @@ export function Vendas() {
   const diaFinal = day().format("YYYY-MM-DD");
 
   React.useEffect(() => {
-    async function getVenda() {
-      const rsp = await vendaService.analitico(diaInicial, diaFinal);
-      setVenda(rsp);
-    }
-    getVenda();
+    getVendaAnalitico({ inicio: diaInicial, fim: diaFinal });
   }, [diaInicial, diaFinal]);
 
   function handleMensal(action: any) {
@@ -49,21 +48,21 @@ export function Vendas() {
   }
 
   return (
-    <div className="flex">
-      <div className="p-2">
+    <div className={"flex"}>
+      <div className={"p-2"}>
         <Table
-          data={mensal(venda.data)}
+          data={mensal(dataVendaAnalitico)}
           selected={mesCorrente}
           dispatch={handleMensal}
           schema={mesSchema}
         >
           <Table
-            data={mensalProduto(mesCorrente, venda.data)}
+            data={mensalProduto(mesCorrente, dataVendaAnalitico)}
             dispatch={handleProduto}
             schema={produtoSchema}
           ></Table>
           <Table
-            data={mensalVendedor(mesCorrente, venda.data)}
+            data={mensalVendedor(mesCorrente, dataVendaAnalitico)}
             selected={vendedorCorrente}
             dispatch={handleVendedor}
             schema={vendedorSchema}
@@ -72,14 +71,18 @@ export function Vendas() {
               data={mensalVendedorProduto(
                 mesCorrente,
                 vendedorCorrente,
-                venda.data
+                dataVendaAnalitico
               )}
               selected={produtoCorrente}
               dispatch={handleProduto}
               schema={produtoSchema}
             ></Table>
             <Table
-              data={mensalVendedorUf(mesCorrente, vendedorCorrente, venda.data)}
+              data={mensalVendedorUf(
+                mesCorrente,
+                vendedorCorrente,
+                dataVendaAnalitico
+              )}
               dispatch={handleUf}
               schema={ufSchema}
             ></Table>

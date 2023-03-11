@@ -1,0 +1,11 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
+### Index
+GET {{host}}/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index"}
+
+
+
+###
+GET {{host}}/api/rpc?rpc={"jsonrpc":"2.0","id":3,"method":"ordemProducaoOperacaoDiario","params":{"operacao":"3059","inicio":"2020-01-01","fim":"2020-01-31"}}

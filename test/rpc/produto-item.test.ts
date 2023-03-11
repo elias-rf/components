@@ -48,7 +48,7 @@ describe("produtoItem", () => {
   });
 
   it("produtoItemPlano", async () => {
-    const rsp = await fetcherRpc.query("produtoItemPlano", {
+    const rsp = await fetcherRpc.query("produtoItemProdutoPlano", {
       id: { produto_item_id: 1 },
       select: ["produto_plano_id"],
     });

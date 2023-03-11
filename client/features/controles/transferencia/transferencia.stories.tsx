@@ -10,6 +10,6 @@ type Story = StoryObj<typeof Transferencia>;
 
 export const Transferencia_: Story = {
   render: () => {
-    return <Transferencia />;
+    return <Transferencia dia="2020-01-01" />;
   },
 };

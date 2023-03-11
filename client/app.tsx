@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ClearLayout } from "./components/clear_layout";
 import { Layout } from "./features/layout";
+// import { globalStyle } from "./global-style";
 import { Dashboard } from "./pages/dashboard";
 import { Home } from "./pages/home";
 import { Loading } from "./pages/loading";
@@ -44,105 +45,107 @@ const Permissao = React.lazy(async () => import("./pages/sistema/permissoes"));
 /** Componente com todas a rotas da aplicativo */
 export function App() {
   return (
-    <BrowserRouter>
-      <Suspense
-        fallback={
-          <Layout>
-            <Loading />
-          </Layout>
-        }
-      >
-        <Routes>
-          <Route element={<Layout />}>
-            <Route
-              path="/"
-              element={<Home />}
-            />
+    <>
+      <BrowserRouter>
+        <Suspense
+          fallback={
+            <Layout>
+              <Loading />
+            </Layout>
+          }
+        >
+          <Routes>
+            <Route element={<Layout />}>
+              <Route
+                path="/"
+                element={<Home />}
+              />
 
-            <Route
-              path="/dashboard"
-              element={<Dashboard />}
-            />
+              <Route
+                path="/dashboard"
+                element={<Dashboard />}
+              />
 
-            <Route path="comercial">
-              <Route
-                path="precos"
-                element={<Precos />}
-              />
-              <Route
-                path="cliente"
-                element={<Cliente />}
-              />
-              <Route
-                path="faturamento"
-                element={<Faturamento />}
-              />
-              <Route
-                path="vendas30dias"
-                element={<Vendas30Dias />}
-              />
-            </Route>
-
-            <Route path="industrial">
-              <Route
-                path="controles"
-                element={<Controles />}
-              />
-              <Route
-                path="ordemProducao"
-                element={<OrdemProducao />}
-              />
-              <Route
-                path="transferencia"
-                element={<Transferencia />}
-              />
-            </Route>
-
-            <Route path="sistema">
-              <Route
-                path="usuario"
-                element={<Usuario />}
-              />
-              <Route
-                path="permissao"
-                element={<Permissao />}
-              />
-            </Route>
-
-            <Route path="outros">
-              <Route
-                path="agenda"
-                element={<Agenda />}
-              >
+              <Route path="comercial">
                 <Route
-                  path=":currentId"
-                  element={<Agenda />}
+                  path="precos"
+                  element={<Precos />}
+                />
+                <Route
+                  path="cliente"
+                  element={<Cliente />}
+                />
+                <Route
+                  path="faturamento"
+                  element={<Faturamento />}
+                />
+                <Route
+                  path="vendas30dias"
+                  element={<Vendas30Dias />}
                 />
               </Route>
+
+              <Route path="industrial">
+                <Route
+                  path="controles"
+                  element={<Controles />}
+                />
+                <Route
+                  path="ordemProducao"
+                  element={<OrdemProducao />}
+                />
+                <Route
+                  path="transferencia"
+                  element={<Transferencia />}
+                />
+              </Route>
+
+              <Route path="sistema">
+                <Route
+                  path="usuario"
+                  element={<Usuario />}
+                />
+                <Route
+                  path="permissao"
+                  element={<Permissao />}
+                />
+              </Route>
+
+              <Route path="outros">
+                <Route
+                  path="agenda"
+                  element={<Agenda />}
+                >
+                  <Route
+                    path=":currentId"
+                    element={<Agenda />}
+                  />
+                </Route>
+              </Route>
             </Route>
-          </Route>
 
-          <Route element={<ClearLayout />}>
+            <Route element={<ClearLayout />}>
+              <Route
+                path="/login"
+                element={<Login />}
+              />
+            </Route>
+
             <Route
-              path="/login"
-              element={<Login />}
+              path="/logout"
+              element={<Logout />}
             />
-          </Route>
-
-          <Route
-            path="/logout"
-            element={<Logout />}
-          />
-          <Route
-            path="/403"
-            element={<Page403 />}
-          />
-          <Route
-            path="*"
-            element={<Page404 />}
-          />
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
+            <Route
+              path="/403"
+              element={<Page403 />}
+            />
+            <Route
+              path="*"
+              element={<Page404 />}
+            />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    </>
   );
 }

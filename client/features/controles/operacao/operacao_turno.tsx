@@ -1,8 +1,7 @@
 import React from "react";
-import { TEvent, TFieldClient } from "../../../../types";
-import { isEmpty } from "../../../../utils/identify/is_empty";
+import { ordemProducaoOperacaoStore } from "../../../../model/ordem-producao-operacao/ordem-producao-operacao.store";
+import { TEvent } from "../../../../types";
 import { Table } from "../../../components/table/table";
-import { operacaoService } from "../../../service/operacao.service";
 
 type OperacaoTurnoProps = {
   operacao: { operacao?: string };
@@ -15,35 +14,25 @@ export function OperacaoTurno({
   dia,
   onSelectEvent,
 }: OperacaoTurnoProps) {
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
-  const [data, setData] = React.useState<TFieldClient[]>([]);
+  const getSchema = ordemProducaoOperacaoStore((state) => state.getTurnoSchema);
+  const schema = ordemProducaoOperacaoStore((state) => state.dataTurnoSchema);
+  const getTurno = ordemProducaoOperacaoStore((state) => state.getTurno);
+  const turno = ordemProducaoOperacaoStore((state) => state.dataTurno);
 
   React.useEffect(() => {
-    async function getSchema() {
-      const rsp = await operacaoService.schemaTurno();
-      setSchema(rsp);
-    }
     getSchema();
   }, []);
 
   React.useEffect(() => {
-    async function getData() {
-      if (isEmpty(operacao.operacao) || isEmpty(dia.dia)) {
-        setData([]);
-        return;
-      }
-      const rsp = await operacaoService.turno(
-        operacao.operacao || "",
-        dia.dia || ""
-      );
-      setData(rsp);
-    }
-    getData();
+    getTurno({
+      operacao: operacao.operacao || "",
+      data: dia.dia || "",
+    });
   }, [dia, operacao]);
 
   return (
     <Table
-      data={data}
+      data={turno}
       schema={schema}
       onSelectEvent={onSelectEvent}
     ></Table>

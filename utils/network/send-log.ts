@@ -1,4 +1,5 @@
 const http = require("http");
+import { logger } from "../logger";
 
 export async function sendLog(msg: any) {
   const options = {
@@ -14,9 +15,9 @@ export async function sendLog(msg: any) {
   };
 
   return new Promise((resolve, reject) => {
-    const req = http.request(options, (res) => {
+    const req = http.request(options, (res: any) => {
       let body = "";
-      res.on("data", (chunk) => {
+      res.on("data", (chunk: any) => {
         body += chunk;
       });
 
@@ -32,7 +33,10 @@ export async function sendLog(msg: any) {
         reject(Error("HTTP call failed"));
       });
     });
-
+    req.on("error", (err: any) => {
+      logger.trace(msg);
+      resolve("ok");
+    });
     // The below 2 lines are most important part of the whole snippet.
     const body = typeof msg === "string" ? { info: msg } : msg;
     body.time = new Date();

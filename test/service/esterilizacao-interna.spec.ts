@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { esterilizacaoInternaService } from "../../client/service/esterilizacao-interna.service";
+import { esterilizacaoInternaServiceFactory } from "../../model/esterilizacao-interna/esterilizacao-interna.service";
+
+const esterilizacaoInternaService = esterilizacaoInternaServiceFactory();
 
 describe("esterilizacaoInternaService", () => {
   it("esterilizacaoInternaSchema", async () => {

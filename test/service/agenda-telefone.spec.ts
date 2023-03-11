@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { agendaTelefoneService } from "../../client/service/agenda-telefone.service";
+import { agendaTelefoneServiceFactory } from "../../model/agenda-telefone/agenda-telefone.service";
 import { delCreateAux, readAux } from "../../test/aux/aux";
+
+const agendaTelefoneService = agendaTelefoneServiceFactory();
 
 describe("agendaTelefoneService", () => {
   it("agendaTelefoneSchema", async () => {
-    expect(await (await agendaTelefoneService.query.schema()).length).toEqual(
-      4
-    );
+    expect((await agendaTelefoneService.query.schema()).length).toEqual(4);
   });
   it("agendaTelefoneClear", async () => {
     expect(await agendaTelefoneService.query.clear()).toEqual({

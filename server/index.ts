@@ -1,5 +1,6 @@
 import { logger } from "../utils/logger";
 import { app } from "./app";
+import "./global";
 
 async function start() {
   const port = normalizePort(process.env.PORT || "3000");

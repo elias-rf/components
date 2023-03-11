@@ -11,13 +11,16 @@ describe("rpc-server", () => {
     ({ subtrahend, minuend }: { subtrahend: number; minuend: number }) =>
       minuend - subtrahend
   );
+
   rpc.addMethod(
     "query",
     "multiply",
     ({ a, b }: { a: number; b: number }) => a * b
   );
+
   rpc.addMethod("query", "error", ({ a, b }: { a: number; b: number }) => {
-    throw new Error("erro definido", { cause: "merda" });
+    console.log(a, b);
+    throw new Error("erro definido");
   });
 
   it("deve receber chamado sum", async () => {
@@ -55,7 +58,7 @@ describe("rpc-server", () => {
       id: 1,
       error: {
         code: -32601,
-        message: "Method not found",
+        message: "Method not found: unknow",
       },
     });
   });
@@ -72,7 +75,7 @@ describe("rpc-server", () => {
       jsonrpc: "2.0",
       id: 2,
       error: {
-        code: "merda",
+        code: "Error",
         message: "erro definido",
       },
     });
@@ -137,7 +140,7 @@ describe("rpc-server", () => {
       await rpc.runQuery({ jsonrpc: "2.0", method: "foobar", id: "1" })
     ).toEqual({
       jsonrpc: "2.0",
-      error: { code: -32601, message: "Method not found" },
+      error: { code: -32601, message: "Method not found: foobar" },
       id: "1",
     });
   });
@@ -147,7 +150,7 @@ describe("rpc-server", () => {
       await rpc.runQuery({ jsonrpc: "2.0", method: "foobar", id: "1" })
     ).toEqual({
       jsonrpc: "2.0",
-      error: { code: -32601, message: "Method not found" },
+      error: { code: -32601, message: "Method not found: foobar" },
       id: "1",
     });
   });

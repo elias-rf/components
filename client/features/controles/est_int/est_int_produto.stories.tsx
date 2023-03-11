@@ -12,8 +12,8 @@ export const Est_Int_Produto: Story = {
   render: () => {
     return (
       <EsterilizacaoInternaProduto
-        diaCorrente={{ dia: "2021-01-08" }}
-        produtoCorrente={{ produto: "Liteflex" }}
+        diaCorrente={{ dia: "2020-01-01" }}
+        produtoCorrente={{ produto: "cat1" }}
         onSelectEvent={(event: TEvent) => console.log(event)}
       />
     );

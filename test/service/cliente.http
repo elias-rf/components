@@ -1,15 +1,23 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
 ### ME
-GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"me"}
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"me"}
 Content-Type: application/json
 
 ### Schema
-GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":2,"method":"clienteSchema"}
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":2,"method":"clienteSchema"}
 Content-Type: application/json
 
 ### Index
-GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"cliente"}
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"cliente"}
 Content-Type: application/json
 
 ### Schema
-GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":2,"method":"clienteVendaMensalQuantidade","params":{"inicio":"2020-01-01","fim":"2020-01-31","cliente":1}}
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":2,"method":"clienteVendaMensalQuantidade","params":{"inicio":"2020-01-01","fim":"2020-01-31","cliente":1}}
 Content-Type: application/json

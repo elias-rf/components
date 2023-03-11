@@ -98,7 +98,7 @@ describe("cache", () => {
       counter++;
       return num1 * 2;
     };
-    cache.clear();
+    cache.clear({ key: "" });
     expect(Array.from(cache.lru.keys())).toEqual([]);
     expect(cache.size()).toBe(0);
 

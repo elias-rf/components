@@ -1,53 +1,46 @@
 import React from "react";
-import { TEvent, TFieldClient, TIds } from "../../../../types";
-import { cache } from "../../../../utils/cache";
+import { nfSaidaStore } from "../../../../model/nf-saida/nf-saida.store";
+import { TEvent, TIds } from "../../../../types";
+import { day } from "../../../../utils/date/day";
 import { Table } from "../../../components/table/table";
-import { day } from "../../../lib/day";
-import { transferenciaService } from "../../../service/transferencia.service";
 
 type TransferenciaMensalProps = {
   mesCorrente: TIds;
   children?: React.ReactNode;
+  dia?: string;
   onSelectEvent?: (event: TEvent) => void;
 };
+
 export function TransferenciaMensal({
   children,
   mesCorrente,
+  dia,
   onSelectEvent,
 }: TransferenciaMensalProps) {
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
-  const [data, setData] = React.useState<TFieldClient[]>([]);
+  const [dataTransferenciaMensalSchema, getTransferenciaMensalSchema] =
+    nfSaidaStore((state) => [
+      state.dataTransferenciaMensalSchema,
+      state.getTransferenciaMensalSchema,
+    ]);
+  const [dataTransferenciaMensal, getTransferenciaMensal] = nfSaidaStore(
+    (state) => [state.dataTransferenciaMensal, state.getTransferenciaMensal]
+  );
 
   React.useEffect(() => {
-    async function getSchema() {
-      const rsp = await cache.fetch({
-        key: "transferenciaService.schemaMensal",
-        callback: transferenciaService.schemaMensal,
-      });
-      setSchema(rsp);
-    }
-    getSchema();
+    getTransferenciaMensalSchema();
   }, []);
 
-  const mesInicial = day().subtract(13, "month").format("YYYY-MM");
+  const mesInicial = day(dia).subtract(13, "month").format("YYYY-MM");
 
   React.useEffect(() => {
-    async function getData() {
-      const rsp = await cache.fetch({
-        key: "transferenciaService.mensal",
-        callback: transferenciaService.mensal,
-        args: [mesInicial],
-      });
-      setData(rsp);
-    }
-    getData();
+    getTransferenciaMensal({ mes: mesInicial });
   }, [mesInicial]);
 
   return (
     <Table
       name="mensal"
-      data={data}
-      schema={schema}
+      data={dataTransferenciaMensal}
+      schema={dataTransferenciaMensalSchema}
       selected={mesCorrente}
       onSelectEvent={onSelectEvent}
     >

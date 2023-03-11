@@ -1,9 +1,8 @@
 import React from "react";
-import { TEvent, TFieldClient, TIds } from "../../../../types";
-import { isEmpty } from "../../../../utils/identify/is_empty";
+import { ordemProducaoOperacaoStore } from "../../../../model/ordem-producao-operacao/ordem-producao-operacao.store";
+import { TEvent, TIds } from "../../../../types";
+import { day } from "../../../../utils/date/day";
 import { Table } from "../../../components/table/table";
-import { day } from "../../../lib/day";
-import { operacaoService } from "../../../service/operacao.service";
 
 type OperacaoDiarioProp = {
   operacao: TIds;
@@ -20,41 +19,33 @@ export function OperacaoDiario({
   children,
   onSelectEvent,
 }: OperacaoDiarioProp) {
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
-  const [data, setData] = React.useState<TFieldClient[]>([]);
+  const getSchema = ordemProducaoOperacaoStore(
+    (state) => state.getDiarioSchema
+  );
+  const getDiario = ordemProducaoOperacaoStore((state) => state.getDiario);
+  const schema = ordemProducaoOperacaoStore((state) => state.dataDiarioSchema);
+  const diario = ordemProducaoOperacaoStore((state) => state.dataDiario);
 
   React.useEffect(() => {
-    async function getSchema() {
-      const rsp = await operacaoService.schemaDiario();
-      setSchema(rsp);
-    }
     getSchema();
   }, []);
 
   React.useEffect(() => {
-    async function getData() {
-      if (isEmpty(operacao.operacao) || isEmpty(mes.mes)) {
-        setData([]);
-        return;
-      }
-      const rsp = await operacaoService.diario(
-        operacao.operacao,
-        day(mes.mes + "-01")
-          .startOf("month")
-          .format("YYYY-MM-DD"),
-        day(mes.mes + "-01")
-          .endOf("month")
-          .format("YYYY-MM-DD")
-      );
-      setData(rsp);
-    }
-    getData();
+    getDiario({
+      operacao: operacao.operacao,
+      inicio: day(mes.mes + "-01")
+        .startOf("month")
+        .format("YYYY-MM-DD"),
+      fim: day(mes.mes + "-01")
+        .endOf("month")
+        .format("YYYY-MM-DD"),
+    });
   }, [mes, operacao]);
 
   return (
     <Table
       name="diario"
-      data={data}
+      data={diario}
       schema={schema}
       selected={diaCorrente}
       onSelectEvent={onSelectEvent}

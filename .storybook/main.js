@@ -12,6 +12,7 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
+    "storybook-tailwind-dark-mode",
   ],
   framework: {
     name: "@storybook/react-vite",
@@ -26,7 +27,7 @@ module.exports = {
   staticDirs: ["../public"],
   async viteFinal(config) {
     config.server.proxy = {
-      "/api": "http://localhost:3000",
+      "/api": "http://localhost:3333",
     };
     return config;
   },
@@ -35,6 +36,6 @@ module.exports = {
     strictMode: true,
   },
   docs: {
-    autodocs: true,
+    autodocs: false,
   },
 };

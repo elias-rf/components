@@ -2,9 +2,11 @@ import { action } from "@storybook/addon-actions";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 import { TEvent, TFieldClient, TOrder, TWhere } from "../../../types";
+import delIcon from "../../assets/icons/delete.svg";
+import editIcon from "../../assets/icons/edit.svg";
+import newIcon from "../../assets/icons/new.svg";
 import { Search } from "./search";
 import { Table } from "./table";
-
 export default {
   title: "Components/Table/Table",
   component: Table,
@@ -50,7 +52,10 @@ const schema: TFieldClient[] = [
 export const Simples: ComponentStory<typeof Table> = () => {
   return (
     <div>
-      <Table data={data} schema={schema} />
+      <Table
+        data={data}
+        schema={schema}
+      />
     </div>
   );
 };
@@ -77,7 +82,11 @@ export const Procura: ComponentStory<typeof Table> = () => {
 
   return (
     <div>
-      <Search where={where} schema={schema} onWhereEvent={handleWhere} />
+      <Search
+        where={where}
+        schema={schema}
+        onWhereEvent={handleWhere}
+      />
       <Table
         name={"table1"}
         data={data}
@@ -162,7 +171,85 @@ export const Tree: ComponentStory<typeof Table> = (props: any) => {
         onSelectEvent={handleSelect}
         onWhereEvent={handleWhere}
       >
-        <Table name={"table2"} data={data} schema={schema} />
+        <Table
+          name={"table2"}
+          data={data}
+          schema={schema}
+        />
+      </Table>
+    </div>
+  );
+};
+
+/** TABELA COM TREE Filter*/
+export const TreeFilter: ComponentStory<typeof Table> = () => {
+  const [selected, setSelected] = React.useState(["2"]);
+  const [where, setWhere] = React.useState<TWhere[]>([["id", "=", "4"]]);
+  const [orderBy, setOrderBy] = React.useState<TOrder[]>([["id", "desc"]]);
+  const commands = {
+    head() {
+      return (
+        <button onClick={() => console.log("novo")}>
+          <img src={newIcon} />
+        </button>
+      );
+    },
+    row({ record }: { record: any }) {
+      return (
+        <div className={"space-x-2"}>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              console.log("edit", record);
+            }}
+          >
+            <img src={editIcon} />
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              console.log("del", record);
+            }}
+          >
+            <img src={delIcon} />
+          </button>
+        </div>
+      );
+    },
+  };
+  function handleWhere(event: TEvent) {
+    setWhere(event.value);
+    action("where")(event.value);
+  }
+  function handleSelect(event: TEvent) {
+    setSelected(event.value);
+    action("select")(event.value);
+  }
+
+  function handleOrder(event: TEvent) {
+    setOrderBy(event.value);
+    action("order")(event.value);
+  }
+
+  return (
+    <div>
+      <Table
+        name={"table1"}
+        data={data}
+        schema={schema}
+        selected={selected}
+        order={orderBy}
+        where={where}
+        onOrderEvent={handleOrder}
+        onSelectEvent={handleSelect}
+        onWhereEvent={handleWhere}
+        commands={commands}
+      >
+        <Table
+          name={"table2"}
+          data={data}
+          schema={schema}
+        />
       </Table>
     </div>
   );

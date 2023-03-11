@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { twMerge } from "tailwind-merge";
+import { nfSaidaService } from "../../../model/nf-saida/nf-saida.service";
+import { ordemProducaoService } from "../../../model/ordem-producao/ordem-producao.service";
 import { Badge } from "../../components/badge";
 import { Button } from "../../components/button";
 import { Label } from "../../components/form";
 import { Input } from "../../components/input";
-import { ordemProducaoService } from "../../service/ordem-producao.service";
-import { transferenciaService } from "../../service/transferencia.service";
 
 type TLista = {
   controle: string;
@@ -75,7 +74,7 @@ export function Transferencia() {
       return;
     }
     try {
-      await transferenciaService.create(lista.map((item) => item.controle));
+      await nfSaidaService.create(lista.map((item) => item.controle));
     } catch (e: any) {
       setMsg(e.message);
     }
@@ -107,15 +106,15 @@ export function Transferencia() {
       />
       <Button onClickEvent={transfer}>Transferir</Button>
       <div
-        className={twMerge(
-          "text-3xl font-bold text-red-500",
-          readLength() === parseInt(quantidade) ? "text-blue-500" : ""
-        )}
+        className={
+          ("text-3xl font-bold text-red-500",
+          readLength() === parseInt(quantidade) ? "text-blue-500" : "")
+        }
       >
         {readLength()} unidades
-        <div className="text-3xl font-bold text-red-500">{msg}</div>
+        <div className={"text-3xl font-bold text-red-500"}>{msg}</div>
       </div>
-      <div className="flex flex-wrap">
+      <div className={"flex flex-wrap"}>
         {lista.map((item, idx) => (
           <Badge
             onCloseEvent={() => unread(item.controle)}

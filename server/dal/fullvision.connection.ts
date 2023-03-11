@@ -1,14 +1,13 @@
 import KnexObj, { Knex } from "knex";
 import { config } from "../config";
-import { optionsFullvision } from "../config/knex";
 import { knexLogger } from "../lib/knex/knex-logger";
 
 let knexFullvision: Knex;
 
 if (config.app.env === "test") {
-  knexFullvision = KnexObj(optionsFullvision);
+  knexFullvision = KnexObj(config.db.fullvision);
 } else {
-  knexFullvision = knexLogger(KnexObj(optionsFullvision));
+  knexFullvision = knexLogger(KnexObj(config.db.fullvision));
 }
 
 export default knexFullvision;

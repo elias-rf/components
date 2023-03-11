@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { usuarioStore } from "../../model/usuario/usuario.store";
 import { TEvent } from "../../types";
 import { Login as LoginComponent } from "../components/login/login";
-import { authenticationService } from "../service/authentication.service";
 
 /**
  * Componente para tela de login
@@ -10,6 +10,7 @@ import { authenticationService } from "../service/authentication.service";
  * @returns {*} componente <LoginView />
  */
 export function Login() {
+  const setLogin = usuarioStore((state) => state.setLogin);
   const [error, setError] = React.useState("");
   const [spinner, setSpinner] = React.useState(false);
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export function Login() {
     setSpinner(true);
     setError("");
     try {
-      await authenticationService.mutation.login(event.value);
+      await setLogin(event.value);
       setSpinner(false);
       navigate("/");
     } catch (e: any) {
@@ -28,7 +29,7 @@ export function Login() {
   }
 
   return (
-    <div className="flex justify-center">
+    <div className={"flex justify-center"}>
       <div>
         <div>{error}</div>
         <LoginComponent

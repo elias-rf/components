@@ -7,9 +7,9 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { nfSaidaStore } from "../../../model/nf-saida/nf-saida.store";
 import { day } from "../../../utils/date/day";
 import { formatMoney } from "../../../utils/format/format-money";
-import { vendaService } from "../../service/venda.service";
 
 /**
  * Componente para manipular Agenda de Ramais
@@ -17,22 +17,20 @@ import { vendaService } from "../../service/venda.service";
  * @returns {*} componente react
  */
 export function Vendas30dias() {
-  const [vendas, setVendas] = React.useState({
-    liteflex: [],
-    hilite: [],
-    enlite: [],
-    metil: [],
-    anel: [],
-    enliteLiteflex: [],
-  });
+  const [dataVendaDiario, getVendaDiario] = nfSaidaStore((state) => [
+    state.dataVendaDiario,
+    state.getVendaDiario,
+  ]);
   const width = "100%";
   const height = 300;
 
   React.useEffect(() => {
-    async function get() {
-      const fim = day().format("YYYY-MM-DD");
-      const inicio = day().subtract(90, "days").format("YYYY-MM-DD");
-      const cli = await vendaService.diario(inicio, fim, [
+    const fim = day().format("YYYY-MM-DD");
+    const inicio = day().subtract(90, "days").format("YYYY-MM-DD");
+    getVendaDiario({
+      inicio,
+      fim,
+      uf: [
         "AC",
         "AL",
         "AM",
@@ -63,22 +61,20 @@ export function Vendas30dias() {
         "TO",
         "EX",
         "FV",
-      ]);
-      setVendas(cli);
-    }
-    get();
+      ],
+    });
   }, []);
 
   return (
     <>
-      <div className="py-2">
-        <h2 className="text-lg text-center">Liteflex</h2>
+      <div className={"py-2"}>
+        <h2 className={"text-lg text-center"}>Liteflex</h2>
         <ResponsiveContainer
           width={width}
           height={height}
         >
           <LineChart
-            data={vendas?.liteflex}
+            data={dataVendaDiario?.liteflex}
             syncId="implante"
           >
             <Line
@@ -109,13 +105,13 @@ export function Vendas30dias() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className="py-2">
-        <h2 className="text-lg text-center">Hilite</h2>
+      <div className={"py-2"}>
+        <h2 className={"text-lg text-center"}>Hilite</h2>
         <ResponsiveContainer
           width={width}
           height={height}
         >
-          <LineChart data={vendas?.hilite}>
+          <LineChart data={dataVendaDiario?.hilite}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -144,14 +140,14 @@ export function Vendas30dias() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className="py-2">
-        <h2 className="text-lg text-center">Enlite</h2>
+      <div className={"py-2"}>
+        <h2 className={"text-lg text-center"}>Enlite</h2>
         <ResponsiveContainer
           width={width}
           height={height}
         >
           <LineChart
-            data={vendas?.enlite}
+            data={dataVendaDiario?.enlite}
             syncId="implante"
           >
             <Line
@@ -182,13 +178,13 @@ export function Vendas30dias() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className="py-2">
-        <h2 className="text-lg text-center">Metil</h2>
+      <div className={"py-2"}>
+        <h2 className={"text-lg text-center"}>Metil</h2>
         <ResponsiveContainer
           width={width}
           height={height}
         >
-          <LineChart data={vendas?.metil}>
+          <LineChart data={dataVendaDiario?.metil}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -217,13 +213,13 @@ export function Vendas30dias() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className="py-2">
-        <h2 className="text-lg text-center">Corneal Ring</h2>
+      <div className={"py-2"}>
+        <h2 className={"text-lg text-center"}>Corneal Ring</h2>
         <ResponsiveContainer
           width={width}
           height={height}
         >
-          <LineChart data={vendas?.anel}>
+          <LineChart data={dataVendaDiario?.anel}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -252,13 +248,13 @@ export function Vendas30dias() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className="py-2">
-        <h2 className="text-lg text-center">Liteflex + Enlite</h2>
+      <div className={"py-2"}>
+        <h2 className={"text-lg text-center"}>Liteflex + Enlite</h2>
         <ResponsiveContainer
           width={width}
           height={height}
         >
-          <LineChart data={vendas?.enliteLiteflex}>
+          <LineChart data={dataVendaDiario?.enliteLiteflex}>
             <Line
               type="monotone"
               yAxisId="right"

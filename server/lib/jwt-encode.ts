@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import { sign } from "jsonwebtoken";
 import type { TCurrentUser } from "../../types";
 /**
  * codifica um token JWT com os dados do usuario
@@ -13,7 +13,7 @@ export function jwtEncode(
   secret = "SenhaSecreta",
   expiration = "8h"
 ) {
-  return jwt.sign(user, secret, {
+  return sign(user, secret, {
     expiresIn: expiration,
   });
 }

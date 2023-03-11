@@ -20,14 +20,18 @@ export function MenuTitle({ to, children, onClickEvent }: TMenuTitleProps) {
   }
 
   return (
-    <div className="flex flex-row items-center justify-between flex-shrink-0 px-10 py-2 text-2xl">
-      <div className="w-full cursor-pointer">
+    <div
+      className={
+        "flex flex-row items-center justify-between flex-shrink-0 px-10 py-2 text-2xl"
+      }
+    >
+      <div className={"w-full cursor-pointer"}>
         <div onClick={handleOnClick}>{children}</div>
       </div>
       <button
         type="button"
         aria-label={to}
-        className="rounded-lg lg:hidden focus:outline-none"
+        className={"rounded-lg lg:hidden focus:outline-none"}
         onClick={handleShow}
       >
         <MenuIcon opened={show} />

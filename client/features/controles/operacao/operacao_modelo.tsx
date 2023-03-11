@@ -1,8 +1,7 @@
 import React from "react";
-import { TEvent, TFieldClient } from "../../../../types";
-import { isEmpty } from "../../../../utils/identify/is_empty";
+import { ordemProducaoOperacaoStore } from "../../../../model/ordem-producao-operacao/ordem-producao-operacao.store";
+import { TEvent } from "../../../../types";
 import { Table } from "../../../components/table/table";
-import { operacaoService } from "../../../service/operacao.service";
 
 type OperacaoModelProps = {
   operacao: { operacao?: string };
@@ -13,42 +12,29 @@ type OperacaoModelProps = {
 };
 
 export function OperacaoModelo({ operacao, dia, produto }: OperacaoModelProps) {
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
-  const [data, setData] = React.useState<TFieldClient[]>([]);
+  const getSchema = ordemProducaoOperacaoStore(
+    (state) => state.getModeloSchema
+  );
+  const schema = ordemProducaoOperacaoStore((state) => state.dataModeloSchema);
+  const getModelo = ordemProducaoOperacaoStore((state) => state.getModelo);
+  const modelo = ordemProducaoOperacaoStore((state) => state.dataModelo);
 
   React.useEffect(() => {
-    async function getSchema() {
-      const rsp = await operacaoService.schemaModelo();
-      setSchema(rsp);
-    }
     getSchema();
   }, []);
 
   React.useEffect(() => {
-    async function getData() {
-      if (
-        isEmpty(operacao.operacao) ||
-        isEmpty(dia.dia) ||
-        isEmpty(produto.produto)
-      ) {
-        setData([]);
-        return;
-      }
-
-      const rsp = await operacaoService.modelo(
-        operacao.operacao || "",
-        dia.dia || "",
-        produto.produto || ""
-      );
-      setData(rsp);
-    }
-    getData();
+    getModelo({
+      operacao: operacao.operacao || "",
+      data: dia.dia || "",
+      produto: produto.produto || "",
+    });
   }, [dia, operacao, produto]);
 
   return (
     <Table
       name="modelo"
-      data={data}
+      data={modelo}
       schema={schema}
     ></Table>
   );

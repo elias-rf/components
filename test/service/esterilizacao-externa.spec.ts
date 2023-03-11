@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { esterilizacaoExternaService } from "../../client/service/esterilizacao-externa.service";
+import { esterilizacaoExternaServiceFactory } from "../../model/esterilizacao-externa/esterilizacao-externa.service";
+
+const esterilizacaoExternaService = esterilizacaoExternaServiceFactory();
 
 describe("esterilizacaoExternaService", () => {
   it("esterilizacaoExternaSchema", async () => {
@@ -64,7 +66,7 @@ describe("esterilizacaoExternaService", () => {
     expect(rsp).toEqual([
       {
         dia: "2020-01-01",
-        diaSemana: "qua",
+        dia_semana: "ter",
         quantidade: 10,
       },
     ]);

@@ -187,6 +187,7 @@ export async function initDb() {
     del: ["*"],
     create: [
       { filial_id: 1, ano: 2023, mes: 1, produto_plano_id: 1, entrada: 0 },
+      { filial_id: 1, ano: 2020, mes: 1, produto_plano_id: 1, entrada: 0 },
     ],
   });
 

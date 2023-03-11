@@ -1,9 +1,9 @@
 import React from "react";
+import { usuarioStore } from "../../../model/usuario/usuario.store";
+import { TUsuarioFields } from "../../../model/usuario/usuario.type";
 import { TIds, TOrder, TWhere } from "../../../types";
-import { TUsuarioFields } from "../../../types/usuario.type";
 import { Table } from "../../components/table/table";
 import { TTableEvent } from "../../components/table/table.types";
-import { usuarioStore } from "../../service/usuario.service";
 
 export type TUsuarioListEvent = TTableEvent;
 
@@ -24,10 +24,14 @@ export function UsuarioList({
   order,
   onOrderEvent,
 }: TUsuarioListProps) {
-  const getSchema = usuarioStore((state) => state.getSchema);
-  const dataSchema = usuarioStore((state) => state.dataSchema);
-  const getList = usuarioStore((state) => state.getList);
-  const dataList = usuarioStore((state) => state.dataList);
+  const [dataSchema, getSchema] = usuarioStore((state) => [
+    state.dataSchema,
+    state.getSchema,
+  ]);
+  const [dataList, getList] = usuarioStore((state) => [
+    state.dataList,
+    state.getList,
+  ]);
 
   React.useEffect(() => {
     getSchema();

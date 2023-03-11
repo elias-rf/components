@@ -1,0 +1,19 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
+### INDEX
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"groupSubject"}
+
+### LIST
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":"1","method":"groupSubjectList","params":{}}
+
+### READ
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":1,"method":"groupSubjectRead","params":{"id":{"group_id":"dev","subject_id":"/sistema/permissao"}}}
+
+### CAN
+GET {{host}}/api/rpc
+?rpc={"jsonrpc":"2.0","id":1,"method":"groupSubjectCan","params":{"id":{"group_id":"dev","subject_id":"/comercial/precos"}}}

@@ -2,10 +2,10 @@ import React from "react";
 import { TOrder, TSelected, TWhere } from "../../../types";
 import { Page } from "../../components/page/page";
 import { PageTitle } from "../../components/page/page_title";
-import { TAgendaTelefoneListEvent } from "../../features/agenda_telefone/agenda_telefone_list";
+import { TAgendaTelefoneListEvent } from "../../features/agenda_telefone/agenda-telefone-list";
 import { Auth } from "../../features/auth";
-import { GroupSubjectForm } from "../../features/permissoes/group_subject_form";
-import { GroupSubjectList } from "../../features/permissoes/group_subject_list";
+import { GroupSubjectForm } from "../../features/permissoes/group-subject-form";
+import { GroupSubjectList } from "../../features/permissoes/group-subject-list";
 
 export default function Permissoes() {
   const [selected, setSelected] = React.useState<TSelected>([]);
@@ -29,7 +29,7 @@ export default function Permissoes() {
       <Page>
         <PageTitle title="Permissões" />
         <hr />{" "}
-        <section className="flex flex-col gap-2">
+        <section className={"flex flex-col gap-2"}>
           <GroupSubjectForm id={selected} />
           <GroupSubjectList
             selected={selected}

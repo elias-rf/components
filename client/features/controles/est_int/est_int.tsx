@@ -1,17 +1,21 @@
 import React from "react";
 import { TEvent } from "../../../../types";
-import { day } from "../../../lib/day";
+import { day } from "../../../../utils/date/day";
 import { EsterilizacaoInternaDiario } from "./est_int_diario";
 import { EsterilizacaoInternaMensal } from "./est_int_mensal";
 import { EsterilizacaoInternaModelo } from "./est_int_modelo";
 import { EsterilizacaoInternaProduto } from "./est_int_produto";
 
-export function EstInt() {
+type EsterilizacaoInternaProp = {
+  dia?: string;
+};
+
+export function EstInt({ dia }: EsterilizacaoInternaProp) {
   const [mesCorrente, setMesCorrente] = React.useState({});
   const [diaCorrente, setDiaCorrente] = React.useState({});
   const [produtoCorrente, setProdutoCorrente] = React.useState({});
 
-  const mesInicial = { mes: day().subtract(13, "month").format("YYYY-MM") };
+  const mesInicial = { mes: day(dia).subtract(13, "month").format("YYYY-MM") };
 
   function handleOnChangeEvent(event: TEvent) {
     if (event.name === "mensal") setMesCorrente(event.value);
@@ -20,8 +24,8 @@ export function EstInt() {
   }
 
   return (
-    <div className="flex">
-      <div className="p-2">
+    <div className={"flex"}>
+      <div className={"p-2"}>
         <EsterilizacaoInternaMensal
           mesInicial={mesInicial}
           mesCorrente={mesCorrente}

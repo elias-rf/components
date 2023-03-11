@@ -21,10 +21,6 @@ export function TableFilter({
   }, [where]);
 
   function handleOnInput(event: TEvent) {
-    console.log(
-      `🚀 ~ file: table-filter.tsx ~ line 24 ~ handleOnInput ~ event`,
-      event
-    );
     if (onWhereEvent) {
       const rsp: TEventTableFilter = {
         name: schemaField.name,

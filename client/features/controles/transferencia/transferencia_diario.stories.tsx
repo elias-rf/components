@@ -11,8 +11,8 @@ export const Transferencia_Diario: Story = {
   render: () => {
     return (
       <TransferenciaDiario
-        mesCorrente={{ mes: "2021-01" }}
-        diaCorrente={{ dia: "2021-01-08" }}
+        mesCorrente={{ mes: "2020-01" }}
+        diaCorrente={{ dia: "2020-01-01" }}
       />
     );
   },

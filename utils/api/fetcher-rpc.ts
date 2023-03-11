@@ -16,11 +16,13 @@ const rpc = rpcClient();
 async function query(method: string, params?: any) {
   const rpcRequest = rpc.request(method, params);
   const url = `${server}/api/rpc?rpc=` + JSON.stringify(rpcRequest);
+  const token = sessionStorage.getItem("token") || "";
 
   const response = await fetch(url, {
     method: "GET",
     headers: {
       "content-type": "application/json",
+      Authentication: token,
     },
   });
 
@@ -35,11 +37,13 @@ async function query(method: string, params?: any) {
 
 async function mutation(method: string, params?: any) {
   const url = `${server}/api/rpc`;
+  const token = sessionStorage.getItem("token") || "";
 
   const response = await fetch(url, {
     method: "POST",
     headers: {
       "content-type": "application/json",
+      Authentication: token,
     },
     body: JSON.stringify(rpc.request(method, params)),
   });

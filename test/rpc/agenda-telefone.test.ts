@@ -4,7 +4,7 @@ import { delCreateAux, readAux } from "../../test/aux/aux";
 
 import { fetcherRpc } from "../../utils/api/fetcher-rpc";
 
-describe("agendaTelefone", () => {
+describe("agendaTelefone.store", () => {
   it("agendaTelefoneSchema", async () => {
     const rsp = await fetcherRpc.query("agendaTelefoneSchema");
     expect(rsp.length).toEqual(4);
@@ -22,11 +22,11 @@ describe("agendaTelefone", () => {
   });
 
   it("agendaTelefoneList", async () => {
-    const rnd = Math.round(Math.random() * 10000).toString();
-    await delCreateAux("agenda_telefone", {
-      del: [{ agenda_telefone_id: rnd }],
-      create: [{ agenda_telefone_id: rnd }],
-    });
+    const rnd = "1";
+    // await delCreateAux("agenda_telefone", {
+    //   del: [{ agenda_telefone_id: rnd }],
+    //   create: [{ agenda_telefone_id: rnd }],
+    // });
     //---
     const rsp = await fetcherRpc.query("agendaTelefoneList", {
       where: [["agenda_telefone_id", "=", rnd]],
@@ -52,21 +52,21 @@ describe("agendaTelefone", () => {
 
   it("agendaTelefoneCreate", async () => {
     await delCreateAux("agenda_telefone", {
-      del: [{ agenda_telefone_id: 2 }],
+      del: [{ agenda_telefone_id: 4 }],
     });
     const rsp = await fetcherRpc.mutation("agendaTelefoneCreate", {
-      data: { agenda_telefone_id: 2, nome: "tel" },
+      data: { agenda_telefone_id: 4, nome: "tel" },
     });
 
     expect(rsp).toEqual({
-      agenda_telefone_id: 2,
+      agenda_telefone_id: 4,
       email: null,
       nome: "tel",
       setor: null,
     });
-    expect(await connections.oftalmo("phonebook").where({ id: 2 })).toEqual([
+    expect(await connections.oftalmo("phonebook").where({ id: 4 })).toEqual([
       {
-        id: 2,
+        id: 4,
         email: null,
         name: "tel",
         department: null,
@@ -98,13 +98,14 @@ describe("agendaTelefone", () => {
   });
 
   it("agendaTelefoneDel", async () => {
+    const id = 33;
     await delCreateAux("agenda_telefone", {
-      create: [{ agenda_telefone_id: 3 }],
+      create: [{ agenda_telefone_id: id }],
     });
     const rsp = await fetcherRpc.mutation("agendaTelefoneDel", {
-      id: { agenda_telefone_id: 3 },
+      id: { agenda_telefone_id: id },
     });
     expect(rsp).toEqual(1);
-    expect(await readAux("agenda_telefone", { id: 3 })).toEqual([]);
+    expect(await readAux("agenda_telefone", { id })).toEqual([]);
   });
 });

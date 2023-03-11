@@ -8,6 +8,12 @@ export const ordemProducaoOperacaoQuery: {
   {
     method: ["select"],
     sql: "tOperacaoOrdemProducao",
+    bindings: ["2020-01-01", "2020-01-31", "3058"],
+    response: [{ quantidade: 1, dia: "2020-01-01" }],
+  },
+  {
+    method: ["select"],
+    sql: "tOperacaoOrdemProducao",
     bindings: ["2020-01-01"],
     response: [{ quantidade: 1 }],
   },

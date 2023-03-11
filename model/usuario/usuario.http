@@ -1,0 +1,29 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
+### INDEX
+GET {{host}}/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"usuario"}
+
+###
+# @name LOGIN
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{"jsonrpc":"2.0","id":"1",
+  "method":"usuarioLogin",
+  "params":{"user":"user","password":"123"}
+}
+
+### ME
+GET {{host}}/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"usuarioMe"}
+authorization: {{LOGIN.response.body.$.result.token}}
+
+### LOGOUT
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{"jsonrpc":"2.0","id":"1",
+  "method":"usuarioLogout",
+  "params":{}
+}

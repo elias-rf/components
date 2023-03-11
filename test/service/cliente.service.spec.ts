@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { clienteService } from "../../client/service/cliente.service";
+import { clienteServiceFactory } from "../../model/cliente/cliente.service";
+
+const clienteService = clienteServiceFactory();
 
 describe("clienteService", () => {
   it("clienteSchema", async () => {

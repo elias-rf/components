@@ -1,5 +1,4 @@
 import React from "react";
-import { twMerge } from "tailwind-merge";
 import type { TEvent } from "../../../types";
 import { pksFromFieldsClient } from "../../../utils/schema/pks-from-fields";
 import { isSelected } from "../../lib/is-selected";
@@ -25,7 +24,9 @@ export function Table({
   children,
   selectedClassName = "bg-gray-300",
   tableClassName,
+  commands = {},
 }: TTableProps) {
+  console.log(commands);
   let fields = schema ?? [];
   const pk = pksFromFieldsClient(schema);
   fields = fields.filter((item) => item.visible !== false);
@@ -88,10 +89,10 @@ export function Table({
 
   return (
     <>
-      <table className={twMerge("w-full", tableClassName)}>
+      <table className={("w-full", tableClassName)}>
         <thead>
           <tr>
-            {hasTree() ? <th className="w-4"></th> : null}
+            {hasTree() ? <th className={"w-4"}></th> : null}
             {fields?.map((fld) => (
               <TableColumn
                 key={fld.name}
@@ -100,8 +101,10 @@ export function Table({
                 order={order || []}
               />
             ))}
+            {commands?.head ? <th>{commands.head()}</th> : null}
           </tr>
-          <tr className="p-0 m-0">
+          <tr className={"p-0 m-0"}>
+            {hasTree() ? <th className={"w-4"}></th> : null}
             {where
               ? fields?.map((fld) => (
                   <TableFilter
@@ -121,11 +124,11 @@ export function Table({
                   <tr onClick={() => handleOnSelect(rec)}>
                     {hasTree() ? (
                       <td
-                        className={twMerge(
+                        className={
                           isSelected(selected || {}, rec)
                             ? selectedClassName
                             : null
-                        )}
+                        }
                       >
                         <ShowChevronIcon
                           opened={isSelected(selected || {}, rec)}
@@ -141,6 +144,9 @@ export function Table({
                         key={fld.name}
                       />
                     ))}
+                    {commands?.row ? (
+                      <td>{commands.row({ record: rec })}</td>
+                    ) : null}
                   </tr>
                   {hasTree() && isSelected(selected || {}, rec) ? (
                     <tr>

@@ -9,6 +9,6 @@ type Story = StoryObj<typeof EstExt>;
 
 export const Est_Ext: Story = {
   render: () => {
-    return <EstExt />;
+    return <EstExt dia="2020-01-01" />;
   },
 };

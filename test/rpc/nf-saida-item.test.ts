@@ -5,7 +5,7 @@ describe("nfSaida", () => {
   it("nfSaidaItemSchema", async () => {
     const rsp = await fetcherRpc.query("nfSaidaItemSchema");
 
-    expect(rsp.length).toEqual(90);
+    expect(rsp.length).toEqual(123);
   });
 
   it("nfSaidaItemClear", async () => {

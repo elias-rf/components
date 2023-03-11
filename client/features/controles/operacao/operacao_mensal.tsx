@@ -1,8 +1,7 @@
 import React from "react";
-import { TEvent, TFieldClient, TIds } from "../../../../types";
-import { cache } from "../../../../utils/cache";
+import { ordemProducaoOperacaoStore } from "../../../../model/ordem-producao-operacao/ordem-producao-operacao.store";
+import { TEvent, TIds } from "../../../../types";
 import { Table } from "../../../components/table/table";
-import { operacaoService } from "../../../service/operacao.service";
 
 type OperacaoMensalProps = {
   operacao: TIds;
@@ -19,36 +18,25 @@ export function OperacaoMensal({
   children,
   onSelectEvent,
 }: OperacaoMensalProps) {
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
-  const [data, setData] = React.useState<TFieldClient[]>([]);
+  const getSchema = ordemProducaoOperacaoStore(
+    (state) => state.getMensalSchema
+  );
+  const schema = ordemProducaoOperacaoStore((state) => state.dataMensalSchema);
+  const getMensal = ordemProducaoOperacaoStore((state) => state.getMensal);
+  const mensal = ordemProducaoOperacaoStore((state) => state.dataMensal);
 
   React.useEffect(() => {
-    async function getSchema() {
-      const rsp = await cache.fetch({
-        key: "operacaoService.schemaMensal",
-        callback: operacaoService.schemaMensal,
-      });
-      setSchema(rsp);
-    }
     getSchema();
   }, []);
 
   React.useEffect(() => {
-    async function getData() {
-      const rsp = await cache.fetch({
-        key: "operacaoService.mensal",
-        callback: operacaoService.mensal,
-        args: [operacao.operacao, mesInicial.mes],
-      });
-      setData(rsp);
-    }
-    getData();
+    getMensal({ operacao: operacao.operacao, mes: mesInicial.mes });
   }, [mesInicial, operacao]);
 
   return (
     <Table
       name="mensal"
-      data={data}
+      data={mensal}
       schema={schema}
       selected={mesCorrente}
       onSelectEvent={onSelectEvent}

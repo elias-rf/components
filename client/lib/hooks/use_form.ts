@@ -1,21 +1,16 @@
 import React from "react";
 import { TEvent, TFieldClient, TGenericObject } from "../../../types";
 
-export function useForm(getSchema: () => Promise<TFieldClient[]>) {
+export function useForm(schema: TFieldClient[]) {
   const [values, setValues] = React.useState<TGenericObject>({});
   const [errors, setErrors] = React.useState<TGenericObject>({});
-  const [schema, setSchema] = React.useState<TFieldClient[]>([]);
   const [isDirty, setIsDirty] = React.useState<boolean>(false); // '' dirty = valid,
+
   React.useEffect(() => {
-    async function get() {
-      if (schema.length === 0) {
-        const sch = await getSchema();
-        setSchema(sch);
-        setValues(sch.map((fld) => ({ [fld.name]: fld.defaultValue || "" })));
-      }
+    if (schema.length > 0) {
+      setValues(schema.map((fld) => ({ [fld.name]: fld.defaultValue || "" })));
     }
-    get();
-  }, []);
+  }, [schema]);
 
   function onChangeEvent(event: TEvent) {
     setValues({ ...values, [event.name]: event.value });

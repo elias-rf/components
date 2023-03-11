@@ -1,4 +1,4 @@
-import { db } from "../../schema";
+import { tables } from "../../model/tables";
 import { connections } from "../../server/dal/connections";
 import { recordClear } from "../../server/lib/record-clear";
 import { TGenericObject } from "../../types";
@@ -19,15 +19,15 @@ export async function delCreateAux(
 export function createRecord(table: string, recs: TGenericObject[]) {
   return renameToFieldArrayObject(
     recs.map((rec: TGenericObject) => ({
-      ...recordClear(db[table].fields),
+      ...recordClear(tables[table].fields),
       ...rec,
     })),
-    db[table].fields
+    tables[table].fields
   );
 }
 
 export async function createAux(table: string, recs: TGenericObject[]) {
-  const tableDef = db[table];
+  const tableDef = tables[table];
   const cnn = tableDef.database;
   const knex = connections[cnn];
   for (const rec of recs) {
@@ -40,24 +40,24 @@ export async function createAux(table: string, recs: TGenericObject[]) {
 }
 
 export async function deleteAux(table: string, records: TGenericObject[]) {
-  const tableDef = db[table];
+  const tableDef = tables[table];
   const cnn = tableDef.database;
   const knex = connections[cnn];
-  const recs = renameToFieldArrayObject(records, db[table].fields);
+  const recs = renameToFieldArrayObject(records, tables[table].fields);
   for (const rec of recs) {
     await knex(tableDef.table).del().where(rec);
   }
 }
 
 export async function deleteAll(table: string) {
-  const tableDef = db[table];
+  const tableDef = tables[table];
   const cnn = tableDef.database;
   const knex = connections[cnn];
   await knex(tableDef.table).del();
 }
 
 export async function readAux(table: string, where: any) {
-  const tableDef = db[table];
+  const tableDef = tables[table];
   const cnn = tableDef.database;
   const knex = connections[cnn];
   return knex(tableDef.table).where(where);

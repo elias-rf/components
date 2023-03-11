@@ -1,18 +1,23 @@
 import { NextFunction, Request, Response } from "express";
 
+type ResponseLog = Response & { contentBody: any };
+
 let id = 1;
 
-const resDotSendInterceptor = (res: Response, send: any) => (content: any) => {
-  res.contentBody = content;
-  res.send = send;
-  res.send(content);
-};
+const resDotSendInterceptor =
+  (res: ResponseLog, send: any) => (content: any) => {
+    res.contentBody = content;
+    res.send = send;
+    res.send(content);
+    return "";
+  };
 
 /**
  * Middleware recebe cookie JWT e decodifica para ctx.state.currentUser
  */
-export function loggerMiddle(logger: any) {
-  return (req: Request, res: Response, next: NextFunction) => {
+export const loggerMiddleFactory =
+  (logger: any) =>
+  (req: Request & { context: any }, res: any, next: NextFunction) => {
     const initialTime = Date.now();
     const agora = new Date().toJSON();
 
@@ -26,7 +31,7 @@ export function loggerMiddle(logger: any) {
         id: id++,
         data: agora,
         elapsed,
-        user: req.currentUser,
+        user: req.context.currentUser,
         req: {
           ip: req.ip,
           method: req.method,
@@ -48,4 +53,3 @@ export function loggerMiddle(logger: any) {
     });
     next();
   };
-}

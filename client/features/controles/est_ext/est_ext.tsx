@@ -1,17 +1,21 @@
 import React from "react";
 import { TEvent } from "../../../../types";
-import { day } from "../../../lib/day";
+import { day } from "../../../../utils/date/day";
 import { EsterilizacaoExternaDiario } from "./est_ext_diario";
 import { EsterilizacaoExternaMensal } from "./est_ext_mensal";
 import { EsterilizacaoExternaModelo } from "./est_ext_modelo";
 import { EsterilizacaoExternaProduto } from "./est_ext_produto";
 
-export function EstExt() {
+type EsterilizacaoExternaProp = {
+  dia?: string;
+};
+
+export function EstExt({ dia }: EsterilizacaoExternaProp) {
   const [mesCorrente, setMesCorrente] = React.useState({});
   const [diaCorrente, setDiaCorrente] = React.useState({});
   const [produtoCorrente, setProdutoCorrente] = React.useState({});
 
-  const mesInicial = { mes: day().subtract(13, "month").format("YYYY-MM") };
+  const mesInicial = { mes: day(dia).subtract(13, "month").format("YYYY-MM") };
 
   function handleOnChangeEvent(event: TEvent) {
     if (event.name === "mensal") setMesCorrente(event.value);
@@ -20,8 +24,8 @@ export function EstExt() {
   }
 
   return (
-    <div className="flex">
-      <div className="p-2">
+    <div className={"flex"}>
+      <div className={"p-2"}>
         <EsterilizacaoExternaMensal
           mesInicial={mesInicial}
           mesCorrente={mesCorrente}
