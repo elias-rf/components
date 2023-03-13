@@ -197,7 +197,7 @@ export function Search({
         </div>
         <div className={"p-1"}>
           <Button
-            size="xs"
+            size="extraSmall"
             onClickEvent={handleAdd}
           >
             Filtrar

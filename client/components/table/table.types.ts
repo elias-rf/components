@@ -25,7 +25,10 @@ export type TTableProps = {
   children?: React.ReactNode;
   selectedClassName?: string;
   tableClassName?: string;
-  commands?: { head?: React.ReactNode[]; row?: React.ReactNode[] };
+  commands?: {
+    head?: () => React.ReactNode;
+    row?: (rec: any) => React.ReactNode;
+  };
 };
 
 export type TEventTableFilter = TEvent & {

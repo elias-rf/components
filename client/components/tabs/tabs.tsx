@@ -1,5 +1,5 @@
 import React from "react";
-import { TabsContext } from "./Tabs.context";
+import { TabsContext } from "./tabs.context";
 import { TTabsProps } from "./tabs.types";
 
 export function Tabs({ onChangeEvent, active, children }: TTabsProps) {

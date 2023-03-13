@@ -127,7 +127,7 @@ export function AgendaTelefoneForm({ id }: TAgendaTelefoneFormProps) {
       <div className={"flex justify-end"}>
         <Button
           className={"w-20"}
-          size="sm"
+          size="small"
           color="default"
           onClickEvent={handleButtonSave}
           name="salvar"
@@ -138,7 +138,7 @@ export function AgendaTelefoneForm({ id }: TAgendaTelefoneFormProps) {
         </Button>
         <Button
           className={"w-20"}
-          size="sm"
+          size="small"
           color="default"
           onClickEvent={handleButtonSave}
           name="salvar"

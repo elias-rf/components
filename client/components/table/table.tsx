@@ -1,4 +1,5 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 import type { TEvent } from "../../../types";
 import { pksFromFieldsClient } from "../../../utils/schema/pks-from-fields";
 import { isSelected } from "../../lib/is-selected";
@@ -7,7 +8,6 @@ import { TableCell } from "./table-cell";
 import { TableColumn } from "./table-column";
 import { TableFilter } from "./table-filter";
 import { TTableProps } from "./table.types";
-
 /**
  * Componente Table
  */
@@ -89,7 +89,7 @@ export function Table({
 
   return (
     <>
-      <table className={("w-full", tableClassName)}>
+      <table className={twMerge("w-full", tableClassName)}>
         <thead>
           <tr>
             {hasTree() ? <th className={"w-4"}></th> : null}
@@ -124,11 +124,11 @@ export function Table({
                   <tr onClick={() => handleOnSelect(rec)}>
                     {hasTree() ? (
                       <td
-                        className={
+                        className={twMerge(
                           isSelected(selected || {}, rec)
                             ? selectedClassName
                             : null
-                        }
+                        )}
                       >
                         <ShowChevronIcon
                           opened={isSelected(selected || {}, rec)}

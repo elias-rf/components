@@ -2,7 +2,7 @@ import React from "react";
 import { TAgendaTelefoneFields } from "../../../model/agenda-telefone/agenda-telefone.type";
 import { stores } from "../../../model/stores";
 import { TIds, TOrder, TWhere } from "../../../types";
-import { Button } from "../../components/Button";
+import { Button } from "../../components/button";
 import { DelDocIcon } from "../../components/icons/del-doc-icon";
 import { NewDocIcon } from "../../components/icons/new-doc-icon";
 import { PenIcon } from "../../components/icons/pen-icon";
@@ -18,7 +18,7 @@ type TAgendaTelefoneListProps = {
   onWhereEvent: (event: TAgendaTelefoneListEvent) => void;
   order: TOrder<TAgendaTelefoneFields>[];
   onOrderEvent: (event: TAgendaTelefoneListEvent) => void;
-  children: React.child;
+  children: React.Node;
 };
 
 const { getList, getSchema } = stores.agendaTelefoneStore.getState();

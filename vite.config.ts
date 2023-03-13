@@ -7,6 +7,7 @@ import react from "@vitejs/plugin-react";
 import dotenv from "dotenv-flow";
 import path from "node:path";
 import { defineConfig } from "vitest/config";
+import { day } from "./utils/date/day";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ console.log("PROXY http://localhost:" + serverPort);
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  root: "./client/",
   server: {
     port: 3001,
     host: "0.0.0.0",
@@ -22,7 +24,7 @@ export default defineConfig({
       "/api": "http://localhost:" + serverPort,
     },
   },
-  build: { outDir: "./public", emptyOutDir: true, target: "esnext" },
+  build: { outDir: "../public", emptyOutDir: true, target: "esnext" },
   plugins: [react()],
   test: {
     globals: true,
@@ -33,7 +35,10 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@root": path.resolve(__dirname, "./"),
+      "@": path.resolve(__dirname, "./"),
     },
+  },
+  define: {
+    __APP_VERSION__: JSON.stringify(day().format("YY-MM-DD.HH:mm")),
   },
 });

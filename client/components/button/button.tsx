@@ -1,4 +1,6 @@
+import { twMerge } from "tailwind-merge";
 import { TEvent } from "../../../types";
+
 //https://flowbite.com/docs/components/buttons/
 export type TButtonEvent = TEvent & {
   component: "Button";
@@ -76,13 +78,13 @@ export function Button({
 
   return (
     <button
-      className={
-        (commonTheme,
+      className={twMerge(
+        commonTheme,
         buttonSize[size],
         buttonTheme[color],
         disabled ? `cursor-not-allowed opacity-50` : "",
-        className)
-      }
+        className
+      )}
       disabled={disabled}
       onClick={handleClick}
       data-testid={dataTestid || "button"}
