@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const LoteEnvelope: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const LoteEnvelope: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const LoteEnvelope: TTable = {
       field: "NumInicial",
       label: "NumInicial",
       name: "NumInicial",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -25,7 +25,7 @@ export const LoteEnvelope: TTable = {
       field: "NumFinal",
       label: "NumFinal",
       name: "NumFinal",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -34,7 +34,7 @@ export const LoteEnvelope: TTable = {
       field: "DtRemessa",
       label: "DtRemessa",
       name: "DtRemessa",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

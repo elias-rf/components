@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ParametrosAtu: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ParametrosAtu: TTable = {
       field: "Identificador",
       label: "Identificador",
       name: "ParametrosAtu_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ParametrosAtu: TTable = {
       field: "UltEstacaoProcessada",
       label: "UltEstacaoProcessada",
       name: "UltEstacaoProcessada",
-      type: "string",
+      typeField: "string",
       size: 64,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const ParametrosAtu: TTable = {
       field: "DtUltAtualizacao",
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -34,7 +34,7 @@ export const ParametrosAtu: TTable = {
       field: "HrUltAtualizacao",
       label: "HrUltAtualizacao",
       name: "HrUltAtualizacao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -43,7 +43,7 @@ export const ParametrosAtu: TTable = {
       field: "Intervalo",
       label: "Intervalo",
       name: "Intervalo",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },

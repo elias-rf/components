@@ -1,6 +1,6 @@
 import React from "react";
 import { ordemProducaoOperacaoStore } from "../../../../model/ordem-producao-operacao/ordem-producao-operacao.store";
-import { TEvent, TIds } from "../../../../types";
+import { TIds } from "../../../../types";
 import { day } from "../../../../utils/date/day";
 import { Table } from "../../../components/table/table";
 
@@ -9,7 +9,7 @@ type OperacaoDiarioProp = {
   mes: TIds;
   diaCorrente: TIds;
   children?: React.ReactNode;
-  onSelectEvent?: (event: TEvent) => void;
+  onSelectEvent?: (event: any) => void;
 };
 
 export function OperacaoDiario({
@@ -48,7 +48,7 @@ export function OperacaoDiario({
       data={diario}
       schema={schema}
       selected={diaCorrente}
-      onSelectEvent={onSelectEvent}
+      onSelect={onSelectEvent}
     >
       {children}
     </Table>

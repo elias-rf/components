@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const CotacaoNiveisDesconto: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const CotacaoNiveisDesconto: TTable = {
       field: "CdFornecedor",
       label: "CdFornecedor",
       name: "CdFornecedor",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const CotacaoNiveisDesconto: TTable = {
       field: "CdFabricante",
       label: "CdFabricante",
       name: "CdFabricante",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -26,7 +26,7 @@ export const CotacaoNiveisDesconto: TTable = {
       field: "Nivel1",
       label: "Nivel1",
       name: "Nivel1",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -35,7 +35,7 @@ export const CotacaoNiveisDesconto: TTable = {
       field: "Nivel2",
       label: "Nivel2",
       name: "Nivel2",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -44,7 +44,7 @@ export const CotacaoNiveisDesconto: TTable = {
       field: "Nivel3",
       label: "Nivel3",
       name: "Nivel3",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,

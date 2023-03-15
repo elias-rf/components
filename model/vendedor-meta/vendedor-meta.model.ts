@@ -1,6 +1,6 @@
-
+import { Knex } from "knex";
 import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnections } from "../../types";
+import type { TConnections } from "../../types/model";
 import { vendedor_meta } from "./vendedor-meta.table";
 import type { TVendedorMetaModel } from "./vendedor-meta.type";
 //#region import
@@ -11,12 +11,8 @@ export function vendedorMetaModelFactory(
   { connections }: { connections: TConnections }
 ): //#endregion
 TVendedorMetaModel {
-
-  const connection = connections[vendedor_meta.database]
-  const crud = crudFactory(
-    connection,
-    vendedor_meta
-  );
+  const connection: Knex = connections[vendedor_meta.database];
+  const crud = crudFactory(connection, vendedor_meta);
 
   //#region def
   //#endregion
@@ -36,7 +32,7 @@ TVendedorMetaModel {
     vendedor_meta,
   } as TVendedorMetaModel;
 
-  return model
+  return model;
 }
 
 //#region other

@@ -1,5 +1,5 @@
 import type { Knex } from "knex";
-import type { TTable } from "../../../../types";
+import type { TTable } from "../../../../types/model";
 //--
 import { TCrudRpc } from "../crud.type";
 import { clearFactory } from "./clear-factory";

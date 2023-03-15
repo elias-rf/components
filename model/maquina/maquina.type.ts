@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TMaquinaPk {
@@ -14,7 +14,7 @@ export interface TMaquina extends TMaquinaPk {
   is_ativo?: boolean;
 }
 
-export type TMaquinaFields = keyof Required<TMaquina>
+export type TMaquinaFields = keyof Required<TMaquina>;
 
 export type TMaquinaIds = {
   [pk in keyof Required<TMaquinaPk>]: any;
@@ -23,7 +23,7 @@ export type TMaquinaSelect = TSelect<TMaquinaFields>;
 export type TMaquinaWhere = TWhere<TMaquinaFields>;
 export type TMaquinaOrder = TOrder<TMaquinaFields>;
 
-export type TMaquinaSchema = () => Promise<TFieldClient[]>;
+export type TMaquinaSchema = () => Promise<TField[]>;
 export type TMaquinaClear = () => Promise<TMaquina>;
 export type TMaquinaList = (args: {
   where?: TWhere<TMaquinaFields>[];
@@ -45,9 +45,7 @@ export type TMaquinaUpdate = (args: {
   data: TMaquina;
   select?: TSelect<TMaquinaFields>;
 }) => Promise<TMaquina>;
-export type TMaquinaDel = (args: {
-  id: TMaquinaIds;
-}) => Promise<number>;
+export type TMaquinaDel = (args: { id: TMaquinaIds }) => Promise<number>;
 
 //#region def
 //#endregion
@@ -68,11 +66,11 @@ export type TMaquinaCrud = {
 
 export type TMaquinaModel = TMaquinaCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TMaquinaRpc = TMaquinaModel;

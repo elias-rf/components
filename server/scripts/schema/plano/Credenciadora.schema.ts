@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const Credenciadora: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const Credenciadora: TTable = {
       field: "CNPJ",
       label: "CNPJ",
       name: "Credenciadora_id",
-      type: "int",
+      typeField: "int",
       size: 9,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const Credenciadora: TTable = {
       field: "Codigo",
       label: "Codigo",
       name: "Codigo",
-      type: "int",
+      typeField: "int",
       size: 5,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const Credenciadora: TTable = {
       field: "Empresa",
       label: "Empresa",
       name: "Empresa",
-      type: "string",
+      typeField: "string",
       size: 128,
     },
   ],

@@ -1,5 +1,10 @@
 import { useFormContext } from "react-hook-form";
-import type { TSelectFieldAttributes } from "../field-types";
+import type { BaseFieldAttributes } from "./base-field.types";
+
+export type TSelectFieldAttributes = BaseFieldAttributes & {
+  type: "select";
+  options: { label: string; value: string }[];
+};
 
 export function SelectField({ label, name, options }: TSelectFieldAttributes) {
   const { register } = useFormContext();

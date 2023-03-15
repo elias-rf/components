@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const MovCreFornecedorObs: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const MovCreFornecedorObs: TTable = {
       field: "CdFornecedor",
       label: "CdFornecedor",
       name: "CdFornecedor",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const MovCreFornecedorObs: TTable = {
       field: "Sequencia",
       label: "Sequencia",
       name: "Sequencia",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const MovCreFornecedorObs: TTable = {
       field: "Observacao",
       label: "Observacao",
       name: "Observacao",
-      type: "string",
+      typeField: "string",
       size: 1024,
       allowNull: false,
     },

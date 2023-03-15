@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TFieldClient } from "../../types";
+import { TField } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { nfEntradaControleService } from "./nf-entrada-controle.service";
 import type {
@@ -23,7 +23,7 @@ type TNfEntradaControleStore = {
   getList: TNfEntradaControleList;
   dataRead: TNfEntradaControle;
   getRead: TNfEntradaControleRead;
-  dataSchema: TFieldClient[];
+  dataSchema: TField[];
   getSchema: TNfEntradaControleSchema;
   dataClear: TNfEntradaControle;
   getClear: TNfEntradaControleClear;

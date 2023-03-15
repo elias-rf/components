@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const CadProObsNota: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const CadProObsNota: TTable = {
       field: "CdProduto",
       label: "CdProduto",
       name: "CadProObsNota_id",
-      type: "string",
+      typeField: "string",
       size: 15,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const CadProObsNota: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -26,7 +26,7 @@ export const CadProObsNota: TTable = {
       field: "ObsComplementar",
       label: "ObsComplementar",
       name: "ObsComplementar",
-      type: "string",
+      typeField: "string",
       size: 1024,
     },
   ],

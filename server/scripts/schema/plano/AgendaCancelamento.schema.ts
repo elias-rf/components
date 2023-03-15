@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const AgendaCancelamento: TTable = {
   database: "plano",
@@ -8,14 +8,14 @@ export const AgendaCancelamento: TTable = {
       field: "CdUsuario",
       label: "CdUsuario",
       name: "CdUsuario",
-      type: "string",
+      typeField: "string",
       size: 10,
     },
     {
       field: "IdCompromisso",
       label: "IdCompromisso",
       name: "AgendaCancelamento_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       primaryKey: true,
       allowNull: false,
@@ -24,14 +24,14 @@ export const AgendaCancelamento: TTable = {
       field: "CdResponsavel",
       label: "CdResponsavel",
       name: "CdResponsavel",
-      type: "string",
+      typeField: "string",
       size: 10,
     },
     {
       field: "DtCancelamento",
       label: "DtCancelamento",
       name: "DtCancelamento",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
     },
@@ -39,7 +39,7 @@ export const AgendaCancelamento: TTable = {
       field: "HrCancelamento",
       label: "HrCancelamento",
       name: "HrCancelamento",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
     },
@@ -47,7 +47,7 @@ export const AgendaCancelamento: TTable = {
       field: "DsMotivoCancelamento",
       label: "DsMotivoCancelamento",
       name: "DsMotivoCancelamento",
-      type: "string",
+      typeField: "string",
       size: 1024,
     },
   ],

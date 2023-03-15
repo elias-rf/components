@@ -1,4 +1,4 @@
-import type { RpcResponse, TRpcRequest } from "../../types";
+import type { RpcResponse, TRpcRequest } from "../../types/rpc";
 import { getUniqueId } from "./get-unique-id";
 
 /** codifica requests e decodifica responses no padrão RPC */

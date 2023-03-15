@@ -1,19 +1,30 @@
-import { CheckboxField } from "./components/checkbox-field";
-import { InputField } from "./components/input-field";
-import { SelectField } from "./components/select-field";
-import { TextareaField } from "./components/textarea-field";
-import { TFieldAttributes } from "./field-types";
+import {
+  CheckboxField,
+  TCheckboxFieldAttributes,
+} from "./components/checkbox-field";
+import { SelectField, TSelectFieldAttributes } from "./components/select-field";
+import { TTextFieldAttributes, TextField } from "./components/text-field";
+import {
+  TTextareaFieldAttributes,
+  TextareaField,
+} from "./components/textarea-field";
+
+export type TFieldAttributes =
+  | TCheckboxFieldAttributes
+  | TSelectFieldAttributes
+  | TTextFieldAttributes
+  | TTextareaFieldAttributes;
 
 export function Field(props: TFieldAttributes) {
   switch (props.type) {
-    case "text":
-      return <InputField {...props} />;
-    case "textarea":
-      return <TextareaField {...props} />;
-    case "select":
-      return <SelectField {...props} />;
     case "checkbox":
       return <CheckboxField {...props} />;
+    case "select":
+      return <SelectField {...props} />;
+    case "text":
+      return <TextField {...props} />;
+    case "textarea":
+      return <TextareaField {...props} />;
 
     default:
       throw new Error("Invalid Field Type");

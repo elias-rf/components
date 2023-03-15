@@ -1,6 +1,5 @@
 import React from "react";
 import { esterilizacaoInternaStore } from "../../../../model/esterilizacao-interna/esterilizacao-interna.store";
-import { TEvent } from "../../../../types";
 import { day } from "../../../../utils/date/day";
 import { Table } from "../../../components/table/table";
 
@@ -8,7 +7,7 @@ type EsterilizacaoInternaDiarioProps = {
   children?: React.ReactNode;
   mesCorrente: { mes?: string };
   diaCorrente: { dia?: string };
-  onSelectEvent: (event: TEvent) => void;
+  onSelect: (event: any) => void;
 };
 const { getSchemaDiario, getDiario } = esterilizacaoInternaStore.getState();
 
@@ -16,7 +15,7 @@ export function EsterilizacaoInternaDiario({
   children,
   mesCorrente,
   diaCorrente,
-  onSelectEvent,
+  onSelect,
 }: EsterilizacaoInternaDiarioProps) {
   const dataSchemaDiario = esterilizacaoInternaStore(
     (state) => state.dataSchemaDiario
@@ -44,7 +43,7 @@ export function EsterilizacaoInternaDiario({
       data={dataDiario}
       schema={dataSchemaDiario}
       selected={diaCorrente}
-      onSelectEvent={onSelectEvent}
+      onSelect={onSelect}
     >
       {children}
     </Table>

@@ -1,17 +1,12 @@
 import { twMerge } from "tailwind-merge";
-import { TEvent } from "../../../types";
 
 //https://flowbite.com/docs/components/buttons/
-export type TButtonEvent = TEvent & {
-  component: "Button";
-  event: "onClickEvent";
-};
 
 export type TButtonProps = {
   children: React.ReactNode;
   color?:
-    | "default"
-    | "alternative"
+    | "primary"
+    | "secondary"
     | "dark"
     | "light"
     | "green"
@@ -22,7 +17,7 @@ export type TButtonProps = {
   size?: "extraSmall" | "small" | "base" | "large" | "extraLarge";
   name?: string;
   className?: string;
-  onClickEvent?: (event: TButtonEvent) => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   "data-testid"?: string;
 };
 
@@ -30,10 +25,10 @@ const commonTheme =
   "text-center text-white focus:ring-4 font-medium rounded-lg focus:outline-none ";
 
 const buttonTheme = {
-  default:
+  primary:
     "bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800",
-  alternative:
-    "text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700",
+  secondary:
+    "bg-slate-400 border border-gray-200 hover:bg-gray-600 focus:z-10 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700",
   dark: "bg-gray-800 hover:bg-gray-900 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700",
   light:
     "text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700",
@@ -59,23 +54,14 @@ const buttonSize = {
  */
 export function Button({
   className,
+  onClick,
   children,
   disabled = false,
-  color = "default",
+  color = "primary",
   size = "base",
-  onClickEvent = () => null,
-  name = "",
+  name = "button",
   "data-testid": dataTestid,
 }: TButtonProps) {
-  function handleClick() {
-    onClickEvent({
-      name,
-      value: children,
-      component: "Button",
-      event: "onClickEvent",
-    });
-  }
-
   return (
     <button
       className={twMerge(
@@ -86,8 +72,9 @@ export function Button({
         className
       )}
       disabled={disabled}
-      onClick={handleClick}
+      onClick={onClick}
       data-testid={dataTestid || "button"}
+      name={name}
     >
       {children}
     </button>

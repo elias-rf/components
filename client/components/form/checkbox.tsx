@@ -1,43 +1,35 @@
 import React from "react";
-import { TCheckboxProps } from "./checkbox.types";
+
+export type TCheckboxProps = {
+  name: string;
+  onBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onInput?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value: any;
+};
 
 /**
  *
  */
 export function Checkbox({
   name = "",
-  onChangeEvent = () => null,
-  onBlurEvent = () => null,
-  onInputEvent = () => null,
+  onChange = () => null,
+  onBlur = () => null,
+  onInput = () => null,
   value = "",
 }: TCheckboxProps) {
   // input já foi disparado
   const [dispInput, setDispInput] = React.useState(false);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChangeEvent({
-      name,
-      value: e.target.checked,
-      component: "Checkbox",
-      event: "onChangeEvent",
-    });
+    onChange(e);
     if (dispInput) setDispInput(false);
   };
 
-  const handleOnBlur = () => {
-    onBlurEvent({
-      name,
-      value,
-      component: "Checkbox",
-      event: "onBlurEvent",
-    });
+  const handleOnBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onBlur(e);
     if (!dispInput) {
-      onInputEvent({
-        name,
-        value: value,
-        component: "Checkbox",
-        event: "onInputEvent",
-      });
+      onInput(e);
       setDispInput(true);
     }
   };
@@ -45,12 +37,7 @@ export function Checkbox({
   const handleEnter = (event: any) => {
     if (event.key.toLowerCase() === "enter") {
       if (!dispInput) {
-        onInputEvent({
-          name,
-          value,
-          component: "Checkbox",
-          event: "onInputEvent",
-        });
+        onInput(event);
         setDispInput(true);
       }
       const form = event.target.form;

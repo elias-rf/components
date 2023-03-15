@@ -1,14 +1,15 @@
 import React from "react";
-import { TEvent } from "../../../types";
+import { TField, TWhere } from "../../../types";
 import { whereUtil } from "../../lib/http/where-util";
 import { Textbox } from "../form/textbox";
-import { TEventTableFilter, TTableFilter } from "./table.types";
 
-export function TableFilter({
-  schemaField,
-  where,
-  onWhereEvent,
-}: TTableFilter) {
+export type TTableFilter = {
+  schemaField: TField;
+  onWhere?: (event: any) => void;
+  where?: TWhere[];
+};
+
+export function TableFilter({ schemaField, where, onWhere }: TTableFilter) {
   const [inputValue, setInputValue] = React.useState(
     whereUtil.getValue(where || [], schemaField.name)
   );
@@ -20,15 +21,15 @@ export function TableFilter({
     }
   }, [where]);
 
-  function handleOnInput(event: TEvent) {
-    if (onWhereEvent) {
-      const rsp: TEventTableFilter = {
+  function handleOnInput(event: any) {
+    if (onWhere) {
+      const rsp: TTableFilter = {
         name: schemaField.name,
         value: whereUtil.setUnique(where || [], schemaField.name, event.value),
         component: "TableFilter",
-        event: "onWhereEvent",
+        event: "onWhere",
       };
-      onWhereEvent(rsp);
+      onWhere(rsp);
     }
   }
 
@@ -39,8 +40,8 @@ export function TableFilter({
         value={inputValue}
         key={schemaField.name}
         className={"w-full border-2 border-gray-300 px-1"}
-        onChangeEvent={(e: TEvent) => setInputValue(e.value)}
-        onInputEvent={handleOnInput}
+        onChange={(e: any) => setInputValue(e.value)}
+        onInput={handleOnInput}
       />
     </th>
   );

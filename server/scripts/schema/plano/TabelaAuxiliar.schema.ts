@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const TabelaAuxiliar: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const TabelaAuxiliar: TTable = {
       field: "Tipo",
       label: "Tipo",
       name: "Tipo",
-      type: "string",
+      typeField: "string",
       size: 32,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const TabelaAuxiliar: TTable = {
       field: "Codigo",
       label: "Codigo",
       name: "Codigo",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const TabelaAuxiliar: TTable = {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 128,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ export const TabelaAuxiliar: TTable = {
       field: "FgAtivo",
       label: "FgAtivo",
       name: "FgAtivo",
-      type: "string",
+      typeField: "string",
       size: 1,
       allowNull: false,
     },
@@ -40,7 +40,7 @@ export const TabelaAuxiliar: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

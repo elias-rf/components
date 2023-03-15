@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tbl_op_liopu_processo: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tbl_op_liopu_processo: TTable = {
       field: "fkoplio",
       label: "fkoplio",
       name: "fkoplio",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const tbl_op_liopu_processo: TTable = {
       field: "fkoperacao",
       label: "fkoperacao",
       name: "fkoperacao",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const tbl_op_liopu_processo: TTable = {
       field: "Quantidade",
       label: "Quantidade",
       name: "Quantidade",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },

@@ -1,4 +1,4 @@
-import { TTable } from "../../types";
+import { TTable } from "../../types/model";
 
 export const cidade: TTable = {
   database: "plano",
@@ -9,34 +9,34 @@ export const cidade: TTable = {
       label: "Máquina",
       name: "nome_cidade",
       primaryKey: true,
-      type: "string",
+      typeField: "string",
     },
     {
       field: "ufOld",
       label: "Cód Setor",
       name: "uf_old",
       primaryKey: true,
-      type: "string",
+      typeField: "string",
     },
     {
       field: "CdCidadeIBGE",
       label: "Cód",
       name: "cidade_id",
-      type: "string",
+      typeField: "string",
     },
 
     {
       field: "CdUFIBGE",
       label: "Série",
       name: "uf_id",
-      type: "int",
+      typeField: "int",
       allowNull: false,
     },
     {
       field: "uf",
       label: "Cód Divisao",
       name: "uf",
-      type: "string",
+      typeField: "string",
     },
   ],
 };

@@ -1,4 +1,4 @@
-import type { TTable } from "../../types";
+import type { TTable } from "../../types/model";
 
 export const agenda_telefone: TTable = {
   database: "oftalmo",
@@ -10,26 +10,26 @@ export const agenda_telefone: TTable = {
       label: "Ramal",
       name: "agenda_telefone_id",
       primaryKey: true,
-      type: "int",
+      typeField: "int",
     },
     {
       allowNull: false,
       field: "name",
       label: "Nome",
       name: "nome",
-      type: "string",
+      typeField: "string",
     },
     {
       field: "department",
       label: "Setor",
       name: "setor",
-      type: "string",
+      typeField: "string",
     },
     {
       field: "email",
       label: "Email",
       name: "email",
-      type: "string",
+      typeField: "string",
     },
   ],
 };

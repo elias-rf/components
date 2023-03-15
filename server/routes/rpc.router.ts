@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import express from "express";
-import { TRpcRequest } from "../../types";
+import { TRpcRequest } from "../../types/rpc";
 import { resetCookie, setCookie } from "../../utils/network/cookie";
 
 import { rpc } from "../api";

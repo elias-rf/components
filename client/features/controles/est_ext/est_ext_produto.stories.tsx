@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { TEvent } from "../../../../types";
 import { EsterilizacaoExternaProduto } from "./est_ext_produto";
 
 const meta: Meta<typeof EsterilizacaoExternaProduto> = {
@@ -15,7 +14,7 @@ export const Est_Ext_Produto: Story = {
       <EsterilizacaoExternaProduto
         diaCorrente={{ dia: "2020-01-01" }}
         produtoCorrente={{ produto: "cat1" }}
-        onSelectEvent={(event: TEvent) => console.log(event)}
+        onSelect={(event: any) => console.log(event)}
       />
     );
   },

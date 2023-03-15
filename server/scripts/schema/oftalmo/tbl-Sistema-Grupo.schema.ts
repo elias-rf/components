@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tbl_Sistema_Grupo: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tbl_Sistema_Grupo: TTable = {
       field: "kSistemaGrupo",
       label: "kSistemaGrupo",
       name: "tbl_Sistema_Grupo_id",
-      type: "int",
+      typeField: "int",
       size: 2,
       autoIncrement: true,
       primaryKey: true,
@@ -18,7 +18,7 @@ export const tbl_Sistema_Grupo: TTable = {
       field: "DescricaoGrupo",
       label: "DescricaoGrupo",
       name: "DescricaoGrupo",
-      type: "string",
+      typeField: "string",
       size: 60,
     },
   ],

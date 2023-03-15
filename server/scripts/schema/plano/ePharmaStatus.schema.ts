@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ePharmaStatus: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ePharmaStatus: TTable = {
       field: "Identificacao",
       label: "Identificacao",
       name: "ePharmaStatus_id",
-      type: "int",
+      typeField: "int",
       size: 2,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ePharmaStatus: TTable = {
       field: "DtUltEncerramento",
       label: "DtUltEncerramento",
       name: "DtUltEncerramento",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -26,7 +26,7 @@ export const ePharmaStatus: TTable = {
       field: "DtInicializacao",
       label: "DtInicializacao",
       name: "DtInicializacao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ParametrosContAcesso: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ParametrosContAcesso: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -17,14 +17,14 @@ export const ParametrosContAcesso: TTable = {
       field: "Base",
       label: "Base",
       name: "Base",
-      type: "string",
+      typeField: "string",
       size: 1024,
     },
     {
       field: "Estacao",
       label: "Estacao",
       name: "Estacao",
-      type: "string",
+      typeField: "string",
       size: 1024,
     },
   ],

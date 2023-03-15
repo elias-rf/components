@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const HistoricoConversao: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const HistoricoConversao: TTable = {
       field: "DtRelease",
       label: "DtRelease",
       name: "DtRelease",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -17,7 +17,7 @@ export const HistoricoConversao: TTable = {
       field: "DtAtualizacao",
       label: "DtAtualizacao",
       name: "DtAtualizacao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -26,7 +26,7 @@ export const HistoricoConversao: TTable = {
       field: "Usuario",
       label: "Usuario",
       name: "Usuario",
-      type: "string",
+      typeField: "string",
       size: 32,
       allowNull: false,
     },

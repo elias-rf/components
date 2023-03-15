@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ObsItemCotacao: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ObsItemCotacao: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ObsItemCotacao: TTable = {
       field: "NumCotacao",
       label: "NumCotacao",
       name: "NumCotacao",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -26,7 +26,7 @@ export const ObsItemCotacao: TTable = {
       field: "Sequencia",
       label: "Sequencia",
       name: "Sequencia",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const ObsItemCotacao: TTable = {
       field: "Observacao",
       label: "Observacao",
       name: "Observacao",
-      type: "string",
+      typeField: "string",
       size: 512,
     },
   ],

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const MapaEntregaProtocoloHist: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const MapaEntregaProtocoloHist: TTable = {
       field: "CdMapaEntregaProtocolo",
       label: "CdMapaEntregaProtocolo",
       name: "CdMapaEntregaProtocolo",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const MapaEntregaProtocoloHist: TTable = {
       field: "DtHistorico",
       label: "DtHistorico",
       name: "DtHistorico",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -25,7 +25,7 @@ export const MapaEntregaProtocoloHist: TTable = {
       field: "DsHistorico",
       label: "DsHistorico",
       name: "DsHistorico",
-      type: "string",
+      typeField: "string",
       size: 4000,
     },
   ],

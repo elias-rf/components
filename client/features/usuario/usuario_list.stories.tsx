@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { TEvent } from "../../../types";
 import { UsuarioList } from "./usuario_list";
 
 const meta: Meta<typeof UsuarioList> = {
@@ -15,13 +14,13 @@ const ListState = () => {
   const [where, setWhere] = React.useState([]);
   const [order, setOrder] = React.useState([]);
 
-  function handleSelected(e: TEvent) {
+  function handleSelected(e: any) {
     setSelected(e.value);
   }
-  function handleWhere(e: TEvent) {
+  function handleWhere(e: any) {
     setWhere(e.value);
   }
-  function handleOrder(e: TEvent) {
+  function handleOrder(e: any) {
     setOrder(e.value);
   }
 

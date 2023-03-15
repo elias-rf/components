@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tProdutoSubCategoria: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tProdutoSubCategoria: TTable = {
       field: "kSubCategoria",
       label: "kSubCategoria",
       name: "tProdutoSubCategoria_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       autoIncrement: true,
       primaryKey: true,
@@ -18,7 +18,7 @@ export const tProdutoSubCategoria: TTable = {
       field: "SubCategoria",
       label: "SubCategoria",
       name: "SubCategoria",
-      type: "string",
+      typeField: "string",
       size: 30,
       allowNull: false,
     },
@@ -26,14 +26,14 @@ export const tProdutoSubCategoria: TTable = {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 255,
     },
     {
       field: "fkCategoria",
       label: "fkCategoria",
       name: "fkCategoria",
-      type: "string",
+      typeField: "string",
       size: 50,
       allowNull: false,
     },

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const LogPro: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const LogPro: TTable = {
       field: "CdProduto",
       label: "CdProduto",
       name: "CdProduto",
-      type: "string",
+      typeField: "string",
       size: 15,
       allowNull: false,
     },
@@ -16,14 +16,14 @@ export const LogPro: TTable = {
       field: "CdEmpresa",
       label: "CdEmpresa",
       name: "CdEmpresa",
-      type: "int",
+      typeField: "int",
       size: 4,
     },
     {
       field: "DtPromocaoFinal",
       label: "DtPromocaoFinal",
       name: "DtPromocaoFinal",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
     },
@@ -31,7 +31,7 @@ export const LogPro: TTable = {
       field: "DtPromocaoInicial",
       label: "DtPromocaoInicial",
       name: "DtPromocaoInicial",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
     },
@@ -39,7 +39,7 @@ export const LogPro: TTable = {
       field: "TipLog",
       label: "TipLog",
       name: "TipLog",
-      type: "string",
+      typeField: "string",
       size: 2,
       allowNull: false,
     },
@@ -47,7 +47,7 @@ export const LogPro: TTable = {
       field: "VlValor",
       label: "VlValor",
       name: "VlValor",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
     },

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ConfigConvenio: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ConfigConvenio: TTable = {
       field: "CdCliente",
       label: "CdCliente",
       name: "CdCliente",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ConfigConvenio: TTable = {
       field: "Tipo",
       label: "Tipo",
       name: "Tipo",
-      type: "string",
+      typeField: "string",
       size: 10,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const ConfigConvenio: TTable = {
       field: "Codigo",
       label: "Codigo",
       name: "Codigo",
-      type: "string",
+      typeField: "string",
       size: 15,
       allowNull: false,
     },
@@ -33,7 +33,7 @@ export const ConfigConvenio: TTable = {
       field: "FgPermissao",
       label: "FgPermissao",
       name: "FgPermissao",
-      type: "string",
+      typeField: "string",
       size: 1,
       allowNull: false,
     },
@@ -41,7 +41,7 @@ export const ConfigConvenio: TTable = {
       field: "PercDesconto",
       label: "PercDesconto",
       name: "PercDesconto",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,

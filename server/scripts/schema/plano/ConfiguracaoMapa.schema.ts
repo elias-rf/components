@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ConfiguracaoMapa: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ConfiguracaoMapa: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "ConfiguracaoMapa_id",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       primaryKey: true,
@@ -18,7 +18,7 @@ export const ConfiguracaoMapa: TTable = {
       field: "DtUltimoMapa",
       label: "DtUltimoMapa",
       name: "DtUltimoMapa",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

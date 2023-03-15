@@ -1,4 +1,4 @@
-import { RpcResponse, TRpcContext, TRpcRequest } from "../../types";
+import { RpcResponse, TRpcContext, TRpcRequest } from "../../types/rpc";
 import { getParamsSintetic } from "../identify/get_params";
 
 const mutationMethods = new Map();

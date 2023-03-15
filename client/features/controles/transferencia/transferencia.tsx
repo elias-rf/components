@@ -1,5 +1,4 @@
 import React from "react";
-import { TEvent } from "../../../../types";
 import { TransferenciaDiario } from "./transferencia_diario";
 import { TransferenciaMensal } from "./transferencia_mensal";
 import { TransferenciaModelo } from "./transferencia_modelo";
@@ -12,7 +11,7 @@ export function Transferencia({ dia }: TransferenciaProp) {
   const [mesCorrente, setMesCorrente] = React.useState({});
   const [diaCorrente, setDiaCorrente] = React.useState({});
 
-  function handleOnChangeEvent(event: TEvent) {
+  function handleOnChangeEvent(event: any) {
     if (event.name === "mensal") setMesCorrente(event.value);
     if (event.name === "diario") setDiaCorrente(event.value);
   }

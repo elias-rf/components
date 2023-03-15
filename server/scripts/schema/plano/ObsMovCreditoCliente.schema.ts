@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ObsMovCreditoCliente: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ObsMovCreditoCliente: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ObsMovCreditoCliente: TTable = {
       field: "NumDocumento",
       label: "NumDocumento",
       name: "NumDocumento",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -26,7 +26,7 @@ export const ObsMovCreditoCliente: TTable = {
       field: "Serie",
       label: "Serie",
       name: "Serie",
-      type: "string",
+      typeField: "string",
       size: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const ObsMovCreditoCliente: TTable = {
       field: "TipoMovimentacao",
       label: "TipoMovimentacao",
       name: "TipoMovimentacao",
-      type: "string",
+      typeField: "string",
       size: 1,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const ObsMovCreditoCliente: TTable = {
       field: "Observacao",
       label: "Observacao",
       name: "Observacao",
-      type: "string",
+      typeField: "string",
       size: 512,
     },
   ],

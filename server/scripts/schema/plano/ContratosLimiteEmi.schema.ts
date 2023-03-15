@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ContratosLimiteEmi: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ContratosLimiteEmi: TTable = {
       field: "CdCliente",
       label: "CdCliente",
       name: "CdCliente",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ContratosLimiteEmi: TTable = {
       field: "DiaContr",
       label: "DiaContr",
       name: "DiaContr",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const ContratosLimiteEmi: TTable = {
       field: "DataLimite",
       label: "DataLimite",
       name: "DataLimite",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

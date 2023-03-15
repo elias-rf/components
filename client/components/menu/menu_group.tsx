@@ -2,7 +2,12 @@ import chevronDown from "@iconify/icons-carbon/chevron-down";
 import chevronRight from "@iconify/icons-carbon/chevron-right";
 import { InlineIcon } from "@iconify/react";
 import { useMenuStore } from "./menu.store";
-import { TMenuGroupProps } from "./menu.types";
+
+export type TMenuGroupProps = {
+  children: React.ReactElement | React.ReactElement[];
+  title: string;
+  icon?: IconifyIcon;
+};
 
 export function MenuGroup({ icon, title, children }: TMenuGroupProps) {
   const currentGroup = useMenuStore((state) => state.currentGroup);

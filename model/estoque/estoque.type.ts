@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TEstoquePk {
@@ -9,7 +9,7 @@ export interface TEstoque extends TEstoquePk {
   estoque?: number;
 }
 
-export type TEstoqueFields = keyof Required<TEstoque>
+export type TEstoqueFields = keyof Required<TEstoque>;
 
 export type TEstoqueIds = {
   [pk in keyof Required<TEstoquePk>]: any;
@@ -18,7 +18,7 @@ export type TEstoqueSelect = TSelect<TEstoqueFields>;
 export type TEstoqueWhere = TWhere<TEstoqueFields>;
 export type TEstoqueOrder = TOrder<TEstoqueFields>;
 
-export type TEstoqueSchema = () => Promise<TFieldClient[]>;
+export type TEstoqueSchema = () => Promise<TField[]>;
 export type TEstoqueClear = () => Promise<TEstoque>;
 export type TEstoqueList = (args: {
   where?: TWhere<TEstoqueFields>[];
@@ -40,9 +40,7 @@ export type TEstoqueUpdate = (args: {
   data: TEstoque;
   select?: TSelect<TEstoqueFields>;
 }) => Promise<TEstoque>;
-export type TEstoqueDel = (args: {
-  id: TEstoqueIds;
-}) => Promise<number>;
+export type TEstoqueDel = (args: { id: TEstoqueIds }) => Promise<number>;
 
 //#region def
 export type TEstoqueIncrement = (args: {
@@ -67,9 +65,9 @@ export type TEstoqueCrud = {
 
 export type TEstoqueModel = TEstoqueCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
   mutation: { increment: TEstoqueIncrement };
   //#endregion

@@ -1,20 +1,14 @@
-import { TEvent } from "../../../types";
+import React from "react";
 import { Menu } from "../menu/menu";
-import { TMenuItemEvent, TMenuTitleEvent } from "../menu/menu.types";
 import { MenuBody } from "../menu/menu_body";
 import { MenuGroup } from "../menu/menu_group";
 import { MenuItem } from "../menu/menu_item";
 import { MenuTitle } from "../menu/menu_title";
 
-export type TDefaultLayoutEvent = TEvent & {
-  component: "DefaultLayout";
-  event: "onClickEvent";
-};
-
 export type TDefaultLayoutProps = {
   children?: React.ReactNode;
   isAuthenticated: boolean;
-  onClickEvent: (e: TDefaultLayoutEvent) => void;
+  onClick: (e: React.MouseEvent) => void;
   menu: any;
 };
 
@@ -22,16 +16,11 @@ export type TDefaultLayoutProps = {
 export function DefaultLayout({
   isAuthenticated,
   menu,
-  onClickEvent,
+  onClick,
   children,
 }: TDefaultLayoutProps) {
-  function handleOnClick({ value, event }: TMenuTitleEvent | TMenuItemEvent) {
-    onClickEvent({
-      name: "DefaultLayout",
-      component: "DefaultLayout",
-      value,
-      event,
-    });
+  function handleOnClick(e: React.MouseEvent) {
+    onClick(e);
   }
 
   return (
@@ -47,7 +36,7 @@ export function DefaultLayout({
           <Menu>
             <MenuTitle
               to={menu.title.to}
-              onClickEvent={handleOnClick}
+              onClick={handleOnClick}
             >
               {menu.title.title}
             </MenuTitle>
@@ -63,7 +52,7 @@ export function DefaultLayout({
                       <MenuItem
                         to={item.to}
                         key={item.title}
-                        onClickEvent={handleOnClick}
+                        onClick={handleOnClick}
                       >
                         {item.title}
                       </MenuItem>
@@ -76,7 +65,7 @@ export function DefaultLayout({
                 <div className={"pl-2"}>
                   <MenuItem
                     to={"/login"}
-                    onClickEvent={handleOnClick}
+                    onClick={handleOnClick}
                   >
                     Login
                   </MenuItem>

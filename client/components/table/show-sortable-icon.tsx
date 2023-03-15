@@ -1,10 +1,10 @@
-import { TFieldClient, TOrder } from "../../../types";
+import { TField, TOrder } from "../../../types";
 import { orderByUtil } from "../../../utils/schema/order-by";
 import { SortIcon } from "../icons/sort-icon";
 
 interface ShowSortableIconProps {
   order: TOrder[];
-  fieldSchema: TFieldClient;
+  fieldSchema: TField;
 }
 
 /**

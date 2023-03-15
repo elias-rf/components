@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TNfSaidaItemPk {
@@ -129,7 +129,7 @@ export interface TNfSaidaItem extends TNfSaidaItemPk {
   VlICMSSubstituto?: number;
 }
 
-export type TNfSaidaItemFields = keyof Required<TNfSaidaItem>
+export type TNfSaidaItemFields = keyof Required<TNfSaidaItem>;
 
 export type TNfSaidaItemIds = {
   [pk in keyof Required<TNfSaidaItemPk>]: any;
@@ -138,7 +138,7 @@ export type TNfSaidaItemSelect = TSelect<TNfSaidaItemFields>;
 export type TNfSaidaItemWhere = TWhere<TNfSaidaItemFields>;
 export type TNfSaidaItemOrder = TOrder<TNfSaidaItemFields>;
 
-export type TNfSaidaItemSchema = () => Promise<TFieldClient[]>;
+export type TNfSaidaItemSchema = () => Promise<TField[]>;
 export type TNfSaidaItemClear = () => Promise<TNfSaidaItem>;
 export type TNfSaidaItemList = (args: {
   where?: TWhere<TNfSaidaItemFields>[];
@@ -183,11 +183,11 @@ export type TNfSaidaItemCrud = {
 
 export type TNfSaidaItemModel = TNfSaidaItemCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TNfSaidaItemRpc = TNfSaidaItemModel;

@@ -1,19 +1,16 @@
-import { TFieldClient, TFieldServer } from "../../types";
+import { TField } from "../../types";
 import { difference } from "../array/difference";
 import { isNonEmptyObject } from "../identify/is-non-empty-object";
 import { namesFromFields } from "../schema/names-from-fields";
 import { pksFromFieldsClient } from "../schema/pks-from-fields";
 
-export function zIdClient(
-  id: { [field: string]: any },
-  fields: TFieldClient[]
-) {
+export function zIdClient(id: { [field: string]: any }, fields: TField[]) {
   const resp = isIdClient(id, fields);
   if (resp === "") return;
   throw new Error(resp);
 }
 
-export function isId(id: { [field: string]: any }, fields: TFieldServer[]) {
+export function isId(id: { [field: string]: any }, fields: TField[]) {
   if (!isNonEmptyObject(id)) return "Id deve ser informado";
 
   const nameListOk = namesFromFields(
@@ -52,10 +49,7 @@ export function isId(id: { [field: string]: any }, fields: TFieldServer[]) {
 }
 
 /** Receber um object e verifica se propriedades são fields primaryKey do schema */
-export function isIdClient(
-  id: { [field: string]: any },
-  fields: TFieldClient[]
-) {
+export function isIdClient(id: { [field: string]: any }, fields: TField[]) {
   const pkList = pksFromFieldsClient(fields);
   if (!isNonEmptyObject(id))
     return `Id deve ser informado: ${pkList.toString()}`;

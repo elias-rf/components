@@ -1,10 +1,9 @@
 import React from "react";
-import { TTabsEvent } from "./tabs.types";
 
 export const TabsContext = React.createContext<{
   active: string;
-  onChangeEvent: (event: TTabsEvent) => void;
+  onChange: (event: any) => void;
 }>({
   active: "",
-  onChangeEvent: () => undefined,
+  onChange: () => undefined,
 });

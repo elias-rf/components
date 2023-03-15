@@ -13,7 +13,7 @@ describe("Badge", () => {
 
   it("component clickable", () => {
     const handleClick = vi.fn();
-    render(<Badge onClickEvent={handleClick}>TESTE</Badge>);
+    render(<Badge onClick={handleClick}>TESTE</Badge>);
 
     fireEvent.click(screen.getByTestId("badge-span"));
     expect(screen.getByTestId("badge-span")).toBeDefined();
@@ -24,7 +24,7 @@ describe("Badge", () => {
 
   it("component closable", () => {
     const handleClose = vi.fn();
-    render(<Badge onCloseEvent={handleClose}>TESTE</Badge>);
+    render(<Badge onClose={handleClose}>TESTE</Badge>);
     fireEvent.click(screen.getByTestId("badge-button-close"));
 
     expect(screen.getByTestId("badge-span")).toBeDefined();

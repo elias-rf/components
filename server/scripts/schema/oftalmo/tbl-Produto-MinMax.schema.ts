@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tbl_Produto_MinMax: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tbl_Produto_MinMax: TTable = {
       field: "fkProdutoItem",
       label: "fkProdutoItem",
       name: "tbl_Produto_MinMax_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const tbl_Produto_MinMax: TTable = {
       field: "Minimo",
       label: "Minimo",
       name: "Minimo",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const tbl_Produto_MinMax: TTable = {
       field: "Media",
       label: "Media",
       name: "Media",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -33,7 +33,7 @@ export const tbl_Produto_MinMax: TTable = {
       field: "Maximo",
       label: "Maximo",
       name: "Maximo",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },

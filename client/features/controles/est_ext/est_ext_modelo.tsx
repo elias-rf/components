@@ -1,12 +1,11 @@
 import React from "react";
 import { esterilizacaoExternaStore } from "../../../../model/esterilizacao-externa/esterilizacao-externa.store";
-import { TEvent } from "../../../../types";
 import { Table } from "../../../components/table/table";
 
 type EsterilizacaoExternaModeloProp = {
   diaCorrente: { dia?: string };
   produtoCorrente: { produto?: string };
-  onSelectEvent: (event: TEvent) => void;
+  onSelect: (event: any) => void;
 };
 
 const { getSchemaModelo, getModelo } = esterilizacaoExternaStore.getState();
@@ -14,7 +13,7 @@ const { getSchemaModelo, getModelo } = esterilizacaoExternaStore.getState();
 export function EsterilizacaoExternaModelo({
   diaCorrente,
   produtoCorrente,
-  onSelectEvent,
+  onSelect,
 }: EsterilizacaoExternaModeloProp) {
   const dataSchemaModelo = esterilizacaoExternaStore(
     (state) => state.dataSchemaModelo
@@ -37,7 +36,7 @@ export function EsterilizacaoExternaModelo({
       name="modelo"
       data={dataModelo}
       schema={dataSchemaModelo}
-      onSelectEvent={onSelectEvent}
+      onSelect={onSelect}
     ></Table>
   );
 }

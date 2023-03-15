@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ParamContVer: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ParamContVer: TTable = {
       field: "Ver01",
       label: "Ver01",
       name: "Ver01",
-      type: "string",
+      typeField: "string",
       size: 512,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const ParamContVer: TTable = {
       field: "Ver02",
       label: "Ver02",
       name: "Ver02",
-      type: "string",
+      typeField: "string",
       size: 512,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const ParamContVer: TTable = {
       field: "Ver03",
       label: "Ver03",
       name: "Ver03",
-      type: "string",
+      typeField: "string",
       size: 512,
       allowNull: false,
     },

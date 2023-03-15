@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ContratoAluguel: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ContratoAluguel: TTable = {
       field: "CdCliente",
       label: "CdCliente",
       name: "CdCliente",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ContratoAluguel: TTable = {
       field: "DiaContr",
       label: "DiaContr",
       name: "DiaContr",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const ContratoAluguel: TTable = {
       field: "VlFranquia",
       label: "VlFranquia",
       name: "VlFranquia",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -34,7 +34,7 @@ export const ContratoAluguel: TTable = {
       field: "QtdeFranquia",
       label: "QtdeFranquia",
       name: "QtdeFranquia",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -43,7 +43,7 @@ export const ContratoAluguel: TTable = {
       field: "VlUnitExcedente",
       label: "VlUnitExcedente",
       name: "VlUnitExcedente",
-      type: "float",
+      typeField: "float",
       size: 8,
       allowNull: false,
     },

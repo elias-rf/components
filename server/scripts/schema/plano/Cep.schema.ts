@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const Cep: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const Cep: TTable = {
       field: "CepInicial",
       label: "CepInicial",
       name: "Cep_id",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       primaryKey: true,
@@ -18,7 +18,7 @@ export const Cep: TTable = {
       field: "CepFinal",
       label: "CepFinal",
       name: "CepFinal",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -27,14 +27,14 @@ export const Cep: TTable = {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 50,
     },
     {
       field: "Regiao",
       label: "Regiao",
       name: "Regiao",
-      type: "string",
+      typeField: "string",
       size: 10,
     },
   ],

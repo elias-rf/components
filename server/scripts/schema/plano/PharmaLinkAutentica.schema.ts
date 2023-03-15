@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const PharmaLinkAutentica: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const PharmaLinkAutentica: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "PharmaLinkAutentica_id",
-      type: "int",
+      typeField: "int",
       size: 9,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const PharmaLinkAutentica: TTable = {
       field: "Autentica",
       label: "Autentica",
       name: "Autentica",
-      type: "string",
+      typeField: "string",
       size: 16,
       allowNull: false,
     },

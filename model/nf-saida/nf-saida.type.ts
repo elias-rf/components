@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TNfSaidaPk {
@@ -96,7 +96,7 @@ export interface TNfSaida extends TNfSaidaPk {
   percComissao?: number;
 }
 
-export type TNfSaidaFields = keyof Required<TNfSaida>
+export type TNfSaidaFields = keyof Required<TNfSaida>;
 
 export type TNfSaidaIds = {
   [pk in keyof Required<TNfSaidaPk>]: any;
@@ -105,7 +105,7 @@ export type TNfSaidaSelect = TSelect<TNfSaidaFields>;
 export type TNfSaidaWhere = TWhere<TNfSaidaFields>;
 export type TNfSaidaOrder = TOrder<TNfSaidaFields>;
 
-export type TNfSaidaSchema = () => Promise<TFieldClient[]>;
+export type TNfSaidaSchema = () => Promise<TField[]>;
 export type TNfSaidaClear = () => Promise<TNfSaida>;
 export type TNfSaidaList = (args: {
   where?: TWhere<TNfSaidaFields>[];
@@ -127,9 +127,7 @@ export type TNfSaidaUpdate = (args: {
   data: TNfSaida;
   select?: TSelect<TNfSaidaFields>;
 }) => Promise<TNfSaida>;
-export type TNfSaidaDel = (args: {
-  id: TNfSaidaIds;
-}) => Promise<number>;
+export type TNfSaidaDel = (args: { id: TNfSaidaIds }) => Promise<number>;
 
 //#region def
 export type TNfTransferenciaDiario = (args: {
@@ -205,17 +203,17 @@ export type TNfSaidaModel = TNfSaidaCrud & {
   //#region type
   query: {
     transferenciaDiario: TNfTransferenciaDiario;
-    transferenciaDiarioSchema(): Promise<TFieldClient[]>;
+    transferenciaDiarioSchema(): Promise<TField[]>;
     transferenciaMensal: TNfTransferenciaMensal;
-    transferenciaMensalSchema(): Promise<TFieldClient[]>;
+    transferenciaMensalSchema(): Promise<TField[]>;
     transferenciaModelo: TNfTransferenciaModelo;
-    transferenciaModeloSchema(): Promise<TFieldClient[]>;
+    transferenciaModeloSchema(): Promise<TField[]>;
     vendaDiario: TNfVendaDiario;
-    vendaDiarioSchema(): Promise<TFieldClient[]>;
+    vendaDiarioSchema(): Promise<TField[]>;
     vendaMensalCliente: TNfVendaMensalCliente;
-    vendaMensalClienteSchema(): Promise<TFieldClient[]>;
+    vendaMensalClienteSchema(): Promise<TField[]>;
     vendaAnalitico: TNfVendaAnalitico;
-    vendaAnaliticoSchema(): Promise<TFieldClient[]>;
+    vendaAnaliticoSchema(): Promise<TField[]>;
   };
   //#endregion
 };

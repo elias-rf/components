@@ -1,13 +1,12 @@
 import React from "react";
 import { esterilizacaoExternaStore } from "../../../../model/esterilizacao-externa/esterilizacao-externa.store";
-import { TEvent } from "../../../../types";
 import { Table } from "../../../components/table/table";
 
 type EsterilizacaoExternaMensalProp = {
   children?: React.ReactNode;
   mesCorrente: { mes?: string };
   mesInicial: { mes: string };
-  onSelectEvent?: (event: TEvent) => void;
+  onSelect?: (event: any) => void;
 };
 
 const { getSchemaMensal, getMensal } = esterilizacaoExternaStore.getState();
@@ -15,7 +14,7 @@ const { getSchemaMensal, getMensal } = esterilizacaoExternaStore.getState();
 export function EsterilizacaoExternaMensal({
   mesInicial,
   mesCorrente,
-  onSelectEvent,
+  onSelect,
   children,
 }: EsterilizacaoExternaMensalProp) {
   const dataSchemaMensal = esterilizacaoExternaStore(
@@ -37,7 +36,7 @@ export function EsterilizacaoExternaMensal({
       data={dataMensal}
       schema={dataSchemaMensal}
       selected={mesCorrente}
-      onSelectEvent={onSelectEvent}
+      onSelect={onSelect}
     >
       {children}
     </Table>

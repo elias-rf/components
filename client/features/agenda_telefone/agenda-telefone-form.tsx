@@ -1,45 +1,40 @@
 import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
 import { useMap } from "react-use";
-import type {
-  TAgendaTelefone,
-  TAgendaTelefoneIds,
-} from "../../../model/agenda-telefone/agenda-telefone.type";
+import type { TAgendaTelefoneIds } from "../../../model/agenda-telefone/agenda-telefone.type";
 import { stores } from "../../../model/stores";
-import type { TEvent, TFieldClient } from "../../../types";
 import { isEmpty } from "../../../utils/identify/is_empty";
 import { isNumber } from "../../../utils/identify/is_number";
+import { recordClear } from "../../../utils/schema/record-clear";
 import { Button } from "../../components/button";
-import { Label } from "../../components/form/label";
-import { Textbox } from "../../components/form/textbox";
+import { Field } from "../../components/field";
+import { agendaTelefoneSchema } from "./agenda-telefone.schema";
 
 type TAgendaTelefoneFormProps = {
   id: TAgendaTelefoneIds;
 };
 
-const {
-  getClear,
-  getSchema,
-  getRead,
-  refreshList,
-  setUpdate,
-  setCreate,
-  setDel,
-} = stores.agendaTelefoneStore.getState();
+type TStatus = "edit" | "new" | "view";
 
+const { getRead } = stores.agendaTelefoneStore.getState();
+console.log(recordClear(agendaTelefoneSchema));
 export function AgendaTelefoneForm({ id }: TAgendaTelefoneFormProps) {
   const dataClear = stores.agendaTelefoneStore((state) => state.dataClear);
-  const dataSchema = stores.agendaTelefoneStore((state) => state.dataSchema);
   const dataRead = stores.agendaTelefoneStore((state) => state.dataRead);
-  const fetching = stores.agendaTelefoneStore((state) => state.fetching);
   const [record, actionsRecord] = useMap(dataClear);
-  const [status, setStatus] = React.useState("new");
-  const [isDirty, setIsDirty] = React.useState(false);
+  const [status, setStatus] = React.useState<TStatus>("new");
 
-  // inicializa component
+  const methods = useForm();
+  const [schema, setSchema] = React.useState(agendaTelefoneSchema);
+
   React.useEffect(() => {
-    getClear();
-    getSchema();
-  }, []);
+    const dsbl = status === "view";
+
+    for (const item of agendaTelefoneSchema) {
+      item.disabled = dsbl;
+    }
+    setSchema(agendaTelefoneSchema);
+  }, [status]);
 
   // atualiza state do form quando com o ID passado
   React.useEffect(() => {
@@ -48,116 +43,105 @@ export function AgendaTelefoneForm({ id }: TAgendaTelefoneFormProps) {
     } else {
       getRead({ id });
     }
-    setIsDirty(false);
   }, [id, dataClear]);
 
   // atualiza state do form quando for lido do servidor
   React.useEffect(() => {
     if (dataRead.agenda_telefone_id) {
       actionsRecord.setAll(dataRead);
-      setStatus("update");
+      setStatus("view");
     }
   }, [dataRead]);
 
-  //
+  function handleButtonCancel() {
+    setStatus("view");
+    console.log("cancel");
+  }
 
-  function handleButtonNew() {
-    actionsRecord.setAll(dataClear);
-    setStatus("new");
+  function handleButtonEdit() {
+    setStatus("edit");
   }
 
   function handleButtonDel() {
-    setDel({
-      id: { agenda_telefone_id: record.agenda_telefone_id },
-    })
-      .then(() => {
-        setIsDirty(false);
-        setStatus("new");
-        refreshList();
-        return actionsRecord.setAll(dataClear);
-      })
-      .catch((errors) => console.log(errors));
+    setStatus("view");
   }
 
   function handleButtonSave() {
-    if (status === "update") {
-      setUpdate({
-        id: { agenda_telefone_id: record.agenda_telefone_id },
-        data: record,
-      })
-        .then(refreshList)
-        .catch((err) => console.log(err));
-    }
-    if (status === "new") {
-      setCreate({ data: record })
-        .then(refreshList)
-        .catch((err) => console.log(err));
-    }
-    actionsRecord.setAll(dataClear);
-    setIsDirty(false);
-    setStatus("new");
+    setStatus("view");
   }
 
-  function handleRecordEdit(event: TEvent) {
-    if (!isDirty) setIsDirty(true);
-    actionsRecord.set(event.name as keyof TAgendaTelefone, event.value);
-  }
+  const onSubmitHandler = (values: any) => {
+    console.log(`Submitted`);
+    console.log(values);
+  };
 
   return (
     <section
       data-name="PhonebookForm"
       className={"mt-2"}
     >
-      <div className={"flex flex-wrap gap-2"}>
-        {dataSchema?.map((field: TFieldClient) => (
-          <React.Fragment key={field.name}>
-            <div className={"my-2"}>
-              <Label name={field.name}>{field.label || ""}</Label>
-              <Textbox
-                type="text"
-                name={field.name}
-                onChangeEvent={handleRecordEdit}
-                value={record[field.name as keyof TAgendaTelefone] || ""}
-                data-testid={`input-${field.name}`}
-              />
-            </div>
-          </React.Fragment>
-        ))}
-      </div>
       <div className={"flex justify-end"}>
         <Button
-          className={"w-20"}
+          className={"w-24 mr-4"}
           size="small"
-          color="default"
-          onClickEvent={handleButtonSave}
+          color="primary"
+          onClick={handleButtonEdit}
           name="salvar"
-          disabled={!isDirty}
           data-testid="buttonSave"
         >
           Editar
         </Button>
         <Button
-          className={"w-20"}
+          className={"w-24"}
           size="small"
-          color="default"
-          onClickEvent={handleButtonSave}
+          color="secondary"
+          onClick={handleButtonDel}
           name="salvar"
-          disabled={!isDirty}
+          data-testid="buttonSave"
+        >
+          Excluir
+        </Button>
+      </div>
+      <div className={"flex flex-wrap gap-2"}>
+        <FormProvider {...methods}>
+          <form
+            className="form"
+            onSubmit={methods.handleSubmit(onSubmitHandler)}
+            autoComplete="off"
+          >
+            {schema.map((field) => (
+              <React.Fragment key={field.name}>
+                <Field
+                  {...field}
+                  key={field.name}
+                />
+              </React.Fragment>
+            ))}
+          </form>
+        </FormProvider>
+      </div>
+      <div className={"flex justify-end"}>
+        <Button
+          className={"w-24 mr-4"}
+          size="small"
+          color="primary"
+          onClick={handleButtonSave}
+          name="salvar"
           data-testid="buttonSave"
         >
           Salvar
+        </Button>
+        <Button
+          className={"w-24"}
+          size="small"
+          color="secondary"
+          onClick={handleButtonCancel}
+          name="salvar"
+          data-testid="buttonCancel"
+        >
+          Cancelar
         </Button>
       </div>
     </section>
   );
 }
-
-/*
-load empty(id) = new, false
-load !empty(id) = update, false
-clickNew = new, false
-clickDel = new, false
-clickSave = update, false
-clickKey = , true
-
-*/

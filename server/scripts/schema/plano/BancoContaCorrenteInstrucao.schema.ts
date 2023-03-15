@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const BancoContaCorrenteInstrucao: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const BancoContaCorrenteInstrucao: TTable = {
       field: "NumBanco",
       label: "NumBanco",
       name: "NumBanco",
-      type: "int",
+      typeField: "int",
       size: 5,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const BancoContaCorrenteInstrucao: TTable = {
       field: "NumAgencia",
       label: "NumAgencia",
       name: "NumAgencia",
-      type: "int",
+      typeField: "int",
       size: 5,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const BancoContaCorrenteInstrucao: TTable = {
       field: "NumContaCorrente",
       label: "NumContaCorrente",
       name: "NumContaCorrente",
-      type: "string",
+      typeField: "string",
       size: 16,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ export const BancoContaCorrenteInstrucao: TTable = {
       field: "Sequencia",
       label: "Sequencia",
       name: "Sequencia",
-      type: "int",
+      typeField: "int",
       size: 5,
       allowNull: false,
     },
@@ -40,7 +40,7 @@ export const BancoContaCorrenteInstrucao: TTable = {
       field: "Instrucao",
       label: "Instrucao",
       name: "Instrucao",
-      type: "string",
+      typeField: "string",
       size: 64,
       allowNull: false,
     },

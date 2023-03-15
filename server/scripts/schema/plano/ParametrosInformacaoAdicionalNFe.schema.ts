@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ParametrosInformacaoAdicionalNFe: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ParametrosInformacaoAdicionalNFe: TTable = {
       field: "CdEmpresa",
       label: "CdEmpresa",
       name: "CdEmpresa",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const ParametrosInformacaoAdicionalNFe: TTable = {
       field: "UF",
       label: "UF",
       name: "UF",
-      type: "string",
+      typeField: "string",
       size: 2,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const ParametrosInformacaoAdicionalNFe: TTable = {
       field: "CSTICMS",
       label: "CSTICMS",
       name: "CSTICMS",
-      type: "int",
+      typeField: "int",
       size: 5,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ export const ParametrosInformacaoAdicionalNFe: TTable = {
       field: "Mensagem",
       label: "Mensagem",
       name: "Mensagem",
-      type: "string",
+      typeField: "string",
       size: 1024,
       allowNull: false,
     },

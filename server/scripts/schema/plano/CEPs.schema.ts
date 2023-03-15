@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const CEPs: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const CEPs: TTable = {
       field: "CEP",
       label: "CEP",
       name: "CEP",
-      type: "string",
+      typeField: "string",
       size: 8,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const CEPs: TTable = {
       field: "CdCidade",
       label: "CdCidade",
       name: "CdCidade",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -24,28 +24,28 @@ export const CEPs: TTable = {
       field: "NmLogradouroInteiro",
       label: "NmLogradouroInteiro",
       name: "NmLogradouroInteiro",
-      type: "string",
+      typeField: "string",
       size: 125,
     },
     {
       field: "NmLogradouro",
       label: "NmLogradouro",
       name: "NmLogradouro",
-      type: "string",
+      typeField: "string",
       size: 70,
     },
     {
       field: "TipoLogradouro",
       label: "TipoLogradouro",
       name: "TipoLogradouro",
-      type: "string",
+      typeField: "string",
       size: 72,
     },
     {
       field: "Bairro",
       label: "Bairro",
       name: "Bairro",
-      type: "string",
+      typeField: "string",
       size: 128,
     },
   ],

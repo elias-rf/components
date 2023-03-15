@@ -1,5 +1,6 @@
 import { Knex } from "knex";
-import { TCreateArgs, TSelect, TTable } from "../../../../types";
+import { TCreateArgs, TSelect } from "../../../../types";
+import type { TTable } from "../../../../types/model";
 import { namesFromTable } from "../../../../utils/schema/names-from-table";
 import {
   renameFieldToName,

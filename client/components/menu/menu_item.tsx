@@ -1,13 +1,12 @@
-import { TMenuItemProps } from "./menu.types";
+export type TMenuItemProps = {
+  to?: string;
+  onClick: (e: React.MouseEvent) => void;
+  children: string;
+};
 
-export function MenuItem({ to = "/", onClickEvent, children }: TMenuItemProps) {
-  function handleOnClick() {
-    onClickEvent({
-      name: to,
-      component: "MenuItem",
-      event: "onClickEvent",
-      value: to,
-    });
+export function MenuItem({ to = "/", onClick, children }: TMenuItemProps) {
+  function handleOnClick(e: React.MouseEvent) {
+    onClick(e);
   }
 
   return (

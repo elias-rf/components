@@ -13,9 +13,9 @@ type Story = StoryObj<typeof Accordion>;
 function AccordionStory() {
   const [active, setActive] = React.useState<string[]>([]);
 
-  function handleClick(e: any) {
+  function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
     let rsp: string[] = [...active];
-    const name: string = e.target.name;
+    const name: string = e.currentTarget.name;
     if (rsp.includes(name)) {
       rsp = rsp.filter((item) => item !== name);
     } else {

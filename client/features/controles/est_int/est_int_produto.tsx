@@ -1,13 +1,12 @@
 import React from "react";
 import { esterilizacaoInternaStore } from "../../../../model/esterilizacao-interna/esterilizacao-interna.store";
-import { TEvent } from "../../../../types";
 import { Table } from "../../../components/table";
 
 type EsterilizacaoInternaProdutoProp = {
   children?: any;
   diaCorrente: { dia?: string };
   produtoCorrente: { produto?: string };
-  onSelectEvent?: (event: TEvent) => void;
+  onSelect?: (event: any) => void;
 };
 
 const { getSchemaProduto, getProduto } = esterilizacaoInternaStore.getState();
@@ -16,7 +15,7 @@ export function EsterilizacaoInternaProduto({
   diaCorrente,
   children,
   produtoCorrente,
-  onSelectEvent,
+  onSelect,
 }: EsterilizacaoInternaProdutoProp) {
   const dataSchemaProduto = esterilizacaoInternaStore(
     (state) => state.dataSchemaProduto
@@ -39,7 +38,7 @@ export function EsterilizacaoInternaProduto({
       data={dataProduto}
       schema={dataSchemaProduto}
       selected={produtoCorrente}
-      onSelectEvent={onSelectEvent}
+      onSelect={onSelect}
     >
       {children}
     </Table>

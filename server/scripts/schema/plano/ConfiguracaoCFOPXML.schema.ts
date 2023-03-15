@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ConfiguracaoCFOPXML: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ConfiguracaoCFOPXML: TTable = {
       field: "CdEmpresa",
       label: "CdEmpresa",
       name: "CdEmpresa",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const ConfiguracaoCFOPXML: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const ConfiguracaoCFOPXML: TTable = {
       field: "CdFornecedor",
       label: "CdFornecedor",
       name: "CdFornecedor",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ export const ConfiguracaoCFOPXML: TTable = {
       field: "CFOPOrigem",
       label: "CFOPOrigem",
       name: "CFOPOrigem",
-      type: "int",
+      typeField: "int",
       size: 5,
       allowNull: false,
     },
@@ -40,7 +40,7 @@ export const ConfiguracaoCFOPXML: TTable = {
       field: "CFOPDestino",
       label: "CFOPDestino",
       name: "CFOPDestino",
-      type: "int",
+      typeField: "int",
       size: 5,
       allowNull: false,
     },

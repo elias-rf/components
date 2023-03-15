@@ -1,4 +1,4 @@
-import { TConnections } from "../../types";
+import { TConnections } from "../../types/model";
 import fullvision from "./fullvision.connection";
 import oftalmo from "./oftalmo.connection";
 import plano from "./plano.connection";

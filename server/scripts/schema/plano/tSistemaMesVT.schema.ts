@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tSistemaMesVT: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const tSistemaMesVT: TTable = {
       field: "Dia",
       label: "Dia",
       name: "tSistemaMesVT_id",
-      type: "date",
+      typeField: "date",
       size: 4,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const tSistemaMesVT: TTable = {
       field: "MesVT",
       label: "MesVT",
       name: "MesVT",
-      type: "date",
+      typeField: "date",
       size: 4,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const tSistemaMesVT: TTable = {
       field: "Feriado",
       label: "Feriado",
       name: "Feriado",
-      type: "int",
+      typeField: "int",
       size: 1,
       allowNull: false,
       defaultValue: "0",
@@ -34,14 +34,14 @@ export const tSistemaMesVT: TTable = {
       field: "ano",
       label: "ano",
       name: "ano",
-      type: "string",
+      typeField: "string",
       size: 4,
     },
     {
       field: "mes",
       label: "mes",
       name: "mes",
-      type: "string",
+      typeField: "string",
       size: 2,
     },
   ],

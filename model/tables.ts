@@ -1,4 +1,4 @@
-import { TDb } from "../types";
+import { TDb } from "../types/model";
 
 // @index(['./**/*.table.ts'], (f, _) => `import { ${_.snakeCase(f.name.slice(0,-6))} } from "${f.path}";`)
 import { agenda_telefone } from "./agenda-telefone/agenda-telefone.table";

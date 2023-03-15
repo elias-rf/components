@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TPedidoPk {
@@ -97,7 +97,7 @@ export interface TPedido extends TPedidoPk {
   VlDescontoCombo?: number;
 }
 
-export type TPedidoFields = keyof Required<TPedido>
+export type TPedidoFields = keyof Required<TPedido>;
 
 export type TPedidoIds = {
   [pk in keyof Required<TPedidoPk>]: any;
@@ -106,7 +106,7 @@ export type TPedidoSelect = TSelect<TPedidoFields>;
 export type TPedidoWhere = TWhere<TPedidoFields>;
 export type TPedidoOrder = TOrder<TPedidoFields>;
 
-export type TPedidoSchema = () => Promise<TFieldClient[]>;
+export type TPedidoSchema = () => Promise<TField[]>;
 export type TPedidoClear = () => Promise<TPedido>;
 export type TPedidoList = (args: {
   where?: TWhere<TPedidoFields>[];
@@ -128,9 +128,7 @@ export type TPedidoUpdate = (args: {
   data: TPedido;
   select?: TSelect<TPedidoFields>;
 }) => Promise<TPedido>;
-export type TPedidoDel = (args: {
-  id: TPedidoIds;
-}) => Promise<number>;
+export type TPedidoDel = (args: { id: TPedidoIds }) => Promise<number>;
 
 //#region def
 //#endregion
@@ -151,11 +149,11 @@ export type TPedidoCrud = {
 
 export type TPedidoModel = TPedidoCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TPedidoRpc = TPedidoModel;

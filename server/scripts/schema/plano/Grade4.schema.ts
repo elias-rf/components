@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const Grade4: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const Grade4: TTable = {
       field: "CdGrade4",
       label: "CdGrade4",
       name: "Grade4_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const Grade4: TTable = {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 20,
     },
   ],

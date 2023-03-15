@@ -1,6 +1,8 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TOrder, TSelect, TWhere } from "../../types";
+import { TField } from "../../types/model";
 //#region import
-import { TCurrentUser, TRpcContext } from "../../types";
+import { TCurrentUser } from "../../types";
+import { TRpcContext } from "../../types/rpc";
 //#endregion
 export interface TUsuarioPk {
   usuario_id?: number;
@@ -26,7 +28,7 @@ export type TUsuarioSelect = TSelect<TUsuarioFields>;
 export type TUsuarioWhere = TWhere<TUsuarioFields>;
 export type TUsuarioOrder = TOrder<TUsuarioFields>;
 
-export type TUsuarioSchema = () => Promise<TFieldClient[]>;
+export type TUsuarioSchema = () => Promise<TField[]>;
 export type TUsuarioClear = () => Promise<TUsuario>;
 export type TUsuarioList = (args: {
   where?: TWhere<TUsuarioFields>[];

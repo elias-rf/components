@@ -1,17 +1,17 @@
-import { TFieldClient } from "../../../types";
+import { TField } from "../../../types";
 
-export async function schemaModelo(): Promise<TFieldClient[]> {
+export async function schemaModelo(): Promise<TField[]> {
   return [
     {
       name: "modelo",
       label: "Modelo",
-      type: "string",
+      typeField: "string",
       primaryKey: true,
     },
     {
       name: "quantidade",
       label: "Quantidade",
-      type: "int",
+      typeField: "int",
     },
   ];
 }

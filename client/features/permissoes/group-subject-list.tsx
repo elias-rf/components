@@ -2,18 +2,18 @@ import React from "react";
 import { groupSubjectStore } from "../../../model/group-subject/group-subject.store";
 import { stores } from "../../../model/stores";
 import { TIds, TOrder, TWhere } from "../../../types";
+import { TTable } from "../../components/table";
 import { Table } from "../../components/table/table";
-import { TTableEvent } from "../../components/table/table.types";
 
-export type TGroupSubjectListEvent = TTableEvent;
+export type TGroupSubjectList = TTable;
 
 type TGroupSubjectListProps = {
   selected: TIds;
-  onSelectEvent: (event: TGroupSubjectListEvent) => void;
+  onSelect: (event: TGroupSubjectList) => void;
   where: TWhere[];
-  onWhereEvent: (event: TGroupSubjectListEvent) => void;
+  onWhere: (event: TGroupSubjectList) => void;
   order: TOrder[];
-  onOrderEvent: (event: TGroupSubjectListEvent) => void;
+  onOrder: (event: TGroupSubjectList) => void;
 };
 
 const { getList, getSchema } = stores.groupSubjectStore.getState();
@@ -25,11 +25,11 @@ const { getList, getSchema } = stores.groupSubjectStore.getState();
  */
 export function GroupSubjectList({
   selected,
-  onSelectEvent,
+  onSelect,
   where,
-  onWhereEvent,
+  onWhere,
   order,
-  onOrderEvent,
+  onOrder,
 }: TGroupSubjectListProps) {
   const dataSchema = groupSubjectStore((state) => state.dataSchema);
   const dataList = groupSubjectStore((state) => state.dataList);
@@ -49,9 +49,9 @@ export function GroupSubjectList({
       selected={selected}
       order={order}
       where={where}
-      onSelectEvent={(e) => onSelectEvent(e)}
-      onWhereEvent={(e) => onWhereEvent(e)}
-      onOrderEvent={(e) => onOrderEvent(e)}
+      onSelect={(e) => onSelect(e)}
+      onWhere={(e) => onWhere(e)}
+      onOrder={(e) => onOrder(e)}
     />
   );
 }

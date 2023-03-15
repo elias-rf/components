@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const Sinonimos: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const Sinonimos: TTable = {
       field: "Sinonimo",
       label: "Sinonimo",
       name: "Sinonimo",
-      type: "string",
+      typeField: "string",
       size: 40,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const Sinonimos: TTable = {
       field: "CdProdutoAssociado",
       label: "CdProdutoAssociado",
       name: "CdProdutoAssociado",
-      type: "string",
+      typeField: "string",
       size: 15,
       allowNull: false,
     },

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const CotacaoCASSIO: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const CotacaoCASSIO: TTable = {
       field: "CdFornecedor",
       label: "CdFornecedor",
       name: "CdFornecedor",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const CotacaoCASSIO: TTable = {
       field: "CdProduto",
       label: "CdProduto",
       name: "CdProduto",
-      type: "string",
+      typeField: "string",
       size: 15,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const CotacaoCASSIO: TTable = {
       field: "Quantidade",
       label: "Quantidade",
       name: "Quantidade",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -34,7 +34,7 @@ export const CotacaoCASSIO: TTable = {
       field: "VlTabela",
       label: "VlTabela",
       name: "VlTabela",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -43,7 +43,7 @@ export const CotacaoCASSIO: TTable = {
       field: "VlLiquido",
       label: "VlLiquido",
       name: "VlLiquido",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tManutencaoPreventivaItem: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tManutencaoPreventivaItem: TTable = {
       field: "fkManutencaoPreventiva",
       label: "fkManutencaoPreventiva",
       name: "fkManutencaoPreventiva",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const tManutencaoPreventivaItem: TTable = {
       field: "fkMaquinaCheckListItem",
       label: "fkMaquinaCheckListItem",
       name: "fkMaquinaCheckListItem",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const tManutencaoPreventivaItem: TTable = {
       field: "ManutencaoOK",
       label: "ManutencaoOK",
       name: "ManutencaoOK",
-      type: "int",
+      typeField: "int",
       size: 1,
       allowNull: false,
       defaultValue: "0",

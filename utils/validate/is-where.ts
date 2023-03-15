@@ -1,4 +1,4 @@
-import { TFieldServer, TWhere } from "../../types";
+import { TField, TWhere } from "../../types";
 import { isArray } from "../identify/is-array";
 import { isNull } from "../identify/is-null";
 import { isObject } from "../identify/is-object";
@@ -6,10 +6,7 @@ import { isString } from "../identify/is-string";
 import { isUndefined } from "../identify/is-undefined";
 import { namesFromFields } from "../schema/names-from-fields";
 
-export function isWhere(
-  where: TWhere[],
-  fields: TFieldServer[]
-): string | null {
+export function isWhere(where: TWhere[], fields: TField[]): string | null {
   if (isNull(where) || isUndefined(where))
     return "where deve ser no formato [field, igualdade, valor]";
   if (!isArray(where) && (isObject(where) || isString(where)))

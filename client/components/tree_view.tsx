@@ -2,9 +2,8 @@ import chevronDown from "@iconify/icons-carbon/chevron-down";
 import chevronRight from "@iconify/icons-carbon/chevron-right";
 import { InlineIcon } from "@iconify/react";
 import { twMerge } from "tailwind-merge";
-import { TEvent } from "../../types";
 
-type TTreeViewEvent = TEvent & {
+type TTreeViewEvent = any & {
   component: "TreeView";
   event: "onSelectEvent";
 };

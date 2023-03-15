@@ -23,7 +23,7 @@ export function storeCreate(fileName: string) {
   const segments = getSegments(file);
 
   const template = `import { create } from "zustand";
-import { TFieldClient } from "../../types";
+import { TField } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { ${tableNameCamel}ServiceFactory } from "./${tableNameParam}.service";
 import type {
@@ -47,7 +47,7 @@ type T${tableNamePascal}Store = {
   getList: T${tableNamePascal}List;
   dataRead: T${tableNamePascal};
   getRead: T${tableNamePascal}Read;
-  dataSchema: TFieldClient[];
+  dataSchema: TField[];
   getSchema: T${tableNamePascal}Schema;
   dataClear: T${tableNamePascal};
   getClear: T${tableNamePascal}Clear;

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const FilialMetas: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const FilialMetas: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const FilialMetas: TTable = {
       field: "Data",
       label: "Data",
       name: "Data",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -26,7 +26,7 @@ export const FilialMetas: TTable = {
       field: "VlMeta",
       label: "VlMeta",
       name: "VlMeta",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,

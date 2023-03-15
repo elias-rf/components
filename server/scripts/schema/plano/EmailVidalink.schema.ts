@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const EmailVidalink: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const EmailVidalink: TTable = {
       field: "Email",
       label: "Email",
       name: "Email",
-      type: "string",
+      typeField: "string",
       size: 100,
     },
   ],

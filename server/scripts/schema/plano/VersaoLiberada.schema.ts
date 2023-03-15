@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const VersaoLiberada: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const VersaoLiberada: TTable = {
       field: "CdEmpresa",
       label: "CdEmpresa",
       name: "CdEmpresa",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const VersaoLiberada: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const VersaoLiberada: TTable = {
       field: "Versao",
       label: "Versao",
       name: "Versao",
-      type: "string",
+      typeField: "string",
       size: 16,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ export const VersaoLiberada: TTable = {
       field: "Release",
       label: "Release",
       name: "Release",
-      type: "string",
+      typeField: "string",
       size: 16,
       allowNull: false,
     },

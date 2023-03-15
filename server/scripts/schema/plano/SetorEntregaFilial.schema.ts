@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const SetorEntregaFilial: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const SetorEntregaFilial: TTable = {
       field: "CdSetorEntrega",
       label: "CdSetorEntrega",
       name: "CdSetorEntrega",
-      type: "int",
+      typeField: "int",
       size: 5,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const SetorEntregaFilial: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const SetorEntregaFilial: TTable = {
       field: "ImpressoraOrdemSeparacao",
       label: "ImpressoraOrdemSeparacao",
       name: "ImpressoraOrdemSeparacao",
-      type: "string",
+      typeField: "string",
       size: 128,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ export const SetorEntregaFilial: TTable = {
       field: "FgAtivo",
       label: "FgAtivo",
       name: "FgAtivo",
-      type: "string",
+      typeField: "string",
       size: 1,
       allowNull: false,
     },
@@ -40,7 +40,7 @@ export const SetorEntregaFilial: TTable = {
       field: "DtUltAtualizacao",
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

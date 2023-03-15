@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const RetornoCotacao: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const RetornoCotacao: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const RetornoCotacao: TTable = {
       field: "NumCotacao",
       label: "NumCotacao",
       name: "NumCotacao",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -26,7 +26,7 @@ export const RetornoCotacao: TTable = {
       field: "CdFornecedor",
       label: "CdFornecedor",
       name: "CdFornecedor",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -35,7 +35,7 @@ export const RetornoCotacao: TTable = {
       field: "DtCotacao",
       label: "DtCotacao",
       name: "DtCotacao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -44,14 +44,14 @@ export const RetornoCotacao: TTable = {
       field: "PrazoPgto",
       label: "PrazoPgto",
       name: "PrazoPgto",
-      type: "string",
+      typeField: "string",
       size: 512,
     },
     {
       field: "PrazoEntrega",
       label: "PrazoEntrega",
       name: "PrazoEntrega",
-      type: "string",
+      typeField: "string",
       size: 512,
     },
   ],

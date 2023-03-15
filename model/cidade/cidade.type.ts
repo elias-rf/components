@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TCidadePk {
@@ -11,7 +11,7 @@ export interface TCidade extends TCidadePk {
   uf?: string;
 }
 
-export type TCidadeFields = keyof Required<TCidade>
+export type TCidadeFields = keyof Required<TCidade>;
 
 export type TCidadeIds = {
   [pk in keyof Required<TCidadePk>]: any;
@@ -20,7 +20,7 @@ export type TCidadeSelect = TSelect<TCidadeFields>;
 export type TCidadeWhere = TWhere<TCidadeFields>;
 export type TCidadeOrder = TOrder<TCidadeFields>;
 
-export type TCidadeSchema = () => Promise<TFieldClient[]>;
+export type TCidadeSchema = () => Promise<TField[]>;
 export type TCidadeClear = () => Promise<TCidade>;
 export type TCidadeList = (args: {
   where?: TWhere<TCidadeFields>[];
@@ -42,9 +42,7 @@ export type TCidadeUpdate = (args: {
   data: TCidade;
   select?: TSelect<TCidadeFields>;
 }) => Promise<TCidade>;
-export type TCidadeDel = (args: {
-  id: TCidadeIds;
-}) => Promise<number>;
+export type TCidadeDel = (args: { id: TCidadeIds }) => Promise<number>;
 
 //#region def
 //#endregion
@@ -65,11 +63,11 @@ export type TCidadeCrud = {
 
 export type TCidadeModel = TCidadeCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TCidadeRpc = TCidadeModel;

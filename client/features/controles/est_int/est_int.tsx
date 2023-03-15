@@ -1,5 +1,4 @@
 import React from "react";
-import { TEvent } from "../../../../types";
 import { day } from "../../../../utils/date/day";
 import { EsterilizacaoInternaDiario } from "./est_int_diario";
 import { EsterilizacaoInternaMensal } from "./est_int_mensal";
@@ -17,7 +16,7 @@ export function EstInt({ dia }: EsterilizacaoInternaProp) {
 
   const mesInicial = { mes: day(dia).subtract(13, "month").format("YYYY-MM") };
 
-  function handleOnChangeEvent(event: TEvent) {
+  function handleOnChange(event: any) {
     if (event.name === "mensal") setMesCorrente(event.value);
     if (event.name === "diario") setDiaCorrente(event.value);
     if (event.name === "produto") setProdutoCorrente(event.value);
@@ -29,22 +28,22 @@ export function EstInt({ dia }: EsterilizacaoInternaProp) {
         <EsterilizacaoInternaMensal
           mesInicial={mesInicial}
           mesCorrente={mesCorrente}
-          onSelectEvent={handleOnChangeEvent}
+          onSelect={handleOnChange}
         >
           <EsterilizacaoInternaDiario
             mesCorrente={mesCorrente}
             diaCorrente={diaCorrente}
-            onSelectEvent={handleOnChangeEvent}
+            onSelect={handleOnChange}
           >
             <EsterilizacaoInternaProduto
               diaCorrente={diaCorrente}
               produtoCorrente={produtoCorrente}
-              onSelectEvent={handleOnChangeEvent}
+              onSelect={handleOnChange}
             >
               <EsterilizacaoInternaModelo
                 diaCorrente={diaCorrente}
                 produtoCorrente={produtoCorrente}
-                onSelectEvent={handleOnChangeEvent}
+                onSelect={handleOnChange}
               ></EsterilizacaoInternaModelo>
             </EsterilizacaoInternaProduto>
           </EsterilizacaoInternaDiario>

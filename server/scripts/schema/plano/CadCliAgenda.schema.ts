@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const CadCliAgenda: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const CadCliAgenda: TTable = {
       field: "CdCliente",
       label: "CdCliente",
       name: "CadCliAgenda_id",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       primaryKey: true,
@@ -18,7 +18,7 @@ export const CadCliAgenda: TTable = {
       field: "FgTeleAtivo",
       label: "FgTeleAtivo",
       name: "FgTeleAtivo",
-      type: "string",
+      typeField: "string",
       size: 1,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const CadCliAgenda: TTable = {
       field: "DtultContato",
       label: "DtultContato",
       name: "DtultContato",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

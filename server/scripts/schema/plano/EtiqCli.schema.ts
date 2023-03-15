@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const EtiqCli: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const EtiqCli: TTable = {
       field: "CdCliente",
       label: "CdCliente",
       name: "CdCliente",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
     },
@@ -16,7 +16,7 @@ export const EtiqCli: TTable = {
       field: "Tipo",
       label: "Tipo",
       name: "Tipo",
-      type: "string",
+      typeField: "string",
       size: 1,
       allowNull: false,
     },

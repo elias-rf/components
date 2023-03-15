@@ -2,7 +2,7 @@ import deepmerge from "ts-deepmerge";
 import { rpcFactory } from "../../client/lib/http/rpc.factory";
 import { TOrdemProducaoOperacaoRpc } from "./ordem-producao-operacao.type";
 //#region import
-import { TFieldClient } from "../../types";
+import { TField } from "../../types/model";
 import { fetcherRpc } from "../../utils/api/fetcher-rpc";
 import { cache } from "../../utils/cache";
 import { isEmpty } from "../../utils/identify/is_empty";
@@ -13,7 +13,7 @@ export const ordemProducaoOperacaoService = deepmerge(
   {
     //#region service
     query: {
-      async diarioSchema(): Promise<TFieldClient[]> {
+      async diarioSchema(): Promise<TField[]> {
         return cache.fetch({
           key: "ordemProducaoOperacaoDiarioSchema",
           callback: fetcherRpc.query,
@@ -36,7 +36,7 @@ export const ordemProducaoOperacaoService = deepmerge(
         });
       },
 
-      async mensalSchema(): Promise<TFieldClient[]> {
+      async mensalSchema(): Promise<TField[]> {
         return cache.fetch({
           key: "ordemProducaoOperacaoMensalSchema",
           callback: fetcherRpc.query,
@@ -55,7 +55,7 @@ export const ordemProducaoOperacaoService = deepmerge(
         });
       },
 
-      async produtoSchema(): Promise<TFieldClient[]> {
+      async produtoSchema(): Promise<TField[]> {
         return cache.fetch({
           key: "ordemProducaoOperacaoProdutoSchema",
           callback: fetcherRpc.query,
@@ -74,18 +74,18 @@ export const ordemProducaoOperacaoService = deepmerge(
         });
       },
 
-      async modeloSchema(): Promise<TFieldClient[]> {
+      async modeloSchema(): Promise<TField[]> {
         return [
           {
             name: "modelo",
             label: "Modelo",
             primaryKey: true,
-            type: "string",
+            typeField: "string",
           },
           {
             name: "quantidade",
             label: "Quantidade",
-            type: "int",
+            typeField: "int",
           },
         ];
       },
@@ -105,7 +105,7 @@ export const ordemProducaoOperacaoService = deepmerge(
         });
       },
 
-      async turnoSchema(): Promise<TFieldClient[]> {
+      async turnoSchema(): Promise<TField[]> {
         return cache.fetch({
           key: "ordemProducaoOperacaoTurnoSchema",
           callback: fetcherRpc.query,

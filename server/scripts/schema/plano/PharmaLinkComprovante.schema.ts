@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const PharmaLinkComprovante: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const PharmaLinkComprovante: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const PharmaLinkComprovante: TTable = {
       field: "NumCupom",
       label: "NumCupom",
       name: "NumCupom",
-      type: "int",
+      typeField: "int",
       size: 5,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const PharmaLinkComprovante: TTable = {
       field: "Sequencia",
       label: "Sequencia",
       name: "Sequencia",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ export const PharmaLinkComprovante: TTable = {
       field: "Texto",
       label: "Texto",
       name: "Texto",
-      type: "string",
+      typeField: "string",
       size: 128,
       allowNull: false,
     },

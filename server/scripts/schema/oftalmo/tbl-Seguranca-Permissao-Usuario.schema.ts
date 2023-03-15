@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tbl_Seguranca_Permissao_Usuario: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tbl_Seguranca_Permissao_Usuario: TTable = {
       field: "kPermissao",
       label: "kPermissao",
       name: "kPermissao",
-      type: "int",
+      typeField: "int",
       size: 4,
       autoIncrement: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const tbl_Seguranca_Permissao_Usuario: TTable = {
       field: "fkObjeto",
       label: "fkObjeto",
       name: "fkObjeto",
-      type: "string",
+      typeField: "string",
       size: 4,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const tbl_Seguranca_Permissao_Usuario: TTable = {
       field: "fkUsuario",
       label: "fkUsuario",
       name: "fkUsuario",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -33,7 +33,7 @@ export const tbl_Seguranca_Permissao_Usuario: TTable = {
       field: "Permissao",
       label: "Permissao",
       name: "Permissao",
-      type: "int",
+      typeField: "int",
       size: 1,
       allowNull: false,
     },
@@ -41,7 +41,7 @@ export const tbl_Seguranca_Permissao_Usuario: TTable = {
       field: "actions",
       label: "actions",
       name: "actions",
-      type: "string",
+      typeField: "string",
       size: 200,
     },
   ],

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const AssocEntregadorCEP: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const AssocEntregadorCEP: TTable = {
       field: "CdEmitente",
       label: "CdEmitente",
       name: "CdEmitente",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const AssocEntregadorCEP: TTable = {
       field: "CEPInicial",
       label: "CEPInicial",
       name: "CEPInicial",
-      type: "string",
+      typeField: "string",
       size: 8,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const AssocEntregadorCEP: TTable = {
       field: "CEPFinal",
       label: "CEPFinal",
       name: "CEPFinal",
-      type: "string",
+      typeField: "string",
       size: 8,
     },
   ],

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { TEvent } from "../../../types";
 import { Textbox } from "./textbox";
 
 const meta: Meta<typeof Textbox> = {
@@ -9,9 +8,9 @@ const meta: Meta<typeof Textbox> = {
   },
   component: Textbox,
   argTypes: {
-    onBlurEvent: { action: "onBlur" },
-    onChangeEvent: { action: "onChange" },
-    onInputEvent: { action: "onInput" },
+    onBlur: { action: "onBlur" },
+    onChange: { action: "onChange" },
+    onInput: { action: "onInput" },
   },
 };
 
@@ -21,18 +20,18 @@ type Story = StoryObj<typeof Textbox>;
 function TextboxState(props: any) {
   const [vlr, setVlr] = React.useState("");
 
-  function handleBlur(e: TEvent) {
-    setVlr(e.value);
+  function handleBlur(e: React.FormEvent<HTMLInputElement>) {
+    setVlr(e.currentTarget.value);
     if (props.onBlur) props.onBlur(e);
   }
 
-  function handleInput(e: TEvent) {
-    setVlr(e.value);
+  function handleInput(e: React.FormEvent<HTMLInputElement>) {
+    setVlr(e.currentTarget.value);
     props.onInput(e);
   }
 
-  function handleChange(e: TEvent) {
-    setVlr(e.value);
+  function handleChange(e: React.FormEvent<HTMLInputElement>) {
+    setVlr(e.currentTarget.value);
     props.onChange(e);
   }
 

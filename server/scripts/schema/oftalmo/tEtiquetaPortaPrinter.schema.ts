@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tEtiquetaPortaPrinter: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tEtiquetaPortaPrinter: TTable = {
       field: "Port",
       label: "Port",
       name: "Port",
-      type: "string",
+      typeField: "string",
       size: 5,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const tEtiquetaPortaPrinter: TTable = {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 50,
       allowNull: false,
     },

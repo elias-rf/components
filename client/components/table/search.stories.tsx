@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import { TEvent, TFieldClient, TWhere } from "../../../types";
+import { TWhere } from "../../../types";
+import { TField } from "../../../types/model";
 import { Search } from "./search";
 
 export default {
@@ -12,11 +13,11 @@ export default {
   },
 } as ComponentMeta<typeof Search>;
 
-const schema: TFieldClient[] = [
+const schema: TField[] = [
   {
     label: "ID",
     name: "id",
-    type: "int",
+    typeField: "int",
     labelClass: "text-left",
     fieldClass: "text-left",
   },
@@ -38,7 +39,7 @@ const schema: TFieldClient[] = [
 export const Default: ComponentStory<typeof Search> = (props: any) => {
   const [where, setWhere] = React.useState<TWhere[]>([["id", "<", "4"]]);
 
-  function handleOnWhere(event: TEvent) {
+  function handleOnWhere(event: any) {
     setWhere(event.value);
     props.onWhere(event);
     props.showWhere(event.value);
@@ -46,7 +47,11 @@ export const Default: ComponentStory<typeof Search> = (props: any) => {
 
   return (
     <div>
-      <Search where={where} schema={schema} onWhereEvent={handleOnWhere} />
+      <Search
+        where={where}
+        schema={schema}
+        onWhere={handleOnWhere}
+      />
     </div>
   );
 };

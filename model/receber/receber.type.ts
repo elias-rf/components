@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TReceberPk {
@@ -70,7 +70,7 @@ export interface TReceber extends TReceberPk {
   FgEmailAVencer?: string;
 }
 
-export type TReceberFields = keyof Required<TReceber>
+export type TReceberFields = keyof Required<TReceber>;
 
 export type TReceberIds = {
   [pk in keyof Required<TReceberPk>]: any;
@@ -79,7 +79,7 @@ export type TReceberSelect = TSelect<TReceberFields>;
 export type TReceberWhere = TWhere<TReceberFields>;
 export type TReceberOrder = TOrder<TReceberFields>;
 
-export type TReceberSchema = () => Promise<TFieldClient[]>;
+export type TReceberSchema = () => Promise<TField[]>;
 export type TReceberClear = () => Promise<TReceber>;
 export type TReceberList = (args: {
   where?: TWhere<TReceberFields>[];
@@ -101,9 +101,7 @@ export type TReceberUpdate = (args: {
   data: TReceber;
   select?: TSelect<TReceberFields>;
 }) => Promise<TReceber>;
-export type TReceberDel = (args: {
-  id: TReceberIds;
-}) => Promise<number>;
+export type TReceberDel = (args: { id: TReceberIds }) => Promise<number>;
 
 //#region def
 //#endregion
@@ -124,11 +122,11 @@ export type TReceberCrud = {
 
 export type TReceberModel = TReceberCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TReceberRpc = TReceberModel;

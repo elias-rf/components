@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TProdutoControlePk {
@@ -28,7 +28,7 @@ export interface TProdutoControle extends TProdutoControlePk {
   modelo_id?: string;
 }
 
-export type TProdutoControleFields = keyof Required<TProdutoControle>
+export type TProdutoControleFields = keyof Required<TProdutoControle>;
 
 export type TProdutoControleIds = {
   [pk in keyof Required<TProdutoControlePk>]: any;
@@ -37,7 +37,7 @@ export type TProdutoControleSelect = TSelect<TProdutoControleFields>;
 export type TProdutoControleWhere = TWhere<TProdutoControleFields>;
 export type TProdutoControleOrder = TOrder<TProdutoControleFields>;
 
-export type TProdutoControleSchema = () => Promise<TFieldClient[]>;
+export type TProdutoControleSchema = () => Promise<TField[]>;
 export type TProdutoControleClear = () => Promise<TProdutoControle>;
 export type TProdutoControleList = (args: {
   where?: TWhere<TProdutoControleFields>[];
@@ -82,11 +82,11 @@ export type TProdutoControleCrud = {
 
 export type TProdutoControleModel = TProdutoControleCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TProdutoControleRpc = TProdutoControleModel;

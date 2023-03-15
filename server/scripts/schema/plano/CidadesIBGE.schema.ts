@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const CidadesIBGE: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const CidadesIBGE: TTable = {
       field: "CdUFIBGE",
       label: "CdUFIBGE",
       name: "CdUFIBGE",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const CidadesIBGE: TTable = {
       field: "CdCidadeIBGE",
       label: "CdCidadeIBGE",
       name: "CdCidadeIBGE",
-      type: "string",
+      typeField: "string",
       size: 5,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const CidadesIBGE: TTable = {
       field: "NmCidadeIBGE",
       label: "NmCidadeIBGE",
       name: "NmCidadeIBGE",
-      type: "string",
+      typeField: "string",
       size: 80,
       allowNull: false,
     },

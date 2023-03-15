@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tbl_Sistema_AutoNumber: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tbl_Sistema_AutoNumber: TTable = {
       field: "Tabela",
       label: "Tabela",
       name: "tbl_Sistema_AutoNumber_id",
-      type: "string",
+      typeField: "string",
       size: 50,
       primaryKey: true,
       allowNull: false,
@@ -17,14 +17,14 @@ export const tbl_Sistema_AutoNumber: TTable = {
       field: "Campo",
       label: "Campo",
       name: "Campo",
-      type: "string",
+      typeField: "string",
       size: 30,
     },
     {
       field: "NextID",
       label: "NextID",
       name: "NextID",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },

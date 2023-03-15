@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const TabelaSelic: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const TabelaSelic: TTable = {
       field: "DtBase",
       label: "DtBase",
       name: "TabelaSelic_id",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       primaryKey: true,
@@ -18,7 +18,7 @@ export const TabelaSelic: TTable = {
       field: "PercSelic",
       label: "PercSelic",
       name: "PercSelic",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -27,7 +27,7 @@ export const TabelaSelic: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

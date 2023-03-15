@@ -1,4 +1,4 @@
-import { TDb } from "../../types/index";
+import { TDb } from "../../types/model";
 import { isValid, z } from "./z";
 
 export function zTable(table: string, entitySchema: TDb) {

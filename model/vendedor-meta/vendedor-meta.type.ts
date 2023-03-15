@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TVendedorMetaPk {
@@ -9,7 +9,7 @@ export interface TVendedorMeta extends TVendedorMetaPk {
   meta?: number;
 }
 
-export type TVendedorMetaFields = keyof Required<TVendedorMeta>
+export type TVendedorMetaFields = keyof Required<TVendedorMeta>;
 
 export type TVendedorMetaIds = {
   [pk in keyof Required<TVendedorMetaPk>]: any;
@@ -18,7 +18,7 @@ export type TVendedorMetaSelect = TSelect<TVendedorMetaFields>;
 export type TVendedorMetaWhere = TWhere<TVendedorMetaFields>;
 export type TVendedorMetaOrder = TOrder<TVendedorMetaFields>;
 
-export type TVendedorMetaSchema = () => Promise<TFieldClient[]>;
+export type TVendedorMetaSchema = () => Promise<TField[]>;
 export type TVendedorMetaClear = () => Promise<TVendedorMeta>;
 export type TVendedorMetaList = (args: {
   where?: TWhere<TVendedorMetaFields>[];
@@ -63,11 +63,11 @@ export type TVendedorMetaCrud = {
 
 export type TVendedorMetaModel = TVendedorMetaCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TVendedorMetaRpc = TVendedorMetaModel;

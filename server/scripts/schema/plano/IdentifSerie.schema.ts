@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const IdentifSerie: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const IdentifSerie: TTable = {
       field: "CdProduto",
       label: "CdProduto",
       name: "CdProduto",
-      type: "string",
+      typeField: "string",
       size: 15,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const IdentifSerie: TTable = {
       field: "NumSerieProduto",
       label: "NumSerieProduto",
       name: "NumSerieProduto",
-      type: "string",
+      typeField: "string",
       size: 20,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const IdentifSerie: TTable = {
       field: "DtLimiteGarantia",
       label: "DtLimiteGarantia",
       name: "DtLimiteGarantia",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
     },
@@ -32,14 +32,14 @@ export const IdentifSerie: TTable = {
       field: "Prazo",
       label: "Prazo",
       name: "Prazo",
-      type: "int",
+      typeField: "int",
       size: 4,
     },
     {
       field: "DtLimiteGarantiaVenda",
       label: "DtLimiteGarantiaVenda",
       name: "DtLimiteGarantiaVenda",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
     },
@@ -47,7 +47,7 @@ export const IdentifSerie: TTable = {
       field: "Status",
       label: "Status",
       name: "Status",
-      type: "string",
+      typeField: "string",
       size: 1,
     },
   ],

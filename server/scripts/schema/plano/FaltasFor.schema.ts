@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const FaltasFor: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const FaltasFor: TTable = {
       field: "CdFornecedor",
       label: "CdFornecedor",
       name: "CdFornecedor",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,14 +17,14 @@ export const FaltasFor: TTable = {
       field: "CdReferencia",
       label: "CdReferencia",
       name: "CdReferencia",
-      type: "string",
+      typeField: "string",
       size: 15,
     },
     {
       field: "CdProduto",
       label: "CdProduto",
       name: "CdProduto",
-      type: "string",
+      typeField: "string",
       size: 15,
       allowNull: false,
     },
@@ -32,14 +32,14 @@ export const FaltasFor: TTable = {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 40,
     },
     {
       field: "PrecoV",
       label: "PrecoV",
       name: "PrecoV",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
     },
@@ -47,7 +47,7 @@ export const FaltasFor: TTable = {
       field: "PrecoF",
       label: "PrecoF",
       name: "PrecoF",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
     },

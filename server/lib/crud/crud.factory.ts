@@ -1,5 +1,5 @@
 import type { Knex } from "knex";
-import type { TTable } from "../../../types";
+import type { TTable } from "../../../types/model";
 import { methods } from "./methods";
 
 export function crudFactory(connection: Knex, table: TTable) {

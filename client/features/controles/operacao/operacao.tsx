@@ -1,5 +1,4 @@
 import React from "react";
-import { TEvent } from "../../../../types";
 import { day } from "../../../../utils/date/day";
 import { Label } from "../../../components/form";
 import { Select } from "../../../components/select/select";
@@ -27,13 +26,13 @@ export function Operacao({ dia }: OperacaoProp) {
 
   const mesInicial = { mes: day(dia).subtract(13, "month").format("YYYY-MM") };
 
-  function handleOnChangeEvent(event: TEvent) {
+  function handleOnChange(event: any) {
     if (event.name === "mensal") setMesCorrente(event.value);
     if (event.name === "diario") setDiaCorrente(event.value);
     if (event.name === "produto") setProdutoCorrente(event.value);
   }
 
-  function handleSelect(event: TEvent) {
+  function handleSelect(event: any) {
     setOperacaoCorrente(event.value);
   }
 
@@ -45,7 +44,7 @@ export function Operacao({ dia }: OperacaoProp) {
           <Select
             name="operacao"
             value={operacaoCorrente.operacao || ""}
-            onChangeEvent={handleSelect}
+            onChange={handleSelect}
           >
             <option value="1010">1010 - Montagem lado 1</option>
             <option value="1015">1015 - Torneamento radial</option>
@@ -63,19 +62,19 @@ export function Operacao({ dia }: OperacaoProp) {
           operacao={operacaoCorrente}
           mesInicial={mesInicial}
           mesCorrente={mesCorrente}
-          onSelectEvent={handleOnChangeEvent}
+          onSelect={handleOnChange}
         >
           <OperacaoDiario
             operacao={operacaoCorrente}
             mes={mesCorrente}
             diaCorrente={diaCorrente}
-            onSelectEvent={handleOnChangeEvent}
+            onSelect={handleOnChange}
           >
             <OperacaoProduto
               operacao={operacaoCorrente}
               dia={diaCorrente}
               produtoCorrente={produtoCorrente}
-              onSelectEvent={handleOnChangeEvent}
+              onSelect={handleOnChange}
             >
               <OperacaoModelo
                 operacao={operacaoCorrente}

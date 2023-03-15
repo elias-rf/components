@@ -1,7 +1,8 @@
 import { action } from "@storybook/addon-actions";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import { TEvent, TFieldClient, TOrder, TWhere } from "../../../types";
+import { TOrder, TWhere } from "../../../types";
+import { TField } from "../../../types/model";
 import delIcon from "../../assets/icons/delete.svg";
 import editIcon from "../../assets/icons/edit.svg";
 import newIcon from "../../assets/icons/new.svg";
@@ -24,11 +25,11 @@ const data: { [index: string]: any }[] = [
   { id: "3", nome: "cicrano", compra: 3.14 },
 ];
 
-const schema: TFieldClient[] = [
+const schema: TField[] = [
   {
     label: "ID",
     name: "id",
-    type: "string",
+    typeField: "string",
     labelClass: "text-left",
     fieldClass: "text-left",
     primaryKey: true,
@@ -66,18 +67,18 @@ export const Procura: ComponentStory<typeof Table> = () => {
   const [where, setWhere] = React.useState<TWhere[]>([["id", "=", "4"]]);
   const [orderBy, setOrderBy] = React.useState<TOrder[]>([["id", "desc"]]);
 
-  function handleWhere(event: TEvent) {
-    setWhere(event.value);
-    action("where")(event.value);
+  function handleWhere(event: any) {
+    setWhere(event.currentTarget.value);
+    action("where")(event.currentTarget.value);
   }
-  function handleSelect(event: TEvent) {
-    setSelected(event.value);
-    action("select")(event.value);
+  function handleSelect(event: any) {
+    setSelected(event.currentTarget.value);
+    action("select")(event.currentTarget.value);
   }
 
-  function handleOrder(event: TEvent) {
-    setOrderBy(event.value);
-    action("order")(event.value);
+  function handleOrder(event: any) {
+    setOrderBy(event.currentTarget.value);
+    action("order")(event.currentTarget.value);
   }
 
   return (
@@ -85,7 +86,7 @@ export const Procura: ComponentStory<typeof Table> = () => {
       <Search
         where={where}
         schema={schema}
-        onWhereEvent={handleWhere}
+        onWhere={handleWhere}
       />
       <Table
         name={"table1"}
@@ -94,9 +95,9 @@ export const Procura: ComponentStory<typeof Table> = () => {
         selected={selected}
         order={orderBy}
         where={where}
-        onOrderEvent={handleOrder}
-        onSelectEvent={handleSelect}
-        onWhereEvent={handleWhere}
+        onOrder={handleOrder}
+        onSelect={handleSelect}
+        onWhere={handleWhere}
       />
     </div>
   );
@@ -108,18 +109,18 @@ export const Filtrado: ComponentStory<typeof Table> = () => {
   const [where, setWhere] = React.useState<TWhere[]>([["id", "=", "4"]]);
   const [orderBy, setOrderBy] = React.useState<TOrder[]>([["id", "desc"]]);
 
-  function handleWhere(event: TEvent) {
-    setWhere(event.value);
-    action("where")(event.value);
+  function handleWhere(event: any) {
+    setWhere(event.currentTarget.value);
+    action("where")(event.currentTarget.value);
   }
-  function handleSelect(event: TEvent) {
-    setSelected(event.value);
-    action("select")(event.value);
+  function handleSelect(event: any) {
+    setSelected(event.currentTarget.value);
+    action("select")(event.currentTarget.value);
   }
 
-  function handleOrder(event: TEvent) {
-    setOrderBy(event.value);
-    action("order")(event.value);
+  function handleOrder(event: any) {
+    setOrderBy(event.currentTarget.value);
+    action("order")(event.currentTarget.value);
   }
 
   return (
@@ -131,9 +132,9 @@ export const Filtrado: ComponentStory<typeof Table> = () => {
         selected={selected}
         order={orderBy}
         where={where}
-        onOrderEvent={handleOrder}
-        onSelectEvent={handleSelect}
-        onWhereEvent={handleWhere}
+        onOrder={handleOrder}
+        onSelect={handleSelect}
+        onWhere={handleWhere}
       />
     </div>
   );
@@ -145,18 +146,18 @@ export const Tree: ComponentStory<typeof Table> = (props: any) => {
   const [_where, setWhere] = React.useState<TWhere[]>([["id", "=", "4"]]);
   const [orderBy, setOrderBy] = React.useState<TOrder[]>([["id", "desc"]]);
 
-  function handleWhere(event: TEvent) {
-    setWhere(event.value);
-    props.showWhere(event.value);
+  function handleWhere(event: any) {
+    setWhere(event.currentTarget.value);
+    props.showWhere(event.currentTarget.value);
   }
-  function handleSelect(event: TEvent) {
-    setSelected(event.value);
-    props.showSelected(event.value);
+  function handleSelect(event: any) {
+    setSelected(event.currentTarget.value);
+    props.showSelected(event.currentTarget.value);
   }
 
-  function handleOrder(event: TEvent) {
-    setOrderBy(event.value);
-    props.showOrderBy(event.value);
+  function handleOrder(event: any) {
+    setOrderBy(event.currentTarget.value);
+    props.showOrderBy(event.currentTarget.value);
   }
 
   return (
@@ -167,9 +168,9 @@ export const Tree: ComponentStory<typeof Table> = (props: any) => {
         schema={schema}
         selected={selected}
         order={orderBy}
-        onOrderEvent={handleOrder}
-        onSelectEvent={handleSelect}
-        onWhereEvent={handleWhere}
+        onOrder={handleOrder}
+        onSelect={handleSelect}
+        onWhere={handleWhere}
       >
         <Table
           name={"table2"}
@@ -217,18 +218,18 @@ export const TreeFilter: ComponentStory<typeof Table> = () => {
       );
     },
   };
-  function handleWhere(event: TEvent) {
-    setWhere(event.value);
-    action("where")(event.value);
+  function handleWhere(event: any) {
+    setWhere(event.currentTarget.value);
+    action("where")(event.currentTarget.value);
   }
-  function handleSelect(event: TEvent) {
-    setSelected(event.value);
-    action("select")(event.value);
+  function handleSelect(event: any) {
+    setSelected(event.currentTarget.value);
+    action("select")(event.currentTarget.value);
   }
 
-  function handleOrder(event: TEvent) {
-    setOrderBy(event.value);
-    action("order")(event.value);
+  function handleOrder(event: any) {
+    setOrderBy(event.currentTarget.value);
+    action("order")(event.currentTarget.value);
   }
 
   return (
@@ -240,9 +241,9 @@ export const TreeFilter: ComponentStory<typeof Table> = () => {
         selected={selected}
         order={orderBy}
         where={where}
-        onOrderEvent={handleOrder}
-        onSelectEvent={handleSelect}
-        onWhereEvent={handleWhere}
+        onOrder={handleOrder}
+        onSelect={handleSelect}
+        onWhere={handleWhere}
         commands={commands}
       >
         <Table

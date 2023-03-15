@@ -1,6 +1,6 @@
-import { TFieldServer } from "../../types";
+import { TField } from "../../types/model";
 
 /** busca fields em uma tabela */
-export function fieldsFromFields(fields: TFieldServer[]) {
-  return fields.map((fld) => fld.field);
+export function fieldsFromFields(fields: TField[]) {
+  return fields.map((fld) => fld.field || "");
 }

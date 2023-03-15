@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ConfiguracaoEmailCR: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ConfiguracaoEmailCR: TTable = {
       field: "CdEmpresa",
       label: "CdEmpresa",
       name: "ConfiguracaoEmailCR_id",
-      type: "int",
+      typeField: "int",
       size: 9,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ConfiguracaoEmailCR: TTable = {
       field: "FgEnvioAutomaticoEmailCR",
       label: "FgEnvioAutomaticoEmailCR",
       name: "FgEnvioAutomaticoEmailCR",
-      type: "string",
+      typeField: "string",
       size: 1,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const ConfiguracaoEmailCR: TTable = {
       field: "DiasCarenciaEnvioEmailCR",
       label: "DiasCarenciaEnvioEmailCR",
       name: "DiasCarenciaEnvioEmailCR",
-      type: "int",
+      typeField: "int",
       size: 5,
       allowNull: false,
     },
@@ -33,7 +33,7 @@ export const ConfiguracaoEmailCR: TTable = {
       field: "PrazoReEnvioEmailCR",
       label: "PrazoReEnvioEmailCR",
       name: "PrazoReEnvioEmailCR",
-      type: "int",
+      typeField: "int",
       size: 5,
       allowNull: false,
     },
@@ -41,7 +41,7 @@ export const ConfiguracaoEmailCR: TTable = {
       field: "DtUltimoEnvioEmail",
       label: "DtUltimoEnvioEmail",
       name: "DtUltimoEnvioEmail",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

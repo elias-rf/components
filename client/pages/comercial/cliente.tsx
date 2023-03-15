@@ -3,12 +3,8 @@ import { TClienteIds } from "../../../model/cliente/cliente.type";
 import { Page } from "../../components/page/page";
 import { PageTitle } from "../../components/page/page_title";
 import { Tab, Tabs } from "../../components/tabs";
-import { TTabsEvent } from "../../components/tabs/tabs.types";
 import { ClienteForm } from "../../features/cliente/cliente_form";
-import {
-  ClienteList,
-  TClienteListEvent,
-} from "../../features/cliente/cliente_list";
+import { ClienteList } from "../../features/cliente/cliente_list";
 import { ClienteQuantidade } from "../../features/cliente/cliente_quantidade";
 import { ClienteValor } from "../../features/cliente/cliente_valor";
 import { ClienteValorMedio } from "../../features/cliente/cliente_valor_medio";
@@ -21,18 +17,18 @@ export default function Cliente() {
   const [where, setWhere] = React.useState([]);
   const [order, setOrder] = React.useState([]);
 
-  function handleEvent(event: TClienteListEvent) {
-    if (event.event === "onSelectEvent") {
+  function handle(event: TClienteList) {
+    if (event.event === "onSelect") {
       setSelected(event.value);
     }
-    if (event.event === "onWhereEvent") {
+    if (event.event === "onWhere") {
       setWhere(event.value);
     }
-    if (event.event === "onOrderEvent") {
+    if (event.event === "onOrder") {
       setOrder(event.value);
     }
   }
-  function handleOnChangeTabs(event: TTabsEvent) {
+  function handleOnChangeTabs(event: TTabs) {
     console.log(event);
     setTabActive(event.value);
   }
@@ -44,7 +40,7 @@ export default function Cliente() {
       <section className={"flex flex-col gap-2"}>
         <Tabs
           active={tabActive}
-          onChangeEvent={handleOnChangeTabs}
+          onChange={handleOnChangeTabs}
         >
           <Tab
             id="form"
@@ -76,9 +72,9 @@ export default function Cliente() {
             selected={selected}
             where={where}
             order={order}
-            onSelectEvent={handleEvent}
-            onWhereEvent={handleEvent}
-            onOrderEvent={handleEvent}
+            onSelect={handle}
+            onWhere={handle}
+            onOrder={handle}
           />
         </div>
       </section>

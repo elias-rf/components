@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tMaquinaCheckList: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tMaquinaCheckList: TTable = {
       field: "fkMaquina",
       label: "fkMaquina",
       name: "fkMaquina",
-      type: "string",
+      typeField: "string",
       size: 30,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const tMaquinaCheckList: TTable = {
       field: "fkMaquinaCheckListItem",
       label: "fkMaquinaCheckListItem",
       name: "fkMaquinaCheckListItem",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },

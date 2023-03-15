@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ePharmaPrescritor: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ePharmaPrescritor: TTable = {
       field: "CdTipoPrescritor",
       label: "CdTipoPrescritor",
       name: "ePharmaPrescritor_id",
-      type: "int",
+      typeField: "int",
       size: 2,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ePharmaPrescritor: TTable = {
       field: "DescricaoPrescritor",
       label: "DescricaoPrescritor",
       name: "DescricaoPrescritor",
-      type: "string",
+      typeField: "string",
       size: 64,
       allowNull: false,
     },

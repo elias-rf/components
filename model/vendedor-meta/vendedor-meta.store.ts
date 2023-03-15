@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TFieldClient } from "../../types";
+import { TField } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { vendedorMetaService } from "./vendedor-meta.service";
 import type {
@@ -23,7 +23,7 @@ type TVendedorMetaStore = {
   getList: TVendedorMetaList;
   dataRead: TVendedorMeta;
   getRead: TVendedorMetaRead;
-  dataSchema: TFieldClient[];
+  dataSchema: TField[];
   getSchema: TVendedorMetaSchema;
   dataClear: TVendedorMeta;
   getClear: TVendedorMetaClear;

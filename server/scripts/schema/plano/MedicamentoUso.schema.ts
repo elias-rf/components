@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const MedicamentoUso: TTable = {
   database: "plano",
@@ -8,21 +8,21 @@ export const MedicamentoUso: TTable = {
       field: "CdProduto",
       label: "CdProduto",
       name: "CdProduto",
-      type: "string",
+      typeField: "string",
       size: 15,
     },
     {
       field: "CdCliente",
       label: "CdCliente",
       name: "CdCliente",
-      type: "string",
+      typeField: "string",
       size: 8,
     },
     {
       field: "DtInicio",
       label: "DtInicio",
       name: "DtInicio",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
     },
@@ -30,7 +30,7 @@ export const MedicamentoUso: TTable = {
       field: "DtFim",
       label: "DtFim",
       name: "DtFim",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
     },
@@ -38,7 +38,7 @@ export const MedicamentoUso: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
     },
@@ -46,7 +46,7 @@ export const MedicamentoUso: TTable = {
       field: "Posologia",
       label: "Posologia",
       name: "Posologia",
-      type: "string",
+      typeField: "string",
       size: 15,
     },
   ],

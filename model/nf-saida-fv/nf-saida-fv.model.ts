@@ -1,10 +1,9 @@
-
 import { crudFactory } from "../../server/lib/crud/crud.factory";
 import type { TConnections } from "../../types";
 import { nf_saida_fv } from "./nf-saida-fv.table";
 import type { TNfSaidaFvModel } from "./nf-saida-fv.type";
 //#region import
-import { TFieldClient } from "../../types";
+import { TField } from "../../types/model";
 import { z, zod } from "../../utils/zod/z";
 import { zsr } from "../../utils/zod/z-refine";
 //#endregion
@@ -14,12 +13,8 @@ export function nfSaidaFvModelFactory(
   { connections }: { connections: TConnections }
 ): //#endregion
 TNfSaidaFvModel {
-
-  const connection = connections[nf_saida_fv.database]
-  const crud = crudFactory(
-    connection,
-    nf_saida_fv
-  );
+  const connection = connections[nf_saida_fv.database];
+  const crud = crudFactory(connection, nf_saida_fv);
 
   //#region def
 
@@ -83,27 +78,27 @@ TNfSaidaFvModel {
         }[];
       },
 
-      async vendaDiarioSchema(): Promise<TFieldClient[]> {
+      async vendaDiarioSchema(): Promise<TField[]> {
         return [
           {
             name: "Dia",
             label: "Dia",
-            type: "string",
+            typeField: "string",
           },
           {
             name: "Produto",
             label: "Produto",
-            type: "string",
+            typeField: "string",
           },
           {
             name: "Quantidade",
             label: "Quantidade",
-            type: "int",
+            typeField: "int",
           },
           {
             name: "Valor",
             label: "Valor",
-            type: "float",
+            typeField: "float",
           },
         ];
       },
@@ -148,32 +143,32 @@ TNfSaidaFvModel {
         return qry;
       },
 
-      async vendaMensalClienteSchema(): Promise<TFieldClient[]> {
+      async vendaMensalClienteSchema(): Promise<TField[]> {
         return [
           {
             name: "anoMes",
             label: "Mês",
-            type: "string",
+            typeField: "string",
           },
           {
             name: "cliente_id",
             label: "Cód. Cliente",
-            type: "int",
+            typeField: "int",
           },
           {
             name: "NmCategoria",
             label: "Produto",
-            type: "string",
+            typeField: "string",
           },
           {
             name: "quantidade",
             label: "Quantidade",
-            type: "int",
+            typeField: "int",
           },
           {
             name: "valor",
             label: "Valor",
-            type: "float",
+            typeField: "float",
           },
         ];
       },
@@ -183,62 +178,62 @@ TNfSaidaFvModel {
           {
             name: "NmCategoria",
             label: "Categoria",
-            type: "string",
+            typeField: "string",
           },
           {
             name: "DtEmissao",
             label: "Emissão",
-            type: "date",
+            typeField: "date",
           },
           {
             name: "NumNota",
             label: "Nota Fiscal",
-            type: "string",
+            typeField: "string",
           },
           {
             name: "Serie",
             label: "Série",
-            type: "string",
+            typeField: "string",
           },
           {
             name: "Tipo",
             label: "Tipo",
-            type: "string",
+            typeField: "string",
           },
           {
             name: "CdProduto",
             label: "Cód Produto",
-            type: "float",
+            typeField: "float",
           },
           {
             name: "Quantidade",
             label: "Quantidade",
-            type: "float",
+            typeField: "float",
           },
           {
             name: "VlTotal",
             label: "Valor",
-            type: "float",
+            typeField: "float",
           },
           {
             name: "Descricao",
             label: "Produto",
-            type: "float",
+            typeField: "float",
           },
           {
             name: "CdVendedor",
             label: "Cód Vendedor",
-            type: "int",
+            typeField: "int",
           },
           {
             name: "NmVendedor",
             label: "Vendedor",
-            type: "string",
+            typeField: "string",
           },
           {
             name: "uf",
             label: "UF",
-            type: "string",
+            typeField: "string",
           },
         ];
       },
@@ -297,7 +292,7 @@ TNfSaidaFvModel {
     nf_saida_fv,
   } as TNfSaidaFvModel;
 
-  return model
+  return model;
 }
 
 //#region other

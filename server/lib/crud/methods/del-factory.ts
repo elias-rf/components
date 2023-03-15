@@ -1,5 +1,6 @@
 import { Knex } from "knex";
-import type { TDelArgs, TTable } from "../../../../types";
+import type { TDelArgs } from "../../../../types";
+import type { TTable } from "../../../../types/model";
 import { renameNameToField } from "../../../../utils/schema/rename-fields";
 import { zIdClient } from "../../../../utils/zod/z-id-client";
 import { TCrudDel } from "../crud.type";

@@ -1,4 +1,4 @@
-import { TRpcContext } from "../../../types";
+import { TRpcContext } from "../../../types/rpc";
 
 export type TEchoRpc = ReturnType<typeof echoRpc>;
 

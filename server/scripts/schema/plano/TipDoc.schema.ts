@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const TipDoc: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const TipDoc: TTable = {
       field: "Codigo",
       label: "Codigo",
       name: "TipDoc_id",
-      type: "string",
+      typeField: "string",
       size: 3,
       primaryKey: true,
       allowNull: false,
@@ -17,21 +17,21 @@ export const TipDoc: TTable = {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 32,
     },
     {
       field: "FgConsiderarDanfe",
       label: "FgConsiderarDanfe",
       name: "FgConsiderarDanfe",
-      type: "string",
+      typeField: "string",
       size: 1,
     },
     {
       field: "FgMovimentoCheque",
       label: "FgMovimentoCheque",
       name: "FgMovimentoCheque",
-      type: "string",
+      typeField: "string",
       size: 1,
       allowNull: false,
     },
@@ -39,14 +39,14 @@ export const TipDoc: TTable = {
       field: "FgAtivo",
       label: "FgAtivo",
       name: "FgAtivo",
-      type: "string",
+      typeField: "string",
       size: 1,
     },
     {
       field: "FgConsiderarXML",
       label: "FgConsiderarXML",
       name: "FgConsiderarXML",
-      type: "string",
+      typeField: "string",
       size: 1,
     },
   ],

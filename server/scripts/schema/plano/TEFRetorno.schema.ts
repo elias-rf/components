@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const TEFRetorno: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const TEFRetorno: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const TEFRetorno: TTable = {
       field: "NumCupom",
       label: "NumCupom",
       name: "NumCupom",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const TEFRetorno: TTable = {
       field: "Sequencia",
       label: "Sequencia",
       name: "Sequencia",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ export const TEFRetorno: TTable = {
       field: "TipoCampo",
       label: "TipoCampo",
       name: "TipoCampo",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -40,7 +40,7 @@ export const TEFRetorno: TTable = {
       field: "Texto",
       label: "Texto",
       name: "Texto",
-      type: "string",
+      typeField: "string",
       size: 2048,
       allowNull: false,
     },

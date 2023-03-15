@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { TEvent } from "../../../types";
 
 type FormState = {
   [form: string]: {
@@ -7,8 +6,12 @@ type FormState = {
   };
   setField: (form: string, field: string, value: any) => void;
   delForm: (form: string) => void;
-  getOnInput: (form: string) => (event: TEvent) => void;
-  getOnChange: (form: string) => (event: TEvent) => void;
+  getOnInput: (
+    form: string
+  ) => (event: React.ChangeEvent<HTMLInputElement>) => void;
+  getOnChange: (
+    form: string
+  ) => (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const useFormStore = create<FormState>()((set) => ({
@@ -17,7 +20,11 @@ export const useFormStore = create<FormState>()((set) => ({
     set(() => ({ forms: { [form]: { [field]: value } } })),
   delForm: (form) => set(() => ({ forms: { [form]: null } })),
   getOnInput: (form) => (event) =>
-    set(() => ({ forms: { [form]: { [event.name]: event.value } } })),
+    set(() => ({
+      forms: { [form]: { [event.target.name]: event.target.value } },
+    })),
   getOnChange: (form) => (event) =>
-    set(() => ({ forms: { [form]: { [event.name]: event.value } } })),
+    set(() => ({
+      forms: { [form]: { [event.target.name]: event.target.value } },
+    })),
 }));

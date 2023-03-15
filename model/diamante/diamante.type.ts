@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TDiamantePk {
@@ -18,7 +18,7 @@ export interface TDiamante extends TDiamantePk {
   quantidade_corte?: number;
 }
 
-export type TDiamanteFields = keyof Required<TDiamante>
+export type TDiamanteFields = keyof Required<TDiamante>;
 
 export type TDiamanteIds = {
   [pk in keyof Required<TDiamantePk>]: any;
@@ -27,7 +27,7 @@ export type TDiamanteSelect = TSelect<TDiamanteFields>;
 export type TDiamanteWhere = TWhere<TDiamanteFields>;
 export type TDiamanteOrder = TOrder<TDiamanteFields>;
 
-export type TDiamanteSchema = () => Promise<TFieldClient[]>;
+export type TDiamanteSchema = () => Promise<TField[]>;
 export type TDiamanteClear = () => Promise<TDiamante>;
 export type TDiamanteList = (args: {
   where?: TWhere<TDiamanteFields>[];
@@ -49,9 +49,7 @@ export type TDiamanteUpdate = (args: {
   data: TDiamante;
   select?: TSelect<TDiamanteFields>;
 }) => Promise<TDiamante>;
-export type TDiamanteDel = (args: {
-  id: TDiamanteIds;
-}) => Promise<number>;
+export type TDiamanteDel = (args: { id: TDiamanteIds }) => Promise<number>;
 
 //#region def
 //#endregion
@@ -72,11 +70,11 @@ export type TDiamanteCrud = {
 
 export type TDiamanteModel = TDiamanteCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TDiamanteRpc = TDiamanteModel;

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ConfigRemessaLab: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ConfigRemessaLab: TTable = {
       field: "IdLayOut",
       label: "IdLayOut",
       name: "IdLayOut",
-      type: "string",
+      typeField: "string",
       size: 50,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const ConfigRemessaLab: TTable = {
       field: "CdFabricante",
       label: "CdFabricante",
       name: "CdFabricante",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,

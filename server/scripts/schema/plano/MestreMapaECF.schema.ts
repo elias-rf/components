@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const MestreMapaECF: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const MestreMapaECF: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const MestreMapaECF: TTable = {
       field: "DtMapa",
       label: "DtMapa",
       name: "DtMapa",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -26,7 +26,7 @@ export const MestreMapaECF: TTable = {
       field: "NumMapa",
       label: "NumMapa",
       name: "NumMapa",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,

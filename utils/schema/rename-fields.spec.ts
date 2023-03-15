@@ -8,23 +8,23 @@ const entity: TFieldServer[] = [
     field: "id",
     name: "agenda_telefone_id",
     primaryKey: true,
-    type: "int",
+    typeField: "int",
   },
   {
     allowNull: false,
     field: "name",
     name: "nome",
-    type: "string",
+    typeField: "string",
   },
   {
     field: "department",
     name: "setor",
-    type: "string",
+    typeField: "string",
   },
   {
     field: "email",
     name: "email",
-    type: "string",
+    typeField: "string",
   },
 ];
 

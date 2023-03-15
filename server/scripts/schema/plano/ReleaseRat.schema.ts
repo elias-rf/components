@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ReleaseRat: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ReleaseRat: TTable = {
       field: "CdReleaseRAT",
       label: "CdReleaseRAT",
       name: "ReleaseRat_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ReleaseRat: TTable = {
       field: "NumeroRat",
       label: "NumeroRat",
       name: "NumeroRat",
-      type: "int",
+      typeField: "int",
       size: 5,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const ReleaseRat: TTable = {
       field: "ReleaseFuncionalidade",
       label: "ReleaseFuncionalidade",
       name: "ReleaseFuncionalidade",
-      type: "string",
+      typeField: "string",
       size: 4000,
       allowNull: false,
     },
@@ -33,7 +33,7 @@ export const ReleaseRat: TTable = {
       field: "ReleaseDescricao",
       label: "ReleaseDescricao",
       name: "ReleaseDescricao",
-      type: "string",
+      typeField: "string",
       size: 8000,
       allowNull: false,
     },
@@ -41,7 +41,7 @@ export const ReleaseRat: TTable = {
       field: "ReleaseObservacao",
       label: "ReleaseObservacao",
       name: "ReleaseObservacao",
-      type: "string",
+      typeField: "string",
       size: 8000,
       allowNull: false,
     },

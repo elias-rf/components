@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const MedicoSecretarias: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const MedicoSecretarias: TTable = {
       field: "CRM",
       label: "CRM",
       name: "CRM",
-      type: "string",
+      typeField: "string",
       size: 16,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const MedicoSecretarias: TTable = {
       field: "NmSecretaria",
       label: "NmSecretaria",
       name: "NmSecretaria",
-      type: "string",
+      typeField: "string",
       size: 50,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const MedicoSecretarias: TTable = {
       field: "DtNascimento",
       label: "DtNascimento",
       name: "DtNascimento",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -33,7 +33,7 @@ export const MedicoSecretarias: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

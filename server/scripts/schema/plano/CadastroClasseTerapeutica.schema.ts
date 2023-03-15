@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const CadastroClasseTerapeutica: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const CadastroClasseTerapeutica: TTable = {
       field: "CdClasseTerapeutica",
       label: "CdClasseTerapeutica",
       name: "CdClasseTerapeutica",
-      type: "string",
+      typeField: "string",
       size: 16,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const CadastroClasseTerapeutica: TTable = {
       field: "NmClasseTerapeutica",
       label: "NmClasseTerapeutica",
       name: "NmClasseTerapeutica",
-      type: "string",
+      typeField: "string",
       size: 40,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const CadastroClasseTerapeutica: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -33,14 +33,14 @@ export const CadastroClasseTerapeutica: TTable = {
       field: "Observacao",
       label: "Observacao",
       name: "Observacao",
-      type: "string",
+      typeField: "string",
       size: 1024,
     },
     {
       field: "Tipo",
       label: "Tipo",
       name: "Tipo",
-      type: "int",
+      typeField: "int",
       size: 2,
     },
   ],

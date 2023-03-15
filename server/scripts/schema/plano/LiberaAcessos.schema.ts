@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const LiberaAcessos: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const LiberaAcessos: TTable = {
       field: "CgcCpf",
       label: "CgcCpf",
       name: "LiberaAcessos_id",
-      type: "string",
+      typeField: "string",
       size: 60,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const LiberaAcessos: TTable = {
       field: "DHLibEmergencia",
       label: "DHLibEmergencia",
       name: "DHLibEmergencia",
-      type: "string",
+      typeField: "string",
       size: 60,
       allowNull: false,
     },

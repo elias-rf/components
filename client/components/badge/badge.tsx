@@ -1,12 +1,6 @@
 // https://flowbite.com/docs/components/badge/
 import { twMerge } from "tailwind-merge";
-import { TEvent } from "../../../types";
-import { BadgeClose } from "./badge_close";
-
-export type TBadgeEvent = TEvent & {
-  component: "Badge";
-  event: "onClickEvent" | "onCloseEvent";
-};
+import { BadgeClose } from "./badge-close";
 
 export type TBadgeProps = {
   color?:
@@ -21,14 +15,9 @@ export type TBadgeProps = {
   large?: boolean;
   children: string;
   name?: string;
-  onClickEvent?: (e: TBadgeEvent) => void;
-  onCloseEvent?: (e: TBadgeEvent) => void;
+  onClick?: (e: React.MouseEvent<HTMLSpanElement>) => void;
+  onClose?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
-};
-
-export type TBadgeClose = {
-  name: string;
-  onCloseEvent?: (e: TBadgeEvent) => void;
 };
 
 const classColor = {
@@ -54,17 +43,12 @@ export function Badge({
   name = "",
   className = "",
   large,
-  onClickEvent,
-  onCloseEvent,
+  onClick,
+  onClose,
 }: TBadgeProps) {
-  function handleClick() {
-    if (onClickEvent) {
-      onClickEvent({
-        name,
-        component: "Badge",
-        event: "onClickEvent",
-        value: children,
-      });
+  function handleClick(e: React.MouseEvent<HTMLSpanElement>) {
+    if (onClick) {
+      onClick(e);
     }
   }
 
@@ -74,8 +58,8 @@ export function Badge({
       className={twMerge(
         "text-xs font-semibold mr-2 pl-2.5 py-0.5 rounded inline-flex items-center justify-between",
         classColor[color],
-        onClickEvent !== undefined ? "cursor-pointer" : "",
-        onCloseEvent !== undefined ? "" : "pr-2.5",
+        onClick !== undefined ? "cursor-pointer" : "",
+        onClose !== undefined ? "" : "pr-2.5",
         large ? "text-sm font-medium" : "",
         className
       )}
@@ -84,7 +68,7 @@ export function Badge({
       {children}
       <BadgeClose
         name={name}
-        onCloseEvent={onCloseEvent}
+        onClose={onClose}
       />
     </span>
   );

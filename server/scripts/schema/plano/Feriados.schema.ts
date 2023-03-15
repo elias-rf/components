@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const Feriados: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const Feriados: TTable = {
       field: "CdCidade",
       label: "CdCidade",
       name: "CdCidade",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const Feriados: TTable = {
       field: "DtFeriado",
       label: "DtFeriado",
       name: "DtFeriado",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const Formulas: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const Formulas: TTable = {
       field: "Origem",
       label: "Origem",
       name: "Origem",
-      type: "string",
+      typeField: "string",
       size: 5,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const Formulas: TTable = {
       field: "Destino",
       label: "Destino",
       name: "Destino",
-      type: "string",
+      typeField: "string",
       size: 5,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const Formulas: TTable = {
       field: "Formula",
       label: "Formula",
       name: "Formula",
-      type: "string",
+      typeField: "string",
       size: 50,
     },
   ],

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TFieldClient } from "../../types";
+import { TField } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { agendaTelefoneService } from "./agenda-telefone.service";
 import type {
@@ -23,7 +23,7 @@ type TAgendaTelefoneStore = {
   getList: TAgendaTelefoneList;
   dataRead: TAgendaTelefone;
   getRead: TAgendaTelefoneRead;
-  dataSchema: TFieldClient[];
+  dataSchema: TField[];
   getSchema: TAgendaTelefoneSchema;
   dataClear: TAgendaTelefone;
   getClear: TAgendaTelefoneClear;

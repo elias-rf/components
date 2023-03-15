@@ -1,8 +1,8 @@
-import { TFieldClient, TTable } from "../../../../types";
+import { TField, TTable } from "../../../../types/model";
 import { TCrudSchema } from "../crud.type";
 
 export function schemaFactory(table: TTable): TCrudSchema {
-  const response = async (): Promise<TFieldClient[]> => {
+  const response = async (): Promise<TField[]> => {
     return table.fields;
   };
 

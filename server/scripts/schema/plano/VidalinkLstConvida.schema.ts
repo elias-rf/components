@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const VidalinkLstConvida: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const VidalinkLstConvida: TTable = {
       field: "Id",
       label: "Id",
       name: "Id",
-      type: "int",
+      typeField: "int",
       size: 4,
       autoIncrement: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const VidalinkLstConvida: TTable = {
       field: "Data",
       label: "Data",
       name: "Data",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
     },
@@ -25,7 +25,7 @@ export const VidalinkLstConvida: TTable = {
       field: "Texto",
       label: "Texto",
       name: "Texto",
-      type: "string",
+      typeField: "string",
       size: 5040,
     },
   ],

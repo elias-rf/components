@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TOperacaoProducaoPk {
@@ -12,7 +12,7 @@ export interface TOperacaoProducao extends TOperacaoProducaoPk {
   amostragem?: number;
 }
 
-export type TOperacaoProducaoFields = keyof Required<TOperacaoProducao>
+export type TOperacaoProducaoFields = keyof Required<TOperacaoProducao>;
 
 export type TOperacaoProducaoIds = {
   [pk in keyof Required<TOperacaoProducaoPk>]: any;
@@ -21,7 +21,7 @@ export type TOperacaoProducaoSelect = TSelect<TOperacaoProducaoFields>;
 export type TOperacaoProducaoWhere = TWhere<TOperacaoProducaoFields>;
 export type TOperacaoProducaoOrder = TOrder<TOperacaoProducaoFields>;
 
-export type TOperacaoProducaoSchema = () => Promise<TFieldClient[]>;
+export type TOperacaoProducaoSchema = () => Promise<TField[]>;
 export type TOperacaoProducaoClear = () => Promise<TOperacaoProducao>;
 export type TOperacaoProducaoList = (args: {
   where?: TWhere<TOperacaoProducaoFields>[];
@@ -66,11 +66,11 @@ export type TOperacaoProducaoCrud = {
 
 export type TOperacaoProducaoModel = TOperacaoProducaoCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TOperacaoProducaoRpc = TOperacaoProducaoModel;

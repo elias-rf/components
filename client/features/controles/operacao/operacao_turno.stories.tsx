@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { TEvent } from "../../../../types";
 import { OperacaoTurno } from "./operacao_turno";
 
 const meta: Meta<typeof OperacaoTurno> = {
@@ -14,7 +13,7 @@ export const Operacao_Turno: Story = {
       <OperacaoTurno
         operacao={{ operacao: "1010" }}
         dia={{ dia: "2021-01-08" }}
-        onSelectEvent={(event: TEvent) => console.log(event)}
+        onSelect={(event: any) => console.log(event)}
       />
     );
   },

@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import { ordemProducaoOperacaoStore } from "../../../../model/ordem-producao-operacao/ordem-producao-operacao.store";
-import { TEvent } from "../../../../types";
 import { Table } from "../../../components/table/table";
 
 type OperacaoProdutoProps = {
@@ -8,7 +7,7 @@ type OperacaoProdutoProps = {
   dia: { dia?: string };
   produtoCorrente: { produto?: string };
   children?: ReactNode;
-  onSelectEvent?: (event: TEvent) => void;
+  onSelect?: (event: any) => void;
 };
 
 export function OperacaoProduto({
@@ -16,7 +15,7 @@ export function OperacaoProduto({
   dia,
   children,
   produtoCorrente,
-  onSelectEvent,
+  onSelect,
 }: OperacaoProdutoProps) {
   const getSchema = ordemProducaoOperacaoStore(
     (state) => state.getProdutoSchema
@@ -39,7 +38,7 @@ export function OperacaoProduto({
       data={produto}
       schema={schema}
       selected={produtoCorrente}
-      onSelectEvent={onSelectEvent}
+      onSelect={onSelect}
     >
       {children}
     </Table>

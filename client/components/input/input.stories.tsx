@@ -26,7 +26,7 @@ function InputAux(props: any) {
       <Input
         {...props}
         value={vlr}
-        onChangeEvent={(e) => setVlr(e.value)}
+        onChangeEvent={(e: any) => setVlr(e.value)}
       />
     </>
   );

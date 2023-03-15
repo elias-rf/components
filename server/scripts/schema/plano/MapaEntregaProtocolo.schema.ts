@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const MapaEntregaProtocolo: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const MapaEntregaProtocolo: TTable = {
       field: "CdMapaEntregaProtocolo",
       label: "CdMapaEntregaProtocolo",
       name: "CdMapaEntregaProtocolo",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const MapaEntregaProtocolo: TTable = {
       field: "DtProtocolo",
       label: "DtProtocolo",
       name: "DtProtocolo",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

@@ -1,8 +1,6 @@
-import { TEvent } from "../../../types";
-
-export type TSelectEvent = TEvent & {
+export type TSelect = any & {
   component: "Select";
-  event: "onChangeEvent";
+  event: "onChange";
 };
 
 export type TOptionsProps =
@@ -21,6 +19,6 @@ export type TSelectProps = {
   field?: string;
   children: React.ReactNode;
   value: string;
-  onChangeEvent: (event: TSelectEvent) => void;
+  onChange: (event: TSelect) => void;
   [prop: string]: any;
 };

@@ -1,14 +1,14 @@
-import { TFieldServer, TSelect } from "../../types/index";
+import { TField, TSelect } from "../../types/index";
 import { namesFromFields } from "../schema/names-from-fields";
 import { isValid, z } from "./z";
 
-export function zSelect(select: TSelect, fields: TFieldServer[]) {
+export function zSelect(select: TSelect, fields: TField[]) {
   const resp = isSelect(select, fields);
   if (resp === "") return;
   throw new Error(resp);
 }
 
-export function isSelect(select: TSelect, fields: TFieldServer[]) {
+export function isSelect(select: TSelect, fields: TField[]) {
   if (!isValid(select, z.array(z.string())))
     return "select deve ser um array de campos";
 

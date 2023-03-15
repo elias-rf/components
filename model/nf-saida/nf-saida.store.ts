@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TFieldClient } from "../../types";
+import { TField } from "../../types/model";
 import { cache } from "../../utils/cache";
 import type {
   TNfSaida,
@@ -31,7 +31,7 @@ type TNfSaidaStore = {
   getList: TNfSaidaList;
   dataRead: TNfSaida;
   getRead: TNfSaidaRead;
-  dataSchema: TFieldClient[];
+  dataSchema: TField[];
   getSchema: TNfSaidaSchema;
   dataClear: TNfSaida;
   getClear: TNfSaidaClear;
@@ -42,20 +42,20 @@ type TNfSaidaStore = {
   dataTransferenciaDiario: ({ dia: string } & TProdutoQtd)[];
   getTransferenciaDiario: TNfTransferenciaDiario;
 
-  dataTransferenciaDiarioSchema: TFieldClient[];
-  getTransferenciaDiarioSchema: () => Promise<TFieldClient[]>;
+  dataTransferenciaDiarioSchema: TField[];
+  getTransferenciaDiarioSchema: () => Promise<TField[]>;
 
   dataTransferenciaMensal: ({ mes: string } & TProdutoQtd)[];
   getTransferenciaMensal: TNfTransferenciaMensal;
 
-  dataTransferenciaMensalSchema: TFieldClient[];
-  getTransferenciaMensalSchema: () => Promise<TFieldClient[]>;
+  dataTransferenciaMensalSchema: TField[];
+  getTransferenciaMensalSchema: () => Promise<TField[]>;
 
   dataTransferenciaModelo: { modelo: string; quantidade: number }[];
   getTransferenciaModelo: TNfTransferenciaModelo;
 
-  dataTransferenciaModeloSchema: TFieldClient[];
-  getTransferenciaModeloSchema: () => Promise<TFieldClient[]>;
+  dataTransferenciaModeloSchema: TField[];
+  getTransferenciaModeloSchema: () => Promise<TField[]>;
 
   dataVendaDiario: {
     NmCategoria: string;
@@ -65,8 +65,8 @@ type TNfSaidaStore = {
   }[];
   getVendaDiario: TNfVendaDiario;
 
-  dataVendaDiarioSchema: TFieldClient[];
-  getVendaDiarioSchema: () => Promise<TFieldClient[]>;
+  dataVendaDiarioSchema: TField[];
+  getVendaDiarioSchema: () => Promise<TField[]>;
 
   dataVendaMensalCliente: {
     NmCategoria: string;
@@ -77,14 +77,14 @@ type TNfSaidaStore = {
   }[];
   getVendaMensalCliente: TNfVendaMensalCliente;
 
-  dataVendaMensalSchema: TFieldClient[];
-  getVendaMensalSchema: () => Promise<TFieldClient[]>;
+  dataVendaMensalSchema: TField[];
+  getVendaMensalSchema: () => Promise<TField[]>;
 
   dataVendaAnalitico: TNfSaida[];
   getVendaAnalitico: (args: { inicio: string; fim: string }) => Promise<any[]>;
 
-  dataVendaAnaliticoSchema: TFieldClient[];
-  getVendaAnaliticoSchema: () => Promise<TFieldClient[]>;
+  dataVendaAnaliticoSchema: TField[];
+  getVendaAnaliticoSchema: () => Promise<TField[]>;
   //#endregion
 };
 

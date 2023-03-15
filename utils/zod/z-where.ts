@@ -1,18 +1,18 @@
 import { isValid, z } from "./z";
 
-import { TFieldServer, TWhere } from "../../types/index";
+import { TField, TWhere } from "../../types";
 import { isArray } from "../identify/is-array";
 import { namesFromFields } from "../schema/names-from-fields";
 
 const FORMAT_INVALID = "where deve ser no formato [field, igualdade, valor]";
 
-export function zWhere(where: TWhere[], fields: TFieldServer[]) {
+export function zWhere(where: TWhere[], fields: TField[]) {
   const resp = isWhere(where, fields);
   if (resp === "") return;
   throw new Error(resp);
 }
 
-function isWhere(where: TWhere[], fields: TFieldServer[]) {
+function isWhere(where: TWhere[], fields: TField[]) {
   // where pode ser []
   if (Array.isArray(where) && where.length === 0) return "";
   if (

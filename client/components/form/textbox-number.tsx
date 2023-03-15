@@ -1,7 +1,16 @@
 import React from "react";
 import { formatNumber } from "../../../utils/format/format-number";
 import { parseNumber } from "../../../utils/parse-number";
-import { TTextboxNumberProps } from "./textbox.types";
+
+export type TTextboxNumberProps = {
+  [prop: string]: any;
+  list?: string;
+  name: string;
+  onChange?: (event: any) => void;
+  onBlur?: (event: any) => void;
+  onInput?: (event: any) => void;
+  value: any;
+};
 
 function posCaret(num: string, newNum: string) {
   const n1 = parseNumber(num).toString().length;
@@ -23,9 +32,9 @@ function posCaret(num: string, newNum: string) {
 
 export function TextboxNumber({
   name,
-  onChangeEvent = () => null,
-  onBlurEvent = () => null,
-  onInputEvent = () => null,
+  onChange = () => null,
+  onBlur = () => null,
+  onInput = () => null,
   value = "",
   list,
   ...others
@@ -35,7 +44,7 @@ export function TextboxNumber({
     value ? formatNumber(value) : ""
   );
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange = (e: any) => {
     const element = e.target;
     const value = element.value;
     const caret = element.selectionStart || 0;
@@ -51,63 +60,38 @@ export function TextboxNumber({
 
     if (value === "") {
       setFormatedValue("");
-      onChangeEvent({
-        name,
-        value: undefined,
-        component: "TextboxNumber",
-        event: "onChangeEvent",
-      });
+      onChange(e);
       return;
     }
 
     setFormatedValue(valueAsText);
-    onChangeEvent({
-      name,
-      value: valueAsNumber,
-      component: "TextboxNumber",
-      event: "onChangeEvent",
-    });
+    onChange(e);
   };
 
-  const handleOnBlur = () => {
-    onBlurEvent({
-      name,
-      value,
-      component: "TextboxNumber",
-      event: "onBlurEvent",
-    });
+  const handleOnBlur = (e: any) => {
+    onBlur(e);
     if (!dispInput) {
-      onInputEvent({
-        name,
-        value: value,
-        component: "TextboxNumber",
-        event: "onInputEvent",
-      });
+      onInput(e);
       setDispInput(true);
     }
   };
 
-  const handleEnter = (event: any) => {
-    if (event.key.toLowerCase() === "enter") {
+  const handleEnter = (e: any) => {
+    if (e.key.toLowerCase() === "enter") {
       if (!dispInput) {
-        onInputEvent({
-          name,
-          value,
-          component: "TextboxNumber",
-          event: "onInputEvent",
-        });
+        onInput(e);
         setDispInput(true);
       }
-      const form = event.target.form;
+      const form = e.target.form;
       if (form) {
-        const index = [...form].indexOf(event.target);
+        const index = [...form].indexOf(e.target);
         if (form.elements.length === index + 1) {
           form.elements[0].focus();
         } else {
           form.elements[index + 1].focus();
         }
       }
-      event.preventDefault();
+      e.preventDefault();
     }
   };
 

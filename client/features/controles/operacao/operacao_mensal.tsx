@@ -1,6 +1,6 @@
 import React from "react";
 import { ordemProducaoOperacaoStore } from "../../../../model/ordem-producao-operacao/ordem-producao-operacao.store";
-import { TEvent, TIds } from "../../../../types";
+import { TIds } from "../../../../types";
 import { Table } from "../../../components/table/table";
 
 type OperacaoMensalProps = {
@@ -8,7 +8,7 @@ type OperacaoMensalProps = {
   mesInicial: TIds;
   mesCorrente: TIds;
   children?: React.ReactNode;
-  onSelectEvent?: (event: TEvent) => void;
+  onSelect?: (event: any) => void;
 };
 
 export function OperacaoMensal({
@@ -16,7 +16,7 @@ export function OperacaoMensal({
   mesInicial,
   mesCorrente,
   children,
-  onSelectEvent,
+  onSelect,
 }: OperacaoMensalProps) {
   const getSchema = ordemProducaoOperacaoStore(
     (state) => state.getMensalSchema
@@ -39,7 +39,7 @@ export function OperacaoMensal({
       data={mensal}
       schema={schema}
       selected={mesCorrente}
-      onSelectEvent={onSelectEvent}
+      onSelect={onSelect}
     >
       {children}
     </Table>

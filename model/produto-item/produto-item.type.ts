@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 import {
   TProdutoPlano,
@@ -25,7 +25,7 @@ export type TProdutoItemSelect = TSelect<TProdutoItemFields>;
 export type TProdutoItemWhere = TWhere<TProdutoItemFields>;
 export type TProdutoItemOrder = TOrder<TProdutoItemFields>;
 
-export type TProdutoItemSchema = () => Promise<TFieldClient[]>;
+export type TProdutoItemSchema = () => Promise<TField[]>;
 export type TProdutoItemClear = () => Promise<TProdutoItem>;
 export type TProdutoItemList = (args: {
   where?: TWhere<TProdutoItemFields>[];

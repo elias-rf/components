@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ProdutoLink: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ProdutoLink: TTable = {
       field: "CdProduto",
       label: "CdProduto",
       name: "ProdutoLink_id",
-      type: "string",
+      typeField: "string",
       size: 16,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ProdutoLink: TTable = {
       field: "Link",
       label: "Link",
       name: "Link",
-      type: "string",
+      typeField: "string",
       size: 512,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const ProdutoLink: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -34,7 +34,7 @@ export const ProdutoLink: TTable = {
       field: "ID",
       label: "ID",
       name: "ID",
-      type: "int",
+      typeField: "int",
       size: 4,
     },
   ],

@@ -3,26 +3,23 @@ import { usuarioStore } from "../../../model/usuario/usuario.store";
 import { TUsuarioFields } from "../../../model/usuario/usuario.type";
 import { TIds, TOrder, TWhere } from "../../../types";
 import { Table } from "../../components/table/table";
-import { TTableEvent } from "../../components/table/table.types";
-
-export type TUsuarioListEvent = TTableEvent;
 
 type TUsuarioListProps = {
   selected: TIds;
-  onSelectEvent: (event: TUsuarioListEvent) => void;
+  onSelect: (event: any) => void;
   where: TWhere<TUsuarioFields>[];
-  onWhereEvent: (event: TUsuarioListEvent) => void;
+  onWhere: (event: any) => void;
   order: TOrder<TUsuarioFields>[];
-  onOrderEvent: (event: TUsuarioListEvent) => void;
+  onOrder: (event: any) => void;
 };
 
 export function UsuarioList({
   selected,
-  onSelectEvent,
+  onSelect,
   where,
-  onWhereEvent,
+  onWhere,
   order,
-  onOrderEvent,
+  onOrder,
 }: TUsuarioListProps) {
   const [dataSchema, getSchema] = usuarioStore((state) => [
     state.dataSchema,
@@ -48,9 +45,9 @@ export function UsuarioList({
       selected={selected}
       order={order}
       where={where}
-      onSelectEvent={(e) => onSelectEvent(e)}
-      onWhereEvent={(e) => onWhereEvent(e)}
-      onOrderEvent={(e) => onOrderEvent(e)}
+      onSelect={(e) => onSelect(e)}
+      onWhere={(e) => onWhere(e)}
+      onOrder={(e) => onOrder(e)}
     />
   );
 }

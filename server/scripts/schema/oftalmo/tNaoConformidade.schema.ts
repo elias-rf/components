@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tNaoConformidade: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tNaoConformidade: TTable = {
       field: "kNaoConformidade",
       label: "kNaoConformidade",
       name: "tNaoConformidade_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const tNaoConformidade: TTable = {
       field: "NaoConformidade",
       label: "NaoConformidade",
       name: "NaoConformidade",
-      type: "string",
+      typeField: "string",
       size: 30,
       allowNull: false,
     },
@@ -25,14 +25,14 @@ export const tNaoConformidade: TTable = {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 200,
     },
     {
       field: "Enable",
       label: "Enable",
       name: "Enable",
-      type: "int",
+      typeField: "int",
       size: 1,
       allowNull: false,
       defaultValue: "1",

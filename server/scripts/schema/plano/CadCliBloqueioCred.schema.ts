@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const CadCliBloqueioCred: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const CadCliBloqueioCred: TTable = {
       field: "CdCliente",
       label: "CdCliente",
       name: "CdCliente",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const CadCliBloqueioCred: TTable = {
       field: "DtOcorrencia",
       label: "DtOcorrencia",
       name: "DtOcorrencia",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -26,7 +26,7 @@ export const CadCliBloqueioCred: TTable = {
       field: "Tipo",
       label: "Tipo",
       name: "Tipo",
-      type: "string",
+      typeField: "string",
       size: 1,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const CadCliBloqueioCred: TTable = {
       field: "CdUsuario",
       label: "CdUsuario",
       name: "CdUsuario",
-      type: "string",
+      typeField: "string",
       size: 10,
       allowNull: false,
     },

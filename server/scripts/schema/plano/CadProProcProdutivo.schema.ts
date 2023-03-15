@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const CadProProcProdutivo: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const CadProProcProdutivo: TTable = {
       field: "CdProduto",
       label: "CdProduto",
       name: "CdProduto",
-      type: "string",
+      typeField: "string",
       size: 15,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const CadProProcProdutivo: TTable = {
       field: "CdPostoProdutivo",
       label: "CdPostoProdutivo",
       name: "CdPostoProdutivo",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const CadProProcProdutivo: TTable = {
       field: "Ordem",
       label: "Ordem",
       name: "Ordem",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -32,14 +32,14 @@ export const CadProProcProdutivo: TTable = {
       field: "DescricaoOperacao",
       label: "DescricaoOperacao",
       name: "DescricaoOperacao",
-      type: "string",
+      typeField: "string",
       size: 5120,
     },
     {
       field: "DescricaoFerramental",
       label: "DescricaoFerramental",
       name: "DescricaoFerramental",
-      type: "string",
+      typeField: "string",
       size: 5120,
     },
   ],

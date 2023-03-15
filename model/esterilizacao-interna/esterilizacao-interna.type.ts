@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TEsterilizacaoInternaPk {
@@ -15,7 +15,7 @@ export interface TEsterilizacaoInterna extends TEsterilizacaoInternaPk {
   data_autoclave?: string;
 }
 
-export type TEsterilizacaoInternaFields = keyof Required<TEsterilizacaoInterna>
+export type TEsterilizacaoInternaFields = keyof Required<TEsterilizacaoInterna>;
 
 export type TEsterilizacaoInternaIds = {
   [pk in keyof Required<TEsterilizacaoInternaPk>]: any;
@@ -24,7 +24,7 @@ export type TEsterilizacaoInternaSelect = TSelect<TEsterilizacaoInternaFields>;
 export type TEsterilizacaoInternaWhere = TWhere<TEsterilizacaoInternaFields>;
 export type TEsterilizacaoInternaOrder = TOrder<TEsterilizacaoInternaFields>;
 
-export type TEsterilizacaoInternaSchema = () => Promise<TFieldClient[]>;
+export type TEsterilizacaoInternaSchema = () => Promise<TField[]>;
 export type TEsterilizacaoInternaClear = () => Promise<TEsterilizacaoInterna>;
 export type TEsterilizacaoInternaList = (args: {
   where?: TWhere<TEsterilizacaoInternaFields>[];
@@ -75,10 +75,10 @@ export type TEsterilizacaoInternaModel = TEsterilizacaoInternaCrud & {
   //#endregion
   //#region type
   query: {
-    schemaDiario(): Promise<TFieldClient[]>;
-    schemaMensal(): Promise<TFieldClient[]>;
-    schemaProduto(): Promise<TFieldClient[]>;
-    schemaModelo(): Promise<TFieldClient[]>;
+    schemaDiario(): Promise<TField[]>;
+    schemaMensal(): Promise<TField[]>;
+    schemaProduto(): Promise<TField[]>;
+    schemaModelo(): Promise<TField[]>;
     diario(args: {
       inicio: string;
       fim: string;

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tbl_OP_Raio: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tbl_OP_Raio: TTable = {
       field: "kRaio",
       label: "kRaio",
       name: "tbl_OP_Raio_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       autoIncrement: true,
       primaryKey: true,
@@ -18,42 +18,42 @@ export const tbl_OP_Raio: TTable = {
       field: "Dioptria",
       label: "Dioptria",
       name: "Dioptria",
-      type: "float",
+      typeField: "float",
       size: 4,
     },
     {
       field: "Raio1",
       label: "Raio1",
       name: "Raio1",
-      type: "float",
+      typeField: "float",
       size: 4,
     },
     {
       field: "Raio2",
       label: "Raio2",
       name: "Raio2",
-      type: "float",
+      typeField: "float",
       size: 4,
     },
     {
       field: "Espessura",
       label: "Espessura",
       name: "Espessura",
-      type: "float",
+      typeField: "float",
       size: 4,
     },
     {
       field: "Diametro",
       label: "Diametro",
       name: "Diametro",
-      type: "float",
+      typeField: "float",
       size: 4,
     },
     {
       field: "Tipo",
       label: "Tipo",
       name: "Tipo",
-      type: "string",
+      typeField: "string",
       size: 1,
     },
   ],

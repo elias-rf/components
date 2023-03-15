@@ -1,10 +1,6 @@
 import { Knex } from "knex";
-import {
-  TGenericObject,
-  TSelect,
-  TTable,
-  TUpdateArgs,
-} from "../../../../types";
+import { TGenericObject, TSelect, TUpdateArgs } from "../../../../types";
+import type { TTable } from "../../../../types/model";
 import { namesFromTable } from "../../../../utils/schema/names-from-table";
 import {
   renameFieldToName,

@@ -1,7 +1,7 @@
 import React from "react";
 import { useMap } from "react-use";
 import { stores } from "../../../model/stores";
-import type { TFieldClient, TSelected } from "../../../types";
+import type { TField, TSelected } from "../../../types";
 import { isEmpty } from "../../../utils/identify/is_empty";
 import { isNumber } from "../../../utils/identify/is_number";
 import { Button } from "../../components/button";
@@ -90,7 +90,7 @@ export function GroupSubjectForm({ id }: TGroupSubjectFormProps) {
     setStatus("new");
   }
 
-  function handleRecordEdit(event: TEvent) {
+  function handleRecordEdit(event: any) {
     if (!isDirty) setIsDirty(true);
     actionsRecord.set(event.name as keyof TAgendaTelefone, event.value);
   }
@@ -103,9 +103,9 @@ export function GroupSubjectForm({ id }: TGroupSubjectFormProps) {
       <div className={"space-x-2"}>
         <Button
           className={"w-20"}
-          size="sm"
+          size="small"
           color="green"
-          onClickEvent={handleButtonNew}
+          onClick={handleButtonNew}
           name="novo"
           data-testid="buttonNew"
         >
@@ -113,9 +113,9 @@ export function GroupSubjectForm({ id }: TGroupSubjectFormProps) {
         </Button>
         <Button
           className={"w-20"}
-          size="sm"
-          color="default"
-          onClickEvent={handleButtonSave}
+          size="small"
+          color="primary"
+          onClick={handleButtonSave}
           name="salvar"
           disabled={!isDirty}
           data-testid="buttonSave"
@@ -124,9 +124,9 @@ export function GroupSubjectForm({ id }: TGroupSubjectFormProps) {
         </Button>
         <Button
           className={"w-20"}
-          size="sm"
+          size="small"
           color="red"
-          onClickEvent={handleButtonDel}
+          onClick={handleButtonDel}
           name="excluir"
           disabled={isDirty}
           data-testid="buttonDel"
@@ -141,14 +141,14 @@ export function GroupSubjectForm({ id }: TGroupSubjectFormProps) {
         </div>
       </div>
       <div className={"flex flex-wrap gap-2"}>
-        {dataSchema?.map((field: TFieldClient) => (
+        {dataSchema?.map((field: TField) => (
           <React.Fragment key={field.name}>
             <div className={"my-2"}>
               <Label name={field.name}>{field.label || ""}</Label>
               <Textbox
                 type="text"
                 name={field.name}
-                onChangeEvent={handleRecordEdit}
+                onChange={handleRecordEdit}
                 value={record[field.name as keyof TGroupSubject] || ""}
                 data-testid={`input-${field.name}`}
               />

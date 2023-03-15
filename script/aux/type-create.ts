@@ -30,12 +30,12 @@ export function typeCreate(fileName: string) {
   const file = getFile(tableNameParam);
   const segments = getSegments(file);
 
-  let template = `import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+  let template = `import { TField, TOrder, TSelect, TWhere } from "../../types";
 ${segments.import}\n`;
   // TTablePk
   template += `export interface T${tableNamePascal}Pk {\n`;
   for (const fld of table.fields.filter((fld) => fld.primaryKey)) {
-    template += `  ${fld.name}?: ${toTs(fld.type || "")};\n`;
+    template += `  ${fld.name}?: ${toTs(fld.typeField || "")};\n`;
   }
   template += `}\n`;
   // TTableCol
@@ -43,7 +43,7 @@ ${segments.import}\n`;
   if (fieldsCol.length > 0) {
     template += `export interface T${tableNamePascal} extends T${tableNamePascal}Pk {\n`;
     for (const fld of fieldsCol) {
-      template += `  ${fld.name}?: ${toTs(fld.type || "")};\n`;
+      template += `  ${fld.name}?: ${toTs(fld.typeField || "")};\n`;
     }
     template += `}\n`;
   }
@@ -58,7 +58,7 @@ export type T${tableNamePascal}Select = TSelect<T${tableNamePascal}Fields>;
 export type T${tableNamePascal}Where = TWhere<T${tableNamePascal}Fields>;
 export type T${tableNamePascal}Order = TOrder<T${tableNamePascal}Fields>;
 
-export type T${tableNamePascal}Schema = () => Promise<TFieldClient[]>;
+export type T${tableNamePascal}Schema = () => Promise<TField[]>;
 export type T${tableNamePascal}Clear = () => Promise<T${tableNamePascal}>;
 export type T${tableNamePascal}List = (args: {
   where?: TWhere<T${tableNamePascal}Fields>[];

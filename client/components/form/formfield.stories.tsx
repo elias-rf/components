@@ -20,7 +20,9 @@ function FormfieldState() {
       <Textbox
         name="teste"
         value={vlr}
-        onChangeEvent={(e) => setVlr(e.value)}
+        onChangeEvent={(e: React.FormEvent<HTMLInputElement>) =>
+          setVlr(e.currentTarget.value)
+        }
       />
       <LabelError>ERRO</LabelError>
     </Formfield>

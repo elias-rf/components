@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TEmpregadoPk {
@@ -13,7 +13,7 @@ export interface TEmpregado extends TEmpregadoPk {
   setor?: string;
 }
 
-export type TEmpregadoFields = keyof Required<TEmpregado>
+export type TEmpregadoFields = keyof Required<TEmpregado>;
 
 export type TEmpregadoIds = {
   [pk in keyof Required<TEmpregadoPk>]: any;
@@ -22,7 +22,7 @@ export type TEmpregadoSelect = TSelect<TEmpregadoFields>;
 export type TEmpregadoWhere = TWhere<TEmpregadoFields>;
 export type TEmpregadoOrder = TOrder<TEmpregadoFields>;
 
-export type TEmpregadoSchema = () => Promise<TFieldClient[]>;
+export type TEmpregadoSchema = () => Promise<TField[]>;
 export type TEmpregadoClear = () => Promise<TEmpregado>;
 export type TEmpregadoList = (args: {
   where?: TWhere<TEmpregadoFields>[];
@@ -44,9 +44,7 @@ export type TEmpregadoUpdate = (args: {
   data: TEmpregado;
   select?: TSelect<TEmpregadoFields>;
 }) => Promise<TEmpregado>;
-export type TEmpregadoDel = (args: {
-  id: TEmpregadoIds;
-}) => Promise<number>;
+export type TEmpregadoDel = (args: { id: TEmpregadoIds }) => Promise<number>;
 
 //#region def
 //#endregion
@@ -67,11 +65,11 @@ export type TEmpregadoCrud = {
 
 export type TEmpregadoModel = TEmpregadoCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TEmpregadoRpc = TEmpregadoModel;

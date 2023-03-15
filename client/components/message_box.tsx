@@ -1,5 +1,4 @@
 import React from "react";
-import { TEvent } from "../../types";
 
 import { Button } from "./button";
 import { Modal } from "./modal";
@@ -10,19 +9,14 @@ interface IMessageBoxProps {
   option1: string;
   option2: string;
   option3: string;
-  onInputEvent: (event: TEvent) => void;
+  onInputEvent: (event: any) => void;
 }
 
 export function MessageBox(props: IMessageBoxProps) {
   const { children, title, option1, option2, option3, onInputEvent } = props;
 
-  function handleClick(e: TEvent) {
-    onInputEvent({
-      name: title,
-      value: e.name,
-      component: "MessageBox",
-      event: "input",
-    });
+  function handleClick(e: React.MouseEvent) {
+    onInputEvent(e);
   }
 
   return (
@@ -42,7 +36,7 @@ export function MessageBox(props: IMessageBoxProps) {
           <div className="flex items-center justify-end p-2 space-x-2">
             {option1 ? (
               <Button
-                onClickEvent={handleClick}
+                onClick={handleClick}
                 name="option1"
               >
                 {option1}
@@ -50,7 +44,7 @@ export function MessageBox(props: IMessageBoxProps) {
             ) : null}
             {option2 ? (
               <Button
-                onClickEvent={handleClick}
+                onClick={handleClick}
                 name="option2"
               >
                 {option2}
@@ -58,7 +52,7 @@ export function MessageBox(props: IMessageBoxProps) {
             ) : null}
             {option3 ? (
               <Button
-                onClickEvent={handleClick}
+                onClick={handleClick}
                 name="option3"
               >
                 {option3}

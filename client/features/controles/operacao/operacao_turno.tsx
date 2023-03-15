@@ -1,19 +1,14 @@
 import React from "react";
 import { ordemProducaoOperacaoStore } from "../../../../model/ordem-producao-operacao/ordem-producao-operacao.store";
-import { TEvent } from "../../../../types";
 import { Table } from "../../../components/table/table";
 
 type OperacaoTurnoProps = {
   operacao: { operacao?: string };
   dia: { dia?: string };
-  onSelectEvent?: (event: TEvent) => void;
+  onSelect?: (event: any) => void;
 };
 
-export function OperacaoTurno({
-  operacao,
-  dia,
-  onSelectEvent,
-}: OperacaoTurnoProps) {
+export function OperacaoTurno({ operacao, dia, onSelect }: OperacaoTurnoProps) {
   const getSchema = ordemProducaoOperacaoStore((state) => state.getTurnoSchema);
   const schema = ordemProducaoOperacaoStore((state) => state.dataTurnoSchema);
   const getTurno = ordemProducaoOperacaoStore((state) => state.getTurno);
@@ -34,7 +29,7 @@ export function OperacaoTurno({
     <Table
       data={turno}
       schema={schema}
-      onSelectEvent={onSelectEvent}
+      onSelect={onSelect}
     ></Table>
   );
 }

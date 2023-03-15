@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 import {
-  TFieldClient,
+  TField,
   TGenericObject,
   TListArgs,
   TOrder,
@@ -28,7 +28,7 @@ export type TCrudSelect = TSelect<TCrudFields>;
 export type TCrudWhere = TWhere<TCrudFields>;
 export type TCrudOrder = TOrder<TCrudFields>;
 
-export type TCrudSchema = () => Promise<TFieldClient[]>;
+export type TCrudSchema = () => Promise<TField[]>;
 export type TCrudClear = () => Promise<TCrud>;
 export type TCrudList = (args: TListArgs) => Promise<TCrud[]>;
 export type TCrudRead = (args: TReadArgs) => Promise<TCrud>;

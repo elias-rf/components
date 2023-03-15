@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ParametrosComandoSQL: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ParametrosComandoSQL: TTable = {
       field: "IdComando",
       label: "IdComando",
       name: "ParametrosComandoSQL_id",
-      type: "string",
+      typeField: "string",
       size: 128,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ParametrosComandoSQL: TTable = {
       field: "Comando",
       label: "Comando",
       name: "Comando",
-      type: "string",
+      typeField: "string",
       size: 5140,
       allowNull: false,
     },

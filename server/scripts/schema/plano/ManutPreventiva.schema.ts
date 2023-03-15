@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ManutPreventiva: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ManutPreventiva: TTable = {
       field: "CdCliente",
       label: "CdCliente",
       name: "CdCliente",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const ManutPreventiva: TTable = {
       field: "Sequencia",
       label: "Sequencia",
       name: "Sequencia",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -24,28 +24,28 @@ export const ManutPreventiva: TTable = {
       field: "CdEquipamento",
       label: "CdEquipamento",
       name: "CdEquipamento",
-      type: "int",
+      typeField: "int",
       size: 4,
     },
     {
       field: "NumSerie",
       label: "NumSerie",
       name: "NumSerie",
-      type: "string",
+      typeField: "string",
       size: 20,
     },
     {
       field: "Periodo",
       label: "Periodo",
       name: "Periodo",
-      type: "int",
+      typeField: "int",
       size: 4,
     },
     {
       field: "DtultPreventiva",
       label: "DtultPreventiva",
       name: "DtultPreventiva",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
     },

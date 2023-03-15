@@ -1,6 +1,6 @@
-import type { TTable } from "../../../../types";
 import { TGenericObject } from "../../../../types";
-import { recordClear } from "../../record-clear";
+import type { TTable } from "../../../../types/model";
+import { recordClear } from "../../../../utils/schema/record-clear";
 import { TCrudClear } from "../crud.type";
 
 export function clearFactory(table: TTable): TCrudClear {

@@ -1,9 +1,8 @@
 import React from "react";
 import { usuarioStore } from "../../../model/usuario/usuario.store";
-import type { TFieldClient, TSelected } from "../../../types";
+import type { TField, TSelected } from "../../../types";
 import { isEmpty } from "../../../utils/identify/is_empty";
 import { Button } from "../../components/button";
-import { TButtonEvent } from "../../components/button/button.types";
 import { Label } from "../../components/form/label";
 import { Textbox } from "../../components/form/textbox";
 import { LabelError } from "../../components/label_error";
@@ -29,15 +28,8 @@ export function UsuarioForm({ id }: TUsuarioFormProps) {
   const refreshList = usuarioStore((state) => state.refreshList);
 
   const [status, setStatus] = React.useState("new");
-  const {
-    values,
-    setValues,
-    errors,
-    onChangeEvent,
-    onInputEvent,
-    isDirty,
-    schema,
-  } = useForm(dataSchema);
+  const { values, setValues, errors, onChange, onInput, isDirty, schema } =
+    useForm(dataSchema);
 
   React.useEffect(() => {
     getClear();
@@ -70,7 +62,7 @@ export function UsuarioForm({ id }: TUsuarioFormProps) {
     refreshList();
   }
 
-  function handleClick(e: TButtonEvent) {
+  function handleClick(e: any) {
     if (e.name === "novo") {
       showRecord(dataClear);
     }
@@ -97,18 +89,18 @@ export function UsuarioForm({ id }: TUsuarioFormProps) {
       <div className={"space-x-2"}>
         <Button
           className={"w-20"}
-          size="sm"
+          size="small"
           color="green"
-          onClickEvent={handleClick}
+          onClick={handleClick}
           name="novo"
         >
           Novo
         </Button>
         <Button
           className={"w-20"}
-          size="sm"
-          color="default"
-          onClickEvent={handleClick}
+          size="small"
+          color="primary"
+          onClick={handleClick}
           name="salvar"
           disabled={!isDirty}
         >
@@ -116,9 +108,9 @@ export function UsuarioForm({ id }: TUsuarioFormProps) {
         </Button>
         <Button
           className={"w-20"}
-          size="sm"
+          size="small"
           color="red"
-          onClickEvent={handleClick}
+          onClick={handleClick}
           name="excluir"
           disabled={isDirty}
         >
@@ -134,15 +126,15 @@ export function UsuarioForm({ id }: TUsuarioFormProps) {
       <div className={"flex flex-wrap gap-2"}>
         {schema
           ?.filter((field) => field.visible !== false)
-          .map((field: TFieldClient) => (
+          .map((field: TField) => (
             <React.Fragment key={field.name}>
               <div className={"my-2"}>
                 <Label name={field.name}>{field.label || ""}</Label>
                 <Textbox
                   type="text"
                   name={field.name}
-                  onChange={onChangeEvent}
-                  onInput={onInputEvent}
+                  onChange={onChange}
+                  onInput={onInput}
                   value={values[field.name] || ""}
                 />
                 <LabelError>{errors[field.name]}</LabelError>

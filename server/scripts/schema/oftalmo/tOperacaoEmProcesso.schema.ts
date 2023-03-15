@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tOperacaoEmProcesso: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tOperacaoEmProcesso: TTable = {
       field: "kOperacaoEP",
       label: "kOperacaoEP",
       name: "tOperacaoEmProcesso_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       autoIncrement: true,
       primaryKey: true,
@@ -18,7 +18,7 @@ export const tOperacaoEmProcesso: TTable = {
       field: "fkOP",
       label: "fkOP",
       name: "fkOP",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const tOperacaoEmProcesso: TTable = {
       field: "fkOperacao",
       label: "fkOperacao",
       name: "fkOperacao",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const tOperacaoEmProcesso: TTable = {
       field: "Quantidade",
       label: "Quantidade",
       name: "Quantidade",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },

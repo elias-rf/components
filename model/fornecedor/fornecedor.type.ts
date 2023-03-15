@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TFornecedorPk {
@@ -15,7 +15,7 @@ export interface TFornecedor extends TFornecedorPk {
   is_ativo?: string;
 }
 
-export type TFornecedorFields = keyof Required<TFornecedor>
+export type TFornecedorFields = keyof Required<TFornecedor>;
 
 export type TFornecedorIds = {
   [pk in keyof Required<TFornecedorPk>]: any;
@@ -24,7 +24,7 @@ export type TFornecedorSelect = TSelect<TFornecedorFields>;
 export type TFornecedorWhere = TWhere<TFornecedorFields>;
 export type TFornecedorOrder = TOrder<TFornecedorFields>;
 
-export type TFornecedorSchema = () => Promise<TFieldClient[]>;
+export type TFornecedorSchema = () => Promise<TField[]>;
 export type TFornecedorClear = () => Promise<TFornecedor>;
 export type TFornecedorList = (args: {
   where?: TWhere<TFornecedorFields>[];
@@ -46,9 +46,7 @@ export type TFornecedorUpdate = (args: {
   data: TFornecedor;
   select?: TSelect<TFornecedorFields>;
 }) => Promise<TFornecedor>;
-export type TFornecedorDel = (args: {
-  id: TFornecedorIds;
-}) => Promise<number>;
+export type TFornecedorDel = (args: { id: TFornecedorIds }) => Promise<number>;
 
 //#region def
 //#endregion
@@ -69,11 +67,11 @@ export type TFornecedorCrud = {
 
 export type TFornecedorModel = TFornecedorCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TFornecedorRpc = TFornecedorModel;

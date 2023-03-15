@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const NatOpeNaoAutorizada: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const NatOpeNaoAutorizada: TTable = {
       field: "CdEmpresa",
       label: "CdEmpresa",
       name: "CdEmpresa",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const NatOpeNaoAutorizada: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const NatOpeNaoAutorizada: TTable = {
       field: "Nop",
       label: "Nop",
       name: "Nop",
-      type: "int",
+      typeField: "int",
       size: 5,
       allowNull: false,
     },

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tbl_Sistema_NCM: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tbl_Sistema_NCM: TTable = {
       field: "KNCM",
       label: "KNCM",
       name: "tbl_Sistema_NCM_id",
-      type: "int",
+      typeField: "int",
       size: 2,
       autoIncrement: true,
       primaryKey: true,
@@ -18,7 +18,7 @@ export const tbl_Sistema_NCM: TTable = {
       field: "NCM",
       label: "NCM",
       name: "NCM",
-      type: "string",
+      typeField: "string",
       size: 10,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const tbl_Sistema_NCM: TTable = {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 2000,
     },
   ],

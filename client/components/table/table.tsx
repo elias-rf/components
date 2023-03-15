@@ -1,13 +1,33 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import type { TEvent } from "../../../types";
+import { TIds, TOrder, TWhere } from "../../../types";
+import { TField } from "../../../types/model";
 import { pksFromFieldsClient } from "../../../utils/schema/pks-from-fields";
 import { isSelected } from "../../lib/is-selected";
 import { ShowChevronIcon } from "../show_chevronIcon";
 import { TableCell } from "./table-cell";
 import { TableColumn } from "./table-column";
 import { TableFilter } from "./table-filter";
-import { TTableProps } from "./table.types";
+
+export type TTableProps = {
+  name?: string;
+  data?: any[];
+  schema: TField[];
+  selected?: TIds;
+  onSelect?: (event: any) => void;
+  order?: TOrder[];
+  onOrder?: (event: any) => void;
+  where?: TWhere[];
+  onWhere?: (event: any) => void;
+  children?: React.ReactNode;
+  selectedClassName?: string;
+  tableClassName?: string;
+  commands?: {
+    head?: () => React.ReactNode;
+    row?: (rec: any) => React.ReactNode;
+  };
+};
+
 /**
  * Componente Table
  */
@@ -18,9 +38,9 @@ export function Table({
   selected,
   order,
   where,
-  onWhereEvent = () => null,
-  onOrderEvent,
-  onSelectEvent = () => null,
+  onWhere = () => null,
+  onOrder,
+  onSelect = () => null,
   children,
   selectedClassName = "bg-gray-300",
   tableClassName,
@@ -48,42 +68,34 @@ export function Table({
    */
   function handleOnSelect(rec: any) {
     if (isSelected(selected || {}, rec) && hasTree()) {
-      onSelectEvent({
+      onSelect({
         name,
         value: [],
-        event: "onSelectEvent",
-        component: "Table",
       });
     } else {
       const value: any = {};
       for (const fld of pk) {
         value[fld] = rec[fld];
       }
-      onSelectEvent({
+      onSelect({
         name,
         value,
-        event: "onSelectEvent",
-        component: "Table",
       });
     }
   }
 
-  function handleOnOrder({ value }: TEvent) {
-    if (onOrderEvent)
-      onOrderEvent({
+  function handleOnOrder({ value }: any) {
+    if (onOrder)
+      onOrder({
         name,
         value,
-        event: "onOrderEvent",
-        component: "Table",
       });
   }
 
-  function handleOnWhere({ value }: TEvent) {
-    onWhereEvent({
+  function handleOnWhere({ value }: any) {
+    onWhere({
       name,
       value,
-      event: "onWhereEvent",
-      component: "Table",
     });
   }
 
@@ -97,7 +109,7 @@ export function Table({
               <TableColumn
                 key={fld.name}
                 schemaField={fld}
-                onOrderEvent={handleOnOrder}
+                onOrder={handleOnOrder}
                 order={order || []}
               />
             ))}
@@ -110,7 +122,7 @@ export function Table({
                   <TableFilter
                     key={fld.name}
                     schemaField={fld}
-                    onWhereEvent={handleOnWhere}
+                    onWhere={handleOnWhere}
                     where={where}
                   ></TableFilter>
                 ))
@@ -120,7 +132,9 @@ export function Table({
         <tbody>
           {Array.isArray(data)
             ? data?.map((rec) => (
-                <React.Fragment key={pk.map((itemId) => rec[itemId]).join(":")}>
+                <React.Fragment
+                  key={pk.map((itemId: any) => rec[itemId]).join(":")}
+                >
                   <tr onClick={() => handleOnSelect(rec)}>
                     {hasTree() ? (
                       <td

@@ -1,14 +1,25 @@
 import React from "react";
-import { TTextboxProps } from "./textbox.types";
+import { TInputType } from "../../../types";
+
+export type TTextboxProps = {
+  [prop: string]: any;
+  list?: string;
+  name: string;
+  onBlur?: (event: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
+  onInput?: (event: React.FormEvent<HTMLInputElement>) => void;
+  value: any;
+  type?: TInputType;
+};
 
 /**
  *
  */
 export function Textbox({
   name = "",
-  onChangeEvent = () => null,
-  onBlurEvent = () => null,
-  onInputEvent = () => null,
+  onChange = () => null,
+  onBlur = () => null,
+  onInput = () => null,
   value = "",
   list,
   ...others
@@ -16,55 +27,35 @@ export function Textbox({
   // input já foi disparado
   const [dispInput, setDispInput] = React.useState(false);
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChangeEvent({
-      name,
-      value: e.target.value,
-      component: "Textbox",
-      event: "onChangeEvent",
-    });
+  const handleOnChange = (e: React.FormEvent<HTMLInputElement>) => {
+    onChange(e);
     if (dispInput) setDispInput(false);
   };
 
-  const handleOnBlur = () => {
-    onBlurEvent({
-      name,
-      value,
-      component: "Textbox",
-      event: "onBlurEvent",
-    });
+  const handleOnBlur = (e: React.FormEvent<HTMLInputElement>) => {
+    onBlur(e);
     if (!dispInput) {
-      onInputEvent({
-        name,
-        value: value,
-        component: "Textbox",
-        event: "onInputEvent",
-      });
+      onInput(e);
       setDispInput(true);
     }
   };
 
-  const handleEnter = (event: any) => {
-    if (event.key.toLowerCase() === "enter") {
+  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key.toLowerCase() === "enter") {
       if (!dispInput) {
-        onInputEvent({
-          name,
-          value,
-          component: "Textbox",
-          event: "onInputEvent",
-        });
+        onInput(e);
         setDispInput(true);
       }
-      const form = event.target.form;
+      const form = e.currentTarget.form;
       if (form) {
-        const index = [...form].indexOf(event.target);
+        const index = [...form].indexOf(e.currentTarget);
         if (form.elements.length === index + 1) {
-          form.elements[0].focus();
+          // form.elements[0].focus();
         } else {
-          form.elements[index + 1].focus();
+          // form.elements[index + 1].focus();
         }
       }
-      event.preventDefault();
+      e.preventDefault();
     }
   };
 

@@ -1,6 +1,5 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { usuarioStore } from "../../model/usuario/usuario.store";
-import type { TEvent } from "../../types";
 import { DefaultLayout } from "../components/layout/default_layout";
 import { menu } from "../menu";
 
@@ -10,14 +9,14 @@ export function Layout({ children }: { children?: any }) {
 
   const navigate = useNavigate();
 
-  async function handleMenu(event: TEvent) {
+  async function handleMenu(event: any) {
     navigate(event.value);
   }
 
   return (
     <DefaultLayout
       menu={menu}
-      onClickEvent={handleMenu}
+      onClick={handleMenu}
       isAuthenticated={isAuthenticated}
     >
       <Outlet />

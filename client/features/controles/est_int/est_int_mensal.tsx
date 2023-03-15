@@ -1,20 +1,19 @@
 import React from "react";
 import { esterilizacaoInternaStore } from "../../../../model/esterilizacao-interna/esterilizacao-interna.store";
-import { TEvent } from "../../../../types";
 import { Table } from "../../../components/table/table";
 
 type EsterilizacaoInternaMensalProp = {
   children?: React.ReactNode;
   mesCorrente: { mes?: string };
   mesInicial: { mes: string };
-  onSelectEvent?: (event: TEvent) => void;
+  onSelect?: (event: any) => void;
 };
 const { getSchemaMensal, getMensal } = esterilizacaoInternaStore.getState();
 
 export function EsterilizacaoInternaMensal({
   mesInicial,
   mesCorrente,
-  onSelectEvent,
+  onSelect,
   children,
 }: EsterilizacaoInternaMensalProp) {
   const dataSchemaMensal = esterilizacaoInternaStore(
@@ -36,7 +35,7 @@ export function EsterilizacaoInternaMensal({
       data={dataMensal}
       schema={dataSchemaMensal}
       selected={mesCorrente}
-      onSelectEvent={onSelectEvent}
+      onSelect={onSelect}
     >
       {children}
     </Table>

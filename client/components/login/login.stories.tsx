@@ -3,7 +3,7 @@ import { Login } from "./login";
 
 const meta: Meta<typeof Login> = {
   component: Login,
-  argTypes: { onInputEvent: { action: "onInputEvent" } },
+  argTypes: { onInput: { action: "onInput" } },
   args: {
     title: "Login Teste",
     error: "Erro de teste",

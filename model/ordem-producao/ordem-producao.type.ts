@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 import { TEtiquetaExterna } from "../etiqueta-externa/etiqueta-externa.type";
 import {
@@ -63,7 +63,7 @@ export interface TOrdemProducao extends TOrdemProducaoPk {
   tamboreamento_lote?: string;
 }
 
-export type TOrdemProducaoFields = keyof Required<TOrdemProducao>
+export type TOrdemProducaoFields = keyof Required<TOrdemProducao>;
 
 export type TOrdemProducaoIds = {
   [pk in keyof Required<TOrdemProducaoPk>]: any;
@@ -72,7 +72,7 @@ export type TOrdemProducaoSelect = TSelect<TOrdemProducaoFields>;
 export type TOrdemProducaoWhere = TWhere<TOrdemProducaoFields>;
 export type TOrdemProducaoOrder = TOrder<TOrdemProducaoFields>;
 
-export type TOrdemProducaoSchema = () => Promise<TFieldClient[]>;
+export type TOrdemProducaoSchema = () => Promise<TField[]>;
 export type TOrdemProducaoClear = () => Promise<TOrdemProducao>;
 export type TOrdemProducaoList = (args: {
   where?: TWhere<TOrdemProducaoFields>[];

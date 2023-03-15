@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TProdutoPk {
@@ -15,7 +15,7 @@ export interface TProduto extends TProdutoPk {
   fkSubCategoria?: number;
 }
 
-export type TProdutoFields = keyof Required<TProduto>
+export type TProdutoFields = keyof Required<TProduto>;
 
 export type TProdutoIds = {
   [pk in keyof Required<TProdutoPk>]: any;
@@ -24,7 +24,7 @@ export type TProdutoSelect = TSelect<TProdutoFields>;
 export type TProdutoWhere = TWhere<TProdutoFields>;
 export type TProdutoOrder = TOrder<TProdutoFields>;
 
-export type TProdutoSchema = () => Promise<TFieldClient[]>;
+export type TProdutoSchema = () => Promise<TField[]>;
 export type TProdutoClear = () => Promise<TProduto>;
 export type TProdutoList = (args: {
   where?: TWhere<TProdutoFields>[];
@@ -46,9 +46,7 @@ export type TProdutoUpdate = (args: {
   data: TProduto;
   select?: TSelect<TProdutoFields>;
 }) => Promise<TProduto>;
-export type TProdutoDel = (args: {
-  id: TProdutoIds;
-}) => Promise<number>;
+export type TProdutoDel = (args: { id: TProdutoIds }) => Promise<number>;
 
 //#region def
 //#endregion
@@ -69,11 +67,11 @@ export type TProdutoCrud = {
 
 export type TProdutoModel = TProdutoCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TProdutoRpc = TProdutoModel;

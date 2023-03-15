@@ -1,5 +1,6 @@
 import { Knex } from "knex";
-import { TGenericObject, TSelect, TTable, TWhere } from "../../../../types";
+import { TGenericObject, TSelect, TWhere } from "../../../../types";
+import type { TTable } from "../../../../types/model";
 import { knexWhere } from "../../../../utils/data/knex-where";
 import { namesFromTable } from "../../../../utils/schema/names-from-table";
 import {

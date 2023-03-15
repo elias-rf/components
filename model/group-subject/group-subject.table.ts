@@ -9,7 +9,7 @@ export const group_subject: TTable = {
       label: "Grupo",
       name: "group_id",
       primaryKey: true,
-      type: "string",
+      typeField: "string",
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const group_subject: TTable = {
       label: "Recurso",
       name: "subject_id",
       primaryKey: true,
-      type: "string",
+      typeField: "string",
       allowNull: false,
     },
   ],

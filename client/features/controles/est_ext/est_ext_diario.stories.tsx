@@ -14,7 +14,7 @@ export const Est_Ext_Diario: Story = {
       <EsterilizacaoExternaDiario
         mesCorrente={{ mes: "2020-01" }}
         diaCorrente={{ dia: "2020-01-01" }}
-        onSelectEvent={(event) => console.log(event)}
+        onSelect={(event) => console.log(event)}
       />
     );
   },

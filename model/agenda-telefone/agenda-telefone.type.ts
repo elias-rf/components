@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TAgendaTelefonePk {
@@ -19,7 +19,7 @@ export type TAgendaTelefoneSelect = TSelect<TAgendaTelefoneFields>;
 export type TAgendaTelefoneWhere = TWhere<TAgendaTelefoneFields>;
 export type TAgendaTelefoneOrder = TOrder<TAgendaTelefoneFields>;
 
-export type TAgendaTelefoneSchema = () => Promise<TFieldClient[]>;
+export type TAgendaTelefoneSchema = () => Promise<TField[]>;
 export type TAgendaTelefoneClear = () => Promise<TAgendaTelefone>;
 export type TAgendaTelefoneList = (args: {
   where?: TWhere<TAgendaTelefoneFields>[];

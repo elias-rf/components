@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 import { clearFactory } from "./clear-factory";
 
 const schema: TTable = {
@@ -11,26 +11,26 @@ const schema: TTable = {
       label: "Ramal",
       name: "agenda_telefone_id",
       primaryKey: true,
-      type: "int",
+      typeField: "int",
     },
     {
       allowNull: false,
       field: "name",
       label: "Nome",
       name: "nome",
-      type: "string",
+      typeField: "string",
     },
     {
       field: "department",
       label: "Setor",
       name: "setor",
-      type: "string",
+      typeField: "string",
     },
     {
       field: "email",
       label: "Email",
       name: "email",
-      type: "string",
+      typeField: "string",
     },
   ],
 };

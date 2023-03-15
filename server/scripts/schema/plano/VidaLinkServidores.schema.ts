@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const VidaLinkServidores: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const VidaLinkServidores: TTable = {
       field: "IdMaquina",
       label: "IdMaquina",
       name: "VidaLinkServidores_id",
-      type: "string",
+      typeField: "string",
       size: 32,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const VidaLinkServidores: TTable = {
       field: "NmServidor",
       label: "NmServidor",
       name: "NmServidor",
-      type: "string",
+      typeField: "string",
       size: 40,
       allowNull: false,
     },

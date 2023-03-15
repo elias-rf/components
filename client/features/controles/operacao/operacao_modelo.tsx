@@ -1,6 +1,5 @@
 import React from "react";
 import { ordemProducaoOperacaoStore } from "../../../../model/ordem-producao-operacao/ordem-producao-operacao.store";
-import { TEvent } from "../../../../types";
 import { Table } from "../../../components/table/table";
 
 type OperacaoModelProps = {
@@ -8,7 +7,7 @@ type OperacaoModelProps = {
   dia: { dia?: string };
   produto: { produto?: string };
   children?: React.ReactNode;
-  onSelectEvent?: (event: TEvent) => void;
+  onSelectEvent?: (event: any) => void;
 };
 
 export function OperacaoModelo({ operacao, dia, produto }: OperacaoModelProps) {

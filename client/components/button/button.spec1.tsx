@@ -4,7 +4,7 @@ import { Button } from "./button";
 
 describe("Button", () => {
   it("component default", () => {
-    render(<Button>TESTE</Button>);
+    render(<Button onClick={() => null}>TESTE</Button>);
 
     expect(screen.getByTestId("button")).toBeDefined();
     expect(screen.getByTestId("button")).toHaveTextContent("TESTE");
@@ -13,7 +13,7 @@ describe("Button", () => {
 
   it("component clickable", () => {
     const handleClick = vi.fn();
-    render(<Button onClickEvent={handleClick}>TESTE</Button>);
+    render(<Button onClick={handleClick}>TESTE</Button>);
 
     fireEvent.click(screen.getByTestId("button"));
     expect(screen.getByTestId("button")).toBeDefined();

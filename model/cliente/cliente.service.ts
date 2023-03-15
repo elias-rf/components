@@ -2,7 +2,7 @@ import deepmerge from "ts-deepmerge";
 import { rpcFactory } from "../../client/lib/http/rpc.factory";
 import { TClienteRpc } from "./cliente.type";
 //#region import
-import { TFieldClient } from "../../types";
+import { TField } from "../../types/model";
 import { fetcherRpc } from "../../utils/api/fetcher-rpc";
 import { cache } from "../../utils/cache";
 import { day } from "../../utils/date/day";
@@ -53,7 +53,7 @@ export const clienteService = deepmerge(rpcFactory("cliente"), {
 
 //#region other
 function getSchema({ inicio, fim }: { inicio: string; fim: string }) {
-  const rsp: TFieldClient[] = [
+  const rsp: TField[] = [
     {
       name: "categoria",
       label: "Produto",
@@ -65,7 +65,7 @@ function getSchema({ inicio, fim }: { inicio: string; fim: string }) {
   while (dtInicio.format("YYYY-MM") !== dtFim.format("YYYY-MM")) {
     rsp.push({
       name: dtInicio.format("YYYY-MM"),
-      type: "float",
+      typeField: "float",
       fieldClass: "text-right",
     });
     dtInicio = dtInicio.add(1, "month");

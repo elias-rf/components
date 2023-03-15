@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const LstTrn: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const LstTrn: TTable = {
       field: "Data",
       label: "Data",
       name: "Data",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -17,7 +17,7 @@ export const LstTrn: TTable = {
       field: "Usuario",
       label: "Usuario",
       name: "Usuario",
-      type: "string",
+      typeField: "string",
       size: 32,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const LstTrn: TTable = {
       field: "Texto",
       label: "Texto",
       name: "Texto",
-      type: "string",
+      typeField: "string",
       size: 1028,
       allowNull: false,
     },

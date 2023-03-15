@@ -1,11 +1,8 @@
-import { TFieldServer, TSelect } from "../../types";
+import { TField, TSelect } from "../../types";
 import { isNonEmptyArray } from "../identify/is-non-empty-array";
 import { namesFromFields } from "../schema/names-from-fields";
 
-export function isSelect(
-  select: TSelect,
-  fields: TFieldServer[]
-): string | null {
+export function isSelect(select: TSelect, fields: TField[]): string | null {
   if (!isNonEmptyArray(select)) return "select deve ser um array de campos";
 
   const nameList = namesFromFields(fields);

@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TEtiquetaExternaPk {
@@ -9,7 +9,7 @@ export interface TEtiquetaExterna extends TEtiquetaExternaPk {
   data_fabricacao?: string;
 }
 
-export type TEtiquetaExternaFields = keyof Required<TEtiquetaExterna>
+export type TEtiquetaExternaFields = keyof Required<TEtiquetaExterna>;
 
 export type TEtiquetaExternaIds = {
   [pk in keyof Required<TEtiquetaExternaPk>]: any;
@@ -18,7 +18,7 @@ export type TEtiquetaExternaSelect = TSelect<TEtiquetaExternaFields>;
 export type TEtiquetaExternaWhere = TWhere<TEtiquetaExternaFields>;
 export type TEtiquetaExternaOrder = TOrder<TEtiquetaExternaFields>;
 
-export type TEtiquetaExternaSchema = () => Promise<TFieldClient[]>;
+export type TEtiquetaExternaSchema = () => Promise<TField[]>;
 export type TEtiquetaExternaClear = () => Promise<TEtiquetaExterna>;
 export type TEtiquetaExternaList = (args: {
   where?: TWhere<TEtiquetaExternaFields>[];
@@ -63,11 +63,11 @@ export type TEtiquetaExternaCrud = {
 
 export type TEtiquetaExternaModel = TEtiquetaExternaCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TEtiquetaExternaRpc = TEtiquetaExternaModel;

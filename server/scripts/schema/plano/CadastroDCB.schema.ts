@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const CadastroDCB: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const CadastroDCB: TTable = {
       field: "CdDCB",
       label: "CdDCB",
       name: "CadastroDCB_id",
-      type: "string",
+      typeField: "string",
       size: 16,
       primaryKey: true,
       allowNull: false,
@@ -17,21 +17,21 @@ export const CadastroDCB: TTable = {
       field: "DescricaoDCB",
       label: "DescricaoDCB",
       name: "DescricaoDCB",
-      type: "string",
+      typeField: "string",
       size: 40,
     },
     {
       field: "Observacao",
       label: "Observacao",
       name: "Observacao",
-      type: "string",
+      typeField: "string",
       size: 1024,
     },
     {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
     },

@@ -1,11 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Field } from "./field";
-import type { TFieldAttributes } from "./field-types";
+import { Field, TFieldAttributes } from "./field";
 
 const meta: Meta<typeof Field> = {
   component: Field,
-  argTypes: { onClickEvent: { action: "onClickEvent" } },
 };
 
 export default meta;

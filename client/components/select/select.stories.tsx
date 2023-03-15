@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import { TEvent } from "../../../types";
 import { Select } from "./select";
 import { SelectOptions } from "./select-options";
 
@@ -12,14 +11,18 @@ export default {
 
 export const Default: ComponentStory<typeof Select> = (props: any) => {
   const [vlr, setVlr] = React.useState("vlr1");
-  function handleOnChange(e: TEvent) {
-    setVlr(e.value);
+  function handleOnChange(e: any) {
+    setVlr(e.currentTarget.value);
     props.onChange(e);
   }
 
   return (
     <>
-      <Select {...props} value={vlr} onChange={handleOnChange}>
+      <Select
+        {...props}
+        value={vlr}
+        onChange={handleOnChange}
+      >
         <SelectOptions {...props} />
       </Select>
     </>

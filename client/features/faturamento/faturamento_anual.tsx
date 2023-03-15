@@ -1,9 +1,9 @@
-import { TFieldClient } from "../../../types";
+import { TField } from "../../../types";
 import { Table } from "../../components/table/table";
 
 type FaturamentoAnualProps = {
   data: any[];
-  schema: TFieldClient[];
+  schema: TField[];
   dispatch: any;
 };
 

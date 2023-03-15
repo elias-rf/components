@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tbl_Solucao_Controle_Lote: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tbl_Solucao_Controle_Lote: TTable = {
       field: "fkProdutoItem",
       label: "fkProdutoItem",
       name: "fkProdutoItem",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const tbl_Solucao_Controle_Lote: TTable = {
       field: "Quantidade",
       label: "Quantidade",
       name: "Quantidade",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const tbl_Solucao_Controle_Lote: TTable = {
       field: "Lote",
       label: "Lote",
       name: "Lote",
-      type: "string",
+      typeField: "string",
       size: 10,
       allowNull: false,
     },

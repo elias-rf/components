@@ -1,4 +1,6 @@
-import { TMenuProps } from "./menu.types";
+export type TMenuProps = {
+  children: React.ReactElement | React.ReactElement[];
+};
 
 export function Menu({ children }: TMenuProps) {
   return (

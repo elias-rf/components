@@ -1,10 +1,6 @@
 import { Knex } from "knex";
-import type {
-  TGenericObject,
-  TSelect,
-  TTable,
-  TWhere,
-} from "../../../../types";
+import type { TGenericObject, TSelect, TWhere } from "../../../../types";
+import type { TTable } from "../../../../types/model";
 import { knexWhere } from "../../../../utils/data/knex-where";
 import { renameNameToField } from "../../../../utils/schema/rename-fields";
 import { zWhere } from "../../../../utils/zod/z-where";

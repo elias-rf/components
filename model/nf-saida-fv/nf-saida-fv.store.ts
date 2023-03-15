@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TFieldClient } from "../../types";
+import { TField } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { nfSaidaFvService } from "./nf-saida-fv.service";
 import type {
@@ -23,7 +23,7 @@ type TNfSaidaFvStore = {
   getList: TNfSaidaFvList;
   dataRead: TNfSaidaFv;
   getRead: TNfSaidaFvRead;
-  dataSchema: TFieldClient[];
+  dataSchema: TField[];
   getSchema: TNfSaidaFvSchema;
   dataClear: TNfSaidaFv;
   getClear: TNfSaidaFvClear;

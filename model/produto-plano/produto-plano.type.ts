@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TProdutoPlanoPk {
@@ -178,7 +178,7 @@ export interface TProdutoPlano extends TProdutoPlanoPk {
   FgCombo?: string;
 }
 
-export type TProdutoPlanoFields = keyof Required<TProdutoPlano>
+export type TProdutoPlanoFields = keyof Required<TProdutoPlano>;
 
 export type TProdutoPlanoIds = {
   [pk in keyof Required<TProdutoPlanoPk>]: any;
@@ -187,7 +187,7 @@ export type TProdutoPlanoSelect = TSelect<TProdutoPlanoFields>;
 export type TProdutoPlanoWhere = TWhere<TProdutoPlanoFields>;
 export type TProdutoPlanoOrder = TOrder<TProdutoPlanoFields>;
 
-export type TProdutoPlanoSchema = () => Promise<TFieldClient[]>;
+export type TProdutoPlanoSchema = () => Promise<TField[]>;
 export type TProdutoPlanoClear = () => Promise<TProdutoPlano>;
 export type TProdutoPlanoList = (args: {
   where?: TWhere<TProdutoPlanoFields>[];
@@ -232,11 +232,11 @@ export type TProdutoPlanoCrud = {
 
 export type TProdutoPlanoModel = TProdutoPlanoCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TProdutoPlanoRpc = TProdutoPlanoModel;

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ClienteContrato: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ClienteContrato: TTable = {
       field: "CdCliente",
       label: "CdCliente",
       name: "ClienteContrato_id",
-      type: "int",
+      typeField: "int",
       size: 9,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ClienteContrato: TTable = {
       field: "DtEnvioTermo",
       label: "DtEnvioTermo",
       name: "DtEnvioTermo",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -26,7 +26,7 @@ export const ClienteContrato: TTable = {
       field: "DtRecebimentoTermo",
       label: "DtRecebimentoTermo",
       name: "DtRecebimentoTermo",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -35,7 +35,7 @@ export const ClienteContrato: TTable = {
       field: "DtEnvioContrato",
       label: "DtEnvioContrato",
       name: "DtEnvioContrato",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -44,7 +44,7 @@ export const ClienteContrato: TTable = {
       field: "DtRecebimentoContrato",
       label: "DtRecebimentoContrato",
       name: "DtRecebimentoContrato",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

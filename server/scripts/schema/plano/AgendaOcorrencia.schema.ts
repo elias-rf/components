@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const AgendaOcorrencia: TTable = {
   database: "plano",
@@ -8,14 +8,14 @@ export const AgendaOcorrencia: TTable = {
       field: "CdUsuario",
       label: "CdUsuario",
       name: "CdUsuario",
-      type: "string",
+      typeField: "string",
       size: 10,
     },
     {
       field: "IdCompromisso",
       label: "IdCompromisso",
       name: "IdCompromisso",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -23,7 +23,7 @@ export const AgendaOcorrencia: TTable = {
       field: "DtOcorrencia",
       label: "DtOcorrencia",
       name: "DtOcorrencia",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -32,7 +32,7 @@ export const AgendaOcorrencia: TTable = {
       field: "HrOcorrencia",
       label: "HrOcorrencia",
       name: "HrOcorrencia",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -41,7 +41,7 @@ export const AgendaOcorrencia: TTable = {
       field: "DsOcorrencia",
       label: "DsOcorrencia",
       name: "DsOcorrencia",
-      type: "string",
+      typeField: "string",
       size: 1024,
     },
   ],

@@ -1,13 +1,13 @@
-import { TEvent, TFieldClient, TIds } from "../../../types";
+import { TField, TIds } from "../../../types";
 import { Table } from "../../components/table";
 
 export type FaturamentoProps = {
   data: any[];
   datatree: any[];
-  schema: TFieldClient[];
+  schema: TField[];
   dispatch: any;
   selected: TIds;
-  onSelectEvent: (event: TEvent) => void;
+  onSelectEvent: (event: any) => void;
 };
 
 // function Switch({ selected, children }: { selected: string; children: any }) {
@@ -34,7 +34,7 @@ export function Faturamento({
           data={data}
           schema={schema}
           selected={selected}
-          onSelectEvent={onSelectEvent}
+          onSelect={onSelectEvent}
         />
       </div>
     </>

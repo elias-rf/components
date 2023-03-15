@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TEsterilizacaoExternaPk {
@@ -25,7 +25,7 @@ export type TEsterilizacaoExternaSelect = TSelect<TEsterilizacaoExternaFields>;
 export type TEsterilizacaoExternaWhere = TWhere<TEsterilizacaoExternaFields>;
 export type TEsterilizacaoExternaOrder = TOrder<TEsterilizacaoExternaFields>;
 
-export type TEsterilizacaoExternaSchema = () => Promise<TFieldClient[]>;
+export type TEsterilizacaoExternaSchema = () => Promise<TField[]>;
 export type TEsterilizacaoExternaClear = () => Promise<TEsterilizacaoExterna>;
 export type TEsterilizacaoExternaList = (args: {
   where?: TWhere<TEsterilizacaoExternaFields>[];
@@ -94,10 +94,10 @@ export type TEsterilizacaoExternaModel = TEsterilizacaoExternaCrud & {
   //#endregion
   //#region type
   query: {
-    schemaDiario(): Promise<TFieldClient[]>;
-    schemaMensal(): Promise<TFieldClient[]>;
-    schemaProduto(): Promise<TFieldClient[]>;
-    schemaModelo(): Promise<TFieldClient[]>;
+    schemaDiario(): Promise<TField[]>;
+    schemaMensal(): Promise<TField[]>;
+    schemaProduto(): Promise<TField[]>;
+    schemaModelo(): Promise<TField[]>;
     diario: TEsterilizacaoExternaDiario;
     mensal: TEsterilizacaoExternaMensal;
     modelo: TEsterilizacaoExternaModelo;

@@ -1,6 +1,6 @@
-import { TFieldClient } from "../../../types";
+import { TField } from "../../../types";
 
-export function mensalSchema(): () => Promise<TFieldClient[]> {
+export function mensalSchema(): () => Promise<TField[]> {
   return async () => {
     return [
       {

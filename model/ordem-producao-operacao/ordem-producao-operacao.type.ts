@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TOrdemProducaoOperacaoPk {
@@ -26,16 +26,18 @@ export interface TOrdemProducaoOperacao extends TOrdemProducaoOperacaoPk {
   EspSegAlca?: string;
 }
 
-export type TOrdemProducaoOperacaoFields = keyof Required<TOrdemProducaoOperacao>
+export type TOrdemProducaoOperacaoFields =
+  keyof Required<TOrdemProducaoOperacao>;
 
 export type TOrdemProducaoOperacaoIds = {
   [pk in keyof Required<TOrdemProducaoOperacaoPk>]: any;
 };
-export type TOrdemProducaoOperacaoSelect = TSelect<TOrdemProducaoOperacaoFields>;
+export type TOrdemProducaoOperacaoSelect =
+  TSelect<TOrdemProducaoOperacaoFields>;
 export type TOrdemProducaoOperacaoWhere = TWhere<TOrdemProducaoOperacaoFields>;
 export type TOrdemProducaoOperacaoOrder = TOrder<TOrdemProducaoOperacaoFields>;
 
-export type TOrdemProducaoOperacaoSchema = () => Promise<TFieldClient[]>;
+export type TOrdemProducaoOperacaoSchema = () => Promise<TField[]>;
 export type TOrdemProducaoOperacaoClear = () => Promise<TOrdemProducaoOperacao>;
 export type TOrdemProducaoOperacaoList = (args: {
   where?: TWhere<TOrdemProducaoOperacaoFields>[];
@@ -146,19 +148,19 @@ export type TOrdemProducaoOperacaoModel = TOrdemProducaoOperacaoCrud & {
 
   query: {
     diario: TOrdemProducaoOperacaoDiario;
-    diarioSchema(): Promise<TFieldClient[]>;
+    diarioSchema(): Promise<TField[]>;
 
     mensal: TOrdemProducaoOperacaoMensal;
-    mensalSchema(): Promise<TFieldClient[]>;
+    mensalSchema(): Promise<TField[]>;
 
     modelo: TOrdemProducaoOperacaoModelo;
-    modeloSchema(): Promise<TFieldClient[]>;
+    modeloSchema(): Promise<TField[]>;
 
     produto: TOrdemProducaoOperacaoProduto;
-    produtoSchema(): Promise<TFieldClient[]>;
+    produtoSchema(): Promise<TField[]>;
 
     turno: TOrdemProducaoOperacaoTurno;
-    turnoSchema(): Promise<TFieldClient[]>;
+    turnoSchema(): Promise<TField[]>;
   };
 
   //#endregion

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const AcumuladoresParciais: TTable = {
   database: "plano",
@@ -8,14 +8,14 @@ export const AcumuladoresParciais: TTable = {
       field: "CdAcumuladorParcial",
       label: "CdAcumuladorParcial",
       name: "CdAcumuladorParcial",
-      type: "int",
+      typeField: "int",
       size: 4,
     },
     {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 50,
     },
   ],

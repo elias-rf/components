@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ConfiguracaoNCMDesativado: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ConfiguracaoNCMDesativado: TTable = {
       field: "NMC",
       label: "NMC",
       name: "ConfiguracaoNCMDesativado_id",
-      type: "string",
+      typeField: "string",
       size: 8,
       primaryKey: true,
       allowNull: false,

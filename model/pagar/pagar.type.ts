@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TPagarPk {
@@ -40,7 +40,7 @@ export interface TPagar extends TPagarPk {
   FgTipoCustoDRE?: string;
 }
 
-export type TPagarFields = keyof Required<TPagar>
+export type TPagarFields = keyof Required<TPagar>;
 
 export type TPagarIds = {
   [pk in keyof Required<TPagarPk>]: any;
@@ -49,7 +49,7 @@ export type TPagarSelect = TSelect<TPagarFields>;
 export type TPagarWhere = TWhere<TPagarFields>;
 export type TPagarOrder = TOrder<TPagarFields>;
 
-export type TPagarSchema = () => Promise<TFieldClient[]>;
+export type TPagarSchema = () => Promise<TField[]>;
 export type TPagarClear = () => Promise<TPagar>;
 export type TPagarList = (args: {
   where?: TWhere<TPagarFields>[];
@@ -71,9 +71,7 @@ export type TPagarUpdate = (args: {
   data: TPagar;
   select?: TSelect<TPagarFields>;
 }) => Promise<TPagar>;
-export type TPagarDel = (args: {
-  id: TPagarIds;
-}) => Promise<number>;
+export type TPagarDel = (args: { id: TPagarIds }) => Promise<number>;
 
 //#region def
 //#endregion
@@ -94,11 +92,11 @@ export type TPagarCrud = {
 
 export type TPagarModel = TPagarCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TPagarRpc = TPagarModel;

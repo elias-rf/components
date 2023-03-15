@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TProdutoCategoriaPk {
@@ -9,7 +9,7 @@ export interface TProdutoCategoria extends TProdutoCategoriaPk {
   departamento_id?: number;
 }
 
-export type TProdutoCategoriaFields = keyof Required<TProdutoCategoria>
+export type TProdutoCategoriaFields = keyof Required<TProdutoCategoria>;
 
 export type TProdutoCategoriaIds = {
   [pk in keyof Required<TProdutoCategoriaPk>]: any;
@@ -18,7 +18,7 @@ export type TProdutoCategoriaSelect = TSelect<TProdutoCategoriaFields>;
 export type TProdutoCategoriaWhere = TWhere<TProdutoCategoriaFields>;
 export type TProdutoCategoriaOrder = TOrder<TProdutoCategoriaFields>;
 
-export type TProdutoCategoriaSchema = () => Promise<TFieldClient[]>;
+export type TProdutoCategoriaSchema = () => Promise<TField[]>;
 export type TProdutoCategoriaClear = () => Promise<TProdutoCategoria>;
 export type TProdutoCategoriaList = (args: {
   where?: TWhere<TProdutoCategoriaFields>[];
@@ -63,11 +63,11 @@ export type TProdutoCategoriaCrud = {
 
 export type TProdutoCategoriaModel = TProdutoCategoriaCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TProdutoCategoriaRpc = TProdutoCategoriaModel;

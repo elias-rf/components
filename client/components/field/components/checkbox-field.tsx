@@ -1,5 +1,9 @@
 import { useFormContext } from "react-hook-form";
-import { TCheckboxFieldAttributes } from "../field-types";
+import { BaseFieldAttributes } from "./base-field.types";
+
+export type TCheckboxFieldAttributes = BaseFieldAttributes & {
+  type: "checkbox";
+};
 
 export function CheckboxField({ label, name, type }: TCheckboxFieldAttributes) {
   const { register } = useFormContext();

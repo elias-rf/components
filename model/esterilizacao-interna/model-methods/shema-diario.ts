@@ -1,22 +1,22 @@
-import { TFieldClient } from "../../../types";
+import { TField } from "../../../types";
 
-export async function schemaDiario(): Promise<TFieldClient[]> {
+export async function schemaDiario(): Promise<TField[]> {
   return [
     {
       name: "dia",
       label: "Dia",
-      type: "string",
+      typeField: "string",
       primaryKey: true,
     },
     {
       name: "dia_semana",
       label: "Dia Semana",
-      type: "string",
+      typeField: "string",
     },
     {
       name: "quantidade",
       label: "Quantidade",
-      type: "int",
+      typeField: "int",
     },
   ];
 }

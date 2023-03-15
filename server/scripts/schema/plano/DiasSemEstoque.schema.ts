@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const DiasSemEstoque: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const DiasSemEstoque: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const DiasSemEstoque: TTable = {
       field: "CdProduto",
       label: "CdProduto",
       name: "CdProduto",
-      type: "string",
+      typeField: "string",
       size: 15,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const DiasSemEstoque: TTable = {
       field: "DtInicioFalta",
       label: "DtInicioFalta",
       name: "DtInicioFalta",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -33,7 +33,7 @@ export const DiasSemEstoque: TTable = {
       field: "DtReposicao",
       label: "DtReposicao",
       name: "DtReposicao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

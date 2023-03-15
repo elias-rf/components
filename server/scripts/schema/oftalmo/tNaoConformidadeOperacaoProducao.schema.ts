@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tNaoConformidadeOperacaoProducao: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tNaoConformidadeOperacaoProducao: TTable = {
       field: "kNaoConformidadeOP",
       label: "kNaoConformidadeOP",
       name: "tNaoConformidadeOperacaoProducao_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       autoIncrement: true,
       primaryKey: true,
@@ -18,7 +18,7 @@ export const tNaoConformidadeOperacaoProducao: TTable = {
       field: "fkOperacaoOP",
       label: "fkOperacaoOP",
       name: "fkOperacaoOP",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const tNaoConformidadeOperacaoProducao: TTable = {
       field: "Quantidade",
       label: "Quantidade",
       name: "Quantidade",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const tNaoConformidadeOperacaoProducao: TTable = {
       field: "fkNaoConformidade",
       label: "fkNaoConformidade",
       name: "fkNaoConformidade",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const tNaoConformidadeOperacaoProducao: TTable = {
       field: "fkCorrecao",
       label: "fkCorrecao",
       name: "fkCorrecao",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },

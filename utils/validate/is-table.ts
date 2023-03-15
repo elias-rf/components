@@ -1,4 +1,4 @@
-import { TDb } from "../../types";
+import { TDb } from "../../types/model";
 import { isEmpty } from "../identify/is_empty";
 
 export function isTable(table: string, entitySchema: TDb): string | null {

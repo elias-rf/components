@@ -1,10 +1,7 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+
 const config: StorybookConfig = {
-  stories: [
-    "../stories/**/*.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
-    "../client/**/*.stories.@(js|jsx|ts|tsx)",
-  ],
+  stories: ["../client/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -13,6 +10,16 @@ const config: StorybookConfig = {
   framework: {
     name: "@storybook/react-vite",
     options: {},
+  },
+  features: {
+    storyStoreV7: true,
+  },
+  staticDirs: ["../public"],
+  async viteFinal(config) {
+    config.server.proxy = {
+      "/api": "http://localhost:3333",
+    };
+    return config;
   },
   docs: {
     autodocs: "tag",

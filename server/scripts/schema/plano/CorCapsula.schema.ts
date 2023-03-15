@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const CorCapsula: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const CorCapsula: TTable = {
       field: "CdCorCapsula",
       label: "CdCorCapsula",
       name: "CorCapsula_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const CorCapsula: TTable = {
       field: "NmCorCapsula",
       label: "NmCorCapsula",
       name: "NmCorCapsula",
-      type: "string",
+      typeField: "string",
       size: 50,
       allowNull: false,
     },

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tSistemaMes: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tSistemaMes: TTable = {
       field: "Mes",
       label: "Mes",
       name: "tSistemaMes_id",
-      type: "date",
+      typeField: "date",
       size: 4,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const tSistemaMes: TTable = {
       field: "DiaInicial",
       label: "DiaInicial",
       name: "DiaInicial",
-      type: "date",
+      typeField: "date",
       size: 4,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const tSistemaMes: TTable = {
       field: "DiaFinal",
       label: "DiaFinal",
       name: "DiaFinal",
-      type: "date",
+      typeField: "date",
       size: 4,
       allowNull: false,
     },
@@ -33,21 +33,21 @@ export const tSistemaMes: TTable = {
       field: "DiaInicialCornea",
       label: "DiaInicialCornea",
       name: "DiaInicialCornea",
-      type: "date",
+      typeField: "date",
       size: 4,
     },
     {
       field: "DiaFinalCornea",
       label: "DiaFinalCornea",
       name: "DiaFinalCornea",
-      type: "date",
+      typeField: "date",
       size: 4,
     },
     {
       field: "QtdDiasMes",
       label: "QtdDiasMes",
       name: "QtdDiasMes",
-      type: "int",
+      typeField: "int",
       size: 4,
     },
   ],

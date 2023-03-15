@@ -1,6 +1,6 @@
 import React from "react";
 import { nfSaidaStore } from "../../../../model/nf-saida/nf-saida.store";
-import { TEvent, TIds } from "../../../../types";
+import { TIds } from "../../../../types";
 import { day } from "../../../../utils/date/day";
 import { Table } from "../../../components/table/table";
 
@@ -8,7 +8,7 @@ type TransferenciaMensalProps = {
   mesCorrente: TIds;
   children?: React.ReactNode;
   dia?: string;
-  onSelectEvent?: (event: TEvent) => void;
+  onSelectEvent?: (event: any) => void;
 };
 
 export function TransferenciaMensal({
@@ -42,7 +42,7 @@ export function TransferenciaMensal({
       data={dataTransferenciaMensal}
       schema={dataTransferenciaMensalSchema}
       selected={mesCorrente}
-      onSelectEvent={onSelectEvent}
+      onSelect={onSelectEvent}
     >
       {children}
     </Table>

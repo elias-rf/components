@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TNfEntradaLogPk {
@@ -14,7 +14,7 @@ export interface TNfEntradaLog extends TNfEntradaLogPk {
   modelo_id?: string;
 }
 
-export type TNfEntradaLogFields = keyof Required<TNfEntradaLog>
+export type TNfEntradaLogFields = keyof Required<TNfEntradaLog>;
 
 export type TNfEntradaLogIds = {
   [pk in keyof Required<TNfEntradaLogPk>]: any;
@@ -23,7 +23,7 @@ export type TNfEntradaLogSelect = TSelect<TNfEntradaLogFields>;
 export type TNfEntradaLogWhere = TWhere<TNfEntradaLogFields>;
 export type TNfEntradaLogOrder = TOrder<TNfEntradaLogFields>;
 
-export type TNfEntradaLogSchema = () => Promise<TFieldClient[]>;
+export type TNfEntradaLogSchema = () => Promise<TField[]>;
 export type TNfEntradaLogClear = () => Promise<TNfEntradaLog>;
 export type TNfEntradaLogList = (args: {
   where?: TWhere<TNfEntradaLogFields>[];
@@ -68,11 +68,11 @@ export type TNfEntradaLogCrud = {
 
 export type TNfEntradaLogModel = TNfEntradaLogCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TNfEntradaLogRpc = TNfEntradaLogModel;

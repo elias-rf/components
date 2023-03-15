@@ -1,10 +1,10 @@
-import { TFieldServer } from "../../types";
+import { TField } from "../../types/model";
 
-export const entity: TFieldServer[] = [
+export const entity: TField[] = [
   {
     name: "fld_1",
     field: "fld1",
-    type: "int",
+    typeField: "int",
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
@@ -12,19 +12,19 @@ export const entity: TFieldServer[] = [
   {
     name: "fld_2",
     field: "fld2",
-    type: "string",
+    typeField: "string",
     allowNull: false,
     primaryKey: true,
   },
   {
     name: "fld_3",
     field: "fld3",
-    type: "string",
+    typeField: "string",
     readOnly: true,
   },
   {
     name: "fld_4",
     field: "fld4",
-    type: "string",
+    typeField: "string",
   },
 ];

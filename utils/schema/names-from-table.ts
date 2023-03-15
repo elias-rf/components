@@ -1,4 +1,4 @@
-import { TTable } from "../../types";
+import { TTable } from "../../types/model";
 
 /** busca names em uma tabela */
 export function namesFromTable(table: TTable) {

@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { usuarioStore } from "../../model/usuario/usuario.store";
-import { TEvent } from "../../types";
 import { Login as LoginComponent } from "../components/login/login";
 
 /**
@@ -15,7 +14,7 @@ export function Login() {
   const [spinner, setSpinner] = React.useState(false);
   const navigate = useNavigate();
 
-  async function handleInput(event: TEvent) {
+  async function handleInput(event: any) {
     setSpinner(true);
     setError("");
     try {

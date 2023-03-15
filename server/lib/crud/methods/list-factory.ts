@@ -1,10 +1,6 @@
 import { Knex } from "knex";
-import type {
-  TAggregate,
-  TGenericObject,
-  TListArgs,
-  TTable,
-} from "../../../../types";
+import type { TAggregate, TGenericObject, TListArgs } from "../../../../types";
+import type { TTable } from "../../../../types/model";
 import { knexOrder } from "../../../../utils/data/knex-order";
 import { knexWhere } from "../../../../utils/data/knex-where";
 import { namesFromTable } from "../../../../utils/schema/names-from-table";

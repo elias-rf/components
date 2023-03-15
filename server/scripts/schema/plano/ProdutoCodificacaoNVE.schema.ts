@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ProdutoCodificacaoNVE: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ProdutoCodificacaoNVE: TTable = {
       field: "CdProduto",
       label: "CdProduto",
       name: "ProdutoCodificacaoNVE_id",
-      type: "string",
+      typeField: "string",
       size: 16,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ProdutoCodificacaoNVE: TTable = {
       field: "Link",
       label: "Link",
       name: "Link",
-      type: "string",
+      typeField: "string",
       size: 256,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const ProdutoCodificacaoNVE: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -34,7 +34,7 @@ export const ProdutoCodificacaoNVE: TTable = {
       field: "CodificacaoNVE",
       label: "CodificacaoNVE",
       name: "CodificacaoNVE",
-      type: "string",
+      typeField: "string",
       size: 64,
       allowNull: false,
     },

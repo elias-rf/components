@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const FaturamentoRat: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const FaturamentoRat: TTable = {
       field: "NumeroRAT",
       label: "NumeroRAT",
       name: "FaturamentoRat_id",
-      type: "int",
+      typeField: "int",
       size: 5,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const FaturamentoRat: TTable = {
       field: "NumParcela",
       label: "NumParcela",
       name: "NumParcela",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const FaturamentoRat: TTable = {
       field: "DataFaturamento",
       label: "DataFaturamento",
       name: "DataFaturamento",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -34,7 +34,7 @@ export const FaturamentoRat: TTable = {
       field: "VlFaturamento",
       label: "VlFaturamento",
       name: "VlFaturamento",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,

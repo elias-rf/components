@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const MedicoAMIVida: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const MedicoAMIVida: TTable = {
       field: "CRM",
       label: "CRM",
       name: "MedicoAMIVida_id",
-      type: "string",
+      typeField: "string",
       size: 16,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const MedicoAMIVida: TTable = {
       field: "FgEnvioMaterial",
       label: "FgEnvioMaterial",
       name: "FgEnvioMaterial",
-      type: "string",
+      typeField: "string",
       size: 1,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const MedicoAMIVida: TTable = {
       field: "FgEnvioBrindes",
       label: "FgEnvioBrindes",
       name: "FgEnvioBrindes",
-      type: "string",
+      typeField: "string",
       size: 1,
       allowNull: false,
     },
@@ -33,7 +33,7 @@ export const MedicoAMIVida: TTable = {
       field: "FgRelAcompanhamento",
       label: "FgRelAcompanhamento",
       name: "FgRelAcompanhamento",
-      type: "string",
+      typeField: "string",
       size: 1,
       allowNull: false,
     },

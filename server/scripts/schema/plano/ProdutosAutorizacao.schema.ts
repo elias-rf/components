@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ProdutosAutorizacao: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ProdutosAutorizacao: TTable = {
       field: "Autorizador",
       label: "Autorizador",
       name: "Autorizador",
-      type: "string",
+      typeField: "string",
       size: 20,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const ProdutosAutorizacao: TTable = {
       field: "CdProduto",
       label: "CdProduto",
       name: "CdProduto",
-      type: "string",
+      typeField: "string",
       size: 15,
       allowNull: false,
     },

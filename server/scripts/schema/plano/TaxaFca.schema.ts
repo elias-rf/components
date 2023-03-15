@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const TaxaFca: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const TaxaFca: TTable = {
       field: "DataFca",
       label: "DataFca",
       name: "TaxaFca_id",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       primaryKey: true,
@@ -18,7 +18,7 @@ export const TaxaFca: TTable = {
       field: "IndiceFca",
       label: "IndiceFca",
       name: "IndiceFca",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
     },

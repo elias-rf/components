@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tSetor: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tSetor: TTable = {
       field: "kSetor",
       label: "kSetor",
       name: "kSetor",
-      type: "int",
+      typeField: "int",
       size: 4,
       autoIncrement: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const tSetor: TTable = {
       field: "fkDivisao",
       label: "fkDivisao",
       name: "fkDivisao",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const tSetor: TTable = {
       field: "Setor",
       label: "Setor",
       name: "Setor",
-      type: "string",
+      typeField: "string",
       size: 30,
       allowNull: false,
     },
@@ -33,7 +33,7 @@ export const tSetor: TTable = {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 200,
     },
   ],

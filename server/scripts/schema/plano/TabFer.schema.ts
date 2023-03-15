@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const TabFer: TTable = {
   database: "plano",
@@ -8,14 +8,14 @@ export const TabFer: TTable = {
       field: "DtBase",
       label: "DtBase",
       name: "DtBase",
-      type: "date",
+      typeField: "date",
       size: 4,
     },
     {
       field: "Tipo",
       label: "Tipo",
       name: "Tipo",
-      type: "string",
+      typeField: "string",
       size: 1,
     },
   ],

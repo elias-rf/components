@@ -3,7 +3,7 @@ import { TUsuarioFields } from "../../../model/usuario/usuario.type";
 import { TOrder, TSelected, TWhere } from "../../../types";
 import { Page } from "../../components/page/page";
 import { PageTitle } from "../../components/page/page_title";
-import { TAgendaTelefoneListEvent } from "../../features/agenda_telefone/agenda-telefone-list";
+import { TAgendaTelefoneList } from "../../features/agenda_telefone/agenda-telefone-list";
 import { Auth } from "../../features/auth";
 import { UsuarioForm } from "../../features/usuario/usuario_form";
 import { UsuarioList } from "../../features/usuario/usuario_list";
@@ -13,14 +13,14 @@ export default function Usuarios() {
   const [where, setWhere] = React.useState<TWhere<TUsuarioFields>[]>([]);
   const [order, setOrder] = React.useState<TOrder<TUsuarioFields>[]>([]);
 
-  function handleEvent(event: TAgendaTelefoneListEvent) {
-    if (event.event === "onSelectEvent") {
+  function handle(event: TAgendaTelefoneList) {
+    if (event.event === "onSelect") {
       setSelected(event.value);
     }
-    if (event.event === "onWhereEvent") {
+    if (event.event === "onWhere") {
       setWhere(event.value);
     }
-    if (event.event === "onOrderEvent") {
+    if (event.event === "onOrder") {
       setOrder(event.value);
     }
   }
@@ -36,9 +36,9 @@ export default function Usuarios() {
             selected={selected}
             where={where}
             order={order}
-            onSelectEvent={handleEvent}
-            onWhereEvent={handleEvent}
-            onOrderEvent={handleEvent}
+            onSelect={handle}
+            onWhere={handle}
+            onOrder={handle}
           />
         </div>
       </Page>

@@ -7,9 +7,9 @@ export function Tab({ id, title }: TTabProps) {
   const state = React.useContext(TabsContext);
 
   function handleOnChange() {
-    state.onChangeEvent({
+    state.onChange({
       component: "Tabs",
-      event: "onChangeEvent",
+      event: "onChange",
       value: id,
       name: title,
     });

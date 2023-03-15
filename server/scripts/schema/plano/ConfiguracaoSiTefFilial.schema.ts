@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ConfiguracaoSiTefFilial: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ConfiguracaoSiTefFilial: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "ConfiguracaoSiTefFilial_id",
-      type: "int",
+      typeField: "int",
       size: 9,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ConfiguracaoSiTefFilial: TTable = {
       field: "IPSiTef",
       label: "IPSiTef",
       name: "IPSiTef",
-      type: "string",
+      typeField: "string",
       size: 16,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const ConfiguracaoSiTefFilial: TTable = {
       field: "IdLoja",
       label: "IdLoja",
       name: "IdLoja",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },

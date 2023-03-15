@@ -1,7 +1,7 @@
 import React from "react";
-import { TEvent, TFieldClient, TGenericObject } from "../../../types";
+import { TField, TGenericObject } from "../../../types";
 
-export function useForm(schema: TFieldClient[]) {
+export function useForm(schema: TField[]) {
   const [values, setValues] = React.useState<TGenericObject>({});
   const [errors, setErrors] = React.useState<TGenericObject>({});
   const [isDirty, setIsDirty] = React.useState<boolean>(false); // '' dirty = valid,
@@ -12,11 +12,11 @@ export function useForm(schema: TFieldClient[]) {
     }
   }, [schema]);
 
-  function onChangeEvent(event: TEvent) {
+  function onChangeEvent(event: any) {
     setValues({ ...values, [event.name]: event.value });
   }
 
-  function onInputEvent(event: TEvent) {
+  function onInputEvent(event: any) {
     setValues({ ...values, [event.name]: event.value });
     setIsDirty(true);
     console.log("Validar", event.name, event.value);

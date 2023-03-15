@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ECFIdentificacao: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ECFIdentificacao: TTable = {
       field: "CNPJFilial",
       label: "CNPJFilial",
       name: "CNPJFilial",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ECFIdentificacao: TTable = {
       field: "NumECF",
       label: "NumECF",
       name: "NumECF",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const ECFIdentificacao: TTable = {
       field: "NumFabricacao",
       label: "NumFabricacao",
       name: "NumFabricacao",
-      type: "string",
+      typeField: "string",
       size: 64,
       allowNull: false,
     },
@@ -33,7 +33,7 @@ export const ECFIdentificacao: TTable = {
       field: "ControleFilial",
       label: "ControleFilial",
       name: "ControleFilial",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -42,7 +42,7 @@ export const ECFIdentificacao: TTable = {
       field: "ControleFab",
       label: "ControleFab",
       name: "ControleFab",
-      type: "string",
+      typeField: "string",
       size: 64,
       allowNull: false,
     },

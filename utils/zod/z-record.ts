@@ -1,8 +1,8 @@
-import { TFieldServer } from "../../types";
+import { TField } from "../../types";
 import { isObject } from "../identify/is-object";
 import { namesFromFields } from "../schema/names-from-fields";
 
-export function zRecord(record: any, fields: TFieldServer[]) {
+export function zRecord(record: any, fields: TField[]) {
   const resp = isRecord(record, fields);
   if (resp === "") return;
   throw new Error(resp);
@@ -11,7 +11,7 @@ export function zRecord(record: any, fields: TFieldServer[]) {
 /**
  * Validar se são dados para gravação de um registro informado pelo usuário
  */
-export function isRecord<Rec>(data: Rec, fields: TFieldServer[]) {
+export function isRecord<Rec>(data: Rec, fields: TField[]) {
   if (!isObject(data)) return "Data deve ser um objeto";
 
   const nameListOk = namesFromFields(

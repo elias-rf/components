@@ -1,6 +1,5 @@
-
 import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnections } from "../../types";
+import type { TConnections } from "../../types/model";
 import { usuario } from "./usuario.table";
 import type { TUsuarioModel } from "./usuario.type";
 //#region import
@@ -16,12 +15,8 @@ export function usuarioModelFactory(
   { connections }: { connections: TConnections }
 ): //#endregion
 TUsuarioModel {
-
-  const connection = connections[usuario.database]
-  const crud = crudFactory(
-    connection,
-    usuario
-  );
+  const connection: TConnection = connections[usuario.database];
+  const crud = crudFactory(connection, usuario);
 
   //#region def
   //#endregion
@@ -92,7 +87,7 @@ TUsuarioModel {
     usuario,
   } as TUsuarioModel;
 
-  return model
+  return model;
 }
 
 //#region other

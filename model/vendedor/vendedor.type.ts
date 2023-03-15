@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TVendedorPk {
@@ -34,7 +34,7 @@ export interface TVendedor extends TVendedorPk {
   FgTecnicoOS?: string;
 }
 
-export type TVendedorFields = keyof Required<TVendedor>
+export type TVendedorFields = keyof Required<TVendedor>;
 
 export type TVendedorIds = {
   [pk in keyof Required<TVendedorPk>]: any;
@@ -43,7 +43,7 @@ export type TVendedorSelect = TSelect<TVendedorFields>;
 export type TVendedorWhere = TWhere<TVendedorFields>;
 export type TVendedorOrder = TOrder<TVendedorFields>;
 
-export type TVendedorSchema = () => Promise<TFieldClient[]>;
+export type TVendedorSchema = () => Promise<TField[]>;
 export type TVendedorClear = () => Promise<TVendedor>;
 export type TVendedorList = (args: {
   where?: TWhere<TVendedorFields>[];
@@ -65,9 +65,7 @@ export type TVendedorUpdate = (args: {
   data: TVendedor;
   select?: TSelect<TVendedorFields>;
 }) => Promise<TVendedor>;
-export type TVendedorDel = (args: {
-  id: TVendedorIds;
-}) => Promise<number>;
+export type TVendedorDel = (args: { id: TVendedorIds }) => Promise<number>;
 
 //#region def
 //#endregion
@@ -88,11 +86,11 @@ export type TVendedorCrud = {
 
 export type TVendedorModel = TVendedorCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TVendedorRpc = TVendedorModel;

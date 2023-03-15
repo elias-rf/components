@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const FilialDownloadXML: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const FilialDownloadXML: TTable = {
       field: "CdEmpresa",
       label: "CdEmpresa",
       name: "CdEmpresa",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const FilialDownloadXML: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const FilialDownloadXML: TTable = {
       field: "CNPJCPFAutorizado",
       label: "CNPJCPFAutorizado",
       name: "CNPJCPFAutorizado",
-      type: "int",
+      typeField: "int",
       size: 9,
       allowNull: false,
     },

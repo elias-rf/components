@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const VidalinkComprovante: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const VidalinkComprovante: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const VidalinkComprovante: TTable = {
       field: "NumCupom",
       label: "NumCupom",
       name: "NumCupom",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const VidalinkComprovante: TTable = {
       field: "Sequencia",
       label: "Sequencia",
       name: "Sequencia",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ export const VidalinkComprovante: TTable = {
       field: "Texto",
       label: "Texto",
       name: "Texto",
-      type: "string",
+      typeField: "string",
       size: 64,
       allowNull: false,
     },
@@ -40,7 +40,7 @@ export const VidalinkComprovante: TTable = {
       field: "NumAutorizacao",
       label: "NumAutorizacao",
       name: "NumAutorizacao",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
     },

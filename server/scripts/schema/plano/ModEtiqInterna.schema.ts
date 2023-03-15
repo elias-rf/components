@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ModEtiqInterna: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ModEtiqInterna: TTable = {
       field: "Codigo",
       label: "Codigo",
       name: "ModEtiqInterna_id",
-      type: "int",
+      typeField: "int",
       size: 5,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ModEtiqInterna: TTable = {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 64,
       allowNull: false,
     },

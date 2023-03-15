@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ECFS: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ECFS: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ECFS: TTable = {
       field: "ECF",
       label: "ECF",
       name: "ECF",
-      type: "int",
+      typeField: "int",
       size: 2,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const ECFS: TTable = {
       field: "Identificacao",
       label: "Identificacao",
       name: "Identificacao",
-      type: "string",
+      typeField: "string",
       size: 64,
       allowNull: false,
     },
@@ -33,7 +33,7 @@ export const ECFS: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

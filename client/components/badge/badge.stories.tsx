@@ -4,8 +4,8 @@ import { Badge } from "./badge";
 const meta: Meta<typeof Badge> = {
   component: Badge,
   argTypes: {
-    onClickEvent: { action: "onClickEvent" },
-    onCloseEvent: { action: "onCloseEvent" },
+    onClick: { action: "onClickEvent" },
+    onClose: { action: "onCloseEvent" },
     color: {
       options: [
         "default",
@@ -57,7 +57,7 @@ export const Clicable: Story = {
           name={props.name}
           large={props.large}
           color={props.color}
-          onClickEvent={props.onClickEvent}
+          onClick={props.onClick}
           className={props.className}
         >
           {props.children}
@@ -75,8 +75,8 @@ export const Closable: Story = {
           name={props.name}
           large={props.large}
           color={props.color}
-          onClickEvent={props.onClickEvent}
-          onCloseEvent={props.onCloseEvent}
+          onClick={props.onClick}
+          onClose={props.onClose}
           className={props.className}
         >
           {props.children}

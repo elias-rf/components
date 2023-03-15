@@ -1,6 +1,6 @@
 import { getTracker } from "knex-mock-client";
 import { connectionsMock } from "../../../../mocks/connections.mock";
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 import { knexMockHistory } from "../../../../utils/data/knex-mock-history";
 import { listFactory } from "./list-factory";
 

@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TNfEntradaPk {
@@ -86,7 +86,7 @@ export interface TNfEntrada extends TNfEntradaPk {
   FgFCPSTCompoeVlCustoProduto?: string;
 }
 
-export type TNfEntradaFields = keyof Required<TNfEntrada>
+export type TNfEntradaFields = keyof Required<TNfEntrada>;
 
 export type TNfEntradaIds = {
   [pk in keyof Required<TNfEntradaPk>]: any;
@@ -95,7 +95,7 @@ export type TNfEntradaSelect = TSelect<TNfEntradaFields>;
 export type TNfEntradaWhere = TWhere<TNfEntradaFields>;
 export type TNfEntradaOrder = TOrder<TNfEntradaFields>;
 
-export type TNfEntradaSchema = () => Promise<TFieldClient[]>;
+export type TNfEntradaSchema = () => Promise<TField[]>;
 export type TNfEntradaClear = () => Promise<TNfEntrada>;
 export type TNfEntradaList = (args: {
   where?: TWhere<TNfEntradaFields>[];
@@ -117,9 +117,7 @@ export type TNfEntradaUpdate = (args: {
   data: TNfEntrada;
   select?: TSelect<TNfEntradaFields>;
 }) => Promise<TNfEntrada>;
-export type TNfEntradaDel = (args: {
-  id: TNfEntradaIds;
-}) => Promise<number>;
+export type TNfEntradaDel = (args: { id: TNfEntradaIds }) => Promise<number>;
 
 //#region def
 export type TNfEntradaTransferenciaCreate = (args: {
@@ -143,9 +141,9 @@ export type TNfEntradaCrud = {
 
 export type TNfEntradaModel = TNfEntradaCrud & {
   //#region query
-//#endregion
+  //#endregion
   //#region mutation
-//#endregion
+  //#endregion
   //#region type
   mutation: {
     transferenciaCreate: TNfEntradaTransferenciaCreate;

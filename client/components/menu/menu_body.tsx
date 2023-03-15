@@ -1,6 +1,10 @@
 import { twMerge } from "tailwind-merge";
 import { useMenuStore } from "./menu.store";
-import { TMenuBodyProps } from "./menu.types";
+
+export type TMenuBodyProps = {
+  children: React.ReactElement | React.ReactElement[];
+  version: string;
+};
 
 export function MenuBody({ children }: TMenuBodyProps) {
   const show = useMenuStore((state) => state.show);

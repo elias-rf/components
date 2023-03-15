@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ComponentesCombo: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ComponentesCombo: TTable = {
       field: "CdKit",
       label: "CdKit",
       name: "ComponentesCombo_id",
-      type: "string",
+      typeField: "string",
       size: 18,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const ComponentesCombo: TTable = {
       field: "QtdeMinimaCombo",
       label: "QtdeMinimaCombo",
       name: "QtdeMinimaCombo",
-      type: "int",
+      typeField: "int",
       size: 5,
       scale: 5,
       allowNull: false,
@@ -26,7 +26,7 @@ export const ComponentesCombo: TTable = {
       field: "QtdeMaximaCombo",
       label: "QtdeMaximaCombo",
       name: "QtdeMaximaCombo",
-      type: "int",
+      typeField: "int",
       size: 5,
       scale: 5,
       allowNull: false,
@@ -35,7 +35,7 @@ export const ComponentesCombo: TTable = {
       field: "VlUnitarioCombo",
       label: "VlUnitarioCombo",
       name: "VlUnitarioCombo",
-      type: "int",
+      typeField: "int",
       size: 9,
       scale: 5,
       allowNull: false,
@@ -44,7 +44,7 @@ export const ComponentesCombo: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

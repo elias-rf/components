@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tAuditoria: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tAuditoria: TTable = {
       field: "id",
       label: "id",
       name: "tAuditoria_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       autoIncrement: true,
       primaryKey: true,
@@ -18,14 +18,14 @@ export const tAuditoria: TTable = {
       field: "estacao",
       label: "estacao",
       name: "estacao",
-      type: "string",
+      typeField: "string",
       size: 50,
     },
     {
       field: "data",
       label: "data",
       name: "data",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       defaultValue: "getdate()",
@@ -34,7 +34,7 @@ export const tAuditoria: TTable = {
       field: "hora",
       label: "hora",
       name: "hora",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       defaultValue: "getdate()",
@@ -43,14 +43,14 @@ export const tAuditoria: TTable = {
       field: "usuario",
       label: "usuario",
       name: "usuario",
-      type: "string",
+      typeField: "string",
       size: 50,
     },
     {
       field: "operacao",
       label: "operacao",
       name: "operacao",
-      type: "string",
+      typeField: "string",
       size: 200,
     },
   ],

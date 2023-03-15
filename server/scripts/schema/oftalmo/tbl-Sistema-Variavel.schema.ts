@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tbl_Sistema_Variavel: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tbl_Sistema_Variavel: TTable = {
       field: "kVar",
       label: "kVar",
       name: "tbl_Sistema_Variavel_id",
-      type: "string",
+      typeField: "string",
       size: 50,
       primaryKey: true,
       allowNull: false,
@@ -17,14 +17,14 @@ export const tbl_Sistema_Variavel: TTable = {
       field: "Vlr",
       label: "Vlr",
       name: "Vlr",
-      type: "string",
+      typeField: "string",
       size: 250,
     },
     {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 50,
     },
   ],

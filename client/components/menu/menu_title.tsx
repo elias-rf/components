@@ -1,18 +1,19 @@
 import { useMenuStore } from "./menu.store";
-import { TMenuTitleProps } from "./menu.types";
 import { MenuIcon } from "./menu_icon";
 
-export function MenuTitle({ to, children, onClickEvent }: TMenuTitleProps) {
+export type TMenuTitleProps = {
+  to: string;
+  onClick: (e: React.MouseEvent) => void;
+
+  children: string | React.ReactElement;
+};
+
+export function MenuTitle({ to, children, onClick }: TMenuTitleProps) {
   const show = useMenuStore((state) => state.show);
   const setShow = useMenuStore((state) => state.setShow);
 
-  function handleOnClick() {
-    onClickEvent({
-      name: to,
-      component: "MenuTitle",
-      event: "onClickEvent",
-      value: to,
-    });
+  function handleOnClick(e: React.MouseEvent) {
+    onClick(e);
   }
 
   function handleShow() {

@@ -1,26 +1,22 @@
 import React, { useState } from "react";
-import { TEvent, TFieldClient, TWhere } from "../../../types";
+import { TField, TWhere } from "../../../types";
 import { Badge } from "../badge";
 import { Button } from "../button";
 import { Textbox } from "../form/textbox";
 import { Select } from "../select/select";
 
-export type TSearchEvent = TEvent & {
+export type TSearch = any & {
   component: "Search";
-  event: "onWhereEvent";
+  event: "onWhere";
 };
 
 type TSearchProps = {
-  schema: TFieldClient[];
+  schema: TField[];
   where: TWhere[];
-  onWhereEvent: (event: TSearchEvent) => void;
+  onWhere: (event: TSearch) => void;
 };
 
-export function Search({
-  schema = [],
-  where = [],
-  onWhereEvent,
-}: TSearchProps) {
+export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
   const [whr, setWhr] = useState<TWhere[]>([]); // where de trabalho
   const [fieldSelect, setFieldSelect] = useState(schema[0]?.name); // campo selecionado, default 1o campo.
   const [equalitySelect, setEqualitySelect] = useState("="); // igualdade selecionada, default =
@@ -44,11 +40,11 @@ export function Search({
       null: "(vazio)",
     };
 
-    const aux: TFieldClient | undefined = schema.find(
+    const aux: TField | undefined = schema.find(
       (item: { name: string }) => item.name === field
     );
 
-    const tipo = aux?.type;
+    const tipo = aux?.typeField;
 
     switch (tipo) {
       case "boolean":
@@ -92,16 +88,16 @@ export function Search({
     });
     if (flag) whr.push([fieldSelect, equalitySelect, valueInput]);
     setWhr(whr);
-    onWhereEvent({
+    onWhere({
       name: "",
       component: "Search",
       value: whr,
-      event: "onWhereEvent",
+      event: "onWhere",
     });
     setValueInput("");
   }
 
-  function handleSelectField(event: TEvent) {
+  function handleSelectField(event: any) {
     setFieldSelect(event.value);
     if (Object.keys(getEqualitys(event.value)).includes(equalitySelect)) {
       return;
@@ -109,7 +105,7 @@ export function Search({
     setEqualitySelect("=");
   }
 
-  function handleInput(e: TEvent) {
+  function handleInput(e: any) {
     setValueInput(e.value);
   }
 
@@ -117,11 +113,11 @@ export function Search({
     const aux = [...whr];
     aux.splice(idx, 1);
     setWhr(aux);
-    onWhereEvent({
+    onWhere({
       name: "",
       component: "Search",
       value: aux,
-      event: "onWhereEvent",
+      event: "onWhere",
     });
   }
 
@@ -141,8 +137,8 @@ export function Search({
             key={idx}
           >
             <Badge
-              onCloseEvent={() => handleDel(idx)}
-              onClickEvent={() => handleEdit(idx)}
+              onClose={() => handleDel(idx)}
+              onClick={() => handleEdit(idx)}
             >
               {`${getFieldTitle(item[0])} ${getEqualityName(item[1])} ${
                 item[2]
@@ -156,7 +152,7 @@ export function Search({
         <div className={"self-center p-1"}>
           <Select
             value={fieldSelect}
-            onChangeEvent={handleSelectField}
+            onChange={handleSelectField}
             style={{ width: "10rem" }}
           >
             {schema.map((column: { name: string; label?: string }) => (
@@ -172,7 +168,7 @@ export function Search({
         <div className={"self-center p-1"}>
           <Select
             value={equalitySelect}
-            onChangeEvent={(e: TEvent) => setEqualitySelect(e.value)}
+            onChange={(e: any) => setEqualitySelect(e.value)}
             style={{ width: "10rem" }}
           >
             {Object.entries(getEqualitys(fieldSelect)).map(
@@ -192,13 +188,13 @@ export function Search({
             name="valor"
             value={valueInput}
             field={"valor"}
-            onChangeEvent={handleInput}
+            onChange={handleInput}
           />
         </div>
         <div className={"p-1"}>
           <Button
             size="extraSmall"
-            onClickEvent={handleAdd}
+            onClick={handleAdd}
           >
             Filtrar
           </Button>

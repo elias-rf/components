@@ -1,60 +1,8 @@
-import type {
-  TEvent,
-  TFieldClient,
-  TIds,
-  TOrder,
-  TSelected,
-  TWhere,
-} from "../../../types";
-
-export type TTableEvent = TEvent & {
-  component: "Table";
-  event: "onSelectEvent" | "onOrderEvent" | "onWhereEvent";
-};
-
-export type TTableProps = {
-  name?: string;
-  data?: any[];
-  schema: TFieldClient[];
-  selected?: TIds;
-  onSelectEvent?: (event: TTableEvent) => void;
-  order?: TOrder[];
-  onOrderEvent?: (event: TTableEvent) => void;
-  where?: TWhere[];
-  onWhereEvent?: (event: TTableEvent) => void;
-  children?: React.ReactNode;
-  selectedClassName?: string;
-  tableClassName?: string;
-  commands?: {
-    head?: () => React.ReactNode;
-    row?: (rec: any) => React.ReactNode;
-  };
-};
-
-export type TEventTableFilter = TEvent & {
-  component: "TableFilter";
-  event: "onWhereEvent";
-};
-
-export type TTableFilter = {
-  schemaField: TFieldClient;
-  onWhereEvent?: (event: TEventTableFilter) => void;
-  where?: TWhere[];
-};
-
-export type TTableColumnEvent = TEvent & {
-  component: "TableColumn";
-  event: "onOrderEvent";
-};
-
-export type TTableColumn = {
-  schemaField: TFieldClient;
-  order: TOrder[];
-  onOrderEvent?: (event: TTableColumnEvent) => void;
-};
+import type { TSelected } from "../../../types";
+import { TField } from "../../../types/model";
 
 export type TTableCell = {
-  schemaField: TFieldClient;
+  schemaField: TField;
   selected?: TSelected;
   record: { [field: string]: any };
   selectedClassName?: string;

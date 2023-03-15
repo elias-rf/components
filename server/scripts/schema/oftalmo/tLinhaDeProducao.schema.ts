@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tLinhaDeProducao: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tLinhaDeProducao: TTable = {
       field: "kLinhaDeProducao",
       label: "kLinhaDeProducao",
       name: "tLinhaDeProducao_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const tLinhaDeProducao: TTable = {
       field: "LinhaDeProducao",
       label: "LinhaDeProducao",
       name: "LinhaDeProducao",
-      type: "string",
+      typeField: "string",
       size: 30,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const tLinhaDeProducao: TTable = {
       field: "CalcularEmProcesso",
       label: "CalcularEmProcesso",
       name: "CalcularEmProcesso",
-      type: "int",
+      typeField: "int",
       size: 1,
       allowNull: false,
       defaultValue: "1",
@@ -34,7 +34,7 @@ export const tLinhaDeProducao: TTable = {
       field: "SolicitarLoteBotao",
       label: "SolicitarLoteBotao",
       name: "SolicitarLoteBotao",
-      type: "int",
+      typeField: "int",
       size: 1,
       allowNull: false,
       defaultValue: "0",
@@ -43,14 +43,14 @@ export const tLinhaDeProducao: TTable = {
       field: "fkOperacaoQtdEstExt",
       label: "fkOperacaoQtdEstExt",
       name: "fkOperacaoQtdEstExt",
-      type: "int",
+      typeField: "int",
       size: 4,
     },
     {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 200,
     },
   ],

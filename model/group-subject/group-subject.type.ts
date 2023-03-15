@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TGroupSubjectPk {
@@ -6,7 +6,7 @@ export interface TGroupSubjectPk {
   subject_id?: string;
 }
 
-export type TGroupSubjectFields = keyof Required<TGroupSubject>
+export type TGroupSubjectFields = keyof Required<TGroupSubject>;
 
 export type TGroupSubjectIds = {
   [pk in keyof Required<TGroupSubjectPk>]: any;
@@ -15,7 +15,7 @@ export type TGroupSubjectSelect = TSelect<TGroupSubjectFields>;
 export type TGroupSubjectWhere = TWhere<TGroupSubjectFields>;
 export type TGroupSubjectOrder = TOrder<TGroupSubjectFields>;
 
-export type TGroupSubjectSchema = () => Promise<TFieldClient[]>;
+export type TGroupSubjectSchema = () => Promise<TField[]>;
 export type TGroupSubjectClear = () => Promise<TGroupSubject>;
 export type TGroupSubjectList = (args: {
   where?: TWhere<TGroupSubjectFields>[];

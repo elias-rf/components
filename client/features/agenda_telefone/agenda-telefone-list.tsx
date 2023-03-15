@@ -7,29 +7,26 @@ import { DelDocIcon } from "../../components/icons/del-doc-icon";
 import { NewDocIcon } from "../../components/icons/new-doc-icon";
 import { PenIcon } from "../../components/icons/pen-icon";
 import { Table } from "../../components/table/table";
-import { TTableEvent } from "../../components/table/table.types";
-
-export type TAgendaTelefoneListEvent = TTableEvent;
 
 type TAgendaTelefoneListProps = {
   selected: TIds;
-  onSelectEvent: (event: TAgendaTelefoneListEvent) => void;
+  onSelect: (event: any) => void;
   where: TWhere<TAgendaTelefoneFields>[];
-  onWhereEvent: (event: TAgendaTelefoneListEvent) => void;
+  onWhere: (event: any) => void;
   order: TOrder<TAgendaTelefoneFields>[];
-  onOrderEvent: (event: TAgendaTelefoneListEvent) => void;
-  children: React.Node;
+  onOrder: (event: any) => void;
+  children?: React.ReactNode;
 };
 
 const { getList, getSchema } = stores.agendaTelefoneStore.getState();
 
 export function AgendaTelefoneList({
   selected,
-  onSelectEvent,
+  onSelect,
   where,
-  onWhereEvent,
+  onWhere,
   order,
-  onOrderEvent,
+  onOrder,
   children,
 }: TAgendaTelefoneListProps) {
   const dataSchema = stores.agendaTelefoneStore((state) => state.dataSchema);
@@ -93,9 +90,9 @@ export function AgendaTelefoneList({
         selected={selected}
         order={order}
         where={where}
-        onSelectEvent={onSelectEvent}
-        onWhereEvent={onWhereEvent}
-        onOrderEvent={onOrderEvent}
+        onSelect={onSelect}
+        onWhere={onWhere}
+        onOrder={onOrder}
         commands={commands}
       >
         {children}

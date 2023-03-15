@@ -1,4 +1,4 @@
-import { TFieldServer, TOrder } from "../../types";
+import { TField, TOrder } from "../../types";
 import { isArray } from "../identify/is-array";
 import { isNull } from "../identify/is-null";
 import { isObject } from "../identify/is-object";
@@ -6,10 +6,7 @@ import { isString } from "../identify/is-string";
 import { isUndefined } from "../identify/is-undefined";
 import { namesFromFields } from "../schema/names-from-fields";
 
-export function isOrder(
-  order: TOrder[],
-  fields: TFieldServer[]
-): string | null {
+export function isOrder(order: TOrder[], fields: TField[]): string | null {
   if (isNull(order) || isUndefined(order))
     return "order deve ser informado no formato [[field, asc|desc]]";
   if (!isArray(order) && (isObject(order) || isString(order)))

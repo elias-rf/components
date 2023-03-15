@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const tCorrecaoNaoConformidade: TTable = {
   database: "oftalmo",
@@ -8,7 +8,7 @@ export const tCorrecaoNaoConformidade: TTable = {
       field: "kCorrecao",
       label: "kCorrecao",
       name: "tCorrecaoNaoConformidade_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const tCorrecaoNaoConformidade: TTable = {
       field: "Correcao",
       label: "Correcao",
       name: "Correcao",
-      type: "string",
+      typeField: "string",
       size: 30,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const tCorrecaoNaoConformidade: TTable = {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
-      type: "string",
+      typeField: "string",
       size: 200,
     },
   ],

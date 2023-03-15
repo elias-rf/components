@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TFieldClient } from "../../types";
+import { TField } from "../../types/model";
 import { cache } from "../../utils/cache";
 import type {
   TEstoque,
@@ -24,7 +24,7 @@ type TEstoqueStore = {
   getList: TEstoqueList;
   dataRead: TEstoque;
   getRead: TEstoqueRead;
-  dataSchema: TFieldClient[];
+  dataSchema: TField[];
   getSchema: TEstoqueSchema;
   dataClear: TEstoque;
   getClear: TEstoqueClear;

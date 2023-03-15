@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const SaisConflitantes: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const SaisConflitantes: TTable = {
       field: "CdSalOrigem",
       label: "CdSalOrigem",
       name: "CdSalOrigem",
-      type: "string",
+      typeField: "string",
       size: 15,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const SaisConflitantes: TTable = {
       field: "CdSalDestino",
       label: "CdSalDestino",
       name: "CdSalDestino",
-      type: "string",
+      typeField: "string",
       size: 15,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const SaisConflitantes: TTable = {
       field: "FgTipoAdvertencia",
       label: "FgTipoAdvertencia",
       name: "FgTipoAdvertencia",
-      type: "string",
+      typeField: "string",
       size: 1,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ export const SaisConflitantes: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -41,7 +41,7 @@ export const SaisConflitantes: TTable = {
       field: "Observacao",
       label: "Observacao",
       name: "Observacao",
-      type: "string",
+      typeField: "string",
       size: 1024,
     },
   ],

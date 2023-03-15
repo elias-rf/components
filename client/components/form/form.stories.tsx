@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { fetchMockRpc } from "../../../mocks/fetch-mock-rpc";
-import { agendaTelefoneService } from "../../../model/agenda-telefone/agenda-telefone.service";
 import { useForm } from "../../lib/hooks/use_form";
 import { LabelError } from "../label_error";
 import { Form } from "./form";
@@ -57,9 +56,7 @@ export default meta;
 type Story = StoryObj<typeof Form>;
 
 function FormState(props: any) {
-  const { values, errors, onChangeEvent, onInputEvent, schema } = useForm(
-    agendaTelefoneService.query.schema
-  );
+  const { values, errors, onChangeEvent, onInputEvent, schema } = useForm([]);
 
   return (
     <div>

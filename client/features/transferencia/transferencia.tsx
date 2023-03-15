@@ -87,24 +87,24 @@ export function Transferencia() {
         autoComplete="off"
         name="op"
         value={op}
-        onChangeEvent={(e) => setOp(e.value)}
+        onChange={(e) => setOp(e.value)}
       />
       <Label name="qtd">Quantidade Física</Label>
       <Input
         autoComplete="off"
         name="quantidade"
         value={quantidade}
-        onChangeEvent={(e) => setQuantidade(e.value)}
+        onChange={(e) => setQuantidade(e.value)}
       />
-      <Button onClickEvent={readControles}>Buscar</Button>
+      <Button onClick={readControles}>Buscar</Button>
       <Label name="serial">Serial</Label>
       <Input
         autoComplete="off"
         name="controle"
         value={controle}
-        onChangeEvent={(e) => setControle(e.value)}
+        onChange={(e) => setControle(e.value)}
       />
-      <Button onClickEvent={transfer}>Transferir</Button>
+      <Button onClick={transfer}>Transferir</Button>
       <div
         className={
           ("text-3xl font-bold text-red-500",
@@ -117,7 +117,7 @@ export function Transferencia() {
       <div className={"flex flex-wrap"}>
         {lista.map((item, idx) => (
           <Badge
-            onCloseEvent={() => unread(item.controle)}
+            onClose={() => unread(item.controle)}
             name={item.controle}
             key={idx + item.controle}
             className={"font-mono text-sm " + (item.lido ? "bg-red-400" : "")}

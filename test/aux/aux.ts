@@ -1,7 +1,7 @@
 import { tables } from "../../model/tables";
 import { connections } from "../../server/dal/connections";
-import { recordClear } from "../../server/lib/record-clear";
 import { TGenericObject } from "../../types";
+import { recordClear } from "../../utils/schema/record-clear";
 import { renameToFieldArrayObject } from "../../utils/schema/rename-fields";
 
 export async function delCreateAux(

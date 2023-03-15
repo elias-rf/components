@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const ObservacaoRAT: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const ObservacaoRAT: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ export const ObservacaoRAT: TTable = {
       field: "NumeroRAT",
       label: "NumeroRAT",
       name: "NumeroRAT",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ export const ObservacaoRAT: TTable = {
       field: "Ocorrencia",
       label: "Ocorrencia",
       name: "Ocorrencia",
-      type: "int",
+      typeField: "int",
       size: 4,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ export const ObservacaoRAT: TTable = {
       field: "Observacao",
       label: "Observacao",
       name: "Observacao",
-      type: "string",
+      typeField: "string",
       size: 1024,
     },
   ],

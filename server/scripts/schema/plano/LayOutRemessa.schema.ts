@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const LayOutRemessa: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const LayOutRemessa: TTable = {
       field: "IdLayOut",
       label: "IdLayOut",
       name: "LayOutRemessa_id",
-      type: "string",
+      typeField: "string",
       size: 124,
       primaryKey: true,
       allowNull: false,

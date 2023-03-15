@@ -1,5 +1,4 @@
 import React from "react";
-import { TEvent } from "../../../types";
 import { Textbox } from "../../components/form/textbox";
 import { inteiro, moeda } from "../../lib/text-box-formats";
 import { PrecosVendedor } from "./precos_vendedor";
@@ -22,7 +21,7 @@ function Produto({
 }: {
   produto: any;
   snap: any;
-  recalc: (args: TEvent) => void;
+  recalc: (args: any) => void;
 }) {
   return (
     <React.Fragment key={produto.grupo}>
@@ -97,7 +96,7 @@ function Produto({
 export function PrecosCliente() {
   const [snap, setValue] = usePrecosState() as any;
 
-  function recalc({ name, value }: TEvent) {
+  function recalc({ name, value }: any) {
     const [group, item] = name.split(".");
     setValue(group, item, value);
   }

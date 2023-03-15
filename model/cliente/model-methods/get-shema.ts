@@ -1,4 +1,4 @@
-import { TFieldClient } from "../../../types";
+import { TField } from "../../../types";
 import { day } from "../../../utils/date/day";
 import { z, zod } from "../../../utils/zod/z";
 import { zsr } from "../../../utils/zod/z-refine";
@@ -12,7 +12,7 @@ export function getSchema(args: TPeriodo) {
       fim: z.string().superRefine(zsr.date),
     })
   );
-  const rsp: TFieldClient[] = [
+  const rsp: TField[] = [
     {
       name: "categoria",
       label: "Produto",
@@ -24,7 +24,7 @@ export function getSchema(args: TPeriodo) {
   while (dtInicio.format("YYYY-MM") !== dtFim.format("YYYY-MM")) {
     rsp.push({
       name: dtInicio.format("YYYY-MM"),
-      type: "float",
+      typeField: "float",
       fieldClass: "text-right",
     });
     dtInicio = dtInicio.add(1, "month");

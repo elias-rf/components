@@ -1,16 +1,10 @@
-import { TEvent } from "../../../types";
 import { useField } from "../../lib/hooks/use-field.hook";
 import { Button } from "../button";
 import { Textbox } from "../form/textbox";
 import { SpinnerIcon } from "../spinner/spinner-icon";
 
-export type TLoginEvent = TEvent & {
-  component: "Login";
-  event: "onInputEvent";
-};
-
 export type TLoginProps = {
-  onInputEvent?: (event: TLoginEvent) => void;
+  onInput?: (e: { user: string; password: string }) => void;
   title?: string;
   loading?: boolean;
   error?: string;
@@ -21,19 +15,15 @@ export function Login(props: TLoginProps) {
     title = "Login",
     loading = false,
     error,
-    onInputEvent = () => null,
+    onInput = () => null,
   } = props;
 
   const fieldUser = useField("");
   const fieldPassword = useField("");
 
-  const handleLogin = () =>
-    onInputEvent({
-      name: title,
-      value: { user: fieldUser.value, password: fieldPassword.value },
-      component: "Login",
-      event: "onInputEvent",
-    });
+  function handleLogin() {
+    onInput({ user: fieldUser.value, password: fieldPassword.value });
+  }
 
   return (
     <div
@@ -67,7 +57,7 @@ export function Login(props: TLoginProps) {
           <div className={"relative flex"}>
             <Button
               name="login"
-              onClickEvent={handleLogin}
+              onClick={handleLogin}
             >
               <div className={"inline-flex flex-nowrap"}>
                 Login

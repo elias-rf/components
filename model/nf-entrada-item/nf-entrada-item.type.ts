@@ -1,4 +1,4 @@
-import { TFieldClient, TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TNfEntradaItemPk {
@@ -44,7 +44,7 @@ export interface TNfEntradaItem extends TNfEntradaItemPk {
   is_conferido?: string;
 }
 
-export type TNfEntradaItemFields = keyof Required<TNfEntradaItem>
+export type TNfEntradaItemFields = keyof Required<TNfEntradaItem>;
 
 export type TNfEntradaItemIds = {
   [pk in keyof Required<TNfEntradaItemPk>]: any;
@@ -53,7 +53,7 @@ export type TNfEntradaItemSelect = TSelect<TNfEntradaItemFields>;
 export type TNfEntradaItemWhere = TWhere<TNfEntradaItemFields>;
 export type TNfEntradaItemOrder = TOrder<TNfEntradaItemFields>;
 
-export type TNfEntradaItemSchema = () => Promise<TFieldClient[]>;
+export type TNfEntradaItemSchema = () => Promise<TField[]>;
 export type TNfEntradaItemClear = () => Promise<TNfEntradaItem>;
 export type TNfEntradaItemList = (args: {
   where?: TWhere<TNfEntradaItemFields>[];
@@ -98,11 +98,11 @@ export type TNfEntradaItemCrud = {
 
 export type TNfEntradaItemModel = TNfEntradaItemCrud & {
   //#region query
-    //#endregion
+  //#endregion
   //#region mutation
-    //#endregion
+  //#endregion
   //#region type
-//#endregion
+  //#endregion
 };
 
 export type TNfEntradaItemRpc = TNfEntradaItemModel;

@@ -1,18 +1,16 @@
-import { TEvent } from "../../../types";
-
-export type TTabsEvent = TEvent & {
+export type TTabs = any & {
   component: "Tabs";
-  event: "onChangeEvent";
+  event: "onChange";
 };
 
-export type TTabEvent = TEvent & {
+export type TTab = any & {
   component: "Tab";
-  event: "onClickEvent";
+  event: "onClick";
 };
 
 export type TTabsProps = {
   active: string;
-  onChangeEvent: (event: TTabsEvent) => void;
+  onChange: (event: TTabs) => void;
   children: React.ReactElement[];
 };
 
@@ -20,6 +18,6 @@ export type TTabProps = {
   active?: string;
   id: string;
   title: string;
-  onClickEvent?: (event: TTabEvent) => void;
+  onClick?: (event: TTab) => void;
   children: React.ReactNode;
 };

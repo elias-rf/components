@@ -1,7 +1,7 @@
 import { action } from "@storybook/addon-actions";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import { TEvent, TFieldClient, TWhere } from "../../../types";
+import { TField, TWhere } from "../../../types";
 import { TableFilter } from "./table-filter";
 
 export default {
@@ -9,11 +9,11 @@ export default {
   component: TableFilter,
 } as ComponentMeta<typeof TableFilter>;
 
-const schema: TFieldClient[] = [
+const schema: TField[] = [
   {
     label: "ID",
     name: "id",
-    type: "string",
+    typeField: "string",
     labelClass: "text-left",
     fieldClass: "text-left",
   },
@@ -35,7 +35,7 @@ const schema: TFieldClient[] = [
 export const Default: ComponentStory<typeof TableFilter> = () => {
   const [where, setWhere] = React.useState<TWhere[]>([["id", "=", "4"]]);
 
-  function handleOnWhere(e: TEvent) {
+  function handleOnWhere(e: any) {
     setWhere(e.value);
     action("where")(e);
   }
@@ -49,7 +49,7 @@ export const Default: ComponentStory<typeof TableFilter> = () => {
               key={fld.name}
               schemaField={fld}
               where={where}
-              onWhereEvent={handleOnWhere}
+              onWhere={handleOnWhere}
             />
           ))}
         </tr>

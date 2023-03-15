@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const FilialDataContabil: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const FilialDataContabil: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "FilialDataContabil_id",
-      type: "int",
+      typeField: "int",
       size: 4,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const FilialDataContabil: TTable = {
       field: "DtFechamentoPeriodo",
       label: "DtFechamentoPeriodo",
       name: "DtFechamentoPeriodo",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
@@ -26,7 +26,7 @@ export const FilialDataContabil: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

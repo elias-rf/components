@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TFieldClient } from "../../types";
+import { TField } from "../../types/model";
 import { cache } from "../../utils/cache";
 import type {
   TUsuario,
@@ -25,7 +25,7 @@ type TUsuarioStore = {
   getList: TUsuarioList;
   dataRead: TUsuario;
   getRead: TUsuarioRead;
-  dataSchema: TFieldClient[];
+  dataSchema: TField[];
   getSchema: TUsuarioSchema;
   dataClear: TUsuario;
   getClear: TUsuarioClear;

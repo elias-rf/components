@@ -1,5 +1,5 @@
 import { Knex } from "knex";
-import { TTable } from "../types";
+import { TTable } from "../types/model";
 //--
 import { clearFactory } from "../server/lib/crud/methods/clear-factory";
 import { connectionFactory } from "../server/lib/crud/methods/connection";

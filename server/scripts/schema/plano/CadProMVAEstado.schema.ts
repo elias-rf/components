@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const CadProMVAEstado: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const CadProMVAEstado: TTable = {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -17,7 +17,7 @@ export const CadProMVAEstado: TTable = {
       field: "CdProduto",
       label: "CdProduto",
       name: "CdProduto",
-      type: "string",
+      typeField: "string",
       size: 16,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export const CadProMVAEstado: TTable = {
       field: "Uf",
       label: "Uf",
       name: "Uf",
-      type: "string",
+      typeField: "string",
       size: 2,
       allowNull: false,
     },
@@ -33,7 +33,7 @@ export const CadProMVAEstado: TTable = {
       field: "PercMVA",
       label: "PercMVA",
       name: "PercMVA",
-      type: "float",
+      typeField: "float",
       size: 8,
       scale: 4,
       allowNull: false,
@@ -42,7 +42,7 @@ export const CadProMVAEstado: TTable = {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,

@@ -1,4 +1,4 @@
-import { TTable } from "../../../../types";
+import { TTable } from "../../../../types/model";
 
 export const HistoricoAtualizacao: TTable = {
   database: "plano",
@@ -8,7 +8,7 @@ export const HistoricoAtualizacao: TTable = {
       field: "Funcao",
       label: "Funcao",
       name: "HistoricoAtualizacao_id",
-      type: "string",
+      typeField: "string",
       size: 32,
       primaryKey: true,
       allowNull: false,
@@ -17,7 +17,7 @@ export const HistoricoAtualizacao: TTable = {
       field: "Data",
       label: "Data",
       name: "Data",
-      type: "datetime",
+      typeField: "datetime",
       size: 8,
       scale: 3,
       allowNull: false,
