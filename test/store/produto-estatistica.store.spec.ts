@@ -1,7 +1,5 @@
 import { produtoEstatisticaStore } from "../../model/produto-estatistica/produto-estatistica.store";
 
-const produtoEstatisticaStore = produtoEstatisticaStore;
-
 describe("produtoEstatisticaStore", () => {
   it("setIncrement", async () => {
     const qtd = await produtoEstatisticaStore.getState().getRead({

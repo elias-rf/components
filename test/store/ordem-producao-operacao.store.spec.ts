@@ -1,21 +1,19 @@
 import { ordemProducaoOperacaoStore } from "../../model/ordem-producao-operacao/ordem-producao-operacao.store";
 
-const ordemProducaoOperacaoStore = ordemProducaoOperacaoStore;
-
 describe("ordemProducaoOperacaoStore", () => {
   it("getDiarioSchema", async () => {
     await ordemProducaoOperacaoStore.getState().getDiarioSchema();
     expect(ordemProducaoOperacaoStore.getState().dataDiarioSchema).toEqual([
-      { label: "Dia", name: "dia", primaryKey: true, type: "string" },
+      { label: "Dia", name: "dia", primaryKey: true, typeField: "string" },
       {
         label: "Dia Semana",
         name: "diaSemana",
-        type: "string",
+        typeField: "string",
       },
       {
         label: "Quantidade",
         name: "quantidade",
-        type: "string",
+        typeField: "string",
       },
     ]);
   });
@@ -38,11 +36,11 @@ describe("ordemProducaoOperacaoStore", () => {
   it("getMensalSchema", async () => {
     await ordemProducaoOperacaoStore.getState().getMensalSchema();
     expect(ordemProducaoOperacaoStore.getState().dataMensalSchema).toEqual([
-      { label: "Mês", name: "mes", primaryKey: true, type: "string" },
+      { label: "Mês", name: "mes", primaryKey: true, typeField: "string" },
       {
         label: "Quantidade",
         name: "quantidade",
-        type: "int",
+        typeField: "int",
       },
     ]);
   });
@@ -63,11 +61,16 @@ describe("ordemProducaoOperacaoStore", () => {
   it("getProdutoSchema", async () => {
     await ordemProducaoOperacaoStore.getState().getProdutoSchema();
     expect(ordemProducaoOperacaoStore.getState().dataProdutoSchema).toEqual([
-      { label: "Produto", name: "produto", primaryKey: true, type: "string" },
+      {
+        label: "Produto",
+        name: "produto",
+        primaryKey: true,
+        typeField: "string",
+      },
       {
         label: "Quantidade",
         name: "quantidade",
-        type: "int",
+        typeField: "int",
       },
     ]);
   });
@@ -88,11 +91,16 @@ describe("ordemProducaoOperacaoStore", () => {
   it("getModeloSchema", async () => {
     await ordemProducaoOperacaoStore.getState().getModeloSchema();
     expect(ordemProducaoOperacaoStore.getState().dataModeloSchema).toEqual([
-      { label: "Modelo", name: "modelo", primaryKey: true, type: "string" },
+      {
+        label: "Modelo",
+        name: "modelo",
+        primaryKey: true,
+        typeField: "string",
+      },
       {
         label: "Quantidade",
         name: "quantidade",
-        type: "int",
+        typeField: "int",
       },
     ]);
   });
@@ -114,11 +122,11 @@ describe("ordemProducaoOperacaoStore", () => {
   it("getTurnoSchema", async () => {
     await ordemProducaoOperacaoStore.getState().getTurnoSchema();
     expect(ordemProducaoOperacaoStore.getState().dataTurnoSchema).toEqual([
-      { label: "Turno", name: "turno", primaryKey: true, type: "string" },
+      { label: "Turno", name: "turno", primaryKey: true, typeField: "string" },
       {
         label: "Quantidade",
         name: "quantidade",
-        type: "int",
+        typeField: "int",
       },
     ]);
   });

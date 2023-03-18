@@ -1,7 +1,5 @@
 import { estoqueStore } from "../../model/estoque/estoque.store";
 
-const estoqueStore = estoqueStore;
-
 describe("estoqueStore", () => {
   it("setIncrement", async () => {
     const qtd = await estoqueStore.getState().getRead({

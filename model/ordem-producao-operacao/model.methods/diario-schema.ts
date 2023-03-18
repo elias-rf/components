@@ -7,17 +7,17 @@ export function diarioSchema(): () => Promise<TField[]> {
         name: "dia",
         label: "Dia",
         primaryKey: true,
-        type: "string",
+        typeField: "string",
       },
       {
         name: "diaSemana",
         label: "Dia Semana",
-        type: "string",
+        typeField: "string",
       },
       {
         name: "quantidade",
         label: "Quantidade",
-        type: "string",
+        typeField: "string",
       },
     ];
   };

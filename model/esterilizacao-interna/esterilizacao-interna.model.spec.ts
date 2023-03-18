@@ -1,11 +1,11 @@
-import { getTracker } from "knex-mock-client";
+import { createTracker } from "knex-mock-client";
 import { describe, expect, test } from "vitest";
 import { connectionsMock } from "../../mocks/connections.mock";
 import { knexMockHistory } from "../../utils/data/knex-mock-history";
 import { esterilizacaoInternaModelFactory } from "./esterilizacao-interna.model";
 
 describe("esterilizacaoInterna", () => {
-  const tracker = getTracker();
+  const tracker = createTracker(connectionsMock.oftalmo);
 
   const esterilizacaoInterna = esterilizacaoInternaModelFactory({
     connections: connectionsMock,

@@ -6,9 +6,9 @@ import {
   renameFieldToName,
   renameNameToField,
 } from "../../../../utils/schema/rename-fields";
+import { isSelect } from "../../../../utils/validate/is-select";
 import { zIdClient } from "../../../../utils/zod/z-id-client";
-import { zRecord } from "../../../../utils/zod/z-record";
-import { zSelect } from "../../../../utils/zod/z-select";
+import { isRecord } from "../../../../utils/zod/z-record";
 import { TCrudUpdate } from "../crud.type";
 
 export function updateFactory(connection: Knex, schema: TTable): TCrudUpdate {
@@ -18,8 +18,8 @@ export function updateFactory(connection: Knex, schema: TTable): TCrudUpdate {
     select = [],
   }: TUpdateArgs): Promise<TGenericObject> => {
     zIdClient(id, schema.fields);
-    zRecord(data, schema.fields);
-    zSelect(select as TSelect, schema.fields);
+    isRecord(data, schema.fields);
+    isSelect(select as TSelect, schema.fields);
 
     const tbl = schema.table;
     if (select.length === 0) {

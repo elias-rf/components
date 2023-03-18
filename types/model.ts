@@ -11,12 +11,22 @@ export type TConnections = {
   [cnn in TConnectionsName]: TConnection;
 };
 
-export type TFieldType = "checkbox" | "select" | "text" | "textarea";
+export type TFormType = "checkbox" | "select" | "text" | "textarea";
+export type TFieldType =
+  | "string"
+  | "float"
+  | "int"
+  | "boolean"
+  | "currency"
+  | "date"
+  | "datetime"
+  | "selection"
+  | "tag";
 
 export type TField = {
   name: string; // nome usado para queries
   field?: string; // campo no banco de dados
-  typeField?: string; // tipo do dado no banco de dados
+  typeField?: TFieldType; // tipo do dado no banco de dados
   required?: boolean; // não pode ser vazio
   defaultValue?: any; // valor inicial
   primaryKey?: boolean; // é chave do registro
@@ -31,7 +41,7 @@ export type TField = {
   fieldClass?: string; // classe para o campo
   labelClass?: string; // classe para o label
   disabled?: boolean; // input desabilitado
-  typeForm?: TFieldType; // tipo de input no formulário
+  typeForm?: TFormType; // tipo de input no formulário
 };
 
 export type TTable = {

@@ -1,7 +1,5 @@
 import { cidadeStore } from "../../model/cidade/cidade.store";
 
-const cidadeStore = cidadeStore;
-
 describe("cidadeStore", () => {
   it("getList", async () => {
     await cidadeStore.getState().getList({

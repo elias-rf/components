@@ -1,10 +1,11 @@
-import { getTracker } from "knex-mock-client";
+import { createTracker } from "knex-mock-client";
 import { describe, expect, it } from "vitest";
+import { connectionsMock } from "../../mocks/connections.mock";
 import { container } from "../../mocks/container.mock";
 import { knexMockHistory } from "../../utils/data/knex-mock-history";
 
 describe("ordemProducaoModel", () => {
-  const tracker = getTracker();
+  const tracker = createTracker(connectionsMock.oftalmo);
 
   const ordemProducaoModel = container.resolve("ordemProducaoModel");
 

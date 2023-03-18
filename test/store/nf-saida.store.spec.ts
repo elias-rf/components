@@ -1,7 +1,5 @@
 import { nfSaidaStore } from "../../model/nf-saida/nf-saida.store";
 
-const nfSaidaStore = nfSaidaStore;
-
 describe("nfSaidaStore", () => {
   it("setTransferenciaCreate", async () => {
     await nfSaidaStore

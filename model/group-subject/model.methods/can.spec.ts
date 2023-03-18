@@ -1,11 +1,11 @@
-import { getTracker } from "knex-mock-client";
-import { knexMock } from "../../../mocks/connections.mock";
+import { createTracker } from "knex-mock-client";
+import { connectionsMock, knexMock } from "../../../mocks/connections.mock";
 import { knexMockHistory } from "../../../mocks/knex-mock-history";
 import { group_subject } from "../group-subject.table";
 import { canFactory } from "./can";
 
 describe("canFactory", () => {
-  const tracker = getTracker();
+  const tracker = createTracker(connectionsMock.oftalmo);
 
   beforeEach(() => {
     tracker.reset();

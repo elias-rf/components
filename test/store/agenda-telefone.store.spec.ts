@@ -1,7 +1,5 @@
 import { agendaTelefoneStore } from "../../model/agenda-telefone/agenda-telefone.store";
 
-const agendaTelefoneStore = agendaTelefoneStore;
-
 describe("agendaTelefoneStore", () => {
   it("getList", async () => {
     await agendaTelefoneStore.getState().getList({

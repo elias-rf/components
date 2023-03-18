@@ -6,7 +6,7 @@ import { useMenuStore } from "./menu.store";
 export type TMenuGroupProps = {
   children: React.ReactElement | React.ReactElement[];
   title: string;
-  icon?: IconifyIcon;
+  icon?: any;
 };
 
 export function MenuGroup({ icon, title, children }: TMenuGroupProps) {

@@ -6,8 +6,8 @@ import {
   renameFieldToName,
   renameNameToField,
 } from "../../../../utils/schema/rename-fields";
+import { isSelect } from "../../../../utils/validate/is-select";
 import { zIdClient } from "../../../../utils/zod/z-id-client";
-import { zSelect } from "../../../../utils/zod/z-select";
 import { TCrudRead } from "../crud.type";
 
 export function readFactory(connection: Knex, table: TTable): TCrudRead {
@@ -16,7 +16,7 @@ export function readFactory(connection: Knex, table: TTable): TCrudRead {
     select = [],
   }: TReadArgs): Promise<TGenericObject> => {
     zIdClient(id, table.fields);
-    zSelect(select as string[], table.fields);
+    isSelect(select as string[], table.fields);
 
     const tbl = table.table;
     if (select.length === 0) {

@@ -1,4 +1,4 @@
-import { getTracker } from "knex-mock-client";
+import { createTracker } from "knex-mock-client";
 import { connectionsMock } from "../../../../mocks/connections.mock";
 import { TTable } from "../../../../types/model";
 import { knexMockHistory } from "../../../../utils/data/knex-mock-history";
@@ -14,32 +14,32 @@ const schema: TTable = {
       label: "Ramal",
       name: "agenda_telefone_id",
       primaryKey: true,
-      type: "int",
+      typeField: "int",
     },
     {
       allowNull: false,
       field: "name",
       label: "Nome",
       name: "nome",
-      type: "string",
+      typeField: "string",
     },
     {
       field: "department",
       label: "Setor",
       name: "setor",
-      type: "string",
+      typeField: "string",
     },
     {
       field: "email",
       label: "Email",
       name: "email",
-      type: "string",
+      typeField: "string",
     },
   ],
 };
 
 describe("crudList", () => {
-  const tracker = getTracker();
+  const tracker = createTracker(connectionsMock.oftalmo);
   const list = listFactory(connectionsMock.oftalmo, schema);
 
   beforeEach(() => {
@@ -68,7 +68,7 @@ describe("crudList", () => {
         ],
       })
     ).rejects.toThrow(
-      "a,b não são válidos para order use: agenda_telefone_id,email,nome,setor"
+      "a não é um nome válido: agenda_telefone_id,nome,setor,email"
     );
   });
 

@@ -1,7 +1,5 @@
 import { usuarioStore } from "../../model/usuario/usuario.store";
 
-const usuarioStore = usuarioStore;
-
 describe("usuarioStore", () => {
   it("login logout", async () => {
     // LOGIN

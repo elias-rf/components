@@ -1,8 +1,8 @@
-import { TFieldType } from "../../../../types/model";
+import { TFormType } from "../../../../types";
 
 export type BaseFieldAttributes = {
-  label: string;
+  label?: string;
   name: string;
-  type: TFieldType;
+  type?: TFormType;
   disabled?: boolean;
 };

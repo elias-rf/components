@@ -1,11 +1,11 @@
-import { getTracker } from "knex-mock-client";
+import { createTracker } from "knex-mock-client";
 import { connectionsMock } from "../../../mocks/connections.mock";
 import { etiquetaExternaModelFactory } from "../../etiqueta-externa/etiqueta-externa.model";
 import { ordem_producao } from "../ordem-producao.table";
 import { etiquetaExterna } from "./etiqueta-externa";
 
 describe("ordemProducaoMethods", () => {
-  const tracker = getTracker();
+  const tracker = createTracker(connectionsMock.oftalmo);
   const etiquetaExternaModel = etiquetaExternaModelFactory({
     connections: connectionsMock,
   });

@@ -8,7 +8,7 @@ import {
 } from "../schema/pks-from-fields";
 
 export function isId(id: { [field: string]: any }, fields: TField[]) {
-  if (!isNonEmptyObject(id)) return "Id deve ser informado";
+  if (!isNonEmptyObject(id)) throw new Error("Id deve ser informado");
 
   const nameListOk = namesFromFields(
     fields.filter((fld) => fld.primaryKey === true)
@@ -25,24 +25,30 @@ export function isId(id: { [field: string]: any }, fields: TField[]) {
   }
 
   if (fieldsInvalidos.length === 1) {
-    return `${fieldsInvalidos} não é um id válido${
-      fieldsLivres.length > 0 ? ", use: " : "."
-    }${fieldsLivres}`;
+    throw new Error(
+      `${fieldsInvalidos} não é um id válido${
+        fieldsLivres.length > 0 ? ", use: " : "."
+      }${fieldsLivres}`
+    );
   }
 
   if (fieldsInvalidos.length > 1) {
-    return `${fieldsInvalidos} não são id válidos${
-      fieldsLivres.length > 0 ? ", use: " : "."
-    }${fieldsLivres}`;
+    throw new Error(
+      `${fieldsInvalidos} não são id válidos${
+        fieldsLivres.length > 0 ? ", use: " : "."
+      }${fieldsLivres}`
+    );
   }
 
   if (fieldsLivres.length > 0) {
-    return `${fieldsLivres} não ${
-      fieldsLivres.length === 1 ? "foi informado" : "foram informados"
-    } para id.`;
+    throw new Error(
+      `${fieldsLivres} não ${
+        fieldsLivres.length === 1 ? "foi informado" : "foram informados"
+      } para id.`
+    );
   }
 
-  return null;
+  return id;
 }
 
 /** Receber um object e verifica se propriedades são fields primaryKey do schema */

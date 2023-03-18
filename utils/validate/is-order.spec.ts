@@ -4,47 +4,44 @@ import { isOrder } from "./is-order";
 
 describe("isOrder", () => {
   it("deve invalidar order não formatados corretamente", () => {
-    // @ts-expect-error: Unreachable code error
-    expect(isOrder(undefined, entity)).toBe(
+    expect(() => isOrder(undefined, entity)).toThrow(
+      "order deve ser informado no formato [[field, asc|desc]]"
+    );
+    expect(() => isOrder(null, entity)).toThrow(
       "order deve ser informado no formato [[field, asc|desc]]"
     );
     // @ts-expect-error: Unreachable code error
-    expect(isOrder(null, entity)).toBe(
+    expect(() => isOrder({}, entity)).toThrow(
       "order deve ser informado no formato [[field, asc|desc]]"
     );
     // @ts-expect-error: Unreachable code error
-    expect(isOrder({}, entity)).toBe(
+    expect(() => isOrder("field", entity)).toThrow(
       "order deve ser informado no formato [[field, asc|desc]]"
     );
     // @ts-expect-error: Unreachable code error
-    expect(isOrder("field", entity)).toBe(
+    expect(() => isOrder({ field: 1 }, entity)).toThrow(
       "order deve ser informado no formato [[field, asc|desc]]"
     );
     // @ts-expect-error: Unreachable code error
-    expect(isOrder({ field: 1 }, entity)).toBe(
-      "order deve ser informado no formato [[field, asc|desc]]"
-    );
-    // @ts-expect-error: Unreachable code error
-    expect(isOrder([{ field: 1 }], entity)).toBe(
+    expect(() => isOrder([{ field: 1 }], entity)).toThrow(
       "order deve ser informado no formato [[field, asc|desc]]"
     );
   });
 
   it("deve validar order correto", () => {
-    expect(isOrder([["fld_1", "asc"]], entity)).toBe(null);
+    expect(isOrder([["fld_1", "asc"]], entity)).toEqual([["fld_1", "asc"]]);
   });
 
   it("deve validar order vazio", () => {
-    expect(isOrder([], entity)).toBe(null);
+    expect(isOrder([], entity)).toEqual([]);
   });
 
   it("deve invalidar order field errado", () => {
-    // @ts-expect-error: Unreachable code error
-    expect(isOrder([["fld_0", "asc"]], entity)).toBe(
+    expect(() => isOrder([["fld_0", "asc"]], entity)).toThrow(
       "fld_0 não é válido para order use: fld_1,fld_2,fld_3,fld_4"
     );
 
-    expect(
+    expect(() =>
       isOrder(
         [
           ["fld_0", "asc"],
@@ -52,13 +49,12 @@ describe("isOrder", () => {
         ],
         entity
       )
-    ).toBe(
+    ).toThrow(
       "fld_0,fld_00 não são válidos para order use: fld_1,fld_2,fld_3,fld_4"
     );
   });
   it("não listar fields usados", () => {
-    // @ts-expect-error: Unreachable code error
-    expect(
+    expect(() =>
       isOrder(
         [
           ["fld_0", "asc"],
@@ -66,6 +62,6 @@ describe("isOrder", () => {
         ],
         entity
       )
-    ).toBe("fld_0 não é válido para order use: fld_2,fld_3,fld_4");
+    ).toThrow("fld_0 não é válido para order use: fld_2,fld_3,fld_4");
   });
 });

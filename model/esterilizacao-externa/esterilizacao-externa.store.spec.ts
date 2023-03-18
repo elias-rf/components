@@ -1,12 +1,9 @@
-import { esterilizacaoExternaServiceFactory } from "./esterilizacao-externa.service";
-
-const service = esterilizacaoExternaServiceFactory();
-const agendaTelefoneStore = esterilizacaoExternaStore;
+import { esterilizacaoExternaStore } from "./esterilizacao-externa.store";
 
 describe("esterilizacaoExternaStore", () => {
   it("getSchema", async () => {
-    await agendaTelefoneStore.getState().getSchema();
+    await esterilizacaoExternaStore.getState().getSchema();
 
-    expect(agendaTelefoneStore.getState().dataSchema.length).toEqual(10);
+    expect(esterilizacaoExternaStore.getState().dataSchema.length).toEqual(10);
   });
 });

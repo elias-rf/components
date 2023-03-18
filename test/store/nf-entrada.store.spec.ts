@@ -1,8 +1,6 @@
 import { nfEntradaStore } from "../../model/nf-entrada/nf-entrada.store";
 import { delCreateAux } from "../aux/aux";
 
-const nfEntradaStore = nfEntradaStore;
-
 describe("nfEntradaStore", () => {
   it("setTransferenciaCreate", async () => {
     await delCreateAux("nf_entrada_controle", {

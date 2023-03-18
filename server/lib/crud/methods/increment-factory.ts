@@ -7,8 +7,8 @@ import {
   renameFieldToName,
   renameNameToField,
 } from "../../../../utils/schema/rename-fields";
-import { zSelect } from "../../../../utils/zod/z-select";
-import { zWhere } from "../../../../utils/zod/z-where";
+import { isSelect } from "../../../../utils/validate/is-select";
+import { isWhere } from "../../../../utils/validate/is-where";
 import { TCrudIncrement } from "../crud.type";
 
 export function incrementFactory(db: Knex, schema: TTable): TCrudIncrement {
@@ -21,8 +21,8 @@ export function incrementFactory(db: Knex, schema: TTable): TCrudIncrement {
     increment?: TGenericObject;
     select?: TSelect;
   }): Promise<TGenericObject[]> => {
-    zWhere(where, schema.fields);
-    zSelect(select as string[], schema.fields);
+    isWhere(where, schema.fields);
+    isSelect(select as string[], schema.fields);
     const tbl = schema.table;
     const entity = schema;
     if (select.length > 0) {

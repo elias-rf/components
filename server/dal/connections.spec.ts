@@ -1,5 +1,5 @@
 import knex from "knex";
-import { getTracker, MockClient, Tracker } from "knex-mock-client";
+import { createTracker, MockClient, Tracker } from "knex-mock-client";
 import { afterEach, beforeAll, describe, expect, test, vi } from "vitest";
 import { connections } from "./connections";
 
@@ -15,7 +15,7 @@ describe("teste", () => {
   let tracker: Tracker;
 
   beforeAll(() => {
-    tracker = getTracker();
+    tracker = createTracker(connections.plano);
   });
 
   afterEach(() => {

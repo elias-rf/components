@@ -1,4 +1,4 @@
-import { getTracker } from "knex-mock-client";
+import { createTracker } from "knex-mock-client";
 import { connectionsMock } from "../../../../mocks/connections.mock";
 import { TTable } from "../../../../types/model";
 import { knexMockHistory } from "../../../../utils/data/knex-mock-history";
@@ -39,7 +39,7 @@ const schema: TTable = {
 };
 
 describe("crudRead", () => {
-  const tracker = getTracker();
+  const tracker = createTracker(connectionsMock.oftalmo);
   tracker.reset();
   tracker.on.select("phonebook").response([]);
   const read = readFactory(connectionsMock.oftalmo, schema);

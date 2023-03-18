@@ -36,11 +36,11 @@ const schema: TTable = {
   ],
 };
 
-import { getTracker } from "knex-mock-client";
+import { createTracker } from "knex-mock-client";
 import { knexMockHistory } from "../../../../utils/data/knex-mock-history";
 
 describe("crudCount", () => {
-  const tracker = getTracker();
+  const tracker = createTracker(connectionsMock.oftalmo);
   tracker.reset();
   tracker.on.select("phonebook").response([]);
   const count = countFactory(connectionsMock.oftalmo, schema);

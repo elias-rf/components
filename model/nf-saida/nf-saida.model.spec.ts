@@ -1,4 +1,4 @@
-import { getTracker } from "knex-mock-client";
+import { createTracker } from "knex-mock-client";
 import { describe, expect, it } from "vitest";
 import { connectionsMock } from "../../mocks/connections.mock";
 import { knexMockHistory } from "../../utils/data/knex-mock-history";
@@ -6,7 +6,7 @@ import { nfSaidaFvModelFactory } from "../nf-saida-fv/nf-saida-fv.model";
 import { nfSaidaModelFactory } from "./nf-saida.model";
 
 describe("nfSaidaModel", () => {
-  const tracker = getTracker();
+  const tracker = createTracker(connectionsMock.plano);
 
   const nfSaida = nfSaidaModelFactory({
     connections: connectionsMock,

@@ -1,4 +1,7 @@
-import { connectionsMock as connections } from "../../../../mocks/connections.mock";
+import {
+  connectionsMock as connections,
+  connectionsMock,
+} from "../../../../mocks/connections.mock";
 import { TTable } from "../../../../types/model";
 import { createFactory } from "./create-factory";
 
@@ -36,11 +39,11 @@ const schema: TTable = {
   ],
 };
 
-import { getTracker } from "knex-mock-client";
+import { createTracker } from "knex-mock-client";
 import { knexMockHistory } from "../../../../utils/data/knex-mock-history";
 
 describe("crudCreate", () => {
-  const tracker = getTracker();
+  const tracker = createTracker(connectionsMock.oftalmo);
   tracker.reset();
   tracker.on.insert("phonebook").response([{ id: 10 }]);
   const create = createFactory(connections.oftalmo, schema);

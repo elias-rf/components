@@ -63,12 +63,12 @@ describe("cliente", () => {
       },
       {
         name: "2020-01",
-        type: "float",
+        typeField: "float",
         fieldClass: "text-right",
       },
       {
         name: "2020-02",
-        type: "float",
+        typeField: "float",
         fieldClass: "text-right",
       },
     ]);
@@ -87,12 +87,12 @@ describe("cliente", () => {
       },
       {
         name: "2020-02",
-        type: "float",
+        typeField: "float",
         fieldClass: "text-right",
       },
       {
         name: "2020-03",
-        type: "float",
+        typeField: "float",
         fieldClass: "text-right",
       },
     ]);
@@ -112,12 +112,12 @@ describe("cliente", () => {
       },
       {
         name: "2020-01",
-        type: "float",
+        typeField: "float",
         fieldClass: "text-right",
       },
       {
         name: "2020-02",
-        type: "float",
+        typeField: "float",
         fieldClass: "text-right",
       },
     ]);

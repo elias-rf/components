@@ -1,4 +1,7 @@
 import { z } from "zod";
+import { errorMapBr } from "./z-br";
+
+z.setErrorMap(errorMapBr);
 
 export function zod<T extends z.ZodTypeAny>(data: any, schema: T) {
   const resp: any = schema.safeParse(data);

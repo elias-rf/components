@@ -1,4 +1,7 @@
-import { connectionsMock as connections } from "../../../../mocks/connections.mock";
+import {
+  connectionsMock as connections,
+  connectionsMock,
+} from "../../../../mocks/connections.mock";
 import { TTable } from "../../../../types/model";
 import { decrementFactory } from "./decrement-factory";
 
@@ -36,11 +39,11 @@ const schema: TTable = {
   ],
 };
 
-import { getTracker } from "knex-mock-client";
+import { createTracker } from "knex-mock-client";
 import { knexMockHistory } from "../../../../utils/data/knex-mock-history";
 
 describe("crudDecrement", () => {
-  const tracker = getTracker();
+  const tracker = createTracker(connectionsMock.oftalmo);
   tracker.reset();
   tracker.on.update("phonebook").response([]);
   const decrement = decrementFactory(connections.oftalmo, schema);

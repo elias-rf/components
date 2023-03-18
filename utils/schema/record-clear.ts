@@ -1,4 +1,4 @@
-import { TField } from "../../types/model";
+import { TField } from "../../types";
 /**
  * Cria um registro limpo a partir do schema
  *

@@ -1,7 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { clienteServiceFactory } from "../../model/cliente/cliente.service";
-
-const clienteService = clienteServiceFactory();
+import { clienteService } from "../../model/cliente/cliente.service";
 
 describe("clienteService", () => {
   it("clienteSchema", async () => {
@@ -59,7 +57,7 @@ describe("clienteService", () => {
       {
         name: "2020-01",
         fieldClass: "text-right",
-        type: "float",
+        typeField: "float",
       },
     ]);
   });
@@ -77,7 +75,7 @@ describe("clienteService", () => {
       {
         name: "2020-01",
         fieldClass: "text-right",
-        type: "float",
+        typeField: "float",
       },
     ]);
   });
@@ -95,7 +93,7 @@ describe("clienteService", () => {
       {
         name: "2020-01",
         fieldClass: "text-right",
-        type: "float",
+        typeField: "float",
       },
     ]);
   });

@@ -1,7 +1,5 @@
 import { ordemProducaoStore } from "../../model/ordem-producao/ordem-producao.store";
 
-const ordemProducaoStore = ordemProducaoStore;
-
 describe("ordemProducaoStore", () => {
   it("getProdutoItem", async () => {
     await ordemProducaoStore.getState().getProdutoItem({

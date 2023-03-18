@@ -1,8 +1,8 @@
 import { expect, it } from "vitest";
-import { TEntitySchema } from "../../types";
+import { TDb } from "../../types";
 import { isTable } from "./is-table";
 
-const entity: TEntitySchema = {
+const entity: TDb = {
   agenda_telefone: {
     database: "oftalmo",
     table: "phonebook",
@@ -10,24 +10,43 @@ const entity: TEntitySchema = {
   },
 };
 
-it("deve validar Id", () => {
-  expect(isTable(undefined, entity)).toBe(
+it("deve invalidar Id errado", () => {
+  expect(() => isTable(undefined, entity)).toThrow(
     "Um nome de tabela deve ser informado"
   );
-  expect(isTable(null, entity)).toBe("Um nome de tabela deve ser informado");
-  expect(isTable({}, entity)).toBe("Um nome de tabela deve ser informado");
-  expect(isTable([], entity)).toBe("Um nome de tabela deve ser informado");
-  expect(isTable("field", entity)).toBe(
+  expect(() => isTable(null, entity)).toThrow(
+    "Um nome de tabela deve ser informado"
+  );
+
+  // @ts-expect-error: not assignable to parameter of type 'string'
+  expect(() => isTable({}, entity)).toThrow(
+    "Um nome de tabela deve ser informado"
+  );
+
+  // @ts-expect-error: not assignable to parameter of type 'string'
+  expect(() => isTable([], entity)).toThrow(
+    "Um nome de tabela deve ser informado"
+  );
+  expect(() => isTable("field", entity)).toThrow(
     "field não é uma entidade cadastrada no schema. Talvez seja: agenda_telefone"
   );
-  expect(isTable({ agenda_telefone_id: 1, nome: "fulano" }, entity)).toEqual(
-    "[object Object] não é uma entidade cadastrada no schema. Talvez seja: agenda_telefone"
+
+  expect(() =>
+    // @ts-expect-error: not assignable to parameter of type 'string'
+    isTable({ agenda_telefone_id: 1, nome: "fulano" }, entity)
+  ).toThrow("Um nome de tabela deve ser informado");
+
+  // @ts-expect-error: not assignable to parameter of type 'string'
+  expect(() => isTable({ fld: 1 }, entity)).toThrow(
+    "Um nome de tabela deve ser informado"
   );
-  expect(isTable({ fld: 1 }, entity)).toEqual(
-    "[object Object] não é uma entidade cadastrada no schema. Talvez seja: agenda_telefone"
+
+  // @ts-expect-error: not assignable to parameter of type 'string'
+  expect(() => isTable({ agenda_telefone_id: 1 }, entity)).toThrow(
+    "Um nome de tabela deve ser informado"
   );
-  expect(isTable({ agenda_telefone_id: 1 }, entity)).toEqual(
-    "[object Object] não é uma entidade cadastrada no schema. Talvez seja: agenda_telefone"
-  );
-  expect(isTable("agenda_telefone", entity)).toEqual(null);
+});
+
+it("deve validar Id", () => {
+  expect(isTable("agenda_telefone", entity)).toEqual("agenda_telefone");
 });

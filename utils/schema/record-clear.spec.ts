@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { tables } from "../../model/tables";
+import { TField } from "../../types";
 import { recordClear } from "./record-clear";
 
 describe("record-clear", () => {
@@ -8,8 +9,44 @@ describe("record-clear", () => {
       expect(recordClear(tables[table].fields)).toEqual(expect.anything());
     }
   });
-  it("deve percorrer todos os schemas sem erros", () => {
+
+  it("deve percorrer o schema agenda_telefone sem erros", () => {
     expect(recordClear(tables.agenda_telefone.fields)).toEqual({
+      agenda_telefone_id: 0,
+      email: null,
+      nome: "",
+      setor: null,
+    });
+  });
+
+  it("deve percorrer o schema definido sem erros", () => {
+    const schema: TField[] = [
+      {
+        allowNull: false,
+        label: "Ramal",
+        name: "agenda_telefone_id",
+        primaryKey: true,
+        typeField: "int",
+      },
+      {
+        allowNull: false,
+        label: "Nome",
+        name: "nome",
+        typeField: "string",
+      },
+      {
+        label: "Setor",
+        name: "setor",
+        typeField: "string",
+      },
+      {
+        label: "Email",
+        name: "email",
+        typeField: "string",
+      },
+    ];
+
+    expect(recordClear(schema)).toEqual({
       agenda_telefone_id: 0,
       email: null,
       nome: "",

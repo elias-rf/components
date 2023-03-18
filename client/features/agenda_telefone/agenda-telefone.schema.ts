@@ -6,22 +6,22 @@ export const agendaTelefoneSchema: TField[] = [
     label: "Ramal",
     name: "agenda_telefone_id",
     primaryKey: true,
-    typeField: "text",
+    typeField: "int",
   },
   {
     allowNull: false,
     label: "Nome",
     name: "nome",
-    typeField: "text",
+    typeField: "string",
   },
   {
     label: "Setor",
     name: "setor",
-    typeField: "text",
+    typeField: "string",
   },
   {
     label: "Email",
     name: "email",
-    typeField: "text",
+    typeField: "string",
   },
 ];

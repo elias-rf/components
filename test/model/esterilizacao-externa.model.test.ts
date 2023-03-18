@@ -10,18 +10,18 @@ describe("esterilizacaoExterna model", () => {
       {
         name: "dia",
         label: "Dia",
-        type: "string",
+        typeField: "string",
         primaryKey: true,
       },
       {
         name: "dia_semana",
         label: "Dia Semana",
-        type: "string",
+        typeField: "string",
       },
       {
         name: "quantidade",
         label: "Quantidade",
-        type: "int",
+        typeField: "int",
       },
     ]);
   });
@@ -32,13 +32,13 @@ describe("esterilizacaoExterna model", () => {
       {
         name: "mes",
         label: "Mês",
-        type: "string",
+        typeField: "string",
         primaryKey: true,
       },
       {
         name: "quantidade",
         label: "Quantidade",
-        type: "int",
+        typeField: "int",
       },
     ]);
   });
@@ -49,13 +49,13 @@ describe("esterilizacaoExterna model", () => {
       {
         name: "produto",
         label: "Produto",
-        type: "string",
+        typeField: "string",
         primaryKey: true,
       },
       {
         name: "quantidade",
         label: "Quantidade",
-        type: "int",
+        typeField: "int",
       },
     ]);
   });
@@ -66,13 +66,13 @@ describe("esterilizacaoExterna model", () => {
       {
         name: "modelo",
         label: "Modelo",
-        type: "string",
+        typeField: "string",
         primaryKey: true,
       },
       {
         name: "quantidade",
         label: "Quantidade",
-        type: "int",
+        typeField: "int",
       },
     ]);
   });

@@ -1,9 +1,11 @@
 import { TField, TSelect } from "../../types";
-import { isNonEmptyArray } from "../identify/is-non-empty-array";
 import { namesFromFields } from "../schema/names-from-fields";
 
-export function isSelect(select: TSelect, fields: TField[]): string | null {
-  if (!isNonEmptyArray(select)) return "select deve ser um array de campos";
+export function isSelect(select: TSelect, fields: TField[]) {
+  if (!Array.isArray(select))
+    throw new Error("select deve ser um array de campos");
+  // if (!isNonEmptyArray(select))
+  //   throw new Error("select deve ser um array de campos");
 
   const nameList = namesFromFields(fields);
   const fieldsInvalidos = [];
@@ -16,9 +18,11 @@ export function isSelect(select: TSelect, fields: TField[]): string | null {
     fieldsLivres = fieldsLivres.filter((f) => f !== fld);
   }
   if (fieldsInvalidos.length > 0) {
-    return `${fieldsInvalidos} não ${
-      fieldsInvalidos.length === 1 ? "é select válido" : "são select válidos"
-    } use: ${fieldsLivres}`;
+    throw new Error(
+      `${fieldsInvalidos} não ${
+        fieldsInvalidos.length === 1 ? "é select válido" : "são select válidos"
+      } use: ${fieldsLivres}`
+    );
   }
-  return null;
+  return select;
 }

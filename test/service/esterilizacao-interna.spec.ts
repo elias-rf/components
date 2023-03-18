@@ -1,7 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { esterilizacaoInternaServiceFactory } from "../../model/esterilizacao-interna/esterilizacao-interna.service";
-
-const esterilizacaoInternaService = esterilizacaoInternaServiceFactory();
+import { esterilizacaoInternaService } from "../../model/esterilizacao-interna/esterilizacao-interna.service";
 
 describe("esterilizacaoInternaService", () => {
   it("esterilizacaoInternaSchema", async () => {
@@ -43,16 +41,16 @@ describe("esterilizacaoInternaService", () => {
   it("esterilizacaoInternaSchemaDiario", async () => {
     const rsp = await esterilizacaoInternaService.query.schemaDiario();
     expect(rsp).toEqual([
-      { label: "Dia", name: "dia", primaryKey: true, type: "string" },
+      { label: "Dia", name: "dia", primaryKey: true, typeField: "string" },
       {
         label: "Dia Semana",
         name: "dia_semana",
-        type: "string",
+        typeField: "string",
       },
       {
         label: "Quantidade",
         name: "quantidade",
-        type: "int",
+        typeField: "int",
       },
     ]);
   });
@@ -74,11 +72,11 @@ describe("esterilizacaoInternaService", () => {
   it("esterilizacaoInternaSchemaMensal", async () => {
     const rsp = await esterilizacaoInternaService.query.schemaMensal();
     expect(rsp).toEqual([
-      { label: "Mês", name: "mes", primaryKey: true, type: "string" },
+      { label: "Mês", name: "mes", primaryKey: true, typeField: "string" },
       {
         label: "Quantidade",
         name: "quantidade",
-        type: "int",
+        typeField: "int",
       },
     ]);
   });
@@ -98,11 +96,16 @@ describe("esterilizacaoInternaService", () => {
   it("esterilizacaoInternaSchemaProduto", async () => {
     const rsp = await esterilizacaoInternaService.query.schemaProduto();
     expect(rsp).toEqual([
-      { label: "Produto", name: "produto", primaryKey: true, type: "string" },
+      {
+        label: "Produto",
+        name: "produto",
+        primaryKey: true,
+        typeField: "string",
+      },
       {
         label: "Quantidade",
         name: "quantidade",
-        type: "int",
+        typeField: "int",
       },
     ]);
   });
@@ -122,11 +125,16 @@ describe("esterilizacaoInternaService", () => {
   it("esterilizacaoInternaSchemaModelo", async () => {
     const rsp = await esterilizacaoInternaService.query.schemaModelo();
     expect(rsp).toEqual([
-      { label: "Modelo", name: "modelo", primaryKey: true, type: "string" },
+      {
+        label: "Modelo",
+        name: "modelo",
+        primaryKey: true,
+        typeField: "string",
+      },
       {
         label: "Quantidade",
         name: "quantidade",
-        type: "int",
+        typeField: "int",
       },
     ]);
   });

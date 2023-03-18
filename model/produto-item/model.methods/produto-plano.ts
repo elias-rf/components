@@ -1,7 +1,7 @@
 import { TCrud } from "../../../server/lib/crud/crud.factory";
 import { TTable } from "../../../types";
+import { isSelect } from "../../../utils/validate/is-select";
 import { zIdClient } from "../../../utils/zod/z-id-client";
-import { zSelect } from "../../../utils/zod/z-select";
 import { produto_plano } from "../../produto-plano/produto-plano.table";
 import {
   TProdutoPlano,
@@ -20,7 +20,7 @@ export function produtoPlano({
 }): TProdutoItemPlanoProduto {
   return async ({ id, select }) => {
     zIdClient(id, produto_item.fields);
-    zSelect(select || [], produto_plano.fields);
+    isSelect(select || [], produto_plano.fields);
 
     let { produto_plano_id } = await produtoItemCrud.query.read({
       id,

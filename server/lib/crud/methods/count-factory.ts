@@ -3,7 +3,7 @@ import type { TGenericObject, TSelect, TWhere } from "../../../../types";
 import type { TTable } from "../../../../types/model";
 import { knexWhere } from "../../../../utils/data/knex-where";
 import { renameNameToField } from "../../../../utils/schema/rename-fields";
-import { zWhere } from "../../../../utils/zod/z-where";
+import { isWhere } from "../../../../utils/validate/is-where";
 import { TCrudCount } from "../crud.type";
 
 export function countFactory(connection: Knex, table: TTable): TCrudCount {
@@ -16,7 +16,7 @@ export function countFactory(connection: Knex, table: TTable): TCrudCount {
     count?: TGenericObject;
     select?: TSelect;
   }) => {
-    zWhere(where, table.fields);
+    isWhere(where, table.fields);
 
     let qry = connection(table.table)
       .where(knexWhere(renameNameToField(where, table.fields)))

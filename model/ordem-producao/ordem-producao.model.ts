@@ -1,4 +1,3 @@
-
 import { crudFactory } from "../../server/lib/crud/crud.factory";
 import type { TConnections } from "../../types";
 import { ordem_producao } from "./ordem-producao.table";
@@ -7,9 +6,9 @@ import type { TOrdemProducaoModel } from "./ordem-producao.type";
 import { day } from "../../utils/date/day";
 import { isEmpty } from "../../utils/identify/is_empty";
 import { module10 } from "../../utils/string/module10";
+import { isSelect } from "../../utils/validate/is-select";
 import { z, zod } from "../../utils/zod/z";
 import { zIdClient } from "../../utils/zod/z-id-client";
-import { zSelect } from "../../utils/zod/z-select";
 import { TEtiquetaExternaRpc } from "../etiqueta-externa/etiqueta-externa.type";
 import { TOrdemProducaoOperacaoRpc } from "../ordem-producao-operacao/ordem-producao-operacao.type";
 import { produto_item } from "../produto-item/produto-item.table";
@@ -34,12 +33,8 @@ export function ordemProducaoModelFactory(
   }
 ): //#endregion
 TOrdemProducaoModel {
-
-  const connection = connections[ordem_producao.database]
-  const crud = crudFactory(
-    connection,
-    ordem_producao
-  );
+  const connection = connections[ordem_producao.database];
+  const crud = crudFactory(connection, ordem_producao);
 
   //#region def
 
@@ -53,7 +48,7 @@ TOrdemProducaoModel {
       // Retorna Produto item
       async produtoItem({ id, select }): Promise<any> {
         zIdClient(id, ordem_producao.fields);
-        zSelect(select || [], produto_item.fields);
+        isSelect(select || [], produto_item.fields);
         const ordemProducao = await model.query.read({
           id,
           select: ["produto_item_id"],
@@ -70,7 +65,7 @@ TOrdemProducaoModel {
 
       async produtoPlano({ id, select }) {
         zIdClient(id, ordem_producao.fields);
-        zSelect(select || [], produto_plano.fields);
+        isSelect(select || [], produto_plano.fields);
 
         const { produto_item_id } = await model.query.read({
           id,
@@ -201,7 +196,7 @@ TOrdemProducaoModel {
     ordem_producao,
   } as TOrdemProducaoModel;
 
-  return model
+  return model;
 }
 
 //#region other

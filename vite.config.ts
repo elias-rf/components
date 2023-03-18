@@ -33,11 +33,6 @@ export default defineConfig({
     setupFiles: [path.resolve(__dirname, "./setup-tests.ts")],
     outputTruncateLength: 3500,
   },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./"),
-    },
-  },
   define: {
     __APP_VERSION__: JSON.stringify(day().format("YY-MM-DD.HH:mm")),
   },

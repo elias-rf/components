@@ -6,28 +6,32 @@ import { isString } from "../identify/is-string";
 import { isUndefined } from "../identify/is-undefined";
 import { namesFromFields } from "../schema/names-from-fields";
 
-export function isWhere(where: TWhere[], fields: TField[]): string | null {
-  if (isNull(where) || isUndefined(where))
-    return "where deve ser no formato [field, igualdade, valor]";
+const FORMAT_INVALID = "where deve ser no formato [field, igualdade, valor]";
+
+export function isWhere(where: TWhere[], fields: TField[]) {
+  if (isNull(where) || isUndefined(where) || !isArray(where))
+    throw new Error(FORMAT_INVALID);
   if (!isArray(where) && (isObject(where) || isString(where)))
-    return "where deve ser no formato [field, igualdade, valor]";
+    return FORMAT_INVALID;
 
   const nameList = namesFromFields(fields);
   const fieldsInvalidos = [];
   let fieldsLivres = nameList.sort();
 
   for (const item of where) {
-    if (!isArray(item))
-      return "where deve ser no formato [field, igualdade, valor]";
-    if (item.length !== 3)
-      return "where deve ser no formato [field, igualdade, valor]";
+    if (!isArray(item)) throw new Error(FORMAT_INVALID);
+    if (item.length !== 3) throw new Error(FORMAT_INVALID);
     if (!nameList.includes(item[0])) fieldsInvalidos.push(item[0]);
     fieldsLivres = fieldsLivres.filter((f) => f !== item[0]);
   }
   if (fieldsInvalidos.length > 0) {
-    return `${fieldsInvalidos} não ${
-      fieldsInvalidos.length === 1 ? "é um campo válido" : "são campos válidos"
-    } para where use: ${fieldsLivres}`;
+    throw new Error(
+      `${fieldsInvalidos} não ${
+        fieldsInvalidos.length === 1
+          ? "é um campo válido"
+          : "são campos válidos"
+      } para where use: ${fieldsLivres}`
+    );
   }
-  return null;
+  return where;
 }

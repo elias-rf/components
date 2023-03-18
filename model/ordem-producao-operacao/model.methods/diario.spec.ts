@@ -1,11 +1,11 @@
-import { getTracker } from "knex-mock-client";
+import { createTracker } from "knex-mock-client";
 import { describe, expect, it } from "vitest";
 import { connectionsMock } from "../../../mocks/connections.mock";
 import { knexMockHistory } from "../../../utils/data/knex-mock-history";
 import { diario } from "./diario";
 
 describe("ordemProducaoOperacaoMethods", () => {
-  const tracker = getTracker();
+  const tracker = createTracker(connectionsMock.oftalmo);
 
   beforeEach(() => {
     tracker.reset();

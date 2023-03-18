@@ -6,14 +6,14 @@ import {
   renameFieldToName,
   renameNameToField,
 } from "../../../../utils/schema/rename-fields";
-import { zRecord } from "../../../../utils/zod/z-record";
-import { zSelect } from "../../../../utils/zod/z-select";
+import { isSelect } from "../../../../utils/validate/is-select";
+import { isRecord } from "../../../../utils/zod/z-record";
 import { TCrudCreate } from "../crud.type";
 
 export function createFactory(connection: Knex, schema: TTable): TCrudCreate {
   const response = async ({ data, select = [] }: TCreateArgs) => {
-    zRecord(data, schema.fields);
-    zSelect(select as TSelect, schema.fields);
+    isRecord(data, schema.fields);
+    isSelect(select as TSelect, schema.fields);
 
     if (select.length === 0) {
       select = namesFromTable(schema);

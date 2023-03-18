@@ -1,9 +1,10 @@
-import { getTracker } from "knex-mock-client";
+import { createTracker } from "knex-mock-client";
+import { connectionsMock } from "../../mocks/connections.mock";
 import { container } from "../../mocks/container.mock";
 import { knexMockHistory } from "../../utils/data/knex-mock-history";
 
 describe("clienteRpc", () => {
-  const tracker = getTracker();
+  const tracker = createTracker(connectionsMock.plano);
 
   const clienteRpc = container.resolve("clienteRpc");
 

@@ -1,7 +1,5 @@
 import { esterilizacaoInternaStore } from "../../model/esterilizacao-interna/esterilizacao-interna.store";
 
-const esterilizacaoInternaStore = esterilizacaoInternaStore;
-
 describe("esterilizacaoInternaStore", () => {
   it("getList", async () => {
     await esterilizacaoInternaStore.getState().getList({

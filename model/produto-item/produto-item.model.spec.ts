@@ -1,4 +1,4 @@
-import { getTracker } from "knex-mock-client";
+import { createTracker } from "knex-mock-client";
 import { describe, expect, test } from "vitest";
 import { connectionsMock } from "../../mocks/connections.mock";
 import { knexMockHistory } from "../../utils/data/knex-mock-history";
@@ -8,7 +8,7 @@ import { produtoItemModelFactory } from "./produto-item.model";
 import { produto_item } from "./produto-item.table";
 
 describe("produtoItem", () => {
-  const tracker = getTracker();
+  const tracker = createTracker(connectionsMock.oftalmo);
 
   const produtoItem = produtoItemModelFactory({
     connections: connectionsMock,

@@ -7,12 +7,12 @@ export function mensalSchema(): () => Promise<TField[]> {
         name: "mes",
         label: "Mês",
         primaryKey: true,
-        type: "string",
+        typeField: "string",
       },
       {
         name: "quantidade",
         label: "Quantidade",
-        type: "int",
+        typeField: "int",
       },
     ];
   };

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
+import { TrpcProvider } from "../trpc-provider";
 import { AgendaTelefoneList } from "./agenda-telefone-list";
 
 const meta: Meta<typeof AgendaTelefoneList> = {
@@ -25,14 +26,16 @@ const ListState = () => {
   }
 
   return (
-    <AgendaTelefoneList
-      selected={selected}
-      where={where}
-      order={order}
-      onSelect={handleSelected}
-      onWhere={handleWhere}
-      onOrder={handleOrder}
-    />
+    <TrpcProvider>
+      <AgendaTelefoneList
+        selected={selected}
+        where={where}
+        order={order}
+        onSelect={handleSelected}
+        onWhere={handleWhere}
+        onOrder={handleOrder}
+      />
+    </TrpcProvider>
   );
 };
 

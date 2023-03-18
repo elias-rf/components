@@ -1,7 +1,5 @@
 import { clienteStore } from "../../model/cliente/cliente.store";
 
-const clienteStore = clienteStore;
-
 describe("clienteStore", () => {
   it("getList", async () => {
     await clienteStore.getState().getList({
@@ -91,7 +89,7 @@ describe("clienteStore", () => {
       {
         fieldClass: "text-right",
         name: "2020-01",
-        type: "float",
+        typeField: "float",
       },
     ]);
   });
@@ -122,7 +120,7 @@ describe("clienteStore", () => {
       {
         fieldClass: "text-right",
         name: "2020-01",
-        type: "float",
+        typeField: "float",
       },
     ]);
   });
@@ -153,7 +151,7 @@ describe("clienteStore", () => {
       {
         fieldClass: "text-right",
         name: "2020-01",
-        type: "float",
+        typeField: "float",
       },
     ]);
   });

@@ -1,4 +1,4 @@
-import { getTracker, Tracker } from "knex-mock-client";
+import { createTracker, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { connectionsMock } from "../../mocks/connections.mock";
 import { setTracker } from "../../server/lib/set_tracker";
@@ -12,7 +12,7 @@ describe("nfSaidaFvModel", () => {
   let tracker: Tracker;
 
   beforeAll(() => {
-    tracker = getTracker();
+    tracker = createTracker(connectionsMock.plano);
     setTracker(tracker);
   });
 

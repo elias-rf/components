@@ -7,12 +7,12 @@ export function modeloSchema(): () => Promise<TField[]> {
         name: "modelo",
         label: "Modelo",
         primaryKey: true,
-        type: "string",
+        typeField: "string",
       },
       {
         name: "quantidade",
         label: "Quantidade",
-        type: "int",
+        typeField: "int",
       },
     ];
   };

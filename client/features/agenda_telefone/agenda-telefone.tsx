@@ -20,18 +20,16 @@ export function AgendaTelefone() {
   const [where, setWhere] = React.useState<TWhere<TAgendaTelefoneFields>[]>([]);
   const [order, setOrder] = React.useState<TOrder<TAgendaTelefoneFields>[]>([]);
 
-  function handle(event: any) {
-    if (event.event === "onSelect") {
-      setSelected(event.value);
-    }
-    if (event.event === "onWhere") {
-      setWhere(event.value);
-    }
-    if (event.event === "onOrder") {
-      setOrder(event.value);
-    }
+  function handleSelect(event: any) {
+    setSelected(event.value);
   }
-  ("");
+  function handleWhere(event: any) {
+    setWhere(event.value);
+  }
+  function handleOrder(event: any) {
+    setOrder(event.value);
+  }
+
   return (
     <Page>
       <PageTitle title="Agenda de Ramais" />
@@ -41,9 +39,9 @@ export function AgendaTelefone() {
           selected={selected}
           where={where}
           order={order}
-          onSelect={handle}
-          onWhere={handle}
-          onOrder={handle}
+          onSelect={handleSelect}
+          onWhere={handleWhere}
+          onOrder={handleOrder}
         >
           <AgendaTelefoneForm id={selected} />
         </AgendaTelefoneList>

@@ -1,7 +1,5 @@
 import { groupSubjectStore } from "../../model/group-subject/group-subject.store";
 
-const groupSubjectStore = groupSubjectStore;
-
 describe("groupSubjectStore", () => {
   it("getCan true", async () => {
     let rsp = await groupSubjectStore.getState().getCan({

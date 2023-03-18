@@ -8,7 +8,7 @@ export default {
 
 export const Default: ComponentStory<typeof SelectOptions> = () => {
   return (
-    <select>
+    <select title="slc">
       <SelectOptions
         options={[
           ["A", "a"],
@@ -21,7 +21,7 @@ export const Default: ComponentStory<typeof SelectOptions> = () => {
 
 export const Objects: ComponentStory<typeof SelectOptions> = () => {
   return (
-    <select>
+    <select title="slc">
       <SelectOptions options={[{ A: "a" }, { B: "b" }]} />
     </select>
   );
@@ -29,7 +29,7 @@ export const Objects: ComponentStory<typeof SelectOptions> = () => {
 
 export const ObjectsCompounds: ComponentStory<typeof SelectOptions> = () => {
   return (
-    <select>
+    <select title="slc">
       <SelectOptions
         options={[
           { title: "A", value: "a" },

@@ -13,19 +13,12 @@ TAgendaTelefoneModel {
   const connection = connections[agenda_telefone.database];
   const crud = crudFactory(connection, agenda_telefone);
 
-  //#region def
-  //#endregion
-
   const model = {
     query: {
       ...crud.query,
-      //#region query
-      //#endregion
     },
     mutation: {
       ...crud.mutation,
-      //#region mutation
-      //#endregion
     },
     connection,
     agenda_telefone,

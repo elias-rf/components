@@ -3,10 +3,10 @@ import {
   TCheckboxFieldAttributes,
 } from "./components/checkbox-field";
 import { SelectField, TSelectFieldAttributes } from "./components/select-field";
-import { TTextFieldAttributes, TextField } from "./components/text-field";
+import { TextField, TTextFieldAttributes } from "./components/text-field";
 import {
-  TTextareaFieldAttributes,
   TextareaField,
+  TTextareaFieldAttributes,
 } from "./components/textarea-field";
 
 export type TFieldAttributes =

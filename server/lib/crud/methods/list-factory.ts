@@ -8,11 +8,11 @@ import {
   renameFieldToName,
   renameNameToField,
 } from "../../../../utils/schema/rename-fields";
+import { isLimit } from "../../../../utils/validate/is-limit";
+import { isSelect } from "../../../../utils/validate/is-select";
+import { isWhere } from "../../../../utils/validate/is-where";
 import { zAggregate } from "../../../../utils/zod/z-aggregate";
-import { zLimit } from "../../../../utils/zod/z-limit";
-import { zOrder } from "../../../../utils/zod/z-order";
-import { zSelect } from "../../../../utils/zod/z-select";
-import { zWhere } from "../../../../utils/zod/z-where";
+import { isOrder } from "../../../../utils/zod/z-order";
 import { TCrudList } from "../crud.type";
 
 export function listFactory(connection: Knex, table: TTable): TCrudList {
@@ -25,12 +25,12 @@ export function listFactory(connection: Knex, table: TTable): TCrudList {
     sum = {},
     min = {},
     max = {},
-  }: TListArgs): Promise<TGenericObject[]> => {
-    zWhere(where, table.fields);
-    zOrder(order, table.fields);
-    zLimit(limit);
-    zSelect(select as string[], table.fields);
-    zSelect(group as string[], table.fields);
+  }: TListArgs = {}): Promise<TGenericObject[]> => {
+    isWhere(where, table.fields);
+    isOrder(order, table.fields);
+    isLimit(limit);
+    isSelect(select as string[], table.fields);
+    isSelect(group as string[], table.fields);
     zAggregate(sum as TAggregate, table.fields);
     zAggregate(min as TAggregate, table.fields);
     zAggregate(max as TAggregate, table.fields);

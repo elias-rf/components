@@ -1,8 +1,6 @@
 import { esterilizacaoExternaStore } from "../../model/esterilizacao-externa/esterilizacao-externa.store";
 import { esterilizacao_externa } from "../../model/esterilizacao-externa/esterilizacao-externa.table";
 
-const esterilizacaoExternaStore = esterilizacaoExternaStore;
-
 describe("esterilizacaoExternaStore", () => {
   it("getList", async () => {
     await esterilizacaoExternaStore.getState().getList({
@@ -87,17 +85,17 @@ describe("esterilizacaoExternaStore", () => {
         label: "Dia",
         name: "dia",
         primaryKey: true,
-        type: "string",
+        typeField: "string",
       },
       {
         label: "Dia Semana",
         name: "dia_semana",
-        type: "string",
+        typeField: "string",
       },
       {
         label: "Quantidade",
         name: "quantidade",
-        type: "int",
+        typeField: "int",
       },
     ]);
   });

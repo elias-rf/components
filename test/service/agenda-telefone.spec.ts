@@ -1,8 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { agendaTelefoneServiceFactory } from "../../model/agenda-telefone/agenda-telefone.service";
+import { agendaTelefoneService } from "../../model/agenda-telefone/agenda-telefone.service";
 import { delCreateAux, readAux } from "../../test/aux/aux";
-
-const agendaTelefoneService = agendaTelefoneServiceFactory();
 
 describe("agendaTelefoneService", () => {
   it("agendaTelefoneSchema", async () => {
