@@ -52,7 +52,6 @@ TNfEntradaModel {
     },
     mutation: {
       ...crud.mutation,
-      //#region mutation
       // Transfere produtos acabados da matriz para filial
       ...nfEntradaMethodsFactory({
         ordemProducaoModel,

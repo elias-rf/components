@@ -24,9 +24,13 @@ export const br = {
     not_finite: "Número não pode ser infinito",
     invalid_string: {
       email: "E-mail inválido",
+      ip: "IP inválido",
       url: "URL inválida",
       uuid: "UUID inválido",
       cuid: "CUID inválido",
+      cuid2: "CUID2 inválido",
+      ulid: "ULID inválido",
+      emoji: "emoji inválido",
       regex: "Combinação inválida",
       datetime: "datetime inválido",
       startsWith: 'Entrada inválida: precisa iniciar com "{startsWith}"',
@@ -42,6 +46,10 @@ export const br = {
         not_inclusive: "A string precisa conter mais de {minimum} caracter(es)",
       },
       number: {
+        inclusive: "O número precisa ser maior ou igual a {minimum}",
+        not_inclusive: "O número precisa ser maior que {minimum}",
+      },
+      bigint: {
         inclusive: "O número precisa ser maior ou igual a {minimum}",
         not_inclusive: "O número precisa ser maior que {minimum}",
       },
@@ -81,11 +89,15 @@ export const br = {
   },
   validations: {
     email: "email",
+    ip: "ip",
     url: "url",
     uuid: "uuid",
+    ulid: "ulid",
     cuid: "cuid",
+    cuid2: "cuid2",
     regex: "regex",
     datetime: "datetime",
+    emoji: "emoji",
   },
   types: {
     function: "function",
@@ -123,12 +135,6 @@ function joinValues<T extends any[]>(array: T, separator = " | "): string {
     .map((val) => (typeof val === "string" ? `'${val}'` : val))
     .join(separator);
 }
-
-export type HandlePathOption = {
-  context?: string;
-  ns?: string | readonly string[];
-  keyPrefix?: string;
-};
 
 export const errorMapBr: ZodErrorMap = (issue) => {
   let message = "";
@@ -199,15 +205,12 @@ export const errorMapBr: ZodErrorMap = (issue) => {
           });
         }
       } else {
-        message = template(
-          br.errors.invalid_string[issue.validation] as string,
-          {
-            validation: template(br.validations[issue.validation], {
-              defaultValue: issue.validation,
-            }),
-            defaultValue: message,
-          }
-        );
+        message = template(br.errors.invalid_string[issue.validation], {
+          validation: template(br.validations[issue.validation], {
+            defaultValue: issue.validation,
+          }),
+          defaultValue: message,
+        });
       }
       break;
     case ZodIssueCode.too_small:

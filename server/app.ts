@@ -11,6 +11,12 @@ import { router } from "./routes";
 
 export const app = express();
 
+declare module "express-serve-static-core" {
+  interface Request {
+    currentUser?: boolean;
+  }
+}
+
 app.use(express.json());
 app.use(cookieParser(config.auth.secret));
 app.use(jwtMiddleFactory(config.auth.secret || ""));

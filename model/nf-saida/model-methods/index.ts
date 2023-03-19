@@ -35,5 +35,6 @@ export function nfSaidaMethods({
       vendaMensalClienteSchema: vendaMensalClienteSchema(),
       vendaMensalCliente: vendaMensalCliente({ connection }),
     },
+    mutation: {},
   };
 }

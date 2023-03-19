@@ -1,39 +1,44 @@
-import * as t from "superstruct";
-import { TCreateArgs, TDelArgs, TUpdateArgs } from "../../../types";
-import { isWhere } from "../../../utils/validate/is-where";
+import { TConnection, TTable } from "../../../types";
 import { publicProcedure } from "../../trpc";
+import { TCrudRpc } from "../crud/crud.type";
+import {
+  countZod,
+  createZod,
+  delZod,
+  incrementZod,
+  listZod,
+  readZod,
+  updateZod,
+} from "./inputs";
 
-export function crudProcedureFactory(resourceModel: any) {
+type TModel = TCrudRpc & {
+  connection: TConnection;
+  table: TTable;
+};
+
+export function crudProcedureFactory(resourceModel: TModel) {
   return {
-    list: publicProcedure
-      .input((input) => isWhere(input.where))
-      .query((req) => {
-        return resourceModel.query.list(req.input);
-      }),
-    read: publicProcedure
-      // .input((qry) => qry as TReadArgs)
-      .input(
-        t.object({
-          id: t.record(t.string(), t.union([t.string(), t.number()])),
-        })
-      )
-      .query((req) => {
-        return resourceModel.query.read(req.input);
-      }),
-    update: publicProcedure
-      .input((qry) => qry as TUpdateArgs)
-      .mutation((req) => {
-        return resourceModel.mutation.update(req.input);
-      }),
-    create: publicProcedure
-      .input((qry) => qry as TCreateArgs)
-      .mutation((req) => {
-        return resourceModel.mutation.create(req.input);
-      }),
-    del: publicProcedure
-      .input((qry) => qry as TDelArgs)
-      .mutation((req) => {
-        return resourceModel.mutation.del(req.input);
-      }),
+    count: publicProcedure.input(countZod).query((req) => {
+      return resourceModel.query.count(req.input);
+    }),
+    list: publicProcedure.input(listZod).query((req) => {
+      return resourceModel.query.list(req.input);
+    }),
+    read: publicProcedure.input(readZod).query((req) => {
+      return resourceModel.query.read(req.input);
+    }),
+    update: publicProcedure.input(updateZod).mutation((req) => {
+      return resourceModel.mutation.update(req.input);
+    }),
+    create: publicProcedure.input(createZod).mutation((req) => {
+      return resourceModel.mutation.create(req.input);
+    }),
+    del: publicProcedure.input(delZod).mutation((req) => {
+      return resourceModel.mutation.del(req.input);
+    }),
+
+    increment: publicProcedure.input(incrementZod).mutation((req) => {
+      return resourceModel.mutation.increment(req.input);
+    }),
   };
 }

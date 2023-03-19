@@ -9,7 +9,7 @@ import { schemaMensal } from "./shema-mensal";
 import { schemaModelo } from "./shema-modelo";
 import { schemaProduto } from "./shema-produto";
 
-export function esterilizacaoExternaMethods(connection:Knex) {
+export function esterilizacaoExternaMethods(connection: Knex) {
   return {
     query: {
       schemaDiario,
@@ -21,5 +21,6 @@ export function esterilizacaoExternaMethods(connection:Knex) {
       diario: diario(connection),
       mensal: mensal(connection),
     },
+    mutation: {},
   };
 }

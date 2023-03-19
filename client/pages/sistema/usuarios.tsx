@@ -3,7 +3,6 @@ import { TUsuarioFields } from "../../../model/usuario/usuario.type";
 import { TOrder, TSelected, TWhere } from "../../../types";
 import { Page } from "../../components/page/page";
 import { PageTitle } from "../../components/page/page_title";
-import { TAgendaTelefoneList } from "../../features/agenda_telefone/agenda-telefone-list";
 import { Auth } from "../../features/auth";
 import { UsuarioForm } from "../../features/usuario/usuario_form";
 import { UsuarioList } from "../../features/usuario/usuario_list";
@@ -13,7 +12,7 @@ export default function Usuarios() {
   const [where, setWhere] = React.useState<TWhere<TUsuarioFields>[]>([]);
   const [order, setOrder] = React.useState<TOrder<TUsuarioFields>[]>([]);
 
-  function handle(event: TAgendaTelefoneList) {
+  function handle(event: any) {
     if (event.event === "onSelect") {
       setSelected(event.value);
     }

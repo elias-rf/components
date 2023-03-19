@@ -68,12 +68,6 @@ export type TEsterilizacaoInternaCrud = {
 };
 
 export type TEsterilizacaoInternaModel = TEsterilizacaoInternaCrud & {
-  //#region query
-
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
   query: {
     schemaDiario(): Promise<TField[]>;
     schemaMensal(): Promise<TField[]>;

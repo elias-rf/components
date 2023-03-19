@@ -1,5 +1,5 @@
 //--
-import { TCrud } from "../../../server/lib/crud/crud.factory";
+import { TCrud } from "../../../server/lib/crud/crud.type";
 import { TTable } from "../../../types";
 import { TProdutoPlanoRpc } from "../../produto-plano/produto-plano.type";
 import { produtoPlano } from "./produto-plano";

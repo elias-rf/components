@@ -1,4 +1,4 @@
-import { TCrud } from "../../../server/lib/crud/crud.factory";
+import { TCrud } from "../../../server/lib/crud/crud.type";
 import { TTable } from "../../../types";
 import { isSelect } from "../../../utils/validate/is-select";
 import { zIdClient } from "../../../utils/zod/z-id-client";

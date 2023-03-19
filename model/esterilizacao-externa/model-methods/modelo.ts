@@ -1,9 +1,9 @@
-import { Knex } from "knex";
+import { TConnection } from "../../../types";
 import { z, zod } from "../../../utils/zod/z";
 import { zsr } from "../../../utils/zod/z-refine";
 import { TEsterilizacaoExternaModelo } from "../esterilizacao-externa.type";
 
-export function modelo(connection: Knex): TEsterilizacaoExternaModelo {
+export function modelo(connection: TConnection): TEsterilizacaoExternaModelo {
   return async ({ data, produto }: { data: string; produto: string }) => {
     zod(data, z.string().superRefine(zsr.date));
     zod(produto, z.string());

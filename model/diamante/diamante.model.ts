@@ -1,35 +1,21 @@
-
-import deepmerge from "ts-deepmerge";
 import { crudFactory } from "../../server/lib/crud/crud.factory";
 import type { TConnections } from "../../types";
 import { diamante } from "./diamante.table";
 import type { TDiamanteModel } from "./diamante.type";
-//#region import
-//#endregion
 
-export function diamanteModelFactory(
-  //#region inject
-  { connections }: { connections: TConnections }
-): //#endregion
-TDiamanteModel {
+export function diamanteModelFactory({
+  connections,
+}: {
+  connections: TConnections;
+}): TDiamanteModel {
+  const connection = connections[diamante.database];
+  const crud = crudFactory(connection, diamante);
 
-  const connection = connections[diamante.database]
-  const crud = crudFactory(
+  const model = {
     connection,
-    diamante
-  );
-
-  //#region def
-  //#endregion
-
-  return deepmerge(
-    { connection, diamante },
-    crud,
-    //#region query
-      //#endregion
-  );
-
+    diamante,
+    query: { ...crud.query },
+    mutation: { ...crud.mutation },
+  };
+  return model;
 }
-
-//#region other
-//#endregion

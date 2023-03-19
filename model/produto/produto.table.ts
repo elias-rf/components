@@ -76,7 +76,7 @@ export const produto: TTable = {
   ],
   associates: {
     produto_item: {
-      typeField: "00",
+      type: "00",
       source: ["produto_id"],
       target: ["produto_id"],
     },

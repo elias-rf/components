@@ -3,7 +3,9 @@ import dotenv from "dotenv-flow";
 import type { Knex } from "knex";
 import tls from "tls";
 
-dotenv.config();
+dotenv.config({
+  silent: true,
+});
 
 tls.DEFAULT_MIN_VERSION = "TLSv1";
 

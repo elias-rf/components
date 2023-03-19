@@ -1,5 +1,5 @@
 import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnections } from "../../types/model";
+import type { TConnection, TConnections } from "../../types/model";
 import { usuario } from "./usuario.table";
 import type { TUsuarioModel } from "./usuario.type";
 //#region import

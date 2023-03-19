@@ -1,4 +1,4 @@
-import { TOrder, TSelect, TWhere } from "../../types";
+import { TField, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TReceberPk {

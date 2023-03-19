@@ -44,10 +44,12 @@ export type TField = {
   typeForm?: TFormType; // tipo de input no formulário
 };
 
+export type TFields = TField[];
+
 export type TTable = {
   database: TConnectionsName;
   table: string;
-  fields: TField[];
+  fields: TFields;
   associates?: {
     [table: string]: {
       type: "1" | "00";

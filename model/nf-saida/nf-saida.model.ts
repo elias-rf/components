@@ -1,37 +1,27 @@
-import deepmerge from "ts-deepmerge";
 import { crudFactory } from "../../server/lib/crud/crud.factory";
 import type { TConnections } from "../../types";
-import { nf_saida } from "./nf-saida.table";
-import type { TNfSaidaModel } from "./nf-saida.type";
-//#region import
 import { TNfSaidaFvModel } from "../nf-saida-fv/nf-saida-fv.type";
 import { nfSaidaMethods } from "./model-methods";
-//#endregion
+import { nf_saida } from "./nf-saida.table";
+import type { TNfSaidaModel } from "./nf-saida.type";
 
-export function nfSaidaModelFactory(
-  //#region inject
-  {
-    connections,
-    nfSaidaFvModel,
-  }: {
-    connections: TConnections;
-    nfSaidaFvModel: TNfSaidaFvModel;
-  }
-): //#endregion
-TNfSaidaModel {
+export function nfSaidaModelFactory({
+  connections,
+  nfSaidaFvModel,
+}: {
+  connections: TConnections;
+  nfSaidaFvModel: TNfSaidaFvModel;
+}): TNfSaidaModel {
   const connection = connections[nf_saida.database];
   const crud = crudFactory(connection, nf_saida);
+  const methods = nfSaidaMethods({ connection, nfSaidaFvModel });
 
-  //#region def
-  //#endregion
-  return deepmerge(
-    { connection, nf_saida },
-    crud,
-    //#region query
-    nfSaidaMethods({ connection, nfSaidaFvModel })
-    //#endregion
-  );
+  const model = {
+    connection,
+    table: nf_saida,
+    query: { ...crud.query, ...methods.query },
+    mutation: { ...crud.mutation, ...methods.mutation },
+  };
+
+  return model;
 }
-
-//#region other
-//#endregion

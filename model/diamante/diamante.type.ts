@@ -68,13 +68,6 @@ export type TDiamanteCrud = {
   };
 };
 
-export type TDiamanteModel = TDiamanteCrud & {
-  //#region query
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-  //#endregion
-};
+export type TDiamanteModel = TDiamanteCrud;
 
 export type TDiamanteRpc = TDiamanteModel;

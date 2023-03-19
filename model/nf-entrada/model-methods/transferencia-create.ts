@@ -1,5 +1,6 @@
 import { isEmpty } from "lodash";
 import { z } from "zod";
+import { TCrud } from "../../../server/lib/crud/crud.type";
 import { day } from "../../../utils/date/day";
 import { zod } from "../../../utils/zod/z";
 import { TEstoqueRpc } from "../../estoque/estoque.type";
@@ -9,10 +10,7 @@ import { TNfEntradaLogRpc } from "../../nf-entrada-log/nf-entrada-log.type";
 import { TOrdemProducaoRpc } from "../../ordem-producao/ordem-producao.type";
 import { TProdutoControleRpc } from "../../produto-controle/produto-controle.type";
 import { TProdutoEstatisticaRpc } from "../../produto-estatistica/produto-estatistica.type";
-import {
-  TNfEntradaCrud,
-  TNfEntradaTransferenciaCreate,
-} from "../nf-entrada.type";
+import { TNfEntradaTransferenciaCreate } from "../nf-entrada.type";
 
 export function transferenciaCreateFactory({
   ordemProducaoModel,
@@ -25,7 +23,7 @@ export function transferenciaCreateFactory({
   nfEntradaControleModel,
 }: {
   ordemProducaoModel: TOrdemProducaoRpc;
-  nfEntradaModel: TNfEntradaCrud;
+  nfEntradaModel: TCrud;
   estoqueModel: TEstoqueRpc;
   produtoEstatisticaModel: TProdutoEstatisticaRpc;
   nfEntradaLogModel: TNfEntradaLogRpc;

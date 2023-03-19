@@ -1,4 +1,3 @@
-import deepmerge from "ts-deepmerge";
 import { crudFactory } from "../../server/lib/crud/crud.factory";
 import type { TConnections } from "../../types";
 import { esterilizacao_externa } from "./esterilizacao-externa.table";
@@ -15,19 +14,14 @@ export function esterilizacaoExternaModelFactory(
 TEsterilizacaoExternaModel {
   const connection = connections[esterilizacao_externa.database];
   const crud = crudFactory(connection, esterilizacao_externa);
+  const methods = esterilizacaoExternaMethods(connection);
 
-  //#region def
-  //#endregion
+  const model = {
+    connection,
+    esterilizacao_externa,
+    query: { ...crud.query, ...methods.query },
+    mutation: { ...crud.mutation, ...methods.mutation },
+  };
 
-  return deepmerge(
-    { connection, esterilizacao_externa },
-    crud,
-    //#region query
-    esterilizacaoExternaMethods(connection)
-
-    //#endregion
-  );
+  return model;
 }
-
-//#region other
-//#endregion

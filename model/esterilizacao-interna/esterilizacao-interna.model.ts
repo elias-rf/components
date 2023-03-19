@@ -1,33 +1,22 @@
-
 import { crudFactory } from "../../server/lib/crud/crud.factory";
 import type { TConnections } from "../../types";
-import { esterilizacao_interna } from "./esterilizacao-interna.table";
-import type { TEsterilizacaoInternaModel } from "./esterilizacao-interna.type";
-//#region import
 import { z, zod } from "../../utils/zod/z";
 import { zsr } from "../../utils/zod/z-refine";
+import { esterilizacao_interna } from "./esterilizacao-interna.table";
+import type { TEsterilizacaoInternaModel } from "./esterilizacao-interna.type";
 import { esterilizacaoInternaMethods } from "./model-methods";
-//#endregion
 
-export function esterilizacaoInternaModelFactory(
-  //#region inject
-  { connections }: { connections: TConnections }
-): //#endregion
-TEsterilizacaoInternaModel {
-
-  const connection = connections[esterilizacao_interna.database]
-  const crud = crudFactory(
-    connection,
-    esterilizacao_interna
-  );
-
-  //#region def
-  //#endregion
+export function esterilizacaoInternaModelFactory({
+  connections,
+}: {
+  connections: TConnections;
+}): TEsterilizacaoInternaModel {
+  const connection = connections[esterilizacao_interna.database];
+  const crud = crudFactory(connection, esterilizacao_interna);
 
   const model = {
     query: {
       ...crud.query,
-      //#region query
       ...esterilizacaoInternaMethods(connection).query,
 
       // PRODUTO
@@ -53,19 +42,13 @@ TEsterilizacaoInternaModel {
           .where(knex.raw("fkOperacao in (3058, 3158)"));
         return qry;
       },
-      //#endregion
     },
     mutation: {
       ...crud.mutation,
-      //#region mutation
-      //#endregion
     },
     connection,
     esterilizacao_interna,
-  } as TEsterilizacaoInternaModel;
+  };
 
-  return model
+  return model;
 }
-
-//#region other
-//#endregion

@@ -1,6 +1,5 @@
 import { TField, TOrder, TSelect, TWhere } from "../../types";
-//#region import
-//#endregion
+
 export interface TAgendaTelefonePk {
   agenda_telefone_id?: number;
 }
@@ -62,13 +61,6 @@ export type TAgendaTelefoneCrud = {
   };
 };
 
-export type TAgendaTelefoneModel = TAgendaTelefoneCrud & {
-  //#region query
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-  //#endregion
-};
+export type TAgendaTelefoneModel = TAgendaTelefoneCrud;
 
 export type TAgendaTelefoneRpc = TAgendaTelefoneModel;
