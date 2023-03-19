@@ -1,11 +1,11 @@
-import { TField } from "../../types";
+import { TFieldDef } from "../../types";
 import { isObject } from "../identify/is-object";
 import { namesFromFields } from "../schema/names-from-fields";
 
 /**
  * Validar se são dados para gravação de um registro informado pelo usuário
  */
-export function isData<Rec>(data: Rec, fields: TField[]) {
+export function isData<Rec>(data: Rec, fields: TFieldDef[]) {
   if (!isObject(data)) throw new Error("Data deve ser um objeto");
 
   const nameListOk = namesFromFields(

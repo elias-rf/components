@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TPedidoPk {
@@ -106,7 +106,7 @@ export type TPedidoSelect = TSelect<TPedidoFields>;
 export type TPedidoWhere = TWhere<TPedidoFields>;
 export type TPedidoOrder = TOrder<TPedidoFields>;
 
-export type TPedidoSchema = () => Promise<TField[]>;
+export type TPedidoSchema = () => Promise<TFieldDef[]>;
 export type TPedidoClear = () => Promise<TPedido>;
 export type TPedidoList = (args: {
   where?: TWhere<TPedidoFields>[];

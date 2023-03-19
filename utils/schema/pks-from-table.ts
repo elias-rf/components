@@ -1,6 +1,6 @@
-import { TTable } from "../../types";
+import { TTableDef } from "../../types";
 import { pksFromFieldsServer } from "./pks-from-fields";
 
-export function pksFromTable(table: TTable) {
+export function pksFromTable(table: TTableDef) {
   return pksFromFieldsServer(table.fields);
 }

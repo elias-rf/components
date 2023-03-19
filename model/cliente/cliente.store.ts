@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import type {
   TCliente,
@@ -24,7 +24,7 @@ type TClienteStore = {
   getList: TClienteList;
   dataRead: TCliente;
   getRead: TClienteRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TClienteSchema;
   dataClear: TCliente;
   getClear: TClienteClear;
@@ -33,19 +33,19 @@ type TClienteStore = {
   setDel: TClienteDel;
   //#region type
   dataVendaMensalQuantidadeSchema: any[];
-  getVendaMensalQuantidadeSchema(args: TPeriodo): Promise<TField[]>;
+  getVendaMensalQuantidadeSchema(args: TPeriodo): Promise<TFieldDef[]>;
 
   dataVendaMensalQuantidade: any[];
   getVendaMensalQuantidade(args: TPeriodo & { cliente: number }): Promise<any>;
 
   dataVendaMensalValorSchema: any[];
-  getVendaMensalValorSchema(args: TPeriodo): Promise<TField[]>;
+  getVendaMensalValorSchema(args: TPeriodo): Promise<TFieldDef[]>;
 
   dataVendaMensalValor: any[];
   getVendaMensalValor(args: TPeriodo & { cliente: number }): Promise<any>;
 
   dataVendaMensalValorMedioSchema: any[];
-  getVendaMensalValorMedioSchema(args: TPeriodo): Promise<TField[]>;
+  getVendaMensalValorMedioSchema(args: TPeriodo): Promise<TFieldDef[]>;
 
   dataVendaMensalValorMedio: any[];
   getVendaMensalValorMedio(args: TPeriodo & { cliente: number }): Promise<any>;

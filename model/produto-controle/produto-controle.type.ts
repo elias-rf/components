@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TProdutoControlePk {
@@ -37,7 +37,7 @@ export type TProdutoControleSelect = TSelect<TProdutoControleFields>;
 export type TProdutoControleWhere = TWhere<TProdutoControleFields>;
 export type TProdutoControleOrder = TOrder<TProdutoControleFields>;
 
-export type TProdutoControleSchema = () => Promise<TField[]>;
+export type TProdutoControleSchema = () => Promise<TFieldDef[]>;
 export type TProdutoControleClear = () => Promise<TProdutoControle>;
 export type TProdutoControleList = (args: {
   where?: TWhere<TProdutoControleFields>[];

@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 import { TEtiquetaExterna } from "../etiqueta-externa/etiqueta-externa.type";
 import {
@@ -72,7 +72,7 @@ export type TOrdemProducaoSelect = TSelect<TOrdemProducaoFields>;
 export type TOrdemProducaoWhere = TWhere<TOrdemProducaoFields>;
 export type TOrdemProducaoOrder = TOrder<TOrdemProducaoFields>;
 
-export type TOrdemProducaoSchema = () => Promise<TField[]>;
+export type TOrdemProducaoSchema = () => Promise<TFieldDef[]>;
 export type TOrdemProducaoClear = () => Promise<TOrdemProducao>;
 export type TOrdemProducaoList = (args: {
   where?: TWhere<TOrdemProducaoFields>[];

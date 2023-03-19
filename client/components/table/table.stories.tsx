@@ -2,7 +2,7 @@ import { action } from "@storybook/addon-actions";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 import { TOrder, TWhere } from "../../../types";
-import { TField } from "../../../types/model";
+import { TFieldDef } from "../../../types/model";
 import delIcon from "../../assets/icons/delete.svg";
 import editIcon from "../../assets/icons/edit.svg";
 import newIcon from "../../assets/icons/new.svg";
@@ -25,7 +25,7 @@ const data: { [index: string]: any }[] = [
   { id: "3", nome: "cicrano", compra: 3.14 },
 ];
 
-const schema: TField[] = [
+const schema: TFieldDef[] = [
   {
     label: "ID",
     name: "id",

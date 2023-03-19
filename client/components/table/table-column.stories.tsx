@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import { TField } from "../../../types/model";
+import { TFieldDef } from "../../../types/model";
 import { TableColumn } from "./table-column";
 
 export default {
@@ -12,7 +12,7 @@ export default {
   },
 } as ComponentMeta<typeof TableColumn>;
 
-const schema: TField[] = [
+const schema: TFieldDef[] = [
   {
     label: "ID",
     name: "nid",

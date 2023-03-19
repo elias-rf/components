@@ -1,7 +1,12 @@
-import { TDb } from "../../types/model";
+import { TTableDef } from "../../types/model";
 import { isEmpty } from "../identify/is_empty";
 
-export function isTable(table: string, entitySchema: TDb) {
+export function isTable(
+  table: string,
+  entitySchema: {
+    [table: string]: TTableDef;
+  }
+) {
   if (typeof table !== "string")
     throw new Error("Um nome de tabela deve ser informado");
   if (isEmpty(table)) throw new Error("Um nome de tabela deve ser informado");

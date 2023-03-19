@@ -1,7 +1,7 @@
 import React from "react";
 import { useMap } from "react-use";
 import { stores } from "../../../model/stores";
-import type { TField, TSelected } from "../../../types";
+import type { TFieldDef, TSelected } from "../../../types";
 import { isEmpty } from "../../../utils/identify/is_empty";
 import { isNumber } from "../../../utils/identify/is_number";
 import { Button } from "../../components/button";
@@ -141,7 +141,7 @@ export function GroupSubjectForm({ id }: TGroupSubjectFormProps) {
         </div>
       </div>
       <div className={"flex flex-wrap gap-2"}>
-        {dataSchema?.map((field: TField) => (
+        {dataSchema?.map((field: TFieldDef) => (
           <React.Fragment key={field.name}>
             <div className={"my-2"}>
               <Label name={field.name}>{field.label || ""}</Label>

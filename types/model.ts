@@ -3,12 +3,12 @@ import { Knex } from "knex";
  * Tipos para Banco de Dados
  */
 
-export type TConnectionsName = "oftalmo" | "plano" | "fullvision";
+export type TConnectionNames = "oftalmo" | "plano" | "fullvision";
 
 export type TConnection = Knex;
 
 export type TConnections = {
-  [cnn in TConnectionsName]: TConnection;
+  [cnn in TConnectionNames]: TConnection;
 };
 
 export type TFormType = "checkbox" | "select" | "text" | "textarea";
@@ -23,7 +23,7 @@ export type TFieldType =
   | "selection"
   | "tag";
 
-export type TField = {
+export type TFieldDef = {
   name: string; // nome usado para queries
   field?: string; // campo no banco de dados
   typeField?: TFieldType; // tipo do dado no banco de dados
@@ -44,10 +44,10 @@ export type TField = {
   typeForm?: TFormType; // tipo de input no formulário
 };
 
-export type TFields = TField[];
+export type TFields = TFieldDef[];
 
-export type TTable = {
-  database: TConnectionsName;
+export type TTableDef = {
+  database: TConnectionNames;
   table: string;
   fields: TFields;
   associates?: {
@@ -57,9 +57,4 @@ export type TTable = {
       target: string[];
     };
   };
-};
-
-/** Tabelas de banco de dados */
-export type TDb = {
-  [table: string]: TTable;
 };

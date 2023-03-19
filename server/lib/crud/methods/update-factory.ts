@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 import { TGenericObject, TSelect, TUpdateArgs } from "../../../../types";
-import type { TTable } from "../../../../types/model";
+import type { TTableDef } from "../../../../types/model";
 import { namesFromTable } from "../../../../utils/schema/names-from-table";
 import {
   renameFieldToName,
@@ -11,7 +11,10 @@ import { zIdClient } from "../../../../utils/zod/z-id-client";
 import { isRecord } from "../../../../utils/zod/z-record";
 import { TCrudUpdate } from "../crud.type";
 
-export function updateFactory(connection: Knex, schema: TTable): TCrudUpdate {
+export function updateFactory(
+  connection: Knex,
+  schema: TTableDef
+): TCrudUpdate {
   const response = async ({
     id,
     data,

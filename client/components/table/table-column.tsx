@@ -1,17 +1,17 @@
 import { twMerge } from "tailwind-merge";
 import { TOrder } from "../../../types";
-import { TField } from "../../../types/model";
+import { TFieldDef } from "../../../types/model";
 import { orderByUtil } from "../../../utils/schema/order-by";
 import { ShowSortableIcon } from "./show-sortable-icon";
 
 export type TTableColumn = {
-  schemaField: TField;
+  schemaField: TFieldDef;
   order: TOrder[];
   onOrder?: (event: any) => void;
 };
 
 export function TableColumn({ schemaField, order, onOrder }: TTableColumn) {
-  function handleOnOrder(order: TOrder[] = [], schemaField: TField) {
+  function handleOnOrder(order: TOrder[] = [], schemaField: TFieldDef) {
     if (onOrder && schemaField.sortable !== false)
       onOrder({
         name: "",

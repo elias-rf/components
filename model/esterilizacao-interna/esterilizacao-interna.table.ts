@@ -1,6 +1,6 @@
-import { TTable } from "../../types";
+import { TTableDef } from "../../types";
 
-export const esterilizacao_interna: TTable = {
+export const esterilizacao_interna: TTableDef = {
   database: "oftalmo",
   table: "tEsterilizacaoInterna",
   fields: [

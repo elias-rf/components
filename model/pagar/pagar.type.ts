@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TPagarPk {
@@ -49,7 +49,7 @@ export type TPagarSelect = TSelect<TPagarFields>;
 export type TPagarWhere = TWhere<TPagarFields>;
 export type TPagarOrder = TOrder<TPagarFields>;
 
-export type TPagarSchema = () => Promise<TField[]>;
+export type TPagarSchema = () => Promise<TFieldDef[]>;
 export type TPagarClear = () => Promise<TPagar>;
 export type TPagarList = (args: {
   where?: TWhere<TPagarFields>[];

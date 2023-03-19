@@ -1,16 +1,16 @@
-import { TField } from "../../types";
+import { TFieldDef } from "../../types";
 import { difference } from "../array/difference";
 import { isNonEmptyObject } from "../identify/is-non-empty-object";
 import { namesFromFields } from "../schema/names-from-fields";
 import { pksFromFieldsServer } from "../schema/pks-from-fields";
 
-export function zIdServer(id: { [field: string]: any }, fields: TField[]) {
+export function zIdServer(id: { [field: string]: any }, fields: TFieldDef[]) {
   const resp = isIdServer(id, fields);
   if (resp === "") return;
   throw new Error(resp || "");
 }
 
-export function isId(id: { [field: string]: any }, fields: TField[]) {
+export function isId(id: { [field: string]: any }, fields: TFieldDef[]) {
   if (!isNonEmptyObject(id)) return "Id deve ser informado";
 
   const nameListOk = namesFromFields(
@@ -51,7 +51,7 @@ export function isId(id: { [field: string]: any }, fields: TField[]) {
 /** Receber um object e verifica se propriedades são fields primaryKey do schema */
 export function isIdServer(
   id: { [field: string]: any },
-  fields: TField[]
+  fields: TFieldDef[]
 ): string | null {
   if (!isNonEmptyObject(id)) return "Id deve ser informado";
   const pkList = pksFromFieldsServer(fields);

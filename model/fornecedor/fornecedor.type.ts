@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TFornecedorPk {
@@ -24,7 +24,7 @@ export type TFornecedorSelect = TSelect<TFornecedorFields>;
 export type TFornecedorWhere = TWhere<TFornecedorFields>;
 export type TFornecedorOrder = TOrder<TFornecedorFields>;
 
-export type TFornecedorSchema = () => Promise<TField[]>;
+export type TFornecedorSchema = () => Promise<TFieldDef[]>;
 export type TFornecedorClear = () => Promise<TFornecedor>;
 export type TFornecedorList = (args: {
   where?: TWhere<TFornecedorFields>[];

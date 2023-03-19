@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TReceberPk {
@@ -79,7 +79,7 @@ export type TReceberSelect = TSelect<TReceberFields>;
 export type TReceberWhere = TWhere<TReceberFields>;
 export type TReceberOrder = TOrder<TReceberFields>;
 
-export type TReceberSchema = () => Promise<TField[]>;
+export type TReceberSchema = () => Promise<TFieldDef[]>;
 export type TReceberClear = () => Promise<TReceber>;
 export type TReceberList = (args: {
   where?: TWhere<TReceberFields>[];

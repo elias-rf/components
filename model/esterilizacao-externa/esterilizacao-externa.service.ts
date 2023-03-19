@@ -1,7 +1,7 @@
 import deepmerge from "ts-deepmerge";
 import { rpcFactory } from "../../client/lib/http/rpc.factory";
 
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { fetcherRpc } from "../../utils/api/fetcher-rpc";
 import { day } from "../../utils/date/day";
 import { isEmpty } from "../../utils/identify/is_empty";
@@ -31,7 +31,7 @@ export const esterilizacaoExternaService = deepmerge(
         });
       },
 
-      async schemaMensal(): Promise<TField[]> {
+      async schemaMensal(): Promise<TFieldDef[]> {
         return fetcherRpc.query("esterilizacaoExternaSchemaMensal");
       },
 
@@ -42,7 +42,7 @@ export const esterilizacaoExternaService = deepmerge(
         return fetcherRpc.query("esterilizacaoExternaMensal", args);
       },
 
-      async schemaProduto(): Promise<TField[]> {
+      async schemaProduto(): Promise<TFieldDef[]> {
         return fetcherRpc.query("esterilizacaoExternaSchemaProduto");
       },
 
@@ -53,7 +53,7 @@ export const esterilizacaoExternaService = deepmerge(
         return fetcherRpc.query("esterilizacaoExternaProduto", args);
       },
 
-      async schemaModelo(): Promise<TField[]> {
+      async schemaModelo(): Promise<TFieldDef[]> {
         return fetcherRpc.query("esterilizacaoExternaSchemaModelo");
       },
 

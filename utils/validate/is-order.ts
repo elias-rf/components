@@ -1,4 +1,4 @@
-import { TField, TOrder } from "../../types";
+import { TFieldDef, TOrder } from "../../types";
 import { isArray } from "../identify/is-array";
 import { isNull } from "../identify/is-null";
 import { isObject } from "../identify/is-object";
@@ -8,7 +8,7 @@ import { namesFromFields } from "../schema/names-from-fields";
 
 const ERR_MESSAGE = "order deve ser informado no formato [[field, asc|desc]]";
 
-export function isOrder(order: TOrder[], fields: TField[]) {
+export function isOrder(order: TOrder[], fields: TFieldDef[]) {
   if (isNull(order) || isUndefined(order)) throw new Error(ERR_MESSAGE);
   if (!isArray(order) && (isObject(order) || isString(order)))
     throw new Error(ERR_MESSAGE);

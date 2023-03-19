@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import type {
   TOrdemProducaoOperacao,
@@ -35,7 +35,7 @@ type TOrdemProducaoOperacaoStore = {
   getList: TOrdemProducaoOperacaoList;
   dataRead: TOrdemProducaoOperacao;
   getRead: TOrdemProducaoOperacaoRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TOrdemProducaoOperacaoSchema;
   dataClear: TOrdemProducaoOperacao;
   getClear: TOrdemProducaoOperacaoClear;
@@ -43,40 +43,40 @@ type TOrdemProducaoOperacaoStore = {
   setUpdate: TOrdemProducaoOperacaoUpdate;
   setDel: TOrdemProducaoOperacaoDel;
   //#region type
-  dataDiarioSchema: TField[];
-  getDiarioSchema: () => Promise<TField[]>;
+  dataDiarioSchema: TFieldDef[];
+  getDiarioSchema: () => Promise<TFieldDef[]>;
 
   dataDiario: TOrdemProducaoOperacaoDiarioResp;
   getDiario: (
     args: TOrdemProducaoOperacaoDiarioArgs
   ) => Promise<TOrdemProducaoOperacaoDiarioResp>;
 
-  dataMensalSchema: TField[];
-  getMensalSchema: () => Promise<TField[]>;
+  dataMensalSchema: TFieldDef[];
+  getMensalSchema: () => Promise<TFieldDef[]>;
 
   dataMensal: TOrdemProducaoOperacaoMensalResp;
   getMensal: (
     args: TOrdemProducaoOperacaoMensalArgs
   ) => Promise<TOrdemProducaoOperacaoMensalResp>;
 
-  dataProdutoSchema: TField[];
-  getProdutoSchema: () => Promise<TField[]>;
+  dataProdutoSchema: TFieldDef[];
+  getProdutoSchema: () => Promise<TFieldDef[]>;
 
   dataProduto: TOrdemProducaoOperacaoProdutoResp;
   getProduto: (
     args: TOrdemProducaoOperacaoProdutoArgs
   ) => Promise<TOrdemProducaoOperacaoProdutoResp>;
 
-  dataModeloSchema: TField[];
-  getModeloSchema: () => Promise<TField[]>;
+  dataModeloSchema: TFieldDef[];
+  getModeloSchema: () => Promise<TFieldDef[]>;
 
   dataModelo: TOrdemProducaoOperacaoModeloResp;
   getModelo: (
     args: TOrdemProducaoOperacaoModeloArgs
   ) => Promise<TOrdemProducaoOperacaoModeloResp>;
 
-  dataTurnoSchema: TField[];
-  getTurnoSchema: () => Promise<TField[]>;
+  dataTurnoSchema: TFieldDef[];
+  getTurnoSchema: () => Promise<TFieldDef[]>;
 
   dataTurno: TOrdemProducaoOperacaoTurnoResp;
   getTurno: (

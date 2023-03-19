@@ -1,6 +1,6 @@
-import { TTable } from "../../../../types/model";
+import { TTableDef } from "../../../../types/model";
 
-export const MestreMapaECF: TTable = {
+export const MestreMapaECF: TTableDef = {
   database: "plano",
   table: "MestreMapaECF",
   fields: [

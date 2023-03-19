@@ -1,6 +1,6 @@
 //--
 import { Knex } from "knex";
-import { TTable } from "../../../types";
+import { TTableDef } from "../../../types";
 import { canFactory } from "./can";
 
 export function groupSubjectMethods({
@@ -8,7 +8,7 @@ export function groupSubjectMethods({
   table,
 }: {
   connection: Knex;
-  table: TTable;
+  table: TTableDef;
 }) {
   return {
     query: {

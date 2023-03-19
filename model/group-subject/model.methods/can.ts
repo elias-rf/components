@@ -1,5 +1,5 @@
 import { Knex } from "knex";
-import { TTable } from "../../../types";
+import { TTableDef } from "../../../types";
 import { z, zod } from "../../../utils/zod/z";
 import { TGroupSubjectCan } from "../group-subject.type";
 
@@ -8,7 +8,7 @@ export function canFactory({
   table,
 }: {
   connection: Knex;
-  table: TTable;
+  table: TTableDef;
 }): TGroupSubjectCan {
   return async ({ id }) => {
     zod(

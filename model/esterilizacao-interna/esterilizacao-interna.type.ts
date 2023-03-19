@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TEsterilizacaoInternaPk {
@@ -24,7 +24,7 @@ export type TEsterilizacaoInternaSelect = TSelect<TEsterilizacaoInternaFields>;
 export type TEsterilizacaoInternaWhere = TWhere<TEsterilizacaoInternaFields>;
 export type TEsterilizacaoInternaOrder = TOrder<TEsterilizacaoInternaFields>;
 
-export type TEsterilizacaoInternaSchema = () => Promise<TField[]>;
+export type TEsterilizacaoInternaSchema = () => Promise<TFieldDef[]>;
 export type TEsterilizacaoInternaClear = () => Promise<TEsterilizacaoInterna>;
 export type TEsterilizacaoInternaList = (args: {
   where?: TWhere<TEsterilizacaoInternaFields>[];
@@ -69,10 +69,10 @@ export type TEsterilizacaoInternaCrud = {
 
 export type TEsterilizacaoInternaModel = TEsterilizacaoInternaCrud & {
   query: {
-    schemaDiario(): Promise<TField[]>;
-    schemaMensal(): Promise<TField[]>;
-    schemaProduto(): Promise<TField[]>;
-    schemaModelo(): Promise<TField[]>;
+    schemaDiario(): Promise<TFieldDef[]>;
+    schemaMensal(): Promise<TFieldDef[]>;
+    schemaProduto(): Promise<TFieldDef[]>;
+    schemaModelo(): Promise<TFieldDef[]>;
     diario(args: {
       inicio: string;
       fim: string;

@@ -1,6 +1,6 @@
-import { TTable } from "../../../../types/model";
+import { TTableDef } from "../../../../types/model";
 
-export const tEtiquetaPortaPrinter: TTable = {
+export const tEtiquetaPortaPrinter: TTableDef = {
   database: "oftalmo",
   table: "tEtiquetaPortaPrinter",
   fields: [

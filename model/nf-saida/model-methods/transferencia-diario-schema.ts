@@ -1,6 +1,6 @@
-import { TField } from "../../../types";
+import { TFieldDef } from "../../../types";
 
-export function transferenciaDiarioSchema(): () => Promise<TField[]> {
+export function transferenciaDiarioSchema(): () => Promise<TFieldDef[]> {
   return async () => {
     return [
       {

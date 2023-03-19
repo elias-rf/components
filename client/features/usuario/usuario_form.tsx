@@ -1,6 +1,6 @@
 import React from "react";
 import { usuarioStore } from "../../../model/usuario/usuario.store";
-import type { TField, TSelected } from "../../../types";
+import type { TFieldDef, TSelected } from "../../../types";
 import { isEmpty } from "../../../utils/identify/is_empty";
 import { Button } from "../../components/button";
 import { Label } from "../../components/form/label";
@@ -126,7 +126,7 @@ export function UsuarioForm({ id }: TUsuarioFormProps) {
       <div className={"flex flex-wrap gap-2"}>
         {schema
           ?.filter((field) => field.visible !== false)
-          .map((field: TField) => (
+          .map((field: TFieldDef) => (
             <React.Fragment key={field.name}>
               <div className={"my-2"}>
                 <Label name={field.name}>{field.label || ""}</Label>

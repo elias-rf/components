@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TNfSaidaFvPk {
@@ -31,7 +31,7 @@ export type TNfSaidaFvSelect = TSelect<TNfSaidaFvFields>;
 export type TNfSaidaFvWhere = TWhere<TNfSaidaFvFields>;
 export type TNfSaidaFvOrder = TOrder<TNfSaidaFvFields>;
 
-export type TNfSaidaFvSchema = () => Promise<TField[]>;
+export type TNfSaidaFvSchema = () => Promise<TFieldDef[]>;
 export type TNfSaidaFvClear = () => Promise<TNfSaidaFv>;
 export type TNfSaidaFvList = (args: {
   where?: TWhere<TNfSaidaFvFields>[];
@@ -88,7 +88,7 @@ export type TNfSaidaFvModel = TNfSaidaFvCrud & {
         valor: number;
       }[]
     >;
-    vendaDiarioSchema(): Promise<TField[]>;
+    vendaDiarioSchema(): Promise<TFieldDef[]>;
     vendaMensalCliente({
       inicio,
       fim,
@@ -106,12 +106,12 @@ export type TNfSaidaFvModel = TNfSaidaFvCrud & {
         valor: number;
       }[]
     >;
-    vendaMensalClienteSchema(): Promise<TField[]>;
+    vendaMensalClienteSchema(): Promise<TFieldDef[]>;
     vendaAnalitico(args: {
       inicio: string;
       fim: string;
     }): Promise<TNfSaidaFv[]>;
-    vendaAnaliticoSchema(): Promise<TField[]>;
+    vendaAnaliticoSchema(): Promise<TFieldDef[]>;
   };
   //#endregion
 };

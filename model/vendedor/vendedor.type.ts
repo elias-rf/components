@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TVendedorPk {
@@ -43,7 +43,7 @@ export type TVendedorSelect = TSelect<TVendedorFields>;
 export type TVendedorWhere = TWhere<TVendedorFields>;
 export type TVendedorOrder = TOrder<TVendedorFields>;
 
-export type TVendedorSchema = () => Promise<TField[]>;
+export type TVendedorSchema = () => Promise<TFieldDef[]>;
 export type TVendedorClear = () => Promise<TVendedor>;
 export type TVendedorList = (args: {
   where?: TWhere<TVendedorFields>[];

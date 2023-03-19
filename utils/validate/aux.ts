@@ -1,6 +1,6 @@
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 
-export const entity: TField[] = [
+export const entity: TFieldDef[] = [
   {
     name: "fld_1",
     field: "fld1",

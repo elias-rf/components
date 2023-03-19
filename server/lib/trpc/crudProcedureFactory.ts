@@ -1,6 +1,6 @@
-import { TConnection, TTable } from "../../../types";
+import { TConnection, TTableDef } from "../../../types";
 import { publicProcedure } from "../../trpc";
-import { TCrudRpc } from "../crud/crud.type";
+import { TCrud } from "../crud/crud.type";
 import {
   countZod,
   createZod,
@@ -11,12 +11,14 @@ import {
   updateZod,
 } from "./inputs";
 
-type TModel = TCrudRpc & {
+type TModelDefault = TCrud & {
   connection: TConnection;
-  table: TTable;
+  table: TTableDef;
 };
 
-export function crudProcedureFactory(resourceModel: TModel) {
+export function crudProcedureFactory<TModel extends TModelDefault>(
+  resourceModel: TModel
+) {
   return {
     count: publicProcedure.input(countZod).query((req) => {
       return resourceModel.query.count(req.input);

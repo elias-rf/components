@@ -1,10 +1,10 @@
 import React from "react";
-import { TField, TWhere } from "../../../types";
+import { TFieldDef, TWhere } from "../../../types";
 import { whereUtil } from "../../lib/http/where-util";
 import { Textbox } from "../form/textbox";
 
 export type TTableFilter = {
-  schemaField: TField;
+  schemaField: TFieldDef;
   onWhere?: (event: any) => void;
   where?: TWhere[];
 };

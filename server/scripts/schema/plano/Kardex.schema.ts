@@ -1,6 +1,6 @@
-import { TTable } from "../../../../types/model";
+import { TTableDef } from "../../../../types/model";
 
-export const Kardex: TTable = {
+export const Kardex: TTableDef = {
   database: "plano",
   table: "Kardex",
   fields: [

@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 import { TCreateArgs, TSelect } from "../../../../types";
-import type { TTable } from "../../../../types/model";
+import type { TTableDef } from "../../../../types/model";
 import { namesFromTable } from "../../../../utils/schema/names-from-table";
 import {
   renameFieldToName,
@@ -10,7 +10,10 @@ import { isSelect } from "../../../../utils/validate/is-select";
 import { isRecord } from "../../../../utils/zod/z-record";
 import { TCrudCreate } from "../crud.type";
 
-export function createFactory(connection: Knex, schema: TTable): TCrudCreate {
+export function createFactory(
+  connection: Knex,
+  schema: TTableDef
+): TCrudCreate {
   const response = async ({ data, select = [] }: TCreateArgs) => {
     isRecord(data, schema.fields);
     isSelect(select as TSelect, schema.fields);

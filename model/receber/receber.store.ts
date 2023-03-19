@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { receberService } from "./receber.service";
 import type {
@@ -23,7 +23,7 @@ type TReceberStore = {
   getList: TReceberList;
   dataRead: TReceber;
   getRead: TReceberRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TReceberSchema;
   dataClear: TReceber;
   getClear: TReceberClear;

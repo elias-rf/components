@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TField, TWhere } from "../../../types";
+import { TFieldDef, TWhere } from "../../../types";
 import { Badge } from "../badge";
 import { Button } from "../button";
 import { Textbox } from "../form/textbox";
@@ -11,7 +11,7 @@ export type TSearch = any & {
 };
 
 type TSearchProps = {
-  schema: TField[];
+  schema: TFieldDef[];
   where: TWhere[];
   onWhere: (event: TSearch) => void;
 };
@@ -40,7 +40,7 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
       null: "(vazio)",
     };
 
-    const aux: TField | undefined = schema.find(
+    const aux: TFieldDef | undefined = schema.find(
       (item: { name: string }) => item.name === field
     );
 

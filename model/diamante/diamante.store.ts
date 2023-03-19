@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { diamanteService } from "./diamante.service";
 import type {
@@ -23,7 +23,7 @@ type TDiamanteStore = {
   getList: TDiamanteList;
   dataRead: TDiamante;
   getRead: TDiamanteRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TDiamanteSchema;
   dataClear: TDiamante;
   getClear: TDiamanteClear;

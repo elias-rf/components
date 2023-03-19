@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { fornecedorService } from "./fornecedor.service";
 import type {
@@ -23,7 +23,7 @@ type TFornecedorStore = {
   getList: TFornecedorList;
   dataRead: TFornecedor;
   getRead: TFornecedorRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TFornecedorSchema;
   dataClear: TFornecedor;
   getClear: TFornecedorClear;

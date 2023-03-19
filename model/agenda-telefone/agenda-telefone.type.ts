@@ -1,4 +1,11 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import {
+  TConnection,
+  TFieldDef,
+  TOrder,
+  TSelect,
+  TTableDef,
+  TWhere,
+} from "../../types";
 
 export interface TAgendaTelefonePk {
   agenda_telefone_id?: number;
@@ -18,7 +25,7 @@ export type TAgendaTelefoneSelect = TSelect<TAgendaTelefoneFields>;
 export type TAgendaTelefoneWhere = TWhere<TAgendaTelefoneFields>;
 export type TAgendaTelefoneOrder = TOrder<TAgendaTelefoneFields>;
 
-export type TAgendaTelefoneSchema = () => Promise<TField[]>;
+export type TAgendaTelefoneSchema = () => Promise<TFieldDef[]>;
 export type TAgendaTelefoneClear = () => Promise<TAgendaTelefone>;
 export type TAgendaTelefoneList = (args: {
   where?: TWhere<TAgendaTelefoneFields>[];
@@ -61,6 +68,9 @@ export type TAgendaTelefoneCrud = {
   };
 };
 
-export type TAgendaTelefoneModel = TAgendaTelefoneCrud;
+export type TAgendaTelefoneModel = TAgendaTelefoneCrud & {
+  connection: TConnection;
+  table: TTableDef;
+};
 
 export type TAgendaTelefoneRpc = TAgendaTelefoneModel;

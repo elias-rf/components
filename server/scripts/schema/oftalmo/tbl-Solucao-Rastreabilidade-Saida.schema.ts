@@ -1,6 +1,6 @@
-import { TTable } from "../../../../types/model";
+import { TTableDef } from "../../../../types/model";
 
-export const tbl_Solucao_Rastreabilidade_Saida: TTable = {
+export const tbl_Solucao_Rastreabilidade_Saida: TTableDef = {
   database: "oftalmo",
   table: "tbl_Solucao_Rastreabilidade_Saida",
   fields: [

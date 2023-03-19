@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { operacaoProducaoService } from "./operacao-producao.service";
 import type {
@@ -23,7 +23,7 @@ type TOperacaoProducaoStore = {
   getList: TOperacaoProducaoList;
   dataRead: TOperacaoProducao;
   getRead: TOperacaoProducaoRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TOperacaoProducaoSchema;
   dataClear: TOperacaoProducao;
   getClear: TOperacaoProducaoClear;

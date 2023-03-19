@@ -1,4 +1,4 @@
-import { TField, TWhere } from "../../types";
+import { TFieldDef, TWhere } from "../../types";
 import { isArray } from "../identify/is-array";
 import { isNull } from "../identify/is-null";
 import { isObject } from "../identify/is-object";
@@ -8,7 +8,7 @@ import { namesFromFields } from "../schema/names-from-fields";
 
 const FORMAT_INVALID = "where deve ser no formato [field, igualdade, valor]";
 
-export function isWhere(where: TWhere[], fields: TField[]) {
+export function isWhere(where: TWhere[], fields: TFieldDef[]) {
   if (isNull(where) || isUndefined(where) || !isArray(where))
     throw new Error(FORMAT_INVALID);
   if (!isArray(where) && (isObject(where) || isString(where)))

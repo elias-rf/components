@@ -1,6 +1,6 @@
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 
 /** busca fields em uma tabela */
-export function fieldsFromFields(fields: TField[]) {
+export function fieldsFromFields(fields: TFieldDef[]) {
   return fields.map((fld) => fld.field || "");
 }

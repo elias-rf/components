@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { nfEntradaLogService } from "./nf-entrada-log.service";
 import type {
@@ -23,7 +23,7 @@ type TNfEntradaLogStore = {
   getList: TNfEntradaLogList;
   dataRead: TNfEntradaLog;
   getRead: TNfEntradaLogRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TNfEntradaLogSchema;
   dataClear: TNfEntradaLog;
   getClear: TNfEntradaLogClear;

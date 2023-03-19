@@ -1,8 +1,8 @@
 import type { TSelected } from "../../../types";
-import { TField } from "../../../types/model";
+import { TFieldDef } from "../../../types/model";
 
 export type TTableCell = {
-  schemaField: TField;
+  schemaField: TFieldDef;
   selected?: TSelected;
   record: { [field: string]: any };
   selectedClassName?: string;

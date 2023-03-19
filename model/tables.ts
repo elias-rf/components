@@ -1,4 +1,4 @@
-import { TDb } from "../types/model";
+import { TTableDef } from "../types/model";
 
 // @index(['./**/*.table.ts'], (f, _) => `import { ${_.snakeCase(f.name.slice(0,-6))} } from "${f.path}";`)
 import { agenda_telefone } from "./agenda-telefone/agenda-telefone.table";
@@ -40,7 +40,9 @@ import { vendedor_meta } from "./vendedor-meta/vendedor-meta.table";
 import { vendedor } from "./vendedor/vendedor.table";
 // @endindex
 
-export const tables: TDb = {
+export const tables: {
+  [table: string]: TTableDef;
+} = {
   // @index(['./**/*.table.ts'], (f, _) => `${_.snakeCase(f.name.slice(0,-6))},`)
   agenda_telefone,
   cidade,

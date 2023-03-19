@@ -1,5 +1,5 @@
 import { TCrud } from "../../../server/lib/crud/crud.type";
-import { TTable } from "../../../types";
+import { TTableDef } from "../../../types";
 import { isSelect } from "../../../utils/validate/is-select";
 import { zIdClient } from "../../../utils/zod/z-id-client";
 import { produto_plano } from "../../produto-plano/produto-plano.table";
@@ -16,7 +16,7 @@ export function produtoPlano({
 }: {
   produtoPlanoModel: TProdutoPlanoRpc;
   produtoItemCrud: TCrud;
-  produto_item: TTable;
+  produto_item: TTableDef;
 }): TProdutoItemPlanoProduto {
   return async ({ id, select }) => {
     zIdClient(id, produto_item.fields);

@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TEmpregadoPk {
@@ -22,7 +22,7 @@ export type TEmpregadoSelect = TSelect<TEmpregadoFields>;
 export type TEmpregadoWhere = TWhere<TEmpregadoFields>;
 export type TEmpregadoOrder = TOrder<TEmpregadoFields>;
 
-export type TEmpregadoSchema = () => Promise<TField[]>;
+export type TEmpregadoSchema = () => Promise<TFieldDef[]>;
 export type TEmpregadoClear = () => Promise<TEmpregado>;
 export type TEmpregadoList = (args: {
   where?: TWhere<TEmpregadoFields>[];

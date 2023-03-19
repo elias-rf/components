@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TClientePk {
@@ -25,7 +25,7 @@ export type TClienteSelect = TSelect<TClienteFields>;
 export type TClienteWhere = TWhere<TClienteFields>;
 export type TClienteOrder = TOrder<TClienteFields>;
 
-export type TClienteSchema = () => Promise<TField[]>;
+export type TClienteSchema = () => Promise<TFieldDef[]>;
 export type TClienteClear = () => Promise<TCliente>;
 export type TClienteList = (args: {
   where?: TWhere<TClienteFields>[];
@@ -85,13 +85,13 @@ export type TClienteModel = TClienteCrud & {
   //#endregion
   //#region type
   query: {
-    vendaMensalQuantidadeSchema(args: TPeriodo): Promise<TField[]>;
+    vendaMensalQuantidadeSchema(args: TPeriodo): Promise<TFieldDef[]>;
     vendaMensalQuantidade(args: TPeriodoCliente): Promise<TVendaMensalResp[]>;
 
-    vendaMensalValorSchema(args: TPeriodo): Promise<TField[]>;
+    vendaMensalValorSchema(args: TPeriodo): Promise<TFieldDef[]>;
     vendaMensalValor(args: TPeriodoCliente): Promise<TVendaMensalResp[]>;
 
-    vendaMensalValorMedioSchema(args: TPeriodo): Promise<TField[]>;
+    vendaMensalValorMedioSchema(args: TPeriodo): Promise<TFieldDef[]>;
     vendaMensalValorMedio(args: TPeriodoCliente): Promise<TVendaMensalResp[]>;
   };
   //#endregion

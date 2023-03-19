@@ -1,6 +1,6 @@
-import { TField } from "../../../types";
+import { TFieldDef } from "../../../types";
 
-export async function schemaDiario(): Promise<TField[]> {
+export async function schemaDiario(): Promise<TFieldDef[]> {
   return [
     {
       name: "dia",

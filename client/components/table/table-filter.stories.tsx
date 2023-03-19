@@ -1,7 +1,7 @@
 import { action } from "@storybook/addon-actions";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import { TField, TWhere } from "../../../types";
+import { TFieldDef, TWhere } from "../../../types";
 import { TableFilter } from "./table-filter";
 
 export default {
@@ -9,7 +9,7 @@ export default {
   component: TableFilter,
 } as ComponentMeta<typeof TableFilter>;
 
-const schema: TField[] = [
+const schema: TFieldDef[] = [
   {
     label: "ID",
     name: "id",

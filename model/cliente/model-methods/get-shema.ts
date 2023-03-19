@@ -1,4 +1,4 @@
-import { TField } from "../../../types";
+import { TFieldDef } from "../../../types";
 import { day } from "../../../utils/date/day";
 import { z, zod } from "../../../utils/zod/z";
 import { zsr } from "../../../utils/zod/z-refine";
@@ -12,7 +12,7 @@ export function getSchema(args: TPeriodo) {
       fim: z.string().superRefine(zsr.date),
     })
   );
-  const rsp: TField[] = [
+  const rsp: TFieldDef[] = [
     {
       name: "categoria",
       label: "Produto",

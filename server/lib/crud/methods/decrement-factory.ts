@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 import { TGenericObject, TSelect, TWhere } from "../../../../types";
-import type { TTable } from "../../../../types/model";
+import type { TTableDef } from "../../../../types/model";
 import { knexWhere } from "../../../../utils/data/knex-where";
 import { namesFromTable } from "../../../../utils/schema/names-from-table";
 import {
@@ -11,7 +11,7 @@ import { isSelect } from "../../../../utils/validate/is-select";
 import { isWhere } from "../../../../utils/validate/is-where";
 import { TCrudDecrement } from "../crud.type";
 
-export function decrementFactory(db: Knex, table: TTable): TCrudDecrement {
+export function decrementFactory(db: Knex, table: TTableDef): TCrudDecrement {
   const response = async ({
     where = [],
     decrement = {},

@@ -1,6 +1,6 @@
-import { TTable } from "../../../../types/model";
+import { TTableDef } from "../../../../types/model";
 
-export const TabelaSelic: TTable = {
+export const TabelaSelic: TTableDef = {
   database: "plano",
   table: "TabelaSelic",
   fields: [

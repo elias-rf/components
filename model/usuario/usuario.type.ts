@@ -1,5 +1,5 @@
 import { TOrder, TSelect, TWhere } from "../../types";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 //#region import
 import { TCurrentUser } from "../../types";
 import { TRpcContext } from "../../types/rpc";
@@ -28,7 +28,7 @@ export type TUsuarioSelect = TSelect<TUsuarioFields>;
 export type TUsuarioWhere = TWhere<TUsuarioFields>;
 export type TUsuarioOrder = TOrder<TUsuarioFields>;
 
-export type TUsuarioSchema = () => Promise<TField[]>;
+export type TUsuarioSchema = () => Promise<TFieldDef[]>;
 export type TUsuarioClear = () => Promise<TUsuario>;
 export type TUsuarioList = (args: {
   where?: TWhere<TUsuarioFields>[];

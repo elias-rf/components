@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { empregadoService } from "./empregado.service";
 import type {
@@ -23,7 +23,7 @@ type TEmpregadoStore = {
   getList: TEmpregadoList;
   dataRead: TEmpregado;
   getRead: TEmpregadoRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TEmpregadoSchema;
   dataClear: TEmpregado;
   getClear: TEmpregadoClear;

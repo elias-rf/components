@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TCidadePk {
@@ -20,7 +20,7 @@ export type TCidadeSelect = TSelect<TCidadeFields>;
 export type TCidadeWhere = TWhere<TCidadeFields>;
 export type TCidadeOrder = TOrder<TCidadeFields>;
 
-export type TCidadeSchema = () => Promise<TField[]>;
+export type TCidadeSchema = () => Promise<TFieldDef[]>;
 export type TCidadeClear = () => Promise<TCidade>;
 export type TCidadeList = (args: {
   where?: TWhere<TCidadeFields>[];

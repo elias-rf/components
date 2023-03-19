@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 import type { TAggregate, TGenericObject, TListArgs } from "../../../../types";
-import type { TTable } from "../../../../types/model";
+import type { TTableDef } from "../../../../types/model";
 import { knexOrder } from "../../../../utils/data/knex-order";
 import { knexWhere } from "../../../../utils/data/knex-where";
 import { namesFromTable } from "../../../../utils/schema/names-from-table";
@@ -15,7 +15,7 @@ import { zAggregate } from "../../../../utils/zod/z-aggregate";
 import { isOrder } from "../../../../utils/zod/z-order";
 import { TCrudList } from "../crud.type";
 
-export function listFactory(connection: Knex, table: TTable): TCrudList {
+export function listFactory(connection: Knex, table: TTableDef): TCrudList {
   const response = async ({
     where = [],
     order = [],

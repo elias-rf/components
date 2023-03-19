@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { pedidoItemService } from "./pedido-item.service";
 import type {
@@ -23,7 +23,7 @@ type TPedidoItemStore = {
   getList: TPedidoItemList;
   dataRead: TPedidoItem;
   getRead: TPedidoItemRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TPedidoItemSchema;
   dataClear: TPedidoItem;
   getClear: TPedidoItemClear;

@@ -1,6 +1,6 @@
-import { TTable } from "../../../../types/model";
+import { TTableDef } from "../../../../types/model";
 
-export const tSistemaMesVT: TTable = {
+export const tSistemaMesVT: TTableDef = {
   database: "oftalmo",
   table: "tSistemaMesVT",
   fields: [

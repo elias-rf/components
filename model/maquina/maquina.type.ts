@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TMaquinaPk {
@@ -23,7 +23,7 @@ export type TMaquinaSelect = TSelect<TMaquinaFields>;
 export type TMaquinaWhere = TWhere<TMaquinaFields>;
 export type TMaquinaOrder = TOrder<TMaquinaFields>;
 
-export type TMaquinaSchema = () => Promise<TField[]>;
+export type TMaquinaSchema = () => Promise<TFieldDef[]>;
 export type TMaquinaClear = () => Promise<TMaquina>;
 export type TMaquinaList = (args: {
   where?: TWhere<TMaquinaFields>[];

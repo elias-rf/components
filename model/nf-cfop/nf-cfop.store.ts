@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { nfCfopService } from "./nf-cfop.service";
 import type {
@@ -23,7 +23,7 @@ type TNfCfopStore = {
   getList: TNfCfopList;
   dataRead: TNfCfop;
   getRead: TNfCfopRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TNfCfopSchema;
   dataClear: TNfCfop;
   getClear: TNfCfopClear;

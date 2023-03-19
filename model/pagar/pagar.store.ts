@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { pagarService } from "./pagar.service";
 import type {
@@ -23,7 +23,7 @@ type TPagarStore = {
   getList: TPagarList;
   dataRead: TPagar;
   getRead: TPagarRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TPagarSchema;
   dataClear: TPagar;
   getClear: TPagarClear;

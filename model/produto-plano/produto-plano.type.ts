@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TProdutoPlanoPk {
@@ -187,7 +187,7 @@ export type TProdutoPlanoSelect = TSelect<TProdutoPlanoFields>;
 export type TProdutoPlanoWhere = TWhere<TProdutoPlanoFields>;
 export type TProdutoPlanoOrder = TOrder<TProdutoPlanoFields>;
 
-export type TProdutoPlanoSchema = () => Promise<TField[]>;
+export type TProdutoPlanoSchema = () => Promise<TFieldDef[]>;
 export type TProdutoPlanoClear = () => Promise<TProdutoPlano>;
 export type TProdutoPlanoList = (args: {
   where?: TWhere<TProdutoPlanoFields>[];

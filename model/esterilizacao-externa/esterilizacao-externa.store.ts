@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { esterilizacaoExternaService } from "./esterilizacao-externa.service";
 import type {
@@ -23,7 +23,7 @@ type TEsterilizacaoExternaStore = {
   getList: TEsterilizacaoExternaList;
   dataRead: TEsterilizacaoExterna;
   getRead: TEsterilizacaoExternaRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TEsterilizacaoExternaSchema;
   dataClear: TEsterilizacaoExterna;
   getClear: TEsterilizacaoExternaClear;
@@ -53,17 +53,17 @@ type TEsterilizacaoExternaStore = {
     data: string;
   }) => Promise<{ produto: string; quantidade: number }[]>;
 
-  dataSchemaDiario: TField[];
-  getSchemaDiario: () => Promise<TField[]>;
+  dataSchemaDiario: TFieldDef[];
+  getSchemaDiario: () => Promise<TFieldDef[]>;
 
-  dataSchemaMensal: TField[];
-  getSchemaMensal: () => Promise<TField[]>;
+  dataSchemaMensal: TFieldDef[];
+  getSchemaMensal: () => Promise<TFieldDef[]>;
 
-  dataSchemaProduto: TField[];
-  getSchemaProduto: () => Promise<TField[]>;
+  dataSchemaProduto: TFieldDef[];
+  getSchemaProduto: () => Promise<TFieldDef[]>;
 
-  dataSchemaModelo: TField[];
-  getSchemaModelo: () => Promise<TField[]>;
+  dataSchemaModelo: TFieldDef[];
+  getSchemaModelo: () => Promise<TFieldDef[]>;
   //#endregion
 };
 

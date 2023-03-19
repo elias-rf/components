@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TOrdemProducaoOperacaoPk {
@@ -37,7 +37,7 @@ export type TOrdemProducaoOperacaoSelect =
 export type TOrdemProducaoOperacaoWhere = TWhere<TOrdemProducaoOperacaoFields>;
 export type TOrdemProducaoOperacaoOrder = TOrder<TOrdemProducaoOperacaoFields>;
 
-export type TOrdemProducaoOperacaoSchema = () => Promise<TField[]>;
+export type TOrdemProducaoOperacaoSchema = () => Promise<TFieldDef[]>;
 export type TOrdemProducaoOperacaoClear = () => Promise<TOrdemProducaoOperacao>;
 export type TOrdemProducaoOperacaoList = (args: {
   where?: TWhere<TOrdemProducaoOperacaoFields>[];
@@ -148,19 +148,19 @@ export type TOrdemProducaoOperacaoModel = TOrdemProducaoOperacaoCrud & {
 
   query: {
     diario: TOrdemProducaoOperacaoDiario;
-    diarioSchema(): Promise<TField[]>;
+    diarioSchema(): Promise<TFieldDef[]>;
 
     mensal: TOrdemProducaoOperacaoMensal;
-    mensalSchema(): Promise<TField[]>;
+    mensalSchema(): Promise<TFieldDef[]>;
 
     modelo: TOrdemProducaoOperacaoModelo;
-    modeloSchema(): Promise<TField[]>;
+    modeloSchema(): Promise<TFieldDef[]>;
 
     produto: TOrdemProducaoOperacaoProduto;
-    produtoSchema(): Promise<TField[]>;
+    produtoSchema(): Promise<TFieldDef[]>;
 
     turno: TOrdemProducaoOperacaoTurno;
-    turnoSchema(): Promise<TField[]>;
+    turnoSchema(): Promise<TFieldDef[]>;
   };
 
   //#endregion

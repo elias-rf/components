@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 import { TWhere } from "../../../types";
-import { TField } from "../../../types/model";
+import { TFieldDef } from "../../../types/model";
 import { Search } from "./search";
 
 export default {
@@ -13,7 +13,7 @@ export default {
   },
 } as ComponentMeta<typeof Search>;
 
-const schema: TField[] = [
+const schema: TFieldDef[] = [
   {
     label: "ID",
     name: "id",

@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TNfEntradaControlePk {
@@ -23,7 +23,7 @@ export type TNfEntradaControleSelect = TSelect<TNfEntradaControleFields>;
 export type TNfEntradaControleWhere = TWhere<TNfEntradaControleFields>;
 export type TNfEntradaControleOrder = TOrder<TNfEntradaControleFields>;
 
-export type TNfEntradaControleSchema = () => Promise<TField[]>;
+export type TNfEntradaControleSchema = () => Promise<TFieldDef[]>;
 export type TNfEntradaControleClear = () => Promise<TNfEntradaControle>;
 export type TNfEntradaControleList = (args: {
   where?: TWhere<TNfEntradaControleFields>[];

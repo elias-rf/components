@@ -1,13 +1,13 @@
-import { TAggregate, TField } from "../../types/index";
+import { TAggregate, TFieldDef } from "../../types/index";
 import { namesFromFields } from "../schema/names-from-fields";
 
-export function zAggregate(aggregate: TAggregate, fields: TField[]) {
+export function zAggregate(aggregate: TAggregate, fields: TFieldDef[]) {
   const resp = isAggregate(aggregate, fields);
   if (resp === "") return;
   throw new Error(resp);
 }
 
-export function isAggregate(aggregate: TAggregate, fields: TField[]) {
+export function isAggregate(aggregate: TAggregate, fields: TFieldDef[]) {
   if (
     typeof aggregate !== "object" ||
     Array.isArray(aggregate) ||

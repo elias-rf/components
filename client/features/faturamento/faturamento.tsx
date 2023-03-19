@@ -1,10 +1,10 @@
-import { TField, TIds } from "../../../types";
+import { TFieldDef, TIds } from "../../../types";
 import { Table } from "../../components/table";
 
 export type FaturamentoProps = {
   data: any[];
   datatree: any[];
-  schema: TField[];
+  schema: TFieldDef[];
   dispatch: any;
   selected: TIds;
   onSelectEvent: (event: any) => void;

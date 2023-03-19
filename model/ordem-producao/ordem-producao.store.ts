@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import type {
   TOrdemProducao,
@@ -33,7 +33,7 @@ type TOrdemProducaoStore = {
   getList: TOrdemProducaoList;
   dataRead: TOrdemProducao;
   getRead: TOrdemProducaoRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TOrdemProducaoSchema;
   dataClear: TOrdemProducao;
   getClear: TOrdemProducaoClear;

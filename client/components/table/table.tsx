@@ -1,7 +1,7 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import { TIds, TOrder, TWhere } from "../../../types";
-import { TField } from "../../../types/model";
+import { TFieldDef } from "../../../types/model";
 import { pksFromFieldsClient } from "../../../utils/schema/pks-from-fields";
 import { isSelected } from "../../lib/is-selected";
 import { ShowChevronIcon } from "../show_chevronIcon";
@@ -12,7 +12,7 @@ import { TableFilter } from "./table-filter";
 export type TTableProps = {
   name?: string;
   data?: any[];
-  schema: TField[];
+  schema: TFieldDef[];
   selected?: TIds;
   onSelect?: (event: any) => void;
   order?: TOrder[];

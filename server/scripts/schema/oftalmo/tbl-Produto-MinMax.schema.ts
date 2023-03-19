@@ -1,6 +1,6 @@
-import { TTable } from "../../../../types/model";
+import { TTableDef } from "../../../../types/model";
 
-export const tbl_Produto_MinMax: TTable = {
+export const tbl_Produto_MinMax: TTableDef = {
   database: "oftalmo",
   table: "tbl_Produto_MinMax",
   fields: [

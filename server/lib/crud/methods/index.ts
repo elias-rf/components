@@ -1,5 +1,5 @@
 import type { Knex } from "knex";
-import type { TTable } from "../../../../types/model";
+import type { TTableDef } from "../../../../types/model";
 //--
 import { TCrudRpc } from "../crud.type";
 import { clearFactory } from "./clear-factory";
@@ -15,7 +15,7 @@ import { readFactory } from "./read-factory";
 import { schemaFactory } from "./schema-factory";
 import { updateFactory } from "./update-factory";
 
-export const methods = (connection: Knex, table: TTable): TCrudRpc => ({
+export const methods = (connection: Knex, table: TTableDef): TCrudRpc => ({
   query: {
     schema: schemaFactory(table),
     clear: clearFactory(table),

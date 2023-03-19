@@ -1,11 +1,11 @@
 import { Knex } from "knex";
 import type { TDelArgs } from "../../../../types";
-import type { TTable } from "../../../../types/model";
+import type { TTableDef } from "../../../../types/model";
 import { renameNameToField } from "../../../../utils/schema/rename-fields";
 import { zIdClient } from "../../../../utils/zod/z-id-client";
 import { TCrudDel } from "../crud.type";
 
-export function delFactory(db: Knex, schema: TTable): TCrudDel {
+export function delFactory(db: Knex, schema: TTableDef): TCrudDel {
   const response = async ({ id }: TDelArgs): Promise<number> => {
     zIdClient(id, schema.fields);
 

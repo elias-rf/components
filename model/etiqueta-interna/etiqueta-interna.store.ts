@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { etiquetaInternaService } from "./etiqueta-interna.service";
 import type {
@@ -23,7 +23,7 @@ type TEtiquetaInternaStore = {
   getList: TEtiquetaInternaList;
   dataRead: TEtiquetaInterna;
   getRead: TEtiquetaInternaRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TEtiquetaInternaSchema;
   dataClear: TEtiquetaInterna;
   getClear: TEtiquetaInternaClear;

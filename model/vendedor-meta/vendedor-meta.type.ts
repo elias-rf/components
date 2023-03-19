@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TVendedorMetaPk {
@@ -18,7 +18,7 @@ export type TVendedorMetaSelect = TSelect<TVendedorMetaFields>;
 export type TVendedorMetaWhere = TWhere<TVendedorMetaFields>;
 export type TVendedorMetaOrder = TOrder<TVendedorMetaFields>;
 
-export type TVendedorMetaSchema = () => Promise<TField[]>;
+export type TVendedorMetaSchema = () => Promise<TFieldDef[]>;
 export type TVendedorMetaClear = () => Promise<TVendedorMeta>;
 export type TVendedorMetaList = (args: {
   where?: TWhere<TVendedorMetaFields>[];

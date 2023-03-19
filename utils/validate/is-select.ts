@@ -1,7 +1,7 @@
-import { TField, TSelect } from "../../types";
+import { TFieldDef, TSelect } from "../../types";
 import { namesFromFields } from "../schema/names-from-fields";
 
-export function isSelect(select: TSelect, fields: TField[]) {
+export function isSelect(select: TSelect, fields: TFieldDef[]) {
   if (!Array.isArray(select))
     throw new Error("select deve ser um array de campos");
   // if (!isNonEmptyArray(select))

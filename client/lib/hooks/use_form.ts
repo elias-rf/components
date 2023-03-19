@@ -1,7 +1,7 @@
 import React from "react";
-import { TField, TGenericObject } from "../../../types";
+import { TFieldDef, TGenericObject } from "../../../types";
 
-export function useForm(schema: TField[]) {
+export function useForm(schema: TFieldDef[]) {
   const [values, setValues] = React.useState<TGenericObject>({});
   const [errors, setErrors] = React.useState<TGenericObject>({});
   const [isDirty, setIsDirty] = React.useState<boolean>(false); // '' dirty = valid,

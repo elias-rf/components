@@ -1,6 +1,6 @@
-import { TTable } from "../../../../types/model";
+import { TTableDef } from "../../../../types/model";
 
-export const ICMSMapaECF: TTable = {
+export const ICMSMapaECF: TTableDef = {
   database: "plano",
   table: "ICMSMapaECF",
   fields: [

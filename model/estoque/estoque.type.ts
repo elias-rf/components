@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TEstoquePk {
@@ -18,7 +18,7 @@ export type TEstoqueSelect = TSelect<TEstoqueFields>;
 export type TEstoqueWhere = TWhere<TEstoqueFields>;
 export type TEstoqueOrder = TOrder<TEstoqueFields>;
 
-export type TEstoqueSchema = () => Promise<TField[]>;
+export type TEstoqueSchema = () => Promise<TFieldDef[]>;
 export type TEstoqueClear = () => Promise<TEstoque>;
 export type TEstoqueList = (args: {
   where?: TWhere<TEstoqueFields>[];

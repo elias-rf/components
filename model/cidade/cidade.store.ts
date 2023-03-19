@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { cidadeService } from "./cidade.service";
 import type {
@@ -23,7 +23,7 @@ type TCidadeStore = {
   getList: TCidadeList;
   dataRead: TCidade;
   getRead: TCidadeRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TCidadeSchema;
   dataClear: TCidade;
   getClear: TCidadeClear;

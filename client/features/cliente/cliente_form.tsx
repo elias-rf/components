@@ -1,7 +1,7 @@
 import React from "react";
 import { clienteStore } from "../../../model/cliente/cliente.store";
 import { TClienteIds } from "../../../model/cliente/cliente.type";
-import type { TField } from "../../../types";
+import type { TFieldDef } from "../../../types";
 import { isEmpty } from "../../../utils/identify/is_empty";
 import { isNumber } from "../../../utils/identify/is_number";
 import { Label } from "../../components/form";
@@ -49,7 +49,7 @@ export function ClienteForm({ id }: TClienteFormProps) {
     >
       <div className={"flex flex-col"}>
         <div className={"flex flex-wrap gap-2"}>
-          {dataSchema?.map((field: TField) => (
+          {dataSchema?.map((field: TFieldDef) => (
             <React.Fragment key={field.name}>
               <div className={"my-2"}>
                 <Label name={field.name}>{field.label || ""}</Label>

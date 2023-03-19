@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { maquinaService } from "./maquina.service";
 import type {
@@ -21,7 +21,7 @@ type TMaquinaStore = {
   getList: TMaquinaList;
   dataRead: TMaquina;
   getRead: TMaquinaRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TMaquinaSchema;
   dataClear: TMaquina;
   getClear: TMaquinaClear;

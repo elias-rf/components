@@ -14,23 +14,23 @@ export const idZod = z.record(z.any());
 export const dataZod = z.record(z.any());
 
 export const listZod = z.object({
-  where: whereZod,
-  limit: z.number(),
-  order: orderZod,
-  select: selectZod,
-  group: selectZod,
-  sum: z.record(z.string()),
-  min: z.record(z.string()),
-  max: z.record(z.string()),
+  where: whereZod.optional(),
+  limit: z.number().optional(),
+  order: orderZod.optional(),
+  select: selectZod.optional(),
+  group: selectZod.optional(),
+  sum: z.record(z.string()).optional(),
+  min: z.record(z.string()).optional(),
+  max: z.record(z.string()).optional(),
 });
 
 export const countZod = z.object({
-  where: whereZod,
+  where: whereZod.optional(),
 });
 
 export const readZod = z.object({
   id: idZod,
-  select: selectZod,
+  select: selectZod.optional(),
 });
 
 export const delZod = z.object({
@@ -40,16 +40,16 @@ export const delZod = z.object({
 export const updateZod = z.object({
   id: idZod,
   data: dataZod,
-  select: selectZod,
+  select: selectZod.optional(),
 });
 
 export const createZod = z.object({
   data: dataZod,
-  select: selectZod,
+  select: selectZod.optional(),
 });
 
 export const incrementZod = z.object({
   increment: z.record(z.number()),
   where: whereZod,
-  select: selectZod,
+  select: selectZod.optional(),
 });

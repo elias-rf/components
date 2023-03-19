@@ -1,9 +1,9 @@
-import { TField, TIds, TOrder, TSelect, TWhere } from "../../../types";
+import { TFieldDef, TIds, TOrder, TSelect, TWhere } from "../../../types";
 import { fetcherRpc } from "../../../utils/api/fetcher-rpc";
 
 export type TCrudFactory<Rec> = {
   query: {
-    schema(): Promise<TField[]>;
+    schema(): Promise<TFieldDef[]>;
     clear(): Promise<Rec>;
     list(args: {
       where?: TWhere[];
@@ -23,8 +23,10 @@ export type TCrudFactory<Rec> = {
 export function crudFactory<Rec>(table: string): TCrudFactory<Rec> {
   return {
     query: {
-      async schema(): Promise<TField[]> {
-        return fetcherRpc.query(`crudSchema`, { table }) as Promise<TField[]>;
+      async schema(): Promise<TFieldDef[]> {
+        return fetcherRpc.query(`crudSchema`, { table }) as Promise<
+          TFieldDef[]
+        >;
       },
       async clear() {
         return fetcherRpc.query(`crudClear`, { table }) as Promise<Rec>;

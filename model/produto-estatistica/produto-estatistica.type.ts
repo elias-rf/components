@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TProdutoEstatisticaPk {
@@ -33,7 +33,7 @@ export type TProdutoEstatisticaSelect = TSelect<TProdutoEstatisticaFields>;
 export type TProdutoEstatisticaWhere = TWhere<TProdutoEstatisticaFields>;
 export type TProdutoEstatisticaOrder = TOrder<TProdutoEstatisticaFields>;
 
-export type TProdutoEstatisticaSchema = () => Promise<TField[]>;
+export type TProdutoEstatisticaSchema = () => Promise<TFieldDef[]>;
 export type TProdutoEstatisticaClear = () => Promise<TProdutoEstatistica>;
 export type TProdutoEstatisticaList = (args: {
   where?: TWhere<TProdutoEstatisticaFields>[];

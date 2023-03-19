@@ -1,5 +1,5 @@
 import { Knex } from "knex";
-import { TTable } from "../types/model";
+import { TTableDef } from "../types/model";
 //--
 import { clearFactory } from "../server/lib/crud/methods/clear-factory";
 import { connectionFactory } from "../server/lib/crud/methods/connection";
@@ -14,7 +14,7 @@ import { readFactory } from "../server/lib/crud/methods/read-factory";
 import { schemaFactory } from "../server/lib/crud/methods/schema-factory";
 import { updateFactory } from "../server/lib/crud/methods/update-factory";
 
-export const methods = (connection: Knex, table: TTable) => ({
+export const methods = (connection: Knex, table: TTableDef) => ({
   clear: clearFactory(table),
   count: countFactory(connection, table),
   create: createFactory(connection, table),
@@ -29,7 +29,7 @@ export const methods = (connection: Knex, table: TTable) => ({
   nameList: nameList(table),
 });
 
-export function crudFactoryMock(connection: Knex, table: TTable) {
+export function crudFactoryMock(connection: Knex, table: TTableDef) {
   return {
     ...methods(connection, table),
   };

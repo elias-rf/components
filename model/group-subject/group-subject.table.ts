@@ -1,6 +1,6 @@
-import { TTable } from "../../types";
+import { TTableDef } from "../../types";
 
-export const group_subject: TTable = {
+export const group_subject: TTableDef = {
   database: "oftalmo",
   table: "groupSubject",
   fields: [

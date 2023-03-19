@@ -1,6 +1,6 @@
-import { TTable } from "../../../../types/model";
+import { TTableDef } from "../../../../types/model";
 
-export const ECFTotalizador: TTable = {
+export const ECFTotalizador: TTableDef = {
   database: "plano",
   table: "ECFTotalizador",
   fields: [

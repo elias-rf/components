@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TNfCfopPk {
@@ -19,7 +19,7 @@ export type TNfCfopSelect = TSelect<TNfCfopFields>;
 export type TNfCfopWhere = TWhere<TNfCfopFields>;
 export type TNfCfopOrder = TOrder<TNfCfopFields>;
 
-export type TNfCfopSchema = () => Promise<TField[]>;
+export type TNfCfopSchema = () => Promise<TFieldDef[]>;
 export type TNfCfopClear = () => Promise<TNfCfop>;
 export type TNfCfopList = (args: {
   where?: TWhere<TNfCfopFields>[];

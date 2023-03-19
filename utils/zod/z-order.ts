@@ -1,4 +1,4 @@
-import { TField, TOrder } from "../../types/index";
+import { TFieldDef, TOrder } from "../../types/index";
 import { isArray } from "../identify/is-array";
 import { isObject } from "../identify/is-object";
 import { isString } from "../identify/is-string";
@@ -7,13 +7,13 @@ import { isValid, z } from "./z";
 
 const FORMAT_ERROR = "order deve ser informado no formato [[field, asc|desc]]";
 
-export function zOrder(order: TOrder[], fields: TField[]) {
+export function zOrder(order: TOrder[], fields: TFieldDef[]) {
   const resp = isOrder(order, fields);
   if (resp === "") return;
   throw new Error(resp);
 }
 
-export function isOrder(order: TOrder[], fields: TField[]) {
+export function isOrder(order: TOrder[], fields: TFieldDef[]) {
   if (
     !isValid(
       order,

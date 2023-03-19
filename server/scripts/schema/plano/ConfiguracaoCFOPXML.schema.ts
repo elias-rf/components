@@ -1,6 +1,6 @@
-import { TTable } from "../../../../types/model";
+import { TTableDef } from "../../../../types/model";
 
-export const ConfiguracaoCFOPXML: TTable = {
+export const ConfiguracaoCFOPXML: TTableDef = {
   database: "plano",
   table: "ConfiguracaoCFOPXML",
   fields: [

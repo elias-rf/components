@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TDiamantePk {
@@ -27,7 +27,7 @@ export type TDiamanteSelect = TSelect<TDiamanteFields>;
 export type TDiamanteWhere = TWhere<TDiamanteFields>;
 export type TDiamanteOrder = TOrder<TDiamanteFields>;
 
-export type TDiamanteSchema = () => Promise<TField[]>;
+export type TDiamanteSchema = () => Promise<TFieldDef[]>;
 export type TDiamanteClear = () => Promise<TDiamante>;
 export type TDiamanteList = (args: {
   where?: TWhere<TDiamanteFields>[];

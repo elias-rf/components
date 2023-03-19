@@ -29,10 +29,10 @@ export function AgendaTelefoneForm({
   onUpdate,
   onDel,
 }: TAgendaTelefoneFormProps) {
-  const dataRead = trpc.agendaTelefoneRead.useQuery({ id });
-  const dataUpdate = trpc.agendaTelefoneUpdate.useMutation();
-  const dataCreate = trpc.agendaTelefoneCreate.useMutation();
-  const dataDel = trpc.agendaTelefoneDel.useMutation();
+  const dataRead = trpc.agendaTelefone.read.useQuery({ id });
+  const dataUpdate = trpc.agendaTelefone.update.useMutation();
+  const dataCreate = trpc.agendaTelefone.create.useMutation();
+  const dataDel = trpc.agendaTelefone.del.useMutation();
   const [status, setStatus] = React.useState<TStatus>("new");
 
   const methods = useForm({ defaultValues: dataClear });

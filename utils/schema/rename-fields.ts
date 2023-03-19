@@ -1,4 +1,4 @@
-import type { TField } from "../../types";
+import type { TFieldDef } from "../../types";
 import { isArray } from "../identify/is-array";
 import { isObject } from "../identify/is-object";
 import { isEmpty } from "../identify/is_empty";
@@ -81,7 +81,7 @@ function objectPropValue(
  * @param {TFieldServer[]} fields
  * @return {*}
  */
-export function renameToFieldTuple(tupleArray: any[], fields: TField[]) {
+export function renameToFieldTuple(tupleArray: any[], fields: TFieldDef[]) {
   if (isEmpty(tupleArray)) return tupleArray;
   const nameList = namesFromFields(fields);
   const fieldList = fieldsFromFields(fields);
@@ -91,7 +91,7 @@ export function renameToFieldTuple(tupleArray: any[], fields: TField[]) {
   });
 }
 
-export function renameToFieldArray(data: any, fields: TField[]) {
+export function renameToFieldArray(data: any, fields: TFieldDef[]) {
   if (isEmpty(data)) return data;
   const nameList = namesFromFields(fields);
   const fieldList = fieldsFromFields(fields);
@@ -105,7 +105,7 @@ export function renameToFieldArray(data: any, fields: TField[]) {
   });
 }
 
-export function renameToNameObject(data: any, fields: TField[]) {
+export function renameToNameObject(data: any, fields: TFieldDef[]) {
   if (!isObject(data)) return data;
   const nameList = namesFromFields(fields);
   const fieldList = fieldsFromFields(fields);
@@ -113,7 +113,7 @@ export function renameToNameObject(data: any, fields: TField[]) {
   return rsp;
 }
 
-export function renameToFieldObject(data: any, fields: TField[]) {
+export function renameToFieldObject(data: any, fields: TFieldDef[]) {
   if (!isObject(data)) return data;
   const nameList = namesFromFields(fields);
   const fieldList = fieldsFromFields(fields);
@@ -121,7 +121,7 @@ export function renameToFieldObject(data: any, fields: TField[]) {
   return rsp;
 }
 
-export function renameToNameArrayObject(data: any[], fields: TField[]) {
+export function renameToNameArrayObject(data: any[], fields: TFieldDef[]) {
   if (!isArray(data)) return data;
   const nameList = namesFromFields(fields);
   const fieldList = fieldsFromFields(fields);
@@ -132,7 +132,7 @@ export function renameToNameArrayObject(data: any[], fields: TField[]) {
   return rsp;
 }
 
-export function renameToFieldArrayObject(data: any[], fields: TField[]) {
+export function renameToFieldArrayObject(data: any[], fields: TFieldDef[]) {
   if (!isArray(data)) return data;
   const nameList = namesFromFields(fields);
   const fieldList = fieldsFromFields(fields);
@@ -143,7 +143,7 @@ export function renameToFieldArrayObject(data: any[], fields: TField[]) {
   return rsp;
 }
 
-export function renameFieldToName(data: any, fields: TField[]) {
+export function renameFieldToName(data: any, fields: TFieldDef[]) {
   const nameList = namesFromFields(fields);
   const fieldList = fieldsFromFields(fields);
 
@@ -162,7 +162,7 @@ export function renameFieldToName(data: any, fields: TField[]) {
   }
 }
 
-export function renameNameToField(data: any, fields: TField[]) {
+export function renameNameToField(data: any, fields: TFieldDef[]) {
   const nameList = namesFromFields(fields);
   const fieldList = fieldsFromFields(fields);
 

@@ -1,12 +1,12 @@
 import { Knex } from "knex";
 import type { TGenericObject, TSelect, TWhere } from "../../../../types";
-import type { TTable } from "../../../../types/model";
+import type { TTableDef } from "../../../../types/model";
 import { knexWhere } from "../../../../utils/data/knex-where";
 import { renameNameToField } from "../../../../utils/schema/rename-fields";
 import { isWhere } from "../../../../utils/validate/is-where";
 import { TCrudCount } from "../crud.type";
 
-export function countFactory(connection: Knex, table: TTable): TCrudCount {
+export function countFactory(connection: Knex, table: TTableDef): TCrudCount {
   const response = async ({
     where = [],
     count = { ttl: "*" },

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import type {
   TProdutoEstatistica,
@@ -24,7 +24,7 @@ type TProdutoEstatisticaStore = {
   getList: TProdutoEstatisticaList;
   dataRead: TProdutoEstatistica;
   getRead: TProdutoEstatisticaRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TProdutoEstatisticaSchema;
   dataClear: TProdutoEstatistica;
   getClear: TProdutoEstatisticaClear;

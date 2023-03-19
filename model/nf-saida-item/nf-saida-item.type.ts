@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TNfSaidaItemPk {
@@ -138,7 +138,7 @@ export type TNfSaidaItemSelect = TSelect<TNfSaidaItemFields>;
 export type TNfSaidaItemWhere = TWhere<TNfSaidaItemFields>;
 export type TNfSaidaItemOrder = TOrder<TNfSaidaItemFields>;
 
-export type TNfSaidaItemSchema = () => Promise<TField[]>;
+export type TNfSaidaItemSchema = () => Promise<TFieldDef[]>;
 export type TNfSaidaItemClear = () => Promise<TNfSaidaItem>;
 export type TNfSaidaItemList = (args: {
   where?: TWhere<TNfSaidaItemFields>[];

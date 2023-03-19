@@ -2,7 +2,7 @@ import deepmerge from "ts-deepmerge";
 import { rpcFactory } from "../../client/lib/http/rpc.factory";
 import { TEsterilizacaoInternaRpc } from "./esterilizacao-interna.type";
 //#region import
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { fetcherRpc } from "../../utils/api/fetcher-rpc";
 import { day } from "../../utils/date/day";
 import { isEmpty } from "../../utils/identify/is_empty";
@@ -32,7 +32,7 @@ export const esterilizacaoInternaService = deepmerge(
         });
       },
 
-      schemaMensal(): Promise<TField[]> {
+      schemaMensal(): Promise<TFieldDef[]> {
         return fetcherRpc.query("esterilizacaoInternaSchemaMensal");
       },
 
@@ -43,7 +43,7 @@ export const esterilizacaoInternaService = deepmerge(
         return fetcherRpc.query("esterilizacaoInternaMensal", args);
       },
 
-      schemaProduto(): Promise<TField[]> {
+      schemaProduto(): Promise<TFieldDef[]> {
         return fetcherRpc.query("esterilizacaoInternaSchemaProduto");
       },
 
@@ -54,7 +54,7 @@ export const esterilizacaoInternaService = deepmerge(
         return fetcherRpc.query("esterilizacaoInternaProduto", args);
       },
 
-      schemaModelo(): Promise<TField[]> {
+      schemaModelo(): Promise<TFieldDef[]> {
         return fetcherRpc.query("esterilizacaoInternaSchemaModelo");
       },
 

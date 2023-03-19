@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 import type { TGenericObject, TReadArgs } from "../../../../types";
-import type { TTable } from "../../../../types/model";
+import type { TTableDef } from "../../../../types/model";
 import { namesFromTable } from "../../../../utils/schema/names-from-table";
 import {
   renameFieldToName,
@@ -10,7 +10,7 @@ import { isSelect } from "../../../../utils/validate/is-select";
 import { zIdClient } from "../../../../utils/zod/z-id-client";
 import { TCrudRead } from "../crud.type";
 
-export function readFactory(connection: Knex, table: TTable): TCrudRead {
+export function readFactory(connection: Knex, table: TTableDef): TCrudRead {
   const response = async ({
     id,
     select = [],

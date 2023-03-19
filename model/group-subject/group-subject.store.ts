@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import type {
   TGroupSubject,
@@ -24,7 +24,7 @@ type TGroupSubjectStore = {
   getList: TGroupSubjectList;
   dataRead: TGroupSubject;
   getRead: TGroupSubjectRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TGroupSubjectSchema;
   dataClear: TGroupSubject;
   getClear: TGroupSubjectClear;

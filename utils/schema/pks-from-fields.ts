@@ -1,7 +1,7 @@
-import { TField, TPks } from "../../types";
+import { TFieldDef, TPks } from "../../types";
 
 /** busca fields primaryKey em um schema */
-export function pksFromFieldsServer(fields: TField[] = []) {
+export function pksFromFieldsServer(fields: TFieldDef[] = []) {
   const pks: TPks = [];
   for (const field of fields) {
     if (field.primaryKey) {
@@ -12,7 +12,7 @@ export function pksFromFieldsServer(fields: TField[] = []) {
 }
 
 /** busca names primaryKey em um schema */
-export function pksFromFieldsClient(fields: TField[] = []) {
+export function pksFromFieldsClient(fields: TFieldDef[] = []) {
   const pks: TPks = [];
   for (const field of fields) {
     if (field.primaryKey) {

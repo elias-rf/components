@@ -1,6 +1,6 @@
-import { TTable } from "../../../../types/model";
+import { TTableDef } from "../../../../types/model";
 
-export const NotaComprovanteRecLocal: TTable = {
+export const NotaComprovanteRecLocal: TTableDef = {
   database: "plano",
   table: "NotaComprovanteRecLocal",
   fields: [

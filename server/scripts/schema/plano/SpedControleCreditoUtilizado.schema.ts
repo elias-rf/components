@@ -1,6 +1,6 @@
-import { TTable } from "../../../../types/model";
+import { TTableDef } from "../../../../types/model";
 
-export const SpedControleCreditoUtilizado: TTable = {
+export const SpedControleCreditoUtilizado: TTableDef = {
   database: "plano",
   table: "SpedControleCreditoUtilizado",
   fields: [

@@ -1,6 +1,6 @@
-import { TTable } from "../../../../types/model";
+import { TTableDef } from "../../../../types/model";
 
-export const EmailVidalink: TTable = {
+export const EmailVidalink: TTableDef = {
   database: "plano",
   table: "EmailVidalink",
   fields: [

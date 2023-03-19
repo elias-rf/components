@@ -1,4 +1,4 @@
-import { TField, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
 //#region import
 //#endregion
 export interface TEtiquetaExternaPk {
@@ -18,7 +18,7 @@ export type TEtiquetaExternaSelect = TSelect<TEtiquetaExternaFields>;
 export type TEtiquetaExternaWhere = TWhere<TEtiquetaExternaFields>;
 export type TEtiquetaExternaOrder = TOrder<TEtiquetaExternaFields>;
 
-export type TEtiquetaExternaSchema = () => Promise<TField[]>;
+export type TEtiquetaExternaSchema = () => Promise<TFieldDef[]>;
 export type TEtiquetaExternaClear = () => Promise<TEtiquetaExterna>;
 export type TEtiquetaExternaList = (args: {
   where?: TWhere<TEtiquetaExternaFields>[];

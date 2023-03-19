@@ -1,6 +1,6 @@
-import { TField } from "../../../types";
+import { TFieldDef } from "../../../types";
 
-export async function schemaProduto(): Promise<TField[]> {
+export async function schemaProduto(): Promise<TFieldDef[]> {
   return [
     {
       name: "produto",

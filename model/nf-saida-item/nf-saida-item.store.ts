@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TField } from "../../types/model";
+import { TFieldDef } from "../../types/model";
 import { cache } from "../../utils/cache";
 import { nfSaidaItemService } from "./nf-saida-item.service";
 import type {
@@ -23,7 +23,7 @@ type TNfSaidaItemStore = {
   getList: TNfSaidaItemList;
   dataRead: TNfSaidaItem;
   getRead: TNfSaidaItemRead;
-  dataSchema: TField[];
+  dataSchema: TFieldDef[];
   getSchema: TNfSaidaItemSchema;
   dataClear: TNfSaidaItem;
   getClear: TNfSaidaItemClear;
