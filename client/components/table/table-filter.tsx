@@ -23,7 +23,7 @@ export function TableFilter({ schemaField, where, onWhere }: TTableFilter) {
 
   function handleOnInput(event: any) {
     if (onWhere) {
-      const rsp: TTableFilter = {
+      const rsp = {
         name: schemaField.name,
         value: whereUtil.setUnique(where || [], schemaField.name, event.value),
         component: "TableFilter",

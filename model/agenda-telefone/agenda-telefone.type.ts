@@ -27,6 +27,10 @@ export type TAgendaTelefoneOrder = TOrder<TAgendaTelefoneFields>;
 
 export type TAgendaTelefoneSchema = () => Promise<TFieldDef[]>;
 export type TAgendaTelefoneClear = () => Promise<TAgendaTelefone>;
+export type TAgendaTelefoneCount = (args: {
+  where?: TWhere<TAgendaTelefoneFields>[];
+  count?: TSelect<TAgendaTelefoneFields>;
+}) => Promise<number>;
 export type TAgendaTelefoneList = (args: {
   where?: TWhere<TAgendaTelefoneFields>[];
   order?: TOrder<TAgendaTelefoneFields>[];
@@ -56,8 +60,6 @@ export type TAgendaTelefoneDel = (args: {
 
 export type TAgendaTelefoneCrud = {
   query: {
-    schema: TAgendaTelefoneSchema;
-    clear: TAgendaTelefoneClear;
     list: TAgendaTelefoneList;
     read: TAgendaTelefoneRead;
   };

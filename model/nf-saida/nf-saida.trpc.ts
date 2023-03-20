@@ -1,7 +1,29 @@
-import { crudProcedureFactory } from "../../server/lib/trpc/crudProcedureFactory";
-import { router } from "../../server/trpc";
+import {
+  createZod,
+  delZod,
+  listZod,
+  readZod,
+  updateZod,
+} from "../../server/lib/trpc/inputs";
+import { publicProcedure, router } from "../../server/trpc";
 import { container } from "../container";
 
-const nfSaidaModel = container.resolve("nfSaidaModel");
+const model = container.resolve("nfSaidaModel");
 
-export const nfSaidaRouter = router(crudProcedureFactory(nfSaidaModel));
+export const nfSaidaRouter = router({
+  list: publicProcedure.input(listZod).query((req) => {
+    return model.query.list(req.input);
+  }),
+  read: publicProcedure.input(readZod).query((req) => {
+    return model.query.read(req.input);
+  }),
+  update: publicProcedure.input(updateZod).mutation((req) => {
+    return model.mutation.update(req.input);
+  }),
+  create: publicProcedure.input(createZod).mutation((req) => {
+    return model.mutation.create(req.input);
+  }),
+  del: publicProcedure.input(delZod).mutation((req) => {
+    return model.mutation.del(req.input);
+  }),
+});

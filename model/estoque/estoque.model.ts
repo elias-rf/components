@@ -1,4 +1,3 @@
-
 import { crudFactory } from "../../server/lib/crud/crud.factory";
 import type { TConnections } from "../../types";
 import { estoque } from "./estoque.table";
@@ -18,12 +17,8 @@ export function estoqueModelFactory(
   { connections }: { connections: TConnections }
 ): //#endregion
 TEstoqueModel {
-
-  const connection = connections[estoque.database]
-  const crud = crudFactory(
-    connection,
-    estoque
-  );
+  const connection = connections[estoque.database];
+  const crud = crudFactory(connection, estoque);
 
   //#region def
   const entity = tables.estoque;
@@ -41,7 +36,7 @@ TEstoqueModel {
       async increment({ id, quantidade }) {
         validateIsThrow(isNumber(quantidade), "quantidade dever ser numérica");
         validateThrow(isIdClient(id, entity.fields));
-        const knex = crud.connection();
+        const knex = crud.connection;
         const qry = await knex(entity.table)
           .increment("EstAtual", quantidade)
           .where(renameToFieldObject(id, entity.fields))
@@ -54,7 +49,7 @@ TEstoqueModel {
     estoque,
   } as TEstoqueModel;
 
-  return model
+  return model;
 }
 
 //#region other

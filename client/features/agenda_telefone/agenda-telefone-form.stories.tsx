@@ -16,9 +16,11 @@ function FormState(props: any) {
     <TrpcProvider>
       <AgendaTelefoneForm
         id={props.id}
-        onCreate={(rec) =>
-          (meta.args.id.agenda_telefone_id = rec.agenda_telefone_id)
-        }
+        onCreate={(rec) => {
+          meta.args = meta.args ?? {};
+          meta.args.id = meta.args.id ?? { agenda_telefone_id: 0 };
+          meta.args.id.agenda_telefone_id = rec.agenda_telefone_id;
+        }}
       />
     </TrpcProvider>
   );

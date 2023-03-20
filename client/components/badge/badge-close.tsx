@@ -2,14 +2,14 @@ import { CloseIcon } from "../icons/close-icon";
 
 export type TBadgeClose = {
   name: string;
-  onClose?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClose?: (e: React.MouseEvent<HTMLButtonElement>, name: string) => void;
 };
 
 export function BadgeClose({ onClose, name }: TBadgeClose) {
-  function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+  function handleClick(e: React.MouseEvent<HTMLButtonElement>, name: string) {
     e.stopPropagation();
     if (onClose) {
-      onClose(e);
+      onClose(e, name);
     }
   }
 
@@ -18,7 +18,7 @@ export function BadgeClose({ onClose, name }: TBadgeClose) {
   return (
     <button
       type="button"
-      onClick={handleClick}
+      onClick={(e) => handleClick(e, name)}
       className={
         "inline-flex items-center p-0.5 ml-2 text-sm text-blue-400 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-300 dark:hover:text-blue-900"
       }

@@ -2,7 +2,7 @@ import { AccordionContext } from "./accordion.context";
 
 export type TAccordionProps = {
   active: string[];
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>, name: string) => void;
   children: React.ReactElement[];
 };
 

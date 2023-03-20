@@ -190,8 +190,14 @@ export const TreeFilter: ComponentStory<typeof Table> = () => {
   const commands = {
     head() {
       return (
-        <button onClick={() => console.log("novo")}>
-          <img src={newIcon} />
+        <button
+          onClick={() => console.log("novo")}
+          title="button"
+        >
+          <img
+            src={newIcon}
+            title="image"
+          />
         </button>
       );
     },
@@ -203,16 +209,24 @@ export const TreeFilter: ComponentStory<typeof Table> = () => {
               e.stopPropagation();
               console.log("edit", record);
             }}
+            title="button"
           >
-            <img src={editIcon} />
+            <img
+              src={editIcon}
+              title="image"
+            />
           </button>
           <button
             onClick={(e) => {
               e.stopPropagation();
               console.log("del", record);
             }}
+            title="button"
           >
-            <img src={delIcon} />
+            <img
+              src={delIcon}
+              title="image"
+            />
           </button>
         </div>
       );

@@ -15,8 +15,8 @@ export type TBadgeProps = {
   large?: boolean;
   children: string;
   name?: string;
-  onClick?: (e: React.MouseEvent<HTMLSpanElement>) => void;
-  onClose?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLSpanElement>, name: string) => void;
+  onClose?: (e: React.MouseEvent<HTMLButtonElement>, name: string) => void;
   className?: string;
 };
 
@@ -48,7 +48,7 @@ export function Badge({
 }: TBadgeProps) {
   function handleClick(e: React.MouseEvent<HTMLSpanElement>) {
     if (onClick) {
-      onClick(e);
+      onClick(e, name);
     }
   }
 
@@ -68,7 +68,7 @@ export function Badge({
       {children}
       <BadgeClose
         name={name}
-        onClose={onClose}
+        onClose={(e) => (onClose ? onClose(e, name) : null)}
       />
     </span>
   );

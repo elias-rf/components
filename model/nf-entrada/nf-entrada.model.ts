@@ -39,39 +39,29 @@ export function nfEntradaModelFactory(
 TNfEntradaModel {
   const connection = connections[nf_entrada.database];
   const crud = crudFactory(connection, nf_entrada);
-
-  //#region def
-
-  //#endregion
+  const methods = nfEntradaMethodsFactory({
+    ordemProducaoModel,
+    estoqueModel,
+    produtoEstatisticaModel,
+    nfEntradaModel: crud,
+    nfEntradaLogModel,
+    nfEntradaItemModel,
+    produtoControleModel,
+    nfEntradaControleModel,
+  });
 
   const model = {
     query: {
       ...crud.query,
-      //#region query
-      //#endregion
+      ...methods.query,
     },
     mutation: {
       ...crud.mutation,
-      // Transfere produtos acabados da matriz para filial
-      ...nfEntradaMethodsFactory({
-        ordemProducaoModel,
-        estoqueModel,
-        produtoEstatisticaModel,
-        nfEntradaModel: crud,
-        nfEntradaLogModel,
-        nfEntradaItemModel,
-        produtoControleModel,
-        nfEntradaControleModel,
-      }).mutation,
-
-      //#endregion
+      ...methods.mutation,
     },
     connection,
-    nf_entrada,
+    table: nf_entrada,
   } as TNfEntradaModel;
 
   return model;
 }
-
-//#region other
-//#endregion

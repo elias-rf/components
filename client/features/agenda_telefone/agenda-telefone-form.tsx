@@ -14,9 +14,9 @@ import { agendaTelefoneSchema } from "./agenda-telefone.schema";
 
 type TAgendaTelefoneFormProps = {
   id: TAgendaTelefoneIds;
-  onCreate?: (args: { new: TAgendaTelefone }) => void;
-  onUpdate?: (args: { old: TAgendaTelefone; new: TAgendaTelefone }) => void;
-  onDel?: (args: { old: TAgendaTelefone }) => void;
+  onCreate?: (rec: TAgendaTelefone) => void;
+  onUpdate?: (rec: TAgendaTelefone) => void;
+  onDel?: (ok: number) => void;
 };
 
 type TStatus = "edit" | "new" | "view";
@@ -29,32 +29,50 @@ export function AgendaTelefoneForm({
   onUpdate,
   onDel,
 }: TAgendaTelefoneFormProps) {
+  const utils = trpc.useContext();
   const dataRead = trpc.agendaTelefone.read.useQuery({ id });
-  const dataUpdate = trpc.agendaTelefone.update.useMutation();
-  const dataCreate = trpc.agendaTelefone.create.useMutation();
-  const dataDel = trpc.agendaTelefone.del.useMutation();
+
+  const dataUpdate = trpc.agendaTelefone.update.useMutation({
+    onSuccess: (rec) => {
+      utils.agendaTelefone.invalidate();
+      if (onUpdate) onUpdate(rec);
+    },
+  });
+  const dataCreate = trpc.agendaTelefone.create.useMutation({
+    onSuccess: (rec) => {
+      utils.agendaTelefone.invalidate();
+      if (onCreate) onCreate(rec);
+    },
+  });
+  const dataDel = trpc.agendaTelefone.del.useMutation({
+    onSuccess: (ok) => {
+      utils.agendaTelefone.invalidate();
+      if (onDel) onDel(ok);
+    },
+  });
+
   const [status, setStatus] = React.useState<TStatus>("new");
 
-  const methods = useForm({ defaultValues: dataClear });
+  const formMethods = useForm({ defaultValues: dataClear });
 
   // atualiza state do form quando com o ID passado
   React.useEffect(() => {
     if (isEmpty(id) || !isNumber(id.agenda_telefone_id)) {
-      return methods.reset(dataClear);
+      return formMethods.reset(dataClear);
     }
   }, [id]);
 
   // atualiza state do form quando for lido do servidor
   React.useEffect(() => {
     if (dataRead.data && dataRead.data.agenda_telefone_id) {
-      methods.reset(dataRead.data);
+      formMethods.reset(dataRead.data);
       setStatus("view");
     }
   }, [dataRead.data]);
 
   function handleButtonCancel() {
     setStatus("view");
-    methods.reset();
+    formMethods.reset();
     console.log("cancel");
   }
 
@@ -64,42 +82,19 @@ export function AgendaTelefoneForm({
 
   function handleButtonNew() {
     setStatus("new");
-    methods.reset(dataClear);
+    formMethods.reset(dataClear);
   }
 
   function handleButtonDel() {
     setStatus("view");
-    dataDel.mutate(
-      { id },
-      {
-        onSuccess: () => {
-          dataRead.refetch();
-          if (onDel) onDel({ old: dataRead });
-        },
-      }
-    );
+    dataDel.mutate({ id });
   }
 
   function handleButtonSave() {
     setStatus("view");
     if (status === "edit")
-      dataUpdate.mutate(
-        { id, data: methods.getValues() },
-        {
-          onSuccess: (data) => {
-            if (onUpdate) onUpdate({ old: dataRead, new: data });
-          },
-        }
-      );
-    if (status === "new")
-      dataCreate.mutate(
-        { data: methods.getValues() },
-        {
-          onSuccess: (data) => {
-            if (onCreate) onCreate({ new: data });
-          },
-        }
-      );
+      dataUpdate.mutate({ id, data: formMethods.getValues() });
+    if (status === "new") dataCreate.mutate({ data: formMethods.getValues() });
   }
 
   const onSubmitHandler = (values: any) => {
@@ -149,10 +144,10 @@ export function AgendaTelefoneForm({
         ""
       )}
       <div className={"flex flex-wrap gap-2"}>
-        <FormProvider {...methods}>
+        <FormProvider {...formMethods}>
           <form
             className="form"
-            onSubmit={methods.handleSubmit(onSubmitHandler)}
+            onSubmit={formMethods.handleSubmit(onSubmitHandler)}
             autoComplete="off"
           >
             {agendaTelefoneSchema.map((field) => (
@@ -172,7 +167,7 @@ export function AgendaTelefoneForm({
         ""
       ) : (
         <div className={"flex justify-end"}>
-          {methods.formState.isDirty ? (
+          {formMethods.formState.isDirty ? (
             <Button
               className={"w-24 mr-4"}
               size="small"

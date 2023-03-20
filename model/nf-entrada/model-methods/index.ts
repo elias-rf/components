@@ -28,6 +28,7 @@ export function nfEntradaMethodsFactory({
   nfEntradaControleModel: TNfEntradaControleRpc;
 }) {
   return {
+    query: {},
     mutation: {
       transferenciaCreate: transferenciaCreateFactory({
         ordemProducaoModel,

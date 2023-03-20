@@ -1,6 +1,11 @@
 import React from "react";
 import { TabsContext } from "./tabs.context";
-import { TTabsProps } from "./tabs.types";
+
+export type TTabsProps = {
+  active: string;
+  onChange: (event: React.MouseEvent<HTMLLIElement>, id: string) => void;
+  children: React.ReactElement[];
+};
 
 export function Tabs({ onChange, active, children }: TTabsProps) {
   return (

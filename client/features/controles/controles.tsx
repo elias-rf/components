@@ -14,7 +14,7 @@ export function Controles() {
     <div className={"max-h-screen overflow-auto"}>
       <Tabs
         active={active}
-        onChangeEvent={(event) => setActive(event.value)}
+        onChange={(event, id) => setActive(id)}
       >
         <Tab
           id="operacao"

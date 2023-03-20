@@ -2,8 +2,8 @@ import React from "react";
 
 export const TabsContext = React.createContext<{
   active: string;
-  onChange: (event: any) => void;
+  onChange: (event: React.MouseEvent<HTMLLIElement>, id: string) => void;
 }>({
   active: "",
-  onChange: () => undefined,
+  onChange: () => null,
 });

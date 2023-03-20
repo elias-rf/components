@@ -1,3 +1,4 @@
+import { getQueryKey } from "@trpc/react-query";
 import React from "react";
 import { TAgendaTelefoneFields } from "../../../model/agenda-telefone/agenda-telefone.type";
 import { TIds, TOrder, TWhere } from "../../../types";
@@ -25,7 +26,7 @@ export function AgendaTelefoneList({
   children,
 }: TAgendaTelefoneListProps) {
   const dataList = trpc.agendaTelefone.list.useQuery({ where, order });
-
+  console.log(getQueryKey(trpc.agendaTelefone.list, undefined, "query"));
   return (
     <>
       <Table

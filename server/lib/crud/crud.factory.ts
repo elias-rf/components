@@ -9,5 +9,3 @@ export function crudFactory(connection: TConnection, table: TTableDef): TCrud {
 }
 
 export type TCrudFactory = typeof crudFactory;
-
-// export type TCrud = ReturnType<TCrudFactory>;

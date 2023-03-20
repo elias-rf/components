@@ -19,8 +19,8 @@ export const Default: ComponentStory<typeof Tabs> = (args: any) => {
   const [active2, setActive2] = React.useState("t2");
   const [active3, setActive3] = React.useState("t2");
 
-  function handleOnChange(event: TTabs) {
-    setActive(event.value);
+  function handleOnChange(event: TTabs, id: string) {
+    setActive(id);
     args.onClick(event);
   }
   return (
@@ -34,7 +34,7 @@ export const Default: ComponentStory<typeof Tabs> = (args: any) => {
       >
         <Tabs
           active={active1}
-          onChange={(e) => setActive1(e.value)}
+          onChange={(e, id) => setActive1(id)}
         >
           <Tab
             id="t1"
@@ -62,7 +62,7 @@ export const Default: ComponentStory<typeof Tabs> = (args: any) => {
       >
         <Tabs
           active={active2}
-          onChange={(e) => setActive2(e.value)}
+          onChange={(e, id) => setActive2(id)}
         >
           <Tab
             id="t1"
@@ -90,7 +90,7 @@ export const Default: ComponentStory<typeof Tabs> = (args: any) => {
       >
         <Tabs
           active={active3}
-          onChange={(e) => setActive3(e.value)}
+          onChange={(e, id) => setActive3(id)}
         >
           <Tab
             id="t1"

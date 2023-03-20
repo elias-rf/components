@@ -22,7 +22,7 @@ export function esterilizacaoInternaModelFactory({
       // PRODUTO
       async produto({ data }: { data: string }) {
         zod(data, z.string().superRefine(zsr.date));
-        const knex = crud.connection();
+        const knex = crud.connection;
         const qry = await knex(
           knex.raw(
             "((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp"

@@ -1,5 +1,5 @@
-import { Knex } from "knex";
 import {
+  TConnection,
   TFieldDef,
   TGenericObject,
   TListArgs,
@@ -29,7 +29,7 @@ export type TCrudWhere = TWhere<TCrudFields>;
 export type TCrudOrder = TOrder<TCrudFields>;
 
 export type TCrudSchema = () => Promise<TFieldDef[]>;
-export type TCrudClear = () => Promise<TCrud>;
+export type TCrudClear = () => Promise<Record<string, any>>;
 export type TCrudList = (args: TListArgs) => Promise<TCrud[]>;
 export type TCrudRead = (args: TReadArgs) => Promise<TCrud>;
 
@@ -48,12 +48,8 @@ export type TCrudIncrement = (args: {
   where?: TWhere[];
   increment?: TGenericObject;
   select?: TSelect;
-}) => Promise<any>;
-export type TCrudDecrement = (args: {
-  where?: TWhere[];
-  decrement?: TGenericObject;
-  select?: TSelect;
-}) => Promise<any>;
+}) => Promise<Record<string, any>>;
+
 export type TCrudNameList = () => string[];
 
 export type TCrudRpc = {
@@ -66,11 +62,9 @@ export type TCrudRpc = {
   };
   mutation: {
     increment: TCrudIncrement;
-    decrement: TCrudDecrement;
     create: TCrudCreate;
     update: TCrudUpdate;
     del: TCrudDel;
   };
-  nameList: TCrudNameList;
-  connection: () => Knex;
+  connection: TConnection;
 };

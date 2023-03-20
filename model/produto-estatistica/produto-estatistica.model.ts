@@ -1,4 +1,3 @@
-
 import { crudFactory } from "../../server/lib/crud/crud.factory";
 import type { TConnections } from "../../types";
 import { produto_estatistica } from "./produto-estatistica.table";
@@ -15,12 +14,8 @@ export function produtoEstatisticaModelFactory(
   { connections }: { connections: TConnections }
 ): //#endregion
 TProdutoEstatisticaModel {
-
-  const connection = connections[produto_estatistica.database]
-  const crud = crudFactory(
-    connection,
-    produto_estatistica
-  );
+  const connection = connections[produto_estatistica.database];
+  const crud = crudFactory(connection, produto_estatistica);
 
   //#region def
   //#endregion
@@ -37,7 +32,7 @@ TProdutoEstatisticaModel {
       async increment({ id, quantidade }) {
         zIdClient(id, produto_estatistica.fields);
         zod(quantidade, z.number());
-        const connections = crud.connection();
+        const connections = crud.connection;
         const entity = tables.produto_estatistica;
         const knex = connections;
 
@@ -55,7 +50,7 @@ TProdutoEstatisticaModel {
     produto_estatistica,
   } as TProdutoEstatisticaModel;
 
-  return model
+  return model;
 }
 
 //#region other

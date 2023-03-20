@@ -25,7 +25,7 @@ export function Transferencia({ dia }: TransferenciaProp) {
           onSelectEvent={handleOnChangeEvent}
         >
           <TransferenciaDiario
-            onSelectEvent={handleOnChangeEvent}
+            onSelect={handleOnChangeEvent}
             diaCorrente={diaCorrente}
             mesCorrente={mesCorrente}
           >

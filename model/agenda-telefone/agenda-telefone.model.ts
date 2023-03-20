@@ -13,10 +13,23 @@ export function agendaTelefoneModelFactory({
 
   const model = {
     query: {
-      ...crud.query,
+      list(args) {
+        return crud.query.list(args);
+      },
+      read(args) {
+        return crud.query.read(args);
+      },
     },
     mutation: {
-      ...crud.mutation,
+      create(args) {
+        return crud.mutation.create(args);
+      },
+      update(args) {
+        return crud.mutation.update(args);
+      },
+      del(args) {
+        return crud.mutation.del(args);
+      },
     },
     connection,
     table: agenda_telefone,
@@ -24,6 +37,5 @@ export function agendaTelefoneModelFactory({
       clear: `Retorna um registro com valores default`,
     },
   } as TAgendaTelefoneModel;
-
   return model;
 }

@@ -17,7 +17,7 @@ export type TButtonProps = {
   size?: "extraSmall" | "small" | "base" | "large" | "extraLarge";
   name?: string;
   className?: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>, name: string) => void;
   "data-testid"?: string;
 };
 
@@ -72,7 +72,7 @@ export function Button({
         className
       )}
       disabled={disabled}
-      onClick={onClick}
+      onClick={(e) => onClick(e, name)}
       data-testid={dataTestid || "button"}
       name={name}
     >
