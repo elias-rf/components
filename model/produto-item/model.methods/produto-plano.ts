@@ -7,7 +7,7 @@ import {
   TProdutoPlano,
   TProdutoPlanoRpc,
 } from "../../produto-plano/produto-plano.type";
-import { TProdutoItemPlanoProduto } from "../produto-item.type";
+import { TProdutoItemProdutoPlano } from "../produto-item.type";
 
 export function produtoPlano({
   produtoPlanoModel,
@@ -17,7 +17,7 @@ export function produtoPlano({
   produtoPlanoModel: TProdutoPlanoRpc;
   produtoItemCrud: TCrud;
   produto_item: TTableDef;
-}): TProdutoItemPlanoProduto {
+}): TProdutoItemProdutoPlano {
   return async ({ id, select }) => {
     zIdClient(id, produto_item.fields);
     isSelect(select || [], produto_plano.fields);

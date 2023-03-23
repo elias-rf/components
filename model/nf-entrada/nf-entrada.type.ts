@@ -125,10 +125,8 @@ export type TNfEntradaTransferenciaCreate = (args: {
 }) => Promise<boolean>;
 //#endregion
 
-export type TNfEntradaCrud = {
+export type TNfEntradaModel = {
   query: {
-    schema: TNfEntradaSchema;
-    clear: TNfEntradaClear;
     list: TNfEntradaList;
     read: TNfEntradaRead;
   };
@@ -136,19 +134,8 @@ export type TNfEntradaCrud = {
     create: TNfEntradaCreate;
     update: TNfEntradaUpdate;
     del: TNfEntradaDel;
-  };
-};
-
-export type TNfEntradaModel = TNfEntradaCrud & {
-  //#region query
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-  mutation: {
     transferenciaCreate: TNfEntradaTransferenciaCreate;
   };
-  //#endregion
 };
 
 export type TNfEntradaRpc = TNfEntradaModel;

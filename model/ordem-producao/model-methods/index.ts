@@ -43,6 +43,5 @@ export function ordemProducaoMethods({
       produtoItem,
       produtoPlano,
     },
-    mutation: {},
   };
 }

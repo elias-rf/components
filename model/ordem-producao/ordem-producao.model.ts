@@ -27,21 +27,27 @@ export function ordemProducaoModelFactory({
     produtoItemModel,
   });
 
-  const model = {
-    query: {
-      ...crud.query,
-      ...methods.query,
-    },
-    mutation: {
-      ...crud.mutation,
-      ...methods.mutation,
-    },
+  const model: TOrdemProducaoModel = {
     connection,
     table: ordem_producao,
-  } as TOrdemProducaoModel;
+    query: {
+      list: (args) => crud.query.list(args),
+      read: (args) => crud.query.read(args),
+      controle: (args) => methods.query.controle(args),
+      dataFabricacao: (args) => methods.query.dataFabricacao(args),
+      dataValidade: (args) => methods.query.dataValidade(args),
+      ehControleValido: (args) => methods.query.ehControleValido(args),
+      etiquetaExterna: (args) => methods.query.etiquetaExterna(args),
+      fromControle: (args) => methods.query.fromControle(args),
+      produtoItem: (args) => methods.query.produtoItem(args),
+      produtoPlano: (args) => methods.query.produtoPlano(args),
+    },
+    mutation: {
+      create: (args) => crud.mutation.create(args),
+      update: (args) => crud.mutation.update(args),
+      del: (args) => crud.mutation.del(args),
+    },
+  };
 
   return model;
 }
-
-//#region other
-//#endregion

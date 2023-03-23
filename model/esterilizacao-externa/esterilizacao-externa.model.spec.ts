@@ -15,7 +15,7 @@ describe("esterilizacaoEsterna", () => {
     tracker.reset();
   });
 
-  test("diario", async () => {
+  it("diario", async () => {
     tracker.on
       .select("tEsterilizacaoExterna")
       .response([{ dia: "2020-01-01", quantidade: 1 }]);

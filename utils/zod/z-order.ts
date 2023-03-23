@@ -3,7 +3,7 @@ import { isArray } from "../identify/is-array";
 import { isObject } from "../identify/is-object";
 import { isString } from "../identify/is-string";
 import { namesFromFields } from "../schema/names-from-fields";
-import { isValid, z } from "./z";
+import { isValid, zd } from "./zod";
 
 const FORMAT_ERROR = "order deve ser informado no formato [[field, asc|desc]]";
 
@@ -17,8 +17,11 @@ export function isOrder(order: TOrder[], fields: TFieldDef[]) {
   if (
     !isValid(
       order,
-      z.array(
-        z.tuple([z.string(), z.union([z.literal("asc"), z.literal("desc")])])
+      zd.array(
+        zd.tuple([
+          zd.string(),
+          zd.union([zd.literal("asc"), zd.literal("desc")]),
+        ])
       )
     )
   )

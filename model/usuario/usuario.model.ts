@@ -1,38 +1,30 @@
-import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnection, TConnections } from "../../types/model";
-import { usuario } from "./usuario.table";
-import type { TUsuarioModel } from "./usuario.type";
-//#region import
 import { config } from "../../server/config";
+import { crudFactory } from "../../server/lib/crud/crud.factory";
 import { jwtEncode } from "../../server/lib/jwt-encode";
 import { passwordVerify } from "../../server/lib/password-verify";
 import type { TCurrentUser } from "../../types";
-import type { TUsuario } from "./usuario.type";
-//#endregion
+import type { TConnection, TConnections } from "../../types/model";
+import { usuario } from "./usuario.table";
+import type { TUsuario, TUsuarioModel } from "./usuario.type";
 
-export function usuarioModelFactory(
-  //#region inject
-  { connections }: { connections: TConnections }
-): //#endregion
-TUsuarioModel {
+export function usuarioModelFactory({
+  connections,
+}: {
+  connections: TConnections;
+}): TUsuarioModel {
   const connection: TConnection = connections[usuario.database];
   const crud = crudFactory(connection, usuario);
-
-  //#region def
-  //#endregion
 
   const model = {
     query: {
       ...crud.query,
-      //#region query
+
       async me() {
         return {};
       },
-      //#endregion
     },
     mutation: {
       ...crud.mutation,
-      //#region mutation
       async logout() {
         return true;
       },
@@ -81,7 +73,6 @@ TUsuarioModel {
         );
         return resp;
       },
-      //#endregion
     },
     connection,
     usuario,
@@ -89,6 +80,3 @@ TUsuarioModel {
 
   return model;
 }
-
-//#region other
-//#endregion

@@ -1,6 +1,6 @@
 import { Knex } from "knex";
-import { z, zod } from "../../../utils/zod/z";
 import { zsr } from "../../../utils/zod/z-refine";
+import { zd, zod } from "../../../utils/zod/zod";
 import { TNfTransferenciaModelo } from "../nf-saida.type";
 
 export function transferenciaModelo({
@@ -9,7 +9,7 @@ export function transferenciaModelo({
   connection: Knex;
 }): TNfTransferenciaModelo {
   return async ({ data }) => {
-    zod(data, z.string().superRefine(zsr.date));
+    zod(data, zd.string().superRefine(zsr.date));
     const qry = await connection(
       connection.raw(
         "NatOpe INNER JOIN (CategPro INNER JOIN (CadPro INNER JOIN (MestreNota INNER JOIN ItemNota ON (MestreNota.Serie = ItemNota.Serie) AND (MestreNota.NumNota = ItemNota.NumNota) AND (MestreNota.CdFilial = ItemNota.CdFilial)) ON CadPro.CdProduto = ItemNota.CdProduto) ON CategPro.CdCategoria = CadPro.CdCategoria) ON (ItemNota.Nop = NatOpe.Nop) AND (NatOpe.Nop = MestreNota.Nop)"

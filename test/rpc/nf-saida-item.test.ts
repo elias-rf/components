@@ -1,16 +1,29 @@
 import { describe, expect, it } from "vitest";
-import { fetcherRpc } from "../../utils/api/fetcher-rpc";
+import { fetchTrpc } from "../../client/lib/fetch-trpc";
 
 describe("nfSaida", () => {
-  it("nfSaidaItemSchema", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaItemSchema");
+  it("nfSaidaItemList", async () => {
+    const rsp = await fetchTrpc.nfSaidaItem.list.query({
+      select: ["filial_id", "nota_id", "serie_id", "modelo_id"],
+    });
 
-    expect(rsp.length).toEqual(123);
+    expect(rsp).toEqual([
+      { filial_id: 1, nota_id: 1, modelo_id: "1  ", serie_id: "1  " },
+      { filial_id: 2, nota_id: 1, modelo_id: "1  ", serie_id: "1  " },
+    ]);
   });
 
-  it("nfSaidaItemClear", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaItemClear");
+  it("nfSaidaItemRead", async () => {
+    const rsp = await fetchTrpc.nfSaidaItem.read.query({
+      id: { filial_id: 1, nota_id: 1, modelo_id: "1  ", serie_id: "1  " },
+      select: ["filial_id", "nota_id", "serie_id", "modelo_id"],
+    });
 
-    expect(rsp).toEqual(expect.any(Object));
+    expect(rsp).toEqual({
+      filial_id: 1,
+      nota_id: 1,
+      modelo_id: "1  ",
+      serie_id: "1  ",
+    });
   });
 });

@@ -1,8 +1,8 @@
 import { Knex } from "knex";
 import { z } from "zod";
 import { day } from "../../../utils/date/day";
-import { zod } from "../../../utils/zod/z";
 import { zDate } from "../../../utils/zod/z-date";
+import { zod } from "../../../utils/zod/zod";
 import { TOrdemProducaoOperacaoDiario } from "../ordem-producao-operacao.type";
 
 export function diario(connection: Knex): TOrdemProducaoOperacaoDiario {

@@ -16,12 +16,30 @@ export function clienteModelFactory({
   const connection = connections[cliente.database];
   const crud = crudFactory(connection, cliente);
   const methods = clienteMethods({ nfSaidaModel });
-  const model = {
+
+  const model: TClienteModel = {
     connection,
     table: cliente,
-    help: {},
-    query: { ...crud.query, ...methods.query },
-    mutation: { ...crud.mutation, ...methods.mutation },
+    query: {
+      list: (args) => crud.query.list(args),
+      read: (args) => crud.query.read(args),
+      vendaMensalQuantidadeSchema: (args) =>
+        methods.query.vendaMensalQuantidadeSchema(args),
+      vendaMensalValorSchema: (args) =>
+        methods.query.vendaMensalValorSchema(args),
+      vendaMensalValorMedioSchema: (args) =>
+        methods.query.vendaMensalValorMedioSchema(args),
+      vendaMensalQuantidade: (args) =>
+        methods.query.vendaMensalQuantidade(args),
+      vendaMensalValor: (args) => methods.query.vendaMensalValor(args),
+      vendaMensalValorMedio: (args) =>
+        methods.query.vendaMensalValorMedio(args),
+    },
+    mutation: {
+      create: (args) => crud.mutation.create(args),
+      update: (args) => crud.mutation.update(args),
+      del: (args) => crud.mutation.del(args),
+    },
   };
 
   return model;

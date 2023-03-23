@@ -1,43 +1,29 @@
-
 import { crudFactory } from "../../server/lib/crud/crud.factory";
 import type { TConnections } from "../../types";
 import { pagar } from "./pagar.table";
 import type { TPagarModel } from "./pagar.type";
-//#region import
-//#endregion
 
-export function pagarModelFactory(
-  //#region inject
-  { connections }: { connections: TConnections }
-): //#endregion
-TPagarModel {
+export function pagarModelFactory({
+  connections,
+}: {
+  connections: TConnections;
+}): TPagarModel {
+  const connection = connections[pagar.database];
+  const crud = crudFactory(connection, pagar);
 
-  const connection = connections[pagar.database]
-  const crud = crudFactory(
+  const model: TPagarModel = {
     connection,
-    pagar
-  );
-
-  //#region def
-  //#endregion
-
-  const model = {
+    table: pagar,
     query: {
-      ...crud.query,
-      //#region query
-      //#endregion
+      list: (args) => crud.query.list(args),
+      read: (args) => crud.query.read(args),
     },
     mutation: {
-      ...crud.mutation,
-      //#region mutation
-      //#endregion
+      create: (args) => crud.mutation.create(args),
+      update: (args) => crud.mutation.update(args),
+      del: (args) => crud.mutation.del(args),
     },
-    connection,
-    pagar,
-  } as TPagarModel;
+  };
 
-  return model
+  return model;
 }
-
-//#region other
-//#endregion

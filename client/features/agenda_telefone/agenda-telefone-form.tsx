@@ -103,10 +103,7 @@ export function AgendaTelefoneForm({
   };
 
   return (
-    <section
-      data-name="PhonebookForm"
-      className={"mt-2"}
-    >
+    <section className={"mt-2"}>
       {status === "view" ? (
         <div className={"flex justify-end"}>
           <Button
@@ -140,16 +137,14 @@ export function AgendaTelefoneForm({
             Excluir
           </Button>
         </div>
-      ) : (
-        ""
-      )}
-      <div className={"flex flex-wrap gap-2"}>
-        <FormProvider {...formMethods}>
-          <form
-            className="form"
-            onSubmit={formMethods.handleSubmit(onSubmitHandler)}
-            autoComplete="off"
-          >
+      ) : null}
+      <FormProvider {...formMethods}>
+        <form
+          className="form"
+          onSubmit={formMethods.handleSubmit(onSubmitHandler)}
+          autoComplete="off"
+        >
+          <div className={"sm:flex flex-wrap gap-2"}>
             {agendaTelefoneSchema.map((field) => (
               <React.Fragment key={field.name}>
                 <Field
@@ -160,12 +155,10 @@ export function AgendaTelefoneForm({
                 />
               </React.Fragment>
             ))}
-          </form>
-        </FormProvider>
-      </div>
-      {status === "view" ? (
-        ""
-      ) : (
+          </div>
+        </form>
+      </FormProvider>
+      {status === "view" ? null : (
         <div className={"flex justify-end"}>
           {formMethods.formState.isDirty ? (
             <Button
@@ -178,9 +171,7 @@ export function AgendaTelefoneForm({
             >
               Salvar
             </Button>
-          ) : (
-            ""
-          )}
+          ) : null}
           <Button
             className={"w-24"}
             size="small"

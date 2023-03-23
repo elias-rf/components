@@ -1,31 +1,13 @@
 import { describe, expect, it } from "vitest";
+import { fetchTrpc } from "../../client/lib/fetch-trpc";
 import { connections } from "../../server/dal/connections";
 import { delCreateAux } from "../../test/aux/aux";
-import { fetcherRpc } from "../../utils/api/fetcher-rpc";
 
 const tableName = "cidadesERF";
 
 describe("cidade", () => {
-  it("cidadeSchema", async () => {
-    const rsp = await fetcherRpc.query("cidadeSchema");
-
-    expect(rsp.length).toEqual(5);
-  });
-
-  it("cidadeClear", async () => {
-    const rsp = await fetcherRpc.query("cidadeClear");
-
-    expect(rsp).toEqual({
-      nome_cidade: null,
-      uf_old: null,
-      cidade_id: null,
-      uf_id: 0,
-      uf: null,
-    });
-  });
-
   it("cidadeList", async () => {
-    const rsp = await fetcherRpc.query("cidadeList", {
+    const rsp = await fetchTrpc.cidade.list.query({
       where: [
         ["nome_cidade", "=", "cid1"],
         ["uf_old", "=", "SP"],
@@ -37,7 +19,7 @@ describe("cidade", () => {
   });
 
   it("cidadeRead", async () => {
-    const rsp = await fetcherRpc.query("cidadeRead", {
+    const rsp = await fetchTrpc.cidade.read.query({
       id: { nome_cidade: "cid1", uf_old: "SP" },
       select: ["cidade_id"],
     });
@@ -51,7 +33,7 @@ describe("cidade", () => {
     await delCreateAux("cidade", {
       del: [{ uf_id: 2 }],
     });
-    const rsp = await fetcherRpc.mutation("cidadeCreate", {
+    const rsp = await fetchTrpc.cidade.create.mutate({
       data: { cidade_id: 2, nome_cidade: "cid", uf_id: 2, uf_old: "RJ" },
     });
 
@@ -80,7 +62,7 @@ describe("cidade", () => {
   it("cidadeUpdate", async () => {
     const rnd = Math.round(Math.random() * 10000).toString();
     //---
-    const rsp = await fetcherRpc.mutation("cidadeUpdate", {
+    const rsp = await fetchTrpc.cidade.update.mutate({
       id: { nome_cidade: "cid1", uf_old: "SP" },
       data: { uf_id: rnd },
       select: ["uf_id"],
@@ -108,7 +90,7 @@ describe("cidade", () => {
     await delCreateAux("cidade", {
       create: [{ cidade_id: 2, uf: "SP", uf_old: "SP", nome_cidade: "cid2" }],
     });
-    const rsp = await fetcherRpc.mutation("cidadeDel", {
+    const rsp = await fetchTrpc.cidade.del.mutate({
       id: { nome_cidade: "cid2", uf_old: "SP" },
     });
 

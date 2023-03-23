@@ -2,25 +2,34 @@ import { crudFactory } from "../../server/lib/crud/crud.factory";
 import type { TConnections } from "../../types";
 import { esterilizacao_externa } from "./esterilizacao-externa.table";
 import type { TEsterilizacaoExternaModel } from "./esterilizacao-externa.type";
-//#region import
+
 import { esterilizacaoExternaMethods } from "./model-methods";
 
-//#endregion
-
-export function esterilizacaoExternaModelFactory(
-  //#region inject
-  { connections }: { connections: TConnections }
-): //#endregion
-TEsterilizacaoExternaModel {
+export function esterilizacaoExternaModelFactory({
+  connections,
+}: {
+  connections: TConnections;
+}): TEsterilizacaoExternaModel {
   const connection = connections[esterilizacao_externa.database];
   const crud = crudFactory(connection, esterilizacao_externa);
   const methods = esterilizacaoExternaMethods(connection);
 
-  const model = {
+  const model: TEsterilizacaoExternaModel = {
     connection,
-    esterilizacao_externa,
-    query: { ...crud.query, ...methods.query },
-    mutation: { ...crud.mutation, ...methods.mutation },
+    table: esterilizacao_externa,
+    query: {
+      list: (args) => crud.query.list(args),
+      read: (args) => crud.query.read(args),
+      diario: (args) => methods.query.diario(args),
+      mensal: (args) => methods.query.mensal(args),
+      modelo: (args) => methods.query.modelo(args),
+      produto: (args) => methods.query.produto(args),
+    },
+    mutation: {
+      create: (args) => crud.mutation.create(args),
+      update: (args) => crud.mutation.update(args),
+      del: (args) => crud.mutation.del(args),
+    },
   };
 
   return model;

@@ -42,6 +42,7 @@ export type TFieldDef = {
   labelClass?: string; // classe para o label
   disabled?: boolean; // input desabilitado
   typeForm?: TFormType; // tipo de input no formulário
+  classNameField?: string; // style para field
 };
 
 export type TFields = TFieldDef[];

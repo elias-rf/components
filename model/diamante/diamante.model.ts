@@ -11,11 +11,18 @@ export function diamanteModelFactory({
   const connection = connections[diamante.database];
   const crud = crudFactory(connection, diamante);
 
-  const model = {
+  const model: TDiamanteModel = {
     connection,
-    diamante,
-    query: { ...crud.query },
-    mutation: { ...crud.mutation },
+    table: diamante,
+    query: {
+      list: (args) => crud.query.list(args),
+      read: (args) => crud.query.read(args),
+    },
+    mutation: {
+      create: (args) => crud.mutation.create(args),
+      update: (args) => crud.mutation.update(args),
+      del: (args) => crud.mutation.del(args),
+    },
   };
   return model;
 }

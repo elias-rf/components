@@ -1,30 +1,11 @@
 import { describe, expect, it } from "vitest";
+import { fetchTrpc } from "../../client/lib/fetch-trpc";
 import { connections } from "../../server/dal/connections";
 import { delCreateAux } from "../../test/aux/aux";
-import { fetcherRpc } from "../../utils/api/fetcher-rpc";
 
 describe("produtoItem", () => {
-  it("produtoItemSchema", async () => {
-    const rsp = await fetcherRpc.query("produtoItemSchema");
-
-    expect(rsp.length).toEqual(6);
-  });
-
-  it("produtoItemClear", async () => {
-    const rsp = await fetcherRpc.query("produtoItemClear");
-
-    expect(rsp).toEqual({
-      fora_linha: 0,
-      grupo_credito: null,
-      nome_produto_item: "",
-      produto_id: 0,
-      produto_item_id: 0,
-      produto_plano_id: null,
-    });
-  });
-
   it("produtoItemList", async () => {
-    const rsp = await fetcherRpc.query("produtoItemList", {
+    const rsp = await fetchTrpc.produtoItem.list.query({
       where: [["produto_item_id", "=", "1"]],
       select: ["produto_item_id"],
     });
@@ -37,7 +18,7 @@ describe("produtoItem", () => {
   });
 
   it("produtoItemRead", async () => {
-    const rsp = await fetcherRpc.query("produtoItemRead", {
+    const rsp = await fetchTrpc.produtoItem.read.query({
       id: { produto_item_id: 1 },
       select: ["produto_item_id"],
     });
@@ -48,7 +29,7 @@ describe("produtoItem", () => {
   });
 
   it("produtoItemPlano", async () => {
-    const rsp = await fetcherRpc.query("produtoItemProdutoPlano", {
+    const rsp = await fetchTrpc.produtoItem.produtoPlano.query({
       id: { produto_item_id: 1 },
       select: ["produto_plano_id"],
     });
@@ -62,7 +43,7 @@ describe("produtoItem", () => {
     await delCreateAux("produto_item", {
       del: [{ produto_item_id: 2 }],
     });
-    const rsp = await fetcherRpc.mutation("produtoItemCreate", {
+    const rsp = await fetchTrpc.produtoItem.create.mutate({
       data: {
         produto_item_id: 2,
         nome_produto_item: "prod4",
@@ -94,7 +75,7 @@ describe("produtoItem", () => {
   it("produtoItemUpdate", async () => {
     const rnd = Math.round(Math.random() * 10000).toString();
 
-    const rsp = await fetcherRpc.mutation("produtoItemUpdate", {
+    const rsp = await fetchTrpc.produtoItem.update.mutate({
       id: { produto_item_id: 1 },
       data: { grupo_credito: rnd },
     });
@@ -121,7 +102,7 @@ describe("produtoItem", () => {
   });
 
   it("produtoItemDel", async () => {
-    const rsp = await fetcherRpc.mutation("produtoItemDel", {
+    const rsp = await fetchTrpc.produtoItem.del.mutate({
       id: { produto_item_id: 2 },
     });
 

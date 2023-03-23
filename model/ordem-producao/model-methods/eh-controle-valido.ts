@@ -2,7 +2,7 @@ import { module10 } from "../../../utils/string/module10";
 
 // Valida se número de série é válido
 export function ehControleValidoFactory() {
-  return ({ controle }: { controle: string }) => {
+  return async ({ controle }: { controle: string }) => {
     if (!controle) return false;
 
     if (controle.length === 12) {

@@ -1,6 +1,6 @@
 import { Knex } from "knex";
-import { z, zod } from "../../../utils/zod/z";
 import { zsr } from "../../../utils/zod/z-refine";
+import { zd, zod } from "../../../utils/zod/zod";
 import { TEsterilizacaoExternaProduto } from "../esterilizacao-externa.type";
 
 export function produto(connection: Knex): TEsterilizacaoExternaProduto {
@@ -9,7 +9,7 @@ export function produto(connection: Knex): TEsterilizacaoExternaProduto {
   }: {
     data: string;
   }): Promise<{ produto: string; quantidade: number }[]> => {
-    zod(data, z.string().superRefine(zsr.date));
+    zod(data, zd.string().superRefine(zsr.date));
 
     const qry = connection(
       connection.raw(

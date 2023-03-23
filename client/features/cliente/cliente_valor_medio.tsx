@@ -1,48 +1,34 @@
-import React from "react";
-import { clienteStore } from "../../../model/cliente/cliente.store";
 import type { TIds } from "../../../types";
 import { day } from "../../../utils/date/day";
 import { Table } from "../../components/table";
+import { trpc } from "../../lib/fetch-trpc";
+import { getSchema } from "./get-shema";
 
 type ClienteValorMedioProps = {
   id: TIds;
   dia?: string;
 };
 
-const { getVendaMensalValorMedioSchema, getVendaMensalValorMedio } =
-  clienteStore.getState();
-
 export function ClienteValorMedio({ id, dia }: ClienteValorMedioProps) {
-  const dataVendaMensalValorMedioSchema = clienteStore(
-    (state) => state.dataVendaMensalValorMedioSchema
-  );
-  const dataVendaMensalValorMedio = clienteStore(
-    (state) => state.dataVendaMensalValorMedio
-  );
-
   const inicio = day(dia)
     .subtract(1, "year")
     .startOf("month")
     .format("YYYY-MM-DD");
   const fim = day(dia).subtract(1, "month").endOf("month").format("YYYY-MM-DD");
-
-  React.useEffect(() => {
-    getVendaMensalValorMedioSchema({ inicio, fim });
-  }, [inicio, fim]);
-
-  React.useEffect(() => {
-    getVendaMensalValorMedio({
-      cliente: id.cliente_id,
+  const schema = getSchema({ inicio, fim });
+  const dataVendaMensalValorMedio = trpc.cliente.vendaMensalValorMedio.useQuery(
+    {
       inicio,
       fim,
-    });
-  }, [id, inicio, fim]);
+      cliente: id.cliente_id,
+    }
+  );
 
   return (
     <Table
       name="ClienteValorMedio"
-      data={dataVendaMensalValorMedio}
-      schema={dataVendaMensalValorMedioSchema}
+      data={dataVendaMensalValorMedio.data}
+      schema={schema}
     />
   );
 }

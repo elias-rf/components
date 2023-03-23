@@ -1,8 +1,8 @@
-import { z } from "./z";
+import { zd } from "./zod";
 
 describe("z traduzido", () => {
   it("invalid_type", () => {
-    const schema = z.string();
+    const schema = zd.string();
     expect(schema.safeParse(12).error.issues).toEqual([
       {
         code: "invalid_type",
@@ -15,7 +15,7 @@ describe("z traduzido", () => {
   });
 
   it("invalid_type_received_undefined", () => {
-    const schema = z.string();
+    const schema = zd.string();
     expect(schema.safeParse().error.issues).toEqual([
       {
         code: "invalid_type",
@@ -28,7 +28,7 @@ describe("z traduzido", () => {
   });
 
   it("invalid_literal", () => {
-    const schema = z.literal("a");
+    const schema = zd.literal("a");
     expect(schema.safeParse("b").error.issues).toEqual([
       {
         code: "invalid_literal",
@@ -41,14 +41,14 @@ describe("z traduzido", () => {
   });
 
   it("unrecognized_keys", () => {
-    const schema = z.object({ a: z.string() }).strict();
+    const schema = zd.object({ a: zd.string() }).strict();
     expect(schema.safeParse({ a: "a", b: "b" }).error.format()).toEqual({
       _errors: ["Chave(s) não reconhecida(s) no objeto: 'b'"],
     });
   });
 
   it("invalid_union", () => {
-    const schema = z.union([z.literal("a"), z.literal("b")]);
+    const schema = zd.union([zd.literal("a"), zd.literal("b")]);
     expect(schema.safeParse("c").error.format()).toEqual({
       _errors: [
         'Valor literal inválido, era esperado "a"',

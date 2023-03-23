@@ -4,8 +4,8 @@ import { produto_estatistica } from "./produto-estatistica.table";
 import type { TProdutoEstatisticaModel } from "./produto-estatistica.type";
 //#region import
 import { renameToFieldObject } from "../../utils/schema/rename-fields";
-import { z, zod } from "../../utils/zod/z";
 import { zIdClient } from "../../utils/zod/z-id-client";
+import { zd, zod } from "../../utils/zod/zod";
 import { tables } from "../tables";
 //#endregion
 
@@ -31,7 +31,7 @@ TProdutoEstatisticaModel {
       //#region mutation
       async increment({ id, quantidade }) {
         zIdClient(id, produto_estatistica.fields);
-        zod(quantidade, z.number());
+        zod(quantidade, zd.number());
         const connections = crud.connection;
         const entity = tables.produto_estatistica;
         const knex = connections;

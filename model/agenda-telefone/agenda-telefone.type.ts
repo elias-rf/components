@@ -55,10 +55,9 @@ export type TAgendaTelefoneDel = (args: {
   id: TAgendaTelefoneIds;
 }) => Promise<number>;
 
-//#region def
-//#endregion
-
-export type TAgendaTelefoneCrud = {
+export type TAgendaTelefoneModel = {
+  connection: TConnection;
+  table: TTableDef;
   query: {
     list: TAgendaTelefoneList;
     read: TAgendaTelefoneRead;
@@ -68,11 +67,6 @@ export type TAgendaTelefoneCrud = {
     update: TAgendaTelefoneUpdate;
     del: TAgendaTelefoneDel;
   };
-};
-
-export type TAgendaTelefoneModel = TAgendaTelefoneCrud & {
-  connection: TConnection;
-  table: TTableDef;
 };
 
 export type TAgendaTelefoneRpc = TAgendaTelefoneModel;

@@ -1,6 +1,12 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
-//#region import
-//#endregion
+import {
+  TConnection,
+  TFieldDef,
+  TOrder,
+  TSelect,
+  TTableDef,
+  TWhere,
+} from "../../types";
+
 export interface TEstoquePk {
   filial_id?: number;
   produto_plano_id?: string;
@@ -42,17 +48,15 @@ export type TEstoqueUpdate = (args: {
 }) => Promise<TEstoque>;
 export type TEstoqueDel = (args: { id: TEstoqueIds }) => Promise<number>;
 
-//#region def
 export type TEstoqueIncrement = (args: {
   id: TEstoqueIds;
   quantidade: number;
 }) => Promise<any>;
-//#endregion
 
-export type TEstoqueCrud = {
+export type TEstoqueModel = {
+  connection: TConnection;
+  table: TTableDef;
   query: {
-    schema: TEstoqueSchema;
-    clear: TEstoqueClear;
     list: TEstoqueList;
     read: TEstoqueRead;
   };
@@ -60,17 +64,8 @@ export type TEstoqueCrud = {
     create: TEstoqueCreate;
     update: TEstoqueUpdate;
     del: TEstoqueDel;
+    increment: TEstoqueIncrement;
   };
-};
-
-export type TEstoqueModel = TEstoqueCrud & {
-  //#region query
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-  mutation: { increment: TEstoqueIncrement };
-  //#endregion
 };
 
 export type TEstoqueRpc = TEstoqueModel;

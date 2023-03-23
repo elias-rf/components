@@ -1,5 +1,11 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
-//#region import
+import {
+  TConnection,
+  TFieldDef,
+  TOrder,
+  TSelect,
+  TTableDef,
+  TWhere,
+} from "../../types";
 import { TEtiquetaExterna } from "../etiqueta-externa/etiqueta-externa.type";
 import {
   TProdutoItem,
@@ -9,7 +15,6 @@ import {
   TProdutoPlano,
   TProdutoPlanoFields,
 } from "../produto-plano/produto-plano.type";
-//#endregion
 export interface TOrdemProducaoPk {
   ordem_producao_id?: number;
 }
@@ -98,7 +103,6 @@ export type TOrdemProducaoDel = (args: {
   id: TOrdemProducaoIds;
 }) => Promise<number>;
 
-//#region def
 export type TOrdemProducaoProdutoItem = (args: {
   id: TOrdemProducaoIds;
   select?: TProdutoItemSelect;
@@ -106,43 +110,30 @@ export type TOrdemProducaoProdutoItem = (args: {
 export type TOrdemProducaoEtiquetaExterna = (args: {
   id: TOrdemProducaoIds;
 }) => Promise<TEtiquetaExterna[]>;
-//#endregion
 
-export type TOrdemProducaoCrud = {
+export type TOrdemProducaoModel = {
+  connection: TConnection;
+  table: TTableDef;
   query: {
-    schema: TOrdemProducaoSchema;
-    clear: TOrdemProducaoClear;
     list: TOrdemProducaoList;
     read: TOrdemProducaoRead;
+    controle(args: { id: TOrdemProducaoIds; serie: string }): Promise<string>;
+    dataFabricacao(args: { id: TOrdemProducaoIds }): Promise<string>;
+    dataValidade(args: { id: TOrdemProducaoIds }): Promise<string>;
+    ehControleValido(args: { controle: string }): Promise<boolean>;
+    etiquetaExterna: TOrdemProducaoEtiquetaExterna;
+    fromControle(args: { controle: string }): Promise<string>;
+    produtoItem: TOrdemProducaoProdutoItem;
+    produtoPlano(args: {
+      id: TOrdemProducaoIds;
+      select?: TSelect<TProdutoPlanoFields>;
+    }): Promise<TProdutoPlano>;
   };
   mutation: {
     create: TOrdemProducaoCreate;
     update: TOrdemProducaoUpdate;
     del: TOrdemProducaoDel;
   };
-};
-
-export type TOrdemProducaoModel = TOrdemProducaoCrud & {
-  //#region query
-
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-  query: {
-    produtoItem: TOrdemProducaoProdutoItem;
-    produtoPlano(args: {
-      id: TOrdemProducaoIds;
-      select?: TSelect<TProdutoPlanoFields>;
-    }): Promise<TProdutoPlano>;
-    dataFabricacao(args: { id: TOrdemProducaoIds }): Promise<string>;
-    dataValidade(args: { id: TOrdemProducaoIds }): Promise<string>;
-    controle(args: { id: TOrdemProducaoIds; serie: string }): Promise<string>;
-    fromControle(args: { controle: string }): Promise<string>;
-    ehControleValido(args: { controle: string }): Promise<boolean>;
-    etiquetaExterna: TOrdemProducaoEtiquetaExterna;
-  };
-  //#endregion
 };
 
 export type TOrdemProducaoRpc = TOrdemProducaoModel;

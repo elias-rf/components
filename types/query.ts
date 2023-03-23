@@ -1,5 +1,7 @@
+import { Model } from "objection";
 import { TGenericObject } from "./index";
 
+export type ModelDb = typeof Model;
 /**
  * Tipos para Queries
  */

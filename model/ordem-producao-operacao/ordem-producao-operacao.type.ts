@@ -1,6 +1,12 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
-//#region import
-//#endregion
+import {
+  TConnection,
+  TFieldDef,
+  TOrder,
+  TSelect,
+  TTableDef,
+  TWhere,
+} from "../../types";
+
 export interface TOrdemProducaoOperacaoPk {
   ordem_producao_operacao_id?: number;
 }
@@ -123,47 +129,23 @@ export type TOrdemProducaoOperacaoTurno = (
   args: TOrdemProducaoOperacaoTurnoArgs
 ) => Promise<TOrdemProducaoOperacaoTurnoResp>;
 
-//#endregion
-
-export type TOrdemProducaoOperacaoCrud = {
+export type TOrdemProducaoOperacaoModel = {
+  connection: TConnection;
+  table: TTableDef;
   query: {
-    schema: TOrdemProducaoOperacaoSchema;
-    clear: TOrdemProducaoOperacaoClear;
     list: TOrdemProducaoOperacaoList;
     read: TOrdemProducaoOperacaoRead;
+    diario: TOrdemProducaoOperacaoDiario;
+    mensal: TOrdemProducaoOperacaoMensal;
+    modelo: TOrdemProducaoOperacaoModelo;
+    produto: TOrdemProducaoOperacaoProduto;
+    turno: TOrdemProducaoOperacaoTurno;
   };
   mutation: {
     create: TOrdemProducaoOperacaoCreate;
     update: TOrdemProducaoOperacaoUpdate;
     del: TOrdemProducaoOperacaoDel;
   };
-};
-
-export type TOrdemProducaoOperacaoModel = TOrdemProducaoOperacaoCrud & {
-  //#region query
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-
-  query: {
-    diario: TOrdemProducaoOperacaoDiario;
-    diarioSchema(): Promise<TFieldDef[]>;
-
-    mensal: TOrdemProducaoOperacaoMensal;
-    mensalSchema(): Promise<TFieldDef[]>;
-
-    modelo: TOrdemProducaoOperacaoModelo;
-    modeloSchema(): Promise<TFieldDef[]>;
-
-    produto: TOrdemProducaoOperacaoProduto;
-    produtoSchema(): Promise<TFieldDef[]>;
-
-    turno: TOrdemProducaoOperacaoTurno;
-    turnoSchema(): Promise<TFieldDef[]>;
-  };
-
-  //#endregion
 };
 
 export type TOrdemProducaoOperacaoRpc = TOrdemProducaoOperacaoModel;

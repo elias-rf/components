@@ -1,6 +1,6 @@
 import { Knex } from "knex";
-import { z, zod } from "../../../utils/zod/z";
 import { zsr } from "../../../utils/zod/z-refine";
+import { zd, zod } from "../../../utils/zod/zod";
 import { TNfTransferenciaMensal } from "../nf-saida.type";
 
 export function transferenciaMensal({
@@ -9,7 +9,7 @@ export function transferenciaMensal({
   connection: Knex;
 }): TNfTransferenciaMensal {
   return async ({ mes }) => {
-    zod(mes, z.string().superRefine(zsr.month));
+    zod(mes, zd.string().superRefine(zsr.month));
     const aux: any = {};
     const rsp = [];
     const qry = await connection(

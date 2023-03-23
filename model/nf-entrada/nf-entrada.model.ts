@@ -50,18 +50,18 @@ TNfEntradaModel {
     nfEntradaControleModel,
   });
 
-  const model = {
+  const model: TNfEntradaModel = {
     query: {
-      ...crud.query,
-      ...methods.query,
+      list: (args) => crud.query.list(args),
+      read: (args) => crud.query.read(args),
     },
     mutation: {
-      ...crud.mutation,
-      ...methods.mutation,
+      create: (args) => crud.mutation.create(args),
+      update: (args) => crud.mutation.update(args),
+      del: (args) => crud.mutation.del(args),
+      transferenciaCreate: (args) => methods.mutation.transferenciaCreate(args),
     },
-    connection,
-    table: nf_entrada,
-  } as TNfEntradaModel;
+  };
 
   return model;
 }

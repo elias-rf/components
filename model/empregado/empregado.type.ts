@@ -1,4 +1,11 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
+import {
+  TConnection,
+  TFieldDef,
+  TOrder,
+  TSelect,
+  TTableDef,
+  TWhere,
+} from "../../types";
 //#region import
 //#endregion
 export interface TEmpregadoPk {
@@ -46,13 +53,10 @@ export type TEmpregadoUpdate = (args: {
 }) => Promise<TEmpregado>;
 export type TEmpregadoDel = (args: { id: TEmpregadoIds }) => Promise<number>;
 
-//#region def
-//#endregion
-
-export type TEmpregadoCrud = {
+export type TEmpregadoModel = {
+  connection: TConnection;
+  table: TTableDef;
   query: {
-    schema: TEmpregadoSchema;
-    clear: TEmpregadoClear;
     list: TEmpregadoList;
     read: TEmpregadoRead;
   };
@@ -62,14 +66,3 @@ export type TEmpregadoCrud = {
     del: TEmpregadoDel;
   };
 };
-
-export type TEmpregadoModel = TEmpregadoCrud & {
-  //#region query
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-  //#endregion
-};
-
-export type TEmpregadoRpc = TEmpregadoModel;

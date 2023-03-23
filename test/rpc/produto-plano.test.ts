@@ -1,15 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { fetcherRpc } from "../../utils/api/fetcher-rpc";
+import { fetchTrpc } from "../../client/lib/fetch-trpc";
 
 describe("produtoPlano", () => {
-  it("produtoPlanoSchema", async () => {
-    const rsp = await fetcherRpc.query("produtoPlanoSchema");
-
-    expect(rsp.length).toEqual(172);
-  });
-
   it("produtoPlanoList", async () => {
-    const rsp = await fetcherRpc.query("produtoPlanoList", {
+    const rsp = await fetchTrpc.produtoPlano.list.query({
       where: [["produto_plano_id", "=", "1"]],
       select: ["produto_plano_id"],
     });
@@ -22,7 +16,7 @@ describe("produtoPlano", () => {
   });
 
   it("produtoPlanoRead", async () => {
-    const rsp = await fetcherRpc.query("produtoPlanoRead", {
+    const rsp = await fetchTrpc.produtoPlano.read.query({
       id: { produto_plano_id: 1 },
       select: ["produto_plano_id"],
     });

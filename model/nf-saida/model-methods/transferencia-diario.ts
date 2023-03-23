@@ -1,6 +1,6 @@
 import { Knex } from "knex";
-import { z, zod } from "../../../utils/zod/z";
 import { zsr } from "../../../utils/zod/z-refine";
+import { zd, zod } from "../../../utils/zod/zod";
 import { TNfTransferenciaDiario } from "../nf-saida.type";
 
 export function transferenciaDiario({
@@ -9,8 +9,8 @@ export function transferenciaDiario({
   connection: Knex;
 }): TNfTransferenciaDiario {
   return async ({ inicio, fim }) => {
-    zod(inicio, z.string().superRefine(zsr.date));
-    zod(fim, z.string().superRefine(zsr.date));
+    zod(inicio, zd.string().superRefine(zsr.date));
+    zod(fim, zd.string().superRefine(zsr.date));
 
     const aux: any = {};
     const rsp = [];

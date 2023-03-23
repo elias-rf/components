@@ -1,6 +1,5 @@
 import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
-//#region import
-//#endregion
+
 export interface TNfSaidaPk {
   filial_id?: number;
   nota_id?: number;
@@ -129,7 +128,6 @@ export type TNfSaidaUpdate = (args: {
 }) => Promise<TNfSaida>;
 export type TNfSaidaDel = (args: { id: TNfSaidaIds }) => Promise<number>;
 
-//#region def
 export type TNfTransferenciaDiario = (args: {
   inicio: string;
   fim: string;
@@ -180,42 +178,22 @@ export type TProdutoQtd = {
 };
 //#endregion
 
-export type TNfSaidaCrud = {
+export type TNfSaidaModel = {
   query: {
-    schema: TNfSaidaSchema;
-    clear: TNfSaidaClear;
     list: TNfSaidaList;
     read: TNfSaidaRead;
+    transferenciaDiario: TNfTransferenciaDiario;
+    transferenciaMensal: TNfTransferenciaMensal;
+    transferenciaModelo: TNfTransferenciaModelo;
+    vendaDiario: TNfVendaDiario;
+    vendaMensalCliente: TNfVendaMensalCliente;
+    vendaAnalitico: TNfVendaAnalitico;
   };
   mutation: {
     create: TNfSaidaCreate;
     update: TNfSaidaUpdate;
     del: TNfSaidaDel;
   };
-};
-
-export type TNfSaidaModel = TNfSaidaCrud & {
-  //#region query
-
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-  query: {
-    transferenciaDiario: TNfTransferenciaDiario;
-    transferenciaDiarioSchema(): Promise<TFieldDef[]>;
-    transferenciaMensal: TNfTransferenciaMensal;
-    transferenciaMensalSchema(): Promise<TFieldDef[]>;
-    transferenciaModelo: TNfTransferenciaModelo;
-    transferenciaModeloSchema(): Promise<TFieldDef[]>;
-    vendaDiario: TNfVendaDiario;
-    vendaDiarioSchema(): Promise<TFieldDef[]>;
-    vendaMensalCliente: TNfVendaMensalCliente;
-    vendaMensalClienteSchema(): Promise<TFieldDef[]>;
-    vendaAnalitico: TNfVendaAnalitico;
-    vendaAnaliticoSchema(): Promise<TFieldDef[]>;
-  };
-  //#endregion
 };
 
 export type TNfSaidaRpc = TNfSaidaModel;

@@ -1,6 +1,11 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
-//#region import
-//#endregion
+import {
+  TConnection,
+  TFieldDef,
+  TOrder,
+  TSelect,
+  TTableDef,
+  TWhere,
+} from "../../types";
 export interface TClientePk {
   cliente_id?: number;
 }
@@ -49,7 +54,6 @@ export type TClienteUpdate = (args: {
 }) => Promise<TCliente>;
 export type TClienteDel = (args: { id: TClienteIds }) => Promise<number>;
 
-//#region def
 export type TPeriodo = {
   inicio: string;
   fim: string;
@@ -62,29 +66,13 @@ export type TPeriodoCliente = {
 export type TVendaMensalResp = {
   [key: string]: string | number;
 };
-//#endregion
 
-export type TClienteCrud = {
+export type TClienteModel = {
+  connection: TConnection;
+  table: TTableDef;
   query: {
-    schema: TClienteSchema;
-    clear: TClienteClear;
     list: TClienteList;
     read: TClienteRead;
-  };
-  mutation: {
-    create: TClienteCreate;
-    update: TClienteUpdate;
-    del: TClienteDel;
-  };
-};
-
-export type TClienteModel = TClienteCrud & {
-  //#region query
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-  query: {
     vendaMensalQuantidadeSchema(args: TPeriodo): Promise<TFieldDef[]>;
     vendaMensalQuantidade(args: TPeriodoCliente): Promise<TVendaMensalResp[]>;
 
@@ -94,7 +82,11 @@ export type TClienteModel = TClienteCrud & {
     vendaMensalValorMedioSchema(args: TPeriodo): Promise<TFieldDef[]>;
     vendaMensalValorMedio(args: TPeriodoCliente): Promise<TVendaMensalResp[]>;
   };
-  //#endregion
+  mutation: {
+    create: TClienteCreate;
+    update: TClienteUpdate;
+    del: TClienteDel;
+  };
 };
 
 export type TClienteRpc = TClienteModel;

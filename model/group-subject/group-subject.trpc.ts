@@ -7,6 +7,7 @@ import {
   TReadArgs,
   TUpdateArgs,
 } from "../../types";
+import { zd } from "../../utils/zod/zod";
 const groupSubjectModel = container.resolve("groupSubjectModel");
 
 export const groupSubjectRouter = router({
@@ -35,4 +36,14 @@ export const groupSubjectRouter = router({
     .mutation((req) => {
       return groupSubjectModel.mutation.del(req.input);
     }),
+  can: publicProcedure
+    .input(
+      zd.object({
+        id: zd.object({
+          group_id: zd.string(),
+          subject_id: zd.string(),
+        }),
+      })
+    )
+    .query((req) => groupSubjectModel.query.can(req.input)),
 });

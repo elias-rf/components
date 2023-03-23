@@ -3,9 +3,8 @@ import { vi } from "vitest";
 import { Badge } from "./badge";
 
 describe("Badge", () => {
-  it("component default", () => {
+  it("component default", async () => {
     render(<Badge>TESTE</Badge>);
-
     expect(screen.getByTestId("badge-span")).toBeDefined();
     expect(screen.getByTestId("badge-span")).toHaveTextContent("TESTE");
     expect(() => screen.getByTestId("badge-button-close")).toThrow();
@@ -26,7 +25,6 @@ describe("Badge", () => {
     const handleClose = vi.fn();
     render(<Badge onClose={handleClose}>TESTE</Badge>);
     fireEvent.click(screen.getByTestId("badge-button-close"));
-
     expect(screen.getByTestId("badge-span")).toBeDefined();
     expect(screen.getByTestId("badge-span")).toHaveTextContent("TESTE");
     expect(screen.getByTestId("badge-button-close")).toBeDefined();

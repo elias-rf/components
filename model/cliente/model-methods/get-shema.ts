@@ -1,15 +1,15 @@
 import { TFieldDef } from "../../../types";
 import { day } from "../../../utils/date/day";
-import { z, zod } from "../../../utils/zod/z";
 import { zsr } from "../../../utils/zod/z-refine";
+import { zd, zod } from "../../../utils/zod/zod";
 import type { TPeriodo } from "../cliente.type";
 
 export function getSchema(args: TPeriodo) {
   zod(
     args,
-    z.object({
-      inicio: z.string().superRefine(zsr.date),
-      fim: z.string().superRefine(zsr.date),
+    zd.object({
+      inicio: zd.string().superRefine(zsr.date),
+      fim: zd.string().superRefine(zsr.date),
     })
   );
   const rsp: TFieldDef[] = [

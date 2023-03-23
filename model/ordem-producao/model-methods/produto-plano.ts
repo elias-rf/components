@@ -15,7 +15,7 @@ export function produtoPlanoFactory({
     select,
   }: {
     id: TOrdemProducaoIds;
-    select: TProdutoPlanoSelect;
+    select?: TProdutoPlanoSelect;
   }) => {
     const { produto_item_id } = await crud.query.read({
       id,

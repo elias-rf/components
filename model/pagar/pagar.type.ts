@@ -1,4 +1,11 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
+import {
+  TConnection,
+  TFieldDef,
+  TOrder,
+  TSelect,
+  TTableDef,
+  TWhere,
+} from "../../types";
 //#region import
 //#endregion
 export interface TPagarPk {
@@ -76,10 +83,10 @@ export type TPagarDel = (args: { id: TPagarIds }) => Promise<number>;
 //#region def
 //#endregion
 
-export type TPagarCrud = {
+export type TPagarModel = {
+  connection: TConnection;
+  table: TTableDef;
   query: {
-    schema: TPagarSchema;
-    clear: TPagarClear;
     list: TPagarList;
     read: TPagarRead;
   };
@@ -88,15 +95,6 @@ export type TPagarCrud = {
     update: TPagarUpdate;
     del: TPagarDel;
   };
-};
-
-export type TPagarModel = TPagarCrud & {
-  //#region query
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-  //#endregion
 };
 
 export type TPagarRpc = TPagarModel;

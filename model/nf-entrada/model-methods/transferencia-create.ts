@@ -1,8 +1,7 @@
 import { isEmpty } from "lodash";
-import { z } from "zod";
+
 import { TCrud } from "../../../server/lib/crud/crud.type";
 import { day } from "../../../utils/date/day";
-import { zod } from "../../../utils/zod/z";
 import { TEstoqueRpc } from "../../estoque/estoque.type";
 import { TNfEntradaControleRpc } from "../../nf-entrada-controle/nf-entrada-controle.type";
 import { TNfEntradaItemRpc } from "../../nf-entrada-item/nf-entrada-item.type";
@@ -32,7 +31,6 @@ export function transferenciaCreateFactory({
   nfEntradaControleModel: TNfEntradaControleRpc;
 }): TNfEntradaTransferenciaCreate {
   return async ({ controles }) => {
-    zod(controles, z.array(z.string()));
     const ordem_producao_id = await ordemProducaoModel.query.fromControle({
       controle: controles[0],
     });

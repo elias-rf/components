@@ -1,4 +1,11 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
+import {
+  TConnection,
+  TFieldDef,
+  TOrder,
+  TSelect,
+  TTableDef,
+  TWhere,
+} from "../../types";
 //#region import
 //#endregion
 export interface TEsterilizacaoExternaPk {
@@ -70,14 +77,16 @@ export type TEsterilizacaoExternaProduto = (args: {
   data: string;
 }) => Promise<{ produto: string; quantidade: number }[]>;
 
-//#endregion
-
-export type TEsterilizacaoExternaCrud = {
+export type TEsterilizacaoExternaModel = {
+  connection: TConnection;
+  table: TTableDef;
   query: {
-    schema: TEsterilizacaoExternaSchema;
-    clear: TEsterilizacaoExternaClear;
     list: TEsterilizacaoExternaList;
     read: TEsterilizacaoExternaRead;
+    diario: TEsterilizacaoExternaDiario;
+    mensal: TEsterilizacaoExternaMensal;
+    modelo: TEsterilizacaoExternaModelo;
+    produto: TEsterilizacaoExternaProduto;
   };
   mutation: {
     create: TEsterilizacaoExternaCreate;
@@ -85,25 +94,3 @@ export type TEsterilizacaoExternaCrud = {
     del: TEsterilizacaoExternaDel;
   };
 };
-
-export type TEsterilizacaoExternaModel = TEsterilizacaoExternaCrud & {
-  //#region query
-
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-  query: {
-    schemaDiario(): Promise<TFieldDef[]>;
-    schemaMensal(): Promise<TFieldDef[]>;
-    schemaProduto(): Promise<TFieldDef[]>;
-    schemaModelo(): Promise<TFieldDef[]>;
-    diario: TEsterilizacaoExternaDiario;
-    mensal: TEsterilizacaoExternaMensal;
-    modelo: TEsterilizacaoExternaModelo;
-    produto: TEsterilizacaoExternaProduto;
-  };
-  //#endregion
-};
-
-export type TEsterilizacaoExternaRpc = TEsterilizacaoExternaModel;

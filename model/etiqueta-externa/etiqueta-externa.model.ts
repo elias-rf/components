@@ -1,43 +1,29 @@
-
 import { crudFactory } from "../../server/lib/crud/crud.factory";
 import type { TConnections } from "../../types";
 import { etiqueta_externa } from "./etiqueta-externa.table";
 import type { TEtiquetaExternaModel } from "./etiqueta-externa.type";
-//#region import
-//#endregion
 
-export function etiquetaExternaModelFactory(
-  //#region inject
-  { connections }: { connections: TConnections }
-): //#endregion
-TEtiquetaExternaModel {
+export function etiquetaExternaModelFactory({
+  connections,
+}: {
+  connections: TConnections;
+}): TEtiquetaExternaModel {
+  const connection = connections[etiqueta_externa.database];
+  const crud = crudFactory(connection, etiqueta_externa);
 
-  const connection = connections[etiqueta_externa.database]
-  const crud = crudFactory(
+  const model: TEtiquetaExternaModel = {
     connection,
-    etiqueta_externa
-  );
-
-  //#region def
-  //#endregion
-
-  const model = {
+    table: etiqueta_externa,
     query: {
-      ...crud.query,
-      //#region query
-      //#endregion
+      list: (args) => crud.query.list(args),
+      read: (args) => crud.query.read(args),
     },
     mutation: {
-      ...crud.mutation,
-      //#region mutation
-      //#endregion
+      create: (args) => crud.mutation.create(args),
+      update: (args) => crud.mutation.update(args),
+      del: (args) => crud.mutation.del(args),
     },
-    connection,
-    etiqueta_externa,
-  } as TEtiquetaExternaModel;
+  };
 
-  return model
+  return model;
 }
-
-//#region other
-//#endregion

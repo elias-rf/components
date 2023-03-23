@@ -1,7 +1,7 @@
 import { Knex } from "knex";
 import { day } from "../../../utils/date/day";
-import { z, zod } from "../../../utils/zod/z";
 import { zsr } from "../../../utils/zod/z-refine";
+import { zd, zod } from "../../../utils/zod/zod";
 import { TEsterilizacaoExternaDiario } from "../esterilizacao-externa.type";
 
 export function diario(connection: Knex): TEsterilizacaoExternaDiario {
@@ -12,8 +12,8 @@ export function diario(connection: Knex): TEsterilizacaoExternaDiario {
     inicio: string;
     fim: string;
   }): Promise<{ dia: string; dia_semana: string; quantidade: number }[]> => {
-    zod(inicio, z.string().superRefine(zsr.date));
-    zod(fim, z.string().superRefine(zsr.date));
+    zod(inicio, zd.string().superRefine(zsr.date));
+    zod(fim, zd.string().superRefine(zsr.date));
 
     const qry = await connection(
       connection.raw(

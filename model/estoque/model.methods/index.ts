@@ -3,12 +3,9 @@ import type { Knex } from "knex";
 import { TTableDef } from "../../../types";
 import { increment } from "./increment";
 
-export function esterilizacaoInternaMethods(
-  connection: Knex,
-  table: TTableDef
-) {
+export function estoqueMethods(connection: Knex, table: TTableDef) {
   return {
-    query: {
+    mutation: {
       increment: increment(connection, table),
     },
   };

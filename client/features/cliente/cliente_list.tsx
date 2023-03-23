@@ -1,8 +1,8 @@
-import React from "react";
-import { clienteStore } from "../../../model/cliente/cliente.store";
 import { TClienteFields } from "../../../model/cliente/cliente.type";
 import type { TIds, TOrder, TWhere } from "../../../types";
 import { Table } from "../../components/table/table";
+import { trpc } from "../../lib/fetch-trpc";
+import { clienteSchema } from "./cliente.schema";
 
 type TClienteListProps = {
   selected: TIds;
@@ -13,8 +13,6 @@ type TClienteListProps = {
   onOrder: (event: any) => void;
 };
 
-const { getSchema, getList } = clienteStore.getState();
-
 export function ClienteList({
   selected,
   onSelect,
@@ -23,27 +21,18 @@ export function ClienteList({
   order,
   onOrder,
 }: TClienteListProps) {
-  const dataSchema = clienteStore((state) => state.dataSchema);
-  const dataList = clienteStore((state) => state.dataList);
-
-  React.useEffect(() => {
-    getSchema();
-  }, []);
-
-  React.useEffect(() => {
-    getList({ where, order });
-  }, [where, order]);
+  const dataList = trpc.agendaTelefone.list.useQuery({ where, order });
 
   return (
     <Table
-      schema={dataSchema}
-      data={dataList}
+      schema={clienteSchema}
+      data={dataList.data}
       selected={selected}
       order={order}
       where={where}
-      onSelect={(e) => onSelect(e)}
-      onWhere={(e) => onWhere(e)}
-      onOrder={(e) => onOrder(e)}
+      onSelect={onSelect}
+      onWhere={onWhere}
+      onOrder={onOrder}
     />
   );
 }

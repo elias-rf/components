@@ -1,43 +1,29 @@
-
 import { crudFactory } from "../../server/lib/crud/crud.factory";
 import type { TConnections } from "../../types";
 import { empregado } from "./empregado.table";
 import type { TEmpregadoModel } from "./empregado.type";
-//#region import
-//#endregion
 
-export function empregadoModelFactory(
-  //#region inject
-  { connections }: { connections: TConnections }
-): //#endregion
-TEmpregadoModel {
+export function empregadoModelFactory({
+  connections,
+}: {
+  connections: TConnections;
+}): TEmpregadoModel {
+  const connection = connections[empregado.database];
+  const crud = crudFactory(connection, empregado);
 
-  const connection = connections[empregado.database]
-  const crud = crudFactory(
+  const model: TEmpregadoModel = {
     connection,
-    empregado
-  );
-
-  //#region def
-  //#endregion
-
-  const model = {
+    table: empregado,
     query: {
-      ...crud.query,
-      //#region query
-      //#endregion
+      list: (args) => crud.query.list(args),
+      read: (args) => crud.query.read(args),
     },
     mutation: {
-      ...crud.mutation,
-      //#region mutation
-      //#endregion
+      create: (args) => crud.mutation.create(args),
+      update: (args) => crud.mutation.update(args),
+      del: (args) => crud.mutation.del(args),
     },
-    connection,
-    empregado,
-  } as TEmpregadoModel;
+  };
 
-  return model
+  return model;
 }
-
-//#region other
-//#endregion

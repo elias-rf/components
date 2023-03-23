@@ -18,7 +18,7 @@ export function produtoItemFactory({
     select,
   }: {
     id: TOrdemProducaoIds;
-    select: TProdutoItemSelect;
+    select?: TProdutoItemSelect;
   }) => {
     const ordemProducao = await crud.query.read({
       id,

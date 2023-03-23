@@ -1,23 +1,11 @@
 import { describe, expect, it } from "vitest";
+import { fetchTrpc } from "../../client/lib/fetch-trpc";
 import { connections } from "../../server/dal/connections";
 import { delCreateAux } from "../../test/aux/aux";
-import { fetcherRpc } from "../../utils/api/fetcher-rpc";
 
 describe("produto", () => {
-  it("produtoSchema", async () => {
-    const rsp = await fetcherRpc.query("produtoSchema");
-
-    expect(rsp.length).toEqual(9);
-  });
-
-  it("produtoClear", async () => {
-    const rsp = await fetcherRpc.query("produtoClear");
-
-    expect(rsp).toEqual(expect.any(Object));
-  });
-
   it("produtoList", async () => {
-    const rsp = await fetcherRpc.query("produtoList", {
+    const rsp = await fetchTrpc.produto.list.query({
       where: [["produto_id", "=", "1"]],
       select: ["produto_id"],
     });
@@ -30,7 +18,7 @@ describe("produto", () => {
   });
 
   it("produtoRead", async () => {
-    const rsp = await fetcherRpc.query("produtoRead", {
+    const rsp = await fetchTrpc.produto.read.query({
       id: { produto_id: 1 },
       select: ["produto_id"],
     });
@@ -44,7 +32,7 @@ describe("produto", () => {
     await delCreateAux("produto", {
       del: [{ produto_id: 4 }],
     });
-    const rsp = await fetcherRpc.mutation("produtoCreate", {
+    const rsp = await fetchTrpc.produto.create.mutate({
       data: { produto_id: 4, nome_comercial: "prod4", categoria_id: 1 },
       select: ["produto_id"],
     });
@@ -67,7 +55,7 @@ describe("produto", () => {
   it("produtoUpdate", async () => {
     const rnd = Math.round(Math.random() * 10000).toString();
 
-    const rsp = await fetcherRpc.mutation("produtoUpdate", {
+    const rsp = await fetchTrpc.produto.update.mutate({
       id: { produto_id: 1 },
       data: { nome_comercial: rnd },
       select: ["produto_id", "nome_comercial"],
@@ -93,7 +81,7 @@ describe("produto", () => {
     await delCreateAux("produto", {
       create: [{ produto_id: 2 }],
     });
-    const rsp = await fetcherRpc.mutation("produtoDel", {
+    const rsp = await fetchTrpc.produto.del.mutate({
       id: { produto_id: 2 },
     });
 

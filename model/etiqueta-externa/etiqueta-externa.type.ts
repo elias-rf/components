@@ -1,6 +1,12 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
-//#region import
-//#endregion
+import {
+  TConnection,
+  TFieldDef,
+  TOrder,
+  TSelect,
+  TTableDef,
+  TWhere,
+} from "../../types";
+
 export interface TEtiquetaExternaPk {
   etiqueta_externa_id?: string;
 }
@@ -44,13 +50,10 @@ export type TEtiquetaExternaDel = (args: {
   id: TEtiquetaExternaIds;
 }) => Promise<number>;
 
-//#region def
-//#endregion
-
-export type TEtiquetaExternaCrud = {
+export type TEtiquetaExternaModel = {
+  connection: TConnection;
+  table: TTableDef;
   query: {
-    schema: TEtiquetaExternaSchema;
-    clear: TEtiquetaExternaClear;
     list: TEtiquetaExternaList;
     read: TEtiquetaExternaRead;
   };
@@ -59,15 +62,6 @@ export type TEtiquetaExternaCrud = {
     update: TEtiquetaExternaUpdate;
     del: TEtiquetaExternaDel;
   };
-};
-
-export type TEtiquetaExternaModel = TEtiquetaExternaCrud & {
-  //#region query
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-  //#endregion
 };
 
 export type TEtiquetaExternaRpc = TEtiquetaExternaModel;

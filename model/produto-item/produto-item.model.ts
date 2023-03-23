@@ -1,55 +1,39 @@
-
 import { crudFactory } from "../../server/lib/crud/crud.factory";
 import type { TConnections } from "../../types";
-import { produto_item } from "./produto-item.table";
-import type { TProdutoItemModel } from "./produto-item.type";
-//#region import
 import { TProdutoPlanoRpc } from "../produto-plano/produto-plano.type";
 import { produtoItemMethods } from "./model.methods";
-//#endregion
+import { produto_item } from "./produto-item.table";
+import type { TProdutoItemModel } from "./produto-item.type";
 
-export function produtoItemModelFactory(
-  //#region inject
-  {
-    connections,
+export function produtoItemModelFactory({
+  connections,
+  produtoPlanoModel,
+}: {
+  connections: TConnections;
+  produtoPlanoModel: TProdutoPlanoRpc;
+}): TProdutoItemModel {
+  const connection = connections[produto_item.database];
+  const crud = crudFactory(connection, produto_item);
+  const methods = produtoItemMethods({
     produtoPlanoModel,
-  }: {
-    connections: TConnections;
-    produtoPlanoModel: TProdutoPlanoRpc;
-  }
-): //#endregion
-TProdutoItemModel {
+    produtoItemCrud: crud,
+    produto_item,
+  });
 
-  const connection = connections[produto_item.database]
-  const crud = crudFactory(
-    connection,
-    produto_item
-  );
-
-  //#region def
-  //#endregion
-
-  const model = {
+  const model: TProdutoItemModel = {
     query: {
-      ...crud.query,
-      //#region query
-      ...produtoItemMethods({
-        produtoPlanoModel,
-        produtoItemCrud: crud,
-        produto_item,
-      }).query,
-      //#endregion
+      list: (args) => crud.query.list(args),
+      read: (args) => crud.query.read(args),
+      produtoPlano: (args) => methods.query.produtoPlano(args),
     },
     mutation: {
-      ...crud.mutation,
-      //#region mutation
-      //#endregion
+      create: (args) => crud.mutation.create(args),
+      update: (args) => crud.mutation.update(args),
+      del: (args) => crud.mutation.del(args),
     },
-    connection,
-    produto_item,
-  } as TProdutoItemModel;
+  };
 
-  return model
+  return model;
 }
 
 //#region other

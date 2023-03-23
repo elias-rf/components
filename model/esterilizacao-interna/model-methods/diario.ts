@@ -1,6 +1,6 @@
 import { Knex } from "knex";
-import { z, zod } from "../../../utils/zod/z";
 import { zsr } from "../../../utils/zod/z-refine";
+import { zd, zod } from "../../../utils/zod/zod";
 
 export function diario(connection: Knex) {
   return async ({
@@ -10,8 +10,8 @@ export function diario(connection: Knex) {
     inicio: string;
     fim: string;
   }): Promise<{ dia: string; dia_semana: string; quantidade: number }[]> => {
-    zod(inicio, z.string().superRefine(zsr.date));
-    zod(fim, z.string().superRefine(zsr.date));
+    zod(inicio, zd.string().superRefine(zsr.date));
+    zod(fim, zd.string().superRefine(zsr.date));
     const qry = connection("tOperacaoOrdemProducao")
       .select(
         connection.raw("DataInicio as dia, Sum(QtdConforme) AS quantidade")

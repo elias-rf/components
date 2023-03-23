@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 import { TTableDef } from "../../../types";
-import { z, zod } from "../../../utils/zod/z";
+import { zd, zod } from "../../../utils/zod/zod";
 import { TGroupSubjectCan } from "../group-subject.type";
 
 export function canFactory({
@@ -13,9 +13,9 @@ export function canFactory({
   return async ({ id }) => {
     zod(
       id,
-      z.object({
-        group_id: z.string(),
-        subject_id: z.string(),
+      zd.object({
+        group_id: zd.string(),
+        subject_id: zd.string(),
       })
     );
     let rsp = false;

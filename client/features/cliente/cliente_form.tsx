@@ -1,70 +1,59 @@
 import React from "react";
-import { clienteStore } from "../../../model/cliente/cliente.store";
+import { FormProvider, useForm } from "react-hook-form";
 import { TClienteIds } from "../../../model/cliente/cliente.type";
 import type { TFieldDef } from "../../../types";
-import { isEmpty } from "../../../utils/identify/is_empty";
-import { isNumber } from "../../../utils/identify/is_number";
-import { Label } from "../../components/form";
-import { Textbox } from "../../components/form/textbox";
-import { useForm } from "../../lib/hooks/use_form";
+import { recordClear } from "../../../utils/schema/record-clear";
+import { Field } from "../../components/field";
+import { trpc } from "../../lib/fetch-trpc";
+import { clienteSchema } from "./cliente.schema";
 
 type TClienteFormProps = {
   id: TClienteIds;
 };
 
-const { getClear, getSchema, getRead } = clienteStore.getState();
+type TStatus = "edit" | "new" | "view";
+const dataClear = recordClear(clienteSchema);
 
 export function ClienteForm({ id }: TClienteFormProps) {
-  const dataClear = clienteStore((state) => state.dataClear);
-
-  const dataSchema = clienteStore((state) => state.dataSchema);
-
-  const dataRead = clienteStore((state) => state.dataRead);
-
-  const { values, setValues, onChangeEvent, onInputEvent } =
-    useForm(dataSchema);
+  const dataRead = trpc.cliente.read.useQuery({ id });
+  const [status, setStatus] = React.useState<TStatus>("new");
+  const formMethods = useForm({ defaultValues: dataClear });
 
   React.useEffect(() => {
-    getClear();
-    getSchema();
-  }, [getClear]);
+    if (dataRead.data && dataRead.data.agenda_telefone_id) {
+      formMethods.reset(dataRead.data);
+      setStatus("view");
+    }
+  }, [dataRead.data]);
 
-  React.useEffect(() => {
-    if (isEmpty(id) || !isNumber(id.cliente_id)) return showRecord(dataClear);
-    getRead({ id });
-  }, [id, getRead, dataClear]);
-
-  React.useEffect(() => {
-    setValues(dataRead);
-  }, [dataRead]);
-
-  function showRecord(rec: any) {
-    setValues(rec);
-  }
+  const onSubmitHandler = (values: any) => {
+    console.log(`Submitted`);
+    console.log(values);
+  };
 
   return (
-    <section
-      data-name="PhonebookForm"
-      className={"mt-2"}
-    >
-      <div className={"flex flex-col"}>
-        <div className={"flex flex-wrap gap-2"}>
-          {dataSchema?.map((field: TFieldDef) => (
-            <React.Fragment key={field.name}>
-              <div className={"my-2"}>
-                <Label name={field.name}>{field.label || ""}</Label>
-                <Textbox
+    <section className={"mt-2"}>
+      <FormProvider {...formMethods}>
+        <form
+          className="form"
+          onSubmit={formMethods.handleSubmit(onSubmitHandler)}
+          autoComplete="off"
+        ></form>
+        <div className={"flex flex-col"}>
+          <div className={"flex flex-wrap gap-2"}>
+            {clienteSchema.map((field: TFieldDef) => (
+              <React.Fragment key={field.name}>
+                <Field
                   type="text"
-                  name={field.name}
-                  onChange={onChangeEvent}
-                  onInput={onInputEvent}
-                  value={values[field.name] || ""}
+                  {...field}
+                  disabled={status === "view"}
+                  key={field.name}
                 />
-              </div>
-            </React.Fragment>
-          ))}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
-      </div>
+      </FormProvider>
     </section>
   );
 }

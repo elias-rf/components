@@ -1,21 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { fetcherRpc } from "../../utils/api/fetcher-rpc";
+import { fetchTrpc } from "../../client/lib/fetch-trpc";
 
 describe("nfSaida", () => {
-  it("nfSaidaSchema", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaSchema");
-
-    expect(rsp.length).toEqual(90);
-  });
-
-  it("nfSaidaClear", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaClear");
-
-    expect(rsp).toEqual(expect.any(Object));
-  });
-
   it("nfSaidaList", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaList", {
+    const rsp = await fetchTrpc.nfSaida.list.query({
       where: [
         ["filial_id", "=", 1],
         ["nota_id", "=", 1],
@@ -27,7 +15,7 @@ describe("nfSaida", () => {
   });
 
   it("nfSaidaRead", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaRead", {
+    const rsp = await fetchTrpc.nfSaida.read.query({
       id: { filial_id: 1, nota_id: 1, serie_id: 1, modelo_id: 1 },
       select: ["filial_id"],
     });
@@ -36,7 +24,7 @@ describe("nfSaida", () => {
   });
 
   it("nfSaidaTransferenciaDiario", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaTransferenciaDiario", {
+    const rsp = await fetchTrpc.nfSaida.transferenciaDiario.query({
       inicio: "2020-01-01",
       fim: "2020-02-01",
     });
@@ -44,14 +32,8 @@ describe("nfSaida", () => {
     expect(rsp).toEqual([{ cat1: 10, dia: "2020-01-01" }]);
   });
 
-  it("nfSaidaTransferenciaDiarioSchema", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaTransferenciaDiarioSchema");
-
-    expect(rsp.length).toEqual(7);
-  });
-
   it("nfSaidaTransferenciaMensal", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaTransferenciaMensal", {
+    const rsp = await fetchTrpc.nfSaida.transferenciaMensal.query({
       mes: "2020-01",
     });
 
@@ -59,27 +41,15 @@ describe("nfSaida", () => {
   });
 
   it("nfSaidaTransferenciaModelo", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaTransferenciaModelo", {
+    const rsp = await fetchTrpc.nfSaida.transferenciaModelo.query({
       data: "2020-01-01",
     });
 
     expect(rsp).toEqual([{ modelo: "prodPlano1", quantidade: 10 }]);
   });
 
-  it("nfSaidaTransferenciaModeloSchema", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaTransferenciaModeloSchema");
-
-    expect(rsp.length).toEqual(2);
-  });
-
-  it("nfSaidaTransferenciaMensalSchema", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaTransferenciaMensalSchema");
-
-    expect(rsp.length).toEqual(7);
-  });
-
   it("nfSaidaVendaDiario", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaVendaDiario", {
+    const rsp = await fetchTrpc.nfSaida.vendaDiario.query({
       inicio: "2020-01-01",
       fim: "2020-02-01",
       uf: ["SP"],
@@ -95,14 +65,8 @@ describe("nfSaida", () => {
     ]);
   });
 
-  it("nfSaidaVendaDiarioSchema", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaVendaDiarioSchema");
-
-    expect(rsp.length).toEqual(4);
-  });
-
   it("nfSaidaVendaMensalCliente", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaVendaMensalCliente", {
+    const rsp = await fetchTrpc.nfSaida.vendaMensalCliente.query({
       inicio: "2020-01-01",
       fim: "2020-02-01",
       cliente: 1,
@@ -119,20 +83,8 @@ describe("nfSaida", () => {
     ]);
   });
 
-  it("nfSaidaVendaMensalClienteSchema", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaVendaMensalClienteSchema");
-
-    expect(rsp.length).toEqual(5);
-  });
-
-  it("nfSaidaVendaAnaliticoSchema", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaVendaAnaliticoSchema");
-
-    expect(rsp.length).toEqual(12);
-  });
-
   it("nfSaidaVendaAnalitico", async () => {
-    const rsp = await fetcherRpc.query("nfSaidaVendaAnalitico", {
+    const rsp = await fetchTrpc.nfSaida.vendaAnalitico.query({
       inicio: "2020-01-01",
       fim: "2020-02-01",
     });

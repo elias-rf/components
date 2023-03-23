@@ -1,6 +1,12 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
-//#region import
-//#endregion
+import {
+  TConnection,
+  TFieldDef,
+  TOrder,
+  TSelect,
+  TTableDef,
+  TWhere,
+} from "../../types";
+
 export interface TEsterilizacaoInternaPk {
   esterilizacao_interna_id?: number;
 }
@@ -50,29 +56,12 @@ export type TEsterilizacaoInternaDel = (args: {
   id: TEsterilizacaoInternaIds;
 }) => Promise<number>;
 
-//#region def
-//#endregion
-
-export type TEsterilizacaoInternaCrud = {
+export type TEsterilizacaoInternaModel = {
+  connection: TConnection;
+  table: TTableDef;
   query: {
-    schema: TEsterilizacaoInternaSchema;
-    clear: TEsterilizacaoInternaClear;
     list: TEsterilizacaoInternaList;
     read: TEsterilizacaoInternaRead;
-  };
-  mutation: {
-    create: TEsterilizacaoInternaCreate;
-    update: TEsterilizacaoInternaUpdate;
-    del: TEsterilizacaoInternaDel;
-  };
-};
-
-export type TEsterilizacaoInternaModel = TEsterilizacaoInternaCrud & {
-  query: {
-    schemaDiario(): Promise<TFieldDef[]>;
-    schemaMensal(): Promise<TFieldDef[]>;
-    schemaProduto(): Promise<TFieldDef[]>;
-    schemaModelo(): Promise<TFieldDef[]>;
     diario(args: {
       inicio: string;
       fim: string;
@@ -88,7 +77,9 @@ export type TEsterilizacaoInternaModel = TEsterilizacaoInternaCrud & {
       data: string;
     }): Promise<{ produto: string; quantidade: number }[]>;
   };
-  //#endregion
+  mutation: {
+    create: TEsterilizacaoInternaCreate;
+    update: TEsterilizacaoInternaUpdate;
+    del: TEsterilizacaoInternaDel;
+  };
 };
-
-export type TEsterilizacaoInternaRpc = TEsterilizacaoInternaModel;

@@ -52,37 +52,23 @@ export type TProdutoItemDel = (args: {
 }) => Promise<number>;
 
 //#region def
-export type TProdutoItemPlanoProduto = (args: {
+export type TProdutoItemProdutoPlano = (args: {
   id: TProdutoItemIds;
   select?: TSelect<TProdutoPlanoFields>;
 }) => Promise<TProdutoPlano>;
 //#endregion
 
-export type TProdutoItemCrud = {
+export type TProdutoItemModel = {
   query: {
-    schema: TProdutoItemSchema;
-    clear: TProdutoItemClear;
     list: TProdutoItemList;
     read: TProdutoItemRead;
+    produtoPlano: TProdutoItemProdutoPlano;
   };
   mutation: {
     create: TProdutoItemCreate;
     update: TProdutoItemUpdate;
     del: TProdutoItemDel;
   };
-};
-
-export type TProdutoItemModel = TProdutoItemCrud & {
-  //#region query
-
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-  query: {
-    produtoPlano: TProdutoItemPlanoProduto;
-  };
-  //#endregion
 };
 
 export type TProdutoItemRpc = TProdutoItemModel;

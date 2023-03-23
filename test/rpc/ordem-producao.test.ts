@@ -1,22 +1,10 @@
 import { describe, expect, it } from "vitest";
+import { fetchTrpc } from "../../client/lib/fetch-trpc";
 import { delCreateAux } from "../../test/aux/aux";
-import { fetcherRpc } from "../../utils/api/fetcher-rpc";
 
 describe("ordemProducao", () => {
-  it("ordemProducaoSchema", async () => {
-    const rsp = await fetcherRpc.query("ordemProducaoSchema");
-
-    expect(rsp.length).toEqual(48);
-  });
-
-  it("ordemProducaoClear", async () => {
-    const rsp = await fetcherRpc.query("ordemProducaoClear");
-
-    expect(rsp).toEqual(expect.any(Object));
-  });
-
   it("ordemProducaoList", async () => {
-    const rsp = await fetcherRpc.query("ordemProducaoList", {
+    const rsp = await fetchTrpc.ordemProducao.list.query({
       where: [["ordem_producao_id", "=", "1"]],
       select: ["ordem_producao_id"],
     });
@@ -25,7 +13,7 @@ describe("ordemProducao", () => {
   });
 
   it("ordemProducaoRead", async () => {
-    const rsp = await fetcherRpc.query("ordemProducaoRead", {
+    const rsp = await fetchTrpc.ordemProducao.read.query({
       id: { ordem_producao_id: 1 },
       select: ["ordem_producao_id"],
     });
@@ -34,7 +22,7 @@ describe("ordemProducao", () => {
   });
 
   it("ordemProducaoProdutoItem", async () => {
-    const rsp = await fetcherRpc.query("ordemProducaoProdutoItem", {
+    const rsp = await fetchTrpc.ordemProducao.produtoItem.query({
       id: { ordem_producao_id: 1 },
       select: ["produto_item_id"],
     });
@@ -68,7 +56,7 @@ describe("ordemProducao", () => {
       ],
     });
     // ---
-    const rsp = await fetcherRpc.query("ordemProducaoProdutoPlano", {
+    const rsp = await fetchTrpc.ordemProducao.produtoPlano.query({
       id: { ordem_producao_id: rnd },
       select: ["produto_plano_id", "produto"],
     });
@@ -77,7 +65,7 @@ describe("ordemProducao", () => {
   });
 
   it("ordemProducaoDataFabricacao 3059", async () => {
-    const rsp = await fetcherRpc.query("ordemProducaoDataFabricacao", {
+    const rsp = await fetchTrpc.ordemProducao.dataFabricacao.query({
       id: { ordem_producao_id: "1" },
     });
 
@@ -95,7 +83,7 @@ describe("ordemProducao", () => {
   // });
 
   it("ordemProducaoDataValidade", async () => {
-    const rsp = await fetcherRpc.query("ordemProducaoDataValidade", {
+    const rsp = await fetchTrpc.ordemProducao.dataValidade.query({
       id: { ordem_producao_id: "1" },
     });
 
@@ -103,7 +91,7 @@ describe("ordemProducao", () => {
   });
 
   it("ordemProducaoControle", async () => {
-    const rsp = await fetcherRpc.query("ordemProducaoControle", {
+    const rsp = await fetchTrpc.ordemProducao.controle.query({
       id: { ordem_producao_id: "100" },
       serie: "1",
     });
@@ -112,7 +100,7 @@ describe("ordemProducao", () => {
   });
 
   it("ordemProducaoFromControle", async () => {
-    const rsp = await fetcherRpc.query("ordemProducaoFromControle", {
+    const rsp = await fetchTrpc.ordemProducao.fromControle.query({
       controle: "000001000017",
     });
 
@@ -120,7 +108,7 @@ describe("ordemProducao", () => {
   });
 
   it("ordemProducaoEhControleValido", async () => {
-    const rsp = await fetcherRpc.query("ordemProducaoEhControleValido", {
+    const rsp = await fetchTrpc.ordemProducao.ehControleValido.query({
       controle: "000001000017",
     });
 
@@ -128,7 +116,7 @@ describe("ordemProducao", () => {
   });
 
   it("ordemProducaoEtiquetaExterna", async () => {
-    const rsp = await fetcherRpc.query("ordemProducaoEtiquetaExterna", {
+    const rsp = await fetchTrpc.ordemProducao.etiquetaExterna.query({
       id: { ordem_producao_id: "00000100" },
     });
 

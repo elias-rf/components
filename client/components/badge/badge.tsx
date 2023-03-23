@@ -56,7 +56,7 @@ export function Badge({
     <span
       onClick={handleClick}
       className={twMerge(
-        "text-xs font-semibold mr-2 pl-2.5 py-0.5 rounded inline-flex items-center justify-between",
+        "mr-2 inline-flex items-center justify-between rounded py-0.5 pl-2.5 text-xs font-semibold",
         classColor[color],
         onClick !== undefined ? "cursor-pointer" : "",
         onClose !== undefined ? "" : "pr-2.5",
@@ -66,10 +66,12 @@ export function Badge({
       data-testid="badge-span"
     >
       {children}
-      <BadgeClose
-        name={name}
-        onClose={(e) => (onClose ? onClose(e, name) : null)}
-      />
+      {onClose ? (
+        <BadgeClose
+          name={name}
+          onClose={onClose}
+        />
+      ) : null}
     </span>
   );
 }

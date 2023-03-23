@@ -1,4 +1,11 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
+import {
+  TConnection,
+  TFieldDef,
+  TOrder,
+  TSelect,
+  TTableDef,
+  TWhere,
+} from "../../types";
 //#region import
 //#endregion
 export interface TDiamantePk {
@@ -54,10 +61,10 @@ export type TDiamanteDel = (args: { id: TDiamanteIds }) => Promise<number>;
 //#region def
 //#endregion
 
-export type TDiamanteCrud = {
+export type TDiamanteModel = {
+  connection: TConnection;
+  table: TTableDef;
   query: {
-    schema: TDiamanteSchema;
-    clear: TDiamanteClear;
     list: TDiamanteList;
     read: TDiamanteRead;
   };
@@ -67,7 +74,5 @@ export type TDiamanteCrud = {
     del: TDiamanteDel;
   };
 };
-
-export type TDiamanteModel = TDiamanteCrud;
 
 export type TDiamanteRpc = TDiamanteModel;

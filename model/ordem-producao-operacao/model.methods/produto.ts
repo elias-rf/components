@@ -1,7 +1,7 @@
 import { Knex } from "knex";
 import { z } from "zod";
-import { zod } from "../../../utils/zod/z";
 import { zsr } from "../../../utils/zod/z-refine";
+import { zod } from "../../../utils/zod/zod";
 import { TOrdemProducaoOperacaoProduto } from "../ordem-producao-operacao.type";
 
 export function produto(connection: Knex): TOrdemProducaoOperacaoProduto {

@@ -1,6 +1,6 @@
 import { formatMoney } from "../../../utils/format/format-money";
-import { z, zod } from "../../../utils/zod/z";
 import { zsr } from "../../../utils/zod/z-refine";
+import { zd, zod } from "../../../utils/zod/zod";
 import { TNfSaidaModel } from "../../nf-saida/nf-saida.type";
 import { TPeriodoCliente, TVendaMensalResp } from "../cliente.type";
 
@@ -12,10 +12,10 @@ export function vendaMensalValorFactory({
   return async (args: TPeriodoCliente): Promise<TVendaMensalResp[]> => {
     zod(
       args,
-      z.object({
-        inicio: z.string().superRefine(zsr.date),
-        fim: z.string().superRefine(zsr.date),
-        cliente: z.number(),
+      zd.object({
+        inicio: zd.string().superRefine(zsr.date),
+        fim: zd.string().superRefine(zsr.date),
+        cliente: zd.number(),
       })
     );
     const data = await nfSaidaModel.query.vendaMensalCliente(args);

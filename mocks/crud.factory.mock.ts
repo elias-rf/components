@@ -4,7 +4,6 @@ import { TTableDef } from "../types/model";
 import { clearFactory } from "../server/lib/crud/methods/clear-factory";
 import { countFactory } from "../server/lib/crud/methods/count-factory";
 import { createFactory } from "../server/lib/crud/methods/create-factory";
-import { decrementFactory } from "../server/lib/crud/methods/decrement-factory";
 import { delFactory } from "../server/lib/crud/methods/del-factory";
 import { incrementFactory } from "../server/lib/crud/methods/increment-factory";
 import { listFactory } from "../server/lib/crud/methods/list-factory";
@@ -17,7 +16,6 @@ export const methods = (connection: Knex, table: TTableDef) => ({
   clear: clearFactory(table),
   count: countFactory(connection, table),
   create: createFactory(connection, table),
-  decrement: decrementFactory(connection, table),
   increment: incrementFactory(connection, table),
   del: delFactory(connection, table),
   update: updateFactory(connection, table),

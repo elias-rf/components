@@ -1,12 +1,12 @@
 import { TConnection } from "../../../types";
-import { z, zod } from "../../../utils/zod/z";
 import { zsr } from "../../../utils/zod/z-refine";
+import { zd, zod } from "../../../utils/zod/zod";
 import { TEsterilizacaoExternaModelo } from "../esterilizacao-externa.type";
 
 export function modelo(connection: TConnection): TEsterilizacaoExternaModelo {
   return async ({ data, produto }: { data: string; produto: string }) => {
-    zod(data, z.string().superRefine(zsr.date));
-    zod(produto, z.string());
+    zod(data, zd.string().superRefine(zsr.date));
+    zod(produto, zd.string());
 
     const qry = connection(
       connection.raw(

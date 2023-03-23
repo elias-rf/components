@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
+import { TrpcProvider } from "../trpc-provider";
 import { ClienteList } from "./cliente_list";
 
 const meta: Meta<typeof ClienteList> = {
@@ -37,5 +38,9 @@ function ListState() {
 }
 
 export const List: Story = {
-  render: () => <ListState />,
+  render: () => (
+    <TrpcProvider>
+      <ListState />
+    </TrpcProvider>
+  ),
 };
