@@ -1,16 +1,16 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { TFieldDef } from "../../../types/model";
 import { TableColumn } from "./table-column";
 
-export default {
-  title: "Components/Table/TableColumns",
+const meta: Meta<typeof TableColumn> = {
   component: TableColumn,
   argTypes: {
     onOrder: { action: "onClick" },
-    showOrderBy: { monitor: "orderBy" },
   },
-} as ComponentMeta<typeof TableColumn>;
+};
+export default meta;
+type Story = StoryObj<typeof TableColumn>;
 
 const schema: TFieldDef[] = [
   {
@@ -35,12 +35,12 @@ const schema: TFieldDef[] = [
   },
 ];
 
-export const Default: ComponentStory<typeof TableColumn> = (props: any) => {
+const TableColumnStory = (props: any) => {
   const [orderBy, setOrderBy] = React.useState([]);
 
   function handleOnOrder(e: any) {
     setOrderBy(e.value);
-    props.showOrderBy(e.value);
+
     if (props.onOrder) props.onOrder(e);
   }
 
@@ -60,4 +60,10 @@ export const Default: ComponentStory<typeof TableColumn> = (props: any) => {
       </thead>
     </table>
   );
+};
+
+export const Default: Story = {
+  render: (props) => {
+    return <TableColumnStory {...props} />;
+  },
 };

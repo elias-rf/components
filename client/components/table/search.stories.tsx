@@ -1,48 +1,41 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { JsonViewer } from "@textea/json-viewer";
 import React from "react";
-import { TWhere } from "../../../types";
-import { TFieldDef } from "../../../types/model";
+import type { TFieldDef, TWhere } from "../../../types";
 import { Search } from "./search";
 
-export default {
-  title: "Components/Table/Search",
+const meta: Meta<typeof Search> = {
   component: Search,
   argTypes: {
     onWhere: { action: "onWhere" },
-    showWhere: { monitor: "where" },
   },
-} as ComponentMeta<typeof Search>;
+};
+
+export default meta;
+type Story = StoryObj<typeof Search>;
 
 const schema: TFieldDef[] = [
   {
     label: "ID",
     name: "id",
     typeField: "int",
-    labelClass: "text-left",
-    fieldClass: "text-left",
   },
   {
     label: "Nome",
     name: "nome",
-    labelClass: "text-center",
-    fieldClass: "text-center",
-    sortable: false,
   },
   {
     label: "Valor de compra",
     name: "compra",
-    labelClass: "text-right",
-    fieldClass: "text-right",
   },
 ];
 
-export const Default: ComponentStory<typeof Search> = (props: any) => {
+function SearchStory(props: any) {
   const [where, setWhere] = React.useState<TWhere[]>([["id", "<", "4"]]);
 
-  function handleOnWhere(event: any) {
-    setWhere(event.value);
-    props.onWhere(event);
-    props.showWhere(event.value);
+  function handleOnWhere(where: TWhere[]) {
+    setWhere(where);
+    props.onWhere(where);
   }
 
   return (
@@ -52,6 +45,16 @@ export const Default: ComponentStory<typeof Search> = (props: any) => {
         schema={schema}
         onWhere={handleOnWhere}
       />
+      <JsonViewer
+        rootName="where"
+        value={where}
+        highlightUpdates
+        className="text-xs"
+      />
     </div>
   );
+}
+
+export const Default: Story = {
+  render: (props) => <SearchStory {...props} />,
 };

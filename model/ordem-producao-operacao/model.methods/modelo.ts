@@ -6,12 +6,12 @@ import { TOrdemProducaoOperacaoModelo } from "../ordem-producao-operacao.type";
 
 export function modelo(connection: Knex): TOrdemProducaoOperacaoModelo {
   return async ({
-    data,
     operacao,
+    data,
     produto,
   }: {
-    data: string;
     operacao: string;
+    data: string;
     produto: string;
   }) => {
     zod(operacao, z.string());

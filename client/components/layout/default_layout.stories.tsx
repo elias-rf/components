@@ -1,69 +1,86 @@
-import shoppingBag from "@iconify/icons-carbon/shopping-bag";
-import userAvatar from "@iconify/icons-carbon/user-avatar";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { DefaultLayout } from "./default_layout";
+import type { Meta, StoryObj } from "@storybook/react";
+import {
+  IconBoxMultiple,
+  IconBuildingFactory2,
+  IconBuildingStore,
+  IconShieldLock,
+} from "@tabler/icons-react";
+import { LayoutDefault } from "./default_layout";
 
-const menu = {
-  versao: "1.0.0",
-  title: { title: "Visiontech", to: "/" },
-  groups: [
-    {
-      title: "Usuario",
-      icon: userAvatar,
-      items: [
-        { title: "Alterar Senha", to: "/password" },
-        { title: "Logout", to: "/logout" },
-      ],
-    },
-    {
-      title: "Comercial",
-      icon: shoppingBag,
-      items: [
-        { title: "Calculadora de Preços", to: "/comercial/precos" },
-        { title: "Vendas 30 Dias", to: "/comercial/vendas30dias" },
-      ],
-    },
-    {
-      title: "Industrial",
-      icon: shoppingBag,
-      items: [
-        { title: "Controles de produção", to: "/industrial/controles" },
-        { title: "Transferência", to: "/industrial/transferencia" },
-      ],
-    },
-    {
-      title: "Sistema",
-      icon: shoppingBag,
-      items: [
-        { title: "Usuários", to: "/sistema/usuario" },
-        { title: "Permissões", to: "/sistema/permissao" },
-      ],
-    },
-    {
-      title: "Outros",
-      icon: shoppingBag,
-      items: [{ title: "Agenda de ramais", to: "/outros/agenda" }],
-    },
-  ],
+const menu = [
+  {
+    label: "Comercial",
+    icon: (
+      <IconBuildingStore
+        size="1rem"
+        stroke={1}
+      />
+    ),
+    items: [
+      { label: "Calculadora de preços", to: "/comercial/calculadora" },
+      { label: "Vendas 30 dias", to: "/comercial/venda" },
+      { label: "Clientes", to: "/comercial/cliente" },
+    ],
+  },
+  {
+    label: "Industrial",
+    icon: (
+      <IconBuildingFactory2
+        size="1rem"
+        stroke={1}
+      />
+    ),
+    items: [
+      { label: "Controles de produção", to: "/industrial/controle" },
+      { label: "Transferência", to: "/industrial/transferencia" },
+    ],
+  },
+  {
+    label: "Sistema",
+    icon: (
+      <IconShieldLock
+        size="1rem"
+        stroke={1}
+      />
+    ),
+    items: [
+      { label: "Usuários", to: "/sistema/usuario" },
+      { label: "Permissões", to: "/sistema/permissao" },
+    ],
+  },
+  {
+    label: "Outros",
+    icon: (
+      <IconBoxMultiple
+        size="1rem"
+        stroke={1}
+      />
+    ),
+    items: [{ label: "Agenda de ramais", to: "/outros/agenda" }],
+  },
+];
+
+const meta: Meta<typeof LayoutDefault> = {
+  component: LayoutDefault,
+  argTypes: { onClick: { action: "onClick" } },
 };
 
-export default {
-  title: "Components/DefaultLayout",
-  component: DefaultLayout,
-  argTypes: { onClick: { action: "onClick" } },
-} as ComponentMeta<typeof DefaultLayout>;
+export default meta;
+type Story = StoryObj<typeof LayoutDefault>;
 
-export const Default: ComponentStory<typeof DefaultLayout> = (props: any) => {
-  return (
-    <>
-      <DefaultLayout {...props}>Página de dados</DefaultLayout>
-    </>
-  );
+export const Default: Story = {
+  render: (props: any) => {
+    return (
+      <>
+        <LayoutDefault {...props}>Página de dados</LayoutDefault>
+      </>
+    );
+  },
 };
 
 Default.args = {
   children: `Página 1`,
-  isAuthenticated: true,
+
   menu,
 };
 

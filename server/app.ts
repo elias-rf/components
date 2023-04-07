@@ -22,6 +22,7 @@ app.use(cookieParser(config.auth.secret));
 app.use(jwtMiddleFactory(config.auth.secret || ""));
 app.use(loggerMiddleFactory(logger));
 app.use(cors());
+app.options("*", cors());
 app.use(express.static(join(__dirname, "../../public")));
 app.get("/api", (req, res) => {
   res.send("ok");

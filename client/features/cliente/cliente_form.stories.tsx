@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { TrpcProvider } from "../trpc-provider";
 import { ClienteForm } from "./cliente_form";
 
 const meta: Meta<typeof ClienteForm> = {
@@ -14,10 +13,6 @@ type Story = StoryObj<typeof ClienteForm>;
 
 export const Form: Story = {
   render: (props: any) => {
-    return (
-      <TrpcProvider>
-        <ClienteForm id={props.id} />
-      </TrpcProvider>
-    );
+    return <ClienteForm id={props.id} />;
   },
 };

@@ -1,6 +1,5 @@
-import React from "react";
-import { nfSaidaStore } from "../../../model/nf-saida/nf-saida.store";
 import { day } from "../../../utils/date/day";
+import { trpc } from "../../../utils/trpc/trpc";
 import { PageTitle } from "../../components/page/page_title";
 
 function quantidadeProduto(data: any[] | undefined, prod: string) {
@@ -10,81 +9,71 @@ function quantidadeProduto(data: any[] | undefined, prod: string) {
 }
 
 export function TransferenciaMes() {
-  const [dataTransferenciaMensal, getTransferenciaMensal] = nfSaidaStore(
-    (state) => [state.dataTransferenciaMensal, state.getTransferenciaMensal]
-  );
-
-  // const [dataTransferenciaMensalSchema, getTransferenciaMensalSchema] =
-  //   nfSaidaStore((state) => [
-  //     state.dataTransferenciaMensalSchema,
-  //     state.getTransferenciaMensalSchema,
-  //   ]);
-
   const mesInicial = day().format("YYYY-MM");
 
-  React.useEffect(() => {
-    getTransferenciaMensal({ mes: mesInicial });
-  }, [mesInicial]);
+  const dataTransferenciaMensal = trpc.nfSaida.transferenciaMensal.useQuery({
+    mes: mesInicial,
+  });
 
   return (
     <div className={"w-fit"}>
       <PageTitle title={"Produção do Mês"} />
       <div className={"flex"}>
-        <div className={"p-2 border border-gray-600 w-80"}>
+        <div className={"w-80 border border-gray-600 p-2"}>
           <div>LiteFlex</div>
           <div className={"text-8xl"}>
-            {quantidadeProduto(dataTransferenciaMensal, "LITEFLEX")}
+            {quantidadeProduto(dataTransferenciaMensal.data, "LITEFLEX")}
           </div>
         </div>
         <div className={"w-60"}>
           <div
             className={
-              "flex justify-between p-2 border border-gray-600 flex-nowrap"
+              "flex flex-nowrap justify-between border border-gray-600 p-2"
             }
           >
             <div className={"w-28"}>Hilite</div>
             <div className={"items-end text-xl"}>
-              {quantidadeProduto(dataTransferenciaMensal, "HILITE")}
+              {quantidadeProduto(dataTransferenciaMensal.data, "HILITE")}
             </div>
           </div>
           <div
             className={
-              "flex justify-between p-2 border border-gray-600 flex-nowrap"
+              "flex flex-nowrap justify-between border border-gray-600 p-2"
             }
           >
             <div className={"w-28"}>Enlite</div>
             <div className={"text-xl"}>
-              {quantidadeProduto(dataTransferenciaMensal, "ENLITE")}
+              {quantidadeProduto(dataTransferenciaMensal.data, "ENLITE")}
             </div>
           </div>
           <div
             className={
-              "flex justify-between p-2 border border-gray-600 flex-nowrap"
+              "flex flex-nowrap justify-between border border-gray-600 p-2"
             }
           >
             <div className={"w-28"}>Metil</div>
             <div className={"text-xl"}>
-              {quantidadeProduto(dataTransferenciaMensal, "METILCELULOSE")}
+              {quantidadeProduto(dataTransferenciaMensal.data, "METILCELULOSE")}
             </div>
           </div>
           <div
             className={
-              "flex justify-between p-2 border border-gray-600 flex-nowrap"
+              "flex flex-nowrap justify-between border border-gray-600 p-2"
             }
           >
             <div className={"w-28"}>Corneal Ring</div>
             <div className={"text-xl"}>
-              {quantidadeProduto(dataTransferenciaMensal, "CORNEAL RING")}
+              {quantidadeProduto(dataTransferenciaMensal.data, "CORNEAL RING")}
             </div>
           </div>
           <div
             className={
-              "flex justify-between p-2 border border-gray-600 flex-nowrap"
+              "flex flex-nowrap justify-between border border-gray-600 p-2"
             }
           >
             <div className={"w-28"}>Anel Capsular</div>
             <div className={"text-xl"}>
-              {quantidadeProduto(dataTransferenciaMensal, "ANEL CAPSULAR")}
+              {quantidadeProduto(dataTransferenciaMensal.data, "ANEL CAPSULAR")}
             </div>
           </div>
         </div>

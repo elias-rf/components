@@ -4,6 +4,7 @@ import { jwtEncode } from "../../server/lib/jwt-encode";
 import { passwordVerify } from "../../server/lib/password-verify";
 import type { TCurrentUser } from "../../types";
 import type { TConnection, TConnections } from "../../types/model";
+import { setCookie } from "../../utils/network/cookie";
 import { usuario } from "./usuario.table";
 import type { TUsuario, TUsuarioModel } from "./usuario.type";
 
@@ -19,16 +20,20 @@ export function usuarioModelFactory({
     query: {
       ...crud.query,
 
-      async me() {
-        return {};
+      async me(ctx: any) {
+        return ctx.req.context.currentUser;
       },
     },
     mutation: {
       ...crud.mutation,
-      async logout() {
+      async logout(ctx: any) {
+        setCookie(ctx.res, "token", "", { maxAge: 1 });
         return true;
       },
-      async login({ user, password }: { user: string; password: string }) {
+      async login(
+        { user, password }: { user: string; password: string },
+        ctx: any
+      ) {
         let record: TUsuario;
         if (!user) {
           throw new Error("Usuário não informado");
@@ -71,6 +76,9 @@ export function usuarioModelFactory({
           config.auth.secret,
           config.auth.expiration
         );
+        setCookie(ctx.res, "token", resp.token, {
+          maxAge: 60 * 60 * 12 * 1000, // 12 horas
+        });
         return resp;
       },
     },

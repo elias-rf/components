@@ -1,7 +1,7 @@
 import React from "react";
-import { TransferenciaDiario } from "./transferencia_diario";
-import { TransferenciaMensal } from "./transferencia_mensal";
-import { TransferenciaModelo } from "./transferencia_modelo";
+import { TransferenciaDiario } from "./transferencia-diario";
+import { TransferenciaMensal } from "./transferencia-mensal";
+import { TransferenciaModelo } from "./transferencia-modelo";
 
 type TransferenciaProp = {
   dia?: string;

@@ -1,17 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { usuarioStore } from "../../model/usuario/usuario.store";
+import { trpc } from "../../utils/trpc/trpc";
 import logo from "../assets/images/logo.svg";
 import { Page } from "../components/page/page";
 
 export function Home() {
-  const isAuthenticated = usuarioStore((state: any) => state.isAuthenticated);
-
   const navigate = useNavigate();
+  const me = trpc.usuario.me.useQuery();
 
   React.useEffect(() => {
-    if (isAuthenticated) navigate("/dashboard");
-  }, [isAuthenticated]);
+    if (me.data) {
+      if (me.data.usuario_id > 0) navigate("/dashboard");
+      if (me.data.usuario_id === undefined) navigate("/login");
+    }
+  }, [me.data]);
 
   return (
     <Page>

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { TrpcProvider } from "../trpc-provider";
 import { ClienteValorMedio } from "./cliente_valor_medio";
 
 const meta: Meta<typeof ClienteValorMedio> = {
@@ -15,12 +14,10 @@ type Story = StoryObj<typeof ClienteValorMedio>;
 export const ValorMedio: Story = {
   render: (props: any) => {
     return (
-      <TrpcProvider>
-        <ClienteValorMedio
-          id={props.id}
-          dia="2020-02-01"
-        />
-      </TrpcProvider>
+      <ClienteValorMedio
+        id={props.id}
+        dia="2020-02-01"
+      />
     );
   },
 };

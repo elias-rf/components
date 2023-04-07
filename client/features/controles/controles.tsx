@@ -2,8 +2,8 @@ import React from "react";
 
 import { Tab } from "../../components/tabs/tab";
 import { Tabs } from "../../components/tabs/tabs";
-import { EstExt } from "./est_ext/est_ext";
-import { EstInt } from "./est_int/est_int";
+import { EstExt } from "./est_ext/est-ext";
+import { EstInt } from "./est_int/est-int";
 import { Operacao } from "./operacao/operacao";
 import { Transferencia } from "./transferencia/transferencia";
 

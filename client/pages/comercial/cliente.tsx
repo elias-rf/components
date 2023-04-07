@@ -28,10 +28,9 @@ export default function Cliente() {
       setOrder(event.value);
     }
   }
-  function handleOnChangeTabs(event: TTabs) {
-    console.log(event);
-    setTabActive(event.value);
-  }
+  const handleOnChangeTabs = (_: any, id: string) => {
+    setTabActive(id);
+  };
 
   return (
     <Page>

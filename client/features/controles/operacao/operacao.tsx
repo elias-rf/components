@@ -2,11 +2,11 @@ import React from "react";
 import { day } from "../../../../utils/date/day";
 import { Label } from "../../../components/form";
 import { Select } from "../../../components/select/select";
-import { OperacaoDiario } from "./operacao_diario";
-import { OperacaoMensal } from "./operacao_mensal";
-import { OperacaoModelo } from "./operacao_modelo";
-import { OperacaoProduto } from "./operacao_produto";
-import { OperacaoTurno } from "./operacao_turno";
+import { OperacaoDiario } from "./operacao-diario";
+import { OperacaoMensal } from "./operacao-mensal";
+import { OperacaoModelo } from "./operacao-modelo";
+import { OperacaoProduto } from "./operacao-produto";
+import { OperacaoTurno } from "./operacao-turno";
 
 type OperacaoProp = {
   dia?: string;

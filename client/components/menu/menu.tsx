@@ -1,13 +1,41 @@
-export type TMenuProps = {
-  children: React.ReactElement | React.ReactElement[];
+"use client";
+
+import { Box, NavLink } from "@mantine/core";
+
+export type TMenuComponentProps = {
+  menu: {
+    label: string;
+    icon: React.ReactNode;
+    items: {
+      label: string;
+      to: string;
+    }[];
+  }[];
+  onClick: (to: string) => void;
 };
 
-export function Menu({ children }: TMenuProps) {
+export function MenuComponent({ menu, onClick }: TMenuComponentProps) {
   return (
-    <div className={"flex-col lg:flex lg:flex-row lg:min-h-screen"}>
-      <div className={"flex flex-col text-gray-100 bg-gray-700"}>
-        {children}
-      </div>
-    </div>
+    <Box w={185}>
+      {menu.map((grupo) => {
+        return (
+          <NavLink
+            label={grupo.label}
+            key={grupo.label}
+            icon={grupo.icon}
+          >
+            {grupo.items.map((link) => {
+              return (
+                <NavLink
+                  label={link.label}
+                  key={link.label}
+                  onClick={() => onClick(link.to)}
+                />
+              );
+            })}
+          </NavLink>
+        );
+      })}
+    </Box>
   );
 }

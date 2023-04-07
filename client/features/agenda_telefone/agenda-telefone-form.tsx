@@ -7,9 +7,10 @@ import type {
 import { isEmpty } from "../../../utils/identify/is_empty";
 import { isNumber } from "../../../utils/identify/is_number";
 import { recordClear } from "../../../utils/schema/record-clear";
-import { Button } from "../../components/button";
+import { trpc } from "../../../utils/trpc/trpc";
+
+import { Button } from "@mantine/core";
 import { Field } from "../../components/field";
-import { trpc } from "../../lib/fetch-trpc";
 import { agendaTelefoneSchema } from "./agenda-telefone.schema";
 
 type TAgendaTelefoneFormProps = {
@@ -107,7 +108,7 @@ export function AgendaTelefoneForm({
       {status === "view" ? (
         <div className={"flex justify-end"}>
           <Button
-            className={"w-24 mr-4"}
+            className={"mr-4 w-24"}
             size="small"
             color="primary"
             onClick={handleButtonEdit}
@@ -117,7 +118,7 @@ export function AgendaTelefoneForm({
             Editar
           </Button>
           <Button
-            className={"w-24 mr-4"}
+            className={"mr-4 w-24"}
             size="small"
             color="secondary"
             onClick={handleButtonNew}
@@ -144,7 +145,7 @@ export function AgendaTelefoneForm({
           onSubmit={formMethods.handleSubmit(onSubmitHandler)}
           autoComplete="off"
         >
-          <div className={"sm:flex flex-wrap gap-2"}>
+          <div className={"flex-wrap gap-2 sm:flex"}>
             {agendaTelefoneSchema.map((field) => (
               <React.Fragment key={field.name}>
                 <Field
@@ -162,7 +163,7 @@ export function AgendaTelefoneForm({
         <div className={"flex justify-end"}>
           {formMethods.formState.isDirty ? (
             <Button
-              className={"w-24 mr-4"}
+              className={"mr-4 w-24"}
               size="small"
               color="primary"
               onClick={handleButtonSave}

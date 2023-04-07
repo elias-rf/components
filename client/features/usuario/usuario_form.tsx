@@ -1,147 +1,186 @@
 import React from "react";
-import { usuarioStore } from "../../../model/usuario/usuario.store";
-import type { TFieldDef, TSelected } from "../../../types";
+import { FormProvider, useForm } from "react-hook-form";
+import { TUsuario, TUsuarioIds } from "../../../model/usuario/usuario.type";
 import { isEmpty } from "../../../utils/identify/is_empty";
+import { recordClear } from "../../../utils/schema/record-clear";
+import { trpc } from "../../../utils/trpc/trpc";
 import { Button } from "../../components/button";
-import { Label } from "../../components/form/label";
-import { Textbox } from "../../components/form/textbox";
-import { LabelError } from "../../components/label_error";
-import { SpinnerIcon } from "../../components/spinner";
-import { useForm } from "../../lib/hooks/use_form";
+import { Field } from "../../components/field";
 import { isNumber } from "../../lib/valid/isNumber";
+import { usuarioSchema } from "./usuario-schema";
 
 type TUsuarioFormProps = {
-  id: TSelected;
+  id: TUsuarioIds;
+  onCreate?: (rec: TUsuario) => void;
+  onUpdate?: (rec: TUsuario) => void;
+  onDel?: (ok: number) => void;
 };
 
-export function UsuarioForm({ id }: TUsuarioFormProps) {
-  const dataClear = usuarioStore((state) => state.dataClear);
-  const getClear = usuarioStore((state) => state.getClear);
-  const dataSchema = usuarioStore((state) => state.dataSchema);
-  const getSchema = usuarioStore((state) => state.getSchema);
-  const dataRead = usuarioStore((state) => state.dataRead);
-  const getRead = usuarioStore((state) => state.getRead);
-  const setCreate = usuarioStore((state) => state.setCreate);
-  const setUpdate = usuarioStore((state) => state.setUpdate);
-  const setDel = usuarioStore((state) => state.setDel);
-  const fetching = usuarioStore((state) => state.fetching);
-  const refreshList = usuarioStore((state) => state.refreshList);
+type TStatus = "edit" | "new" | "view";
 
-  const [status, setStatus] = React.useState("new");
-  const { values, setValues, errors, onChange, onInput, isDirty, schema } =
-    useForm(dataSchema);
+const dataClear = recordClear(usuarioSchema);
 
+export function UsuarioForm({
+  id,
+  onCreate,
+  onUpdate,
+  onDel,
+}: TUsuarioFormProps) {
+  const utils = trpc.useContext();
+  const dataRead = trpc.usuario.read.useQuery({ id });
+
+  const dataUpdate = trpc.agendaTelefone.update.useMutation({
+    onSuccess: (rec) => {
+      utils.agendaTelefone.invalidate();
+      if (onUpdate) onUpdate(rec);
+    },
+  });
+  const dataCreate = trpc.agendaTelefone.create.useMutation({
+    onSuccess: (rec) => {
+      utils.agendaTelefone.invalidate();
+      if (onCreate) onCreate(rec);
+    },
+  });
+  const dataDel = trpc.agendaTelefone.del.useMutation({
+    onSuccess: (ok) => {
+      utils.agendaTelefone.invalidate();
+      if (onDel) onDel(ok);
+    },
+  });
+
+  const [status, setStatus] = React.useState<TStatus>("new");
+
+  const formMethods = useForm({ defaultValues: dataClear });
+
+  // atualiza state do form quando com o ID passado
   React.useEffect(() => {
-    getClear();
-    getSchema();
-  }, [getClear]);
-
-  React.useEffect(() => {
-    if (isEmpty(id) || !isNumber(id.usuario_id)) return showRecord(dataClear);
-    getRead({ id });
-  }, [id, getRead, dataClear]);
-
-  React.useEffect(() => {
-    setValues(dataRead);
-  }, [dataRead]);
-
-  function showRecord(rec: any) {
-    let status = "update";
-    setValues(rec);
-    if (isEmpty(rec.usuario_id)) {
-      status = "new";
+    if (isEmpty(id) || !isNumber(id.usuario_id)) {
+      return formMethods.reset(dataClear);
     }
-    setStatus(status);
+  }, [id]);
+
+  // atualiza state do form quando for lido do servidor
+  React.useEffect(() => {
+    if (dataRead.data && dataRead.data.usuario_id) {
+      formMethods.reset(dataRead.data);
+      setStatus("view");
+    }
+  }, [dataRead.data]);
+
+  function handleButtonCancel() {
+    setStatus("view");
+    formMethods.reset();
+    console.log("cancel");
   }
 
-  async function updataRecord() {
-    await setUpdate({
-      id: { usuario_id: values.usuario_id },
-      data: values,
-    });
-    refreshList();
+  function handleButtonEdit() {
+    setStatus("edit");
   }
 
-  function handleClick(e: any) {
-    if (e.name === "novo") {
-      showRecord(dataClear);
-    }
-    if (e.name === "excluir") {
-      setDel({
-        id: { usuario_id: values.usuario_id },
-      });
-      showRecord(dataClear);
-    }
-    if (e.name === "salvar") {
-      if (status === "update") {
-        updataRecord();
-      }
-      if (status === "new") setCreate({ data: values });
-      showRecord(dataClear);
-    }
+  function handleButtonNew() {
+    setStatus("new");
+    formMethods.reset(dataClear);
   }
+
+  function handleButtonDel() {
+    setStatus("view");
+    dataDel.mutate({ id });
+  }
+
+  function handleButtonSave() {
+    setStatus("view");
+    if (status === "edit")
+      dataUpdate.mutate({ id, data: formMethods.getValues() });
+    if (status === "new") dataCreate.mutate({ data: formMethods.getValues() });
+  }
+
+  const onSubmitHandler = (values: any) => {
+    console.log(`Submitted`);
+    console.log(values);
+  };
 
   return (
-    <section
-      data-name="PhonebookForm"
-      className={"mt-2"}
-    >
-      <div className={"space-x-2"}>
-        <Button
-          className={"w-20"}
-          size="small"
-          color="green"
-          onClick={handleClick}
-          name="novo"
-        >
-          Novo
-        </Button>
-        <Button
-          className={"w-20"}
-          size="small"
-          color="primary"
-          onClick={handleClick}
-          name="salvar"
-          disabled={!isDirty}
-        >
-          Salvar
-        </Button>
-        <Button
-          className={"w-20"}
-          size="small"
-          color="red"
-          onClick={handleClick}
-          name="excluir"
-          disabled={isDirty}
-        >
-          Excluir
-        </Button>
-        <div className={"inline-block"}>
-          <SpinnerIcon
-            show={fetching}
-            className={"text-xl"}
-          />
+    <section className={"mt-2"}>
+      {status === "view" ? (
+        <div className={"flex justify-end"}>
+          <Button
+            className={"mr-4 w-24"}
+            size="small"
+            color="primary"
+            onClick={handleButtonEdit}
+            name="edit"
+            data-testid="buttonEdit"
+          >
+            Editar
+          </Button>
+          <Button
+            className={"mr-4 w-24"}
+            size="small"
+            color="secondary"
+            onClick={handleButtonNew}
+            name="new"
+            data-testid="buttonNew"
+          >
+            Novo
+          </Button>
+          <Button
+            className={"w-24"}
+            size="small"
+            color="secondary"
+            onClick={handleButtonDel}
+            name="del"
+            data-testid="buttonDel"
+          >
+            Excluir
+          </Button>
         </div>
-      </div>
-      <div className={"flex flex-wrap gap-2"}>
-        {schema
-          ?.filter((field) => field.visible !== false)
-          .map((field: TFieldDef) => (
-            <React.Fragment key={field.name}>
-              <div className={"my-2"}>
-                <Label name={field.name}>{field.label || ""}</Label>
-                <Textbox
+      ) : null}
+      <FormProvider {...formMethods}>
+        <form
+          className="form"
+          onSubmit={formMethods.handleSubmit(onSubmitHandler)}
+          autoComplete="off"
+        >
+          <div className={"flex-wrap gap-2 sm:flex"}>
+            {usuarioSchema.map((field) => (
+              <React.Fragment key={field.name}>
+                <Field
                   type="text"
-                  name={field.name}
-                  onChange={onChange}
-                  onInput={onInput}
-                  value={values[field.name] || ""}
+                  {...field}
+                  disabled={status === "view"}
+                  key={field.name}
                 />
-                <LabelError>{errors[field.name]}</LabelError>
-              </div>
-            </React.Fragment>
-          ))}
-      </div>
+              </React.Fragment>
+            ))}
+          </div>
+        </form>
+      </FormProvider>
+      {status === "view" ? null : (
+        <div className={"flex justify-end"}>
+          {formMethods.formState.isDirty ? (
+            <Button
+              className={"mr-4 w-24"}
+              size="small"
+              color="primary"
+              onClick={handleButtonSave}
+              name="save"
+              data-testid="buttonSave"
+            >
+              Salvar
+            </Button>
+          ) : null}
+          <Button
+            className={"w-24"}
+            size="small"
+            color="secondary"
+            onClick={handleButtonCancel}
+            name="cancel"
+            data-testid="buttonCancel"
+          >
+            Cancelar
+          </Button>
+        </div>
+      )}
     </section>
   );
 }

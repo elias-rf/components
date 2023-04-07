@@ -1,13 +1,15 @@
-import { action } from "@storybook/addon-actions";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { JsonViewer } from "@textea/json-viewer";
 import React from "react";
 import { TFieldDef, TWhere } from "../../../types";
 import { TableFilter } from "./table-filter";
 
-export default {
-  title: "Components/Table/TableFilter",
+const meta: Meta<typeof TableFilter> = {
   component: TableFilter,
-} as ComponentMeta<typeof TableFilter>;
+};
+
+export default meta;
+type Story = StoryObj<typeof TableFilter>;
 
 const schema: TFieldDef[] = [
   {
@@ -32,28 +34,41 @@ const schema: TFieldDef[] = [
   },
 ];
 
-export const Default: ComponentStory<typeof TableFilter> = () => {
+const TableFilterStory = () => {
   const [where, setWhere] = React.useState<TWhere[]>([["id", "=", "4"]]);
 
-  function handleOnWhere(e: any) {
-    setWhere(e.value);
-    action("where")(e);
+  function handleOnWhere(where: any) {
+    setWhere(where);
   }
 
   return (
-    <table className={"w-full"}>
-      <thead>
-        <tr>
-          {schema?.map((fld) => (
-            <TableFilter
-              key={fld.name}
-              schemaField={fld}
-              where={where}
-              onWhere={handleOnWhere}
-            />
-          ))}
-        </tr>
-      </thead>
-    </table>
+    <>
+      <table className={"w-full"}>
+        <thead>
+          <tr>
+            {schema?.map((fld) => (
+              <TableFilter
+                key={fld.name}
+                schemaField={fld}
+                where={where}
+                onWhere={handleOnWhere}
+              />
+            ))}
+          </tr>
+        </thead>
+      </table>
+      <JsonViewer
+        rootName="where"
+        value={where}
+        highlightUpdates
+        className="text-xs"
+      />
+    </>
   );
+};
+
+export const Default: Story = {
+  render: () => {
+    return <TableFilterStory />;
+  },
 };

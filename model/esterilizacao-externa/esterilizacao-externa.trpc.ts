@@ -5,7 +5,8 @@ import {
   readZod,
   updateZod,
 } from "../../server/lib/trpc/inputs";
-import { publicProcedure, router } from "../../server/trpc";
+import { publicProcedure, router } from "../../utils/trpc/trpc-server";
+import { zd } from "../../utils/zod/zod";
 import { container } from "../container";
 
 const model = container.resolve("esterilizacaoExternaModel");
@@ -26,4 +27,16 @@ export const esterilizacaoExternaRouter = router({
   del: publicProcedure
     .input(delZod)
     .mutation((req) => model.mutation.del(req.input)),
+  diario: publicProcedure
+    .input(zd.object({ inicio: zd.string(), fim: zd.string() }))
+    .query((req) => model.query.diario(req.input)),
+  mensal: publicProcedure
+    .input(zd.object({ mes: zd.string() }))
+    .query((req) => model.query.mensal(req.input)),
+  modelo: publicProcedure
+    .input(zd.object({ data: zd.string(), produto: zd.string() }))
+    .query((req) => model.query.modelo(req.input)),
+  produto: publicProcedure
+    .input(zd.object({ data: zd.string() }))
+    .query((req) => model.query.produto(req.input)),
 });

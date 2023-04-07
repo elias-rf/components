@@ -3,27 +3,22 @@
 @host = {{hostname}}:{{port}}
 
 ### INDEX
-GET {{host}}/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"usuario"}
+GET {{host}}/api/trpc/usuario.list?input={}
 
 ###
 # @name LOGIN
-POST {{host}}/api/rpc
+POST {{host}}/api/trpc/usuario.login
 Content-Type: application/json
 
-{"jsonrpc":"2.0","id":"1",
-  "method":"usuarioLogin",
-  "params":{"user":"user","password":"123"}
-}
+{"user":"user","password":"123"}
+
 
 ### ME
-GET {{host}}/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"usuarioMe"}
-authorization: {{LOGIN.response.body.$.result.token}}
+GET {{host}}/api/trpc/usuario.me
+
 
 ### LOGOUT
-POST {{host}}/api/rpc
-Content-Type: application/json
+POST {{host}}/api/trpc/usuario.logout
 
-{"jsonrpc":"2.0","id":"1",
-  "method":"usuarioLogout",
-  "params":{}
-}
+### READ
+GET {{host}}/api/trpc/usuario.read?input={"id":{"usuario_id":2}}

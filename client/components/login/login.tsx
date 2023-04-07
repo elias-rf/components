@@ -1,7 +1,5 @@
-import { useField } from "../../lib/hooks/use-field.hook";
-import { Button } from "../button";
-import { Textbox } from "../form/textbox";
-import { SpinnerIcon } from "../spinner/spinner-icon";
+import { Button, Space, Text, TextInput, Title } from "@mantine/core";
+import React from "react";
 
 export type TLoginProps = {
   onInput?: (e: { user: string; password: string }) => void;
@@ -17,62 +15,46 @@ export function Login(props: TLoginProps) {
     error,
     onInput = () => null,
   } = props;
-
-  const fieldUser = useField("");
-  const fieldPassword = useField("");
-
+  const [password, setPassword] = React.useState("");
+  const [user, setUser] = React.useState("");
   function handleLogin() {
-    onInput({ user: fieldUser.value, password: fieldPassword.value });
+    onInput({ user, password });
   }
 
   return (
-    <div
-      className={
-        "flex items-center justify-center w-screen h-screen bg-gray-200"
-      }
-    >
-      <div
-        className={
-          "flex flex-col w-64 px-4 py-4 bg-white border border-gray-400 rounded-lg"
-        }
+    <div>
+      <Title
+        order={3}
+        align="center"
       >
-        <div className={"mb-4 text-2xl font-semibold text-center"}>{title}</div>
-        <div className={"flex flex-col mb-2"}>
-          <Textbox
-            type="text"
-            {...fieldUser.register()}
-            name="nome"
-            placeholder="Nome"
-          />
-        </div>
-        <div className={"flex flex-col mb-6"}>
-          <Textbox
-            type="password"
-            {...fieldPassword.register()}
-            name="password"
-            placeholder="Senha"
-          />
-        </div>
-        <div className={"flex flex-col mb-2"}>
-          <div className={"relative flex"}>
-            <Button
-              name="login"
-              onClick={handleLogin}
-            >
-              <div className={"inline-flex flex-nowrap"}>
-                Login
-                <div className={"self-center ml-1"}>
-                  <SpinnerIcon
-                    show={loading}
-                    className={"-mr-4"}
-                  />
-                </div>
-              </div>
-            </Button>
-          </div>
-        </div>
-        <div className={"flex flex-col text-red-600"}>{error}</div>
-      </div>
+        {title}
+      </Title>
+
+      <TextInput
+        type="text"
+        label="Nome"
+        value={user}
+        onChange={(event) => setUser(event.currentTarget.value)}
+      />
+
+      <Space h="xs" />
+
+      <TextInput
+        type="password"
+        label="Senha"
+        value={password}
+        onChange={(event) => setPassword(event.currentTarget.value)}
+      />
+
+      <Space h="xs" />
+      <Button
+        loading={loading}
+        loaderPosition="right"
+        onClick={handleLogin}
+      >
+        Login
+      </Button>
+      <Text c={"red"}>{error}</Text>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import {
   readZod,
   updateZod,
 } from "../../server/lib/trpc/inputs";
-import { publicProcedure, router } from "../../server/trpc";
+import { publicProcedure, router } from "../../utils/trpc/trpc-server";
 import { zd } from "../../utils/zod/zod";
 import { container } from "../container";
 
@@ -27,8 +27,8 @@ export const usuarioRouter = router({
   del: publicProcedure
     .input(delZod)
     .mutation((req) => model.mutation.del(req.input)),
-  me: publicProcedure.query(() => model.query.me()),
-  logout: publicProcedure.mutation(() => model.mutation.logout()),
+  me: publicProcedure.query(({ ctx }) => model.query.me(ctx)),
+  logout: publicProcedure.mutation(({ ctx }) => model.mutation.logout(ctx)),
   login: publicProcedure
     .input(
       zd.object({
@@ -36,7 +36,7 @@ export const usuarioRouter = router({
         password: zd.string(),
       })
     )
-    .mutation((req) => {
-      return model.mutation.login(req.input);
+    .mutation(({ input, ctx }) => {
+      return model.mutation.login(input, ctx);
     }),
 });

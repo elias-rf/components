@@ -1,6 +1,6 @@
 import React from "react";
+import { trpc } from "../../utils/trpc/trpc";
 import { Authorization } from "../components/authorization";
-import { trpc } from "../lib/fetch-trpc";
 
 export function Auth({ children }: { children: React.ReactNode }) {
   const currentUser = trpc.usuario.me.useQuery();

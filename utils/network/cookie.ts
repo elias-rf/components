@@ -9,19 +9,15 @@ export function setCookie(
   value: string,
   options: CookieSerializeOptions = {}
 ) {
-  options.path = options.path || "/";
-  if (options.maxAge) {
-    options.expires = new Date(Date.now() + options.maxAge * 1000);
-  }
-
-  res.setHeader("Set-Cookie", serialize(name, value, options));
+  console.log(`🚀 ~ file: cookie.ts:15 ~ options:`, options);
+  res.cookie(name, value, options);
 }
 
 /**
  * This resets `cookie` on `res` object
  */
 export function resetCookie(res: Response, name: string) {
-  res.setHeader(
+  res.cookie(
     "Set-Cookie",
     serialize(name, "", {
       path: "/",

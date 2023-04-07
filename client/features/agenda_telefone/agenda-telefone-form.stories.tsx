@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { TrpcProvider } from "../trpc-provider";
 import { AgendaTelefoneForm } from "./agenda-telefone-form";
 const meta: Meta<typeof AgendaTelefoneForm> = {
   component: AgendaTelefoneForm,
@@ -13,16 +12,14 @@ type Story = StoryObj<typeof AgendaTelefoneForm>;
 
 function FormState(props: any) {
   return (
-    <TrpcProvider>
-      <AgendaTelefoneForm
-        id={props.id}
-        onCreate={(rec) => {
-          meta.args = meta.args ?? {};
-          meta.args.id = meta.args.id ?? { agenda_telefone_id: 0 };
-          meta.args.id.agenda_telefone_id = rec.agenda_telefone_id;
-        }}
-      />
-    </TrpcProvider>
+    <AgendaTelefoneForm
+      id={props.id}
+      onCreate={(rec) => {
+        meta.args = meta.args ?? {};
+        meta.args.id = meta.args.id ?? { agenda_telefone_id: 0 };
+        meta.args.id.agenda_telefone_id = rec.agenda_telefone_id;
+      }}
+    />
   );
 }
 

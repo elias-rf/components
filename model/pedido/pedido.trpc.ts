@@ -5,7 +5,7 @@ import {
   readZod,
   updateZod,
 } from "../../server/lib/trpc/inputs";
-import { publicProcedure, router } from "../../server/trpc";
+import { publicProcedure, router } from "../../utils/trpc/trpc-server";
 import { container } from "../container";
 
 const model = container.resolve("pedidoModel");

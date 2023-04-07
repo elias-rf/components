@@ -1,86 +1,136 @@
+import {
+  AppShell,
+  Box,
+  Burger,
+  Button,
+  Flex,
+  Header,
+  MediaQuery,
+  Menu,
+  Navbar,
+  useMantineTheme,
+} from "@mantine/core";
+import { IconMessageCircle, IconSettings } from "@tabler/icons-react";
 import React from "react";
-import { Menu } from "../menu/menu";
-import { MenuBody } from "../menu/menu_body";
-import { MenuGroup } from "../menu/menu_group";
-import { MenuItem } from "../menu/menu_item";
-import { MenuTitle } from "../menu/menu_title";
+import { TCurrentUser } from "../../../types";
+import { MenuComponent } from "../menu/menu";
 
-export type TDefaultLayoutProps = {
-  children?: React.ReactNode;
-  isAuthenticated: boolean;
-  onClick: (e: React.MouseEvent) => void;
-  menu: any;
+type TLayoutDefaultProps = {
+  menu: {
+    label: string;
+    icon: React.ReactNode;
+    items: {
+      label: string;
+      to: string;
+    }[];
+  }[];
+  onClick: (to: string) => void;
+  children: React.ReactNode;
+  me: TCurrentUser;
 };
 
-/** componente layout com menu */
-export function DefaultLayout({
-  isAuthenticated,
+export function LayoutDefault({
   menu,
   onClick,
   children,
-}: TDefaultLayoutProps) {
-  function handleOnClick(e: React.MouseEvent) {
-    onClick(e);
-  }
+  me,
+}: TLayoutDefaultProps) {
+  const theme = useMantineTheme();
+  const [opened, setOpened] = React.useState(false);
 
   return (
-    <section
-      data-name="DefaultLayout"
-      className={"flex flex-col h-screen lg:flex-row"}
-    >
-      <nav
-        data-name="DefaultLayout_Menu"
-        className={"print:hidden"}
-      >
-        <div className={"flex-initial"}>
-          <Menu>
-            <MenuTitle
-              to={menu.title.to}
-              onClick={handleOnClick}
+    <AppShell
+      styles={{
+        main: {
+          background:
+            theme.colorScheme === "dark"
+              ? theme.colors.dark[8]
+              : theme.colors.gray[0],
+        },
+      }}
+      navbar={
+        <Navbar
+          p="md"
+          hiddenBreakpoint="sm"
+          hidden={!opened}
+          width={{ sm: 200, lg: 200 }}
+        >
+          <Box w={185}>
+            <MenuComponent
+              onClick={onClick}
+              menu={menu}
+            ></MenuComponent>
+          </Box>
+        </Navbar>
+      }
+      header={
+        <Header
+          height={38}
+          className="p-1"
+        >
+          <Flex
+            justify={"space-between"}
+            className=""
+          >
+            <Flex
+              wrap="nowrap"
+              direction="row"
+              align="center"
             >
-              {menu.title.title}
-            </MenuTitle>
-            {isAuthenticated ? (
-              <MenuBody version={menu.versao}>
-                {menu.groups.map((group: any) => (
-                  <MenuGroup
-                    icon={group.icon}
-                    title={group.title}
-                    key={group.title}
-                  >
-                    {group.items.map((item: any) => (
-                      <MenuItem
-                        to={item.to}
-                        key={item.title}
-                        onClick={handleOnClick}
-                      >
-                        {item.title}
-                      </MenuItem>
-                    ))}
-                  </MenuGroup>
-                ))}
-              </MenuBody>
-            ) : (
-              <MenuBody version={menu.versao}>
-                <div className={"pl-2"}>
-                  <MenuItem
-                    to={"/login"}
-                    onClick={handleOnClick}
-                  >
-                    Login
-                  </MenuItem>
-                </div>
-              </MenuBody>
-            )}
-          </Menu>
-        </div>
-      </nav>
-      <section
-        data-name="DefaultLayout_Main"
-        className={"flex-auto overflow-auto"}
-      >
-        {children}
-      </section>
-    </section>
+              <MediaQuery
+                largerThan="sm"
+                styles={{ display: "none" }}
+              >
+                <Burger
+                  opened={opened}
+                  onClick={() => setOpened((o) => !o)}
+                  size="sm"
+                  color={theme.colors.gray[6]}
+                />
+              </MediaQuery>
+              <Button
+                variant="subtle"
+                color="dark"
+                compact
+                onClick={() => onClick("/")}
+              >
+                VISIONTECH
+              </Button>
+            </Flex>
+            <Menu
+              width={150}
+              trigger="hover"
+              position="bottom-end"
+            >
+              <Menu.Target>
+                <Button
+                  variant="subtle"
+                  color="dark"
+                  compact
+                >
+                  {me?.nome || "Nome"}
+                </Button>
+              </Menu.Target>
+              <Menu.Dropdown>
+                <Menu.Item
+                  icon={<IconSettings size={14} />}
+                  onClick={() => onClick("/user/config")}
+                >
+                  Configurações
+                </Menu.Item>
+                <Menu.Item
+                  icon={<IconMessageCircle size={14} />}
+                  onClick={() => onClick("/logout")}
+                >
+                  Sair
+                </Menu.Item>
+              </Menu.Dropdown>
+            </Menu>
+          </Flex>
+        </Header>
+      }
+    >
+      {children}
+    </AppShell>
   );
 }

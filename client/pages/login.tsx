@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { usuarioStore } from "../../model/usuario/usuario.store";
+import { trpc } from "../../utils/trpc/trpc";
 import { Login as LoginComponent } from "../components/login/login";
 
 /**
@@ -9,18 +9,25 @@ import { Login as LoginComponent } from "../components/login/login";
  * @returns {*} componente <LoginView />
  */
 export function Login() {
-  const setLogin = usuarioStore((state) => state.setLogin);
+  const login = trpc.usuario.login.useMutation();
   const [error, setError] = React.useState("");
   const [spinner, setSpinner] = React.useState(false);
   const navigate = useNavigate();
 
-  async function handleInput(event: any) {
+  React.useEffect(() => {
+    if (login.data && login.data.usuario_id > 0) {
+      console.log("logado!");
+      navigate("/");
+    }
+  }, [login.data]);
+
+  async function handleInput(user: { user: string; password: string }) {
     setSpinner(true);
     setError("");
     try {
-      await setLogin(event.value);
+      await login.mutate(user);
+
       setSpinner(false);
-      navigate("/");
     } catch (e: any) {
       setSpinner(false);
       setError(e.response?.errors[0].message);
@@ -33,7 +40,7 @@ export function Login() {
         <div>{error}</div>
         <LoginComponent
           title="Intranet Visiontech"
-          onInputEvent={handleInput}
+          onInput={handleInput}
           loading={spinner}
           error={error}
         />

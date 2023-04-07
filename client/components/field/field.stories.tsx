@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { FormProvider, useForm } from "react-hook-form";
+
+import { Button, Space } from "@mantine/core";
+import { useForm } from "@mantine/form";
+import React from "react";
 import { Field, TFieldAttributes } from "./field";
 
 const meta: Meta<typeof Field> = {
@@ -24,7 +27,7 @@ const formSchema: TFieldAttributes[] = [
     name: "favAnimal",
     label: "What is Your Favourite Pet?",
     type: "select",
-    options: [
+    data: [
       { label: "Dog 🐶", value: "dog" },
       { label: "Cat 😺", value: "cat" },
       { label: "Bird 🐦", value: "bird" },
@@ -40,7 +43,14 @@ const formSchema: TFieldAttributes[] = [
 ];
 
 function FieldComponent() {
-  const methods = useForm();
+  const form = useForm({
+    initialValues: {
+      fullName: "",
+      address: "",
+      favAnimal: "",
+      agreeToTerms: false,
+    },
+  });
 
   const onSubmitHandler = (values: any) => {
     console.log(`Submitted`);
@@ -49,21 +59,24 @@ function FieldComponent() {
 
   return (
     <div className={"flex space-x-2 space-y-2"}>
-      <FormProvider {...methods}>
-        <form
-          className="form"
-          onSubmit={methods.handleSubmit(onSubmitHandler)}
-          autoComplete="off"
-        >
-          {formSchema.map((field) => (
+      <form onSubmit={form.onSubmit(onSubmitHandler)}>
+        {formSchema.map((field) => (
+          <React.Fragment key={field.name}>
             <Field
               {...field}
-              key={field.name}
+              {...form.getInputProps(field.name)}
             />
-          ))}
-          <button type="submit">OK</button>
-        </form>
-      </FormProvider>
+            <Space h="xs" />
+          </React.Fragment>
+        ))}
+
+        <Button
+          variant="outline"
+          type="submit"
+        >
+          OK
+        </Button>
+      </form>
     </div>
   );
 }

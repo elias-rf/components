@@ -7,24 +7,19 @@ import { ShowSortableIcon } from "./show-sortable-icon";
 export type TTableColumn = {
   schemaField: TFieldDef;
   order: TOrder[];
-  onOrder?: (event: any) => void;
+  onOrder?: (order: TOrder[]) => void;
 };
 
 export function TableColumn({ schemaField, order, onOrder }: TTableColumn) {
   function handleOnOrder(order: TOrder[] = [], schemaField: TFieldDef) {
     if (onOrder && schemaField.sortable !== false)
-      onOrder({
-        name: "",
-        value: orderByUtil.setUnique(order, schemaField?.name),
-        event: "onOrder",
-        component: "TableColumn",
-      });
+      onOrder(orderByUtil.setUnique(order, schemaField?.name));
   }
 
   return (
     <th
       className={twMerge(
-        "sticky top-0 p-1 border-b-1 border-gray-300 bg-gray-100",
+        "border-b-1 sticky top-0 border-gray-300 bg-gray-100 p-1",
         schemaField.labelClass,
         schemaField.sortable !== false && onOrder ? "cursor-pointer" : null
       )}

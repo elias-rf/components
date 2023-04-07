@@ -1,26 +1,26 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import { usuarioStore } from "../../model/usuario/usuario.store";
-import { DefaultLayout } from "../components/layout/default_layout";
+import { trpc } from "../../utils/trpc/trpc";
+import { LayoutDefault } from "../components/layout/default_layout";
 import { menu } from "../menu";
 
 /** feature Layout com menu de páginas do aplicativo */
 export function Layout({ children }: { children?: any }) {
-  const isAuthenticated = usuarioStore((state: any) => state.isAuthenticated);
+  const me = trpc.usuario.me.useQuery();
 
   const navigate = useNavigate();
 
-  async function handleMenu(event: any) {
-    navigate(event.value);
+  async function handleMenu(to: string) {
+    navigate(to);
   }
 
   return (
-    <DefaultLayout
+    <LayoutDefault
       menu={menu}
       onClick={handleMenu}
-      isAuthenticated={isAuthenticated}
+      me={{}}
     >
       <Outlet />
       {children}
-    </DefaultLayout>
+    </LayoutDefault>
   );
 }

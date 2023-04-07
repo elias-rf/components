@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { usuarioStore } from "../../model/usuario/usuario.store";
 import { Page } from "../components/page/page";
 import { TransferenciaMes } from "../features/dashboard/transferencia_mes";
 

@@ -3,8 +3,8 @@ import { FormProvider, useForm } from "react-hook-form";
 import { TClienteIds } from "../../../model/cliente/cliente.type";
 import type { TFieldDef } from "../../../types";
 import { recordClear } from "../../../utils/schema/record-clear";
+import { trpc } from "../../../utils/trpc/trpc";
 import { Field } from "../../components/field";
-import { trpc } from "../../lib/fetch-trpc";
 import { clienteSchema } from "./cliente.schema";
 
 type TClienteFormProps = {

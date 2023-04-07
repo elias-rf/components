@@ -1,6 +1,10 @@
+import {
+  IconChevronDown,
+  IconChevronUp,
+  IconSelector,
+} from "@tabler/icons-react";
 import { TFieldDef, TOrder } from "../../../types";
 import { orderByUtil } from "../../../utils/schema/order-by";
-import { SortIcon } from "../icons/sort-icon";
 
 interface ShowSortableIconProps {
   order: TOrder[];
@@ -24,25 +28,25 @@ export function ShowSortableIcon({
 
   if (ord === "asc") {
     return (
-      <SortIcon
-        direction="up"
-        className="w-4"
+      <IconChevronUp
+        stroke={1}
+        size={16}
       />
     );
   }
   if (ord === "desc") {
     return (
-      <SortIcon
-        direction="down"
-        className="w-4"
+      <IconChevronDown
+        stroke={1}
+        size={16}
       />
     );
   }
 
   return (
-    <SortIcon
-      direction="both"
-      className="w-4"
+    <IconSelector
+      stroke={1}
+      size={20}
     />
   );
 }

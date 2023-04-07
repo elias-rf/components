@@ -1,8 +1,8 @@
 import React from "react";
 import { TAgendaTelefoneFields } from "../../../model/agenda-telefone/agenda-telefone.type";
 import { TIds, TOrder, TWhere } from "../../../types";
+import { trpc } from "../../../utils/trpc/trpc";
 import { Table } from "../../components/table/table";
-import { trpc } from "../../lib/fetch-trpc";
 import { agendaTelefoneSchema } from "./agenda-telefone.schema";
 
 type TAgendaTelefoneListProps = {

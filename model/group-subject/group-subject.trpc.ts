@@ -1,5 +1,4 @@
 import { container } from "../../model/container";
-import { publicProcedure, router } from "../../server/trpc";
 import {
   TCreateArgs,
   TDelArgs,
@@ -7,6 +6,7 @@ import {
   TReadArgs,
   TUpdateArgs,
 } from "../../types";
+import { publicProcedure, router } from "../../utils/trpc/trpc-server";
 import { zd } from "../../utils/zod/zod";
 const groupSubjectModel = container.resolve("groupSubjectModel");
 

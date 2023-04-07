@@ -29,9 +29,9 @@ const ListState = () => {
       selected={selected}
       where={where}
       order={order}
-      onSelectEvent={handleSelected}
-      onWhereEvent={handleWhere}
-      onOrderEvent={handleOrder}
+      onSelect={handleSelected}
+      onWhere={handleWhere}
+      onOrder={handleOrder}
     />
   );
 };

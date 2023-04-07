@@ -1,8 +1,8 @@
-import React from "react";
-import { usuarioStore } from "../../../model/usuario/usuario.store";
 import { TUsuarioFields } from "../../../model/usuario/usuario.type";
 import { TIds, TOrder, TWhere } from "../../../types";
+import { trpc } from "../../../utils/trpc/trpc";
 import { Table } from "../../components/table/table";
+import { usuarioSchema } from "./usuario-schema";
 
 type TUsuarioListProps = {
   selected: TIds;
@@ -21,33 +21,18 @@ export function UsuarioList({
   order,
   onOrder,
 }: TUsuarioListProps) {
-  const [dataSchema, getSchema] = usuarioStore((state) => [
-    state.dataSchema,
-    state.getSchema,
-  ]);
-  const [dataList, getList] = usuarioStore((state) => [
-    state.dataList,
-    state.getList,
-  ]);
-
-  React.useEffect(() => {
-    getSchema();
-  }, [getSchema]);
-
-  React.useEffect(() => {
-    getList({ where, order });
-  }, [where, order, getList]);
+  const dataList = trpc.usuario.list.useQuery({ where, order });
 
   return (
     <Table
-      schema={dataSchema}
-      data={dataList}
+      schema={usuarioSchema}
+      data={dataList.data}
       selected={selected}
       order={order}
       where={where}
-      onSelect={(e) => onSelect(e)}
-      onWhere={(e) => onWhere(e)}
-      onOrder={(e) => onOrder(e)}
+      onSelect={onSelect}
+      onWhere={onWhere}
+      onOrder={onOrder}
     />
   );
 }

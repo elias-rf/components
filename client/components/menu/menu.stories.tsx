@@ -1,64 +1,88 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Menu } from "./menu";
-import { MenuBody } from "./menu_body";
-import { MenuGroup } from "./menu_group";
-import { MenuItem } from "./menu_item";
-import { MenuTitle } from "./menu_title";
+import type { Meta, StoryObj } from "@storybook/react";
+import {
+  IconBoxMultiple,
+  IconBuildingFactory2,
+  IconBuildingStore,
+  IconShieldLock,
+} from "@tabler/icons-react";
+import { MenuComponent } from "./menu";
 
-export default {
-  title: "Components/Menu/Menu",
-  component: Menu,
-  subcomponents: { MenuTitle, MenuItem },
-  argTypes: { onClickEvent: { action: "onClick" } },
-} as ComponentMeta<typeof Menu>;
+const meta: Meta<typeof MenuComponent> = {
+  component: MenuComponent,
+  argTypes: { onClick: { action: "onClick" } },
+};
 
-export const Default: ComponentStory<typeof MenuTitle> = (args: any) => {
-  function handleOnClickEvent(event: React.MouseEvent) {
+const menu = [
+  {
+    label: "Comercial",
+    icon: (
+      <IconBuildingStore
+        size="1rem"
+        stroke={1}
+      />
+    ),
+    items: [
+      { label: "Calculadora de preços", to: "/comercial/calculadora" },
+      { label: "Vendas 30 dias", to: "/comercial/venda" },
+      { label: "Clientes", to: "/comercial/cliente" },
+    ],
+  },
+  {
+    label: "Industrial",
+    icon: (
+      <IconBuildingFactory2
+        size="1rem"
+        stroke={1}
+      />
+    ),
+    items: [
+      { label: "Controles de produção", to: "/industrial/controle" },
+      { label: "Transferência", to: "/industrial/transferencia" },
+    ],
+  },
+  {
+    label: "Sistema",
+    icon: (
+      <IconShieldLock
+        size="1rem"
+        stroke={1}
+      />
+    ),
+    items: [
+      { label: "Usuários", to: "/sistema/usuario" },
+      { label: "Permissões", to: "/sistema/permissao" },
+    ],
+  },
+  {
+    label: "Outros",
+    icon: (
+      <IconBoxMultiple
+        size="1rem"
+        stroke={1}
+      />
+    ),
+    items: [{ label: "Agenda de ramais", to: "/outros/agenda" }],
+  },
+];
+
+export default meta;
+type Story = StoryObj<typeof MenuComponent>;
+
+const MenuComponentStory = (args: any) => {
+  function handleOnClickEvent(event: string) {
     args.onClickEvent(event);
   }
 
   return (
     <>
-      <Menu {...args}>
-        <MenuTitle
-          onClick={handleOnClickEvent}
-          to="/#"
-        >
-          Titulo
-        </MenuTitle>
-        <MenuBody version="1.0">
-          <MenuGroup title="Grupo 1">
-            <MenuItem
-              onClick={handleOnClickEvent}
-              to="/11#"
-            >
-              Item 11
-            </MenuItem>
-            <MenuItem
-              onClick={handleOnClickEvent}
-              to="/12#"
-            >
-              Item 12
-            </MenuItem>
-          </MenuGroup>
-          <MenuGroup title="Grupo 2">
-            <MenuItem
-              onClick={handleOnClickEvent}
-              to="/21#"
-            >
-              Item 21
-            </MenuItem>
-            <MenuItem
-              onClick={handleOnClickEvent}
-              to="/22#"
-            >
-              Item 22
-            </MenuItem>
-          </MenuGroup>
-        </MenuBody>
-      </Menu>
+      <MenuComponent
+        menu={menu}
+        onClick={handleOnClickEvent}
+      ></MenuComponent>
     </>
   );
 };
 
-Default.storyName = "Menu";
+export const Default: Story = {
+  render: () => <MenuComponentStory />,
+};
