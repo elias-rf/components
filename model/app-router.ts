@@ -39,7 +39,7 @@ import { vendedorMetaRouter } from "./vendedor-meta/vendedor-meta.trpc";
 import { vendedorRouter } from "./vendedor/vendedor.trpc";
 // @endindex
 
-export const routers = router({
+export const appRouter = router({
   // @index(['./**/*.trpc.ts'], (f, _) => `${_.camelCase(f.name.slice(0,-4))}: ${_.camelCase(f.name.slice(0,-4))}Router,`)
   agendaTelefone: agendaTelefoneRouter,
   cidade: cidadeRouter,
@@ -81,4 +81,4 @@ export const routers = router({
   // @endindex
 });
 
-export type TRpcs = typeof routers;
+export type TAppRouter = typeof appRouter;

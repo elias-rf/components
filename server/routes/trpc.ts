@@ -1,11 +1,12 @@
-// @filename: server.ts
-import * as trpcExpress from "@trpc/server/adapters/express";
-import { routers } from "../../model/trpcs";
+import { fastifyTRPCPlugin } from "@trpc/server/adapters/fastify";
+import { FastifyInstance } from "fastify";
+import { appRouter } from "../../model/app-router";
 import { createContext } from "../../utils/trpc/context-server";
 
-export const trpcMiddle = trpcExpress.createExpressMiddleware({
-  router: routers,
-  createContext,
-});
-
-export type TAppRouter = typeof routers;
+export function trpc(fastify: FastifyInstance, options, done) {
+  fastify.register(fastifyTRPCPlugin, {
+    prefix: "/trpc",
+    trpcOptions: { router: appRouter, createContext },
+  });
+  done();
+}

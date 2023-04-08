@@ -6,7 +6,6 @@ export const createContext = ({
   res,
 }: trpcExpress.CreateExpressContextOptions) => {
   return { currentUser: req.currentUser, req, res };
-  // return opts.req;
 };
 
 export type TContext = inferAsyncReturnType<typeof createContext>;

@@ -11,8 +11,8 @@ tls.DEFAULT_MIN_VERSION = "TLSv1";
 
 interface Config {
   app: {
-    port?: string;
-    env?: string;
+    port: number;
+    env: string;
     mock?: boolean;
   };
   db: {
@@ -28,8 +28,8 @@ interface Config {
 
 export const config: Config = {
   app: {
-    port: process.env.PORT,
-    env: process.env.NODE_ENV,
+    port: parseInt(process.env.PORT ? process.env.PORT : "3000"),
+    env: process.env.NODE_ENV || "development",
     mock: process.env.MOCK === "true",
   },
   auth: {
