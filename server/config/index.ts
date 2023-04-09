@@ -21,8 +21,8 @@ interface Config {
     fullvision: Knex.Config;
   };
   auth: {
-    expiration?: string;
-    secret?: string;
+    expiration: number;
+    secret: string;
   };
 }
 
@@ -33,8 +33,8 @@ export const config: Config = {
     mock: process.env.MOCK === "true",
   },
   auth: {
-    expiration: process.env.auth_expiration,
-    secret: process.env.auth_secret,
+    expiration: parseInt(process.env.auth_expiration || "3600"),
+    secret: process.env.auth_secret || "S3gr3d0",
   },
   db: {
     oftalmo: {

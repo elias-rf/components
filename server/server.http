@@ -34,9 +34,6 @@ GET {{host}}/api/rpc
 ?rpc={"jsonrpc":"2.0","id":"1","method":"agendaTelefoneSchema"}
 
 
-### TESTE
-GET {{host}}/ping
-
 
 ### TESTE
 GET {{host}}/api/teste

@@ -1,15 +1,8 @@
-// import cookieParser from "cookie-parser";
-// import cors from "cors";
-import Fastify, { RouteShorthandOptions } from "fastify";
-// import { join } from "path";
-// import { logger } from "../utils/logger";
-// import { config } from "./config";
-// import { errMiddle } from "./middleware/err-middle";
-// import { jwtMiddleFactory } from "./middleware/jwt-middle";
-// import { loggerMiddleFactory } from "./middleware/logger-middle";
+import cookie from "@fastify/cookie";
+import jwt from "@fastify/jwt";
+import Fastify from "fastify";
+import { config } from "./config";
 import { routes } from "./routes";
-
-export const app = Fastify({ maxParamLength: 5000, logger: true });
 
 declare module "express-serve-static-core" {
   interface Request {
@@ -17,38 +10,22 @@ declare module "express-serve-static-core" {
   }
 }
 
-// app.use(express.json());
-// app.use(cookieParser(config.auth.secret));
-// app.use(jwtMiddleFactory(config.auth.secret || ""));
-// app.use(loggerMiddleFactory(logger));
-// app.use(cors());
-// app.options("*", cors());
-// app.use(express.static(join(__dirname, "../../public")));
-// app.get("/api", (req, res) => {
-//   res.send("ok");
-// });
-
-// app.use(router);
-
-// app.use(errMiddle);
-
-const opts: RouteShorthandOptions = {
-  schema: {
-    response: {
-      200: {
-        type: "object",
-        properties: {
-          pong: {
-            type: "string",
-          },
-        },
-      },
-    },
+export const app = Fastify({ maxParamLength: 5000, logger: true });
+app.register(cookie);
+app.register(jwt, {
+  secret: config.auth.secret,
+  sign: { expiresIn: config.auth.expiration },
+  cookie: {
+    cookieName: "token",
+    signed: false,
   },
-};
+});
+app.addHook("onRequest", async (request, reply) => {
+  try {
+    await request.jwtVerify();
+  } catch (err) {
+    // app.log.error(err);
+  }
+});
 
 app.register(routes);
-
-app.get("/ping", opts, async (request, reply) => {
-  return { pong: "it worked!" };
-});

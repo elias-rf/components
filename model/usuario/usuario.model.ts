@@ -1,10 +1,9 @@
 import { config } from "../../server/config";
 import { crudFactory } from "../../server/lib/crud/crud.factory";
-import { jwtEncode } from "../../server/lib/jwt-encode";
 import { passwordVerify } from "../../server/lib/password-verify";
 import type { TCurrentUser } from "../../types";
 import type { TConnection, TConnections } from "../../types/model";
-import { setCookie } from "../../utils/network/cookie";
+import { day } from "../../utils/date/day";
 import { usuario } from "./usuario.table";
 import type { TUsuario, TUsuarioModel } from "./usuario.type";
 
@@ -21,13 +20,16 @@ export function usuarioModelFactory({
       ...crud.query,
 
       async me(ctx: any) {
-        return ctx.req.context.currentUser;
+        const resp = ctx.req.user;
+        resp.iat = day.unix(resp.iat).format("YYYY-MM-DDTHH:mm:ss");
+        resp.exp = day.unix(resp.exp).format("YYYY-MM-DDTHH:mm:ss");
+        return ctx.req.user || {};
       },
     },
     mutation: {
       ...crud.mutation,
       async logout(ctx: any) {
-        setCookie(ctx.res, "token", "", { maxAge: 1 });
+        ctx.res.clearCookie("token", { path: "/" });
         return true;
       },
       async login(
@@ -71,13 +73,11 @@ export function usuarioModelFactory({
           nome: record.nome || "",
           group_id: record.group_id || "",
         };
-        resp.token = jwtEncode(
-          resp,
-          config.auth.secret,
-          config.auth.expiration
-        );
-        setCookie(ctx.res, "token", resp.token, {
-          maxAge: 60 * 60 * 12 * 1000, // 12 horas
+        resp.token = await ctx.res.jwtSign(resp);
+
+        ctx.res.setCookie("token", resp.token, {
+          maxAge: config.auth.expiration,
+          path: "/",
         });
         return resp;
       },
