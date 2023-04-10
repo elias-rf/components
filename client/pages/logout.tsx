@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { trpc } from "../../utils/trpc/trpc";
 import { SpinnerIcon } from "../components/spinner/spinner-icon";
 
 /**
@@ -8,16 +9,17 @@ import { SpinnerIcon } from "../components/spinner/spinner-icon";
  * @returns {*} componente <LoginView />
  */
 export function Logout() {
-  const setLogout = usuarioStore((state) => state.setLogout);
-
   const navigate = useNavigate();
+  const logout = trpc.usuario.logout.useMutation();
   React.useEffect(() => {
-    async function logout() {
-      await setLogout();
-      navigate("/");
-    }
-    logout();
+    logout.mutate();
+    sessionStorage.removeItem("token");
   }, []);
+
+  React.useEffect(() => {
+    navigate("/");
+  }, [logout.data]);
+
   return (
     <div className={"flex justify-center"}>
       <SpinnerIcon show={true} />

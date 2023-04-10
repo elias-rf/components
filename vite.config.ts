@@ -6,6 +6,7 @@
 import react from "@vitejs/plugin-react";
 import dotenv from "dotenv-flow";
 import path from "node:path";
+import UnoCSS from "unocss/vite";
 import { defineConfig } from "vitest/config";
 import { day } from "./utils/date/day";
 
@@ -25,13 +26,12 @@ export default defineConfig({
     },
   },
   build: { outDir: "../public", emptyOutDir: true, target: "esnext" },
-  plugins: [react()],
+  plugins: [react(), UnoCSS()],
   test: {
     globals: true,
     environment: "jsdom", // or 'jsdom', 'node'
     snapshotFormat: { escapeString: false },
     setupFiles: [path.resolve(__dirname, "./setup-tests.ts")],
-    outputTruncateLength: 3500,
   },
   define: {
     __APP_VERSION__: JSON.stringify(day().format("YY-MM-DD.HH:mm")),

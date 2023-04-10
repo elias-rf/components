@@ -1,7 +1,8 @@
 import { MantineProvider } from "@mantine/core";
 import "@storybook/addon-console";
 import { Preview } from "@storybook/react";
-import "../client/index.css";
+// import "../client/index.css";
+import "virtual:uno.css";
 import { TrpcProvider } from "../utils/trpc/trpc-provider";
 
 export const parameters = {
@@ -21,14 +22,14 @@ export const globalTypes = {
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-      >
-        <TrpcProvider>
+      <TrpcProvider>
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+        >
           <Story />
-        </TrpcProvider>
-      </MantineProvider>
+        </MantineProvider>
+      </TrpcProvider>
     ),
   ],
 };

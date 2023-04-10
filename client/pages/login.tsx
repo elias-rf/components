@@ -15,29 +15,30 @@ export function Login() {
   const navigate = useNavigate();
 
   React.useEffect(() => {
+    setSpinner(false);
     if (login.data && login.data.usuario_id > 0) {
-      console.log("logado!");
+      sessionStorage.setItem("token", login.data.token);
+      while (sessionStorage.getItem("token") !== login.data.token) {
+        console.log("Gravando sessionStorage");
+      }
       navigate("/");
     }
   }, [login.data]);
 
+  React.useEffect(() => {
+    setSpinner(false);
+    setError(login.error?.message || "");
+  }, [login.error]);
+
   async function handleInput(user: { user: string; password: string }) {
     setSpinner(true);
     setError("");
-    try {
-      await login.mutate(user);
-
-      setSpinner(false);
-    } catch (e: any) {
-      setSpinner(false);
-      setError(e.response?.errors[0].message);
-    }
+    login.mutate(user);
   }
 
   return (
     <div className={"flex justify-center"}>
       <div>
-        <div>{error}</div>
         <LoginComponent
           title="Intranet Visiontech"
           onInput={handleInput}

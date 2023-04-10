@@ -40,6 +40,7 @@ export function LayoutDefault({
 
   return (
     <AppShell
+      padding={6}
       styles={{
         main: {
           background:
@@ -99,7 +100,6 @@ export function LayoutDefault({
             </Flex>
             <Menu
               width={150}
-              trigger="hover"
               position="bottom-end"
             >
               <Menu.Target>
@@ -107,8 +107,13 @@ export function LayoutDefault({
                   variant="subtle"
                   color="dark"
                   compact
+                  onClick={() => {
+                    if (!me?.nome) {
+                      onClick("/login");
+                    }
+                  }}
                 >
-                  {me?.nome || "Nome"}
+                  {me?.nome || "Login"}
                 </Button>
               </Menu.Target>
               <Menu.Dropdown>

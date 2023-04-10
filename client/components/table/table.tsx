@@ -10,15 +10,14 @@ import { TableColumn } from "./table-column";
 import { TableFilter } from "./table-filter";
 
 export type TTableProps = {
-  name?: string;
   data?: any[];
   schema: TFieldDef[];
   selected?: TIds;
-  onSelect?: (event: any) => void;
+  onSelect?: (selected: TIds) => void;
   order?: TOrder[];
-  onOrder?: (event: any) => void;
+  onOrder?: (order: TOrder[]) => void;
   where?: TWhere[];
-  onWhere?: (event: any) => void;
+  onWhere?: (where: TWhere[]) => void;
   children?: React.ReactNode;
   selectedClassName?: string;
   tableClassName?: string;
@@ -32,7 +31,6 @@ export type TTableProps = {
  * Componente Table
  */
 export function Table({
-  name = "",
   data = [],
   schema,
   selected,
@@ -46,7 +44,6 @@ export function Table({
   tableClassName,
   commands = {},
 }: TTableProps) {
-  console.log(commands);
   let fields = schema ?? [];
   const pk = pksFromFieldsClient(schema);
   fields = fields.filter((item) => item.visible !== false);
@@ -68,35 +65,24 @@ export function Table({
    */
   function handleOnSelect(rec: any) {
     if (isSelected(selected || {}, rec) && hasTree()) {
-      onSelect({
-        name,
-        value: [],
-      });
+      onSelect([]);
     } else {
       const value: any = {};
       for (const fld of pk) {
         value[fld] = rec[fld];
       }
-      onSelect({
-        name,
-        value,
-      });
+      onSelect(value);
     }
   }
 
   function handleOnOrder({ value }: any) {
-    if (onOrder)
-      onOrder({
-        name,
-        value,
-      });
+    console.log(`🚀 ~ file: table.tsx:80 ~ handleOnOrder ~ value:`, value);
+
+    if (onOrder) onOrder(value);
   }
 
   function handleOnWhere({ value }: any) {
-    onWhere({
-      name,
-      value,
-    });
+    onWhere(value);
   }
 
   return (
@@ -115,7 +101,7 @@ export function Table({
             ))}
             {commands?.head ? <th>{commands.head()}</th> : null}
           </tr>
-          <tr className={"p-0 m-0"}>
+          <tr className={"m-0 p-0"}>
             {hasTree() ? <th className={"w-4"}></th> : null}
             {where
               ? fields?.map((fld) => (

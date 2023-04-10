@@ -7,11 +7,11 @@ import { agendaTelefoneSchema } from "./agenda-telefone.schema";
 
 type TAgendaTelefoneListProps = {
   selected: TIds;
-  onSelect: (event: any) => void;
+  onSelect: (event: TIds) => void;
   where: TWhere<TAgendaTelefoneFields>[];
-  onWhere: (event: any) => void;
+  onWhere: (where: TWhere[]) => void;
   order: TOrder<TAgendaTelefoneFields>[];
-  onOrder: (event: any) => void;
+  onOrder: (order: TOrder[]) => void;
   children?: React.ReactNode;
 };
 

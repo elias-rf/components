@@ -1,4 +1,5 @@
 import cookie from "@fastify/cookie";
+import cors from "@fastify/cors";
 import jwt from "@fastify/jwt";
 import Fastify from "fastify";
 import { config } from "./config";
@@ -11,6 +12,8 @@ declare module "express-serve-static-core" {
 }
 
 export const app = Fastify({ maxParamLength: 5000, logger: true });
+
+app.register(cors, { origin: "*" });
 app.register(cookie);
 app.register(jwt, {
   secret: config.auth.secret,

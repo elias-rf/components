@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { trpc } from "../../utils/trpc/trpc";
 import logo from "../assets/images/logo.svg";
 import { Page } from "../components/page/page";
+import { isAuthenticated } from "../lib/is-authenticated";
 
 export function Home() {
   const navigate = useNavigate();
@@ -10,8 +11,8 @@ export function Home() {
 
   React.useEffect(() => {
     if (me.data) {
-      if (me.data.usuario_id > 0) navigate("/dashboard");
-      if (me.data.usuario_id === undefined) navigate("/login");
+      if (isAuthenticated(me.data)) return navigate("/dashboard");
+      navigate("/login");
     }
   }, [me.data]);
 

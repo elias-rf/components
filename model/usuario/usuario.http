@@ -12,10 +12,8 @@ Content-Type: application/json
 
 {"user":"user","password":"123"}
 
-
 ### ME
 GET {{host}}/api/trpc/usuario.me
-
 
 ### LOGOUT
 POST {{host}}/api/trpc/usuario.logout
@@ -23,10 +21,5 @@ POST {{host}}/api/trpc/usuario.logout
 ### READ
 GET {{host}}/api/trpc/usuario.read?input={"id":{"usuario_id":2}}
 
-
 ### TESTE
 GET {{host}}/api/teste
-
-
-
-43200000

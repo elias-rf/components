@@ -1,16 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { trpc } from "../../utils/trpc/trpc";
 import { Page } from "../components/page/page";
 import { TransferenciaMes } from "../features/dashboard/transferencia_mes";
+import { isAuthenticated } from "../lib/is-authenticated";
 
 export function Dashboard() {
-  const isAuthenticated = usuarioStore((state: any) => state.isAuthenticated);
-
   const navigate = useNavigate();
+  const me = trpc.usuario.me.useQuery();
 
   React.useEffect(() => {
-    if (!isAuthenticated) navigate("/");
-  }, [isAuthenticated]);
+    if (!isAuthenticated(me.data)) navigate("/");
+  }, [me.data]);
 
   return (
     <Page>

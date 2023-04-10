@@ -9,6 +9,8 @@ import { Loading } from "./pages/loading";
 import { Login } from "./pages/login";
 import { Logout } from "./pages/logout";
 
+console.log(process.env.NODE_ENV);
+
 // utilidades
 const Page403 = React.lazy(async () => import("./pages/page_403"));
 const Page404 = React.lazy(async () => import("./pages/page_404"));

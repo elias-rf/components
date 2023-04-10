@@ -1,17 +1,13 @@
 // import { trpcMiddle } from "./trpc";
 
-import {  FastifyPluginCallback } from "fastify";
-import { teste } from "./teste";
-import { trpc } from "./trpc";
+import { FastifyPluginCallback } from "fastify";
+import { testeRoute } from "./teste";
+import { trpcRoute } from "./trpc";
 
 const prefix = "/api";
-export const routes: FastifyPluginCallback = (
-  fastify,
-  options, 
-  done
-) => {
-  fastify.register(teste, { prefix });
-  fastify.register(trpc, { prefix });
+export const routes: FastifyPluginCallback = (fastify, options, done) => {
+  fastify.register(testeRoute, { prefix });
+  fastify.register(trpcRoute, { prefix });
   done();
 };
 

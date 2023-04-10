@@ -17,7 +17,7 @@ export function Layout({ children }: { children?: any }) {
     <LayoutDefault
       menu={menu}
       onClick={handleMenu}
-      me={{}}
+      me={me.data}
     >
       <Outlet />
       {children}

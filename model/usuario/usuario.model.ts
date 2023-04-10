@@ -21,9 +21,11 @@ export function usuarioModelFactory({
 
       async me(ctx: any) {
         const resp = ctx.req.user;
-        resp.iat = day.unix(resp.iat).format("YYYY-MM-DDTHH:mm:ss");
-        resp.exp = day.unix(resp.exp).format("YYYY-MM-DDTHH:mm:ss");
-        return ctx.req.user || {};
+        if (resp && resp.iat) {
+          resp.iat = day.unix(resp.iat).format("YYYY-MM-DDTHH:mm:ss");
+          resp.exp = day.unix(resp.exp).format("YYYY-MM-DDTHH:mm:ss");
+        }
+        return (resp as TCurrentUser) || "NOT_LOGGED";
       },
     },
     mutation: {

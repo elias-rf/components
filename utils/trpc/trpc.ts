@@ -3,11 +3,15 @@ import { createTRPCReact } from "@trpc/react-query";
 import type { TAppRouter } from "../../model/app-router";
 
 let server = "";
-if (process.env.NODE_ENV === "test") server = "http://localhost:3333";
+if (process.env.NODE_ENV === "development") server = "http://localhost:3333";
 
 const links = [
   httpBatchLink({
     url: `${server}/api/trpc`,
+    headers() {
+      const token = `Bearer ${sessionStorage.getItem("token") || "NO_TOKEN"}`;
+      return { Authorization: token };
+    },
   }),
 ];
 
