@@ -91,9 +91,6 @@ dependencies:
   '@radix-ui/react-tooltip':
     specifier: ^1.0.5
     version: 1.0.5(@types/react@18.0.34)(react-dom@18.2.0)(react@18.2.0)
-  '@table-library/react-table-library':
-    specifier: ^4.1.0
-    version: 4.1.0(@emotion/react@11.10.6)(react-dom@18.2.0)(react@18.2.0)
   '@tabler/icons-react':
     specifier: ^2.15.0
     version: 2.15.0(react@18.2.0)
@@ -103,6 +100,9 @@ dependencies:
   '@tanstack/react-query-devtools':
     specifier: ^4.29.1
     version: 4.29.1(@tanstack/react-query@4.29.1)(react-dom@18.2.0)(react@18.2.0)
+  '@tanstack/react-table':
+    specifier: ^8.8.5
+    version: 8.8.5(react-dom@18.2.0)(react@18.2.0)
   '@textea/json-viewer':
     specifier: ^2.16.2
     version: 2.16.2(@types/react@18.0.34)(react-dom@18.2.0)(react@18.2.0)
@@ -4592,21 +4592,6 @@ packages:
       file-system-cache: 2.0.2
     dev: true
 
-  /@table-library/react-table-library@4.1.0(@emotion/react@11.10.6)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-O8DYNBPGeA8z4TfoNEQaffMAsolcb9bTW6kTlJUFtI0MB7HIX0+OJ0zkIA2aBGN6ZK2c1T+X83YMRWuhRDoauA==}
-    peerDependencies:
-      '@emotion/react': '>= 11'
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-    dependencies:
-      '@emotion/react': 11.10.6(@types/react@18.0.34)(react@18.2.0)
-      clsx: 1.1.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-virtualized-auto-sizer: 1.0.7(react-dom@18.2.0)(react@18.2.0)
-      react-window: 1.8.7(react-dom@18.2.0)(react@18.2.0)
-    dev: false
-
   /@tabler/icons-react@2.15.0(react@18.2.0):
     resolution: {integrity: sha512-yE+0kskRLANxB3ulkJ4UsouvMsNA+C5y58JjWgdHX8T4pLK/9FOtFPdGmZW2Z5SodC6XZCXH/uw0PqAy1I3/JA==}
     peerDependencies:
@@ -4663,6 +4648,23 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /@tanstack/react-table@8.8.5(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-g/t21E/ICHvaCOJOhsDNr5QaB/6aDQEHFbx/YliwwU/CJThMqG+dS28vnToIBV/5MBgpeXoGRi2waDJVJlZrtg==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/table-core': 8.8.5
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@tanstack/table-core@8.8.5:
+    resolution: {integrity: sha512-Xnwa1qxpgvSW7ozLiexmKp2PIYcLBiY/IizbdGriYCL6OOHuZ9baRhrrH51zjyz+61ly6K59rmt6AI/3RR+97Q==}
+    engines: {node: '>=12'}
     dev: false
 
   /@testing-library/dom@8.20.0:
@@ -9599,10 +9601,6 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
-  /memoize-one@5.2.1:
-    resolution: {integrity: sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==}
-    dev: false
-
   /memoizerific@1.11.3:
     resolution: {integrity: sha512-/EuHYwAPdLtXwAwSZkh/Gutery6pD2KYd44oQLhAvQp/50mpyduZh8Q7PYHXTCJ+wuXxt7oij2LXyIJOOYFPog==}
     dependencies:
@@ -11066,30 +11064,6 @@ packages:
       throttle-debounce: 3.0.1
       ts-easing: 0.2.0
       tslib: 2.5.0
-    dev: false
-
-  /react-virtualized-auto-sizer@1.0.7(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Mxi6lwOmjwIjC1X4gABXMJcKHsOo0xWl3E3ugOgufB8GJU+MqrtY35aBuvCYv/razQ1Vbp7h1gWJjGjoNN5pmA==}
-    engines: {node: '>8.0.0'}
-    peerDependencies:
-      react: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0-rc
-      react-dom: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0-rc
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /react-window@1.8.7(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-JHEZbPXBpKMmoNO1bNhoXOOLg/ujhL/BU4IqVU9r8eQPcy5KQnGHIHDRkJ0ns9IM5+Aq5LNwt3j8t3tIrePQzA==}
-    engines: {node: '>8.0.0'}
-    peerDependencies:
-      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@babel/runtime': 7.21.0
-      memoize-one: 5.2.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react@18.2.0:

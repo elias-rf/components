@@ -1,9 +1,10 @@
+import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import React from "react";
 import { TAgendaTelefoneFields } from "../../../model/agenda-telefone/agenda-telefone.type";
 import { TIds, TOrder, TWhere } from "../../../types";
 import { trpc } from "../../../utils/trpc/trpc";
-import { Table } from "../../components/table/table";
-import { agendaTelefoneSchema } from "./agenda-telefone.schema";
+import { Table } from "../../components/react-table/table";
+import { agendaTelefoneColumns } from "./agenda-telefone.cols";
 
 type TAgendaTelefoneListProps = {
   selected: TIds;
@@ -25,20 +26,15 @@ export function AgendaTelefoneList({
   children,
 }: TAgendaTelefoneListProps) {
   const dataList = trpc.agendaTelefone.list.useQuery({ where, order });
+  const table = useReactTable({
+    columns: agendaTelefoneColumns,
+    data: dataList.data || [],
+    getCoreRowModel: getCoreRowModel(),
+  });
+
   return (
     <>
-      <Table
-        schema={agendaTelefoneSchema}
-        data={dataList.data}
-        selected={selected}
-        order={order}
-        where={where}
-        onSelect={onSelect}
-        onWhere={onWhere}
-        onOrder={onOrder}
-      >
-        {children}
-      </Table>
+      <Table table={table}></Table>
     </>
   );
 }
