@@ -1,4 +1,4 @@
-import { TUsuarioFields } from "../../../model/usuario/usuario.type";
+import { TUsuarioFields } from "../../../models/usuario/usuario.type";
 import { TIds, TOrder, TWhere } from "../../../types";
 import { trpc } from "../../../utils/trpc/trpc";
 import { Table } from "../../components/table/table";

@@ -1,4 +1,4 @@
-import { TPeriodo } from "../../../model/cliente/cliente.type";
+import { TPeriodo } from "../../../models/cliente/cliente.type";
 import { TFieldDef } from "../../../types";
 import { day } from "../../../utils/date/day";
 import { zsr } from "../../../utils/zod/z-refine";

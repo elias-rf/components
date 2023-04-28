@@ -1,25 +1,7 @@
-# Estrutura da Intranet
+[Tailwind](https://tailwindcss.com/docs/flex-basis)
 
-::: mermaid
-graph TD;
+[TanStack Table](https://tanstack.com/table/v8/docs/api/core/table)
 
-subgraph Server
-  index-->app;
-  app-->routes;
-  routes-->rpc.router;
-  rpc.router-->rpc;
-  rpc-->rpcs;
-  rpcs-->resourceRpcFactory;
-  resourceRpcFactory-->resourceModelFactory
-  resourceModelFactory-->crudFactory
-  resourceModelFactory-->resourceMethodsFactory
-end
+[UnoCSS](https://unocss.dev/presets/icons)
 
-subgraph Client
-    resourceStore --> resourceService
-    resourceService --> rpcFactory
-    rpcFactory --> fetcherRpc
-    fetcherRpc --> rpcClient
-end
-fetcherRpc == rede === routes
-:::
+[Icones](https://icones.js.org/collection/fluent)

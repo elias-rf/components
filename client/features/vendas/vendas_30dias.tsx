@@ -7,7 +7,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { nfSaidaStore } from "../../../model/nf-saida/nf-saida.store";
+
 import { day } from "../../../utils/date/day";
 import { formatMoney } from "../../../utils/format/format-money";
 
@@ -17,6 +17,7 @@ import { formatMoney } from "../../../utils/format/format-money";
  * @returns {*} componente react
  */
 export function Vendas30dias() {
+  const nfSaidaStore = () => {};
   const [dataVendaDiario, getVendaDiario] = nfSaidaStore((state) => [
     state.dataVendaDiario,
     state.getVendaDiario,
@@ -68,7 +69,7 @@ export function Vendas30dias() {
   return (
     <>
       <div className={"py-2"}>
-        <h2 className={"text-lg text-center"}>Liteflex</h2>
+        <h2 className={"text-center text-lg"}>Liteflex</h2>
         <ResponsiveContainer
           width={width}
           height={height}
@@ -106,7 +107,7 @@ export function Vendas30dias() {
         </ResponsiveContainer>
       </div>
       <div className={"py-2"}>
-        <h2 className={"text-lg text-center"}>Hilite</h2>
+        <h2 className={"text-center text-lg"}>Hilite</h2>
         <ResponsiveContainer
           width={width}
           height={height}
@@ -141,7 +142,7 @@ export function Vendas30dias() {
         </ResponsiveContainer>
       </div>
       <div className={"py-2"}>
-        <h2 className={"text-lg text-center"}>Enlite</h2>
+        <h2 className={"text-center text-lg"}>Enlite</h2>
         <ResponsiveContainer
           width={width}
           height={height}
@@ -179,7 +180,7 @@ export function Vendas30dias() {
         </ResponsiveContainer>
       </div>
       <div className={"py-2"}>
-        <h2 className={"text-lg text-center"}>Metil</h2>
+        <h2 className={"text-center text-lg"}>Metil</h2>
         <ResponsiveContainer
           width={width}
           height={height}
@@ -214,7 +215,7 @@ export function Vendas30dias() {
         </ResponsiveContainer>
       </div>
       <div className={"py-2"}>
-        <h2 className={"text-lg text-center"}>Corneal Ring</h2>
+        <h2 className={"text-center text-lg"}>Corneal Ring</h2>
         <ResponsiveContainer
           width={width}
           height={height}
@@ -249,7 +250,7 @@ export function Vendas30dias() {
         </ResponsiveContainer>
       </div>
       <div className={"py-2"}>
-        <h2 className={"text-lg text-center"}>Liteflex + Enlite</h2>
+        <h2 className={"text-center text-lg"}>Liteflex + Enlite</h2>
         <ResponsiveContainer
           width={width}
           height={height}

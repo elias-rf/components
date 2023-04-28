@@ -1,10 +1,10 @@
+import { Button } from "@mantine/core";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { TUsuario, TUsuarioIds } from "../../../model/usuario/usuario.type";
+import { TUsuario, TUsuarioIds } from "../../../models/usuario/usuario.type";
 import { isEmpty } from "../../../utils/identify/is_empty";
 import { recordClear } from "../../../utils/schema/record-clear";
 import { trpc } from "../../../utils/trpc/trpc";
-import { Button } from "../../components/button";
 import { Field } from "../../components/field";
 import { isNumber } from "../../lib/valid/isNumber";
 import { usuarioSchema } from "./usuario-schema";

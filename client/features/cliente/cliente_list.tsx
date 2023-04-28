@@ -1,4 +1,4 @@
-import { TClienteFields } from "../../../model/cliente/cliente.type";
+import { TClienteFields } from "../../../models/cliente/cliente.type";
 import type { TIds, TOrder, TWhere } from "../../../types";
 import { trpc } from "../../../utils/trpc/trpc";
 import { Table } from "../../components/table/table";

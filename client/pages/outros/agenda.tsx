@@ -3,7 +3,7 @@ import React from "react";
 import {
   TAgendaTelefoneFields,
   TAgendaTelefoneIds,
-} from "../../../model/agenda-telefone/agenda-telefone.type";
+} from "../../../models/agenda-telefone/agenda-telefone.type";
 import { TOrder, TWhere } from "../../../types";
 import { AgendaTelefoneForm } from "../../features/agenda_telefone/agenda-telefone-form";
 import { AgendaTelefoneList } from "../../features/agenda_telefone/agenda-telefone-list";

@@ -1,5 +1,5 @@
-import { tables } from "../../model/tables";
-import { connections } from "../../server/dal/connections";
+import { connections } from "../../models/connections";
+import { tables } from "../../models/tables";
 import { TGenericObject } from "../../types";
 import { recordClear } from "../../utils/schema/record-clear";
 import { renameToFieldArrayObject } from "../../utils/schema/rename-fields";

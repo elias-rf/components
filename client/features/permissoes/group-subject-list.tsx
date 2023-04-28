@@ -1,11 +1,9 @@
 import React from "react";
-import { groupSubjectStore } from "../../../model/group-subject/group-subject.store";
-import { stores } from "../../../model/stores";
+
 import { TIds, TOrder, TWhere } from "../../../types";
-import { TTable } from "../../components/table";
 import { Table } from "../../components/table/table";
 
-export type TGroupSubjectList = TTable;
+export type TGroupSubjectList = any;
 
 type TGroupSubjectListProps = {
   selected: TIds;

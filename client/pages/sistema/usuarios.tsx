@@ -1,5 +1,5 @@
 import React from "react";
-import { TUsuarioFields } from "../../../model/usuario/usuario.type";
+import { TUsuarioFields } from "../../../models/usuario/usuario.type";
 import { TOrder, TSelected, TWhere } from "../../../types";
 import { Page } from "../../components/page/page";
 import { PageTitle } from "../../components/page/page_title";

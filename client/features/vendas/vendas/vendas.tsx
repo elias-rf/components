@@ -1,5 +1,5 @@
 import React from "react";
-import { nfSaidaStore } from "../../../../model/nf-saida/nf-saida.store";
+import { nfSaidaStore } from "../../../../models/nf-saida/nf-saida.store";
 import { day } from "../../../../utils/date/day";
 import { Table } from "../../../components/table/table";
 import {

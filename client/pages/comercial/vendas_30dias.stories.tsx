@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { BrowserRouter } from "react-router-dom";
-import { usuarioService } from "../../../model/usuario/usuario.service";
+import { usuarioService } from "../../../models/usuario/usuario.service";
 import Vendas30dias from "./vendas_30dias";
 
 await usuarioService.mutation.login({ user: "elias", password: "jkl" });

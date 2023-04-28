@@ -1,14 +1,15 @@
-import { stdin as input, stdout as output } from "node:process";
-import * as readline from "node:readline/promises";
+async function delay(tempo) {
+  return await new Promise((resolve) =>
+    setTimeout(() => resolve(`tempo: ${tempo}`), tempo)
+  );
+}
 
-const rl = readline.createInterface({ input, output });
+console.time("sync");
+console.log(await delay(1000));
+console.log(await delay(2000));
+console.log(await delay(1500));
+console.timeEnd("sync");
 
-const num1 = await rl.question("Primeiro numero ? ");
-const num2 = await rl.question("Segundo numero ? ");
-
-const soma = parseInt(num1) + parseInt(num2);
-const mult = parseInt(num1) * parseInt(num2);
-
-console.log(`Soma: ${soma}  -  Multiplicação: ${mult}`);
-
-rl.close();
+console.time("async");
+console.log(await Promise.all([delay(1000), delay(2000), delay(1500)]));
+console.timeEnd("async");

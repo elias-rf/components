@@ -1,10 +1,10 @@
 import React from "react";
 import { useMap } from "react-use";
-import { stores } from "../../../model/stores";
+
+import { Button } from "@mantine/core";
 import type { TFieldDef, TSelected } from "../../../types";
 import { isEmpty } from "../../../utils/identify/is_empty";
 import { isNumber } from "../../../utils/identify/is_number";
-import { Button } from "../../components/button";
 import { Label } from "../../components/form/label";
 import { SpinnerIcon } from "../../components/spinner";
 import { Textbox } from "../../components/textbox";
@@ -13,21 +13,11 @@ type TGroupSubjectFormProps = {
   id: TSelected;
 };
 
-const {
-  getClear,
-  getSchema,
-  getRead,
-  refreshList,
-  setUpdate,
-  setCreate,
-  setDel,
-} = stores.groupSubjectStore.getState();
-
 export function GroupSubjectForm({ id }: TGroupSubjectFormProps) {
-  const dataClear = stores.groupSubjectStore((state) => state.dataClear);
-  const dataSchema = stores.groupSubjectStore((state) => state.dataSchema);
-  const dataRead = stores.groupSubjectStore((state) => state.dataRead);
-  const fetching = stores.groupSubjectStore((state) => state.fetching);
+  const dataClear = React.useState();
+  const dataSchema = React.useState();
+  const dataRead = React.useState();
+  const fetching = React.useState();
   const [record, actionsRecord] = useMap(dataClear);
   const [status, setStatus] = React.useState("new");
   const [isDirty, setIsDirty] = React.useState(false);

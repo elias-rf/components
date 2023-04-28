@@ -20,10 +20,10 @@ function fieldClear(field: TFieldDef) {
   );
 }
 
-export function recordClear(fields: TFieldDef[]) {
+export function recordClear<TReturn>(fields: TFieldDef[]): Required<TReturn> {
   const rsp: { [field: string]: any } = {};
   for (const field of fields) {
     rsp[field.name] = fieldClear(field);
   }
-  return rsp;
+  return rsp as Required<TReturn>;
 }

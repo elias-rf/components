@@ -44,9 +44,12 @@ export function ShowSortableIcon({
   }
 
   return (
-    <IconSelector
-      stroke={1}
-      size={20}
-    />
+    <>
+      <IconSelector
+        stroke={1}
+        size={20}
+      />
+      <div className="i-fluent-arrow-sort-20-regular"></div>
+    </>
   );
 }

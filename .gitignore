@@ -33,14 +33,10 @@ yarn-error.log*
 
 # vercel
 .vercel
-
+.wireit
 .nyc_output
 public
 
 
-fullvision.sqlite
-oftalmo.sqlite
-plano.sqlite
-test-results/
-playwright-report/
+dist
 docs

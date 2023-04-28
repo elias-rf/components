@@ -1,7 +1,7 @@
 // node -r esbuild-runner/register type_create.ts produto_item
 import * as changeCase from "change-case";
 import fs from "fs";
-import { tables } from "../../model/tables";
+import { tables } from "../../models/tables";
 import { getSegments } from "./get-segments";
 
 function toTs(type: string) {

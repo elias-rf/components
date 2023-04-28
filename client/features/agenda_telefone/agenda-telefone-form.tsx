@@ -1,17 +1,14 @@
+import { useForm } from "@mantine/form";
 import React from "react";
-import { FormProvider, useForm } from "react-hook-form";
 import type {
   TAgendaTelefone,
   TAgendaTelefoneIds,
-} from "../../../model/agenda-telefone/agenda-telefone.type";
+} from "../../../models/agenda-telefone/agenda-telefone.type";
 import { isEmpty } from "../../../utils/identify/is_empty";
 import { isNumber } from "../../../utils/identify/is_number";
-import { recordClear } from "../../../utils/schema/record-clear";
 import { trpc } from "../../../utils/trpc/trpc";
 
-import { Button } from "@mantine/core";
-import { Field } from "../../components/field";
-import { agendaTelefoneSchema } from "./agenda-telefone.schema";
+import { Button, TextInput } from "@mantine/core";
 
 type TAgendaTelefoneFormProps = {
   id: TAgendaTelefoneIds;
@@ -22,14 +19,19 @@ type TAgendaTelefoneFormProps = {
 
 type TStatus = "edit" | "new" | "view";
 
-const dataClear = recordClear(agendaTelefoneSchema);
+const dataClear = {
+  agenda_telefone_id: 0,
+  nome: "",
+  setor: "",
+  email: "",
+};
 
-export function AgendaTelefoneForm({
+export const AgendaTelefoneForm = ({
   id,
   onCreate,
   onUpdate,
   onDel,
-}: TAgendaTelefoneFormProps) {
+}: TAgendaTelefoneFormProps) => {
   const utils = trpc.useContext();
   const dataRead = trpc.agendaTelefone.read.useQuery({ id });
 
@@ -54,26 +56,40 @@ export function AgendaTelefoneForm({
 
   const [status, setStatus] = React.useState<TStatus>("new");
 
-  const formMethods = useForm({ defaultValues: dataClear });
+  const form = useForm({
+    initialValues: dataClear,
+    validate: {
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Email inválido"),
+    },
+  });
 
   // atualiza state do form quando com o ID passado
   React.useEffect(() => {
     if (isEmpty(id) || !isNumber(id.agenda_telefone_id)) {
-      return formMethods.reset(dataClear);
+      form.reset();
+      return;
     }
   }, [id]);
 
   // atualiza state do form quando for lido do servidor
   React.useEffect(() => {
     if (dataRead.data && dataRead.data.agenda_telefone_id) {
-      formMethods.reset(dataRead.data);
+      form.setValues(dataRead.data);
+      form.resetDirty(dataRead.data);
       setStatus("view");
     }
   }, [dataRead.data]);
 
   function handleButtonCancel() {
+    if (status === "edit") {
+      form.setValues(dataRead.data);
+      form.resetDirty(dataRead.data);
+    }
+    if (status === "new") {
+      form.reset();
+    }
     setStatus("view");
-    formMethods.reset();
+
     console.log("cancel");
   }
 
@@ -83,7 +99,8 @@ export function AgendaTelefoneForm({
 
   function handleButtonNew() {
     setStatus("new");
-    formMethods.reset(dataClear);
+    form.setValues(dataClear);
+    form.resetDirty(dataClear);
   }
 
   function handleButtonDel() {
@@ -93,9 +110,8 @@ export function AgendaTelefoneForm({
 
   function handleButtonSave() {
     setStatus("view");
-    if (status === "edit")
-      dataUpdate.mutate({ id, data: formMethods.getValues() });
-    if (status === "new") dataCreate.mutate({ data: formMethods.getValues() });
+    if (status === "edit") dataUpdate.mutate({ id, data: form });
+    if (status === "new") dataCreate.mutate({ data: form });
   }
 
   const onSubmitHandler = (values: any) => {
@@ -109,82 +125,59 @@ export function AgendaTelefoneForm({
         <div className={"flex justify-end"}>
           <Button
             className={"mr-4 w-24"}
-            size="small"
-            color="primary"
             onClick={handleButtonEdit}
-            name="edit"
-            data-testid="buttonEdit"
           >
             Editar
           </Button>
           <Button
             className={"mr-4 w-24"}
-            size="small"
-            color="secondary"
             onClick={handleButtonNew}
-            name="new"
-            data-testid="buttonNew"
           >
             Novo
           </Button>
           <Button
             className={"w-24"}
-            size="small"
-            color="secondary"
             onClick={handleButtonDel}
-            name="del"
-            data-testid="buttonDel"
           >
             Excluir
           </Button>
         </div>
       ) : null}
-      <FormProvider {...formMethods}>
-        <form
-          className="form"
-          onSubmit={formMethods.handleSubmit(onSubmitHandler)}
-          autoComplete="off"
-        >
-          <div className={"flex-wrap gap-2 sm:flex"}>
-            {agendaTelefoneSchema.map((field) => (
-              <React.Fragment key={field.name}>
-                <Field
-                  type="text"
-                  {...field}
-                  disabled={status === "view"}
-                  key={field.name}
-                />
-              </React.Fragment>
-            ))}
-          </div>
-        </form>
-      </FormProvider>
+      <form
+        autoComplete="off"
+        onSubmit={form.onSubmit(onSubmitHandler)}
+      >
+        <div className={"flex-wrap gap-2 sm:flex"}>
+          <TextInput
+            withAsterisk
+            label={"Ramal"}
+            disabled={status === "view"}
+            {...form.getInputProps("agenda_telefone_id")}
+          />
+          <TextInput
+            withAsterisk
+            label={"Nome"}
+            disabled={status === "view"}
+            {...form.getInputProps("nome")}
+          />
+          <TextInput
+            label={"Setor"}
+            {...form.getInputProps("setor")}
+          />
+          <TextInput
+            label={"Email"}
+            {...form.getInputProps("email")}
+          />
+        </div>
+      </form>
       {status === "view" ? null : (
         <div className={"flex justify-end"}>
-          {formMethods.formState.isDirty ? (
-            <Button
-              className={"mr-4 w-24"}
-              size="small"
-              color="primary"
-              onClick={handleButtonSave}
-              name="save"
-              data-testid="buttonSave"
-            >
-              Salvar
-            </Button>
+          {form.isDirty() ? (
+            <Button onClick={handleButtonSave}>Salvar</Button>
           ) : null}
-          <Button
-            className={"w-24"}
-            size="small"
-            color="secondary"
-            onClick={handleButtonCancel}
-            name="cancel"
-            data-testid="buttonCancel"
-          >
-            Cancelar
-          </Button>
+          <Button onClick={handleButtonCancel}>Cancelar</Button>
         </div>
       )}
     </section>
   );
-}
+};
