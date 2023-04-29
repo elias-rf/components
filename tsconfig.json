@@ -29,7 +29,7 @@
     "types": ["node", "vitest/globals"],
     "typeRoots": ["node_modules/@types"],
     "paths": {
-      "@/*": ["./client/*"]
+      "@mono/*": ["./*"]
     }
   },
   "exclude": ["node_modules/*", "**/*.test.ts", "**/*.spec.ts"]

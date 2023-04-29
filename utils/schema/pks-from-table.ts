@@ -1,4 +1,4 @@
-import { TTableDef } from "../../types";
+import { TTableDef } from "@mono/types";
 import { pksFromFieldsServer } from "./pks-from-fields";
 
 export function pksFromTable(table: TTableDef) {

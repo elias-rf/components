@@ -1,6 +1,6 @@
+import { trpc } from "@mono/utils/trpc/trpc";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { trpc } from "../../utils/trpc/trpc";
 import { Page } from "../components/page/page";
 import { TransferenciaMes } from "../features/dashboard/transferencia_mes";
 import { isAuthenticated } from "../lib/is-authenticated";

@@ -1,4 +1,4 @@
-import { TCrud } from "../../../server/lib/crud/crud.type";
+import { TCrud } from "@mono/utils/crud/crud.type";
 import {
   TProdutoItemModel,
   TProdutoItemSelect,

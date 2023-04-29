@@ -1,6 +1,6 @@
+import { formatNumber } from "@mono/utils/format/format-number";
+import { parseNumber } from "@mono/utils/parse-number";
 import React from "react";
-import { formatNumber } from "../../../utils/format/format-number";
-import { parseNumber } from "../../../utils/parse-number";
 
 export type TTextboxNumberProps = {
   [prop: string]: any;
@@ -106,7 +106,7 @@ export function TextboxNumber({
       aria-label={name}
       list={list}
       className={
-        "w-full h-6 px-2 py-1 text-gray-700 border border-gray-400 focus:border-gray-600"
+        "h-6 w-full border border-gray-400 px-2 py-1 text-gray-700 focus:border-gray-600"
       }
       {...others}
     />

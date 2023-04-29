@@ -1,6 +1,6 @@
+import { fetchMockRpc } from "@mono/mocks/fetch-mock-rpc";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { fetchMockRpc } from "../../../mocks/fetch-mock-rpc";
 import { useForm } from "../../lib/hooks/use_form";
 import { LabelError } from "../label_error";
 import { Form } from "./form";

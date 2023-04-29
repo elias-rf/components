@@ -1,6 +1,6 @@
-import type { TIds } from "../../../types";
-import { day } from "../../../utils/date/day";
-import { trpc } from "../../../utils/trpc/trpc";
+import type { TIds } from "@mono/types";
+import { day } from "@mono/utils/date/day";
+import { trpc } from "@mono/utils/trpc/trpc";
 import { Table } from "../../components/table";
 import { getSchema } from "./get-shema";
 

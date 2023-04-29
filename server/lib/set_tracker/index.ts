@@ -1,5 +1,5 @@
+import { difference } from "@mono/utils/array/difference";
 import { RawQuery, Tracker } from "knex-mock-client";
-import { difference } from "../../../utils/array/difference";
 import { cidadeQuery } from "./cidade.query";
 import { clienteQuery } from "./cliente.query";
 import { diamanteQuery } from "./diamante.query";

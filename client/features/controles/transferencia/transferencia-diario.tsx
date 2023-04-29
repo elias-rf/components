@@ -1,6 +1,6 @@
+import { day } from "@mono/utils/date/day";
+import { trpc } from "@mono/utils/trpc/trpc";
 import { ReactNode } from "react";
-import { day } from "../../../../utils/date/day";
-import { trpc } from "../../../../utils/trpc/trpc";
 import { Table } from "../../../components/table/table";
 import { transferenciaDiarioSchema } from "./transferencia-diario.schema";
 

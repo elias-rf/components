@@ -1,8 +1,8 @@
+import { TOrder, TWhere } from "@mono/types";
+import { TFieldDef } from "@mono/types/model";
 import { action } from "@storybook/addon-actions";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import { TOrder, TWhere } from "../../../types";
-import { TFieldDef } from "../../../types/model";
 import delIcon from "../../assets/icons/delete.svg";
 import editIcon from "../../assets/icons/edit.svg";
 import newIcon from "../../assets/icons/new.svg";

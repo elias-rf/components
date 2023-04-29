@@ -1,5 +1,5 @@
+import { container } from "@mono/models/container";
 import { describe, expect, it } from "vitest";
-import { container } from "../../model/container";
 
 describe("esterilizacaoExterna model", () => {
   const model = container.resolve("esterilizacaoExternaModel");

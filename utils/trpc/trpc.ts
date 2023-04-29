@@ -1,6 +1,6 @@
+import type { TAppRouter } from "@mono/models/app-router";
 import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
-import type { TAppRouter } from "../../models/app-router";
 
 let server = "";
 if (process.env.NODE_ENV === "development") server = "http://localhost:3333";

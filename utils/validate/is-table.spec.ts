@@ -1,5 +1,5 @@
+import { TDb } from "@mono/types";
 import { expect, it } from "vitest";
-import { TDb } from "../../types";
 import { isTable } from "./is-table";
 
 const entity: TDb = {

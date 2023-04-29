@@ -1,5 +1,5 @@
+import { TOrder, TSelected, TWhere } from "@mono/types";
 import React from "react";
-import { TOrder, TSelected, TWhere } from "../../../types";
 import { Page } from "../../components/page/page";
 import { PageTitle } from "../../components/page/page_title";
 import { TAgendaTelefoneListEvent } from "../../features/agenda_telefone/agenda-telefone-list";

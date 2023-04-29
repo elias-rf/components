@@ -1,5 +1,5 @@
+import { day } from "@mono/utils/date/day";
 import React from "react";
-import { day } from "../../../../utils/date/day";
 import { EsterilizacaoExternaDiario } from "./est-ext-diario";
 import { EsterilizacaoExternaMensal } from "./est-ext-mensal";
 import { EsterilizacaoExternaModelo } from "./est-ext-modelo";

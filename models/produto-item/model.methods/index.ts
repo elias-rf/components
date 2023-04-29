@@ -1,6 +1,6 @@
 //--
-import { TCrud } from "../../../server/lib/crud/crud.type";
-import { TTableDef } from "../../../types";
+import { TTableDef } from "@mono/types";
+import { TCrud } from "@mono/utils/crud/crud.type";
 import { TProdutoPlanoRpc } from "../../produto-plano/produto-plano.type";
 import { produtoPlano } from "./produto-plano";
 

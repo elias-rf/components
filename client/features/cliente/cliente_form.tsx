@@ -1,9 +1,9 @@
+import { TClienteIds } from "@mono/models/cliente/cliente.type";
+import type { TFieldDef } from "@mono/types";
+import { recordClear } from "@mono/utils/schema/record-clear";
+import { trpc } from "@mono/utils/trpc/trpc";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { TClienteIds } from "../../../models/cliente/cliente.type";
-import type { TFieldDef } from "../../../types";
-import { recordClear } from "../../../utils/schema/record-clear";
-import { trpc } from "../../../utils/trpc/trpc";
 import { Field } from "../../components/field";
 import { clienteSchema } from "./cliente.schema";
 

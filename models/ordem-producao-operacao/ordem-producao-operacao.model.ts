@@ -1,5 +1,5 @@
-import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnections } from "../../types";
+import { crudFactory } from "@mono/utils/crud/crud.factory";
+import type { TConnections } from "../connections";
 import { ordemProducaoOperacaoMethods } from "./model.methods";
 import { ordem_producao_operacao } from "./ordem-producao-operacao.table";
 import type { TOrdemProducaoOperacaoModel } from "./ordem-producao-operacao.type";

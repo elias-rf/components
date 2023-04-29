@@ -1,8 +1,8 @@
 import cookie from "@fastify/cookie";
 import cors from "@fastify/cors";
 import jwt from "@fastify/jwt";
+import { config } from "@mono/config";
 import Fastify from "fastify";
-import { config } from "../config";
 import { routes } from "./routes";
 
 export const app = Fastify({ maxParamLength: 5000, logger: true });

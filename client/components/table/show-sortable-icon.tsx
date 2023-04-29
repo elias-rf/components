@@ -1,10 +1,10 @@
+import { TFieldDef, TOrder } from "@mono/types";
+import { orderByUtil } from "@mono/utils/schema/order-by";
 import {
   IconChevronDown,
   IconChevronUp,
   IconSelector,
 } from "@tabler/icons-react";
-import { TFieldDef, TOrder } from "../../../types";
-import { orderByUtil } from "../../../utils/schema/order-by";
 
 interface ShowSortableIconProps {
   order: TOrder[];

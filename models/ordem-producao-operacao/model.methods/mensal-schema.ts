@@ -1,4 +1,4 @@
-import { TFieldDef } from "../../../types";
+import { TFieldDef } from "@mono/types";
 
 export function mensalSchema(): () => Promise<TFieldDef[]> {
   return async () => {

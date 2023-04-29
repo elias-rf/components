@@ -1,6 +1,6 @@
+import { config } from "@mono/config";
+import { knexLogger } from "@mono/utils/knex-logger";
 import KnexObj, { Knex } from "knex";
-import { config } from "../../config";
-import { knexLogger } from "../../utils/knex-logger";
 
 let knexPlano: Knex;
 

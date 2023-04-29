@@ -1,6 +1,6 @@
 import { Button, Select, Space, TextInput } from "@mantine/core";
+import { TFieldDef, TWhere } from "@mono/types";
 import React, { useState } from "react";
-import { TFieldDef, TWhere } from "../../../types";
 import { BadgeClose } from "../badge-close";
 
 type TSearchProps = {

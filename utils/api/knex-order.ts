@@ -1,4 +1,4 @@
-import { TOrder } from "../../types";
+import { TOrder } from "@mono/types";
 import { isEmpty } from "../identify/is_empty";
 
 export function knexOrder(

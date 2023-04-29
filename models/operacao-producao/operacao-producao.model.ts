@@ -1,6 +1,5 @@
-
-import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnections } from "../../types";
+import { crudFactory } from "@mono/utils/crud/crud.factory";
+import type { TConnections } from "../connections";
 import { operacao_producao } from "./operacao-producao.table";
 import type { TOperacaoProducaoModel } from "./operacao-producao.type";
 //#region import
@@ -11,12 +10,8 @@ export function operacaoProducaoModelFactory(
   { connections }: { connections: TConnections }
 ): //#endregion
 TOperacaoProducaoModel {
-
-  const connection = connections[operacao_producao.database]
-  const crud = crudFactory(
-    connection,
-    operacao_producao
-  );
+  const connection = connections[operacao_producao.database];
+  const crud = crudFactory(connection, operacao_producao);
 
   //#region def
   //#endregion
@@ -36,7 +31,7 @@ TOperacaoProducaoModel {
     operacao_producao,
   } as TOperacaoProducaoModel;
 
-  return model
+  return model;
 }
 
 //#region other

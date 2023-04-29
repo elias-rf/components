@@ -1,7 +1,7 @@
+import { connectionsMock } from "@mono/mocks/connections.mock";
+import { knexMockHistory } from "@mono/utils/data/knex-mock-history";
 import { createTracker } from "knex-mock-client";
 import { describe, expect, it } from "vitest";
-import { connectionsMock } from "../../mocks/connections.mock";
-import { knexMockHistory } from "../../utils/data/knex-mock-history";
 import { nfSaidaFvModelFactory } from "../nf-saida-fv/nf-saida-fv.model";
 import { nfSaidaModelFactory } from "./nf-saida.model";
 

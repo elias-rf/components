@@ -1,7 +1,7 @@
+import { TOrder } from "@mono/types";
+import { TFieldDef } from "@mono/types/model";
+import { orderByUtil } from "@mono/utils/schema/order-by";
 import { twMerge } from "tailwind-merge";
-import { TOrder } from "../../../types";
-import { TFieldDef } from "../../../types/model";
-import { orderByUtil } from "../../../utils/schema/order-by";
 import { ShowSortableIcon } from "./show-sortable-icon";
 
 export type TTableColumn = {

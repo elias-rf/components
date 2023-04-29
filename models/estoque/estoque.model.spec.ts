@@ -1,8 +1,8 @@
+import { connectionsMock } from "@mono/mocks/connections.mock";
+import { knexMockHistory } from "@mono/utils/data/knex-mock-history";
 import { createTracker, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, test } from "vitest";
-import { connectionsMock } from "../../mocks/connections.mock";
 import { setTracker } from "../../server/lib/set_tracker";
-import { knexMockHistory } from "../../utils/data/knex-mock-history";
 import { estoqueModelFactory } from "./estoque.model";
 describe("estoque", () => {
   const estoque = estoqueModelFactory({ connections: connectionsMock });

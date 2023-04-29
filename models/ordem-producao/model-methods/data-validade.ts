@@ -1,4 +1,4 @@
-import { day } from "../../../utils/date/day";
+import { day } from "@mono/utils/date/day";
 import { TOrdemProducaoIds, TOrdemProducaoModel } from "../ordem-producao.type";
 
 // Retorna data de validade

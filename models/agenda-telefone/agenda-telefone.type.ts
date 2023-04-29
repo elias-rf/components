@@ -1,11 +1,5 @@
-import {
-  TConnection,
-  TFieldDef,
-  TOrder,
-  TSelect,
-  TTableDef,
-  TWhere,
-} from "../../types";
+import { TFieldDef, TOrder, TSelect, TTableDef, TWhere } from "@mono/types";
+import { TConnection } from "../connections";
 
 export interface TAgendaTelefonePk {
   agenda_telefone_id?: number;

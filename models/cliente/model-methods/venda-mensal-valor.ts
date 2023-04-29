@@ -1,6 +1,6 @@
-import { formatMoney } from "../../../utils/format/format-money";
-import { zsr } from "../../../utils/zod/z-refine";
-import { zd, zod } from "../../../utils/zod/zod";
+import { formatMoney } from "@mono/utils/format/format-money";
+import { zsr } from "@mono/utils/zod/z-refine";
+import { zd, zod } from "@mono/utils/zod/zod";
 import { TNfSaidaModel } from "../../nf-saida/nf-saida.type";
 import { TPeriodoCliente, TVendaMensalResp } from "../cliente.type";
 

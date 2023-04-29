@@ -1,7 +1,7 @@
+import { zsr } from "@mono/utils/zod/z-refine";
+import { zod } from "@mono/utils/zod/zod";
 import { Knex } from "knex";
 import { z } from "zod";
-import { zsr } from "../../../utils/zod/z-refine";
-import { zod } from "../../../utils/zod/zod";
 import { TOrdemProducaoOperacaoTurno } from "../ordem-producao-operacao.type";
 
 export function turno(connection: Knex): TOrdemProducaoOperacaoTurno {

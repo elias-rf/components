@@ -1,5 +1,5 @@
+import { TFieldServer } from "@mono/types";
 import { describe, expect, it } from "vitest";
-import { TFieldServer } from "../../types";
 import { zIdClient } from "./z-id-client";
 
 const entity: TFieldServer[] = [

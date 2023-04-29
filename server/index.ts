@@ -1,5 +1,10 @@
-// import { logger } from "../utils/logger";
-import { config } from "../config";
+/**
+ * @introduction Entrada para servidor de API da intranet
+ *
+ * @description usa fastify, trpc
+ */
+
+import { config } from "@mono/config";
 import { app } from "./app";
 import "./global";
 

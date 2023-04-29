@@ -1,12 +1,12 @@
 import { useForm } from "@mantine/form";
-import React from "react";
 import type {
   TAgendaTelefone,
   TAgendaTelefoneIds,
-} from "../../../models/agenda-telefone/agenda-telefone.type";
-import { isEmpty } from "../../../utils/identify/is_empty";
-import { isNumber } from "../../../utils/identify/is_number";
-import { trpc } from "../../../utils/trpc/trpc";
+} from "@mono/models/agenda-telefone/agenda-telefone.type";
+import { isEmpty } from "@mono/utils/identify/is_empty";
+import { isNumber } from "@mono/utils/identify/is_number";
+import { trpc } from "@mono/utils/trpc/trpc";
+import React from "react";
 
 import { Button, TextInput } from "@mantine/core";
 

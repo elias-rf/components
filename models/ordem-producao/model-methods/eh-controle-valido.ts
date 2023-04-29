@@ -1,4 +1,4 @@
-import { module10 } from "../../../utils/string/module10";
+import { module10 } from "@mono/utils/string/module10";
 
 // Valida se número de série é válido
 export function ehControleValidoFactory() {

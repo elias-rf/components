@@ -1,4 +1,4 @@
-import { TTableDef } from "../../types";
+import { TTableDef } from "@mono/types";
 
 export const group_subject: TTableDef = {
   database: "oftalmo",

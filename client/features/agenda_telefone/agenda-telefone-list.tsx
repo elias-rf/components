@@ -1,8 +1,8 @@
+import { TAgendaTelefoneFields } from "@mono/models/agenda-telefone/agenda-telefone.type";
+import { TIds, TOrder, TWhere } from "@mono/types";
+import { trpc } from "@mono/utils/trpc/trpc";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import React from "react";
-import { TAgendaTelefoneFields } from "../../../models/agenda-telefone/agenda-telefone.type";
-import { TIds, TOrder, TWhere } from "../../../types";
-import { trpc } from "../../../utils/trpc/trpc";
 import { Table } from "../../components/table";
 import { agendaTelefoneColumns } from "./agenda-telefone.cols";
 

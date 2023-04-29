@@ -1,5 +1,5 @@
+import { TFieldServer } from "@mono/types";
 import { describe, expect, it } from "vitest";
-import { TFieldServer } from "../../types";
 import { renameFieldToName, renameNameToField } from "./rename-fields";
 
 const entity: TFieldServer[] = [

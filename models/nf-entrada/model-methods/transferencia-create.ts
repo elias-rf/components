@@ -1,7 +1,7 @@
 import { isEmpty } from "lodash";
 
-import { TCrud } from "../../../server/lib/crud/crud.type";
-import { day } from "../../../utils/date/day";
+import { TCrud } from "@mono/utils/crud/crud.type";
+import { day } from "@mono/utils/date/day";
 import { TEstoqueRpc } from "../../estoque/estoque.type";
 import { TNfEntradaControleRpc } from "../../nf-entrada-controle/nf-entrada-controle.type";
 import { TNfEntradaItemRpc } from "../../nf-entrada-item/nf-entrada-item.type";

@@ -1,6 +1,6 @@
 import { TextInput } from "@mantine/core";
+import { TFieldDef, TWhere } from "@mono/types";
 import React from "react";
-import { TFieldDef, TWhere } from "../../../types";
 import { whereUtil } from "../../lib/http/where-util";
 
 export type TTableFilter = {

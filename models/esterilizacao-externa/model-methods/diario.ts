@@ -1,7 +1,7 @@
+import { day } from "@mono/utils/date/day";
+import { zsr } from "@mono/utils/zod/z-refine";
+import { zd, zod } from "@mono/utils/zod/zod";
 import { Knex } from "knex";
-import { day } from "../../../utils/date/day";
-import { zsr } from "../../../utils/zod/z-refine";
-import { zd, zod } from "../../../utils/zod/zod";
 import { TEsterilizacaoExternaDiario } from "../esterilizacao-externa.type";
 
 export function diario(connection: Knex): TEsterilizacaoExternaDiario {

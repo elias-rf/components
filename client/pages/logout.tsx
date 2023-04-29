@@ -1,6 +1,6 @@
+import { trpc } from "@mono/utils/trpc/trpc";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { trpc } from "../../utils/trpc/trpc";
 import { SpinnerIcon } from "../components/spinner/spinner-icon";
 
 /**

@@ -1,6 +1,5 @@
-
-import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnections } from "../../types";
+import { crudFactory } from "@mono/utils/crud/crud.factory";
+import { TConnections } from "../connections";
 import { cidade } from "./cidade.table";
 import type { TCidadeModel } from "./cidade.type";
 //#region import
@@ -11,12 +10,8 @@ export function cidadeModelFactory(
   { connections }: { connections: TConnections }
 ): //#endregion
 TCidadeModel {
-
-  const connection = connections[cidade.database]
-  const crud = crudFactory(
-    connection,
-    cidade
-  );
+  const connection = connections[cidade.database];
+  const crud = crudFactory(connection, cidade);
 
   //#region def
   //#endregion
@@ -36,7 +31,7 @@ TCidadeModel {
     cidade,
   } as TCidadeModel;
 
-  return model
+  return model;
 }
 
 //#region other

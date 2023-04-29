@@ -1,4 +1,4 @@
-import { TFieldDef, TSelect } from "../../types";
+import { TFieldDef, TSelect } from "@mono/types";
 import { namesFromFields } from "../schema/names-from-fields";
 
 export function isSelect(select: TSelect, fields: TFieldDef[]) {

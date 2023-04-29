@@ -1,4 +1,4 @@
-import { TTableDef } from "../../../../types/model";
+import { TTableDef } from "@mono/types/model";
 
 export const Nfe2GInutilizacao: TTableDef = {
   database: "plano",

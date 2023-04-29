@@ -1,4 +1,4 @@
-import { TFieldDef } from "../../types";
+import { TFieldDef } from "@mono/types";
 import { difference } from "../array/difference";
 import { isNonEmptyObject } from "../identify/is-non-empty-object";
 import { namesFromFields } from "../schema/names-from-fields";

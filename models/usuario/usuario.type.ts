@@ -1,8 +1,8 @@
-import { TOrder, TSelect, TWhere } from "../../types";
-import { TFieldDef } from "../../types/model";
+import { TOrder, TSelect, TWhere } from "@mono/types";
+import { TFieldDef } from "@mono/types/model";
 //#region import
-import { TCurrentUser } from "../../types";
-import { TRpcContext } from "../../types/rpc";
+import { TCurrentUser } from "@mono/types";
+import { TRpcContext } from "@mono/types/rpc";
 //#endregion
 export interface TUsuarioPk {
   usuario_id?: number;

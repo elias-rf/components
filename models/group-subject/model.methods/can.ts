@@ -1,6 +1,6 @@
+import { TTableDef } from "@mono/types";
+import { zd, zod } from "@mono/utils/zod/zod";
 import { Knex } from "knex";
-import { TTableDef } from "../../../types";
-import { zd, zod } from "../../../utils/zod/zod";
 import { TGroupSubjectCan } from "../group-subject.type";
 
 export function canFactory({

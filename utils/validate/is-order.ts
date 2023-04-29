@@ -1,4 +1,4 @@
-import { TFieldDef, TOrder } from "../../types";
+import { TFieldDef, TOrder } from "@mono/types";
 import { isArray } from "../identify/is-array";
 import { isNull } from "../identify/is-null";
 import { isObject } from "../identify/is-object";

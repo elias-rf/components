@@ -1,4 +1,4 @@
-import { formatMoney } from "../../utils/format/format-money";
+import { formatMoney } from "@mono/utils/format/format-money";
 
 export const moeda = {
   format: (vlr: any) => {

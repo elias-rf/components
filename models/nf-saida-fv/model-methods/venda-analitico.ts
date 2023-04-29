@@ -1,4 +1,4 @@
-import { TConnection } from "../../../types";
+import { TConnection } from "../../connections";
 
 export function vendaAnalitico({ connection }: { connection: TConnection }) {
   return async ({ inicio, fim }: { inicio: string; fim: string }) => {

@@ -1,6 +1,5 @@
-
-import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnections } from "../../types";
+import { crudFactory } from "@mono/utils/crud/crud.factory";
+import type { TConnections } from "../connections";
 import { receber } from "./receber.table";
 import type { TReceberModel } from "./receber.type";
 //#region import
@@ -11,12 +10,8 @@ export function receberModelFactory(
   { connections }: { connections: TConnections }
 ): //#endregion
 TReceberModel {
-
-  const connection = connections[receber.database]
-  const crud = crudFactory(
-    connection,
-    receber
-  );
+  const connection = connections[receber.database];
+  const crud = crudFactory(connection, receber);
 
   //#region def
   //#endregion
@@ -36,7 +31,7 @@ TReceberModel {
     receber,
   } as TReceberModel;
 
-  return model
+  return model;
 }
 
 //#region other

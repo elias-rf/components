@@ -1,5 +1,5 @@
-import { TSelected } from "../../types";
-import { isEmpty } from "../../utils/identify/is_empty";
+import { TSelected } from "@mono/types";
+import { isEmpty } from "@mono/utils/identify/is_empty";
 /**
  * Verifica se o registro está selecionado
  */

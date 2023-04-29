@@ -72,7 +72,7 @@ for (const table of tables) {
 
     return sch;
   });
-  const response = `import { TEntity } from "../../../../types";
+  const response = `import { TEntity } from "@mono/types";
 
 export const ${schemaTable}: TEntity =
   ${JSON.stringify(rsp, null, "  ")}

@@ -1,6 +1,6 @@
+import { TIds } from "@mono/types";
+import { trpc } from "@mono/utils/trpc/trpc";
 import React from "react";
-import { TIds } from "../../../../types";
-import { trpc } from "../../../../utils/trpc/trpc";
 import { Table } from "../../../components/table/table";
 import { operacaoMensalSchema } from "./operacao-mensal.schema";
 

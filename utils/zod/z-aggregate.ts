@@ -1,4 +1,4 @@
-import { TAggregate, TFieldDef } from "../../types/index";
+import { TAggregate, TFieldDef } from "@mono/types/index";
 import { namesFromFields } from "../schema/names-from-fields";
 
 export function zAggregate(aggregate: TAggregate, fields: TFieldDef[]) {

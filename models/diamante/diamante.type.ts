@@ -1,13 +1,6 @@
-import {
-  TConnection,
-  TFieldDef,
-  TOrder,
-  TSelect,
-  TTableDef,
-  TWhere,
-} from "../../types";
-//#region import
-//#endregion
+import { TFieldDef, TOrder, TSelect, TTableDef, TWhere } from "@mono/types";
+import { TConnection } from "../connections";
+
 export interface TDiamantePk {
   diamante_id?: string;
 }

@@ -1,6 +1,6 @@
-import { TFieldDef } from "../../../../types";
-import { day } from "../../../../utils/date/day";
-import { formatMoney } from "../../../../utils/format/format-money";
+import { TFieldDef } from "@mono/types";
+import { day } from "@mono/utils/date/day";
+import { formatMoney } from "@mono/utils/format/format-money";
 
 export type Record = {
   origem: string;

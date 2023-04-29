@@ -1,6 +1,6 @@
+import { TFieldDef } from "@mono/types/model";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { TFieldDef } from "../../../types/model";
 import { TableColumn } from "./table-column";
 
 const meta: Meta<typeof TableColumn> = {

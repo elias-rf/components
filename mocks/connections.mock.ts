@@ -1,6 +1,6 @@
+import { TConnections } from "@mono/models/connections";
 import Knex from "knex";
 import { MockClient } from "knex-mock-client";
-import { TConnections } from "../types";
 
 export const knexMock = Knex({ client: MockClient, dialect: "mssql" });
 

@@ -1,16 +1,16 @@
+import { TTableDef } from "@mono/types/model";
 import { Knex } from "knex";
-import { TTableDef } from "../types/model";
 //--
-import { clearFactory } from "../server/lib/crud/methods/clear-factory";
-import { countFactory } from "../server/lib/crud/methods/count-factory";
-import { createFactory } from "../server/lib/crud/methods/create-factory";
-import { delFactory } from "../server/lib/crud/methods/del-factory";
-import { incrementFactory } from "../server/lib/crud/methods/increment-factory";
-import { listFactory } from "../server/lib/crud/methods/list-factory";
-import { nameList } from "../server/lib/crud/methods/name-list";
-import { readFactory } from "../server/lib/crud/methods/read-factory";
-import { schemaFactory } from "../server/lib/crud/methods/schema-factory";
-import { updateFactory } from "../server/lib/crud/methods/update-factory";
+import { clearFactory } from "@mono/utils/crud/methods/clear-factory";
+import { countFactory } from "@mono/utils/crud/methods/count-factory";
+import { createFactory } from "@mono/utils/crud/methods/create-factory";
+import { delFactory } from "@mono/utils/crud/methods/del-factory";
+import { incrementFactory } from "@mono/utils/crud/methods/increment-factory";
+import { listFactory } from "@mono/utils/crud/methods/list-factory";
+import { nameList } from "@mono/utils/crud/methods/name-list";
+import { readFactory } from "@mono/utils/crud/methods/read-factory";
+import { schemaFactory } from "@mono/utils/crud/methods/schema-factory";
+import { updateFactory } from "@mono/utils/crud/methods/update-factory";
 
 export const methods = (connection: Knex, table: TTableDef) => ({
   clear: clearFactory(table),

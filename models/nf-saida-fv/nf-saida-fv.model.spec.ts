@@ -1,8 +1,8 @@
+import { connectionsMock } from "@mono/mocks/connections.mock";
+import { knexMockHistory } from "@mono/utils/data/knex-mock-history";
 import { createTracker, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
-import { connectionsMock } from "../../mocks/connections.mock";
 import { setTracker } from "../../server/lib/set_tracker";
-import { knexMockHistory } from "../../utils/data/knex-mock-history";
 import { nfSaidaFvModelFactory } from "./nf-saida-fv.model";
 
 describe("nfSaidaFvModel", () => {

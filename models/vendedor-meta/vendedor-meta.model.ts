@@ -1,6 +1,6 @@
+import { crudFactory } from "@mono/utils/crud/crud.factory";
 import { Knex } from "knex";
-import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnections } from "../../types/model";
+import { TConnections } from "../connections";
 import { vendedor_meta } from "./vendedor-meta.table";
 import type { TVendedorMetaModel } from "./vendedor-meta.type";
 //#region import

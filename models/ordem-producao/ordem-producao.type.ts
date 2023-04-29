@@ -1,11 +1,5 @@
-import {
-  TConnection,
-  TFieldDef,
-  TOrder,
-  TSelect,
-  TTableDef,
-  TWhere,
-} from "../../types";
+import { TFieldDef, TOrder, TSelect, TTableDef, TWhere } from "@mono/types";
+import { TConnection } from "../connections";
 import { TEtiquetaExterna } from "../etiqueta-externa/etiqueta-externa.type";
 import {
   TProdutoItem,
@@ -15,6 +9,7 @@ import {
   TProdutoPlano,
   TProdutoPlanoFields,
 } from "../produto-plano/produto-plano.type";
+
 export interface TOrdemProducaoPk {
   ordem_producao_id?: number;
 }

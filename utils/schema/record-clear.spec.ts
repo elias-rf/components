@@ -1,6 +1,6 @@
+import { tables } from "@mono/models/tables";
+import { TFieldDef } from "@mono/types";
 import { describe, expect, it } from "vitest";
-import { tables } from "../../model/tables";
-import { TField } from "../../types";
 import { recordClear } from "./record-clear";
 
 describe("record-clear", () => {
@@ -20,7 +20,7 @@ describe("record-clear", () => {
   });
 
   it("deve percorrer o schema definido sem erros", () => {
-    const schema: TField[] = [
+    const schema: TFieldDef[] = [
       {
         allowNull: false,
         label: "Ramal",

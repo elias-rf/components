@@ -1,5 +1,5 @@
+import { TInputType } from "@mono/types";
 import React from "react";
-import { TInputType } from "../../../types";
 
 export type TTextboxProps = {
   [prop: string]: any;

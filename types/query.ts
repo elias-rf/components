@@ -1,4 +1,4 @@
-import { TGenericObject } from "./index";
+import type { TGenericObject } from "./index";
 
 /**
  * Tipos para Queries

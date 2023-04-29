@@ -1,6 +1,6 @@
+import { trpc } from "@mono/utils/trpc/trpc";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { trpc } from "../../utils/trpc/trpc";
 import logo from "../assets/images/logo.svg";
 import { Page } from "../components/page/page";
 import { isAuthenticated } from "../lib/is-authenticated";

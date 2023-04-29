@@ -1,5 +1,5 @@
+import { trpc } from "@mono/utils/trpc/trpc";
 import React from "react";
-import { trpc } from "../../utils/trpc/trpc";
 import { Authorization } from "../components/authorization";
 
 export function Auth({ children }: { children: React.ReactNode }) {

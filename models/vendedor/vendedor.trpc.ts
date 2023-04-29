@@ -1,3 +1,4 @@
+import { publicProcedure, router } from "@mono/utils/trpc/trpc-server";
 import {
   createZod,
   delZod,
@@ -5,7 +6,6 @@ import {
   readZod,
   updateZod,
 } from "../../server/lib/trpc/inputs";
-import { publicProcedure, router } from "../../utils/trpc/trpc-server";
 import { container } from "../container";
 
 const model = container.resolve("vendedorModel");

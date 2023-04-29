@@ -1,7 +1,7 @@
 // node -r esbuild-runner/register type_create.ts produto_item
+import { tables } from "@mono/models/tables";
 import * as changeCase from "change-case";
 import fs from "fs";
-import { tables } from "../../models/tables";
 import { getSegments } from "./get-segments";
 
 function toTs(type: string) {
@@ -30,7 +30,7 @@ export function typeCreate(fileName: string) {
   const file = getFile(tableNameParam);
   const segments = getSegments(file);
 
-  let template = `import { TField, TOrder, TSelect, TWhere } from "../../types";
+  let template = `import { TField, TOrder, TSelect, TWhere } from "@mono/types";
 ${segments.import}\n`;
   // TTablePk
   template += `export interface T${tableNamePascal}Pk {\n`;

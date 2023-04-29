@@ -1,4 +1,4 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "../../types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "@mono/types";
 //#region import
 //#endregion
 export interface TProdutoEstatisticaPk {

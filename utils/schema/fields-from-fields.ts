@@ -1,4 +1,4 @@
-import { TFieldDef } from "../../types/model";
+import { TFieldDef } from "@mono/types/model";
 
 /** busca fields em uma tabela */
 export function fieldsFromFields(fields: TFieldDef[]) {

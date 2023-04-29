@@ -1,0 +1,15 @@
+{
+  "alias": {
+    "@/*": "client/*"
+  },
+  "resolveExtensions": [
+    ".js",
+    ".jsx",
+    ".ts",
+    ".tsx",
+    ".vue",
+    ".scss",
+    ".less"
+  ],
+  "entryFilePath": "/server/index.ts"
+}

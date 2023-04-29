@@ -1,6 +1,6 @@
-import { TUsuarioFields } from "../../../models/usuario/usuario.type";
-import { TIds, TOrder, TWhere } from "../../../types";
-import { trpc } from "../../../utils/trpc/trpc";
+import { TUsuarioFields } from "@mono/models/usuario/usuario.type";
+import { TIds, TOrder, TWhere } from "@mono/types";
+import { trpc } from "@mono/utils/trpc/trpc";
 import { Table } from "../../components/table/table";
 import { usuarioSchema } from "./usuario-schema";
 

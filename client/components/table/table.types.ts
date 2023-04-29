@@ -1,5 +1,5 @@
-import type { TSelected } from "../../../types";
-import { TFieldDef } from "../../../types/model";
+import type { TSelected } from "@mono/types";
+import { TFieldDef } from "@mono/types/model";
 
 export type TTableCell = {
   schemaField: TFieldDef;

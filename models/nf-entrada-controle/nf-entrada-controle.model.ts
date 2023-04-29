@@ -1,6 +1,5 @@
-
-import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnections } from "../../types";
+import { crudFactory } from "@mono/utils/crud/crud.factory";
+import { TConnections } from "../connections";
 import { nf_entrada_controle } from "./nf-entrada-controle.table";
 import type { TNfEntradaControleModel } from "./nf-entrada-controle.type";
 //#region import
@@ -11,12 +10,8 @@ export function nfEntradaControleModelFactory(
   { connections }: { connections: TConnections }
 ): //#endregion
 TNfEntradaControleModel {
-
-  const connection = connections[nf_entrada_controle.database]
-  const crud = crudFactory(
-    connection,
-    nf_entrada_controle
-  );
+  const connection = connections[nf_entrada_controle.database];
+  const crud = crudFactory(connection, nf_entrada_controle);
 
   //#region def
   //#endregion
@@ -36,7 +31,7 @@ TNfEntradaControleModel {
     nf_entrada_controle,
   } as TNfEntradaControleModel;
 
-  return model
+  return model;
 }
 
 //#region other

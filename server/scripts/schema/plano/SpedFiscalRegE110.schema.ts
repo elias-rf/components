@@ -1,4 +1,4 @@
-import { TTableDef } from "../../../../types/model";
+import { TTableDef } from "@mono/types/model";
 
 export const SpedFiscalRegE110: TTableDef = {
   database: "plano",

@@ -1,9 +1,9 @@
-import { config } from "../../config";
-import { crudFactory } from "../../server/lib/crud/crud.factory";
+import { config } from "@mono/config";
+import type { TCurrentUser } from "@mono/types";
+import { crudFactory } from "@mono/utils/crud/crud.factory";
+import { day } from "@mono/utils/date/day";
 import { passwordVerify } from "../../server/lib/password-verify";
-import type { TCurrentUser } from "../../types";
-import type { TConnection, TConnections } from "../../types/model";
-import { day } from "../../utils/date/day";
+import { TConnection, TConnections } from "../connections";
 import { usuario } from "./usuario.table";
 import type { TUsuario, TUsuarioModel } from "./usuario.type";
 

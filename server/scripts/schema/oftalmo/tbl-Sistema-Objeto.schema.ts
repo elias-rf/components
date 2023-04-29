@@ -1,4 +1,4 @@
-import { TTableDef } from "../../../../types/model";
+import { TTableDef } from "@mono/types/model";
 
 export const tbl_Sistema_Objeto: TTableDef = {
   database: "oftalmo",

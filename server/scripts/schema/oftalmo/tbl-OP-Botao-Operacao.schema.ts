@@ -1,4 +1,4 @@
-import { TTableDef } from "../../../../types/model";
+import { TTableDef } from "@mono/types/model";
 
 export const tbl_OP_Botao_Operacao: TTableDef = {
   database: "oftalmo",

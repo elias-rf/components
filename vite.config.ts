@@ -26,6 +26,7 @@ export default defineConfig({
     },
   },
   build: { outDir: "../public", emptyOutDir: true, target: "esnext" },
+  resolve: { alias: { "@mono": path.resolve(__dirname, "./") } },
   plugins: [react(), UnoCSS()],
   test: {
     globals: true,

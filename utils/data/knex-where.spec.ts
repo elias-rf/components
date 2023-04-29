@@ -1,6 +1,6 @@
+import { Where } from "@mono/types";
 import Knex from "knex";
 import { expect, it } from "vitest";
-import { Where } from "../types";
 import { knexWhere } from "./knex-where";
 
 it("Deve receber arrays", () => {

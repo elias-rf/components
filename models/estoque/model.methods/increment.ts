@@ -1,10 +1,10 @@
+import { TTableDef } from "@mono/types";
+import { isNumber } from "@mono/utils/identify/is_number";
+import { renameToFieldObject } from "@mono/utils/schema/rename-fields";
+import { isIdClient } from "@mono/utils/zod/z-id-client";
 import { Knex } from "knex";
 import { validateIsThrow } from "../../../server/lib/validate-is-throw";
 import { validateThrow } from "../../../server/lib/validate-throw";
-import { TTableDef } from "../../../types";
-import { isNumber } from "../../../utils/identify/is_number";
-import { renameToFieldObject } from "../../../utils/schema/rename-fields";
-import { isIdClient } from "../../../utils/zod/z-id-client";
 import { TEstoqueIncrement } from "../estoque.type";
 export function increment(
   connection: Knex,

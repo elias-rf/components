@@ -1,15 +1,8 @@
-import { Knex } from "knex";
 /**
  * Tipos para Banco de Dados
  */
 
 export type TConnectionNames = "oftalmo" | "plano" | "fullvision";
-
-export type TConnection = Knex;
-
-export type TConnections = {
-  [cnn in TConnectionNames]: TConnection;
-};
 
 export type TFormType = "checkbox" | "select" | "text" | "textarea";
 export type TFieldType =

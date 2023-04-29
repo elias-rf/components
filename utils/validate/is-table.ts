@@ -1,4 +1,4 @@
-import { TTableDef } from "../../types/model";
+import { TTableDef } from "@mono/types/model";
 import { isEmpty } from "../identify/is_empty";
 
 export function isTable(

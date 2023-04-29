@@ -1,4 +1,4 @@
-import { TFieldDef } from "../../../types";
+import { TFieldDef } from "@mono/types";
 import { Table } from "../../components/table/table";
 
 type FaturamentoAnualProps = {

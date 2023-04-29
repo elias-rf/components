@@ -1,6 +1,5 @@
-
-import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnections } from "../../types";
+import { crudFactory } from "@mono/utils/crud/crud.factory";
+import { TConnections } from "../connections";
 import { etiqueta_interna } from "./etiqueta-interna.table";
 import type { TEtiquetaInternaModel } from "./etiqueta-interna.type";
 //#region import
@@ -11,12 +10,8 @@ export function etiquetaInternaModelFactory(
   { connections }: { connections: TConnections }
 ): //#endregion
 TEtiquetaInternaModel {
-
-  const connection = connections[etiqueta_interna.database]
-  const crud = crudFactory(
-    connection,
-    etiqueta_interna
-  );
+  const connection = connections[etiqueta_interna.database];
+  const crud = crudFactory(connection, etiqueta_interna);
 
   //#region def
   //#endregion
@@ -36,7 +31,7 @@ TEtiquetaInternaModel {
     etiqueta_interna,
   } as TEtiquetaInternaModel;
 
-  return model
+  return model;
 }
 
 //#region other

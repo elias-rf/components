@@ -1,10 +1,10 @@
 import { Button } from "@mantine/core";
+import { TUsuario, TUsuarioIds } from "@mono/models/usuario/usuario.type";
+import { isEmpty } from "@mono/utils/identify/is_empty";
+import { recordClear } from "@mono/utils/schema/record-clear";
+import { trpc } from "@mono/utils/trpc/trpc";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { TUsuario, TUsuarioIds } from "../../../models/usuario/usuario.type";
-import { isEmpty } from "../../../utils/identify/is_empty";
-import { recordClear } from "../../../utils/schema/record-clear";
-import { trpc } from "../../../utils/trpc/trpc";
 import { Field } from "../../components/field";
 import { isNumber } from "../../lib/valid/isNumber";
 import { usuarioSchema } from "./usuario-schema";

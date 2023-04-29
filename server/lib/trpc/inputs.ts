@@ -1,4 +1,4 @@
-import { zd } from "../../../utils/zod/zod";
+import { zd } from "@mono/utils/zod/zod";
 
 export const whereZod = zd.array(
   zd.tuple([zd.string(), zd.string(), zd.union([zd.string(), zd.number()])])

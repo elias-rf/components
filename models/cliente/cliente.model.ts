@@ -1,5 +1,5 @@
-import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnections } from "../../types";
+import { crudFactory } from "@mono/utils/crud/crud.factory";
+import { TConnections } from "../connections";
 import { cliente } from "./cliente.table";
 import type { TClienteModel } from "./cliente.type";
 

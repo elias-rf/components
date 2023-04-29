@@ -1,6 +1,6 @@
+import { connectionsMock, knexMock } from "@mono/mocks/connections.mock";
+import { knexMockHistory } from "@mono/mocks/knex-mock-history";
 import { createTracker } from "knex-mock-client";
-import { connectionsMock, knexMock } from "../../../mocks/connections.mock";
-import { knexMockHistory } from "../../../mocks/knex-mock-history";
 import { group_subject } from "../group-subject.table";
 import { canFactory } from "./can";
 

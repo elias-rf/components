@@ -1,5 +1,5 @@
+import { trpc } from "@mono/utils/trpc/trpc";
 import React from "react";
-import { trpc } from "../../../../utils/trpc/trpc";
 import { Table } from "../../../components/table/table";
 import { transferenciaModeloSchema } from "./transferencia-modelo.schema";
 

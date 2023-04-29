@@ -1,7 +1,7 @@
 import { Button } from "@mantine/core";
+import { fetchTrpc } from "@mono/utils/trpc/trpc";
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { fetchTrpc } from "../../../utils/trpc/trpc";
 import { BadgeClose } from "../../components/badge-close";
 import { Label } from "../../components/form";
 import { Input } from "../../components/input";

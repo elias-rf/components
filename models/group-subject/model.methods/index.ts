@@ -1,6 +1,6 @@
 //--
+import { TTableDef } from "@mono/types";
 import { Knex } from "knex";
-import { TTableDef } from "../../../types";
 import { canFactory } from "./can";
 
 export function groupSubjectMethods({

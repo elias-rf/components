@@ -1,6 +1,6 @@
+import { TUsuarioFields } from "@mono/models/usuario/usuario.type";
+import { TOrder, TSelected, TWhere } from "@mono/types";
 import React from "react";
-import { TUsuarioFields } from "../../../models/usuario/usuario.type";
-import { TOrder, TSelected, TWhere } from "../../../types";
 import { Page } from "../../components/page/page";
 import { PageTitle } from "../../components/page/page_title";
 import { Auth } from "../../features/auth";

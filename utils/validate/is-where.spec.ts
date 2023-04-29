@@ -1,5 +1,5 @@
+import { TField } from "@mono/types";
 import { describe, expect, it } from "vitest";
-import { TField } from "../../types";
 import { isWhere } from "./is-where";
 
 const entity: TField[] = [

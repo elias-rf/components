@@ -1,4 +1,4 @@
-import { TConnection } from "../../../types";
+import { TConnection } from "../../connections";
 
 export function vendaDiario({ connection }: { connection: TConnection }) {
   return async ({

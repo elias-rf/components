@@ -1,4 +1,5 @@
-import { TConnections, TCurrentUser } from "./index";
+import { TConnections } from "@mono/models/connections";
+import type { TCurrentUser } from "./index";
 
 /** Contexto para RPC */
 export type TRpcContext = {

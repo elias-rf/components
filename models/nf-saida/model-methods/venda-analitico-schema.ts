@@ -1,4 +1,4 @@
-import { TFieldDef } from "../../../types";
+import { TFieldDef } from "@mono/types";
 
 export function vendaAnaliticoSchema(): () => Promise<TFieldDef[]> {
   return async () => {

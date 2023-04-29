@@ -1,6 +1,6 @@
+import { zsr } from "@mono/utils/zod/z-refine";
+import { zd, zod } from "@mono/utils/zod/zod";
 import { Knex } from "knex";
-import { zsr } from "../../../utils/zod/z-refine";
-import { zd, zod } from "../../../utils/zod/zod";
 
 export function produto(connection: Knex) {
   return async ({

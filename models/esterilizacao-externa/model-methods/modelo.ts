@@ -1,6 +1,6 @@
-import { TConnection } from "../../../types";
-import { zsr } from "../../../utils/zod/z-refine";
-import { zd, zod } from "../../../utils/zod/zod";
+import { zsr } from "@mono/utils/zod/z-refine";
+import { zd, zod } from "@mono/utils/zod/zod";
+import { TConnection } from "../../connections";
 import { TEsterilizacaoExternaModelo } from "../esterilizacao-externa.type";
 
 export function modelo(connection: TConnection): TEsterilizacaoExternaModelo {

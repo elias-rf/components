@@ -1,6 +1,5 @@
-
-import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnections } from "../../types";
+import { crudFactory } from "@mono/utils/crud/crud.factory";
+import { TConnections } from "../connections";
 import { vendedor } from "./vendedor.table";
 import type { TVendedorModel } from "./vendedor.type";
 //#region import
@@ -11,12 +10,8 @@ export function vendedorModelFactory(
   { connections }: { connections: TConnections }
 ): //#endregion
 TVendedorModel {
-
-  const connection = connections[vendedor.database]
-  const crud = crudFactory(
-    connection,
-    vendedor
-  );
+  const connection = connections[vendedor.database];
+  const crud = crudFactory(connection, vendedor);
 
   //#region def
   //#endregion
@@ -36,7 +31,7 @@ TVendedorModel {
     vendedor,
   } as TVendedorModel;
 
-  return model
+  return model;
 }
 
 //#region other

@@ -1,6 +1,6 @@
+import { day } from "@mono/utils/date/day";
+import { trpc } from "@mono/utils/trpc/trpc";
 import React from "react";
-import { day } from "../../../../utils/date/day";
-import { trpc } from "../../../../utils/trpc/trpc";
 import { Table } from "../../../components/table/table";
 import { esterilizacaoInternaDiarioSchema } from "./est-int-diario-schema";
 

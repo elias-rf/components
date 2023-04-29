@@ -1,7 +1,7 @@
+import { TFieldDef, TWhere } from "@mono/types";
 import type { Meta, StoryObj } from "@storybook/react";
 import { JsonViewer } from "@textea/json-viewer";
 import React from "react";
-import { TFieldDef, TWhere } from "../../../types";
 import { TableFilter } from "./table-filter";
 
 const meta: Meta<typeof TableFilter> = {

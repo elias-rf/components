@@ -1,4 +1,4 @@
-import { TRpcContext } from "../types/rpc";
+import { TRpcContext } from "@mono/types/rpc";
 
 //recognize it as module
 export {};

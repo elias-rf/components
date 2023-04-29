@@ -1,4 +1,4 @@
-import { TConnection } from "../../../types";
+import { TConnection } from "../../connections";
 import { vendaAnalitico } from "./venda-analitico";
 import { vendaAnaliticoSchema } from "./venda-analitico-schema";
 import { vendaDiario } from "./venda-diario";

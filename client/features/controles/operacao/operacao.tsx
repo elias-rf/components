@@ -1,5 +1,5 @@
+import { day } from "@mono/utils/date/day";
 import React from "react";
-import { day } from "../../../../utils/date/day";
 import { Label } from "../../../components/form";
 import { Select } from "../../../components/select/select";
 import { OperacaoDiario } from "./operacao-diario";

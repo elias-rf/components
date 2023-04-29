@@ -1,9 +1,9 @@
-import React from "react";
 import {
   TAgendaTelefoneFields,
   TAgendaTelefoneIds,
-} from "../../../models/agenda-telefone/agenda-telefone.type";
-import { TOrder, TWhere } from "../../../types";
+} from "@mono/models/agenda-telefone/agenda-telefone.type";
+import { TOrder, TWhere } from "@mono/types";
+import React from "react";
 
 import { Page } from "../../components/page/page";
 import { PageTitle } from "../../components/page/page_title";

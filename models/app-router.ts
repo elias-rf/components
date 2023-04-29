@@ -1,4 +1,4 @@
-import { router } from "../utils/trpc/trpc-server";
+import { router } from "@mono/utils/trpc/trpc-server";
 // @index(['./**/*.trpc.ts'], (f, _) => `import { ${_.camelCase(f.name.slice(0,-4))}Router } from "${f.path}";`)
 import { agendaTelefoneRouter } from "./agenda-telefone/agenda-telefone.trpc";
 import { cidadeRouter } from "./cidade/cidade.trpc";
