@@ -3,7 +3,7 @@ import "@storybook/addon-console";
 import { Preview } from "@storybook/react";
 // import "../client/index.css";
 // import "virtual:uno.css";
-import { TrpcProvider } from "@mono/utils/trpc/trpc-provider";
+import { TrpcProvider } from "@/utils/trpc/trpc-provider";
 import "uno.css";
 
 export const parameters = {

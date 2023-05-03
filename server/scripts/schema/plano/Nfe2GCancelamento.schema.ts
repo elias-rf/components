@@ -1,4 +1,4 @@
-import { TTableDef } from "@mono/types/model";
+import { TTableDef } from "@/types/model";
 
 export const Nfe2GCancelamento: TTableDef = {
   database: "plano",

@@ -1,5 +1,5 @@
-import { zsr } from "@mono/utils/zod/z-refine";
-import { zd, zod } from "@mono/utils/zod/zod";
+import { zsr } from "@/utils/zod/z-refine";
+import { zd, zod } from "@/utils/zod/zod";
 import { Knex } from "knex";
 import { TNfTransferenciaModelo } from "../nf-saida.type";
 

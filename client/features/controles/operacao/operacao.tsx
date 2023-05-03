@@ -1,4 +1,4 @@
-import { day } from "@mono/utils/date/day";
+import { day } from "@/utils/date/day";
 import React from "react";
 import { Label } from "../../../components/form";
 import { Select } from "../../../components/select/select";

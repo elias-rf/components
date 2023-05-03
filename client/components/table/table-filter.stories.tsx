@@ -1,4 +1,4 @@
-import { TFieldDef, TWhere } from "@mono/types";
+import { TFieldDef, TWhere } from "@/types";
 import type { Meta, StoryObj } from "@storybook/react";
 import { JsonViewer } from "@textea/json-viewer";
 import React from "react";

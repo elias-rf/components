@@ -1,4 +1,4 @@
-import { TFieldDef, TGenericObject } from "@mono/types";
+import { TFieldDef, TGenericObject } from "@/types";
 import React from "react";
 
 export function useForm(schema: TFieldDef[]) {

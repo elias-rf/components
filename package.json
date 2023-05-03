@@ -37,9 +37,9 @@
       "command": "tsup-node server/index.ts"
     },
     "dev:server:test": {
-      "command": "tsx watch ./server/index.ts | pino-pretty",
+      "command": "tsx watch ./server/index.ts",
       "env": {
-        "NODE_ENV": "test"
+        "NODE_ENV": "development"
       },
       "service": true
     }
@@ -74,6 +74,7 @@
     "lodash": "^4.17.21",
     "pino": "^8.11.0",
     "pino-http": "^8.3.3",
+    "pino-pretty": "^10.0.0",
     "pubsub-js": "^1.9.4",
     "quick-lru": "^6.1.1",
     "react": "^18.2.0",

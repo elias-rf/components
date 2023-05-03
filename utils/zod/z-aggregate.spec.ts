@@ -1,4 +1,4 @@
-import { TFieldServer } from "@mono/types";
+import { TFieldServer } from "@/types";
 import { zAggregate } from "./z-aggregate";
 
 const entity: TFieldServer[] = [

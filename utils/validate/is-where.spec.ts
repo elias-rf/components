@@ -1,4 +1,4 @@
-import { TField } from "@mono/types";
+import { TField } from "@/types";
 import { describe, expect, it } from "vitest";
 import { isWhere } from "./is-where";
 

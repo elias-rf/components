@@ -1,5 +1,5 @@
 //--
-import { TCrud } from "@mono/utils/crud/crud.type";
+import { TCrud } from "@/utils/crud/crud.type";
 import { TEtiquetaExternaRpc } from "../../etiqueta-externa/etiqueta-externa.type";
 import { TOrdemProducaoOperacaoModel } from "../../ordem-producao-operacao/ordem-producao-operacao.type";
 import { TProdutoItemModel } from "../../produto-item/produto-item.type";

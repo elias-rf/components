@@ -1,4 +1,4 @@
-import { day } from "@mono/utils/date/day";
+import { day } from "@/utils/date/day";
 
 export const isMDY = (message = "Valor deve ser ano-mes-dia") => {
   return (value: any) => {

@@ -1,4 +1,4 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "@mono/types";
+import { TFieldDef, TOrder, TSelect, TWhere } from "@/types";
 
 export interface TNfSaidaPk {
   filial_id?: number;

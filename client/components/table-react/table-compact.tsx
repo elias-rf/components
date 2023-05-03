@@ -1,4 +1,12 @@
-import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import {
+  ColumnDef,
+  ColumnFiltersState,
+  OnChangeFn,
+  RowSelectionState,
+  SortingState,
+  getCoreRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
 import { BodySubRow } from "./body-sub-row";
 import { HeadFilter } from "./head-filter";
 import {
@@ -14,6 +22,18 @@ import {
   TableReact,
 } from "./index";
 
+type TTableReactCompactProps = {
+  data: Record<string, any>[];
+  columns: ColumnDef<Record<string, any>>[];
+  sort?: { id: string; desc: boolean }[];
+  setSort?: OnChangeFn<SortingState>;
+  rowSelection?: { [index: number]: boolean };
+  setRowSelection?: OnChangeFn<RowSelectionState>;
+  filters?: { id: string; value: string }[];
+  setFilters?: OnChangeFn<ColumnFiltersState>;
+  children: (row: any) => any;
+};
+
 export const TableReactCompact = ({
   data,
   columns,
@@ -24,7 +44,7 @@ export const TableReactCompact = ({
   children,
   filters,
   setFilters,
-}: any) => {
+}: TTableReactCompactProps) => {
   const table = useReactTable({
     columns,
     data,

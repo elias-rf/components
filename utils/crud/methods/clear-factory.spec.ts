@@ -1,7 +1,7 @@
-import { TTable } from "@mono/types/model";
+import { TTableDef } from "@/types";
 import { clearFactory } from "./clear-factory";
 
-const schema: TTable = {
+const schema: TTableDef = {
   database: "oftalmo",
   table: "phonebook",
   fields: [

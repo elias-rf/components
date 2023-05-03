@@ -1,11 +1,31 @@
+// fastify-jwt.d.ts
+import { config } from "@/config";
 import cookie from "@fastify/cookie";
 import cors from "@fastify/cors";
 import jwt from "@fastify/jwt";
-import { config } from "@mono/config";
 import Fastify from "fastify";
 import { routes } from "./routes";
 
-export const app = Fastify({ maxParamLength: 5000, logger: true });
+const envToLogger = {
+  development: {
+    transport: {
+      target: "pino-pretty",
+      options: {
+        translateTime: "HH:MM:ss Z",
+        ignore: "pid,hostname",
+      },
+    },
+  },
+  production: true,
+  test: false,
+};
+
+const environment: string = process.env.NODE_ENV || "production";
+
+export const app = Fastify({
+  maxParamLength: 5000,
+  logger: envToLogger[environment as keyof typeof envToLogger] ?? true,
+});
 
 app.register(cors, { origin: "*" });
 app.register(cookie);

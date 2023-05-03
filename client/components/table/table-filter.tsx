@@ -1,5 +1,5 @@
+import { TFieldDef, TWhere } from "@/types";
 import { TextInput } from "@mantine/core";
-import { TFieldDef, TWhere } from "@mono/types";
 import React from "react";
 import { whereUtil } from "../../lib/http/where-util";
 

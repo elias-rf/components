@@ -1,4 +1,4 @@
-import { TDb } from "@mono/types";
+import { TDb } from "@/types";
 import { expect, it } from "vitest";
 import { isTable } from "./is-table";
 

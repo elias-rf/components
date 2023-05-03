@@ -1,4 +1,4 @@
-import type { TGenericObject, TSelect, TTableDef, TWhere } from "@mono/types";
+import type { TGenericObject, TSelect, TTableDef, TWhere } from "@/types";
 import { Knex } from "knex";
 import { knexWhere } from "../../data/knex-where";
 import { renameNameToField } from "../../schema/rename-fields";

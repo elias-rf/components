@@ -1,6 +1,6 @@
-import { TClienteFields } from "@mono/models/cliente/cliente.type";
-import type { TIds, TOrder, TWhere } from "@mono/types";
-import { trpc } from "@mono/utils/trpc/trpc";
+import { TClienteFields } from "@/models/cliente/cliente.type";
+import type { TIds, TOrder, TWhere } from "@/types";
+import { trpc } from "@/utils/trpc/trpc";
 import { Table } from "../../components/table/table";
 import { clienteSchema } from "./cliente.schema";
 

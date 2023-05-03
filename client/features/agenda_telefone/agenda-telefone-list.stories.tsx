@@ -16,12 +16,27 @@ const ListState = () => {
   const [order, setOrder] = React.useState([]);
 
   function handleSelected(e: any) {
+    console.log(
+      `🚀 ~ file: agenda-telefone-list.stories.tsx:20 ~ handleSelected ~ e: any:`,
+      e
+    );
+
     setSelected(e.value);
   }
   function handleWhere(e: any) {
+    console.log(
+      `🚀 ~ file: agenda-telefone-list.stories.tsx:26 ~ handleWhere ~ e: any:`,
+      e
+    );
+
     setWhere(e.value);
   }
   function handleOrder(e: any) {
+    console.log(
+      `🚀 ~ file: agenda-telefone-list.stories.tsx:32 ~ handleOrder ~ e: any:`,
+      e
+    );
+
     setOrder(e.value);
   }
 

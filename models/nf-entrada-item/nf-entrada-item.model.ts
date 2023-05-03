@@ -1,5 +1,5 @@
-import { crudFactory } from "@mono/utils/crud/crud.factory";
-import type { TConnections } from "../connections";
+import type { TConnections } from "@/config/connections";
+import { crudFactory } from "@/utils/crud/crud.factory";
 import { nf_entrada_item } from "./nf-entrada-item.table";
 import type { TNfEntradaItemModel } from "./nf-entrada-item.type";
 //#region import

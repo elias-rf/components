@@ -1,4 +1,4 @@
-import { day } from "@mono/utils/date/day";
+import { day } from "@/utils/date/day";
 import React from "react";
 import { EsterilizacaoExternaDiario } from "./est-ext-diario";
 import { EsterilizacaoExternaMensal } from "./est-ext-mensal";

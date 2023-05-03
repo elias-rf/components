@@ -1,5 +1,5 @@
-import { crudFactory } from "@mono/utils/crud/crud.factory";
-import { TConnections } from "../connections";
+import type { TConnections } from "@/config/connections";
+import { crudFactory } from "@/utils/crud/crud.factory";
 import { fornecedor } from "./fornecedor.table";
 import type { TFornecedorModel } from "./fornecedor.type";
 //#region import

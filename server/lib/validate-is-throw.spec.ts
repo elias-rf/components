@@ -1,4 +1,4 @@
-import { isString } from "@mono/utils/identify/is-string";
+import { isString } from "@/utils/identify/is-string";
 import { expect, it } from "vitest";
 import { validateIsThrow } from "./validate-is-throw";
 

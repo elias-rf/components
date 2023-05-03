@@ -1,6 +1,6 @@
-import { TIds } from "@mono/types";
-import { day } from "@mono/utils/date/day";
-import { trpc } from "@mono/utils/trpc/trpc";
+import { TIds } from "@/types";
+import { day } from "@/utils/date/day";
+import { trpc } from "@/utils/trpc/trpc";
 import React from "react";
 import { Table } from "../../../components/table/table";
 import { operacaoDiarioSchema } from "./operacao-diario.schema";

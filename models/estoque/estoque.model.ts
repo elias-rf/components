@@ -1,5 +1,5 @@
-import { crudFactory } from "@mono/utils/crud/crud.factory";
-import { TConnections } from "../connections";
+import type { TConnections } from "@/config/connections";
+import { crudFactory } from "@/utils/crud/crud.factory";
 import { estoque } from "./estoque.table";
 import type { TEstoqueModel } from "./estoque.type";
 import { estoqueMethods } from "./model.methods";

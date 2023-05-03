@@ -1,5 +1,5 @@
+import { TrpcProvider } from "@/utils/trpc/trpc-provider";
 import { MantineProvider } from "@mantine/core";
-import { TrpcProvider } from "@mono/utils/trpc/trpc-provider";
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Layout } from "./features/layout";

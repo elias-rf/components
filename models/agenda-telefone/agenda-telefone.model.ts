@@ -1,6 +1,5 @@
-import { crudFactory } from "@mono/utils/crud/crud.factory";
-import { TConnections } from "../connections";
-
+import type { TConnections } from "@/config/connections";
+import { crudFactory } from "@/utils/crud/crud.factory";
 import { agenda_telefone } from "./agenda-telefone.table";
 import type { TAgendaTelefoneModel } from "./agenda-telefone.type";
 

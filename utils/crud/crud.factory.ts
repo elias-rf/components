@@ -1,5 +1,5 @@
-import { TConnection } from "@mono/models/connections";
-import type { TTableDef } from "@mono/types";
+import { TConnection } from "@/config/connections";
+import type { TTableDef } from "@/types";
 import type { TCrud } from "./crud.type";
 import { methods } from "./methods";
 

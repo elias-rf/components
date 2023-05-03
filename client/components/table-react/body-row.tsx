@@ -2,13 +2,12 @@ import type { Row } from "@tanstack/react-table";
 import classnames from "classnames";
 import { Fragment } from "react";
 
-export const BodyRow = ({
-  row,
-  children,
-}: {
+type BodyRowProps = {
   row: Row<Record<string, any>>;
   children: any;
-}) => {
+};
+
+export const BodyRow = ({ row, children }: BodyRowProps) => {
   if (!row) return null;
 
   return (

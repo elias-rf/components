@@ -1,5 +1,5 @@
-import { crudFactory } from "@mono/utils/crud/crud.factory";
-import { TConnections } from "../connections";
+import type { TConnections } from "@/config/connections";
+import { crudFactory } from "@/utils/crud/crud.factory";
 import { esterilizacao_interna } from "./esterilizacao-interna.table";
 import type { TEsterilizacaoInternaModel } from "./esterilizacao-interna.type";
 import { esterilizacaoInternaMethods } from "./model-methods";

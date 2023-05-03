@@ -1,5 +1,5 @@
-import { formatNumber } from "@mono/utils/format/format-number";
-import { parseNumber } from "@mono/utils/parse-number";
+import { formatNumber } from "@/utils/format/format-number";
+import { parseNumber } from "@/utils/parse-number";
 import React from "react";
 
 export type TTextboxNumberProps = {

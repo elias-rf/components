@@ -1,4 +1,4 @@
-import type { TTableDef } from "@mono/types/model";
+import type { TTableDef } from "@/types/model";
 
 export const agenda_telefone: TTableDef = {
   database: "oftalmo",

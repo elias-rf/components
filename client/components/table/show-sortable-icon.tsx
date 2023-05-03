@@ -1,5 +1,5 @@
-import { TFieldDef, TOrder } from "@mono/types";
-import { orderByUtil } from "@mono/utils/schema/order-by";
+import { TFieldDef, TOrder } from "@/types";
+import { orderByUtil } from "@/utils/schema/order-by";
 import {
   IconChevronDown,
   IconChevronUp,

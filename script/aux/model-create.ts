@@ -26,7 +26,7 @@ export function modelCreate(fileName: string) {
   const template = `
 import deepmerge from "ts-deepmerge";
 import { crudFactory } from "../../server/lib/crud/crud.factory";
-import type { TConnections } from "@mono/types";
+import type { TConnections } from "@/types";
 import { ${tableNameSnake} } from "./${tableNameParam}.table";
 import type { T${tableNamePascal}Model } from "./${tableNameParam}.type";
 ${segments.import}

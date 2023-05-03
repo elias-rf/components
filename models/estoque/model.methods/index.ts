@@ -1,6 +1,6 @@
 import type { Knex } from "knex";
 //--
-import { TTableDef } from "@mono/types";
+import { TTableDef } from "@/types";
 import { increment } from "./increment";
 
 export function estoqueMethods(connection: Knex, table: TTableDef) {

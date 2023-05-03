@@ -1,4 +1,4 @@
-import { publicProcedure, router } from "@mono/utils/trpc/trpc-server";
+import { publicProcedure, router } from "@/utils/trpc/trpc-server";
 import {
   createZod,
   delZod,

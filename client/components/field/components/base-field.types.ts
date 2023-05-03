@@ -1,4 +1,4 @@
-import { TFormType } from "@mono/types";
+import { TFormType } from "@/types";
 
 export type BaseFieldAttributes = {
   label?: string;

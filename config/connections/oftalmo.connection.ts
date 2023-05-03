@@ -1,5 +1,5 @@
-import { config } from "@mono/config";
-import { knexLogger } from "@mono/utils/knex-logger";
+import { config } from "@/config";
+import { knexLogger } from "@/utils/knex-logger";
 import KnexObj, { Knex } from "knex";
 
 let connectionOftalmo: Knex;

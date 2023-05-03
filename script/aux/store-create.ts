@@ -23,8 +23,8 @@ export function storeCreate(fileName: string) {
   const segments = getSegments(file);
 
   const template = `import { create } from "zustand";
-import { TField } from "@mono/types/model";
-import { cache } from "@mono/utils/cache";
+import { TField } from "@/types/model";
+import { cache } from "@/utils/cache";
 import { ${tableNameCamel}ServiceFactory } from "./${tableNameParam}.service";
 import type {
   T${tableNamePascal},

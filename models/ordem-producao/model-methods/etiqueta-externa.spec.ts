@@ -1,4 +1,4 @@
-import { connectionsMock } from "@mono/mocks/connections.mock";
+import { connectionsMock } from "@/mocks/connections.mock";
 import { createTracker } from "knex-mock-client";
 import { etiquetaExternaModelFactory } from "../../etiqueta-externa/etiqueta-externa.model";
 import { etiquetaExternaFactory } from "./etiqueta-externa";

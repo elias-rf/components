@@ -1,4 +1,4 @@
-import { TFieldDef, TTableDef } from "@mono/types";
+import { TFieldDef, TTableDef } from "@/types";
 import { TCrudSchema } from "../crud.type";
 
 export function schemaFactory(table: TTableDef): TCrudSchema {

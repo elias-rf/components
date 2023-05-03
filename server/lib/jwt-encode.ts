@@ -1,4 +1,4 @@
-import type { TCurrentUser } from "@mono/types";
+import type { TCurrentUser } from "@/types";
 import { sign } from "jsonwebtoken";
 /**
  * codifica um token JWT com os dados do usuario

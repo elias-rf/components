@@ -1,4 +1,4 @@
-import { TWhere } from "@mono/types";
+import { TWhere } from "@/types";
 
 /*
 [

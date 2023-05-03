@@ -1,6 +1,6 @@
-import { day } from "@mono/utils/date/day";
-import { zDate } from "@mono/utils/zod/z-date";
-import { zod } from "@mono/utils/zod/zod";
+import { day } from "@/utils/date/day";
+import { zDate } from "@/utils/zod/z-date";
+import { zod } from "@/utils/zod/zod";
 import { Knex } from "knex";
 import { z } from "zod";
 import { TOrdemProducaoOperacaoDiario } from "../ordem-producao-operacao.type";

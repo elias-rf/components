@@ -1,5 +1,5 @@
 import { asFunction, asValue, createContainer, InjectionMode } from "awilix";
-import { connections } from "./connections";
+import { connections } from "../config/connections";
 // ---
 
 // @index(['./**/*.model.ts'], (f, _) => `import { ${_.camelCase(f.name.slice(0,-6))}ModelFactory } from "${f.path}";`)

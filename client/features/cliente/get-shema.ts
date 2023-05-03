@@ -1,8 +1,8 @@
-import { TPeriodo } from "@mono/models/cliente/cliente.type";
-import { TFieldDef } from "@mono/types";
-import { day } from "@mono/utils/date/day";
-import { zsr } from "@mono/utils/zod/z-refine";
-import { zd, zod } from "@mono/utils/zod/zod";
+import { TPeriodo } from "@/models/cliente/cliente.type";
+import { TFieldDef } from "@/types";
+import { day } from "@/utils/date/day";
+import { zsr } from "@/utils/zod/z-refine";
+import { zd, zod } from "@/utils/zod/zod";
 
 export function getSchema(args: TPeriodo) {
   zod(

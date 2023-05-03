@@ -1,8 +1,8 @@
-import { connections } from "@mono/models/connections";
-import { tables } from "@mono/models/tables";
-import { TGenericObject } from "@mono/types";
-import { recordClear } from "@mono/utils/schema/record-clear";
-import { renameToFieldArrayObject } from "@mono/utils/schema/rename-fields";
+import { connections } from "@/config/connections";
+import { tables } from "@/models/tables";
+import { TGenericObject } from "@/types";
+import { recordClear } from "@/utils/schema/record-clear";
+import { renameToFieldArrayObject } from "@/utils/schema/rename-fields";
 
 export async function delCreateAux(
   table: string,

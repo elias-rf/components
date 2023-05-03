@@ -1,12 +1,11 @@
 import type { Row } from "@tanstack/react-table";
 
-export const BodySubRow = ({
-  row,
-  children,
-}: {
+type TBodySubRowProps = {
   row: Row<Record<string, any>>;
   children: any;
-}) => {
+};
+
+export const BodySubRow = ({ row, children }: TBodySubRowProps) => {
   if (!row || !row.getIsSelected()) return null;
 
   return (

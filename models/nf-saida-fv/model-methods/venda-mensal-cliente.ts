@@ -1,4 +1,4 @@
-import { TConnection } from "../../connections";
+import { TConnection } from "../../../config/connections";
 
 export function vendaMensalCliente({
   connection,

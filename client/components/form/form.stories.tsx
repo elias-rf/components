@@ -1,4 +1,4 @@
-import { fetchMockRpc } from "@mono/mocks/fetch-mock-rpc";
+import { fetchMockRpc } from "@/mocks/fetch-mock-rpc";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { useForm } from "../../lib/hooks/use_form";

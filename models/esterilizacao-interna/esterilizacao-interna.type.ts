@@ -1,5 +1,5 @@
-import { TFieldDef, TOrder, TSelect, TTableDef, TWhere } from "@mono/types";
-import { TConnection } from "../connections";
+import { TFieldDef, TOrder, TSelect, TTableDef, TWhere } from "@/types";
+import { TConnection } from "../../config/connections";
 
 export interface TEsterilizacaoInternaPk {
   esterilizacao_interna_id?: number;

@@ -1,4 +1,4 @@
-import { TFields } from "@mono/types";
+import { TFields } from "@/types";
 
 export function vendaDiarioSchema(): () => Promise<TFields> {
   return async () => {

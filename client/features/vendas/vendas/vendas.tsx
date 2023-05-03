@@ -1,5 +1,5 @@
-import { nfSaidaStore } from "@mono/models/nf-saida/nf-saida.store";
-import { day } from "@mono/utils/date/day";
+import { nfSaidaStore } from "@/models/nf-saida/nf-saida.store";
+import { day } from "@/utils/date/day";
 import React from "react";
 import { Table } from "../../../components/table/table";
 import {

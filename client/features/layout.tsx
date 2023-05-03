@@ -1,4 +1,4 @@
-import { trpc } from "@mono/utils/trpc/trpc";
+import { trpc } from "@/utils/trpc/trpc";
 import { Outlet, useNavigate } from "react-router-dom";
 import { LayoutDefault } from "../components/layout/default_layout";
 import { menu } from "../menu";

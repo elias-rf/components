@@ -1,3 +1,4 @@
+import { TCurrentUser } from "@/types";
 import {
   AppShell,
   Box,
@@ -10,7 +11,6 @@ import {
   Navbar,
   useMantineTheme,
 } from "@mantine/core";
-import { TCurrentUser } from "@mono/types";
 import { IconMessageCircle, IconSettings } from "@tabler/icons-react";
 import React from "react";
 import { MenuComponent } from "../menu/menu";

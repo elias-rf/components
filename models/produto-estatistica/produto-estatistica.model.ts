@@ -1,11 +1,11 @@
-import { crudFactory } from "@mono/utils/crud/crud.factory";
-import type { TConnections } from "../connections";
+import type { TConnections } from "@/config/connections";
+import { crudFactory } from "@/utils/crud/crud.factory";
 import { produto_estatistica } from "./produto-estatistica.table";
 import type { TProdutoEstatisticaModel } from "./produto-estatistica.type";
 //#region import
-import { renameToFieldObject } from "@mono/utils/schema/rename-fields";
-import { zIdClient } from "@mono/utils/zod/z-id-client";
-import { zd, zod } from "@mono/utils/zod/zod";
+import { renameToFieldObject } from "@/utils/schema/rename-fields";
+import { zIdClient } from "@/utils/zod/z-id-client";
+import { zd, zod } from "@/utils/zod/zod";
 import { tables } from "../tables";
 //#endregion
 

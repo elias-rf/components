@@ -1,4 +1,4 @@
-import { TAgendaTelefone } from "@mono/models/agenda-telefone/agenda-telefone.type";
+import { TAgendaTelefone } from "@/models/agenda-telefone/agenda-telefone.type";
 import { ColumnDef } from "@tanstack/react-table";
 
 export const agendaTelefoneColumns: ColumnDef<TAgendaTelefone>[] = [

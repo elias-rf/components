@@ -1,4 +1,4 @@
-import { trpc } from "@mono/utils/trpc/trpc";
+import { trpc } from "@/utils/trpc/trpc";
 import { Table } from "../../../components/table";
 import { EsterilizacaoInternaProdutoSchema } from "./est-int-produto-schema";
 

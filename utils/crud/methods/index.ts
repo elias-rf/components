@@ -1,5 +1,5 @@
-import type { TConnection } from "@mono/models/connections";
-import type { TTableDef } from "@mono/types";
+import type { TConnection } from "@/config/connections";
+import type { TTableDef } from "@/types";
 import { Knex } from "knex";
 import type { TCrudRpc } from "../crud.type";
 import { clearFactory } from "./clear-factory";

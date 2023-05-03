@@ -1,5 +1,5 @@
-import { connectionsMock } from "@mono/mocks/connections.mock";
-import { knexMockHistory } from "@mono/utils/data/knex-mock-history";
+import { connectionsMock } from "@/mocks/connections.mock";
+import { knexMockHistory } from "@/utils/data/knex-mock-history";
 import { createTracker, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, test } from "vitest";
 import { setTracker } from "../../server/lib/set_tracker";

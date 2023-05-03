@@ -1,4 +1,4 @@
-import { TGenericObject } from "@mono/types";
+import { TGenericObject } from "@/types";
 
 export function db(data: TGenericObject) {
   let dt = structuredClone(data);

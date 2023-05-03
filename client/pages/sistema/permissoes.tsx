@@ -1,4 +1,4 @@
-import { TOrder, TSelected, TWhere } from "@mono/types";
+import { TOrder, TSelected, TWhere } from "@/types";
 import React from "react";
 import { Page } from "../../components/page/page";
 import { PageTitle } from "../../components/page/page_title";

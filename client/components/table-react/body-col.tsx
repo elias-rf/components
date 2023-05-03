@@ -1,11 +1,11 @@
 import type { Cell } from "@tanstack/react-table";
 import { flexRender } from "@tanstack/react-table";
 
-export const BodyCol = ({
-  cell,
-}: {
+type TBodyColProps = {
   cell?: Cell<Record<string, any>, unknown>;
-}) => {
+};
+
+export const BodyCol = ({ cell }: TBodyColProps) => {
   if (!cell) return null;
 
   return (

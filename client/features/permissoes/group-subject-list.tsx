@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TIds, TOrder, TWhere } from "@mono/types";
+import { TIds, TOrder, TWhere } from "@/types";
 import { Table } from "../../components/table/table";
 
 export type TGroupSubjectList = any;

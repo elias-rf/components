@@ -1,4 +1,4 @@
-import { TGenericObject } from "@mono/types";
+import { TGenericObject } from "@/types";
 
 export function setInfo(rpc: TGenericObject, info: TGenericObject) {
   for (const inf in info) {

@@ -1,4 +1,4 @@
-import { TFieldDef } from "@mono/types";
+import { TFieldDef } from "@/types";
 
 export async function schemaProduto(): Promise<TFieldDef[]> {
   return [

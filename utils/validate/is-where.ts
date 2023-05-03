@@ -1,4 +1,4 @@
-import { TFieldDef, TWhere } from "@mono/types";
+import { TFieldDef, TWhere } from "@/types";
 import { isArray } from "../identify/is-array";
 import { isNull } from "../identify/is-null";
 import { isObject } from "../identify/is-object";

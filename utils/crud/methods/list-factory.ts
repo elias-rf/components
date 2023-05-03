@@ -1,9 +1,4 @@
-import type {
-  TAggregate,
-  TGenericObject,
-  TListArgs,
-  TTableDef,
-} from "@mono/types";
+import type { TAggregate, TGenericObject, TListArgs, TTableDef } from "@/types";
 import { Knex } from "knex";
 import { knexOrder } from "../../data/knex-order";
 import { knexWhere } from "../../data/knex-where";

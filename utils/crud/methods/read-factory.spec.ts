@@ -1,6 +1,6 @@
-import { connectionsMock } from "@mono/mocks/connections.mock";
-import { TTableDef } from "@mono/types";
-import { knexMockHistory } from "@mono/utils/data/knex-mock-history";
+import { connectionsMock } from "@/mocks/connections.mock";
+import { TTableDef } from "@/types";
+import { knexMockHistory } from "@/utils/data/knex-mock-history";
 import { createTracker } from "knex-mock-client";
 import { readFactory } from "./read-factory";
 

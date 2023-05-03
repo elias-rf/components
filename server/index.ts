@@ -4,7 +4,7 @@
  * @description usa fastify, trpc
  */
 
-import { config } from "@mono/config";
+import { config } from "@/config";
 import { app } from "./app";
 import "./global";
 

@@ -1,4 +1,4 @@
-import { TCrud } from "@mono/utils/crud/crud.type";
+import { TCrud } from "@/utils/crud/crud.type";
 import { TProdutoItemModel } from "../../produto-item/produto-item.type";
 import { TProdutoPlanoSelect } from "../../produto-plano/produto-plano.type";
 import { TOrdemProducaoIds } from "../ordem-producao.type";

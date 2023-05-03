@@ -1,8 +1,8 @@
 import {
   connectionsMock as connections,
   connectionsMock,
-} from "@mono/mocks/connections.mock";
-import { TTableDef } from "@mono/types/model";
+} from "@/mocks/connections.mock";
+import { TTableDef } from "@/types/model";
 import { incrementFactory } from "./increment-factory";
 
 const schema: TTableDef = {
@@ -39,7 +39,7 @@ const schema: TTableDef = {
   ],
 };
 
-import { knexMockHistory } from "@mono/utils/data/knex-mock-history";
+import { knexMockHistory } from "@/utils/data/knex-mock-history";
 import { createTracker } from "knex-mock-client";
 
 describe("crudIncrement", () => {

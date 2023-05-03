@@ -1,5 +1,5 @@
-import { crudFactory } from "@mono/utils/crud/crud.factory";
-import type { TConnections } from "../connections";
+import type { TConnections } from "@/config/connections";
+import { crudFactory } from "@/utils/crud/crud.factory";
 import { TProdutoPlanoRpc } from "../produto-plano/produto-plano.type";
 import { produtoItemMethods } from "./model.methods";
 import { produto_item } from "./produto-item.table";

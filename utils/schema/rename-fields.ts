@@ -1,4 +1,4 @@
-import type { TFieldDef } from "@mono/types";
+import type { TFieldDef } from "@/types";
 import { isArray } from "../identify/is-array";
 import { isObject } from "../identify/is-object";
 import { isEmpty } from "../identify/is_empty";

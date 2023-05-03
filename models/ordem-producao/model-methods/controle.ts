@@ -1,4 +1,4 @@
-import { module10 } from "@mono/utils/string/module10";
+import { module10 } from "@/utils/string/module10";
 import { TOrdemProducaoIds } from "../ordem-producao.type";
 
 // Retorna numero de controle a partir da ordem de producao e numero de serie

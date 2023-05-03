@@ -1,13 +1,12 @@
 import type { HeaderGroup } from "@tanstack/react-table";
 import { Fragment } from "react";
 
-export const HeadRow = ({
-  headerGroup,
-  children,
-}: {
+type THeadRowProps = {
   headerGroup: HeaderGroup<Record<string, any>>;
   children: any;
-}) => {
+};
+
+export const HeadRow = ({ headerGroup, children }: THeadRowProps) => {
   return (
     <tr
       key={headerGroup.id}

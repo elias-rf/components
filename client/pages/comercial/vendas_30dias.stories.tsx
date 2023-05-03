@@ -1,4 +1,4 @@
-import { usuarioService } from "@mono/models/usuario/usuario.service";
+import { usuarioService } from "@/models/usuario/usuario.service";
 import type { Meta, StoryObj } from "@storybook/react";
 import { BrowserRouter } from "react-router-dom";
 import Vendas30dias from "./vendas_30dias";

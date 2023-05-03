@@ -1,12 +1,12 @@
 import type { Header } from "@tanstack/react-table";
 import { flexRender } from "@tanstack/react-table";
 
-export const HeadCol = ({
-  header,
-}: {
+type THeadColProps = {
   header: Header<Record<string, any>, unknown>;
   children?: any;
-}) => {
+};
+
+export const HeadCol = ({ header }: THeadColProps) => {
   return (
     <th
       colSpan={header.colSpan}

@@ -8,8 +8,8 @@ import {
   YAxis,
 } from "recharts";
 
-import { day } from "@mono/utils/date/day";
-import { formatMoney } from "@mono/utils/format/format-money";
+import { day } from "@/utils/date/day";
+import { formatMoney } from "@/utils/format/format-money";
 
 /**
  * Componente para manipular Agenda de Ramais

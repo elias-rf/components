@@ -1,4 +1,4 @@
-import { Where } from "@mono/types";
+import { Where } from "@/types";
 import Knex from "knex";
 import { expect, it } from "vitest";
 import { knexWhere } from "./knex-where";

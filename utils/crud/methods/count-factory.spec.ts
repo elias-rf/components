@@ -1,5 +1,7 @@
-import { connectionsMock } from "@mono/mocks/connections.mock";
-import { TTableDef } from "@mono/types/model";
+import { connectionsMock } from "@/mocks/connections.mock";
+import { TTableDef } from "@/types";
+import { knexMockHistory } from "@/utils/data/knex-mock-history";
+import { createTracker } from "knex-mock-client";
 import { countFactory } from "./count-factory";
 
 const schema: TTableDef = {
@@ -35,9 +37,6 @@ const schema: TTableDef = {
     },
   ],
 };
-
-import { knexMockHistory } from "@mono/utils/data/knex-mock-history";
-import { createTracker } from "knex-mock-client";
 
 describe("crudCount", () => {
   const tracker = createTracker(connectionsMock.oftalmo);

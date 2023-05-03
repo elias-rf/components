@@ -1,4 +1,4 @@
-import { TClienteIds } from "@mono/models/cliente/cliente.type";
+import { TClienteIds } from "@/models/cliente/cliente.type";
 import React from "react";
 import { Page } from "../../components/page/page";
 import { PageTitle } from "../../components/page/page_title";

@@ -1,4 +1,4 @@
-import type { TFieldDef } from "@mono/types";
+import type { TFieldDef } from "@/types";
 
 export const agendaTelefoneSchema: TFieldDef[] = [
   {

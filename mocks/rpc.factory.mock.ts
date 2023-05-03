@@ -1,4 +1,5 @@
-import type { TRpc } from "../client/lib/http/rpc.factory";
+import type { TRpc } from "@/client/lib/http/rpc.factory";
+
 export function rpcFactoryMock(table: string) {
   return {
     query: {

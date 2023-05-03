@@ -1,5 +1,5 @@
-import { crudFactory } from "@mono/utils/crud/crud.factory";
-import { TConnections } from "../connections";
+import type { TConnections } from "@/config/connections";
+import { crudFactory } from "@/utils/crud/crud.factory";
 import { nf_cfop } from "./nf-cfop.table";
 import type { TNfCfopModel } from "./nf-cfop.type";
 //#region import

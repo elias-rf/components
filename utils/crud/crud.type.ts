@@ -1,4 +1,4 @@
-import { TConnection } from "@mono/models/connections";
+import { TConnection } from "@/config/connections";
 import {
   TFieldDef,
   TGenericObject,
@@ -7,7 +7,7 @@ import {
   TReadArgs,
   TSelect,
   TWhere,
-} from "@mono/types";
+} from "@/types";
 
 export type TCrudPk = {
   [fld: string]: any;

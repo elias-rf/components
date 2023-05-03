@@ -1,4 +1,4 @@
-import type { TGenericObject, TTableDef } from "@mono/types";
+import type { TGenericObject, TTableDef } from "@/types";
 import { recordClear } from "../../schema/record-clear";
 import { TCrudClear } from "../crud.type";
 

@@ -1,4 +1,4 @@
-import { TConnection } from "../../connections";
+import { TConnection } from "../../../config/connections";
 import { vendaAnalitico } from "./venda-analitico";
 import { vendaAnaliticoSchema } from "./venda-analitico-schema";
 import { vendaDiario } from "./venda-diario";

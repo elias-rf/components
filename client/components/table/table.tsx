@@ -1,5 +1,5 @@
-import { TFieldDef, TIds, TOrder, TWhere } from "@mono/types";
-import { pksFromFieldsClient } from "@mono/utils/schema/pks-from-fields";
+import { TFieldDef, TIds, TOrder, TWhere } from "@/types";
+import { pksFromFieldsClient } from "@/utils/schema/pks-from-fields";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import { isSelected } from "../../lib/is-selected";

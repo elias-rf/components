@@ -1,7 +1,7 @@
-import { TTableDef } from "@mono/types";
-import { TCrud } from "@mono/utils/crud/crud.type";
-import { isSelect } from "@mono/utils/validate/is-select";
-import { zIdClient } from "@mono/utils/zod/z-id-client";
+import { TTableDef } from "@/types";
+import { TCrud } from "@/utils/crud/crud.type";
+import { isSelect } from "@/utils/validate/is-select";
+import { zIdClient } from "@/utils/zod/z-id-client";
 import { produto_plano } from "../../produto-plano/produto-plano.table";
 import {
   TProdutoPlano,

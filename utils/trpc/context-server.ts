@@ -1,11 +1,8 @@
 import { inferAsyncReturnType } from "@trpc/server";
-import * as trpcExpress from "@trpc/server/adapters/express";
+import { CreateFastifyContextOptions } from "@trpc/server/adapters/fastify";
 
-export const createContext = ({
-  req,
-  res,
-}: trpcExpress.CreateExpressContextOptions) => {
-  return { currentUser: req.currentUser, req, res };
+export const createContext = ({ req, res }: CreateFastifyContextOptions) => {
+  return { req, res, currentUser: req.user };
 };
 
 export type TContext = inferAsyncReturnType<typeof createContext>;

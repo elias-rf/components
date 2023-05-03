@@ -1,4 +1,4 @@
-import { TFieldServer } from "@mono/types";
+import { TFieldServer } from "@/types";
 import { describe, expect, it } from "vitest";
 import { zIdServer } from "./z-id-server";
 

@@ -1,4 +1,4 @@
-import { TTableDef } from "@mono/types/model";
+import { TTableDef } from "@/types/model";
 
 export const tPlanGrupo: TTableDef = {
   database: "oftalmo",

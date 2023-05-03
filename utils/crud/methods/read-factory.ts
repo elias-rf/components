@@ -1,4 +1,4 @@
-import type { TGenericObject, TReadArgs, TTableDef } from "@mono/types";
+import type { TGenericObject, TReadArgs, TTableDef } from "@/types";
 import { Knex } from "knex";
 import { namesFromTable } from "../../schema/names-from-table";
 import {

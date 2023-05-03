@@ -1,4 +1,4 @@
-import type { TAppRouter } from "@mono/models/app-router";
+import type { TAppRouter } from "@/models/app-router";
 import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
 

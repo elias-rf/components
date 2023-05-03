@@ -1,11 +1,11 @@
 import type { Header } from "@tanstack/react-table";
 import { useInput } from "../../lib/hooks/use-input";
 
-export const HeadFilter = ({
-  header,
-}: {
+type THeadFilterProps = {
   header: Header<Record<string, any>, unknown>;
-}) => {
+};
+
+export const HeadFilter = ({ header }: THeadFilterProps) => {
   const register = useInput(
     header.column.getFilterValue() as string,
     header.column.setFilterValue

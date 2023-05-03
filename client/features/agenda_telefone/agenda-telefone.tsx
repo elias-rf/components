@@ -1,8 +1,8 @@
 import {
   TAgendaTelefoneFields,
   TAgendaTelefoneIds,
-} from "@mono/models/agenda-telefone/agenda-telefone.type";
-import { TOrder, TWhere } from "@mono/types";
+} from "@/models/agenda-telefone/agenda-telefone.type";
+import { TOrder, TWhere } from "@/types";
 import React from "react";
 
 import { Page } from "../../components/page/page";

@@ -1,9 +1,9 @@
-import { Divider, Title } from "@mantine/core";
 import {
   TAgendaTelefoneFields,
   TAgendaTelefoneIds,
-} from "@mono/models/agenda-telefone/agenda-telefone.type";
-import { TOrder, TWhere } from "@mono/types";
+} from "@/models/agenda-telefone/agenda-telefone.type";
+import { TOrder, TWhere } from "@/types";
+import { Divider, Title } from "@mantine/core";
 import React from "react";
 import { AgendaTelefoneForm } from "../../features/agenda_telefone/agenda-telefone-form";
 import { AgendaTelefoneList } from "../../features/agenda_telefone/agenda-telefone-list";

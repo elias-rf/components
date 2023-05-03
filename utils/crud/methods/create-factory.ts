@@ -1,4 +1,4 @@
-import type { TCreateArgs, TSelect, TTableDef } from "@mono/types";
+import type { TCreateArgs, TSelect, TTableDef } from "@/types";
 import { Knex } from "knex";
 import { namesFromTable } from "../../schema/names-from-table";
 import {

@@ -1,9 +1,4 @@
-import type {
-  TGenericObject,
-  TSelect,
-  TTableDef,
-  TUpdateArgs,
-} from "@mono/types";
+import type { TGenericObject, TSelect, TTableDef, TUpdateArgs } from "@/types";
 import { Knex } from "knex";
 import { namesFromTable } from "../../schema/names-from-table";
 import {

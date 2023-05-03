@@ -84,7 +84,7 @@ const cols: ColumnDef<Data>[] = [
     footer: ({ table }) => {
       const total = table
         .getRowModel()
-        .rows.reduce((sum, row) => row.getValue("compra") + sum, 0);
+        .rows.reduce((sum, row) => (row.getValue("compra") as number) + sum, 0);
       return <div className="mx-2 text-right">{total}</div>;
     },
   },

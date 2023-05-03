@@ -1,10 +1,10 @@
 import React from "react";
 import { useMap } from "react-use";
 
+import type { TFieldDef, TSelected } from "@/types";
+import { isEmpty } from "@/utils/identify/is_empty";
+import { isNumber } from "@/utils/identify/is_number";
 import { Button } from "@mantine/core";
-import type { TFieldDef, TSelected } from "@mono/types";
-import { isEmpty } from "@mono/utils/identify/is_empty";
-import { isNumber } from "@mono/utils/identify/is_number";
 import { Label } from "../../components/form/label";
 import { SpinnerIcon } from "../../components/spinner";
 import { Textbox } from "../../components/textbox";

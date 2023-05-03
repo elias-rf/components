@@ -1,5 +1,5 @@
-import { crudFactory } from "@mono/utils/crud/crud.factory";
-import type { TConnections } from "../connections";
+import type { TConnections } from "@/config/connections";
+import { crudFactory } from "@/utils/crud/crud.factory";
 import { nf_saida_item } from "./nf-saida-item.table";
 import type { TNfSaidaItemModel } from "./nf-saida-item.type";
 //#region import

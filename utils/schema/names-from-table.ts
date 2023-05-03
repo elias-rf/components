@@ -1,4 +1,4 @@
-import { TTableDef } from "@mono/types/model";
+import { TTableDef } from "@/types/model";
 
 /** busca names em uma tabela */
 export function namesFromTable(table: TTableDef) {

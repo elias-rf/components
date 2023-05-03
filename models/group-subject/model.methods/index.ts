@@ -1,5 +1,5 @@
 //--
-import { TTableDef } from "@mono/types";
+import { TTableDef } from "@/types";
 import { Knex } from "knex";
 import { canFactory } from "./can";
 

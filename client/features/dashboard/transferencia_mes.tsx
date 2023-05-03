@@ -1,5 +1,5 @@
-import { day } from "@mono/utils/date/day";
-import { trpc } from "@mono/utils/trpc/trpc";
+import { day } from "@/utils/date/day";
+import { trpc } from "@/utils/trpc/trpc";
 import { PageTitle } from "../../components/page/page_title";
 
 function quantidadeProduto(data: any[] | undefined, prod: string) {

@@ -1,5 +1,5 @@
-import { tables } from "@mono/models/tables";
-import { TFieldDef } from "@mono/types";
+import { tables } from "@/models/tables";
+import { TFieldDef } from "@/types";
 import { describe, expect, it } from "vitest";
 import { recordClear } from "./record-clear";
 

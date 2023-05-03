@@ -1,5 +1,5 @@
-import { day } from "@mono/utils/date/day";
-import { isEmpty } from "@mono/utils/identify/is_empty";
+import { day } from "@/utils/date/day";
+import { isEmpty } from "@/utils/identify/is_empty";
 import { TOrdemProducaoOperacaoModel } from "../../ordem-producao-operacao/ordem-producao-operacao.type";
 import { TOrdemProducaoIds } from "../ordem-producao.type";
 

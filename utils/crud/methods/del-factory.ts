@@ -1,4 +1,4 @@
-import type { TDelArgs, TTableDef } from "@mono/types";
+import type { TDelArgs, TTableDef } from "@/types";
 import { Knex } from "knex";
 import { renameNameToField } from "../../schema/rename-fields";
 import { zIdClient } from "../../zod/z-id-client";

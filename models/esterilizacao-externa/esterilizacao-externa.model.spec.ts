@@ -1,6 +1,6 @@
-import { connectionsMock } from "@mono/mocks/connections.mock";
-import { container } from "@mono/mocks/container.mock";
-import { knexMockHistory } from "@mono/utils/data/knex-mock-history";
+import { connectionsMock } from "@/mocks/connections.mock";
+import { container } from "@/mocks/container.mock";
+import { knexMockHistory } from "@/utils/data/knex-mock-history";
 import { createTracker } from "knex-mock-client";
 import { describe, expect, test } from "vitest";
 

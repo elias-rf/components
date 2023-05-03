@@ -1,4 +1,4 @@
-import { container } from "@mono/models/container";
+import { container } from "@/models/container";
 import { describe, expect, it } from "vitest";
 
 describe("rpc de cliente", () => {

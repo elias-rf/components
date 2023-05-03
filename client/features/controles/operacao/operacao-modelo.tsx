@@ -1,4 +1,4 @@
-import { trpc } from "@mono/utils/trpc/trpc";
+import { trpc } from "@/utils/trpc/trpc";
 import React from "react";
 import { Table } from "../../../components/table/table";
 import { operacaoModeloSchema } from "./operacao-modelo.schema";

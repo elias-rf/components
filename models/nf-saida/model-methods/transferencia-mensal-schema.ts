@@ -1,4 +1,4 @@
-import { TFieldDef } from "@mono/types";
+import { TFieldDef } from "@/types";
 
 export function transferenciaMensalSchema(): () => Promise<TFieldDef[]> {
   return async () => {

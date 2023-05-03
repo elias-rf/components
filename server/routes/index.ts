@@ -1,14 +1,12 @@
 // import { trpcMiddle } from "./trpc";
 
 import { FastifyPluginCallback } from "fastify";
-import { testeRoute } from "./teste";
+import { systemRoute } from "./system";
 import { trpcRoute } from "./trpc";
 
 const prefix = "/api";
 export const routes: FastifyPluginCallback = (fastify, options, done) => {
-  fastify.register(testeRoute, { prefix });
+  fastify.register(systemRoute, { prefix });
   fastify.register(trpcRoute, { prefix });
   done();
 };
-
-// router.use("/api/trpc", trpcMiddle);

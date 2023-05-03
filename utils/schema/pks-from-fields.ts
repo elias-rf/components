@@ -1,4 +1,4 @@
-import { TFieldDef, TPks } from "@mono/types";
+import { TFieldDef, TPks } from "@/types";
 
 /** busca fields primaryKey em um schema */
 export function pksFromFieldsServer(fields: TFieldDef[] = []) {

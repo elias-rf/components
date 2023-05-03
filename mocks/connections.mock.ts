@@ -1,4 +1,4 @@
-import { TConnections } from "@mono/models/connections";
+import type { TConnections } from "@/config/connections";
 import Knex from "knex";
 import { MockClient } from "knex-mock-client";
 

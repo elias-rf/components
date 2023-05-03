@@ -1,5 +1,5 @@
-import { crudFactory } from "@mono/utils/crud/crud.factory";
-import type { TConnections } from "../connections";
+import type { TConnections } from "@/config/connections";
+import { crudFactory } from "@/utils/crud/crud.factory";
 import { TEtiquetaExternaRpc } from "../etiqueta-externa/etiqueta-externa.type";
 import { TOrdemProducaoOperacaoRpc } from "../ordem-producao-operacao/ordem-producao-operacao.type";
 import { TProdutoItemRpc } from "../produto-item/produto-item.type";

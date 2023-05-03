@@ -1,11 +1,11 @@
 import type { Header } from "@tanstack/react-table";
 import { flexRender } from "@tanstack/react-table";
 
-export const FootCol = ({
-  header,
-}: {
+type TFootColProps = {
   header?: Header<Record<string, any>, unknown>;
-}) => {
+};
+
+export const FootCol = ({ header }: TFootColProps) => {
   if (!header) return null;
 
   return (

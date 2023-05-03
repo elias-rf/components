@@ -1,4 +1,4 @@
-import { TFieldDef } from "@mono/types";
+import { TFieldDef } from "@/types";
 import { isObject } from "../identify/is-object";
 import { namesFromFields } from "../schema/names-from-fields";
 
