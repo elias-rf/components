@@ -8,7 +8,7 @@ import {
   readZod,
   selectZod,
   updateZod,
-} from "../../server/lib/trpc/inputs";
+} from "../../utils/trpc/inputs";
 import { container } from "../container";
 
 const model = container.resolve("ordemProducaoModel");

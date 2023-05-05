@@ -1,10 +1,10 @@
 import { TTableDef } from "@/types";
-import { isNumber } from "@/utils/identify/is_number";
+import { isNumber } from "@/utils/identify/is-number";
 import { renameToFieldObject } from "@/utils/schema/rename-fields";
+import { validateIsThrow } from "@/utils/validate/validate-is-throw";
+import { validateThrow } from "@/utils/validate/validate-throw";
 import { isIdClient } from "@/utils/zod/z-id-client";
 import { Knex } from "knex";
-import { validateIsThrow } from "../../../server/lib/validate-is-throw";
-import { validateThrow } from "../../../server/lib/validate-throw";
 import { TEstoqueIncrement } from "../estoque.type";
 export function increment(
   connection: Knex,

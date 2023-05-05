@@ -21,7 +21,7 @@ const ListState = () => {
       e
     );
 
-    setSelected(e.value);
+    // setSelected(e);
   }
   function handleWhere(e: any) {
     console.log(
@@ -29,7 +29,7 @@ const ListState = () => {
       e
     );
 
-    setWhere(e.value);
+    // setWhere(e);
   }
   function handleOrder(e: any) {
     console.log(
@@ -37,7 +37,7 @@ const ListState = () => {
       e
     );
 
-    setOrder(e.value);
+    // setOrder(e);
   }
 
   return (

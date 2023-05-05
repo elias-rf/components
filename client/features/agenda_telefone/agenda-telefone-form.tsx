@@ -2,8 +2,8 @@ import type {
   TAgendaTelefone,
   TAgendaTelefoneIds,
 } from "@/models/agenda-telefone/agenda-telefone.type";
-import { isEmpty } from "@/utils/identify/is_empty";
-import { isNumber } from "@/utils/identify/is_number";
+import { isEmpty } from "@/utils/identify/is-empty";
+import { isNumber } from "@/utils/identify/is-number";
 import { trpc } from "@/utils/trpc/trpc";
 import { useForm } from "@mantine/form";
 import React from "react";

@@ -2,6 +2,7 @@ import {
   ColumnDef,
   ColumnFiltersState,
   OnChangeFn,
+  Row,
   RowSelectionState,
   SortingState,
   getCoreRowModel,
@@ -24,18 +25,23 @@ import {
 
 type TTableReactCompactProps = {
   data: Record<string, any>[];
-  columns: ColumnDef<Record<string, any>>[];
-  sort?: { id: string; desc: boolean }[];
+  columns: ColumnDef<any>[];
+  sort?: SortingState;
   setSort?: OnChangeFn<SortingState>;
-  rowSelection?: { [index: number]: boolean };
+  rowSelection?: RowSelectionState;
   setRowSelection?: OnChangeFn<RowSelectionState>;
-  filters?: { id: string; value: string }[];
+  filters?: ColumnFiltersState;
   setFilters?: OnChangeFn<ColumnFiltersState>;
-  children: (row: any) => any;
+  children?: (row: any) => any;
+  getRowId?: (
+    originalRow: any,
+    index: number,
+    parent?: Row<any> | undefined
+  ) => string;
 };
 
 export const TableReactCompact = ({
-  data,
+  data = [],
   columns,
   sort,
   setSort,
@@ -44,6 +50,7 @@ export const TableReactCompact = ({
   children,
   filters,
   setFilters,
+  getRowId,
 }: TTableReactCompactProps) => {
   const table = useReactTable({
     columns,
@@ -60,7 +67,7 @@ export const TableReactCompact = ({
     onSortingChange: setSort,
     onColumnFiltersChange: setFilters,
     initialState: {},
-
+    getRowId,
     onRowSelectionChange: setRowSelection,
     enableMultiRowSelection: false,
   });
@@ -93,7 +100,7 @@ export const TableReactCompact = ({
                 </BodyRow>
                 {table.options.enableRowSelection ? (
                   <BodySubRow {...props}>
-                    {(row: any) => children(row)}
+                    {(row: any) => (children ? children(row) : "")}
                   </BodySubRow>
                 ) : (
                   ""

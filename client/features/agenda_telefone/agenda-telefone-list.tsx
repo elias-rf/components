@@ -1,18 +1,20 @@
 import { TableReactCompact } from "@/client/components/table-react";
-import { TAgendaTelefoneFields } from "@/models/agenda-telefone/agenda-telefone.type";
-import { TIds, TOrder, TWhere } from "@/types";
 import { trpc } from "@/utils/trpc/trpc";
-import React from "react";
+import {
+  ColumnFiltersState,
+  OnChangeFn,
+  RowSelectionState,
+} from "@tanstack/react-table";
 import { agendaTelefoneColumns } from "./agenda-telefone.cols";
 
 type TAgendaTelefoneListProps = {
-  selected: TIds;
-  onSelect: (event: TIds) => void;
-  where: TWhere<TAgendaTelefoneFields>[];
-  onWhere: (where: TWhere[]) => void;
-  order: TOrder<TAgendaTelefoneFields>[];
-  onOrder: (order: TOrder[]) => void;
-  children?: React.ReactNode;
+  selected: RowSelectionState;
+  onSelect: OnChangeFn<RowSelectionState>;
+  where: ColumnFiltersState[];
+  onWhere: OnChangeFn<ColumnFiltersState>;
+  order: SortingState[];
+  onOrder: OnChangeFn<SortingState>;
+  children?: (row: any) => any;
 };
 
 export function AgendaTelefoneList({

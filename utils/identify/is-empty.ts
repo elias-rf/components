@@ -12,13 +12,15 @@
 // Date      false
 // function  false
 
-export function isEmpty(val: any) {
-  if (
-    typeof val == "function" ||
-    typeof val == "number" ||
-    typeof val == "boolean" ||
-    Object.prototype.toString.call(val) === "[object Date]"
-  )
-    return false;
-  return val == null || !(Object.keys(val) || val).length;
+export function isEmpty(input: any): boolean {
+  if (typeof input === "undefined" || input === null) {
+    return true;
+  }
+  if (typeof input === "string" || Array.isArray(input)) {
+    return input.length === 0;
+  }
+  if (typeof input === "object") {
+    return Object.keys(input).length === 0;
+  }
+  return false;
 }

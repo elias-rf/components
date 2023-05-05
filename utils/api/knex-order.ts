@@ -1,5 +1,5 @@
 import { TOrder } from "@/types";
-import { isEmpty } from "../identify/is_empty";
+import { isEmpty } from "../identify/is-empty";
 
 export function knexOrder(
   order: TOrder[] = []

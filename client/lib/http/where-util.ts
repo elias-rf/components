@@ -1,5 +1,5 @@
 import { TWhere } from "@/types";
-import { isEmpty } from "@/utils/identify/is_empty";
+import { isEmpty } from "@/utils/identify/is-empty";
 
 export const whereUtil = {
   setUnique(where: TWhere[], field: string, value: any): TWhere[] {

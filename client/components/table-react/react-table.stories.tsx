@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   ColumnDef,
+  ColumnFiltersState,
   ExpandedState,
+  RowSelectionState,
   SortingState,
   getCoreRowModel,
   useReactTable,
@@ -165,10 +167,26 @@ const TableStory = () => {
   );
 };
 
+// ##########################
+// COMPACT
+// ##########################
 const TableStoryCompact = () => {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [selection, setSelection] = React.useState({});
-  const [filters, setFilters] = React.useState([{ id: "id", value: "314" }]);
+  const [sorting, setSorting] = React.useState<SortingState>([
+    { id: "id", desc: true },
+  ]);
+  const [selection, setSelection] = React.useState<RowSelectionState>({
+    "1": true,
+  });
+  const [filters, setFilters] = React.useState<ColumnFiltersState>([
+    { id: "id", value: "314" },
+  ]);
+
+  const getRowId = (originalRow: any, index: number, parent: any) => {
+    console.log(originalRow, index, parent);
+    return parent
+      ? [parent.id, originalRow.uniqueId].join(".")
+      : originalRow.id;
+  };
 
   return (
     <div>
@@ -182,6 +200,7 @@ const TableStoryCompact = () => {
           rowSelection={selection}
           filters={filters}
           setFilters={setFilters}
+          getRowId={getRowId}
         >
           {(row: any) => (
             <div>
@@ -197,12 +216,40 @@ const TableStoryCompact = () => {
   );
 };
 
+// ##########################
+// COMPACT SIMPLES
+// ##########################
+const colsSimples: ColumnDef<Data>[] = [
+  {
+    header: "ID",
+    accessorKey: "id",
+    cell: ({ getValue }) => {
+      return <div className="mx-2 text-right">{getValue() as string}</div>;
+    },
+  },
+  {
+    header: "Nome",
+    accessorKey: "nome",
+  },
+  {
+    header: "Valor de compra",
+    accessorKey: "compra",
+    cell: ({ getValue }) => {
+      return (
+        <div className="mx-2 text-right">
+          {(getValue() as number).toFixed(2)}
+        </div>
+      );
+    },
+  },
+];
+
 const TableStoryCompactSimples = () => {
   return (
     <div>
       <div className="h-40 overflow-y-scroll">
         <TableReactCompact
-          columns={cols}
+          columns={colsSimples}
           data={data}
         ></TableReactCompact>
       </div>

@@ -10,6 +10,9 @@ function toSql(sql: string, bindings: any[]) {
   }, sql);
 }
 
+/**
+ * Emite log de consultas SQL do Knex
+ */
 export function knexLogger(knex: Knex) {
   const queries = new Map();
 

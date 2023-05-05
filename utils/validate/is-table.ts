@@ -1,5 +1,5 @@
 import { TTableDef } from "@/types/model";
-import { isEmpty } from "../identify/is_empty";
+import { isEmpty } from "../identify/is-empty";
 
 export function isTable(
   table: string,

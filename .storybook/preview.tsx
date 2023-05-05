@@ -3,8 +3,8 @@ import "@storybook/addon-console";
 import { Preview } from "@storybook/react";
 // import "../client/index.css";
 // import "virtual:uno.css";
-import { TrpcProvider } from "@/utils/trpc/trpc-provider";
 import "uno.css";
+import { TrpcProvider } from "../utils/trpc/trpc-provider";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

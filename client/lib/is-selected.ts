@@ -1,5 +1,5 @@
 import { TSelected } from "@/types";
-import { isEmpty } from "@/utils/identify/is_empty";
+import { isEmpty } from "@/utils/identify/is-empty";
 /**
  * Verifica se o registro está selecionado
  */

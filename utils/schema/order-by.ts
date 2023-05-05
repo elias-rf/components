@@ -1,5 +1,5 @@
 import { TOrder } from "@/types";
-import { isEmpty } from "../identify/is_empty";
+import { isEmpty } from "../identify/is-empty";
 
 export const orderByUtil = {
   setUnique(order: TOrder[], field: string) {

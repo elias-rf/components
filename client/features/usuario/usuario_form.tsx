@@ -1,5 +1,5 @@
 import { TUsuario, TUsuarioIds } from "@/models/usuario/usuario.type";
-import { isEmpty } from "@/utils/identify/is_empty";
+import { isEmpty } from "@/utils/identify/is-empty";
 import { recordClear } from "@/utils/schema/record-clear";
 import { trpc } from "@/utils/trpc/trpc";
 import { Button } from "@mantine/core";

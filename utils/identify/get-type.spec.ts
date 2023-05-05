@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getType } from "./get_type";
+import { getType } from "./get-type";
 
 describe("getType", () => {
   it("should return the type of the object", () => {

@@ -3,7 +3,7 @@ import { TConnection, TConnections } from "@/config/connections";
 import type { TCurrentUser } from "@/types";
 import { crudFactory } from "@/utils/crud/crud.factory";
 import { day } from "@/utils/date/day";
-import { passwordVerify } from "../../server/lib/password-verify";
+import { passwordVerify } from "@/utils/string/password-verify";
 import { usuario } from "./usuario.table";
 import type { TUsuario, TUsuarioModel } from "./usuario.type";
 
