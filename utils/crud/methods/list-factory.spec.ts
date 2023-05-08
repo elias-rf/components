@@ -63,8 +63,8 @@ describe("crudList", () => {
     await expect(
       list({
         order: [
-          ["a", "desc"],
-          ["b", "desc"],
+          { id: "a", desc: true },
+          { id: "b", desc: true },
         ],
       })
     ).rejects.toThrow(
@@ -75,10 +75,10 @@ describe("crudList", () => {
   it("lista com where errada", async () => {
     await expect(
       list({
-        order: [["agenda_telefone_id", "desc"]],
+        order: [{ id: "agenda_telefone_id", desc: true }],
         where: [
-          ["1", "=", 1],
-          ["2", "=", 2],
+          { id: "1", value: "= 1" },
+          { id: "2", value: "= 2" },
         ],
       })
     ).rejects.toThrow(
@@ -89,14 +89,14 @@ describe("crudList", () => {
   it("lista sem argumentos", async () => {
     tracker.on.select("phonebook").response([]);
     const rsp = await list({
-      where: [["agenda_telefone_id", "=", 10]],
+      where: [{ id: "agenda_telefone_id", value: "=10" }],
     });
     expect(rsp).toEqual([]);
 
     expect(knexMockHistory(tracker)).toEqual({
       select: [
         {
-          bindings: [50, 10],
+          bindings: [50, "10"],
           sql: "select top (@p0) [id], [name], [department], [email] from [phonebook] where ([id] = @p1)",
         },
       ],
@@ -106,13 +106,13 @@ describe("crudList", () => {
   it("lista com argumentos", async () => {
     tracker.on.select("phonebook").response([]);
     const rsp = await list({
-      where: [["agenda_telefone_id", "=", 10]],
+      where: [{ id: "agenda_telefone_id", value: "=10" }],
     });
     expect(rsp).toEqual([]);
     expect(knexMockHistory(tracker)).toEqual({
       select: [
         {
-          bindings: [50, 10],
+          bindings: [50, "10"],
           sql: "select top (@p0) [id], [name], [department], [email] from [phonebook] where ([id] = @p1)",
         },
       ],
@@ -123,14 +123,14 @@ describe("crudList", () => {
     tracker.on.select("phonebook").response([]);
     const rsp = await list({
       select: ["agenda_telefone_id"],
-      where: [["agenda_telefone_id", "=", 10]],
+      where: [{ id: "agenda_telefone_id", value: "=10" }],
       sum: { ttl: "agenda_telefone_id" },
     });
     expect(rsp).toEqual([]);
     expect(knexMockHistory(tracker)).toEqual({
       select: [
         {
-          bindings: [50, 10],
+          bindings: [50, "10"],
           sql: "select top (@p0) [id], sum([agenda_telefone_id]) as [ttl] from [phonebook] where ([id] = @p1)",
         },
       ],
@@ -141,7 +141,7 @@ describe("crudList", () => {
     tracker.on.select("phonebook").response([]);
     const rsp = await list({
       select: ["agenda_telefone_id"],
-      where: [["agenda_telefone_id", "=", 10]],
+      where: [{ id: "agenda_telefone_id", value: "=10" }],
       sum: { ttl: "agenda_telefone_id" },
       group: ["setor"],
     });
@@ -149,7 +149,7 @@ describe("crudList", () => {
     expect(knexMockHistory(tracker)).toEqual({
       select: [
         {
-          bindings: [50, 10],
+          bindings: [50, "10"],
           sql: "select top (@p0) [id], sum([agenda_telefone_id]) as [ttl] from [phonebook] where ([id] = @p1) group by [department]",
         },
       ],
@@ -160,14 +160,14 @@ describe("crudList", () => {
     tracker.on.select("phonebook").response([]);
     const rsp = await list({
       select: ["agenda_telefone_id"],
-      where: [["agenda_telefone_id", "=", 10]],
+      where: [{ id: "agenda_telefone_id", value: "=10" }],
       min: { ttl: "agenda_telefone_id" },
     });
     expect(rsp).toEqual([]);
     expect(knexMockHistory(tracker)).toEqual({
       select: [
         {
-          bindings: [50, 10],
+          bindings: [50, "10"],
           sql: "select top (@p0) [id], min([agenda_telefone_id]) as [ttl] from [phonebook] where ([id] = @p1)",
         },
       ],
@@ -178,14 +178,14 @@ describe("crudList", () => {
     tracker.on.select("phonebook").response([]);
     const rsp = await list({
       select: ["agenda_telefone_id"],
-      where: [["agenda_telefone_id", "=", 10]],
+      where: [{ id: "agenda_telefone_id", value: "=10" }],
       max: { ttl: "agenda_telefone_id" },
     });
     expect(rsp).toEqual([]);
     expect(knexMockHistory(tracker)).toEqual({
       select: [
         {
-          bindings: [50, 10],
+          bindings: [50, "10"],
           sql: "select top (@p0) [id], max([agenda_telefone_id]) as [ttl] from [phonebook] where ([id] = @p1)",
         },
       ],

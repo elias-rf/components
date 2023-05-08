@@ -20,7 +20,6 @@ export function OperacaoModelo({ operacao, dia, produto }: OperacaoModelProps) {
 
   return (
     <Table
-      name="modelo"
       data={modelo.data}
       schema={operacaoModeloSchema}
     ></Table>

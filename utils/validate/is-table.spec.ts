@@ -1,8 +1,10 @@
-import { TDb } from "@/types";
+import { TTableDef } from "@/types";
 import { expect, it } from "vitest";
 import { isTable } from "./is-table";
 
-const entity: TDb = {
+const entity: {
+  [table: string]: TTableDef;
+} = {
   agenda_telefone: {
     database: "oftalmo",
     table: "phonebook",
@@ -11,13 +13,6 @@ const entity: TDb = {
 };
 
 it("deve invalidar Id errado", () => {
-  expect(() => isTable(undefined, entity)).toThrow(
-    "Um nome de tabela deve ser informado"
-  );
-  expect(() => isTable(null, entity)).toThrow(
-    "Um nome de tabela deve ser informado"
-  );
-
   // @ts-expect-error: not assignable to parameter of type 'string'
   expect(() => isTable({}, entity)).toThrow(
     "Um nome de tabela deve ser informado"

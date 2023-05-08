@@ -20,7 +20,6 @@ export function EsterilizacaoExternaModelo({
 
   return (
     <Table
-      name="modelo"
       data={dataModelo.data}
       schema={esterilizacaoExternaModeloSchema}
       onSelect={onSelect}

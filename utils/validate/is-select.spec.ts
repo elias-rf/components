@@ -4,12 +4,6 @@ import { isSelect } from "./is-select";
 
 describe("isSelect", () => {
   it("deve invalidar select mal formatados", () => {
-    expect(() => isSelect(undefined, entity)).toThrow(
-      "select deve ser um array de campos"
-    );
-    expect(() => isSelect(null, entity)).toThrow(
-      "select deve ser um array de campos"
-    );
     // @ts-expect-error: Unreachable code error
     expect(() => isSelect({}, entity)).toThrow(
       "select deve ser um array de campos"

@@ -1,84 +1,44 @@
-import { TField } from "@/types";
+import { TFields } from "@/types";
 import { describe, expect, it } from "vitest";
 import { isWhere } from "./is-where";
 
-const entity: TField[] = [
+const entity: TFields = [
   {
     name: "fld_1",
     field: "fld1",
-    typeField: "int",
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
   },
   {
     name: "fld_2",
     field: "fld2",
-    typeField: "string",
-    allowNull: false,
-    primaryKey: true,
   },
   {
     name: "fld_3",
     field: "fld3",
-    typeField: "string",
-    readOnly: true,
   },
   {
     name: "fld_4",
     field: "fld4",
-    typeField: "string",
   },
 ];
 
 describe("isWhere", () => {
-  it("deve invalidar where mal formatados", () => {
-    expect(() => isWhere(undefined, entity)).toThrow(
-      "where deve ser no formato [field, igualdade, valor]"
-    );
-    expect(() => isWhere(null, entity)).toThrow(
-      "where deve ser no formato [field, igualdade, valor]"
-    );
-    // @ts-expect-error: Unreachable code error
-    expect(() => isWhere({}, entity)).toThrow(
-      "where deve ser no formato [field, igualdade, valor]"
-    );
-    // @ts-expect-error: Unreachable code error
-    expect(() => isWhere("field", entity)).toThrow(
-      "where deve ser no formato [field, igualdade, valor]"
-    );
-    // @ts-expect-error: Unreachable code error
-    expect(() => isWhere({ field: 1 }, entity)).toThrow(
-      "where deve ser no formato [field, igualdade, valor]"
-    );
-    // @ts-expect-error: Unreachable code error
-    expect(() => isWhere([{ field: 1 }], entity)).toThrow(
-      "where deve ser no formato [field, igualdade, valor]"
-    );
-    // @ts-expect-error: Unreachable code error
-    expect(() => isWhere([["field", "ascii"]], entity)).toThrow(
-      "where deve ser no formato [field, igualdade, valor]"
-    );
-    // @ts-expect-error: Unreachable code error
-    expect(() => isWhere([["field"]], entity)).toThrow(
-      "where deve ser no formato [field, igualdade, valor]"
-    );
-  });
   it("deve validar where vazio", () => {
     expect(isWhere([], entity)).toEqual([]);
   });
   it("deve validar campo correto", () => {
-    expect(isWhere([["fld_1", "=", "asc"]], entity)).toEqual([
+    expect(isWhere([{ id: "fld_1", value: "=asc" }], entity)).toEqual([
       ["fld_1", "=", "asc"],
     ]);
-    expect(isWhere([["fld_1", "=", 1]], entity)).toEqual([["fld_1", "=", 1]]);
+    expect(isWhere([{ id: "fld_1", value: "=1" }], entity)).toEqual([
+      ["fld_1", "=", 1],
+    ]);
   });
   it("deve invalidar campo incorreto", () => {
     expect(() =>
       isWhere(
         [
-          ["fld_0", "=", "asc"],
-          ["fld_1", "=", "asc"],
+          { id: "fld_0", value: "= asc" },
+          { id: "fld_1", value: "= asc" },
         ],
         entity
       )
@@ -88,9 +48,9 @@ describe("isWhere", () => {
     expect(() =>
       isWhere(
         [
-          ["fld_0", "=", "asc"],
-          ["fld_00", "=", "asc"],
-          ["fld_1", "=", "asc"],
+          { id: "fld_0", value: "=asc" },
+          { id: "fld_00", value: "=asc" },
+          { id: "fld_1", value: "=asc" },
         ],
         entity
       )

@@ -36,7 +36,6 @@ export const usuario: TTableDef = {
       name: "empregado_id",
       typeField: "int",
       size: 4,
-      visible: false,
     },
     {
       field: "Ativo",
@@ -52,7 +51,6 @@ export const usuario: TTableDef = {
       name: "hash",
       typeField: "string",
       size: 255,
-      visible: false,
     },
     {
       field: "nome",
@@ -67,7 +65,6 @@ export const usuario: TTableDef = {
       name: "setor",
       typeField: "string",
       size: 50,
-      visible: false,
     },
     {
       field: "nivel",
@@ -75,7 +72,6 @@ export const usuario: TTableDef = {
       name: "nivel",
       typeField: "int",
       size: 4,
-      visible: false,
     },
     {
       field: "idGroup",

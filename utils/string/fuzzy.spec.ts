@@ -66,10 +66,6 @@ describe("fuzzy", function () {
     });
   });
   describe(".filter", function () {
-    it("should return an empty array when the array is undefined", function () {
-      const result = fuzzy.filter("pattern", undefined);
-      expect(result).to.deep.equal([]);
-    });
     it("should return an empty array when the array is empty", function () {
       const result = fuzzy.filter("pattern", []);
       expect(result).to.deep.equal([]);

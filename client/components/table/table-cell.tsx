@@ -1,6 +1,13 @@
+import type { TSelected } from "@/types";
 import { twMerge } from "tailwind-merge";
 import { isSelected } from "../../lib/is-selected";
-import { TTableCell } from "./table.types";
+
+export type TTableCell = {
+  schemaField: { fieldClass?: string; name: string };
+  selected?: TSelected;
+  record: { [field: string]: any };
+  selectedClassName?: string;
+};
 
 export function TableCell({
   schemaField,

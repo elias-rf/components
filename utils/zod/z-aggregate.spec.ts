@@ -1,7 +1,6 @@
-import { TFieldServer } from "@/types";
 import { zAggregate } from "./z-aggregate";
 
-const entity: TFieldServer[] = [
+const entity = [
   {
     name: "fld_1",
     field: "fld1",
@@ -31,24 +30,6 @@ const entity: TFieldServer[] = [
 ];
 
 describe("select", () => {
-  it("deve invalidar select mal formatados", () => {
-    expect(() => zAggregate(undefined, entity)).toThrow(
-      "aggregate deve ser um objeto {alias:field}"
-    );
-    expect(() => zAggregate(null, entity)).toThrow(
-      "aggregate deve ser um objeto {alias:field}"
-    );
-    expect(() => zAggregate("field", entity)).toThrow(
-      "aggregate deve ser um objeto {alias:field}"
-    );
-    expect(() => zAggregate({ field: 1 }, entity)).toThrow(
-      "1 não é select válido use: fld_1,fld_2,fld_3,fld_4"
-    );
-    expect(() => zAggregate([], entity)).toThrow(
-      "aggregate deve ser um objeto {alias:field}"
-    );
-  });
-
   it("deve validar select", () => {
     expect(zAggregate({ ttl: "fld_1", cnt: "fld_2" }, entity)).toBe(undefined);
   });

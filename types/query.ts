@@ -1,5 +1,23 @@
 import type { TGenericObject } from "./index";
 
+export type TFilter = {
+  id: string;
+  value: string;
+};
+
+export type TFilters = TFilter[];
+
+export type TSort = {
+  id: string;
+  desc: boolean;
+};
+
+export type TSorts = TSort[];
+
+export type TSelection = {
+  [key: string]: boolean;
+};
+
 /**
  * Tipos para Queries
  */
@@ -27,8 +45,8 @@ export type TSelected = { [fields: string]: any };
 /** Argumentos para modelo de listagem */
 export type TListArgs = {
   limit?: number;
-  where?: TWhere[];
-  order?: TOrder[];
+  where?: TFilters;
+  order?: TSorts;
   select?: TSelect;
   sum?: TAggregate;
   min?: TAggregate;

@@ -12,7 +12,9 @@ export function pksFromFieldsServer(fields: TFieldDef[] = []) {
 }
 
 /** busca names primaryKey em um schema */
-export function pksFromFieldsClient(fields: TFieldDef[] = []) {
+export function pksFromFieldsClient(
+  fields: { primaryKey?: boolean; name: string }[] = []
+) {
   const pks: TPks = [];
   for (const field of fields) {
     if (field.primaryKey) {

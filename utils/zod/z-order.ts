@@ -1,4 +1,4 @@
-import { TFieldDef, TOrder } from "@/types/index";
+import { TFieldDef, TOrder } from "@/types";
 import { isArray } from "../identify/is-array";
 import { isObject } from "../identify/is-object";
 import { isString } from "../identify/is-string";

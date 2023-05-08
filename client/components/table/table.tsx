@@ -1,4 +1,4 @@
-import { TFieldDef, TIds, TOrder, TWhere } from "@/types";
+import { TIds, TOrder, TWhere } from "@/types";
 import { pksFromFieldsClient } from "@/utils/schema/pks-from-fields";
 import React from "react";
 import { twMerge } from "tailwind-merge";
@@ -10,7 +10,15 @@ import { TableFilter } from "./table-filter";
 
 export type TTableProps = {
   data?: any[];
-  schema: TFieldDef[];
+  schema: {
+    name: string;
+    visible?: boolean;
+    primaryKey?: boolean;
+    sortable?: boolean;
+    labelClass?: string;
+    label?: string;
+    fieldClass?: string;
+  }[];
   selected?: TIds;
   onSelect?: (selected: TIds) => void;
   order?: TOrder[];
@@ -75,8 +83,6 @@ export function Table({
   }
 
   function handleOnOrder({ value }: any) {
-    console.log(`🚀 ~ file: table.tsx:80 ~ handleOnOrder ~ value:`, value);
-
     if (onOrder) onOrder(value);
   }
 

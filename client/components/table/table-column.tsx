@@ -1,17 +1,23 @@
 import { TOrder } from "@/types";
-import { TFieldDef } from "@/types/model";
 import { orderByUtil } from "@/utils/schema/order-by";
 import { twMerge } from "tailwind-merge";
 import { ShowSortableIcon } from "./show-sortable-icon";
 
+type TSchemaField = {
+  sortable?: boolean;
+  labelClass?: string;
+  name: string;
+  label?: string;
+};
+
 export type TTableColumn = {
-  schemaField: TFieldDef;
+  schemaField: TSchemaField;
   order: TOrder[];
   onOrder?: (order: TOrder[]) => void;
 };
 
 export function TableColumn({ schemaField, order, onOrder }: TTableColumn) {
-  function handleOnOrder(order: TOrder[] = [], schemaField: TFieldDef) {
+  function handleOnOrder(order: TOrder[] = [], schemaField: TSchemaField) {
     if (onOrder && schemaField.sortable !== false)
       onOrder(orderByUtil.setUnique(order, schemaField?.name));
   }

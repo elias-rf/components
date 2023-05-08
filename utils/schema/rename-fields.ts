@@ -1,15 +1,10 @@
 import type { TFieldDef } from "@/types";
+import { renameString } from "@/utils/schema/rename-string";
 import { isArray } from "../identify/is-array";
 import { isEmpty } from "../identify/is-empty";
 import { isObject } from "../identify/is-object";
 import { fieldsFromFields } from "./fields-from-fields";
 import { namesFromFields } from "./names-from-fields";
-
-function renameString(name = "", sourceList: string[], targetList: string[]) {
-  const idx = sourceList.indexOf(name);
-  if (idx >= 0) return targetList[idx] as string;
-  throw new Error(`${name} não é um nome válido: ${sourceList.toString()}`);
-}
 
 function renameTuple(data: any[], sourceList: string[], targetList: string[]) {
   if (isEmpty(data)) return data;

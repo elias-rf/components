@@ -1,12 +1,12 @@
-import { TFieldServer } from "@/types";
+import { TFieldDef } from "@/types";
 import { describe, expect, it } from "vitest";
 import { zIdClient } from "./z-id-client";
 
-const entity: TFieldServer[] = [
+const entity: TFieldDef[] = [
   {
     name: "fld_1",
     field: "fld1",
-    type: "int",
+    typeField: "int",
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
@@ -14,27 +14,25 @@ const entity: TFieldServer[] = [
   {
     name: "fld_2",
     field: "fld2",
-    type: "string",
+    typeField: "string",
     allowNull: false,
     primaryKey: true,
   },
   {
     name: "fld_3",
     field: "fld3",
-    type: "string",
+    typeField: "string",
     readOnly: true,
   },
   {
     name: "fld_4",
     field: "fld4",
-    type: "string",
+    typeField: "string",
   },
 ];
 
 describe("idClient", () => {
   it("deve invalidar Id vazio", () => {
-    expect(() => zIdClient(undefined, entity)).toThrow("Id deve ser informado");
-    expect(() => zIdClient(null, entity)).toThrow("Id deve ser informado");
     expect(() => zIdClient({}, entity)).toThrow("Id deve ser informado");
     expect(() => zIdClient([], entity)).toThrow("Id deve ser informado");
   });

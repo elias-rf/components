@@ -1,9 +1,8 @@
-import { TEntity } from "@/types";
 import { isId } from "@/utils/validate/is-id";
 import { expect, it } from "vitest";
 import { validateThrow } from "./validate-throw";
 
-const entity: TEntity = {
+const entity = {
   database: "oftalmo",
   table: "phonebook",
   schema: [

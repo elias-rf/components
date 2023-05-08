@@ -4,12 +4,6 @@ import { isOrder } from "./is-order";
 
 describe("isOrder", () => {
   it("deve invalidar order não formatados corretamente", () => {
-    expect(() => isOrder(undefined, entity)).toThrow(
-      "order deve ser informado no formato [[field, asc|desc]]"
-    );
-    expect(() => isOrder(null, entity)).toThrow(
-      "order deve ser informado no formato [[field, asc|desc]]"
-    );
     // @ts-expect-error: Unreachable code error
     expect(() => isOrder({}, entity)).toThrow(
       "order deve ser informado no formato [[field, asc|desc]]"

@@ -1,35 +1,52 @@
-import { TWhere } from "@/types";
+import { TFilters } from "@/types";
+import type { TEquality } from "@/utils/api/getEquality";
+import { getEquality } from "@/utils/api/getEquality";
 
 /*
 [
-  ['field','=', value]
-  ['field','>=', value]
-  ['field','>', value]
-  ['field','<=', value]
-  ['field','<', value]
-  ['field','in', [value1, value2, value3]]
-  ['field','between', [value1, value2]]
-  ['field','like', '%value%']
-  ['field','is', null]
+  {id:'',value: 'value'}
+  {id:'',value: '=value'}
+  {id:'',value: '>= value'}
+  {id:'',value: '> value'}
+  {id:'',value: '<= value'}
+  {id:'',value: '< value'}
+  {id:'',value: '?value'}
+  {id:'',value: '?value?'}
+  {id:'',value: 'value?'}
+  {id:'',value: 'value1 <> value2'}
+  {id:'',value: '-'}
 ]
 */
 
-function where(type: string, builder: any, whereArray: any) {
-  whereArray.forEach((item: any) => {
-    if (item.length === 3) {
-      if (item[1] === "not is") {
-        return builder.whereNotNull(item[0]);
-      }
-      builder[type](...item);
-    } else {
-      if (item[0] === "or") where("orWhere", builder, item[1]); // or
-      if (item[0] === "and") where("andWhere", builder, item[1]); // and
-    }
+const where = (type: string, builder: any, equalities: TEquality[]) => {
+  equalities.forEach((equality: TEquality) => {
+    if (equality.equality === "null") return builder.whereNull(equality.field);
+    if (equality.equality === "between")
+      return builder.whereBetween(equality.field, equality.value);
+    return builder.where(equality.field, equality.equality, equality.value);
   });
-}
+};
 
-export function knexWhere(whereArray: TWhere[] = []) {
+/**
+ * Converte o filter do cliente para where do servidor
+ */
+export const knexWhere = (
+  filters: TFilters = [],
+  schema?: { field: string; name: string }[]
+) => {
+  let equalities = filters.map((filter) => getEquality(filter));
+  if (Array.isArray(schema)) {
+    const conv = schema.reduce<Record<string, string>>((resp, item) => {
+      resp[item.name] = item.field;
+      return resp;
+    }, {});
+    equalities = equalities.map((equality) => ({
+      field: conv[equality.field] || equality.field,
+      equality: equality.equality,
+      value: equality.value,
+    }));
+  }
   return (builder: any) => {
-    where("where", builder, whereArray);
+    where("where", builder, equalities);
   };
-}
+};

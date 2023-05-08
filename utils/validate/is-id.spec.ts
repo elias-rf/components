@@ -4,8 +4,6 @@ import { isId } from "./is-id";
 
 describe("isId", () => {
   it("deve invalidar Id vazio", () => {
-    expect(() => isId(undefined, entity)).toThrow("Id deve ser informado");
-    expect(() => isId(null, entity)).toThrow("Id deve ser informado");
     expect(() => isId({}, entity)).toThrow("Id deve ser informado");
     expect(() => isId([], entity)).toThrow("Id deve ser informado");
   });

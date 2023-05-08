@@ -1,8 +1,8 @@
-import { TFieldServer } from "@/types";
+import { TFieldDef } from "@/types";
 import { describe, expect, it } from "vitest";
 import { renameFieldToName, renameNameToField } from "./rename-fields";
 
-const entity: TFieldServer[] = [
+const entity: TFieldDef[] = [
   {
     allowNull: false,
     field: "id",

@@ -1,4 +1,3 @@
-import { nfSaidaStore } from "@/models/nf-saida/nf-saida.store";
 import { day } from "@/utils/date/day";
 import React from "react";
 import { Table } from "../../../components/table/table";
@@ -13,8 +12,6 @@ import {
   ufSchema,
   vendedorSchema,
 } from "./venda";
-
-const nfSaidaStore = nfSaidaStore();
 
 export function Vendas() {
   const getVendaAnalitico = nfSaidaStore((state) => state.getVendaAnalitico);

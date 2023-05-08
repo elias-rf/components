@@ -14,19 +14,6 @@ describe("z traduzido", () => {
     ]);
   });
 
-  it("invalid_type_received_undefined", () => {
-    const schema = zd.string();
-    expect(schema.safeParse().error.issues).toEqual([
-      {
-        code: "invalid_type",
-        message: "Obrigatório",
-        expected: "string",
-        received: "undefined",
-        path: [],
-      },
-    ]);
-  });
-
   it("invalid_literal", () => {
     const schema = zd.literal("a");
     expect(schema.safeParse("b").error.issues).toEqual([

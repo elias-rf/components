@@ -18,7 +18,6 @@ export function TransferenciaModelo({
 
   return (
     <Table
-      name="modelo"
       data={dataTransferenciaModelo.data}
       schema={transferenciaModeloSchema}
     >

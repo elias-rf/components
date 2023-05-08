@@ -1,4 +1,4 @@
-import { TFieldDef, TOrder } from "@/types";
+import { TOrder } from "@/types";
 import { orderByUtil } from "@/utils/schema/order-by";
 import {
   IconChevronDown,
@@ -8,7 +8,7 @@ import {
 
 interface ShowSortableIconProps {
   order: TOrder[];
-  fieldSchema: TFieldDef;
+  fieldSchema: { sortable?: boolean; name: string };
 }
 
 /**

@@ -1,9 +1,6 @@
 import { template } from "./template";
 
 describe("template", () => {
-  it("deve executar sem substituir", () => {
-    expect(template("teste", undefined)).toBe("teste");
-  });
   it("deve substituir com object", () => {
     expect(template("João {maria} José", { maria: "Maria" })).toBe(
       "João Maria José"

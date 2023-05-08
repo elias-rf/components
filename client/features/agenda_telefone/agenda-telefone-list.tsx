@@ -4,15 +4,16 @@ import {
   ColumnFiltersState,
   OnChangeFn,
   RowSelectionState,
+  SortingState,
 } from "@tanstack/react-table";
 import { agendaTelefoneColumns } from "./agenda-telefone.cols";
 
 type TAgendaTelefoneListProps = {
   selected: RowSelectionState;
   onSelect: OnChangeFn<RowSelectionState>;
-  where: ColumnFiltersState[];
+  where: ColumnFiltersState;
   onWhere: OnChangeFn<ColumnFiltersState>;
-  order: SortingState[];
+  order: SortingState;
   onOrder: OnChangeFn<SortingState>;
   children?: (row: any) => any;
 };

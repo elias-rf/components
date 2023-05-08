@@ -1,7 +1,10 @@
 import type { TAggregate, TGenericObject, TListArgs, TTableDef } from "@/types";
+import { knexOrder } from "@/utils/api/knex-order";
+import { knexSelect } from "@/utils/api/knex-select";
+import { knexWhere } from "@/utils/api/knex-where";
+import { isOrder } from "@/utils/validate/is-order";
+import { isWhere } from "@/utils/validate/is-where";
 import { Knex } from "knex";
-import { knexOrder } from "../../data/knex-order";
-import { knexWhere } from "../../data/knex-where";
 import { namesFromTable } from "../../schema/names-from-table";
 import {
   renameFieldToName,
@@ -9,9 +12,7 @@ import {
 } from "../../schema/rename-fields";
 import { isLimit } from "../../validate/is-limit";
 import { isSelect } from "../../validate/is-select";
-import { isWhere } from "../../validate/is-where";
 import { zAggregate } from "../../zod/z-aggregate";
-import { isOrder } from "../../zod/z-order";
 import { TCrudList } from "../crud.type";
 
 export function listFactory(connection: Knex, table: TTableDef): TCrudList {
@@ -25,9 +26,9 @@ export function listFactory(connection: Knex, table: TTableDef): TCrudList {
     min = {},
     max = {},
   }: TListArgs = {}): Promise<TGenericObject[]> => {
+    isLimit(limit);
     isWhere(where, table.fields);
     isOrder(order, table.fields);
-    isLimit(limit);
     isSelect(select as string[], table.fields);
     isSelect(group as string[], table.fields);
     zAggregate(sum as TAggregate, table.fields);
@@ -39,12 +40,10 @@ export function listFactory(connection: Knex, table: TTableDef): TCrudList {
     }
 
     let qry = connection(tbl);
-    if (select) qry = qry.select(renameNameToField(select, table.fields));
+    if (select) qry = qry.select(knexSelect(select, table.fields));
     if (limit) qry = qry.limit(limit);
-    if (where.length > 0)
-      qry = qry.where(knexWhere(renameNameToField(where, table.fields)));
-    if (order.length > 0)
-      qry = qry.orderBy(knexOrder(renameNameToField(order, table.fields)));
+    if (where.length > 0) qry = qry.where(knexWhere(where, table.fields));
+    if (order.length > 0) qry = qry.orderBy(knexOrder(order, table.fields));
     if (Object.keys(sum).length > 0) qry = qry.sum(sum);
 
     if (Object.keys(min).length > 0) qry = qry.min(min);

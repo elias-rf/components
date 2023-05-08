@@ -1,4 +1,4 @@
-const http = require("http");
+const http = require("node:http");
 import { logger } from "../logger";
 
 export async function sendLog(msg: any) {

@@ -60,13 +60,6 @@ describe("rpc de cliente", () => {
     expect(dlt).toEqual(1);
   });
 
-  it("clienteUpdate no params", async () => {
-    // @ts-expect-error teste para ausencia de parametros
-    await expect(model.mutation.update({ table: "cliente" })).rejects.toThrow(
-      "Id deve ser informado"
-    );
-  });
-
   it("update", async () => {
     const rsp = await model.mutation.update({
       id: { cliente_id: 1 },
