@@ -9,7 +9,7 @@ export const TipoContrato: TTableDef = {
       label: "Codigo",
       name: "TipoContrato_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const TipoContrato: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const TipoContrato: TTableDef = {
       label: "fG6949",
       name: "fG6949",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

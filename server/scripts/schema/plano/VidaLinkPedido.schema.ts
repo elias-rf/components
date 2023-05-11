@@ -9,7 +9,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "NumAutorizacao",
       name: "VidaLinkPedido_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "PlanoConvenio",
       name: "PlanoConvenio",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "CdConvenio",
       name: "CdConvenio",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "NmConvenio",
       name: "NmConvenio",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "NmConveniado",
       name: "NmConveniado",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "NumCartao",
       name: "NumCartao",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "TipoAutorizacao",
       name: "TipoAutorizacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "Estacao",
       name: "Estacao",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -83,7 +83,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "VlTotal",
       name: "VlTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -92,7 +92,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "VlReceberLoja",
       name: "VlReceberLoja",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -101,7 +101,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "VlReceberConvenio",
       name: "VlReceberConvenio",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -110,7 +110,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "VlReceberVidaLink",
       name: "VlReceberVidaLink",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -119,7 +119,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -127,7 +127,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -135,7 +135,7 @@ export const VidaLinkPedido: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -143,7 +143,6 @@ export const VidaLinkPedido: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
     },
   ],
 };

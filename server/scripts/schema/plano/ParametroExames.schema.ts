@@ -9,14 +9,13 @@ export const ParametroExames: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "string",
-      size: 15,
     },
     {
       field: "data",
       label: "data",
       name: "data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -24,7 +23,7 @@ export const ParametroExames: TTableDef = {
       label: "hora",
       name: "hora",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -32,49 +31,42 @@ export const ParametroExames: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "CdExame",
       label: "CdExame",
       name: "CdExame",
       typeField: "string",
-      size: 8,
     },
     {
       field: "P_A_S",
       label: "P_A_S",
       name: "P_A_S",
       typeField: "string",
-      size: 5,
     },
     {
       field: "P_A_D",
       label: "P_A_D",
       name: "P_A_D",
       typeField: "string",
-      size: 5,
     },
     {
       field: "Unidade",
       label: "Unidade",
       name: "Unidade",
       typeField: "string",
-      size: 5,
     },
     {
       field: "Laudo",
       label: "Laudo",
       name: "Laudo",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "OpGrid",
       label: "OpGrid",
       name: "OpGrid",
       typeField: "string",
-      size: 1,
     },
   ],
 };

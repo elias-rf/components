@@ -1,6 +1,6 @@
-import { TFieldDef } from "@/types";
+import { TSchema } from "@/types";
 
-export const transferenciaDiarioSchema: TFieldDef[] = [
+export const transferenciaDiarioSchema: TSchema = [
   {
     name: "dia",
     label: "Dia",

@@ -9,7 +9,7 @@ export const TabDep: TTableDef = {
       label: "CdDepartamento",
       name: "TabDep_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,14 +18,13 @@ export const TabDep: TTableDef = {
       label: "NmDepartamento",
       name: "NmDepartamento",
       typeField: "string",
-      size: 30,
     },
     {
       field: "PercLucro",
       label: "PercLucro",
       name: "PercLucro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -33,21 +32,19 @@ export const TabDep: TTableDef = {
       label: "FgEstoque",
       name: "FgEstoque",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgListaPreco",
       label: "FgListaPreco",
       name: "FgListaPreco",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -55,7 +52,7 @@ export const TabDep: TTableDef = {
       label: "PercDescMaxGerente",
       name: "PercDescMaxGerente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -63,7 +60,7 @@ export const TabDep: TTableDef = {
       label: "PercDescMaxVendedor",
       name: "PercDescMaxVendedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -71,7 +68,7 @@ export const TabDep: TTableDef = {
       label: "PontosMilhagem",
       name: "PontosMilhagem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -79,7 +76,6 @@ export const TabDep: TTableDef = {
       label: "SeqGrade",
       name: "SeqGrade",
       typeField: "int",
-      size: 5,
     },
   ],
 };

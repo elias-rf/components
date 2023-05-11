@@ -9,7 +9,7 @@ export const SuporteObsDiaria: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SuporteObsDiaria: TTableDef = {
       label: "DtReferencia",
       name: "DtReferencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const SuporteObsDiaria: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 3072,
+
       allowNull: false,
     },
   ],

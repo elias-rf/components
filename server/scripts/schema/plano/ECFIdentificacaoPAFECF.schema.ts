@@ -9,7 +9,7 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "NumSerie",
       name: "ECFIdentificacaoPAFECF_id",
       typeField: "string",
-      size: 32,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "MFAdicional",
       name: "MFAdicional",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "TipoECF",
       name: "TipoECF",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "MarcaECF",
       name: "MarcaECF",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "ModeloECF",
       name: "ModeloECF",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "VersaoSB",
       name: "VersaoSB",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "DtInstalacaoSB",
       name: "DtInstalacaoSB",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "HrInstalacaoSB",
       name: "HrInstalacaoSB",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "NumSequencialECF",
       name: "NumSequencialECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -84,7 +84,7 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "CNPJUsuario",
       name: "CNPJUsuario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -93,7 +93,7 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "IEUsuario",
       name: "IEUsuario",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -101,7 +101,7 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -110,7 +110,7 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "DtUltAlteracaoEstoque",
       name: "DtUltAlteracaoEstoque",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -118,7 +118,6 @@ export const ECFIdentificacaoPAFECF: TTableDef = {
       label: "ControleSerie",
       name: "ControleSerie",
       typeField: "string",
-      size: 64,
     },
   ],
 };

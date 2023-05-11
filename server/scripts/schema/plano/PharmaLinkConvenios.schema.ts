@@ -9,7 +9,7 @@ export const PharmaLinkConvenios: TTableDef = {
       label: "IdConvenio",
       name: "PharmaLinkConvenios_id",
       typeField: "string",
-      size: 6,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const PharmaLinkConvenios: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
   ],

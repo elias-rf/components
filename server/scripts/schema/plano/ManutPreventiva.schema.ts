@@ -9,7 +9,7 @@ export const ManutPreventiva: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ManutPreventiva: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,28 +25,25 @@ export const ManutPreventiva: TTableDef = {
       label: "CdEquipamento",
       name: "CdEquipamento",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NumSerie",
       label: "NumSerie",
       name: "NumSerie",
       typeField: "string",
-      size: 20,
     },
     {
       field: "Periodo",
       label: "Periodo",
       name: "Periodo",
       typeField: "int",
-      size: 4,
     },
     {
       field: "DtultPreventiva",
       label: "DtultPreventiva",
       name: "DtultPreventiva",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
   ],

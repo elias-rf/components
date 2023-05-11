@@ -9,7 +9,7 @@ export const MedicoAMIVida: TTableDef = {
       label: "CRM",
       name: "MedicoAMIVida_id",
       typeField: "string",
-      size: 16,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MedicoAMIVida: TTableDef = {
       label: "FgEnvioMaterial",
       name: "FgEnvioMaterial",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const MedicoAMIVida: TTableDef = {
       label: "FgEnvioBrindes",
       name: "FgEnvioBrindes",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const MedicoAMIVida: TTableDef = {
       label: "FgRelAcompanhamento",
       name: "FgRelAcompanhamento",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const Autorizacao: TTableDef = {
       label: "CdSistema",
       name: "CdSistema",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Autorizacao: TTableDef = {
       label: "CdFuncao",
       name: "CdFuncao",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const Autorizacao: TTableDef = {
       label: "SgUsuario",
       name: "SgUsuario",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

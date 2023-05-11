@@ -9,7 +9,7 @@ export const UnidadeProdutiva: TTableDef = {
       label: "Identificacao",
       name: "UnidadeProdutiva_id",
       typeField: "string",
-      size: 25,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const UnidadeProdutiva: TTableDef = {
       label: "CustoLaboratorio",
       name: "CustoLaboratorio",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const UnidadeProdutiva: TTableDef = {
       label: "CustoTelemarketing",
       name: "CustoTelemarketing",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const UnidadeProdutiva: TTableDef = {
       label: "CustoBalcao",
       name: "CustoBalcao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -45,7 +45,7 @@ export const UnidadeProdutiva: TTableDef = {
       label: "CustoControleQualidade",
       name: "CustoControleQualidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -54,7 +54,7 @@ export const UnidadeProdutiva: TTableDef = {
       label: "CustoExpedicao",
       name: "CustoExpedicao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -63,7 +63,7 @@ export const UnidadeProdutiva: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

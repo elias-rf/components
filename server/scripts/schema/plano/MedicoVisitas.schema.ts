@@ -9,7 +9,7 @@ export const MedicoVisitas: TTableDef = {
       label: "Crm",
       name: "Crm",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const MedicoVisitas: TTableDef = {
       label: "DtVisita",
       name: "DtVisita",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -26,14 +26,13 @@ export const MedicoVisitas: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "CdConsultor",
       label: "CdConsultor",
       name: "CdConsultor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -41,7 +40,7 @@ export const MedicoVisitas: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -49,7 +48,6 @@ export const MedicoVisitas: TTableDef = {
       label: "TipoContato",
       name: "TipoContato",
       typeField: "string",
-      size: 1,
     },
   ],
 };

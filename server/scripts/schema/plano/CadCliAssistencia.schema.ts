@@ -9,7 +9,7 @@ export const CadCliAssistencia: TTableDef = {
       label: "CdCliente",
       name: "CadCliAssistencia_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const CadCliAssistencia: TTableDef = {
       label: "FgBancoHoras",
       name: "FgBancoHoras",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const CadCliAssistencia: TTableDef = {
       label: "TempoResposta",
       name: "TempoResposta",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const CadCliAssistencia: TTableDef = {
       label: "TempoSolucao",
       name: "TempoSolucao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const CadCliAssistencia: TTableDef = {
       label: "TempoDeslocamento",
       name: "TempoDeslocamento",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const CadCliAssistencia: TTableDef = {
       label: "VlHoraAvulsa",
       name: "VlHoraAvulsa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

@@ -9,7 +9,7 @@ export const tbl_Solucao_Controle_Lote: TTableDef = {
       label: "fkProdutoItem",
       name: "fkProdutoItem",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const tbl_Solucao_Controle_Lote: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const tbl_Solucao_Controle_Lote: TTableDef = {
       label: "Lote",
       name: "Lote",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
   ],

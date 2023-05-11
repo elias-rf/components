@@ -9,7 +9,7 @@ export const ePharmaComprovante: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ePharmaComprovante: TTableDef = {
       label: "NumCupom",
       name: "NumCupom",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ePharmaComprovante: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ePharmaComprovante: TTableDef = {
       label: "Texto",
       name: "Texto",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
   ],

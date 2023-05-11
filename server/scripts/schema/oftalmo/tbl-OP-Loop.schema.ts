@@ -9,7 +9,7 @@ export const tbl_OP_Loop: TTableDef = {
       label: "kOpLoop",
       name: "tbl_OP_Loop_id",
       typeField: "string",
-      size: 8,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tbl_OP_Loop: TTableDef = {
       label: "QtdFilamentos",
       name: "QtdFilamentos",
       typeField: "int",
-      size: 1,
+
       defaultValue: "50",
     },
     {
@@ -26,42 +26,37 @@ export const tbl_OP_Loop: TTableDef = {
       label: "Espessura",
       name: "Espessura",
       typeField: "float",
-      size: 4,
     },
     {
       field: "Modelo",
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Tamanho",
       label: "Tamanho",
       name: "Tamanho",
       typeField: "float",
-      size: 4,
     },
     {
       field: "Lote",
       label: "Lote",
       name: "Lote",
       typeField: "string",
-      size: 50,
     },
     {
       field: "DataEmissao",
       label: "DataEmissao",
       name: "DataEmissao",
       typeField: "date",
-      size: 4,
     },
     {
       field: "Travado",
       label: "Travado",
       name: "Travado",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -70,7 +65,7 @@ export const tbl_OP_Loop: TTableDef = {
       label: "IdAuxiliar",
       name: "IdAuxiliar",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       allowNull: false,
     },

@@ -1,6 +1,6 @@
-import { TFieldDef } from "@/types";
+import { TSchema } from "@/types";
 
-export async function schemaMensal(): Promise<TFieldDef[]> {
+export async function schemaMensal(): Promise<TSchema> {
   return [
     {
       name: "mes",

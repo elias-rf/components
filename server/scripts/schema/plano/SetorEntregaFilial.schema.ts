@@ -9,7 +9,7 @@ export const SetorEntregaFilial: TTableDef = {
       label: "CdSetorEntrega",
       name: "CdSetorEntrega",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SetorEntregaFilial: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const SetorEntregaFilial: TTableDef = {
       label: "ImpressoraOrdemSeparacao",
       name: "ImpressoraOrdemSeparacao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const SetorEntregaFilial: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const SetorEntregaFilial: TTableDef = {
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

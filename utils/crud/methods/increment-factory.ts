@@ -1,27 +1,20 @@
-import type { TGenericObject, TSelect, TTableDef, TWhere } from "@/types";
+import type { TGenericObject, TIncrementArgs, TTableDef } from "@/types";
+import { knexIncrement } from "@/utils/api/knex-increment";
+import { knexWhere } from "@/utils/api/knex-where";
+import { assertFilters } from "@/utils/asserts/assert-filters";
 import { Knex } from "knex";
-import { knexWhere } from "../../data/knex-where";
+import { assertSelect } from "../../asserts/assert-select";
 import { namesFromTable } from "../../schema/names-from-table";
-import {
-  renameFieldToName,
-  renameNameToField,
-} from "../../schema/rename-fields";
-import { isSelect } from "../../validate/is-select";
-import { isWhere } from "../../validate/is-where";
-import { TCrudIncrement } from "../crud.type";
+import { renameFieldToName } from "../../schema/rename-fields";
 
-export function incrementFactory(db: Knex, schema: TTableDef): TCrudIncrement {
+export function incrementFactory(db: Knex, schema: TTableDef) {
   const response = async ({
-    where = [],
-    increment = {},
+    filters = [],
+    increment,
     select = [],
-  }: {
-    where?: TWhere[];
-    increment?: TGenericObject;
-    select?: TSelect;
-  }): Promise<TGenericObject[]> => {
-    isWhere(where, schema.fields);
-    isSelect(select as string[], schema.fields);
+  }: TIncrementArgs): Promise<TGenericObject[]> => {
+    assertFilters(filters, schema.fields);
+    assertSelect(select as string[], schema.fields);
     const tbl = schema.table;
     const entity = schema;
     if (select.length > 0) {
@@ -29,12 +22,11 @@ export function incrementFactory(db: Knex, schema: TTableDef): TCrudIncrement {
     }
 
     const data: TGenericObject[] = await db(tbl)
-      .where(knexWhere(renameNameToField(where, entity.fields)))
-      .increment(renameNameToField(increment, entity.fields))
+      .where(knexWhere(filters, entity.fields))
+      .increment(knexIncrement(increment, schema.fields))
       .returning(select as string[]);
     return renameFieldToName(data, schema.fields);
   };
 
-  response.help = "Incrementa um campo para registros filtrados";
   return response;
 }

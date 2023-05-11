@@ -9,7 +9,7 @@ export const ParamContAcesso: TTableDef = {
       label: "Base",
       name: "Base",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ParamContAcesso: TTableDef = {
       label: "Estacao",
       name: "Estacao",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ParamContAcesso: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,6 @@ export const ParamContAcesso: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 512,
     },
   ],
 };

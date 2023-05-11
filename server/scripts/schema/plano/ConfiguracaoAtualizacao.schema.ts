@@ -9,7 +9,7 @@ export const ConfiguracaoAtualizacao: TTableDef = {
       label: "NumECF",
       name: "ConfiguracaoAtualizacao_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ConfiguracaoAtualizacao: TTableDef = {
       label: "Caminho",
       name: "Caminho",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ConfiguracaoAtualizacao: TTableDef = {
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const ConfiguracaoAtualizacao: TTableDef = {
       label: "NumUltLinhaMestre",
       name: "NumUltLinhaMestre",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ConfiguracaoAtualizacao: TTableDef = {
       label: "NumUltLinhaItem",
       name: "NumUltLinhaItem",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const ConfiguracaoAtualizacao: TTableDef = {
       label: "NumUltLinhaCaixa",
       name: "NumUltLinhaCaixa",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const ConfiguracaoAtualizacao: TTableDef = {
       label: "NumUltLinhaFinanceiro",
       name: "NumUltLinhaFinanceiro",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const ConfiguracaoAtualizacao: TTableDef = {
       label: "NumUltLinhaRecebimento",
       name: "NumUltLinhaRecebimento",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -75,14 +75,12 @@ export const ConfiguracaoAtualizacao: TTableDef = {
       label: "NumUltLinhaDocumentoNaoFiscal",
       name: "NumUltLinhaDocumentoNaoFiscal",
       typeField: "int",
-      size: 2,
     },
     {
       field: "NumUltLinhaMeiosPagamento",
       label: "NumUltLinhaMeiosPagamento",
       name: "NumUltLinhaMeiosPagamento",
       typeField: "int",
-      size: 2,
     },
   ],
 };

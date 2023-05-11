@@ -9,7 +9,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "CdKit",
       name: "ConfiguracaoImpKits_id",
       typeField: "string",
-      size: 15,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "NumOP",
       name: "NumOP",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "ProdutoProduzido",
       name: "ProdutoProduzido",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "LoteProdutoProduzido",
       name: "LoteProdutoProduzido",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "QtdeProdutoProduzido",
       name: "QtdeProdutoProduzido",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "LoteGrelhaProduzida",
       name: "LoteGrelhaProduzida",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "QtdeGrelhaProduzida",
       name: "QtdeGrelhaProduzida",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "Largura",
       name: "Largura",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "Espessura",
       name: "Espessura",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "DescMateriaPrima",
       name: "DescMateriaPrima",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "QtdeMateriaPrima",
       name: "QtdeMateriaPrima",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "LoteMateriaPrima",
       name: "LoteMateriaPrima",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "MaquinaProducao",
       name: "MaquinaProducao",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -114,7 +114,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "DtFabricacao",
       name: "DtFabricacao",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -122,7 +122,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "OperadorMaquina",
       name: "OperadorMaquina",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -130,7 +130,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "TipoCaixa",
       name: "TipoCaixa",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -138,7 +138,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "PecaCaixa",
       name: "PecaCaixa",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -146,7 +146,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "LoteCaixa",
       name: "LoteCaixa",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -154,7 +154,7 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "DtExtrusao",
       name: "DtExtrusao",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -162,119 +162,102 @@ export const ConfiguracaoImpKits: TTableDef = {
       label: "CdProdutoProduzido",
       name: "CdProdutoProduzido",
       typeField: "string",
-      size: 64,
     },
     {
       field: "CdMateriaPrima",
       label: "CdMateriaPrima",
       name: "CdMateriaPrima",
       typeField: "string",
-      size: 64,
     },
     {
       field: "Cliente",
       label: "Cliente",
       name: "Cliente",
       typeField: "string",
-      size: 64,
     },
     {
       field: "PostoProdutivo1",
       label: "PostoProdutivo1",
       name: "PostoProdutivo1",
       typeField: "string",
-      size: 64,
     },
     {
       field: "PostoProdutivo2",
       label: "PostoProdutivo2",
       name: "PostoProdutivo2",
       typeField: "string",
-      size: 64,
     },
     {
       field: "PostoProdutivo3",
       label: "PostoProdutivo3",
       name: "PostoProdutivo3",
       typeField: "string",
-      size: 64,
     },
     {
       field: "PostoProdutivo4",
       label: "PostoProdutivo4",
       name: "PostoProdutivo4",
       typeField: "string",
-      size: 64,
     },
     {
       field: "PostoProdutivo5",
       label: "PostoProdutivo5",
       name: "PostoProdutivo5",
       typeField: "string",
-      size: 64,
     },
     {
       field: "PostoProdutivo6",
       label: "PostoProdutivo6",
       name: "PostoProdutivo6",
       typeField: "string",
-      size: 64,
     },
     {
       field: "DescOperacao1",
       label: "DescOperacao1",
       name: "DescOperacao1",
       typeField: "string",
-      size: 64,
     },
     {
       field: "DescOperacao2",
       label: "DescOperacao2",
       name: "DescOperacao2",
       typeField: "string",
-      size: 64,
     },
     {
       field: "DescOperacao3",
       label: "DescOperacao3",
       name: "DescOperacao3",
       typeField: "string",
-      size: 64,
     },
     {
       field: "DescOperacao4",
       label: "DescOperacao4",
       name: "DescOperacao4",
       typeField: "string",
-      size: 64,
     },
     {
       field: "DescOperacao5",
       label: "DescOperacao5",
       name: "DescOperacao5",
       typeField: "string",
-      size: 64,
     },
     {
       field: "DescOperacao6",
       label: "DescOperacao6",
       name: "DescOperacao6",
       typeField: "string",
-      size: 64,
     },
     {
       field: "DtEmissao",
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "string",
-      size: 64,
     },
     {
       field: "Obs",
       label: "Obs",
       name: "Obs",
       typeField: "string",
-      size: 64,
     },
   ],
 };

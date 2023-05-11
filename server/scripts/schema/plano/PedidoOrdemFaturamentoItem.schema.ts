@@ -9,7 +9,7 @@ export const PedidoOrdemFaturamentoItem: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const PedidoOrdemFaturamentoItem: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const PedidoOrdemFaturamentoItem: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const PedidoOrdemFaturamentoItem: TTableDef = {
       label: "NumOrdemFaturamento",
       name: "NumOrdemFaturamento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const PedidoOrdemFaturamentoItem: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const PedidoOrdemFaturamentoItem: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const PedidoOrdemFaturamentoItem: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -66,7 +66,7 @@ export const PedidoOrdemFaturamentoItem: TTableDef = {
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const MovCreditoFornecedor: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MovCreditoFornecedor: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const MovCreditoFornecedor: TTableDef = {
       label: "NumDocOrigem",
       name: "NumDocOrigem",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const MovCreditoFornecedor: TTableDef = {
       label: "NumDocDestino",
       name: "NumDocDestino",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const MovCreditoFornecedor: TTableDef = {
       label: "VlCredito",
       name: "VlCredito",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -51,7 +51,7 @@ export const MovCreditoFornecedor: TTableDef = {
       label: "VlDebito",
       name: "VlDebito",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -60,7 +60,6 @@ export const MovCreditoFornecedor: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
     },
   ],
 };

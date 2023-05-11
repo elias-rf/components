@@ -9,7 +9,7 @@ export const ProducaoOperacaoMaquina: TTableDef = {
       label: "CdOperacao",
       name: "CdOperacao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProducaoOperacaoMaquina: TTableDef = {
       label: "CdMaquina",
       name: "CdMaquina",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
   ],

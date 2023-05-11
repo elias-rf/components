@@ -9,7 +9,7 @@ export const TabMovCTroco: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TabMovCTroco: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TabMovCTroco: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const TabMovCTroco: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const TabMovCTroco: TTableDef = {
       label: "VlDinheiro",
       name: "VlDinheiro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -50,7 +50,7 @@ export const TabMovCTroco: TTableDef = {
       label: "VlTroco",
       name: "VlTroco",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

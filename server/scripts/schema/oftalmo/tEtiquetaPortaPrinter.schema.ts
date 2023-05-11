@@ -9,7 +9,7 @@ export const tEtiquetaPortaPrinter: TTableDef = {
       label: "Port",
       name: "Port",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const tEtiquetaPortaPrinter: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
   ],

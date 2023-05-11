@@ -9,7 +9,7 @@ export const HistoricoConveniado: TTableDef = {
       label: "CdFuncionario",
       name: "CdFuncionario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const HistoricoConveniado: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const HistoricoConveniado: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const HistoricoConveniado: TTableDef = {
       label: "Historico",
       name: "Historico",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const HistoricoConveniado: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const HistoricoConveniado: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

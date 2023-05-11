@@ -5,10 +5,7 @@ import {
   TProdutoItem,
   TProdutoItemSelect,
 } from "../produto-item/produto-item.type";
-import {
-  TProdutoPlano,
-  TProdutoPlanoFields,
-} from "../produto-plano/produto-plano.type";
+import { TProdutoPlano } from "../produto-plano/produto-plano.type";
 
 export interface TOrdemProducaoPk {
   ordem_producao_id?: number;
@@ -68,31 +65,31 @@ export type TOrdemProducaoFields = keyof Required<TOrdemProducao>;
 export type TOrdemProducaoIds = {
   [pk in keyof Required<TOrdemProducaoPk>]: any;
 };
-export type TOrdemProducaoSelect = TSelect<TOrdemProducaoFields>;
-export type TOrdemProducaoWhere = TWhere<TOrdemProducaoFields>;
-export type TOrdemProducaoOrder = TOrder<TOrdemProducaoFields>;
+export type TOrdemProducaoSelect = TSelect;
+export type TOrdemProducaoWhere = TWhere;
+export type TOrdemProducaoOrder = TOrder;
 
 export type TOrdemProducaoSchema = () => Promise<TFieldDef[]>;
 export type TOrdemProducaoClear = () => Promise<TOrdemProducao>;
 export type TOrdemProducaoList = (args: {
-  where?: TWhere<TOrdemProducaoFields>[];
-  order?: TOrder<TOrdemProducaoFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TOrdemProducaoFields>;
+  select?: TSelect;
 }) => Promise<TOrdemProducao[]>;
 export type TOrdemProducaoRead = (args: {
   id: TOrdemProducaoIds;
-  select?: TSelect<TOrdemProducaoFields>;
+  select?: TSelect;
 }) => Promise<TOrdemProducao>;
 
 export type TOrdemProducaoCreate = (args: {
   data: TOrdemProducao;
-  select?: TSelect<TOrdemProducaoFields>;
+  select?: TSelect;
 }) => Promise<TOrdemProducao>;
 export type TOrdemProducaoUpdate = (args: {
   id: TOrdemProducaoIds;
   data: TOrdemProducao;
-  select?: TSelect<TOrdemProducaoFields>;
+  select?: TSelect;
 }) => Promise<TOrdemProducao>;
 export type TOrdemProducaoDel = (args: {
   id: TOrdemProducaoIds;
@@ -121,7 +118,7 @@ export type TOrdemProducaoModel = {
     produtoItem: TOrdemProducaoProdutoItem;
     produtoPlano(args: {
       id: TOrdemProducaoIds;
-      select?: TSelect<TProdutoPlanoFields>;
+      select?: TSelect;
     }): Promise<TProdutoPlano>;
   };
   mutation: {

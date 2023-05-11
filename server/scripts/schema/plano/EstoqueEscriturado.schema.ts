@@ -9,7 +9,7 @@ export const EstoqueEscriturado: TTableDef = {
       label: "MesBase",
       name: "MesBase",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const EstoqueEscriturado: TTableDef = {
       label: "AnoBase",
       name: "AnoBase",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const EstoqueEscriturado: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const EstoqueEscriturado: TTableDef = {
       label: "CdIndEstoque",
       name: "CdIndEstoque",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const EstoqueEscriturado: TTableDef = {
       label: "TipoParticipante",
       name: "TipoParticipante",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const EstoqueEscriturado: TTableDef = {
       label: "CdParticipante",
       name: "CdParticipante",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const EstoqueEscriturado: TTableDef = {
       label: "Qtde",
       name: "Qtde",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const EstoqueEscriturado: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const EstoqueEscriturado: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

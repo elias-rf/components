@@ -9,7 +9,7 @@ export const MestrePedidoOrdemServico: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const MestrePedidoOrdemServico: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const MestrePedidoOrdemServico: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -33,70 +33,61 @@ export const MestrePedidoOrdemServico: TTableDef = {
       label: "Veiculo",
       name: "Veiculo",
       typeField: "string",
-      size: 50,
     },
     {
       field: "Marca",
       label: "Marca",
       name: "Marca",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Cor",
       label: "Cor",
       name: "Cor",
       typeField: "string",
-      size: 20,
     },
     {
       field: "Ano",
       label: "Ano",
       name: "Ano",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Placa",
       label: "Placa",
       name: "Placa",
       typeField: "string",
-      size: 7,
     },
     {
       field: "Frota",
       label: "Frota",
       name: "Frota",
       typeField: "string",
-      size: 25,
     },
     {
       field: "NumSinistro",
       label: "NumSinistro",
       name: "NumSinistro",
       typeField: "string",
-      size: 20,
     },
     {
       field: "Motorista",
       label: "Motorista",
       name: "Motorista",
       typeField: "string",
-      size: 50,
     },
     {
       field: "NumNota",
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 4,
     },
     {
       field: "KM",
       label: "KM",
       name: "KM",
       typeField: "int",
-      size: 9,
+
       scale: 3,
     },
   ],

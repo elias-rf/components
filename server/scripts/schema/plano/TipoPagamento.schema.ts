@@ -9,7 +9,7 @@ export const TipoPagamento: TTableDef = {
       label: "CdTipoPagamento",
       name: "TipoPagamento_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const TipoPagamento: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
   ],

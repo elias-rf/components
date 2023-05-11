@@ -9,7 +9,7 @@ export const Transportadoras: TTableDef = {
       label: "Bairro",
       name: "Bairro",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Transportadoras: TTableDef = {
       label: "CdTransportadora",
       name: "CdTransportadora",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const Transportadoras: TTableDef = {
       label: "CEP",
       name: "CEP",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const Transportadoras: TTableDef = {
       label: "CGC",
       name: "CGC",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const Transportadoras: TTableDef = {
       label: "Cidade",
       name: "Cidade",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -52,7 +52,7 @@ export const Transportadoras: TTableDef = {
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -60,7 +60,7 @@ export const Transportadoras: TTableDef = {
       label: "Fax",
       name: "Fax",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -68,7 +68,7 @@ export const Transportadoras: TTableDef = {
       label: "InscEst",
       name: "InscEst",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -76,7 +76,7 @@ export const Transportadoras: TTableDef = {
       label: "NmContato",
       name: "NmContato",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -84,7 +84,7 @@ export const Transportadoras: TTableDef = {
       label: "RzSocial",
       name: "RzSocial",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -92,7 +92,7 @@ export const Transportadoras: TTableDef = {
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -100,7 +100,7 @@ export const Transportadoras: TTableDef = {
       label: "UF",
       name: "UF",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
   ],

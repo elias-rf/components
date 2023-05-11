@@ -9,7 +9,7 @@ export const TipoLIberacao: TTableDef = {
       label: "CdTipoLiberacao",
       name: "TipoLIberacao_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const TipoLIberacao: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
   ],

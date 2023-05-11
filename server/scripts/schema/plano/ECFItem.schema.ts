@@ -9,7 +9,7 @@ export const ECFItem: TTableDef = {
       label: "CNPJFilial",
       name: "CNPJFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ECFItem: TTableDef = {
       label: "NumECF",
       name: "NumECF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ECFItem: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const ECFItem: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -44,7 +44,7 @@ export const ECFItem: TTableDef = {
       label: "NumCupom",
       name: "NumCupom",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -53,7 +53,7 @@ export const ECFItem: TTableDef = {
       label: "NumCOO",
       name: "NumCOO",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -62,7 +62,7 @@ export const ECFItem: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -70,7 +70,7 @@ export const ECFItem: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -79,7 +79,7 @@ export const ECFItem: TTableDef = {
       label: "VlUnitario",
       name: "VlUnitario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -88,7 +88,7 @@ export const ECFItem: TTableDef = {
       label: "VlTotal",
       name: "VlTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -97,7 +97,7 @@ export const ECFItem: TTableDef = {
       label: "AliqImposto",
       name: "AliqImposto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -106,7 +106,7 @@ export const ECFItem: TTableDef = {
       label: "VlImposto",
       name: "VlImposto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

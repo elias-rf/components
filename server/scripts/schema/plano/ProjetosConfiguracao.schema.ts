@@ -9,7 +9,7 @@ export const ProjetosConfiguracao: TTableDef = {
       label: "CdProjetosConfiguracao",
       name: "ProjetosConfiguracao_id",
       typeField: "int",
-      size: 9,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const ProjetosConfiguracao: TTableDef = {
       label: "CdProjeto",
       name: "CdProjeto",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const ProjetosConfiguracao: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ProjetosConfiguracao: TTableDef = {
       label: "QtdeProduto",
       name: "QtdeProduto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -43,7 +43,7 @@ export const ProjetosConfiguracao: TTableDef = {
       label: "PercQtde",
       name: "PercQtde",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -51,14 +51,13 @@ export const ProjetosConfiguracao: TTableDef = {
       label: "CRM",
       name: "CRM",
       typeField: "string",
-      size: 15,
     },
     {
       field: "PercCRM",
       label: "PercCRM",
       name: "PercCRM",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

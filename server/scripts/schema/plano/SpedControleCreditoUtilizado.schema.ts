@@ -9,7 +9,7 @@ export const SpedControleCreditoUtilizado: TTableDef = {
       label: "Cnpj",
       name: "Cnpj",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SpedControleCreditoUtilizado: TTableDef = {
       label: "PeriodoApuracao",
       name: "PeriodoApuracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const SpedControleCreditoUtilizado: TTableDef = {
       label: "PeriodoUtilizacao",
       name: "PeriodoUtilizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const SpedControleCreditoUtilizado: TTableDef = {
       label: "TipoImposto",
       name: "TipoImposto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const SpedControleCreditoUtilizado: TTableDef = {
       label: "CdCredito",
       name: "CdCredito",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const SpedControleCreditoUtilizado: TTableDef = {
       label: "VlCreditoUtilizado",
       name: "VlCreditoUtilizado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -60,7 +60,7 @@ export const SpedControleCreditoUtilizado: TTableDef = {
       label: "DtGeracao",
       name: "DtGeracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

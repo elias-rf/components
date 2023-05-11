@@ -9,7 +9,7 @@ export const ControleSerieRat: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -17,7 +17,6 @@ export const ControleSerieRat: TTableDef = {
       label: "NumSerie",
       name: "NumSerie",
       typeField: "string",
-      size: 100,
     },
   ],
 };

@@ -2,7 +2,7 @@ import { zsr } from "@/utils/zod/z-refine";
 import { zod } from "@/utils/zod/zod";
 import { Knex } from "knex";
 import { z } from "zod";
-import { TNfSaidaFvModel } from "../../nf-saida-fv/nf-saida-fv.type";
+import { TNfSaidaFvModel } from "../../nf-saida-fv/nf-saida-fv.model";
 import { TNfSaida, TNfVendaAnalitico } from "../nf-saida.type";
 
 export function vendaAnalitico({

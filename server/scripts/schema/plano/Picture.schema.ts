@@ -9,7 +9,7 @@ export const Picture: TTableDef = {
       label: "Numero",
       name: "Picture_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,14 +18,12 @@ export const Picture: TTableDef = {
       label: "Picture",
       name: "Picture",
       typeField: "string",
-      size: 255,
     },
     {
       field: "Tempo",
       label: "Tempo",
       name: "Tempo",
       typeField: "int",
-      size: 4,
     },
   ],
 };

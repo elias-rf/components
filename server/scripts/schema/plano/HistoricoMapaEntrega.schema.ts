@@ -9,7 +9,7 @@ export const HistoricoMapaEntrega: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const HistoricoMapaEntrega: TTableDef = {
       label: "NumMapa",
       name: "NumMapa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const HistoricoMapaEntrega: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const HistoricoMapaEntrega: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const HistoricoMapaEntrega: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -52,7 +52,6 @@ export const HistoricoMapaEntrega: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 512,
     },
   ],
 };

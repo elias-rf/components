@@ -9,7 +9,7 @@ export const TabChe: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TabChe: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TabChe: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const TabChe: TTableDef = {
       label: "NumCheque",
       name: "NumCheque",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const TabChe: TTableDef = {
       label: "CdFavorecido",
       name: "CdFavorecido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -49,14 +49,13 @@ export const TabChe: TTableDef = {
       label: "NmFavorecido",
       name: "NmFavorecido",
       typeField: "string",
-      size: 40,
     },
     {
       field: "DtEmissao",
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -64,7 +63,7 @@ export const TabChe: TTableDef = {
       label: "VlCheque",
       name: "VlCheque",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -72,7 +71,7 @@ export const TabChe: TTableDef = {
       label: "DtPgto",
       name: "DtPgto",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -80,14 +79,12 @@ export const TabChe: TTableDef = {
       label: "TxFinalidade",
       name: "TxFinalidade",
       typeField: "string",
-      size: 4000,
     },
     {
       field: "FgSituacao",
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
     },
   ],
 };

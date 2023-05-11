@@ -9,7 +9,7 @@ export const InfBancos: TTableDef = {
       label: "Caminho",
       name: "Caminho",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const InfBancos: TTableDef = {
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const InfBancos: TTableDef = {
       label: "HrUltAtualizacao",
       name: "HrUltAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

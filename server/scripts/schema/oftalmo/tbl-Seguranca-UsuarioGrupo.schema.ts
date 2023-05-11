@@ -9,7 +9,7 @@ export const tbl_Seguranca_UsuarioGrupo: TTableDef = {
       label: "fkNomeUsuario",
       name: "fkNomeUsuario",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const tbl_Seguranca_UsuarioGrupo: TTableDef = {
       label: "fkGrupo",
       name: "fkGrupo",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

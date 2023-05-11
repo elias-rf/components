@@ -9,7 +9,7 @@ export const ProdutoCodificacaoNVE: TTableDef = {
       label: "CdProduto",
       name: "ProdutoCodificacaoNVE_id",
       typeField: "string",
-      size: 16,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProdutoCodificacaoNVE: TTableDef = {
       label: "Link",
       name: "Link",
       typeField: "string",
-      size: 256,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ProdutoCodificacaoNVE: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const ProdutoCodificacaoNVE: TTableDef = {
       label: "CodificacaoNVE",
       name: "CodificacaoNVE",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

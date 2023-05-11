@@ -9,7 +9,7 @@ export const CadastroSais: TTableDef = {
       label: "CdSal",
       name: "CadastroSais_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadastroSais: TTableDef = {
       label: "NmSal",
       name: "NmSal",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CadastroSais: TTableDef = {
       label: "AbreviaturaSal",
       name: "AbreviaturaSal",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const CadastroSais: TTableDef = {
       label: "DoseMinima",
       name: "DoseMinima",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const CadastroSais: TTableDef = {
       label: "DoseMaxima",
       name: "DoseMaxima",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const CadastroSais: TTableDef = {
       label: "Volume",
       name: "Volume",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const CadastroSais: TTableDef = {
       label: "FgControlado",
       name: "FgControlado",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const CadastroSais: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

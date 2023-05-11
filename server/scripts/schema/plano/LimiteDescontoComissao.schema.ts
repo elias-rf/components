@@ -9,7 +9,7 @@ export const LimiteDescontoComissao: TTableDef = {
       label: "PercLimite",
       name: "LimiteDescontoComissao_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const LimiteDescontoComissao: TTableDef = {
       label: "PercReducao",
       name: "PercReducao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

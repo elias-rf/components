@@ -9,7 +9,7 @@ export const AdministradoraBanco: TTableDef = {
       label: "CdAdministradora",
       name: "AdministradoraBanco_id",
       typeField: "string",
-      size: 10,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const AdministradoraBanco: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const AdministradoraBanco: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const AdministradoraBanco: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
   ],

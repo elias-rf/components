@@ -9,7 +9,7 @@ export const Conhecimentos: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Conhecimentos: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const Conhecimentos: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const Conhecimentos: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -45,7 +45,7 @@ export const Conhecimentos: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -53,7 +53,7 @@ export const Conhecimentos: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -61,7 +61,7 @@ export const Conhecimentos: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -70,7 +70,7 @@ export const Conhecimentos: TTableDef = {
       label: "CdTransportadora",
       name: "CdTransportadora",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -79,7 +79,7 @@ export const Conhecimentos: TTableDef = {
       label: "Valor",
       name: "Valor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -88,7 +88,7 @@ export const Conhecimentos: TTableDef = {
       label: "FgStatus",
       name: "FgStatus",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -96,7 +96,7 @@ export const Conhecimentos: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
   ],

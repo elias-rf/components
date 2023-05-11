@@ -9,7 +9,7 @@ export const BloqueioMapa: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const BloqueioMapa: TTableDef = {
       label: "NumMapa",
       name: "NumMapa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const BloqueioMapa: TTableDef = {
       label: "Estacao",
       name: "Estacao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const BloqueioMapa: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const BloqueioMapa: TTableDef = {
       label: "Funcao",
       name: "Funcao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const BloqueioMapa: TTableDef = {
       label: "DtBloqueio",
       name: "DtBloqueio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

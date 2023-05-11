@@ -9,7 +9,7 @@ export const ICMSMapaECF: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ICMSMapaECF: TTableDef = {
       label: "DtMapa",
       name: "DtMapa",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ICMSMapaECF: TTableDef = {
       label: "NumECF",
       name: "NumECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ICMSMapaECF: TTableDef = {
       label: "AliqICMS",
       name: "AliqICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const ICMSMapaECF: TTableDef = {
       label: "VlBaseCalculo",
       name: "VlBaseCalculo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -53,7 +53,7 @@ export const ICMSMapaECF: TTableDef = {
       label: "VlICMS",
       name: "VlICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

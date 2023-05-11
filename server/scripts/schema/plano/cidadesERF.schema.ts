@@ -9,7 +9,7 @@ export const cidadesERF: TTableDef = {
       label: "CdUFIBGE",
       name: "CdUFIBGE",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,28 +18,24 @@ export const cidadesERF: TTableDef = {
       label: "CdCidadeIBGE",
       name: "CdCidadeIBGE",
       typeField: "string",
-      size: 5,
     },
     {
       field: "NmCidadeIBGE",
       label: "NmCidadeIBGE",
       name: "NmCidadeIBGE",
       typeField: "string",
-      size: 80,
     },
     {
       field: "uf",
       label: "uf",
       name: "uf",
       typeField: "string",
-      size: 3,
     },
     {
       field: "ufOld",
       label: "ufOld",
       name: "ufOld",
       typeField: "string",
-      size: 2,
     },
   ],
 };

@@ -2,9 +2,8 @@
  * Tipos para Banco de Dados
  */
 
-export type TConnectionNames = "oftalmo" | "plano" | "fullvision";
-
 export type TFormType = "checkbox" | "select" | "text" | "textarea";
+
 export type TFieldType =
   | "string"
   | "float"
@@ -25,15 +24,9 @@ export type TFieldDef = {
   primaryKey?: boolean; // é chave do registro
   allowNull?: boolean; // pode ser nulo
   autoIncrement?: boolean; // é incrementado pelo banco de dados
-  size?: number; // tamanho em caracteres
   scale?: number; // tamanho em decimais
   readOnly?: boolean; // apenas leitura
   label?: string; // rotulo para usuário
-  // visible?: boolean; // visivel em forms e tables
-  // sortable?: boolean; // por ser usado para ordernar
-  // fieldClass?: string; // classe para o campo
-  // labelClass?: string; // classe para o label
-  // disabled?: boolean; // input desabilitado
   typeForm?: TFormType; // tipo de input no formulário
   classNameField?: string; // style para field
 };
@@ -41,7 +34,7 @@ export type TFieldDef = {
 export type TFields = TFieldDef[];
 
 export type TTableDef = {
-  database: TConnectionNames;
+  database: string;
   table: string;
   fields: TFields;
   associates?: {
@@ -52,3 +45,18 @@ export type TTableDef = {
     };
   };
 };
+
+export type TSchema = {
+  name: string; // nome usado para queries
+  label?: string; // rotulo para usuário
+  typeField?: TFieldType; // tipo do dado no banco de dados
+  primaryKey?: boolean; // é chave do registro
+  fieldClass?: string; // classe para o campo
+  labelClass?: string; // classe para o label
+  size?: number; // tamanho em caracteres
+  visible?: boolean; // visivel em forms e tables
+  sortable?: boolean; // por ser usado para ordernar
+  disabled?: boolean; // input desabilitado
+  allowNull?: boolean; // pode ser nulo
+  defaultValue?: any; // valor inicial
+}[];

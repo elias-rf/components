@@ -9,7 +9,7 @@ export const NotaEntradaXMLDescProduto: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaEntradaXMLDescProduto: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaEntradaXMLDescProduto: TTableDef = {
       label: "NumeroNota",
       name: "NumeroNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaEntradaXMLDescProduto: TTableDef = {
       label: "SerieNota",
       name: "SerieNota",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaEntradaXMLDescProduto: TTableDef = {
       label: "ModeloNota",
       name: "ModeloNota",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaEntradaXMLDescProduto: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NotaEntradaXMLDescProduto: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const NotaEntradaXMLDescProduto: TTableDef = {
       label: "DescricaoProdutoXML",
       name: "DescricaoProdutoXML",
       typeField: "string",
-      size: 120,
+
       allowNull: false,
     },
   ],

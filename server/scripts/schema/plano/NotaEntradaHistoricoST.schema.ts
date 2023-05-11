@@ -9,7 +9,7 @@ export const NotaEntradaHistoricoST: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaEntradaHistoricoST: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaEntradaHistoricoST: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaEntradaHistoricoST: TTableDef = {
       label: "DtOcorrencia",
       name: "DtOcorrencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const NotaEntradaHistoricoST: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const NotaEntradaHistoricoST: TTableDef = {
       label: "SerieNota",
       name: "SerieNota",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const NotaEntradaHistoricoST: TTableDef = {
       label: "ModeloNota",
       name: "ModeloNota",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const NotaEntradaHistoricoST: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const NotaEntradaHistoricoST: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -83,7 +83,7 @@ export const NotaEntradaHistoricoST: TTableDef = {
       label: "VlBaseCalculoST",
       name: "VlBaseCalculoST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -92,7 +92,7 @@ export const NotaEntradaHistoricoST: TTableDef = {
       label: "VlICMSST",
       name: "VlICMSST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -101,7 +101,7 @@ export const NotaEntradaHistoricoST: TTableDef = {
       label: "FgSituacaoNota",
       name: "FgSituacaoNota",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

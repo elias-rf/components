@@ -9,7 +9,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "NumSerie",
       name: "NumSerie",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "NumCOO",
       name: "NumCOO",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "TipoPagamento",
       name: "TipoPagamento",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "NumGNF",
       name: "NumGNF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "NumCCF",
       name: "NumCCF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -61,7 +61,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "VlTotal",
       name: "VlTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -70,7 +70,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "VlPagamento",
       name: "VlPagamento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -79,7 +79,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "FgEstorno",
       name: "FgEstorno",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -87,7 +87,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "VlEstorno",
       name: "VlEstorno",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -96,7 +96,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -105,7 +105,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -113,7 +113,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "TipoDoc",
       name: "TipoDoc",
       typeField: "string",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -121,7 +121,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "ControleSerie",
       name: "ControleSerie",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -129,7 +129,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "ControleCOO",
       name: "ControleCOO",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -137,7 +137,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "ControleSerieDoc",
       name: "ControleSerieDoc",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -145,7 +145,7 @@ export const ECFMeiosPagamento: TTableDef = {
       label: "ControleTipo",
       name: "ControleTipo",
       typeField: "string",
-      size: 62,
+
       allowNull: false,
     },
   ],

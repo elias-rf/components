@@ -9,7 +9,7 @@ export const ProducaoMaquina: TTableDef = {
       label: "CdMaquina",
       name: "ProducaoMaquina_id",
       typeField: "string",
-      size: 8,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProducaoMaquina: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ProducaoMaquina: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

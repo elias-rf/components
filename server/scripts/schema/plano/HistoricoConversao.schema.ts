@@ -9,7 +9,7 @@ export const HistoricoConversao: TTableDef = {
       label: "DtRelease",
       name: "DtRelease",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const HistoricoConversao: TTableDef = {
       label: "DtAtualizacao",
       name: "DtAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const HistoricoConversao: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "NumNotaSaida",
       name: "NumNotaSaida",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "SerieNotaSaida",
       name: "SerieNotaSaida",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "ModeloNotaSaida",
       name: "ModeloNotaSaida",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -97,7 +97,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "SequenciaNotaSaida",
       name: "SequenciaNotaSaida",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -105,7 +105,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -114,7 +114,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -122,7 +122,7 @@ export const NotaEntradaRecuperacaoSTItemMovimentoHistorico: TTableDef = {
       label: "Historico",
       name: "Historico",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
   ],

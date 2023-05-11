@@ -9,7 +9,7 @@ export const VidalinkComprovante: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const VidalinkComprovante: TTableDef = {
       label: "NumCupom",
       name: "NumCupom",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const VidalinkComprovante: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const VidalinkComprovante: TTableDef = {
       label: "Texto",
       name: "Texto",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const VidalinkComprovante: TTableDef = {
       label: "NumAutorizacao",
       name: "NumAutorizacao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

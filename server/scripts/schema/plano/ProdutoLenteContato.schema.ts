@@ -9,7 +9,7 @@ export const ProdutoLenteContato: TTableDef = {
       label: "CdProduto",
       name: "ProdutoLenteContato_id",
       typeField: "string",
-      size: 16,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProdutoLenteContato: TTableDef = {
       label: "Dioptria",
       name: "Dioptria",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ProdutoLenteContato: TTableDef = {
       label: "Raio1",
       name: "Raio1",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const ProdutoLenteContato: TTableDef = {
       label: "Raio2",
       name: "Raio2",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -45,7 +45,7 @@ export const ProdutoLenteContato: TTableDef = {
       label: "Espessura",
       name: "Espessura",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -54,7 +54,7 @@ export const ProdutoLenteContato: TTableDef = {
       label: "EspessuraMinima",
       name: "EspessuraMinima",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -63,7 +63,7 @@ export const ProdutoLenteContato: TTableDef = {
       label: "EspessuraMaxima",
       name: "EspessuraMaxima",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -72,7 +72,7 @@ export const ProdutoLenteContato: TTableDef = {
       label: "BLFNominal",
       name: "BLFNominal",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -81,7 +81,7 @@ export const ProdutoLenteContato: TTableDef = {
       label: "BLFMinimo",
       name: "BLFMinimo",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -90,7 +90,7 @@ export const ProdutoLenteContato: TTableDef = {
       label: "BLFMaximo",
       name: "BLFMaximo",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },

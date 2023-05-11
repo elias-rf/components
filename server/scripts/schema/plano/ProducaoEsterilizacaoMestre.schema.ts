@@ -9,7 +9,7 @@ export const ProducaoEsterilizacaoMestre: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProducaoEsterilizacaoMestre: TTableDef = {
       label: "NumLoteEsterilizacao",
       name: "NumLoteEsterilizacao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProducaoEsterilizacaoMestre: TTableDef = {
       label: "TipoEsterilizacao",
       name: "TipoEsterilizacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ProducaoEsterilizacaoMestre: TTableDef = {
       label: "DtEnvio",
       name: "DtEnvio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const ProducaoEsterilizacaoMestre: TTableDef = {
       label: "DtRetorno",
       name: "DtRetorno",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -51,7 +51,7 @@ export const ProducaoEsterilizacaoMestre: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const ProducaoEsterilizacaoMestre: TTableDef = {
       label: "Caixas",
       name: "Caixas",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const ProducaoEsterilizacaoMestre: TTableDef = {
       label: "Resultado",
       name: "Resultado",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const ProducaoEsterilizacaoMestre: TTableDef = {
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

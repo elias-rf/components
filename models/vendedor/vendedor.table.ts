@@ -9,7 +9,7 @@ export const vendedor: TTableDef = {
       label: "CdVendedor",
       name: "vendedor_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const vendedor: TTableDef = {
       label: "NmVendedor",
       name: "vendedor",
       typeField: "string",
-      size: 70,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const vendedor: TTableDef = {
       label: "Endereco",
       name: "endereco",
       typeField: "string",
-      size: 70,
+
       allowNull: false,
     },
     {
@@ -35,21 +35,19 @@ export const vendedor: TTableDef = {
       label: "Cidade",
       name: "cidade",
       typeField: "string",
-      size: 30,
     },
     {
       field: "Uf",
       label: "Uf",
       name: "uf",
       typeField: "string",
-      size: 2,
     },
     {
       field: "CPF",
       label: "CPF",
       name: "cpf",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -57,7 +55,7 @@ export const vendedor: TTableDef = {
       label: "Identidade",
       name: "identidade",
       typeField: "string",
-      size: 18,
+
       allowNull: false,
     },
     {
@@ -65,21 +63,19 @@ export const vendedor: TTableDef = {
       label: "Telefone",
       name: "telefone",
       typeField: "string",
-      size: 20,
     },
     {
       field: "FgControle",
       label: "FgControle",
       name: "eh_controle",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Meta",
       label: "Meta",
       name: "meta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -87,7 +83,7 @@ export const vendedor: TTableDef = {
       label: "Venda",
       name: "venda",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -95,7 +91,7 @@ export const vendedor: TTableDef = {
       label: "ComissaoAV",
       name: "ComissaoAV",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -103,7 +99,7 @@ export const vendedor: TTableDef = {
       label: "ComissaoPZ",
       name: "ComissaoPZ",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -111,7 +107,7 @@ export const vendedor: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -119,14 +115,13 @@ export const vendedor: TTableDef = {
       label: "Cargo",
       name: "cargo",
       typeField: "string",
-      size: 30,
     },
     {
       field: "PercLimiteComissao",
       label: "PercLimiteComissao",
       name: "PercLimiteComissao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -134,35 +129,31 @@ export const vendedor: TTableDef = {
       label: "FgAtivo",
       name: "eh_ativo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Bairro",
       label: "Bairro",
       name: "bairro",
       typeField: "string",
-      size: 32,
     },
     {
       field: "TelefoneAdicional",
       label: "TelefoneAdicional",
       name: "TelefoneAdicional",
       typeField: "string",
-      size: 32,
     },
     {
       field: "Email",
       label: "Email",
       name: "email",
       typeField: "string",
-      size: 128,
     },
     {
       field: "PercComissaoVarejoVista",
       label: "PercComissaoVarejoVista",
       name: "PercComissaoVarejoVista",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -170,7 +161,7 @@ export const vendedor: TTableDef = {
       label: "PercComissaoAtacadoVista",
       name: "PercComissaoAtacadoVista",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -178,7 +169,7 @@ export const vendedor: TTableDef = {
       label: "PercComissaoVarejoPrazo",
       name: "PercComissaoVarejoPrazo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -186,7 +177,7 @@ export const vendedor: TTableDef = {
       label: "PercComissaoAtacadoPrazo",
       name: "PercComissaoAtacadoPrazo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -194,7 +185,7 @@ export const vendedor: TTableDef = {
       label: "Cep",
       name: "cep",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -202,21 +193,18 @@ export const vendedor: TTableDef = {
       label: "NmFantasia",
       name: "NmFantasia",
       typeField: "string",
-      size: 64,
     },
     {
       field: "FgFuncionarioOS",
       label: "FgFuncionarioOS",
       name: "FgFuncionarioOS",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgTecnicoOS",
       label: "FgTecnicoOS",
       name: "FgTecnicoOS",
       typeField: "string",
-      size: 1,
     },
   ],
 };

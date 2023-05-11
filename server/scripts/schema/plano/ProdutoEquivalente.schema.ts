@@ -9,7 +9,7 @@ export const ProdutoEquivalente: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProdutoEquivalente: TTableDef = {
       label: "CdProdutoEquivalente",
       name: "CdProdutoEquivalente",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProdutoEquivalente: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

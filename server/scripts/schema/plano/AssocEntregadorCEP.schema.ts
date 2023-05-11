@@ -9,7 +9,7 @@ export const AssocEntregadorCEP: TTableDef = {
       label: "CdEmitente",
       name: "CdEmitente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const AssocEntregadorCEP: TTableDef = {
       label: "CEPInicial",
       name: "CEPInicial",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,6 @@ export const AssocEntregadorCEP: TTableDef = {
       label: "CEPFinal",
       name: "CEPFinal",
       typeField: "string",
-      size: 8,
     },
   ],
 };

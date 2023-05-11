@@ -9,7 +9,7 @@ export const PedidoAssistencia: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const PedidoAssistencia: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const PedidoAssistencia: TTableDef = {
       label: "NumSerieEqpto",
       name: "NumSerieEqpto",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const PedidoAssistencia: TTableDef = {
       label: "DtLimiteGarantia",
       name: "DtLimiteGarantia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,14 +42,12 @@ export const PedidoAssistencia: TTableDef = {
       label: "DescricaoEqpto",
       name: "DescricaoEqpto",
       typeField: "string",
-      size: 256,
     },
     {
       field: "DefeitoReclamado",
       label: "DefeitoReclamado",
       name: "DefeitoReclamado",
       typeField: "string",
-      size: 1024,
     },
   ],
 };

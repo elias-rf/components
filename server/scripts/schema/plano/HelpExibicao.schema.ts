@@ -9,7 +9,7 @@ export const HelpExibicao: TTableDef = {
       label: "IdFuncao",
       name: "HelpExibicao_id",
       typeField: "string",
-      size: 64,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const HelpExibicao: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const HelpExibicao: TTableDef = {
       label: "Link",
       name: "Link",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
   ],

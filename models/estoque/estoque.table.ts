@@ -10,7 +10,7 @@ export const estoque: TTableDef = {
       name: "filial_id",
       primaryKey: true,
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -19,7 +19,7 @@ export const estoque: TTableDef = {
       name: "produto_plano_id",
       primaryKey: true,
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {

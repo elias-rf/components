@@ -9,7 +9,7 @@ export const RomaneioEstoqueItem: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const RomaneioEstoqueItem: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const RomaneioEstoqueItem: TTableDef = {
       label: "NumRomaneio",
       name: "NumRomaneio",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const RomaneioEstoqueItem: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const RomaneioEstoqueItem: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 18,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const RomaneioEstoqueItem: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const RomaneioEstoqueItem: TTableDef = {
       label: "NumLote",
       name: "NumLote",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
   ],

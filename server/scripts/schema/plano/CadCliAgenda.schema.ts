@@ -9,7 +9,7 @@ export const CadCliAgenda: TTableDef = {
       label: "CdCliente",
       name: "CadCliAgenda_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const CadCliAgenda: TTableDef = {
       label: "FgTeleAtivo",
       name: "FgTeleAtivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const CadCliAgenda: TTableDef = {
       label: "DtultContato",
       name: "DtultContato",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

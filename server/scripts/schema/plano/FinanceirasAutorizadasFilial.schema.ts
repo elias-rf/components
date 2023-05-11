@@ -9,7 +9,7 @@ export const FinanceirasAutorizadasFilial: TTableDef = {
       label: "CdFinanceira",
       name: "CdFinanceira",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const FinanceirasAutorizadasFilial: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const FinanceirasAutorizadasFilial: TTableDef = {
       label: "CdClienteAssociado",
       name: "CdClienteAssociado",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const FinanceirasAutorizadasFilial: TTableDef = {
       label: "PrazoRecebimento",
       name: "PrazoRecebimento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const FinanceirasAutorizadasFilial: TTableDef = {
       label: "TipoRecebimento",
       name: "TipoRecebimento",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const FinanceirasAutorizadasFilial: TTableDef = {
       label: "FgDiaUtilRecebimento",
       name: "FgDiaUtilRecebimento",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const FinanceirasAutorizadasFilial: TTableDef = {
       label: "TaxaAdministracao",
       name: "TaxaAdministracao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -66,7 +66,7 @@ export const FinanceirasAutorizadasFilial: TTableDef = {
       label: "NumParcelas",
       name: "NumParcelas",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const FinanceirasAutorizadasFilial: TTableDef = {
       label: "CoeficienteCalculoParcela",
       name: "CoeficienteCalculoParcela",
       typeField: "int",
-      size: 5,
+
       scale: 7,
       allowNull: false,
     },
@@ -83,7 +83,7 @@ export const FinanceirasAutorizadasFilial: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -91,7 +91,7 @@ export const FinanceirasAutorizadasFilial: TTableDef = {
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

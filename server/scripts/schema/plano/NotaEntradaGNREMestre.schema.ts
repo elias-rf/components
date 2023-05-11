@@ -9,7 +9,7 @@ export const NotaEntradaGNREMestre: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaEntradaGNREMestre: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaEntradaGNREMestre: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaEntradaGNREMestre: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaEntradaGNREMestre: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaEntradaGNREMestre: TTableDef = {
       label: "PercMinimoICMSSub",
       name: "PercMinimoICMSSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const NotaEntradaGNREMestre: TTableDef = {
       label: "VlPrincipal",
       name: "VlPrincipal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const NotaEntradaGNREMestre: TTableDef = {
       label: "VlAtualizacaoMonetaria",
       name: "VlAtualizacaoMonetaria",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const NotaEntradaGNREMestre: TTableDef = {
       label: "VlJuros",
       name: "VlJuros",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -85,7 +85,7 @@ export const NotaEntradaGNREMestre: TTableDef = {
       label: "VlMulta",
       name: "VlMulta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -94,7 +94,7 @@ export const NotaEntradaGNREMestre: TTableDef = {
       label: "DtRecolhimento",
       name: "DtRecolhimento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -103,7 +103,7 @@ export const NotaEntradaGNREMestre: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

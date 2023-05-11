@@ -9,7 +9,7 @@ export const SegmentosProdutos: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SegmentosProdutos: TTableDef = {
       label: "CdSegmento",
       name: "CdSegmento",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

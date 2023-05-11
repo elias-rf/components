@@ -9,7 +9,7 @@ export const LogPro: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,14 +17,13 @@ export const LogPro: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 4,
     },
     {
       field: "DtPromocaoFinal",
       label: "DtPromocaoFinal",
       name: "DtPromocaoFinal",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -32,7 +31,7 @@ export const LogPro: TTableDef = {
       label: "DtPromocaoInicial",
       name: "DtPromocaoInicial",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -40,7 +39,7 @@ export const LogPro: TTableDef = {
       label: "TipLog",
       name: "TipLog",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -48,7 +47,7 @@ export const LogPro: TTableDef = {
       label: "VlValor",
       name: "VlValor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

@@ -9,7 +9,7 @@ export const EspecificacaoItemPedido: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const EspecificacaoItemPedido: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const EspecificacaoItemPedido: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const EspecificacaoItemPedido: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,6 @@ export const EspecificacaoItemPedido: TTableDef = {
       label: "Especificacao",
       name: "Especificacao",
       typeField: "string",
-      size: 20,
     },
   ],
 };

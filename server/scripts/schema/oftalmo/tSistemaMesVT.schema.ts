@@ -9,7 +9,7 @@ export const tSistemaMesVT: TTableDef = {
       label: "Dia",
       name: "tSistemaMesVT_id",
       typeField: "date",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tSistemaMesVT: TTableDef = {
       label: "MesVT",
       name: "MesVT",
       typeField: "date",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const tSistemaMesVT: TTableDef = {
       label: "Feriado",
       name: "Feriado",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -35,14 +35,12 @@ export const tSistemaMesVT: TTableDef = {
       label: "ano",
       name: "ano",
       typeField: "string",
-      size: 4,
     },
     {
       field: "mes",
       label: "mes",
       name: "mes",
       typeField: "string",
-      size: 2,
     },
   ],
 };

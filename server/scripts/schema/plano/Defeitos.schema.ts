@@ -9,7 +9,7 @@ export const Defeitos: TTableDef = {
       label: "CdDefeito",
       name: "Defeitos_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Defeitos: TTableDef = {
       label: "NmDefeito",
       name: "NmDefeito",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
   ],

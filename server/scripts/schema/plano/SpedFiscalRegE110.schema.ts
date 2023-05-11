@@ -9,7 +9,7 @@ export const SpedFiscalRegE110: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SpedFiscalRegE110: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const SpedFiscalRegE110: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const SpedFiscalRegE110: TTableDef = {
       label: "VlAjusteDebito",
       name: "VlAjusteDebito",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const SpedFiscalRegE110: TTableDef = {
       label: "VlAjusteDebitoTotal",
       name: "VlAjusteDebitoTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const SpedFiscalRegE110: TTableDef = {
       label: "VlEstornoCredito",
       name: "VlEstornoCredito",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -61,7 +61,7 @@ export const SpedFiscalRegE110: TTableDef = {
       label: "VlAjusteCredito",
       name: "VlAjusteCredito",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -70,7 +70,7 @@ export const SpedFiscalRegE110: TTableDef = {
       label: "VlAjusteCreditoTotal",
       name: "VlAjusteCreditoTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -79,7 +79,7 @@ export const SpedFiscalRegE110: TTableDef = {
       label: "VlEstornoDebito",
       name: "VlEstornoDebito",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -88,7 +88,7 @@ export const SpedFiscalRegE110: TTableDef = {
       label: "VlSaldoCredorAnterior",
       name: "VlSaldoCredorAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -97,7 +97,7 @@ export const SpedFiscalRegE110: TTableDef = {
       label: "VlTotalDeducoes",
       name: "VlTotalDeducoes",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -106,7 +106,7 @@ export const SpedFiscalRegE110: TTableDef = {
       label: "VlExtraApuracao",
       name: "VlExtraApuracao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -115,7 +115,7 @@ export const SpedFiscalRegE110: TTableDef = {
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

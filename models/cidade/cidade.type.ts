@@ -16,31 +16,31 @@ export type TCidadeFields = keyof Required<TCidade>;
 export type TCidadeIds = {
   [pk in keyof Required<TCidadePk>]: any;
 };
-export type TCidadeSelect = TSelect<TCidadeFields>;
-export type TCidadeWhere = TWhere<TCidadeFields>;
-export type TCidadeOrder = TOrder<TCidadeFields>;
+export type TCidadeSelect = TSelect;
+export type TCidadeWhere = TWhere;
+export type TCidadeOrder = TOrder;
 
 export type TCidadeSchema = () => Promise<TFieldDef[]>;
 export type TCidadeClear = () => Promise<TCidade>;
 export type TCidadeList = (args: {
-  where?: TWhere<TCidadeFields>[];
-  order?: TOrder<TCidadeFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TCidadeFields>;
+  select?: TSelect;
 }) => Promise<TCidade[]>;
 export type TCidadeRead = (args: {
   id: TCidadeIds;
-  select?: TSelect<TCidadeFields>;
+  select?: TSelect;
 }) => Promise<TCidade>;
 
 export type TCidadeCreate = (args: {
   data: TCidade;
-  select?: TSelect<TCidadeFields>;
+  select?: TSelect;
 }) => Promise<TCidade>;
 export type TCidadeUpdate = (args: {
   id: TCidadeIds;
   data: TCidade;
-  select?: TSelect<TCidadeFields>;
+  select?: TSelect;
 }) => Promise<TCidade>;
 export type TCidadeDel = (args: { id: TCidadeIds }) => Promise<number>;
 

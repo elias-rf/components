@@ -9,7 +9,7 @@ export const Deposito: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Deposito: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const Deposito: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const Deposito: TTableDef = {
       label: "DtDeposito",
       name: "DtDeposito",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const Deposito: TTableDef = {
       label: "SeqDep",
       name: "SeqDep",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -50,14 +50,13 @@ export const Deposito: TTableDef = {
       label: "Finalidade",
       name: "Finalidade",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "VlDinheiro",
       label: "VlDinheiro",
       name: "VlDinheiro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -65,7 +64,7 @@ export const Deposito: TTableDef = {
       label: "VlChequePraca",
       name: "VlChequePraca",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -73,7 +72,7 @@ export const Deposito: TTableDef = {
       label: "VlChequeOutros",
       name: "VlChequeOutros",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -81,14 +80,12 @@ export const Deposito: TTableDef = {
       label: "CdFilialAssociada",
       name: "CdFilialAssociada",
       typeField: "int",
-      size: 4,
     },
     {
       field: "FgSituacao",
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
     },
   ],
 };

@@ -1,38 +1,25 @@
 import type { TConnections } from "@/config/connections";
 import { crudFactory } from "@/utils/crud/crud.factory";
 import { produto_categoria } from "./produto-categoria.table";
-import type { TProdutoCategoriaModel } from "./produto-categoria.type";
-//#region import
-//#endregion
 
-export function produtoCategoriaModelFactory(
-  //#region inject
-  { connections }: { connections: TConnections }
-): //#endregion
-TProdutoCategoriaModel {
+export function produtoCategoriaModelFactory({
+  connections,
+}: {
+  connections: TConnections;
+}) {
   const connection = connections[produto_categoria.database];
   const crud = crudFactory(connection, produto_categoria);
-
-  //#region def
-  //#endregion
 
   const model = {
     query: {
       ...crud.query,
-      //#region query
-      //#endregion
     },
     mutation: {
       ...crud.mutation,
-      //#region mutation
-      //#endregion
     },
     connection,
     produto_categoria,
-  } as TProdutoCategoriaModel;
+  };
 
   return model;
 }
-
-//#region other
-//#endregion

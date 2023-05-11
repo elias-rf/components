@@ -9,7 +9,6 @@ export const EmailVidalink: TTableDef = {
       label: "Email",
       name: "Email",
       typeField: "string",
-      size: 100,
     },
   ],
 };

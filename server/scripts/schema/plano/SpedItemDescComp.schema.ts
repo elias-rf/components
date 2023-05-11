@@ -9,7 +9,7 @@ export const SpedItemDescComp: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SpedItemDescComp: TTableDef = {
       label: "CdEmitente",
       name: "CdEmitente",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const SpedItemDescComp: TTableDef = {
       label: "TipoEmitente",
       name: "TipoEmitente",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const SpedItemDescComp: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const SpedItemDescComp: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const SpedItemDescComp: TTableDef = {
       label: "SubSerie",
       name: "SubSerie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const SpedItemDescComp: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const SpedItemDescComp: TTableDef = {
       label: "NumECF",
       name: "NumECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const SpedItemDescComp: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const SpedItemDescComp: TTableDef = {
       label: "DescComplementar",
       name: "DescComplementar",
       typeField: "string",
-      size: 256,
+
       allowNull: false,
     },
   ],

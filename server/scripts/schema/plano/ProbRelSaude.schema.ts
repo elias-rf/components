@@ -9,21 +9,19 @@ export const ProbRelSaude: TTableDef = {
       label: "CdPrs",
       name: "CdPrs",
       typeField: "string",
-      size: 8,
     },
     {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 40,
     },
     {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
   ],

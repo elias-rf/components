@@ -9,7 +9,7 @@ export const ContasReceberChequeRenegociado: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ContasReceberChequeRenegociado: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ContasReceberChequeRenegociado: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ContasReceberChequeRenegociado: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ContasReceberChequeRenegociado: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ContasReceberChequeRenegociado: TTableDef = {
       label: "SiglaDocumento",
       name: "SiglaDocumento",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ContasReceberChequeRenegociado: TTableDef = {
       label: "ItemDocumento",
       name: "ItemDocumento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -65,14 +65,13 @@ export const ContasReceberChequeRenegociado: TTableDef = {
       label: "NmPortador",
       name: "NmPortador",
       typeField: "string",
-      size: 256,
     },
     {
       field: "DtInclusao",
       label: "DtInclusao",
       name: "DtInclusao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
   ],

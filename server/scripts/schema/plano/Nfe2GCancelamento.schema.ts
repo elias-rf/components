@@ -9,7 +9,7 @@ export const Nfe2GCancelamento: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Nfe2GCancelamento: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const Nfe2GCancelamento: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const Nfe2GCancelamento: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const Nfe2GCancelamento: TTableDef = {
       label: "CdMotivoCancelamento",
       name: "CdMotivoCancelamento",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const Nfe2GCancelamento: TTableDef = {
       label: "MotivoCancelamento",
       name: "MotivoCancelamento",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const Nfe2GCancelamento: TTableDef = {
       label: "DtCancelamento",
       name: "DtCancelamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -68,7 +68,7 @@ export const Nfe2GCancelamento: TTableDef = {
       label: "UsuarioCancelamento",
       name: "UsuarioCancelamento",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -76,7 +76,7 @@ export const Nfe2GCancelamento: TTableDef = {
       label: "NumProtocoloCancelamento",
       name: "NumProtocoloCancelamento",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -84,7 +84,7 @@ export const Nfe2GCancelamento: TTableDef = {
       label: "DtProtocoloCancelamento",
       name: "DtProtocoloCancelamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

@@ -9,7 +9,7 @@ export const ConfiguracaoNFeSe: TTableDef = {
       label: "CdFilial",
       name: "ConfiguracaoNFeSe_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const ConfiguracaoNFeSe: TTableDef = {
       label: "VersaoXML",
       name: "VersaoXML",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const ConfiguracaoNFeSe: TTableDef = {
       label: "Ambiente",
       name: "Ambiente",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ConfiguracaoNFeSe: TTableDef = {
       label: "CaminhoNfeSe",
       name: "CaminhoNfeSe",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ConfiguracaoNFeSe: TTableDef = {
       label: "CertificadoNfeSe",
       name: "CertificadoNfeSe",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const ConfiguracaoNFeSe: TTableDef = {
       label: "UsuarioNfeSe",
       name: "UsuarioNfeSe",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const ConfiguracaoNFeSe: TTableDef = {
       label: "SenhaNfeSe",
       name: "SenhaNfeSe",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const ConfiguracaoNFeSe: TTableDef = {
       label: "ProxyNfeSe",
       name: "ProxyNfeSe",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const ConfiguracaoNFeSe: TTableDef = {
       label: "LicencaNfeSe",
       name: "LicencaNfeSe",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
   ],

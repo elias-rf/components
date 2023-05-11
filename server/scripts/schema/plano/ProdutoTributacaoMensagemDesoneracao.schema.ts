@@ -9,7 +9,7 @@ export const ProdutoTributacaoMensagemDesoneracao: TTableDef = {
       label: "CdBeneficioFiscal",
       name: "ProdutoTributacaoMensagemDesoneracao_id",
       typeField: "string",
-      size: 10,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProdutoTributacaoMensagemDesoneracao: TTableDef = {
       label: "CdMotivoDesoneracao",
       name: "CdMotivoDesoneracao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
   ],

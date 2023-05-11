@@ -9,7 +9,7 @@ export const LiberaAcessos: TTableDef = {
       label: "CgcCpf",
       name: "LiberaAcessos_id",
       typeField: "string",
-      size: 60,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const LiberaAcessos: TTableDef = {
       label: "DHLibEmergencia",
       name: "DHLibEmergencia",
       typeField: "string",
-      size: 60,
+
       allowNull: false,
     },
   ],

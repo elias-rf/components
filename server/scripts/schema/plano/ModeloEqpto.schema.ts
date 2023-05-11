@@ -9,7 +9,7 @@ export const ModeloEqpto: TTableDef = {
       label: "CdModeloEqpto",
       name: "ModeloEqpto_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ModeloEqpto: TTableDef = {
       label: "NmModeloEqpto",
       name: "NmModeloEqpto",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
   ],

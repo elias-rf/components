@@ -5,13 +5,13 @@ import { crudFactory } from "@/utils/crud/crud.factory";
 import { day } from "@/utils/date/day";
 import { passwordVerify } from "@/utils/string/password-verify";
 import { usuario } from "./usuario.table";
-import type { TUsuario, TUsuarioModel } from "./usuario.type";
+import type { TUsuario } from "./usuario.type";
 
 export function usuarioModelFactory({
   connections,
 }: {
   connections: TConnections;
-}): TUsuarioModel {
+}) {
   const connection: TConnection = connections[usuario.database];
   const crud = crudFactory(connection, usuario);
 
@@ -49,7 +49,7 @@ export function usuarioModelFactory({
 
         try {
           const rec = await crud.query.list({
-            where: [["nome_login", "=", user]],
+            filters: [{ id: "nome_login", value: user }],
           });
           record = rec[0];
         } catch (err: any) {
@@ -86,7 +86,7 @@ export function usuarioModelFactory({
     },
     connection,
     usuario,
-  } as TUsuarioModel;
+  };
 
   return model;
 }

@@ -102,31 +102,31 @@ export type TPedidoFields = keyof Required<TPedido>;
 export type TPedidoIds = {
   [pk in keyof Required<TPedidoPk>]: any;
 };
-export type TPedidoSelect = TSelect<TPedidoFields>;
-export type TPedidoWhere = TWhere<TPedidoFields>;
-export type TPedidoOrder = TOrder<TPedidoFields>;
+export type TPedidoSelect = TSelect;
+export type TPedidoWhere = TWhere;
+export type TPedidoOrder = TOrder;
 
 export type TPedidoSchema = () => Promise<TFieldDef[]>;
 export type TPedidoClear = () => Promise<TPedido>;
 export type TPedidoList = (args: {
-  where?: TWhere<TPedidoFields>[];
-  order?: TOrder<TPedidoFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TPedidoFields>;
+  select?: TSelect;
 }) => Promise<TPedido[]>;
 export type TPedidoRead = (args: {
   id: TPedidoIds;
-  select?: TSelect<TPedidoFields>;
+  select?: TSelect;
 }) => Promise<TPedido>;
 
 export type TPedidoCreate = (args: {
   data: TPedido;
-  select?: TSelect<TPedidoFields>;
+  select?: TSelect;
 }) => Promise<TPedido>;
 export type TPedidoUpdate = (args: {
   id: TPedidoIds;
   data: TPedido;
-  select?: TSelect<TPedidoFields>;
+  select?: TSelect;
 }) => Promise<TPedido>;
 export type TPedidoDel = (args: { id: TPedidoIds }) => Promise<number>;
 

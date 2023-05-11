@@ -9,7 +9,7 @@ export const ECFAtualizacaoEstoque: TTableDef = {
       label: "NumSerie",
       name: "NumSerie",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -17,35 +17,31 @@ export const ECFAtualizacaoEstoque: TTableDef = {
       label: "MFAdicional",
       name: "MFAdicional",
       typeField: "string",
-      size: 2,
     },
     {
       field: "TipoECF",
       label: "TipoECF",
       name: "TipoECF",
       typeField: "string",
-      size: 76,
     },
     {
       field: "MarcaECF",
       label: "MarcaECF",
       name: "MarcaECF",
       typeField: "string",
-      size: 32,
     },
     {
       field: "ModeloECF",
       label: "ModeloECF",
       name: "ModeloECF",
       typeField: "string",
-      size: 32,
     },
     {
       field: "DtEstoque",
       label: "DtEstoque",
       name: "DtEstoque",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -54,7 +50,7 @@ export const ECFAtualizacaoEstoque: TTableDef = {
       label: "HrEstoque",
       name: "HrEstoque",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

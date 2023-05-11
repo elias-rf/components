@@ -9,7 +9,7 @@ export const MsgConflitos: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const MsgConflitos: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const MsgConflitos: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const MsgConflitos: TTableDef = {
       label: "CdUsuario",
       name: "CdUsuario",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const MsgConflitos: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -50,7 +50,7 @@ export const MsgConflitos: TTableDef = {
       label: "CdSalOrigem",
       name: "CdSalOrigem",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const MsgConflitos: TTableDef = {
       label: "CdSalDestino",
       name: "CdSalDestino",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const MsgConflitos: TTableDef = {
       label: "FgTipoMensagem",
       name: "FgTipoMensagem",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,6 @@ export const MsgConflitos: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
     },
   ],
 };

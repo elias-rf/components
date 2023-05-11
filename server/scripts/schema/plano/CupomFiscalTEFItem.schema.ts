@@ -9,7 +9,7 @@ export const CupomFiscalTEFItem: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CupomFiscalTEFItem: TTableDef = {
       label: "NumECF",
       name: "NumECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const CupomFiscalTEFItem: TTableDef = {
       label: "NumCupom",
       name: "NumCupom",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const CupomFiscalTEFItem: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const CupomFiscalTEFItem: TTableDef = {
       label: "TipoCampo",
       name: "TipoCampo",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const CupomFiscalTEFItem: TTableDef = {
       label: "Conteudo",
       name: "Conteudo",
       typeField: "string",
-      size: 5120,
+
       allowNull: false,
     },
   ],

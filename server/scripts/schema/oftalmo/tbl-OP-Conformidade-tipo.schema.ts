@@ -9,7 +9,7 @@ export const tbl_OP_Conformidade_tipo: TTableDef = {
       label: "kConformidade",
       name: "tbl_OP_Conformidade_tipo_id",
       typeField: "string",
-      size: 100,
+
       primaryKey: true,
       allowNull: false,
     },

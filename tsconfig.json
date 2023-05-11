@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "declarationMap": true,
+    "composite": false,
+    "declarationMap": false,
     "downlevelIteration": true,
     "noEmit": true,
     "noImplicitAny": true,
@@ -12,7 +12,7 @@
     "baseUrl": ".",
     "emitDeclarationOnly": false,
     "forceConsistentCasingInFileNames": true,
-    "declaration": true,
+    "declaration": false,
     "importHelpers": true,
     "isolatedModules": true,
     "jsx": "react-jsx",

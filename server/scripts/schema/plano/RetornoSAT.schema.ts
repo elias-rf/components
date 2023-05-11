@@ -9,7 +9,7 @@ export const RetornoSAT: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const RetornoSAT: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const RetornoSAT: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const RetornoSAT: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const RetornoSAT: TTableDef = {
       label: "NumChave",
       name: "NumChave",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const RetornoSAT: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const RetornoSAT: TTableDef = {
       label: "VlTotalCfe",
       name: "VlTotalCfe",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const RetornoSAT: TTableDef = {
       label: "CpfCnpj",
       name: "CpfCnpj",
       typeField: "string",
-      size: 24,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const RetornoSAT: TTableDef = {
       label: "AssinaturaQrCode",
       name: "AssinaturaQrCode",
       typeField: "string",
-      size: 4096,
+
       allowNull: false,
     },
   ],

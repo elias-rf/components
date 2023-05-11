@@ -9,7 +9,7 @@ export const tbl_Seguranca_Grupo: TTableDef = {
       label: "kGrupo",
       name: "tbl_Seguranca_Grupo_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,6 @@ export const tbl_Seguranca_Grupo: TTableDef = {
       label: "NomeGrupo",
       name: "NomeGrupo",
       typeField: "string",
-      size: 50,
     },
   ],
 };

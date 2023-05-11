@@ -9,7 +9,7 @@ export const CadProEcommerce: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CadProEcommerce: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const CadProEcommerce: TTableDef = {
       label: "Altura",
       name: "Altura",
       typeField: "int",
-      size: 9,
+
       scale: 2,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const CadProEcommerce: TTableDef = {
       label: "Largura",
       name: "Largura",
       typeField: "int",
-      size: 9,
+
       scale: 2,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const CadProEcommerce: TTableDef = {
       label: "Profundidade",
       name: "Profundidade",
       typeField: "int",
-      size: 9,
+
       scale: 2,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const CadProEcommerce: TTableDef = {
       label: "FgSincronizar",
       name: "FgSincronizar",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

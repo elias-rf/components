@@ -9,7 +9,7 @@ export const ProtocoloProduto: TTableDef = {
       label: "CdProtocolo",
       name: "CdProtocolo",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProtocoloProduto: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProtocoloProduto: TTableDef = {
       label: "QtdeProduto",
       name: "QtdeProduto",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ProtocoloProduto: TTableDef = {
       label: "FgEnviaRetornar",
       name: "FgEnviaRetornar",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

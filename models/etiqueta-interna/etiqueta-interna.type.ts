@@ -14,31 +14,31 @@ export type TEtiquetaInternaFields = keyof Required<TEtiquetaInterna>;
 export type TEtiquetaInternaIds = {
   [pk in keyof Required<TEtiquetaInternaPk>]: any;
 };
-export type TEtiquetaInternaSelect = TSelect<TEtiquetaInternaFields>;
-export type TEtiquetaInternaWhere = TWhere<TEtiquetaInternaFields>;
-export type TEtiquetaInternaOrder = TOrder<TEtiquetaInternaFields>;
+export type TEtiquetaInternaSelect = TSelect;
+export type TEtiquetaInternaWhere = TWhere;
+export type TEtiquetaInternaOrder = TOrder;
 
 export type TEtiquetaInternaSchema = () => Promise<TFieldDef[]>;
 export type TEtiquetaInternaClear = () => Promise<TEtiquetaInterna>;
 export type TEtiquetaInternaList = (args: {
-  where?: TWhere<TEtiquetaInternaFields>[];
-  order?: TOrder<TEtiquetaInternaFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TEtiquetaInternaFields>;
+  select?: TSelect;
 }) => Promise<TEtiquetaInterna[]>;
 export type TEtiquetaInternaRead = (args: {
   id: TEtiquetaInternaIds;
-  select?: TSelect<TEtiquetaInternaFields>;
+  select?: TSelect;
 }) => Promise<TEtiquetaInterna>;
 
 export type TEtiquetaInternaCreate = (args: {
   data: TEtiquetaInterna;
-  select?: TSelect<TEtiquetaInternaFields>;
+  select?: TSelect;
 }) => Promise<TEtiquetaInterna>;
 export type TEtiquetaInternaUpdate = (args: {
   id: TEtiquetaInternaIds;
   data: TEtiquetaInterna;
-  select?: TSelect<TEtiquetaInternaFields>;
+  select?: TSelect;
 }) => Promise<TEtiquetaInterna>;
 export type TEtiquetaInternaDel = (args: {
   id: TEtiquetaInternaIds;

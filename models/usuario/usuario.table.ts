@@ -9,7 +9,7 @@ export const usuario: TTableDef = {
       label: "Usuario",
       name: "usuario_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -20,7 +20,7 @@ export const usuario: TTableDef = {
       label: "Login",
       name: "nome_login",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -28,21 +28,19 @@ export const usuario: TTableDef = {
       label: "Email",
       name: "email",
       typeField: "string",
-      size: 50,
     },
     {
       field: "fkFuncionario",
       label: "fkFuncionario",
       name: "empregado_id",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Ativo",
       label: "Ativo",
       name: "is_ativo",
       typeField: "int",
-      size: 1,
+
       defaultValue: "1",
     },
     {
@@ -50,35 +48,30 @@ export const usuario: TTableDef = {
       label: "Hash",
       name: "hash",
       typeField: "string",
-      size: 255,
     },
     {
       field: "nome",
       label: "Nome",
       name: "nome",
       typeField: "string",
-      size: 200,
     },
     {
       field: "setor",
       label: "setor",
       name: "setor",
       typeField: "string",
-      size: 50,
     },
     {
       field: "nivel",
       label: "nivel",
       name: "nivel",
       typeField: "int",
-      size: 4,
     },
     {
       field: "idGroup",
       label: "Grupo",
       name: "group_id",
       typeField: "string",
-      size: 50,
     },
   ],
 };

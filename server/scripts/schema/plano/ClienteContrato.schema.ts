@@ -9,7 +9,7 @@ export const ClienteContrato: TTableDef = {
       label: "CdCliente",
       name: "ClienteContrato_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ClienteContrato: TTableDef = {
       label: "DtEnvioTermo",
       name: "DtEnvioTermo",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ClienteContrato: TTableDef = {
       label: "DtRecebimentoTermo",
       name: "DtRecebimentoTermo",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const ClienteContrato: TTableDef = {
       label: "DtEnvioContrato",
       name: "DtEnvioContrato",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -45,7 +45,7 @@ export const ClienteContrato: TTableDef = {
       label: "DtRecebimentoContrato",
       name: "DtRecebimentoContrato",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

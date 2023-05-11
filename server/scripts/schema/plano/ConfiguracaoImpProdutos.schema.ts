@@ -9,7 +9,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "IdLayOut",
       name: "ConfiguracaoImpProdutos_id",
       typeField: "string",
-      size: 10,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdProdutoInicial",
       name: "CdProdutoInicial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdProdutoFinal",
       name: "CdProdutoFinal",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdReferenciaInicial",
       name: "CdReferenciaInicial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdreferenciaFinal",
       name: "CdreferenciaFinal",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "DescricaoInicial",
       name: "DescricaoInicial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "DescricaoFinal",
       name: "DescricaoFinal",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdDepartamentoInicial",
       name: "CdDepartamentoInicial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdDepartamentoFinal",
       name: "CdDepartamentoFinal",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdDepartamentoPadrao",
       name: "CdDepartamentoPadrao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdCategoriaInicial",
       name: "CdCategoriaInicial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdCategoriaFinal",
       name: "CdCategoriaFinal",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdCategoriaPadrao",
       name: "CdCategoriaPadrao",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -114,7 +114,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdFornecedorInicial",
       name: "CdFornecedorInicial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -122,7 +122,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdFornecedorFinal",
       name: "CdFornecedorFinal",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -130,7 +130,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdFornecedorPadrao",
       name: "CdFornecedorPadrao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -139,7 +139,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdFabricanteInicial",
       name: "CdFabricanteInicial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -147,7 +147,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdFabricanteFinal",
       name: "CdFabricanteFinal",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -155,7 +155,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CdFabricantePadrao",
       name: "CdFabricantePadrao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -164,7 +164,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "UnidadeInicial",
       name: "UnidadeInicial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -172,7 +172,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "UnidadeFinal",
       name: "UnidadeFinal",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -180,7 +180,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "UnidadePadrao",
       name: "UnidadePadrao",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -188,7 +188,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "VlTabelaInicial",
       name: "VlTabelaInicial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -196,7 +196,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "VlTabelaFinal",
       name: "VlTabelaFinal",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -204,7 +204,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "VlTabelaDecimais",
       name: "VlTabelaDecimais",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -212,7 +212,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "VlCustoInicial",
       name: "VlCustoInicial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -220,7 +220,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "VlCustoFinal",
       name: "VlCustoFinal",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -228,7 +228,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "VlCustoDecimais",
       name: "VlCustoDecimais",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -236,7 +236,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "VlAtacadoInicial",
       name: "VlAtacadoInicial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -244,7 +244,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "VlAtacadoFinal",
       name: "VlAtacadoFinal",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -252,7 +252,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "VlAtacadoDecimais",
       name: "VlAtacadoDecimais",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -260,7 +260,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "VlVarejoInicial",
       name: "VlVarejoInicial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -268,7 +268,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "VlVarejoFinal",
       name: "VlVarejoFinal",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -276,7 +276,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "VlVarejoDecimais",
       name: "VlVarejoDecimais",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -284,7 +284,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "DescricaoContInicial",
       name: "DescricaoContInicial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -292,7 +292,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "DescricaoContFinal",
       name: "DescricaoContFinal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -300,7 +300,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CompDescricaoInicial",
       name: "CompDescricaoInicial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -308,7 +308,7 @@ export const ConfiguracaoImpProdutos: TTableDef = {
       label: "CompDescricaoFinal",
       name: "CompDescricaoFinal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

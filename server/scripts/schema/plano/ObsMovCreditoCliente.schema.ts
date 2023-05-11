@@ -9,7 +9,7 @@ export const ObsMovCreditoCliente: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ObsMovCreditoCliente: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ObsMovCreditoCliente: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ObsMovCreditoCliente: TTableDef = {
       label: "TipoMovimentacao",
       name: "TipoMovimentacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,6 @@ export const ObsMovCreditoCliente: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 512,
     },
   ],
 };

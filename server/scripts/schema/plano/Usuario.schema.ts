@@ -9,7 +9,7 @@ export const Usuario: TTableDef = {
       label: "SgUsuario",
       name: "Usuario_id",
       typeField: "string",
-      size: 32,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Usuario: TTableDef = {
       label: "NmUsuario",
       name: "NmUsuario",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const Usuario: TTableDef = {
       label: "Senha",
       name: "Senha",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const Usuario: TTableDef = {
       label: "CdVendedorDefalt",
       name: "CdVendedorDefalt",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const Usuario: TTableDef = {
       label: "CdTecnicoAssoc",
       name: "CdTecnicoAssoc",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const Usuario: TTableDef = {
       label: "CdOperadorAssociado",
       name: "CdOperadorAssociado",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const Usuario: TTableDef = {
       label: "DtAlteracao",
       name: "DtAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -68,7 +68,7 @@ export const Usuario: TTableDef = {
       label: "Email",
       name: "Email",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -76,7 +76,6 @@ export const Usuario: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
     },
   ],
 };

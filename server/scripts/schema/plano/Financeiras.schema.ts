@@ -9,7 +9,7 @@ export const Financeiras: TTableDef = {
       label: "CdFinanceira",
       name: "Financeiras_id",
       typeField: "int",
-      size: 5,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Financeiras: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const Financeiras: TTableDef = {
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

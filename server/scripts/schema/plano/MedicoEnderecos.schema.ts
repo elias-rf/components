@@ -9,7 +9,7 @@ export const MedicoEnderecos: TTableDef = {
       label: "Crm",
       name: "Crm",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const MedicoEnderecos: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const MedicoEnderecos: TTableDef = {
       label: "NmClinica",
       name: "NmClinica",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const MedicoEnderecos: TTableDef = {
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const MedicoEnderecos: TTableDef = {
       label: "NumEndereco",
       name: "NumEndereco",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const MedicoEnderecos: TTableDef = {
       label: "CompEndereco",
       name: "CompEndereco",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const MedicoEnderecos: TTableDef = {
       label: "Bairro",
       name: "Bairro",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const MedicoEnderecos: TTableDef = {
       label: "Cidade",
       name: "Cidade",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const MedicoEnderecos: TTableDef = {
       label: "Uf",
       name: "Uf",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const MedicoEnderecos: TTableDef = {
       label: "Cep",
       name: "Cep",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -90,7 +90,7 @@ export const MedicoEnderecos: TTableDef = {
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const MedicoEnderecos: TTableDef = {
       label: "Email",
       name: "Email",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const MedicoEnderecos: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
   ],

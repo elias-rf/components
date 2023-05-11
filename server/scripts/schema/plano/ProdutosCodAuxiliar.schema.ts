@@ -9,7 +9,7 @@ export const ProdutosCodAuxiliar: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 18,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProdutosCodAuxiliar: TTableDef = {
       label: "CdAuxiliar",
       name: "CdAuxiliar",
       typeField: "string",
-      size: 18,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProdutosCodAuxiliar: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

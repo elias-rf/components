@@ -9,7 +9,7 @@ export const FilialInscEstSubstituto: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const FilialInscEstSubstituto: TTableDef = {
       label: "UF",
       name: "UF",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const FilialInscEstSubstituto: TTableDef = {
       label: "InscEstSubstituto",
       name: "InscEstSubstituto",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const FilialInscEstSubstituto: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

@@ -9,14 +9,12 @@ export const AcumuladoresParciais: TTableDef = {
       label: "CdAcumuladorParcial",
       name: "CdAcumuladorParcial",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 50,
     },
   ],
 };

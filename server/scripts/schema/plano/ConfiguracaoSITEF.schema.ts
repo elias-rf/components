@@ -9,7 +9,7 @@ export const ConfiguracaoSITEF: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ConfiguracaoSITEF: TTableDef = {
       label: "Host1",
       name: "Host1",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ConfiguracaoSITEF: TTableDef = {
       label: "Host2",
       name: "Host2",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ConfiguracaoSITEF: TTableDef = {
       label: "Host3",
       name: "Host3",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ConfiguracaoSITEF: TTableDef = {
       label: "Host4",
       name: "Host4",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ConfiguracaoSITEF: TTableDef = {
       label: "Loja",
       name: "Loja",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ConfiguracaoSITEF: TTableDef = {
       label: "MsgPINPAD",
       name: "MsgPINPAD",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const ConfiguracaoSITEF: TTableDef = {
       label: "CaminhoSITEF",
       name: "CaminhoSITEF",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const ConfiguracaoSITEF: TTableDef = {
       label: "ContraSenha",
       name: "ContraSenha",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const ConfiguracaoSITEF: TTableDef = {
       label: "CdFilial",
       name: "ConfiguracaoSITEF_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },

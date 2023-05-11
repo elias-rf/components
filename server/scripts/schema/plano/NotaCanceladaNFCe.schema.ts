@@ -9,7 +9,7 @@ export const NotaCanceladaNFCe: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaCanceladaNFCe: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaCanceladaNFCe: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaCanceladaNFCe: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const NotaCanceladaNFCe: TTableDef = {
       label: "Supervisor",
       name: "Supervisor",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const NotaCanceladaNFCe: TTableDef = {
       label: "Valor",
       name: "Valor",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const NotaCanceladaNFCe: TTableDef = {
       label: "Motivo",
       name: "Motivo",
       typeField: "string",
-      size: 120,
+
       allowNull: false,
     },
   ],

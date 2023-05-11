@@ -9,7 +9,7 @@ export const CtrlLigacao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CtrlLigacao: TTableDef = {
       label: "Id",
       name: "Id",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const CtrlLigacao: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const CtrlLigacao: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const CtrlLigacao: TTableDef = {
       label: "Horario",
       name: "Horario",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -51,7 +51,7 @@ export const CtrlLigacao: TTableDef = {
       label: "CdAtendente",
       name: "CdAtendente",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const CtrlLigacao: TTableDef = {
       label: "CdDestinatario",
       name: "CdDestinatario",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const CtrlLigacao: TTableDef = {
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const CtrlLigacao: TTableDef = {
       label: "Contato",
       name: "Contato",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -83,7 +83,7 @@ export const CtrlLigacao: TTableDef = {
       label: "FgTipo",
       name: "FgTipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -91,7 +91,7 @@ export const CtrlLigacao: TTableDef = {
       label: "Motivo",
       name: "Motivo",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -99,7 +99,7 @@ export const CtrlLigacao: TTableDef = {
       label: "Encaminhamento",
       name: "Encaminhamento",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -107,7 +107,7 @@ export const CtrlLigacao: TTableDef = {
       label: "FgRetorno",
       name: "FgRetorno",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

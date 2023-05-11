@@ -9,7 +9,7 @@ export const TabBal: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TabBal: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TabBal: TTableDef = {
       label: "Contagem1",
       name: "Contagem1",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -33,7 +33,7 @@ export const TabBal: TTableDef = {
       label: "Contagem2",
       name: "Contagem2",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -41,21 +41,19 @@ export const TabBal: TTableDef = {
       label: "EndPrateleiraAtual",
       name: "EndPrateleiraAtual",
       typeField: "string",
-      size: 15,
     },
     {
       field: "EndPrateleiraNovo",
       label: "EndPrateleiraNovo",
       name: "EndPrateleiraNovo",
       typeField: "string",
-      size: 15,
     },
     {
       field: "DtContagem",
       label: "DtContagem",
       name: "DtContagem",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -63,21 +61,18 @@ export const TabBal: TTableDef = {
       label: "IdReduzido",
       name: "IdReduzido",
       typeField: "int",
-      size: 4,
     },
     {
       field: "StatusContagem",
       label: "StatusContagem",
       name: "StatusContagem",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NumBalanco",
       label: "NumBalanco",
       name: "NumBalanco",
       typeField: "int",
-      size: 2,
     },
   ],
 };

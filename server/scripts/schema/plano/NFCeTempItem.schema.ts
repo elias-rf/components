@@ -9,7 +9,7 @@ export const NFCeTempItem: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NFCeTempItem: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NFCeTempItem: TTableDef = {
       label: "Estacao",
       name: "Estacao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NFCeTempItem: TTableDef = {
       label: "DtOperacao",
       name: "DtOperacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const NFCeTempItem: TTableDef = {
       label: "IdOperacao",
       name: "IdOperacao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const NFCeTempItem: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const NFCeTempItem: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const NFCeTempItem: TTableDef = {
       label: "CdRefEstoque",
       name: "CdRefEstoque",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const NFCeTempItem: TTableDef = {
       label: "CdProdutoAssociado",
       name: "CdProdutoAssociado",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const NFCeTempItem: TTableDef = {
       label: "CdReferencia",
       name: "CdReferencia",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const NFCeTempItem: TTableDef = {
       label: "FgImprimeComponentes",
       name: "FgImprimeComponentes",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const NFCeTempItem: TTableDef = {
       label: "Unidade",
       name: "Unidade",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const NFCeTempItem: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -115,7 +115,7 @@ export const NFCeTempItem: TTableDef = {
       label: "VlUnitario",
       name: "VlUnitario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -124,7 +124,7 @@ export const NFCeTempItem: TTableDef = {
       label: "PercDesconto",
       name: "PercDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -133,7 +133,7 @@ export const NFCeTempItem: TTableDef = {
       label: "VlDesconto",
       name: "VlDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -142,7 +142,7 @@ export const NFCeTempItem: TTableDef = {
       label: "VlLiquido",
       name: "VlLiquido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -151,7 +151,7 @@ export const NFCeTempItem: TTableDef = {
       label: "PercDescMaxVendedor",
       name: "PercDescMaxVendedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -160,7 +160,7 @@ export const NFCeTempItem: TTableDef = {
       label: "PercDescMaxGerente",
       name: "PercDescMaxGerente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -169,7 +169,7 @@ export const NFCeTempItem: TTableDef = {
       label: "FgEstoque",
       name: "FgEstoque",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -177,7 +177,7 @@ export const NFCeTempItem: TTableDef = {
       label: "CRM",
       name: "CRM",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -185,7 +185,7 @@ export const NFCeTempItem: TTableDef = {
       label: "FgVMSCard",
       name: "FgVMSCard",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -193,7 +193,7 @@ export const NFCeTempItem: TTableDef = {
       label: "FgServico",
       name: "FgServico",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -201,7 +201,7 @@ export const NFCeTempItem: TTableDef = {
       label: "FgPsico",
       name: "FgPsico",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -209,14 +209,13 @@ export const NFCeTempItem: TTableDef = {
       label: "FgTipoReceita",
       name: "FgTipoReceita",
       typeField: "string",
-      size: 2,
     },
     {
       field: "FgLoteControlado",
       label: "FgLoteControlado",
       name: "FgLoteControlado",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -224,7 +223,7 @@ export const NFCeTempItem: TTableDef = {
       label: "TipoTributacaoICMS",
       name: "TipoTributacaoICMS",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -232,7 +231,7 @@ export const NFCeTempItem: TTableDef = {
       label: "AliquotaICMS",
       name: "AliquotaICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -241,7 +240,7 @@ export const NFCeTempItem: TTableDef = {
       label: "TipoTributacaoPIS",
       name: "TipoTributacaoPIS",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -249,7 +248,7 @@ export const NFCeTempItem: TTableDef = {
       label: "AliquotaPIS",
       name: "AliquotaPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -258,7 +257,7 @@ export const NFCeTempItem: TTableDef = {
       label: "TipoTributacaoCOFINS",
       name: "TipoTributacaoCOFINS",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -266,7 +265,7 @@ export const NFCeTempItem: TTableDef = {
       label: "AliquotaCOFINS",
       name: "AliquotaCOFINS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -275,7 +274,7 @@ export const NFCeTempItem: TTableDef = {
       label: "PercComisVista",
       name: "PercComisVista",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -284,7 +283,7 @@ export const NFCeTempItem: TTableDef = {
       label: "PercComisVistaExtra",
       name: "PercComisVistaExtra",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -293,7 +292,7 @@ export const NFCeTempItem: TTableDef = {
       label: "PercComisPrazo",
       name: "PercComisPrazo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -302,7 +301,7 @@ export const NFCeTempItem: TTableDef = {
       label: "PercComisPrazoExtra",
       name: "PercComisPrazoExtra",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -311,7 +310,7 @@ export const NFCeTempItem: TTableDef = {
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -319,21 +318,19 @@ export const NFCeTempItem: TTableDef = {
       label: "CdBeneficioFiscal",
       name: "CdBeneficioFiscal",
       typeField: "string",
-      size: 10,
     },
     {
       field: "AliquotaDesoneracao",
       label: "AliquotaDesoneracao",
       name: "AliquotaDesoneracao",
       typeField: "int",
-      size: 5,
     },
     {
       field: "VlDesoneracao",
       label: "VlDesoneracao",
       name: "VlDesoneracao",
       typeField: "int",
-      size: 9,
+
       scale: 2,
     },
     {
@@ -341,7 +338,6 @@ export const NFCeTempItem: TTableDef = {
       label: "CdMotivoDesoneracao",
       name: "CdMotivoDesoneracao",
       typeField: "int",
-      size: 5,
     },
   ],
 };

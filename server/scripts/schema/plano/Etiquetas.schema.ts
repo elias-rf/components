@@ -9,7 +9,7 @@ export const Etiquetas: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Etiquetas: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -25,14 +25,13 @@ export const Etiquetas: TTableDef = {
       label: "Qtde",
       name: "Qtde",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NumSerie",
       label: "NumSerie",
       name: "NumSerie",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
   ],

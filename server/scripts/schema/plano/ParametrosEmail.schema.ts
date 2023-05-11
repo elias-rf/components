@@ -9,7 +9,7 @@ export const ParametrosEmail: TTableDef = {
       label: "Tipo",
       name: "ParametrosEmail_id",
       typeField: "string",
-      size: 16,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ParametrosEmail: TTableDef = {
       label: "Remetente",
       name: "Remetente",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ParametrosEmail: TTableDef = {
       label: "IdRemetente",
       name: "IdRemetente",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ParametrosEmail: TTableDef = {
       label: "SMTPHost",
       name: "SMTPHost",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ParametrosEmail: TTableDef = {
       label: "SMTPPort",
       name: "SMTPPort",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ParametrosEmail: TTableDef = {
       label: "Connect",
       name: "Connect",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ParametrosEmail: TTableDef = {
       label: "Message",
       name: "Message",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const ParametrosEmail: TTableDef = {
       label: "Autentication",
       name: "Autentication",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const ParametrosEmail: TTableDef = {
       label: "TLS",
       name: "TLS",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const ParametrosEmail: TTableDef = {
       label: "UserName",
       name: "UserName",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const ParametrosEmail: TTableDef = {
       label: "Password",
       name: "Password",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
   ],

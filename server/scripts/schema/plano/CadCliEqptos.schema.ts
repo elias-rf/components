@@ -9,7 +9,7 @@ export const CadCliEqptos: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadCliEqptos: TTableDef = {
       label: "CdMarcaEqpto",
       name: "CdMarcaEqpto",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CadCliEqptos: TTableDef = {
       label: "CdModeloEqpto",
       name: "CdModeloEqpto",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const CadCliEqptos: TTableDef = {
       label: "NumSerie",
       name: "NumSerie",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

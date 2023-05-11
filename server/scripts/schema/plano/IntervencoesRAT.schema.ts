@@ -9,7 +9,7 @@ export const IntervencoesRAT: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const IntervencoesRAT: TTableDef = {
       label: "NumeroRAT",
       name: "NumeroRAT",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const IntervencoesRAT: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const IntervencoesRAT: TTableDef = {
       label: "DtIntervencao",
       name: "DtIntervencao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -41,7 +41,7 @@ export const IntervencoesRAT: TTableDef = {
       label: "HrSaidaEmp",
       name: "HrSaidaEmp",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -49,7 +49,7 @@ export const IntervencoesRAT: TTableDef = {
       label: "HrChegadaCli",
       name: "HrChegadaCli",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -57,7 +57,7 @@ export const IntervencoesRAT: TTableDef = {
       label: "HrInicio",
       name: "HrInicio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -65,7 +65,7 @@ export const IntervencoesRAT: TTableDef = {
       label: "HrTermino",
       name: "HrTermino",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -73,7 +73,7 @@ export const IntervencoesRAT: TTableDef = {
       label: "HrSaidaCli",
       name: "HrSaidaCli",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -81,7 +81,7 @@ export const IntervencoesRAT: TTableDef = {
       label: "HrChegadaEmp",
       name: "HrChegadaEmp",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -89,28 +89,25 @@ export const IntervencoesRAT: TTableDef = {
       label: "CdSituacao",
       name: "CdSituacao",
       typeField: "int",
-      size: 4,
     },
     {
       field: "KmRodado",
       label: "KmRodado",
       name: "KmRodado",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdTecnico",
       label: "CdTecnico",
       name: "CdTecnico",
       typeField: "int",
-      size: 4,
     },
     {
       field: "QtdeHoras",
       label: "QtdeHoras",
       name: "QtdeHoras",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -118,35 +115,30 @@ export const IntervencoesRAT: TTableDef = {
       label: "NumRatAssociado",
       name: "NumRatAssociado",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "FgFaturado",
       label: "FgFaturado",
       name: "FgFaturado",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgDeslocFaturado",
       label: "FgDeslocFaturado",
       name: "FgDeslocFaturado",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CdFase",
       label: "CdFase",
       name: "CdFase",
       typeField: "int",
-      size: 2,
     },
   ],
 };

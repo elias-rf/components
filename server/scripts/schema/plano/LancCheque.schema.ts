@@ -9,7 +9,7 @@ export const LancCheque: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const LancCheque: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const LancCheque: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const LancCheque: TTableDef = {
       label: "NumCheque",
       name: "NumCheque",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const LancCheque: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const LancCheque: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const LancCheque: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const LancCheque: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const LancCheque: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const LancCheque: TTableDef = {
       label: "SeqDoc",
       name: "SeqDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const LancCheque: TTableDef = {
       label: "VlBruto",
       name: "VlBruto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -98,7 +98,7 @@ export const LancCheque: TTableDef = {
       label: "VlAbatimento",
       name: "VlAbatimento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -106,7 +106,7 @@ export const LancCheque: TTableDef = {
       label: "VlAcrescimo",
       name: "VlAcrescimo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -114,7 +114,6 @@ export const LancCheque: TTableDef = {
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
     },
   ],
 };

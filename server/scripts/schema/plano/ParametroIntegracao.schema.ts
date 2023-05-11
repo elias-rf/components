@@ -9,7 +9,7 @@ export const ParametroIntegracao: TTableDef = {
       label: "CdEmpresa",
       name: "ParametroIntegracao_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ParametroIntegracao: TTableDef = {
       label: "SMTPServer",
       name: "SMTPServer",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ParametroIntegracao: TTableDef = {
       label: "POP3Server",
       name: "POP3Server",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ParametroIntegracao: TTableDef = {
       label: "NomeRemetente",
       name: "NomeRemetente",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ParametroIntegracao: TTableDef = {
       label: "EnderecoRemetente",
       name: "EnderecoRemetente",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ParametroIntegracao: TTableDef = {
       label: "NomeUsuario",
       name: "NomeUsuario",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ParametroIntegracao: TTableDef = {
       label: "SenhaUsuario",
       name: "SenhaUsuario",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const ParametroIntegracao: TTableDef = {
       label: "IntExecucao",
       name: "IntExecucao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const ParametroIntegracao: TTableDef = {
       label: "TpIntExecucao",
       name: "TpIntExecucao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const ParametroIntegracao: TTableDef = {
       label: "IntSelecao",
       name: "IntSelecao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const ParametroIntegracao: TTableDef = {
       label: "TpIntSelecao",
       name: "TpIntSelecao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,6 @@ export const ParametroIntegracao: TTableDef = {
       label: "FgConexaocomAutenticacao",
       name: "FgConexaocomAutenticacao",
       typeField: "string",
-      size: 1,
     },
   ],
 };

@@ -32,20 +32,20 @@ const where = (type: string, builder: any, equalities: TEquality[]) => {
  */
 export const knexWhere = (
   filters: TFilters = [],
-  schema?: { field: string; name: string }[]
+  schema: { field: string; name: string }[]
 ) => {
   let equalities = filters.map((filter) => getEquality(filter));
-  if (Array.isArray(schema)) {
-    const conv = schema.reduce<Record<string, string>>((resp, item) => {
-      resp[item.name] = item.field;
-      return resp;
-    }, {});
-    equalities = equalities.map((equality) => ({
-      field: conv[equality.field] || equality.field,
-      equality: equality.equality,
-      value: equality.value,
-    }));
-  }
+
+  const conv = schema.reduce<Record<string, string>>((resp, item) => {
+    resp[item.name] = item.field;
+    return resp;
+  }, {});
+  equalities = equalities.map((equality) => ({
+    field: conv[equality.field] || equality.field,
+    equality: equality.equality,
+    value: equality.value,
+  }));
+
   return (builder: any) => {
     where("where", builder, equalities);
   };

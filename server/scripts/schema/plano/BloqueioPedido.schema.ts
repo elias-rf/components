@@ -9,7 +9,7 @@ export const BloqueioPedido: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const BloqueioPedido: TTableDef = {
       label: "Estacao",
       name: "Estacao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const BloqueioPedido: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

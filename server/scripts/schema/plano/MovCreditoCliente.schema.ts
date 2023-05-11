@@ -9,7 +9,7 @@ export const MovCreditoCliente: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MovCreditoCliente: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const MovCreditoCliente: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const MovCreditoCliente: TTableDef = {
       label: "TipoMovimentacao",
       name: "TipoMovimentacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const MovCreditoCliente: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const MovCreditoCliente: TTableDef = {
       label: "DtLcto",
       name: "DtLcto",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -61,7 +61,7 @@ export const MovCreditoCliente: TTableDef = {
       label: "VlCredito",
       name: "VlCredito",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -70,7 +70,7 @@ export const MovCreditoCliente: TTableDef = {
       label: "CdUsuario",
       name: "CdUsuario",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -78,7 +78,7 @@ export const MovCreditoCliente: TTableDef = {
       label: "DtOcorrencia",
       name: "DtOcorrencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

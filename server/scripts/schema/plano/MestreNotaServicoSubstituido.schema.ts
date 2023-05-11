@@ -9,7 +9,7 @@ export const MestreNotaServicoSubstituido: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MestreNotaServicoSubstituido: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const MestreNotaServicoSubstituido: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const MestreNotaServicoSubstituido: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const MestreNotaServicoSubstituido: TTableDef = {
       label: "NumeroSubstituido",
       name: "NumeroSubstituido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const MestreNotaServicoSubstituido: TTableDef = {
       label: "SerieSubstituido",
       name: "SerieSubstituido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -61,7 +61,7 @@ export const MestreNotaServicoSubstituido: TTableDef = {
       label: "TipoSubstituido",
       name: "TipoSubstituido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const MedicamentoInterv: TTableDef = {
       label: "CdIntervencao",
       name: "CdIntervencao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -17,7 +17,7 @@ export const MedicamentoInterv: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -25,14 +25,13 @@ export const MedicamentoInterv: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
     },
     {
       field: "DtInicio",
       label: "DtInicio",
       name: "DtInicio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -40,7 +39,7 @@ export const MedicamentoInterv: TTableDef = {
       label: "DtFim",
       name: "DtFim",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -48,7 +47,7 @@ export const MedicamentoInterv: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -56,7 +55,6 @@ export const MedicamentoInterv: TTableDef = {
       label: "Posologia",
       name: "Posologia",
       typeField: "string",
-      size: 15,
     },
   ],
 };

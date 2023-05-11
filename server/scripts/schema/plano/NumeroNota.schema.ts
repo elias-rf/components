@@ -9,7 +9,7 @@ export const NumeroNota: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,14 +17,13 @@ export const NumeroNota: TTableDef = {
       label: "NumUltNota",
       name: "NumUltNota",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Serie",
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -32,7 +31,7 @@ export const NumeroNota: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
   ],

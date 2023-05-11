@@ -9,7 +9,7 @@ export const NFe: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NFe: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NFe: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NFe: TTableDef = {
       label: "DtSolicitacao",
       name: "DtSolicitacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -41,7 +41,7 @@ export const NFe: TTableDef = {
       label: "DtAutorizacao",
       name: "DtAutorizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -49,14 +49,13 @@ export const NFe: TTableDef = {
       label: "Situacao",
       name: "Situacao",
       typeField: "string",
-      size: 600,
     },
     {
       field: "fgDanfe",
       label: "fgDanfe",
       name: "fgDanfe",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -64,21 +63,18 @@ export const NFe: TTableDef = {
       label: "AutorExpedida",
       name: "AutorExpedida",
       typeField: "string",
-      size: 100,
     },
     {
       field: "ChaveNFe",
       label: "ChaveNFe",
       name: "ChaveNFe",
       typeField: "string",
-      size: 600,
     },
     {
       field: "ReciboNFe",
       label: "ReciboNFe",
       name: "ReciboNFe",
       typeField: "string",
-      size: 600,
     },
   ],
 };

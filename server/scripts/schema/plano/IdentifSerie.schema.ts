@@ -9,7 +9,7 @@ export const IdentifSerie: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const IdentifSerie: TTableDef = {
       label: "NumSerieProduto",
       name: "NumSerieProduto",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const IdentifSerie: TTableDef = {
       label: "DtLimiteGarantia",
       name: "DtLimiteGarantia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -33,14 +33,13 @@ export const IdentifSerie: TTableDef = {
       label: "Prazo",
       name: "Prazo",
       typeField: "int",
-      size: 4,
     },
     {
       field: "DtLimiteGarantiaVenda",
       label: "DtLimiteGarantiaVenda",
       name: "DtLimiteGarantiaVenda",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -48,7 +47,6 @@ export const IdentifSerie: TTableDef = {
       label: "Status",
       name: "Status",
       typeField: "string",
-      size: 1,
     },
   ],
 };

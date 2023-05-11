@@ -9,7 +9,7 @@ export const tbl_Seguranca_Permissao_Usuario: TTableDef = {
       label: "kPermissao",
       name: "kPermissao",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tbl_Seguranca_Permissao_Usuario: TTableDef = {
       label: "fkObjeto",
       name: "fkObjeto",
       typeField: "string",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const tbl_Seguranca_Permissao_Usuario: TTableDef = {
       label: "fkUsuario",
       name: "fkUsuario",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const tbl_Seguranca_Permissao_Usuario: TTableDef = {
       label: "Permissao",
       name: "Permissao",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,6 @@ export const tbl_Seguranca_Permissao_Usuario: TTableDef = {
       label: "actions",
       name: "actions",
       typeField: "string",
-      size: 200,
     },
   ],
 };

@@ -20,31 +20,31 @@ export type TProdutoFields = keyof Required<TProduto>;
 export type TProdutoIds = {
   [pk in keyof Required<TProdutoPk>]: any;
 };
-export type TProdutoSelect = TSelect<TProdutoFields>;
-export type TProdutoWhere = TWhere<TProdutoFields>;
-export type TProdutoOrder = TOrder<TProdutoFields>;
+export type TProdutoSelect = TSelect;
+export type TProdutoWhere = TWhere;
+export type TProdutoOrder = TOrder;
 
 export type TProdutoSchema = () => Promise<TFieldDef[]>;
 export type TProdutoClear = () => Promise<TProduto>;
 export type TProdutoList = (args: {
-  where?: TWhere<TProdutoFields>[];
-  order?: TOrder<TProdutoFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TProdutoFields>;
+  select?: TSelect;
 }) => Promise<TProduto[]>;
 export type TProdutoRead = (args: {
   id: TProdutoIds;
-  select?: TSelect<TProdutoFields>;
+  select?: TSelect;
 }) => Promise<TProduto>;
 
 export type TProdutoCreate = (args: {
   data: TProduto;
-  select?: TSelect<TProdutoFields>;
+  select?: TSelect;
 }) => Promise<TProduto>;
 export type TProdutoUpdate = (args: {
   id: TProdutoIds;
   data: TProduto;
-  select?: TSelect<TProdutoFields>;
+  select?: TSelect;
 }) => Promise<TProduto>;
 export type TProdutoDel = (args: { id: TProdutoIds }) => Promise<number>;
 

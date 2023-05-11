@@ -1,15 +1,13 @@
 import type { TConnections } from "@/config/connections";
 import { crudFactory } from "@/utils/crud/crud.factory";
 import { nf_entrada_item } from "./nf-entrada-item.table";
-import type { TNfEntradaItemModel } from "./nf-entrada-item.type";
 //#region import
 //#endregion
 
 export function nfEntradaItemModelFactory(
   //#region inject
   { connections }: { connections: TConnections }
-): //#endregion
-TNfEntradaItemModel {
+) {
   const connection = connections[nf_entrada_item.database];
   const crud = crudFactory(connection, nf_entrada_item);
 
@@ -29,7 +27,7 @@ TNfEntradaItemModel {
     },
     connection,
     nf_entrada_item,
-  } as TNfEntradaItemModel;
+  };
 
   return model;
 }

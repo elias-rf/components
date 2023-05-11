@@ -9,7 +9,7 @@ export const EstoqueDistribuicao: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const EstoqueDistribuicao: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const EstoqueDistribuicao: TTableDef = {
       label: "CdLocalEstoque",
       name: "CdLocalEstoque",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const EstoqueDistribuicao: TTableDef = {
       label: "EstAtual",
       name: "EstAtual",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

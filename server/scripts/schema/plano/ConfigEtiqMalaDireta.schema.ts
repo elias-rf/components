@@ -9,7 +9,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "Impressora",
       name: "ConfigEtiqMalaDireta_id",
       typeField: "string",
-      size: 40,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "QtdeEtiquetasLinha",
       name: "QtdeEtiquetasLinha",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "QtdeEtiquetasColunas",
       name: "QtdeEtiquetasColunas",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "QtdeLinhasInicial",
       name: "QtdeLinhasInicial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "EspLateral",
       name: "EspLateral",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "QtdeCaracteres",
       name: "QtdeCaracteres",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "QtdeLinhas",
       name: "QtdeLinhas",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "CaracteresEntreEtiquetas",
       name: "CaracteresEntreEtiquetas",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "LinhaRzSocial",
       name: "LinhaRzSocial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "LinhaContato",
       name: "LinhaContato",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "LinhaEndereco",
       name: "LinhaEndereco",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "LinhaBairro",
       name: "LinhaBairro",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "LinhaCidade",
       name: "LinhaCidade",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -114,7 +114,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "LinhaCep",
       name: "LinhaCep",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -122,7 +122,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "TipoImpressao",
       name: "TipoImpressao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -130,7 +130,7 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "AlturaLinha",
       name: "AlturaLinha",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -138,28 +138,24 @@ export const ConfigEtiqMalaDireta: TTableDef = {
       label: "LinhaCartaoFidelidade",
       name: "LinhaCartaoFidelidade",
       typeField: "int",
-      size: 2,
     },
     {
       field: "Modelo",
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 20,
     },
     {
       field: "LinhaCartao",
       label: "LinhaCartao",
       name: "LinhaCartao",
       typeField: "int",
-      size: 2,
     },
     {
       field: "QtdeLinhasUltima",
       label: "QtdeLinhasUltima",
       name: "QtdeLinhasUltima",
       typeField: "int",
-      size: 4,
     },
   ],
 };

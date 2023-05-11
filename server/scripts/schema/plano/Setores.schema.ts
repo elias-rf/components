@@ -9,7 +9,7 @@ export const Setores: TTableDef = {
       label: "CdSetor",
       name: "Setores_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,14 +18,12 @@ export const Setores: TTableDef = {
       label: "NmSetor",
       name: "NmSetor",
       typeField: "string",
-      size: 20,
     },
     {
       field: "ModeloPedido",
       label: "ModeloPedido",
       name: "ModeloPedido",
       typeField: "string",
-      size: 32,
     },
   ],
 };

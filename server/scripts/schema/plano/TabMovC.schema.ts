@@ -9,7 +9,7 @@ export const TabMovC: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TabMovC: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TabMovC: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const TabMovC: TTableDef = {
       label: "SeqLan",
       name: "SeqLan",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const TabMovC: TTableDef = {
       label: "Horario",
       name: "Horario",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -50,28 +50,25 @@ export const TabMovC: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
     },
     {
       field: "TipDoc",
       label: "TipDoc",
       name: "TipDoc",
       typeField: "string",
-      size: 16,
     },
     {
       field: "CdRecebimento",
       label: "CdRecebimento",
       name: "CdRecebimento",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NmCartao",
       label: "NmCartao",
       name: "NmCartao",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -79,21 +76,19 @@ export const TabMovC: TTableDef = {
       label: "NroPDV",
       name: "NroPDV",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NumCartao",
       label: "NumCartao",
       name: "NumCartao",
       typeField: "string",
-      size: 20,
     },
     {
       field: "NumDoc",
       label: "NumDoc",
       name: "NumDoc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -101,14 +96,13 @@ export const TabMovC: TTableDef = {
       label: "Operacao",
       name: "Operacao",
       typeField: "string",
-      size: 15,
     },
     {
       field: "VlLancamento",
       label: "VlLancamento",
       name: "VlLancamento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -116,42 +110,37 @@ export const TabMovC: TTableDef = {
       label: "TipLan",
       name: "TipLan",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Atualizacao",
       label: "Atualizacao",
       name: "Atualizacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgSituacao",
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "TipoOperacao",
       label: "TipoOperacao",
       name: "TipoOperacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgRecebido",
       label: "FgRecebido",
       name: "FgRecebido",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -159,14 +148,13 @@ export const TabMovC: TTableDef = {
       label: "FgPendente",
       name: "FgPendente",
       typeField: "string",
-      size: 1,
     },
     {
       field: "VlComissao",
       label: "VlComissao",
       name: "VlComissao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -174,7 +162,7 @@ export const TabMovC: TTableDef = {
       label: "PercComissao",
       name: "PercComissao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -182,14 +170,13 @@ export const TabMovC: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdVendedor",
       label: "CdVendedor",
       name: "CdVendedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -197,28 +184,25 @@ export const TabMovC: TTableDef = {
       label: "Historico",
       name: "Historico",
       typeField: "string",
-      size: 512,
     },
     {
       field: "CdSetor",
       label: "CdSetor",
       name: "CdSetor",
       typeField: "int",
-      size: 2,
     },
     {
       field: "SeqCaixa",
       label: "SeqCaixa",
       name: "SeqCaixa",
       typeField: "int",
-      size: 2,
     },
     {
       field: "Modelo",
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -226,7 +210,7 @@ export const TabMovC: TTableDef = {
       label: "NumMapa",
       name: "NumMapa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -234,14 +218,12 @@ export const TabMovC: TTableDef = {
       label: "FgMovimentoTroco",
       name: "FgMovimentoTroco",
       typeField: "string",
-      size: 1,
     },
     {
       field: "TipoDocumento",
       label: "TipoDocumento",
       name: "TipoDocumento",
       typeField: "string",
-      size: 1,
     },
   ],
 };

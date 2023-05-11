@@ -9,7 +9,7 @@ export const Cidade: TTableDef = {
       label: "CdCidade",
       name: "Cidade_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Cidade: TTableDef = {
       label: "UF",
       name: "UF",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,6 @@ export const Cidade: TTableDef = {
       label: "NmCidade",
       name: "NmCidade",
       typeField: "string",
-      size: 50,
     },
   ],
 };

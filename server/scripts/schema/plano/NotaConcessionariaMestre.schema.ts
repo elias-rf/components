@@ -9,7 +9,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "SubSerie",
       name: "SubSerie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -74,7 +74,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "DtOperacao",
       name: "DtOperacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -83,7 +83,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "CdClasseConsumo",
       name: "CdClasseConsumo",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -91,7 +91,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "CdTipoLigacao",
       name: "CdTipoLigacao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -99,7 +99,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "CdGrupoTensao",
       name: "CdGrupoTensao",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -107,7 +107,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "CdInfComplementar",
       name: "CdInfComplementar",
       typeField: "string",
-      size: 6,
+
       allowNull: false,
     },
     {
@@ -115,7 +115,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlDocumento",
       name: "VlDocumento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -124,7 +124,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlDesconto",
       name: "VlDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -133,7 +133,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlConsumido",
       name: "VlConsumido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -142,7 +142,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlNaoTributado",
       name: "VlNaoTributado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -151,7 +151,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlTerceiros",
       name: "VlTerceiros",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -160,7 +160,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlDespesaAcessoria",
       name: "VlDespesaAcessoria",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -169,7 +169,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlBaseCalculoICMS",
       name: "VlBaseCalculoICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -178,7 +178,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlICMS",
       name: "VlICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -187,7 +187,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlBaseCalculoICMSST",
       name: "VlBaseCalculoICMSST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -196,7 +196,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlICMSST",
       name: "VlICMSST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -205,7 +205,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlBaseCalculoPIS",
       name: "VlBaseCalculoPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -214,7 +214,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlPIS",
       name: "VlPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -223,7 +223,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlBaseCalculoCOFINS",
       name: "VlBaseCalculoCOFINS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -232,7 +232,7 @@ export const NotaConcessionariaMestre: TTableDef = {
       label: "VlCOFINS",
       name: "VlCOFINS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

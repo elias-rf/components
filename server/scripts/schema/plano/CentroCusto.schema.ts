@@ -9,7 +9,7 @@ export const CentroCusto: TTableDef = {
       label: "CdCentroCusto",
       name: "CentroCusto_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,6 @@ export const CentroCusto: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 50,
     },
   ],
 };

@@ -9,7 +9,7 @@ export const tbl_Op_Loop_Conformidade: TTableDef = {
       label: "kOpLoopConformidade",
       name: "tbl_Op_Loop_Conformidade_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const tbl_Op_Loop_Conformidade: TTableDef = {
       label: "fkOpLoop",
       name: "fkOpLoop",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -27,28 +27,25 @@ export const tbl_Op_Loop_Conformidade: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Conformidade",
       label: "Conformidade",
       name: "Conformidade",
       typeField: "string",
-      size: 100,
     },
     {
       field: "Analise",
       label: "Analise",
       name: "Analise",
       typeField: "string",
-      size: 100,
     },
     {
       field: "fkOperacao",
       label: "fkOperacao",
       name: "fkOperacao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -56,21 +53,18 @@ export const tbl_Op_Loop_Conformidade: TTableDef = {
       label: "Disposicao",
       name: "Disposicao",
       typeField: "string",
-      size: 100,
     },
     {
       field: "ConformidadeAntigo",
       label: "ConformidadeAntigo",
       name: "ConformidadeAntigo",
       typeField: "string",
-      size: 100,
     },
     {
       field: "DisposicaoAntigo",
       label: "DisposicaoAntigo",
       name: "DisposicaoAntigo",
       typeField: "string",
-      size: 100,
     },
   ],
 };

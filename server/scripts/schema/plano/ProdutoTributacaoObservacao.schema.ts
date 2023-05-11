@@ -9,7 +9,7 @@ export const ProdutoTributacaoObservacao: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProdutoTributacaoObservacao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProdutoTributacaoObservacao: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ProdutoTributacaoObservacao: TTableDef = {
       label: "CFOP",
       name: "CFOP",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ProdutoTributacaoObservacao: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ProdutoTributacaoObservacao: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

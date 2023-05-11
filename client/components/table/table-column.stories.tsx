@@ -1,4 +1,4 @@
-import { TFieldDef } from "@/types/model";
+import { TSchema } from "@/types/model";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { TableColumn } from "./table-column";
@@ -12,7 +12,7 @@ const meta: Meta<typeof TableColumn> = {
 export default meta;
 type Story = StoryObj<typeof TableColumn>;
 
-const schema: TFieldDef[] = [
+const schema: TSchema = [
   {
     label: "ID",
     name: "nid",

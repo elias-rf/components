@@ -10,7 +10,7 @@ export const nf_cfop: TTableDef = {
       name: "cfop",
       primaryKey: true,
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -24,14 +24,12 @@ export const nf_cfop: TTableDef = {
       label: "Estatística",
       name: "estatistica",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Estoque",
       label: "Estoque",
       name: "estoque",
       typeField: "string",
-      size: 1,
     },
   ],
 };

@@ -9,7 +9,7 @@ export const PedidoLibFinanceiro: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const PedidoLibFinanceiro: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const PedidoLibFinanceiro: TTableDef = {
       label: "VlLiberado",
       name: "VlLiberado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const PedidoLibFinanceiro: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -44,7 +44,7 @@ export const PedidoLibFinanceiro: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -53,7 +53,7 @@ export const PedidoLibFinanceiro: TTableDef = {
       label: "UsuarioConf",
       name: "UsuarioConf",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -61,7 +61,7 @@ export const PedidoLibFinanceiro: TTableDef = {
       label: "DataConf",
       name: "DataConf",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

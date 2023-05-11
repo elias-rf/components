@@ -9,7 +9,7 @@ export const FilialSugestaoCFOP: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const FilialSugestaoCFOP: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const FilialSugestaoCFOP: TTableDef = {
       label: "CFOPEstadualEntrada",
       name: "CFOPEstadualEntrada",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const FilialSugestaoCFOP: TTableDef = {
       label: "CFOPEstadualSaida",
       name: "CFOPEstadualSaida",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const FilialSugestaoCFOP: TTableDef = {
       label: "CFOPInterEstadualEntrada",
       name: "CFOPInterEstadualEntrada",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const FilialSugestaoCFOP: TTableDef = {
       label: "CFOPInterEstadualSaida",
       name: "CFOPInterEstadualSaida",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
   ],

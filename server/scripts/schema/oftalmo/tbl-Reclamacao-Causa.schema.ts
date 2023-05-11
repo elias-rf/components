@@ -9,7 +9,7 @@ export const tbl_Reclamacao_Causa: TTableDef = {
       label: "kCausa",
       name: "tbl_Reclamacao_Causa_id",
       typeField: "string",
-      size: 50,
+
       primaryKey: true,
       allowNull: false,
     },

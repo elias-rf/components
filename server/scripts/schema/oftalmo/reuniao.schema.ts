@@ -9,7 +9,7 @@ export const reuniao: TTableDef = {
       label: "id",
       name: "reuniao_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,14 +19,13 @@ export const reuniao: TTableDef = {
       label: "solicitante",
       name: "solicitante",
       typeField: "string",
-      size: 255,
     },
     {
       field: "data",
       label: "data",
       name: "data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -34,7 +33,7 @@ export const reuniao: TTableDef = {
       label: "inicio",
       name: "inicio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -42,7 +41,7 @@ export const reuniao: TTableDef = {
       label: "fim",
       name: "fim",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -50,14 +49,12 @@ export const reuniao: TTableDef = {
       label: "participantes",
       name: "participantes",
       typeField: "int",
-      size: 4,
     },
     {
       field: "cafe",
       label: "cafe",
       name: "cafe",
       typeField: "int",
-      size: 1,
     },
   ],
 };

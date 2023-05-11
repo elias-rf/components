@@ -9,7 +9,7 @@ export const TempDanfe: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TempDanfe: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TempDanfe: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const TempDanfe: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const TempDanfe: TTableDef = {
       label: "SequenciaNota",
       name: "SequenciaNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const TempDanfe: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const TempDanfe: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const TempDanfe: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 256,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const TempDanfe: TTableDef = {
       label: "NCM",
       name: "NCM",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const TempDanfe: TTableDef = {
       label: "CST",
       name: "CST",
       typeField: "string",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const TempDanfe: TTableDef = {
       label: "CFOP",
       name: "CFOP",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -97,7 +97,7 @@ export const TempDanfe: TTableDef = {
       label: "Unidade",
       name: "Unidade",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -105,7 +105,7 @@ export const TempDanfe: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -114,7 +114,7 @@ export const TempDanfe: TTableDef = {
       label: "VlUnitario",
       name: "VlUnitario",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -122,7 +122,7 @@ export const TempDanfe: TTableDef = {
       label: "VlTotalItem",
       name: "VlTotalItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -131,7 +131,7 @@ export const TempDanfe: TTableDef = {
       label: "VlBaseCalculoICMS",
       name: "VlBaseCalculoICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -140,7 +140,7 @@ export const TempDanfe: TTableDef = {
       label: "AliquotaICMS",
       name: "AliquotaICMS",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -149,7 +149,7 @@ export const TempDanfe: TTableDef = {
       label: "VlICMS",
       name: "VlICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -158,7 +158,7 @@ export const TempDanfe: TTableDef = {
       label: "AliquotaIPI",
       name: "AliquotaIPI",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -167,7 +167,7 @@ export const TempDanfe: TTableDef = {
       label: "VlIPI",
       name: "VlIPI",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -176,7 +176,7 @@ export const TempDanfe: TTableDef = {
       label: "VlAproximadoImpostoItem",
       name: "VlAproximadoImpostoItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -184,7 +184,7 @@ export const TempDanfe: TTableDef = {
       label: "VlBrutoItem",
       name: "VlBrutoItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

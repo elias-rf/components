@@ -9,7 +9,7 @@ export const NotaAgrupamento: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaAgrupamento: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaAgrupamento: TTableDef = {
       label: "NumNotaAgrupada",
       name: "NumNotaAgrupada",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaAgrupamento: TTableDef = {
       label: "SerieNotaAgrupada",
       name: "SerieNotaAgrupada",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaAgrupamento: TTableDef = {
       label: "ModeloNotaAgrupada",
       name: "ModeloNotaAgrupada",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaAgrupamento: TTableDef = {
       label: "NumAgrupamento",
       name: "NumAgrupamento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NotaAgrupamento: TTableDef = {
       label: "DtInclusao",
       name: "DtInclusao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -66,7 +66,7 @@ export const NotaAgrupamento: TTableDef = {
       label: "NumNotaAgrupamento",
       name: "NumNotaAgrupamento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const NotaAgrupamento: TTableDef = {
       label: "SerieNotaAgrupamento",
       name: "SerieNotaAgrupamento",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const NotaAgrupamento: TTableDef = {
       label: "ModeloNotaAgrupamento",
       name: "ModeloNotaAgrupamento",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
   ],

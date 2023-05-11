@@ -1,5 +1,4 @@
 import { tables } from "@/models/tables";
-import { TFieldDef } from "@/types";
 import { describe, expect, it } from "vitest";
 import { recordClear } from "./record-clear";
 
@@ -20,7 +19,7 @@ describe("record-clear", () => {
   });
 
   it("deve percorrer o schema definido sem erros", () => {
-    const schema: TFieldDef[] = [
+    const schema = [
       {
         allowNull: false,
         label: "Ramal",

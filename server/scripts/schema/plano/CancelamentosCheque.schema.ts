@@ -9,7 +9,7 @@ export const CancelamentosCheque: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CancelamentosCheque: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const CancelamentosCheque: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const CancelamentosCheque: TTableDef = {
       label: "NumCheque",
       name: "NumCheque",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const CancelamentosCheque: TTableDef = {
       label: "DtCancelamento",
       name: "DtCancelamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -49,7 +49,6 @@ export const CancelamentosCheque: TTableDef = {
       label: "Motivo",
       name: "Motivo",
       typeField: "string",
-      size: 1024,
     },
   ],
 };

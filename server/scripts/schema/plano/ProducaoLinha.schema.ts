@@ -9,7 +9,7 @@ export const ProducaoLinha: TTableDef = {
       label: "CdLinhaProducao",
       name: "ProducaoLinha_id",
       typeField: "int",
-      size: 5,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProducaoLinha: TTableDef = {
       label: "NmLinhaProducao",
       name: "NmLinhaProducao",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ProducaoLinha: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ProducaoLinha: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

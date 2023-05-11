@@ -14,31 +14,31 @@ export type TEtiquetaExternaFields = keyof Required<TEtiquetaExterna>;
 export type TEtiquetaExternaIds = {
   [pk in keyof Required<TEtiquetaExternaPk>]: any;
 };
-export type TEtiquetaExternaSelect = TSelect<TEtiquetaExternaFields>;
-export type TEtiquetaExternaWhere = TWhere<TEtiquetaExternaFields>;
-export type TEtiquetaExternaOrder = TOrder<TEtiquetaExternaFields>;
+export type TEtiquetaExternaSelect = TSelect;
+export type TEtiquetaExternaWhere = TWhere;
+export type TEtiquetaExternaOrder = TOrder;
 
 export type TEtiquetaExternaSchema = () => Promise<TFieldDef[]>;
 export type TEtiquetaExternaClear = () => Promise<TEtiquetaExterna>;
 export type TEtiquetaExternaList = (args: {
-  where?: TWhere<TEtiquetaExternaFields>[];
-  order?: TOrder<TEtiquetaExternaFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TEtiquetaExternaFields>;
+  select?: TSelect;
 }) => Promise<TEtiquetaExterna[]>;
 export type TEtiquetaExternaRead = (args: {
   id: TEtiquetaExternaIds;
-  select?: TSelect<TEtiquetaExternaFields>;
+  select?: TSelect;
 }) => Promise<TEtiquetaExterna>;
 
 export type TEtiquetaExternaCreate = (args: {
   data: TEtiquetaExterna;
-  select?: TSelect<TEtiquetaExternaFields>;
+  select?: TSelect;
 }) => Promise<TEtiquetaExterna>;
 export type TEtiquetaExternaUpdate = (args: {
   id: TEtiquetaExternaIds;
   data: TEtiquetaExterna;
-  select?: TSelect<TEtiquetaExternaFields>;
+  select?: TSelect;
 }) => Promise<TEtiquetaExterna>;
 export type TEtiquetaExternaDel = (args: {
   id: TEtiquetaExternaIds;

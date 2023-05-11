@@ -9,7 +9,7 @@ export const PharmaLinkAutentica: TTableDef = {
       label: "CdFilial",
       name: "PharmaLinkAutentica_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const PharmaLinkAutentica: TTableDef = {
       label: "Autentica",
       name: "Autentica",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
   ],

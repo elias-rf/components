@@ -9,7 +9,7 @@ export const ClienteDMSNestle: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ClienteDMSNestle: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ClienteDMSNestle: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ClienteDMSNestle: TTableDef = {
       label: "DtInclusao",
       name: "DtInclusao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

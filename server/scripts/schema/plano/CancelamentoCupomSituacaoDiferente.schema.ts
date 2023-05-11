@@ -9,7 +9,7 @@ export const CancelamentoCupomSituacaoDiferente: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CancelamentoCupomSituacaoDiferente: TTableDef = {
       label: "NroPDV",
       name: "NroPDV",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CancelamentoCupomSituacaoDiferente: TTableDef = {
       label: "NumCupom",
       name: "NumCupom",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const CancelamentoCupomSituacaoDiferente: TTableDef = {
       label: "DtLancamento",
       name: "DtLancamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const CancelamentoCupomSituacaoDiferente: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -52,7 +52,7 @@ export const CancelamentoCupomSituacaoDiferente: TTableDef = {
       label: "Motivo",
       name: "Motivo",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -60,7 +60,7 @@ export const CancelamentoCupomSituacaoDiferente: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 256,
+
       allowNull: false,
     },
     {
@@ -68,7 +68,7 @@ export const CancelamentoCupomSituacaoDiferente: TTableDef = {
       label: "SerieNotaReferente",
       name: "SerieNotaReferente",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -76,7 +76,7 @@ export const CancelamentoCupomSituacaoDiferente: TTableDef = {
       label: "ModeloNotaReferente",
       name: "ModeloNotaReferente",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -84,7 +84,7 @@ export const CancelamentoCupomSituacaoDiferente: TTableDef = {
       label: "NumNotaReferente",
       name: "NumNotaReferente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -93,7 +93,7 @@ export const CancelamentoCupomSituacaoDiferente: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

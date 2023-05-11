@@ -9,7 +9,7 @@ export const PedidoPagamentoFinanciamento: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const PedidoPagamentoFinanciamento: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const PedidoPagamentoFinanciamento: TTableDef = {
       label: "CdFinanceira",
       name: "CdFinanceira",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const PedidoPagamentoFinanciamento: TTableDef = {
       label: "NumParcelas",
       name: "NumParcelas",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const PedidoPagamentoFinanciamento: TTableDef = {
       label: "VlParcela",
       name: "VlParcela",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -50,7 +50,7 @@ export const PedidoPagamentoFinanciamento: TTableDef = {
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

@@ -9,21 +9,19 @@ export const PcPagTit: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdBanco",
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdCliente",
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -31,7 +29,7 @@ export const PcPagTit: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -39,7 +37,7 @@ export const PcPagTit: TTableDef = {
       label: "DaPagto",
       name: "DaPagto",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -48,7 +46,7 @@ export const PcPagTit: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -56,7 +54,7 @@ export const PcPagTit: TTableDef = {
       label: "ItemDoc",
       name: "ItemDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -64,7 +62,7 @@ export const PcPagTit: TTableDef = {
       label: "NossoNumero",
       name: "NossoNumero",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -72,7 +70,7 @@ export const PcPagTit: TTableDef = {
       label: "NrDoc",
       name: "NrDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -80,21 +78,19 @@ export const PcPagTit: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
     },
     {
       field: "NumLcto",
       label: "NumLcto",
       name: "NumLcto",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Serie",
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -102,7 +98,7 @@ export const PcPagTit: TTableDef = {
       label: "SiglaDoc",
       name: "SiglaDoc",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -110,7 +106,7 @@ export const PcPagTit: TTableDef = {
       label: "VlAmortizado",
       name: "VlAmortizado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -118,7 +114,7 @@ export const PcPagTit: TTableDef = {
       label: "VlDesconto",
       name: "VlDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -126,7 +122,7 @@ export const PcPagTit: TTableDef = {
       label: "VlJuros",
       name: "VlJuros",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -134,7 +130,7 @@ export const PcPagTit: TTableDef = {
       label: "VlPagto",
       name: "VlPagto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -142,7 +138,7 @@ export const PcPagTit: TTableDef = {
       label: "VlTarifa",
       name: "VlTarifa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -150,7 +146,7 @@ export const PcPagTit: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
   ],

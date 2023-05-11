@@ -9,7 +9,7 @@ export const TributacaoEstados: TTableDef = {
       label: "UfOrigem",
       name: "UfOrigem",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TributacaoEstados: TTableDef = {
       label: "UfDestino",
       name: "UfDestino",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TributacaoEstados: TTableDef = {
       label: "AliqICMSEntrada",
       name: "AliqICMSEntrada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const TributacaoEstados: TTableDef = {
       label: "ReducaoICMSEntrada",
       name: "ReducaoICMSEntrada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const TributacaoEstados: TTableDef = {
       label: "AliqICMSSaidaContribuinte",
       name: "AliqICMSSaidaContribuinte",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const TributacaoEstados: TTableDef = {
       label: "ReducaoICMSSaidaContribuinte",
       name: "ReducaoICMSSaidaContribuinte",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -61,7 +61,7 @@ export const TributacaoEstados: TTableDef = {
       label: "AliqICMSSaidaContribuinteSimples",
       name: "AliqICMSSaidaContribuinteSimples",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -70,7 +70,7 @@ export const TributacaoEstados: TTableDef = {
       label: "ReducaoICMSSaidaContribuinteSimples",
       name: "ReducaoICMSSaidaContribuinteSimples",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -79,7 +79,7 @@ export const TributacaoEstados: TTableDef = {
       label: "AliqICMSSaidaNaoContribuinte",
       name: "AliqICMSSaidaNaoContribuinte",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -88,7 +88,7 @@ export const TributacaoEstados: TTableDef = {
       label: "ReducaoICMSSaidaNaoContribuinte",
       name: "ReducaoICMSSaidaNaoContribuinte",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -97,7 +97,7 @@ export const TributacaoEstados: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -106,7 +106,7 @@ export const TributacaoEstados: TTableDef = {
       label: "AliqICMSSaidaNaoContribuinteSimples",
       name: "AliqICMSSaidaNaoContribuinteSimples",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -114,7 +114,7 @@ export const TributacaoEstados: TTableDef = {
       label: "ReducaoICMSSaidaNaoContribuinteSimples",
       name: "ReducaoICMSSaidaNaoContribuinteSimples",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

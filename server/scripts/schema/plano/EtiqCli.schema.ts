@@ -9,7 +9,7 @@ export const EtiqCli: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -17,7 +17,7 @@ export const EtiqCli: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

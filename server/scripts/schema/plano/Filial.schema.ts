@@ -9,7 +9,7 @@ export const Filial: TTableDef = {
       label: "CdFilial",
       name: "Filial_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,49 +18,43 @@ export const Filial: TTableDef = {
       label: "RzSocial",
       name: "RzSocial",
       typeField: "string",
-      size: 40,
     },
     {
       field: "NmFilial",
       label: "NmFilial",
       name: "NmFilial",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Endereco",
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Cidade",
       label: "Cidade",
       name: "Cidade",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Bairro",
       label: "Bairro",
       name: "Bairro",
       typeField: "string",
-      size: 20,
     },
     {
       field: "Uf",
       label: "Uf",
       name: "Uf",
       typeField: "string",
-      size: 2,
     },
     {
       field: "Cep",
       label: "Cep",
       name: "Cep",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -68,7 +62,7 @@ export const Filial: TTableDef = {
       label: "CGC",
       name: "CGC",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -76,28 +70,25 @@ export const Filial: TTableDef = {
       label: "InscEst",
       name: "InscEst",
       typeField: "string",
-      size: 20,
     },
     {
       field: "Telefone",
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 20,
     },
     {
       field: "Fax",
       label: "Fax",
       name: "Fax",
       typeField: "string",
-      size: 20,
     },
     {
       field: "AliqIRRF",
       label: "AliqIRRF",
       name: "AliqIRRF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -105,7 +96,7 @@ export const Filial: TTableDef = {
       label: "AliqISS",
       name: "AliqISS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -113,7 +104,7 @@ export const Filial: TTableDef = {
       label: "AliqlSS",
       name: "AliqlSS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -121,7 +112,7 @@ export const Filial: TTableDef = {
       label: "CdClienteAssociado",
       name: "CdClienteAssociado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -129,7 +120,7 @@ export const Filial: TTableDef = {
       label: "CdFornecAssociado",
       name: "CdFornecAssociado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -137,7 +128,7 @@ export const Filial: TTableDef = {
       label: "Comissao",
       name: "Comissao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -145,7 +136,7 @@ export const Filial: TTableDef = {
       label: "Diversos",
       name: "Diversos",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -153,7 +144,7 @@ export const Filial: TTableDef = {
       label: "CustoFinanceiro",
       name: "CustoFinanceiro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -161,7 +152,7 @@ export const Filial: TTableDef = {
       label: "Despesas",
       name: "Despesas",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -169,7 +160,7 @@ export const Filial: TTableDef = {
       label: "Publicidade",
       name: "Publicidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -177,7 +168,7 @@ export const Filial: TTableDef = {
       label: "TaxaJurosDia",
       name: "TaxaJurosDia",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -185,84 +176,73 @@ export const Filial: TTableDef = {
       label: "DiasCarencia",
       name: "DiasCarencia",
       typeField: "int",
-      size: 1,
     },
     {
       field: "FgBloqueado",
       label: "FgBloqueado",
       name: "FgBloqueado",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgContribuinteFinal",
       label: "FgContribuinteFinal",
       name: "FgContribuinteFinal",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgSubstituicao",
       label: "FgSubstituicao",
       name: "FgSubstituicao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "InscMunicipal",
       label: "InscMunicipal",
       name: "InscMunicipal",
       typeField: "string",
-      size: 20,
     },
     {
       field: "NumUltFolhaInventario",
       label: "NumUltFolhaInventario",
       name: "NumUltFolhaInventario",
       typeField: "int",
-      size: 4,
     },
     {
       field: "FgDestaqueImposto",
       label: "FgDestaqueImposto",
       name: "FgDestaqueImposto",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Registro",
       label: "Registro",
       name: "Registro",
       typeField: "string",
-      size: 30,
     },
     {
       field: "Socio",
       label: "Socio",
       name: "Socio",
       typeField: "string",
-      size: 30,
     },
     {
       field: "CPFsocio",
       label: "CPFsocio",
       name: "CPFsocio",
       typeField: "string",
-      size: 30,
     },
     {
       field: "AreaAtuacao",
       label: "AreaAtuacao",
       name: "AreaAtuacao",
       typeField: "string",
-      size: 40,
     },
     {
       field: "NumLicencaFuncionamento",
       label: "NumLicencaFuncionamento",
       name: "NumLicencaFuncionamento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -270,77 +250,67 @@ export const Filial: TTableDef = {
       label: "ResponsavelTecnico",
       name: "ResponsavelTecnico",
       typeField: "string",
-      size: 30,
     },
     {
       field: "CRFRespTecnico",
       label: "CRFRespTecnico",
       name: "CRFRespTecnico",
       typeField: "string",
-      size: 15,
     },
     {
       field: "AssistenteTecnico",
       label: "AssistenteTecnico",
       name: "AssistenteTecnico",
       typeField: "string",
-      size: 30,
     },
     {
       field: "CRFAssistTecnico",
       label: "CRFAssistTecnico",
       name: "CRFAssistTecnico",
       typeField: "string",
-      size: 15,
     },
     {
       field: "DistritoSanitario",
       label: "DistritoSanitario",
       name: "DistritoSanitario",
       typeField: "string",
-      size: 30,
     },
     {
       field: "CdCidade",
       label: "CdCidade",
       name: "CdCidade",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdEmpresa",
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 4,
     },
     {
       field: "FgAtivo",
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgDeposito",
       label: "FgDeposito",
       name: "FgDeposito",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Funcionamento",
       label: "Funcionamento",
       name: "Funcionamento",
       typeField: "string",
-      size: 1,
     },
     {
       field: "PercAtacadoTransf",
       label: "PercAtacadoTransf",
       name: "PercAtacadoTransf",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -348,7 +318,7 @@ export const Filial: TTableDef = {
       label: "PercPerdaProducao",
       name: "PercPerdaProducao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -356,7 +326,7 @@ export const Filial: TTableDef = {
       label: "PercMedioImpostoVenda",
       name: "PercMedioImpostoVenda",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -364,7 +334,7 @@ export const Filial: TTableDef = {
       label: "MediaEntrega",
       name: "MediaEntrega",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -372,7 +342,7 @@ export const Filial: TTableDef = {
       label: "PercAcrescControlado",
       name: "PercAcrescControlado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -380,7 +350,7 @@ export const Filial: TTableDef = {
       label: "PercCustoFinanProducao",
       name: "PercCustoFinanProducao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -388,7 +358,7 @@ export const Filial: TTableDef = {
       label: "PercMedioComisPJ",
       name: "PercMedioComisPJ",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -396,7 +366,7 @@ export const Filial: TTableDef = {
       label: "PercMedioComisPromotor",
       name: "PercMedioComisPromotor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -404,7 +374,7 @@ export const Filial: TTableDef = {
       label: "LimiteTaxaEntrega",
       name: "LimiteTaxaEntrega",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -412,7 +382,7 @@ export const Filial: TTableDef = {
       label: "VlTaxaEntrega",
       name: "VlTaxaEntrega",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -420,14 +390,13 @@ export const Filial: TTableDef = {
       label: "ModeloNf",
       name: "ModeloNf",
       typeField: "string",
-      size: 50,
     },
     {
       field: "PercPesoTransferencia",
       label: "PercPesoTransferencia",
       name: "PercPesoTransferencia",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -435,35 +404,31 @@ export const Filial: TTableDef = {
       label: "MsgPadroPedido",
       name: "MsgPadroPedido",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "MsgClienteContribuinte",
       label: "MsgClienteContribuinte",
       name: "MsgClienteContribuinte",
       typeField: "string",
-      size: 80,
     },
     {
       field: "MsgClienteNaoContribuinte",
       label: "MsgClienteNaoContribuinte",
       name: "MsgClienteNaoContribuinte",
       typeField: "string",
-      size: 80,
     },
     {
       field: "MsgPublicPedido",
       label: "MsgPublicPedido",
       name: "MsgPublicPedido",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "AliqIN381",
       label: "AliqIN381",
       name: "AliqIN381",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -471,7 +436,7 @@ export const Filial: TTableDef = {
       label: "VlMinimoIN381",
       name: "VlMinimoIN381",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -479,7 +444,7 @@ export const Filial: TTableDef = {
       label: "VlMinimoIR",
       name: "VlMinimoIR",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -487,42 +452,37 @@ export const Filial: TTableDef = {
       label: "PeriodoIR",
       name: "PeriodoIR",
       typeField: "string",
-      size: 1,
     },
     {
       field: "PeriodoIN",
       label: "PeriodoIN",
       name: "PeriodoIN",
       typeField: "string",
-      size: 1,
     },
     {
       field: "MsgClienteOptanteSimples",
       label: "MsgClienteOptanteSimples",
       name: "MsgClienteOptanteSimples",
       typeField: "string",
-      size: 80,
     },
     {
       field: "FgDeduzISS",
       label: "FgDeduzISS",
       name: "FgDeduzISS",
       typeField: "string",
-      size: 1,
     },
     {
       field: "QtdadeCaracterRodape",
       label: "QtdadeCaracterRodape",
       name: "QtdadeCaracterRodape",
       typeField: "int",
-      size: 4,
     },
     {
       field: "PercPisEntrada",
       label: "PercPisEntrada",
       name: "PercPisEntrada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -530,7 +490,7 @@ export const Filial: TTableDef = {
       label: "DtInicioCustoMedio",
       name: "DtInicioCustoMedio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -538,21 +498,19 @@ export const Filial: TTableDef = {
       label: "FgTipoEmpresa",
       name: "FgTipoEmpresa",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Email",
       label: "Email",
       name: "Email",
       typeField: "string",
-      size: 64,
     },
     {
       field: "DtUltBloqCli",
       label: "DtUltBloqCli",
       name: "DtUltBloqCli",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -560,7 +518,7 @@ export const Filial: TTableDef = {
       label: "NumUltLote",
       name: "NumUltLote",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -568,14 +526,13 @@ export const Filial: TTableDef = {
       label: "CPFRespTecnico",
       name: "CPFRespTecnico",
       typeField: "float",
-      size: 8,
     },
     {
       field: "NumAutorizacaoFuncionamento",
       label: "NumAutorizacaoFuncionamento",
       name: "NumAutorizacaoFuncionamento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -583,7 +540,7 @@ export const Filial: TTableDef = {
       label: "NumAutorizacaoEspecial",
       name: "NumAutorizacaoEspecial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -591,14 +548,13 @@ export const Filial: TTableDef = {
       label: "FgExibeEstoque",
       name: "FgExibeEstoque",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CdFilialCentral",
       label: "CdFilialCentral",
       name: "CdFilialCentral",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -606,7 +562,7 @@ export const Filial: TTableDef = {
       label: "PercPisEntradaNeutro",
       name: "PercPisEntradaNeutro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -614,7 +570,7 @@ export const Filial: TTableDef = {
       label: "PercPisEntradaPositivo",
       name: "PercPisEntradaPositivo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -622,7 +578,7 @@ export const Filial: TTableDef = {
       label: "PercPisEntradaNegativo",
       name: "PercPisEntradaNegativo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -630,28 +586,25 @@ export const Filial: TTableDef = {
       label: "NumEndereco",
       name: "NumEndereco",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CompEndereco",
       label: "CompEndereco",
       name: "CompEndereco",
       typeField: "string",
-      size: 32,
     },
     {
       field: "InscSuframa",
       label: "InscSuframa",
       name: "InscSuframa",
       typeField: "string",
-      size: 32,
     },
     {
       field: "PercCofinsSaida",
       label: "PercCofinsSaida",
       name: "PercCofinsSaida",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -659,7 +612,7 @@ export const Filial: TTableDef = {
       label: "PercPisSaida",
       name: "PercPisSaida",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -667,21 +620,19 @@ export const Filial: TTableDef = {
       label: "FgNFe",
       name: "FgNFe",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgOptanteSimples",
       label: "FgOptanteSimples",
       name: "FgOptanteSimples",
       typeField: "string",
-      size: 1,
     },
     {
       field: "PercCofinsEntradaNeutro",
       label: "PercCofinsEntradaNeutro",
       name: "PercCofinsEntradaNeutro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -689,7 +640,7 @@ export const Filial: TTableDef = {
       label: "PercCofinsEntradaPositivo",
       name: "PercCofinsEntradaPositivo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -697,7 +648,7 @@ export const Filial: TTableDef = {
       label: "PercCofinsEntradaNegativo",
       name: "PercCofinsEntradaNegativo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -705,7 +656,7 @@ export const Filial: TTableDef = {
       label: "PercCofinsEntrada",
       name: "PercCofinsEntrada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -713,14 +664,13 @@ export const Filial: TTableDef = {
       label: "EmailProcNfeContador",
       name: "EmailProcNfeContador",
       typeField: "string",
-      size: 128,
     },
     {
       field: "MsgCabecalhoPedido",
       label: "MsgCabecalhoPedido",
       name: "MsgCabecalhoPedido",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
     {
@@ -728,7 +678,7 @@ export const Filial: TTableDef = {
       label: "PercMinimoICMSSub",
       name: "PercMinimoICMSSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -736,42 +686,37 @@ export const Filial: TTableDef = {
       label: "CNPJCentralizador",
       name: "CNPJCentralizador",
       typeField: "int",
-      size: 9,
     },
     {
       field: "IndicadorPeriodoApuracaoIPI",
       label: "IndicadorPeriodoApuracaoIPI",
       name: "IndicadorPeriodoApuracaoIPI",
       typeField: "int",
-      size: 2,
     },
     {
       field: "FgLogEtiquetaLote",
       label: "FgLogEtiquetaLote",
       name: "FgLogEtiquetaLote",
       typeField: "string",
-      size: 1,
     },
     {
       field: "PerfilApresArquivoSPED",
       label: "PerfilApresArquivoSPED",
       name: "PerfilApresArquivoSPED",
       typeField: "string",
-      size: 1,
     },
     {
       field: "IndicadorTipoAtividade",
       label: "IndicadorTipoAtividade",
       name: "IndicadorTipoAtividade",
       typeField: "string",
-      size: 1,
     },
     {
       field: "AliquotaNacional12741",
       label: "AliquotaNacional12741",
       name: "AliquotaNacional12741",
       typeField: "int",
-      size: 5,
+
       scale: 2,
     },
     {
@@ -779,7 +724,7 @@ export const Filial: TTableDef = {
       label: "AliquotaImportado12741",
       name: "AliquotaImportado12741",
       typeField: "int",
-      size: 5,
+
       scale: 2,
     },
     {
@@ -787,77 +732,67 @@ export const Filial: TTableDef = {
       label: "IndicadorTipoAtividadePISCofins",
       name: "IndicadorTipoAtividadePISCofins",
       typeField: "string",
-      size: 1,
     },
     {
       field: "IndicadorNaturezaPJ",
       label: "IndicadorNaturezaPJ",
       name: "IndicadorNaturezaPJ",
       typeField: "string",
-      size: 2,
     },
     {
       field: "IndicadorIncidenciaPISCofins",
       label: "IndicadorIncidenciaPISCofins",
       name: "IndicadorIncidenciaPISCofins",
       typeField: "string",
-      size: 1,
     },
     {
       field: "IndicadorApropriacaoPISCofins",
       label: "IndicadorApropriacaoPISCofins",
       name: "IndicadorApropriacaoPISCofins",
       typeField: "string",
-      size: 1,
     },
     {
       field: "IndicadorTipoContribuicaoPISCofins",
       label: "IndicadorTipoContribuicaoPISCofins",
       name: "IndicadorTipoContribuicaoPISCofins",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CdContribuicaoSocialApurada",
       label: "CdContribuicaoSocialApurada",
       name: "CdContribuicaoSocialApurada",
       typeField: "int",
-      size: 5,
     },
     {
       field: "FgNfeSe",
       label: "FgNfeSe",
       name: "FgNfeSe",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CdRegimeEspecialTributacao",
       label: "CdRegimeEspecialTributacao",
       name: "CdRegimeEspecialTributacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgIncentivoCultural",
       label: "FgIncentivoCultural",
       name: "FgIncentivoCultural",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CdTributacaoMunicipio",
       label: "CdTributacaoMunicipio",
       name: "CdTributacaoMunicipio",
       typeField: "string",
-      size: 32,
     },
     {
       field: "CdMunicipioPrestadorServico",
       label: "CdMunicipioPrestadorServico",
       name: "CdMunicipioPrestadorServico",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -865,7 +800,7 @@ export const Filial: TTableDef = {
       label: "AliquotaCSLL",
       name: "AliquotaCSLL",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -873,7 +808,7 @@ export const Filial: TTableDef = {
       label: "VlMinimoCSLL",
       name: "VlMinimoCSLL",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -881,7 +816,7 @@ export const Filial: TTableDef = {
       label: "CPFAssociado",
       name: "CPFAssociado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -889,42 +824,37 @@ export const Filial: TTableDef = {
       label: "CNAE",
       name: "CNAE",
       typeField: "string",
-      size: 32,
     },
     {
       field: "CdRegimeTributario",
       label: "CdRegimeTributario",
       name: "CdRegimeTributario",
       typeField: "int",
-      size: 2,
     },
     {
       field: "FgEtiquetaEntrega",
       label: "FgEtiquetaEntrega",
       name: "FgEtiquetaEntrega",
       typeField: "string",
-      size: 1,
     },
     {
       field: "MsgDeducaoFiscal",
       label: "MsgDeducaoFiscal",
       name: "MsgDeducaoFiscal",
       typeField: "string",
-      size: 512,
     },
     {
       field: "MsgClienteIsentoICMS",
       label: "MsgClienteIsentoICMS",
       name: "MsgClienteIsentoICMS",
       typeField: "string",
-      size: 512,
     },
     {
       field: "AliqINSS",
       label: "AliqINSS",
       name: "AliqINSS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -932,14 +862,13 @@ export const Filial: TTableDef = {
       label: "FgIsencaoFaixaReceita",
       name: "FgIsencaoFaixaReceita",
       typeField: "string",
-      size: 1,
     },
     {
       field: "AliquotaCreditoICMS",
       label: "AliquotaCreditoICMS",
       name: "AliquotaCreditoICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -947,7 +876,7 @@ export const Filial: TTableDef = {
       label: "PercMultaAtraso",
       name: "PercMultaAtraso",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -955,14 +884,13 @@ export const Filial: TTableDef = {
       label: "QtdeDiasProtesto",
       name: "QtdeDiasProtesto",
       typeField: "int",
-      size: 5,
     },
     {
       field: "DtUltAvisoLiberacao",
       label: "DtUltAvisoLiberacao",
       name: "DtUltAvisoLiberacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -970,56 +898,49 @@ export const Filial: TTableDef = {
       label: "FgSetorEntrega",
       name: "FgSetorEntrega",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgNFCe",
       label: "FgNFCe",
       name: "FgNFCe",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgTributaPartilhaICMS",
       label: "FgTributaPartilhaICMS",
       name: "FgTributaPartilhaICMS",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgPartilhaICMSSomenteNaoPresencial",
       label: "FgPartilhaICMSSomenteNaoPresencial",
       name: "FgPartilhaICMSSomenteNaoPresencial",
       typeField: "string",
-      size: 1,
     },
     {
       field: "IndIncFisc",
       label: "IndIncFisc",
       name: "IndIncFisc",
       typeField: "int",
-      size: 2,
     },
     {
       field: "CListServ",
       label: "CListServ",
       name: "CListServ",
       typeField: "int",
-      size: 5,
     },
     {
       field: "EmailNotificacaoNFePendente",
       label: "EmailNotificacaoNFePendente",
       name: "EmailNotificacaoNFePendente",
       typeField: "string",
-      size: 128,
     },
     {
       field: "DtUltNotificacaoNFePendente",
       label: "DtUltNotificacaoNFePendente",
       name: "DtUltNotificacaoNFePendente",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -1027,14 +948,13 @@ export const Filial: TTableDef = {
       label: "FgDistribuicaoEstoque",
       name: "FgDistribuicaoEstoque",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtLimite",
       label: "DtLimite",
       name: "DtLimite",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -1042,7 +962,7 @@ export const Filial: TTableDef = {
       label: "PercMargemMinima",
       name: "PercMargemMinima",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1050,56 +970,49 @@ export const Filial: TTableDef = {
       label: "FgICMSEfetivo",
       name: "FgICMSEfetivo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgRespTecnico",
       label: "FgRespTecnico",
       name: "FgRespTecnico",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgSTRetidoAnt",
       label: "FgSTRetidoAnt",
       name: "FgSTRetidoAnt",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DiretorioPDFBoletos",
       label: "DiretorioPDFBoletos",
       name: "DiretorioPDFBoletos",
       typeField: "string",
-      size: 128,
     },
     {
       field: "FgBoletoOnLine",
       label: "FgBoletoOnLine",
       name: "FgBoletoOnLine",
       typeField: "string",
-      size: 1,
     },
     {
       field: "ClassificacaoContribuintesIPI",
       label: "ClassificacaoContribuintesIPI",
       name: "ClassificacaoContribuintesIPI",
       typeField: "string",
-      size: 2,
     },
     {
       field: "FgRE08720",
       label: "FgRE08720",
       name: "FgRE08720",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtUltimoProcessamentoRE08720",
       label: "DtUltimoProcessamentoRE08720",
       name: "DtUltimoProcessamentoRE08720",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
   ],

@@ -9,7 +9,7 @@ export const NotaCombustivel: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaCombustivel: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaCombustivel: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaCombustivel: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaCombustivel: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaCombustivel: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NotaCombustivel: TTableDef = {
       label: "CdANP",
       name: "CdANP",
       typeField: "string",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const NotaCombustivel: TTableDef = {
       label: "CdCODIF",
       name: "CdCODIF",
       typeField: "string",
-      size: 21,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const NotaCombustivel: TTableDef = {
       label: "QtdeFatTemp",
       name: "QtdeFatTemp",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -82,7 +82,7 @@ export const NotaCombustivel: TTableDef = {
       label: "UFConsumo",
       name: "UFConsumo",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const NotaCombustivel: TTableDef = {
       label: "QtdeBaseCalculoCIDE",
       name: "QtdeBaseCalculoCIDE",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -99,7 +99,7 @@ export const NotaCombustivel: TTableDef = {
       label: "AliquotaCIDE",
       name: "AliquotaCIDE",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -108,7 +108,7 @@ export const NotaCombustivel: TTableDef = {
       label: "VlCIDE",
       name: "VlCIDE",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -117,7 +117,7 @@ export const NotaCombustivel: TTableDef = {
       label: "PercGasNatural",
       name: "PercGasNatural",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

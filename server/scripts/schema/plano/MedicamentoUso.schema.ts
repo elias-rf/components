@@ -9,21 +9,19 @@ export const MedicamentoUso: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
     },
     {
       field: "CdCliente",
       label: "CdCliente",
       name: "CdCliente",
       typeField: "string",
-      size: 8,
     },
     {
       field: "DtInicio",
       label: "DtInicio",
       name: "DtInicio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -31,7 +29,7 @@ export const MedicamentoUso: TTableDef = {
       label: "DtFim",
       name: "DtFim",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -39,7 +37,7 @@ export const MedicamentoUso: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -47,7 +45,6 @@ export const MedicamentoUso: TTableDef = {
       label: "Posologia",
       name: "Posologia",
       typeField: "string",
-      size: 15,
     },
   ],
 };

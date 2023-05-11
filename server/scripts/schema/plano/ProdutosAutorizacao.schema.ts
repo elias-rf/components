@@ -9,7 +9,7 @@ export const ProdutosAutorizacao: TTableDef = {
       label: "Autorizador",
       name: "Autorizador",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProdutosAutorizacao: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
   ],

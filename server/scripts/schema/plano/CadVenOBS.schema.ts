@@ -9,7 +9,7 @@ export const CadVenOBS: TTableDef = {
       label: "CdVendedor",
       name: "CadVenOBS_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const CadVenOBS: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
   ],

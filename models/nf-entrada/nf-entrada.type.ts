@@ -1,6 +1,3 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "@/types";
-//#region import
-//#endregion
 export interface TNfEntradaPk {
   filial_id?: number;
   nota_id?: number;
@@ -85,57 +82,3 @@ export interface TNfEntrada extends TNfEntradaPk {
   FgFCPSTCompoeVlTotalNota?: string;
   FgFCPSTCompoeVlCustoProduto?: string;
 }
-
-export type TNfEntradaFields = keyof Required<TNfEntrada>;
-
-export type TNfEntradaIds = {
-  [pk in keyof Required<TNfEntradaPk>]: any;
-};
-export type TNfEntradaSelect = TSelect<TNfEntradaFields>;
-export type TNfEntradaWhere = TWhere<TNfEntradaFields>;
-export type TNfEntradaOrder = TOrder<TNfEntradaFields>;
-
-export type TNfEntradaSchema = () => Promise<TFieldDef[]>;
-export type TNfEntradaClear = () => Promise<TNfEntrada>;
-export type TNfEntradaList = (args: {
-  where?: TWhere<TNfEntradaFields>[];
-  order?: TOrder<TNfEntradaFields>[];
-  limit?: number;
-  select?: TSelect<TNfEntradaFields>;
-}) => Promise<TNfEntrada[]>;
-export type TNfEntradaRead = (args: {
-  id: TNfEntradaIds;
-  select?: TSelect<TNfEntradaFields>;
-}) => Promise<TNfEntrada>;
-
-export type TNfEntradaCreate = (args: {
-  data: TNfEntrada;
-  select?: TSelect<TNfEntradaFields>;
-}) => Promise<TNfEntrada>;
-export type TNfEntradaUpdate = (args: {
-  id: TNfEntradaIds;
-  data: TNfEntrada;
-  select?: TSelect<TNfEntradaFields>;
-}) => Promise<TNfEntrada>;
-export type TNfEntradaDel = (args: { id: TNfEntradaIds }) => Promise<number>;
-
-//#region def
-export type TNfEntradaTransferenciaCreate = (args: {
-  controles: string[];
-}) => Promise<boolean>;
-//#endregion
-
-export type TNfEntradaModel = {
-  query: {
-    list: TNfEntradaList;
-    read: TNfEntradaRead;
-  };
-  mutation: {
-    create: TNfEntradaCreate;
-    update: TNfEntradaUpdate;
-    del: TNfEntradaDel;
-    transferenciaCreate: TNfEntradaTransferenciaCreate;
-  };
-};
-
-export type TNfEntradaRpc = TNfEntradaModel;

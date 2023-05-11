@@ -9,7 +9,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "NumProducao",
       name: "NumProducao",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "DtProducao",
       name: "DtProducao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "CdVendedor",
       name: "CdVendedor",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "CdSacola",
       name: "CdSacola",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "DtEntrega",
       name: "DtEntrega",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "Qtde",
       name: "Qtde",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "CdUnidade",
       name: "CdUnidade",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -84,7 +84,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "Largura",
       name: "Largura",
       typeField: "int",
-      size: 9,
+
       scale: 2,
       allowNull: false,
     },
@@ -93,7 +93,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "Comprimento",
       name: "Comprimento",
       typeField: "int",
-      size: 9,
+
       scale: 2,
       allowNull: false,
     },
@@ -102,7 +102,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "Espessura",
       name: "Espessura",
       typeField: "int",
-      size: 9,
+
       scale: 2,
       allowNull: false,
     },
@@ -111,7 +111,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "LarguraExtrusao",
       name: "LarguraExtrusao",
       typeField: "int",
-      size: 9,
+
       scale: 2,
       allowNull: false,
     },
@@ -120,7 +120,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "PesoSacola",
       name: "PesoSacola",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -129,7 +129,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "PesoTotal",
       name: "PesoTotal",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -138,7 +138,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "Oxi",
       name: "Oxi",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -146,7 +146,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "Tratamento",
       name: "Tratamento",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -154,7 +154,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "GramaMetro",
       name: "GramaMetro",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -162,7 +162,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "Variacao",
       name: "Variacao",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -170,7 +170,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -178,7 +178,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "Material",
       name: "Material",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -186,7 +186,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "Ping",
       name: "Ping",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -194,7 +194,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -202,7 +202,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "Sanfona",
       name: "Sanfona",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -210,7 +210,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "CoresImpressao",
       name: "CoresImpressao",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -218,7 +218,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "Marca",
       name: "Marca",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -226,7 +226,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "EmbalagemPara",
       name: "EmbalagemPara",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -234,7 +234,7 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "CdFase",
       name: "CdFase",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -242,14 +242,12 @@ export const MestreProducaoSacolas: TTableDef = {
       label: "NumBobinas",
       name: "NumBobinas",
       typeField: "int",
-      size: 9,
     },
     {
       field: "Diametro",
       label: "Diametro",
       name: "Diametro",
       typeField: "int",
-      size: 9,
     },
   ],
 };

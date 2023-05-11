@@ -9,7 +9,7 @@ export const tManutencaoPreventivaItem: TTableDef = {
       label: "fkManutencaoPreventiva",
       name: "fkManutencaoPreventiva",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const tManutencaoPreventivaItem: TTableDef = {
       label: "fkMaquinaCheckListItem",
       name: "fkMaquinaCheckListItem",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const tManutencaoPreventivaItem: TTableDef = {
       label: "ManutencaoOK",
       name: "ManutencaoOK",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },

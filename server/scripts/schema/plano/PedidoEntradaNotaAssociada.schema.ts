@@ -9,7 +9,7 @@ export const PedidoEntradaNotaAssociada: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const PedidoEntradaNotaAssociada: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const PedidoEntradaNotaAssociada: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const PedidoEntradaNotaAssociada: TTableDef = {
       label: "NumNotaFaturada",
       name: "NumNotaFaturada",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const PedidoEntradaNotaAssociada: TTableDef = {
       label: "SerieNotaFaturada",
       name: "SerieNotaFaturada",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const PedidoEntradaNotaAssociada: TTableDef = {
       label: "ModeloNotaFaturada",
       name: "ModeloNotaFaturada",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
   ],

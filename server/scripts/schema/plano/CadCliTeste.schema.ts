@@ -9,7 +9,7 @@ export const CadCliTeste: TTableDef = {
       label: "CdCliente",
       name: "CadCliTeste_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadCliTeste: TTableDef = {
       label: "Texto",
       name: "Texto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
   ],

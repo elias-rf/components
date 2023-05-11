@@ -9,7 +9,7 @@ export const PedidoItemPedCliente: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const PedidoItemPedCliente: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const PedidoItemPedCliente: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const PedidoItemPedCliente: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const PedidoItemPedCliente: TTableDef = {
       label: "NumPedCliente",
       name: "NumPedCliente",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const PedidoItemPedCliente: TTableDef = {
       label: "ItemPedCliente",
       name: "ItemPedCliente",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const tbl_OP: TTableDef = {
       label: "kOP",
       name: "tbl_OP_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,28 +18,25 @@ export const tbl_OP: TTableDef = {
       label: "fkOPBotao",
       name: "fkOPBotao",
       typeField: "int",
-      size: 4,
     },
     {
       field: "fkOPLoop",
       label: "fkOPLoop",
       name: "fkOPLoop",
       typeField: "int",
-      size: 4,
     },
     {
       field: "fkOPPai",
       label: "fkOPPai",
       name: "fkOPPai",
       typeField: "int",
-      size: 4,
     },
     {
       field: "fkTipoOP",
       label: "fkTipoOP",
       name: "fkTipoOP",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -47,28 +44,25 @@ export const tbl_OP: TTableDef = {
       label: "DataEmissao",
       name: "DataEmissao",
       typeField: "date",
-      size: 4,
     },
     {
       field: "Quantidade",
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 4,
     },
     {
       field: "EmProcesso",
       label: "EmProcesso",
       name: "EmProcesso",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Travado",
       label: "Travado",
       name: "Travado",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -77,21 +71,19 @@ export const tbl_OP: TTableDef = {
       label: "NomeUsuario",
       name: "NomeUsuario",
       typeField: "string",
-      size: 50,
     },
     {
       field: "Obs",
       label: "Obs",
       name: "Obs",
       typeField: "string",
-      size: 250,
     },
     {
       field: "fkProdutoItem",
       label: "fkProdutoItem",
       name: "fkProdutoItem",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -99,7 +91,6 @@ export const tbl_OP: TTableDef = {
       label: "Broca",
       name: "Broca",
       typeField: "float",
-      size: 4,
     },
   ],
 };

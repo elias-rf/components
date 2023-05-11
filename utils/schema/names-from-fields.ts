@@ -1,6 +1,4 @@
-import { TFieldDef } from "@/types/model";
-
 /** busca names em uma tabela */
-export function namesFromFields(fields: TFieldDef[]) {
+export function namesFromFields(fields: { name: string }[]) {
   return fields.map((fld) => fld.name);
 }

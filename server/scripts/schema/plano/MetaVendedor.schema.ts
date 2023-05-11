@@ -9,7 +9,7 @@ export const MetaVendedor: TTableDef = {
       label: "CdVendedor",
       name: "CdVendedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MetaVendedor: TTableDef = {
       label: "MesReferencia",
       name: "MesReferencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const MetaVendedor: TTableDef = {
       label: "VlMeta",
       name: "VlMeta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const MetaVendedor: TTableDef = {
       label: "QtdeMeta",
       name: "QtdeMeta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -44,7 +44,7 @@ export const MetaVendedor: TTableDef = {
       label: "VlRealizado",
       name: "VlRealizado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -52,7 +52,7 @@ export const MetaVendedor: TTableDef = {
       label: "QtdeRealizado",
       name: "QtdeRealizado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

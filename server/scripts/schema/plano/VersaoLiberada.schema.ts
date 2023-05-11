@@ -9,7 +9,7 @@ export const VersaoLiberada: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const VersaoLiberada: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const VersaoLiberada: TTableDef = {
       label: "Versao",
       name: "Versao",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const VersaoLiberada: TTableDef = {
       label: "Release",
       name: "Release",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
   ],

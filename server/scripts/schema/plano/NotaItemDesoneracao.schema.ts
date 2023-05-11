@@ -9,7 +9,7 @@ export const NotaItemDesoneracao: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaItemDesoneracao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaItemDesoneracao: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaItemDesoneracao: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaItemDesoneracao: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaItemDesoneracao: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NotaItemDesoneracao: TTableDef = {
       label: "CdBeneficioFiscal",
       name: "CdBeneficioFiscal",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const NotaItemDesoneracao: TTableDef = {
       label: "AliquotaDesoneracao",
       name: "AliquotaDesoneracao",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -74,7 +74,7 @@ export const NotaItemDesoneracao: TTableDef = {
       label: "VlDesoneracao",
       name: "VlDesoneracao",
       typeField: "int",
-      size: 9,
+
       scale: 2,
       allowNull: false,
     },
@@ -83,7 +83,7 @@ export const NotaItemDesoneracao: TTableDef = {
       label: "CdMotivoDesoneracao",
       name: "CdMotivoDesoneracao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
   ],

@@ -1,4 +1,4 @@
-import { TFieldDef } from "@/types";
+import { TSchema } from "@/types";
 import { day } from "@/utils/date/day";
 import { formatMoney } from "@/utils/format/format-money";
 
@@ -30,7 +30,7 @@ function sortProdutoAsc(a: any, b: any) {
   return 0;
 }
 
-export const mesSchema: TFieldDef[] = [
+export const mesSchema: TSchema = [
   { name: "mes", label: "Mes" },
   { name: "valor", label: "Faturamento", fieldClass: "text-right" },
 ];

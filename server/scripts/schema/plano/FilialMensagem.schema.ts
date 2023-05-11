@@ -9,7 +9,7 @@ export const FilialMensagem: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const FilialMensagem: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const FilialMensagem: TTableDef = {
       label: "TipoMensagem",
       name: "TipoMensagem",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const FilialMensagem: TTableDef = {
       label: "Mensagem",
       name: "Mensagem",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
   ],

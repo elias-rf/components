@@ -9,7 +9,7 @@ export const TEFRetorno: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TEFRetorno: TTableDef = {
       label: "NumCupom",
       name: "NumCupom",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TEFRetorno: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const TEFRetorno: TTableDef = {
       label: "TipoCampo",
       name: "TipoCampo",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const TEFRetorno: TTableDef = {
       label: "Texto",
       name: "Texto",
       typeField: "string",
-      size: 2048,
+
       allowNull: false,
     },
   ],

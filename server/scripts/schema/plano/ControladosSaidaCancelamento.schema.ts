@@ -9,7 +9,7 @@ export const ControladosSaidaCancelamento: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ControladosSaidaCancelamento: TTableDef = {
       label: "NumPDV",
       name: "NumPDV",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ControladosSaidaCancelamento: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ControladosSaidaCancelamento: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ControladosSaidaCancelamento: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ControladosSaidaCancelamento: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ControladosSaidaCancelamento: TTableDef = {
       label: "DtCancelamento",
       name: "DtCancelamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -67,21 +67,19 @@ export const ControladosSaidaCancelamento: TTableDef = {
       label: "Motivo",
       name: "Motivo",
       typeField: "string",
-      size: 2048,
     },
     {
       field: "NmUsuario",
       label: "NmUsuario",
       name: "NmUsuario",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Modelo",
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
   ],

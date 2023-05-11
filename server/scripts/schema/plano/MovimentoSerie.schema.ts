@@ -9,7 +9,7 @@ export const MovimentoSerie: TTableDef = {
       label: "CdEmitente",
       name: "CdEmitente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MovimentoSerie: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const MovimentoSerie: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const MovimentoSerie: TTableDef = {
       label: "DtMovimento",
       name: "DtMovimento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -42,14 +42,13 @@ export const MovimentoSerie: TTableDef = {
       label: "Finalidade",
       name: "Finalidade",
       typeField: "string",
-      size: 255,
     },
     {
       field: "HrMovimento",
       label: "HrMovimento",
       name: "HrMovimento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -57,7 +56,7 @@ export const MovimentoSerie: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -65,7 +64,7 @@ export const MovimentoSerie: TTableDef = {
       label: "NumSerieProduto",
       name: "NumSerieProduto",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -73,7 +72,7 @@ export const MovimentoSerie: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -81,14 +80,13 @@ export const MovimentoSerie: TTableDef = {
       label: "TipoEmitente",
       name: "TipoEmitente",
       typeField: "string",
-      size: 1,
     },
     {
       field: "TipoMovimento",
       label: "TipoMovimento",
       name: "TipoMovimento",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -96,7 +94,7 @@ export const MovimentoSerie: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
   ],

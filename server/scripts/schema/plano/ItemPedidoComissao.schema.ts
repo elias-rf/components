@@ -9,7 +9,7 @@ export const ItemPedidoComissao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ItemPedidoComissao: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const ItemPedidoComissao: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ItemPedidoComissao: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ItemPedidoComissao: TTableDef = {
       label: "CdVendedor",
       name: "CdVendedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -51,7 +51,7 @@ export const ItemPedidoComissao: TTableDef = {
       label: "PercComissaoVista",
       name: "PercComissaoVista",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -60,7 +60,7 @@ export const ItemPedidoComissao: TTableDef = {
       label: "PercComissaoPrazo",
       name: "PercComissaoPrazo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

@@ -9,7 +9,7 @@ export const CadCliMetas: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadCliMetas: TTableDef = {
       label: "MesReferencia",
       name: "MesReferencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const CadCliMetas: TTableDef = {
       label: "VlMeta",
       name: "VlMeta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const CadCliMetas: TTableDef = {
       label: "VlMetaAjustada",
       name: "VlMetaAjustada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -45,7 +45,7 @@ export const CadCliMetas: TTableDef = {
       label: "QtdeMeta",
       name: "QtdeMeta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -54,7 +54,7 @@ export const CadCliMetas: TTableDef = {
       label: "QtdeMetaAjustada",
       name: "QtdeMetaAjustada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -63,7 +63,7 @@ export const CadCliMetas: TTableDef = {
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

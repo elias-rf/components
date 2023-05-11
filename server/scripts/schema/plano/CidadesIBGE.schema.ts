@@ -9,7 +9,7 @@ export const CidadesIBGE: TTableDef = {
       label: "CdUFIBGE",
       name: "CdUFIBGE",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CidadesIBGE: TTableDef = {
       label: "CdCidadeIBGE",
       name: "CdCidadeIBGE",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CidadesIBGE: TTableDef = {
       label: "NmCidadeIBGE",
       name: "NmCidadeIBGE",
       typeField: "string",
-      size: 80,
+
       allowNull: false,
     },
   ],

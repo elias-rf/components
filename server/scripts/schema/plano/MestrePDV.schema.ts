@@ -9,7 +9,7 @@ export const MestrePDV: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const MestrePDV: TTableDef = {
       label: "NroPDV",
       name: "NroPDV",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const MestrePDV: TTableDef = {
       label: "NumCupom",
       name: "NumCupom",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -33,21 +33,19 @@ export const MestrePDV: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
     },
     {
       field: "CdTipoVenda",
       label: "CdTipoVenda",
       name: "CdTipoVenda",
       typeField: "int",
-      size: 2,
     },
     {
       field: "DtEmissao",
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -55,7 +53,7 @@ export const MestrePDV: TTableDef = {
       label: "DtReal",
       name: "DtReal",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -63,7 +61,7 @@ export const MestrePDV: TTableDef = {
       label: "Horario",
       name: "Horario",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -71,7 +69,7 @@ export const MestrePDV: TTableDef = {
       label: "CdVendedor",
       name: "CdVendedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -79,14 +77,13 @@ export const MestrePDV: TTableDef = {
       label: "CdCaixa",
       name: "CdCaixa",
       typeField: "string",
-      size: 10,
     },
     {
       field: "CdCliente",
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -94,7 +91,7 @@ export const MestrePDV: TTableDef = {
       label: "CdFuncionario",
       name: "CdFuncionario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -102,7 +99,7 @@ export const MestrePDV: TTableDef = {
       label: "VlTotal",
       name: "VlTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -110,7 +107,7 @@ export const MestrePDV: TTableDef = {
       label: "VlDesconto",
       name: "VlDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -118,7 +115,7 @@ export const MestrePDV: TTableDef = {
       label: "VlDescGer",
       name: "VlDescGer",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -126,42 +123,37 @@ export const MestrePDV: TTableDef = {
       label: "CupomRef",
       name: "CupomRef",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NumCRM",
       label: "NumCRM",
       name: "NumCRM",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Atualizacao",
       label: "Atualizacao",
       name: "Atualizacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "TipoConvenio",
       label: "TipoConvenio",
       name: "TipoConvenio",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NumPedido",
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
     },
     {
       field: "VlTroco",
       label: "VlTroco",
       name: "VlTroco",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -169,7 +161,7 @@ export const MestrePDV: TTableDef = {
       label: "PercParticipPrazo",
       name: "PercParticipPrazo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -177,7 +169,7 @@ export const MestrePDV: TTableDef = {
       label: "PercParticipVista",
       name: "PercParticipVista",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -185,7 +177,7 @@ export const MestrePDV: TTableDef = {
       label: "RedutorComissao",
       name: "RedutorComissao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -193,7 +185,7 @@ export const MestrePDV: TTableDef = {
       label: "VlCreditoVMS",
       name: "VlCreditoVMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -201,21 +193,19 @@ export const MestrePDV: TTableDef = {
       label: "CdUsuario",
       name: "CdUsuario",
       typeField: "string",
-      size: 10,
     },
     {
       field: "CdSetor",
       label: "CdSetor",
       name: "CdSetor",
       typeField: "int",
-      size: 2,
     },
     {
       field: "CdLocalEstoque",
       label: "CdLocalEstoque",
       name: "CdLocalEstoque",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -223,7 +213,7 @@ export const MestrePDV: TTableDef = {
       label: "NumCOO",
       name: "NumCOO",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -231,7 +221,7 @@ export const MestrePDV: TTableDef = {
       label: "CdVendedorExtra",
       name: "CdVendedorExtra",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -239,7 +229,7 @@ export const MestrePDV: TTableDef = {
       label: "NumCCF",
       name: "NumCCF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -248,7 +238,7 @@ export const MestrePDV: TTableDef = {
       label: "NumSerieECF",
       name: "NumSerieECF",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -256,7 +246,7 @@ export const MestrePDV: TTableDef = {
       label: "MfAdicional",
       name: "MfAdicional",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -264,7 +254,7 @@ export const MestrePDV: TTableDef = {
       label: "ModeloECF",
       name: "ModeloECF",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -272,7 +262,7 @@ export const MestrePDV: TTableDef = {
       label: "NumUsuario",
       name: "NumUsuario",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -280,7 +270,7 @@ export const MestrePDV: TTableDef = {
       label: "VlBaseCalculoICMS",
       name: "VlBaseCalculoICMS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -288,7 +278,7 @@ export const MestrePDV: TTableDef = {
       label: "VLISS",
       name: "VLISS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -296,7 +286,7 @@ export const MestrePDV: TTableDef = {
       label: "FgTipoCancelamento",
       name: "FgTipoCancelamento",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -304,7 +294,7 @@ export const MestrePDV: TTableDef = {
       label: "VlICMS",
       name: "VlICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -312,7 +302,7 @@ export const MestrePDV: TTableDef = {
       label: "VlBaseCalculoISS",
       name: "VlBaseCalculoISS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -320,7 +310,7 @@ export const MestrePDV: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -328,7 +318,7 @@ export const MestrePDV: TTableDef = {
       label: "VlAproximadoImpostoCupom",
       name: "VlAproximadoImpostoCupom",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -336,7 +326,7 @@ export const MestrePDV: TTableDef = {
       label: "ControleFilial",
       name: "ControleFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -345,7 +335,7 @@ export const MestrePDV: TTableDef = {
       label: "ControleECF",
       name: "ControleECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -353,7 +343,7 @@ export const MestrePDV: TTableDef = {
       label: "ControleCupom",
       name: "ControleCupom",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -362,21 +352,19 @@ export const MestrePDV: TTableDef = {
       label: "FgSituacaoGerencial",
       name: "FgSituacaoGerencial",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgSituacaoFiscal",
       label: "FgSituacaoFiscal",
       name: "FgSituacaoFiscal",
       typeField: "string",
-      size: 1,
     },
     {
       field: "VlAproximadoImpostoFederal",
       label: "VlAproximadoImpostoFederal",
       name: "VlAproximadoImpostoFederal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -384,7 +372,7 @@ export const MestrePDV: TTableDef = {
       label: "VlAproximadoImpostoEstadual",
       name: "VlAproximadoImpostoEstadual",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -392,7 +380,7 @@ export const MestrePDV: TTableDef = {
       label: "VlAproximadoImpostoMunicipal",
       name: "VlAproximadoImpostoMunicipal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -400,7 +388,6 @@ export const MestrePDV: TTableDef = {
       label: "CPFCNPJ",
       name: "CPFCNPJ",
       typeField: "string",
-      size: 32,
     },
   ],
 };

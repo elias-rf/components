@@ -9,7 +9,7 @@ export const tNovoNome: TTableDef = {
       label: "NomeProdutoItem",
       name: "tNovoNome_id",
       typeField: "string",
-      size: 30,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,6 @@ export const tNovoNome: TTableDef = {
       label: "NovoNome",
       name: "NovoNome",
       typeField: "string",
-      size: 30,
     },
   ],
 };

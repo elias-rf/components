@@ -9,7 +9,7 @@ export const tOperacaoEmProcesso: TTableDef = {
       label: "kOperacaoEP",
       name: "tOperacaoEmProcesso_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const tOperacaoEmProcesso: TTableDef = {
       label: "fkOP",
       name: "fkOP",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const tOperacaoEmProcesso: TTableDef = {
       label: "fkOperacao",
       name: "fkOperacao",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const tOperacaoEmProcesso: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

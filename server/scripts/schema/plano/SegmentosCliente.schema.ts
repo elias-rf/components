@@ -9,7 +9,7 @@ export const SegmentosCliente: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const SegmentosCliente: TTableDef = {
       label: "CdSegmento",
       name: "CdSegmento",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

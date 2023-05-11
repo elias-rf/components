@@ -10,7 +10,7 @@ export const etiqueta_externa: TTableDef = {
       name: "etiqueta_externa_id",
       primaryKey: true,
       typeField: "string",
-      size: 18,
+
       allowNull: false,
     },
     {
@@ -18,7 +18,7 @@ export const etiqueta_externa: TTableDef = {
       label: "Quantidade",
       name: "quantidade",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
       defaultValue: "1",
     },
@@ -27,7 +27,7 @@ export const etiqueta_externa: TTableDef = {
       label: "Data Fabricacao",
       name: "data_fabricacao",
       typeField: "date",
-      size: 8,
+
       scale: 3,
     },
   ],

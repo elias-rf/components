@@ -9,7 +9,7 @@ export const tOrdemProducaoVerificada: TTableDef = {
       label: "kOP",
       name: "tOrdemProducaoVerificada_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },

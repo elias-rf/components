@@ -9,7 +9,7 @@ export const ParamContVer: TTableDef = {
       label: "Ver01",
       name: "Ver01",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ParamContVer: TTableDef = {
       label: "Ver02",
       name: "Ver02",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ParamContVer: TTableDef = {
       label: "Ver03",
       name: "Ver03",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
   ],

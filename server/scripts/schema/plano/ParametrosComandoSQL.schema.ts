@@ -9,7 +9,7 @@ export const ParametrosComandoSQL: TTableDef = {
       label: "IdComando",
       name: "ParametrosComandoSQL_id",
       typeField: "string",
-      size: 128,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ParametrosComandoSQL: TTableDef = {
       label: "Comando",
       name: "Comando",
       typeField: "string",
-      size: 5140,
+
       allowNull: false,
     },
   ],

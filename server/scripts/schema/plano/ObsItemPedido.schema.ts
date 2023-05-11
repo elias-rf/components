@@ -9,7 +9,7 @@ export const ObsItemPedido: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ObsItemPedido: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ObsItemPedido: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ObsItemPedido: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,6 @@ export const ObsItemPedido: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 512,
     },
   ],
 };

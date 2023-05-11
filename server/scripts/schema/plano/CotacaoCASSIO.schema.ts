@@ -9,7 +9,7 @@ export const CotacaoCASSIO: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CotacaoCASSIO: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CotacaoCASSIO: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const CotacaoCASSIO: TTableDef = {
       label: "VlTabela",
       name: "VlTabela",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const CotacaoCASSIO: TTableDef = {
       label: "VlLiquido",
       name: "VlLiquido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

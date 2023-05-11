@@ -9,7 +9,7 @@ export const Sinonimos: TTableDef = {
       label: "Sinonimo",
       name: "Sinonimo",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Sinonimos: TTableDef = {
       label: "CdProdutoAssociado",
       name: "CdProdutoAssociado",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
   ],

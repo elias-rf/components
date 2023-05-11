@@ -9,7 +9,7 @@ export const ConfigEtiqEntrega: TTableDef = {
       label: "CdFilial",
       name: "ConfigEtiqEntrega_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const ConfigEtiqEntrega: TTableDef = {
       label: "QtdeEtiquetasHorizontal",
       name: "QtdeEtiquetasHorizontal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -28,7 +28,7 @@ export const ConfigEtiqEntrega: TTableDef = {
       label: "QtdeEtiquetasVertical",
       name: "QtdeEtiquetasVertical",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -37,7 +37,7 @@ export const ConfigEtiqEntrega: TTableDef = {
       label: "AlturaEtiqueta",
       name: "AlturaEtiqueta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -46,7 +46,7 @@ export const ConfigEtiqEntrega: TTableDef = {
       label: "LarguraEtiqueta",
       name: "LarguraEtiqueta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -55,7 +55,7 @@ export const ConfigEtiqEntrega: TTableDef = {
       label: "EspacoDesconsiderarInicio",
       name: "EspacoDesconsiderarInicio",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -64,7 +64,7 @@ export const ConfigEtiqEntrega: TTableDef = {
       label: "EspacoDesconsiderarLateral",
       name: "EspacoDesconsiderarLateral",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -73,7 +73,7 @@ export const ConfigEtiqEntrega: TTableDef = {
       label: "EspacoDesconsiderarEntreEtiquetas",
       name: "EspacoDesconsiderarEntreEtiquetas",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -82,7 +82,7 @@ export const ConfigEtiqEntrega: TTableDef = {
       label: "QtdeLinhasEtiqueta",
       name: "QtdeLinhasEtiqueta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -91,7 +91,7 @@ export const ConfigEtiqEntrega: TTableDef = {
       label: "QtdeCaracteresLinha",
       name: "QtdeCaracteresLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -100,7 +100,7 @@ export const ConfigEtiqEntrega: TTableDef = {
       label: "Fonte",
       name: "Fonte",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

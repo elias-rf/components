@@ -9,7 +9,7 @@ export const CondPagto: TTableDef = {
       label: "Codigo",
       name: "CondPagto_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,56 +18,49 @@ export const CondPagto: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Prazo1",
       label: "Prazo1",
       name: "Prazo1",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Prazo2",
       label: "Prazo2",
       name: "Prazo2",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Prazo3",
       label: "Prazo3",
       name: "Prazo3",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Prazo4",
       label: "Prazo4",
       name: "Prazo4",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Prazo5",
       label: "Prazo5",
       name: "Prazo5",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Prazo6",
       label: "Prazo6",
       name: "Prazo6",
       typeField: "int",
-      size: 4,
     },
     {
       field: "AcresFinanceiro",
       label: "AcresFinanceiro",
       name: "AcresFinanceiro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -75,21 +68,19 @@ export const CondPagto: TTableDef = {
       label: "FgVista",
       name: "FgVista",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Tipo",
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "VlMinimo",
       label: "VlMinimo",
       name: "VlMinimo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -97,7 +88,7 @@ export const CondPagto: TTableDef = {
       label: "Participacao1",
       name: "Participacao1",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -105,7 +96,7 @@ export const CondPagto: TTableDef = {
       label: "Participacao2",
       name: "Participacao2",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -113,7 +104,7 @@ export const CondPagto: TTableDef = {
       label: "Participacao3",
       name: "Participacao3",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -121,7 +112,7 @@ export const CondPagto: TTableDef = {
       label: "Participacao4",
       name: "Participacao4",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -129,7 +120,7 @@ export const CondPagto: TTableDef = {
       label: "Participacao5",
       name: "Participacao5",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -137,7 +128,7 @@ export const CondPagto: TTableDef = {
       label: "Participacao6",
       name: "Participacao6",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -145,7 +136,7 @@ export const CondPagto: TTableDef = {
       label: "Prazo7",
       name: "Prazo7",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -153,7 +144,7 @@ export const CondPagto: TTableDef = {
       label: "Prazo8",
       name: "Prazo8",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -161,7 +152,7 @@ export const CondPagto: TTableDef = {
       label: "Prazo9",
       name: "Prazo9",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -169,7 +160,7 @@ export const CondPagto: TTableDef = {
       label: "Prazo10",
       name: "Prazo10",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -177,7 +168,7 @@ export const CondPagto: TTableDef = {
       label: "Prazo11",
       name: "Prazo11",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -185,7 +176,7 @@ export const CondPagto: TTableDef = {
       label: "Prazo12",
       name: "Prazo12",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -193,7 +184,7 @@ export const CondPagto: TTableDef = {
       label: "Participacao7",
       name: "Participacao7",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -201,7 +192,7 @@ export const CondPagto: TTableDef = {
       label: "Participacao8",
       name: "Participacao8",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -209,7 +200,7 @@ export const CondPagto: TTableDef = {
       label: "Participacao9",
       name: "Participacao9",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -217,7 +208,7 @@ export const CondPagto: TTableDef = {
       label: "Participacao10",
       name: "Participacao10",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -225,7 +216,7 @@ export const CondPagto: TTableDef = {
       label: "Participacao11",
       name: "Participacao11",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -233,7 +224,7 @@ export const CondPagto: TTableDef = {
       label: "Participacao12",
       name: "Participacao12",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

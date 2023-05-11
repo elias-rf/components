@@ -9,7 +9,7 @@ export const tbl_figura: TTableDef = {
       label: "KFigura",
       name: "tbl_figura_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tbl_figura: TTableDef = {
       label: "TipoFigura",
       name: "TipoFigura",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
     },
   ],

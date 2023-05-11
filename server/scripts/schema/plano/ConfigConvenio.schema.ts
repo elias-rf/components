@@ -9,7 +9,7 @@ export const ConfigConvenio: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ConfigConvenio: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ConfigConvenio: TTableDef = {
       label: "Codigo",
       name: "Codigo",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ConfigConvenio: TTableDef = {
       label: "FgPermissao",
       name: "FgPermissao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ConfigConvenio: TTableDef = {
       label: "PercDesconto",
       name: "PercDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

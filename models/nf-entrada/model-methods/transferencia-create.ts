@@ -1,7 +1,6 @@
-import { isEmpty } from "lodash";
-
-import { TCrud } from "@/utils/crud/crud.type";
+import { TCrud } from "@/utils/crud/crud.factory";
 import { day } from "@/utils/date/day";
+import { isEmpty } from "@/utils/identify/is-empty";
 import { TEstoqueRpc } from "../../estoque/estoque.type";
 import { TNfEntradaControleRpc } from "../../nf-entrada-controle/nf-entrada-controle.type";
 import { TNfEntradaItemRpc } from "../../nf-entrada-item/nf-entrada-item.type";
@@ -9,7 +8,6 @@ import { TNfEntradaLogRpc } from "../../nf-entrada-log/nf-entrada-log.type";
 import { TOrdemProducaoRpc } from "../../ordem-producao/ordem-producao.type";
 import { TProdutoControleRpc } from "../../produto-controle/produto-controle.type";
 import { TProdutoEstatisticaRpc } from "../../produto-estatistica/produto-estatistica.type";
-import { TNfEntradaTransferenciaCreate } from "../nf-entrada.type";
 
 export function transferenciaCreateFactory({
   ordemProducaoModel,
@@ -29,8 +27,8 @@ export function transferenciaCreateFactory({
   nfEntradaItemModel: TNfEntradaItemRpc;
   produtoControleModel: TProdutoControleRpc;
   nfEntradaControleModel: TNfEntradaControleRpc;
-}): TNfEntradaTransferenciaCreate {
-  return async ({ controles }) => {
+}) {
+  return async ({ controles }: { controles: string[] }) => {
     const ordem_producao_id = await ordemProducaoModel.query.fromControle({
       controle: controles[0],
     });
@@ -79,12 +77,12 @@ export function transferenciaCreateFactory({
     const agora = day().format("HH:mm:ss");
 
     const nf = await nfEntradaModel.query.read({
-      id: {
-        filial_id: 1,
-        nota_id: ordem_producao_id,
-        serie_id: "XX",
-        modelo_id: "1",
-      },
+      ids: [
+        { id: "filial_id", value: 1 },
+        { id: "nota_id", value: ordem_producao_id },
+        { id: "serie_id", value: "XX" },
+        { id: "modelo_id", value: "1" },
+      ],
       select: ["nota_id"],
     });
 
@@ -200,7 +198,10 @@ export function transferenciaCreateFactory({
     });
 
     await estoqueModel.mutation.increment({
-      id: { filial_id: "1", produto_plano_id: produto_plano_id || "" },
+      id: [
+        { id: "filial_id", value: "1" },
+        { id: "produto_plano_id", value: produto_plano_id || "" },
+      ],
       quantidade,
     });
 

@@ -9,7 +9,7 @@ export const CancelamentoSAT: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CancelamentoSAT: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const CancelamentoSAT: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const CancelamentoSAT: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,21 +41,19 @@ export const CancelamentoSAT: TTableDef = {
       label: "NumChave",
       name: "NumChave",
       typeField: "string",
-      size: 128,
     },
     {
       field: "NumSessao",
       label: "NumSessao",
       name: "NumSessao",
       typeField: "string",
-      size: 32,
     },
     {
       field: "DtCancelamento",
       label: "DtCancelamento",
       name: "DtCancelamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -63,21 +61,19 @@ export const CancelamentoSAT: TTableDef = {
       label: "NumDocumentoSAT",
       name: "NumDocumentoSAT",
       typeField: "int",
-      size: 5,
     },
     {
       field: "CpfCnpjConsumidor",
       label: "CpfCnpjConsumidor",
       name: "CpfCnpjConsumidor",
       typeField: "string",
-      size: 32,
     },
     {
       field: "VlTotalCupom",
       label: "VlTotalCupom",
       name: "VlTotalCupom",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -85,7 +81,6 @@ export const CancelamentoSAT: TTableDef = {
       label: "AssinaturaQrCode",
       name: "AssinaturaQrCode",
       typeField: "string",
-      size: 4096,
     },
   ],
 };

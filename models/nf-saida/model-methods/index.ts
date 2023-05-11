@@ -1,5 +1,5 @@
 import { Knex } from "knex";
-import { TNfSaidaFvModel } from "../../nf-saida-fv/nf-saida-fv.type";
+import { TNfSaidaFvModel } from "../../nf-saida-fv/nf-saida-fv.model";
 import { transferenciaDiario } from "./transferencia-diario";
 import { transferenciaDiarioSchema } from "./transferencia-diario-schema";
 import { transferenciaMensal } from "./transferencia-mensal";

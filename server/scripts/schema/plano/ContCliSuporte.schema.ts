@@ -9,7 +9,7 @@ export const ContCliSuporte: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ContCliSuporte: TTableDef = {
       label: "NumSequencia",
       name: "NumSequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ContCliSuporte: TTableDef = {
       label: "UsuarioSite",
       name: "UsuarioSite",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ContCliSuporte: TTableDef = {
       label: "SenhaSite",
       name: "SenhaSite",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

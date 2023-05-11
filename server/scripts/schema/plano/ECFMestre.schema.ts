@@ -9,7 +9,7 @@ export const ECFMestre: TTableDef = {
       label: "CNPJFilial",
       name: "CNPJFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ECFMestre: TTableDef = {
       label: "NumECF",
       name: "NumECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ECFMestre: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const ECFMestre: TTableDef = {
       label: "COOInicial",
       name: "COOInicial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const ECFMestre: TTableDef = {
       label: "COOFinal",
       name: "COOFinal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -53,7 +53,7 @@ export const ECFMestre: TTableDef = {
       label: "NumReducaoZ",
       name: "NumReducaoZ",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -62,7 +62,7 @@ export const ECFMestre: TTableDef = {
       label: "ContadorReinicio",
       name: "ContadorReinicio",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -71,7 +71,7 @@ export const ECFMestre: TTableDef = {
       label: "VlVendaBruta",
       name: "VlVendaBruta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -80,7 +80,7 @@ export const ECFMestre: TTableDef = {
       label: "VlTotalizador",
       name: "VlTotalizador",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -89,7 +89,7 @@ export const ECFMestre: TTableDef = {
       label: "NumSerie",
       name: "NumSerie",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -97,7 +97,7 @@ export const ECFMestre: TTableDef = {
       label: "TipoReducao",
       name: "TipoReducao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -105,7 +105,7 @@ export const ECFMestre: TTableDef = {
       label: "NumCOOReducao",
       name: "NumCOOReducao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -114,7 +114,7 @@ export const ECFMestre: TTableDef = {
       label: "DtEmissaoReducao",
       name: "DtEmissaoReducao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -123,7 +123,7 @@ export const ECFMestre: TTableDef = {
       label: "HrEmissaoReducao",
       name: "HrEmissaoReducao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -132,7 +132,7 @@ export const ECFMestre: TTableDef = {
       label: "NumUsuario",
       name: "NumUsuario",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -140,7 +140,7 @@ export const ECFMestre: TTableDef = {
       label: "ParamDescISS",
       name: "ParamDescISS",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -148,7 +148,7 @@ export const ECFMestre: TTableDef = {
       label: "VlGrandeTotal",
       name: "VlGrandeTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -157,7 +157,7 @@ export const ECFMestre: TTableDef = {
       label: "VlNaoFiscal",
       name: "VlNaoFiscal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -165,7 +165,7 @@ export const ECFMestre: TTableDef = {
       label: "VlAcrescimo",
       name: "VlAcrescimo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -173,7 +173,7 @@ export const ECFMestre: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -181,7 +181,7 @@ export const ECFMestre: TTableDef = {
       label: "ControleFilial",
       name: "ControleFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -189,21 +189,19 @@ export const ECFMestre: TTableDef = {
       label: "ControleECF",
       name: "ControleECF",
       typeField: "int",
-      size: 2,
     },
     {
       field: "ControleSerie",
       label: "ControleSerie",
       name: "ControleSerie",
       typeField: "string",
-      size: 32,
     },
     {
       field: "ControleData",
       label: "ControleData",
       name: "ControleData",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
   ],

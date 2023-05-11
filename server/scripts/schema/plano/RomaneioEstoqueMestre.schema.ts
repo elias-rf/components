@@ -9,7 +9,7 @@ export const RomaneioEstoqueMestre: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const RomaneioEstoqueMestre: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const RomaneioEstoqueMestre: TTableDef = {
       label: "NumRomaneio",
       name: "NumRomaneio",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const RomaneioEstoqueMestre: TTableDef = {
       label: "TipoMovimentacao",
       name: "TipoMovimentacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const RomaneioEstoqueMestre: TTableDef = {
       label: "CdLocalEstoque",
       name: "CdLocalEstoque",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const RomaneioEstoqueMestre: TTableDef = {
       label: "FgStatus",
       name: "FgStatus",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const RomaneioEstoqueMestre: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -66,7 +66,7 @@ export const RomaneioEstoqueMestre: TTableDef = {
       label: "UsuarioEmissao",
       name: "UsuarioEmissao",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const RomaneioEstoqueMestre: TTableDef = {
       label: "DtRetorno",
       name: "DtRetorno",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -83,7 +83,7 @@ export const RomaneioEstoqueMestre: TTableDef = {
       label: "UsuarioRetorno",
       name: "UsuarioRetorno",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -91,7 +91,7 @@ export const RomaneioEstoqueMestre: TTableDef = {
       label: "DtConferencia",
       name: "DtConferencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -100,7 +100,7 @@ export const RomaneioEstoqueMestre: TTableDef = {
       label: "UsuarioConferencia",
       name: "UsuarioConferencia",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -108,7 +108,7 @@ export const RomaneioEstoqueMestre: TTableDef = {
       label: "DtMovimento",
       name: "DtMovimento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

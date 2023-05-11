@@ -9,7 +9,7 @@ export const SpedReceitaBruta: TTableDef = {
       label: "CNPJCentralizador",
       name: "CNPJCentralizador",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SpedReceitaBruta: TTableDef = {
       label: "PeriodoApuracao",
       name: "PeriodoApuracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const SpedReceitaBruta: TTableDef = {
       label: "VlTributadoInterno",
       name: "VlTributadoInterno",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const SpedReceitaBruta: TTableDef = {
       label: "VlNaoTributadoIterno",
       name: "VlNaoTributadoIterno",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const SpedReceitaBruta: TTableDef = {
       label: "VlExportacao",
       name: "VlExportacao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -53,7 +53,7 @@ export const SpedReceitaBruta: TTableDef = {
       label: "VlReceitaCumulativa",
       name: "VlReceitaCumulativa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -62,7 +62,7 @@ export const SpedReceitaBruta: TTableDef = {
       label: "VlReceitaBruta",
       name: "VlReceitaBruta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

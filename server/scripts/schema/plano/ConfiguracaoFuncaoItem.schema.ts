@@ -9,7 +9,7 @@ export const ConfiguracaoFuncaoItem: TTableDef = {
       label: "CdFuncao",
       name: "CdFuncao",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ConfiguracaoFuncaoItem: TTableDef = {
       label: "Parametro",
       name: "Parametro",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ConfiguracaoFuncaoItem: TTableDef = {
       label: "Conteudo",
       name: "Conteudo",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
   ],

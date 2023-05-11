@@ -9,7 +9,7 @@ export const FasesProducao: TTableDef = {
       label: "CdFase",
       name: "CdFase",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const FasesProducao: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
   ],

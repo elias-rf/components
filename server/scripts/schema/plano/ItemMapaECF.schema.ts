@@ -9,7 +9,7 @@ export const ItemMapaECF: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ItemMapaECF: TTableDef = {
       label: "DtMapa",
       name: "DtMapa",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ItemMapaECF: TTableDef = {
       label: "NumECF",
       name: "NumECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ItemMapaECF: TTableDef = {
       label: "NumeroSerie",
       name: "NumeroSerie",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ItemMapaECF: TTableDef = {
       label: "ContReducaoZ",
       name: "ContReducaoZ",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const ItemMapaECF: TTableDef = {
       label: "ConReinicioCRO",
       name: "ConReinicioCRO",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const ItemMapaECF: TTableDef = {
       label: "NumOperacaoInicial",
       name: "NumOperacaoInicial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const ItemMapaECF: TTableDef = {
       label: "NumOperacaoFinal",
       name: "NumOperacaoFinal",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const ItemMapaECF: TTableDef = {
       label: "ConCancelamento",
       name: "ConCancelamento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -84,7 +84,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlGTAtual",
       name: "VlGTAtual",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -93,7 +93,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlGTAnterior",
       name: "VlGTAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -102,7 +102,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlVendaBruta",
       name: "VlVendaBruta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -111,7 +111,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlVendaLiquida",
       name: "VlVendaLiquida",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -120,7 +120,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlTotalISS",
       name: "VlTotalISS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -129,7 +129,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlCancelamentos",
       name: "VlCancelamentos",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -138,7 +138,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlDescontos",
       name: "VlDescontos",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -147,7 +147,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlAcrescimo",
       name: "VlAcrescimo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -156,7 +156,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlBaseCalcICMS",
       name: "VlBaseCalcICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -165,7 +165,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlIcms",
       name: "VlIcms",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -174,7 +174,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlIsentas",
       name: "VlIsentas",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -183,7 +183,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlOutros",
       name: "VlOutros",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -192,7 +192,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlSubTribComInsidencia",
       name: "VlSubTribComInsidencia",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -201,7 +201,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlSubTribSemInsidencia",
       name: "VlSubTribSemInsidencia",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -210,7 +210,7 @@ export const ItemMapaECF: TTableDef = {
       label: "VlRecebimentos",
       name: "VlRecebimentos",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

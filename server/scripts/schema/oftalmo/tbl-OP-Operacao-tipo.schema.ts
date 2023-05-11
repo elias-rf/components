@@ -9,7 +9,7 @@ export const tbl_OP_Operacao_tipo: TTableDef = {
       label: "kOperacao",
       name: "tbl_OP_Operacao_tipo_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tbl_OP_Operacao_tipo: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const tbl_OP_Operacao_tipo: TTableDef = {
       label: "Grupo",
       name: "Grupo",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -35,7 +35,7 @@ export const tbl_OP_Operacao_tipo: TTableDef = {
       label: "Ordem",
       name: "Ordem",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -44,28 +44,25 @@ export const tbl_OP_Operacao_tipo: TTableDef = {
       label: "ProxOP",
       name: "ProxOP",
       typeField: "int",
-      size: 2,
     },
     {
       field: "ProxOPPU",
       label: "ProxOPPU",
       name: "ProxOPPU",
       typeField: "int",
-      size: 2,
     },
     {
       field: "ProxOPRet",
       label: "ProxOPRet",
       name: "ProxOPRet",
       typeField: "int",
-      size: 2,
     },
     {
       field: "ehRetrabalho",
       label: "ehRetrabalho",
       name: "ehRetrabalho",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },

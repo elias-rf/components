@@ -9,7 +9,7 @@ export const TabBan: TTableDef = {
       label: "CdBanco",
       name: "TabBan_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,14 +18,13 @@ export const TabBan: TTableDef = {
       label: "NmBanco",
       name: "NmBanco",
       typeField: "string",
-      size: 50,
     },
     {
       field: "IdEmpresa",
       label: "IdEmpresa",
       name: "IdEmpresa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -33,56 +32,49 @@ export const TabBan: TTableDef = {
       label: "SiglaEmpresa",
       name: "SiglaEmpresa",
       typeField: "string",
-      size: 30,
     },
     {
       field: "FgTipoProducao",
       label: "FgTipoProducao",
       name: "FgTipoProducao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NmCedente",
       label: "NmCedente",
       name: "NmCedente",
       typeField: "string",
-      size: 40,
     },
     {
       field: "NumeroContratoCaucao",
       label: "NumeroContratoCaucao",
       name: "NumeroContratoCaucao",
       typeField: "string",
-      size: 10,
     },
     {
       field: "NumeroConvenio",
       label: "NumeroConvenio",
       name: "NumeroConvenio",
       typeField: "string",
-      size: 10,
     },
     {
       field: "FgSacador",
       label: "FgSacador",
       name: "FgSacador",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgValorMulta",
       label: "FgValorMulta",
       name: "FgValorMulta",
       typeField: "string",
-      size: 1,
     },
     {
       field: "PercMulta",
       label: "PercMulta",
       name: "PercMulta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -90,7 +82,7 @@ export const TabBan: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -98,7 +90,6 @@ export const TabBan: TTableDef = {
       label: "LogoMarcaBanco",
       name: "LogoMarcaBanco",
       typeField: "string",
-      size: 128,
     },
   ],
 };

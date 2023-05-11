@@ -9,7 +9,7 @@ export const MestreMapaEntrega: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MestreMapaEntrega: TTableDef = {
       label: "NumMapa",
       name: "NumMapa",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const MestreMapaEntrega: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -34,7 +34,7 @@ export const MestreMapaEntrega: TTableDef = {
       label: "Horario",
       name: "Horario",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -42,7 +42,7 @@ export const MestreMapaEntrega: TTableDef = {
       label: "CdTransportador",
       name: "CdTransportador",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -50,21 +50,19 @@ export const MestreMapaEntrega: TTableDef = {
       label: "Observacoes",
       name: "Observacoes",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "FgSituacao",
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtAcerto",
       label: "DtAcerto",
       name: "DtAcerto",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -72,28 +70,24 @@ export const MestreMapaEntrega: TTableDef = {
       label: "CdUsuarioInc",
       name: "CdUsuarioInc",
       typeField: "string",
-      size: 10,
     },
     {
       field: "CdUsuarioAce",
       label: "CdUsuarioAce",
       name: "CdUsuarioAce",
       typeField: "string",
-      size: 10,
     },
     {
       field: "CdPostoAtendimento",
       label: "CdPostoAtendimento",
       name: "CdPostoAtendimento",
       typeField: "int",
-      size: 4,
     },
     {
       field: "FgConferencia",
       label: "FgConferencia",
       name: "FgConferencia",
       typeField: "string",
-      size: 1,
     },
   ],
 };

@@ -9,7 +9,7 @@ export const EstoqueDiarioMestre: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const EstoqueDiarioMestre: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const EstoqueDiarioMestre: TTableDef = {
       label: "NumSerieECF",
       name: "NumSerieECF",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const EstoqueDiarioMestre: TTableDef = {
       label: "MFAdicional",
       name: "MFAdicional",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const EstoqueDiarioMestre: TTableDef = {
       label: "TipoECF",
       name: "TipoECF",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const EstoqueDiarioMestre: TTableDef = {
       label: "MarcaECF",
       name: "MarcaECF",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const EstoqueDiarioMestre: TTableDef = {
       label: "ModeloECF",
       name: "ModeloECF",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const EstoqueDiarioMestre: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

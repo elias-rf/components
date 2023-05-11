@@ -9,21 +9,19 @@ export const PagamentoPedido: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdBanco",
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdClienteAssociado",
       label: "CdClienteAssociado",
       name: "CdClienteAssociado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -31,7 +29,7 @@ export const PagamentoPedido: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -39,7 +37,7 @@ export const PagamentoPedido: TTableDef = {
       label: "DtVencimento",
       name: "DtVencimento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -47,7 +45,7 @@ export const PagamentoPedido: TTableDef = {
       label: "ItemDoc",
       name: "ItemDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -55,28 +53,25 @@ export const PagamentoPedido: TTableDef = {
       label: "NmCartao",
       name: "NmCartao",
       typeField: "string",
-      size: 15,
     },
     {
       field: "NumCheque",
       label: "NumCheque",
       name: "NumCheque",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NumConta",
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
     },
     {
       field: "NumPedido",
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -84,21 +79,19 @@ export const PagamentoPedido: TTableDef = {
       label: "ParcelasCartao",
       name: "ParcelasCartao",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Prazo",
       label: "Prazo",
       name: "Prazo",
       typeField: "int",
-      size: 4,
     },
     {
       field: "SiglaDoc",
       label: "SiglaDoc",
       name: "SiglaDoc",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -106,7 +99,7 @@ export const PagamentoPedido: TTableDef = {
       label: "Taxa",
       name: "Taxa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -114,7 +107,7 @@ export const PagamentoPedido: TTableDef = {
       label: "VlCorrecao",
       name: "VlCorrecao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -122,7 +115,7 @@ export const PagamentoPedido: TTableDef = {
       label: "VlPrincipal",
       name: "VlPrincipal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -130,7 +123,7 @@ export const PagamentoPedido: TTableDef = {
       label: "CdFuncionario",
       name: "CdFuncionario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -138,21 +131,18 @@ export const PagamentoPedido: TTableDef = {
       label: "NmFuncionario",
       name: "NmFuncionario",
       typeField: "string",
-      size: 40,
     },
     {
       field: "CdCondPagto",
       label: "CdCondPagto",
       name: "CdCondPagto",
       typeField: "int",
-      size: 4,
     },
     {
       field: "FgCobrancaBancaria",
       label: "FgCobrancaBancaria",
       name: "FgCobrancaBancaria",
       typeField: "string",
-      size: 1,
     },
   ],
 };

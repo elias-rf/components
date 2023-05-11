@@ -9,7 +9,7 @@ export const CadCliAMIVida: TTableDef = {
       label: "CdCliente",
       name: "CadCliAMIVida_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const CadCliAMIVida: TTableDef = {
       label: "FgEnvioMaterial",
       name: "FgEnvioMaterial",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const CadCliAMIVida: TTableDef = {
       label: "FgEnvioBrindes",
       name: "FgEnvioBrindes",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const CadCliAMIVida: TTableDef = {
       label: "FgTeleAtivo",
       name: "FgTeleAtivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const CadCliAMIVida: TTableDef = {
       label: "DtUltContato",
       name: "DtUltContato",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -51,7 +51,6 @@ export const CadCliAMIVida: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 512,
     },
   ],
 };

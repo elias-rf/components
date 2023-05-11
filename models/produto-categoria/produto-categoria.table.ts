@@ -9,7 +9,7 @@ export const produto_categoria: TTableDef = {
       label: "CdCategoria",
       name: "produto_categoria_id",
       typeField: "string",
-      size: 6,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,14 +18,12 @@ export const produto_categoria: TTableDef = {
       label: "NmCategoria",
       name: "categoria",
       typeField: "string",
-      size: 30,
     },
     {
       field: "CdDepartamento",
       label: "CdDepartamento",
       name: "departamento_id",
       typeField: "int",
-      size: 2,
     },
   ],
 };

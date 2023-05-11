@@ -9,7 +9,7 @@ export const SubTipoFor: TTableDef = {
       label: "CdSubTipo",
       name: "SubTipoFor_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,6 @@ export const SubTipoFor: TTableDef = {
       label: "NmSubTipo",
       name: "NmSubTipo",
       typeField: "string",
-      size: 40,
     },
   ],
 };

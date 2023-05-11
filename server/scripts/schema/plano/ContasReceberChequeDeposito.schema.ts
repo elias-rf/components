@@ -9,7 +9,7 @@ export const ContasReceberChequeDeposito: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ContasReceberChequeDeposito: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ContasReceberChequeDeposito: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ContasReceberChequeDeposito: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ContasReceberChequeDeposito: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ContasReceberChequeDeposito: TTableDef = {
       label: "SiglaDocumento",
       name: "SiglaDocumento",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ContasReceberChequeDeposito: TTableDef = {
       label: "ItemDocumento",
       name: "ItemDocumento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const ContasReceberChequeDeposito: TTableDef = {
       label: "CdBancoDeposito",
       name: "CdBancoDeposito",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const ContasReceberChequeDeposito: TTableDef = {
       label: "CdAgenciaDeposito",
       name: "CdAgenciaDeposito",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const ContasReceberChequeDeposito: TTableDef = {
       label: "NumContaDeposito",
       name: "NumContaDeposito",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const ContasReceberChequeDeposito: TTableDef = {
       label: "NumLancamentoDeposito",
       name: "NumLancamentoDeposito",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -97,7 +97,7 @@ export const ContasReceberChequeDeposito: TTableDef = {
       label: "DtInclusao",
       name: "DtInclusao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -106,7 +106,7 @@ export const ContasReceberChequeDeposito: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

@@ -9,7 +9,7 @@ export const GrupoProdutos: TTableDef = {
       label: "CdGrupo",
       name: "GrupoProdutos_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,14 +18,12 @@ export const GrupoProdutos: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 25,
     },
     {
       field: "FgListaPreco",
       label: "FgListaPreco",
       name: "FgListaPreco",
       typeField: "string",
-      size: 1,
     },
   ],
 };

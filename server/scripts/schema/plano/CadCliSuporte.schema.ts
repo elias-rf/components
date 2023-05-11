@@ -9,7 +9,7 @@ export const CadCliSuporte: TTableDef = {
       label: "CdCliente",
       name: "CadCliSuporte_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadCliSuporte: TTableDef = {
       label: "UsuarioSite",
       name: "UsuarioSite",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CadCliSuporte: TTableDef = {
       label: "SenhaSite",
       name: "SenhaSite",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -34,14 +34,12 @@ export const CadCliSuporte: TTableDef = {
       label: "NmGestor",
       name: "NmGestor",
       typeField: "string",
-      size: 64,
     },
     {
       field: "EmailGestor",
       label: "EmailGestor",
       name: "EmailGestor",
       typeField: "string",
-      size: 128,
     },
   ],
 };

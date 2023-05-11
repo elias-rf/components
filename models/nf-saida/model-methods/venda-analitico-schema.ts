@@ -1,6 +1,6 @@
-import { TFieldDef } from "@/types";
+import { TSchema } from "@/types";
 
-export function vendaAnaliticoSchema(): () => Promise<TFieldDef[]> {
+export function vendaAnaliticoSchema(): () => Promise<TSchema> {
   return async () => {
     return [
       {

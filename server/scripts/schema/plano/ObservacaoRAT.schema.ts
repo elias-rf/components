@@ -9,7 +9,7 @@ export const ObservacaoRAT: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ObservacaoRAT: TTableDef = {
       label: "NumeroRAT",
       name: "NumeroRAT",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ObservacaoRAT: TTableDef = {
       label: "Ocorrencia",
       name: "Ocorrencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,6 @@ export const ObservacaoRAT: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
     },
   ],
 };

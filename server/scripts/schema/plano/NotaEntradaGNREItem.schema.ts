@@ -9,7 +9,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "ClassificacaoProduto",
       name: "ClassificacaoProduto",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "VlPMC",
       name: "VlPMC",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -74,7 +74,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "PercRedBaseSTPMC",
       name: "PercRedBaseSTPMC",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -83,7 +83,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "PercMVA",
       name: "PercMVA",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -92,7 +92,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "PercRedBaseSTMVA",
       name: "PercRedBaseSTMVA",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -101,7 +101,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "PercReducaoICMS",
       name: "PercReducaoICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -110,7 +110,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "VlBaseCalculoICMS",
       name: "VlBaseCalculoICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -119,7 +119,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "AliquotaICMS",
       name: "AliquotaICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -128,7 +128,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "VlICMS",
       name: "VlICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -137,7 +137,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "VlBaseCalculoICMSSub",
       name: "VlBaseCalculoICMSSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -146,7 +146,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "AliquotaICMSSub",
       name: "AliquotaICMSSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -155,7 +155,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "VlICMSSub",
       name: "VlICMSSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -164,7 +164,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "VlICMSRecolher",
       name: "VlICMSRecolher",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -173,7 +173,7 @@ export const NotaEntradaGNREItem: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

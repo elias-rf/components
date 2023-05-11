@@ -9,7 +9,7 @@ export const CadastroDCB: TTableDef = {
       label: "CdDCB",
       name: "CadastroDCB_id",
       typeField: "string",
-      size: 16,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,21 +18,19 @@ export const CadastroDCB: TTableDef = {
       label: "DescricaoDCB",
       name: "DescricaoDCB",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Observacao",
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
   ],

@@ -32,32 +32,31 @@ export type TOrdemProducaoOperacaoFields =
 export type TOrdemProducaoOperacaoIds = {
   [pk in keyof Required<TOrdemProducaoOperacaoPk>]: any;
 };
-export type TOrdemProducaoOperacaoSelect =
-  TSelect<TOrdemProducaoOperacaoFields>;
-export type TOrdemProducaoOperacaoWhere = TWhere<TOrdemProducaoOperacaoFields>;
-export type TOrdemProducaoOperacaoOrder = TOrder<TOrdemProducaoOperacaoFields>;
+export type TOrdemProducaoOperacaoSelect = TSelect;
+export type TOrdemProducaoOperacaoWhere = TWhere;
+export type TOrdemProducaoOperacaoOrder = TOrder;
 
 export type TOrdemProducaoOperacaoSchema = () => Promise<TFieldDef[]>;
 export type TOrdemProducaoOperacaoClear = () => Promise<TOrdemProducaoOperacao>;
 export type TOrdemProducaoOperacaoList = (args: {
-  where?: TWhere<TOrdemProducaoOperacaoFields>[];
-  order?: TOrder<TOrdemProducaoOperacaoFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TOrdemProducaoOperacaoFields>;
+  select?: TSelect;
 }) => Promise<TOrdemProducaoOperacao[]>;
 export type TOrdemProducaoOperacaoRead = (args: {
   id: TOrdemProducaoOperacaoIds;
-  select?: TSelect<TOrdemProducaoOperacaoFields>;
+  select?: TSelect;
 }) => Promise<TOrdemProducaoOperacao>;
 
 export type TOrdemProducaoOperacaoCreate = (args: {
   data: TOrdemProducaoOperacao;
-  select?: TSelect<TOrdemProducaoOperacaoFields>;
+  select?: TSelect;
 }) => Promise<TOrdemProducaoOperacao>;
 export type TOrdemProducaoOperacaoUpdate = (args: {
   id: TOrdemProducaoOperacaoIds;
   data: TOrdemProducaoOperacao;
-  select?: TSelect<TOrdemProducaoOperacaoFields>;
+  select?: TSelect;
 }) => Promise<TOrdemProducaoOperacao>;
 export type TOrdemProducaoOperacaoDel = (args: {
   id: TOrdemProducaoOperacaoIds;

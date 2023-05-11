@@ -9,7 +9,7 @@ export const MapaEntregaOutros: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MapaEntregaOutros: TTableDef = {
       label: "NumMapa",
       name: "NumMapa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const MapaEntregaOutros: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const MapaEntregaOutros: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -44,7 +44,7 @@ export const MapaEntregaOutros: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -52,7 +52,7 @@ export const MapaEntregaOutros: TTableDef = {
       label: "Valor",
       name: "Valor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -61,7 +61,6 @@ export const MapaEntregaOutros: TTableDef = {
       label: "TipoAssoc",
       name: "TipoAssoc",
       typeField: "string",
-      size: 3,
     },
   ],
 };

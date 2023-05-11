@@ -9,7 +9,7 @@ export const ControladosPedido: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ControladosPedido: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ControladosPedido: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ControladosPedido: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ControladosPedido: TTableDef = {
       label: "QtdePrescrita",
       name: "QtdePrescrita",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -50,7 +50,7 @@ export const ControladosPedido: TTableDef = {
       label: "QtdeVendida",
       name: "QtdeVendida",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -58,7 +58,7 @@ export const ControladosPedido: TTableDef = {
       label: "CRM",
       name: "CRM",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const ControladosPedido: TTableDef = {
       label: "DtReceita",
       name: "DtReceita",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -74,14 +74,13 @@ export const ControladosPedido: TTableDef = {
       label: "NumReceita",
       name: "NumReceita",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdComprador",
       label: "CdComprador",
       name: "CdComprador",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -89,35 +88,30 @@ export const ControladosPedido: TTableDef = {
       label: "NomeComprador",
       name: "NomeComprador",
       typeField: "string",
-      size: 70,
     },
     {
       field: "Endereco",
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 70,
     },
     {
       field: "NumIdentidade",
       label: "NumIdentidade",
       name: "NumIdentidade",
       typeField: "string",
-      size: 20,
     },
     {
       field: "Telefone",
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 20,
     },
     {
       field: "TipoReceita",
       label: "TipoReceita",
       name: "TipoReceita",
       typeField: "string",
-      size: 2,
     },
   ],
 };

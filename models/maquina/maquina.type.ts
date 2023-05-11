@@ -19,31 +19,31 @@ export type TMaquinaFields = keyof Required<TMaquina>;
 export type TMaquinaIds = {
   [pk in keyof Required<TMaquinaPk>]: any;
 };
-export type TMaquinaSelect = TSelect<TMaquinaFields>;
-export type TMaquinaWhere = TWhere<TMaquinaFields>;
-export type TMaquinaOrder = TOrder<TMaquinaFields>;
+export type TMaquinaSelect = TSelect;
+export type TMaquinaWhere = TWhere;
+export type TMaquinaOrder = TOrder;
 
 export type TMaquinaSchema = () => Promise<TFieldDef[]>;
 export type TMaquinaClear = () => Promise<TMaquina>;
 export type TMaquinaList = (args: {
-  where?: TWhere<TMaquinaFields>[];
-  order?: TOrder<TMaquinaFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TMaquinaFields>;
+  select?: TSelect;
 }) => Promise<TMaquina[]>;
 export type TMaquinaRead = (args: {
   id: TMaquinaIds;
-  select?: TSelect<TMaquinaFields>;
+  select?: TSelect;
 }) => Promise<TMaquina>;
 
 export type TMaquinaCreate = (args: {
   data: TMaquina;
-  select?: TSelect<TMaquinaFields>;
+  select?: TSelect;
 }) => Promise<TMaquina>;
 export type TMaquinaUpdate = (args: {
   id: TMaquinaIds;
   data: TMaquina;
-  select?: TSelect<TMaquinaFields>;
+  select?: TSelect;
 }) => Promise<TMaquina>;
 export type TMaquinaDel = (args: { id: TMaquinaIds }) => Promise<number>;
 

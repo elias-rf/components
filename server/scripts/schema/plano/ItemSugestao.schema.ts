@@ -9,7 +9,7 @@ export const ItemSugestao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ItemSugestao: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ItemSugestao: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ItemSugestao: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -41,14 +41,13 @@ export const ItemSugestao: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 50,
     },
     {
       field: "Qtde",
       label: "Qtde",
       name: "Qtde",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -56,7 +55,7 @@ export const ItemSugestao: TTableDef = {
       label: "VlUnitario",
       name: "VlUnitario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -64,7 +63,7 @@ export const ItemSugestao: TTableDef = {
       label: "VlLiquido",
       name: "VlLiquido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -72,7 +71,7 @@ export const ItemSugestao: TTableDef = {
       label: "VlTotal",
       name: "VlTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

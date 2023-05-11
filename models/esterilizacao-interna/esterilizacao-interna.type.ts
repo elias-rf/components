@@ -20,31 +20,31 @@ export type TEsterilizacaoInternaFields = keyof Required<TEsterilizacaoInterna>;
 export type TEsterilizacaoInternaIds = {
   [pk in keyof Required<TEsterilizacaoInternaPk>]: any;
 };
-export type TEsterilizacaoInternaSelect = TSelect<TEsterilizacaoInternaFields>;
-export type TEsterilizacaoInternaWhere = TWhere<TEsterilizacaoInternaFields>;
-export type TEsterilizacaoInternaOrder = TOrder<TEsterilizacaoInternaFields>;
+export type TEsterilizacaoInternaSelect = TSelect;
+export type TEsterilizacaoInternaWhere = TWhere;
+export type TEsterilizacaoInternaOrder = TOrder;
 
 export type TEsterilizacaoInternaSchema = () => Promise<TFieldDef[]>;
 export type TEsterilizacaoInternaClear = () => Promise<TEsterilizacaoInterna>;
 export type TEsterilizacaoInternaList = (args: {
-  where?: TWhere<TEsterilizacaoInternaFields>[];
-  order?: TOrder<TEsterilizacaoInternaFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TEsterilizacaoInternaFields>;
+  select?: TSelect;
 }) => Promise<TEsterilizacaoInterna[]>;
 export type TEsterilizacaoInternaRead = (args: {
   id: TEsterilizacaoInternaIds;
-  select?: TSelect<TEsterilizacaoInternaFields>;
+  select?: TSelect;
 }) => Promise<TEsterilizacaoInterna>;
 
 export type TEsterilizacaoInternaCreate = (args: {
   data: TEsterilizacaoInterna;
-  select?: TSelect<TEsterilizacaoInternaFields>;
+  select?: TSelect;
 }) => Promise<TEsterilizacaoInterna>;
 export type TEsterilizacaoInternaUpdate = (args: {
   id: TEsterilizacaoInternaIds;
   data: TEsterilizacaoInterna;
-  select?: TSelect<TEsterilizacaoInternaFields>;
+  select?: TSelect;
 }) => Promise<TEsterilizacaoInterna>;
 export type TEsterilizacaoInternaDel = (args: {
   id: TEsterilizacaoInternaIds;

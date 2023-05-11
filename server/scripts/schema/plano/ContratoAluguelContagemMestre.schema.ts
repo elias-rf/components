@@ -9,7 +9,7 @@ export const ContratoAluguelContagemMestre: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ContratoAluguelContagemMestre: TTableDef = {
       label: "DiaContr",
       name: "DiaContr",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ContratoAluguelContagemMestre: TTableDef = {
       label: "DtContagem",
       name: "DtContagem",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const ContratoAluguelContagemMestre: TTableDef = {
       label: "UsuarioContagem",
       name: "UsuarioContagem",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ContratoAluguelContagemMestre: TTableDef = {
       label: "VlFranquia",
       name: "VlFranquia",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const ContratoAluguelContagemMestre: TTableDef = {
       label: "QtdeFranquia",
       name: "QtdeFranquia",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -61,7 +61,7 @@ export const ContratoAluguelContagemMestre: TTableDef = {
       label: "QtdeContada",
       name: "QtdeContada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -70,7 +70,7 @@ export const ContratoAluguelContagemMestre: TTableDef = {
       label: "VlUnitExcedente",
       name: "VlUnitExcedente",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -78,7 +78,7 @@ export const ContratoAluguelContagemMestre: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -87,7 +87,7 @@ export const ContratoAluguelContagemMestre: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -95,7 +95,7 @@ export const ContratoAluguelContagemMestre: TTableDef = {
       label: "UsuarioNota",
       name: "UsuarioNota",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -103,7 +103,7 @@ export const ContratoAluguelContagemMestre: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
   ],

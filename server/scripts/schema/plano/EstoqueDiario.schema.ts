@@ -9,7 +9,7 @@ export const EstoqueDiario: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const EstoqueDiario: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const EstoqueDiario: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const EstoqueDiario: TTableDef = {
       label: "QtdeEstoque",
       name: "QtdeEstoque",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

@@ -9,7 +9,7 @@ export const NotaTerceirosNfe: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaTerceirosNfe: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaTerceirosNfe: TTableDef = {
       label: "CdEmitente",
       name: "CdEmitente",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaTerceirosNfe: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaTerceirosNfe: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaTerceirosNfe: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NotaTerceirosNfe: TTableDef = {
       label: "NumChaveNfe",
       name: "NumChaveNfe",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

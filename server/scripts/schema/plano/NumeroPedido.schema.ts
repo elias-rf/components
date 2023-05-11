@@ -9,7 +9,7 @@ export const NumeroPedido: TTableDef = {
       label: "CdFilial",
       name: "NumeroPedido_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,6 @@ export const NumeroPedido: TTableDef = {
       label: "NumUltPedido",
       name: "NumUltPedido",
       typeField: "int",
-      size: 4,
     },
   ],
 };

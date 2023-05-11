@@ -9,7 +9,7 @@ export const CadCli: TTableDef = {
       label: "CdCliente",
       name: "CadCli_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,42 +19,42 @@ export const CadCli: TTableDef = {
       label: "RzSocial",
       name: "RzSocial",
       typeField: "string",
-      size: 70,
+
     },
     {
       field: "Endereco",
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 70,
+
     },
     {
       field: "Bairro",
       label: "Bairro",
       name: "Bairro",
       typeField: "string",
-      size: 30,
+
     },
     {
       field: "Cidade",
       label: "Cidade",
       name: "Cidade",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "Uf",
       label: "Uf",
       name: "Uf",
       typeField: "string",
-      size: 2,
+
     },
     {
       field: "Cep",
       label: "Cep",
       name: "Cep",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -62,7 +62,7 @@ export const CadCli: TTableDef = {
       label: "EMail",
       name: "EMail",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -70,7 +70,7 @@ export const CadCli: TTableDef = {
       label: "CGC",
       name: "CGC",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -78,7 +78,7 @@ export const CadCli: TTableDef = {
       label: "NumIdentidade",
       name: "NumIdentidade",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -86,35 +86,35 @@ export const CadCli: TTableDef = {
       label: "InscEst",
       name: "InscEst",
       typeField: "string",
-      size: 18,
+
     },
     {
       field: "Telefone",
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "Fax",
       label: "Fax",
       name: "Fax",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "CxPostal",
       label: "CxPostal",
       name: "CxPostal",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "CdVendedor",
       label: "CdVendedor",
       name: "CdVendedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -122,42 +122,42 @@ export const CadCli: TTableDef = {
       label: "Classificacao",
       name: "Classificacao",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "Credito",
       label: "Credito",
       name: "Credito",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "CidadeCob",
       label: "CidadeCob",
       name: "CidadeCob",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "BairroCob",
       label: "BairroCob",
       name: "BairroCob",
       typeField: "string",
-      size: 30,
+
     },
     {
       field: "UfCob",
       label: "UfCob",
       name: "UfCob",
       typeField: "string",
-      size: 2,
+
     },
     {
       field: "CepCob",
       label: "CepCob",
       name: "CepCob",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -165,14 +165,14 @@ export const CadCli: TTableDef = {
       label: "BairroTrab",
       name: "BairroTrab",
       typeField: "string",
-      size: 30,
+
     },
     {
       field: "CepTrab",
       label: "CepTrab",
       name: "CepTrab",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -180,7 +180,7 @@ export const CadCli: TTableDef = {
       label: "CapSocial",
       name: "CapSocial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -188,28 +188,28 @@ export const CadCli: TTableDef = {
       label: "Cargo1",
       name: "Cargo1",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "Cargo2",
       label: "Cargo2",
       name: "Cargo2",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "Cargo3",
       label: "Cargo3",
       name: "Cargo3",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "Cota1",
       label: "Cota1",
       name: "Cota1",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -217,7 +217,7 @@ export const CadCli: TTableDef = {
       label: "Cota2",
       name: "Cota2",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -225,7 +225,7 @@ export const CadCli: TTableDef = {
       label: "Cota3",
       name: "Cota3",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -233,21 +233,21 @@ export const CadCli: TTableDef = {
       label: "CartPro",
       name: "CartPro",
       typeField: "string",
-      size: 15,
+
     },
     {
       field: "CdFilial",
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
     },
     {
       field: "CGCConjugue",
       label: "CGCConjugue",
       name: "CGCConjugue",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -255,14 +255,14 @@ export const CadCli: TTableDef = {
       label: "DiaLimiteFaturamento",
       name: "DiaLimiteFaturamento",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "DtAdmissao",
       label: "DtAdmissao",
       name: "DtAdmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -270,7 +270,7 @@ export const CadCli: TTableDef = {
       label: "DtConsulta",
       name: "DtConsulta",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -278,7 +278,7 @@ export const CadCli: TTableDef = {
       label: "DtFundacao",
       name: "DtFundacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -286,7 +286,7 @@ export const CadCli: TTableDef = {
       label: "DtMaiorCompra",
       name: "DtMaiorCompra",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -294,7 +294,7 @@ export const CadCli: TTableDef = {
       label: "DtNascConjugue",
       name: "DtNascConjugue",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -302,7 +302,7 @@ export const CadCli: TTableDef = {
       label: "DtPriCompra",
       name: "DtPriCompra",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -310,7 +310,7 @@ export const CadCli: TTableDef = {
       label: "DtResidencia",
       name: "DtResidencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -318,7 +318,7 @@ export const CadCli: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -326,7 +326,7 @@ export const CadCli: TTableDef = {
       label: "DtUltRetorno",
       name: "DtUltRetorno",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -334,224 +334,224 @@ export const CadCli: TTableDef = {
       label: "EnderecoCob",
       name: "EnderecoCob",
       typeField: "string",
-      size: 140,
+
     },
     {
       field: "EnderecoRef1",
       label: "EnderecoRef1",
       name: "EnderecoRef1",
       typeField: "string",
-      size: 50,
+
     },
     {
       field: "EnderecoRef2",
       label: "EnderecoRef2",
       name: "EnderecoRef2",
       typeField: "string",
-      size: 50,
+
     },
     {
       field: "EnderecoRef3",
       label: "EnderecoRef3",
       name: "EnderecoRef3",
       typeField: "string",
-      size: 50,
+
     },
     {
       field: "EnderecoTrab",
       label: "EnderecoTrab",
       name: "EnderecoTrab",
       typeField: "string",
-      size: 50,
+
     },
     {
       field: "EstadoCivil",
       label: "EstadoCivil",
       name: "EstadoCivil",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "Experiencia",
       label: "Experiencia",
       name: "Experiencia",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "FgBloqueio",
       label: "FgBloqueio",
       name: "FgBloqueio",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "FgContribuinte",
       label: "FgContribuinte",
       name: "FgContribuinte",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "FgFaturamento",
       label: "FgFaturamento",
       name: "FgFaturamento",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "FgPropria",
       label: "FgPropria",
       name: "FgPropria",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "Fidelidade",
       label: "Fidelidade",
       name: "Fidelidade",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "FoneRec",
       label: "FoneRec",
       name: "FoneRec",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "FoneRef1",
       label: "FoneRef1",
       name: "FoneRef1",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "FoneRef2",
       label: "FoneRef2",
       name: "FoneRef2",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "FoneRef3",
       label: "FoneRef3",
       name: "FoneRef3",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "FoneTrabalho",
       label: "FoneTrabalho",
       name: "FoneTrabalho",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "Funcao",
       label: "Funcao",
       name: "Funcao",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "HabPgtoAnt",
       label: "HabPgtoAnt",
       name: "HabPgtoAnt",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "HabPgtoAtu",
       label: "HabPgtoAtu",
       name: "HabPgtoAtu",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "LocalTrabalho",
       label: "LocalTrabalho",
       name: "LocalTrabalho",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "NmFantasia",
       label: "NmFantasia",
       name: "NmFantasia",
       typeField: "string",
-      size: 70,
+
     },
     {
       field: "NmMae",
       label: "NmMae",
       name: "NmMae",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "NmPai",
       label: "NmPai",
       name: "NmPai",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "NomeConjugue",
       label: "NomeConjugue",
       name: "NomeConjugue",
       typeField: "string",
-      size: 50,
+
     },
     {
       field: "NomeRef1",
       label: "NomeRef1",
       name: "NomeRef1",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "NomeRef2",
       label: "NomeRef2",
       name: "NomeRef2",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "NomeRef3",
       label: "NomeRef3",
       name: "NomeRef3",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "NumDepend",
       label: "NumDepend",
       name: "NumDepend",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "NumRetorno",
       label: "NumRetorno",
       name: "NumRetorno",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "Observacao",
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
+
     },
     {
       field: "OutrosRen",
       label: "OutrosRen",
       name: "OutrosRen",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -559,14 +559,14 @@ export const CadCli: TTableDef = {
       label: "Pagto",
       name: "Pagto",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "PercComissaoPrazo",
       label: "PercComissaoPrazo",
       name: "PercComissaoPrazo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -574,7 +574,7 @@ export const CadCli: TTableDef = {
       label: "PercComissaoVista",
       name: "PercComissaoVista",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -582,28 +582,28 @@ export const CadCli: TTableDef = {
       label: "PrazoFaturamento",
       name: "PrazoFaturamento",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "RamalTrab",
       label: "RamalTrab",
       name: "RamalTrab",
       typeField: "string",
-      size: 4,
+
     },
     {
       field: "Regiao",
       label: "Regiao",
       name: "Regiao",
       typeField: "string",
-      size: 10,
+
     },
     {
       field: "RenFam",
       label: "RenFam",
       name: "RenFam",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -611,28 +611,28 @@ export const CadCli: TTableDef = {
       label: "Responsavel",
       name: "Responsavel",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "RG",
       label: "RG",
       name: "RG",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "RGConjugue",
       label: "RGConjugue",
       name: "RGConjugue",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "Salario",
       label: "Salario",
       name: "Salario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -640,98 +640,98 @@ export const CadCli: TTableDef = {
       label: "Serasa",
       name: "Serasa",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "SerieCartPro",
       label: "SerieCartPro",
       name: "SerieCartPro",
       typeField: "string",
-      size: 15,
+
     },
     {
       field: "Sexo",
       label: "Sexo",
       name: "Sexo",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "Socio1",
       label: "Socio1",
       name: "Socio1",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "Socio2",
       label: "Socio2",
       name: "Socio2",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "Socio3",
       label: "Socio3",
       name: "Socio3",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "Spc",
       label: "Spc",
       name: "Spc",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "TempoResposta",
       label: "TempoResposta",
       name: "TempoResposta",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "TempoSolucao",
       label: "TempoSolucao",
       name: "TempoSolucao",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "TipoFaturamento",
       label: "TipoFaturamento",
       name: "TipoFaturamento",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "TipoPreco",
       label: "TipoPreco",
       name: "TipoPreco",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "Unidade",
       label: "Unidade",
       name: "Unidade",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "VideoCheque",
       label: "VideoCheque",
       name: "VideoCheque",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "VlLimite",
       label: "VlLimite",
       name: "VlLimite",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -739,7 +739,7 @@ export const CadCli: TTableDef = {
       label: "VlMaiorCompra",
       name: "VlMaiorCompra",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -747,7 +747,7 @@ export const CadCli: TTableDef = {
       label: "VlPriCompra",
       name: "VlPriCompra",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -755,7 +755,7 @@ export const CadCli: TTableDef = {
       label: "VlUltCompra",
       name: "VlUltCompra",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -763,35 +763,35 @@ export const CadCli: TTableDef = {
       label: "CdTipo",
       name: "CdTipo",
       typeField: "int",
-      size: 2,
+
     },
     {
       field: "CdBanco",
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 2,
+
     },
     {
       field: "CdAgencia",
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 2,
+
     },
     {
       field: "NmCobranca",
       label: "NmCobranca",
       name: "NmCobranca",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "DtNasc",
       label: "DtNasc",
       name: "DtNasc",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -799,14 +799,14 @@ export const CadCli: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "DtUltAtraso",
       label: "DtUltAtraso",
       name: "DtUltAtraso",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -814,28 +814,28 @@ export const CadCli: TTableDef = {
       label: "VlMaiorAtraso",
       name: "VlMaiorAtraso",
       typeField: "int",
-      size: 2,
+
     },
     {
       field: "QtdeAtraso",
       label: "QtdeAtraso",
       name: "QtdeAtraso",
       typeField: "int",
-      size: 2,
+
     },
     {
       field: "NroDiasAtraso",
       label: "NroDiasAtraso",
       name: "NroDiasAtraso",
       typeField: "int",
-      size: 2,
+
     },
     {
       field: "DtUltCompra",
       label: "DtUltCompra",
       name: "DtUltCompra",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -843,35 +843,35 @@ export const CadCli: TTableDef = {
       label: "TipoCobranca",
       name: "TipoCobranca",
       typeField: "string",
-      size: 15,
+
     },
     {
       field: "CidadeTrab",
       label: "CidadeTrab",
       name: "CidadeTrab",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "UfTrab",
       label: "UfTrab",
       name: "UfTrab",
       typeField: "string",
-      size: 2,
+
     },
     {
       field: "NumMatricula",
       label: "NumMatricula",
       name: "NumMatricula",
       typeField: "float",
-      size: 8,
+
     },
     {
       field: "DtAprovacaoCadastro",
       label: "DtAprovacaoCadastro",
       name: "DtAprovacaoCadastro",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -879,56 +879,56 @@ export const CadCli: TTableDef = {
       label: "FgFichaCadastro",
       name: "FgFichaCadastro",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "Nacionalidade",
       label: "Nacionalidade",
       name: "Nacionalidade",
       typeField: "string",
-      size: 25,
+
     },
     {
       field: "Profissao",
       label: "Profissao",
       name: "Profissao",
       typeField: "string",
-      size: 30,
+
     },
     {
       field: "NumCartPlanoSaude",
       label: "NumCartPlanoSaude",
       name: "NumCartPlanoSaude",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "LocalTrabalhoConjuge",
       label: "LocalTrabalhoConjuge",
       name: "LocalTrabalhoConjuge",
       typeField: "string",
-      size: 50,
+
     },
     {
       field: "AcrescimoCusto",
       label: "AcrescimoCusto",
       name: "AcrescimoCusto",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "FgBancoHoras",
       label: "FgBancoHoras",
       name: "FgBancoHoras",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "Peso",
       label: "Peso",
       name: "Peso",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -936,7 +936,7 @@ export const CadCli: TTableDef = {
       label: "Altura",
       name: "Altura",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -944,35 +944,35 @@ export const CadCli: TTableDef = {
       label: "Alergia",
       name: "Alergia",
       typeField: "string",
-      size: 1024,
+
     },
     {
       field: "NmContatoCliente",
       label: "NmContatoCliente",
       name: "NmContatoCliente",
       typeField: "string",
-      size: 25,
+
     },
     {
       field: "CdRamoAtividade",
       label: "CdRamoAtividade",
       name: "CdRamoAtividade",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "CdCidade",
       label: "CdCidade",
       name: "CdCidade",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "PercAcrescimoAtacado",
       label: "PercAcrescimoAtacado",
       name: "PercAcrescimoAtacado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -980,28 +980,28 @@ export const CadCli: TTableDef = {
       label: "DiaLimiteFaturamento2",
       name: "DiaLimiteFaturamento2",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "DiaVencimento",
       label: "DiaVencimento",
       name: "DiaVencimento",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "DiaVencimento2",
       label: "DiaVencimento2",
       name: "DiaVencimento2",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "VlCredito",
       label: "VlCredito",
       name: "VlCredito",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1009,21 +1009,21 @@ export const CadCli: TTableDef = {
       label: "ModeloArquivo",
       name: "ModeloArquivo",
       typeField: "string",
-      size: 10,
+
     },
     {
       field: "TelefoneAdicional",
       label: "TelefoneAdicional",
       name: "TelefoneAdicional",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "NumCartaoFidelidade",
       label: "NumCartaoFidelidade",
       name: "NumCartaoFidelidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1031,21 +1031,21 @@ export const CadCli: TTableDef = {
       label: "NumEndereco",
       name: "NumEndereco",
       typeField: "int",
-      size: 4,
+
     },
     {
       field: "NmPaciente",
       label: "NmPaciente",
       name: "NmPaciente",
       typeField: "string",
-      size: 40,
+
     },
     {
       field: "DtInicioFidelidade",
       label: "DtInicioFidelidade",
       name: "DtInicioFidelidade",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -1053,28 +1053,28 @@ export const CadCli: TTableDef = {
       label: "FgOptanteSimples",
       name: "FgOptanteSimples",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "Complemento",
       label: "Complemento",
       name: "Complemento",
       typeField: "string",
-      size: 60,
+
     },
     {
       field: "FgAmiVida",
       label: "FgAmiVida",
       name: "FgAmiVida",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "CdConvAssociado",
       label: "CdConvAssociado",
       name: "CdConvAssociado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1082,21 +1082,21 @@ export const CadCli: TTableDef = {
       label: "CdTipoContrato",
       name: "CdTipoContrato",
       typeField: "int",
-      size: 2,
+
     },
     {
       field: "TempoLib",
       label: "TempoLib",
       name: "TempoLib",
       typeField: "int",
-      size: 2,
+
     },
     {
       field: "DtValidade",
       label: "DtValidade",
       name: "DtValidade",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -1104,49 +1104,49 @@ export const CadCli: TTableDef = {
       label: "Tolerancia",
       name: "Tolerancia",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "FgBloqueioCadastro",
       label: "FgBloqueioCadastro",
       name: "FgBloqueioCadastro",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "CdTecnico",
       label: "CdTecnico",
       name: "CdTecnico",
       typeField: "float",
-      size: 9,
+
     },
     {
       field: "EndBuscaReceita",
       label: "EndBuscaReceita",
       name: "EndBuscaReceita",
       typeField: "string",
-      size: 70,
+
     },
     {
       field: "FgIsentoICMS",
       label: "FgIsentoICMS",
       name: "FgIsentoICMS",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "CdTipoLiberacao",
       label: "CdTipoLiberacao",
       name: "CdTipoLiberacao",
       typeField: "int",
-      size: 9,
+
     },
     {
       field: "DtMaiorAtraso",
       label: "DtMaiorAtraso",
       name: "DtMaiorAtraso",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -1154,7 +1154,7 @@ export const CadCli: TTableDef = {
       label: "PercComissaoVarejoVista",
       name: "PercComissaoVarejoVista",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1162,7 +1162,7 @@ export const CadCli: TTableDef = {
       label: "PercComissaoAtacadoVista",
       name: "PercComissaoAtacadoVista",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1170,7 +1170,7 @@ export const CadCli: TTableDef = {
       label: "PercComissaoVarejoPrazo",
       name: "PercComissaoVarejoPrazo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1178,7 +1178,7 @@ export const CadCli: TTableDef = {
       label: "PercComissaoAtacadoPrazo",
       name: "PercComissaoAtacadoPrazo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1186,14 +1186,14 @@ export const CadCli: TTableDef = {
       label: "NumLicencas",
       name: "NumLicencas",
       typeField: "int",
-      size: 2,
+
     },
     {
       field: "CdVendedorExtra",
       label: "CdVendedorExtra",
       name: "CdVendedorExtra",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1201,7 +1201,7 @@ export const CadCli: TTableDef = {
       label: "DtValidadeLicencaSanitaria",
       name: "DtValidadeLicencaSanitaria",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -1209,7 +1209,7 @@ export const CadCli: TTableDef = {
       label: "DtValidadeBalanco",
       name: "DtValidadeBalanco",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -1217,21 +1217,21 @@ export const CadCli: TTableDef = {
       label: "CdAlternativo",
       name: "CdAlternativo",
       typeField: "string",
-      size: 32,
+
     },
     {
       field: "EmailCobranca",
       label: "EmailCobranca",
       name: "EmailCobranca",
       typeField: "string",
-      size: 128,
+
     },
     {
       field: "DtMaiorAcumulo",
       label: "DtMaiorAcumulo",
       name: "DtMaiorAcumulo",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -1239,7 +1239,7 @@ export const CadCli: TTableDef = {
       label: "VlMaiorAcumulo",
       name: "VlMaiorAcumulo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1247,14 +1247,14 @@ export const CadCli: TTableDef = {
       label: "FgObrigaNotaFiscal",
       name: "FgObrigaNotaFiscal",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "CdPais",
       label: "CdPais",
       name: "CdPais",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1262,49 +1262,49 @@ export const CadCli: TTableDef = {
       label: "NmPais",
       name: "NmPais",
       typeField: "string",
-      size: 64,
+
     },
     {
       field: "NumContaReceita",
       label: "NumContaReceita",
       name: "NumContaReceita",
       typeField: "int",
-      size: 9,
+
     },
     {
       field: "InscMunicipal",
       label: "InscMunicipal",
       name: "InscMunicipal",
       typeField: "string",
-      size: 18,
+
     },
     {
       field: "EmailProcNfe",
       label: "EmailProcNfe",
       name: "EmailProcNfe",
       typeField: "string",
-      size: 256,
+
     },
     {
       field: "CdClienteAgrupador",
       label: "CdClienteAgrupador",
       name: "CdClienteAgrupador",
       typeField: "int",
-      size: 9,
+
     },
     {
       field: "CNAE",
       label: "CNAE",
       name: "CNAE",
       typeField: "string",
-      size: 16,
+
     },
     {
       field: "PercCargaTributariaMedia",
       label: "PercCargaTributariaMedia",
       name: "PercCargaTributariaMedia",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1312,14 +1312,14 @@ export const CadCli: TTableDef = {
       label: "FgConsumidorFinal",
       name: "FgConsumidorFinal",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "CPFAssociado",
       label: "CPFAssociado",
       name: "CPFAssociado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1327,49 +1327,49 @@ export const CadCli: TTableDef = {
       label: "InscSuframa",
       name: "InscSuframa",
       typeField: "string",
-      size: 16,
+
     },
     {
       field: "CdEnderecoEntregaPadrao",
       label: "CdEnderecoEntregaPadrao",
       name: "CdEnderecoEntregaPadrao",
       typeField: "int",
-      size: 5,
+
     },
     {
       field: "LocalEntregaAnterior",
       label: "LocalEntregaAnterior",
       name: "LocalEntregaAnterior",
       typeField: "string",
-      size: 80,
+
     },
     {
       field: "ProximidadesAnterior",
       label: "ProximidadesAnterior",
       name: "ProximidadesAnterior",
       typeField: "string",
-      size: 80,
+
     },
     {
       field: "FgInformarICMSSTAnterior",
       label: "FgInformarICMSSTAnterior",
       name: "FgInformarICMSSTAnterior",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "FgTipoPessoa",
       label: "FgTipoPessoa",
       name: "FgTipoPessoa",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "DtCadastro",
       label: "DtCadastro",
       name: "DtCadastro",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -1378,49 +1378,49 @@ export const CadCli: TTableDef = {
       label: "Proximidades",
       name: "Proximidades",
       typeField: "string",
-      size: 80,
+
     },
     {
       field: "IdentificacaoEstrangeiro",
       label: "IdentificacaoEstrangeiro",
       name: "IdentificacaoEstrangeiro",
       typeField: "string",
-      size: 20,
+
     },
     {
       field: "CdTipoVenda",
       label: "CdTipoVenda",
       name: "CdTipoVenda",
       typeField: "int",
-      size: 5,
+
     },
     {
       field: "FgDifalPorDentro",
       label: "FgDifalPorDentro",
       name: "FgDifalPorDentro",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "TipoDocumento",
       label: "TipoDocumento",
       name: "TipoDocumento",
       typeField: "string",
-      size: 3,
+
     },
     {
       field: "TipoTributacaoIPI",
       label: "TipoTributacaoIPI",
       name: "TipoTributacaoIPI",
       typeField: "string",
-      size: 1,
+
     },
     {
       field: "FgClubeCompras",
       label: "FgClubeCompras",
       name: "FgClubeCompras",
       typeField: "string",
-      size: 1,
+
     },
   ],
 };

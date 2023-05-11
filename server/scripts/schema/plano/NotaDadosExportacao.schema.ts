@@ -9,7 +9,7 @@ export const NotaDadosExportacao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaDadosExportacao: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const NotaDadosExportacao: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const NotaDadosExportacao: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const NotaDadosExportacao: TTableDef = {
       label: "UfEmbarque",
       name: "UfEmbarque",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const NotaDadosExportacao: TTableDef = {
       label: "LocalEmbarque",
       name: "LocalEmbarque",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

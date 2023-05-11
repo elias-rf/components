@@ -9,7 +9,7 @@ export const CancelamentosLctos: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CancelamentosLctos: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const CancelamentosLctos: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const CancelamentosLctos: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const CancelamentosLctos: TTableDef = {
       label: "NumLcto",
       name: "NumLcto",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const CancelamentosLctos: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const CancelamentosLctos: TTableDef = {
       label: "DtCancelamento",
       name: "DtCancelamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -66,7 +66,6 @@ export const CancelamentosLctos: TTableDef = {
       label: "Motivo",
       name: "Motivo",
       typeField: "string",
-      size: 1024,
     },
   ],
 };

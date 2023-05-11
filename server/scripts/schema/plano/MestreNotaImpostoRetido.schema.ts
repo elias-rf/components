@@ -9,7 +9,7 @@ export const MestreNotaImpostoRetido: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MestreNotaImpostoRetido: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const MestreNotaImpostoRetido: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const MestreNotaImpostoRetido: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const MestreNotaImpostoRetido: TTableDef = {
       label: "VlPISRetido",
       name: "VlPISRetido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const MestreNotaImpostoRetido: TTableDef = {
       label: "VlCOFINSRetido",
       name: "VlCOFINSRetido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -61,7 +61,7 @@ export const MestreNotaImpostoRetido: TTableDef = {
       label: "VlCSLLRetido",
       name: "VlCSLLRetido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -70,7 +70,7 @@ export const MestreNotaImpostoRetido: TTableDef = {
       label: "VlBaseCalculoIRRF",
       name: "VlBaseCalculoIRRF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -79,7 +79,7 @@ export const MestreNotaImpostoRetido: TTableDef = {
       label: "VlIRRFRetido",
       name: "VlIRRFRetido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -88,7 +88,7 @@ export const MestreNotaImpostoRetido: TTableDef = {
       label: "VlBaseCalculoPrevidencia",
       name: "VlBaseCalculoPrevidencia",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -97,7 +97,7 @@ export const MestreNotaImpostoRetido: TTableDef = {
       label: "VlPrevidenciaRetido",
       name: "VlPrevidenciaRetido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

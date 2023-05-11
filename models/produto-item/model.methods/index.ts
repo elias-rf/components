@@ -1,7 +1,7 @@
 //--
+import { TProdutoPlanoModel } from "@/models/produto-plano/produto-plano.model";
 import { TTableDef } from "@/types";
-import { TCrud } from "@/utils/crud/crud.type";
-import { TProdutoPlanoRpc } from "../../produto-plano/produto-plano.type";
+import { TCrud } from "@/utils/crud/crud.factory";
 import { produtoPlano } from "./produto-plano";
 
 export function produtoItemMethods({
@@ -9,7 +9,7 @@ export function produtoItemMethods({
   produtoItemCrud,
   produto_item,
 }: {
-  produtoPlanoModel: TProdutoPlanoRpc;
+  produtoPlanoModel: TProdutoPlanoModel;
   produtoItemCrud: TCrud;
   produto_item: TTableDef;
 }) {

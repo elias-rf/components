@@ -1,5 +1,5 @@
 import { connectionsMock } from "@/mocks/connections.mock";
-import { knexMockHistory } from "@/utils/data/knex-mock-history";
+import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { createTracker, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, test } from "vitest";
 import { setTracker } from "../../server/lib/set_tracker";
@@ -23,7 +23,10 @@ describe("estoque", () => {
 
   test("increment", async () => {
     const rsp = await estoque.mutation.increment({
-      id: { produto_plano_id: "1", filial_id: 1 },
+      id: [
+        { id: "produto_plano_id", value: "1" },
+        { id: "filial_id", value: 1 },
+      ],
       quantidade: 2,
     });
 

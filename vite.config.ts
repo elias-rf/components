@@ -29,6 +29,7 @@ export default defineConfig({
   resolve: { alias: { "@": path.resolve(__dirname, "./") } },
   plugins: [react(), UnoCSS()],
   test: {
+    root: "./",
     globals: true,
     environment: "jsdom", // or 'jsdom', 'node'
     snapshotFormat: { escapeString: false },

@@ -9,7 +9,7 @@ export const CadProEtiqueta: TTableDef = {
       label: "CdProduto",
       name: "CadProEtiqueta_id",
       typeField: "string",
-      size: 15,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadProEtiqueta: TTableDef = {
       label: "ReceitaEtiqueta",
       name: "ReceitaEtiqueta",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CadProEtiqueta: TTableDef = {
       label: "TipoEtiqueta",
       name: "TipoEtiqueta",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const CadProEtiqueta: TTableDef = {
       label: "TipoValidadeEtiqueta",
       name: "TipoValidadeEtiqueta",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const CadProEtiqueta: TTableDef = {
       label: "ValidadeEtiqueta",
       name: "ValidadeEtiqueta",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const CadProEtiqueta: TTableDef = {
       label: "DeptoEtiqueta",
       name: "DeptoEtiqueta",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const CadProEtiqueta: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

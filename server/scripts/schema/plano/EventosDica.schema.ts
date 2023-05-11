@@ -9,7 +9,7 @@ export const EventosDica: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const EventosDica: TTableDef = {
       label: "CdUsuario",
       name: "CdUsuario",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const EventosDica: TTableDef = {
       label: "CdFuncao",
       name: "CdFuncao",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const EventosDica: TTableDef = {
       label: "Evento",
       name: "Evento",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const EventosDica: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

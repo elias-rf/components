@@ -9,7 +9,7 @@ export const FaturamentoRat: TTableDef = {
       label: "NumeroRAT",
       name: "FaturamentoRat_id",
       typeField: "int",
-      size: 5,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const FaturamentoRat: TTableDef = {
       label: "NumParcela",
       name: "NumParcela",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const FaturamentoRat: TTableDef = {
       label: "DataFaturamento",
       name: "DataFaturamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const FaturamentoRat: TTableDef = {
       label: "VlFaturamento",
       name: "VlFaturamento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

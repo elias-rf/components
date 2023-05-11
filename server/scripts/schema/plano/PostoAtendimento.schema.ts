@@ -9,7 +9,7 @@ export const PostoAtendimento: TTableDef = {
       label: "Codigo",
       name: "PostoAtendimento_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,6 @@ export const PostoAtendimento: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 50,
     },
   ],
 };

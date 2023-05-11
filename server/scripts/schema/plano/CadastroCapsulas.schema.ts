@@ -9,7 +9,7 @@ export const CadastroCapsulas: TTableDef = {
       label: "CdCapsula",
       name: "CadastroCapsulas_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadastroCapsulas: TTableDef = {
       label: "NmCapsula",
       name: "NmCapsula",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CadastroCapsulas: TTableDef = {
       label: "CdCorCapsula",
       name: "CdCorCapsula",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const CadastroCapsulas: TTableDef = {
       label: "Capacidade",
       name: "Capacidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const CadastroCapsulas: TTableDef = {
       label: "UnidadeMedida",
       name: "UnidadeMedida",
       typeField: "string",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const CadastroCapsulas: TTableDef = {
       label: "CdProdutoAssociado",
       name: "CdProdutoAssociado",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const CadastroCapsulas: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

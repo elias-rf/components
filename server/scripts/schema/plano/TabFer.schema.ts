@@ -9,14 +9,12 @@ export const TabFer: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "date",
-      size: 4,
     },
     {
       field: "Tipo",
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
     },
   ],
 };

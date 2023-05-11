@@ -9,7 +9,7 @@ export const MestreNotaServico: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MestreNotaServico: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const MestreNotaServico: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const MestreNotaServico: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const MestreNotaServico: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const MestreNotaServico: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -61,7 +61,7 @@ export const MestreNotaServico: TTableDef = {
       label: "NaturezaOperacao",
       name: "NaturezaOperacao",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -69,7 +69,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlBaseCalculoISS",
       name: "VlBaseCalculoISS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -78,7 +78,7 @@ export const MestreNotaServico: TTableDef = {
       label: "AliquotaISS",
       name: "AliquotaISS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -87,7 +87,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlISS",
       name: "VlISS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -96,7 +96,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlBaseCalculoPIS",
       name: "VlBaseCalculoPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -105,7 +105,7 @@ export const MestreNotaServico: TTableDef = {
       label: "AliquotaPIS",
       name: "AliquotaPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -114,7 +114,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlPIS",
       name: "VlPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -123,7 +123,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlBaseCalculoCofins",
       name: "VlBaseCalculoCofins",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -132,7 +132,7 @@ export const MestreNotaServico: TTableDef = {
       label: "AliquotaCofins",
       name: "AliquotaCofins",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -141,7 +141,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlCofins",
       name: "VlCofins",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -150,7 +150,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlBaseCalculoINSS",
       name: "VlBaseCalculoINSS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -159,7 +159,7 @@ export const MestreNotaServico: TTableDef = {
       label: "AliquotaINSS",
       name: "AliquotaINSS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -168,7 +168,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlINSS",
       name: "VlINSS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -177,7 +177,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlBaseCalculoIR",
       name: "VlBaseCalculoIR",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -186,7 +186,7 @@ export const MestreNotaServico: TTableDef = {
       label: "AliquotaIR",
       name: "AliquotaIR",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -195,7 +195,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlIR",
       name: "VlIR",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -204,7 +204,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlBaseCalculoIN381",
       name: "VlBaseCalculoIN381",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -213,7 +213,7 @@ export const MestreNotaServico: TTableDef = {
       label: "AliquotaINS381",
       name: "AliquotaINS381",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -222,7 +222,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlIN381",
       name: "VlIN381",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -231,7 +231,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlBaseCalculoCSLL",
       name: "VlBaseCalculoCSLL",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -240,7 +240,7 @@ export const MestreNotaServico: TTableDef = {
       label: "AliquotaCSLL",
       name: "AliquotaCSLL",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -249,7 +249,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlCSLL",
       name: "VlCSLL",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -258,7 +258,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlTotalServicos",
       name: "VlTotalServicos",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -267,7 +267,7 @@ export const MestreNotaServico: TTableDef = {
       label: "VlTotalLiquidoServicos",
       name: "VlTotalLiquidoServicos",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

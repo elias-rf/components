@@ -9,7 +9,7 @@ export const ProdutoLei2622: TTableDef = {
       label: "CdProduto",
       name: "ProdutoLei2622_id",
       typeField: "string",
-      size: 18,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProdutoLei2622: TTableDef = {
       label: "UnidadeMedida",
       name: "UnidadeMedida",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ProdutoLei2622: TTableDef = {
       label: "Operacao",
       name: "Operacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ProdutoLei2622: TTableDef = {
       label: "Multiplicador",
       name: "Multiplicador",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },

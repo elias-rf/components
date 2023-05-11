@@ -9,7 +9,7 @@ export const ParametrosInformacaoAdicionalNFe: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ParametrosInformacaoAdicionalNFe: TTableDef = {
       label: "UF",
       name: "UF",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ParametrosInformacaoAdicionalNFe: TTableDef = {
       label: "CSTICMS",
       name: "CSTICMS",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ParametrosInformacaoAdicionalNFe: TTableDef = {
       label: "Mensagem",
       name: "Mensagem",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
   ],

@@ -10,7 +10,7 @@ export const pedido_item: TTableDef = {
       name: "filial_id",
       primaryKey: true,
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -18,7 +18,7 @@ export const pedido_item: TTableDef = {
       label: "produto_id",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const pedido_item: TTableDef = {
       name: "pedido_id",
       primaryKey: true,
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const pedido_item: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -44,7 +44,7 @@ export const pedido_item: TTableDef = {
       label: "DtPrevEntrega",
       name: "DtPrevEntrega",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -53,7 +53,7 @@ export const pedido_item: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -61,21 +61,19 @@ export const pedido_item: TTableDef = {
       label: "CdRefEstoque",
       name: "CdRefEstoque",
       typeField: "string",
-      size: 15,
     },
     {
       field: "CdKit",
       label: "CdKit",
       name: "CdKit",
       typeField: "string",
-      size: 15,
     },
     {
       field: "Qtde",
       label: "Qtde",
       name: "Qtde",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -83,7 +81,7 @@ export const pedido_item: TTableDef = {
       label: "ConversaoMedida",
       name: "ConversaoMedida",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -91,7 +89,7 @@ export const pedido_item: TTableDef = {
       label: "Correcao",
       name: "Correcao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -99,14 +97,13 @@ export const pedido_item: TTableDef = {
       label: "FgPeso",
       name: "FgPeso",
       typeField: "string",
-      size: 1,
     },
     {
       field: "ICMS",
       label: "ICMS",
       name: "ICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -114,28 +111,25 @@ export const pedido_item: TTableDef = {
       label: "ImprimeComponentes",
       name: "ImprimeComponentes",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Peso",
       label: "Peso",
       name: "Peso",
       typeField: "string",
-      size: 10,
     },
     {
       field: "SelecProd",
       label: "SelecProd",
       name: "SelecProd",
       typeField: "string",
-      size: 1,
     },
     {
       field: "VlDescontoFechamento",
       label: "VlDescontoFechamento",
       name: "VlDescontoFechamento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -143,7 +137,7 @@ export const pedido_item: TTableDef = {
       label: "VlUnitario",
       name: "VlUnitario",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -151,7 +145,7 @@ export const pedido_item: TTableDef = {
       label: "PercDesconto",
       name: "PercDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -159,7 +153,7 @@ export const pedido_item: TTableDef = {
       label: "VlDesconto",
       name: "VlDesconto",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -167,7 +161,7 @@ export const pedido_item: TTableDef = {
       label: "VlLiquido",
       name: "VlLiquido",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -175,7 +169,7 @@ export const pedido_item: TTableDef = {
       label: "IPI",
       name: "IPI",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -183,7 +177,7 @@ export const pedido_item: TTableDef = {
       label: "VlTotal",
       name: "VlTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -191,7 +185,7 @@ export const pedido_item: TTableDef = {
       label: "CustoFinanc",
       name: "CustoFinanc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -199,7 +193,7 @@ export const pedido_item: TTableDef = {
       label: "QtdeAtendida",
       name: "QtdeAtendida",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -207,7 +201,7 @@ export const pedido_item: TTableDef = {
       label: "CdAcumuladorParcial",
       name: "CdAcumuladorParcial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -215,21 +209,19 @@ export const pedido_item: TTableDef = {
       label: "ComplementoDescricao",
       name: "ComplementoDescricao",
       typeField: "string",
-      size: 20,
     },
     {
       field: "CRM",
       label: "CRM",
       name: "CRM",
       typeField: "string",
-      size: 16,
     },
     {
       field: "PercLimiteComissao",
       label: "PercLimiteComissao",
       name: "PercLimiteComissao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -237,14 +229,13 @@ export const pedido_item: TTableDef = {
       label: "NumFormula",
       name: "NumFormula",
       typeField: "int",
-      size: 4,
     },
     {
       field: "VlVistaUnit",
       label: "VlVistaUnit",
       name: "VlVistaUnit",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -252,7 +243,7 @@ export const pedido_item: TTableDef = {
       label: "VlPrazoUnit",
       name: "VlPrazoUnit",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -260,7 +251,7 @@ export const pedido_item: TTableDef = {
       label: "VlFidelidadeUnit",
       name: "VlFidelidadeUnit",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -268,7 +259,7 @@ export const pedido_item: TTableDef = {
       label: "QtdeFormula",
       name: "QtdeFormula",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -276,21 +267,19 @@ export const pedido_item: TTableDef = {
       label: "DescricaoAlterada",
       name: "DescricaoAlterada",
       typeField: "string",
-      size: 100,
     },
     {
       field: "StatusTRN",
       label: "StatusTRN",
       name: "StatusTRN",
       typeField: "int",
-      size: 2,
     },
     {
       field: "Unidade",
       label: "Unidade",
       name: "Unidade",
       typeField: "string",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -298,14 +287,13 @@ export const pedido_item: TTableDef = {
       label: "FgImprimeObs",
       name: "FgImprimeObs",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtReceita",
       label: "DtReceita",
       name: "DtReceita",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -313,42 +301,37 @@ export const pedido_item: TTableDef = {
       label: "TributacaoICMS",
       name: "TributacaoICMS",
       typeField: "int",
-      size: 2,
     },
     {
       field: "NumPedidoEmitente",
       label: "NumPedidoEmitente",
       name: "NumPedidoEmitente",
       typeField: "string",
-      size: 20,
     },
     {
       field: "CdProjeto",
       label: "CdProjeto",
       name: "CdProjeto",
       typeField: "int",
-      size: 2,
     },
     {
       field: "fgBuscaDCB",
       label: "fgBuscaDCB",
       name: "fgBuscaDCB",
       typeField: "string",
-      size: 10,
     },
     {
       field: "PrazoEntregaItem",
       label: "PrazoEntregaItem",
       name: "PrazoEntregaItem",
       typeField: "string",
-      size: 16,
     },
     {
       field: "VlVendaOriginal",
       label: "VlVendaOriginal",
       name: "VlVendaOriginal",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -356,7 +339,7 @@ export const pedido_item: TTableDef = {
       label: "VlAcrescimo",
       name: "VlAcrescimo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -364,14 +347,13 @@ export const pedido_item: TTableDef = {
       label: "FgSituacaoItem",
       name: "FgSituacaoItem",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtEmissao",
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -379,35 +361,31 @@ export const pedido_item: TTableDef = {
       label: "FgPreVenda",
       name: "FgPreVenda",
       typeField: "string",
-      size: 1,
     },
     {
       field: "ControleNum",
       label: "ControleNum",
       name: "ControleNum",
       typeField: "int",
-      size: 9,
     },
     {
       field: "ControleSeq",
       label: "ControleSeq",
       name: "ControleSeq",
       typeField: "int",
-      size: 2,
     },
     {
       field: "SituacaoTributaria",
       label: "SituacaoTributaria",
       name: "SituacaoTributaria",
       typeField: "string",
-      size: 1,
     },
     {
       field: "AliquotaICMS",
       label: "AliquotaICMS",
       name: "AliquotaICMS",
       typeField: "int",
-      size: 5,
+
       scale: 2,
     },
     {
@@ -415,14 +393,13 @@ export const pedido_item: TTableDef = {
       label: "DescricaoProduto",
       name: "DescricaoProduto",
       typeField: "string",
-      size: 128,
     },
     {
       field: "PercDescontoOriginal",
       label: "PercDescontoOriginal",
       name: "PercDescontoOriginal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -430,7 +407,7 @@ export const pedido_item: TTableDef = {
       label: "AliquotaICMSST",
       name: "AliquotaICMSST",
       typeField: "int",
-      size: 5,
+
       scale: 2,
     },
     {
@@ -438,14 +415,13 @@ export const pedido_item: TTableDef = {
       label: "CdSetorEntrega",
       name: "CdSetorEntrega",
       typeField: "int",
-      size: 5,
     },
     {
       field: "VlPesoBruto",
       label: "VlPesoBruto",
       name: "VlPesoBruto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -453,14 +429,13 @@ export const pedido_item: TTableDef = {
       label: "CdStatus",
       name: "CdStatus",
       typeField: "int",
-      size: 4,
     },
     {
       field: "VlAcrescimoProduto",
       label: "VlAcrescimoProduto",
       name: "VlAcrescimoProduto",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -468,7 +443,7 @@ export const pedido_item: TTableDef = {
       label: "VlUnitarioNovo",
       name: "VlUnitarioNovo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

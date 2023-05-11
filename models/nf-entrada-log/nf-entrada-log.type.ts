@@ -19,31 +19,31 @@ export type TNfEntradaLogFields = keyof Required<TNfEntradaLog>;
 export type TNfEntradaLogIds = {
   [pk in keyof Required<TNfEntradaLogPk>]: any;
 };
-export type TNfEntradaLogSelect = TSelect<TNfEntradaLogFields>;
-export type TNfEntradaLogWhere = TWhere<TNfEntradaLogFields>;
-export type TNfEntradaLogOrder = TOrder<TNfEntradaLogFields>;
+export type TNfEntradaLogSelect = TSelect;
+export type TNfEntradaLogWhere = TWhere;
+export type TNfEntradaLogOrder = TOrder;
 
 export type TNfEntradaLogSchema = () => Promise<TFieldDef[]>;
 export type TNfEntradaLogClear = () => Promise<TNfEntradaLog>;
 export type TNfEntradaLogList = (args: {
-  where?: TWhere<TNfEntradaLogFields>[];
-  order?: TOrder<TNfEntradaLogFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TNfEntradaLogFields>;
+  select?: TSelect;
 }) => Promise<TNfEntradaLog[]>;
 export type TNfEntradaLogRead = (args: {
   id: TNfEntradaLogIds;
-  select?: TSelect<TNfEntradaLogFields>;
+  select?: TSelect;
 }) => Promise<TNfEntradaLog>;
 
 export type TNfEntradaLogCreate = (args: {
   data: TNfEntradaLog;
-  select?: TSelect<TNfEntradaLogFields>;
+  select?: TSelect;
 }) => Promise<TNfEntradaLog>;
 export type TNfEntradaLogUpdate = (args: {
   id: TNfEntradaLogIds;
   data: TNfEntradaLog;
-  select?: TSelect<TNfEntradaLogFields>;
+  select?: TSelect;
 }) => Promise<TNfEntradaLog>;
 export type TNfEntradaLogDel = (args: {
   id: TNfEntradaLogIds;

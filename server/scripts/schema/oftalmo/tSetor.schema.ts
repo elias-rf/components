@@ -9,7 +9,7 @@ export const tSetor: TTableDef = {
       label: "kSetor",
       name: "kSetor",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tSetor: TTableDef = {
       label: "fkDivisao",
       name: "fkDivisao",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const tSetor: TTableDef = {
       label: "Setor",
       name: "Setor",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,6 @@ export const tSetor: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 200,
     },
   ],
 };

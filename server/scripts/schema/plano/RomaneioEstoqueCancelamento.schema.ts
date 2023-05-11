@@ -9,7 +9,7 @@ export const RomaneioEstoqueCancelamento: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const RomaneioEstoqueCancelamento: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const RomaneioEstoqueCancelamento: TTableDef = {
       label: "NumRomaneio",
       name: "NumRomaneio",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const RomaneioEstoqueCancelamento: TTableDef = {
       label: "Motivo",
       name: "Motivo",
       typeField: "string",
-      size: 1028,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const RomaneioEstoqueCancelamento: TTableDef = {
       label: "DtCancelamento",
       name: "DtCancelamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -50,7 +50,7 @@ export const RomaneioEstoqueCancelamento: TTableDef = {
       label: "UsuarioCancelamento",
       name: "UsuarioCancelamento",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
   ],

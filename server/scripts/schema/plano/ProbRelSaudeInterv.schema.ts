@@ -9,7 +9,7 @@ export const ProbRelSaudeInterv: TTableDef = {
       label: "CdIntervencao",
       name: "CdIntervencao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -17,7 +17,7 @@ export const ProbRelSaudeInterv: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -25,14 +25,13 @@ export const ProbRelSaudeInterv: TTableDef = {
       label: "CdPrs",
       name: "CdPrs",
       typeField: "string",
-      size: 8,
     },
     {
       field: "Data",
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -40,7 +39,7 @@ export const ProbRelSaudeInterv: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
   ],

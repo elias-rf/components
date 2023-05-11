@@ -9,7 +9,7 @@ export const tPlanComponente: TTableDef = {
       label: "kPlanComponente",
       name: "tPlanComponente_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const tPlanComponente: TTableDef = {
       label: "fkPlanItem",
       name: "fkPlanItem",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const tPlanComponente: TTableDef = {
       label: "NomeComponente",
       name: "NomeComponente",
       typeField: "string",
-      size: 100,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const tPlanComponente: TTableDef = {
       label: "BaseFrequencia",
       name: "BaseFrequencia",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
       defaultValue: "Dia",
     },
@@ -44,7 +44,7 @@ export const tPlanComponente: TTableDef = {
       label: "Frequencia",
       name: "Frequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
       defaultValue: "1",
     },
@@ -53,7 +53,7 @@ export const tPlanComponente: TTableDef = {
       label: "TempoAviso",
       name: "TempoAviso",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
       defaultValue: "1",
     },

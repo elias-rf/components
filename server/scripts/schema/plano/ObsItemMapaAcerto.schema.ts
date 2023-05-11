@@ -9,7 +9,7 @@ export const ObsItemMapaAcerto: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ObsItemMapaAcerto: TTableDef = {
       label: "NumMapa",
       name: "NumMapa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ObsItemMapaAcerto: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const ObsItemMapaAcerto: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -44,7 +44,7 @@ export const ObsItemMapaAcerto: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -52,14 +52,13 @@ export const ObsItemMapaAcerto: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 512,
     },
     {
       field: "Modelo",
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -67,7 +66,7 @@ export const ObsItemMapaAcerto: TTableDef = {
       label: "SiglaDoc",
       name: "SiglaDoc",
       typeField: "string",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -75,7 +74,7 @@ export const ObsItemMapaAcerto: TTableDef = {
       label: "ItemDoc",
       name: "ItemDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

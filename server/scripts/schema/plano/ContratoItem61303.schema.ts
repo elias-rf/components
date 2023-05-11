@@ -9,7 +9,7 @@ export const ContratoItem61303: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ContratoItem61303: TTableDef = {
       label: "Dia",
       name: "Dia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ContratoItem61303: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ContratoItem61303: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const ContratoItem61303: TTableDef = {
       label: "VlUnitario",
       name: "VlUnitario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

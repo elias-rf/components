@@ -9,7 +9,7 @@ export const PedidoPagamentosEntrada: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const PedidoPagamentosEntrada: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const PedidoPagamentosEntrada: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const PedidoPagamentosEntrada: TTableDef = {
       label: "DtVencimento",
       name: "DtVencimento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const PedidoPagamentosEntrada: TTableDef = {
       label: "Valor",
       name: "Valor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -53,7 +53,6 @@ export const PedidoPagamentosEntrada: TTableDef = {
       label: "Seq",
       name: "Seq",
       typeField: "int",
-      size: 4,
     },
   ],
 };

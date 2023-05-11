@@ -9,7 +9,7 @@ export const ExcNM: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ExcNM: TTableDef = {
       label: "NroNf",
       name: "NroNf",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ExcNM: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ExcNM: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const ExcNM: TTableDef = {
       label: "Nop",
       name: "Nop",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ExcNM: TTableDef = {
       label: "DtEmi",
       name: "DtEmi",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -59,7 +59,7 @@ export const ExcNM: TTableDef = {
       label: "DtEntr",
       name: "DtEntr",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -68,7 +68,7 @@ export const ExcNM: TTableDef = {
       label: "TotNf",
       name: "TotNf",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -77,7 +77,7 @@ export const ExcNM: TTableDef = {
       label: "BaseSubstituicao",
       name: "BaseSubstituicao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -86,7 +86,7 @@ export const ExcNM: TTableDef = {
       label: "IPIBasCalc",
       name: "IPIBasCalc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -95,7 +95,7 @@ export const ExcNM: TTableDef = {
       label: "IPIVlr",
       name: "IPIVlr",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -104,7 +104,7 @@ export const ExcNM: TTableDef = {
       label: "IPIFrete",
       name: "IPIFrete",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -113,7 +113,7 @@ export const ExcNM: TTableDef = {
       label: "ICMSAliq",
       name: "ICMSAliq",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -122,7 +122,7 @@ export const ExcNM: TTableDef = {
       label: "ICMSBasCalc",
       name: "ICMSBasCalc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -131,7 +131,7 @@ export const ExcNM: TTableDef = {
       label: "ICMSVlr",
       name: "ICMSVlr",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -140,7 +140,7 @@ export const ExcNM: TTableDef = {
       label: "ICMSRetido",
       name: "ICMSRetido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -149,7 +149,7 @@ export const ExcNM: TTableDef = {
       label: "ICMSOperPropria",
       name: "ICMSOperPropria",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -158,7 +158,7 @@ export const ExcNM: TTableDef = {
       label: "ICMSFrete",
       name: "ICMSFrete",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -167,7 +167,7 @@ export const ExcNM: TTableDef = {
       label: "Frete",
       name: "Frete",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -176,7 +176,7 @@ export const ExcNM: TTableDef = {
       label: "Seguro",
       name: "Seguro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -185,7 +185,7 @@ export const ExcNM: TTableDef = {
       label: "DtValidacao",
       name: "DtValidacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -194,7 +194,7 @@ export const ExcNM: TTableDef = {
       label: "VlMercadorias",
       name: "VlMercadorias",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -203,7 +203,7 @@ export const ExcNM: TTableDef = {
       label: "ConPag",
       name: "ConPag",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -211,7 +211,7 @@ export const ExcNM: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -219,7 +219,7 @@ export const ExcNM: TTableDef = {
       label: "FgIPICompoeBase",
       name: "FgIPICompoeBase",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -227,7 +227,7 @@ export const ExcNM: TTableDef = {
       label: "Horario",
       name: "Horario",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -236,7 +236,7 @@ export const ExcNM: TTableDef = {
       label: "VlNfComplementar",
       name: "VlNfComplementar",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -245,7 +245,7 @@ export const ExcNM: TTableDef = {
       label: "FgIPICompoeBaseSub",
       name: "FgIPICompoeBaseSub",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -253,7 +253,7 @@ export const ExcNM: TTableDef = {
       label: "FgEstoque",
       name: "FgEstoque",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -261,7 +261,7 @@ export const ExcNM: TTableDef = {
       label: "IdParametro",
       name: "IdParametro",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -269,7 +269,7 @@ export const ExcNM: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
   ],

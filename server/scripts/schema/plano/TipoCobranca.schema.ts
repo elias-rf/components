@@ -9,7 +9,7 @@ export const TipoCobranca: TTableDef = {
       label: "FgCobranca",
       name: "TipoCobranca_id",
       typeField: "string",
-      size: 1,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const TipoCobranca: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
   ],

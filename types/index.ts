@@ -1,6 +1,5 @@
 export * from "./model";
 export * from "./query";
-export * from "./rpc";
 
 /** Dados do usuário logado */
 export type TCurrentUser = {
@@ -22,7 +21,7 @@ export type TInputType =
   | "text";
 
 /** Objeto genérico */
-export type TGenericObject = { [key: string]: any };
+export type TGenericObject = Record<string, any>;
 
 /** Registro genérico */
 export type TUnknownObject = Record<PropertyKey, unknown>;

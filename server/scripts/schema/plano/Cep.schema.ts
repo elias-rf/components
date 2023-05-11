@@ -9,7 +9,7 @@ export const Cep: TTableDef = {
       label: "CepInicial",
       name: "Cep_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const Cep: TTableDef = {
       label: "CepFinal",
       name: "CepFinal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -28,14 +28,12 @@ export const Cep: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 50,
     },
     {
       field: "Regiao",
       label: "Regiao",
       name: "Regiao",
       typeField: "string",
-      size: 10,
     },
   ],
 };

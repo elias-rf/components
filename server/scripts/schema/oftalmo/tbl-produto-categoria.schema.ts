@@ -9,7 +9,7 @@ export const tbl_produto_categoria: TTableDef = {
       label: "kCategoria",
       name: "tbl_produto_categoria_id",
       typeField: "string",
-      size: 50,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,14 +18,13 @@ export const tbl_produto_categoria: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 150,
     },
     {
       field: "Flag",
       label: "Flag",
       name: "Flag",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -34,7 +33,7 @@ export const tbl_produto_categoria: TTableDef = {
       label: "Controlado",
       name: "Controlado",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "1",
     },
@@ -43,7 +42,7 @@ export const tbl_produto_categoria: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -52,7 +51,7 @@ export const tbl_produto_categoria: TTableDef = {
       label: "fkCategoriaTipo",
       name: "fkCategoriaTipo",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -60,7 +59,7 @@ export const tbl_produto_categoria: TTableDef = {
       label: "EhObjetivoVenda",
       name: "EhObjetivoVenda",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -69,7 +68,6 @@ export const tbl_produto_categoria: TTableDef = {
       label: "CategoriaComercial",
       name: "CategoriaComercial",
       typeField: "string",
-      size: 50,
     },
   ],
 };

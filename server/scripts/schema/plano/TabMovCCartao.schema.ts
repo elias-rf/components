@@ -9,7 +9,7 @@ export const TabMovCCartao: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TabMovCCartao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TabMovCCartao: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const TabMovCCartao: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const TabMovCCartao: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const TabMovCCartao: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const TabMovCCartao: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const TabMovCCartao: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const TabMovCCartao: TTableDef = {
       label: "Bandeira",
       name: "Bandeira",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const TabMovCCartao: TTableDef = {
       label: "CNPJCredenciadora",
       name: "CNPJCredenciadora",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const TabMovCCartao: TTableDef = {
       label: "TipoIntegracao",
       name: "TipoIntegracao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const TabMovCCartao: TTableDef = {
       label: "NumAutorizacao",
       name: "NumAutorizacao",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,6 @@ export const TabMovCCartao: TTableDef = {
       label: "CdCredenciadora",
       name: "CdCredenciadora",
       typeField: "int",
-      size: 5,
     },
   ],
 };

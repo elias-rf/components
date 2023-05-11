@@ -9,7 +9,7 @@ export const UnidadeSacolas: TTableDef = {
       label: "CdUnidadeSacola",
       name: "UnidadeSacolas_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const UnidadeSacolas: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 70,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const UnidadeSacolas: TTableDef = {
       label: "PercentualAcrescimo",
       name: "PercentualAcrescimo",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },

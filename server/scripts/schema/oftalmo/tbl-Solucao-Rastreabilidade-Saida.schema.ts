@@ -9,7 +9,7 @@ export const tbl_Solucao_Rastreabilidade_Saida: TTableDef = {
       label: "kRastreabilidade",
       name: "tbl_Solucao_Rastreabilidade_Saida_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,28 +19,24 @@ export const tbl_Solucao_Rastreabilidade_Saida: TTableDef = {
       label: "fkSaida",
       name: "fkSaida",
       typeField: "int",
-      size: 4,
     },
     {
       field: "fkProdutoItem",
       label: "fkProdutoItem",
       name: "fkProdutoItem",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Lote",
       label: "Lote",
       name: "Lote",
       typeField: "string",
-      size: 10,
     },
     {
       field: "Quantidade",
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 4,
     },
   ],
 };

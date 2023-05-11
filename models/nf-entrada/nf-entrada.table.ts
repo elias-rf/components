@@ -9,7 +9,7 @@ export const nf_entrada: TTableDef = {
       label: "CdEmpresa",
       name: "filial_id",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
       primaryKey: true,
     },
@@ -18,7 +18,7 @@ export const nf_entrada: TTableDef = {
       label: "NroNf",
       name: "nota_id",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
       primaryKey: true,
     },
@@ -27,7 +27,7 @@ export const nf_entrada: TTableDef = {
       label: "Serie",
       name: "serie_id",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
       primaryKey: true,
     },
@@ -36,7 +36,7 @@ export const nf_entrada: TTableDef = {
       label: "Modelo",
       name: "modelo_id",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
       primaryKey: true,
     },
@@ -46,7 +46,7 @@ export const nf_entrada: TTableDef = {
       label: "CdFornecedor",
       name: "fornecedor_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -55,7 +55,7 @@ export const nf_entrada: TTableDef = {
       label: "DtEmi",
       name: "data_emissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -63,7 +63,7 @@ export const nf_entrada: TTableDef = {
       label: "DtEntr",
       name: "data_entrada",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -71,21 +71,19 @@ export const nf_entrada: TTableDef = {
       label: "Nop",
       name: "cfop",
       typeField: "int",
-      size: 2,
     },
     {
       field: "NopFiscal",
       label: "NopFiscal",
       name: "cfop_fiscal",
       typeField: "int",
-      size: 2,
     },
     {
       field: "TotNF",
       label: "TotNF",
       name: "total_nf",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -93,7 +91,7 @@ export const nf_entrada: TTableDef = {
       label: "BaseSubstituicao",
       name: "BaseSubstituicao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -101,7 +99,7 @@ export const nf_entrada: TTableDef = {
       label: "IPIBasCalc",
       name: "IPIBasCalc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -109,7 +107,7 @@ export const nf_entrada: TTableDef = {
       label: "IPIVlr",
       name: "IPIVlr",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -117,7 +115,7 @@ export const nf_entrada: TTableDef = {
       label: "IPIFrete",
       name: "IPIFrete",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -125,7 +123,7 @@ export const nf_entrada: TTableDef = {
       label: "ICMSAliq",
       name: "ICMSAliq",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -133,7 +131,7 @@ export const nf_entrada: TTableDef = {
       label: "ICMSBasCalc",
       name: "ICMSBasCalc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -141,7 +139,7 @@ export const nf_entrada: TTableDef = {
       label: "ICMSVlr",
       name: "ICMSVlr",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -149,7 +147,7 @@ export const nf_entrada: TTableDef = {
       label: "ICMSRetido",
       name: "ICMSRetido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -157,7 +155,7 @@ export const nf_entrada: TTableDef = {
       label: "ICMSOperPropria",
       name: "ICMSOperPropria",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -165,7 +163,7 @@ export const nf_entrada: TTableDef = {
       label: "ICMSFrete",
       name: "ICMSFrete",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -173,7 +171,7 @@ export const nf_entrada: TTableDef = {
       label: "Frete",
       name: "Frete",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -181,7 +179,7 @@ export const nf_entrada: TTableDef = {
       label: "Seguro",
       name: "Seguro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -189,7 +187,7 @@ export const nf_entrada: TTableDef = {
       label: "DtValidacao",
       name: "DtValidacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -197,7 +195,7 @@ export const nf_entrada: TTableDef = {
       label: "VlMercadorias",
       name: "VlMercadorias",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -205,21 +203,19 @@ export const nf_entrada: TTableDef = {
       label: "ConPag",
       name: "ConPag",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Tipo",
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Horario",
       label: "Horario",
       name: "Horario",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -227,14 +223,13 @@ export const nf_entrada: TTableDef = {
       label: "FgIPICompoeBase",
       name: "FgIPICompoeBase",
       typeField: "string",
-      size: 1,
     },
     {
       field: "VlNfComplementar",
       label: "VlNfComplementar",
       name: "VlNfComplementar",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -242,42 +237,37 @@ export const nf_entrada: TTableDef = {
       label: "FgIPICompoeBaseSub",
       name: "FgIPICompoeBaseSub",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgEstoque",
       label: "FgEstoque",
       name: "FgEstoque",
       typeField: "string",
-      size: 1,
     },
     {
       field: "IdParametro",
       label: "IdParametro",
       name: "IdParametro",
       typeField: "int",
-      size: 2,
     },
     {
       field: "GrupoFiscal",
       label: "GrupoFiscal",
       name: "GrupoFiscal",
       typeField: "int",
-      size: 2,
     },
     {
       field: "FgConferencia",
       label: "FgConferencia",
       name: "FgConferencia",
       typeField: "string",
-      size: 1,
     },
     {
       field: "VlRepasseICMS",
       label: "VlRepasseICMS",
       name: "VlRepasseICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -285,14 +275,13 @@ export const nf_entrada: TTableDef = {
       label: "FgSomaICMSSub",
       name: "FgSomaICMSSub",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtConferencia",
       label: "DtConferencia",
       name: "DtConferencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -300,28 +289,25 @@ export const nf_entrada: TTableDef = {
       label: "SgUsuario",
       name: "SgUsuario",
       typeField: "string",
-      size: 10,
     },
     {
       field: "dsObservacao",
       label: "dsObservacao",
       name: "dsObservacao",
       typeField: "string",
-      size: 300,
     },
     {
       field: "FgUtilizaPercRedBCIcms",
       label: "FgUtilizaPercRedBCIcms",
       name: "FgUtilizaPercRedBCIcms",
       typeField: "string",
-      size: 1,
     },
     {
       field: "VlDespAcessorias",
       label: "VlDespAcessorias",
       name: "VlDespAcessorias",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -329,7 +315,7 @@ export const nf_entrada: TTableDef = {
       label: "NumNotaRelacionada",
       name: "NumNotaRelacionada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -337,7 +323,7 @@ export const nf_entrada: TTableDef = {
       label: "VlNotaRelacionada",
       name: "VlNotaRelacionada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -345,42 +331,37 @@ export const nf_entrada: TTableDef = {
       label: "FgDespesasCompoeTotal",
       name: "FgDespesasCompoeTotal",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NumChaveNfe",
       label: "NumChaveNfe",
       name: "NumChaveNfe",
       typeField: "string",
-      size: 64,
     },
     {
       field: "FgXML",
       label: "FgXML",
       name: "FgXML",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgGNRE",
       label: "FgGNRE",
       name: "FgGNRE",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgStatusGNRE",
       label: "FgStatusGNRE",
       name: "FgStatusGNRE",
       typeField: "string",
-      size: 1,
     },
     {
       field: "VlGNRE",
       label: "VlGNRE",
       name: "VlGNRE",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -388,7 +369,7 @@ export const nf_entrada: TTableDef = {
       label: "DtValidacaoNota",
       name: "DtValidacaoNota",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -396,7 +377,7 @@ export const nf_entrada: TTableDef = {
       label: "DtRecolhimentoGNRE",
       name: "DtRecolhimentoGNRE",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -404,14 +385,13 @@ export const nf_entrada: TTableDef = {
       label: "IndicadorFormaPgto",
       name: "IndicadorFormaPgto",
       typeField: "int",
-      size: 2,
     },
     {
       field: "VlPIS",
       label: "VlPIS",
       name: "VlPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -419,7 +399,7 @@ export const nf_entrada: TTableDef = {
       label: "VlCofins",
       name: "VlCofins",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -427,7 +407,7 @@ export const nf_entrada: TTableDef = {
       label: "VlPISSubstituido",
       name: "VlPISSubstituido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -435,7 +415,7 @@ export const nf_entrada: TTableDef = {
       label: "VlCofinsSubstituido",
       name: "VlCofinsSubstituido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -443,84 +423,73 @@ export const nf_entrada: TTableDef = {
       label: "FgFreteCompoeBaseICMS",
       name: "FgFreteCompoeBaseICMS",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgFreteCompoeBaseIPI",
       label: "FgFreteCompoeBaseIPI",
       name: "FgFreteCompoeBaseIPI",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgFreteCompoeTotal",
       label: "FgFreteCompoeTotal",
       name: "FgFreteCompoeTotal",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgFreteCompoeVlProdutos",
       label: "FgFreteCompoeVlProdutos",
       name: "FgFreteCompoeVlProdutos",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgDespesasCompoeBaseICMS",
       label: "FgDespesasCompoeBaseICMS",
       name: "FgDespesasCompoeBaseICMS",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgDespesasCompoeBaseIPI",
       label: "FgDespesasCompoeBaseIPI",
       name: "FgDespesasCompoeBaseIPI",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgDespesasCompoeVlProdutos",
       label: "FgDespesasCompoeVlProdutos",
       name: "FgDespesasCompoeVlProdutos",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgSeguroCompoeVlProdutos",
       label: "FgSeguroCompoeVlProdutos",
       name: "FgSeguroCompoeVlProdutos",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgSeguroCompoeBaseICMS",
       label: "FgSeguroCompoeBaseICMS",
       name: "FgSeguroCompoeBaseICMS",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgSeguroCompoeBaseIPI",
       label: "FgSeguroCompoeBaseIPI",
       name: "FgSeguroCompoeBaseIPI",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgSeguroCompoeTotal",
       label: "FgSeguroCompoeTotal",
       name: "FgSeguroCompoeTotal",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NumPedido",
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -528,28 +497,25 @@ export const nf_entrada: TTableDef = {
       label: "FgLogEtiquetasLote",
       name: "FgLogEtiquetasLote",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgUtilizaVlICMSSTProdutos",
       label: "FgUtilizaVlICMSSTProdutos",
       name: "FgUtilizaVlICMSSTProdutos",
       typeField: "string",
-      size: 1,
     },
     {
       field: "SituacaoDoc",
       label: "SituacaoDoc",
       name: "SituacaoDoc",
       typeField: "int",
-      size: 4,
     },
     {
       field: "VlDesconto",
       label: "VlDesconto",
       name: "VlDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -557,7 +523,7 @@ export const nf_entrada: TTableDef = {
       label: "VlFreteConhecTransp",
       name: "VlFreteConhecTransp",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -565,28 +531,25 @@ export const nf_entrada: TTableDef = {
       label: "NumNotaConhecTransp",
       name: "NumNotaConhecTransp",
       typeField: "int",
-      size: 4,
     },
     {
       field: "FgFreteCompoeBasePIS",
       label: "FgFreteCompoeBasePIS",
       name: "FgFreteCompoeBasePIS",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgFreteCompoeBaseCOFINS",
       label: "FgFreteCompoeBaseCOFINS",
       name: "FgFreteCompoeBaseCOFINS",
       typeField: "string",
-      size: 1,
     },
     {
       field: "VlTotalFCPST",
       label: "VlTotalFCPST",
       name: "VlTotalFCPST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -594,21 +557,18 @@ export const nf_entrada: TTableDef = {
       label: "FgFCPSTCompoeVlTotalProdutos",
       name: "FgFCPSTCompoeVlTotalProdutos",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgFCPSTCompoeVlTotalNota",
       label: "FgFCPSTCompoeVlTotalNota",
       name: "FgFCPSTCompoeVlTotalNota",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgFCPSTCompoeVlCustoProduto",
       label: "FgFCPSTCompoeVlCustoProduto",
       name: "FgFCPSTCompoeVlCustoProduto",
       typeField: "string",
-      size: 1,
     },
   ],
 };

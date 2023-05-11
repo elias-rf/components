@@ -9,7 +9,7 @@ export const EtiquetasLote: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const EtiquetasLote: TTableDef = {
       label: "CdLote",
       name: "CdLote",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const EtiquetasLote: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const EtiquetasLote: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

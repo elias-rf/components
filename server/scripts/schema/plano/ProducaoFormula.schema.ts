@@ -9,7 +9,7 @@ export const ProducaoFormula: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProducaoFormula: TTableDef = {
       label: "NumFormula",
       name: "NumFormula",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProducaoFormula: TTableDef = {
       label: "LoteEsterilizacao",
       name: "LoteEsterilizacao",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ProducaoFormula: TTableDef = {
       label: "LoteFabricante",
       name: "LoteFabricante",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ProducaoFormula: TTableDef = {
       label: "QuantidadeOriginal",
       name: "QuantidadeOriginal",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ProducaoFormula: TTableDef = {
       label: "IndiceRefracao20",
       name: "IndiceRefracao20",
       typeField: "int",
-      size: 5,
+
       scale: 4,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const ProducaoFormula: TTableDef = {
       label: "IndiceRefracao35",
       name: "IndiceRefracao35",
       typeField: "int",
-      size: 5,
+
       scale: 4,
       allowNull: false,
     },

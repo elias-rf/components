@@ -9,7 +9,7 @@ export const MestrePedidoObs: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MestrePedidoObs: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const MestrePedidoObs: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const MestrePedidoObs: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 2048,
+
       allowNull: false,
     },
   ],

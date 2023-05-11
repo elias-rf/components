@@ -9,7 +9,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "Identificacao",
       name: "Identificacao",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "TipoImpressao",
       name: "TipoImpressao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "QtdeEtiquetasVertical",
       name: "QtdeEtiquetasVertical",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "QtdeEtiquetasHorizontal",
       name: "QtdeEtiquetasHorizontal",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "DensidadeImpressao",
       name: "DensidadeImpressao",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "AlturaEtiqueta",
       name: "AlturaEtiqueta",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "DeslocamentoSuperior",
       name: "DeslocamentoSuperior",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "VelocidadeImpressao",
       name: "VelocidadeImpressao",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -85,7 +85,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "LarguraEtiqueta",
       name: "LarguraEtiqueta",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -94,7 +94,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "DeslocamentoEsquerdo",
       name: "DeslocamentoEsquerdo",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -103,7 +103,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "EspacoEntreEtiquetas",
       name: "EspacoEntreEtiquetas",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -112,7 +112,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "DescProdPosVert",
       name: "DescProdPosVert",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -121,7 +121,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "DescProdPosHoriz",
       name: "DescProdPosHoriz",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -130,7 +130,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "DescProdFonte",
       name: "DescProdFonte",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -138,7 +138,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "DescProdAltura",
       name: "DescProdAltura",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -147,7 +147,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "DescProdLargura",
       name: "DescProdLargura",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -156,7 +156,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "DescProdCaracteres",
       name: "DescProdCaracteres",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -164,7 +164,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "FgQuebraDescricaoProduto",
       name: "FgQuebraDescricaoProduto",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -172,7 +172,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "ComplProdPosVert",
       name: "ComplProdPosVert",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -181,7 +181,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "ComplProdPosHoriz",
       name: "ComplProdPosHoriz",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -190,7 +190,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "ComplProdFonte",
       name: "ComplProdFonte",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -198,7 +198,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "ComplProdAltura",
       name: "ComplProdAltura",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -207,7 +207,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "ComplProdLargura",
       name: "ComplProdLargura",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -216,7 +216,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "ComplProdCaracteres",
       name: "ComplProdCaracteres",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -224,7 +224,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "CdProdutoPosVert",
       name: "CdProdutoPosVert",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -233,7 +233,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "CdProdutoPosHoriz",
       name: "CdProdutoPosHoriz",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -242,7 +242,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "CdProdutoFonte",
       name: "CdProdutoFonte",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -250,7 +250,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "CdProdutoAltura",
       name: "CdProdutoAltura",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -259,7 +259,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "CdProdutoLargura",
       name: "CdProdutoLargura",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -268,7 +268,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "PrecoPosVert",
       name: "PrecoPosVert",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -277,7 +277,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "PrecoPosHoriz",
       name: "PrecoPosHoriz",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -286,7 +286,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "PrecoFonte",
       name: "PrecoFonte",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -294,7 +294,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "PrecoAltura",
       name: "PrecoAltura",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -303,7 +303,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "PrecoLargura",
       name: "PrecoLargura",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -312,7 +312,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "Lei2622PosVert",
       name: "Lei2622PosVert",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -321,7 +321,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "Lei2622PosHoriz",
       name: "Lei2622PosHoriz",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -330,7 +330,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "Lei2622Fonte",
       name: "Lei2622Fonte",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -338,7 +338,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "Lei2622Altura",
       name: "Lei2622Altura",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -347,7 +347,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "Lei2622Largura",
       name: "Lei2622Largura",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -356,7 +356,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "CodBarraPosVert",
       name: "CodBarraPosVert",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -365,7 +365,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "CodBarraPosHoriz",
       name: "CodBarraPosHoriz",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -374,7 +374,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "CodBarraFonte",
       name: "CodBarraFonte",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -382,7 +382,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "CodBarraAltura",
       name: "CodBarraAltura",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -391,7 +391,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "CodBarraBarraEstreita",
       name: "CodBarraBarraEstreita",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -400,7 +400,7 @@ export const ConfiguracaoImpressaoEtiqueta: TTableDef = {
       label: "CodBarraBarraLarga",
       name: "CodBarraBarraLarga",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },

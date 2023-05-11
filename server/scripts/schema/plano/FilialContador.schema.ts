@@ -9,7 +9,7 @@ export const FilialContador: TTableDef = {
       label: "CdFilial",
       name: "FilialContador_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const FilialContador: TTableDef = {
       label: "NmContador",
       name: "NmContador",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const FilialContador: TTableDef = {
       label: "NumCRC",
       name: "NumCRC",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const FilialContador: TTableDef = {
       label: "CPF",
       name: "CPF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const FilialContador: TTableDef = {
       label: "CNPJ",
       name: "CNPJ",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -53,7 +53,7 @@ export const FilialContador: TTableDef = {
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -61,7 +61,7 @@ export const FilialContador: TTableDef = {
       label: "NumEndereco",
       name: "NumEndereco",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -69,7 +69,7 @@ export const FilialContador: TTableDef = {
       label: "CompEndereco",
       name: "CompEndereco",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -77,7 +77,7 @@ export const FilialContador: TTableDef = {
       label: "Bairro",
       name: "Bairro",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -85,7 +85,7 @@ export const FilialContador: TTableDef = {
       label: "CdCidade",
       name: "CdCidade",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -93,7 +93,7 @@ export const FilialContador: TTableDef = {
       label: "NmCidade",
       name: "NmCidade",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -101,7 +101,7 @@ export const FilialContador: TTableDef = {
       label: "Uf",
       name: "Uf",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -109,7 +109,7 @@ export const FilialContador: TTableDef = {
       label: "Cep",
       name: "Cep",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -118,7 +118,7 @@ export const FilialContador: TTableDef = {
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -126,7 +126,7 @@ export const FilialContador: TTableDef = {
       label: "Fax",
       name: "Fax",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -134,7 +134,7 @@ export const FilialContador: TTableDef = {
       label: "Email",
       name: "Email",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -142,7 +142,7 @@ export const FilialContador: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -151,7 +151,6 @@ export const FilialContador: TTableDef = {
       label: "EmailProcNfe",
       name: "EmailProcNfe",
       typeField: "string",
-      size: 128,
     },
   ],
 };

@@ -18,31 +18,31 @@ export type TEmpregadoFields = keyof Required<TEmpregado>;
 export type TEmpregadoIds = {
   [pk in keyof Required<TEmpregadoPk>]: any;
 };
-export type TEmpregadoSelect = TSelect<TEmpregadoFields>;
-export type TEmpregadoWhere = TWhere<TEmpregadoFields>;
-export type TEmpregadoOrder = TOrder<TEmpregadoFields>;
+export type TEmpregadoSelect = TSelect;
+export type TEmpregadoWhere = TWhere;
+export type TEmpregadoOrder = TOrder;
 
 export type TEmpregadoSchema = () => Promise<TFieldDef[]>;
 export type TEmpregadoClear = () => Promise<TEmpregado>;
 export type TEmpregadoList = (args: {
-  where?: TWhere<TEmpregadoFields>[];
-  order?: TOrder<TEmpregadoFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TEmpregadoFields>;
+  select?: TSelect;
 }) => Promise<TEmpregado[]>;
 export type TEmpregadoRead = (args: {
   id: TEmpregadoIds;
-  select?: TSelect<TEmpregadoFields>;
+  select?: TSelect;
 }) => Promise<TEmpregado>;
 
 export type TEmpregadoCreate = (args: {
   data: TEmpregado;
-  select?: TSelect<TEmpregadoFields>;
+  select?: TSelect;
 }) => Promise<TEmpregado>;
 export type TEmpregadoUpdate = (args: {
   id: TEmpregadoIds;
   data: TEmpregado;
-  select?: TSelect<TEmpregadoFields>;
+  select?: TSelect;
 }) => Promise<TEmpregado>;
 export type TEmpregadoDel = (args: { id: TEmpregadoIds }) => Promise<number>;
 

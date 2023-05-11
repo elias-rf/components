@@ -23,31 +23,31 @@ export type TEsterilizacaoExternaFields = keyof Required<TEsterilizacaoExterna>;
 export type TEsterilizacaoExternaIds = {
   [pk in keyof Required<TEsterilizacaoExternaPk>]: any;
 };
-export type TEsterilizacaoExternaSelect = TSelect<TEsterilizacaoExternaFields>;
-export type TEsterilizacaoExternaWhere = TWhere<TEsterilizacaoExternaFields>;
-export type TEsterilizacaoExternaOrder = TOrder<TEsterilizacaoExternaFields>;
+export type TEsterilizacaoExternaSelect = TSelect;
+export type TEsterilizacaoExternaWhere = TWhere;
+export type TEsterilizacaoExternaOrder = TOrder;
 
 export type TEsterilizacaoExternaSchema = () => Promise<TFieldDef[]>;
 export type TEsterilizacaoExternaClear = () => Promise<TEsterilizacaoExterna>;
 export type TEsterilizacaoExternaList = (args: {
-  where?: TWhere<TEsterilizacaoExternaFields>[];
-  order?: TOrder<TEsterilizacaoExternaFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TEsterilizacaoExternaFields>;
+  select?: TSelect;
 }) => Promise<TEsterilizacaoExterna[]>;
 export type TEsterilizacaoExternaRead = (args: {
   id: TEsterilizacaoExternaIds;
-  select?: TSelect<TEsterilizacaoExternaFields>;
+  select?: TSelect;
 }) => Promise<TEsterilizacaoExterna>;
 
 export type TEsterilizacaoExternaCreate = (args: {
   data: TEsterilizacaoExterna;
-  select?: TSelect<TEsterilizacaoExternaFields>;
+  select?: TSelect;
 }) => Promise<TEsterilizacaoExterna>;
 export type TEsterilizacaoExternaUpdate = (args: {
   id: TEsterilizacaoExternaIds;
   data: TEsterilizacaoExterna;
-  select?: TSelect<TEsterilizacaoExternaFields>;
+  select?: TSelect;
 }) => Promise<TEsterilizacaoExterna>;
 export type TEsterilizacaoExternaDel = (args: {
   id: TEsterilizacaoExternaIds;

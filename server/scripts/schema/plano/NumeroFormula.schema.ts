@@ -9,7 +9,7 @@ export const NumeroFormula: TTableDef = {
       label: "CdFilial",
       name: "NumeroFormula_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const NumeroFormula: TTableDef = {
       label: "NumUltFormula",
       name: "NumUltFormula",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

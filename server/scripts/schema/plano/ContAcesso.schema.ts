@@ -9,7 +9,7 @@ export const ContAcesso: TTableDef = {
       label: "Base",
       name: "Base",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ContAcesso: TTableDef = {
       label: "Estacao",
       name: "Estacao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
   ],

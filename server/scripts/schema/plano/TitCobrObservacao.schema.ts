@@ -9,7 +9,7 @@ export const TitCobrObservacao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const TitCobrObservacao: TTableDef = {
       label: "NrDoc",
       name: "NrDoc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const TitCobrObservacao: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const TitCobrObservacao: TTableDef = {
       label: "SiglaDoc",
       name: "SiglaDoc",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const TitCobrObservacao: TTableDef = {
       label: "ItemDoc",
       name: "ItemDoc",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,6 @@ export const TitCobrObservacao: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
     },
   ],
 };

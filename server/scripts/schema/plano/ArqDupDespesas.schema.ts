@@ -9,7 +9,7 @@ export const ArqDupDespesas: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ArqDupDespesas: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ArqDupDespesas: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ArqDupDespesas: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ArqDupDespesas: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const ArqDupDespesas: TTableDef = {
       label: "SeqDoc",
       name: "SeqDoc",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const ArqDupDespesas: TTableDef = {
       label: "NumContaDespesa",
       name: "NumContaDespesa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const ArqDupDespesas: TTableDef = {
       label: "Percentual",
       name: "Percentual",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const ArqDupDespesas: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

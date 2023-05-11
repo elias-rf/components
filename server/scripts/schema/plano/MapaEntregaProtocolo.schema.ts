@@ -9,7 +9,7 @@ export const MapaEntregaProtocolo: TTableDef = {
       label: "CdMapaEntregaProtocolo",
       name: "CdMapaEntregaProtocolo",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const MapaEntregaProtocolo: TTableDef = {
       label: "DtProtocolo",
       name: "DtProtocolo",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

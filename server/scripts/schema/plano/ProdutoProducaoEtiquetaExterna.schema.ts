@@ -9,7 +9,7 @@ export const ProdutoProducaoEtiquetaExterna: TTableDef = {
       label: "CdProduto",
       name: "ProdutoProducaoEtiquetaExterna_id",
       typeField: "string",
-      size: 16,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProdutoProducaoEtiquetaExterna: TTableDef = {
       label: "Etiqueta",
       name: "Etiqueta",
       typeField: "string",
-      size: -1,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const ProducaoNaoConformidade: TTableDef = {
       label: "CdNaoConformidade",
       name: "ProducaoNaoConformidade_id",
       typeField: "int",
-      size: 5,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProducaoNaoConformidade: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ProducaoNaoConformidade: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

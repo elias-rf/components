@@ -9,7 +9,7 @@ export const PharmaLinkItemPedido: TTableDef = {
       label: "NumAutorizacao",
       name: "NumAutorizacao",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const PharmaLinkItemPedido: TTableDef = {
       label: "CdProdutoPharmaLink",
       name: "CdProdutoPharmaLink",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const PharmaLinkItemPedido: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const PharmaLinkItemPedido: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const PharmaLinkItemPedido: TTableDef = {
       label: "VlBruto",
       name: "VlBruto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -50,7 +50,7 @@ export const PharmaLinkItemPedido: TTableDef = {
       label: "VlLoja",
       name: "VlLoja",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -59,7 +59,7 @@ export const PharmaLinkItemPedido: TTableDef = {
       label: "VlPharmaLink",
       name: "VlPharmaLink",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -68,7 +68,7 @@ export const PharmaLinkItemPedido: TTableDef = {
       label: "VlReceberLoja",
       name: "VlReceberLoja",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -77,7 +77,7 @@ export const PharmaLinkItemPedido: TTableDef = {
       label: "Desconto",
       name: "Desconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -86,7 +86,7 @@ export const PharmaLinkItemPedido: TTableDef = {
       label: "DtRetorno",
       name: "DtRetorno",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -95,7 +95,7 @@ export const PharmaLinkItemPedido: TTableDef = {
       label: "CdStatus",
       name: "CdStatus",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

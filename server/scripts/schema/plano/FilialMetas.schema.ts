@@ -9,7 +9,7 @@ export const FilialMetas: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const FilialMetas: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const FilialMetas: TTableDef = {
       label: "VlMeta",
       name: "VlMeta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

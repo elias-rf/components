@@ -9,7 +9,7 @@ export const ProdutoCombustivel: TTableDef = {
       label: "CdProduto",
       name: "ProdutoCombustivel_id",
       typeField: "string",
-      size: 16,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProdutoCombustivel: TTableDef = {
       label: "CdANP",
       name: "CdANP",
       typeField: "string",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ProdutoCombustivel: TTableDef = {
       label: "CdCODIF",
       name: "CdCODIF",
       typeField: "string",
-      size: 21,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ProdutoCombustivel: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const ProdutoCombustivel: TTableDef = {
       label: "PercGasNatural",
       name: "PercGasNatural",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -51,7 +51,7 @@ export const ProdutoCombustivel: TTableDef = {
       label: "PercGasNaturalNac",
       name: "PercGasNaturalNac",
       typeField: "int",
-      size: 5,
+
       scale: 4,
     },
     {
@@ -59,7 +59,7 @@ export const ProdutoCombustivel: TTableDef = {
       label: "PercGasNaturalImp",
       name: "PercGasNaturalImp",
       typeField: "int",
-      size: 5,
+
       scale: 4,
     },
     {
@@ -67,7 +67,7 @@ export const ProdutoCombustivel: TTableDef = {
       label: "VlPartida",
       name: "VlPartida",
       typeField: "int",
-      size: 9,
+
       scale: 4,
     },
     {
@@ -75,7 +75,6 @@ export const ProdutoCombustivel: TTableDef = {
       label: "DescricaoANP",
       name: "DescricaoANP",
       typeField: "string",
-      size: 95,
     },
   ],
 };

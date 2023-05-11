@@ -15,31 +15,31 @@ export type TNfCfopFields = keyof Required<TNfCfop>;
 export type TNfCfopIds = {
   [pk in keyof Required<TNfCfopPk>]: any;
 };
-export type TNfCfopSelect = TSelect<TNfCfopFields>;
-export type TNfCfopWhere = TWhere<TNfCfopFields>;
-export type TNfCfopOrder = TOrder<TNfCfopFields>;
+export type TNfCfopSelect = TSelect;
+export type TNfCfopWhere = TWhere;
+export type TNfCfopOrder = TOrder;
 
 export type TNfCfopSchema = () => Promise<TFieldDef[]>;
 export type TNfCfopClear = () => Promise<TNfCfop>;
 export type TNfCfopList = (args: {
-  where?: TWhere<TNfCfopFields>[];
-  order?: TOrder<TNfCfopFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TNfCfopFields>;
+  select?: TSelect;
 }) => Promise<TNfCfop[]>;
 export type TNfCfopRead = (args: {
   id: TNfCfopIds;
-  select?: TSelect<TNfCfopFields>;
+  select?: TSelect;
 }) => Promise<TNfCfop>;
 
 export type TNfCfopCreate = (args: {
   data: TNfCfop;
-  select?: TSelect<TNfCfopFields>;
+  select?: TSelect;
 }) => Promise<TNfCfop>;
 export type TNfCfopUpdate = (args: {
   id: TNfCfopIds;
   data: TNfCfop;
-  select?: TSelect<TNfCfopFields>;
+  select?: TSelect;
 }) => Promise<TNfCfop>;
 export type TNfCfopDel = (args: { id: TNfCfopIds }) => Promise<number>;
 

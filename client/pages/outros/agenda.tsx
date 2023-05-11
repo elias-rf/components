@@ -1,7 +1,4 @@
-import {
-  TAgendaTelefoneFields,
-  TAgendaTelefoneIds,
-} from "@/models/agenda-telefone/agenda-telefone.type";
+import { TAgendaTelefoneIds } from "@/models/agenda-telefone/agenda-telefone.type";
 import { TOrder, TWhere } from "@/types";
 import { Divider, Title } from "@mantine/core";
 import React from "react";
@@ -15,8 +12,8 @@ export default function Agenda() {
   const [selected, setSelected] = React.useState<TAgendaTelefoneIds>({
     agenda_telefone_id: 0,
   });
-  const [where, setWhere] = React.useState<TWhere<TAgendaTelefoneFields>[]>([]);
-  const [order, setOrder] = React.useState<TOrder<TAgendaTelefoneFields>[]>([]);
+  const [where, setWhere] = React.useState<TWhere[]>([]);
+  const [order, setOrder] = React.useState<TOrder[]>([]);
 
   return (
     <>

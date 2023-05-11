@@ -9,7 +9,7 @@ export const Grade3: TTableDef = {
       label: "CdGrade3",
       name: "Grade3_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,6 @@ export const Grade3: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 20,
     },
   ],
 };

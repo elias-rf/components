@@ -9,7 +9,7 @@ export const SpedItem: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SpedItem: TTableDef = {
       label: "CdEmitente",
       name: "CdEmitente",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const SpedItem: TTableDef = {
       label: "TipoEmitente",
       name: "TipoEmitente",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const SpedItem: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const SpedItem: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const SpedItem: TTableDef = {
       label: "SubSerie",
       name: "SubSerie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const SpedItem: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const SpedItem: TTableDef = {
       label: "NumECF",
       name: "NumECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const SpedItem: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const SpedItem: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const SpedItem: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -98,7 +98,7 @@ export const SpedItem: TTableDef = {
       label: "IndMovimento",
       name: "IndMovimento",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const SpedItem: TTableDef = {
       label: "Unidade",
       name: "Unidade",
       typeField: "string",
-      size: 6,
+
       allowNull: false,
     },
     {
@@ -114,7 +114,7 @@ export const SpedItem: TTableDef = {
       label: "CFOPItem",
       name: "CFOPItem",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -122,7 +122,7 @@ export const SpedItem: TTableDef = {
       label: "CdNatureza",
       name: "CdNatureza",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -130,7 +130,7 @@ export const SpedItem: TTableDef = {
       label: "VlUnitario",
       name: "VlUnitario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -139,7 +139,7 @@ export const SpedItem: TTableDef = {
       label: "VlProduto",
       name: "VlProduto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -148,7 +148,7 @@ export const SpedItem: TTableDef = {
       label: "VlDesconto",
       name: "VlDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -157,7 +157,7 @@ export const SpedItem: TTableDef = {
       label: "VlSuframa",
       name: "VlSuframa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -166,7 +166,7 @@ export const SpedItem: TTableDef = {
       label: "VlFreteItem",
       name: "VlFreteItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -175,7 +175,7 @@ export const SpedItem: TTableDef = {
       label: "VlSeguroItem",
       name: "VlSeguroItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -184,7 +184,7 @@ export const SpedItem: TTableDef = {
       label: "VlDespesaAcessoriaItem",
       name: "VlDespesaAcessoriaItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -193,7 +193,7 @@ export const SpedItem: TTableDef = {
       label: "VlTotalItem",
       name: "VlTotalItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -202,7 +202,7 @@ export const SpedItem: TTableDef = {
       label: "CSTICMS",
       name: "CSTICMS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -210,7 +210,7 @@ export const SpedItem: TTableDef = {
       label: "VlBaseCalculoICMSItem",
       name: "VlBaseCalculoICMSItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -219,7 +219,7 @@ export const SpedItem: TTableDef = {
       label: "AliquotaICMS",
       name: "AliquotaICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -228,7 +228,7 @@ export const SpedItem: TTableDef = {
       label: "VlICMSItem",
       name: "VlICMSItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -237,7 +237,7 @@ export const SpedItem: TTableDef = {
       label: "VlBaseCalculoICMSSTItem",
       name: "VlBaseCalculoICMSSTItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -246,7 +246,7 @@ export const SpedItem: TTableDef = {
       label: "AliquotaICMSST",
       name: "AliquotaICMSST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -255,7 +255,7 @@ export const SpedItem: TTableDef = {
       label: "VlICMSSTItem",
       name: "VlICMSSTItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -264,7 +264,7 @@ export const SpedItem: TTableDef = {
       label: "CSTIPI",
       name: "CSTIPI",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -272,7 +272,7 @@ export const SpedItem: TTableDef = {
       label: "CdEnquadramentoIPI",
       name: "CdEnquadramentoIPI",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -280,7 +280,7 @@ export const SpedItem: TTableDef = {
       label: "VlBaseCalculoIPIItem",
       name: "VlBaseCalculoIPIItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -289,7 +289,7 @@ export const SpedItem: TTableDef = {
       label: "AliquotaIPI",
       name: "AliquotaIPI",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -298,7 +298,7 @@ export const SpedItem: TTableDef = {
       label: "VlIPIItem",
       name: "VlIPIItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -307,7 +307,7 @@ export const SpedItem: TTableDef = {
       label: "CdCreditoPISCOFINS",
       name: "CdCreditoPISCOFINS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -315,7 +315,7 @@ export const SpedItem: TTableDef = {
       label: "IndOrigemCreditoPISCOFINS",
       name: "IndOrigemCreditoPISCOFINS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -323,7 +323,7 @@ export const SpedItem: TTableDef = {
       label: "CdContApuradaPISCOFINS",
       name: "CdContApuradaPISCOFINS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -331,7 +331,7 @@ export const SpedItem: TTableDef = {
       label: "CdBaseCreditoPISCOFINS",
       name: "CdBaseCreditoPISCOFINS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -339,7 +339,7 @@ export const SpedItem: TTableDef = {
       label: "CdNaturezaPISCOFINS",
       name: "CdNaturezaPISCOFINS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -347,7 +347,7 @@ export const SpedItem: TTableDef = {
       label: "CSTPIS",
       name: "CSTPIS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -355,7 +355,7 @@ export const SpedItem: TTableDef = {
       label: "VlBaseCalculoPISItem",
       name: "VlBaseCalculoPISItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -364,7 +364,7 @@ export const SpedItem: TTableDef = {
       label: "AliquotaPIS",
       name: "AliquotaPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -373,7 +373,7 @@ export const SpedItem: TTableDef = {
       label: "VlPISItem",
       name: "VlPISItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -382,7 +382,7 @@ export const SpedItem: TTableDef = {
       label: "VlPISSTItem",
       name: "VlPISSTItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -391,7 +391,7 @@ export const SpedItem: TTableDef = {
       label: "CSTCOFINS",
       name: "CSTCOFINS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -399,7 +399,7 @@ export const SpedItem: TTableDef = {
       label: "VlBaseCalculoCOFINSItem",
       name: "VlBaseCalculoCOFINSItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -408,7 +408,7 @@ export const SpedItem: TTableDef = {
       label: "AliquotaCOFINS",
       name: "AliquotaCOFINS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -417,7 +417,7 @@ export const SpedItem: TTableDef = {
       label: "VlCOFINSItem",
       name: "VlCOFINSItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -426,7 +426,7 @@ export const SpedItem: TTableDef = {
       label: "VlCOFINSSTItem",
       name: "VlCOFINSSTItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -435,14 +435,12 @@ export const SpedItem: TTableDef = {
       label: "ControleEstoque",
       name: "ControleEstoque",
       typeField: "int",
-      size: 4,
     },
     {
       field: "PlanoContaSped",
       label: "PlanoContaSped",
       name: "PlanoContaSped",
       typeField: "int",
-      size: 9,
     },
   ],
 };

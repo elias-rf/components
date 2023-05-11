@@ -9,7 +9,7 @@ export const TempCombo: TTableDef = {
       label: "Estacao",
       name: "Estacao",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TempCombo: TTableDef = {
       label: "Origem",
       name: "Origem",
       typeField: "string",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TempCombo: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const TempCombo: TTableDef = {
       label: "CdCombo",
       name: "CdCombo",
       typeField: "string",
-      size: 18,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const TempCombo: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 18,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const TempCombo: TTableDef = {
       label: "QtdeMinima",
       name: "QtdeMinima",
       typeField: "int",
-      size: 5,
+
       scale: 5,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const TempCombo: TTableDef = {
       label: "QtdeMaxima",
       name: "QtdeMaxima",
       typeField: "int",
-      size: 5,
+
       scale: 5,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const TempCombo: TTableDef = {
       label: "VlUnidadeCombo",
       name: "VlUnidadeCombo",
       typeField: "int",
-      size: 9,
+
       scale: 5,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const TempCombo: TTableDef = {
       label: "QtdeVendida",
       name: "QtdeVendida",
       typeField: "int",
-      size: 5,
+
       scale: 5,
       allowNull: false,
     },
@@ -85,7 +85,7 @@ export const TempCombo: TTableDef = {
       label: "VlUnidadeVenda",
       name: "VlUnidadeVenda",
       typeField: "int",
-      size: 9,
+
       scale: 5,
       allowNull: false,
     },
@@ -94,7 +94,7 @@ export const TempCombo: TTableDef = {
       label: "QtdeUtilizada",
       name: "QtdeUtilizada",
       typeField: "int",
-      size: 5,
+
       scale: 5,
       allowNull: false,
     },
@@ -103,7 +103,7 @@ export const TempCombo: TTableDef = {
       label: "QtdeCombo",
       name: "QtdeCombo",
       typeField: "int",
-      size: 5,
+
       scale: 5,
       allowNull: false,
     },

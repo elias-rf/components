@@ -9,7 +9,7 @@ export const SaldoFilial: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SaldoFilial: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const SaldoFilial: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const SaldoFilial: TTableDef = {
       label: "DtSaldo",
       name: "DtSaldo",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const SaldoFilial: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const SaldoFilial: TTableDef = {
       label: "Valor",
       name: "Valor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

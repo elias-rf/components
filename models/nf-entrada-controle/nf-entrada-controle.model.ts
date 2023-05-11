@@ -1,38 +1,25 @@
 import type { TConnections } from "@/config/connections";
 import { crudFactory } from "@/utils/crud/crud.factory";
 import { nf_entrada_controle } from "./nf-entrada-controle.table";
-import type { TNfEntradaControleModel } from "./nf-entrada-controle.type";
-//#region import
-//#endregion
 
-export function nfEntradaControleModelFactory(
-  //#region inject
-  { connections }: { connections: TConnections }
-): //#endregion
-TNfEntradaControleModel {
+export function nfEntradaControleModelFactory({
+  connections,
+}: {
+  connections: TConnections;
+}) {
   const connection = connections[nf_entrada_controle.database];
   const crud = crudFactory(connection, nf_entrada_controle);
-
-  //#region def
-  //#endregion
 
   const model = {
     query: {
       ...crud.query,
-      //#region query
-      //#endregion
     },
     mutation: {
       ...crud.mutation,
-      //#region mutation
-      //#endregion
     },
     connection,
     nf_entrada_controle,
-  } as TNfEntradaControleModel;
+  };
 
   return model;
 }
-
-//#region other
-//#endregion

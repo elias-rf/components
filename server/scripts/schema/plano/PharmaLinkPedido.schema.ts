@@ -9,7 +9,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "NumAutorizacao",
       name: "PharmaLinkPedido_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "Operadora",
       name: "Operadora",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "CdProjeto",
       name: "CdProjeto",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "Modalidade",
       name: "Modalidade",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "DtRetorno",
       name: "DtRetorno",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -59,7 +59,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "CdStatus",
       name: "CdStatus",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "NmPaciente",
       name: "NmPaciente",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "CdTerminal",
       name: "CdTerminal",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -83,7 +83,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "NumeroCartao",
       name: "NumeroCartao",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -91,7 +91,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -99,7 +99,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "ExigeCRM",
       name: "ExigeCRM",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -107,7 +107,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -115,7 +115,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -123,7 +123,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -131,7 +131,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "NumPDV",
       name: "NumPDV",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -140,7 +140,7 @@ export const PharmaLinkPedido: TTableDef = {
       label: "NumCOO",
       name: "NumCOO",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

@@ -9,7 +9,7 @@ export const ePharmaPedido: TTableDef = {
       label: "NumAutorizacao",
       name: "ePharmaPedido_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const ePharmaPedido: TTableDef = {
       label: "DtAutorizacao",
       name: "DtAutorizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -28,7 +28,7 @@ export const ePharmaPedido: TTableDef = {
       label: "NumeroTransacao",
       name: "NumeroTransacao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -37,7 +37,7 @@ export const ePharmaPedido: TTableDef = {
       label: "DtValidadeAutorizacao",
       name: "DtValidadeAutorizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -46,7 +46,7 @@ export const ePharmaPedido: TTableDef = {
       label: "NmPaciente",
       name: "NmPaciente",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -54,7 +54,7 @@ export const ePharmaPedido: TTableDef = {
       label: "SaldoCartao",
       name: "SaldoCartao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -63,7 +63,7 @@ export const ePharmaPedido: TTableDef = {
       label: "DtValidadeSaldo",
       name: "DtValidadeSaldo",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -72,7 +72,7 @@ export const ePharmaPedido: TTableDef = {
       label: "NumCOO",
       name: "NumCOO",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -81,7 +81,7 @@ export const ePharmaPedido: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -90,7 +90,7 @@ export const ePharmaPedido: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const ePharmaPedido: TTableDef = {
       label: "DtMovimento",
       name: "DtMovimento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -107,7 +107,7 @@ export const ePharmaPedido: TTableDef = {
       label: "DtConciliacao",
       name: "DtConciliacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -116,7 +116,7 @@ export const ePharmaPedido: TTableDef = {
       label: "DtPagamento",
       name: "DtPagamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -125,7 +125,7 @@ export const ePharmaPedido: TTableDef = {
       label: "FgConciliacao",
       name: "FgConciliacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const Formulas: TTableDef = {
       label: "Origem",
       name: "Origem",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Formulas: TTableDef = {
       label: "Destino",
       name: "Destino",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,6 @@ export const Formulas: TTableDef = {
       label: "Formula",
       name: "Formula",
       typeField: "string",
-      size: 50,
     },
   ],
 };

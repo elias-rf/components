@@ -9,7 +9,7 @@ export const ComponentesRAT: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ComponentesRAT: TTableDef = {
       label: "NumeroRAT",
       name: "NumeroRAT",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ComponentesRAT: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ComponentesRAT: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -41,7 +41,7 @@ export const ComponentesRAT: TTableDef = {
       label: "VlLiquido",
       name: "VlLiquido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -49,7 +49,7 @@ export const ComponentesRAT: TTableDef = {
       label: "VlTotal",
       name: "VlTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -57,7 +57,7 @@ export const ComponentesRAT: TTableDef = {
       label: "AliqIcms",
       name: "AliqIcms",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -65,7 +65,7 @@ export const ComponentesRAT: TTableDef = {
       label: "PercDescItem",
       name: "PercDescItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -73,7 +73,7 @@ export const ComponentesRAT: TTableDef = {
       label: "VlVenda",
       name: "VlVenda",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -81,7 +81,7 @@ export const ComponentesRAT: TTableDef = {
       label: "VlCusto",
       name: "VlCusto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -89,7 +89,7 @@ export const ComponentesRAT: TTableDef = {
       label: "ReducaoICMS",
       name: "ReducaoICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -97,7 +97,7 @@ export const ComponentesRAT: TTableDef = {
       label: "PercComissao",
       name: "PercComissao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -105,7 +105,6 @@ export const ComponentesRAT: TTableDef = {
       label: "TipoEstoque",
       name: "TipoEstoque",
       typeField: "string",
-      size: 1,
     },
   ],
 };

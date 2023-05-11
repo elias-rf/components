@@ -9,7 +9,7 @@ export const ContratoAluguelItem: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ContratoAluguelItem: TTableDef = {
       label: "DiaContr",
       name: "DiaContr",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ContratoAluguelItem: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ContratoAluguelItem: TTableDef = {
       label: "NumSerie",
       name: "NumSerie",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ContratoAluguelItem: TTableDef = {
       label: "Localizacao",
       name: "Localizacao",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ContratoAluguelItem: TTableDef = {
       label: "NmContato",
       name: "NmContato",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ContratoAluguelItem: TTableDef = {
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
   ],

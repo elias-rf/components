@@ -9,7 +9,7 @@ export const ItemNotaServico: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ItemNotaServico: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ItemNotaServico: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ItemNotaServico: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ItemNotaServico: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const ItemNotaServico: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const ItemNotaServico: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -68,7 +68,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlUnitario",
       name: "VlUnitario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -77,7 +77,7 @@ export const ItemNotaServico: TTableDef = {
       label: "FgIRRF",
       name: "FgIRRF",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -85,7 +85,7 @@ export const ItemNotaServico: TTableDef = {
       label: "FgIN381",
       name: "FgIN381",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -93,7 +93,7 @@ export const ItemNotaServico: TTableDef = {
       label: "FgEstoqueServico",
       name: "FgEstoqueServico",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -101,7 +101,7 @@ export const ItemNotaServico: TTableDef = {
       label: "CST",
       name: "CST",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -109,7 +109,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlServico",
       name: "VlServico",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -118,7 +118,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlLiquido",
       name: "VlLiquido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -127,7 +127,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlDeducoes",
       name: "VlDeducoes",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -136,7 +136,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlBaseCalculo",
       name: "VlBaseCalculo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -145,7 +145,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlBaseCalculoPIS",
       name: "VlBaseCalculoPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -154,7 +154,7 @@ export const ItemNotaServico: TTableDef = {
       label: "AliquotaPIS",
       name: "AliquotaPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -163,7 +163,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlPIS",
       name: "VlPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -172,7 +172,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlBaseCalculoCofins",
       name: "VlBaseCalculoCofins",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -181,7 +181,7 @@ export const ItemNotaServico: TTableDef = {
       label: "AliquotaCofins",
       name: "AliquotaCofins",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -190,7 +190,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlCofins",
       name: "VlCofins",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -199,7 +199,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlBaseCalculoINSS",
       name: "VlBaseCalculoINSS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -208,7 +208,7 @@ export const ItemNotaServico: TTableDef = {
       label: "AliquotaINSS",
       name: "AliquotaINSS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -217,7 +217,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlINSS",
       name: "VlINSS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -226,7 +226,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlBaseCalculoIRRF",
       name: "VlBaseCalculoIRRF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -235,7 +235,7 @@ export const ItemNotaServico: TTableDef = {
       label: "AliquotaIRRF",
       name: "AliquotaIRRF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -244,7 +244,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlIRRF",
       name: "VlIRRF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -253,7 +253,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlBaseCalculoCSLL",
       name: "VlBaseCalculoCSLL",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -262,7 +262,7 @@ export const ItemNotaServico: TTableDef = {
       label: "AliquotaCSLL",
       name: "AliquotaCSLL",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -271,7 +271,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlCSLL",
       name: "VlCSLL",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -280,7 +280,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlBaseCalculoIN381",
       name: "VlBaseCalculoIN381",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -289,7 +289,7 @@ export const ItemNotaServico: TTableDef = {
       label: "AliquotaIN381",
       name: "AliquotaIN381",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -298,7 +298,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlIN381",
       name: "VlIN381",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -307,7 +307,7 @@ export const ItemNotaServico: TTableDef = {
       label: "FgISSRetido",
       name: "FgISSRetido",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -315,7 +315,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlISSRetido",
       name: "VlISSRetido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -324,7 +324,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlBaseCalculoISS",
       name: "VlBaseCalculoISS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -333,7 +333,7 @@ export const ItemNotaServico: TTableDef = {
       label: "AliquotaISS",
       name: "AliquotaISS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -342,7 +342,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlISS",
       name: "VlISS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -351,7 +351,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlOutrasRetencoes",
       name: "VlOutrasRetencoes",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -360,7 +360,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlDescontoIncondicionado",
       name: "VlDescontoIncondicionado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -369,7 +369,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlDescontoCondicionado",
       name: "VlDescontoCondicionado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -378,7 +378,7 @@ export const ItemNotaServico: TTableDef = {
       label: "CSTPIS",
       name: "CSTPIS",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -386,7 +386,7 @@ export const ItemNotaServico: TTableDef = {
       label: "CSTCofins",
       name: "CSTCofins",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -394,7 +394,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlAproximadoImpostoItem",
       name: "VlAproximadoImpostoItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -402,7 +402,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlAproximadoImpostoFederal",
       name: "VlAproximadoImpostoFederal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -410,7 +410,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlAproximadoImpostoEstadual",
       name: "VlAproximadoImpostoEstadual",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -418,7 +418,7 @@ export const ItemNotaServico: TTableDef = {
       label: "VlAproximadoImpostoMunicipal",
       name: "VlAproximadoImpostoMunicipal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

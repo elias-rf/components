@@ -9,7 +9,7 @@ export const LayOutRemessa: TTableDef = {
       label: "IdLayOut",
       name: "LayOutRemessa_id",
       typeField: "string",
-      size: 124,
+
       primaryKey: true,
       allowNull: false,
     },

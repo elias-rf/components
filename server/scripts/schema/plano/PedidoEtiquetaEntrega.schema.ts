@@ -9,7 +9,7 @@ export const PedidoEtiquetaEntrega: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const PedidoEtiquetaEntrega: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const PedidoEtiquetaEntrega: TTableDef = {
       label: "TextoEtiqueta",
       name: "TextoEtiqueta",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const PedidoEtiquetaEntrega: TTableDef = {
       label: "FgImpressao",
       name: "FgImpressao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,6 @@ export const PedidoEtiquetaEntrega: TTableDef = {
       label: "FgEtiquetaEnderecoEntrega",
       name: "FgEtiquetaEnderecoEntrega",
       typeField: "string",
-      size: 1,
     },
   ],
 };

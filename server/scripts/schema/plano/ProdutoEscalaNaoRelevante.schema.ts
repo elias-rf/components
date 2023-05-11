@@ -9,7 +9,7 @@ export const ProdutoEscalaNaoRelevante: TTableDef = {
       label: "CdProduto",
       name: "ProdutoEscalaNaoRelevante_id",
       typeField: "string",
-      size: 18,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProdutoEscalaNaoRelevante: TTableDef = {
       label: "CNPJFabricante",
       name: "CNPJFabricante",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
   ],

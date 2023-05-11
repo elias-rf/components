@@ -9,7 +9,7 @@ export const ProducaoEsterilizacaoItem: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProducaoEsterilizacaoItem: TTableDef = {
       label: "NumLoteEsterilizacao",
       name: "NumLoteEsterilizacao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProducaoEsterilizacaoItem: TTableDef = {
       label: "NumFormula",
       name: "NumFormula",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ProducaoEsterilizacaoItem: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
   ],

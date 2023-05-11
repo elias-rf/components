@@ -9,7 +9,7 @@ export const CancelamentoTitCobr: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CancelamentoTitCobr: TTableDef = {
       label: "SiglaDoc",
       name: "SiglaDoc",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const CancelamentoTitCobr: TTableDef = {
       label: "NrDoc",
       name: "NrDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const CancelamentoTitCobr: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const CancelamentoTitCobr: TTableDef = {
       label: "ItemDoc",
       name: "ItemDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -49,14 +49,13 @@ export const CancelamentoTitCobr: TTableDef = {
       label: "Motivo",
       name: "Motivo",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "Modelo",
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
   ],

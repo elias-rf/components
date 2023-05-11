@@ -9,7 +9,7 @@ export const CadproObservacaoCompra: TTableDef = {
       label: "CdProduto",
       name: "CadproObservacaoCompra_id",
       typeField: "string",
-      size: 16,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadproObservacaoCompra: TTableDef = {
       label: "ObservacaoCompra",
       name: "ObservacaoCompra",
       typeField: "string",
-      size: 7680,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CadproObservacaoCompra: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

@@ -9,7 +9,7 @@ export const DistCusto: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const DistCusto: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const DistCusto: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const DistCusto: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const DistCusto: TTableDef = {
       label: "SeqDoc",
       name: "SeqDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const DistCusto: TTableDef = {
       label: "CdEmitente",
       name: "CdEmitente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const DistCusto: TTableDef = {
       label: "CdCentroCusto",
       name: "CdCentroCusto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const DistCusto: TTableDef = {
       label: "Percentual",
       name: "Percentual",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -75,7 +75,7 @@ export const DistCusto: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -83,7 +83,6 @@ export const DistCusto: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 4,
     },
   ],
 };

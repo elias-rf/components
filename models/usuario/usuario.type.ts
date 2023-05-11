@@ -2,7 +2,7 @@ import { TOrder, TSelect, TWhere } from "@/types";
 import { TFieldDef } from "@/types/model";
 //#region import
 import { TCurrentUser } from "@/types";
-import { TRpcContext } from "@/types/rpc";
+
 //#endregion
 export interface TUsuarioPk {
   usuario_id?: number;
@@ -24,31 +24,31 @@ export type TUsuarioFields = keyof Required<TUsuario>;
 export type TUsuarioIds = {
   [pk in keyof Required<TUsuarioPk>]: any;
 };
-export type TUsuarioSelect = TSelect<TUsuarioFields>;
-export type TUsuarioWhere = TWhere<TUsuarioFields>;
-export type TUsuarioOrder = TOrder<TUsuarioFields>;
+export type TUsuarioSelect = TSelect;
+export type TUsuarioWhere = TWhere;
+export type TUsuarioOrder = TOrder;
 
 export type TUsuarioSchema = () => Promise<TFieldDef[]>;
 export type TUsuarioClear = () => Promise<TUsuario>;
 export type TUsuarioList = (args: {
-  where?: TWhere<TUsuarioFields>[];
-  order?: TOrder<TUsuarioFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TUsuarioFields>;
+  select?: TSelect;
 }) => Promise<TUsuario[]>;
 export type TUsuarioRead = (args: {
   id: TUsuarioIds;
-  select?: TSelect<TUsuarioFields>;
+  select?: TSelect;
 }) => Promise<TUsuario>;
 
 export type TUsuarioCreate = (args: {
   data: TUsuario;
-  select?: TSelect<TUsuarioFields>;
+  select?: TSelect;
 }) => Promise<TUsuario>;
 export type TUsuarioUpdate = (args: {
   id: TUsuarioIds;
   data: TUsuario;
-  select?: TSelect<TUsuarioFields>;
+  select?: TSelect;
 }) => Promise<TUsuario>;
 export type TUsuarioDel = (args: { id: TUsuarioIds }) => Promise<number>;
 
@@ -58,7 +58,7 @@ export type TUsuarioLogin = (args: {
   password: string;
 }) => Promise<TCurrentUser>;
 export type TUsuarioLogout = () => Promise<boolean>;
-export type TUsuarioMe = (_?: void, ctx?: TRpcContext) => Promise<TCurrentUser>;
+export type TUsuarioMe = (_?: void, ctx?: any) => Promise<TCurrentUser>;
 //#endregion
 
 export type TUsuarioCrud = {

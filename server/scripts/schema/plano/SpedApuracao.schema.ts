@@ -9,7 +9,7 @@ export const SpedApuracao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SpedApuracao: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const SpedApuracao: TTableDef = {
       label: "PeriodoApuracao",
       name: "PeriodoApuracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const SpedApuracao: TTableDef = {
       label: "OrigemCredito",
       name: "OrigemCredito",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const SpedApuracao: TTableDef = {
       label: "CNPJCedente",
       name: "CNPJCedente",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const SpedApuracao: TTableDef = {
       label: "CdTipoCredito",
       name: "CdTipoCredito",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const SpedApuracao: TTableDef = {
       label: "VlApuradoAnterior",
       name: "VlApuradoAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const SpedApuracao: TTableDef = {
       label: "VlExtemporaneoAnterior",
       name: "VlExtemporaneoAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const SpedApuracao: TTableDef = {
       label: "VlDescontoAnterior",
       name: "VlDescontoAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -85,7 +85,7 @@ export const SpedApuracao: TTableDef = {
       label: "VlRessarcimentoAnterior",
       name: "VlRessarcimentoAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -94,7 +94,7 @@ export const SpedApuracao: TTableDef = {
       label: "VlDCIAnterior",
       name: "VlDCIAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -103,7 +103,7 @@ export const SpedApuracao: TTableDef = {
       label: "VlDescontoPeriodo",
       name: "VlDescontoPeriodo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -112,7 +112,7 @@ export const SpedApuracao: TTableDef = {
       label: "VlRessarcimentoPeriodo",
       name: "VlRessarcimentoPeriodo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -121,7 +121,7 @@ export const SpedApuracao: TTableDef = {
       label: "VlDCIPeriodo",
       name: "VlDCIPeriodo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -130,7 +130,7 @@ export const SpedApuracao: TTableDef = {
       label: "VlTransferido",
       name: "VlTransferido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -139,7 +139,7 @@ export const SpedApuracao: TTableDef = {
       label: "VlOutrasFormas",
       name: "VlOutrasFormas",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

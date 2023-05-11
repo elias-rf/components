@@ -9,7 +9,7 @@ export const ControladosSaida: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,14 +18,13 @@ export const ControladosSaida: TTableDef = {
       label: "NumPDV",
       name: "NumPDV",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NumDocumento",
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -33,14 +32,13 @@ export const ControladosSaida: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
     },
     {
       field: "CdProduto",
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -48,7 +46,7 @@ export const ControladosSaida: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -56,7 +54,7 @@ export const ControladosSaida: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -64,7 +62,7 @@ export const ControladosSaida: TTableDef = {
       label: "QtdePrescrita",
       name: "QtdePrescrita",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -72,7 +70,7 @@ export const ControladosSaida: TTableDef = {
       label: "QtdeVendida",
       name: "QtdeVendida",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -80,7 +78,7 @@ export const ControladosSaida: TTableDef = {
       label: "CRM",
       name: "CRM",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -88,7 +86,7 @@ export const ControladosSaida: TTableDef = {
       label: "DtReceita",
       name: "DtReceita",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -96,14 +94,13 @@ export const ControladosSaida: TTableDef = {
       label: "NumReceita",
       name: "NumReceita",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdComprador",
       label: "CdComprador",
       name: "CdComprador",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -111,56 +108,49 @@ export const ControladosSaida: TTableDef = {
       label: "NomeComprador",
       name: "NomeComprador",
       typeField: "string",
-      size: 70,
     },
     {
       field: "Endereco",
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 70,
     },
     {
       field: "NumIdentidade",
       label: "NumIdentidade",
       name: "NumIdentidade",
       typeField: "string",
-      size: 20,
     },
     {
       field: "Telefone",
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 20,
     },
     {
       field: "FgStatus",
       label: "FgStatus",
       name: "FgStatus",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NmPaciente",
       label: "NmPaciente",
       name: "NmPaciente",
       typeField: "string",
-      size: 40,
     },
     {
       field: "TipoReceita",
       label: "TipoReceita",
       name: "TipoReceita",
       typeField: "string",
-      size: 2,
     },
     {
       field: "NumPedido",
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -168,42 +158,37 @@ export const ControladosSaida: TTableDef = {
       label: "TipoUsoMedicamento",
       name: "TipoUsoMedicamento",
       typeField: "int",
-      size: 2,
     },
     {
       field: "UfReceita",
       label: "UfReceita",
       name: "UfReceita",
       typeField: "string",
-      size: 2,
     },
     {
       field: "TipoIdentidade",
       label: "TipoIdentidade",
       name: "TipoIdentidade",
       typeField: "int",
-      size: 2,
     },
     {
       field: "UfIdentidade",
       label: "UfIdentidade",
       name: "UfIdentidade",
       typeField: "string",
-      size: 2,
     },
     {
       field: "EmissorIdentidade",
       label: "EmissorIdentidade",
       name: "EmissorIdentidade",
       typeField: "string",
-      size: 16,
     },
     {
       field: "NumLoteProduto",
       label: "NumLoteProduto",
       name: "NumLoteProduto",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -211,42 +196,37 @@ export const ControladosSaida: TTableDef = {
       label: "NumRegistroProduto",
       name: "NumRegistroProduto",
       typeField: "string",
-      size: 16,
     },
     {
       field: "Conselho",
       label: "Conselho",
       name: "Conselho",
       typeField: "string",
-      size: 8,
     },
     {
       field: "UfConselho",
       label: "UfConselho",
       name: "UfConselho",
       typeField: "string",
-      size: 2,
     },
     {
       field: "NumConselho",
       label: "NumConselho",
       name: "NumConselho",
       typeField: "float",
-      size: 8,
     },
     {
       field: "FgGenerico",
       label: "FgGenerico",
       name: "FgGenerico",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Modelo",
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -254,42 +234,36 @@ export const ControladosSaida: TTableDef = {
       label: "TipoMovimentacao",
       name: "TipoMovimentacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "MotivoPerda",
       label: "MotivoPerda",
       name: "MotivoPerda",
       typeField: "int",
-      size: 2,
     },
     {
       field: "UsoProlongado",
       label: "UsoProlongado",
       name: "UsoProlongado",
       typeField: "int",
-      size: 2,
     },
     {
       field: "unidadeIdade",
       label: "unidadeIdade",
       name: "unidadeIdade",
       typeField: "int",
-      size: 2,
     },
     {
       field: "Idade",
       label: "Idade",
       name: "Idade",
       typeField: "int",
-      size: 2,
     },
     {
       field: "Sexo",
       label: "Sexo",
       name: "Sexo",
       typeField: "string",
-      size: 1,
     },
   ],
 };

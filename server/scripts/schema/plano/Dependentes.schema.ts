@@ -9,7 +9,7 @@ export const Dependentes: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Dependentes: TTableDef = {
       label: "CdFuncionario",
       name: "CdFuncionario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const Dependentes: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const Dependentes: TTableDef = {
       label: "NmDependente",
       name: "NmDependente",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const Dependentes: TTableDef = {
       label: "DtNctoDependente",
       name: "DtNctoDependente",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

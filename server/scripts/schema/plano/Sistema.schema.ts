@@ -9,7 +9,7 @@ export const Sistema: TTableDef = {
       label: "CdSistema",
       name: "Sistema_id",
       typeField: "string",
-      size: 16,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Sistema: TTableDef = {
       label: "NmSistema",
       name: "NmSistema",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
   ],

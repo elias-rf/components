@@ -9,7 +9,7 @@ export const ExcIN: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ExcIN: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ExcIN: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ExcIN: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ExcIN: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ExcIN: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const ExcIN: TTableDef = {
       label: "VlUnitario",
       name: "VlUnitario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const ExcIN: TTableDef = {
       label: "VlTotal",
       name: "VlTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const ExcIN: TTableDef = {
       label: "AliqIcms",
       name: "AliqIcms",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -85,7 +85,7 @@ export const ExcIN: TTableDef = {
       label: "BaseCalculo",
       name: "BaseCalculo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -94,7 +94,7 @@ export const ExcIN: TTableDef = {
       label: "VlICms",
       name: "VlICms",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -103,7 +103,7 @@ export const ExcIN: TTableDef = {
       label: "VlLiquido",
       name: "VlLiquido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -112,7 +112,7 @@ export const ExcIN: TTableDef = {
       label: "FgEstoque",
       name: "FgEstoque",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -120,7 +120,7 @@ export const ExcIN: TTableDef = {
       label: "VlCusto",
       name: "VlCusto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -129,7 +129,7 @@ export const ExcIN: TTableDef = {
       label: "CustoMedio",
       name: "CustoMedio",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -138,7 +138,7 @@ export const ExcIN: TTableDef = {
       label: "CdProdutoAssociado",
       name: "CdProdutoAssociado",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -146,7 +146,7 @@ export const ExcIN: TTableDef = {
       label: "CdRefEstoque",
       name: "CdRefEstoque",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -154,7 +154,7 @@ export const ExcIN: TTableDef = {
       label: "PercDesconto",
       name: "PercDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -163,7 +163,7 @@ export const ExcIN: TTableDef = {
       label: "AliqIPI",
       name: "AliqIPI",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -172,7 +172,7 @@ export const ExcIN: TTableDef = {
       label: "BaseSub",
       name: "BaseSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -181,7 +181,7 @@ export const ExcIN: TTableDef = {
       label: "FgKit",
       name: "FgKit",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -189,7 +189,7 @@ export const ExcIN: TTableDef = {
       label: "FgPeso",
       name: "FgPeso",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -197,7 +197,7 @@ export const ExcIN: TTableDef = {
       label: "ImprimeComponentes",
       name: "ImprimeComponentes",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -205,7 +205,7 @@ export const ExcIN: TTableDef = {
       label: "Irrf",
       name: "Irrf",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -214,7 +214,7 @@ export const ExcIN: TTableDef = {
       label: "MargemSub",
       name: "MargemSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -223,7 +223,7 @@ export const ExcIN: TTableDef = {
       label: "Peso",
       name: "Peso",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -231,7 +231,7 @@ export const ExcIN: TTableDef = {
       label: "ReducaoICMS",
       name: "ReducaoICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -240,7 +240,7 @@ export const ExcIN: TTableDef = {
       label: "TaxaFCA",
       name: "TaxaFCA",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -249,7 +249,7 @@ export const ExcIN: TTableDef = {
       label: "TipoMovimentacao",
       name: "TipoMovimentacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -257,7 +257,7 @@ export const ExcIN: TTableDef = {
       label: "VlComissaoPrazo",
       name: "VlComissaoPrazo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -266,7 +266,7 @@ export const ExcIN: TTableDef = {
       label: "VlComissaoVista",
       name: "VlComissaoVista",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -275,7 +275,7 @@ export const ExcIN: TTableDef = {
       label: "VlICMSSub",
       name: "VlICMSSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -284,7 +284,7 @@ export const ExcIN: TTableDef = {
       label: "VLIPI",
       name: "VLIPI",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -293,7 +293,7 @@ export const ExcIN: TTableDef = {
       label: "VLISS",
       name: "VLISS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -302,7 +302,7 @@ export const ExcIN: TTableDef = {
       label: "PercLimiteComissao",
       name: "PercLimiteComissao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -311,7 +311,7 @@ export const ExcIN: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
   ],

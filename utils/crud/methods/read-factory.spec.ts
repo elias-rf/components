@@ -1,6 +1,6 @@
 import { connectionsMock } from "@/mocks/connections.mock";
+import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { TTableDef } from "@/types";
-import { knexMockHistory } from "@/utils/data/knex-mock-history";
 import { createTracker } from "knex-mock-client";
 import { readFactory } from "./read-factory";
 
@@ -50,14 +50,14 @@ describe("crudRead", () => {
 
   it("read", async () => {
     const rsp = await read({
-      id: { agenda_telefone_id: 10 },
+      ids: [{ id: "agenda_telefone_id", value: 10 }],
     });
     expect(rsp).toEqual({});
     expect(knexMockHistory(tracker)).toEqual({
       select: [
         {
           bindings: [10],
-          sql: "select [id], [name], [department], [email] from [phonebook] where [id] = @p0",
+          sql: "select [id], [name], [department], [email] from [phonebook] where ([id] = @p0)",
         },
       ],
     });

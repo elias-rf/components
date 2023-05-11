@@ -9,7 +9,7 @@ export const TextoPreventiva: TTableDef = {
       label: "Sequencia",
       name: "TextoPreventiva_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,6 @@ export const TextoPreventiva: TTableDef = {
       label: "Texto",
       name: "Texto",
       typeField: "string",
-      size: 100,
     },
   ],
 };

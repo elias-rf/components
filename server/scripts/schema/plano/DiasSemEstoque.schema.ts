@@ -9,7 +9,7 @@ export const DiasSemEstoque: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const DiasSemEstoque: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const DiasSemEstoque: TTableDef = {
       label: "DtInicioFalta",
       name: "DtInicioFalta",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const DiasSemEstoque: TTableDef = {
       label: "DtReposicao",
       name: "DtReposicao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

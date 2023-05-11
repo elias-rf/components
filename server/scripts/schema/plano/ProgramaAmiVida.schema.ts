@@ -9,7 +9,7 @@ export const ProgramaAmiVida: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProgramaAmiVida: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ProgramaAmiVida: TTableDef = {
       label: "Campanha",
       name: "Campanha",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ProgramaAmiVida: TTableDef = {
       label: "UnidadesCaixa",
       name: "UnidadesCaixa",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ProgramaAmiVida: TTableDef = {
       label: "DtInicioCampanha",
       name: "DtInicioCampanha",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -51,7 +51,7 @@ export const ProgramaAmiVida: TTableDef = {
       label: "DtFinalCampanha",
       name: "DtFinalCampanha",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -60,7 +60,7 @@ export const ProgramaAmiVida: TTableDef = {
       label: "FgParticipacao",
       name: "FgParticipacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -68,7 +68,7 @@ export const ProgramaAmiVida: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

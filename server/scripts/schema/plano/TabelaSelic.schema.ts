@@ -9,7 +9,7 @@ export const TabelaSelic: TTableDef = {
       label: "DtBase",
       name: "TabelaSelic_id",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const TabelaSelic: TTableDef = {
       label: "PercSelic",
       name: "PercSelic",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -28,7 +28,7 @@ export const TabelaSelic: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

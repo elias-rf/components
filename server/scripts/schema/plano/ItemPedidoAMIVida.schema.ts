@@ -9,7 +9,7 @@ export const ItemPedidoAMIVida: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ItemPedidoAMIVida: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ItemPedidoAMIVida: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ItemPedidoAMIVida: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ItemPedidoAMIVida: TTableDef = {
       label: "Posologia",
       name: "Posologia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -51,14 +51,12 @@ export const ItemPedidoAMIVida: TTableDef = {
       label: "MedidaDoses",
       name: "MedidaDoses",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NumDosesDia",
       label: "NumDosesDia",
       name: "NumDosesDia",
       typeField: "int",
-      size: 2,
     },
   ],
 };

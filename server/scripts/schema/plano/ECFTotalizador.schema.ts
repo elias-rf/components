@@ -9,7 +9,7 @@ export const ECFTotalizador: TTableDef = {
       label: "CNPJFilial",
       name: "CNPJFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ECFTotalizador: TTableDef = {
       label: "NumECF",
       name: "NumECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ECFTotalizador: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const ECFTotalizador: TTableDef = {
       label: "Totalizador",
       name: "Totalizador",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ECFTotalizador: TTableDef = {
       label: "Aliquota",
       name: "Aliquota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const ECFTotalizador: TTableDef = {
       label: "VlAcumulado",
       name: "VlAcumulado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -61,7 +61,7 @@ export const ECFTotalizador: TTableDef = {
       label: "NumSerie",
       name: "NumSerie",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -69,7 +69,7 @@ export const ECFTotalizador: TTableDef = {
       label: "NumReducaoZ",
       name: "NumReducaoZ",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -77,7 +77,7 @@ export const ECFTotalizador: TTableDef = {
       label: "NumUsuario",
       name: "NumUsuario",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -85,14 +85,13 @@ export const ECFTotalizador: TTableDef = {
       label: "PosicaoTotalizador",
       name: "PosicaoTotalizador",
       typeField: "int",
-      size: 2,
     },
     {
       field: "ControleFilial",
       label: "ControleFilial",
       name: "ControleFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -101,7 +100,7 @@ export const ECFTotalizador: TTableDef = {
       label: "ControleECF",
       name: "ControleECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -109,7 +108,7 @@ export const ECFTotalizador: TTableDef = {
       label: "ControleData",
       name: "ControleData",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -118,7 +117,7 @@ export const ECFTotalizador: TTableDef = {
       label: "ControleTotalizador",
       name: "ControleTotalizador",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -126,7 +125,7 @@ export const ECFTotalizador: TTableDef = {
       label: "ControleAliquota",
       name: "ControleAliquota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -135,7 +134,7 @@ export const ECFTotalizador: TTableDef = {
       label: "ControlePosicao",
       name: "ControlePosicao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
   ],

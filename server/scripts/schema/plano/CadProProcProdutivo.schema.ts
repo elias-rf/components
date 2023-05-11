@@ -9,7 +9,7 @@ export const CadProProcProdutivo: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CadProProcProdutivo: TTableDef = {
       label: "CdPostoProdutivo",
       name: "CdPostoProdutivo",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const CadProProcProdutivo: TTableDef = {
       label: "Ordem",
       name: "Ordem",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,14 +33,12 @@ export const CadProProcProdutivo: TTableDef = {
       label: "DescricaoOperacao",
       name: "DescricaoOperacao",
       typeField: "string",
-      size: 5120,
     },
     {
       field: "DescricaoFerramental",
       label: "DescricaoFerramental",
       name: "DescricaoFerramental",
       typeField: "string",
-      size: 5120,
     },
   ],
 };

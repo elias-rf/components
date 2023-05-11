@@ -9,7 +9,7 @@ export const CartaoFidelidadeDebito: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CartaoFidelidadeDebito: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CartaoFidelidadeDebito: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const CartaoFidelidadeDebito: TTableDef = {
       label: "DtMovimentacao",
       name: "DtMovimentacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const CartaoFidelidadeDebito: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const CartaoFidelidadeDebito: TTableDef = {
       label: "PontosMilhagem",
       name: "PontosMilhagem",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -60,7 +60,7 @@ export const CartaoFidelidadeDebito: TTableDef = {
       label: "Comentarios",
       name: "Comentarios",
       typeField: "string",
-      size: 80,
+
       allowNull: false,
     },
   ],

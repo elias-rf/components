@@ -9,7 +9,7 @@ export const ECFSGT: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ECFSGT: TTableDef = {
       label: "ECF",
       name: "ECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ECFSGT: TTableDef = {
       label: "Identificacao",
       name: "Identificacao",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ECFSGT: TTableDef = {
       label: "VlGrandeTotal",
       name: "VlGrandeTotal",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ECFSGT: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

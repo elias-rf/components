@@ -9,7 +9,7 @@ export const PlanoContas: TTableDef = {
       label: "NumConta",
       name: "PlanoContas_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const PlanoContas: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -26,28 +26,24 @@ export const PlanoContas: TTableDef = {
       label: "CdReduzido",
       name: "CdReduzido",
       typeField: "int",
-      size: 4,
     },
     {
       field: "TipoConta",
       label: "TipoConta",
       name: "TipoConta",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CdCorrelacionado",
       label: "CdCorrelacionado",
       name: "CdCorrelacionado",
       typeField: "int",
-      size: 9,
     },
     {
       field: "CdNatureza",
       label: "CdNatureza",
       name: "CdNatureza",
       typeField: "int",
-      size: 4,
     },
   ],
 };

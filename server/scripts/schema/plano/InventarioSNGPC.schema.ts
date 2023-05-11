@@ -9,7 +9,7 @@ export const InventarioSNGPC: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const InventarioSNGPC: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const InventarioSNGPC: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const InventarioSNGPC: TTableDef = {
       label: "NumLote",
       name: "NumLote",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const InventarioSNGPC: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -51,7 +51,7 @@ export const InventarioSNGPC: TTableDef = {
       label: "NumRegistroProduto",
       name: "NumRegistroProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const InventarioSNGPC: TTableDef = {
       label: "Unidade",
       name: "Unidade",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
   ],

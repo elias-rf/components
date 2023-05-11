@@ -9,7 +9,7 @@ export const PedidoEnderecoReceita: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const PedidoEnderecoReceita: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const PedidoEnderecoReceita: TTableDef = {
       label: "EnderecoReceita",
       name: "EnderecoReceita",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const PedidoEnderecoReceita: TTableDef = {
       label: "DtBusca",
       name: "DtBusca",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const PedidoEnderecoReceita: TTableDef = {
       label: "HrInicial",
       name: "HrInicial",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -51,7 +51,7 @@ export const PedidoEnderecoReceita: TTableDef = {
       label: "HrFinal",
       name: "HrFinal",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

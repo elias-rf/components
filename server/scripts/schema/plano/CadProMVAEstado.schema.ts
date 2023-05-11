@@ -9,7 +9,7 @@ export const CadProMVAEstado: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadProMVAEstado: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CadProMVAEstado: TTableDef = {
       label: "Uf",
       name: "Uf",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const CadProMVAEstado: TTableDef = {
       label: "PercMVA",
       name: "PercMVA",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const CadProMVAEstado: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

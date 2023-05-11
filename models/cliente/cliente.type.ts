@@ -21,31 +21,31 @@ export type TClienteFields = keyof Required<TCliente>;
 export type TClienteIds = {
   [pk in keyof Required<TClientePk>]: any;
 };
-export type TClienteSelect = TSelect<TClienteFields>;
-export type TClienteWhere = TWhere<TClienteFields>;
-export type TClienteOrder = TOrder<TClienteFields>;
+export type TClienteSelect = TSelect;
+export type TClienteWhere = TWhere;
+export type TClienteOrder = TOrder;
 
 export type TClienteSchema = () => Promise<TFieldDef[]>;
 export type TClienteClear = () => Promise<TCliente>;
 export type TClienteList = (args: {
-  where?: TWhere<TClienteFields>[];
-  order?: TOrder<TClienteFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TClienteFields>;
+  select?: TSelect;
 }) => Promise<TCliente[]>;
 export type TClienteRead = (args: {
   id: TClienteIds;
-  select?: TSelect<TClienteFields>;
+  select?: TSelect;
 }) => Promise<TCliente>;
 
 export type TClienteCreate = (args: {
   data: TCliente;
-  select?: TSelect<TClienteFields>;
+  select?: TSelect;
 }) => Promise<TCliente>;
 export type TClienteUpdate = (args: {
   id: TClienteIds;
   data: TCliente;
-  select?: TSelect<TClienteFields>;
+  select?: TSelect;
 }) => Promise<TCliente>;
 export type TClienteDel = (args: { id: TClienteIds }) => Promise<number>;
 
@@ -83,5 +83,3 @@ export type TClienteModel = {
     del: TClienteDel;
   };
 };
-
-export type TClienteRpc = TClienteModel;

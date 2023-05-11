@@ -9,7 +9,7 @@ export const MestrePedidoDescritivo: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MestrePedidoDescritivo: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,14 +27,12 @@ export const MestrePedidoDescritivo: TTableDef = {
       label: "Cabecalho",
       name: "Cabecalho",
       typeField: "string",
-      size: 2560,
     },
     {
       field: "Rodape",
       label: "Rodape",
       name: "Rodape",
       typeField: "string",
-      size: 2560,
     },
   ],
 };

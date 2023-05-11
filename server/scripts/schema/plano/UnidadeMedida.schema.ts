@@ -9,7 +9,7 @@ export const UnidadeMedida: TTableDef = {
       label: "Unidade",
       name: "UnidadeMedida_id",
       typeField: "string",
-      size: 5,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const UnidadeMedida: TTableDef = {
       label: "DescricaoUnidade",
       name: "DescricaoUnidade",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
   ],

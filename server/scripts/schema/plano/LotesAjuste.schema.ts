@@ -9,7 +9,7 @@ export const LotesAjuste: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const LotesAjuste: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const LotesAjuste: TTableDef = {
       label: "NumLote",
       name: "NumLote",
       typeField: "string",
-      size: 18,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const LotesAjuste: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const LotesAjuste: TTableDef = {
       label: "SaldoAnterior",
       name: "SaldoAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -51,7 +51,7 @@ export const LotesAjuste: TTableDef = {
       label: "SaldoNovo",
       name: "SaldoNovo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -60,7 +60,7 @@ export const LotesAjuste: TTableDef = {
       label: "FgAlteraSaldo",
       name: "FgAlteraSaldo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

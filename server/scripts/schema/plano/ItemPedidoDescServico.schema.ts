@@ -9,7 +9,7 @@ export const ItemPedidoDescServico: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ItemPedidoDescServico: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const ItemPedidoDescServico: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ItemPedidoDescServico: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,6 @@ export const ItemPedidoDescServico: TTableDef = {
       label: "DescricaoServico",
       name: "DescricaoServico",
       typeField: "string",
-      size: 5120,
     },
   ],
 };

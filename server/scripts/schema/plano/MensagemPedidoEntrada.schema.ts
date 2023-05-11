@@ -9,7 +9,7 @@ export const MensagemPedidoEntrada: TTableDef = {
       label: "CdFilial",
       name: "MensagemPedidoEntrada_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const MensagemPedidoEntrada: TTableDef = {
       label: "MensagemPedido",
       name: "MensagemPedido",
       typeField: "string",
-      size: 1028,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const MensagemPedidoEntrada: TTableDef = {
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

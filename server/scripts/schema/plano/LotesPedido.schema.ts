@@ -9,7 +9,7 @@ export const LotesPedido: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const LotesPedido: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const LotesPedido: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const LotesPedido: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const LotesPedido: TTableDef = {
       label: "NumLote",
       name: "NumLote",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const LotesPedido: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const LotesPedido: TTableDef = {
       label: "NumOrdemFaturamento",
       name: "NumOrdemFaturamento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
   ],

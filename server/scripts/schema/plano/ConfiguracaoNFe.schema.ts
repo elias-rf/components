@@ -9,7 +9,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "CdFilial",
       name: "ConfiguracaoNFe_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "Versao",
       name: "Versao",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "Ambiente",
       name: "Ambiente",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "TipoImpressao",
       name: "TipoImpressao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "TipoEmissao",
       name: "TipoEmissao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "FinalidadeEmissao",
       name: "FinalidadeEmissao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "TempoConsulta",
       name: "TempoConsulta",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "CaminhoNfe",
       name: "CaminhoNfe",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "CertificadoNfe",
       name: "CertificadoNfe",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -83,7 +83,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "UsuarioNfe",
       name: "UsuarioNfe",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -91,7 +91,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "SenhaNfe",
       name: "SenhaNfe",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -99,7 +99,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "ProxyNfe",
       name: "ProxyNfe",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -107,7 +107,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "LicencaNfe",
       name: "LicencaNfe",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -115,7 +115,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "CSTIPI",
       name: "CSTIPI",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -123,7 +123,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "CSTPIS",
       name: "CSTPIS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -131,7 +131,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "CSTCOFINS",
       name: "CSTCOFINS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -139,14 +139,13 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "MensagemContingencia",
       name: "MensagemContingencia",
       typeField: "string",
-      size: 256,
     },
     {
       field: "DataHorarioContingencia",
       label: "DataHorarioContingencia",
       name: "DataHorarioContingencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -154,28 +153,25 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "FgConcatenaOBSItemDanfe",
       name: "FgConcatenaOBSItemDanfe",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgConcatenaOBSDanfe",
       label: "FgConcatenaOBSDanfe",
       name: "FgConcatenaOBSDanfe",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgCancelaPorEvento",
       label: "FgCancelaPorEvento",
       name: "FgCancelaPorEvento",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CaminhoProcNfe",
       label: "CaminhoProcNfe",
       name: "CaminhoProcNfe",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -183,7 +179,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "CaminhoPDF",
       name: "CaminhoPDF",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -191,7 +187,7 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "CaminhoCartaCorrecao",
       name: "CaminhoCartaCorrecao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -199,105 +195,90 @@ export const ConfiguracaoNFe: TTableDef = {
       label: "VersaoDanfe",
       name: "VersaoDanfe",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NumViasDanfe",
       label: "NumViasDanfe",
       name: "NumViasDanfe",
       typeField: "int",
-      size: 2,
     },
     {
       field: "FgGeraPDFDanfe",
       label: "FgGeraPDFDanfe",
       name: "FgGeraPDFDanfe",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgMultiplasLinhas",
       label: "FgMultiplasLinhas",
       name: "FgMultiplasLinhas",
       typeField: "string",
-      size: 1,
     },
     {
       field: "SiglaWS",
       label: "SiglaWS",
       name: "SiglaWS",
       typeField: "string",
-      size: 16,
     },
     {
       field: "FgImprimirTotalImpostoItem",
       label: "FgImprimirTotalImpostoItem",
       name: "FgImprimirTotalImpostoItem",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgDanfeImprimeLotes",
       label: "FgDanfeImprimeLotes",
       name: "FgDanfeImprimeLotes",
       typeField: "string",
-      size: 1,
     },
     {
       field: "UTC",
       label: "UTC",
       name: "UTC",
       typeField: "string",
-      size: 6,
     },
     {
       field: "MensagemEmail",
       label: "MensagemEmail",
       name: "MensagemEmail",
       typeField: "string",
-      size: 512,
     },
     {
       field: "FGNT201503",
       label: "FGNT201503",
       name: "FGNT201503",
       typeField: "string",
-      size: 1,
     },
     {
       field: "LimiteHorasCancelamento",
       label: "LimiteHorasCancelamento",
       name: "LimiteHorasCancelamento",
       typeField: "int",
-      size: 5,
     },
     {
       field: "FgDupMercantil",
       label: "FgDupMercantil",
       name: "FgDupMercantil",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgParcelaDup",
       label: "FgParcelaDup",
       name: "FgParcelaDup",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FGNT201901",
       label: "FGNT201901",
       name: "FGNT201901",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgTagIPI",
       label: "FgTagIPI",
       name: "FgTagIPI",
       typeField: "string",
-      size: 1,
     },
   ],
 };

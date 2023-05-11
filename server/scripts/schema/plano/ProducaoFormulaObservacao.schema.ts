@@ -9,7 +9,7 @@ export const ProducaoFormulaObservacao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProducaoFormulaObservacao: TTableDef = {
       label: "NumFormula",
       name: "NumFormula",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProducaoFormulaObservacao: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
   ],

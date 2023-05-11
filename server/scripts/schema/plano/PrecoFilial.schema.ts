@@ -9,7 +9,7 @@ export const PrecoFilial: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const PrecoFilial: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const PrecoFilial: TTableDef = {
       label: "DtFinalPromAtacado",
       name: "DtFinalPromAtacado",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -33,7 +33,7 @@ export const PrecoFilial: TTableDef = {
       label: "DtFinalPromVarejo",
       name: "DtFinalPromVarejo",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -41,7 +41,7 @@ export const PrecoFilial: TTableDef = {
       label: "DtInicialPromAtacado",
       name: "DtInicialPromAtacado",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -49,7 +49,7 @@ export const PrecoFilial: TTableDef = {
       label: "DtInicialPromVarejo",
       name: "DtInicialPromVarejo",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -57,7 +57,7 @@ export const PrecoFilial: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -65,7 +65,7 @@ export const PrecoFilial: TTableDef = {
       label: "VlAtacado",
       name: "VlAtacado",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -73,7 +73,7 @@ export const PrecoFilial: TTableDef = {
       label: "VlPromAtacado",
       name: "VlPromAtacado",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -81,7 +81,7 @@ export const PrecoFilial: TTableDef = {
       label: "VlPromVarejo",
       name: "VlPromVarejo",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -89,7 +89,7 @@ export const PrecoFilial: TTableDef = {
       label: "VlVenda",
       name: "VlVenda",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -97,7 +97,7 @@ export const PrecoFilial: TTableDef = {
       label: "VlTabela",
       name: "VlTabela",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -105,7 +105,7 @@ export const PrecoFilial: TTableDef = {
       label: "VlVendaAnterior",
       name: "VlVendaAnterior",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -113,7 +113,7 @@ export const PrecoFilial: TTableDef = {
       label: "VlAtacadoAnterior",
       name: "VlAtacadoAnterior",
       typeField: "int",
-      size: 13,
+
       scale: 10,
     },
     {
@@ -121,7 +121,7 @@ export const PrecoFilial: TTableDef = {
       label: "DtUltAlteracaoVlTabela",
       name: "DtUltAlteracaoVlTabela",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -129,7 +129,7 @@ export const PrecoFilial: TTableDef = {
       label: "VlCusto",
       name: "VlCusto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -137,7 +137,7 @@ export const PrecoFilial: TTableDef = {
       label: "DtUltAlteracaoVlCusto",
       name: "DtUltAlteracaoVlCusto",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -145,7 +145,7 @@ export const PrecoFilial: TTableDef = {
       label: "DtUltAlteracaoVlVenda",
       name: "DtUltAlteracaoVlVenda",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -153,7 +153,7 @@ export const PrecoFilial: TTableDef = {
       label: "DtUltAlteracaoVlAtacado",
       name: "DtUltAlteracaoVlAtacado",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -161,7 +161,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercDescontoA",
       name: "PercDescontoA",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -169,7 +169,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercDescontoB",
       name: "PercDescontoB",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -177,7 +177,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercDescontoC",
       name: "PercDescontoC",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -185,7 +185,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercDescontoD",
       name: "PercDescontoD",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -193,7 +193,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercDescontoE",
       name: "PercDescontoE",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -201,7 +201,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercDescontoFidelizacao",
       name: "PercDescontoFidelizacao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -209,7 +209,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercDescontoFidelidade",
       name: "PercDescontoFidelidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -217,7 +217,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercDescMaxVendedor",
       name: "PercDescMaxVendedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -225,7 +225,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercDescExtra",
       name: "PercDescExtra",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -233,7 +233,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercAcresFinanc",
       name: "PercAcresFinanc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -241,7 +241,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercDescMaxGerente",
       name: "PercDescMaxGerente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -249,7 +249,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercDescontoEspecial",
       name: "PercDescontoEspecial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -257,7 +257,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercDescVista",
       name: "PercDescVista",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -265,7 +265,7 @@ export const PrecoFilial: TTableDef = {
       label: "PercDescPrazo",
       name: "PercDescPrazo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -273,21 +273,19 @@ export const PrecoFilial: TTableDef = {
       label: "FgDescVendedorDireto",
       name: "FgDescVendedorDireto",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgPrecoFabrica",
       label: "FgPrecoFabrica",
       name: "FgPrecoFabrica",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DescontoF",
       label: "DescontoF",
       name: "DescontoF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -295,7 +293,7 @@ export const PrecoFilial: TTableDef = {
       label: "DescontoG",
       name: "DescontoG",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -303,7 +301,7 @@ export const PrecoFilial: TTableDef = {
       label: "DescontoH",
       name: "DescontoH",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -311,7 +309,7 @@ export const PrecoFilial: TTableDef = {
       label: "DescontoI",
       name: "DescontoI",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -319,7 +317,7 @@ export const PrecoFilial: TTableDef = {
       label: "DescontoJ",
       name: "DescontoJ",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

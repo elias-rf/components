@@ -9,7 +9,7 @@ export const CotacaoMoedas: TTableDef = {
       label: "CdMoeda",
       name: "CdMoeda",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CotacaoMoedas: TTableDef = {
       label: "DtCotacao",
       name: "DtCotacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const CotacaoMoedas: TTableDef = {
       label: "VlCotacao",
       name: "VlCotacao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

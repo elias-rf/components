@@ -9,7 +9,7 @@ export const produto_controle: TTableDef = {
       label: "CdLote",
       name: "controle",
       typeField: "string",
-      size: 18,
+
       allowNull: false,
       primaryKey: true,
     },
@@ -18,7 +18,7 @@ export const produto_controle: TTableDef = {
       label: "CdProduto",
       name: "produto_plano_id",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
       primaryKey: true,
     },
@@ -27,7 +27,7 @@ export const produto_controle: TTableDef = {
       label: "CdFornecedor",
       name: "fornecedor_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
       primaryKey: true,
@@ -37,14 +37,13 @@ export const produto_controle: TTableDef = {
       label: "CdNRA",
       name: "nra_id",
       typeField: "string",
-      size: 6,
     },
     {
       field: "DtFabricacao",
       label: "DtFabricacao",
       name: "data_fabricacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -52,7 +51,7 @@ export const produto_controle: TTableDef = {
       label: "DtValidade",
       name: "data_validade",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -60,7 +59,7 @@ export const produto_controle: TTableDef = {
       label: "DtAnalise",
       name: "data_analise",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -68,14 +67,13 @@ export const produto_controle: TTableDef = {
       label: "Aspecto",
       name: "aspecto",
       typeField: "string",
-      size: 40,
     },
     {
       field: "FatorCorrecao",
       label: "FatorCorrecao",
       name: "fator_correcao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -83,28 +81,25 @@ export const produto_controle: TTableDef = {
       label: "Densidade",
       name: "densidade",
       typeField: "float",
-      size: 4,
     },
     {
       field: "PercentualDiluicao",
       label: "PercentualDiluicao",
       name: "percentual_diluicao",
       typeField: "float",
-      size: 4,
     },
     {
       field: "SituacaoLote",
       label: "SituacaoLote",
       name: "situacao_lote",
       typeField: "string",
-      size: 1,
     },
     {
       field: "SerieNfEntrada",
       label: "SerieNfEntrada",
       name: "serie_id",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -112,7 +107,7 @@ export const produto_controle: TTableDef = {
       label: "QtdeAdquirida",
       name: "quantidade_adquirida",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -120,7 +115,7 @@ export const produto_controle: TTableDef = {
       label: "NumNfEntrada",
       name: "nota_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -129,7 +124,7 @@ export const produto_controle: TTableDef = {
       label: "SaldoPeso",
       name: "saldo_peso",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -137,7 +132,7 @@ export const produto_controle: TTableDef = {
       label: "DtEntrada",
       name: "data_entrada",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -145,7 +140,7 @@ export const produto_controle: TTableDef = {
       label: "DtLimiteUso",
       name: "data_limite_uso",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -153,21 +148,19 @@ export const produto_controle: TTableDef = {
       label: "TipoLote",
       name: "tipo_lote",
       typeField: "string",
-      size: 1,
     },
     {
       field: "IdReduzido",
       label: "IdReduzido",
       name: "IdReduzido",
       typeField: "float",
-      size: 8,
     },
     {
       field: "CdFilial",
       label: "CdFilial",
       name: "filial_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -176,7 +169,7 @@ export const produto_controle: TTableDef = {
       label: "Modelo",
       name: "modelo_id",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     // {
@@ -184,7 +177,7 @@ export const produto_controle: TTableDef = {
     //   label: "NumLote",
     //   name: "controle",
     //   typeField: "string",
-    //   size: 18,
+    //
     // },
   ],
 };

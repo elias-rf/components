@@ -9,7 +9,7 @@ export const ConfigBristol: TTableDef = {
       label: "CdFornecedor",
       name: "ConfigBristol_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,

@@ -9,7 +9,7 @@ export const CadCliBloqueioCred: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadCliBloqueioCred: TTableDef = {
       label: "DtOcorrencia",
       name: "DtOcorrencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const CadCliBloqueioCred: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const CadCliBloqueioCred: TTableDef = {
       label: "CdUsuario",
       name: "CdUsuario",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
   ],

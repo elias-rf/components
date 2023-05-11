@@ -1,33 +1,32 @@
 import type { TConnections } from "@/config/connections";
 import { crudFactory } from "@/utils/crud/crud.factory";
 import { esterilizacao_interna } from "./esterilizacao-interna.table";
-import type { TEsterilizacaoInternaModel } from "./esterilizacao-interna.type";
 import { esterilizacaoInternaMethods } from "./model-methods";
 
 export function esterilizacaoInternaModelFactory({
   connections,
 }: {
   connections: TConnections;
-}): TEsterilizacaoInternaModel {
+}) {
   const connection = connections[esterilizacao_interna.database];
   const crud = crudFactory(connection, esterilizacao_interna);
   const methods = esterilizacaoInternaMethods(connection);
 
-  const model: TEsterilizacaoInternaModel = {
+  const model = {
     connection,
     table: esterilizacao_interna,
     query: {
-      list: (args) => crud.query.list(args),
-      read: (args) => crud.query.read(args),
-      produto: (args) => methods.query.produto(args),
-      modelo: (args) => methods.query.modelo(args),
-      diario: (args) => methods.query.diario(args),
-      mensal: (args) => methods.query.mensal(args),
+      list: crud.query.list,
+      read: crud.query.read,
+      produto: methods.query.produto,
+      modelo: methods.query.modelo,
+      diario: methods.query.diario,
+      mensal: methods.query.mensal,
     },
     mutation: {
-      create: (args) => crud.mutation.create(args),
-      update: (args) => crud.mutation.update(args),
-      del: (args) => crud.mutation.del(args),
+      create: crud.mutation.create,
+      update: crud.mutation.update,
+      del: crud.mutation.del,
     },
   };
 

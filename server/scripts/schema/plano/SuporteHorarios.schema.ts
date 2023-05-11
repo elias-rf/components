@@ -9,7 +9,7 @@ export const SuporteHorarios: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SuporteHorarios: TTableDef = {
       label: "DataHoraReferencia",
       name: "DataHoraReferencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const SuporteHorarios: TTableDef = {
       label: "TipoMovimentacao",
       name: "TipoMovimentacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

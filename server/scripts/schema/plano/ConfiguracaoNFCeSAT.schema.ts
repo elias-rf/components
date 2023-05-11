@@ -9,7 +9,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "Versao",
       name: "Versao",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "SiglaWS",
       name: "SiglaWS",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "VersaoQRCode",
       name: "VersaoQRCode",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "IdToken",
       name: "IdToken",
       typeField: "string",
-      size: 6,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "CSC",
       name: "CSC",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "SerieNotaFiscal",
       name: "SerieNotaFiscal",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "Ambiente",
       name: "Ambiente",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "TipoImpressao",
       name: "TipoImpressao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "TipoDanfe",
       name: "TipoDanfe",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -97,7 +97,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "TipoEmissao",
       name: "TipoEmissao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -105,7 +105,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "CodigoVinculacao",
       name: "CodigoVinculacao",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -113,7 +113,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "CodigoAtivacao",
       name: "CodigoAtivacao",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -121,7 +121,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "CaminhoNfe",
       name: "CaminhoNfe",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -129,7 +129,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "FgGeraPDFDanfe",
       name: "FgGeraPDFDanfe",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -137,7 +137,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "CaminhoProcNfe",
       name: "CaminhoProcNfe",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -145,7 +145,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "CaminhoPDF",
       name: "CaminhoPDF",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -153,7 +153,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "FgDanfeImprimeLotes",
       name: "FgDanfeImprimeLotes",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -161,7 +161,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "MensagemEmail",
       name: "MensagemEmail",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -169,7 +169,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "FgConcatenaOBSItemDanfe",
       name: "FgConcatenaOBSItemDanfe",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -177,7 +177,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "FgConcatenaOBSDanfe",
       name: "FgConcatenaOBSDanfe",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -185,7 +185,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "FgImprimirTotalImpostoItem",
       name: "FgImprimirTotalImpostoItem",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -193,7 +193,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "NumViasDanfe",
       name: "NumViasDanfe",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -201,7 +201,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "FgMultiplasLinhas",
       name: "FgMultiplasLinhas",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -209,7 +209,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "LimiteHorasCancelamento",
       name: "LimiteHorasCancelamento",
       typeField: "int",
-      size: 5,
+
       scale: 1,
       allowNull: false,
     },
@@ -218,7 +218,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "VlAvisoRetirada",
       name: "VlAvisoRetirada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -227,7 +227,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "CdClientePadrao",
       name: "CdClientePadrao",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -235,7 +235,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "CdVendedorPadrao",
       name: "CdVendedorPadrao",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -243,7 +243,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "CdTipoVendaPadrao",
       name: "CdTipoVendaPadrao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -251,7 +251,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "QuantidadePadrao",
       name: "QuantidadePadrao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -260,7 +260,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "FgInicioVenda",
       name: "FgInicioVenda",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -268,7 +268,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "FgPreVenda",
       name: "FgPreVenda",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -276,7 +276,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "FgPreVendaSimplificada",
       name: "FgPreVendaSimplificada",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -284,7 +284,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "QuantidadeLimite",
       name: "QuantidadeLimite",
       typeField: "int",
-      size: 9,
+
       scale: 6,
       allowNull: false,
     },
@@ -293,7 +293,7 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "QuantidadeAlerta",
       name: "QuantidadeAlerta",
       typeField: "int",
-      size: 9,
+
       scale: 6,
       allowNull: false,
     },
@@ -302,7 +302,6 @@ export const ConfiguracaoNFCeSAT: TTableDef = {
       label: "NumSerieSAT",
       name: "NumSerieSAT",
       typeField: "string",
-      size: 24,
     },
   ],
 };

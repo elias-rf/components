@@ -9,7 +9,7 @@ export const ItensSubstituicao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ItensSubstituicao: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ItensSubstituicao: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ItensSubstituicao: TTableDef = {
       label: "DtEntrada",
       name: "DtEntrada",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -41,21 +41,19 @@ export const ItensSubstituicao: TTableDef = {
       label: "NumNfEntrada",
       name: "NumNfEntrada",
       typeField: "int",
-      size: 4,
     },
     {
       field: "SerieNfEntrada",
       label: "SerieNfEntrada",
       name: "SerieNfEntrada",
       typeField: "string",
-      size: 3,
     },
     {
       field: "VlSubstituido",
       label: "VlSubstituido",
       name: "VlSubstituido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -63,7 +61,7 @@ export const ItensSubstituicao: TTableDef = {
       label: "VlIcmsSubstituido",
       name: "VlIcmsSubstituido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -71,7 +69,7 @@ export const ItensSubstituicao: TTableDef = {
       label: "DtSaida",
       name: "DtSaida",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -79,21 +77,19 @@ export const ItensSubstituicao: TTableDef = {
       label: "NumNfSaida",
       name: "NumNfSaida",
       typeField: "int",
-      size: 4,
     },
     {
       field: "SerieNfSaida",
       label: "SerieNfSaida",
       name: "SerieNfSaida",
       typeField: "string",
-      size: 3,
     },
     {
       field: "CdFornecedor",
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

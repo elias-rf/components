@@ -9,7 +9,7 @@ export const LancDiversosClasse: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const LancDiversosClasse: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const LancDiversosClasse: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "string",
-      size: 12,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const LancDiversosClasse: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const LancDiversosClasse: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -50,7 +50,7 @@ export const LancDiversosClasse: TTableDef = {
       label: "NumLcto",
       name: "NumLcto",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const LancDiversosClasse: TTableDef = {
       label: "NumContaClasse",
       name: "NumContaClasse",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const LancDiversosClasse: TTableDef = {
       label: "Percentual",
       name: "Percentual",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },

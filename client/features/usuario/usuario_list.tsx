@@ -1,4 +1,3 @@
-import { TUsuarioFields } from "@/models/usuario/usuario.type";
 import { TIds, TOrder, TWhere } from "@/types";
 import { trpc } from "@/utils/trpc/trpc";
 import { Table } from "../../components/table/table";
@@ -7,9 +6,9 @@ import { usuarioSchema } from "./usuario-schema";
 type TUsuarioListProps = {
   selected: TIds;
   onSelect: (event: any) => void;
-  where: TWhere<TUsuarioFields>[];
+  where: TWhere[];
   onWhere: (event: any) => void;
-  order: TOrder<TUsuarioFields>[];
+  order: TOrder[];
   onOrder: (event: any) => void;
 };
 

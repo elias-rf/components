@@ -9,7 +9,7 @@ export const NfeSeArquivos: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const NfeSeArquivos: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const NfeSeArquivos: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const NfeSeArquivos: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const NfeSeArquivos: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const NfeSeArquivos: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const NfeSeArquivos: TTableDef = {
       label: "Texto",
       name: "Texto",
       typeField: "string",
-      size: 4096,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const NfeSeArquivos: TTableDef = {
       label: "DtGeracao",
       name: "DtGeracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const NfeSeArquivos: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
   ],

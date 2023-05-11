@@ -9,7 +9,7 @@ export const ModEtiqExterna: TTableDef = {
       label: "Codigo",
       name: "ModEtiqExterna_id",
       typeField: "int",
-      size: 5,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ModEtiqExterna: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

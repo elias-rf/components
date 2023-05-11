@@ -9,7 +9,7 @@ export const CadProFarmacia: TTableDef = {
       label: "CdProduto",
       name: "CadProFarmacia_id",
       typeField: "string",
-      size: 15,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadProFarmacia: TTableDef = {
       label: "FgUsoContinuo",
       name: "FgUsoContinuo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CadProFarmacia: TTableDef = {
       label: "PosologiaDia",
       name: "PosologiaDia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const CadProFarmacia: TTableDef = {
       label: "QtdeDoses",
       name: "QtdeDoses",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -42,21 +42,19 @@ export const CadProFarmacia: TTableDef = {
       label: "NumRegistroProduto",
       name: "NumRegistroProduto",
       typeField: "string",
-      size: 16,
     },
     {
       field: "FgEnvioCaneta",
       label: "FgEnvioCaneta",
       name: "FgEnvioCaneta",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NumDosesDia",
       label: "NumDosesDia",
       name: "NumDosesDia",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -64,63 +62,54 @@ export const CadProFarmacia: TTableDef = {
       label: "MedidaDoses",
       name: "MedidaDoses",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgSNGPC",
       label: "FgSNGPC",
       name: "FgSNGPC",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgVendaAtiva",
       label: "FgVendaAtiva",
       name: "FgVendaAtiva",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgTermoLabel",
       label: "FgTermoLabel",
       name: "FgTermoLabel",
       typeField: "string",
-      size: 1,
     },
     {
       field: "ObsTermoLabel",
       label: "ObsTermoLabel",
       name: "ObsTermoLabel",
       typeField: "string",
-      size: 512,
     },
     {
       field: "NmMedicamento",
       label: "NmMedicamento",
       name: "NmMedicamento",
       typeField: "string",
-      size: 128,
     },
     {
       field: "Apresentacao",
       label: "Apresentacao",
       name: "Apresentacao",
       typeField: "string",
-      size: 128,
     },
     {
       field: "FgMedicamento",
       label: "FgMedicamento",
       name: "FgMedicamento",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgTipoMedicamento",
       label: "FgTipoMedicamento",
       name: "FgTipoMedicamento",
       typeField: "int",
-      size: 4,
     },
   ],
 };

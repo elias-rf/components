@@ -11,31 +11,31 @@ export type TGroupSubjectFields = keyof Required<TGroupSubject>;
 export type TGroupSubjectIds = {
   [pk in keyof Required<TGroupSubjectPk>]: any;
 };
-export type TGroupSubjectSelect = TSelect<TGroupSubjectFields>;
-export type TGroupSubjectWhere = TWhere<TGroupSubjectFields>;
-export type TGroupSubjectOrder = TOrder<TGroupSubjectFields>;
+export type TGroupSubjectSelect = TSelect;
+export type TGroupSubjectWhere = TWhere;
+export type TGroupSubjectOrder = TOrder;
 
 export type TGroupSubjectSchema = () => Promise<TFieldDef[]>;
 export type TGroupSubjectClear = () => Promise<TGroupSubject>;
 export type TGroupSubjectList = (args: {
-  where?: TWhere<TGroupSubjectFields>[];
-  order?: TOrder<TGroupSubjectFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TGroupSubjectFields>;
+  select?: TSelect;
 }) => Promise<TGroupSubject[]>;
 export type TGroupSubjectRead = (args: {
   id: TGroupSubjectIds;
-  select?: TSelect<TGroupSubjectFields>;
+  select?: TSelect;
 }) => Promise<TGroupSubject>;
 
 export type TGroupSubjectCreate = (args: {
   data: TGroupSubject;
-  select?: TSelect<TGroupSubjectFields>;
+  select?: TSelect;
 }) => Promise<TGroupSubject>;
 export type TGroupSubjectUpdate = (args: {
   id: TGroupSubjectIds;
   data: TGroupSubject;
-  select?: TSelect<TGroupSubjectFields>;
+  select?: TSelect;
 }) => Promise<TGroupSubject>;
 export type TGroupSubjectDel = (args: {
   id: TGroupSubjectIds;

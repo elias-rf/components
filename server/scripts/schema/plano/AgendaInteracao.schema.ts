@@ -9,7 +9,7 @@ export const AgendaInteracao: TTableDef = {
       label: "IdCompromisso",
       name: "IdCompromisso",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const AgendaInteracao: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const AgendaInteracao: TTableDef = {
       label: "DtInteracaoPrevista",
       name: "DtInteracaoPrevista",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const AgendaInteracao: TTableDef = {
       label: "DescricaoInteracaoPrevista",
       name: "DescricaoInteracaoPrevista",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const AgendaInteracao: TTableDef = {
       label: "UsuarioInteracaoPrevista",
       name: "UsuarioInteracaoPrevista",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const AgendaInteracao: TTableDef = {
       label: "TipoInteracaoPrevista",
       name: "TipoInteracaoPrevista",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const AgendaInteracao: TTableDef = {
       label: "DtInteracaoRealizada",
       name: "DtInteracaoRealizada",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const AgendaInteracao: TTableDef = {
       label: "DescricaoInteracaoRealizada",
       name: "DescricaoInteracaoRealizada",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const AgendaInteracao: TTableDef = {
       label: "UsuarioInteracaoRealizada",
       name: "UsuarioInteracaoRealizada",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -83,7 +83,7 @@ export const AgendaInteracao: TTableDef = {
       label: "TipoInteracaoRealizada",
       name: "TipoInteracaoRealizada",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

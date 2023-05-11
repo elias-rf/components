@@ -9,7 +9,7 @@ export const tMaquinaCheckList: TTableDef = {
       label: "fkMaquina",
       name: "fkMaquina",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const tMaquinaCheckList: TTableDef = {
       label: "fkMaquinaCheckListItem",
       name: "fkMaquinaCheckListItem",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

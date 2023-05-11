@@ -9,7 +9,7 @@ export const SuporteObservacao: TTableDef = {
       label: "Usuario",
       name: "SuporteObservacao_id",
       typeField: "string",
-      size: 32,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const SuporteObservacao: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 3072,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "NumFormula",
       name: "NumFormula",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "CdOperacao",
       name: "CdOperacao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "QtdeConforme",
       name: "QtdeConforme",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "QtdeRetrabalho",
       name: "QtdeRetrabalho",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -51,7 +51,7 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "CdMaquina",
       name: "CdMaquina",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "CdOperador",
       name: "CdOperador",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "DtInicio",
       name: "DtInicio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "DtTermino",
       name: "DtTermino",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -85,7 +85,7 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "CdOperacaoRetrabalho",
       name: "CdOperacaoRetrabalho",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -93,7 +93,7 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "QtdeNaoConforme",
       name: "QtdeNaoConforme",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -101,7 +101,7 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -109,7 +109,7 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "QtdeReclassificacao",
       name: "QtdeReclassificacao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -117,7 +117,6 @@ export const ProducaoFormulaOperacao: TTableDef = {
       label: "SequenciaOperacao",
       name: "SequenciaOperacao",
       typeField: "int",
-      size: 5,
     },
   ],
 };

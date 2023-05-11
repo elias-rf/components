@@ -9,7 +9,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "NumBanco",
       name: "NumBanco",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "NumAgencia",
       name: "NumAgencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "NumContaCorrente",
       name: "NumContaCorrente",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "AgCodCedente",
       name: "AgCodCedente",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "NmCedente",
       name: "NmCedente",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "CNPJ",
       name: "CNPJ",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "Numero",
       name: "Numero",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "Complemento",
       name: "Complemento",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "Bairro",
       name: "Bairro",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "Cidade",
       name: "Cidade",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -97,7 +97,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "UF",
       name: "UF",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -105,7 +105,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "CEP",
       name: "CEP",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -113,7 +113,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -121,7 +121,7 @@ export const BancoContaCorrenteCedente: TTableDef = {
       label: "Fax",
       name: "Fax",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
   ],

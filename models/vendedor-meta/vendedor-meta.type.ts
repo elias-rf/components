@@ -14,31 +14,31 @@ export type TVendedorMetaFields = keyof Required<TVendedorMeta>;
 export type TVendedorMetaIds = {
   [pk in keyof Required<TVendedorMetaPk>]: any;
 };
-export type TVendedorMetaSelect = TSelect<TVendedorMetaFields>;
-export type TVendedorMetaWhere = TWhere<TVendedorMetaFields>;
-export type TVendedorMetaOrder = TOrder<TVendedorMetaFields>;
+export type TVendedorMetaSelect = TSelect;
+export type TVendedorMetaWhere = TWhere;
+export type TVendedorMetaOrder = TOrder;
 
 export type TVendedorMetaSchema = () => Promise<TFieldDef[]>;
 export type TVendedorMetaClear = () => Promise<TVendedorMeta>;
 export type TVendedorMetaList = (args: {
-  where?: TWhere<TVendedorMetaFields>[];
-  order?: TOrder<TVendedorMetaFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TVendedorMetaFields>;
+  select?: TSelect;
 }) => Promise<TVendedorMeta[]>;
 export type TVendedorMetaRead = (args: {
   id: TVendedorMetaIds;
-  select?: TSelect<TVendedorMetaFields>;
+  select?: TSelect;
 }) => Promise<TVendedorMeta>;
 
 export type TVendedorMetaCreate = (args: {
   data: TVendedorMeta;
-  select?: TSelect<TVendedorMetaFields>;
+  select?: TSelect;
 }) => Promise<TVendedorMeta>;
 export type TVendedorMetaUpdate = (args: {
   id: TVendedorMetaIds;
   data: TVendedorMeta;
-  select?: TSelect<TVendedorMetaFields>;
+  select?: TSelect;
 }) => Promise<TVendedorMeta>;
 export type TVendedorMetaDel = (args: {
   id: TVendedorMetaIds;

@@ -9,7 +9,7 @@ export const tEsterilizacaoExterna: TTableDef = {
       label: "kLoteEstExt",
       name: "tEsterilizacaoExterna_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tEsterilizacaoExterna: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "date",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const tEsterilizacaoExterna: TTableDef = {
       label: "DataRetorno",
       name: "DataRetorno",
       typeField: "date",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -34,21 +34,19 @@ export const tEsterilizacaoExterna: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 4,
     },
     {
       field: "QtdCaixa",
       label: "QtdCaixa",
       name: "QtdCaixa",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Fechado",
       label: "Fechado",
       name: "Fechado",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -57,28 +55,24 @@ export const tEsterilizacaoExterna: TTableDef = {
       label: "Resultado",
       name: "Resultado",
       typeField: "string",
-      size: 1,
     },
     {
       field: "UsuarioResultado",
       label: "UsuarioResultado",
       name: "UsuarioResultado",
       typeField: "string",
-      size: 50,
     },
     {
       field: "Obs",
       label: "Obs",
       name: "Obs",
       typeField: "string",
-      size: 200,
     },
     {
       field: "LoteEto",
       label: "LoteEto",
       name: "LoteEto",
       typeField: "string",
-      size: 50,
     },
   ],
 };

@@ -9,7 +9,7 @@ export const produto: TTableDef = {
       label: "kProduto",
       name: "produto_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const produto: TTableDef = {
       label: "fkCategoria",
       name: "categoria_id",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const produto: TTableDef = {
       label: "NomeComercial",
       name: "nome_comercial",
       typeField: "string",
-      size: 120,
+
       allowNull: false,
     },
     {
@@ -34,35 +34,31 @@ export const produto: TTableDef = {
       label: "Fabricante",
       name: "Fabricante",
       typeField: "string",
-      size: 50,
     },
     {
       field: "OBS",
       label: "OBS",
       name: "OBS",
       typeField: "string",
-      size: 16,
     },
     {
       field: "DescricaoTecnica",
       label: "DescricaoTecnica",
       name: "DescricaoTecnica",
       typeField: "string",
-      size: 16,
     },
     {
       field: "DescricaoGenerica",
       label: "DescricaoGenerica",
       name: "DescricaoGenerica",
       typeField: "string",
-      size: 16,
     },
     {
       field: "GrupoCredito",
       label: "GrupoCredito",
       name: "GrupoCredito",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
       defaultValue: "Geral",
     },
@@ -71,7 +67,6 @@ export const produto: TTableDef = {
       label: "fkSubCategoria",
       name: "fkSubCategoria",
       typeField: "int",
-      size: 4,
     },
   ],
   associates: {

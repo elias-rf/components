@@ -9,7 +9,7 @@ export const PharmaLinkComprovante: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const PharmaLinkComprovante: TTableDef = {
       label: "NumCupom",
       name: "NumCupom",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const PharmaLinkComprovante: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const PharmaLinkComprovante: TTableDef = {
       label: "Texto",
       name: "Texto",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
   ],

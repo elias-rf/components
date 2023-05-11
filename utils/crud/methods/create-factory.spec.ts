@@ -2,7 +2,9 @@ import {
   connectionsMock as connections,
   connectionsMock,
 } from "@/mocks/connections.mock";
-import { TTableDef } from "@/types/model";
+import { knexMockHistory } from "@/mocks/knex-mock-history";
+import { TTableDef } from "@/types";
+import { createTracker } from "knex-mock-client";
 import { createFactory } from "./create-factory";
 
 const schema: TTableDef = {
@@ -39,9 +41,6 @@ const schema: TTableDef = {
   ],
 };
 
-import { knexMockHistory } from "@/utils/data/knex-mock-history";
-import { createTracker } from "knex-mock-client";
-
 describe("crudCreate", () => {
   const tracker = createTracker(connectionsMock.oftalmo);
   tracker.reset();
@@ -54,16 +53,14 @@ describe("crudCreate", () => {
 
   it("create", async () => {
     const rsp = await create({
-      table: "agenda_telefone",
       data: { agenda_telefone_id: 10 },
-      select: ["agenda_telefone_id"],
     });
     expect(rsp).toEqual({ agenda_telefone_id: 10 });
     expect(knexMockHistory(tracker)).toEqual({
       insert: [
         {
           bindings: [10],
-          sql: "insert into [phonebook] ([id]) output inserted.[id] values (@p0)",
+          sql: "insert into [phonebook] ([id]) output inserted.[id], inserted.[name], inserted.[department], inserted.[email] values (@p0)",
         },
       ],
     });

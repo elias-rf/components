@@ -9,7 +9,7 @@ export const FilialConversaoCST: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 6,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const FilialConversaoCST: TTableDef = {
       label: "CdFilialOrigem",
       name: "CdFilialOrigem",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const FilialConversaoCST: TTableDef = {
       label: "CdFilialDestino",
       name: "CdFilialDestino",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const FilialConversaoCST: TTableDef = {
       label: "CSTOrigem",
       name: "CSTOrigem",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const FilialConversaoCST: TTableDef = {
       label: "CSTDestino",
       name: "CSTDestino",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
   ],

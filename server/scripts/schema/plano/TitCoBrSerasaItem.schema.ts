@@ -9,7 +9,7 @@ export const TitCoBrSerasaItem: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TitCoBrSerasaItem: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TitCoBrSerasaItem: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const TitCoBrSerasaItem: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const TitCoBrSerasaItem: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const TitCoBrSerasaItem: TTableDef = {
       label: "SiglaDocumento",
       name: "SiglaDocumento",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const TitCoBrSerasaItem: TTableDef = {
       label: "ItemDocumento",
       name: "ItemDocumento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const TitCoBrSerasaItem: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -74,7 +74,7 @@ export const TitCoBrSerasaItem: TTableDef = {
       label: "DtVcto",
       name: "DtVcto",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -83,7 +83,7 @@ export const TitCoBrSerasaItem: TTableDef = {
       label: "DtPagto",
       name: "DtPagto",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -92,7 +92,7 @@ export const TitCoBrSerasaItem: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -101,7 +101,7 @@ export const TitCoBrSerasaItem: TTableDef = {
       label: "VlTitulo",
       name: "VlTitulo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

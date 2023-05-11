@@ -9,7 +9,7 @@ export const Agencia: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Agencia: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,21 +25,19 @@ export const Agencia: TTableDef = {
       label: "NmAgencia",
       name: "NmAgencia",
       typeField: "string",
-      size: 50,
     },
     {
       field: "DVAgencia",
       label: "DVAgencia",
       name: "DVAgencia",
       typeField: "string",
-      size: 25,
     },
     {
       field: "FgAtivo",
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

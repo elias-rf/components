@@ -9,7 +9,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "Estacao",
       name: "Estacao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "DtOperacao",
       name: "DtOperacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "IdOperacao",
       name: "IdOperacao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "CPFCNPJCliente",
       name: "CPFCNPJCliente",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "EmailCliente",
       name: "EmailCliente",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "CdVendedor",
       name: "CdVendedor",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "CdVendedorExtra",
       name: "CdVendedorExtra",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "CdFuncionario",
       name: "CdFuncionario",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "CdTipoVenda",
       name: "CdTipoVenda",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "VlTotal",
       name: "VlTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -115,7 +115,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "VlDesconto",
       name: "VlDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -124,7 +124,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "VlDescGer",
       name: "VlDescGer",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -133,7 +133,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -141,7 +141,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "CdSetor",
       name: "CdSetor",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -149,7 +149,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "Localizacao",
       name: "Localizacao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -157,7 +157,7 @@ export const NFCeTempMestre: TTableDef = {
       label: "FgVendaExterna",
       name: "FgVendaExterna",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -165,14 +165,12 @@ export const NFCeTempMestre: TTableDef = {
       label: "Fase",
       name: "Fase",
       typeField: "string",
-      size: 16,
     },
     {
       field: "FgAbatimento",
       label: "FgAbatimento",
       name: "FgAbatimento",
       typeField: "string",
-      size: 1,
     },
   ],
 };

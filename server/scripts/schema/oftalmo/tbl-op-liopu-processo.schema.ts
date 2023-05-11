@@ -9,7 +9,7 @@ export const tbl_op_liopu_processo: TTableDef = {
       label: "fkoplio",
       name: "fkoplio",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const tbl_op_liopu_processo: TTableDef = {
       label: "fkoperacao",
       name: "fkoperacao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const tbl_op_liopu_processo: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

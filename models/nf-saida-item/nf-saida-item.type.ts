@@ -134,31 +134,31 @@ export type TNfSaidaItemFields = keyof Required<TNfSaidaItem>;
 export type TNfSaidaItemIds = {
   [pk in keyof Required<TNfSaidaItemPk>]: any;
 };
-export type TNfSaidaItemSelect = TSelect<TNfSaidaItemFields>;
-export type TNfSaidaItemWhere = TWhere<TNfSaidaItemFields>;
-export type TNfSaidaItemOrder = TOrder<TNfSaidaItemFields>;
+export type TNfSaidaItemSelect = TSelect;
+export type TNfSaidaItemWhere = TWhere;
+export type TNfSaidaItemOrder = TOrder;
 
 export type TNfSaidaItemSchema = () => Promise<TFieldDef[]>;
 export type TNfSaidaItemClear = () => Promise<TNfSaidaItem>;
 export type TNfSaidaItemList = (args: {
-  where?: TWhere<TNfSaidaItemFields>[];
-  order?: TOrder<TNfSaidaItemFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TNfSaidaItemFields>;
+  select?: TSelect;
 }) => Promise<TNfSaidaItem[]>;
 export type TNfSaidaItemRead = (args: {
   id: TNfSaidaItemIds;
-  select?: TSelect<TNfSaidaItemFields>;
+  select?: TSelect;
 }) => Promise<TNfSaidaItem>;
 
 export type TNfSaidaItemCreate = (args: {
   data: TNfSaidaItem;
-  select?: TSelect<TNfSaidaItemFields>;
+  select?: TSelect;
 }) => Promise<TNfSaidaItem>;
 export type TNfSaidaItemUpdate = (args: {
   id: TNfSaidaItemIds;
   data: TNfSaidaItem;
-  select?: TSelect<TNfSaidaItemFields>;
+  select?: TSelect;
 }) => Promise<TNfSaidaItem>;
 export type TNfSaidaItemDel = (args: {
   id: TNfSaidaItemIds;

@@ -1,0 +1,43 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`zFilters > not pass 1`] = `
+"[
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "object",
+    "path": [],
+    "message": "O dado deve ser do tipo array, porém foi enviado object"
+  }
+]"
+`;
+
+exports[`zFilters > not pass 2`] = `
+"[
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "number",
+    "path": [
+      0,
+      "value"
+    ],
+    "message": "O dado deve ser do tipo string, porém foi enviado number"
+  }
+]"
+`;
+
+exports[`zFilters > not pass 3`] = `
+"[
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "number",
+    "path": [
+      0,
+      "id"
+    ],
+    "message": "O dado deve ser do tipo string, porém foi enviado number"
+  }
+]"
+`;

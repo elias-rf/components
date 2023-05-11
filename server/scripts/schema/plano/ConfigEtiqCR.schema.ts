@@ -9,7 +9,7 @@ export const ConfigEtiqCR: TTableDef = {
       label: "Impressora",
       name: "ConfigEtiqCR_id",
       typeField: "string",
-      size: 40,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ConfigEtiqCR: TTableDef = {
       label: "QtdeEtiquetasLinha",
       name: "QtdeEtiquetasLinha",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ConfigEtiqCR: TTableDef = {
       label: "QtdeEtiquetasColunas",
       name: "QtdeEtiquetasColunas",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ConfigEtiqCR: TTableDef = {
       label: "QtdeLinhasInicial",
       name: "QtdeLinhasInicial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ConfigEtiqCR: TTableDef = {
       label: "EspLateral",
       name: "EspLateral",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ConfigEtiqCR: TTableDef = {
       label: "QtdeCaracteres",
       name: "QtdeCaracteres",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ConfigEtiqCR: TTableDef = {
       label: "QtdeLinhas",
       name: "QtdeLinhas",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const ConfigEtiqCR: TTableDef = {
       label: "CaracteresEntreEtiquetas",
       name: "CaracteresEntreEtiquetas",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const ConfigEtiqCR: TTableDef = {
       label: "TipoImpressao",
       name: "TipoImpressao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const ConfigEtiqCR: TTableDef = {
       label: "AlturaEtiqueta",
       name: "AlturaEtiqueta",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -90,7 +90,7 @@ export const ConfigEtiqCR: TTableDef = {
       label: "AlturaPagina",
       name: "AlturaPagina",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -98,7 +98,6 @@ export const ConfigEtiqCR: TTableDef = {
       label: "Orientacao",
       name: "Orientacao",
       typeField: "string",
-      size: 1,
     },
   ],
 };

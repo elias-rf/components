@@ -9,7 +9,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "CdSolicitacaoRat",
       name: "SolicitacaoRat_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "NumeroRAT",
       name: "NumeroRAT",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "Mudanca",
       name: "Mudanca",
       typeField: "string",
-      size: 250,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "ResumoMudanca",
       name: "ResumoMudanca",
       typeField: "string",
-      size: 4000,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "RazoesMudanca",
       name: "RazoesMudanca",
       typeField: "string",
-      size: 4000,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "PreRequisitos",
       name: "PreRequisitos",
       typeField: "string",
-      size: 4000,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "PontosChecagem",
       name: "PontosChecagem",
       typeField: "string",
-      size: 4000,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "CdTecnicoDesenv",
       name: "CdTecnicoDesenv",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "CdTecnicoSolicitacao",
       name: "CdTecnicoSolicitacao",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "FgAguardaAprovConteudo",
       name: "FgAguardaAprovConteudo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "FgAguardaAprovOrcamento",
       name: "FgAguardaAprovOrcamento",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "FgAprovado",
       name: "FgAprovado",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "DataEntregaSol",
       name: "DataEntregaSol",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -115,7 +115,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "HorasPrevistas",
       name: "HorasPrevistas",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -124,7 +124,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "HorasRepassadas",
       name: "HorasRepassadas",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -133,7 +133,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "DetalheMudanca",
       name: "DetalheMudanca",
       typeField: "string",
-      size: 8000,
+
       allowNull: false,
     },
     {
@@ -141,7 +141,7 @@ export const SolicitacaoRat: TTableDef = {
       label: "ObservacaoMudanca",
       name: "ObservacaoMudanca",
       typeField: "string",
-      size: 8000,
+
       allowNull: false,
     },
   ],

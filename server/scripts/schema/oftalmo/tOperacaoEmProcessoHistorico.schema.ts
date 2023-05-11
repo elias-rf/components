@@ -9,7 +9,7 @@ export const tOperacaoEmProcessoHistorico: TTableDef = {
       label: "kOperacaoEPH",
       name: "tOperacaoEmProcessoHistorico_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const tOperacaoEmProcessoHistorico: TTableDef = {
       label: "DataRegistro",
       name: "DataRegistro",
       typeField: "date",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const tOperacaoEmProcessoHistorico: TTableDef = {
       label: "fkLinhaDeProducao",
       name: "fkLinhaDeProducao",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const tOperacaoEmProcessoHistorico: TTableDef = {
       label: "fkOperacao",
       name: "fkOperacao",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const tOperacaoEmProcessoHistorico: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

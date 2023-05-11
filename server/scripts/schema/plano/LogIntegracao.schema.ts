@@ -9,7 +9,7 @@ export const LogIntegracao: TTableDef = {
       label: "CdEmpresa",
       name: "LogIntegracao_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const LogIntegracao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const LogIntegracao: TTableDef = {
       label: "DHArquivo",
       name: "DHArquivo",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const LogIntegracao: TTableDef = {
       label: "IdEquipamento",
       name: "IdEquipamento",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const LogIntegracao: TTableDef = {
       label: "EnderecoEmail",
       name: "EnderecoEmail",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const LogIntegracao: TTableDef = {
       label: "QtdeArquivos",
       name: "QtdeArquivos",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const LogIntegracao: TTableDef = {
       label: "Mensagem",
       name: "Mensagem",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
   ],

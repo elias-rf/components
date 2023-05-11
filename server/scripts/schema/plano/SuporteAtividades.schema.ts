@@ -9,7 +9,7 @@ export const SuporteAtividades: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SuporteAtividades: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const SuporteAtividades: TTableDef = {
       label: "CdTecnico",
       name: "CdTecnico",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const SuporteAtividades: TTableDef = {
       label: "DtInicio",
       name: "DtInicio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const SuporteAtividades: TTableDef = {
       label: "DtTermino",
       name: "DtTermino",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -51,7 +51,7 @@ export const SuporteAtividades: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const SuporteAtividades: TTableDef = {
       label: "RzSocial",
       name: "RzSocial",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const SuporteAtividades: TTableDef = {
       label: "NmContato",
       name: "NmContato",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const SuporteAtividades: TTableDef = {
       label: "NumeroRat",
       name: "NumeroRat",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -83,7 +83,7 @@ export const SuporteAtividades: TTableDef = {
       label: "Funcao",
       name: "Funcao",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -91,7 +91,7 @@ export const SuporteAtividades: TTableDef = {
       label: "FgAtendimentoInterno",
       name: "FgAtendimentoInterno",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -99,7 +99,7 @@ export const SuporteAtividades: TTableDef = {
       label: "DescricaoAtividade",
       name: "DescricaoAtividade",
       typeField: "string",
-      size: 2048,
+
       allowNull: false,
     },
   ],

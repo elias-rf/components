@@ -9,7 +9,7 @@ export const ConfiguracaoImpPreco: TTableDef = {
       label: "IdModeloArquivo",
       name: "ConfiguracaoImpPreco_id",
       typeField: "string",
-      size: 20,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ConfiguracaoImpPreco: TTableDef = {
       label: "PosicaoProduto",
       name: "PosicaoProduto",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ConfiguracaoImpPreco: TTableDef = {
       label: "TamanhoProduto",
       name: "TamanhoProduto",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ConfiguracaoImpPreco: TTableDef = {
       label: "PosicaoTabela",
       name: "PosicaoTabela",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ConfiguracaoImpPreco: TTableDef = {
       label: "TamanhoTabela",
       name: "TamanhoTabela",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ConfiguracaoImpPreco: TTableDef = {
       label: "DecimaisTabela",
       name: "DecimaisTabela",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ConfiguracaoImpPreco: TTableDef = {
       label: "PosicaoVenda",
       name: "PosicaoVenda",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const ConfiguracaoImpPreco: TTableDef = {
       label: "TamanhoVenda",
       name: "TamanhoVenda",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const ConfiguracaoImpPreco: TTableDef = {
       label: "DecimaisVenda",
       name: "DecimaisVenda",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
   ],

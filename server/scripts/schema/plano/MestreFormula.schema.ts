@@ -9,7 +9,7 @@ export const MestreFormula: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const MestreFormula: TTableDef = {
       label: "NumFormula",
       name: "NumFormula",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const MestreFormula: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const MestreFormula: TTableDef = {
       label: "HrEmissao",
       name: "HrEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const MestreFormula: TTableDef = {
       label: "CdTipoFormula",
       name: "CdTipoFormula",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const MestreFormula: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const MestreFormula: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -68,7 +68,7 @@ export const MestreFormula: TTableDef = {
       label: "CdVendedor",
       name: "CdVendedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -77,7 +77,7 @@ export const MestreFormula: TTableDef = {
       label: "CRM",
       name: "CRM",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -85,7 +85,7 @@ export const MestreFormula: TTableDef = {
       label: "DtEntregaPrevista",
       name: "DtEntregaPrevista",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -94,7 +94,7 @@ export const MestreFormula: TTableDef = {
       label: "HrEntregaPrevista",
       name: "HrEntregaPrevista",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -103,7 +103,7 @@ export const MestreFormula: TTableDef = {
       label: "cdFase",
       name: "cdFase",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -111,7 +111,7 @@ export const MestreFormula: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -120,7 +120,7 @@ export const MestreFormula: TTableDef = {
       label: "Valor",
       name: "Valor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -129,7 +129,7 @@ export const MestreFormula: TTableDef = {
       label: "DtFabricacao",
       name: "DtFabricacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -137,7 +137,7 @@ export const MestreFormula: TTableDef = {
       label: "DtValidade",
       name: "DtValidade",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -145,14 +145,13 @@ export const MestreFormula: TTableDef = {
       label: "Posologia",
       name: "Posologia",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "DtConfirmacao",
       label: "DtConfirmacao",
       name: "DtConfirmacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -160,28 +159,25 @@ export const MestreFormula: TTableDef = {
       label: "FgSemiAcabado",
       name: "FgSemiAcabado",
       typeField: "string",
-      size: 1,
     },
     {
       field: "TipoPedido",
       label: "TipoPedido",
       name: "TipoPedido",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgFormulaRepetida",
       label: "FgFormulaRepetida",
       name: "FgFormulaRepetida",
       typeField: "string",
-      size: 1,
     },
     {
       field: "HrEntregaIni",
       label: "HrEntregaIni",
       name: "HrEntregaIni",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -189,7 +185,7 @@ export const MestreFormula: TTableDef = {
       label: "HrEntregaFim",
       name: "HrEntregaFim",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -197,7 +193,7 @@ export const MestreFormula: TTableDef = {
       label: "CdFuncionario",
       name: "CdFuncionario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -205,14 +201,13 @@ export const MestreFormula: TTableDef = {
       label: "NumLote",
       name: "NumLote",
       typeField: "string",
-      size: 64,
     },
     {
       field: "QuantidadePrevista",
       label: "QuantidadePrevista",
       name: "QuantidadePrevista",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -220,49 +215,43 @@ export const MestreFormula: TTableDef = {
       label: "Largura",
       name: "Largura",
       typeField: "string",
-      size: 64,
     },
     {
       field: "Espessura",
       label: "Espessura",
       name: "Espessura",
       typeField: "string",
-      size: 64,
     },
     {
       field: "TipoCaixa",
       label: "TipoCaixa",
       name: "TipoCaixa",
       typeField: "string",
-      size: 64,
     },
     {
       field: "PecasCaixa",
       label: "PecasCaixa",
       name: "PecasCaixa",
       typeField: "string",
-      size: 64,
     },
     {
       field: "CdProdutoGrelha",
       label: "CdProdutoGrelha",
       name: "CdProdutoGrelha",
       typeField: "string",
-      size: 64,
     },
     {
       field: "CdLoteGrelha",
       label: "CdLoteGrelha",
       name: "CdLoteGrelha",
       typeField: "string",
-      size: 64,
     },
     {
       field: "QtdeLoteGrelha",
       label: "QtdeLoteGrelha",
       name: "QtdeLoteGrelha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -270,28 +259,25 @@ export const MestreFormula: TTableDef = {
       label: "Maquina",
       name: "Maquina",
       typeField: "string",
-      size: 64,
     },
     {
       field: "Operador",
       label: "Operador",
       name: "Operador",
       typeField: "string",
-      size: 64,
     },
     {
       field: "CdLoteEmbalagem",
       label: "CdLoteEmbalagem",
       name: "CdLoteEmbalagem",
       typeField: "string",
-      size: 64,
     },
     {
       field: "DtProducao",
       label: "DtProducao",
       name: "DtProducao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -299,21 +285,19 @@ export const MestreFormula: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgSituacao",
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -321,21 +305,19 @@ export const MestreFormula: TTableDef = {
       label: "FgCancelado",
       name: "FgCancelado",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Obs",
       label: "Obs",
       name: "Obs",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "QtdePerda",
       label: "QtdePerda",
       name: "QtdePerda",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

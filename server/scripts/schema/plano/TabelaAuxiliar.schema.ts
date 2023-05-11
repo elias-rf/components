@@ -9,7 +9,7 @@ export const TabelaAuxiliar: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TabelaAuxiliar: TTableDef = {
       label: "Codigo",
       name: "Codigo",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TabelaAuxiliar: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const TabelaAuxiliar: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const TabelaAuxiliar: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

@@ -9,7 +9,7 @@ export const LocalEstoque: TTableDef = {
       label: "CdLocalEstoque",
       name: "LocalEstoque_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const LocalEstoque: TTableDef = {
       label: "NmLocalEstoque",
       name: "NmLocalEstoque",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
   ],

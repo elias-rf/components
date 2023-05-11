@@ -9,7 +9,7 @@ export const Nfe2G: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Nfe2G: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const Nfe2G: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const Nfe2G: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const Nfe2G: TTableDef = {
       label: "FgTipoEmissao",
       name: "FgTipoEmissao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const Nfe2G: TTableDef = {
       label: "FgTipoAmbiente",
       name: "FgTipoAmbiente",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const Nfe2G: TTableDef = {
       label: "SituacaoNfe",
       name: "SituacaoNfe",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const Nfe2G: TTableDef = {
       label: "NumChave",
       name: "NumChave",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const Nfe2G: TTableDef = {
       label: "CodigoNF",
       name: "CodigoNF",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -83,7 +83,7 @@ export const Nfe2G: TTableDef = {
       label: "DigitoNF",
       name: "DigitoNF",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -91,7 +91,7 @@ export const Nfe2G: TTableDef = {
       label: "NumRecibo",
       name: "NumRecibo",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -99,7 +99,7 @@ export const Nfe2G: TTableDef = {
       label: "NumProtocolo",
       name: "NumProtocolo",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -107,7 +107,7 @@ export const Nfe2G: TTableDef = {
       label: "DtProtocolo",
       name: "DtProtocolo",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -116,7 +116,7 @@ export const Nfe2G: TTableDef = {
       label: "DtGeracao",
       name: "DtGeracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -125,7 +125,7 @@ export const Nfe2G: TTableDef = {
       label: "UsuarioGeracao",
       name: "UsuarioGeracao",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -133,7 +133,7 @@ export const Nfe2G: TTableDef = {
       label: "LocalGeracao",
       name: "LocalGeracao",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -141,7 +141,7 @@ export const Nfe2G: TTableDef = {
       label: "DtAssinatura",
       name: "DtAssinatura",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -150,7 +150,7 @@ export const Nfe2G: TTableDef = {
       label: "UsuarioAssinatura",
       name: "UsuarioAssinatura",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -158,7 +158,7 @@ export const Nfe2G: TTableDef = {
       label: "DtEnvio",
       name: "DtEnvio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -167,7 +167,7 @@ export const Nfe2G: TTableDef = {
       label: "UsuarioEnvio",
       name: "UsuarioEnvio",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -175,7 +175,7 @@ export const Nfe2G: TTableDef = {
       label: "TempoMedio",
       name: "TempoMedio",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -183,7 +183,7 @@ export const Nfe2G: TTableDef = {
       label: "DtConfirmacao",
       name: "DtConfirmacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -192,7 +192,7 @@ export const Nfe2G: TTableDef = {
       label: "UsuarioConfirmacao",
       name: "UsuarioConfirmacao",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -200,7 +200,7 @@ export const Nfe2G: TTableDef = {
       label: "DtProcNfe",
       name: "DtProcNfe",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -209,7 +209,7 @@ export const Nfe2G: TTableDef = {
       label: "UsuarioProcNfe",
       name: "UsuarioProcNfe",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -217,7 +217,7 @@ export const Nfe2G: TTableDef = {
       label: "DtEmissaoDanfe",
       name: "DtEmissaoDanfe",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -226,7 +226,7 @@ export const Nfe2G: TTableDef = {
       label: "UsuarioEmissaoDanfe",
       name: "UsuarioEmissaoDanfe",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -234,7 +234,7 @@ export const Nfe2G: TTableDef = {
       label: "FgReemissaoDanfe",
       name: "FgReemissaoDanfe",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -242,7 +242,6 @@ export const Nfe2G: TTableDef = {
       label: "URLQRCode",
       name: "URLQRCode",
       typeField: "string",
-      size: 1024,
     },
   ],
 };

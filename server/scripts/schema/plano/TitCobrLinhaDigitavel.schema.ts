@@ -9,7 +9,7 @@ export const TitCobrLinhaDigitavel: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TitCobrLinhaDigitavel: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TitCobrLinhaDigitavel: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const TitCobrLinhaDigitavel: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const TitCobrLinhaDigitavel: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const TitCobrLinhaDigitavel: TTableDef = {
       label: "SiglaDoc",
       name: "SiglaDoc",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const TitCobrLinhaDigitavel: TTableDef = {
       label: "ItemDoc",
       name: "ItemDoc",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const TitCobrLinhaDigitavel: TTableDef = {
       label: "LinhaDigitavel",
       name: "LinhaDigitavel",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

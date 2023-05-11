@@ -9,7 +9,7 @@ export const MestreCotacao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MestreCotacao: TTableDef = {
       label: "NumCotacao",
       name: "NumCotacao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const MestreCotacao: TTableDef = {
       label: "DtCotacao",
       name: "DtCotacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const MestreCotacao: TTableDef = {
       label: "NumRequisicao",
       name: "NumRequisicao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

@@ -9,7 +9,7 @@ export const Componentes: TTableDef = {
       label: "CdKit",
       name: "CdKit",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Componentes: TTableDef = {
       label: "CdProdutoAssociado",
       name: "CdProdutoAssociado",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const Componentes: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -33,21 +33,19 @@ export const Componentes: TTableDef = {
       label: "UnidadeMedida",
       name: "UnidadeMedida",
       typeField: "string",
-      size: 4,
     },
     {
       field: "FgQsp",
       label: "FgQsp",
       name: "FgQsp",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -55,21 +53,18 @@ export const Componentes: TTableDef = {
       label: "FgTermo",
       name: "FgTermo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgExtrusao",
       label: "FgExtrusao",
       name: "FgExtrusao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CaminhoModeloImp",
       label: "CaminhoModeloImp",
       name: "CaminhoModeloImp",
       typeField: "string",
-      size: 256,
     },
   ],
 };

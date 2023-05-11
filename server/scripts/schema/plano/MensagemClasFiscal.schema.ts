@@ -9,7 +9,7 @@ export const MensagemClasFiscal: TTableDef = {
       label: "ClasFiscal",
       name: "MensagemClasFiscal_id",
       typeField: "string",
-      size: 64,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MensagemClasFiscal: TTableDef = {
       label: "Mensagem",
       name: "Mensagem",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const tPlanGrupo: TTableDef = {
       label: "kPlanGrupo",
       name: "tPlanGrupo_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const tPlanGrupo: TTableDef = {
       label: "NomeGrupo",
       name: "NomeGrupo",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
   ],

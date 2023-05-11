@@ -9,7 +9,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "VlBaseCalculoICMS",
       name: "VlBaseCalculoICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -74,7 +74,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "PercICMSOperacao",
       name: "PercICMSOperacao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -83,7 +83,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "PercICMSDestino",
       name: "PercICMSDestino",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -92,7 +92,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "PercPartilha",
       name: "PercPartilha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -101,7 +101,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "VlICMSUFOrigem",
       name: "VlICMSUFOrigem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -110,7 +110,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "VlICMSUFDestino",
       name: "VlICMSUFDestino",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -119,7 +119,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "PercCombatePobrezaDestino",
       name: "PercCombatePobrezaDestino",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -128,7 +128,7 @@ export const NotaPartilhaICMSItem: TTableDef = {
       label: "VlCombatePobrezaDestino",
       name: "VlCombatePobrezaDestino",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

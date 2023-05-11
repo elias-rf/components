@@ -9,7 +9,7 @@ export const AssocFornecedor: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const AssocFornecedor: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -26,14 +26,13 @@ export const AssocFornecedor: TTableDef = {
       label: "CdReferencia",
       name: "CdReferencia",
       typeField: "string",
-      size: 32,
     },
     {
       field: "QtdEmbalagem",
       label: "QtdEmbalagem",
       name: "QtdEmbalagem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -41,7 +40,7 @@ export const AssocFornecedor: TTableDef = {
       label: "DtPriCompra",
       name: "DtPriCompra",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -49,7 +48,7 @@ export const AssocFornecedor: TTableDef = {
       label: "DtUltCompra",
       name: "DtUltCompra",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -57,7 +56,7 @@ export const AssocFornecedor: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -65,14 +64,12 @@ export const AssocFornecedor: TTableDef = {
       label: "NroNf",
       name: "NroNf",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Serie",
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
     },
   ],
 };

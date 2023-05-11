@@ -9,7 +9,7 @@ export const ControleCheque: TTableDef = {
       label: "CdControleCheque",
       name: "ControleCheque_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ControleCheque: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ControleCheque: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -35,7 +35,7 @@ export const ControleCheque: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const ControleCheque: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -53,7 +53,7 @@ export const ControleCheque: TTableDef = {
       label: "NrConta",
       name: "NrConta",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -61,7 +61,7 @@ export const ControleCheque: TTableDef = {
       label: "NrCheque",
       name: "NrCheque",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -69,7 +69,7 @@ export const ControleCheque: TTableDef = {
       label: "NmEmitente",
       name: "NmEmitente",
       typeField: "string",
-      size: 80,
+
       allowNull: false,
     },
     {
@@ -77,7 +77,7 @@ export const ControleCheque: TTableDef = {
       label: "Valor",
       name: "Valor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -86,7 +86,7 @@ export const ControleCheque: TTableDef = {
       label: "CdStatus",
       name: "CdStatus",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -94,7 +94,7 @@ export const ControleCheque: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -103,14 +103,12 @@ export const ControleCheque: TTableDef = {
       label: "Numdoc",
       name: "Numdoc",
       typeField: "int",
-      size: 4,
     },
     {
       field: "SeqDoc",
       label: "SeqDoc",
       name: "SeqDoc",
       typeField: "int",
-      size: 2,
     },
   ],
 };

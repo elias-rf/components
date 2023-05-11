@@ -9,7 +9,7 @@ export const ProdutoUnidadeTributavel: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProdutoUnidadeTributavel: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 18,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProdutoUnidadeTributavel: TTableDef = {
       label: "UnidadeTributavel",
       name: "UnidadeTributavel",
       typeField: "string",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ProdutoUnidadeTributavel: TTableDef = {
       label: "QtdeComercial",
       name: "QtdeComercial",
       typeField: "int",
-      size: 5,
+
       scale: 5,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const ProdutoUnidadeTributavel: TTableDef = {
       label: "QtdeTributavel",
       name: "QtdeTributavel",
       typeField: "int",
-      size: 5,
+
       scale: 5,
       allowNull: false,
     },

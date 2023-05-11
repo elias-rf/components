@@ -9,7 +9,7 @@ export const InstrucaoCobranca: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const InstrucaoCobranca: TTableDef = {
       label: "CdInstrucaoCob",
       name: "CdInstrucaoCob",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,6 @@ export const InstrucaoCobranca: TTableDef = {
       label: "DsInstrucaoCob",
       name: "DsInstrucaoCob",
       typeField: "string",
-      size: 45,
     },
   ],
 };

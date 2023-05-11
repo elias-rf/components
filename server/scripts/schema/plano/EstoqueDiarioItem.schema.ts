@@ -9,7 +9,7 @@ export const EstoqueDiarioItem: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const EstoqueDiarioItem: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const EstoqueDiarioItem: TTableDef = {
       label: "NumSerieECF",
       name: "NumSerieECF",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const EstoqueDiarioItem: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const EstoqueDiarioItem: TTableDef = {
       label: "DescricaoProduto",
       name: "DescricaoProduto",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const EstoqueDiarioItem: TTableDef = {
       label: "UnidadeProduto",
       name: "UnidadeProduto",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const EstoqueDiarioItem: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const EstoqueDiarioItem: TTableDef = {
       label: "ControleNum",
       name: "ControleNum",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const EstoqueDiarioItem: TTableDef = {
       label: "ControleData",
       name: "ControleData",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -84,14 +84,12 @@ export const EstoqueDiarioItem: TTableDef = {
       label: "CodigoNCM",
       name: "CodigoNCM",
       typeField: "string",
-      size: 16,
     },
     {
       field: "CEST",
       label: "CEST",
       name: "CEST",
       typeField: "int",
-      size: 5,
     },
   ],
 };

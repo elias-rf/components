@@ -9,7 +9,7 @@ export const ReleaseRat: TTableDef = {
       label: "CdReleaseRAT",
       name: "ReleaseRat_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ReleaseRat: TTableDef = {
       label: "NumeroRat",
       name: "NumeroRat",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ReleaseRat: TTableDef = {
       label: "ReleaseFuncionalidade",
       name: "ReleaseFuncionalidade",
       typeField: "string",
-      size: 4000,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ReleaseRat: TTableDef = {
       label: "ReleaseDescricao",
       name: "ReleaseDescricao",
       typeField: "string",
-      size: 8000,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ReleaseRat: TTableDef = {
       label: "ReleaseObservacao",
       name: "ReleaseObservacao",
       typeField: "string",
-      size: 8000,
+
       allowNull: false,
     },
   ],

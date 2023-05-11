@@ -1,5 +1,5 @@
 import { TPeriodo } from "@/models/cliente/cliente.type";
-import { TFieldDef } from "@/types";
+import { TSchema } from "@/types";
 import { day } from "@/utils/date/day";
 import { zsr } from "@/utils/zod/z-refine";
 import { zd, zod } from "@/utils/zod/zod";
@@ -12,7 +12,7 @@ export function getSchema(args: TPeriodo) {
       fim: zd.string().superRefine(zsr.date),
     })
   );
-  const rsp: TFieldDef[] = [
+  const rsp: TSchema = [
     {
       name: "categoria",
       label: "Produto",

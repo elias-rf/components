@@ -9,7 +9,7 @@ export const ConfiguracaoSiTefFilial: TTableDef = {
       label: "CdFilial",
       name: "ConfiguracaoSiTefFilial_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ConfiguracaoSiTefFilial: TTableDef = {
       label: "IPSiTef",
       name: "IPSiTef",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ConfiguracaoSiTefFilial: TTableDef = {
       label: "IdLoja",
       name: "IdLoja",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

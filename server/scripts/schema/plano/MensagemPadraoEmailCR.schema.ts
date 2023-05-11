@@ -9,7 +9,7 @@ export const MensagemPadraoEmailCR: TTableDef = {
       label: "CdFilial",
       name: "MensagemPadraoEmailCR_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MensagemPadraoEmailCR: TTableDef = {
       label: "MSG",
       name: "MSG",
       typeField: "string",
-      size: 2048,
+
       allowNull: false,
     },
   ],

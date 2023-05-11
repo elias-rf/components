@@ -9,42 +9,37 @@ export const HistoricoTitCoBr: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NumDoc",
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Serie",
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
     },
     {
       field: "SiglaDoc",
       label: "SiglaDoc",
       name: "SiglaDoc",
       typeField: "string",
-      size: 3,
     },
     {
       field: "ItemDoc",
       label: "ItemDoc",
       name: "ItemDoc",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Data",
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -52,7 +47,7 @@ export const HistoricoTitCoBr: TTableDef = {
       label: "Horario",
       name: "Horario",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -60,14 +55,13 @@ export const HistoricoTitCoBr: TTableDef = {
       label: "usuario",
       name: "usuario",
       typeField: "string",
-      size: 10,
     },
     {
       field: "Historico",
       label: "Historico",
       name: "Historico",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -75,7 +69,6 @@ export const HistoricoTitCoBr: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
     },
   ],
 };

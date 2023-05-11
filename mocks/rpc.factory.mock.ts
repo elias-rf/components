@@ -1,5 +1,3 @@
-import type { TRpc } from "@/client/lib/http/rpc.factory";
-
 export function rpcFactoryMock(table: string) {
   return {
     query: {
@@ -27,5 +25,5 @@ export function rpcFactoryMock(table: string) {
         return [{ table, args }];
       },
     },
-  } as TRpc;
+  };
 }

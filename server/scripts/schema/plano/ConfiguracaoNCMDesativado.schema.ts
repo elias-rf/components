@@ -9,7 +9,7 @@ export const ConfiguracaoNCMDesativado: TTableDef = {
       label: "NMC",
       name: "ConfiguracaoNCMDesativado_id",
       typeField: "string",
-      size: 8,
+
       primaryKey: true,
       allowNull: false,
     },

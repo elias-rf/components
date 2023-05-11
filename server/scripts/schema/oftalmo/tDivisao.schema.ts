@@ -9,7 +9,7 @@ export const tDivisao: TTableDef = {
       label: "kDivisao",
       name: "tDivisao_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tDivisao: TTableDef = {
       label: "Divisao",
       name: "Divisao",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,6 @@ export const tDivisao: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 200,
     },
   ],
 };

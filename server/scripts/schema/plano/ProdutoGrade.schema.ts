@@ -9,7 +9,7 @@ export const ProdutoGrade: TTableDef = {
       label: "CdMestreGrade",
       name: "CdMestreGrade",
       typeField: "string",
-      size: 18,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProdutoGrade: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 18,
+
       allowNull: false,
     },
   ],

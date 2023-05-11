@@ -9,7 +9,7 @@ export const LstTrn: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const LstTrn: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const LstTrn: TTableDef = {
       label: "Texto",
       name: "Texto",
       typeField: "string",
-      size: 1028,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const SpedFiscalRegE116Processo: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SpedFiscalRegE116Processo: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const SpedFiscalRegE116Processo: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const SpedFiscalRegE116Processo: TTableDef = {
       label: "CdObrigacaoRecolher",
       name: "CdObrigacaoRecolher",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const SpedFiscalRegE116Processo: TTableDef = {
       label: "CdReceita",
       name: "CdReceita",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const SpedFiscalRegE116Processo: TTableDef = {
       label: "CdIndicadorOrigem",
       name: "CdIndicadorOrigem",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const SpedFiscalRegE116Processo: TTableDef = {
       label: "NumProcesso",
       name: "NumProcesso",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const SpedFiscalRegE116Processo: TTableDef = {
       label: "DescricaoProcesso",
       name: "DescricaoProcesso",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const SpedFiscalRegE116Processo: TTableDef = {
       label: "DescricaoComplementarProcesso",
       name: "DescricaoComplementarProcesso",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const SpedFiscalRegE116Processo: TTableDef = {
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

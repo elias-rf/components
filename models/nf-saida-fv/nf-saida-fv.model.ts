@@ -2,12 +2,11 @@ import type { TConnections } from "@/config/connections";
 import { crudFactory } from "@/utils/crud/crud.factory";
 import { nfSaidaFvMethods } from "./model-methods";
 import { nf_saida_fv } from "./nf-saida-fv.table";
-import type { TNfSaidaFvModel } from "./nf-saida-fv.type";
 export function nfSaidaFvModelFactory({
   connections,
 }: {
   connections: TConnections;
-}): TNfSaidaFvModel {
+}) {
   const connection = connections[nf_saida_fv.database];
   const crud = crudFactory(connection, nf_saida_fv);
   const methods = nfSaidaFvMethods({ connection });
@@ -22,10 +21,9 @@ export function nfSaidaFvModelFactory({
     },
     connection,
     table: nf_saida_fv,
-  } as TNfSaidaFvModel;
+  };
 
   return model;
 }
 
-//#region other
-//#endregion
+export type TNfSaidaFvModel = ReturnType<typeof nfSaidaFvModelFactory>;

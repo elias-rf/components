@@ -9,7 +9,7 @@ export const tbl_OP_LIOPU_Operacao: TTableDef = {
       label: "kOpLIOItem",
       name: "tbl_OP_LIOPU_Operacao_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const tbl_OP_LIOPU_Operacao: TTableDef = {
       label: "fkOpLIO",
       name: "fkOpLIO",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const tbl_OP_LIOPU_Operacao: TTableDef = {
       label: "fkOperacao",
       name: "fkOperacao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const tbl_OP_LIOPU_Operacao: TTableDef = {
       label: "QtdInicial",
       name: "QtdInicial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -44,7 +44,7 @@ export const tbl_OP_LIOPU_Operacao: TTableDef = {
       label: "Rejeitos",
       name: "Rejeitos",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -53,7 +53,7 @@ export const tbl_OP_LIOPU_Operacao: TTableDef = {
       label: "Retrabalho",
       name: "Retrabalho",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -62,7 +62,7 @@ export const tbl_OP_LIOPU_Operacao: TTableDef = {
       label: "QtdFinal",
       name: "QtdFinal",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -71,7 +71,7 @@ export const tbl_OP_LIOPU_Operacao: TTableDef = {
       label: "fkFuncionario",
       name: "fkFuncionario",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -79,7 +79,7 @@ export const tbl_OP_LIOPU_Operacao: TTableDef = {
       label: "DataOp",
       name: "DataOp",
       typeField: "date",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -87,7 +87,6 @@ export const tbl_OP_LIOPU_Operacao: TTableDef = {
       label: "ViaFilha",
       name: "ViaFilha",
       typeField: "float",
-      size: 4,
     },
   ],
 };

@@ -9,7 +9,7 @@ export const FilialDataContabil: TTableDef = {
       label: "CdFilial",
       name: "FilialDataContabil_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const FilialDataContabil: TTableDef = {
       label: "DtFechamentoPeriodo",
       name: "DtFechamentoPeriodo",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const FilialDataContabil: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

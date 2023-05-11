@@ -9,7 +9,7 @@ export const tOperacaoLinhaDeProducao: TTableDef = {
       label: "kOperacaoLP",
       name: "tOperacaoLinhaDeProducao_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const tOperacaoLinhaDeProducao: TTableDef = {
       label: "fkLinhaDeProducao",
       name: "fkLinhaDeProducao",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const tOperacaoLinhaDeProducao: TTableDef = {
       label: "fkOperacao",
       name: "fkOperacao",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const tOperacaoLinhaDeProducao: TTableDef = {
       label: "Condicional",
       name: "Condicional",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -44,21 +44,19 @@ export const tOperacaoLinhaDeProducao: TTableDef = {
       label: "NextOLP",
       name: "NextOLP",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NextOLPRet",
       label: "NextOLPRet",
       name: "NextOLPRet",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Ordem",
       label: "Ordem",
       name: "Ordem",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -66,7 +64,7 @@ export const tOperacaoLinhaDeProducao: TTableDef = {
       label: "MarcoA",
       name: "MarcoA",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -75,42 +73,36 @@ export const tOperacaoLinhaDeProducao: TTableDef = {
       label: "CheckOrdem",
       name: "CheckOrdem",
       typeField: "string",
-      size: 10,
     },
     {
       field: "CheckOrdemRet",
       label: "CheckOrdemRet",
       name: "CheckOrdemRet",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CheckOrdemIsNotNeedClosed",
       label: "CheckOrdemIsNotNeedClosed",
       name: "CheckOrdemIsNotNeedClosed",
       typeField: "int",
-      size: 1,
     },
     {
       field: "CheckQtd",
       label: "CheckQtd",
       name: "CheckQtd",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CheckQtdRet",
       label: "CheckQtdRet",
       name: "CheckQtdRet",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CheckAmostragem",
       label: "CheckAmostragem",
       name: "CheckAmostragem",
       typeField: "int",
-      size: 4,
     },
   ],
 };

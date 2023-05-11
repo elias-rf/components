@@ -9,7 +9,7 @@ export const SaisConflitantes: TTableDef = {
       label: "CdSalOrigem",
       name: "CdSalOrigem",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SaisConflitantes: TTableDef = {
       label: "CdSalDestino",
       name: "CdSalDestino",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const SaisConflitantes: TTableDef = {
       label: "FgTipoAdvertencia",
       name: "FgTipoAdvertencia",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const SaisConflitantes: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,6 @@ export const SaisConflitantes: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
     },
   ],
 };

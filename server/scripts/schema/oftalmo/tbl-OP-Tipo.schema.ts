@@ -9,7 +9,7 @@ export const tbl_OP_Tipo: TTableDef = {
       label: "kTipoOP",
       name: "tbl_OP_Tipo_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tbl_OP_Tipo: TTableDef = {
       label: "TipoOP",
       name: "TipoOP",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
   ],

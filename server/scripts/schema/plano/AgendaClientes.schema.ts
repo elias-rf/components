@@ -9,7 +9,7 @@ export const AgendaClientes: TTableDef = {
       label: "IdCompromisso",
       name: "AgendaClientes_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,14 +18,12 @@ export const AgendaClientes: TTableDef = {
       label: "NmCliente",
       name: "NmCliente",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Telefone",
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 18,
     },
   ],
 };

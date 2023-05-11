@@ -9,7 +9,7 @@ export const ParametrosFiscaisNop: TTableDef = {
       label: "IdParametro",
       name: "IdParametro",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ParametrosFiscaisNop: TTableDef = {
       label: "Nop",
       name: "Nop",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
   ],

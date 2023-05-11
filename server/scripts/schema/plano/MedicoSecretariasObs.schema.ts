@@ -9,7 +9,7 @@ export const MedicoSecretariasObs: TTableDef = {
       label: "CRM",
       name: "CRM",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const MedicoSecretariasObs: TTableDef = {
       label: "NmSecretaria",
       name: "NmSecretaria",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const MedicoSecretariasObs: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,6 @@ export const MedicoSecretariasObs: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
     },
   ],
 };

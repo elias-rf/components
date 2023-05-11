@@ -1,17 +1,17 @@
 import type { TConnections } from "@/config/connections";
+import { TProdutoPlanoModel } from "@/models/produto-plano/produto-plano.model";
+import { TIds, TListArgs, TReadArgs, TSelect } from "@/types";
 import { crudFactory } from "@/utils/crud/crud.factory";
-import { TProdutoPlanoRpc } from "../produto-plano/produto-plano.type";
 import { produtoItemMethods } from "./model.methods";
 import { produto_item } from "./produto-item.table";
-import type { TProdutoItemModel } from "./produto-item.type";
 
 export function produtoItemModelFactory({
   connections,
   produtoPlanoModel,
 }: {
   connections: TConnections;
-  produtoPlanoModel: TProdutoPlanoRpc;
-}): TProdutoItemModel {
+  produtoPlanoModel: TProdutoPlanoModel;
+}) {
   const connection = connections[produto_item.database];
   const crud = crudFactory(connection, produto_item);
   const methods = produtoItemMethods({
@@ -20,21 +20,17 @@ export function produtoItemModelFactory({
     produto_item,
   });
 
-  const model: TProdutoItemModel = {
+  const model = {
     query: {
-      list: (args) => crud.query.list(args),
-      read: (args) => crud.query.read(args),
-      produtoPlano: (args) => methods.query.produtoPlano(args),
+      list: (args: TListArgs) => crud.query.list(args),
+      read: (args: TReadArgs) => crud.query.read(args),
+      produtoPlano: (args: { ids: TIds; select?: TSelect }) =>
+        methods.query.produtoPlano(args),
     },
     mutation: {
-      create: (args) => crud.mutation.create(args),
-      update: (args) => crud.mutation.update(args),
-      del: (args) => crud.mutation.del(args),
+      ...crud.mutation,
     },
   };
 
   return model;
 }
-
-//#region other
-//#endregion

@@ -9,7 +9,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "Estacao",
       name: "Estacao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "DiretorioMovimento",
       name: "DiretorioMovimento",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "DiretorioResultado",
       name: "DiretorioResultado",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "DiretorioProcNFe",
       name: "DiretorioProcNFe",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "RetaguardaServidor",
       name: "RetaguardaServidor",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "RetaguardaUsuario",
       name: "RetaguardaUsuario",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "RetaguardaSenha",
       name: "RetaguardaSenha",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "RetaguardaBancoDados",
       name: "RetaguardaBancoDados",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "IntervaloSincronizacao",
       name: "IntervaloSincronizacao",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "FgTabelasNotas",
       name: "FgTabelasNotas",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -97,7 +97,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "FgTabelasCaixa",
       name: "FgTabelasCaixa",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -105,7 +105,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "FgTabelaPedidos",
       name: "FgTabelaPedidos",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -113,7 +113,7 @@ export const ConfiguracaoNFCeDesconectada: TTableDef = {
       label: "FgTabelasContasReceber",
       name: "FgTabelasContasReceber",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

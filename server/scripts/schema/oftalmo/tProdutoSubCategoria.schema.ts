@@ -9,7 +9,7 @@ export const tProdutoSubCategoria: TTableDef = {
       label: "kSubCategoria",
       name: "tProdutoSubCategoria_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const tProdutoSubCategoria: TTableDef = {
       label: "SubCategoria",
       name: "SubCategoria",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -27,14 +27,13 @@ export const tProdutoSubCategoria: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 255,
     },
     {
       field: "fkCategoria",
       label: "fkCategoria",
       name: "fkCategoria",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
   ],

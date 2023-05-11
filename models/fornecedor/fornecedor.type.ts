@@ -20,31 +20,31 @@ export type TFornecedorFields = keyof Required<TFornecedor>;
 export type TFornecedorIds = {
   [pk in keyof Required<TFornecedorPk>]: any;
 };
-export type TFornecedorSelect = TSelect<TFornecedorFields>;
-export type TFornecedorWhere = TWhere<TFornecedorFields>;
-export type TFornecedorOrder = TOrder<TFornecedorFields>;
+export type TFornecedorSelect = TSelect;
+export type TFornecedorWhere = TWhere;
+export type TFornecedorOrder = TOrder;
 
 export type TFornecedorSchema = () => Promise<TFieldDef[]>;
 export type TFornecedorClear = () => Promise<TFornecedor>;
 export type TFornecedorList = (args: {
-  where?: TWhere<TFornecedorFields>[];
-  order?: TOrder<TFornecedorFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TFornecedorFields>;
+  select?: TSelect;
 }) => Promise<TFornecedor[]>;
 export type TFornecedorRead = (args: {
   id: TFornecedorIds;
-  select?: TSelect<TFornecedorFields>;
+  select?: TSelect;
 }) => Promise<TFornecedor>;
 
 export type TFornecedorCreate = (args: {
   data: TFornecedor;
-  select?: TSelect<TFornecedorFields>;
+  select?: TSelect;
 }) => Promise<TFornecedor>;
 export type TFornecedorUpdate = (args: {
   id: TFornecedorIds;
   data: TFornecedor;
-  select?: TSelect<TFornecedorFields>;
+  select?: TSelect;
 }) => Promise<TFornecedor>;
 export type TFornecedorDel = (args: { id: TFornecedorIds }) => Promise<number>;
 

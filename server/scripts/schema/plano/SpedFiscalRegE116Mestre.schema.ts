@@ -9,7 +9,7 @@ export const SpedFiscalRegE116Mestre: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SpedFiscalRegE116Mestre: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const SpedFiscalRegE116Mestre: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const SpedFiscalRegE116Mestre: TTableDef = {
       label: "CdObrigacaoRecolher",
       name: "CdObrigacaoRecolher",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const SpedFiscalRegE116Mestre: TTableDef = {
       label: "CdReceita",
       name: "CdReceita",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const SpedFiscalRegE116Mestre: TTableDef = {
       label: "VlObrigacaoRecolher",
       name: "VlObrigacaoRecolher",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -59,7 +59,7 @@ export const SpedFiscalRegE116Mestre: TTableDef = {
       label: "DtVencimento",
       name: "DtVencimento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -68,7 +68,7 @@ export const SpedFiscalRegE116Mestre: TTableDef = {
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

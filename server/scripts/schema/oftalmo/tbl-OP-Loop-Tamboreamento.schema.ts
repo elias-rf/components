@@ -9,7 +9,7 @@ export const tbl_OP_Loop_Tamboreamento: TTableDef = {
       label: "kOpLoopTamboreamento",
       name: "tbl_OP_Loop_Tamboreamento_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const tbl_OP_Loop_Tamboreamento: TTableDef = {
       label: "fkOpLoop",
       name: "fkOpLoop",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const tbl_OP_Loop_Tamboreamento: TTableDef = {
       label: "DataHoraInicial",
       name: "DataHoraInicial",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -35,7 +35,7 @@ export const tbl_OP_Loop_Tamboreamento: TTableDef = {
       label: "DataHoraFinal",
       name: "DataHoraFinal",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -43,21 +43,18 @@ export const tbl_OP_Loop_Tamboreamento: TTableDef = {
       label: "Tempo",
       name: "Tempo",
       typeField: "int",
-      size: 4,
     },
     {
       field: "fkFuncionario",
       label: "fkFuncionario",
       name: "fkFuncionario",
       typeField: "int",
-      size: 4,
     },
     {
       field: "DataTamboreamento",
       label: "DataTamboreamento",
       name: "DataTamboreamento",
       typeField: "date",
-      size: 4,
     },
   ],
 };

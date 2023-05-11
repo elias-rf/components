@@ -1,5 +1,5 @@
 import { connectionsMock } from "@/mocks/connections.mock";
-import { knexMockHistory } from "@/utils/data/knex-mock-history";
+import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { createTracker } from "knex-mock-client";
 import { describe, expect, test } from "vitest";
 import { esterilizacaoInternaModelFactory } from "./esterilizacao-interna.model";

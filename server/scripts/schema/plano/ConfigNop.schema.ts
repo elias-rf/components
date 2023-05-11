@@ -9,7 +9,7 @@ export const ConfigNop: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ConfigNop: TTableDef = {
       label: "UF",
       name: "UF",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ConfigNop: TTableDef = {
       label: "TipoOperacao",
       name: "TipoOperacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ConfigNop: TTableDef = {
       label: "TipoNota",
       name: "TipoNota",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ConfigNop: TTableDef = {
       label: "TipoCliente",
       name: "TipoCliente",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ConfigNop: TTableDef = {
       label: "OrigemMercadoria",
       name: "OrigemMercadoria",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ConfigNop: TTableDef = {
       label: "TipoTributacaoICMS",
       name: "TipoTributacaoICMS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const ConfigNop: TTableDef = {
       label: "TipoTributacaoIPI",
       name: "TipoTributacaoIPI",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const ConfigNop: TTableDef = {
       label: "TipoTributacaoPIS",
       name: "TipoTributacaoPIS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const ConfigNop: TTableDef = {
       label: "TipoTributacaoCOFINS",
       name: "TipoTributacaoCOFINS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const ConfigNop: TTableDef = {
       label: "Nop",
       name: "Nop",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const ConfigNop: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -107,7 +107,7 @@ export const ConfigNop: TTableDef = {
       label: "FinalidadeNota",
       name: "FinalidadeNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
   ],

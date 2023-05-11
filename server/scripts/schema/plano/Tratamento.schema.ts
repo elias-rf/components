@@ -9,7 +9,7 @@ export const Tratamento: TTableDef = {
       label: "Comprimento",
       name: "Comprimento",
       typeField: "int",
-      size: 9,
+
       scale: 2,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Tratamento: TTableDef = {
       label: "NumCliche",
       name: "NumCliche",
       typeField: "int",
-      size: 9,
+
       scale: 2,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const Tratamento: TTableDef = {
       label: "FormulaTratamento",
       name: "FormulaTratamento",
       typeField: "string",
-      size: 70,
+
       allowNull: false,
     },
   ],

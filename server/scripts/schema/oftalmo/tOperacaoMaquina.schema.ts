@@ -9,7 +9,7 @@ export const tOperacaoMaquina: TTableDef = {
       label: "fkOperacao",
       name: "fkOperacao",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const tOperacaoMaquina: TTableDef = {
       label: "fkMaquina",
       name: "fkMaquina",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
   ],

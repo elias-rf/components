@@ -9,7 +9,7 @@ export const ProgramaProdutos: TTableDef = {
       label: "CdPrograma",
       name: "CdPrograma",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProgramaProdutos: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
   ],

@@ -10,7 +10,6 @@ export const nf_saida_item: TTableDef = {
       name: "filial_id",
       primaryKey: true,
       typeField: "int",
-      size: 2,
       allowNull: false,
     },
     {
@@ -19,7 +18,6 @@ export const nf_saida_item: TTableDef = {
       name: "nota_id",
       primaryKey: true,
       typeField: "int",
-      size: 4,
       allowNull: false,
     },
     {
@@ -28,7 +26,6 @@ export const nf_saida_item: TTableDef = {
       name: "serie_id",
       primaryKey: true,
       typeField: "string",
-      size: 3,
       allowNull: false,
     },
     {
@@ -37,7 +34,6 @@ export const nf_saida_item: TTableDef = {
       name: "modelo_id",
       primaryKey: true,
       typeField: "string",
-      size: 3,
       allowNull: false,
     },
     {
@@ -45,7 +41,6 @@ export const nf_saida_item: TTableDef = {
       label: "CdProduto",
       name: "produto_plano_id",
       typeField: "string",
-      size: 15,
       allowNull: false,
     },
     {
@@ -53,7 +48,6 @@ export const nf_saida_item: TTableDef = {
       label: "Sequencia",
       name: "sequencia",
       typeField: "int",
-      size: 4,
       allowNull: false,
     },
     {
@@ -61,21 +55,18 @@ export const nf_saida_item: TTableDef = {
       label: "CdProdutoAssociado",
       name: "CdProdutoAssociado",
       typeField: "string",
-      size: 15,
     },
     {
       field: "CdRefEstoque",
       label: "CdRefEstoque",
       name: "CdRefEstoque",
       typeField: "string",
-      size: 15,
     },
     {
       field: "Quantidade",
       label: "Quantidade",
       name: "quantidade",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -83,7 +74,6 @@ export const nf_saida_item: TTableDef = {
       label: "QtdeAtendida",
       name: "quantidade_atendida",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -91,7 +81,6 @@ export const nf_saida_item: TTableDef = {
       label: "ConversaoMedida",
       name: "ConversaoMedida",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -99,7 +88,6 @@ export const nf_saida_item: TTableDef = {
       label: "Correcao",
       name: "Correcao",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -107,7 +95,6 @@ export const nf_saida_item: TTableDef = {
       label: "VlUnitario",
       name: "VlUnitario",
       typeField: "int",
-      size: 13,
       scale: 10,
     },
     {
@@ -115,7 +102,6 @@ export const nf_saida_item: TTableDef = {
       label: "VlTotal",
       name: "VlTotal",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -123,7 +109,6 @@ export const nf_saida_item: TTableDef = {
       label: "PercDesconto",
       name: "PercDesconto",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -131,7 +116,6 @@ export const nf_saida_item: TTableDef = {
       label: "VlLiquido",
       name: "valor_liquido",
       typeField: "int",
-      size: 13,
       scale: 10,
     },
     {
@@ -139,7 +123,6 @@ export const nf_saida_item: TTableDef = {
       label: "VlCusto",
       name: "VlCusto",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -147,7 +130,6 @@ export const nf_saida_item: TTableDef = {
       label: "BaseSub",
       name: "BaseSub",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -155,35 +137,30 @@ export const nf_saida_item: TTableDef = {
       label: "FgEstoque",
       name: "eh_estoque",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgKit",
       label: "FgKit",
       name: "eh_kit",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgPeso",
       label: "FgPeso",
       name: "eh_peso",
       typeField: "string",
-      size: 1,
     },
     {
       field: "ImprimeComponentes",
       label: "ImprimeComponentes",
       name: "imprime_componente",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Irrf",
       label: "Irrf",
       name: "Irrf",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -191,7 +168,6 @@ export const nf_saida_item: TTableDef = {
       label: "MargemSub",
       name: "MargemSub",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -199,14 +175,12 @@ export const nf_saida_item: TTableDef = {
       label: "Peso",
       name: "Peso",
       typeField: "string",
-      size: 10,
     },
     {
       field: "PesoBruto",
       label: "PesoBruto",
       name: "PesoBruto",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -214,7 +188,6 @@ export const nf_saida_item: TTableDef = {
       label: "PesoLiq",
       name: "PesoLiq",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -222,7 +195,6 @@ export const nf_saida_item: TTableDef = {
       label: "ReducaoICMS",
       name: "ReducaoICMS",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -230,7 +202,6 @@ export const nf_saida_item: TTableDef = {
       label: "TaxaFCA",
       name: "TaxaFCA",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -238,14 +209,12 @@ export const nf_saida_item: TTableDef = {
       label: "TipoMovimentacao",
       name: "TipoMovimentacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "VlComissaoPrazo",
       label: "VlComissaoPrazo",
       name: "VlComissaoPrazo",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -253,7 +222,6 @@ export const nf_saida_item: TTableDef = {
       label: "VlComissaoVista",
       name: "VlComissaoVista",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -261,7 +229,6 @@ export const nf_saida_item: TTableDef = {
       label: "CdVendedor",
       name: "CdVendedor",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -269,7 +236,6 @@ export const nf_saida_item: TTableDef = {
       label: "CdVendedorExtra",
       name: "CdVendedorExtra",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -277,7 +243,6 @@ export const nf_saida_item: TTableDef = {
       label: "PercComisVista",
       name: "PercComisVista",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -285,7 +250,6 @@ export const nf_saida_item: TTableDef = {
       label: "PercComisPrazo",
       name: "PercComisPrazo",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -293,7 +257,6 @@ export const nf_saida_item: TTableDef = {
       label: "PercReducaoComissao",
       name: "PercReducaoComissao",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -301,7 +264,6 @@ export const nf_saida_item: TTableDef = {
       label: "VlICMS",
       name: "VlICMS",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -309,7 +271,6 @@ export const nf_saida_item: TTableDef = {
       label: "VlIcmsSub",
       name: "VlIcmsSub",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -317,7 +278,6 @@ export const nf_saida_item: TTableDef = {
       label: "VlIPI",
       name: "VlIPI",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -325,7 +285,6 @@ export const nf_saida_item: TTableDef = {
       label: "VlISS",
       name: "VlISS",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -333,7 +292,6 @@ export const nf_saida_item: TTableDef = {
       label: "CustoMedio",
       name: "CustoMedio",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -341,21 +299,18 @@ export const nf_saida_item: TTableDef = {
       label: "ComplementoDescricao",
       name: "ComplementoDescricao",
       typeField: "string",
-      size: 20,
     },
     {
       field: "FgEtiqueta",
       label: "FgEtiqueta",
       name: "eh_etiqueta",
       typeField: "string",
-      size: 1,
     },
     {
       field: "PercLimiteComissao",
       label: "PercLimiteComissao",
       name: "PercLimiteComissao",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -363,14 +318,12 @@ export const nf_saida_item: TTableDef = {
       label: "ComplementoDesc",
       name: "ComplementoDesc",
       typeField: "string",
-      size: 15,
     },
     {
       field: "BaseCalculoIPI",
       label: "BaseCalculoIPI",
       name: "BaseCalculoIPI",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -378,7 +331,6 @@ export const nf_saida_item: TTableDef = {
       label: "NumEtiqKanBan",
       name: "NumEtiqKanBan",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -386,7 +338,6 @@ export const nf_saida_item: TTableDef = {
       label: "NumOrdemCompra",
       name: "NumOrdemCompra",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -394,7 +345,6 @@ export const nf_saida_item: TTableDef = {
       label: "VlComissaoVistaExtra",
       name: "VlComissaoVistaExtra",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -402,7 +352,6 @@ export const nf_saida_item: TTableDef = {
       label: "VlComissaoPrazoExtra",
       name: "VlComissaoPrazoExtra",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -410,7 +359,6 @@ export const nf_saida_item: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
       scale: 3,
     },
     {
@@ -418,28 +366,24 @@ export const nf_saida_item: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CRM",
       label: "CRM",
       name: "CRM",
       typeField: "string",
-      size: 16,
     },
     {
       field: "Unidade",
       label: "Unidade",
       name: "Unidade",
       typeField: "string",
-      size: 3,
     },
     {
       field: "VlImpostoDiferido",
       label: "VlImpostoDiferido",
       name: "VlImpostoDiferido",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -447,35 +391,30 @@ export const nf_saida_item: TTableDef = {
       label: "Fg6142",
       name: "Fg6142",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Nop",
       label: "Nop",
       name: "cfop",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NopFiscalItem",
       label: "NopFiscalItem",
       name: "cfop_fiscal",
       typeField: "int",
-      size: 4,
     },
     {
       field: "fgBuscaDCB",
       label: "fgBuscaDCB",
       name: "fgBuscaDCB",
       typeField: "string",
-      size: 10,
     },
     {
       field: "VlPrecoAnvisa",
       label: "VlPrecoAnvisa",
       name: "VlPrecoAnvisa",
       typeField: "int",
-      size: 13,
       scale: 10,
     },
     {
@@ -483,7 +422,6 @@ export const nf_saida_item: TTableDef = {
       label: "AliqRedBaseST",
       name: "AliqRedBaseST",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -491,14 +429,12 @@ export const nf_saida_item: TTableDef = {
       label: "DescComplementarProd",
       name: "DescComplementarProd",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "VlVendaOriginal",
       label: "VlVendaOriginal",
       name: "VlVendaOriginal",
       typeField: "int",
-      size: 13,
       scale: 10,
     },
     {
@@ -506,21 +442,18 @@ export const nf_saida_item: TTableDef = {
       label: "SituacaoTributariaIPI",
       name: "SituacaoTributariaIPI",
       typeField: "int",
-      size: 2,
     },
     {
       field: "CdEnquadramentoIPI",
       label: "CdEnquadramentoIPI",
       name: "CdEnquadramentoIPI",
       typeField: "string",
-      size: 3,
     },
     {
       field: "AliquotaIPI",
       label: "AliquotaIPI",
       name: "AliquotaIPI",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -528,7 +461,6 @@ export const nf_saida_item: TTableDef = {
       label: "AliquotaPIS",
       name: "AliquotaPIS",
       typeField: "float",
-      size: 8,
       scale: 4,
     },
     {
@@ -536,7 +468,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlPIS",
       name: "VlPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -544,7 +476,7 @@ export const nf_saida_item: TTableDef = {
       label: "AliquotaCOFINS",
       name: "AliquotaCOFINS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -552,7 +484,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlCOFINS",
       name: "VlCOFINS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -560,14 +492,13 @@ export const nf_saida_item: TTableDef = {
       label: "SituacaoTributariaCOFINS",
       name: "SituacaoTributariaCOFINS",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BaseCalculoCOFINS",
       label: "BaseCalculoCOFINS",
       name: "BaseCalculoCOFINS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -575,14 +506,13 @@ export const nf_saida_item: TTableDef = {
       label: "SituacaoTributariaPIS",
       name: "SituacaoTributariaPIS",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BaseCalculoPIS",
       label: "BaseCalculoPIS",
       name: "BaseCalculoPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -590,7 +520,7 @@ export const nf_saida_item: TTableDef = {
       label: "AliquotaICMS",
       name: "AliquotaICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -598,7 +528,7 @@ export const nf_saida_item: TTableDef = {
       label: "BaseCalculoICMS",
       name: "BaseCalculoICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -606,21 +536,19 @@ export const nf_saida_item: TTableDef = {
       label: "SituacaoTributariaICMS",
       name: "SituacaoTributariaICMS",
       typeField: "int",
-      size: 2,
     },
     {
       field: "FgICMSDiferimentoTotal",
       label: "FgICMSDiferimentoTotal",
       name: "FgICMSDiferimentoTotal",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CdBaseCalculoCreditoPISCOFINS",
       label: "CdBaseCalculoCreditoPISCOFINS",
       name: "CdBaseCalculoCreditoPISCOFINS",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -628,7 +556,7 @@ export const nf_saida_item: TTableDef = {
       label: "CdTipoCreditoPISCOFINS",
       name: "CdTipoCreditoPISCOFINS",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -636,7 +564,7 @@ export const nf_saida_item: TTableDef = {
       label: "CdContribuicaoApuradaPISCOFINS",
       name: "CdContribuicaoApuradaPISCOFINS",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -644,7 +572,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlAproximadoImpostoItem",
       name: "VlAproximadoImpostoItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -652,7 +580,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlFreteItem",
       name: "VlFreteItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -660,7 +588,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlSeguroItem",
       name: "VlSeguroItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -668,7 +596,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlDespesaAcessoriaItem",
       name: "VlDespesaAcessoriaItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -676,7 +604,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlDescontoGerente",
       name: "VlDescontoGerente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -684,21 +612,19 @@ export const nf_saida_item: TTableDef = {
       label: "FgConsideraItemNfe",
       name: "FgConsideraItemNfe",
       typeField: "string",
-      size: 1,
     },
     {
       field: "OrigemMercadoria",
       label: "OrigemMercadoria",
       name: "OrigemMercadoria",
       typeField: "int",
-      size: 2,
     },
     {
       field: "PercentualMVA",
       label: "PercentualMVA",
       name: "PercentualMVA",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -706,7 +632,7 @@ export const nf_saida_item: TTableDef = {
       label: "PercReducaoBaseSub",
       name: "PercReducaoBaseSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -714,7 +640,7 @@ export const nf_saida_item: TTableDef = {
       label: "PercICMSSub",
       name: "PercICMSSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -722,14 +648,13 @@ export const nf_saida_item: TTableDef = {
       label: "UFSub",
       name: "UFSub",
       typeField: "string",
-      size: 2,
     },
     {
       field: "VlBaseCalculoICMSRetido",
       label: "VlBaseCalculoICMSRetido",
       name: "VlBaseCalculoICMSRetido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -737,7 +662,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlICMSRetido",
       name: "VlICMSRetido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -745,7 +670,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlBaseCalculoICMSDest",
       name: "VlBaseCalculoICMSDest",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -753,7 +678,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlICMSDest",
       name: "VlICMSDest",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -761,7 +686,7 @@ export const nf_saida_item: TTableDef = {
       label: "PercBaseOperacaoPropria",
       name: "PercBaseOperacaoPropria",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -769,7 +694,7 @@ export const nf_saida_item: TTableDef = {
       label: "AliquotaCreditoSimples",
       name: "AliquotaCreditoSimples",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -777,7 +702,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlCreditoSimples",
       name: "VlCreditoSimples",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -785,35 +710,31 @@ export const nf_saida_item: TTableDef = {
       label: "ModalidadeBaseICMS",
       name: "ModalidadeBaseICMS",
       typeField: "int",
-      size: 2,
     },
     {
       field: "ModalidadeBaseSub",
       label: "ModalidadeBaseSub",
       name: "ModalidadeBaseSub",
       typeField: "int",
-      size: 2,
     },
     {
       field: "MotivoDesoneracaoICMS",
       label: "MotivoDesoneracaoICMS",
       name: "MotivoDesoneracaoICMS",
       typeField: "int",
-      size: 2,
     },
     {
       field: "FgEmprestimo",
       label: "FgEmprestimo",
       name: "FgEmprestimo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "PercDiferimento",
       label: "PercDiferimento",
       name: "PercDiferimento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -821,7 +742,7 @@ export const nf_saida_item: TTableDef = {
       label: "QuantidadeLitros",
       name: "QuantidadeLitros",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -829,7 +750,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlIPILitro",
       name: "VlIPILitro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -837,7 +758,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlPISLitro",
       name: "VlPISLitro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -845,7 +766,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlCOFINSLitro",
       name: "VlCOFINSLitro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -853,7 +774,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlAproximadoImpostoFederal",
       name: "VlAproximadoImpostoFederal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -861,7 +782,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlAproximadoImpostoEstadual",
       name: "VlAproximadoImpostoEstadual",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -869,7 +790,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlAproximadoImpostoMunicipal",
       name: "VlAproximadoImpostoMunicipal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -877,14 +798,13 @@ export const nf_saida_item: TTableDef = {
       label: "PlanoContaSped",
       name: "PlanoContaSped",
       typeField: "int",
-      size: 9,
     },
     {
       field: "PercFCP",
       label: "PercFCP",
       name: "PercFCP",
       typeField: "int",
-      size: 5,
+
       scale: 2,
     },
     {
@@ -892,7 +812,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlBaseFCP",
       name: "VlBaseFCP",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -900,7 +820,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlFCP",
       name: "VlFCP",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -908,7 +828,7 @@ export const nf_saida_item: TTableDef = {
       label: "PercFCPST",
       name: "PercFCPST",
       typeField: "int",
-      size: 5,
+
       scale: 2,
     },
     {
@@ -916,7 +836,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlBaseFCPST",
       name: "VlBaseFCPST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -924,7 +844,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlFCPST",
       name: "VlFCPST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -932,7 +852,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlBaseCalculoSTRetido",
       name: "VlBaseCalculoSTRetido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -940,7 +860,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlICMSSTRetido",
       name: "VlICMSSTRetido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -948,7 +868,7 @@ export const nf_saida_item: TTableDef = {
       label: "AliquotaSTRetido",
       name: "AliquotaSTRetido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -956,7 +876,7 @@ export const nf_saida_item: TTableDef = {
       label: "VlICMSSubstituto",
       name: "VlICMSSubstituto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

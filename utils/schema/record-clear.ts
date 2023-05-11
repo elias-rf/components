@@ -1,4 +1,4 @@
-import { TFieldDef } from "@/types";
+import { TGenericObject } from "@/types";
 
 /**
  * Cria um registro limpo a partir do schema
@@ -6,7 +6,11 @@ import { TFieldDef } from "@/types";
  * @param {TFieldDef} field
  * @return {*}
  */
-function fieldClear(field: TFieldDef) {
+function fieldClear(field: {
+  defaultValue?: any;
+  allowNull?: boolean;
+  typeField?: string;
+}) {
   if (field.defaultValue) return field.defaultValue;
   if (field.allowNull !== false) return null;
   if (
@@ -21,10 +25,17 @@ function fieldClear(field: TFieldDef) {
   );
 }
 
-export function recordClear<TReturn>(fields: TFieldDef[]): Required<TReturn> {
+export function recordClear(
+  fields: {
+    defaultValue?: any;
+    allowNull?: boolean;
+    typeField?: string;
+    name: string;
+  }[]
+): TGenericObject {
   const rsp: { [field: string]: any } = {};
   for (const field of fields) {
     rsp[field.name] = fieldClear(field);
   }
-  return rsp as Required<TReturn>;
+  return rsp;
 }

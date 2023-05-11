@@ -9,7 +9,7 @@ export const ordemProducaoAux: TTableDef = {
       label: "fkOp",
       name: "ordemProducaoAux_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,21 +18,18 @@ export const ordemProducaoAux: TTableDef = {
       label: "qtdTotal",
       name: "qtdTotal",
       typeField: "int",
-      size: 4,
     },
     {
       field: "qtdEmProcesso",
       label: "qtdEmProcesso",
       name: "qtdEmProcesso",
       typeField: "int",
-      size: 4,
     },
     {
       field: "qtdRejeitos",
       label: "qtdRejeitos",
       name: "qtdRejeitos",
       typeField: "int",
-      size: 4,
     },
   ],
 };

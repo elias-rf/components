@@ -29,31 +29,31 @@ export type TProdutoEstatisticaFields = keyof Required<TProdutoEstatistica>;
 export type TProdutoEstatisticaIds = {
   [pk in keyof Required<TProdutoEstatisticaPk>]: any;
 };
-export type TProdutoEstatisticaSelect = TSelect<TProdutoEstatisticaFields>;
-export type TProdutoEstatisticaWhere = TWhere<TProdutoEstatisticaFields>;
-export type TProdutoEstatisticaOrder = TOrder<TProdutoEstatisticaFields>;
+export type TProdutoEstatisticaSelect = TSelect;
+export type TProdutoEstatisticaWhere = TWhere;
+export type TProdutoEstatisticaOrder = TOrder;
 
 export type TProdutoEstatisticaSchema = () => Promise<TFieldDef[]>;
 export type TProdutoEstatisticaClear = () => Promise<TProdutoEstatistica>;
 export type TProdutoEstatisticaList = (args: {
-  where?: TWhere<TProdutoEstatisticaFields>[];
-  order?: TOrder<TProdutoEstatisticaFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TProdutoEstatisticaFields>;
+  select?: TSelect;
 }) => Promise<TProdutoEstatistica[]>;
 export type TProdutoEstatisticaRead = (args: {
   id: TProdutoEstatisticaIds;
-  select?: TSelect<TProdutoEstatisticaFields>;
+  select?: TSelect;
 }) => Promise<TProdutoEstatistica>;
 
 export type TProdutoEstatisticaCreate = (args: {
   data: TProdutoEstatistica;
-  select?: TSelect<TProdutoEstatisticaFields>;
+  select?: TSelect;
 }) => Promise<TProdutoEstatistica>;
 export type TProdutoEstatisticaUpdate = (args: {
   id: TProdutoEstatisticaIds;
   data: TProdutoEstatistica;
-  select?: TSelect<TProdutoEstatisticaFields>;
+  select?: TSelect;
 }) => Promise<TProdutoEstatistica>;
 export type TProdutoEstatisticaDel = (args: {
   id: TProdutoEstatisticaIds;

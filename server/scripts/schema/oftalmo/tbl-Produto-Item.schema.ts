@@ -9,7 +9,7 @@ export const tbl_Produto_Item: TTableDef = {
       label: "kProdutoItem",
       name: "tbl_Produto_Item_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tbl_Produto_Item: TTableDef = {
       label: "NomeProdutoItem",
       name: "NomeProdutoItem",
       typeField: "string",
-      size: 120,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const tbl_Produto_Item: TTableDef = {
       label: "fkProduto",
       name: "fkProduto",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const tbl_Produto_Item: TTableDef = {
       label: "QtdMinima",
       name: "QtdMinima",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -43,7 +43,7 @@ export const tbl_Produto_Item: TTableDef = {
       label: "QtdAtual",
       name: "QtdAtual",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -52,7 +52,7 @@ export const tbl_Produto_Item: TTableDef = {
       label: "QtdMaxima",
       name: "QtdMaxima",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -61,7 +61,7 @@ export const tbl_Produto_Item: TTableDef = {
       label: "QtdSeguranca",
       name: "QtdSeguranca",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -70,7 +70,7 @@ export const tbl_Produto_Item: TTableDef = {
       label: "ConsumoMedioMes",
       name: "ConsumoMedioMes",
       typeField: "float",
-      size: 4,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -79,7 +79,7 @@ export const tbl_Produto_Item: TTableDef = {
       label: "ValorVenda",
       name: "ValorVenda",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -87,7 +87,7 @@ export const tbl_Produto_Item: TTableDef = {
       label: "ValorVendaDolar",
       name: "ValorVendaDolar",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -95,7 +95,7 @@ export const tbl_Produto_Item: TTableDef = {
       label: "ValorCompra",
       name: "ValorCompra",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
       defaultValue: "0",
@@ -105,21 +105,19 @@ export const tbl_Produto_Item: TTableDef = {
       label: "fkMoedaCompra",
       name: "fkMoedaCompra",
       typeField: "int",
-      size: 1,
     },
     {
       field: "IdVisiontech",
       label: "IdVisiontech",
       name: "IdVisiontech",
       typeField: "string",
-      size: 6,
     },
     {
       field: "ForaDeLinha",
       label: "ForaDeLinha",
       name: "ForaDeLinha",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -127,21 +125,19 @@ export const tbl_Produto_Item: TTableDef = {
       label: "GrupoCredito",
       name: "GrupoCredito",
       typeField: "string",
-      size: 20,
     },
     {
       field: "fkProdutoItemAssociado",
       label: "fkProdutoItemAssociado",
       name: "fkProdutoItemAssociado",
       typeField: "int",
-      size: 4,
     },
     {
       field: "AvisoEstoqueMinMax",
       label: "AvisoEstoqueMinMax",
       name: "AvisoEstoqueMinMax",
       typeField: "int",
-      size: 1,
+
       defaultValue: "0",
     },
   ],

@@ -9,7 +9,7 @@ export const Eventos: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Eventos: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const Eventos: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const Eventos: TTableDef = {
       label: "Horario",
       name: "Horario",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const Eventos: TTableDef = {
       label: "CdUsuario",
       name: "CdUsuario",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -51,21 +51,18 @@ export const Eventos: TTableDef = {
       label: "CdFuncao",
       name: "CdFuncao",
       typeField: "string",
-      size: 32,
     },
     {
       field: "Evento",
       label: "Evento",
       name: "Evento",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "Estacao",
       label: "Estacao",
       name: "Estacao",
       typeField: "string",
-      size: 64,
     },
   ],
 };

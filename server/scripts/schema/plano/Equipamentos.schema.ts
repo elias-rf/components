@@ -9,7 +9,7 @@ export const Equipamentos: TTableDef = {
       label: "CdEquipamento",
       name: "Equipamentos_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,6 @@ export const Equipamentos: TTableDef = {
       label: "NmEquipamento",
       name: "NmEquipamento",
       typeField: "string",
-      size: 40,
     },
   ],
 };

@@ -9,7 +9,7 @@ export const tLinhaDeProducao: TTableDef = {
       label: "kLinhaDeProducao",
       name: "tLinhaDeProducao_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tLinhaDeProducao: TTableDef = {
       label: "LinhaDeProducao",
       name: "LinhaDeProducao",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const tLinhaDeProducao: TTableDef = {
       label: "CalcularEmProcesso",
       name: "CalcularEmProcesso",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "1",
     },
@@ -35,7 +35,7 @@ export const tLinhaDeProducao: TTableDef = {
       label: "SolicitarLoteBotao",
       name: "SolicitarLoteBotao",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
       defaultValue: "0",
     },
@@ -44,14 +44,12 @@ export const tLinhaDeProducao: TTableDef = {
       label: "fkOperacaoQtdEstExt",
       name: "fkOperacaoQtdEstExt",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 200,
     },
   ],
 };

@@ -9,7 +9,7 @@ export const LotesNota: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const LotesNota: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const LotesNota: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const LotesNota: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const LotesNota: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -50,7 +50,7 @@ export const LotesNota: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const LotesNota: TTableDef = {
       label: "NumLote",
       name: "NumLote",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const LotesNota: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -75,7 +75,7 @@ export const LotesNota: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -83,7 +83,6 @@ export const LotesNota: TTableDef = {
       label: "Cdlote",
       name: "Cdlote",
       typeField: "string",
-      size: 18,
     },
   ],
 };

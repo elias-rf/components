@@ -9,7 +9,7 @@ export const CupomFiscalTEFMestre: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CupomFiscalTEFMestre: TTableDef = {
       label: "NumECF",
       name: "NumECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const CupomFiscalTEFMestre: TTableDef = {
       label: "NumCupom",
       name: "NumCupom",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const CupomFiscalTEFMestre: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const CupomFiscalTEFMestre: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -50,7 +50,7 @@ export const CupomFiscalTEFMestre: TTableDef = {
       label: "HrEmissao",
       name: "HrEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -59,7 +59,7 @@ export const CupomFiscalTEFMestre: TTableDef = {
       label: "TipoCartao",
       name: "TipoCartao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const CupomFiscalTEFMestre: TTableDef = {
       label: "CdAdminitradora",
       name: "CdAdminitradora",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const CupomFiscalTEFMestre: TTableDef = {
       label: "VlRecebimento",
       name: "VlRecebimento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -84,7 +84,7 @@ export const CupomFiscalTEFMestre: TTableDef = {
       label: "QtdeParcelas",
       name: "QtdeParcelas",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -92,7 +92,7 @@ export const CupomFiscalTEFMestre: TTableDef = {
       label: "Fase",
       name: "Fase",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
   ],

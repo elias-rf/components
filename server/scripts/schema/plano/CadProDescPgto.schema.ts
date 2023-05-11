@@ -9,7 +9,7 @@ export const CadProDescPgto: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CadProDescPgto: TTableDef = {
       label: "PrazoMedio",
       name: "PrazoMedio",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const CadProDescPgto: TTableDef = {
       label: "DescVendedor",
       name: "DescVendedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const CadProDescPgto: TTableDef = {
       label: "DescGerente",
       name: "DescGerente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const CadProDescPgto: TTableDef = {
       label: "DescVendedorConsFinal",
       name: "DescVendedorConsFinal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -52,7 +52,7 @@ export const CadProDescPgto: TTableDef = {
       label: "DescGerenteConsFinal",
       name: "DescGerenteConsFinal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

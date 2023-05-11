@@ -9,7 +9,7 @@ export const ContratoAluguelContagem: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ContratoAluguelContagem: TTableDef = {
       label: "DiaContr",
       name: "DiaContr",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ContratoAluguelContagem: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ContratoAluguelContagem: TTableDef = {
       label: "NumSerie",
       name: "NumSerie",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ContratoAluguelContagem: TTableDef = {
       label: "DtContagem",
       name: "DtContagem",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -51,7 +51,7 @@ export const ContratoAluguelContagem: TTableDef = {
       label: "ContagemAnterior",
       name: "ContagemAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -60,7 +60,7 @@ export const ContratoAluguelContagem: TTableDef = {
       label: "ContagemAtual",
       name: "ContagemAtual",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

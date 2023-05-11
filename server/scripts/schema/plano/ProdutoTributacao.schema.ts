@@ -9,7 +9,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "FgCompoeBaseIRRF",
       name: "FgCompoeBaseIRRF",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "FgCompoeBaseIN381",
       name: "FgCompoeBaseIN381",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "FgCompoeBaseISS",
       name: "FgCompoeBaseISS",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "Fg6142",
       name: "Fg6142",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "FgReducaoICMS",
       name: "FgReducaoICMS",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "FgReducaoICMSNC",
       name: "FgReducaoICMSNC",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "FgSubstituido030",
       name: "FgSubstituido030",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "FgIsentoICMSPDV",
       name: "FgIsentoICMSPDV",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "TipoTributacaoICMS",
       name: "TipoTributacaoICMS",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -97,7 +97,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "AliquotaICMS",
       name: "AliquotaICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -106,7 +106,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "ModDeterminacaoBCICMS",
       name: "ModDeterminacaoBCICMS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -114,7 +114,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "ModDeterminacaoBCICMSSub",
       name: "ModDeterminacaoBCICMSSub",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -122,7 +122,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "SituacaoTributariaIPISaida",
       name: "SituacaoTributariaIPISaida",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -130,7 +130,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "AliquotaIPISaida",
       name: "AliquotaIPISaida",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -139,7 +139,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "SituacaoTributariaIPIEntrada",
       name: "SituacaoTributariaIPIEntrada",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -147,7 +147,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "AliquotaIPIEntrada",
       name: "AliquotaIPIEntrada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -156,7 +156,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "CdEnquadramentoIPI",
       name: "CdEnquadramentoIPI",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -164,7 +164,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "ClasseEnquadramentoIPI",
       name: "ClasseEnquadramentoIPI",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -172,7 +172,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "CdSeloIPI",
       name: "CdSeloIPI",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -180,7 +180,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "SituacaoTributariaPISSaida",
       name: "SituacaoTributariaPISSaida",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -188,7 +188,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "AliquotaPISSaida",
       name: "AliquotaPISSaida",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -197,7 +197,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "SituacaoTributariaPISEntrada",
       name: "SituacaoTributariaPISEntrada",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -205,7 +205,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "AliquotaPISEntrada",
       name: "AliquotaPISEntrada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -214,7 +214,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "SituacaoTributariaCOFINSSaida",
       name: "SituacaoTributariaCOFINSSaida",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -222,7 +222,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "AliquotaCOFINSSaida",
       name: "AliquotaCOFINSSaida",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -231,7 +231,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "SituacaoTributariaCOFINSEntrada",
       name: "SituacaoTributariaCOFINSEntrada",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -239,7 +239,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "AliquotaCOFINSEntrada",
       name: "AliquotaCOFINSEntrada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -248,7 +248,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -257,7 +257,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "AliquotaISS",
       name: "AliquotaISS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -265,21 +265,19 @@ export const ProdutoTributacao: TTableDef = {
       label: "CdInformacaoComplementarNF",
       name: "CdInformacaoComplementarNF",
       typeField: "int",
-      size: 2,
     },
     {
       field: "PercentualMedioImposto",
       label: "PercentualMedioImposto",
       name: "PercentualMedioImposto",
       typeField: "string",
-      size: 5,
     },
     {
       field: "VlBaseCalculoICMSSTAnterior",
       label: "VlBaseCalculoICMSSTAnterior",
       name: "VlBaseCalculoICMSSTAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -287,7 +285,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "VlICMSSTAnterior",
       name: "VlICMSSTAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -295,7 +293,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "QuantidadeLitros",
       name: "QuantidadeLitros",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -303,7 +301,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "VlIPILitro",
       name: "VlIPILitro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -311,7 +309,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "VlPISLitro",
       name: "VlPISLitro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -319,7 +317,7 @@ export const ProdutoTributacao: TTableDef = {
       label: "VlCOFINSLitro",
       name: "VlCOFINSLitro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -327,14 +325,12 @@ export const ProdutoTributacao: TTableDef = {
       label: "NCMDV",
       name: "NCMDV",
       typeField: "string",
-      size: 2,
     },
     {
       field: "FgCompoeBlocoK",
       label: "FgCompoeBlocoK",
       name: "FgCompoeBlocoK",
       typeField: "string",
-      size: 1,
     },
   ],
 };

@@ -9,7 +9,7 @@ export const RotuloFormula: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const RotuloFormula: TTableDef = {
       label: "NumFormula",
       name: "NumFormula",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const RotuloFormula: TTableDef = {
       label: "NmCliente",
       name: "NmCliente",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const RotuloFormula: TTableDef = {
       label: "NmMedico",
       name: "NmMedico",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -41,21 +41,18 @@ export const RotuloFormula: TTableDef = {
       label: "CdRotulo",
       name: "CdRotulo",
       typeField: "int",
-      size: 4,
     },
     {
       field: "DescricaoRotulo",
       label: "DescricaoRotulo",
       name: "DescricaoRotulo",
       typeField: "string",
-      size: 3072,
     },
     {
       field: "FgImpressao",
       label: "FgImpressao",
       name: "FgImpressao",
       typeField: "string",
-      size: 1,
     },
   ],
 };

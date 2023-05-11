@@ -1,32 +1,26 @@
 import type { TCreateArgs, TSelect, TTableDef } from "@/types";
+import { knexData } from "@/utils/api/knex-data";
+import { knexSelect } from "@/utils/api/knex-select";
+import { assertData } from "@/utils/asserts/assert-data";
 import { Knex } from "knex";
+import { assertSelect } from "../../asserts/assert-select";
 import { namesFromTable } from "../../schema/names-from-table";
-import {
-  renameFieldToName,
-  renameNameToField,
-} from "../../schema/rename-fields";
-import { isSelect } from "../../validate/is-select";
-import { isRecord } from "../../zod/z-record";
-import { TCrudCreate } from "../crud.type";
+import { renameFieldToName } from "../../schema/rename-fields";
 
-export function createFactory(
-  connection: Knex,
-  schema: TTableDef
-): TCrudCreate {
+export const createFactory = (connection: Knex, schema: TTableDef) => {
   const response = async ({ data, select = [] }: TCreateArgs) => {
-    isRecord(data, schema.fields);
-    isSelect(select as TSelect, schema.fields);
+    assertData(data, schema.fields);
+    assertSelect(select as TSelect, schema.fields);
 
     if (select.length === 0) {
       select = namesFromTable(schema);
     }
 
     const [qry] = await connection(schema.table)
-      .insert(renameNameToField(data, schema.fields))
-      .returning(renameNameToField(select, schema.fields) as any);
+      .insert(knexData(data, schema.fields))
+      .returning(knexSelect(select, schema.fields) as any);
 
     return renameFieldToName(qry, schema.fields);
   };
-  response.help = "Cria um novo registro";
   return response;
-}
+};

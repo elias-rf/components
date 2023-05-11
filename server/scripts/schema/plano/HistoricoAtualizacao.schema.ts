@@ -9,7 +9,7 @@ export const HistoricoAtualizacao: TTableDef = {
       label: "Funcao",
       name: "HistoricoAtualizacao_id",
       typeField: "string",
-      size: 32,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const HistoricoAtualizacao: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

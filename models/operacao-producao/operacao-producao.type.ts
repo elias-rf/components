@@ -17,31 +17,31 @@ export type TOperacaoProducaoFields = keyof Required<TOperacaoProducao>;
 export type TOperacaoProducaoIds = {
   [pk in keyof Required<TOperacaoProducaoPk>]: any;
 };
-export type TOperacaoProducaoSelect = TSelect<TOperacaoProducaoFields>;
-export type TOperacaoProducaoWhere = TWhere<TOperacaoProducaoFields>;
-export type TOperacaoProducaoOrder = TOrder<TOperacaoProducaoFields>;
+export type TOperacaoProducaoSelect = TSelect;
+export type TOperacaoProducaoWhere = TWhere;
+export type TOperacaoProducaoOrder = TOrder;
 
 export type TOperacaoProducaoSchema = () => Promise<TFieldDef[]>;
 export type TOperacaoProducaoClear = () => Promise<TOperacaoProducao>;
 export type TOperacaoProducaoList = (args: {
-  where?: TWhere<TOperacaoProducaoFields>[];
-  order?: TOrder<TOperacaoProducaoFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TOperacaoProducaoFields>;
+  select?: TSelect;
 }) => Promise<TOperacaoProducao[]>;
 export type TOperacaoProducaoRead = (args: {
   id: TOperacaoProducaoIds;
-  select?: TSelect<TOperacaoProducaoFields>;
+  select?: TSelect;
 }) => Promise<TOperacaoProducao>;
 
 export type TOperacaoProducaoCreate = (args: {
   data: TOperacaoProducao;
-  select?: TSelect<TOperacaoProducaoFields>;
+  select?: TSelect;
 }) => Promise<TOperacaoProducao>;
 export type TOperacaoProducaoUpdate = (args: {
   id: TOperacaoProducaoIds;
   data: TOperacaoProducao;
-  select?: TSelect<TOperacaoProducaoFields>;
+  select?: TSelect;
 }) => Promise<TOperacaoProducao>;
 export type TOperacaoProducaoDel = (args: {
   id: TOperacaoProducaoIds;

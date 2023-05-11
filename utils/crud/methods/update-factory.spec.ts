@@ -1,6 +1,6 @@
 import { connectionsMock } from "@/mocks/connections.mock";
+import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { TTableDef } from "@/types/model";
-import { knexMockHistory } from "@/utils/data/knex-mock-history";
 import { createTracker } from "knex-mock-client";
 import { updateFactory } from "./update-factory";
 
@@ -11,29 +11,21 @@ const schema: TTableDef = {
     {
       allowNull: false,
       field: "id",
-      label: "Ramal",
       name: "agenda_telefone_id",
       primaryKey: true,
-      typeField: "int",
     },
     {
       allowNull: false,
       field: "name",
-      label: "Nome",
       name: "nome",
-      typeField: "string",
     },
     {
       field: "department",
-      label: "Setor",
       name: "setor",
-      typeField: "string",
     },
     {
       field: "email",
-      label: "Email",
       name: "email",
-      typeField: "string",
     },
   ],
 };
@@ -49,14 +41,15 @@ describe("crudUpdate", () => {
   });
 
   it("update sem parametros", async () => {
-    // @ts-expect-error teste para ausencia de parametros
-    await expect(() => update({ table: "agenda_telefone" })).rejects.toThrow(
-      "Id deve ser informado: agenda_telefone_id"
+    await expect(() =>
+      update({ ids: [{ id: "table", value: "agenda_telefone" }], data: {} })
+    ).rejects.toThrow(
+      "table não é id válido use: agenda_telefone_id,email,nome,setor"
     );
   });
   it("update", async () => {
     const rsp = await update({
-      id: { agenda_telefone_id: "10" },
+      ids: [{ id: "agenda_telefone_id", value: "10" }],
       data: { agenda_telefone_id: 10 },
       select: ["agenda_telefone_id"],
     });
@@ -65,7 +58,7 @@ describe("crudUpdate", () => {
       update: [
         {
           bindings: [10, "10"],
-          sql: "update [phonebook] set [id] = @p0 output inserted.[id] where [id] = @p1",
+          sql: "update [phonebook] set [id] = @p0 output inserted.[id] where ([id] = @p1)",
         },
       ],
     });

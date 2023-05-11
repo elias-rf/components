@@ -9,7 +9,7 @@ export const ePharmaConvenios: TTableDef = {
       label: "CdConvenio",
       name: "ePharmaConvenios_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const ePharmaConvenios: TTableDef = {
       label: "Nmconvenio",
       name: "Nmconvenio",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const ePharmaConvenios: TTableDef = {
       label: "Rec",
       name: "Rec",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ePharmaConvenios: TTableDef = {
       label: "TipoConvenio",
       name: "TipoConvenio",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ePharmaConvenios: TTableDef = {
       label: "TipoPreco",
       name: "TipoPreco",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const ePharmaConvenios: TTableDef = {
       label: "FgMenorPreco",
       name: "FgMenorPreco",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const ePharmaConvenios: TTableDef = {
       label: "FgAutorizacao",
       name: "FgAutorizacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const ePharmaConvenios: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

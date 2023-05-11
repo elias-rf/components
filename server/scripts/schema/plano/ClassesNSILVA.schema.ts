@@ -9,7 +9,7 @@ export const ClassesNSILVA: TTableDef = {
       label: "NumConta",
       name: "ClassesNSILVA_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ClassesNSILVA: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ClassesNSILVA: TTableDef = {
       label: "Valor",
       name: "Valor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

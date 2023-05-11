@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { zd } from "./zod";
 
 describe("z traduzido", () => {

@@ -19,31 +19,31 @@ export type TNfEntradaControleFields = keyof Required<TNfEntradaControle>;
 export type TNfEntradaControleIds = {
   [pk in keyof Required<TNfEntradaControlePk>]: any;
 };
-export type TNfEntradaControleSelect = TSelect<TNfEntradaControleFields>;
-export type TNfEntradaControleWhere = TWhere<TNfEntradaControleFields>;
-export type TNfEntradaControleOrder = TOrder<TNfEntradaControleFields>;
+export type TNfEntradaControleSelect = TSelect;
+export type TNfEntradaControleWhere = TWhere;
+export type TNfEntradaControleOrder = TOrder;
 
 export type TNfEntradaControleSchema = () => Promise<TFieldDef[]>;
 export type TNfEntradaControleClear = () => Promise<TNfEntradaControle>;
 export type TNfEntradaControleList = (args: {
-  where?: TWhere<TNfEntradaControleFields>[];
-  order?: TOrder<TNfEntradaControleFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TNfEntradaControleFields>;
+  select?: TSelect;
 }) => Promise<TNfEntradaControle[]>;
 export type TNfEntradaControleRead = (args: {
   id: TNfEntradaControleIds;
-  select?: TSelect<TNfEntradaControleFields>;
+  select?: TSelect;
 }) => Promise<TNfEntradaControle>;
 
 export type TNfEntradaControleCreate = (args: {
   data: TNfEntradaControle;
-  select?: TSelect<TNfEntradaControleFields>;
+  select?: TSelect;
 }) => Promise<TNfEntradaControle>;
 export type TNfEntradaControleUpdate = (args: {
   id: TNfEntradaControleIds;
   data: TNfEntradaControle;
-  select?: TSelect<TNfEntradaControleFields>;
+  select?: TSelect;
 }) => Promise<TNfEntradaControle>;
 export type TNfEntradaControleDel = (args: {
   id: TNfEntradaControleIds;

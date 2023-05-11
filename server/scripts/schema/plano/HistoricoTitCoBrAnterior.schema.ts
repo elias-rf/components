@@ -9,7 +9,7 @@ export const HistoricoTitCoBrAnterior: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const HistoricoTitCoBrAnterior: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const HistoricoTitCoBrAnterior: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const HistoricoTitCoBrAnterior: TTableDef = {
       label: "SiglaDoc",
       name: "SiglaDoc",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const HistoricoTitCoBrAnterior: TTableDef = {
       label: "ItemDoc",
       name: "ItemDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const HistoricoTitCoBrAnterior: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const HistoricoTitCoBrAnterior: TTableDef = {
       label: "Horario",
       name: "Horario",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const HistoricoTitCoBrAnterior: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const HistoricoTitCoBrAnterior: TTableDef = {
       label: "Historico",
       name: "Historico",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
   ],

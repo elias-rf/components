@@ -9,7 +9,7 @@ export const HistoricoFormulacao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const HistoricoFormulacao: TTableDef = {
       label: "NumFormula",
       name: "NumFormula",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const HistoricoFormulacao: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const HistoricoFormulacao: TTableDef = {
       label: "CdUsuario",
       name: "CdUsuario",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const HistoricoFormulacao: TTableDef = {
       label: "TipoOcorrencia",
       name: "TipoOcorrencia",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const HistoricoFormulacao: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -58,14 +58,12 @@ export const HistoricoFormulacao: TTableDef = {
       label: "Historico",
       name: "Historico",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "Observacao",
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
     },
   ],
 };

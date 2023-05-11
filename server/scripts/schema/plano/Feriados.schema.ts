@@ -9,7 +9,7 @@ export const Feriados: TTableDef = {
       label: "CdCidade",
       name: "CdCidade",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Feriados: TTableDef = {
       label: "DtFeriado",
       name: "DtFeriado",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

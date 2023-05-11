@@ -9,7 +9,7 @@ export const LegendasClasFiscal: TTableDef = {
       label: "ClasFiscal",
       name: "LegendasClasFiscal_id",
       typeField: "string",
-      size: 16,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const LegendasClasFiscal: TTableDef = {
       label: "Legenda",
       name: "Legenda",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const LegendasClasFiscal: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

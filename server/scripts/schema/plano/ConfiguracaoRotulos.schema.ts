@@ -9,7 +9,7 @@ export const ConfiguracaoRotulos: TTableDef = {
       label: "CdRotulo",
       name: "ConfiguracaoRotulos_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ConfiguracaoRotulos: TTableDef = {
       label: "Identificacao",
       name: "Identificacao",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ConfiguracaoRotulos: TTableDef = {
       label: "Altura",
       name: "Altura",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const ConfiguracaoRotulos: TTableDef = {
       label: "Fonte",
       name: "Fonte",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ConfiguracaoRotulos: TTableDef = {
       label: "NumLinhas",
       name: "NumLinhas",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const ConfiguracaoRotulos: TTableDef = {
       label: "NumColunas",
       name: "NumColunas",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const ConfiguracaoRotulos: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -68,7 +68,7 @@ export const ConfiguracaoRotulos: TTableDef = {
       label: "Deslocamento",
       name: "Deslocamento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -76,7 +76,7 @@ export const ConfiguracaoRotulos: TTableDef = {
       label: "LinhaCliente",
       name: "LinhaCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -84,7 +84,7 @@ export const ConfiguracaoRotulos: TTableDef = {
       label: "LinhaMedico",
       name: "LinhaMedico",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -92,7 +92,7 @@ export const ConfiguracaoRotulos: TTableDef = {
       label: "LinhaDescricao",
       name: "LinhaDescricao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -100,7 +100,7 @@ export const ConfiguracaoRotulos: TTableDef = {
       label: "LinhaValidade",
       name: "LinhaValidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -108,14 +108,12 @@ export const ConfiguracaoRotulos: TTableDef = {
       label: "CaracterDeslocamento",
       name: "CaracterDeslocamento",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Densidade",
       label: "Densidade",
       name: "Densidade",
       typeField: "int",
-      size: 2,
     },
   ],
 };

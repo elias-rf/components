@@ -9,7 +9,7 @@ export const ConfiguracaoFuncaoMestre: TTableDef = {
       label: "CdFuncao",
       name: "ConfiguracaoFuncaoMestre_id",
       typeField: "string",
-      size: 32,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ConfiguracaoFuncaoMestre: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 126,
+
       allowNull: false,
     },
   ],

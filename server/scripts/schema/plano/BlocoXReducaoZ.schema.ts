@@ -9,7 +9,7 @@ export const BlocoXReducaoZ: TTableDef = {
       label: "CNPJFilial",
       name: "CNPJFilial",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const BlocoXReducaoZ: TTableDef = {
       label: "NumECF",
       name: "NumECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const BlocoXReducaoZ: TTableDef = {
       label: "NumSerie",
       name: "NumSerie",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const BlocoXReducaoZ: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const BlocoXReducaoZ: TTableDef = {
       label: "Situacao",
       name: "Situacao",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const BlocoXReducaoZ: TTableDef = {
       label: "StatusRetorno",
       name: "StatusRetorno",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const BlocoXReducaoZ: TTableDef = {
       label: "Recibo",
       name: "Recibo",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

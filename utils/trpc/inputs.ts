@@ -1,12 +1,9 @@
 import { zd } from "@/utils/zod/zod";
-
-export const whereZod = zd.array(
-  zd.tuple([zd.string(), zd.string(), zd.union([zd.string(), zd.number()])])
-);
-
-export const orderZod = zd.array(
-  zd.tuple([zd.string(), zd.union([zd.literal("asc"), zd.literal("desc")])])
-);
+import { zsData } from "@/utils/zod/zs-data";
+import { zsFilters } from "@/utils/zod/zs-filters";
+import { zsLimit } from "@/utils/zod/zs-limit";
+import { zsSelect } from "@/utils/zod/zs-select";
+import { zsSorts } from "@/utils/zod/zs-sorts";
 
 export const selectZod = zd.array(zd.string());
 
@@ -14,42 +11,42 @@ export const idZod = zd.record(zd.any());
 export const dataZod = zd.record(zd.any());
 
 export const listZod = zd.object({
-  where: whereZod.optional(),
-  limit: zd.number().optional(),
-  order: orderZod.optional(),
-  select: selectZod.optional(),
-  group: selectZod.optional(),
+  filters: zsFilters.optional(),
+  limit: zsLimit.optional(),
+  order: zsSorts.optional(),
+  select: zsSelect.optional(),
+  group: zsSelect.optional(),
   sum: zd.record(zd.string()).optional(),
   min: zd.record(zd.string()).optional(),
   max: zd.record(zd.string()).optional(),
 });
 
 export const countZod = zd.object({
-  where: whereZod.optional(),
+  filters: zsFilters.optional(),
 });
 
 export const readZod = zd.object({
-  id: idZod,
-  select: selectZod.optional(),
+  id: zsFilters,
+  select: zsSelect.optional(),
 });
 
 export const delZod = zd.object({
-  id: idZod,
+  id: zsFilters,
 });
 
 export const updateZod = zd.object({
-  id: idZod,
-  data: dataZod,
+  id: zsFilters,
+  data: zsData,
   select: selectZod.optional(),
 });
 
 export const createZod = zd.object({
-  data: dataZod,
-  select: selectZod.optional(),
+  data: zsData,
+  select: zsSelect.optional(),
 });
 
 export const incrementZod = zd.object({
   increment: zd.record(zd.number()),
-  where: whereZod,
-  select: selectZod.optional(),
+  filters: zsFilters,
+  select: zsSelect.optional(),
 });

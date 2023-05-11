@@ -9,7 +9,7 @@ export const tbl_Produto_Raio: TTableDef = {
       label: "fkproduto",
       name: "fkproduto",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const tbl_Produto_Raio: TTableDef = {
       label: "fkprodutoitem",
       name: "fkprodutoitem",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const tbl_Produto_Raio: TTableDef = {
       label: "Dioptria",
       name: "Dioptria",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const tbl_Produto_Raio: TTableDef = {
       label: "Raio1",
       name: "Raio1",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const tbl_Produto_Raio: TTableDef = {
       label: "Raio2",
       name: "Raio2",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const tbl_Produto_Raio: TTableDef = {
       label: "Espessura",
       name: "Espessura",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const tbl_Produto_Raio: TTableDef = {
       label: "BFLMin",
       name: "BFLMin",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const tbl_Produto_Raio: TTableDef = {
       label: "BFL",
       name: "BFL",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const tbl_Produto_Raio: TTableDef = {
       label: "BFLMax",
       name: "BFLMax",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -81,14 +81,12 @@ export const tbl_Produto_Raio: TTableDef = {
       label: "EspessuraMin",
       name: "EspessuraMin",
       typeField: "float",
-      size: 8,
     },
     {
       field: "EspessuraMax",
       label: "EspessuraMax",
       name: "EspessuraMax",
       typeField: "float",
-      size: 8,
     },
   ],
 };

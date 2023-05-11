@@ -9,7 +9,7 @@ export const NotaEntradaRecuperacaoSTItem: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaEntradaRecuperacaoSTItem: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaEntradaRecuperacaoSTItem: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaEntradaRecuperacaoSTItem: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaEntradaRecuperacaoSTItem: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaEntradaRecuperacaoSTItem: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NotaEntradaRecuperacaoSTItem: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const NotaEntradaRecuperacaoSTItem: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const NotaEntradaRecuperacaoSTItem: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -82,7 +82,7 @@ export const NotaEntradaRecuperacaoSTItem: TTableDef = {
       label: "VlBaseCalculoST",
       name: "VlBaseCalculoST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -91,7 +91,7 @@ export const NotaEntradaRecuperacaoSTItem: TTableDef = {
       label: "QuantidadeUtilizada",
       name: "QuantidadeUtilizada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -100,7 +100,7 @@ export const NotaEntradaRecuperacaoSTItem: TTableDef = {
       label: "VlICMSSTRecolhido",
       name: "VlICMSSTRecolhido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -109,7 +109,7 @@ export const NotaEntradaRecuperacaoSTItem: TTableDef = {
       label: "VlICMSSTRecuperado",
       name: "VlICMSSTRecuperado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

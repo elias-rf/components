@@ -9,7 +9,7 @@ export const ConfigNota: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ConfigNota: TTableDef = {
       label: "AlturaFormulario",
       name: "AlturaFormulario",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ConfigNota: TTableDef = {
       label: "AliqICMSColuna",
       name: "AliqICMSColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ConfigNota: TTableDef = {
       label: "AliqICMSTamanho",
       name: "AliqICMSTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ConfigNota: TTableDef = {
       label: "BairroColuna",
       name: "BairroColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ConfigNota: TTableDef = {
       label: "BairroTamanho",
       name: "BairroTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ConfigNota: TTableDef = {
       label: "BaseCalcICMSColuna",
       name: "BaseCalcICMSColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const ConfigNota: TTableDef = {
       label: "BaseCalcICMSLinha",
       name: "BaseCalcICMSLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -74,7 +74,7 @@ export const ConfigNota: TTableDef = {
       label: "BaseCalcICMSTamanho",
       name: "BaseCalcICMSTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const ConfigNota: TTableDef = {
       label: "BaseSubColuna",
       name: "BaseSubColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const ConfigNota: TTableDef = {
       label: "BaseSubTamanho",
       name: "BaseSubTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const ConfigNota: TTableDef = {
       label: "CdProdutoColuna",
       name: "CdProdutoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const ConfigNota: TTableDef = {
       label: "CdProdutoLinha",
       name: "CdProdutoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -115,7 +115,7 @@ export const ConfigNota: TTableDef = {
       label: "CdProdutoTamanho",
       name: "CdProdutoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -123,7 +123,7 @@ export const ConfigNota: TTableDef = {
       label: "CepColuna",
       name: "CepColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -131,7 +131,7 @@ export const ConfigNota: TTableDef = {
       label: "CFOPColuna",
       name: "CFOPColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -139,7 +139,7 @@ export const ConfigNota: TTableDef = {
       label: "CFOPLinha",
       name: "CFOPLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -148,7 +148,7 @@ export const ConfigNota: TTableDef = {
       label: "ClasFiscalColuna",
       name: "ClasFiscalColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -156,7 +156,7 @@ export const ConfigNota: TTableDef = {
       label: "ClasFiscalTamanho",
       name: "ClasFiscalTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -164,7 +164,7 @@ export const ConfigNota: TTableDef = {
       label: "CNPJColuna",
       name: "CNPJColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -172,7 +172,7 @@ export const ConfigNota: TTableDef = {
       label: "CNPJTransportadorColuna",
       name: "CNPJTransportadorColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -180,7 +180,7 @@ export const ConfigNota: TTableDef = {
       label: "DescNopColuna",
       name: "DescNopColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -188,7 +188,7 @@ export const ConfigNota: TTableDef = {
       label: "DescNopTamanho",
       name: "DescNopTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -196,7 +196,7 @@ export const ConfigNota: TTableDef = {
       label: "DescricaoColuna",
       name: "DescricaoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -204,7 +204,7 @@ export const ConfigNota: TTableDef = {
       label: "DescricaoTamanho",
       name: "DescricaoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -212,7 +212,7 @@ export const ConfigNota: TTableDef = {
       label: "DtEmissaoColuna",
       name: "DtEmissaoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -220,7 +220,7 @@ export const ConfigNota: TTableDef = {
       label: "DtSaidaColuna",
       name: "DtSaidaColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -228,7 +228,7 @@ export const ConfigNota: TTableDef = {
       label: "EnderecoColuna",
       name: "EnderecoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -236,7 +236,7 @@ export const ConfigNota: TTableDef = {
       label: "EnderecoLinha",
       name: "EnderecoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -245,7 +245,7 @@ export const ConfigNota: TTableDef = {
       label: "EnderecoTamanho",
       name: "EnderecoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -253,7 +253,7 @@ export const ConfigNota: TTableDef = {
       label: "EndTransportadorColuna",
       name: "EndTransportadorColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -261,7 +261,7 @@ export const ConfigNota: TTableDef = {
       label: "EndTransportadorLinha",
       name: "EndTransportadorLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -270,7 +270,7 @@ export const ConfigNota: TTableDef = {
       label: "EndTransportadorTamanho",
       name: "EndTransportadorTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -278,7 +278,7 @@ export const ConfigNota: TTableDef = {
       label: "EntradaColuna",
       name: "EntradaColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -286,7 +286,7 @@ export const ConfigNota: TTableDef = {
       label: "EspecieColuna",
       name: "EspecieColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -294,7 +294,7 @@ export const ConfigNota: TTableDef = {
       label: "EspecieTamanho",
       name: "EspecieTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -302,7 +302,7 @@ export const ConfigNota: TTableDef = {
       label: "FaturaColuna",
       name: "FaturaColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -310,7 +310,7 @@ export const ConfigNota: TTableDef = {
       label: "FaturaLinha",
       name: "FaturaLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -319,7 +319,7 @@ export const ConfigNota: TTableDef = {
       label: "FaturaNumLinhas",
       name: "FaturaNumLinhas",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -327,7 +327,7 @@ export const ConfigNota: TTableDef = {
       label: "FaturaNumParcelas",
       name: "FaturaNumParcelas",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -335,7 +335,7 @@ export const ConfigNota: TTableDef = {
       label: "FaturaEspacos",
       name: "FaturaEspacos",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -343,7 +343,7 @@ export const ConfigNota: TTableDef = {
       label: "FaturaTamanho",
       name: "FaturaTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -351,7 +351,7 @@ export const ConfigNota: TTableDef = {
       label: "FaturaValorColuna",
       name: "FaturaValorColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -359,7 +359,7 @@ export const ConfigNota: TTableDef = {
       label: "FaturaValorTamanho",
       name: "FaturaValorTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -367,7 +367,7 @@ export const ConfigNota: TTableDef = {
       label: "FaturaVctoColuna",
       name: "FaturaVctoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -375,7 +375,7 @@ export const ConfigNota: TTableDef = {
       label: "FaturaVctoTamanho",
       name: "FaturaVctoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -383,7 +383,7 @@ export const ConfigNota: TTableDef = {
       label: "HorarioColuna",
       name: "HorarioColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -391,7 +391,7 @@ export const ConfigNota: TTableDef = {
       label: "InfAdicionaisColuna",
       name: "InfAdicionaisColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -399,7 +399,7 @@ export const ConfigNota: TTableDef = {
       label: "InfAdicionaisLinha",
       name: "InfAdicionaisLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -408,7 +408,7 @@ export const ConfigNota: TTableDef = {
       label: "InfAdicionaisTamanho",
       name: "InfAdicionaisTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -416,7 +416,7 @@ export const ConfigNota: TTableDef = {
       label: "InscEstColuna",
       name: "InscEstColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -424,7 +424,7 @@ export const ConfigNota: TTableDef = {
       label: "InscEstTransportadorColuna",
       name: "InscEstTransportadorColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -432,7 +432,7 @@ export const ConfigNota: TTableDef = {
       label: "MarcaColuna",
       name: "MarcaColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -440,7 +440,7 @@ export const ConfigNota: TTableDef = {
       label: "MarcaTamanho",
       name: "MarcaTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -448,7 +448,7 @@ export const ConfigNota: TTableDef = {
       label: "MunicipioColuna",
       name: "MunicipioColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -456,7 +456,7 @@ export const ConfigNota: TTableDef = {
       label: "MunicipioLinha",
       name: "MunicipioLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -465,7 +465,7 @@ export const ConfigNota: TTableDef = {
       label: "MunicipioTamanho",
       name: "MunicipioTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -473,7 +473,7 @@ export const ConfigNota: TTableDef = {
       label: "MunicipioTransportadorColuna",
       name: "MunicipioTransportadorColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -481,7 +481,7 @@ export const ConfigNota: TTableDef = {
       label: "MunicipioTransportadorTamanho",
       name: "MunicipioTransportadorTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -489,7 +489,7 @@ export const ConfigNota: TTableDef = {
       label: "NmTransportadorColuna",
       name: "NmTransportadorColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -497,7 +497,7 @@ export const ConfigNota: TTableDef = {
       label: "NmTransportadorLinha",
       name: "NmTransportadorLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -506,7 +506,7 @@ export const ConfigNota: TTableDef = {
       label: "NmTransportadorTamanho",
       name: "NmTransportadorTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -514,7 +514,7 @@ export const ConfigNota: TTableDef = {
       label: "NumeroColuna",
       name: "NumeroColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -522,7 +522,7 @@ export const ConfigNota: TTableDef = {
       label: "NumeroTamanho",
       name: "NumeroTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -530,7 +530,7 @@ export const ConfigNota: TTableDef = {
       label: "NumLinhasInfAdicionais",
       name: "NumLinhasInfAdicionais",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -538,7 +538,7 @@ export const ConfigNota: TTableDef = {
       label: "NumNotaCabColuna",
       name: "NumNotaCabColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -546,7 +546,7 @@ export const ConfigNota: TTableDef = {
       label: "NumNotaCabLinha",
       name: "NumNotaCabLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -555,7 +555,7 @@ export const ConfigNota: TTableDef = {
       label: "NumNotaRodapeColuna",
       name: "NumNotaRodapeColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -563,7 +563,7 @@ export const ConfigNota: TTableDef = {
       label: "NumNotaRodapeLinha",
       name: "NumNotaRodapeLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -572,7 +572,7 @@ export const ConfigNota: TTableDef = {
       label: "PesoBrutoColuna",
       name: "PesoBrutoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -580,7 +580,7 @@ export const ConfigNota: TTableDef = {
       label: "PesoBrutoTamanho",
       name: "PesoBrutoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -588,7 +588,7 @@ export const ConfigNota: TTableDef = {
       label: "PesoLiquidoColuna",
       name: "PesoLiquidoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -596,7 +596,7 @@ export const ConfigNota: TTableDef = {
       label: "PesoLiquidoTamanho",
       name: "PesoLiquidoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -604,7 +604,7 @@ export const ConfigNota: TTableDef = {
       label: "PlacaTamanho",
       name: "PlacaTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -612,7 +612,7 @@ export const ConfigNota: TTableDef = {
       label: "PlacaColuna",
       name: "PlacaColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -620,7 +620,7 @@ export const ConfigNota: TTableDef = {
       label: "QtdeLinhasProduto",
       name: "QtdeLinhasProduto",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -628,7 +628,7 @@ export const ConfigNota: TTableDef = {
       label: "QtdeVolumeColuna",
       name: "QtdeVolumeColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -636,7 +636,7 @@ export const ConfigNota: TTableDef = {
       label: "QtdeVolumeLinha",
       name: "QtdeVolumeLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -645,7 +645,7 @@ export const ConfigNota: TTableDef = {
       label: "QtdeVolumeTamanho",
       name: "QtdeVolumeTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -653,7 +653,7 @@ export const ConfigNota: TTableDef = {
       label: "QuantidadeColuna",
       name: "QuantidadeColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -661,7 +661,7 @@ export const ConfigNota: TTableDef = {
       label: "QuantidadeTamanho",
       name: "QuantidadeTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -669,7 +669,7 @@ export const ConfigNota: TTableDef = {
       label: "RzSocialColuna",
       name: "RzSocialColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -677,7 +677,7 @@ export const ConfigNota: TTableDef = {
       label: "RzSocialLinha",
       name: "RzSocialLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -686,7 +686,7 @@ export const ConfigNota: TTableDef = {
       label: "RzSocialTamanho",
       name: "RzSocialTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -694,7 +694,7 @@ export const ConfigNota: TTableDef = {
       label: "SaidaColuna",
       name: "SaidaColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -702,7 +702,7 @@ export const ConfigNota: TTableDef = {
       label: "SitTributariaColuna",
       name: "SitTributariaColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -710,7 +710,7 @@ export const ConfigNota: TTableDef = {
       label: "SitTributariaTamanho",
       name: "SitTributariaTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -718,7 +718,7 @@ export const ConfigNota: TTableDef = {
       label: "TelefoneColuna",
       name: "TelefoneColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -726,7 +726,7 @@ export const ConfigNota: TTableDef = {
       label: "TelefoneTamanho",
       name: "TelefoneTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -734,7 +734,7 @@ export const ConfigNota: TTableDef = {
       label: "TipoFreteColuna",
       name: "TipoFreteColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -742,7 +742,7 @@ export const ConfigNota: TTableDef = {
       label: "UFColuna",
       name: "UFColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -750,7 +750,7 @@ export const ConfigNota: TTableDef = {
       label: "UFPlacaColuna",
       name: "UFPlacaColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -758,7 +758,7 @@ export const ConfigNota: TTableDef = {
       label: "UFTransportadorColuna",
       name: "UFTransportadorColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -766,7 +766,7 @@ export const ConfigNota: TTableDef = {
       label: "UnidadeColuna",
       name: "UnidadeColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -774,7 +774,7 @@ export const ConfigNota: TTableDef = {
       label: "UnidadeTamanho",
       name: "UnidadeTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -782,7 +782,7 @@ export const ConfigNota: TTableDef = {
       label: "VlDescontoLinha",
       name: "VlDescontoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -791,7 +791,7 @@ export const ConfigNota: TTableDef = {
       label: "VlDescontoColuna",
       name: "VlDescontoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -799,7 +799,7 @@ export const ConfigNota: TTableDef = {
       label: "VlDescontoTamanho",
       name: "VlDescontoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -807,7 +807,7 @@ export const ConfigNota: TTableDef = {
       label: "VlDespesasColuna",
       name: "VlDespesasColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -815,7 +815,7 @@ export const ConfigNota: TTableDef = {
       label: "VlDespesasTamanho",
       name: "VlDespesasTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -823,7 +823,7 @@ export const ConfigNota: TTableDef = {
       label: "VlFreteColuna",
       name: "VlFreteColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -831,7 +831,7 @@ export const ConfigNota: TTableDef = {
       label: "VlFreteLinha",
       name: "VlFreteLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -840,7 +840,7 @@ export const ConfigNota: TTableDef = {
       label: "VlFreteTamanho",
       name: "VlFreteTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -848,7 +848,7 @@ export const ConfigNota: TTableDef = {
       label: "VlICMSColuna",
       name: "VlICMSColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -856,7 +856,7 @@ export const ConfigNota: TTableDef = {
       label: "VlICMSTamanho",
       name: "VlICMSTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -864,7 +864,7 @@ export const ConfigNota: TTableDef = {
       label: "VlICMSSubColuna",
       name: "VlICMSSubColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -872,7 +872,7 @@ export const ConfigNota: TTableDef = {
       label: "VlICMSSubTamanho",
       name: "VlICMSSubTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -880,7 +880,7 @@ export const ConfigNota: TTableDef = {
       label: "VlIPIColuna",
       name: "VlIPIColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -888,7 +888,7 @@ export const ConfigNota: TTableDef = {
       label: "VlIPITamanho",
       name: "VlIPITamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -896,7 +896,7 @@ export const ConfigNota: TTableDef = {
       label: "VlProdutosColuna",
       name: "VlProdutosColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -904,7 +904,7 @@ export const ConfigNota: TTableDef = {
       label: "VlProdutosTamanho",
       name: "VlProdutosTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -912,7 +912,7 @@ export const ConfigNota: TTableDef = {
       label: "VlSeguroColuna",
       name: "VlSeguroColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -920,7 +920,7 @@ export const ConfigNota: TTableDef = {
       label: "VlSeguroTamanho",
       name: "VlSeguroTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -928,7 +928,7 @@ export const ConfigNota: TTableDef = {
       label: "VlTotalColuna",
       name: "VlTotalColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -936,7 +936,7 @@ export const ConfigNota: TTableDef = {
       label: "VlTotalNotaColuna",
       name: "VlTotalNotaColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -944,7 +944,7 @@ export const ConfigNota: TTableDef = {
       label: "VlTotalNotaTamanho",
       name: "VlTotalNotaTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -952,7 +952,7 @@ export const ConfigNota: TTableDef = {
       label: "VlTotalTamanho",
       name: "VlTotalTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -960,7 +960,7 @@ export const ConfigNota: TTableDef = {
       label: "VlUnitarioColuna",
       name: "VlUnitarioColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -968,7 +968,7 @@ export const ConfigNota: TTableDef = {
       label: "VlUnitarioTamanho",
       name: "VlUnitarioTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -976,7 +976,7 @@ export const ConfigNota: TTableDef = {
       label: "FonteCabecalho",
       name: "FonteCabecalho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -984,7 +984,7 @@ export const ConfigNota: TTableDef = {
       label: "FonteProdutos",
       name: "FonteProdutos",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -992,7 +992,7 @@ export const ConfigNota: TTableDef = {
       label: "FonteTotais",
       name: "FonteTotais",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1000,7 +1000,7 @@ export const ConfigNota: TTableDef = {
       label: "FonteTransportador",
       name: "FonteTransportador",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1008,7 +1008,7 @@ export const ConfigNota: TTableDef = {
       label: "FonteFaturas",
       name: "FonteFaturas",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1016,7 +1016,7 @@ export const ConfigNota: TTableDef = {
       label: "FonteInfAdicionais",
       name: "FonteInfAdicionais",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1024,7 +1024,7 @@ export const ConfigNota: TTableDef = {
       label: "FonteServicos",
       name: "FonteServicos",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1032,7 +1032,7 @@ export const ConfigNota: TTableDef = {
       label: "CdServicoLinha",
       name: "CdServicoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -1041,7 +1041,7 @@ export const ConfigNota: TTableDef = {
       label: "QtdeLinhasServico",
       name: "QtdeLinhasServico",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1049,7 +1049,7 @@ export const ConfigNota: TTableDef = {
       label: "CdServicoColuna",
       name: "CdServicoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1057,7 +1057,7 @@ export const ConfigNota: TTableDef = {
       label: "CdServicoTamanho",
       name: "CdServicoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1065,7 +1065,7 @@ export const ConfigNota: TTableDef = {
       label: "DescricaoServicoLinha",
       name: "DescricaoServicoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -1074,7 +1074,7 @@ export const ConfigNota: TTableDef = {
       label: "DescricaoServicoColuna",
       name: "DescricaoServicoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1082,7 +1082,7 @@ export const ConfigNota: TTableDef = {
       label: "DescricaoServicoTamanho",
       name: "DescricaoServicoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1090,7 +1090,7 @@ export const ConfigNota: TTableDef = {
       label: "QuantidadeServicoColuna",
       name: "QuantidadeServicoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1098,7 +1098,7 @@ export const ConfigNota: TTableDef = {
       label: "QuantidadeServicoTamanho",
       name: "QuantidadeServicoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1106,7 +1106,7 @@ export const ConfigNota: TTableDef = {
       label: "VlUnitarioServicoColuna",
       name: "VlUnitarioServicoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1114,7 +1114,7 @@ export const ConfigNota: TTableDef = {
       label: "VlUnitarioServicoTamanho",
       name: "VlUnitarioServicoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1122,7 +1122,7 @@ export const ConfigNota: TTableDef = {
       label: "VlTotalServicoColuna",
       name: "VlTotalServicoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1130,7 +1130,7 @@ export const ConfigNota: TTableDef = {
       label: "VlTotalServicoTamanho",
       name: "VlTotalServicoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1138,7 +1138,7 @@ export const ConfigNota: TTableDef = {
       label: "VlServicoLinha",
       name: "VlServicoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -1147,7 +1147,7 @@ export const ConfigNota: TTableDef = {
       label: "VlServicoColuna",
       name: "VlServicoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1155,7 +1155,7 @@ export const ConfigNota: TTableDef = {
       label: "VlServicoTamanho",
       name: "VlServicoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1163,7 +1163,7 @@ export const ConfigNota: TTableDef = {
       label: "AliquotaISSLinha",
       name: "AliquotaISSLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -1172,7 +1172,7 @@ export const ConfigNota: TTableDef = {
       label: "AliquotaISSColuna",
       name: "AliquotaISSColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1180,7 +1180,7 @@ export const ConfigNota: TTableDef = {
       label: "AliquotaISSTamanho",
       name: "AliquotaISSTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1188,7 +1188,7 @@ export const ConfigNota: TTableDef = {
       label: "VlIssLinha",
       name: "VlIssLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -1197,7 +1197,7 @@ export const ConfigNota: TTableDef = {
       label: "VlISSColuna",
       name: "VlISSColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1205,7 +1205,7 @@ export const ConfigNota: TTableDef = {
       label: "VlISSTamanho",
       name: "VlISSTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -1213,7 +1213,7 @@ export const ConfigNota: TTableDef = {
       label: "EmissaoRodapeColuna",
       name: "EmissaoRodapeColuna",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1221,7 +1221,7 @@ export const ConfigNota: TTableDef = {
       label: "EmissaoRodapeTamanho",
       name: "EmissaoRodapeTamanho",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1229,14 +1229,13 @@ export const ConfigNota: TTableDef = {
       label: "FgImprimeLoteProdutos",
       name: "FgImprimeLoteProdutos",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FaturaValorExtensoLinha",
       label: "FaturaValorExtensoLinha",
       name: "FaturaValorExtensoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1244,7 +1243,7 @@ export const ConfigNota: TTableDef = {
       label: "FaturaValorExtensoColuna",
       name: "FaturaValorExtensoColuna",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1252,7 +1251,7 @@ export const ConfigNota: TTableDef = {
       label: "FaturaValorExtensoTamanho",
       name: "FaturaValorExtensoTamanho",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1260,7 +1259,7 @@ export const ConfigNota: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -1268,7 +1267,7 @@ export const ConfigNota: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1276,7 +1275,7 @@ export const ConfigNota: TTableDef = {
       label: "AliqIPIColuna",
       name: "AliqIPIColuna",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1284,7 +1283,7 @@ export const ConfigNota: TTableDef = {
       label: "AliqIPITamanho",
       name: "AliqIPITamanho",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1292,7 +1291,7 @@ export const ConfigNota: TTableDef = {
       label: "VlIPIItemColuna",
       name: "VlIPIItemColuna",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1300,7 +1299,7 @@ export const ConfigNota: TTableDef = {
       label: "VlIPIItemTamanho",
       name: "VlIPIItemTamanho",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1308,91 +1307,79 @@ export const ConfigNota: TTableDef = {
       label: "FaturaPracaPagamentoLinha",
       name: "FaturaPracaPagamentoLinha",
       typeField: "int",
-      size: 2,
     },
     {
       field: "FaturaPracaPagamentoTamanho",
       label: "FaturaPracaPagamentoTamanho",
       name: "FaturaPracaPagamentoTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "FaturaPracaPagamentoColuna",
       label: "FaturaPracaPagamentoColuna",
       name: "FaturaPracaPagamentoColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BaseISSLinha",
       label: "BaseISSLinha",
       name: "BaseISSLinha",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BaseISSColuna",
       label: "BaseISSColuna",
       name: "BaseISSColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BaseISSTamanho",
       label: "BaseISSTamanho",
       name: "BaseISSTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "InscMunicipalLinha",
       label: "InscMunicipalLinha",
       name: "InscMunicipalLinha",
       typeField: "int",
-      size: 2,
     },
     {
       field: "InscMunicipalColuna",
       label: "InscMunicipalColuna",
       name: "InscMunicipalColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "InscMunicipalTamanho",
       label: "InscMunicipalTamanho",
       name: "InscMunicipalTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "DecimaisValorProduto",
       label: "DecimaisValorProduto",
       name: "DecimaisValorProduto",
       typeField: "int",
-      size: 2,
     },
     {
       field: "DecimaisAliqIPI",
       label: "DecimaisAliqIPI",
       name: "DecimaisAliqIPI",
       typeField: "int",
-      size: 2,
     },
     {
       field: "DecimaisAliqICMS",
       label: "DecimaisAliqICMS",
       name: "DecimaisAliqICMS",
       typeField: "int",
-      size: 2,
     },
     {
       field: "RzSocialFilialLinha",
       label: "RzSocialFilialLinha",
       name: "RzSocialFilialLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1400,21 +1387,19 @@ export const ConfigNota: TTableDef = {
       label: "RzSocialFilialColuna",
       name: "RzSocialFilialColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "RzSocialFilialTamanho",
       label: "RzSocialFilialTamanho",
       name: "RzSocialFilialTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "EnderecoFilialLinha",
       label: "EnderecoFilialLinha",
       name: "EnderecoFilialLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1422,21 +1407,19 @@ export const ConfigNota: TTableDef = {
       label: "EnderecoFilialColuna",
       name: "EnderecoFilialColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "EnderecoFilialTamanho",
       label: "EnderecoFilialTamanho",
       name: "EnderecoFilialTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "CNPJFilialLinha",
       label: "CNPJFilialLinha",
       name: "CNPJFilialLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1444,21 +1427,19 @@ export const ConfigNota: TTableDef = {
       label: "CNPJFilialColuna",
       name: "CNPJFilialColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "CNPJFilialTamanho",
       label: "CNPJFilialTamanho",
       name: "CNPJFilialTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "TelefoneFilialLinha",
       label: "TelefoneFilialLinha",
       name: "TelefoneFilialLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1466,70 +1447,61 @@ export const ConfigNota: TTableDef = {
       label: "TelefoneFilialColuna",
       name: "TelefoneFilialColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "TelefoneFilialTamanho",
       label: "TelefoneFilialTamanho",
       name: "TelefoneFilialTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "NumNotaCompLinha",
       label: "NumNotaCompLinha",
       name: "NumNotaCompLinha",
       typeField: "int",
-      size: 2,
     },
     {
       field: "NumNotaCompColuna",
       label: "NumNotaCompColuna",
       name: "NumNotaCompColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "FgDestacaNumNotaCabecalho",
       label: "FgDestacaNumNotaCabecalho",
       name: "FgDestacaNumNotaCabecalho",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgDestacaNumNotaRodape",
       label: "FgDestacaNumNotaRodape",
       name: "FgDestacaNumNotaRodape",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgConfirmaSaltoPagina",
       label: "FgConfirmaSaltoPagina",
       name: "FgConfirmaSaltoPagina",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FonteNumNotaCabecalho",
       label: "FonteNumNotaCabecalho",
       name: "FonteNumNotaCabecalho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "FonteNumNotaRodape",
       label: "FonteNumNotaRodape",
       name: "FonteNumNotaRodape",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BaseCalcPISLinha",
       label: "BaseCalcPISLinha",
       name: "BaseCalcPISLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1537,21 +1509,19 @@ export const ConfigNota: TTableDef = {
       label: "BaseCalcPISColuna",
       name: "BaseCalcPISColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BaseCalcPISTamanho",
       label: "BaseCalcPISTamanho",
       name: "BaseCalcPISTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "AliquotaPISLinha",
       label: "AliquotaPISLinha",
       name: "AliquotaPISLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1559,21 +1529,19 @@ export const ConfigNota: TTableDef = {
       label: "AliquotaPISColuna",
       name: "AliquotaPISColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "AliquotaPISTamanho",
       label: "AliquotaPISTamanho",
       name: "AliquotaPISTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "VlPISLinha",
       label: "VlPISLinha",
       name: "VlPISLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1581,21 +1549,19 @@ export const ConfigNota: TTableDef = {
       label: "VlPISColuna",
       name: "VlPISColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "VlPISTamanho",
       label: "VlPISTamanho",
       name: "VlPISTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BaseCalcCOFINSLinha",
       label: "BaseCalcCOFINSLinha",
       name: "BaseCalcCOFINSLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1603,21 +1569,19 @@ export const ConfigNota: TTableDef = {
       label: "BaseCalcCOFINSColuna",
       name: "BaseCalcCOFINSColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BaseCalcCOFINSTamanho",
       label: "BaseCalcCOFINSTamanho",
       name: "BaseCalcCOFINSTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "AliquotaCOFINSLinha",
       label: "AliquotaCOFINSLinha",
       name: "AliquotaCOFINSLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1625,21 +1589,19 @@ export const ConfigNota: TTableDef = {
       label: "AliquotaCOFINSColuna",
       name: "AliquotaCOFINSColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "AliquotaCOFINSTamanho",
       label: "AliquotaCOFINSTamanho",
       name: "AliquotaCOFINSTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "VlCOFINSLinha",
       label: "VlCOFINSLinha",
       name: "VlCOFINSLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1647,21 +1609,19 @@ export const ConfigNota: TTableDef = {
       label: "VlCOFINSColuna",
       name: "VlCOFINSColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "VlCOFINSTamanho",
       label: "VlCOFINSTamanho",
       name: "VlCOFINSTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BaseCalcIRRFLinha",
       label: "BaseCalcIRRFLinha",
       name: "BaseCalcIRRFLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1669,21 +1629,19 @@ export const ConfigNota: TTableDef = {
       label: "BaseCalcIRRFColuna",
       name: "BaseCalcIRRFColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BaseCalcIRRFTamanho",
       label: "BaseCalcIRRFTamanho",
       name: "BaseCalcIRRFTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "AliquotaIRRFLinha",
       label: "AliquotaIRRFLinha",
       name: "AliquotaIRRFLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1691,21 +1649,19 @@ export const ConfigNota: TTableDef = {
       label: "AliquotaIRRFColuna",
       name: "AliquotaIRRFColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "AliquotaIRRFTamanho",
       label: "AliquotaIRRFTamanho",
       name: "AliquotaIRRFTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "VlIRRFLinha",
       label: "VlIRRFLinha",
       name: "VlIRRFLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1713,21 +1669,19 @@ export const ConfigNota: TTableDef = {
       label: "VlIRRFColuna",
       name: "VlIRRFColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "VlIRRFTamanho",
       label: "VlIRRFTamanho",
       name: "VlIRRFTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BaseCalcCSLLLinha",
       label: "BaseCalcCSLLLinha",
       name: "BaseCalcCSLLLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1735,21 +1689,19 @@ export const ConfigNota: TTableDef = {
       label: "BaseCalcCSLLColuna",
       name: "BaseCalcCSLLColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BaseCalcCSLLTamanho",
       label: "BaseCalcCSLLTamanho",
       name: "BaseCalcCSLLTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "AliquotaCSLLLinha",
       label: "AliquotaCSLLLinha",
       name: "AliquotaCSLLLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1757,21 +1709,19 @@ export const ConfigNota: TTableDef = {
       label: "AliquotaCSLLColuna",
       name: "AliquotaCSLLColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "AliquotaCSLLTamanho",
       label: "AliquotaCSLLTamanho",
       name: "AliquotaCSLLTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "VlCSLLLinha",
       label: "VlCSLLLinha",
       name: "VlCSLLLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -1779,14 +1729,12 @@ export const ConfigNota: TTableDef = {
       label: "VlCSLLColuna",
       name: "VlCSLLColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "VlCSLLTamanho",
       label: "VlCSLLTamanho",
       name: "VlCSLLTamanho",
       typeField: "int",
-      size: 2,
     },
   ],
 };

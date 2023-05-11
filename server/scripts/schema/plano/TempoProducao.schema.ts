@@ -9,7 +9,7 @@ export const TempoProducao: TTableDef = {
       label: "NumItens",
       name: "TempoProducao_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const TempoProducao: TTableDef = {
       label: "NumCapsulas",
       name: "NumCapsulas",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const TempoProducao: TTableDef = {
       label: "TempoLaboratorio",
       name: "TempoLaboratorio",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const TempoProducao: TTableDef = {
       label: "TempoTelemarketing",
       name: "TempoTelemarketing",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const TempoProducao: TTableDef = {
       label: "TempoBalcao",
       name: "TempoBalcao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const TempoProducao: TTableDef = {
       label: "TempoControleQualidade",
       name: "TempoControleQualidade",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const TempoProducao: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

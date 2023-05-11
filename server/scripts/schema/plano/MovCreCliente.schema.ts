@@ -9,7 +9,7 @@ export const MovCreCliente: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MovCreCliente: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const MovCreCliente: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const MovCreCliente: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const MovCreCliente: TTableDef = {
       label: "TipoMovimentacao",
       name: "TipoMovimentacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const MovCreCliente: TTableDef = {
       label: "Dtlcto",
       name: "Dtlcto",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -60,7 +60,7 @@ export const MovCreCliente: TTableDef = {
       label: "Valor",
       name: "Valor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -69,7 +69,7 @@ export const MovCreCliente: TTableDef = {
       label: "CdUsuario",
       name: "CdUsuario",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -77,7 +77,7 @@ export const MovCreCliente: TTableDef = {
       label: "NumMapa",
       name: "NumMapa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -86,7 +86,7 @@ export const MovCreCliente: TTableDef = {
       label: "DtOcorrencia",
       name: "DtOcorrencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -95,7 +95,7 @@ export const MovCreCliente: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -103,7 +103,6 @@ export const MovCreCliente: TTableDef = {
       label: "TipoDocumento",
       name: "TipoDocumento",
       typeField: "string",
-      size: 1,
     },
   ],
 };

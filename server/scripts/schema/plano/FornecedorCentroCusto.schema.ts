@@ -9,7 +9,7 @@ export const FornecedorCentroCusto: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const FornecedorCentroCusto: TTableDef = {
       label: "CdCentroCusto",
       name: "CdCentroCusto",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const FornecedorCentroCusto: TTableDef = {
       label: "Percentual",
       name: "Percentual",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

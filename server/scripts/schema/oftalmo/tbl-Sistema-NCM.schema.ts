@@ -9,7 +9,7 @@ export const tbl_Sistema_NCM: TTableDef = {
       label: "KNCM",
       name: "tbl_Sistema_NCM_id",
       typeField: "int",
-      size: 2,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const tbl_Sistema_NCM: TTableDef = {
       label: "NCM",
       name: "NCM",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,6 @@ export const tbl_Sistema_NCM: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 2000,
     },
   ],
 };

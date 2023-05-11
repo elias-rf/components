@@ -1,6 +1,6 @@
 import { connectionsMock } from "@/mocks/connections.mock";
+import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { TTableDef } from "@/types/model";
-import { knexMockHistory } from "@/utils/data/knex-mock-history";
 import { createTracker } from "knex-mock-client";
 import { listFactory } from "./list-factory";
 
@@ -11,34 +11,26 @@ const schema: TTableDef = {
     {
       allowNull: false,
       field: "id",
-      label: "Ramal",
       name: "agenda_telefone_id",
       primaryKey: true,
-      typeField: "int",
     },
     {
       allowNull: false,
       field: "name",
-      label: "Nome",
       name: "nome",
-      typeField: "string",
     },
     {
       field: "department",
-      label: "Setor",
       name: "setor",
-      typeField: "string",
     },
     {
       field: "email",
-      label: "Email",
       name: "email",
-      typeField: "string",
     },
   ],
 };
 
-describe("crudList", () => {
+describe("listFactory", () => {
   const tracker = createTracker(connectionsMock.oftalmo);
   const list = listFactory(connectionsMock.oftalmo, schema);
 
@@ -62,21 +54,21 @@ describe("crudList", () => {
   it("lista com order errada", async () => {
     await expect(
       list({
-        order: [
+        sorts: [
           { id: "a", desc: true },
           { id: "b", desc: true },
         ],
       })
     ).rejects.toThrow(
-      "a não é um nome válido: agenda_telefone_id,nome,setor,email"
+      "a,b não são válidos para order use: agenda_telefone_id,email,nome,setor"
     );
   });
 
   it("lista com where errada", async () => {
     await expect(
       list({
-        order: [{ id: "agenda_telefone_id", desc: true }],
-        where: [
+        sorts: [{ id: "agenda_telefone_id", desc: true }],
+        filters: [
           { id: "1", value: "= 1" },
           { id: "2", value: "= 2" },
         ],
@@ -89,7 +81,7 @@ describe("crudList", () => {
   it("lista sem argumentos", async () => {
     tracker.on.select("phonebook").response([]);
     const rsp = await list({
-      where: [{ id: "agenda_telefone_id", value: "=10" }],
+      filters: [{ id: "agenda_telefone_id", value: "=10" }],
     });
     expect(rsp).toEqual([]);
 
@@ -106,7 +98,7 @@ describe("crudList", () => {
   it("lista com argumentos", async () => {
     tracker.on.select("phonebook").response([]);
     const rsp = await list({
-      where: [{ id: "agenda_telefone_id", value: "=10" }],
+      filters: [{ id: "agenda_telefone_id", value: "=10" }],
     });
     expect(rsp).toEqual([]);
     expect(knexMockHistory(tracker)).toEqual({
@@ -123,15 +115,15 @@ describe("crudList", () => {
     tracker.on.select("phonebook").response([]);
     const rsp = await list({
       select: ["agenda_telefone_id"],
-      where: [{ id: "agenda_telefone_id", value: "=10" }],
-      sum: { ttl: "agenda_telefone_id" },
+      filters: [{ id: "agenda_telefone_id", value: "=10" }],
+      sum: { label: "ttl", id: "agenda_telefone_id" },
     });
     expect(rsp).toEqual([]);
     expect(knexMockHistory(tracker)).toEqual({
       select: [
         {
           bindings: [50, "10"],
-          sql: "select top (@p0) [id], sum([agenda_telefone_id]) as [ttl] from [phonebook] where ([id] = @p1)",
+          sql: "select top (@p0) [id], sum([id]) as [ttl] from [phonebook] where ([id] = @p1)",
         },
       ],
     });
@@ -141,8 +133,8 @@ describe("crudList", () => {
     tracker.on.select("phonebook").response([]);
     const rsp = await list({
       select: ["agenda_telefone_id"],
-      where: [{ id: "agenda_telefone_id", value: "=10" }],
-      sum: { ttl: "agenda_telefone_id" },
+      filters: [{ id: "agenda_telefone_id", value: "=10" }],
+      sum: { label: "ttl", id: "agenda_telefone_id" },
       group: ["setor"],
     });
     expect(rsp).toEqual([]);
@@ -150,7 +142,7 @@ describe("crudList", () => {
       select: [
         {
           bindings: [50, "10"],
-          sql: "select top (@p0) [id], sum([agenda_telefone_id]) as [ttl] from [phonebook] where ([id] = @p1) group by [department]",
+          sql: "select top (@p0) [id], sum([id]) as [ttl] from [phonebook] where ([id] = @p1) group by [department]",
         },
       ],
     });
@@ -160,15 +152,15 @@ describe("crudList", () => {
     tracker.on.select("phonebook").response([]);
     const rsp = await list({
       select: ["agenda_telefone_id"],
-      where: [{ id: "agenda_telefone_id", value: "=10" }],
-      min: { ttl: "agenda_telefone_id" },
+      filters: [{ id: "agenda_telefone_id", value: "=10" }],
+      min: { label: "ttl", id: "agenda_telefone_id" },
     });
     expect(rsp).toEqual([]);
     expect(knexMockHistory(tracker)).toEqual({
       select: [
         {
           bindings: [50, "10"],
-          sql: "select top (@p0) [id], min([agenda_telefone_id]) as [ttl] from [phonebook] where ([id] = @p1)",
+          sql: "select top (@p0) [id], sum([id]) as [ttl] from [phonebook] where ([id] = @p1)",
         },
       ],
     });
@@ -178,15 +170,15 @@ describe("crudList", () => {
     tracker.on.select("phonebook").response([]);
     const rsp = await list({
       select: ["agenda_telefone_id"],
-      where: [{ id: "agenda_telefone_id", value: "=10" }],
-      max: { ttl: "agenda_telefone_id" },
+      filters: [{ id: "agenda_telefone_id", value: "=10" }],
+      max: { label: "ttl", id: "agenda_telefone_id" },
     });
     expect(rsp).toEqual([]);
     expect(knexMockHistory(tracker)).toEqual({
       select: [
         {
           bindings: [50, "10"],
-          sql: "select top (@p0) [id], max([agenda_telefone_id]) as [ttl] from [phonebook] where ([id] = @p1)",
+          sql: "select top (@p0) [id], max([id]) as [ttl] from [phonebook] where ([id] = @p1)",
         },
       ],
     });

@@ -9,7 +9,7 @@ export const tTipoDeOP: TTableDef = {
       label: "kTipoOP",
       name: "tTipoDeOP_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tTipoDeOP: TTableDef = {
       label: "DescTipo",
       name: "DescTipo",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
   ],

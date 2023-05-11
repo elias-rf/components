@@ -75,31 +75,31 @@ export type TReceberFields = keyof Required<TReceber>;
 export type TReceberIds = {
   [pk in keyof Required<TReceberPk>]: any;
 };
-export type TReceberSelect = TSelect<TReceberFields>;
-export type TReceberWhere = TWhere<TReceberFields>;
-export type TReceberOrder = TOrder<TReceberFields>;
+export type TReceberSelect = TSelect;
+export type TReceberWhere = TWhere;
+export type TReceberOrder = TOrder;
 
 export type TReceberSchema = () => Promise<TFieldDef[]>;
 export type TReceberClear = () => Promise<TReceber>;
 export type TReceberList = (args: {
-  where?: TWhere<TReceberFields>[];
-  order?: TOrder<TReceberFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TReceberFields>;
+  select?: TSelect;
 }) => Promise<TReceber[]>;
 export type TReceberRead = (args: {
   id: TReceberIds;
-  select?: TSelect<TReceberFields>;
+  select?: TSelect;
 }) => Promise<TReceber>;
 
 export type TReceberCreate = (args: {
   data: TReceber;
-  select?: TSelect<TReceberFields>;
+  select?: TSelect;
 }) => Promise<TReceber>;
 export type TReceberUpdate = (args: {
   id: TReceberIds;
   data: TReceber;
-  select?: TSelect<TReceberFields>;
+  select?: TSelect;
 }) => Promise<TReceber>;
 export type TReceberDel = (args: { id: TReceberIds }) => Promise<number>;
 

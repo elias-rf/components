@@ -9,7 +9,7 @@ export const NotaComprovanteRecLocal: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaComprovanteRecLocal: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaComprovanteRecLocal: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaComprovanteRecLocal: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaComprovanteRecLocal: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaComprovanteRecLocal: TTableDef = {
       label: "NumNotaAviso",
       name: "NumNotaAviso",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NotaComprovanteRecLocal: TTableDef = {
       label: "SerieAviso",
       name: "SerieAviso",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const NotaComprovanteRecLocal: TTableDef = {
       label: "ModeloAviso",
       name: "ModeloAviso",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const NotaComprovanteRecLocal: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -82,7 +82,7 @@ export const NotaComprovanteRecLocal: TTableDef = {
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

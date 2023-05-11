@@ -9,7 +9,7 @@ export const CadProBula: TTableDef = {
       label: "CdProduto",
       name: "CadProBula_id",
       typeField: "string",
-      size: 15,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadProBula: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -27,7 +27,6 @@ export const CadProBula: TTableDef = {
       label: "Texto",
       name: "Texto",
       typeField: "string",
-      size: 5120,
     },
   ],
 };

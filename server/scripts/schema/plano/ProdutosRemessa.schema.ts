@@ -9,7 +9,7 @@ export const ProdutosRemessa: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProdutosRemessa: TTableDef = {
       label: "IdLayOut",
       name: "IdLayOut",
       typeField: "string",
-      size: 124,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProdutosRemessa: TTableDef = {
       label: "FgRemessa",
       name: "FgRemessa",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ProdutosRemessa: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

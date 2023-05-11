@@ -9,7 +9,7 @@ export const Estorno: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Estorno: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const Estorno: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const Estorno: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -41,7 +41,7 @@ export const Estorno: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -50,7 +50,7 @@ export const Estorno: TTableDef = {
       label: "VlBase",
       name: "VlBase",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

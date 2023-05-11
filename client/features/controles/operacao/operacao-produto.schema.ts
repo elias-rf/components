@@ -1,6 +1,6 @@
-import { TFieldDef } from "@/types";
+import { TSchema } from "@/types";
 
-export const operacaoProdutoSchema: TFieldDef[] = [
+export const operacaoProdutoSchema: TSchema = [
   {
     name: "produto",
     label: "Produto",

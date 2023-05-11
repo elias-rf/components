@@ -9,7 +9,7 @@ export const CadEst: TTableDef = {
       label: "Uf",
       name: "CadEst_id",
       typeField: "string",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,14 +18,13 @@ export const CadEst: TTableDef = {
       label: "NmEstado",
       name: "NmEstado",
       typeField: "string",
-      size: 20,
     },
     {
       field: "DescontoSub",
       label: "DescontoSub",
       name: "DescontoSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -33,7 +32,7 @@ export const CadEst: TTableDef = {
       label: "MargemSub",
       name: "MargemSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -41,14 +40,13 @@ export const CadEst: TTableDef = {
       label: "BaseCalculo",
       name: "BaseCalculo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "BaseReducao",
       label: "BaseReducao",
       name: "BaseReducao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -56,7 +54,7 @@ export const CadEst: TTableDef = {
       label: "MargemSubPositivo",
       name: "MargemSubPositivo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -64,7 +62,7 @@ export const CadEst: TTableDef = {
       label: "BaseReducaoPositivo",
       name: "BaseReducaoPositivo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -72,7 +70,7 @@ export const CadEst: TTableDef = {
       label: "MargemSubNegativo",
       name: "MargemSubNegativo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -80,7 +78,7 @@ export const CadEst: TTableDef = {
       label: "BaseReducaoNegativo",
       name: "BaseReducaoNegativo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -88,7 +86,7 @@ export const CadEst: TTableDef = {
       label: "PercSubstituicaoTributaria",
       name: "PercSubstituicaoTributaria",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -96,7 +94,7 @@ export const CadEst: TTableDef = {
       label: "AliqSubstituicao",
       name: "AliqSubstituicao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -104,14 +102,13 @@ export const CadEst: TTableDef = {
       label: "CdIBGE",
       name: "CdIBGE",
       typeField: "int",
-      size: 4,
     },
     {
       field: "PercCombatePobreza",
       label: "PercCombatePobreza",
       name: "PercCombatePobreza",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

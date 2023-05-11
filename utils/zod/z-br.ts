@@ -1,4 +1,4 @@
-// import i18next, { i18n } from "i18next";
+// @ts-nocheck
 import { ZodErrorMap, ZodIssueCode, ZodParsedType } from "zod";
 import { template } from "../string/template";
 

@@ -9,7 +9,7 @@ export const ProducaoOperador: TTableDef = {
       label: "CdOperador",
       name: "ProducaoOperador_id",
       typeField: "int",
-      size: 5,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProducaoOperador: TTableDef = {
       label: "NmOperador",
       name: "NmOperador",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ProducaoOperador: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

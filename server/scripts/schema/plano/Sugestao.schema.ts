@@ -9,7 +9,7 @@ export const Sugestao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Sugestao: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const Sugestao: TTableDef = {
       label: "CdEmitente",
       name: "CdEmitente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -33,7 +33,7 @@ export const Sugestao: TTableDef = {
       label: "CdVendedor",
       name: "CdVendedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -41,7 +41,7 @@ export const Sugestao: TTableDef = {
       label: "DtEntrega",
       name: "DtEntrega",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -49,42 +49,37 @@ export const Sugestao: TTableDef = {
       label: "LocalEntrega",
       name: "LocalEntrega",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "NmFavorecido",
       label: "NmFavorecido",
       name: "NmFavorecido",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Obs",
       label: "Obs",
       name: "Obs",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "Posicao",
       label: "Posicao",
       name: "Posicao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Proximidades",
       label: "Proximidades",
       name: "Proximidades",
       typeField: "string",
-      size: 40,
     },
     {
       field: "VlPago",
       label: "VlPago",
       name: "VlPago",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -92,14 +87,13 @@ export const Sugestao: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtEmissao",
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -107,7 +101,7 @@ export const Sugestao: TTableDef = {
       label: "Horario",
       name: "Horario",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -115,7 +109,7 @@ export const Sugestao: TTableDef = {
       label: "VlTotal",
       name: "VlTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -123,7 +117,6 @@ export const Sugestao: TTableDef = {
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
     },
   ],
 };

@@ -9,7 +9,7 @@ export const VidaLinkServidores: TTableDef = {
       label: "IdMaquina",
       name: "VidaLinkServidores_id",
       typeField: "string",
-      size: 32,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const VidaLinkServidores: TTableDef = {
       label: "NmServidor",
       name: "NmServidor",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
   ],

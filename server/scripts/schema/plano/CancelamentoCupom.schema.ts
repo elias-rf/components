@@ -9,7 +9,7 @@ export const CancelamentoCupom: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CancelamentoCupom: TTableDef = {
       label: "NroPDV",
       name: "NroPDV",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const CancelamentoCupom: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -33,28 +33,25 @@ export const CancelamentoCupom: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 10,
     },
     {
       field: "Gerente",
       label: "Gerente",
       name: "Gerente",
       typeField: "string",
-      size: 10,
     },
     {
       field: "Motivo",
       label: "Motivo",
       name: "Motivo",
       typeField: "string",
-      size: 80,
     },
     {
       field: "DtCancelamento",
       label: "DtCancelamento",
       name: "DtCancelamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -62,7 +59,7 @@ export const CancelamentoCupom: TTableDef = {
       label: "CdMotivoCancelamento",
       name: "CdMotivoCancelamento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

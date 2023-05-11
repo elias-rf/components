@@ -9,7 +9,7 @@ export const ePharmaPrescritor: TTableDef = {
       label: "CdTipoPrescritor",
       name: "ePharmaPrescritor_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ePharmaPrescritor: TTableDef = {
       label: "DescricaoPrescritor",
       name: "DescricaoPrescritor",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "CPFCNPJDestinatario",
       name: "CPFCNPJDestinatario",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "NomeDestinatario",
       name: "NomeDestinatario",
       typeField: "string",
-      size: 70,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "EmailDestinatario",
       name: "EmailDestinatario",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 60,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "NumEndereco",
       name: "NumEndereco",
       typeField: "string",
-      size: 12,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "Complemento",
       name: "Complemento",
       typeField: "string",
-      size: 60,
+
       allowNull: false,
     },
     {
@@ -97,7 +97,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "Bairro",
       name: "Bairro",
       typeField: "string",
-      size: 60,
+
       allowNull: false,
     },
     {
@@ -105,7 +105,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "Cidade",
       name: "Cidade",
       typeField: "string",
-      size: 60,
+
       allowNull: false,
     },
     {
@@ -113,7 +113,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "CdCidade",
       name: "CdCidade",
       typeField: "string",
-      size: 7,
+
       allowNull: false,
     },
     {
@@ -121,7 +121,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "Uf",
       name: "Uf",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -129,7 +129,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "Cep",
       name: "Cep",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -137,7 +137,7 @@ export const NotaDadosNFCe: TTableDef = {
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 14,
+
       allowNull: false,
     },
   ],

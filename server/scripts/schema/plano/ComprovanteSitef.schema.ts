@@ -9,7 +9,7 @@ export const ComprovanteSitef: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ComprovanteSitef: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ComprovanteSitef: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ComprovanteSitef: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ComprovanteSitef: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ComprovanteSitef: TTableDef = {
       label: "Comprovante",
       name: "Comprovante",
       typeField: "string",
-      size: 4096,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ComprovanteSitef: TTableDef = {
       label: "DtGeracao",
       name: "DtGeracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -66,7 +66,7 @@ export const ComprovanteSitef: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

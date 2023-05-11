@@ -9,7 +9,7 @@ export const ConfiguracaoMapa: TTableDef = {
       label: "CdFilial",
       name: "ConfiguracaoMapa_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const ConfiguracaoMapa: TTableDef = {
       label: "DtUltimoMapa",
       name: "DtUltimoMapa",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

@@ -9,7 +9,7 @@ export const tCorrecaoNaoConformidade: TTableDef = {
       label: "kCorrecao",
       name: "tCorrecaoNaoConformidade_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tCorrecaoNaoConformidade: TTableDef = {
       label: "Correcao",
       name: "Correcao",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,6 @@ export const tCorrecaoNaoConformidade: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 200,
     },
   ],
 };

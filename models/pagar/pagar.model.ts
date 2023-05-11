@@ -1,27 +1,24 @@
 import type { TConnections } from "@/config/connections";
 import { crudFactory } from "@/utils/crud/crud.factory";
 import { pagar } from "./pagar.table";
-import type { TPagarModel } from "./pagar.type";
 
 export function pagarModelFactory({
   connections,
 }: {
   connections: TConnections;
-}): TPagarModel {
+}) {
   const connection = connections[pagar.database];
   const crud = crudFactory(connection, pagar);
 
-  const model: TPagarModel = {
+  const model = {
     connection,
     table: pagar,
     query: {
-      list: (args) => crud.query.list(args),
-      read: (args) => crud.query.read(args),
+      list: crud.query.list,
+      read: crud.query.read,
     },
     mutation: {
-      create: (args) => crud.mutation.create(args),
-      update: (args) => crud.mutation.update(args),
-      del: (args) => crud.mutation.del(args),
+      ...crud.mutation,
     },
   };
 

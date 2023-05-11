@@ -9,7 +9,7 @@ export const Moedas: TTableDef = {
       label: "CdMoeda",
       name: "Moedas_id",
       typeField: "string",
-      size: 15,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Moedas: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
   ],

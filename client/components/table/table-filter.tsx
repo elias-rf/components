@@ -1,10 +1,10 @@
-import { TFieldDef, TWhere } from "@/types";
+import { TWhere } from "@/types";
 import { TextInput } from "@mantine/core";
 import React from "react";
 import { whereUtil } from "../../lib/http/where-util";
 
 export type TTableFilter = {
-  schemaField: TFieldDef;
+  schemaField: { name: string };
   where?: TWhere[];
   onWhere?: (where: TWhere[]) => void;
 };
@@ -34,7 +34,7 @@ export function TableFilter({ schemaField, where, onWhere }: TTableFilter) {
         schemaField.name,
         inputValue
       );
-      // onWhere(rsp);
+      onWhere(rsp);
     }
   }
 

@@ -9,7 +9,7 @@ export const ContAjuda: TTableDef = {
       label: "Funcao",
       name: "Funcao",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ContAjuda: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

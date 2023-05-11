@@ -1,4 +1,4 @@
-import { TFieldDef, TOrder, TSelect, TTableDef, TWhere } from "@/types";
+import { TFieldDef, TIds, TOrder, TSelect, TTableDef, TWhere } from "@/types";
 import { TConnection } from "../../config/connections";
 
 export interface TEstoquePk {
@@ -14,36 +14,36 @@ export type TEstoqueFields = keyof Required<TEstoque>;
 export type TEstoqueIds = {
   [pk in keyof Required<TEstoquePk>]: any;
 };
-export type TEstoqueSelect = TSelect<TEstoqueFields>;
-export type TEstoqueWhere = TWhere<TEstoqueFields>;
-export type TEstoqueOrder = TOrder<TEstoqueFields>;
+export type TEstoqueSelect = TSelect;
+export type TEstoqueWhere = TWhere;
+export type TEstoqueOrder = TOrder;
 
 export type TEstoqueSchema = () => Promise<TFieldDef[]>;
 export type TEstoqueClear = () => Promise<TEstoque>;
 export type TEstoqueList = (args: {
-  where?: TWhere<TEstoqueFields>[];
-  order?: TOrder<TEstoqueFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TEstoqueFields>;
+  select?: TSelect;
 }) => Promise<TEstoque[]>;
 export type TEstoqueRead = (args: {
   id: TEstoqueIds;
-  select?: TSelect<TEstoqueFields>;
+  select?: TSelect;
 }) => Promise<TEstoque>;
 
 export type TEstoqueCreate = (args: {
   data: TEstoque;
-  select?: TSelect<TEstoqueFields>;
+  select?: TSelect;
 }) => Promise<TEstoque>;
 export type TEstoqueUpdate = (args: {
   id: TEstoqueIds;
   data: TEstoque;
-  select?: TSelect<TEstoqueFields>;
+  select?: TSelect;
 }) => Promise<TEstoque>;
 export type TEstoqueDel = (args: { id: TEstoqueIds }) => Promise<number>;
 
 export type TEstoqueIncrement = (args: {
-  id: TEstoqueIds;
+  id: TIds;
   quantidade: number;
 }) => Promise<any>;
 

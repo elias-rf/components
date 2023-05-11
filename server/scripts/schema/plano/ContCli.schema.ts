@@ -9,7 +9,7 @@ export const ContCli: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ContCli: TTableDef = {
       label: "NumSequencia",
       name: "NumSequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,28 +26,25 @@ export const ContCli: TTableDef = {
       label: "NmContato",
       name: "NmContato",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Telefone",
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 15,
     },
     {
       field: "Ramal",
       label: "Ramal",
       name: "Ramal",
       typeField: "int",
-      size: 2,
     },
     {
       field: "DtNascimento",
       label: "DtNascimento",
       name: "DtNascimento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -55,14 +52,13 @@ export const ContCli: TTableDef = {
       label: "Hobby",
       name: "Hobby",
       typeField: "string",
-      size: 25,
     },
     {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -70,28 +66,24 @@ export const ContCli: TTableDef = {
       label: "Setor",
       name: "Setor",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Email",
       label: "Email",
       name: "Email",
       typeField: "string",
-      size: 64,
     },
     {
       field: "FgNotificacao",
       label: "FgNotificacao",
       name: "FgNotificacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgSuporte",
       label: "FgSuporte",
       name: "FgSuporte",
       typeField: "string",
-      size: 1,
     },
   ],
 };

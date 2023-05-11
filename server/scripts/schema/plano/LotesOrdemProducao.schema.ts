@@ -9,7 +9,7 @@ export const LotesOrdemProducao: TTableDef = {
       label: "NumFormula",
       name: "NumFormula",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const LotesOrdemProducao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const LotesOrdemProducao: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const LotesOrdemProducao: TTableDef = {
       label: "CdLote",
       name: "CdLote",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const LotesOrdemProducao: TTableDef = {
       label: "QtdeLote",
       name: "QtdeLote",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -51,14 +51,13 @@ export const LotesOrdemProducao: TTableDef = {
       label: "CdFase",
       name: "CdFase",
       typeField: "int",
-      size: 4,
     },
     {
       field: "DtFabricacao",
       label: "DtFabricacao",
       name: "DtFabricacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

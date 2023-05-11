@@ -9,7 +9,7 @@ export const tEmpresa: TTableDef = {
       label: "kEmpresa",
       name: "tEmpresa_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tEmpresa: TTableDef = {
       label: "NomeEmpresa",
       name: "NomeEmpresa",
       typeField: "string",
-      size: 35,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,6 @@ export const tEmpresa: TTableDef = {
       label: "CNPJ",
       name: "CNPJ",
       typeField: "string",
-      size: 14,
     },
   ],
 };

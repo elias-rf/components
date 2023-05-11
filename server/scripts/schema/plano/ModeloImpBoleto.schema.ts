@@ -9,7 +9,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "IdModelo",
       name: "ModeloImpBoleto_id",
       typeField: "string",
-      size: 20,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "TamFormulario",
       name: "TamFormulario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "Densidade",
       name: "Densidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "NumLinhaNumDoc",
       name: "NumLinhaNumDoc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -45,7 +45,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "EspacoEspecie",
       name: "EspacoEspecie",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -54,7 +54,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "NumLinhaValDoc",
       name: "NumLinhaValDoc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -63,7 +63,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "NumLinhaCliente",
       name: "NumLinhaCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -72,7 +72,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "NumLinhaDataVenc",
       name: "NumLinhaDataVenc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -81,7 +81,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "NumLinhaInstrucao",
       name: "NumLinhaInstrucao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -90,7 +90,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "TamLocal",
       name: "TamLocal",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "TamDataDoc",
       name: "TamDataDoc",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "TamBanco",
       name: "TamBanco",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -114,7 +114,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "FgImpCdCliente",
       name: "FgImpCdCliente",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -122,7 +122,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "FgImpInscEst",
       name: "FgImpInscEst",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -130,7 +130,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "FgImpMoraDiaria",
       name: "FgImpMoraDiaria",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -138,7 +138,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "EspecieDoc",
       name: "EspecieDoc",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -146,7 +146,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "LocalCobranca",
       name: "LocalCobranca",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
     {
@@ -154,7 +154,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "InstCobranca1",
       name: "InstCobranca1",
       typeField: "string",
-      size: 80,
+
       allowNull: false,
     },
     {
@@ -162,7 +162,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "InstCobranca2",
       name: "InstCobranca2",
       typeField: "string",
-      size: 80,
+
       allowNull: false,
     },
     {
@@ -170,7 +170,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "InstCobranca3",
       name: "InstCobranca3",
       typeField: "string",
-      size: 80,
+
       allowNull: false,
     },
     {
@@ -178,7 +178,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "InstCobranca4",
       name: "InstCobranca4",
       typeField: "string",
-      size: 80,
+
       allowNull: false,
     },
     {
@@ -186,7 +186,7 @@ export const ModeloImpBoleto: TTableDef = {
       label: "InstCobranca5",
       name: "InstCobranca5",
       typeField: "string",
-      size: 80,
+
       allowNull: false,
     },
   ],

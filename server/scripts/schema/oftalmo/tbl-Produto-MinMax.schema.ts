@@ -9,7 +9,7 @@ export const tbl_Produto_MinMax: TTableDef = {
       label: "fkProdutoItem",
       name: "tbl_Produto_MinMax_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tbl_Produto_MinMax: TTableDef = {
       label: "Minimo",
       name: "Minimo",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const tbl_Produto_MinMax: TTableDef = {
       label: "Media",
       name: "Media",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const tbl_Produto_MinMax: TTableDef = {
       label: "Maximo",
       name: "Maximo",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

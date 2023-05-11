@@ -9,7 +9,7 @@ export const NatOpePlanoContas: TTableDef = {
       label: "Nop",
       name: "Nop",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NatOpePlanoContas: TTableDef = {
       label: "CdDepartamento",
       name: "CdDepartamento",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,6 @@ export const NatOpePlanoContas: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "int",
-      size: 9,
     },
   ],
 };

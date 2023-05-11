@@ -9,7 +9,7 @@ export const tMaquina: TTableDef = {
       label: "kMaquina",
       name: "tMaquina_id",
       typeField: "string",
-      size: 30,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tMaquina: TTableDef = {
       label: "NomeMaquina",
       name: "NomeMaquina",
       typeField: "string",
-      size: 100,
+
       allowNull: false,
     },
     {
@@ -26,49 +26,43 @@ export const tMaquina: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 50,
     },
     {
       field: "fkDivisao",
       label: "fkDivisao",
       name: "fkDivisao",
       typeField: "int",
-      size: 4,
     },
     {
       field: "fkDivisao",
       label: "fkDivisao",
       name: "fkDivisao",
       typeField: "int",
-      size: 4,
     },
     {
       field: "fkSetor",
       label: "fkSetor",
       name: "fkSetor",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 200,
     },
     {
       field: "FrequenciaManutencao",
       label: "FrequenciaManutencao",
       name: "FrequenciaManutencao",
       typeField: "string",
-      size: 10,
     },
     {
       field: "Ativo",
       label: "Ativo",
       name: "Ativo",
       typeField: "int",
-      size: 1,
+
       defaultValue: "1",
     },
   ],

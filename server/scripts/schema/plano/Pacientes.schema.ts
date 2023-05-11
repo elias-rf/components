@@ -9,7 +9,7 @@ export const Pacientes: TTableDef = {
       label: "Domicilio",
       name: "Domicilio",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Pacientes: TTableDef = {
       label: "NmPaciente",
       name: "NmPaciente",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

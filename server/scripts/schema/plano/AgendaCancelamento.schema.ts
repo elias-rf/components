@@ -9,14 +9,13 @@ export const AgendaCancelamento: TTableDef = {
       label: "CdUsuario",
       name: "CdUsuario",
       typeField: "string",
-      size: 10,
     },
     {
       field: "IdCompromisso",
       label: "IdCompromisso",
       name: "AgendaCancelamento_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -25,14 +24,13 @@ export const AgendaCancelamento: TTableDef = {
       label: "CdResponsavel",
       name: "CdResponsavel",
       typeField: "string",
-      size: 10,
     },
     {
       field: "DtCancelamento",
       label: "DtCancelamento",
       name: "DtCancelamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -40,7 +38,7 @@ export const AgendaCancelamento: TTableDef = {
       label: "HrCancelamento",
       name: "HrCancelamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -48,7 +46,6 @@ export const AgendaCancelamento: TTableDef = {
       label: "DsMotivoCancelamento",
       name: "DsMotivoCancelamento",
       typeField: "string",
-      size: 1024,
     },
   ],
 };

@@ -14,31 +14,31 @@ export type TProdutoCategoriaFields = keyof Required<TProdutoCategoria>;
 export type TProdutoCategoriaIds = {
   [pk in keyof Required<TProdutoCategoriaPk>]: any;
 };
-export type TProdutoCategoriaSelect = TSelect<TProdutoCategoriaFields>;
-export type TProdutoCategoriaWhere = TWhere<TProdutoCategoriaFields>;
-export type TProdutoCategoriaOrder = TOrder<TProdutoCategoriaFields>;
+export type TProdutoCategoriaSelect = TSelect;
+export type TProdutoCategoriaWhere = TWhere;
+export type TProdutoCategoriaOrder = TOrder;
 
 export type TProdutoCategoriaSchema = () => Promise<TFieldDef[]>;
 export type TProdutoCategoriaClear = () => Promise<TProdutoCategoria>;
 export type TProdutoCategoriaList = (args: {
-  where?: TWhere<TProdutoCategoriaFields>[];
-  order?: TOrder<TProdutoCategoriaFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TProdutoCategoriaFields>;
+  select?: TSelect;
 }) => Promise<TProdutoCategoria[]>;
 export type TProdutoCategoriaRead = (args: {
   id: TProdutoCategoriaIds;
-  select?: TSelect<TProdutoCategoriaFields>;
+  select?: TSelect;
 }) => Promise<TProdutoCategoria>;
 
 export type TProdutoCategoriaCreate = (args: {
   data: TProdutoCategoria;
-  select?: TSelect<TProdutoCategoriaFields>;
+  select?: TSelect;
 }) => Promise<TProdutoCategoria>;
 export type TProdutoCategoriaUpdate = (args: {
   id: TProdutoCategoriaIds;
   data: TProdutoCategoria;
-  select?: TSelect<TProdutoCategoriaFields>;
+  select?: TSelect;
 }) => Promise<TProdutoCategoria>;
 export type TProdutoCategoriaDel = (args: {
   id: TProdutoCategoriaIds;

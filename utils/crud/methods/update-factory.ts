@@ -1,39 +1,36 @@
 import type { TGenericObject, TSelect, TTableDef, TUpdateArgs } from "@/types";
+import { assertData } from "@/utils/asserts/assert-data";
+import { assertIds } from "@/utils/asserts/assert-ids";
 import { Knex } from "knex";
-import { namesFromTable } from "../../schema/names-from-table";
+import { assertSelect } from "../../asserts/assert-select";
 import {
   renameFieldToName,
   renameNameToField,
 } from "../../schema/rename-fields";
-import { isSelect } from "../../validate/is-select";
-import { zIdClient } from "../../zod/z-id-client";
-import { isRecord } from "../../zod/z-record";
-import { TCrudUpdate } from "../crud.type";
+import { knexSelect } from "@/utils/api/knex-select";
+import { knexId } from "@/utils/api/knex-id";
 
-export function updateFactory(
-  connection: Knex,
-  schema: TTableDef
-): TCrudUpdate {
+export function updateFactory(connection: Knex, schema: TTableDef) {
   const response = async ({
-    id,
+    ids,
     data,
-    select = [],
+    select = ["*"],
   }: TUpdateArgs): Promise<TGenericObject> => {
-    zIdClient(id, schema.fields);
-    isRecord(data, schema.fields);
-    isSelect(select as TSelect, schema.fields);
+    assertIds(ids, schema.fields);
+    assertData(data, schema.fields);
+    assertSelect(select as TSelect, schema.fields);
 
-    const tbl = schema.table;
-    if (select.length === 0) {
-      select = namesFromTable(schema);
-    }
 
-    const qry = await connection(tbl)
-      .update(renameNameToField(data, schema.fields))
-      .where(renameNameToField(id, schema.fields))
-      .returning(renameNameToField(select, schema.fields) as any);
-    return renameFieldToName(qry[0], schema.fields);
+     let qry = connection(schema.table)
+    if (select) qry = qry.select(knexSelect(select, schema.fields));
+
+
+      qry = qry
+        .update(renameNameToField(data, schema.fields))
+        .where(knexId(ids, schema.fields))
+        .returning(knexSelect(select, schema.fields) );
+        const resp = await qry;
+    return renameFieldToName(resp[0], schema.fields);
   };
-  response.help = "Altera informações do registro";
   return response;
 }

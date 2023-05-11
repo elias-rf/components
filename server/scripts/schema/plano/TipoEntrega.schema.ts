@@ -9,7 +9,7 @@ export const TipoEntrega: TTableDef = {
       label: "Codigo",
       name: "TipoEntrega_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const TipoEntrega: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const TipoEntrega: TTableDef = {
       label: "VlMinimo",
       name: "VlMinimo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const TipoEntrega: TTableDef = {
       label: "VlTaxaEntrega",
       name: "VlTaxaEntrega",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -44,28 +44,25 @@ export const TipoEntrega: TTableDef = {
       label: "FgCalculaEntrega",
       name: "FgCalculaEntrega",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgImprimePedido",
       label: "FgImprimePedido",
       name: "FgImprimePedido",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Impressora",
       label: "Impressora",
       name: "Impressora",
       typeField: "string",
-      size: 128,
     },
     {
       field: "PercAdicional",
       label: "PercAdicional",
       name: "PercAdicional",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -73,14 +70,12 @@ export const TipoEntrega: TTableDef = {
       label: "FiguraOrdemFaturamento",
       name: "FiguraOrdemFaturamento",
       typeField: "string",
-      size: 64,
     },
     {
       field: "FgAtivo",
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
     },
   ],
 };

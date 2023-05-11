@@ -9,7 +9,7 @@ export const tbl_Produto_Desenho: TTableDef = {
       label: "fkProduto",
       name: "tbl_Produto_Desenho_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,28 +18,25 @@ export const tbl_Produto_Desenho: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 50,
     },
     {
       field: "EtiquetaS600",
       label: "EtiquetaS600",
       name: "EtiquetaS600",
       typeField: "string",
-      size: 16,
     },
     {
       field: "EtiquetaS4M",
       label: "EtiquetaS4M",
       name: "EtiquetaS4M",
       typeField: "string",
-      size: 16,
     },
     {
       field: "EtiquetaInternaPrimParam",
       label: "EtiquetaInternaPrimParam",
       name: "EtiquetaInternaPrimParam",
       typeField: "int",
-      size: 1,
+
       defaultValue: "0",
     },
     {
@@ -47,7 +44,7 @@ export const tbl_Produto_Desenho: TTableDef = {
       label: "EtiquetaInternaSegParam",
       name: "EtiquetaInternaSegParam",
       typeField: "int",
-      size: 1,
+
       defaultValue: "0",
     },
     {
@@ -55,49 +52,42 @@ export const tbl_Produto_Desenho: TTableDef = {
       label: "EtiquetaExterna1",
       name: "EtiquetaExterna1",
       typeField: "string",
-      size: 16,
     },
     {
       field: "EtiquetaExterna2",
       label: "EtiquetaExterna2",
       name: "EtiquetaExterna2",
       typeField: "string",
-      size: 16,
     },
     {
       field: "EtiquetaExterna3",
       label: "EtiquetaExterna3",
       name: "EtiquetaExterna3",
       typeField: "string",
-      size: 16,
     },
     {
       field: "EtiquetaExterna4",
       label: "EtiquetaExterna4",
       name: "EtiquetaExterna4",
       typeField: "string",
-      size: 16,
     },
     {
       field: "EtiquetaExterna5",
       label: "EtiquetaExterna5",
       name: "EtiquetaExterna5",
       typeField: "string",
-      size: 16,
     },
     {
       field: "EtiquetaExterna6",
       label: "EtiquetaExterna6",
       name: "EtiquetaExterna6",
       typeField: "string",
-      size: 16,
     },
     {
       field: "EtiquetaExterna7",
       label: "EtiquetaExterna7",
       name: "EtiquetaExterna7",
       typeField: "string",
-      size: 16,
     },
   ],
 };

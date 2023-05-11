@@ -1,54 +1,56 @@
 import type { TAggregate, TGenericObject, TListArgs, TTableDef } from "@/types";
+import { knexAggregate } from "@/utils/api/knex-aggregate";
 import { knexOrder } from "@/utils/api/knex-order";
 import { knexSelect } from "@/utils/api/knex-select";
 import { knexWhere } from "@/utils/api/knex-where";
-import { isOrder } from "@/utils/validate/is-order";
-import { isWhere } from "@/utils/validate/is-where";
+import { assertAggregate } from "@/utils/asserts/assert-aggregate";
+import { assertFilters } from "@/utils/asserts/assert-filters";
+import { assertLimit } from "@/utils/asserts/assert-limit";
+import { assertSorts } from "@/utils/asserts/assert-sorts";
 import { Knex } from "knex";
-import { namesFromTable } from "../../schema/names-from-table";
+import { assertSelect } from "../../asserts/assert-select";
 import {
   renameFieldToName,
   renameNameToField,
 } from "../../schema/rename-fields";
-import { isLimit } from "../../validate/is-limit";
-import { isSelect } from "../../validate/is-select";
-import { zAggregate } from "../../zod/z-aggregate";
-import { TCrudList } from "../crud.type";
 
-export function listFactory(connection: Knex, table: TTableDef): TCrudList {
+export function listFactory(connection: Knex, table: TTableDef) {
   const response = async ({
-    where = [],
-    order = [],
+    filters = [],
+    sorts = [],
     limit = 50,
-    select = [],
+    select = ["*"],
     group = [],
-    sum = {},
-    min = {},
-    max = {},
+    sum,
+    min,
+    max,
   }: TListArgs = {}): Promise<TGenericObject[]> => {
-    isLimit(limit);
-    isWhere(where, table.fields);
-    isOrder(order, table.fields);
-    isSelect(select as string[], table.fields);
-    isSelect(group as string[], table.fields);
-    zAggregate(sum as TAggregate, table.fields);
-    zAggregate(min as TAggregate, table.fields);
-    zAggregate(max as TAggregate, table.fields);
-    const tbl = table.table;
-    if (select.length === 0) {
-      select = namesFromTable(table);
-    }
+    // valida parametros
+    assertLimit(limit);
+    assertFilters(filters, table.fields);
+    assertSorts(sorts, table.fields);
+    assertSelect(select as string[], table.fields);
+    assertSelect(group as string[], table.fields);
 
-    let qry = connection(tbl);
+
+
+    let qry = connection(table.table);
     if (select) qry = qry.select(knexSelect(select, table.fields));
     if (limit) qry = qry.limit(limit);
-    if (where.length > 0) qry = qry.where(knexWhere(where, table.fields));
-    if (order.length > 0) qry = qry.orderBy(knexOrder(order, table.fields));
-    if (Object.keys(sum).length > 0) qry = qry.sum(sum);
-
-    if (Object.keys(min).length > 0) qry = qry.min(min);
-
-    if (Object.keys(max).length > 0) qry = qry.max(max);
+    if (filters.length > 0) qry = qry.where(knexWhere(filters, table.fields));
+    if (sorts.length > 0) qry = qry.orderBy(knexOrder(sorts, table.fields));
+    if (sum) {
+      assertAggregate(sum as TAggregate, table.fields);
+      qry = qry.sum(knexAggregate(sum, table.fields));
+    }
+    if (min) {
+      assertAggregate(min as TAggregate, table.fields);
+      qry = qry.sum(knexAggregate(min, table.fields));
+    }
+    if (max) {
+      assertAggregate(max as TAggregate, table.fields);
+      qry = qry.max(knexAggregate(max, table.fields));
+    }
 
     if (group.length > 0)
       qry = qry.groupBy(renameNameToField(group, table.fields));
@@ -56,7 +58,5 @@ export function listFactory(connection: Knex, table: TTableDef): TCrudList {
     const data = await qry;
     return renameFieldToName(data, table.fields);
   };
-
-  response.help = "Restorna lista de registros filtrados";
   return response;
 }

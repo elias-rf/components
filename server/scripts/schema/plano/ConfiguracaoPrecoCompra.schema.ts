@@ -9,7 +9,7 @@ export const ConfiguracaoPrecoCompra: TTableDef = {
       label: "CdEmpresa",
       name: "ConfiguracaoPrecoCompra_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ConfiguracaoPrecoCompra: TTableDef = {
       label: "FgVlTabela",
       name: "FgVlTabela",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ConfiguracaoPrecoCompra: TTableDef = {
       label: "FgVlCusto",
       name: "FgVlCusto",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ConfiguracaoPrecoCompra: TTableDef = {
       label: "FgVlAtacado",
       name: "FgVlAtacado",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ConfiguracaoPrecoCompra: TTableDef = {
       label: "FgVlVarejo",
       name: "FgVlVarejo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ConfiguracaoPrecoCompra: TTableDef = {
       label: "FgCalculoVlCusto",
       name: "FgCalculoVlCusto",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ConfiguracaoPrecoCompra: TTableDef = {
       label: "FgLogPreco",
       name: "FgLogPreco",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const NotaPartilhaICMSMestre: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaPartilhaICMSMestre: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaPartilhaICMSMestre: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaPartilhaICMSMestre: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaPartilhaICMSMestre: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaPartilhaICMSMestre: TTableDef = {
       label: "VlBaseCalculoICMS",
       name: "VlBaseCalculoICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const NotaPartilhaICMSMestre: TTableDef = {
       label: "VlICMSUFOrigem",
       name: "VlICMSUFOrigem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const NotaPartilhaICMSMestre: TTableDef = {
       label: "VlICMSUFDestino",
       name: "VlICMSUFDestino",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const NotaPartilhaICMSMestre: TTableDef = {
       label: "VlCombatePobrezaDestino",
       name: "VlCombatePobrezaDestino",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

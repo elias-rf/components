@@ -9,7 +9,7 @@ export const tEsterilizacaoInterna: TTableDef = {
       label: "kLoteEstInt",
       name: "tEsterilizacaoInterna_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tEsterilizacaoInterna: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -26,28 +26,25 @@ export const tEsterilizacaoInterna: TTableDef = {
       label: "Resultado",
       name: "Resultado",
       typeField: "string",
-      size: 1,
     },
     {
       field: "UsuarioResultado",
       label: "UsuarioResultado",
       name: "UsuarioResultado",
       typeField: "string",
-      size: 50,
     },
     {
       field: "Obs",
       label: "Obs",
       name: "Obs",
       typeField: "string",
-      size: 4000,
     },
     {
       field: "Fechado",
       label: "Fechado",
       name: "Fechado",
       typeField: "int",
-      size: 1,
+
       defaultValue: "0",
     },
     {
@@ -55,14 +52,13 @@ export const tEsterilizacaoInterna: TTableDef = {
       label: "UsuarioFechamento",
       name: "UsuarioFechamento",
       typeField: "string",
-      size: 50,
     },
     {
       field: "DataFechamento",
       label: "DataFechamento",
       name: "DataFechamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -70,7 +66,6 @@ export const tEsterilizacaoInterna: TTableDef = {
       label: "DataHoraAutoclave",
       name: "DataHoraAutoclave",
       typeField: "date",
-      size: 4,
     },
   ],
 };

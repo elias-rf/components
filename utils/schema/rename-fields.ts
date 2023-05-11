@@ -3,8 +3,6 @@ import { renameString } from "@/utils/schema/rename-string";
 import { isArray } from "../identify/is-array";
 import { isEmpty } from "../identify/is-empty";
 import { isObject } from "../identify/is-object";
-import { fieldsFromFields } from "./fields-from-fields";
-import { namesFromFields } from "./names-from-fields";
 
 function renameTuple(data: any[], sourceList: string[], targetList: string[]) {
   if (isEmpty(data)) return data;
@@ -78,8 +76,8 @@ function objectPropValue(
  */
 export function renameToFieldTuple(tupleArray: any[], fields: TFieldDef[]) {
   if (isEmpty(tupleArray)) return tupleArray;
-  const nameList = namesFromFields(fields);
-  const fieldList = fieldsFromFields(fields);
+  const nameList = fields.map((fld) => fld.name);
+  const fieldList = fields.map((fld) => fld.field || "");
   return tupleArray.map((whr: string[]) => {
     whr[0] = renameString(whr[0], nameList, fieldList);
     return whr;
@@ -88,8 +86,8 @@ export function renameToFieldTuple(tupleArray: any[], fields: TFieldDef[]) {
 
 export function renameToFieldArray(data: any, fields: TFieldDef[]) {
   if (isEmpty(data)) return data;
-  const nameList = namesFromFields(fields);
-  const fieldList = fieldsFromFields(fields);
+  const nameList = fields.map((fld) => fld.name);
+  const fieldList = fields.map((fld) => fld.field || "");
   return data.map((field: any) => {
     const fieldIdx = nameList.indexOf(field);
     if (fieldIdx === -1) {
@@ -102,24 +100,24 @@ export function renameToFieldArray(data: any, fields: TFieldDef[]) {
 
 export function renameToNameObject(data: any, fields: TFieldDef[]) {
   if (!isObject(data)) return data;
-  const nameList = namesFromFields(fields);
-  const fieldList = fieldsFromFields(fields);
+  const nameList = fields.map((fld) => fld.name);
+  const fieldList = fields.map((fld) => fld.field || "");
   const rsp = renameObjectProps(data, fieldList, nameList);
   return rsp;
 }
 
 export function renameToFieldObject(data: any, fields: TFieldDef[]) {
   if (!isObject(data)) return data;
-  const nameList = namesFromFields(fields);
-  const fieldList = fieldsFromFields(fields);
+  const nameList = fields.map((fld) => fld.name);
+  const fieldList = fields.map((fld) => fld.field || "");
   const rsp = renameObjectProps(data, nameList, fieldList);
   return rsp;
 }
 
 export function renameToNameArrayObject(data: any[], fields: TFieldDef[]) {
   if (!isArray(data)) return data;
-  const nameList = namesFromFields(fields);
-  const fieldList = fieldsFromFields(fields);
+  const nameList = fields.map((fld) => fld.name);
+  const fieldList = fields.map((fld) => fld.field || "");
 
   const rsp = data.map((rec) => {
     return renameObjectProps(rec, fieldList, nameList);
@@ -129,8 +127,8 @@ export function renameToNameArrayObject(data: any[], fields: TFieldDef[]) {
 
 export function renameToFieldArrayObject(data: any[], fields: TFieldDef[]) {
   if (!isArray(data)) return data;
-  const nameList = namesFromFields(fields);
-  const fieldList = fieldsFromFields(fields);
+  const nameList = fields.map((fld) => fld.name);
+  const fieldList = fields.map((fld) => fld.field || "");
 
   const rsp = data.map((rec) => {
     return renameObjectProps(rec, nameList, fieldList);
@@ -139,8 +137,8 @@ export function renameToFieldArrayObject(data: any[], fields: TFieldDef[]) {
 }
 
 export function renameFieldToName(data: any, fields: TFieldDef[]) {
-  const nameList = namesFromFields(fields);
-  const fieldList = fieldsFromFields(fields);
+  const nameList = fields.map((fld) => fld.name);
+  const fieldList = fields.map((fld) => fld.field || "");
 
   if (typeof data === "string") return renameString(data, fieldList, nameList);
   if (typeof data === "object" && !Array.isArray(data))
@@ -158,8 +156,8 @@ export function renameFieldToName(data: any, fields: TFieldDef[]) {
 }
 
 export function renameNameToField(data: any, fields: TFieldDef[]) {
-  const nameList = namesFromFields(fields);
-  const fieldList = fieldsFromFields(fields);
+  const nameList = fields.map((fld) => fld.name);
+  const fieldList = fields.map((fld) => fld.field || "");
 
   if (typeof data === "string") return renameString(data, nameList, fieldList);
   if (typeof data === "object" && !Array.isArray(data))

@@ -9,7 +9,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "NomeEmpresa",
       name: "tbl_Sistema_Proprietario_id",
       typeField: "string",
-      size: 50,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "KEmpresa",
       name: "KEmpresa",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "SiglaEmpresa",
       name: "SiglaEmpresa",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "RazaoSocial",
       name: "RazaoSocial",
       typeField: "string",
-      size: 150,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "NomeFantasia",
       name: "NomeFantasia",
       typeField: "string",
-      size: 150,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "Contato",
       name: "Contato",
       typeField: "string",
-      size: 150,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "CGC",
       name: "CGC",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "InscEstadual",
       name: "InscEstadual",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 80,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "Bairro",
       name: "Bairro",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "Cidade",
       name: "Cidade",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "Estado",
       name: "Estado",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "CEP",
       name: "CEP",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -114,7 +114,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "Pais",
       name: "Pais",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -122,7 +122,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -130,7 +130,7 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "Fax",
       name: "Fax",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -138,21 +138,18 @@ export const tbl_Sistema_Proprietario: TTableDef = {
       label: "Proprietaria",
       name: "Proprietaria",
       typeField: "int",
-      size: 1,
     },
     {
       field: "ICMS",
       label: "ICMS",
       name: "ICMS",
       typeField: "int",
-      size: 1,
     },
     {
       field: "Web",
       label: "Web",
       name: "Web",
       typeField: "string",
-      size: 50,
     },
   ],
 };

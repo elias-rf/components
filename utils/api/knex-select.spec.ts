@@ -26,8 +26,19 @@ describe("knexSelect", () => {
       "name",
       "department",
     ]);
+  });
+  it("deve disparar erro", () => {
     expect(() => knexSelect(["nomes", "setor"], entity)).toThrow(
-      "nomes não é um nome válido: agenda_telefone_id,nome,setor,email"
+      "nomes não é um campo válido use: agenda_telefone_id,email,nome"
     );
+  });
+
+  it("deve retornar fields quando receber *", () => {
+    expect(knexSelect(["*"], entity)).toEqual([
+      "id",
+      "name",
+      "department",
+      "email",
+    ]);
   });
 });

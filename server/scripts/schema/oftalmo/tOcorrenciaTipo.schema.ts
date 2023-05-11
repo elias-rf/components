@@ -9,7 +9,7 @@ export const tOcorrenciaTipo: TTableDef = {
       label: "kTipo",
       name: "tOcorrenciaTipo_id",
       typeField: "string",
-      size: 30,
+
       primaryKey: true,
       allowNull: false,
     },

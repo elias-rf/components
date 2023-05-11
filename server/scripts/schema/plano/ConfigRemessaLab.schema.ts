@@ -9,7 +9,7 @@ export const ConfigRemessaLab: TTableDef = {
       label: "IdLayOut",
       name: "IdLayOut",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ConfigRemessaLab: TTableDef = {
       label: "CdFabricante",
       name: "CdFabricante",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

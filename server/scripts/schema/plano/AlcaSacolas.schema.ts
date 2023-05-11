@@ -9,7 +9,7 @@ export const AlcaSacolas: TTableDef = {
       label: "CdAlca",
       name: "AlcaSacolas_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const AlcaSacolas: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 70,
+
       allowNull: false,
     },
   ],

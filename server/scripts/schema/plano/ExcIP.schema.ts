@@ -9,7 +9,7 @@ export const ExcIP: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ExcIP: TTableDef = {
       label: "NroPDV",
       name: "NroPDV",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ExcIP: TTableDef = {
       label: "NumCupom",
       name: "NumCupom",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ExcIP: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ExcIP: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ExcIP: TTableDef = {
       label: "CdRefEstoque",
       name: "CdRefEstoque",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ExcIP: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -66,7 +66,7 @@ export const ExcIP: TTableDef = {
       label: "VlUnitario",
       name: "VlUnitario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -75,7 +75,7 @@ export const ExcIP: TTableDef = {
       label: "VlDescGer",
       name: "VlDescGer",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -84,7 +84,7 @@ export const ExcIP: TTableDef = {
       label: "VlDescDir",
       name: "VlDescDir",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -93,7 +93,7 @@ export const ExcIP: TTableDef = {
       label: "VlTotal",
       name: "VlTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -102,7 +102,7 @@ export const ExcIP: TTableDef = {
       label: "VlLiquido",
       name: "VlLiquido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -111,7 +111,7 @@ export const ExcIP: TTableDef = {
       label: "ClasFiscal",
       name: "ClasFiscal",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -119,7 +119,7 @@ export const ExcIP: TTableDef = {
       label: "AliqISS",
       name: "AliqISS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -128,7 +128,7 @@ export const ExcIP: TTableDef = {
       label: "Aliquota",
       name: "Aliquota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -137,7 +137,7 @@ export const ExcIP: TTableDef = {
       label: "VlComissaoPrazo",
       name: "VlComissaoPrazo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -146,7 +146,7 @@ export const ExcIP: TTableDef = {
       label: "VlComissaoVista",
       name: "VlComissaoVista",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -155,7 +155,7 @@ export const ExcIP: TTableDef = {
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -163,7 +163,7 @@ export const ExcIP: TTableDef = {
       label: "CustoMedio",
       name: "CustoMedio",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -172,7 +172,7 @@ export const ExcIP: TTableDef = {
       label: "FgEstoque",
       name: "FgEstoque",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -180,7 +180,7 @@ export const ExcIP: TTableDef = {
       label: "ImprimeComponentes",
       name: "ImprimeComponentes",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -188,7 +188,7 @@ export const ExcIP: TTableDef = {
       label: "CdProdutoAssociado",
       name: "CdProdutoAssociado",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -196,7 +196,7 @@ export const ExcIP: TTableDef = {
       label: "PercLimiteComissao",
       name: "PercLimiteComissao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -205,7 +205,7 @@ export const ExcIP: TTableDef = {
       label: "CRM",
       name: "CRM",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -213,7 +213,7 @@ export const ExcIP: TTableDef = {
       label: "ComplementoDescricao",
       name: "ComplementoDescricao",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -221,7 +221,7 @@ export const ExcIP: TTableDef = {
       label: "VlCusto",
       name: "VlCusto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

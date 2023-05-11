@@ -9,7 +9,7 @@ export const ItemNotaIPI: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ItemNotaIPI: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ItemNotaIPI: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ItemNotaIPI: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ItemNotaIPI: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const ItemNotaIPI: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const ItemNotaIPI: TTableDef = {
       label: "CdEnquadramentoIPI",
       name: "CdEnquadramentoIPI",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -67,7 +67,7 @@ export const ItemNotaIPI: TTableDef = {
       label: "ClasseEnquadramentoIPI",
       name: "ClasseEnquadramentoIPI",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -75,7 +75,7 @@ export const ItemNotaIPI: TTableDef = {
       label: "CdSeloIPI",
       name: "CdSeloIPI",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -83,7 +83,7 @@ export const ItemNotaIPI: TTableDef = {
       label: "QtdeSelo",
       name: "QtdeSelo",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

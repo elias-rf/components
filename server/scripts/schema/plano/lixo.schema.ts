@@ -9,7 +9,7 @@ export const lixo: TTableDef = {
       label: "lote",
       name: "lixo_id",
       typeField: "string",
-      size: 100,
+
       primaryKey: true,
       allowNull: false,
     },

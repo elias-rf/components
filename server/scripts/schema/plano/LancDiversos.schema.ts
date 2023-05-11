@@ -9,7 +9,7 @@ export const LancDiversos: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -17,14 +17,13 @@ export const LancDiversos: TTableDef = {
       label: "TxFinalidade",
       name: "TxFinalidade",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "CdBanco",
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -32,7 +31,7 @@ export const LancDiversos: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -40,7 +39,7 @@ export const LancDiversos: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
+
       allowNull: false,
     },
     {
@@ -48,7 +47,7 @@ export const LancDiversos: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -57,7 +56,7 @@ export const LancDiversos: TTableDef = {
       label: "NumLcto",
       name: "NumLcto",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -65,14 +64,13 @@ export const LancDiversos: TTableDef = {
       label: "CdTpAplicacao",
       name: "CdTpAplicacao",
       typeField: "int",
-      size: 4,
     },
     {
       field: "VlValor",
       label: "VlValor",
       name: "VlValor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -80,28 +78,25 @@ export const LancDiversos: TTableDef = {
       label: "TxTipLcto",
       name: "TxTipLcto",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CdFilialAssociada",
       label: "CdFilialAssociada",
       name: "CdFilialAssociada",
       typeField: "int",
-      size: 4,
     },
     {
       field: "FgSituacao",
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CdContabil",
       label: "CdContabil",
       name: "CdContabil",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -109,28 +104,24 @@ export const LancDiversos: TTableDef = {
       label: "CdBancoDestino",
       name: "CdBancoDestino",
       typeField: "int",
-      size: 2,
     },
     {
       field: "NumContaDestino",
       label: "NumContaDestino",
       name: "NumContaDestino",
       typeField: "string",
-      size: 16,
     },
     {
       field: "NumLctoDestino",
       label: "NumLctoDestino",
       name: "NumLctoDestino",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdAgenciaDestino",
       label: "CdAgenciaDestino",
       name: "CdAgenciaDestino",
       typeField: "int",
-      size: 2,
     },
   ],
 };

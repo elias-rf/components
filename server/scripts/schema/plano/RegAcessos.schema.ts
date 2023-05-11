@@ -9,7 +9,7 @@ export const RegAcessos: TTableDef = {
       label: "Estacao",
       name: "Estacao",
       typeField: "string",
-      size: 60,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const RegAcessos: TTableDef = {
       label: "Modulo",
       name: "Modulo",
       typeField: "string",
-      size: 60,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const RegAcessos: TTableDef = {
       label: "DataAcesso",
       name: "DataAcesso",
       typeField: "string",
-      size: 60,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const RegAcessos: TTableDef = {
       label: "QtdeAcessos",
       name: "QtdeAcessos",
       typeField: "string",
-      size: 60,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const NotaEntradaPagamentos: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const NotaEntradaPagamentos: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const NotaEntradaPagamentos: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const NotaEntradaPagamentos: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const NotaEntradaPagamentos: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const NotaEntradaPagamentos: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -60,7 +60,7 @@ export const NotaEntradaPagamentos: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -68,7 +68,7 @@ export const NotaEntradaPagamentos: TTableDef = {
       label: "DtVencimento",
       name: "DtVencimento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -77,7 +77,7 @@ export const NotaEntradaPagamentos: TTableDef = {
       label: "VlDocumento",
       name: "VlDocumento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -86,7 +86,7 @@ export const NotaEntradaPagamentos: TTableDef = {
       label: "VlDeducao",
       name: "VlDeducao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -95,7 +95,7 @@ export const NotaEntradaPagamentos: TTableDef = {
       label: "VlAcrescimo",
       name: "VlAcrescimo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

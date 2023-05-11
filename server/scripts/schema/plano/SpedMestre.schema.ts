@@ -9,7 +9,7 @@ export const SpedMestre: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SpedMestre: TTableDef = {
       label: "CdEmitente",
       name: "CdEmitente",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const SpedMestre: TTableDef = {
       label: "TipoEmitente",
       name: "TipoEmitente",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const SpedMestre: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const SpedMestre: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const SpedMestre: TTableDef = {
       label: "SubSerie",
       name: "SubSerie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const SpedMestre: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const SpedMestre: TTableDef = {
       label: "NumECF",
       name: "NumECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const SpedMestre: TTableDef = {
       label: "TipoOperacao",
       name: "TipoOperacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const SpedMestre: TTableDef = {
       label: "TipoNotaFiscal",
       name: "TipoNotaFiscal",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const SpedMestre: TTableDef = {
       label: "SituacaoDocumento",
       name: "SituacaoDocumento",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -97,7 +97,7 @@ export const SpedMestre: TTableDef = {
       label: "ChaveEletronica",
       name: "ChaveEletronica",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -105,7 +105,7 @@ export const SpedMestre: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -114,7 +114,7 @@ export const SpedMestre: TTableDef = {
       label: "DtOperacao",
       name: "DtOperacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -123,7 +123,7 @@ export const SpedMestre: TTableDef = {
       label: "FormaPagamento",
       name: "FormaPagamento",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -131,7 +131,7 @@ export const SpedMestre: TTableDef = {
       label: "TipoFrete",
       name: "TipoFrete",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -139,7 +139,7 @@ export const SpedMestre: TTableDef = {
       label: "VlProdutos",
       name: "VlProdutos",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -148,7 +148,7 @@ export const SpedMestre: TTableDef = {
       label: "VlFrete",
       name: "VlFrete",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -157,7 +157,7 @@ export const SpedMestre: TTableDef = {
       label: "VlSeguro",
       name: "VlSeguro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -166,7 +166,7 @@ export const SpedMestre: TTableDef = {
       label: "VlDespesaAcessoria",
       name: "VlDespesaAcessoria",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -175,7 +175,7 @@ export const SpedMestre: TTableDef = {
       label: "VlTotalNota",
       name: "VlTotalNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -184,7 +184,7 @@ export const SpedMestre: TTableDef = {
       label: "VlBaseCalculoICMS",
       name: "VlBaseCalculoICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -193,7 +193,7 @@ export const SpedMestre: TTableDef = {
       label: "VlICMS",
       name: "VlICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -202,7 +202,7 @@ export const SpedMestre: TTableDef = {
       label: "VlBaseCalculoICMSST",
       name: "VlBaseCalculoICMSST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -211,7 +211,7 @@ export const SpedMestre: TTableDef = {
       label: "VlICMSST",
       name: "VlICMSST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -220,7 +220,7 @@ export const SpedMestre: TTableDef = {
       label: "VlIPI",
       name: "VlIPI",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -229,7 +229,7 @@ export const SpedMestre: TTableDef = {
       label: "VlPIS",
       name: "VlPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -238,7 +238,7 @@ export const SpedMestre: TTableDef = {
       label: "VlPISST",
       name: "VlPISST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -247,7 +247,7 @@ export const SpedMestre: TTableDef = {
       label: "VlCofins",
       name: "VlCofins",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -256,7 +256,7 @@ export const SpedMestre: TTableDef = {
       label: "VlCofinsST",
       name: "VlCofinsST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -265,7 +265,7 @@ export const SpedMestre: TTableDef = {
       label: "VlBaseCalculoPIS",
       name: "VlBaseCalculoPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -273,7 +273,7 @@ export const SpedMestre: TTableDef = {
       label: "VlBaseCalculoCofins",
       name: "VlBaseCalculoCofins",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -281,7 +281,7 @@ export const SpedMestre: TTableDef = {
       label: "VLISS",
       name: "VLISS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

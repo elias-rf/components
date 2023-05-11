@@ -9,7 +9,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "SiglaDocumento",
       name: "SiglaDocumento",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "ItemDocumento",
       name: "ItemDocumento",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "CdEmpresaContasPagar",
       name: "CdEmpresaContasPagar",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "CdFilialContasPagar",
       name: "CdFilialContasPagar",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "CdFornecedorContasPagar",
       name: "CdFornecedorContasPagar",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "NumDocumentoContasPagar",
       name: "NumDocumentoContasPagar",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -97,7 +97,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "SerieContasPagar",
       name: "SerieContasPagar",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -105,7 +105,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "ModeloContasPagar",
       name: "ModeloContasPagar",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -113,7 +113,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "ItemDocumentoContasPagar",
       name: "ItemDocumentoContasPagar",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -121,7 +121,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "DtInclusao",
       name: "DtInclusao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -130,7 +130,7 @@ export const ContasReceberChequeFornecedor: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

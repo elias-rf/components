@@ -9,7 +9,7 @@ export const SuporteEvento: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SuporteEvento: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const SuporteEvento: TTableDef = {
       label: "Evento",
       name: "Evento",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const Funcionarios: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Funcionarios: TTableDef = {
       label: "CdFuncionario",
       name: "CdFuncionario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,42 +27,37 @@ export const Funcionarios: TTableDef = {
       label: "NmFuncionario",
       name: "NmFuncionario",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Endereco",
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Cidade",
       label: "Cidade",
       name: "Cidade",
       typeField: "string",
-      size: 30,
     },
     {
       field: "Bairro",
       label: "Bairro",
       name: "Bairro",
       typeField: "string",
-      size: 20,
     },
     {
       field: "Uf",
       label: "Uf",
       name: "Uf",
       typeField: "string",
-      size: 2,
     },
     {
       field: "Cep",
       label: "Cep",
       name: "Cep",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -70,21 +65,19 @@ export const Funcionarios: TTableDef = {
       label: "NumRg",
       name: "NumRg",
       typeField: "string",
-      size: 15,
     },
     {
       field: "Telefone",
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 15,
     },
     {
       field: "DtNasc",
       label: "DtNasc",
       name: "DtNasc",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -92,7 +85,7 @@ export const Funcionarios: TTableDef = {
       label: "VlLimite",
       name: "VlLimite",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -100,14 +93,13 @@ export const Funcionarios: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -115,42 +107,36 @@ export const Funcionarios: TTableDef = {
       label: "FgExibeLimite",
       name: "FgExibeLimite",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Classificacao",
       label: "Classificacao",
       name: "Classificacao",
       typeField: "string",
-      size: 30,
     },
     {
       field: "FgSubsidio",
       label: "FgSubsidio",
       name: "FgSubsidio",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NumAgencia",
       label: "NumAgencia",
       name: "NumAgencia",
       typeField: "string",
-      size: 10,
     },
     {
       field: "NumConta",
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 10,
     },
     {
       field: "NumDV",
       label: "NumDV",
       name: "NumDV",
       typeField: "string",
-      size: 3,
     },
   ],
 };

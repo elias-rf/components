@@ -9,7 +9,7 @@ export const Cores: TTableDef = {
       label: "CdCor",
       name: "Cores_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,6 @@ export const Cores: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 20,
     },
   ],
 };

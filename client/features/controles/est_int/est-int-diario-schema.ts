@@ -1,6 +1,6 @@
-import { TFieldDef } from "@/types";
+import { TSchema } from "@/types";
 
-export const esterilizacaoInternaDiarioSchema: TFieldDef[] = [
+export const esterilizacaoInternaDiarioSchema: TSchema = [
   {
     name: "dia",
     label: "Dia",

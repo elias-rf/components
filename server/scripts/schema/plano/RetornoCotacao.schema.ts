@@ -9,7 +9,7 @@ export const RetornoCotacao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const RetornoCotacao: TTableDef = {
       label: "NumCotacao",
       name: "NumCotacao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const RetornoCotacao: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const RetornoCotacao: TTableDef = {
       label: "DtCotacao",
       name: "DtCotacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -45,14 +45,12 @@ export const RetornoCotacao: TTableDef = {
       label: "PrazoPgto",
       name: "PrazoPgto",
       typeField: "string",
-      size: 512,
     },
     {
       field: "PrazoEntrega",
       label: "PrazoEntrega",
       name: "PrazoEntrega",
       typeField: "string",
-      size: 512,
     },
   ],
 };

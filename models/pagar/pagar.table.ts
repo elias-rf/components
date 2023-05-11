@@ -10,7 +10,7 @@ export const pagar: TTableDef = {
       name: "filial_id",
       primaryKey: true,
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -19,7 +19,7 @@ export const pagar: TTableDef = {
       name: "doc_id",
       primaryKey: true,
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const pagar: TTableDef = {
       label: "CodFor",
       name: "fornecedor_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const pagar: TTableDef = {
       label: "SeqDoc",
       name: "item_doc",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -44,7 +44,7 @@ export const pagar: TTableDef = {
       label: "Serie",
       name: "serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -52,7 +52,7 @@ export const pagar: TTableDef = {
       label: "DatEmi",
       name: "data_emissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -60,7 +60,7 @@ export const pagar: TTableDef = {
       label: "DatVen",
       name: "data_venda",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -68,7 +68,7 @@ export const pagar: TTableDef = {
       label: "DatPag",
       name: "data_pagamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -76,63 +76,55 @@ export const pagar: TTableDef = {
       label: "TipInd",
       name: "TipInd",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Aceite",
       label: "Aceite",
       name: "aceite",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NumFat",
       label: "NumFat",
       name: "NumFat",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdBanco",
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdAgencia",
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NumConta",
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
     },
     {
       field: "NumCheque",
       label: "NumCheque",
       name: "NumCheque",
       typeField: "int",
-      size: 4,
     },
     {
       field: "FgSituacao",
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtUltAlteracao",
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -140,42 +132,37 @@ export const pagar: TTableDef = {
       label: "TpMovimentoBanco",
       name: "TpMovimentoBanco",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NumLancamento",
       label: "NumLancamento",
       name: "NumLancamento",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NumNota",
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdTipoPagamento",
       label: "CdTipoPagamento",
       name: "CdTipoPagamento",
       typeField: "int",
-      size: 2,
     },
     {
       field: "CdFontePagamento",
       label: "CdFontePagamento",
       name: "CdFontePagamento",
       typeField: "int",
-      size: 2,
     },
     {
       field: "DtLancamento",
       label: "DtLancamento",
       name: "DtLancamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -183,7 +170,7 @@ export const pagar: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -191,14 +178,13 @@ export const pagar: TTableDef = {
       label: "NumAuxiliar",
       name: "NumAuxiliar",
       typeField: "string",
-      size: 32,
     },
     {
       field: "VlAmortizado",
       label: "VlAmortizado",
       name: "VlAmortizado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -207,7 +193,7 @@ export const pagar: TTableDef = {
       label: "PercJuroDiario",
       name: "PercJuroDiario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -216,7 +202,7 @@ export const pagar: TTableDef = {
       label: "VlMultaAtraso",
       name: "VlMultaAtraso",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -225,7 +211,7 @@ export const pagar: TTableDef = {
       label: "VlDocumento",
       name: "VlDocumento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -234,7 +220,7 @@ export const pagar: TTableDef = {
       label: "VlDeducao",
       name: "VlDeducao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -243,7 +229,7 @@ export const pagar: TTableDef = {
       label: "VlAcrescimo",
       name: "VlAcrescimo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -252,7 +238,7 @@ export const pagar: TTableDef = {
       label: "VlJurosPago",
       name: "VlJurosPago",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -261,14 +247,13 @@ export const pagar: TTableDef = {
       label: "ObsDocumento",
       name: "ObsDocumento",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "FgTipoCustoDRE",
       label: "FgTipoCustoDRE",
       name: "FgTipoCustoDRE",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

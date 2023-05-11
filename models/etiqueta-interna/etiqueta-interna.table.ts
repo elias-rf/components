@@ -9,7 +9,7 @@ export const etiqueta_interna: TTableDef = {
       label: "Cód",
       name: "etiqueta_interna_id",
       typeField: "string",
-      size: 18,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,14 +18,12 @@ export const etiqueta_interna: TTableDef = {
       label: "Cód Produto",
       name: "produto_item_id",
       typeField: "int",
-      size: 4,
     },
     {
       field: "DataInsercao",
       label: "Data",
       name: "data",
       typeField: "date",
-      size: 4,
     },
   ],
 };

@@ -9,7 +9,7 @@ export const ItemFormula: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ItemFormula: TTableDef = {
       label: "NumFormula",
       name: "NumFormula",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ItemFormula: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ItemFormula: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ItemFormula: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ItemFormula: TTableDef = {
       label: "TipoQuantidade",
       name: "TipoQuantidade",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ItemFormula: TTableDef = {
       label: "QuantidadeEfetiva",
       name: "QuantidadeEfetiva",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const ItemFormula: TTableDef = {
       label: "VlVenda",
       name: "VlVenda",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -74,7 +74,7 @@ export const ItemFormula: TTableDef = {
       label: "Equivalencia",
       name: "Equivalencia",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const ItemFormula: TTableDef = {
       label: "FormulaConversao",
       name: "FormulaConversao",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const ItemFormula: TTableDef = {
       label: "Correcao",
       name: "Correcao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -99,7 +99,7 @@ export const ItemFormula: TTableDef = {
       label: "FgEmbalagem",
       name: "FgEmbalagem",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -107,7 +107,7 @@ export const ItemFormula: TTableDef = {
       label: "FgQsp",
       name: "FgQsp",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -115,7 +115,7 @@ export const ItemFormula: TTableDef = {
       label: "Diluicao",
       name: "Diluicao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -123,21 +123,19 @@ export const ItemFormula: TTableDef = {
       label: "CdLote",
       name: "CdLote",
       typeField: "string",
-      size: 32,
     },
     {
       field: "FgCapsula",
       label: "FgCapsula",
       name: "FgCapsula",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CdFornecedor",
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

@@ -9,7 +9,7 @@ export const MestreNotaServicoIntermediario: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MestreNotaServicoIntermediario: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const MestreNotaServicoIntermediario: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const MestreNotaServicoIntermediario: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const MestreNotaServicoIntermediario: TTableDef = {
       label: "RazaoSocialIntermediario",
       name: "RazaoSocialIntermediario",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const MestreNotaServicoIntermediario: TTableDef = {
       label: "CPFCNPJIntermediario",
       name: "CPFCNPJIntermediario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -60,7 +60,7 @@ export const MestreNotaServicoIntermediario: TTableDef = {
       label: "InscMunicipalIntermediario",
       name: "InscMunicipalIntermediario",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

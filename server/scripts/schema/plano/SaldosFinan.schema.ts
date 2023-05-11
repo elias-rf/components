@@ -9,7 +9,7 @@ export const SaldosFinan: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SaldosFinan: TTableDef = {
       label: "DtReferencia",
       name: "DtReferencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const SaldosFinan: TTableDef = {
       label: "VlSaldo",
       name: "VlSaldo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -34,7 +34,7 @@ export const SaldosFinan: TTableDef = {
       label: "VlSaldoAnt",
       name: "VlSaldoAnt",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

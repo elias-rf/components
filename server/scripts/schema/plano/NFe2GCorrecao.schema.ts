@@ -9,7 +9,7 @@ export const NFe2GCorrecao: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NFe2GCorrecao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NFe2GCorrecao: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NFe2GCorrecao: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NFe2GCorrecao: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NFe2GCorrecao: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NFe2GCorrecao: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -66,7 +66,7 @@ export const NFe2GCorrecao: TTableDef = {
       label: "Correcao",
       name: "Correcao",
       typeField: "string",
-      size: 1000,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const NFe2GCorrecao: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -82,14 +82,12 @@ export const NFe2GCorrecao: TTableDef = {
       label: "Status",
       name: "Status",
       typeField: "int",
-      size: 5,
     },
     {
       field: "NumProtocolo",
       label: "NumProtocolo",
       name: "NumProtocolo",
       typeField: "string",
-      size: 32,
     },
   ],
 };

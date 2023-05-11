@@ -9,7 +9,7 @@ export const ExcMP: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ExcMP: TTableDef = {
       label: "NroPDV",
       name: "NroPDV",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ExcMP: TTableDef = {
       label: "NumCupom",
       name: "NumCupom",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ExcMP: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ExcMP: TTableDef = {
       label: "CdTipoVenda",
       name: "CdTipoVenda",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ExcMP: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const ExcMP: TTableDef = {
       label: "DtReal",
       name: "DtReal",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const ExcMP: TTableDef = {
       label: "Horario",
       name: "Horario",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const ExcMP: TTableDef = {
       label: "CdVendedor",
       name: "CdVendedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -85,7 +85,7 @@ export const ExcMP: TTableDef = {
       label: "CdCaixa",
       name: "CdCaixa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -94,7 +94,7 @@ export const ExcMP: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -103,7 +103,7 @@ export const ExcMP: TTableDef = {
       label: "CdFuncionario",
       name: "CdFuncionario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -112,7 +112,7 @@ export const ExcMP: TTableDef = {
       label: "VlTotal",
       name: "VlTotal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -121,7 +121,7 @@ export const ExcMP: TTableDef = {
       label: "VlDesconto",
       name: "VlDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -130,7 +130,7 @@ export const ExcMP: TTableDef = {
       label: "VlDescGer",
       name: "VlDescGer",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -139,7 +139,7 @@ export const ExcMP: TTableDef = {
       label: "CupomRef",
       name: "CupomRef",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -147,7 +147,7 @@ export const ExcMP: TTableDef = {
       label: "NumCRM",
       name: "NumCRM",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -155,7 +155,7 @@ export const ExcMP: TTableDef = {
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

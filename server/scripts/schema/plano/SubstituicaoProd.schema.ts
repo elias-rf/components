@@ -9,7 +9,7 @@ export const SubstituicaoProd: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const SubstituicaoProd: TTableDef = {
       label: "CdAssociado",
       name: "CdAssociado",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
   ],

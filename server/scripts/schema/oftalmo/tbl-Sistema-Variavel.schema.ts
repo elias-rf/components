@@ -9,7 +9,7 @@ export const tbl_Sistema_Variavel: TTableDef = {
       label: "kVar",
       name: "tbl_Sistema_Variavel_id",
       typeField: "string",
-      size: 50,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,14 +18,12 @@ export const tbl_Sistema_Variavel: TTableDef = {
       label: "Vlr",
       name: "Vlr",
       typeField: "string",
-      size: 250,
     },
     {
       field: "Descricao",
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 50,
     },
   ],
 };

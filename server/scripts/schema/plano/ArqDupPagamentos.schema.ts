@@ -9,7 +9,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "Numdoc",
       name: "Numdoc",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "SeqDoc",
       name: "SeqDoc",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -59,7 +59,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "DtPagamento",
       name: "DtPagamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -68,7 +68,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "SequenciaPgto",
       name: "SequenciaPgto",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -76,7 +76,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "VlAmortizado",
       name: "VlAmortizado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -85,7 +85,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "VlJuros",
       name: "VlJuros",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -94,7 +94,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "VlDesconto",
       name: "VlDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -103,7 +103,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "TipoPgto",
       name: "TipoPgto",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -111,7 +111,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -119,7 +119,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -127,7 +127,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
+
       allowNull: false,
     },
     {
@@ -135,7 +135,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "NumCheque",
       name: "NumCheque",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -143,7 +143,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "NumLcto",
       name: "NumLcto",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -151,7 +151,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "CdUsuario",
       name: "CdUsuario",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -159,7 +159,7 @@ export const ArqDupPagamentos: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -168,7 +168,6 @@ export const ArqDupPagamentos: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
     },
   ],
 };

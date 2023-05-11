@@ -9,7 +9,7 @@ export const SaldoBancoHoras: TTableDef = {
       label: "CdUsuario",
       name: "SaldoBancoHoras_id",
       typeField: "string",
-      size: 64,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const SaldoBancoHoras: TTableDef = {
       label: "DtUltAcertoBancoHoras",
       name: "DtUltAcertoBancoHoras",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const SaldoBancoHoras: TTableDef = {
       label: "QtdeHorasSaldo",
       name: "QtdeHorasSaldo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

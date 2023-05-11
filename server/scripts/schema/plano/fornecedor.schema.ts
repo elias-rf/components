@@ -9,7 +9,7 @@ export const fornecedor: TTableDef = {
       label: "CdFornecedor",
       name: "CadFor_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const fornecedor: TTableDef = {
       label: "RzSocial",
       name: "RzSocial",
       typeField: "string",
-      size: 70,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const fornecedor: TTableDef = {
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 70,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const fornecedor: TTableDef = {
       label: "Bairro",
       name: "Bairro",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -43,21 +43,19 @@ export const fornecedor: TTableDef = {
       label: "Cidade",
       name: "Cidade",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Uf",
       label: "Uf",
       name: "Uf",
       typeField: "string",
-      size: 2,
     },
     {
       field: "Cep",
       label: "Cep",
       name: "Cep",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -65,7 +63,7 @@ export const fornecedor: TTableDef = {
       label: "CGC",
       name: "CGC",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -73,14 +71,13 @@ export const fornecedor: TTableDef = {
       label: "InscEst",
       name: "InscEst",
       typeField: "string",
-      size: 16,
     },
     {
       field: "EMail",
       label: "EMail",
       name: "EMail",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -88,35 +85,31 @@ export const fornecedor: TTableDef = {
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 20,
     },
     {
       field: "Fax",
       label: "Fax",
       name: "Fax",
       typeField: "string",
-      size: 20,
     },
     {
       field: "CdTipo",
       label: "CdTipo",
       name: "CdTipo",
       typeField: "int",
-      size: 2,
     },
     {
       field: "CdSubTipo",
       label: "CdSubTipo",
       name: "CdSubTipo",
       typeField: "int",
-      size: 2,
     },
     {
       field: "ReduMargemSub",
       label: "ReduMargemSub",
       name: "ReduMargemSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -124,7 +117,7 @@ export const fornecedor: TTableDef = {
       label: "DtUltCompra",
       name: "DtUltCompra",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -132,7 +125,7 @@ export const fornecedor: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -140,42 +133,37 @@ export const fornecedor: TTableDef = {
       label: "ModeloAtualizacao",
       name: "ModeloAtualizacao",
       typeField: "string",
-      size: 20,
     },
     {
       field: "CdGrupo",
       label: "CdGrupo",
       name: "CdGrupo",
       typeField: "int",
-      size: 4,
     },
     {
       field: "ModeloPedido",
       label: "ModeloPedido",
       name: "ModeloPedido",
       typeField: "string",
-      size: 15,
     },
     {
       field: "CdIdentificacao",
       label: "CdIdentificacao",
       name: "CdIdentificacao",
       typeField: "string",
-      size: 15,
     },
     {
       field: "VlMoeda",
       label: "VlMoeda",
       name: "VlMoeda",
       typeField: "float",
-      size: 8,
     },
     {
       field: "CdCentroCustoPadrao",
       label: "CdCentroCustoPadrao",
       name: "CdCentroCustoPadrao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -183,105 +171,90 @@ export const fornecedor: TTableDef = {
       label: "IdCondPagamento",
       name: "IdCondPagamento",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Observacao",
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 2048,
     },
     {
       field: "DirTrocaArquivo",
       label: "DirTrocaArquivo",
       name: "DirTrocaArquivo",
       typeField: "string",
-      size: 128,
     },
     {
       field: "NmFantasia",
       label: "NmFantasia",
       name: "NmFantasia",
       typeField: "string",
-      size: 64,
     },
     {
       field: "Classificacao",
       label: "Classificacao",
       name: "Classificacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgCotacao",
       label: "FgCotacao",
       name: "FgCotacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgSigiloso",
       label: "FgSigiloso",
       name: "FgSigiloso",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NumContaDespesa",
       label: "NumContaDespesa",
       name: "NumContaDespesa",
       typeField: "int",
-      size: 9,
     },
     {
       field: "FgAtivo",
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgGNRE",
       label: "FgGNRE",
       name: "FgGNRE",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NumEndereco",
       label: "NumEndereco",
       name: "NumEndereco",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Complemento",
       label: "Complemento",
       name: "Complemento",
       typeField: "string",
-      size: 32,
     },
     {
       field: "InscSuframa",
       label: "InscSuframa",
       name: "InscSuframa",
       typeField: "string",
-      size: 16,
     },
     {
       field: "FgTipoCustoDRE",
       label: "FgTipoCustoDRE",
       name: "FgTipoCustoDRE",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CdPais",
       label: "CdPais",
       name: "CdPais",
       typeField: "int",
-      size: 5,
     },
   ],
 };

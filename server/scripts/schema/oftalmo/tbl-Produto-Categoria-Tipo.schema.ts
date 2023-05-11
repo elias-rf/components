@@ -9,7 +9,7 @@ export const tbl_Produto_Categoria_Tipo: TTableDef = {
       label: "kCategoriaTipo",
       name: "tbl_Produto_Categoria_Tipo_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,6 @@ export const tbl_Produto_Categoria_Tipo: TTableDef = {
       label: "CategoriaTipo",
       name: "CategoriaTipo",
       typeField: "string",
-      size: 50,
     },
   ],
 };

@@ -9,7 +9,7 @@ export const tSistemaUnidade: TTableDef = {
       label: "KUnidade",
       name: "tSistemaUnidade_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,14 +19,12 @@ export const tSistemaUnidade: TTableDef = {
       label: "Abreviatura",
       name: "Abreviatura",
       typeField: "string",
-      size: 5,
     },
     {
       field: "NomeUnidade",
       label: "NomeUnidade",
       name: "NomeUnidade",
       typeField: "string",
-      size: 10,
     },
   ],
 };

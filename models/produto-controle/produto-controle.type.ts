@@ -33,31 +33,31 @@ export type TProdutoControleFields = keyof Required<TProdutoControle>;
 export type TProdutoControleIds = {
   [pk in keyof Required<TProdutoControlePk>]: any;
 };
-export type TProdutoControleSelect = TSelect<TProdutoControleFields>;
-export type TProdutoControleWhere = TWhere<TProdutoControleFields>;
-export type TProdutoControleOrder = TOrder<TProdutoControleFields>;
+export type TProdutoControleSelect = TSelect;
+export type TProdutoControleWhere = TWhere;
+export type TProdutoControleOrder = TOrder;
 
 export type TProdutoControleSchema = () => Promise<TFieldDef[]>;
 export type TProdutoControleClear = () => Promise<TProdutoControle>;
 export type TProdutoControleList = (args: {
-  where?: TWhere<TProdutoControleFields>[];
-  order?: TOrder<TProdutoControleFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TProdutoControleFields>;
+  select?: TSelect;
 }) => Promise<TProdutoControle[]>;
 export type TProdutoControleRead = (args: {
   id: TProdutoControleIds;
-  select?: TSelect<TProdutoControleFields>;
+  select?: TSelect;
 }) => Promise<TProdutoControle>;
 
 export type TProdutoControleCreate = (args: {
   data: TProdutoControle;
-  select?: TSelect<TProdutoControleFields>;
+  select?: TSelect;
 }) => Promise<TProdutoControle>;
 export type TProdutoControleUpdate = (args: {
   id: TProdutoControleIds;
   data: TProdutoControle;
-  select?: TSelect<TProdutoControleFields>;
+  select?: TSelect;
 }) => Promise<TProdutoControle>;
 export type TProdutoControleDel = (args: {
   id: TProdutoControleIds;

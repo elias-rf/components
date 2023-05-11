@@ -9,7 +9,7 @@ export const RegiaoAtendimento: TTableDef = {
       label: "Regiao",
       name: "RegiaoAtendimento_id",
       typeField: "string",
-      size: 10,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,6 @@ export const RegiaoAtendimento: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 20,
     },
   ],
 };

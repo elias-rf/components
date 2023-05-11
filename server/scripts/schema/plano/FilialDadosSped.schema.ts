@@ -9,7 +9,7 @@ export const FilialDadosSped: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const FilialDadosSped: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const FilialDadosSped: TTableDef = {
       label: "CdObrigacaoRecolher",
       name: "CdObrigacaoRecolher",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const FilialDadosSped: TTableDef = {
       label: "CdReceita",
       name: "CdReceita",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const FilialDadosSped: TTableDef = {
       label: "DtUltAtualizacao",
       name: "DtUltAtualizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

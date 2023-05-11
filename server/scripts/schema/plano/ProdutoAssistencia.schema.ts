@@ -9,7 +9,7 @@ export const ProdutoAssistencia: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProdutoAssistencia: TTableDef = {
       label: "CdAssistencia",
       name: "CdAssistencia",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

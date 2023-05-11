@@ -9,7 +9,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "Ajuste",
       name: "Ajuste",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -17,7 +17,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "AjusteDuplo",
       name: "AjusteDuplo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -25,7 +25,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "AltCodigo",
       name: "AltCodigo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -33,7 +33,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "Altura",
       name: "Altura",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -41,7 +41,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "Espaco1",
       name: "Espaco1",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -49,7 +49,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "Espaco2",
       name: "Espaco2",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -57,7 +57,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "Espaco3",
       name: "Espaco3",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -65,7 +65,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "Espaco4",
       name: "Espaco4",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -73,7 +73,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "Espaco5",
       name: "Espaco5",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -81,7 +81,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "EspacoCodigo",
       name: "EspacoCodigo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -89,7 +89,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "EspacoDescricao",
       name: "EspacoDescricao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -97,7 +97,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "EspacoPreco",
       name: "EspacoPreco",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -105,7 +105,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "Largura",
       name: "Largura",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -113,7 +113,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "LinhaInicial",
       name: "LinhaInicial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -121,7 +121,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "Linhas",
       name: "Linhas",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -129,7 +129,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "NomeEtiqueta",
       name: "ModeloEtiqueta_id",
       typeField: "string",
-      size: 50,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -138,7 +138,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "QtdeEtiquetas",
       name: "QtdeEtiquetas",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -146,7 +146,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "TamFonteCodigo",
       name: "TamFonteCodigo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -154,7 +154,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "TamFonteDescricao",
       name: "TamFonteDescricao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -162,7 +162,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "TamFontePreco",
       name: "TamFontePreco",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -170,7 +170,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "TamLinhaCodigo",
       name: "TamLinhaCodigo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -178,7 +178,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "TamLinhaDescricao",
       name: "TamLinhaDescricao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -186,7 +186,7 @@ export const ModeloEtiqueta: TTableDef = {
       label: "TamLinhaPreco",
       name: "TamLinhaPreco",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

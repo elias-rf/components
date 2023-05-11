@@ -9,7 +9,7 @@ export const tbl_Sistema_Objeto_Grupo: TTableDef = {
       label: "fkGrupo",
       name: "fkGrupo",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const tbl_Sistema_Objeto_Grupo: TTableDef = {
       label: "fkObjeto",
       name: "fkObjeto",
       typeField: "string",
-      size: 4,
+
       allowNull: false,
     },
   ],

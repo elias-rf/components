@@ -9,7 +9,7 @@ export const ParMediaImposto: TTableDef = {
       label: "CodigoNCMNBS",
       name: "CodigoNCMNBS",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ParMediaImposto: TTableDef = {
       label: "CodigoEX",
       name: "CodigoEX",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ParMediaImposto: TTableDef = {
       label: "TipoTabela",
       name: "TipoTabela",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ParMediaImposto: TTableDef = {
       label: "AliquotaNacional",
       name: "AliquotaNacional",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ParMediaImposto: TTableDef = {
       label: "AliquotaImportado",
       name: "AliquotaImportado",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ParMediaImposto: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

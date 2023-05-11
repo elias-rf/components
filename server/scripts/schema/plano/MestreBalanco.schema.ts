@@ -9,7 +9,7 @@ export const MestreBalanco: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const MestreBalanco: TTableDef = {
       label: "NumBalanco",
       name: "NumBalanco",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const MestreBalanco: TTableDef = {
       label: "DtRelatorio",
       name: "DtRelatorio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const MestreBalanco: TTableDef = {
       label: "UsuarioRelatorio",
       name: "UsuarioRelatorio",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const MestreBalanco: TTableDef = {
       label: "DtValidacao",
       name: "DtValidacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -51,7 +51,7 @@ export const MestreBalanco: TTableDef = {
       label: "UsuarioValidacao",
       name: "UsuarioValidacao",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
   ],

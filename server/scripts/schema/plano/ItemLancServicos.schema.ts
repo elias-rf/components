@@ -9,7 +9,7 @@ export const ItemLancServicos: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ItemLancServicos: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ItemLancServicos: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ItemLancServicos: TTableDef = {
       label: "SubSerie",
       name: "SubSerie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ItemLancServicos: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ItemLancServicos: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ItemLancServicos: TTableDef = {
       label: "CdServico",
       name: "CdServico",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const ItemLancServicos: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const ItemLancServicos: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 9,
+
       scale: 3,
       allowNull: false,
     },
@@ -82,7 +82,7 @@ export const ItemLancServicos: TTableDef = {
       label: "CdClasse",
       name: "CdClasse",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const ItemLancServicos: TTableDef = {
       label: "Unidade",
       name: "Unidade",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const ItemLancServicos: TTableDef = {
       label: "NopItem",
       name: "NopItem",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const ItemLancServicos: TTableDef = {
       label: "VlUnitario",
       name: "VlUnitario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -115,7 +115,7 @@ export const ItemLancServicos: TTableDef = {
       label: "VlDescItem",
       name: "VlDescItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -124,7 +124,7 @@ export const ItemLancServicos: TTableDef = {
       label: "VlLiquidoUnit",
       name: "VlLiquidoUnit",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -133,7 +133,7 @@ export const ItemLancServicos: TTableDef = {
       label: "Origem",
       name: "Origem",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -141,7 +141,7 @@ export const ItemLancServicos: TTableDef = {
       label: "CdCSTICMS",
       name: "CdCSTICMS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -149,7 +149,7 @@ export const ItemLancServicos: TTableDef = {
       label: "CdCSTPIS",
       name: "CdCSTPIS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -157,7 +157,7 @@ export const ItemLancServicos: TTableDef = {
       label: "CdCSTCOFINS",
       name: "CdCSTCOFINS",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -165,7 +165,7 @@ export const ItemLancServicos: TTableDef = {
       label: "PisBasCalc",
       name: "PisBasCalc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -174,7 +174,7 @@ export const ItemLancServicos: TTableDef = {
       label: "CofinsBasCalc",
       name: "CofinsBasCalc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -183,7 +183,7 @@ export const ItemLancServicos: TTableDef = {
       label: "AliquotaPIS",
       name: "AliquotaPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -192,7 +192,7 @@ export const ItemLancServicos: TTableDef = {
       label: "AliquotaCOFINS",
       name: "AliquotaCOFINS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -201,7 +201,7 @@ export const ItemLancServicos: TTableDef = {
       label: "VlBaseICMSItem",
       name: "VlBaseICMSItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -210,7 +210,7 @@ export const ItemLancServicos: TTableDef = {
       label: "AliquotaICMS",
       name: "AliquotaICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -219,7 +219,7 @@ export const ItemLancServicos: TTableDef = {
       label: "VlIcmsItem",
       name: "VlIcmsItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -228,7 +228,7 @@ export const ItemLancServicos: TTableDef = {
       label: "VlBaseIcmsUF",
       name: "VlBaseIcmsUF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -237,7 +237,7 @@ export const ItemLancServicos: TTableDef = {
       label: "VlIcmsUF",
       name: "VlIcmsUF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -246,7 +246,7 @@ export const ItemLancServicos: TTableDef = {
       label: "VlBaseIcmsItemST",
       name: "VlBaseIcmsItemST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -255,7 +255,7 @@ export const ItemLancServicos: TTableDef = {
       label: "AliquotaST",
       name: "AliquotaST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -264,7 +264,7 @@ export const ItemLancServicos: TTableDef = {
       label: "VlICMSSTItem",
       name: "VlICMSSTItem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -273,7 +273,7 @@ export const ItemLancServicos: TTableDef = {
       label: "VlPIS",
       name: "VlPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -282,7 +282,7 @@ export const ItemLancServicos: TTableDef = {
       label: "VlCofins",
       name: "VlCofins",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -291,7 +291,7 @@ export const ItemLancServicos: TTableDef = {
       label: "Classif",
       name: "Classif",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -299,7 +299,7 @@ export const ItemLancServicos: TTableDef = {
       label: "TipoTributacao",
       name: "TipoTributacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -307,7 +307,6 @@ export const ItemLancServicos: TTableDef = {
       label: "PlanoContaSped",
       name: "PlanoContaSped",
       typeField: "int",
-      size: 9,
     },
   ],
 };

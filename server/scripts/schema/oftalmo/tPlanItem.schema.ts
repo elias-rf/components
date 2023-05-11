@@ -9,7 +9,7 @@ export const tPlanItem: TTableDef = {
       label: "kPlanItem",
       name: "tPlanItem_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const tPlanItem: TTableDef = {
       label: "NomeItem",
       name: "NomeItem",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const tPlanItem: TTableDef = {
       label: "fkPlanGrupo",
       name: "fkPlanGrupo",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

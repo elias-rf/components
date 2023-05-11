@@ -9,7 +9,7 @@ export const ParametrosMediaImposto: TTableDef = {
       label: "TipoTabela",
       name: "TipoTabela",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ParametrosMediaImposto: TTableDef = {
       label: "CodigoNCMNBS",
       name: "CodigoNCMNBS",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ParametrosMediaImposto: TTableDef = {
       label: "CodigoEX",
       name: "CodigoEX",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ParametrosMediaImposto: TTableDef = {
       label: "UF",
       name: "UF",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ParametrosMediaImposto: TTableDef = {
       label: "PercFederalNacional",
       name: "PercFederalNacional",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -50,7 +50,7 @@ export const ParametrosMediaImposto: TTableDef = {
       label: "PercFederalImportado",
       name: "PercFederalImportado",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -59,7 +59,7 @@ export const ParametrosMediaImposto: TTableDef = {
       label: "PercEstadual",
       name: "PercEstadual",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -68,7 +68,7 @@ export const ParametrosMediaImposto: TTableDef = {
       label: "PercMunicipal",
       name: "PercMunicipal",
       typeField: "int",
-      size: 5,
+
       scale: 2,
       allowNull: false,
     },
@@ -77,7 +77,7 @@ export const ParametrosMediaImposto: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

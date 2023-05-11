@@ -9,7 +9,7 @@ export const RamoAtividade: TTableDef = {
       label: "CdRamoAtividade",
       name: "RamoAtividade_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,6 @@ export const RamoAtividade: TTableDef = {
       label: "NmRamoAtividade",
       name: "NmRamoAtividade",
       typeField: "string",
-      size: 30,
     },
   ],
 };

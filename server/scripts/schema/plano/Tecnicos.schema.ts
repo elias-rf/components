@@ -9,7 +9,7 @@ export const Tecnicos: TTableDef = {
       label: "CdTecnico",
       name: "Tecnicos_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,14 +18,12 @@ export const Tecnicos: TTableDef = {
       label: "NmTecnico",
       name: "NmTecnico",
       typeField: "string",
-      size: 40,
     },
     {
       field: "FgAtivo",
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
     },
   ],
 };

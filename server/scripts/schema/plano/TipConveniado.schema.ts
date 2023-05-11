@@ -9,7 +9,7 @@ export const TipConveniado: TTableDef = {
       label: "CdTipConveniado",
       name: "TipConveniado_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const TipConveniado: TTableDef = {
       label: "DsTipConveniado",
       name: "DsTipConveniado",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
   ],

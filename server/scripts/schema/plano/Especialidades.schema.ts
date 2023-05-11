@@ -9,7 +9,7 @@ export const Especialidades: TTableDef = {
       label: "CdEspecialidade",
       name: "Especialidades_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Especialidades: TTableDef = {
       label: "DsEspecialidade",
       name: "DsEspecialidade",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
   ],

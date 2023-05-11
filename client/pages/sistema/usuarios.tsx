@@ -1,4 +1,3 @@
-import { TUsuarioFields } from "@/models/usuario/usuario.type";
 import { TOrder, TSelected, TWhere } from "@/types";
 import React from "react";
 import { Page } from "../../components/page/page";
@@ -9,8 +8,8 @@ import { UsuarioList } from "../../features/usuario/usuario_list";
 
 export default function Usuarios() {
   const [selected, setSelected] = React.useState<TSelected>([]);
-  const [where, setWhere] = React.useState<TWhere<TUsuarioFields>[]>([]);
-  const [order, setOrder] = React.useState<TOrder<TUsuarioFields>[]>([]);
+  const [where, setWhere] = React.useState<TWhere[]>([]);
+  const [order, setOrder] = React.useState<TOrder[]>([]);
 
   function handle(event: any) {
     if (event.event === "onSelect") {

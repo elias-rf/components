@@ -10,7 +10,7 @@ export const nf_entrada_log: TTableDef = {
       name: "filial_id",
       primaryKey: true,
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -20,7 +20,7 @@ export const nf_entrada_log: TTableDef = {
       name: "nota_id",
       primaryKey: true,
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -30,7 +30,7 @@ export const nf_entrada_log: TTableDef = {
       name: "serie_id",
       primaryKey: true,
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -38,7 +38,7 @@ export const nf_entrada_log: TTableDef = {
       label: "CdFornecedor",
       name: "fornecedor_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -47,7 +47,7 @@ export const nf_entrada_log: TTableDef = {
       label: "Data",
       name: "data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -56,7 +56,7 @@ export const nf_entrada_log: TTableDef = {
       label: "Usuario",
       name: "usuario",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -64,7 +64,7 @@ export const nf_entrada_log: TTableDef = {
       label: "Operacao",
       name: "operacao",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
     {
@@ -72,7 +72,7 @@ export const nf_entrada_log: TTableDef = {
       label: "Modelo",
       name: "modelo_id",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
   ],

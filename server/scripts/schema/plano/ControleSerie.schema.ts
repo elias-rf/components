@@ -9,7 +9,7 @@ export const ControleSerie: TTableDef = {
       label: "AutoNumero",
       name: "AutoNumero",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

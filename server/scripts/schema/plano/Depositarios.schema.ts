@@ -9,7 +9,7 @@ export const Depositarios: TTableDef = {
       label: "CdDepositario",
       name: "Depositarios_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Depositarios: TTableDef = {
       label: "NmDepositario",
       name: "NmDepositario",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
   ],

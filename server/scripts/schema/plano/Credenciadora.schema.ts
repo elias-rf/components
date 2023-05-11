@@ -9,7 +9,7 @@ export const Credenciadora: TTableDef = {
       label: "CNPJ",
       name: "Credenciadora_id",
       typeField: "int",
-      size: 9,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Credenciadora: TTableDef = {
       label: "Codigo",
       name: "Codigo",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,6 @@ export const Credenciadora: TTableDef = {
       label: "Empresa",
       name: "Empresa",
       typeField: "string",
-      size: 128,
     },
   ],
 };

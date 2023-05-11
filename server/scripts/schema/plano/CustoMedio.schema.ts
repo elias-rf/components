@@ -9,7 +9,7 @@ export const CustoMedio: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CustoMedio: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const CustoMedio: TTableDef = {
       label: "DtRef",
       name: "DtRef",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const CustoMedio: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const CustoMedio: TTableDef = {
       label: "QtdeAnterior",
       name: "QtdeAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -50,7 +50,7 @@ export const CustoMedio: TTableDef = {
       label: "VlCustoMedioAnterior",
       name: "VlCustoMedioAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -58,21 +58,19 @@ export const CustoMedio: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Serie",
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
     },
     {
       field: "CdFornecedor",
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -80,7 +78,7 @@ export const CustoMedio: TTableDef = {
       label: "QtdeEntrada",
       name: "QtdeEntrada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -88,7 +86,7 @@ export const CustoMedio: TTableDef = {
       label: "VlCustoEntrada",
       name: "VlCustoEntrada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -96,7 +94,7 @@ export const CustoMedio: TTableDef = {
       label: "QtdeSaldo",
       name: "QtdeSaldo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -104,7 +102,7 @@ export const CustoMedio: TTableDef = {
       label: "VlCustoMedio",
       name: "VlCustoMedio",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -112,7 +110,7 @@ export const CustoMedio: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -120,7 +118,6 @@ export const CustoMedio: TTableDef = {
       label: "TipoEmitente",
       name: "TipoEmitente",
       typeField: "string",
-      size: 1,
     },
   ],
 };

@@ -9,7 +9,7 @@ export const tManutencaoPreventiva: TTableDef = {
       label: "kManutencaoPreventiva",
       name: "tManutencaoPreventiva_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tManutencaoPreventiva: TTableDef = {
       label: "fkMaquina",
       name: "fkMaquina",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const tManutencaoPreventiva: TTableDef = {
       label: "DataManutencao",
       name: "DataManutencao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const tManutencaoPreventiva: TTableDef = {
       label: "DataHoraInicio",
       name: "DataHoraInicio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -43,7 +43,7 @@ export const tManutencaoPreventiva: TTableDef = {
       label: "DataHoraFinal",
       name: "DataHoraFinal",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -51,42 +51,36 @@ export const tManutencaoPreventiva: TTableDef = {
       label: "MaterialUtilizadoItemProblema",
       name: "MaterialUtilizadoItemProblema",
       typeField: "string",
-      size: 16,
     },
     {
       field: "Observacao",
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 16,
     },
     {
       field: "ResponsavelManutencao",
       label: "ResponsavelManutencao",
       name: "ResponsavelManutencao",
       typeField: "string",
-      size: 150,
     },
     {
       field: "MotivoNaoConclusaoNoPrazo",
       label: "MotivoNaoConclusaoNoPrazo",
       name: "MotivoNaoConclusaoNoPrazo",
       typeField: "string",
-      size: 16,
     },
     {
       field: "UsuarioConclusao",
       label: "UsuarioConclusao",
       name: "UsuarioConclusao",
       typeField: "string",
-      size: 50,
     },
     {
       field: "LiberadoPor",
       label: "LiberadoPor",
       name: "LiberadoPor",
       typeField: "string",
-      size: 150,
     },
   ],
 };

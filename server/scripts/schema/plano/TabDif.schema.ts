@@ -9,7 +9,7 @@ export const TabDif: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TabDif: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TabDif: TTableDef = {
       label: "DtLcto",
       name: "DtLcto",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const TabDif: TTableDef = {
       label: "HrLcto",
       name: "HrLcto",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const TabDif: TTableDef = {
       label: "EstAtual",
       name: "EstAtual",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -51,7 +51,7 @@ export const TabDif: TTableDef = {
       label: "EstDif",
       name: "EstDif",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -59,21 +59,19 @@ export const TabDif: TTableDef = {
       label: "Motivo",
       name: "Motivo",
       typeField: "string",
-      size: 50,
     },
     {
       field: "FgAtualizacao",
       label: "FgAtualizacao",
       name: "FgAtualizacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "DtValidacao",
       label: "DtValidacao",
       name: "DtValidacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -81,7 +79,7 @@ export const TabDif: TTableDef = {
       label: "Contagem",
       name: "Contagem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -89,7 +87,6 @@ export const TabDif: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 10,
     },
   ],
 };

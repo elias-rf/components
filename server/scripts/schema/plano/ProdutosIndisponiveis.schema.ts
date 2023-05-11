@@ -9,7 +9,7 @@ export const ProdutosIndisponiveis: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProdutosIndisponiveis: TTableDef = {
       label: "NumLote",
       name: "NumLote",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProdutosIndisponiveis: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ProdutosIndisponiveis: TTableDef = {
       label: "FgStatus",
       name: "FgStatus",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ProdutosIndisponiveis: TTableDef = {
       label: "FgMotivo",
       name: "FgMotivo",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ProdutosIndisponiveis: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 256,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ProdutosIndisponiveis: TTableDef = {
       label: "DtLcto",
       name: "DtLcto",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -66,7 +66,7 @@ export const ProdutosIndisponiveis: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

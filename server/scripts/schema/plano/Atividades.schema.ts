@@ -9,7 +9,7 @@ export const Atividades: TTableDef = {
       label: "CdAtividade",
       name: "Atividades_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Atividades: TTableDef = {
       label: "NmAtividade",
       name: "NmAtividade",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
   ],

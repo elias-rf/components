@@ -9,7 +9,7 @@ export const NatOpeNaoAutorizada: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NatOpeNaoAutorizada: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NatOpeNaoAutorizada: TTableDef = {
       label: "Nop",
       name: "Nop",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
   ],

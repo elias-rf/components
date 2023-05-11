@@ -9,7 +9,7 @@ export const AbcSaida: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const AbcSaida: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const AbcSaida: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 126,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const AbcSaida: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const AbcSaida: TTableDef = {
       label: "Valor",
       name: "Valor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

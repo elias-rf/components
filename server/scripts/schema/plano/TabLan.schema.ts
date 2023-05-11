@@ -9,7 +9,7 @@ export const TabLan: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TabLan: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TabLan: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const TabLan: TTableDef = {
       label: "NumLcto",
       name: "NumLcto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const TabLan: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -51,14 +51,13 @@ export const TabLan: TTableDef = {
       label: "TipAplic",
       name: "TipAplic",
       typeField: "string",
-      size: 20,
     },
     {
       field: "VlAplicado",
       label: "VlAplicado",
       name: "VlAplicado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -66,14 +65,13 @@ export const TabLan: TTableDef = {
       label: "LctoDiv",
       name: "LctoDiv",
       typeField: "int",
-      size: 2,
     },
     {
       field: "VlResgate",
       label: "VlResgate",
       name: "VlResgate",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -81,14 +79,12 @@ export const TabLan: TTableDef = {
       label: "LctoResg",
       name: "LctoResg",
       typeField: "int",
-      size: 4,
     },
     {
       field: "LctoRend",
       label: "LctoRend",
       name: "LctoRend",
       typeField: "int",
-      size: 4,
     },
   ],
 };

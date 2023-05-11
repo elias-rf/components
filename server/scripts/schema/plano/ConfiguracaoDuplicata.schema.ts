@@ -9,7 +9,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "TamanhoFolha",
       name: "ConfiguracaoDuplicata_id",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "AlturaLinha",
       name: "AlturaLinha",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "DiaEmissaoLinha",
       name: "DiaEmissaoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "DiaEmissaoColuna",
       name: "DiaEmissaoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -44,7 +44,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "MesEmissaoColuna",
       name: "MesEmissaoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -52,7 +52,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "AnoEmissaoColuna",
       name: "AnoEmissaoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -60,7 +60,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "AnoEmissaoTamanho",
       name: "AnoEmissaoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -68,7 +68,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "FgMesExtenso",
       name: "FgMesExtenso",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -76,7 +76,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "NumFaturaLinha",
       name: "NumFaturaLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -85,7 +85,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "NumFaturaColuna",
       name: "NumFaturaColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -93,7 +93,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "NumFaturaTamanho",
       name: "NumFaturaTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -101,7 +101,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "ValorLinha",
       name: "ValorLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -110,7 +110,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "ValorColuna",
       name: "ValorColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -118,7 +118,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "ValorTamanho",
       name: "ValorTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -126,7 +126,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "NumDuplicataLinha",
       name: "NumDuplicataLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -135,7 +135,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "NumDuplicataColuna",
       name: "NumDuplicataColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -143,7 +143,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "NumDuplicataTamanho",
       name: "NumDuplicataTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -151,7 +151,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "DtVencimentoLinha",
       name: "DtVencimentoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -160,7 +160,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "DtVencimentoColuna",
       name: "DtVencimentoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -168,7 +168,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "VlDescontoLinha",
       name: "VlDescontoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -177,7 +177,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "VlDescontoColuna",
       name: "VlDescontoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -185,7 +185,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "VlDescontoTamanho",
       name: "VlDescontoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -193,7 +193,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "DtLimiteDescontoLinha",
       name: "DtLimiteDescontoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -202,7 +202,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "DtLimiteDescontoColuna",
       name: "DtLimiteDescontoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -210,7 +210,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "RzSocialLinha",
       name: "RzSocialLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -219,7 +219,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "RzSocialColuna",
       name: "RzSocialColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -227,7 +227,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "RzSocialTamanho",
       name: "RzSocialTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -235,7 +235,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "EnderecoLinha",
       name: "EnderecoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -244,7 +244,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "EnderecoColuna",
       name: "EnderecoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -252,7 +252,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "EnderecoTamanho",
       name: "EnderecoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -260,7 +260,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "BairroLinha",
       name: "BairroLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -269,7 +269,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "BairroColuna",
       name: "BairroColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -277,7 +277,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "BairroTamanho",
       name: "BairroTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -285,7 +285,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "CepLinha",
       name: "CepLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -294,7 +294,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "CepColuna",
       name: "CepColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -302,7 +302,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "MunicipioLinha",
       name: "MunicipioLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -311,7 +311,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "MunicipioColuna",
       name: "MunicipioColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -319,7 +319,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "MunicipioTamanho",
       name: "MunicipioTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -327,7 +327,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "EstadoLinha",
       name: "EstadoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -336,7 +336,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "EstadoColuna",
       name: "EstadoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -344,7 +344,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "EndPagamentoLinha",
       name: "EndPagamentoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -353,7 +353,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "EndPagamentoColuna",
       name: "EndPagamentoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -361,7 +361,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "EndPagamentoTamanho",
       name: "EndPagamentoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -369,7 +369,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "MunicipioPagamentoLinha",
       name: "MunicipioPagamentoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -378,7 +378,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "MunicipioPagamentoColuna",
       name: "MunicipioPagamentoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -386,7 +386,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "MunicipioPagamentoTamanho",
       name: "MunicipioPagamentoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -394,7 +394,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "EstadoPagamentoLinha",
       name: "EstadoPagamentoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -403,7 +403,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "EstadoPagamentoColuna",
       name: "EstadoPagamentoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -411,7 +411,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "CNPJLinha",
       name: "CNPJLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -420,7 +420,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "CNPJColuna",
       name: "CNPJColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -428,7 +428,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "CNPJTamanho",
       name: "CNPJTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -436,7 +436,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "InscEstLinha",
       name: "InscEstLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -445,7 +445,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "InscEstColuna",
       name: "InscEstColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -453,7 +453,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "InscEstTamanho",
       name: "InscEstTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -461,7 +461,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "Extenso1Linha",
       name: "Extenso1Linha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -470,7 +470,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "Extenso1Coluna",
       name: "Extenso1Coluna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -478,7 +478,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "Extenso1Tamanho",
       name: "Extenso1Tamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -486,7 +486,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "Extenso2Linha",
       name: "Extenso2Linha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -495,7 +495,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "Extenso2Coluna",
       name: "Extenso2Coluna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -503,7 +503,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "Extenso3Linha",
       name: "Extenso3Linha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -512,7 +512,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "Extenso3Coluna",
       name: "Extenso3Coluna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -520,7 +520,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "ValorLinha1",
       name: "ValorLinha1",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -528,21 +528,19 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "ValorColuna1",
       name: "ValorColuna1",
       typeField: "int",
-      size: 2,
     },
     {
       field: "ValorTamanho1",
       label: "ValorTamanho1",
       name: "ValorTamanho1",
       typeField: "int",
-      size: 2,
     },
     {
       field: "TelefoneLinha",
       label: "TelefoneLinha",
       name: "TelefoneLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -550,21 +548,19 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "TelefoneColuna",
       name: "TelefoneColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "TelefoneTamanho",
       label: "TelefoneTamanho",
       name: "TelefoneTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "CepPagamentoLinha",
       label: "CepPagamentoLinha",
       name: "CepPagamentoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -572,14 +568,13 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "CepPagamentoColuna",
       name: "CepPagamentoColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "NmBancoLinha",
       label: "NmBancoLinha",
       name: "NmBancoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -587,21 +582,19 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "NmBancoColuna",
       name: "NmBancoColuna",
       typeField: "int",
-      size: 2,
     },
     {
       field: "NmBancoTamanho",
       label: "NmBancoTamanho",
       name: "NmBancoTamanho",
       typeField: "int",
-      size: 2,
     },
     {
       field: "BairroPagamentoLinha",
       label: "BairroPagamentoLinha",
       name: "BairroPagamentoLinha",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -610,7 +603,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "BairroPagamentoColuna",
       name: "BairroPagamentoColuna",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -618,7 +611,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "BairroPagamentoTamanho",
       name: "BairroPagamentoTamanho",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -626,7 +619,7 @@ export const ConfiguracaoDuplicata: TTableDef = {
       label: "FgImprimeCodCli",
       name: "FgImprimeCodCli",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

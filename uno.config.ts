@@ -2,7 +2,7 @@ import presetIcons from "@unocss/preset-icons";
 import presetUno from "@unocss/preset-uno";
 import { defineConfig } from "unocss";
 
-const config = defineConfig({
+const config: any = defineConfig({
   presets: [
     presetIcons({
       extraProperties: {

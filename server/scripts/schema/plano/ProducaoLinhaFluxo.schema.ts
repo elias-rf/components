@@ -9,7 +9,7 @@ export const ProducaoLinhaFluxo: TTableDef = {
       label: "CdLinhaProducao",
       name: "CdLinhaProducao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProducaoLinhaFluxo: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProducaoLinhaFluxo: TTableDef = {
       label: "CdOperacao",
       name: "CdOperacao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ProducaoLinhaFluxo: TTableDef = {
       label: "FgCondicional",
       name: "FgCondicional",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ProducaoLinhaFluxo: TTableDef = {
       label: "FgAmostragem",
       name: "FgAmostragem",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ProducaoLinhaFluxo: TTableDef = {
       label: "FgRetrabalho",
       name: "FgRetrabalho",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ProducaoLinhaFluxo: TTableDef = {
       label: "FgEtiquetaInterna",
       name: "FgEtiquetaInterna",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const ProducaoLinhaFluxo: TTableDef = {
       label: "FgEsterilizacaoInterna",
       name: "FgEsterilizacaoInterna",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const ProducaoLinhaFluxo: TTableDef = {
       label: "FgEsterilizacaoExterna",
       name: "FgEsterilizacaoExterna",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const ProducaoLinhaFluxo: TTableDef = {
       label: "FgContinuidade",
       name: "FgContinuidade",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const ProducaoLinhaFluxo: TTableDef = {
       label: "FgEtiquetaExterna",
       name: "FgEtiquetaExterna",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

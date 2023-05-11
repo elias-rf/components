@@ -9,7 +9,7 @@ export const tbl_Sistema_AutoNumber: TTableDef = {
       label: "Tabela",
       name: "tbl_Sistema_AutoNumber_id",
       typeField: "string",
-      size: 50,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,14 +18,13 @@ export const tbl_Sistema_AutoNumber: TTableDef = {
       label: "Campo",
       name: "Campo",
       typeField: "string",
-      size: 30,
     },
     {
       field: "NextID",
       label: "NextID",
       name: "NextID",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

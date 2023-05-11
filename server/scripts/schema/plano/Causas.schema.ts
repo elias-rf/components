@@ -9,7 +9,7 @@ export const Causas: TTableDef = {
       label: "CdCausa",
       name: "Causas_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Causas: TTableDef = {
       label: "NmCausa",
       name: "NmCausa",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
   ],

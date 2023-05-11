@@ -1,6 +1,6 @@
-import type { TFieldDef } from "@/types";
+import type { TSchema } from "@/types";
 
-export const agendaTelefoneSchema: TFieldDef[] = [
+export const agendaTelefoneSchema: TSchema = [
   {
     allowNull: false,
     label: "Ramal",

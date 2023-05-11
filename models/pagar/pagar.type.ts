@@ -47,31 +47,31 @@ export type TPagarFields = keyof Required<TPagar>;
 export type TPagarIds = {
   [pk in keyof Required<TPagarPk>]: any;
 };
-export type TPagarSelect = TSelect<TPagarFields>;
-export type TPagarWhere = TWhere<TPagarFields>;
-export type TPagarOrder = TOrder<TPagarFields>;
+export type TPagarSelect = TSelect;
+export type TPagarWhere = TWhere;
+export type TPagarOrder = TOrder;
 
 export type TPagarSchema = () => Promise<TFieldDef[]>;
 export type TPagarClear = () => Promise<TPagar>;
 export type TPagarList = (args: {
-  where?: TWhere<TPagarFields>[];
-  order?: TOrder<TPagarFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TPagarFields>;
+  select?: TSelect;
 }) => Promise<TPagar[]>;
 export type TPagarRead = (args: {
   id: TPagarIds;
-  select?: TSelect<TPagarFields>;
+  select?: TSelect;
 }) => Promise<TPagar>;
 
 export type TPagarCreate = (args: {
   data: TPagar;
-  select?: TSelect<TPagarFields>;
+  select?: TSelect;
 }) => Promise<TPagar>;
 export type TPagarUpdate = (args: {
   id: TPagarIds;
   data: TPagar;
-  select?: TSelect<TPagarFields>;
+  select?: TSelect;
 }) => Promise<TPagar>;
 export type TPagarDel = (args: { id: TPagarIds }) => Promise<number>;
 

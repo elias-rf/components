@@ -9,7 +9,7 @@ export const BancoContaCorrenteBoleto: TTableDef = {
       label: "NumBanco",
       name: "NumBanco",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const BancoContaCorrenteBoleto: TTableDef = {
       label: "NumAgencia",
       name: "NumAgencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const BancoContaCorrenteBoleto: TTableDef = {
       label: "NumContaCorrente",
       name: "NumContaCorrente",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const BancoContaCorrenteBoleto: TTableDef = {
       label: "Especie",
       name: "Especie",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const BancoContaCorrenteBoleto: TTableDef = {
       label: "Aceite",
       name: "Aceite",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const BancoContaCorrenteBoleto: TTableDef = {
       label: "Moeda",
       name: "Moeda",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const BancoContaCorrenteBoleto: TTableDef = {
       label: "LocalPagamento",
       name: "LocalPagamento",
       typeField: "string",
-      size: 256,
+
       allowNull: false,
     },
     {
@@ -65,14 +65,12 @@ export const BancoContaCorrenteBoleto: TTableDef = {
       label: "NumCarteira",
       name: "NumCarteira",
       typeField: "int",
-      size: 5,
     },
     {
       field: "SeqNossoNumero",
       label: "SeqNossoNumero",
       name: "SeqNossoNumero",
       typeField: "int",
-      size: 5,
     },
   ],
 };

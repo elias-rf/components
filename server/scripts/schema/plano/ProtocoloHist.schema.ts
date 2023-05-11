@@ -9,7 +9,7 @@ export const ProtocoloHist: TTableDef = {
       label: "CdProtocoloHist",
       name: "ProtocoloHist_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProtocoloHist: TTableDef = {
       label: "CdProtocolo",
       name: "CdProtocolo",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,6 @@ export const ProtocoloHist: TTableDef = {
       label: "Historico",
       name: "Historico",
       typeField: "string",
-      size: 1000,
     },
   ],
 };

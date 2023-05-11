@@ -23,31 +23,31 @@ export type TDiamanteFields = keyof Required<TDiamante>;
 export type TDiamanteIds = {
   [pk in keyof Required<TDiamantePk>]: any;
 };
-export type TDiamanteSelect = TSelect<TDiamanteFields>;
-export type TDiamanteWhere = TWhere<TDiamanteFields>;
-export type TDiamanteOrder = TOrder<TDiamanteFields>;
+export type TDiamanteSelect = TSelect;
+export type TDiamanteWhere = TWhere;
+export type TDiamanteOrder = TOrder;
 
 export type TDiamanteSchema = () => Promise<TFieldDef[]>;
 export type TDiamanteClear = () => Promise<TDiamante>;
 export type TDiamanteList = (args: {
-  where?: TWhere<TDiamanteFields>[];
-  order?: TOrder<TDiamanteFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TDiamanteFields>;
+  select?: TSelect;
 }) => Promise<TDiamante[]>;
 export type TDiamanteRead = (args: {
   id: TDiamanteIds;
-  select?: TSelect<TDiamanteFields>;
+  select?: TSelect;
 }) => Promise<TDiamante>;
 
 export type TDiamanteCreate = (args: {
   data: TDiamante;
-  select?: TSelect<TDiamanteFields>;
+  select?: TSelect;
 }) => Promise<TDiamante>;
 export type TDiamanteUpdate = (args: {
   id: TDiamanteIds;
   data: TDiamante;
-  select?: TSelect<TDiamanteFields>;
+  select?: TSelect;
 }) => Promise<TDiamante>;
 export type TDiamanteDel = (args: { id: TDiamanteIds }) => Promise<number>;
 

@@ -9,7 +9,7 @@ export const tbl_OP_Operacao: TTableDef = {
       label: "kOperacao",
       name: "kOperacao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const tbl_OP_Operacao: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const tbl_OP_Operacao: TTableDef = {
       label: "Grupo",
       name: "Grupo",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const tbl_OP_Operacao: TTableDef = {
       label: "Ordem",
       name: "Ordem",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const tbl_OP_Operacao: TTableDef = {
       label: "ehRetrabalho",
       name: "ehRetrabalho",
       typeField: "int",
-      size: 1,
+
       allowNull: false,
     },
   ],

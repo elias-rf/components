@@ -9,7 +9,7 @@ export const TitCoBrSerasaMestre: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TitCoBrSerasaMestre: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TitCoBrSerasaMestre: TTableDef = {
       label: "DtUltEnvio",
       name: "DtUltEnvio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

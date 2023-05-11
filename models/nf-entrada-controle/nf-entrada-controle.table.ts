@@ -26,7 +26,7 @@ export const nf_entrada_controle: TTableDef = {
       name: "serie_id",
       primaryKey: true,
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const nf_entrada_controle: TTableDef = {
       name: "modelo_id",
       primaryKey: true,
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const nf_entrada_controle: TTableDef = {
       label: "Cód Produto",
       name: "produto_plano_id",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const nf_entrada_controle: TTableDef = {
       label: "Controle",
       name: "controle",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {

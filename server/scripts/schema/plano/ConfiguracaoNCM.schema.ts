@@ -9,7 +9,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "NCM",
       name: "NCM",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "DV",
       name: "DV",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "CEST",
       name: "CEST",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "TipoTributacaoICMS",
       name: "TipoTributacaoICMS",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "AliquotaICMS",
       name: "AliquotaICMS",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "PercReducaoICMSST",
       name: "PercReducaoICMSST",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "FgReducaoICMSContribuinte",
       name: "FgReducaoICMSContribuinte",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "FgReducaoICMSNaoContribuinte",
       name: "FgReducaoICMSNaoContribuinte",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -97,7 +97,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "FgCompoeDeducaoICMS",
       name: "FgCompoeDeducaoICMS",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -105,7 +105,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "FgIsentoICMSECF",
       name: "FgIsentoICMSECF",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -113,7 +113,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "FgIsentoSubstituido030",
       name: "FgIsentoSubstituido030",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -121,7 +121,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "ModDeterminacaoBCICMS",
       name: "ModDeterminacaoBCICMS",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -129,7 +129,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "ModDeterminacaoBCICMSSub",
       name: "ModDeterminacaoBCICMSSub",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -137,7 +137,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "CSTIPIEntrada",
       name: "CSTIPIEntrada",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -145,7 +145,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "AliquotaIPIEntrada",
       name: "AliquotaIPIEntrada",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -153,7 +153,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "CSTIPISaida",
       name: "CSTIPISaida",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -161,7 +161,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "AliquotaIPISaida",
       name: "AliquotaIPISaida",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -169,7 +169,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "CdEnquadramentoIPI",
       name: "CdEnquadramentoIPI",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -177,7 +177,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "ClasseEnquadramentoIPI",
       name: "ClasseEnquadramentoIPI",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -185,7 +185,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "CdSeloIPI",
       name: "CdSeloIPI",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -193,7 +193,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "CSTPISCOFINSEntrada",
       name: "CSTPISCOFINSEntrada",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -201,7 +201,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "AliquotaPISEntrada",
       name: "AliquotaPISEntrada",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -209,7 +209,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "CSTPISCOFINSSaida",
       name: "CSTPISCOFINSSaida",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -217,7 +217,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "AliquotaCOFINSEntrada",
       name: "AliquotaCOFINSEntrada",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -225,7 +225,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "AliquotaPISSaida",
       name: "AliquotaPISSaida",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -233,7 +233,7 @@ export const ConfiguracaoNCM: TTableDef = {
       label: "AliquotaCOFINSSaida",
       name: "AliquotaCOFINSSaida",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
   ],

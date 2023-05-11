@@ -9,7 +9,7 @@ export const LoteEnvelope: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const LoteEnvelope: TTableDef = {
       label: "NumInicial",
       name: "NumInicial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const LoteEnvelope: TTableDef = {
       label: "NumFinal",
       name: "NumFinal",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const LoteEnvelope: TTableDef = {
       label: "DtRemessa",
       name: "DtRemessa",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

@@ -9,7 +9,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "UF",
       name: "UF",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,14 +33,13 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "TipoTributacaoICMS",
       name: "TipoTributacaoICMS",
       typeField: "string",
-      size: 1,
     },
     {
       field: "PercMVA",
       label: "PercMVA",
       name: "PercMVA",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -48,7 +47,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "PercReduICMSSub",
       name: "PercReduICMSSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -56,7 +55,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "AliquotaICMSSub",
       name: "AliquotaICMSSub",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -64,7 +63,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "AliquotaICMSCont",
       name: "AliquotaICMSCont",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -72,7 +71,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "AliquotaICMSNaoCont",
       name: "AliquotaICMSNaoCont",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -80,7 +79,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "AliquotaICMSSimplesCont",
       name: "AliquotaICMSSimplesCont",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -88,7 +87,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "AliquotaICMSSimplesNaoCont",
       name: "AliquotaICMSSimplesNaoCont",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -96,7 +95,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "PercReduICMSCont",
       name: "PercReduICMSCont",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -104,7 +103,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "PercReduICMSNaoCont",
       name: "PercReduICMSNaoCont",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -112,7 +111,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "PercReduICMSSimplesCont",
       name: "PercReduICMSSimplesCont",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -120,7 +119,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "PercReduICMSSimplesNaoCont",
       name: "PercReduICMSSimplesNaoCont",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -128,7 +127,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -136,7 +135,7 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "VlPautaPMC",
       name: "VlPautaPMC",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -144,14 +143,13 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "TipoTributacaoICMSConsumidorFinal",
       name: "TipoTributacaoICMSConsumidorFinal",
       typeField: "string",
-      size: 1,
     },
     {
       field: "PercMVASimples",
       label: "PercMVASimples",
       name: "PercMVASimples",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -159,21 +157,19 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "FgReducaoICMS",
       name: "FgReducaoICMS",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgReducaoICMSNC",
       label: "FgReducaoICMSNC",
       name: "FgReducaoICMSNC",
       typeField: "string",
-      size: 1,
     },
     {
       field: "PercReducaoICMSST",
       label: "PercReducaoICMSST",
       name: "PercReducaoICMSST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -181,14 +177,13 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "FgVlBrutoCalculo",
       name: "FgVlBrutoCalculo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "AliqICMSCompra",
       label: "AliqICMSCompra",
       name: "AliqICMSCompra",
       typeField: "int",
-      size: 5,
+
       scale: 2,
     },
     {
@@ -196,21 +191,19 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "FgCompoeGNRE",
       name: "FgCompoeGNRE",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgIsentoICMSCompra",
       label: "FgIsentoICMSCompra",
       name: "FgIsentoICMSCompra",
       typeField: "string",
-      size: 1,
     },
     {
       field: "PercFCP",
       label: "PercFCP",
       name: "PercFCP",
       typeField: "int",
-      size: 5,
+
       scale: 2,
     },
     {
@@ -218,49 +211,43 @@ export const ProdutoTributacaoUF: TTableDef = {
       label: "CdBeneficioFiscalRed",
       name: "CdBeneficioFiscalRed",
       typeField: "string",
-      size: 10,
     },
     {
       field: "CdBeneficioFiscalDif",
       label: "CdBeneficioFiscalDif",
       name: "CdBeneficioFiscalDif",
       typeField: "string",
-      size: 10,
     },
     {
       field: "CdBeneficioFiscalIse",
       label: "CdBeneficioFiscalIse",
       name: "CdBeneficioFiscalIse",
       typeField: "string",
-      size: 10,
     },
     {
       field: "CdBeneficioFiscalNT",
       label: "CdBeneficioFiscalNT",
       name: "CdBeneficioFiscalNT",
       typeField: "string",
-      size: 10,
     },
     {
       field: "CdBeneficioFiscalST",
       label: "CdBeneficioFiscalST",
       name: "CdBeneficioFiscalST",
       typeField: "string",
-      size: 10,
     },
     {
       field: "CdBeneficioFiscalSus",
       label: "CdBeneficioFiscalSus",
       name: "CdBeneficioFiscalSus",
       typeField: "string",
-      size: 10,
     },
     {
       field: "PercDiferimento",
       label: "PercDiferimento",
       name: "PercDiferimento",
       typeField: "int",
-      size: 5,
+
       scale: 2,
     },
   ],

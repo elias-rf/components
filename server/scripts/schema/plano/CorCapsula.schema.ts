@@ -9,7 +9,7 @@ export const CorCapsula: TTableDef = {
       label: "CdCorCapsula",
       name: "CorCapsula_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CorCapsula: TTableDef = {
       label: "NmCorCapsula",
       name: "NmCorCapsula",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
   ],

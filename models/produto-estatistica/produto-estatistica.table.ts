@@ -9,7 +9,7 @@ export const produto_estatistica: TTableDef = {
       label: "CdEmpresa",
       name: "filial_id",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
       primaryKey: true,
     },
@@ -18,7 +18,7 @@ export const produto_estatistica: TTableDef = {
       label: "AnoRef",
       name: "ano",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
       primaryKey: true,
     },
@@ -27,7 +27,7 @@ export const produto_estatistica: TTableDef = {
       label: "MesRef",
       name: "mes",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
       primaryKey: true,
     },
@@ -36,7 +36,7 @@ export const produto_estatistica: TTableDef = {
       label: "CdProduto",
       name: "produto_plano_id",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
       primaryKey: true,
     },
@@ -45,7 +45,7 @@ export const produto_estatistica: TTableDef = {
       label: "EstInicial",
       name: "inicial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -53,7 +53,7 @@ export const produto_estatistica: TTableDef = {
       label: "Entradas",
       name: "entrada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -61,7 +61,7 @@ export const produto_estatistica: TTableDef = {
       label: "Saidas",
       name: "saida",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -69,7 +69,7 @@ export const produto_estatistica: TTableDef = {
       label: "Ajustes",
       name: "ajuste",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -77,7 +77,7 @@ export const produto_estatistica: TTableDef = {
       label: "QtdCompras",
       name: "quantidade_compra",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -85,7 +85,7 @@ export const produto_estatistica: TTableDef = {
       label: "QtdMedio",
       name: "quantidade_medio",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -93,7 +93,7 @@ export const produto_estatistica: TTableDef = {
       label: "QtdVendas",
       name: "quantidade_venda",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -101,7 +101,7 @@ export const produto_estatistica: TTableDef = {
       label: "VlCusto",
       name: "valor_custo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -109,7 +109,7 @@ export const produto_estatistica: TTableDef = {
       label: "VlMedio",
       name: "valor_dedio",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -117,7 +117,7 @@ export const produto_estatistica: TTableDef = {
       label: "VlVendas",
       name: "valor_vendas",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -125,7 +125,7 @@ export const produto_estatistica: TTableDef = {
       label: "VlCustoMedio",
       name: "valor_custo_medio",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -133,7 +133,7 @@ export const produto_estatistica: TTableDef = {
       label: "VlVenda",
       name: "valor_venda",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -141,7 +141,7 @@ export const produto_estatistica: TTableDef = {
       label: "VlAtacado",
       name: "valor_atacado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -149,7 +149,7 @@ export const produto_estatistica: TTableDef = {
       label: "EstInicialPsico",
       name: "inicial_psico",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

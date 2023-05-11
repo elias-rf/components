@@ -1,4 +1,4 @@
-import { TFieldDef, TOrder, TSelect, TWhere } from "@/types";
+import { TSelect } from "@/types";
 //#region import
 //#endregion
 export interface TProdutoPlanoPk {
@@ -178,65 +178,4 @@ export interface TProdutoPlano extends TProdutoPlanoPk {
   FgCombo?: string;
 }
 
-export type TProdutoPlanoFields = keyof Required<TProdutoPlano>;
-
-export type TProdutoPlanoIds = {
-  [pk in keyof Required<TProdutoPlanoPk>]: any;
-};
-export type TProdutoPlanoSelect = TSelect<TProdutoPlanoFields>;
-export type TProdutoPlanoWhere = TWhere<TProdutoPlanoFields>;
-export type TProdutoPlanoOrder = TOrder<TProdutoPlanoFields>;
-
-export type TProdutoPlanoSchema = () => Promise<TFieldDef[]>;
-export type TProdutoPlanoClear = () => Promise<TProdutoPlano>;
-export type TProdutoPlanoList = (args: {
-  where?: TWhere<TProdutoPlanoFields>[];
-  order?: TOrder<TProdutoPlanoFields>[];
-  limit?: number;
-  select?: TSelect<TProdutoPlanoFields>;
-}) => Promise<TProdutoPlano[]>;
-export type TProdutoPlanoRead = (args: {
-  id: TProdutoPlanoIds;
-  select?: TSelect<TProdutoPlanoFields>;
-}) => Promise<TProdutoPlano>;
-
-export type TProdutoPlanoCreate = (args: {
-  data: TProdutoPlano;
-  select?: TSelect<TProdutoPlanoFields>;
-}) => Promise<TProdutoPlano>;
-export type TProdutoPlanoUpdate = (args: {
-  id: TProdutoPlanoIds;
-  data: TProdutoPlano;
-  select?: TSelect<TProdutoPlanoFields>;
-}) => Promise<TProdutoPlano>;
-export type TProdutoPlanoDel = (args: {
-  id: TProdutoPlanoIds;
-}) => Promise<number>;
-
-//#region def
-//#endregion
-
-export type TProdutoPlanoCrud = {
-  query: {
-    schema: TProdutoPlanoSchema;
-    clear: TProdutoPlanoClear;
-    list: TProdutoPlanoList;
-    read: TProdutoPlanoRead;
-  };
-  mutation: {
-    create: TProdutoPlanoCreate;
-    update: TProdutoPlanoUpdate;
-    del: TProdutoPlanoDel;
-  };
-};
-
-export type TProdutoPlanoModel = TProdutoPlanoCrud & {
-  //#region query
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
-  //#endregion
-};
-
-export type TProdutoPlanoRpc = TProdutoPlanoModel;
+export type TProdutoPlanoSelect = TSelect;

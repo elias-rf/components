@@ -9,7 +9,7 @@ export const TipoEmitentes: TTableDef = {
       label: "CdTipoEmitente",
       name: "TipoEmitentes_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,6 @@ export const TipoEmitentes: TTableDef = {
       label: "NmTipoEmitente",
       name: "NmTipoEmitente",
       typeField: "string",
-      size: 40,
     },
   ],
 };

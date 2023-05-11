@@ -9,7 +9,7 @@ export const ProducaoFormulaNaoConforme: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ProducaoFormulaNaoConforme: TTableDef = {
       label: "NumFormula",
       name: "NumFormula",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ProducaoFormulaNaoConforme: TTableDef = {
       label: "CdOperacao",
       name: "CdOperacao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ProducaoFormulaNaoConforme: TTableDef = {
       label: "QuantidadeNaoConforme",
       name: "QuantidadeNaoConforme",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ProducaoFormulaNaoConforme: TTableDef = {
       label: "CdNaoConformidade",
       name: "CdNaoConformidade",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ProducaoFormulaNaoConforme: TTableDef = {
       label: "CdCorrecao",
       name: "CdCorrecao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const ProducaoFormulaNaoConforme: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
   ],

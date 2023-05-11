@@ -9,7 +9,7 @@ export const ControladosSaidaObs: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ControladosSaidaObs: TTableDef = {
       label: "NumPDV",
       name: "NumPDV",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ControladosSaidaObs: TTableDef = {
       label: "NumDocumento",
       name: "NumDocumento",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ControladosSaidaObs: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ControladosSaidaObs: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ControladosSaidaObs: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ControladosSaidaObs: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const ControladosSaidaObs: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 2048,
+
       allowNull: false,
     },
   ],

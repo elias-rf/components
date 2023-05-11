@@ -9,7 +9,7 @@ export const PostoProdutivo: TTableDef = {
       label: "CdPostoProdutivo",
       name: "PostoProdutivo_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const PostoProdutivo: TTableDef = {
       label: "DescPostoProdutivo",
       name: "DescPostoProdutivo",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
   ],

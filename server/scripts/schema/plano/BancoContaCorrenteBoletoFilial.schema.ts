@@ -9,7 +9,7 @@ export const BancoContaCorrenteBoletoFilial: TTableDef = {
       label: "NumBanco",
       name: "NumBanco",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const BancoContaCorrenteBoletoFilial: TTableDef = {
       label: "NumAgencia",
       name: "NumAgencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const BancoContaCorrenteBoletoFilial: TTableDef = {
       label: "NumContaCorrente",
       name: "NumContaCorrente",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const BancoContaCorrenteBoletoFilial: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
   ],

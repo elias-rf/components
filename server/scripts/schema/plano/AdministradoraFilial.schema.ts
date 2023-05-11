@@ -9,7 +9,7 @@ export const AdministradoraFilial: TTableDef = {
       label: "CdAdministradora",
       name: "CdAdministradora",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const AdministradoraFilial: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
   ],

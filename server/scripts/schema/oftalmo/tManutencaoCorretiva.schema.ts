@@ -9,7 +9,7 @@ export const tManutencaoCorretiva: TTableDef = {
       label: "kManutencaoCorretiva",
       name: "tManutencaoCorretiva_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tManutencaoCorretiva: TTableDef = {
       label: "DataHoraInicio",
       name: "DataHoraInicio",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const tManutencaoCorretiva: TTableDef = {
       label: "fkFuncionario",
       name: "fkFuncionario",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const tManutencaoCorretiva: TTableDef = {
       label: "fkMaquina",
       name: "fkMaquina",
       typeField: "string",
-      size: 30,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const tManutencaoCorretiva: TTableDef = {
       label: "DescricaoProblema",
       name: "DescricaoProblema",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const tManutencaoCorretiva: TTableDef = {
       label: "DataHoraFinal",
       name: "DataHoraFinal",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -59,28 +59,25 @@ export const tManutencaoCorretiva: TTableDef = {
       label: "Diagnostico",
       name: "Diagnostico",
       typeField: "string",
-      size: 16,
     },
     {
       field: "DescricaoSolucao",
       label: "DescricaoSolucao",
       name: "DescricaoSolucao",
       typeField: "string",
-      size: 16,
     },
     {
       field: "ResponsavelManutencao",
       label: "ResponsavelManutencao",
       name: "ResponsavelManutencao",
       typeField: "string",
-      size: 100,
     },
     {
       field: "Travado",
       label: "Travado",
       name: "Travado",
       typeField: "int",
-      size: 1,
+
       defaultValue: "0",
     },
     {
@@ -88,7 +85,6 @@ export const tManutencaoCorretiva: TTableDef = {
       label: "UsuarioConclusao",
       name: "UsuarioConclusao",
       typeField: "string",
-      size: 50,
     },
   ],
 };

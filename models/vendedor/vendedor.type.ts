@@ -39,31 +39,31 @@ export type TVendedorFields = keyof Required<TVendedor>;
 export type TVendedorIds = {
   [pk in keyof Required<TVendedorPk>]: any;
 };
-export type TVendedorSelect = TSelect<TVendedorFields>;
-export type TVendedorWhere = TWhere<TVendedorFields>;
-export type TVendedorOrder = TOrder<TVendedorFields>;
+export type TVendedorSelect = TSelect;
+export type TVendedorWhere = TWhere;
+export type TVendedorOrder = TOrder;
 
 export type TVendedorSchema = () => Promise<TFieldDef[]>;
 export type TVendedorClear = () => Promise<TVendedor>;
 export type TVendedorList = (args: {
-  where?: TWhere<TVendedorFields>[];
-  order?: TOrder<TVendedorFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TVendedorFields>;
+  select?: TSelect;
 }) => Promise<TVendedor[]>;
 export type TVendedorRead = (args: {
   id: TVendedorIds;
-  select?: TSelect<TVendedorFields>;
+  select?: TSelect;
 }) => Promise<TVendedor>;
 
 export type TVendedorCreate = (args: {
   data: TVendedor;
-  select?: TSelect<TVendedorFields>;
+  select?: TSelect;
 }) => Promise<TVendedor>;
 export type TVendedorUpdate = (args: {
   id: TVendedorIds;
   data: TVendedor;
-  select?: TSelect<TVendedorFields>;
+  select?: TSelect;
 }) => Promise<TVendedor>;
 export type TVendedorDel = (args: { id: TVendedorIds }) => Promise<number>;
 

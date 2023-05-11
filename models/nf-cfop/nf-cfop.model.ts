@@ -1,15 +1,13 @@
 import type { TConnections } from "@/config/connections";
 import { crudFactory } from "@/utils/crud/crud.factory";
 import { nf_cfop } from "./nf-cfop.table";
-import type { TNfCfopModel } from "./nf-cfop.type";
 //#region import
 //#endregion
 
 export function nfCfopModelFactory(
   //#region inject
   { connections }: { connections: TConnections }
-): //#endregion
-TNfCfopModel {
+) {
   const connection = connections[nf_cfop.database];
   const crud = crudFactory(connection, nf_cfop);
 
@@ -29,7 +27,7 @@ TNfCfopModel {
     },
     connection,
     nf_cfop,
-  } as TNfCfopModel;
+  };
 
   return model;
 }

@@ -9,7 +9,7 @@ export const ItemPedidoDescComercial: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ItemPedidoDescComercial: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ItemPedidoDescComercial: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ItemPedidoDescComercial: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ItemPedidoDescComercial: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 18,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ItemPedidoDescComercial: TTableDef = {
       label: "PercRepasseComercial",
       name: "PercRepasseComercial",
       typeField: "int",
-      size: 5,
+
       scale: 4,
       allowNull: false,
     },
@@ -58,7 +58,7 @@ export const ItemPedidoDescComercial: TTableDef = {
       label: "VlRepasseComercial",
       name: "VlRepasseComercial",
       typeField: "int",
-      size: 9,
+
       scale: 4,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const ItemPedidoDescComercial: TTableDef = {
       label: "PercDescontoComercial",
       name: "PercDescontoComercial",
       typeField: "int",
-      size: 5,
+
       scale: 4,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const ItemPedidoDescComercial: TTableDef = {
       label: "VlDescontoComercial",
       name: "VlDescontoComercial",
       typeField: "int",
-      size: 5,
+
       scale: 4,
       allowNull: false,
     },

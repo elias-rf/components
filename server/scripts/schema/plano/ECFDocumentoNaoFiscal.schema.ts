@@ -9,7 +9,7 @@ export const ECFDocumentoNaoFiscal: TTableDef = {
       label: "NumSerie",
       name: "NumSerie",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ECFDocumentoNaoFiscal: TTableDef = {
       label: "DtBase",
       name: "DtBase",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const ECFDocumentoNaoFiscal: TTableDef = {
       label: "NumCOO",
       name: "NumCOO",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const ECFDocumentoNaoFiscal: TTableDef = {
       label: "TipoDoc",
       name: "TipoDoc",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const ECFDocumentoNaoFiscal: TTableDef = {
       label: "NumGNF",
       name: "NumGNF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -52,7 +52,7 @@ export const ECFDocumentoNaoFiscal: TTableDef = {
       label: "NumGRG",
       name: "NumGRG",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -61,7 +61,7 @@ export const ECFDocumentoNaoFiscal: TTableDef = {
       label: "numCDC",
       name: "numCDC",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -70,7 +70,7 @@ export const ECFDocumentoNaoFiscal: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -79,7 +79,7 @@ export const ECFDocumentoNaoFiscal: TTableDef = {
       label: "HrEmissao",
       name: "HrEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -88,7 +88,7 @@ export const ECFDocumentoNaoFiscal: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -97,7 +97,7 @@ export const ECFDocumentoNaoFiscal: TTableDef = {
       label: "ControleSerie",
       name: "ControleSerie",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -105,7 +105,7 @@ export const ECFDocumentoNaoFiscal: TTableDef = {
       label: "ControleCOO",
       name: "ControleCOO",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
   ],

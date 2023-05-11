@@ -9,7 +9,7 @@ export const ConfiguracaoImpAssoc: TTableDef = {
       label: "IdModeloArquivo",
       name: "ConfiguracaoImpAssoc_id",
       typeField: "string",
-      size: 20,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ConfiguracaoImpAssoc: TTableDef = {
       label: "PosicaoProduto",
       name: "PosicaoProduto",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ConfiguracaoImpAssoc: TTableDef = {
       label: "TamanhoProduto",
       name: "TamanhoProduto",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ConfiguracaoImpAssoc: TTableDef = {
       label: "PosicaoCdReferencia",
       name: "PosicaoCdReferencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ConfiguracaoImpAssoc: TTableDef = {
       label: "TamanhoCdReferencia",
       name: "TamanhoCdReferencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ConfiguracaoImpAssoc: TTableDef = {
       label: "PosicaoQtdeEmbalagem",
       name: "PosicaoQtdeEmbalagem",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ConfiguracaoImpAssoc: TTableDef = {
       label: "TamanhoQtdeEmbalagem",
       name: "TamanhoQtdeEmbalagem",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
   ],

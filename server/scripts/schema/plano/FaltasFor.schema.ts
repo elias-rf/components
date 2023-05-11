@@ -9,7 +9,7 @@ export const FaltasFor: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,14 +18,13 @@ export const FaltasFor: TTableDef = {
       label: "CdReferencia",
       name: "CdReferencia",
       typeField: "string",
-      size: 15,
     },
     {
       field: "CdProduto",
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -33,14 +32,13 @@ export const FaltasFor: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 40,
     },
     {
       field: "PrecoV",
       label: "PrecoV",
       name: "PrecoV",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -48,7 +46,7 @@ export const FaltasFor: TTableDef = {
       label: "PrecoF",
       name: "PrecoF",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
   ],

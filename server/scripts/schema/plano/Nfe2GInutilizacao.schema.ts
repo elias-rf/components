@@ -9,7 +9,7 @@ export const Nfe2GInutilizacao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const Nfe2GInutilizacao: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const Nfe2GInutilizacao: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const Nfe2GInutilizacao: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const Nfe2GInutilizacao: TTableDef = {
       label: "MotivoInutilizacao",
       name: "MotivoInutilizacao",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const Nfe2GInutilizacao: TTableDef = {
       label: "DtInutilizacao",
       name: "DtInutilizacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -60,7 +60,7 @@ export const Nfe2GInutilizacao: TTableDef = {
       label: "UsuarioInutilizacao",
       name: "UsuarioInutilizacao",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercLucroVarejo",
       name: "PercLucroVarejo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -35,7 +35,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercLucroAtacado",
       name: "PercLucroAtacado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercRedCusto",
       name: "PercRedCusto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -53,7 +53,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercDesconto1",
       name: "PercDesconto1",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -62,7 +62,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercDesconto2",
       name: "PercDesconto2",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -71,7 +71,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercDesconto3",
       name: "PercDesconto3",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -80,7 +80,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercDesconto4",
       name: "PercDesconto4",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -89,7 +89,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercDesconto5",
       name: "PercDesconto5",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -98,7 +98,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercIPIFabricante",
       name: "PercIPIFabricante",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -107,7 +107,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercCustoFinanceiro",
       name: "PercCustoFinanceiro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -116,7 +116,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercDiferencaICMS",
       name: "PercDiferencaICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -125,7 +125,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercPisCofins",
       name: "PercPisCofins",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -134,7 +134,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercCustoEmbalagem",
       name: "PercCustoEmbalagem",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -143,7 +143,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "PercAcrescimoDiversos",
       name: "PercAcrescimoDiversos",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -152,7 +152,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "VlCustoFrete",
       name: "VlCustoFrete",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -161,7 +161,7 @@ export const ParametrosCustoProduto: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

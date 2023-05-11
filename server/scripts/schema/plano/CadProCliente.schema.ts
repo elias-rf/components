@@ -9,7 +9,7 @@ export const CadProCliente: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadProCliente: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CadProCliente: TTableDef = {
       label: "CdReferenciaCliente",
       name: "CdReferenciaCliente",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const CadProCliente: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const CadProCliente: TTableDef = {
       label: "NumItemPedido",
       name: "NumItemPedido",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
   ],

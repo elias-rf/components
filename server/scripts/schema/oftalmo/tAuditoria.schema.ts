@@ -9,7 +9,7 @@ export const tAuditoria: TTableDef = {
       label: "id",
       name: "tAuditoria_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,14 +19,13 @@ export const tAuditoria: TTableDef = {
       label: "estacao",
       name: "estacao",
       typeField: "string",
-      size: 50,
     },
     {
       field: "data",
       label: "data",
       name: "data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       defaultValue: "getdate()",
     },
@@ -35,7 +34,7 @@ export const tAuditoria: TTableDef = {
       label: "hora",
       name: "hora",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       defaultValue: "getdate()",
     },
@@ -44,14 +43,12 @@ export const tAuditoria: TTableDef = {
       label: "usuario",
       name: "usuario",
       typeField: "string",
-      size: 50,
     },
     {
       field: "operacao",
       label: "operacao",
       name: "operacao",
       typeField: "string",
-      size: 200,
     },
   ],
 };

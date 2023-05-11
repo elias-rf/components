@@ -9,7 +9,7 @@ export const ProdutoLink: TTableDef = {
       label: "CdProduto",
       name: "ProdutoLink_id",
       typeField: "string",
-      size: 16,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ProdutoLink: TTableDef = {
       label: "Link",
       name: "Link",
       typeField: "string",
-      size: 512,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ProdutoLink: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -35,7 +35,6 @@ export const ProdutoLink: TTableDef = {
       label: "ID",
       name: "ID",
       typeField: "int",
-      size: 4,
     },
   ],
 };

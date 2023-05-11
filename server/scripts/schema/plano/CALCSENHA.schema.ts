@@ -9,7 +9,7 @@ export const CALCSENHA: TTableDef = {
       label: "CdEmpresa",
       name: "CALCSENHA_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CALCSENHA: TTableDef = {
       label: "IdMultiplica",
       name: "IdMultiplica",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CALCSENHA: TTableDef = {
       label: "IdDivide",
       name: "IdDivide",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const CALCSENHA: TTableDef = {
       label: "IdUsuario",
       name: "IdUsuario",
       typeField: "string",
-      size: 20,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const CALCSENHA: TTableDef = {
       label: "DHAlteracao",
       name: "DHAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -51,7 +51,7 @@ export const CALCSENHA: TTableDef = {
       label: "MotAlteracao",
       name: "MotAlteracao",
       typeField: "string",
-      size: 255,
+
       allowNull: false,
     },
   ],

@@ -9,7 +9,7 @@ export const tNaoConformidadeOperacaoProducao: TTableDef = {
       label: "kNaoConformidadeOP",
       name: "tNaoConformidadeOperacaoProducao_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const tNaoConformidadeOperacaoProducao: TTableDef = {
       label: "fkOperacaoOP",
       name: "fkOperacaoOP",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const tNaoConformidadeOperacaoProducao: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const tNaoConformidadeOperacaoProducao: TTableDef = {
       label: "fkNaoConformidade",
       name: "fkNaoConformidade",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const tNaoConformidadeOperacaoProducao: TTableDef = {
       label: "fkCorrecao",
       name: "fkCorrecao",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
   ],

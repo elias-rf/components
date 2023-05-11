@@ -9,7 +9,7 @@ export const AgendaHistorico: TTableDef = {
       label: "IdCompromisso",
       name: "IdCompromisso",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const AgendaHistorico: TTableDef = {
       label: "Ocorrencia",
       name: "Ocorrencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const AgendaHistorico: TTableDef = {
       label: "CdResponsavel",
       name: "CdResponsavel",
       typeField: "string",
-      size: 10,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const AgendaHistorico: TTableDef = {
       label: "DtOcorrencia",
       name: "DtOcorrencia",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,14 +42,12 @@ export const AgendaHistorico: TTableDef = {
       label: "Historico",
       name: "Historico",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "CdUsuario",
       label: "CdUsuario",
       name: "CdUsuario",
       typeField: "string",
-      size: 10,
     },
   ],
 };

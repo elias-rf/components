@@ -72,31 +72,31 @@ export type TPedidoItemFields = keyof Required<TPedidoItem>;
 export type TPedidoItemIds = {
   [pk in keyof Required<TPedidoItemPk>]: any;
 };
-export type TPedidoItemSelect = TSelect<TPedidoItemFields>;
-export type TPedidoItemWhere = TWhere<TPedidoItemFields>;
-export type TPedidoItemOrder = TOrder<TPedidoItemFields>;
+export type TPedidoItemSelect = TSelect;
+export type TPedidoItemWhere = TWhere;
+export type TPedidoItemOrder = TOrder;
 
 export type TPedidoItemSchema = () => Promise<TFieldDef[]>;
 export type TPedidoItemClear = () => Promise<TPedidoItem>;
 export type TPedidoItemList = (args: {
-  where?: TWhere<TPedidoItemFields>[];
-  order?: TOrder<TPedidoItemFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TPedidoItemFields>;
+  select?: TSelect;
 }) => Promise<TPedidoItem[]>;
 export type TPedidoItemRead = (args: {
   id: TPedidoItemIds;
-  select?: TSelect<TPedidoItemFields>;
+  select?: TSelect;
 }) => Promise<TPedidoItem>;
 
 export type TPedidoItemCreate = (args: {
   data: TPedidoItem;
-  select?: TSelect<TPedidoItemFields>;
+  select?: TSelect;
 }) => Promise<TPedidoItem>;
 export type TPedidoItemUpdate = (args: {
   id: TPedidoItemIds;
   data: TPedidoItem;
-  select?: TSelect<TPedidoItemFields>;
+  select?: TSelect;
 }) => Promise<TPedidoItem>;
 export type TPedidoItemDel = (args: { id: TPedidoItemIds }) => Promise<number>;
 

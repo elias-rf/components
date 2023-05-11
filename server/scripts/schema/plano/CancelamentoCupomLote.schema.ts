@@ -9,7 +9,7 @@ export const CancelamentoCupomLote: TTableDef = {
       label: "cdFilial",
       name: "cdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CancelamentoCupomLote: TTableDef = {
       label: "NumCupom",
       name: "NumCupom",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const CancelamentoCupomLote: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const CancelamentoCupomLote: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -43,7 +43,7 @@ export const CancelamentoCupomLote: TTableDef = {
       label: "NumLote",
       name: "NumLote",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const CancelamentoCupomLote: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

@@ -9,7 +9,7 @@ export const MestreRAT: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const MestreRAT: TTableDef = {
       label: "NumeroRAT",
       name: "NumeroRAT",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,14 +25,13 @@ export const MestreRAT: TTableDef = {
       label: "CTN",
       name: "CTN",
       typeField: "string",
-      size: 20,
     },
     {
       field: "DtPreventiva",
       label: "DtPreventiva",
       name: "DtPreventiva",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -40,21 +39,19 @@ export const MestreRAT: TTableDef = {
       label: "FgSituacao",
       name: "FgSituacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NumeroOS",
       label: "NumeroOS",
       name: "NumeroOS",
       typeField: "string",
-      size: 20,
     },
     {
       field: "CdCliente",
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -62,28 +59,25 @@ export const MestreRAT: TTableDef = {
       label: "NmContato",
       name: "NmContato",
       typeField: "string",
-      size: 30,
     },
     {
       field: "CdEquipamento",
       label: "CdEquipamento",
       name: "CdEquipamento",
       typeField: "int",
-      size: 4,
     },
     {
       field: "NumSerie",
       label: "NumSerie",
       name: "NumSerie",
       typeField: "string",
-      size: 20,
     },
     {
       field: "DtChamado",
       label: "DtChamado",
       name: "DtChamado",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -91,7 +85,7 @@ export const MestreRAT: TTableDef = {
       label: "HrChamado",
       name: "HrChamado",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -99,7 +93,7 @@ export const MestreRAT: TTableDef = {
       label: "DtResposta",
       name: "DtResposta",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -107,7 +101,7 @@ export const MestreRAT: TTableDef = {
       label: "HrResposta",
       name: "HrResposta",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -115,7 +109,7 @@ export const MestreRAT: TTableDef = {
       label: "DtSolucao",
       name: "DtSolucao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -123,7 +117,7 @@ export const MestreRAT: TTableDef = {
       label: "HrSolucao",
       name: "HrSolucao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -131,63 +125,55 @@ export const MestreRAT: TTableDef = {
       label: "Defeito",
       name: "Defeito",
       typeField: "string",
-      size: 100,
     },
     {
       field: "CdAtividade",
       label: "CdAtividade",
       name: "CdAtividade",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdDefeito",
       label: "CdDefeito",
       name: "CdDefeito",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdCausa",
       label: "CdCausa",
       name: "CdCausa",
       typeField: "int",
-      size: 4,
     },
     {
       field: "CdSolucao",
       label: "CdSolucao",
       name: "CdSolucao",
       typeField: "int",
-      size: 4,
     },
     {
       field: "FgPrioridade",
       label: "FgPrioridade",
       name: "FgPrioridade",
       typeField: "string",
-      size: 1,
     },
     {
       field: "CdFase",
       label: "CdFase",
       name: "CdFase",
       typeField: "int",
-      size: 2,
     },
     {
       field: "NumIntervencoes",
       label: "NumIntervencoes",
       name: "NumIntervencoes",
       typeField: "int",
-      size: 2,
     },
     {
       field: "DtUltIntervencao",
       label: "DtUltIntervencao",
       name: "DtUltIntervencao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -195,7 +181,7 @@ export const MestreRAT: TTableDef = {
       label: "CdAtendente",
       name: "CdAtendente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -203,7 +189,7 @@ export const MestreRAT: TTableDef = {
       label: "CdRespAtendimento",
       name: "CdRespAtendimento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -211,7 +197,7 @@ export const MestreRAT: TTableDef = {
       label: "DtPrevRetorno",
       name: "DtPrevRetorno",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -219,14 +205,13 @@ export const MestreRAT: TTableDef = {
       label: "FgClassificacao",
       name: "FgClassificacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "TempoPrevisto",
       label: "TempoPrevisto",
       name: "TempoPrevisto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -234,7 +219,7 @@ export const MestreRAT: TTableDef = {
       label: "NumHrDeslocamento",
       name: "NumHrDeslocamento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -242,7 +227,7 @@ export const MestreRAT: TTableDef = {
       label: "NumHrFaturada",
       name: "NumHrFaturada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -250,7 +235,7 @@ export const MestreRAT: TTableDef = {
       label: "NumHrAbonada",
       name: "NumHrAbonada",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -258,42 +243,37 @@ export const MestreRAT: TTableDef = {
       label: "Funcao",
       name: "Funcao",
       typeField: "string",
-      size: 128,
     },
     {
       field: "FgAtendimentoInterno",
       label: "FgAtendimentoInterno",
       name: "FgAtendimentoInterno",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgGeraSolicitacao",
       label: "FgGeraSolicitacao",
       name: "FgGeraSolicitacao",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgReleaseNotes",
       label: "FgReleaseNotes",
       name: "FgReleaseNotes",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Versao",
       label: "Versao",
       name: "Versao",
       typeField: "string",
-      size: 16,
     },
     {
       field: "VlOrcamento",
       label: "VlOrcamento",
       name: "VlOrcamento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -301,28 +281,24 @@ export const MestreRAT: TTableDef = {
       label: "CdFormaPagto",
       name: "CdFormaPagto",
       typeField: "int",
-      size: 2,
     },
     {
       field: "FgImprimeValoresRat",
       label: "FgImprimeValoresRat",
       name: "FgImprimeValoresRat",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgControleDesenvolvimento",
       label: "FgControleDesenvolvimento",
       name: "FgControleDesenvolvimento",
       typeField: "string",
-      size: 1,
     },
     {
       field: "Ambiente",
       label: "Ambiente",
       name: "Ambiente",
       typeField: "string",
-      size: 1,
     },
   ],
 };

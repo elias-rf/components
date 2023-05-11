@@ -9,7 +9,7 @@ export const TabSal: TTableDef = {
       label: "CdBanco",
       name: "CdBanco",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const TabSal: TTableDef = {
       label: "CdAgencia",
       name: "CdAgencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const TabSal: TTableDef = {
       label: "NumConta",
       name: "NumConta",
       typeField: "string",
-      size: 12,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const TabSal: TTableDef = {
       label: "DtSaldo",
       name: "DtSaldo",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const TabSal: TTableDef = {
       label: "VlSaldo",
       name: "VlSaldo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -50,7 +50,6 @@ export const TabSal: TTableDef = {
       label: "FgSaldoFixado",
       name: "FgSaldoFixado",
       typeField: "string",
-      size: 1,
     },
   ],
 };

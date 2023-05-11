@@ -9,7 +9,7 @@ export const GrupoFornecedores: TTableDef = {
       label: "CdGrupo",
       name: "GrupoFornecedores_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,6 @@ export const GrupoFornecedores: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 25,
     },
   ],
 };

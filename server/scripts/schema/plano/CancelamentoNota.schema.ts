@@ -9,7 +9,7 @@ export const CancelamentoNota: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CancelamentoNota: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CancelamentoNota: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const CancelamentoNota: TTableDef = {
       label: "DtCancelamento",
       name: "DtCancelamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -43,21 +43,19 @@ export const CancelamentoNota: TTableDef = {
       label: "NmUsuario",
       name: "NmUsuario",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Motivo",
       label: "Motivo",
       name: "Motivo",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "CdMotivoCancelamento",
       label: "CdMotivoCancelamento",
       name: "CdMotivoCancelamento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -65,7 +63,7 @@ export const CancelamentoNota: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
   ],

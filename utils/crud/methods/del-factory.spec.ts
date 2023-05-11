@@ -2,7 +2,9 @@ import {
   connectionsMock as connections,
   connectionsMock,
 } from "@/mocks/connections.mock";
+import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { TTableDef } from "@/types/model";
+import { createTracker } from "knex-mock-client";
 import { delFactory } from "./del-factory";
 
 const schema: TTableDef = {
@@ -39,9 +41,6 @@ const schema: TTableDef = {
   ],
 };
 
-import { knexMockHistory } from "@/utils/data/knex-mock-history";
-import { createTracker } from "knex-mock-client";
-
 describe("crudDel", () => {
   const tracker = createTracker(connectionsMock.oftalmo);
   tracker.reset();
@@ -54,14 +53,14 @@ describe("crudDel", () => {
 
   it("del", async () => {
     const rsp = await del({
-      id: { agenda_telefone_id: 10 },
+      ids: [{ id: "agenda_telefone_id", value: 10 }],
     });
     expect(rsp).toEqual([]);
     expect(knexMockHistory(tracker)).toEqual({
       delete: [
         {
           bindings: [10],
-          sql: "delete from [phonebook] where [id] = @p0;select @@rowcount",
+          sql: "delete from [phonebook] where ([id] = @p0);select @@rowcount",
         },
       ],
     });

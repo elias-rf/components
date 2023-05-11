@@ -9,14 +9,13 @@ export const Agenda: TTableDef = {
       label: "CdUsuario",
       name: "CdUsuario",
       typeField: "string",
-      size: 10,
     },
     {
       field: "IdCompromisso",
       label: "IdCompromisso",
       name: "Agenda_id",
       typeField: "int",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -25,7 +24,7 @@ export const Agenda: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -33,7 +32,7 @@ export const Agenda: TTableDef = {
       label: "DtAgendamento",
       name: "DtAgendamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -41,7 +40,7 @@ export const Agenda: TTableDef = {
       label: "HrAgendamento",
       name: "HrAgendamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -49,7 +48,7 @@ export const Agenda: TTableDef = {
       label: "DtAgendada",
       name: "DtAgendada",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -57,7 +56,7 @@ export const Agenda: TTableDef = {
       label: "HrAgendado",
       name: "HrAgendado",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -65,28 +64,25 @@ export const Agenda: TTableDef = {
       label: "DsCompromisso",
       name: "DsCompromisso",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "NmContato",
       label: "NmContato",
       name: "NmContato",
       typeField: "string",
-      size: 40,
     },
     {
       field: "FgStatusCompromisso",
       label: "FgStatusCompromisso",
       name: "FgStatusCompromisso",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NumPedido",
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -94,7 +90,6 @@ export const Agenda: TTableDef = {
       label: "CdRespAgendamento",
       name: "CdRespAgendamento",
       typeField: "string",
-      size: 10,
     },
   ],
 };

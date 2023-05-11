@@ -1,16 +1,19 @@
-import { TFieldDef, TWhere } from "@/types";
+import { TWhere } from "@/types";
 import { Button, Select, Space, TextInput } from "@mantine/core";
 import React, { useState } from "react";
 import { BadgeClose } from "../badge-close";
 
 type TSearchProps = {
-  schema: TFieldDef[];
+  schema: { name: string; typeField: string; label: string }[];
   where: TWhere[];
   onWhere: (event: TWhere[]) => void;
 };
 
 // retorna uma lista de igualdades de acordo como o tipo do campo
-function getEqualitys(field: string, schema: TFieldDef[]) {
+function getEqualitys(
+  field: string,
+  schema: { name: string; typeField: string }[]
+) {
   const equalitys: any = {
     "=": "igual a",
     "<": "menor que",
@@ -23,9 +26,7 @@ function getEqualitys(field: string, schema: TFieldDef[]) {
     null: "(vazio)",
   };
 
-  const aux: TFieldDef | undefined = schema.find(
-    (item: { name: string }) => item.name === field
-  );
+  const aux = schema.find((item: { name: string }) => item.name === field);
 
   const tipo = aux?.typeField;
 
@@ -46,7 +47,10 @@ function getEqualitys(field: string, schema: TFieldDef[]) {
 }
 
 // retorna o nome do campo
-function getFieldTitle(field: string, schema: TFieldDef[]) {
+function getFieldTitle(
+  field: string,
+  schema: { name: string; label: string }[]
+) {
   const aux = schema.find((col: { name: string }) => col.name === field);
   const rsp = aux?.label;
   return rsp || "";

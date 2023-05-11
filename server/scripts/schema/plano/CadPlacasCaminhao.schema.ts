@@ -9,7 +9,7 @@ export const CadPlacasCaminhao: TTableDef = {
       label: "NumPlaca",
       name: "CadPlacasCaminhao_id",
       typeField: "string",
-      size: 10,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CadPlacasCaminhao: TTableDef = {
       label: "NmVeiculo",
       name: "NmVeiculo",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const CadPlacasCaminhao: TTableDef = {
       label: "NmMotorista",
       name: "NmMotorista",
       typeField: "string",
-      size: 128,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const CadPlacasCaminhao: TTableDef = {
       label: "NumTara",
       name: "NumTara",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const CadPlacasCaminhao: TTableDef = {
       label: "Unidade",
       name: "Unidade",
       typeField: "string",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -51,7 +51,7 @@ export const CadPlacasCaminhao: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

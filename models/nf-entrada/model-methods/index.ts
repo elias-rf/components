@@ -1,4 +1,4 @@
-import { TCrud } from "@/utils/crud/crud.type";
+import { TCrud } from "@/utils/crud/crud.factory";
 import { TEstoqueRpc } from "../../estoque/estoque.type";
 import { TNfEntradaControleRpc } from "../../nf-entrada-controle/nf-entrada-controle.type";
 import { TNfEntradaItemRpc } from "../../nf-entrada-item/nf-entrada-item.type";

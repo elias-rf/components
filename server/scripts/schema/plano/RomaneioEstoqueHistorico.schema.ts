@@ -9,7 +9,7 @@ export const RomaneioEstoqueHistorico: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const RomaneioEstoqueHistorico: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const RomaneioEstoqueHistorico: TTableDef = {
       label: "NumRomaneio",
       name: "NumRomaneio",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const RomaneioEstoqueHistorico: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -42,7 +42,7 @@ export const RomaneioEstoqueHistorico: TTableDef = {
       label: "Usuario",
       name: "Usuario",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const RomaneioEstoqueHistorico: TTableDef = {
       label: "Historico",
       name: "Historico",
       typeField: "string",
-      size: 1028,
+
       allowNull: false,
     },
   ],

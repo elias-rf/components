@@ -9,7 +9,7 @@ export const ContratoComposicao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ContratoComposicao: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ContratoComposicao: TTableDef = {
       label: "DiaContrato",
       name: "DiaContrato",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ContratoComposicao: TTableDef = {
       label: "CdClienteInstalacao",
       name: "CdClienteInstalacao",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ContratoComposicao: TTableDef = {
       label: "DtInstalacao",
       name: "DtInstalacao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -50,7 +50,7 @@ export const ContratoComposicao: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ContratoComposicao: TTableDef = {
       label: "VlUnitario",
       name: "VlUnitario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const ContratoComposicao: TTableDef = {
       label: "DtUltReajuste",
       name: "DtUltReajuste",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const ContratoComposicao: TTableDef = {
       label: "VlAnterior",
       name: "VlAnterior",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

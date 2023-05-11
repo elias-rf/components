@@ -9,7 +9,7 @@ export const EstoqueEscrituradoCorrecao: TTableDef = {
       label: "MesBase",
       name: "MesBase",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const EstoqueEscrituradoCorrecao: TTableDef = {
       label: "AnoBase",
       name: "AnoBase",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const EstoqueEscrituradoCorrecao: TTableDef = {
       label: "DtPeriodoCorrecao",
       name: "DtPeriodoCorrecao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -34,7 +34,7 @@ export const EstoqueEscrituradoCorrecao: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const EstoqueEscrituradoCorrecao: TTableDef = {
       label: "CdIndEstoque",
       name: "CdIndEstoque",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const EstoqueEscrituradoCorrecao: TTableDef = {
       label: "TipoParticipante",
       name: "TipoParticipante",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const EstoqueEscrituradoCorrecao: TTableDef = {
       label: "CdParticipante",
       name: "CdParticipante",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -67,7 +67,7 @@ export const EstoqueEscrituradoCorrecao: TTableDef = {
       label: "QtdePositivo",
       name: "QtdePositivo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -76,7 +76,7 @@ export const EstoqueEscrituradoCorrecao: TTableDef = {
       label: "QtdeNegativo",
       name: "QtdeNegativo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -85,7 +85,7 @@ export const EstoqueEscrituradoCorrecao: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -93,7 +93,7 @@ export const EstoqueEscrituradoCorrecao: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

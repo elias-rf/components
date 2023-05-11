@@ -15,35 +15,35 @@ export type TAgendaTelefoneFields = keyof Required<TAgendaTelefone>;
 export type TAgendaTelefoneIds = {
   [pk in keyof Required<TAgendaTelefonePk>]: any;
 };
-export type TAgendaTelefoneSelect = TSelect<TAgendaTelefoneFields>;
-export type TAgendaTelefoneWhere = TWhere<TAgendaTelefoneFields>;
-export type TAgendaTelefoneOrder = TOrder<TAgendaTelefoneFields>;
+export type TAgendaTelefoneSelect = TSelect;
+export type TAgendaTelefoneWhere = TWhere;
+export type TAgendaTelefoneOrder = TOrder;
 
 export type TAgendaTelefoneSchema = () => Promise<TFieldDef[]>;
 export type TAgendaTelefoneClear = () => Promise<TAgendaTelefone>;
 export type TAgendaTelefoneCount = (args: {
-  where?: TWhere<TAgendaTelefoneFields>[];
-  count?: TSelect<TAgendaTelefoneFields>;
+  where?: TWhere[];
+  count?: TSelect;
 }) => Promise<number>;
 export type TAgendaTelefoneList = (args: {
-  where?: TWhere<TAgendaTelefoneFields>[];
-  order?: TOrder<TAgendaTelefoneFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TAgendaTelefoneFields>;
+  select?: TSelect;
 }) => Promise<TAgendaTelefone[]>;
 export type TAgendaTelefoneRead = (args: {
   id: TAgendaTelefoneIds;
-  select?: TSelect<TAgendaTelefoneFields>;
+  select?: TSelect;
 }) => Promise<TAgendaTelefone>;
 
 export type TAgendaTelefoneCreate = (args: {
   data: TAgendaTelefone;
-  select?: TSelect<TAgendaTelefoneFields>;
+  select?: TSelect;
 }) => Promise<TAgendaTelefone>;
 export type TAgendaTelefoneUpdate = (args: {
   id: TAgendaTelefoneIds;
   data: TAgendaTelefone;
-  select?: TSelect<TAgendaTelefoneFields>;
+  select?: TSelect;
 }) => Promise<TAgendaTelefone>;
 export type TAgendaTelefoneDel = (args: {
   id: TAgendaTelefoneIds;

@@ -9,7 +9,7 @@ export const tSistemaMes: TTableDef = {
       label: "Mes",
       name: "tSistemaMes_id",
       typeField: "date",
-      size: 4,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const tSistemaMes: TTableDef = {
       label: "DiaInicial",
       name: "DiaInicial",
       typeField: "date",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const tSistemaMes: TTableDef = {
       label: "DiaFinal",
       name: "DiaFinal",
       typeField: "date",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -34,21 +34,18 @@ export const tSistemaMes: TTableDef = {
       label: "DiaInicialCornea",
       name: "DiaInicialCornea",
       typeField: "date",
-      size: 4,
     },
     {
       field: "DiaFinalCornea",
       label: "DiaFinalCornea",
       name: "DiaFinalCornea",
       typeField: "date",
-      size: 4,
     },
     {
       field: "QtdDiasMes",
       label: "QtdDiasMes",
       name: "QtdDiasMes",
       typeField: "int",
-      size: 4,
     },
   ],
 };

@@ -1,4 +1,5 @@
 import type { TConnections } from "@/config/connections";
+import { TListArgs, TReadArgs } from "@/types";
 import { crudFactory } from "@/utils/crud/crud.factory";
 import { diamante } from "./diamante.table";
 import type { TDiamanteModel } from "./diamante.type";
@@ -15,8 +16,8 @@ export function diamanteModelFactory({
     connection,
     table: diamante,
     query: {
-      list: (args) => crud.query.list(args),
-      read: (args) => crud.query.read(args),
+      list: (args: TListArgs) => crud.query.list(args),
+      read: (args: TReadArgs) => crud.query.read(args),
     },
     mutation: {
       create: (args) => crud.mutation.create(args),

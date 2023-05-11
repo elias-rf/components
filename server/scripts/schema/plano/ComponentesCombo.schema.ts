@@ -9,7 +9,7 @@ export const ComponentesCombo: TTableDef = {
       label: "CdKit",
       name: "ComponentesCombo_id",
       typeField: "string",
-      size: 18,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ComponentesCombo: TTableDef = {
       label: "QtdeMinimaCombo",
       name: "QtdeMinimaCombo",
       typeField: "int",
-      size: 5,
+
       scale: 5,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ComponentesCombo: TTableDef = {
       label: "QtdeMaximaCombo",
       name: "QtdeMaximaCombo",
       typeField: "int",
-      size: 5,
+
       scale: 5,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const ComponentesCombo: TTableDef = {
       label: "VlUnitarioCombo",
       name: "VlUnitarioCombo",
       typeField: "int",
-      size: 9,
+
       scale: 5,
       allowNull: false,
     },
@@ -45,7 +45,7 @@ export const ComponentesCombo: TTableDef = {
       label: "DtUltAlteracao",
       name: "DtUltAlteracao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },

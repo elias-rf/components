@@ -9,7 +9,7 @@ export const ComprovanteTRN: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ComprovanteTRN: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ComprovanteTRN: TTableDef = {
       label: "NumLinha",
       name: "NumLinha",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ComprovanteTRN: TTableDef = {
       label: "Texto",
       name: "Texto",
       typeField: "string",
-      size: 40,
+
       allowNull: false,
     },
   ],

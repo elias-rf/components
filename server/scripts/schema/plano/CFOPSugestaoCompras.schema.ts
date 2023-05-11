@@ -9,7 +9,7 @@ export const CFOPSugestaoCompras: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const CFOPSugestaoCompras: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const CFOPSugestaoCompras: TTableDef = {
       label: "UFFornecedor",
       name: "UFFornecedor",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const CFOPSugestaoCompras: TTableDef = {
       label: "TipoMercadoria",
       name: "TipoMercadoria",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const CFOPSugestaoCompras: TTableDef = {
       label: "FgCompoeGNRE",
       name: "FgCompoeGNRE",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const CFOPSugestaoCompras: TTableDef = {
       label: "CFOPXML",
       name: "CFOPXML",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const CFOPSugestaoCompras: TTableDef = {
       label: "CFOPSugestao",
       name: "CFOPSugestao",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
   ],

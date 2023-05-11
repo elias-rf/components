@@ -9,7 +9,7 @@ export const Emitentes: TTableDef = {
       label: "CdTipoEmitente",
       name: "CdTipoEmitente",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Emitentes: TTableDef = {
       label: "CdEmitente",
       name: "CdEmitente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -26,42 +26,37 @@ export const Emitentes: TTableDef = {
       label: "RzSocial",
       name: "RzSocial",
       typeField: "string",
-      size: 70,
     },
     {
       field: "Endereco",
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 70,
     },
     {
       field: "Bairro",
       label: "Bairro",
       name: "Bairro",
       typeField: "string",
-      size: 30,
     },
     {
       field: "Cidade",
       label: "Cidade",
       name: "Cidade",
       typeField: "string",
-      size: 40,
     },
     {
       field: "Uf",
       label: "Uf",
       name: "Uf",
       typeField: "string",
-      size: 2,
     },
     {
       field: "Cep",
       label: "Cep",
       name: "Cep",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -69,7 +64,7 @@ export const Emitentes: TTableDef = {
       label: "Cgc",
       name: "Cgc",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -77,35 +72,31 @@ export const Emitentes: TTableDef = {
       label: "InscEst",
       name: "InscEst",
       typeField: "string",
-      size: 15,
     },
     {
       field: "Telefone",
       label: "Telefone",
       name: "Telefone",
       typeField: "string",
-      size: 15,
     },
     {
       field: "Fax",
       label: "Fax",
       name: "Fax",
       typeField: "string",
-      size: 15,
     },
     {
       field: "NmContato",
       label: "NmContato",
       name: "NmContato",
       typeField: "string",
-      size: 40,
     },
     {
       field: "PercComissao",
       label: "PercComissao",
       name: "PercComissao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -113,35 +104,30 @@ export const Emitentes: TTableDef = {
       label: "FgAtivo",
       name: "FgAtivo",
       typeField: "string",
-      size: 1,
     },
     {
       field: "FgAcertoParcial",
       label: "FgAcertoParcial",
       name: "FgAcertoParcial",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NmFantasia",
       label: "NmFantasia",
       name: "NmFantasia",
       typeField: "string",
-      size: 64,
     },
     {
       field: "Email",
       label: "Email",
       name: "Email",
       typeField: "string",
-      size: 128,
     },
     {
       field: "EmailNfe",
       label: "EmailNfe",
       name: "EmailNfe",
       typeField: "string",
-      size: 128,
     },
   ],
 };

@@ -9,7 +9,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "IdParametro",
       name: "ParametrosFiscais_id",
       typeField: "int",
-      size: 2,
+
       primaryKey: true,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 50,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "TipoMovimentacao",
       name: "TipoMovimentacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "CriterioSubstituicao",
       name: "CriterioSubstituicao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -42,7 +42,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "FgDetalhaItem",
       name: "FgDetalhaItem",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -50,7 +50,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "FgAtualizaTabela",
       name: "FgAtualizaTabela",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -58,7 +58,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "FgAtualizaAtacado",
       name: "FgAtualizaAtacado",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -66,7 +66,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "FgAtualizaCusto",
       name: "FgAtualizaCusto",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -74,7 +74,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "FgAtualizaPreco",
       name: "FgAtualizaPreco",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -82,7 +82,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "FgConferePreco",
       name: "FgConferePreco",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -90,7 +90,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "FgPedido",
       name: "FgPedido",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -98,7 +98,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "FgIntegraCP",
       name: "FgIntegraCP",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "FgIntegraCR",
       name: "FgIntegraCR",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -114,7 +114,7 @@ export const ParametrosFiscais: TTableDef = {
       label: "LimiteArredondamento",
       name: "LimiteArredondamento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

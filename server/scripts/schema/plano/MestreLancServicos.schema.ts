@@ -9,7 +9,7 @@ export const MestreLancServicos: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const MestreLancServicos: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const MestreLancServicos: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const MestreLancServicos: TTableDef = {
       label: "SubSerie",
       name: "SubSerie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const MestreLancServicos: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const MestreLancServicos: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const MestreLancServicos: TTableDef = {
       label: "DtEmissao",
       name: "DtEmissao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -66,7 +66,7 @@ export const MestreLancServicos: TTableDef = {
       label: "DtEntrada",
       name: "DtEntrada",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -75,7 +75,7 @@ export const MestreLancServicos: TTableDef = {
       label: "VlDocumento",
       name: "VlDocumento",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -84,7 +84,7 @@ export const MestreLancServicos: TTableDef = {
       label: "VlDesconto",
       name: "VlDesconto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -93,7 +93,7 @@ export const MestreLancServicos: TTableDef = {
       label: "VlServico",
       name: "VlServico",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -102,7 +102,7 @@ export const MestreLancServicos: TTableDef = {
       label: "VlTerceiros",
       name: "VlTerceiros",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -111,7 +111,7 @@ export const MestreLancServicos: TTableDef = {
       label: "VlDespesas",
       name: "VlDespesas",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -120,7 +120,7 @@ export const MestreLancServicos: TTableDef = {
       label: "VlBaseCalculoICMS",
       name: "VlBaseCalculoICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -129,7 +129,7 @@ export const MestreLancServicos: TTableDef = {
       label: "VlICMS",
       name: "VlICMS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -138,7 +138,7 @@ export const MestreLancServicos: TTableDef = {
       label: "VlBaseCalculoICMSST",
       name: "VlBaseCalculoICMSST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -147,7 +147,7 @@ export const MestreLancServicos: TTableDef = {
       label: "VlICMSST",
       name: "VlICMSST",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -156,7 +156,7 @@ export const MestreLancServicos: TTableDef = {
       label: "VlNaoTributado",
       name: "VlNaoTributado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -165,7 +165,7 @@ export const MestreLancServicos: TTableDef = {
       label: "VlPIS",
       name: "VlPIS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -174,7 +174,7 @@ export const MestreLancServicos: TTableDef = {
       label: "VlCOFINS",
       name: "VlCOFINS",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -183,7 +183,7 @@ export const MestreLancServicos: TTableDef = {
       label: "CdLigacao",
       name: "CdLigacao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -191,7 +191,7 @@ export const MestreLancServicos: TTableDef = {
       label: "CdTensao",
       name: "CdTensao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -199,7 +199,7 @@ export const MestreLancServicos: TTableDef = {
       label: "SituacaoDoc",
       name: "SituacaoDoc",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -207,7 +207,7 @@ export const MestreLancServicos: TTableDef = {
       label: "TipoServico",
       name: "TipoServico",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -215,7 +215,7 @@ export const MestreLancServicos: TTableDef = {
       label: "CdClasse",
       name: "CdClasse",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -223,7 +223,7 @@ export const MestreLancServicos: TTableDef = {
       label: "CdAssinante",
       name: "CdAssinante",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
   ],

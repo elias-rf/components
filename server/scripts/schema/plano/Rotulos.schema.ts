@@ -9,7 +9,7 @@ export const Rotulos: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const Rotulos: TTableDef = {
       label: "CdRotulo",
       name: "CdRotulo",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const Rotulos: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -33,14 +33,13 @@ export const Rotulos: TTableDef = {
       label: "Conteudo",
       name: "Conteudo",
       typeField: "string",
-      size: 1024,
     },
     {
       field: "CRM",
       label: "CRM",
       name: "CRM",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
   ],

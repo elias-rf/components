@@ -9,7 +9,7 @@ export const MapaEntregaProtocoloItem: TTableDef = {
       label: "CdMapaEntregaProtocolo",
       name: "CdMapaEntregaProtocolo",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const MapaEntregaProtocoloItem: TTableDef = {
       label: "NumMapa",
       name: "NumMapa",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const MapaEntregaProtocoloItem: TTableDef = {
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const MapaEntregaProtocoloItem: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,14 +41,13 @@ export const MapaEntregaProtocoloItem: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "int",
-      size: 4,
     },
     {
       field: "DtInsercao",
       label: "DtInsercao",
       name: "DtInsercao",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -57,7 +56,6 @@ export const MapaEntregaProtocoloItem: TTableDef = {
       label: "DsObservacao",
       name: "DsObservacao",
       typeField: "string",
-      size: 250,
     },
   ],
 };

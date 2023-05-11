@@ -9,7 +9,7 @@ export const tbl_OP_Botao_Operacao: TTableDef = {
       label: "kOPBotaoItem",
       name: "tbl_OP_Botao_Operacao_id",
       typeField: "int",
-      size: 4,
+
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -19,7 +19,7 @@ export const tbl_OP_Botao_Operacao: TTableDef = {
       label: "fkOPBotao",
       name: "fkOPBotao",
       typeField: "string",
-      size: 8,
+
       allowNull: false,
     },
     {
@@ -27,7 +27,7 @@ export const tbl_OP_Botao_Operacao: TTableDef = {
       label: "fkOperacao",
       name: "fkOperacao",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const tbl_OP_Botao_Operacao: TTableDef = {
       label: "QtdInicial",
       name: "QtdInicial",
       typeField: "int",
-      size: 4,
+
       defaultValue: "0",
     },
     {
@@ -43,7 +43,7 @@ export const tbl_OP_Botao_Operacao: TTableDef = {
       label: "DataInicial",
       name: "DataInicial",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -51,7 +51,7 @@ export const tbl_OP_Botao_Operacao: TTableDef = {
       label: "Rejeitos",
       name: "Rejeitos",
       typeField: "int",
-      size: 4,
+
       defaultValue: "0",
     },
     {
@@ -59,7 +59,7 @@ export const tbl_OP_Botao_Operacao: TTableDef = {
       label: "QtdFinal",
       name: "QtdFinal",
       typeField: "int",
-      size: 4,
+
       defaultValue: "0",
     },
     {
@@ -67,7 +67,6 @@ export const tbl_OP_Botao_Operacao: TTableDef = {
       label: "fkFuncionario",
       name: "fkFuncionario",
       typeField: "int",
-      size: 4,
     },
   ],
 };

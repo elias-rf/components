@@ -1,5 +1,5 @@
 import { connectionsMock } from "@/mocks/connections.mock";
-import { knexMockHistory } from "@/utils/data/knex-mock-history";
+import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { renameNameToField } from "@/utils/schema/rename-fields";
 import { createTracker } from "knex-mock-client";
 import { describe, expect, test } from "vitest";
@@ -32,7 +32,7 @@ describe("produtoItem", () => {
       );
     tracker.on.select("CadPro").response([{ CdProduto: 1 }]);
     const rsp = await produtoItem.query.produtoPlano({
-      id: { produto_item_id: "10" },
+      ids: [{ id: "produto_item_id", value: "10" }],
       select: ["produto_plano_id"],
     });
     expect(rsp).toEqual({ produto_plano_id: 1 });
@@ -40,11 +40,11 @@ describe("produtoItem", () => {
       select: [
         {
           bindings: ["10"],
-          sql: "select [IdVisiontech] from [tbl_Produto_Item] where [kProdutoItem] = @p0",
+          sql: "select [IdVisiontech] from [tbl_Produto_Item] where ([kProdutoItem] = @p0)",
         },
         {
           bindings: ["1"],
-          sql: "select [CdProduto] from [CadPro] where [CdProduto] = @p0",
+          sql: "select [CdProduto] from [CadPro] where ([CdProduto] = @p0)",
         },
       ],
     });

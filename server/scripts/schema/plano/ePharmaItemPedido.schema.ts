@@ -9,7 +9,7 @@ export const ePharmaItemPedido: TTableDef = {
       label: "NumAutorizacao",
       name: "NumAutorizacao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ePharmaItemPedido: TTableDef = {
       label: "CdProdutoePharma",
       name: "CdProdutoePharma",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ePharmaItemPedido: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 16,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const ePharmaItemPedido: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const ePharmaItemPedido: TTableDef = {
       label: "VlBruto",
       name: "VlBruto",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -53,7 +53,7 @@ export const ePharmaItemPedido: TTableDef = {
       label: "VlLoja",
       name: "VlLoja",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -62,7 +62,7 @@ export const ePharmaItemPedido: TTableDef = {
       label: "VlReceberLoja",
       name: "VlReceberLoja",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -71,7 +71,7 @@ export const ePharmaItemPedido: TTableDef = {
       label: "VlePharma",
       name: "VlePharma",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -80,7 +80,7 @@ export const ePharmaItemPedido: TTableDef = {
       label: "VlAquisicao",
       name: "VlAquisicao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -89,7 +89,7 @@ export const ePharmaItemPedido: TTableDef = {
       label: "VlRepasse",
       name: "VlRepasse",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -98,7 +98,7 @@ export const ePharmaItemPedido: TTableDef = {
       label: "FgMenorPreco",
       name: "FgMenorPreco",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -106,7 +106,7 @@ export const ePharmaItemPedido: TTableDef = {
       label: "CdCategoria",
       name: "CdCategoria",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -114,7 +114,7 @@ export const ePharmaItemPedido: TTableDef = {
       label: "FgConciliacao",
       name: "FgConciliacao",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
   ],

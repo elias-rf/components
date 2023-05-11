@@ -9,7 +9,7 @@ export const Kardex: TTableDef = {
       label: "CdEmitente",
       name: "CdEmitente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -17,28 +17,25 @@ export const Kardex: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
     },
     {
       field: "TipoMov",
       label: "TipoMov",
       name: "TipoMov",
       typeField: "string",
-      size: 1,
     },
     {
       field: "NumDoc",
       label: "NumDoc",
       name: "NumDoc",
       typeField: "int",
-      size: 4,
     },
     {
       field: "Serie",
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -46,7 +43,7 @@ export const Kardex: TTableDef = {
       label: "Data",
       name: "Data",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
     },
     {
@@ -54,7 +51,7 @@ export const Kardex: TTableDef = {
       label: "Quantidade",
       name: "Quantidade",
       typeField: "float",
-      size: 8,
+
       scale: 4,
     },
     {
@@ -62,7 +59,6 @@ export const Kardex: TTableDef = {
       label: "RzSocial",
       name: "RzSocial",
       typeField: "string",
-      size: 40,
     },
   ],
 };

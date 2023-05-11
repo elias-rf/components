@@ -9,7 +9,7 @@ export const CotacaoNiveisDesconto: TTableDef = {
       label: "CdFornecedor",
       name: "CdFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const CotacaoNiveisDesconto: TTableDef = {
       label: "CdFabricante",
       name: "CdFabricante",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const CotacaoNiveisDesconto: TTableDef = {
       label: "Nivel1",
       name: "Nivel1",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const CotacaoNiveisDesconto: TTableDef = {
       label: "Nivel2",
       name: "Nivel2",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -45,7 +45,7 @@ export const CotacaoNiveisDesconto: TTableDef = {
       label: "Nivel3",
       name: "Nivel3",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

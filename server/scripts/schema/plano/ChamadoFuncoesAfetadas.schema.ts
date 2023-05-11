@@ -9,7 +9,7 @@ export const ChamadoFuncoesAfetadas: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const ChamadoFuncoesAfetadas: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const ChamadoFuncoesAfetadas: TTableDef = {
       label: "NumeroRat",
       name: "NumeroRat",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const ChamadoFuncoesAfetadas: TTableDef = {
       label: "Funcao",
       name: "Funcao",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const ChamadoFuncoesAfetadas: TTableDef = {
       label: "Descricao",
       name: "Descricao",
       typeField: "string",
-      size: 256,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const ChamadoFuncoesAfetadas: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 256,
+
       allowNull: false,
     },
   ],

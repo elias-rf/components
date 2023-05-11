@@ -1,8 +1,12 @@
+import {
+  TCreateArgs,
+  TDelArgs,
+  TListArgs,
+  TReadArgs,
+  TUpdateArgs,
+} from "@/types";
 import { crudFactory } from "@/utils/crud/crud.factory";
 import type { TConnections } from "../../config/connections";
-import { nf_entrada } from "./nf-entrada.table";
-import type { TNfEntradaModel } from "./nf-entrada.type";
-//#region import
 import { TEstoqueRpc } from "../estoque/estoque.type";
 import { TNfEntradaControleRpc } from "../nf-entrada-controle/nf-entrada-controle.type";
 import { TNfEntradaItemRpc } from "../nf-entrada-item/nf-entrada-item.type";
@@ -11,32 +15,27 @@ import { TOrdemProducaoRpc } from "../ordem-producao/ordem-producao.type";
 import { TProdutoControleRpc } from "../produto-controle/produto-controle.type";
 import { TProdutoEstatisticaRpc } from "../produto-estatistica/produto-estatistica.type";
 import { nfEntradaMethodsFactory } from "./model-methods";
-//#endregion
+import { nf_entrada } from "./nf-entrada.table";
 
-export function nfEntradaModelFactory(
-  //#region inject
-  {
-    connections,
-    ordemProducaoModel,
-    estoqueModel,
-    produtoEstatisticaModel,
-    nfEntradaLogModel,
-    nfEntradaItemModel,
-    produtoControleModel,
-    nfEntradaControleModel,
-  }: {
-    connections: TConnections;
-
-    ordemProducaoModel: TOrdemProducaoRpc;
-    estoqueModel: TEstoqueRpc;
-    produtoEstatisticaModel: TProdutoEstatisticaRpc;
-    nfEntradaLogModel: TNfEntradaLogRpc;
-    nfEntradaItemModel: TNfEntradaItemRpc;
-    produtoControleModel: TProdutoControleRpc;
-    nfEntradaControleModel: TNfEntradaControleRpc;
-  }
-): //#endregion
-TNfEntradaModel {
+export function nfEntradaModelFactory({
+  connections,
+  ordemProducaoModel,
+  estoqueModel,
+  produtoEstatisticaModel,
+  nfEntradaLogModel,
+  nfEntradaItemModel,
+  produtoControleModel,
+  nfEntradaControleModel,
+}: {
+  connections: TConnections;
+  ordemProducaoModel: TOrdemProducaoRpc;
+  estoqueModel: TEstoqueRpc;
+  produtoEstatisticaModel: TProdutoEstatisticaRpc;
+  nfEntradaLogModel: TNfEntradaLogRpc;
+  nfEntradaItemModel: TNfEntradaItemRpc;
+  produtoControleModel: TProdutoControleRpc;
+  nfEntradaControleModel: TNfEntradaControleRpc;
+}) {
   const connection = connections[nf_entrada.database];
   const crud = crudFactory(connection, nf_entrada);
   const methods = nfEntradaMethodsFactory({
@@ -50,16 +49,17 @@ TNfEntradaModel {
     nfEntradaControleModel,
   });
 
-  const model: TNfEntradaModel = {
+  const model = {
     query: {
-      list: (args) => crud.query.list(args),
-      read: (args) => crud.query.read(args),
+      list: (args: TListArgs) => crud.query.list(args),
+      read: (args: TReadArgs) => crud.query.read(args),
     },
     mutation: {
-      create: (args) => crud.mutation.create(args),
-      update: (args) => crud.mutation.update(args),
-      del: (args) => crud.mutation.del(args),
-      transferenciaCreate: (args) => methods.mutation.transferenciaCreate(args),
+      create: (args: TCreateArgs) => crud.mutation.create(args),
+      update: (args: TUpdateArgs) => crud.mutation.update(args),
+      del: (args: TDelArgs) => crud.mutation.del(args),
+      transferenciaCreate: (args: { controles: string[] }) =>
+        methods.mutation.transferenciaCreate(args),
     },
   };
 

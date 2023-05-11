@@ -9,7 +9,7 @@ export const ItemPedidoAgenda: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ItemPedidoAgenda: TTableDef = {
       label: "CdCliente",
       name: "CdCliente",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ItemPedidoAgenda: TTableDef = {
       label: "NumPedido",
       name: "NumPedido",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const ItemPedidoAgenda: TTableDef = {
       label: "Sequencia",
       name: "Sequencia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -44,7 +44,7 @@ export const ItemPedidoAgenda: TTableDef = {
       label: "CdProduto",
       name: "CdProduto",
       typeField: "string",
-      size: 15,
+
       allowNull: false,
     },
     {
@@ -52,7 +52,7 @@ export const ItemPedidoAgenda: TTableDef = {
       label: "Posologia",
       name: "Posologia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -60,7 +60,7 @@ export const ItemPedidoAgenda: TTableDef = {
       label: "MedidaDoses",
       name: "MedidaDoses",
       typeField: "string",
-      size: 1,
+
       allowNull: false,
     },
     {
@@ -68,7 +68,7 @@ export const ItemPedidoAgenda: TTableDef = {
       label: "NumDosesDia",
       name: "NumDosesDia",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -76,7 +76,7 @@ export const ItemPedidoAgenda: TTableDef = {
       label: "DtIniTratamento",
       name: "DtIniTratamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -85,7 +85,7 @@ export const ItemPedidoAgenda: TTableDef = {
       label: "DtProcessamento",
       name: "DtProcessamento",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -94,7 +94,7 @@ export const ItemPedidoAgenda: TTableDef = {
       label: "DtUltContato",
       name: "DtUltContato",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -103,7 +103,7 @@ export const ItemPedidoAgenda: TTableDef = {
       label: "DtProxContato",
       name: "DtProxContato",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -112,7 +112,7 @@ export const ItemPedidoAgenda: TTableDef = {
       label: "Observacao",
       name: "Observacao",
       typeField: "string",
-      size: 1024,
+
       allowNull: false,
     },
   ],

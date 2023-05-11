@@ -9,7 +9,7 @@ export const tbl_Produto_Componente: TTableDef = {
       label: "fkProduto",
       name: "fkProduto",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const tbl_Produto_Componente: TTableDef = {
       label: "fkProdutoComponente",
       name: "fkProdutoComponente",
       typeField: "int",
-      size: 4,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const tbl_Produto_Componente: TTableDef = {
       label: "Qtd",
       name: "Qtd",
       typeField: "float",
-      size: 8,
+
       allowNull: false,
       defaultValue: "1",
     },

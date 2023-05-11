@@ -9,7 +9,7 @@ export const RetencaoImposto: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const RetencaoImposto: TTableDef = {
       label: "CNPJ",
       name: "CNPJ",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const RetencaoImposto: TTableDef = {
       label: "Tipo",
       name: "Tipo",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -35,7 +35,7 @@ export const RetencaoImposto: TTableDef = {
       label: "NumDocumentoCredito",
       name: "NumDocumentoCredito",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -44,7 +44,7 @@ export const RetencaoImposto: TTableDef = {
       label: "SerieCredito",
       name: "SerieCredito",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -52,7 +52,7 @@ export const RetencaoImposto: TTableDef = {
       label: "DtCredito",
       name: "DtCredito",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -61,7 +61,7 @@ export const RetencaoImposto: TTableDef = {
       label: "VlCredito",
       name: "VlCredito",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -70,7 +70,7 @@ export const RetencaoImposto: TTableDef = {
       label: "NumDocumentoDebito",
       name: "NumDocumentoDebito",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -79,7 +79,7 @@ export const RetencaoImposto: TTableDef = {
       label: "SerieDebito",
       name: "SerieDebito",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -87,7 +87,7 @@ export const RetencaoImposto: TTableDef = {
       label: "DtDebito",
       name: "DtDebito",
       typeField: "datetime",
-      size: 8,
+
       scale: 3,
       allowNull: false,
     },
@@ -96,7 +96,7 @@ export const RetencaoImposto: TTableDef = {
       label: "VlDebito",
       name: "VlDebito",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

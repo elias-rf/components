@@ -9,7 +9,7 @@ export const MapaEntregaAcerto: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const MapaEntregaAcerto: TTableDef = {
       label: "NumMapa",
       name: "NumMapa",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const MapaEntregaAcerto: TTableDef = {
       label: "VlDinheiro",
       name: "VlDinheiro",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const MapaEntregaAcerto: TTableDef = {
       label: "VlCheque",
       name: "VlCheque",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -45,7 +45,7 @@ export const MapaEntregaAcerto: TTableDef = {
       label: "VlChequePre",
       name: "VlChequePre",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -54,7 +54,7 @@ export const MapaEntregaAcerto: TTableDef = {
       label: "VlCartao",
       name: "VlCartao",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -63,7 +63,7 @@ export const MapaEntregaAcerto: TTableDef = {
       label: "VlDebito",
       name: "VlDebito",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -72,7 +72,7 @@ export const MapaEntregaAcerto: TTableDef = {
       label: "VlCrediario",
       name: "VlCrediario",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -81,7 +81,7 @@ export const MapaEntregaAcerto: TTableDef = {
       label: "VlDevolucoes",
       name: "VlDevolucoes",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -90,7 +90,7 @@ export const MapaEntregaAcerto: TTableDef = {
       label: "VlAntecipado",
       name: "VlAntecipado",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -99,7 +99,7 @@ export const MapaEntregaAcerto: TTableDef = {
       label: "VlRetorno",
       name: "VlRetorno",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

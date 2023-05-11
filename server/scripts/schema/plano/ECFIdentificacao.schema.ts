@@ -9,7 +9,7 @@ export const ECFIdentificacao: TTableDef = {
       label: "CNPJFilial",
       name: "CNPJFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ECFIdentificacao: TTableDef = {
       label: "NumECF",
       name: "NumECF",
       typeField: "int",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -26,7 +26,7 @@ export const ECFIdentificacao: TTableDef = {
       label: "NumFabricacao",
       name: "NumFabricacao",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -34,7 +34,7 @@ export const ECFIdentificacao: TTableDef = {
       label: "ControleFilial",
       name: "ControleFilial",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -43,7 +43,7 @@ export const ECFIdentificacao: TTableDef = {
       label: "ControleFab",
       name: "ControleFab",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
   ],

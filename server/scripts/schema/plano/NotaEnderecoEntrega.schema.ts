@@ -9,7 +9,7 @@ export const NotaEnderecoEntrega: TTableDef = {
       label: "CdEmpresa",
       name: "CdEmpresa",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -17,7 +17,7 @@ export const NotaEnderecoEntrega: TTableDef = {
       label: "CdFilial",
       name: "CdFilial",
       typeField: "int",
-      size: 9,
+
       allowNull: false,
     },
     {
@@ -25,7 +25,7 @@ export const NotaEnderecoEntrega: TTableDef = {
       label: "NumNota",
       name: "NumNota",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -33,7 +33,7 @@ export const NotaEnderecoEntrega: TTableDef = {
       label: "Serie",
       name: "Serie",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -41,7 +41,7 @@ export const NotaEnderecoEntrega: TTableDef = {
       label: "Modelo",
       name: "Modelo",
       typeField: "string",
-      size: 3,
+
       allowNull: false,
     },
     {
@@ -49,7 +49,7 @@ export const NotaEnderecoEntrega: TTableDef = {
       label: "Endereco",
       name: "Endereco",
       typeField: "string",
-      size: 256,
+
       allowNull: false,
     },
     {
@@ -57,7 +57,7 @@ export const NotaEnderecoEntrega: TTableDef = {
       label: "Bairro",
       name: "Bairro",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -65,7 +65,7 @@ export const NotaEnderecoEntrega: TTableDef = {
       label: "Cidade",
       name: "Cidade",
       typeField: "string",
-      size: 64,
+
       allowNull: false,
     },
     {
@@ -73,7 +73,7 @@ export const NotaEnderecoEntrega: TTableDef = {
       label: "UF",
       name: "UF",
       typeField: "string",
-      size: 2,
+
       allowNull: false,
     },
     {
@@ -81,7 +81,7 @@ export const NotaEnderecoEntrega: TTableDef = {
       label: "CEP",
       name: "CEP",
       typeField: "int",
-      size: 5,
+
       allowNull: false,
     },
     {
@@ -89,7 +89,7 @@ export const NotaEnderecoEntrega: TTableDef = {
       label: "Proximidades",
       name: "Proximidades",
       typeField: "string",
-      size: 256,
+
       allowNull: false,
     },
     {
@@ -97,7 +97,7 @@ export const NotaEnderecoEntrega: TTableDef = {
       label: "Contato",
       name: "Contato",
       typeField: "string",
-      size: 32,
+
       allowNull: false,
     },
     {
@@ -105,21 +105,18 @@ export const NotaEnderecoEntrega: TTableDef = {
       label: "NumEndereco",
       name: "NumEndereco",
       typeField: "int",
-      size: 5,
     },
     {
       field: "CompEndereco",
       label: "CompEndereco",
       name: "CompEndereco",
       typeField: "string",
-      size: 32,
     },
     {
       field: "FgTipoEndereco",
       label: "FgTipoEndereco",
       name: "FgTipoEndereco",
       typeField: "string",
-      size: 1,
     },
   ],
 };

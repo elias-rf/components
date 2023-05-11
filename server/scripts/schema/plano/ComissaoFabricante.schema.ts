@@ -9,7 +9,7 @@ export const ComissaoFabricante: TTableDef = {
       label: "CDVendedor",
       name: "CDVendedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -18,7 +18,7 @@ export const ComissaoFabricante: TTableDef = {
       label: "CDFornecedor",
       name: "CDFornecedor",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ export const ComissaoFabricante: TTableDef = {
       label: "PercComisAVista",
       name: "PercComisAVista",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ export const ComissaoFabricante: TTableDef = {
       label: "PercComisAPrazo",
       name: "PercComisAPrazo",
       typeField: "float",
-      size: 8,
+
       scale: 4,
       allowNull: false,
     },

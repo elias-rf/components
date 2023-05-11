@@ -49,31 +49,31 @@ export type TNfEntradaItemFields = keyof Required<TNfEntradaItem>;
 export type TNfEntradaItemIds = {
   [pk in keyof Required<TNfEntradaItemPk>]: any;
 };
-export type TNfEntradaItemSelect = TSelect<TNfEntradaItemFields>;
-export type TNfEntradaItemWhere = TWhere<TNfEntradaItemFields>;
-export type TNfEntradaItemOrder = TOrder<TNfEntradaItemFields>;
+export type TNfEntradaItemSelect = TSelect;
+export type TNfEntradaItemWhere = TWhere;
+export type TNfEntradaItemOrder = TOrder;
 
 export type TNfEntradaItemSchema = () => Promise<TFieldDef[]>;
 export type TNfEntradaItemClear = () => Promise<TNfEntradaItem>;
 export type TNfEntradaItemList = (args: {
-  where?: TWhere<TNfEntradaItemFields>[];
-  order?: TOrder<TNfEntradaItemFields>[];
+  where?: TWhere[];
+  order?: TOrder[];
   limit?: number;
-  select?: TSelect<TNfEntradaItemFields>;
+  select?: TSelect;
 }) => Promise<TNfEntradaItem[]>;
 export type TNfEntradaItemRead = (args: {
   id: TNfEntradaItemIds;
-  select?: TSelect<TNfEntradaItemFields>;
+  select?: TSelect;
 }) => Promise<TNfEntradaItem>;
 
 export type TNfEntradaItemCreate = (args: {
   data: TNfEntradaItem;
-  select?: TSelect<TNfEntradaItemFields>;
+  select?: TSelect;
 }) => Promise<TNfEntradaItem>;
 export type TNfEntradaItemUpdate = (args: {
   id: TNfEntradaItemIds;
   data: TNfEntradaItem;
-  select?: TSelect<TNfEntradaItemFields>;
+  select?: TSelect;
 }) => Promise<TNfEntradaItem>;
 export type TNfEntradaItemDel = (args: {
   id: TNfEntradaItemIds;

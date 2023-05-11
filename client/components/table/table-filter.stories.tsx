@@ -1,4 +1,4 @@
-import { TFieldDef, TWhere } from "@/types";
+import { TWhere } from "@/types";
 import type { Meta, StoryObj } from "@storybook/react";
 import { JsonViewer } from "@textea/json-viewer";
 import React from "react";
@@ -11,7 +11,7 @@ const meta: Meta<typeof TableFilter> = {
 export default meta;
 type Story = StoryObj<typeof TableFilter>;
 
-const schema: TFieldDef[] = [
+const schema = [
   {
     label: "ID",
     name: "id",
