@@ -1,31 +1,26 @@
-import { TCrud } from "@/utils/crud/crud.type";
-import { TProdutoItemModel } from "../../produto-item/produto-item.type";
+import { TModels } from "@/models/models";
+import { TIds } from "@/types";
 import { TProdutoPlanoSelect } from "../../produto-plano/produto-plano.type";
-import { TOrdemProducaoIds } from "../ordem-producao.type";
 
-export function produtoPlanoFactory({
-  crud,
-  produtoItemModel,
-}: {
-  crud: TCrud;
-  produtoItemModel: TProdutoItemModel;
-}) {
+export function produtoPlanoFactory({ models }: { models: TModels }) {
   return async ({
-    id,
+    ids,
     select,
   }: {
-    id: TOrdemProducaoIds;
+    ids: TIds;
     select?: TProdutoPlanoSelect;
   }) => {
-    const { produto_item_id } = await crud.query.read({
-      id,
-      select: ["produto_item_id"],
+    const { produto_item_id } = await models.ordemProducao.query.produtoItem({
+      ids,
     });
 
-    return await produtoItemModel.query.produtoPlano({
-      id: {
-        produto_item_id,
-      },
+    return await models.produtoItem.query.produtoPlano({
+      ids: [
+        {
+          id: "produto_item_id",
+          value: produto_item_id,
+        },
+      ],
       select,
     });
   };

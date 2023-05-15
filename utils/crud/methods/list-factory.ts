@@ -14,7 +14,7 @@ import {
   renameNameToField,
 } from "../../schema/rename-fields";
 
-export function listFactory(connection: Knex, table: TTableDef) {
+export function crudListFactory(connection: Knex, table: TTableDef) {
   const response = async ({
     filters = [],
     sorts = [],
@@ -31,8 +31,6 @@ export function listFactory(connection: Knex, table: TTableDef) {
     assertSorts(sorts, table.fields);
     assertSelect(select as string[], table.fields);
     assertSelect(group as string[], table.fields);
-
-
 
     let qry = connection(table.table);
     if (select) qry = qry.select(knexSelect(select, table.fields));

@@ -1,18 +1,9 @@
-import { TIds } from "@/types";
-import { TCrud } from "@/utils/crud/crud.factory";
-import {
-  TProdutoItemModel,
-  TProdutoItemSelect,
-} from "../../produto-item/produto-item.type";
+import type { TModels } from "@/models/models";
+import type { TIds } from "@/types";
+import type { TProdutoItemSelect } from "../../produto-item/produto-item.type";
 
 // Retorna numero de controle a partir da ordem de producao e numero de serie
-export function produtoItemFactory({
-  crud,
-  produtoItemModel,
-}: {
-  crud: TCrud;
-  produtoItemModel: TProdutoItemModel;
-}) {
+export function produtoItemFactory({ models }: { models: TModels }) {
   return async ({
     ids,
     select,
@@ -20,7 +11,7 @@ export function produtoItemFactory({
     ids: TIds;
     select?: TProdutoItemSelect;
   }) => {
-    const ordemProducao = await crud.query.read({
+    const ordemProducao = await models.ordemProducao.query.read({
       ids,
       select: ["produto_item_id"],
     });
@@ -28,8 +19,8 @@ export function produtoItemFactory({
     if (ordemProducao.produto_item_id === undefined) {
       return {};
     }
-    return produtoItemModel.query.read({
-      id: { produto_item_id: ordemProducao.produto_item_id },
+    return models.produtoItem.query.read({
+      ids: [{ id: "produto_item_id", value: ordemProducao.produto_item_id }],
       select,
     });
   };

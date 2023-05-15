@@ -9,7 +9,7 @@ import {
   renameNameToField,
 } from "../../schema/rename-fields";
 
-export function readFactory(connection: Knex, table: TTableDef) {
+export function crudReadFactory(connection: Knex, table: TTableDef) {
   const response = async ({
     ids,
     select = [],

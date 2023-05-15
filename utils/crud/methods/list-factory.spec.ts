@@ -2,7 +2,7 @@ import { connectionsMock } from "@/mocks/connections.mock";
 import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { TTableDef } from "@/types/model";
 import { createTracker } from "knex-mock-client";
-import { listFactory } from "./list-factory";
+import { crudListFactory } from "./list-factory";
 
 const schema: TTableDef = {
   database: "oftalmo",
@@ -32,7 +32,7 @@ const schema: TTableDef = {
 
 describe("listFactory", () => {
   const tracker = createTracker(connectionsMock.oftalmo);
-  const list = listFactory(connectionsMock.oftalmo, schema);
+  const list = crudListFactory(connectionsMock.oftalmo, schema);
 
   beforeEach(() => {
     tracker.reset();

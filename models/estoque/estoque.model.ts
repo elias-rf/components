@@ -1,7 +1,7 @@
 import type { TConnections } from "@/config/connections";
 import { crudFactory } from "@/utils/crud/crud.factory";
 import { estoque } from "./estoque.table";
-import { estoqueMethods } from "./model.methods";
+import { estoqueMethods } from "./methods";
 
 export function estoqueModelFactory({
   connections,

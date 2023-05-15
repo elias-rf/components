@@ -11,7 +11,7 @@ import {
   TUpdateArgs,
 } from "@/types";
 import { TNfSaidaRpc } from "../nf-saida/nf-saida.type";
-import { clienteMethods } from "./model-methods";
+import { clienteMethods } from "./methods";
 
 export function clienteModelFactory({
   connections,

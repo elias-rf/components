@@ -1,11 +1,16 @@
 import { connectionsMock } from "@/mocks/connections.mock";
 import { knexMockHistory } from "@/mocks/knex-mock-history";
+import { setTracker } from "@/server/lib/set_tracker";
 import { createTracker, Tracker } from "knex-mock-client";
 import { afterAll, afterEach, beforeAll, describe, expect, test } from "vitest";
-import { setTracker } from "../../server/lib/set_tracker";
-import { estoqueModelFactory } from "./estoque.model";
+import { estoque } from "../estoque.table";
+import { incrementFactory } from "./increment";
+
 describe("estoque", () => {
-  const estoque = estoqueModelFactory({ connections: connectionsMock });
+  const increment = incrementFactory({
+    connection: connectionsMock.plano,
+    table: estoque,
+  });
   let tracker: Tracker;
 
   beforeAll(() => {
@@ -22,7 +27,7 @@ describe("estoque", () => {
   });
 
   test("increment", async () => {
-    const rsp = await estoque.mutation.increment({
+    const rsp = await increment({
       id: [
         { id: "produto_plano_id", value: "1" },
         { id: "filial_id", value: 1 },
@@ -36,7 +41,7 @@ describe("estoque", () => {
       any: [
         {
           bindings: [2, "1", 1],
-          sql: `update [Estoque] set [EstAtual] = [EstAtual] + @p0 output inserted.[EstAtual] where [CdProduto] = @p1 and [CdEmpresa] = @p2`,
+          sql: `update [Estoque] set [EstAtual] = [EstAtual] + @p0 output inserted.[EstAtual] where ([CdProduto] = @p1 and [CdEmpresa] = @p2)`,
         },
       ],
     });

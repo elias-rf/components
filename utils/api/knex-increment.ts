@@ -1,10 +1,7 @@
-import { TIncrement } from "@/types";
+import { TFields, TIncrement } from "@/types";
 import { assertIncrement } from "@/utils/asserts/assert-increment";
 
-export const knexIncrement = (
-  inc: TIncrement,
-  schema: { field: string; name: string }[]
-) => {
+export const knexIncrement = (inc: TIncrement, schema: TFields) => {
   assertIncrement(inc, schema);
 
   const conv = schema.reduce<Record<string, string>>((resp, item) => {

@@ -1,51 +1,52 @@
+import { TModels } from "@/models/models";
 import { TIds } from "@/types";
+import { assertIds } from "@/utils/asserts/assert-ids";
 import { day } from "@/utils/date/day";
 import { isEmpty } from "@/utils/identify/is-empty";
-import { TOrdemProducaoOperacaoModel } from "../../ordem-producao-operacao/ordem-producao-operacao.type";
+import { ordem_producao } from "../ordem-producao.table";
 
 // Retorna data de fabricacao
-export function dataFabricacaoFactory({
-  ordemProducaoOperacaoModel,
-}: {
-  ordemProducaoOperacaoModel: TOrdemProducaoOperacaoModel;
-}) {
-  return async ({ id }: { id: TIds }) => {
-    let response = await ordemProducaoOperacaoModel.query.list({
-      where: [
-        ["operacao_id", "=", "3059"],
-        ["ordem_producao_id", "=", id.ordem_producao_id],
+export function dataFabricacaoFactory({ models }: { models: TModels }) {
+  return async ({ ids }: { ids: TIds }) => {
+    assertIds(ids, ordem_producao.fields);
+    const id = ids[0].value.toString();
+
+    let response = await models.ordemProducaoOperacao.query.list({
+      filters: [
+        { id: "operacao_id", value: "3059" },
+        { id: "ordem_producao_id", value: id },
       ],
-      order: [["data_hora_inicio", "desc"]],
+      sorts: [{ id: "data_hora_inicio", desc: true }],
       select: ["data_hora_inicio"],
     });
 
     if (response.length === 0 || isEmpty(response[0].data_hora_inicio)) {
-      response = await ordemProducaoOperacaoModel.query.list({
-        where: [
-          ["operacao_id", "=", "3060"],
-          ["ordem_producao_id", "=", id.ordem_producao_id],
+      response = await models.ordemProducaoOperacao.query.list({
+        filters: [
+          { id: "operacao_id", value: "3060" },
+          { id: "ordem_producao_id", value: id.ordem_producao_id },
         ],
-        order: [["data_hora_inicio", "desc"]],
+        sorts: [{ id: "data_hora_inicio", desc: true }],
         select: ["data_hora_inicio"],
       });
     }
     if (response.length === 0 || isEmpty(response[0].data_hora_inicio)) {
-      response = await ordemProducaoOperacaoModel.query.list({
-        where: [
-          ["operacao_id", "=", "4020"],
-          ["ordem_producao_id", "=", id.ordem_producao_id],
+      response = await models.ordemProducaoOperacao.query.list({
+        filters: [
+          { id: "operacao_id", value: "4020" },
+          { id: "ordem_producao_id", value: id.ordem_producao_id },
         ],
-        order: [["data_hora_inicio", "desc"]],
+        sorts: [{ id: "data_hora_inicio", desc: true }],
         select: ["data_hora_inicio"],
       });
     }
     if (response.length === 0 || isEmpty(response[0].data_hora_inicio)) {
-      response = await ordemProducaoOperacaoModel.query.list({
-        where: [
-          ["operacao_id", "=", "3160"],
-          ["ordem_producao_id", "=", id.ordem_producao_id],
+      response = await models.ordemProducaoOperacao.query.list({
+        filters: [
+          { id: "operacao_id", value: "3160" },
+          { id: "ordem_producao_id", value: id.ordem_producao_id },
         ],
-        order: [["data_hora_inicio", "desc"]],
+        sorts: [{ id: "data_hora_inicio", desc: true }],
         select: ["data_hora_inicio"],
       });
     }

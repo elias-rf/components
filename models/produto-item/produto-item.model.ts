@@ -2,7 +2,7 @@ import type { TConnections } from "@/config/connections";
 import { TProdutoPlanoModel } from "@/models/produto-plano/produto-plano.model";
 import { TIds, TListArgs, TReadArgs, TSelect } from "@/types";
 import { crudFactory } from "@/utils/crud/crud.factory";
-import { produtoItemMethods } from "./model.methods";
+import { produtoItemMethods } from "./methods";
 import { produto_item } from "./produto-item.table";
 
 export function produtoItemModelFactory({

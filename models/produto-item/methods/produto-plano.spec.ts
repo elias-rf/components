@@ -1,21 +1,15 @@
 import { connectionsMock } from "@/mocks/connections.mock";
 import { knexMockHistory } from "@/mocks/knex-mock-history";
+import { modelsMock } from "@/mocks/models.mock";
 import { renameNameToField } from "@/utils/schema/rename-fields";
 import { createTracker } from "knex-mock-client";
 import { beforeEach, describe, expect, test } from "vitest";
-import { produtoPlanoModelFactory } from "../../produto-plano/produto-plano.model";
-import { produtoItemModelFactory } from "../produto-item.model";
 import { produto_item } from "../produto-item.table";
 
-describe("produtoItem", () => {
+describe("produtoPlano", () => {
   const tracker = createTracker(connectionsMock.oftalmo);
 
-  const produtoItem = produtoItemModelFactory({
-    connections: connectionsMock,
-    produtoPlanoModel: produtoPlanoModelFactory({
-      connections: connectionsMock,
-    }),
-  });
+  const models = modelsMock;
 
   beforeEach(() => {
     tracker.reset();
@@ -31,7 +25,8 @@ describe("produtoItem", () => {
         )
       );
     tracker.on.select("CadPro").response([{ CdProduto: 1 }]);
-    const rsp = await produtoItem.query.produtoPlano({
+
+    const rsp = await models.produtoItem.query.produtoPlano({
       ids: [{ id: "produto_item_id", value: "10" }],
       select: ["produto_plano_id"],
     });

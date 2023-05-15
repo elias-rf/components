@@ -1,12 +1,12 @@
 import type { Knex } from "knex";
 //--
 import { TTableDef } from "@/types";
-import { increment } from "./increment";
+import { incrementFactory } from "./increment";
 
 export function estoqueMethods(connection: Knex, table: TTableDef) {
   return {
     mutation: {
-      increment: increment(connection, table),
+      increment: incrementFactory(connection, table),
     },
   };
 }

@@ -2,7 +2,7 @@ import { connectionsMock } from "@/mocks/connections.mock";
 import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { TTableDef } from "@/types";
 import { createTracker } from "knex-mock-client";
-import { readFactory } from "./read-factory";
+import { crudReadFactory } from "./read-factory";
 
 const schema: TTableDef = {
   database: "oftalmo",
@@ -42,7 +42,7 @@ describe("crudRead", () => {
   const tracker = createTracker(connectionsMock.oftalmo);
   tracker.reset();
   tracker.on.select("phonebook").response([]);
-  const read = readFactory(connectionsMock.oftalmo, schema);
+  const read = crudReadFactory(connectionsMock.oftalmo, schema);
 
   beforeEach(() => {
     tracker.resetHistory();

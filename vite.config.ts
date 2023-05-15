@@ -34,6 +34,14 @@ export default defineConfig({
     environment: "jsdom", // or 'jsdom', 'node'
     snapshotFormat: { escapeString: false },
     setupFiles: [path.resolve(__dirname, "./setup-tests.ts")],
+    exclude: [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/cypress/**",
+      "**/.{idea,git,cache,output,temp}/**",
+      "**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*",
+      "**/client-ng/**",
+    ],
   },
   define: {
     __APP_VERSION__: JSON.stringify(day().format("YY-MM-DD.HH:mm")),

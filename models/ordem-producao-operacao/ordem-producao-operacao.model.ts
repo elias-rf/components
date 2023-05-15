@@ -1,6 +1,6 @@
 import type { TConnections } from "@/config/connections";
 import { crudFactory } from "@/utils/crud/crud.factory";
-import { ordemProducaoOperacaoMethods } from "./model.methods";
+import { ordemProducaoOperacaoMethods } from "./methods";
 import { ordem_producao_operacao } from "./ordem-producao-operacao.table";
 
 export function ordemProducaoOperacaoModelFactory({

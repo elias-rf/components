@@ -5,8 +5,8 @@ import { countFactory } from "./count-factory";
 import { createFactory } from "./create-factory";
 import { delFactory } from "./del-factory";
 import { incrementFactory } from "./increment-factory";
-import { listFactory } from "./list-factory";
-import { readFactory } from "./read-factory";
+import { crudListFactory } from "./list-factory";
+import { crudReadFactory } from "./read-factory";
 import { schemaFactory } from "./schema-factory";
 import { updateFactory } from "./update-factory";
 
@@ -15,8 +15,8 @@ export const methods = (connection: Knex, table: TTableDef) => ({
     schema: schemaFactory(table),
     clear: clearFactory(table),
     count: countFactory(connection, table),
-    list: listFactory(connection, table),
-    read: readFactory(connection, table),
+    list: crudListFactory(connection, table),
+    read: crudReadFactory(connection, table),
   },
   mutation: {
     increment: incrementFactory(connection, table),

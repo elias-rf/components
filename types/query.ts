@@ -81,7 +81,7 @@ export type TCountArgs = {
 };
 
 export type TIncrementArgs = {
-  filters?: TFilters;
-  increment?: TIncrement;
+  filters: TFilters;
+  increment: TIncrement;
   select?: TSelect;
 };
