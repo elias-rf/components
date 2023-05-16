@@ -20,10 +20,10 @@ export function incrementFactory(db: Knex, schema: TTableDef) {
     if (select.length > 0) {
       select = namesFromTable(entity);
     }
-
+    const inc = knexIncrement(increment, schema.fields);
     const data: TGenericObject[] = await db(tbl)
       .where(knexWhere(filters, entity.fields))
-      .increment(knexIncrement(increment, schema.fields))
+      .increment(...inc)
       .returning(select as string[]);
     return renameFieldToName(data, schema.fields);
   };

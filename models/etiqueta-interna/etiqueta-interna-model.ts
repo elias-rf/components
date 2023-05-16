@@ -1,9 +1,9 @@
 import type { TConnections } from "@/config/connections";
 import { TModels } from "@/models/models";
 import { CrudModel } from "@/utils/crud/crud-model";
-import { agenda_telefone } from "./agenda-telefone.table";
+import { etiqueta_interna } from "./etiqueta-interna.table";
 
-export class AgendaTelefoneModel extends CrudModel {
+export class EtiquetaInternaModel extends CrudModel {
   constructor({
     connections,
     models,
@@ -11,7 +11,7 @@ export class AgendaTelefoneModel extends CrudModel {
     connections: TConnections;
     models: TModels;
   }) {
-    super(connections[agenda_telefone.database], agenda_telefone);
-    models.agendaTelefone = this;
+    super(connections[etiqueta_interna.database], etiqueta_interna);
+    models.etiquetaInterna = this;
   }
 }

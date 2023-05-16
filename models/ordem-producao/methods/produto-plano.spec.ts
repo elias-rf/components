@@ -18,7 +18,7 @@ describe("produtoPlano", () => {
       .response([{ kProdutoItem: 1, fkProduto: 1, IdVisiontech: "1" }]);
     tracker.on.any("CadPro").response([{ CdProduto: 1 }]);
 
-    const rsp = await models.ordemProducao.query.produtoPlano({
+    const rsp = await models.ordemProducao.produtoPlano({
       ids: [{ id: "ordem_producao_id", value: 1 }],
       select: ["produto_plano_id"],
     });

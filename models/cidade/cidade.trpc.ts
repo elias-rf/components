@@ -6,24 +6,24 @@ import {
   readZod,
   updateZod,
 } from "../../utils/trpc/inputs";
-import { container } from "../container";
+import { models } from "../models";
 
-const model = container.resolve("cidadeModel");
+const model = models.agendaTelefone;
 
 export const cidadeRouter = router({
   list: publicProcedure.input(listZod).query((req) => {
-    return model.query.list(req.input);
+    return model.list(req.input);
   }),
   read: publicProcedure.input(readZod).query((req) => {
-    return model.query.read(req.input);
+    return model.read(req.input);
   }),
   update: publicProcedure.input(updateZod).mutation((req) => {
-    return model.mutation.update(req.input);
+    return model.update(req.input);
   }),
   create: publicProcedure.input(createZod).mutation((req) => {
-    return model.mutation.create(req.input);
+    return model.create(req.input);
   }),
   del: publicProcedure.input(delZod).mutation((req) => {
-    return model.mutation.del(req.input);
+    return model.del(req.input);
   }),
 });

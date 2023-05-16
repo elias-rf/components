@@ -1,6 +1,7 @@
 import { connectionsMock } from "@/mocks/connections.mock";
 import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { TTableDef } from "@/types";
+import { clearFactory } from "@/utils/crud/methods/clear-factory";
 import { createTracker } from "knex-mock-client";
 import { CrudModel } from "./crud-model";
 
@@ -11,21 +12,29 @@ const schema: TTableDef = {
     {
       allowNull: false,
       field: "id",
+      label: "Ramal",
       name: "agenda_telefone_id",
       primaryKey: true,
+      typeField: "int",
     },
     {
       allowNull: false,
       field: "name",
+      label: "Nome",
       name: "nome",
+      typeField: "string",
     },
     {
       field: "department",
+      label: "Setor",
       name: "setor",
+      typeField: "string",
     },
     {
       field: "email",
+      label: "Email",
       name: "email",
+      typeField: "string",
     },
   ],
 };
@@ -137,6 +146,32 @@ describe("CrudModel", () => {
           sql: "update [phonebook] set [id] = [id] + @p0 output  where ([id] = @p1)",
         },
       ],
+    });
+  });
+
+  it("count", async () => {
+    tracker.on.select("phonebook").response([]);
+    const rsp = await crudModel.count({
+      filters: [{ id: "agenda_telefone_id", value: "=10" }],
+    });
+    expect(rsp).toEqual([]);
+    expect(knexMockHistory(tracker)).toEqual({
+      select: [
+        {
+          bindings: ["10"],
+          sql: "select count(*) as [ttl] from [phonebook] where ([id] = @p0)",
+        },
+      ],
+    });
+  });
+
+  it("deve retornar record default", async () => {
+    const clear = clearFactory(schema);
+    expect(await clear()).toEqual({
+      agenda_telefone_id: 0,
+      email: null,
+      nome: "",
+      setor: null,
     });
   });
 });

@@ -2,27 +2,18 @@ import { connectionsMock } from "@/mocks/connections.mock";
 import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { modelsMock } from "@/mocks/models.mock";
 import { createTracker } from "knex-mock-client";
-import { AgendaTelefoneModel } from "./agenda-telefone-model";
 
 describe("AgendaTelefoneModel", () => {
   const tracker = createTracker(connectionsMock.oftalmo);
   const models = modelsMock;
-  const agendaTelefoneModel = new AgendaTelefoneModel({
-    connections: connectionsMock,
-    models,
-  });
 
   beforeEach(() => {
     tracker.reset();
   });
 
-  it("instanciar", () => {
-    expect(agendaTelefoneModel).toBeInstanceOf(AgendaTelefoneModel);
-  });
-
   it("list", async () => {
     tracker.on.select("phonebook").response([{ id: "1" }]);
-    const rsp = await models.agendaTelefone.query.list({
+    const rsp = await models.agendaTelefone.list({
       filters: [{ id: "agenda_telefone_id", value: "1" }],
       sorts: [{ id: "agenda_telefone_id", desc: false }],
     });
@@ -40,7 +31,7 @@ describe("AgendaTelefoneModel", () => {
 
   it("read", async () => {
     tracker.on.select("phonebook").response([{ id: "1" }]);
-    const rsp = await models.agendaTelefone.query.read({
+    const rsp = await models.agendaTelefone.read({
       ids: [{ id: "agenda_telefone_id", value: 1 }],
     });
 
@@ -57,7 +48,7 @@ describe("AgendaTelefoneModel", () => {
 
   it("update", async () => {
     tracker.on.update("phonebook").response([{ id: 10 }]);
-    const rsp = await models.agendaTelefone.mutation.update({
+    const rsp = await models.agendaTelefone.update({
       ids: [{ id: "agenda_telefone_id", value: "10" }],
       data: { agenda_telefone_id: 10 },
       select: ["agenda_telefone_id"],

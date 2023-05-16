@@ -2,13 +2,10 @@ import { connectionsMock } from "@/mocks/connections.mock";
 import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { modelsMock } from "@/mocks/models.mock";
 import { createTracker } from "knex-mock-client";
-import { dataFabricacaoFactory } from "./data-fabricacao";
 
-describe("dataFabricacao", () => {
+describe("ordemProducaoModel", () => {
   const tracker = createTracker(connectionsMock.oftalmo);
-
   const models = modelsMock;
-  const dataFabricacao = dataFabricacaoFactory({ models });
 
   beforeEach(() => {
     tracker.reset();
@@ -19,7 +16,7 @@ describe("dataFabricacao", () => {
       .select("tOperacaoOrdemProducao")
       .response([{ DataHoraInicio: "2020-01-01" }]);
 
-    const rsp = await dataFabricacao({
+    const rsp = await models.ordemProducao.dataFabricacao({
       ids: [{ id: "ordem_producao_id", value: "1" }],
     });
 

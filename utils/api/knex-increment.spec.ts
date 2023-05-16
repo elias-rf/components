@@ -24,7 +24,7 @@ describe("knexIncremnt", () => {
   it("deve renomear select para field", () => {
     expect(
       knexIncrement({ id: "agenda_telefone_id", value: 1 }, entity)
-    ).toEqual({ id: 1 });
+    ).toEqual(["id", 1]);
   });
   it("deve disparar erro", () => {
     expect(() => knexIncrement({ id: "field", value: 1 }, entity)).toThrow(

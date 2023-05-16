@@ -1,13 +1,10 @@
 import { connectionsMock } from "@/mocks/connections.mock";
 import { modelsMock } from "@/mocks/models.mock";
 import { createTracker } from "knex-mock-client";
-import { etiquetaExternaFactory } from "./etiqueta-externa";
 
 describe("etiquetaExterna", () => {
   const tracker = createTracker(connectionsMock.oftalmo);
-  const etiquetaExterna = etiquetaExternaFactory({
-    models: modelsMock,
-  });
+  const models = modelsMock;
 
   beforeEach(() => {
     tracker.reset();
@@ -23,7 +20,9 @@ describe("etiquetaExterna", () => {
     ]);
 
     expect(
-      await etiquetaExterna([{ id: "ordem_producao_id", value: "00000100" }])
+      await models.ordemProducao.etiquetaExterna([
+        { id: "ordem_producao_id", value: "00000100" },
+      ])
     ).toEqual([
       {
         data_fabricacao: "2020-01-01",

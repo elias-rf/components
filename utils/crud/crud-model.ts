@@ -1,5 +1,6 @@
 import {
   TAggregate,
+  TCountArgs,
   TCreateArgs,
   TDelArgs,
   TGenericObject,
@@ -25,10 +26,12 @@ import { assertLimit } from "@/utils/asserts/assert-limit";
 import { assertSelect } from "@/utils/asserts/assert-select";
 import { assertSorts } from "@/utils/asserts/assert-sorts";
 import { namesFromTable } from "@/utils/schema/names-from-table";
+import { recordClear } from "@/utils/schema/record-clear";
 import {
   renameFieldToName,
   renameNameToField,
 } from "@/utils/schema/rename-fields";
+import autoBind from "auto-bind";
 import { Knex } from "knex";
 
 export class CrudModel {
@@ -36,11 +39,12 @@ export class CrudModel {
   table: TTableDef;
 
   constructor(connection: Knex, table: TTableDef) {
+    autoBind(this);
     this.connection = connection;
     this.table = table;
   }
 
-  list = async ({
+  async list({
     filters = [],
     sorts = [],
     limit = 50,
@@ -49,7 +53,7 @@ export class CrudModel {
     sum,
     min,
     max,
-  }: TListArgs = {}): Promise<TGenericObject[]> => {
+  }: TListArgs = {}): Promise<TGenericObject[]> {
     // valida parametros
     assertLimit(limit);
     assertFilters(filters, this.table.fields);
@@ -82,9 +86,9 @@ export class CrudModel {
 
     const data = await qry;
     return renameFieldToName(data, this.table.fields);
-  };
+  }
 
-  read = async ({ ids, select = [] }: TReadArgs): Promise<TGenericObject> => {
+  async read({ ids, select = [] }: TReadArgs): Promise<TGenericObject> {
     assertIds(ids, this.table.fields);
     assertSelect(select as string[], this.table.fields);
 
@@ -99,13 +103,28 @@ export class CrudModel {
     const data = await qry;
     const [rec] = renameFieldToName(data, this.table.fields);
     return rec || ({} as TGenericObject);
-  };
+  }
 
-  update = async ({
+  async count({ filters = [], count = { ttl: "*" }, select }: TCountArgs) {
+    assertFilters(filters, this.table.fields);
+
+    let qry = this.connection(this.table.table)
+      .where(knexWhere(filters, this.table.fields))
+      .count(count);
+    if (select) qry = qry.select(renameNameToField(select, this.table.fields));
+    const data = await qry;
+    return data;
+  }
+
+  async clear(): Promise<TGenericObject> {
+    return recordClear(this.table.fields);
+  }
+
+  async update({
     ids,
     data,
     select = ["*"],
-  }: TUpdateArgs): Promise<TGenericObject> => {
+  }: TUpdateArgs): Promise<TGenericObject> {
     assertIds(ids, this.table.fields);
     assertData(data, this.table.fields);
     assertSelect(select as TSelect, this.table.fields);
@@ -119,9 +138,9 @@ export class CrudModel {
       .returning(knexSelect(select, this.table.fields));
     const resp = await qry;
     return renameFieldToName(resp[0], this.table.fields);
-  };
+  }
 
-  create = async ({ data, select = [] }: TCreateArgs) => {
+  async create({ data, select = [] }: TCreateArgs) {
     assertData(data, this.table.fields);
     assertSelect(select as TSelect, this.table.fields);
 
@@ -134,9 +153,9 @@ export class CrudModel {
       .returning(knexSelect(select, this.table.fields) as any);
 
     return renameFieldToName(qry, this.table.fields);
-  };
+  }
 
-  del = async ({ ids }: TDelArgs): Promise<number> => {
+  async del({ ids }: TDelArgs): Promise<number> {
     assertIds(ids, this.table.fields);
 
     const tbl = this.table.table;
@@ -148,24 +167,24 @@ export class CrudModel {
       return qry[0];
     }
     return qry;
-  };
+  }
 
-  increment = async ({
+  async increment({
     filters = [],
     increment,
     select = [],
-  }: TIncrementArgs): Promise<TGenericObject[]> => {
+  }: TIncrementArgs): Promise<TGenericObject[]> {
     assertFilters(filters, this.table.fields);
     assertSelect(select as string[], this.table.fields);
 
     if (select.length > 0) {
       select = namesFromTable(this.table);
     }
-
+    const inc = knexIncrement(increment, this.table.fields);
     const data: TGenericObject[] = await this.connection(this.table.table)
       .where(knexWhere(filters, this.table.fields))
-      .increment(knexIncrement(increment, this.table.fields))
+      .increment(...inc)
       .returning(select as string[]);
     return renameFieldToName(data, this.table.fields);
-  };
+  }
 }

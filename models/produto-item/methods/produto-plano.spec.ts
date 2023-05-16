@@ -26,7 +26,7 @@ describe("produtoPlano", () => {
       );
     tracker.on.select("CadPro").response([{ CdProduto: 1 }]);
 
-    const rsp = await models.produtoItem.query.produtoPlano({
+    const rsp = await models.produtoItem.produtoPlano({
       ids: [{ id: "produto_item_id", value: "10" }],
       select: ["produto_plano_id"],
     });

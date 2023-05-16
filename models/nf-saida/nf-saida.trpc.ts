@@ -7,35 +7,29 @@ import {
   readZod,
   updateZod,
 } from "../../utils/trpc/inputs";
-import { container } from "../container";
+import { models } from "../models";
 
-const model = container.resolve("nfSaidaModel");
+const model = models.nfSaida;
 
 export const nfSaidaRouter = router({
-  list: publicProcedure
-    .input(listZod)
-    .query((req) => model.query.list(req.input)),
-  read: publicProcedure
-    .input(readZod)
-    .query((req) => model.query.read(req.input)),
+  list: publicProcedure.input(listZod).query((req) => model.list(req.input)),
+  read: publicProcedure.input(readZod).query((req) => model.read(req.input)),
   update: publicProcedure
     .input(updateZod)
-    .mutation((req) => model.mutation.update(req.input)),
+    .mutation((req) => model.update(req.input)),
   create: publicProcedure
     .input(createZod)
-    .mutation((req) => model.mutation.create(req.input)),
-  del: publicProcedure
-    .input(delZod)
-    .mutation((req) => model.mutation.del(req.input)),
+    .mutation((req) => model.create(req.input)),
+  del: publicProcedure.input(delZod).mutation((req) => model.del(req.input)),
   transferenciaDiario: publicProcedure
     .input(zd.object({ inicio: zd.string(), fim: zd.string() }))
-    .query((req) => model.query.transferenciaDiario(req.input)),
+    .query((req) => model.transferenciaDiario(req.input)),
   transferenciaMensal: publicProcedure
     .input(zd.object({ mes: zd.string() }))
-    .query((req) => model.query.transferenciaMensal(req.input)),
+    .query((req) => model.transferenciaMensal(req.input)),
   transferenciaModelo: publicProcedure
     .input(zd.object({ data: zd.string() }))
-    .query((req) => model.query.transferenciaModelo(req.input)),
+    .query((req) => model.transferenciaModelo(req.input)),
   vendaDiario: publicProcedure
     .input(
       zd.object({
@@ -44,7 +38,7 @@ export const nfSaidaRouter = router({
         uf: zd.array(zd.string()),
       })
     )
-    .query((req) => model.query.vendaDiario(req.input)),
+    .query((req) => model.vendaDiario(req.input)),
   vendaMensalCliente: publicProcedure
     .input(
       zd.object({
@@ -53,7 +47,7 @@ export const nfSaidaRouter = router({
         cliente: zd.number(),
       })
     )
-    .query((req) => model.query.vendaMensalCliente(req.input)),
+    .query((req) => model.vendaMensalCliente(req.input)),
   vendaAnalitico: publicProcedure
     .input(
       zd.object({
@@ -61,5 +55,5 @@ export const nfSaidaRouter = router({
         fim: zd.string(),
       })
     )
-    .query((req) => model.query.vendaAnalitico(req.input)),
+    .query((req) => model.vendaAnalitico(req.input)),
 });

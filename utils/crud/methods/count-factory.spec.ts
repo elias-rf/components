@@ -40,7 +40,7 @@ describe("crudCount", () => {
     tracker.resetHistory();
   });
 
-  it("decrement", async () => {
+  it("count", async () => {
     const rsp = await count({
       filters: [{ id: "agenda_telefone_id", value: "=10" }],
     });

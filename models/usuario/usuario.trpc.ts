@@ -1,3 +1,4 @@
+import { models } from "@/models/models";
 import { publicProcedure, router } from "@/utils/trpc/trpc-server";
 import { zd } from "@/utils/zod/zod";
 import {
@@ -7,28 +8,21 @@ import {
   readZod,
   updateZod,
 } from "../../utils/trpc/inputs";
-import { container } from "../container";
 
-const model = container.resolve("usuarioModel");
+const model = models.usuario;
 
 export const usuarioRouter = router({
-  list: publicProcedure
-    .input(listZod)
-    .query((req) => model.query.list(req.input)),
-  read: publicProcedure
-    .input(readZod)
-    .query((req) => model.query.read(req.input)),
+  list: publicProcedure.input(listZod).query((req) => model.list(req.input)),
+  read: publicProcedure.input(readZod).query((req) => model.read(req.input)),
   update: publicProcedure
     .input(updateZod)
-    .mutation((req) => model.mutation.update(req.input)),
+    .mutation((req) => model.update(req.input)),
   create: publicProcedure
     .input(createZod)
-    .mutation((req) => model.mutation.create(req.input)),
-  del: publicProcedure
-    .input(delZod)
-    .mutation((req) => model.mutation.del(req.input)),
-  me: publicProcedure.query(({ ctx }) => model.query.me(ctx)),
-  logout: publicProcedure.mutation(({ ctx }) => model.mutation.logout(ctx)),
+    .mutation((req) => model.create(req.input)),
+  del: publicProcedure.input(delZod).mutation((req) => model.del(req.input)),
+  me: publicProcedure.query(({ ctx }) => model.me(ctx)),
+  logout: publicProcedure.mutation(({ ctx }) => model.logout(ctx)),
   login: publicProcedure
     .input(
       zd.object({
@@ -37,6 +31,6 @@ export const usuarioRouter = router({
       })
     )
     .mutation(({ input, ctx }) => {
-      return model.mutation.login(input, ctx);
+      return model.login(input, ctx);
     }),
 });

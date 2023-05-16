@@ -2,12 +2,10 @@ import { connectionsMock } from "@/mocks/connections.mock";
 import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { modelsMock } from "@/mocks/models.mock";
 import { createTracker } from "knex-mock-client";
-import { dataValidadeFactory } from "./data-validade";
 
 describe("dataValidade", () => {
   const tracker = createTracker(connectionsMock.oftalmo);
   const models = modelsMock;
-  const dataValidade = dataValidadeFactory({ models });
 
   beforeEach(() => {
     tracker.reset();
@@ -18,7 +16,7 @@ describe("dataValidade", () => {
       .any("tOperacaoOrdemProducao")
       .response([{ DataHoraInicio: "2020-01-01" }]);
 
-    const rsp = await dataValidade({
+    const rsp = await models.ordemProducao.dataValidade({
       ids: [{ id: "ordem_producao_id", value: 1 }],
     });
 

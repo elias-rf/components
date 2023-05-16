@@ -1,9 +1,9 @@
 import type { TConnections } from "@/config/connections";
 import { TModels } from "@/models/models";
 import { CrudModel } from "@/utils/crud/crud-model";
-import { agenda_telefone } from "./agenda-telefone.table";
+import { cidade } from "./cidade.table";
 
-export class AgendaTelefoneModel extends CrudModel {
+export class CidadeModel extends CrudModel {
   constructor({
     connections,
     models,
@@ -11,7 +11,7 @@ export class AgendaTelefoneModel extends CrudModel {
     connections: TConnections;
     models: TModels;
   }) {
-    super(connections[agenda_telefone.database], agenda_telefone);
-    models.agendaTelefone = this;
+    super(connections[cidade.database], cidade);
+    models.cidade = this;
   }
 }

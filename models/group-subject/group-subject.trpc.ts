@@ -6,44 +6,40 @@ import {
   TUpdateArgs,
 } from "@/types";
 import { publicProcedure, router } from "@/utils/trpc/trpc-server";
+
 import { zd } from "@/utils/zod/zod";
-import { container } from "../container";
-const groupSubjectModel = container.resolve("groupSubjectModel");
+import { zsIds } from "@/utils/zod/zs-ids";
+import { models } from "../models";
+
+const model = models.groupSubject;
 
 export const groupSubjectRouter = router({
   list: publicProcedure
     .input((qry) => qry as TListArgs)
     .query((req) => {
-      return groupSubjectModel.query.list(req.input);
+      return model.list(req.input);
     }),
   read: publicProcedure
     .input((qry) => qry as TReadArgs)
     .query((req) => {
-      return groupSubjectModel.query.read(req.input);
+      return model.read(req.input);
     }),
   update: publicProcedure
     .input((qry) => qry as TUpdateArgs)
     .mutation((req) => {
-      return groupSubjectModel.mutation.update(req.input);
+      return model.update(req.input);
     }),
   create: publicProcedure
     .input((qry) => qry as TCreateArgs)
     .mutation((req) => {
-      return groupSubjectModel.mutation.create(req.input);
+      return model.create(req.input);
     }),
   del: publicProcedure
     .input((qry) => qry as TDelArgs)
     .mutation((req) => {
-      return groupSubjectModel.mutation.del(req.input);
+      return model.del(req.input);
     }),
   can: publicProcedure
-    .input(
-      zd.object({
-        id: zd.object({
-          group_id: zd.string(),
-          subject_id: zd.string(),
-        }),
-      })
-    )
-    .query((req) => groupSubjectModel.query.can(req.input)),
+    .input(zd.object({ ids: zsIds }))
+    .query((req) => model.can(req.input)),
 });
