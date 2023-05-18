@@ -5,9 +5,11 @@ import {
   IconBuildingStore,
   IconShieldLock,
 } from "@tabler/icons-react";
-import { LayoutDefault } from "./default_layout";
+import React from "react";
+import { LayoutDefault } from "./layout-default";
+import { TSidebarItem } from "./sidebar.type";
 
-const menu = [
+const menu: TSidebarItem[] = [
   {
     label: "Comercial",
     icon: (
@@ -17,7 +19,15 @@ const menu = [
       />
     ),
     items: [
-      { label: "Calculadora de preços", to: "/comercial/calculadora" },
+      {
+        label: "Calculadora de preços",
+        to: "/comercial/calculadora",
+        items: [
+          { label: "Calculadora de preços", to: "/comercial/calculadora1" },
+          { label: "Vendas 30 dias", to: "/comercial/venda1" },
+          { label: "Clientes", to: "/comercial/cliente1" },
+        ],
+      },
       { label: "Vendas 30 dias", to: "/comercial/venda" },
       { label: "Clientes", to: "/comercial/cliente" },
     ],
@@ -68,20 +78,28 @@ const meta: Meta<typeof LayoutDefault> = {
 export default meta;
 type Story = StoryObj<typeof LayoutDefault>;
 
+const DefaultStory = (props: any) => {
+  const [path, setPath] = React.useState("/main");
+  return (
+    <LayoutDefault
+      {...props}
+      path={path}
+      onClick={(e: string) => setPath(e)}
+    >
+      Página de dados - {path}
+      <button onClick={() => setPath("/comercial/cliente")}>
+        GO /comercial/cliente
+      </button>
+    </LayoutDefault>
+  );
+};
+
 export const Default: Story = {
-  render: (props: any) => {
-    return (
-      <>
-        <LayoutDefault {...props}>Página de dados</LayoutDefault>
-      </>
-    );
-  },
+  render: (props: any) => <DefaultStory {...props} />,
 };
 
 Default.args = {
   children: `Página 1`,
-
   menu,
+  path: "/main",
 };
-
-Default.storyName = "DefaultLayout";

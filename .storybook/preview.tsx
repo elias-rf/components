@@ -1,4 +1,3 @@
-import { MantineProvider } from "@mantine/core";
 import "@storybook/addon-console";
 import { Preview } from "@storybook/react";
 // import "../client/index.css";
@@ -24,12 +23,7 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <TrpcProvider>
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-        >
-          <Story />
-        </MantineProvider>
+        <Story />
       </TrpcProvider>
     ),
   ],
