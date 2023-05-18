@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
-
-import { Button, Space } from "@mantine/core";
+import { Space } from "@mantine/core";
 import { useForm } from "@mantine/form";
+
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Field, TFieldAttributes } from "./field";
 
@@ -70,12 +70,7 @@ function FieldComponent() {
           </React.Fragment>
         ))}
 
-        <Button
-          variant="outline"
-          type="submit"
-        >
-          OK
-        </Button>
+        <button type="submit">OK</button>
       </form>
     </div>
   );

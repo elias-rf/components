@@ -30,10 +30,8 @@ export const Closable: Story = {
     return (
       <>
         <BadgeClose
-          variant="outline"
           onClick={props.onClick}
           onClose={props.onClose}
-          color="red"
         >
           {props.children}
         </BadgeClose>

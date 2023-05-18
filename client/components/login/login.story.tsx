@@ -4,10 +4,7 @@ import { Login } from "./login";
 const meta: Meta<typeof Login> = {
   component: Login,
   argTypes: { onInput: { action: "onInput" } },
-  args: {
-    title: "Login Teste",
-    error: "Erro de teste",
-  },
+  args: {},
 };
 
 export default meta;

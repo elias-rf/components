@@ -1,7 +1,6 @@
-import { ActionIcon, Badge, BadgeProps, rem } from "@mantine/core";
-import { IconX } from "@tabler/icons-react";
+import Chip from "@mui/material/Chip";
 
-export type TBadgeProps = BadgeProps & {
+export type TBadgeProps = {
   children: string;
   onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
   onClose?: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -14,7 +13,7 @@ export function BadgeClose({
   children,
   onClick,
   onClose,
-  color,
+
   ...props
 }: TBadgeProps) {
   function handleClick(e: any) {
@@ -31,23 +30,10 @@ export function BadgeClose({
   }
 
   return (
-    <Badge
+    <Chip
       onClick={handleClick}
-      color={color || "dark"}
-      leftSection={
-        <ActionIcon
-          size="xs"
-          radius="xl"
-          variant="transparent"
-          color={color || "dark"}
-          onClick={handleClose}
-        >
-          <IconX size={rem(10)} />
-        </ActionIcon>
-      }
-      {...props}
-    >
-      {children}
-    </Badge>
+      onDelete={handleClose}
+      label={children}
+    ></Chip>
   );
 }
