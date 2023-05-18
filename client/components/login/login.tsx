@@ -18,8 +18,8 @@ export function Login({ onInput }: TLoginProps) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const form = {
-      user: data.get("user"),
-      password: data.get("password"),
+      user: data.get("user")?.toString() || "",
+      password: data.get("password")?.toString() || "",
     };
 
     console.log(form);
