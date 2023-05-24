@@ -7,13 +7,23 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
   ],
+
   framework: {
     name: "@storybook/react-vite",
     options: {},
+  },
+  features: {
+    storyStoreV7: true,
+  },
+  staticDirs: ["../public"],
+  async viteFinal(config) {
+    config.server.proxy = {
+      "/api": "http://localhost:3333",
+    };
+    return config;
   },
   docs: {
     autodocs: "tag",
   },
 };
-
 export default config;

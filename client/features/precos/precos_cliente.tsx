@@ -1,5 +1,5 @@
 import React from "react";
-import { Textbox } from "../../components/form/textbox";
+import { Textbox } from "../../components/form-old/textbox";
 import { inteiro, moeda } from "../../lib/text-box-formats";
 import { PrecosVendedor } from "./precos_vendedor";
 import { usePrecosState } from "./use_precos.state";

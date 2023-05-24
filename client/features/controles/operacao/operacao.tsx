@@ -1,6 +1,6 @@
 import { day } from "@/utils/date/day";
 import React from "react";
-import { Label } from "../../../components/form";
+import { Label } from "../../../components/form-old";
 import { Select } from "../../../components/select/select";
 import { OperacaoDiario } from "./operacao-diario";
 import { OperacaoMensal } from "./operacao-mensal";

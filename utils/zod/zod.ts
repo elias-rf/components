@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { errorMapBr } from "./z-br";
+import { errorMapBr } from "./zod-br";
 
 z.setErrorMap(errorMapBr);
 
@@ -9,9 +9,11 @@ export function zod<T extends z.ZodTypeAny>(data: any, schema: T) {
   throw new Error(resp.error.issues[0].message);
 }
 
-export function isValid<T extends z.ZodTypeAny>(data: any, schema: T) {
-  const resp = schema.safeParse(data);
-  return resp.success;
-}
+export const zValidate = <T extends z.ZodTypeAny>(schema: T) => {
+  return (data: any) => {
+    const resp = schema.safeParse(data);
+    if (!resp.success) return resp.error.issues[0].message;
+  };
+};
 
 export { z as zd };

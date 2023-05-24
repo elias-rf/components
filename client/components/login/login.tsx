@@ -1,3 +1,7 @@
+import { Field } from "@/client/components/form/field";
+import { Form } from "@/client/components/form/form";
+import { useForm } from "@/client/components/form/use-form";
+import { zValidate, zd } from "@/utils/zod/zod";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -7,24 +11,16 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import React from "react";
 
 export type TLoginProps = {
   onInput: ({ user, password }: { user: string; password: string }) => void;
 };
 
 export function Login({ onInput }: TLoginProps) {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const form = {
-      user: data.get("user")?.toString() || "",
-      password: data.get("password")?.toString() || "",
-    };
-
-    console.log(form);
-    onInput(form);
-  };
+  const form = useForm(onInput,{
+    user: "",
+    password: "",
+  })
 
   return (
     <Container
@@ -50,39 +46,51 @@ export function Login({ onInput }: TLoginProps) {
           Login
         </Typography>
         <Box
-          component="form"
-          onSubmit={handleSubmit}
-          noValidate
+          component="div"
           sx={{ mt: 1 }}
         >
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="user"
-            label="Usuário"
-            name="user"
-            autoFocus
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Senha"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
+          <Form form={form}>
+            <Field
+              name="user"
+              validate={zValidate(zd.string().min(4,'o usuário deve ter 4 caracteres ou mais'))}
+              field={(field) => (
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="user"
+                  label="Usuário"
+                  name="user"
+                  autoFocus
+                  {...field.getInputProps()}
+                />
+              )} />
 
+            <Field
+              name="password"
+              validate={zValidate(zd.string().min(4, 'a senha deve ter 4 caracteres ou mais'))}
+              field={(field) => (
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="password"
+                  label="Senha"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  {...field.getInputProps()}
+                />
+              )} />
           <Button
-            type="submit"
+            onClick={() => form.submit()}
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
             Entrar
           </Button>
+          </Form>
         </Box>
       </Box>
     </Container>

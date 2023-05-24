@@ -3,7 +3,7 @@ import { Button } from "@mantine/core";
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { BadgeClose } from "../../components/badge-close";
-import { Label } from "../../components/form";
+import { Label } from "../../components/form-old";
 import { Input } from "../../components/input";
 
 type TLista = {

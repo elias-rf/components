@@ -1,2 +1,2 @@
-export * from "../form/textbox";
-export * from "../form/textbox-number";
+export * from "../form-old/textbox";
+export * from "../form-old/textbox-number";

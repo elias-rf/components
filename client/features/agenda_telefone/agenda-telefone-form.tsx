@@ -1,3 +1,5 @@
+import { Form } from "@/client/components/form/form";
+import { useForm } from "@/client/components/form/use-form";
 import type {
   TAgendaTelefone,
   TAgendaTelefoneIds,
@@ -5,10 +7,12 @@ import type {
 import { isEmpty } from "@/utils/identify/is-empty";
 import { isNumber } from "@/utils/identify/is-number";
 import { trpc } from "@/utils/trpc/trpc";
-import { useForm } from "@mantine/form";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+
 import React from "react";
 
-import { Button, TextInput } from "@mantine/core";
+
 
 type TAgendaTelefoneFormProps = {
   id: TAgendaTelefoneIds;
@@ -33,7 +37,7 @@ export const AgendaTelefoneForm = ({
   onDel,
 }: TAgendaTelefoneFormProps) => {
   const utils = trpc.useContext();
-  const dataRead = trpc.agendaTelefone.read.useQuery({ id });
+  const dataRead = trpc.agendaTelefone.read.useQuery({ ids:id });
 
   const dataUpdate = trpc.agendaTelefone.update.useMutation({
     onSuccess: (rec) => {
@@ -56,12 +60,15 @@ export const AgendaTelefoneForm = ({
 
   const [status, setStatus] = React.useState<TStatus>("new");
 
-  const form = useForm({
-    initialValues: dataClear,
-    validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Email inválido"),
-    },
-  });
+  const onSubmitHandler = (values: any) => {
+    console.log(`Submitted`);
+    console.log(values);
+  };
+
+  const form = useForm(onSubmitHandler, dataClear);
+    // validate: {
+    //   email: (value) => (/^\S+@\S+$/.test(value) ? null : "Email inválido"),
+    // },
 
   // atualiza state do form quando com o ID passado
   React.useEffect(() => {
@@ -75,7 +82,7 @@ export const AgendaTelefoneForm = ({
   React.useEffect(() => {
     if (dataRead.data && dataRead.data.agenda_telefone_id) {
       form.setValues(dataRead.data);
-      form.resetDirty(dataRead.data);
+      // form.resetDirty(dataRead.data);
       setStatus("view");
     }
   }, [dataRead.data]);
@@ -83,7 +90,7 @@ export const AgendaTelefoneForm = ({
   function handleButtonCancel() {
     if (status === "edit") {
       form.setValues(dataRead.data);
-      form.resetDirty(dataRead.data);
+      // form.resetDirty(dataRead.data);
     }
     if (status === "new") {
       form.reset();
@@ -100,7 +107,7 @@ export const AgendaTelefoneForm = ({
   function handleButtonNew() {
     setStatus("new");
     form.setValues(dataClear);
-    form.resetDirty(dataClear);
+    // form.resetDirty(dataClear);
   }
 
   function handleButtonDel() {
@@ -114,10 +121,7 @@ export const AgendaTelefoneForm = ({
     if (status === "new") dataCreate.mutate({ data: form });
   }
 
-  const onSubmitHandler = (values: any) => {
-    console.log(`Submitted`);
-    console.log(values);
-  };
+
 
   return (
     <section className={"mt-2"}>
@@ -143,33 +147,30 @@ export const AgendaTelefoneForm = ({
           </Button>
         </div>
       ) : null}
-      <form
-        autoComplete="off"
-        onSubmit={form.onSubmit(onSubmitHandler)}
-      >
+      <Form        form={form}      >
         <div className={"flex-wrap gap-2 sm:flex"}>
-          <TextInput
+          <TextField
             withAsterisk
             label={"Ramal"}
             disabled={status === "view"}
             {...form.getInputProps("agenda_telefone_id")}
           />
-          <TextInput
+          <TextField
             withAsterisk
             label={"Nome"}
             disabled={status === "view"}
             {...form.getInputProps("nome")}
           />
-          <TextInput
+          <TextField
             label={"Setor"}
             {...form.getInputProps("setor")}
           />
-          <TextInput
+          <TextField
             label={"Email"}
             {...form.getInputProps("email")}
           />
         </div>
-      </form>
+      </Form>
       {status === "view" ? null : (
         <div className={"flex justify-end"}>
           {form.isDirty() ? (

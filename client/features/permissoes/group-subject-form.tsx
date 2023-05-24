@@ -5,7 +5,7 @@ import type { TFieldDef, TSelected } from "@/types";
 import { isEmpty } from "@/utils/identify/is-empty";
 import { isNumber } from "@/utils/identify/is-number";
 import { Button } from "@mantine/core";
-import { Label } from "../../components/form/label";
+import { Label } from "../../components/form-old/label";
 import { SpinnerIcon } from "../../components/spinner";
 import { Textbox } from "../../components/textbox";
 
