@@ -1,6 +1,6 @@
 import React from "react";
+import type { TUseForm } from "../../lib/hooks/use-form";
 import { formContext } from "./form.context";
-import type { TUseForm } from "./use-form";
 
 export type TFormProps = {
   form: TUseForm;
