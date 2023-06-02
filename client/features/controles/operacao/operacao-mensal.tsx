@@ -1,7 +1,7 @@
 import { TIds } from "@/types";
 import { trpc } from "@/utils/trpc/trpc";
 import React from "react";
-import { Table } from "../../../components/table/table";
+import { Table } from "../../../components/search/table";
 import { operacaoMensalSchema } from "./operacao-mensal.schema";
 
 type OperacaoMensalProps = {

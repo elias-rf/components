@@ -1,6 +1,6 @@
 import { day } from "@/utils/date/day";
 import React from "react";
-import { Table } from "../../../components/table/table";
+import { Table } from "../../../components/search/table";
 import {
   mensal,
   mensalProduto,

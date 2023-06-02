@@ -1,6 +1,6 @@
 import type { TIds, TOrder, TWhere } from "@/types";
 import { trpc } from "@/utils/trpc/trpc";
-import { Table } from "../../components/table/table";
+import { Table } from "../../components/search/table";
 import { clienteSchema } from "./cliente.schema";
 
 type TClienteListProps = {

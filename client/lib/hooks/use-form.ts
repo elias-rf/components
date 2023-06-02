@@ -1,106 +1,159 @@
 import React from "react";
 
-export const useForm = (
-  onSubmit?: (values: any) => void,
-  initialValues: Record<string, any> = {}
-) => {
-  const [values, _setValues] = React.useState<{ [field: string]: any }>(
+export type TUseFormArgs = {
+  onSubmit?: (values: { [field: string]: string }) => void;
+  onInput?: (values: { [field: string]: string }) => void;
+  initialValues?: { [field: string]: string };
+};
+
+export const useForm = ({
+  onSubmit,
+  onInput,
+  initialValues = {},
+}: TUseFormArgs) => {
+  /**
+   * valores do form
+   */
+  const [values, _setValues] = React.useState<{ [field: string]: string }>(
     initialValues
   );
+
+  /**
+   * mensagens de erro para cada campo
+   */
   const [errors, _setErrors] = React.useState<{
     [field: string]: string | undefined;
   }>({});
+
+  /**
+   * funções de validação para cada campo
+   */
   const [validates, _setValidates] = React.useState<{
     [field: string]: (value: any) => string | undefined;
   }>({});
+
+  /**
+   * valor do input já foi enviado
+   */
+  const [dispInput, _setDispInput] = React.useState<Record<string, boolean>>(
+    {}
+  );
+
+  /**
+   * lista de campos desabilitados
+   */
+  const [disableds, _setDisableds] = React.useState<Record<string, boolean>>(
+    {}
+  );
+
+  /**
+   * valores iniciais
+   */
   const [initials, setInitialVls] = React.useState(initialValues);
+
+  /**
+   * formulário foi alterado
+   */
   const [dirty, setDirty] = React.useState(false);
   const [valid, setValid] = React.useState(true);
-  const [dispInput, _setDispInput] = React.useState<Record<string, any>>({});
 
-  // atualiza dirty
-  React.useEffect(() => {
-    setDirty(
-      Object.keys(values).reduce((res, key) => {
-        return res || values[key] !== initials[key];
-      }, false)
-    );
-  }, [values, initials]);
-
-  // atualiza valid
-  React.useEffect(() => {
-    setValid(
-      Object.keys(errors).reduce((res, key) => {
-        return !res || errors[key] === undefined;
-      }, true)
-    );
-  }, [errors]);
-
-  const setValues = React.useCallback(
-    (newValue: Record<string, any>) => {
-      const fld = Object.keys(newValue)[0];
-      const vlr = newValue[fld];
-      if (values[fld] === vlr) return;
-      _setValues((values) => ({ ...values, ...newValue }));
+  const setDispInput = React.useCallback(
+    (newDispInput: { [x: string]: boolean } | boolean) => {
+      if (typeof newDispInput === "boolean") {
+        const resp: { [x: string]: boolean } = {};
+        for (const fld in values) {
+          resp[fld] = newDispInput;
+        }
+        _setDispInput(resp);
+        return;
+      }
+      _setDispInput((dispInput) => ({ ...dispInput, ...newDispInput }));
     },
     [values]
   );
 
-  const setDispInput = (newDispInput: Record<string, any>) => {
-    const fld = Object.keys(newDispInput)[0];
-    const vlr = newDispInput[fld];
-    if (dispInput[fld] === vlr) return;
-    _setDispInput((dispInput) => ({ ...dispInput, ...newDispInput }));
-  };
-
-  const setErrors = React.useCallback(
-    (newError: Record<string, any>) => {
-      const fld = Object.keys(newError)[0];
-      const vlr = newError[fld];
+  const setValues = React.useCallback(
+    (newValue: Record<string, any>) => {
+      // values
+      const fld = Object.keys(newValue)[0];
+      const vlr = newValue[fld];
+      if (values[fld] === vlr) return;
+      const valuesAux = { ...values };
+      valuesAux[fld] = vlr;
+      _setValues(valuesAux);
+      // errors
+      const errorsAux = { ...errors };
       const err = validates[fld] && validates[fld](vlr || "");
-      // if (errors[fld] === err) return;
-      _setErrors((errors) => ({ ...errors, [fld]: err }));
+      errorsAux[fld] = err;
+      _setErrors(errorsAux);
+      // valid
+      setValid(
+        Object.keys(errorsAux).reduce((response, key) => {
+          return !response || errorsAux[key] === undefined;
+        }, true)
+      );
+      //dirty
+      setDirty(
+        Object.keys(valuesAux).reduce((response, key) => {
+          return response || valuesAux[key] !== initials[key];
+        }, false)
+      );
+      // dispInput
+      setDispInput({ [fld]: false });
     },
-    [validates]
+    [values, setDispInput, validates, errors, initials]
   );
+
+  const setDisableds = (newDisabled: Record<string, boolean> | boolean) => {
+    if (typeof newDisabled === "boolean") {
+      const resp: Record<string, boolean> = {};
+      for (const fld in values) {
+        resp[fld] = newDisabled;
+      }
+      _setDisableds(resp);
+      return;
+    }
+    const fld = Object.keys(newDisabled)[0];
+    const vlr = newDisabled[fld];
+    if (disableds[fld] === vlr) return;
+    _setDisableds((disableds) => ({ ...disableds, ...newDisabled }));
+  };
 
   const onChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const fld = e.currentTarget.name;
       const vlr = e.currentTarget.value;
       setValues({ [fld]: vlr });
-      setErrors({ [fld]: vlr });
-      if (dispInput[e.currentTarget.name])
-        setDispInput({ [e.currentTarget.name]: false });
     },
-    [dispInput, setErrors, setValues]
+    [setValues]
   );
 
   const onBlur = React.useCallback(
     (e: React.FocusEvent<HTMLInputElement>) => {
       const fld = e.currentTarget.name;
       const vlr = e.currentTarget.value;
-      if (values[fld] === vlr) return;
       setValues({ [fld]: vlr });
-      setErrors({ [fld]: vlr });
-      if (!dispInput[fld]) {
+      if (dispInput[fld] === false) {
         setDispInput({ [fld]: true });
+        onInput && onInput({ [fld]: vlr });
       }
     },
-    [dispInput, setErrors, setValues, values]
+    [setValues, dispInput, onInput, setDispInput]
   );
 
   const onKeyDown = React.useCallback(
-    (e: React.KeyboardEvent<HTMLInputElement>) => {
-      const fld = e.currentTarget.name;
+    (e: any) => {
+      const fld = e.target.name;
+      const vlr = e.target.value;
       if (e.key.toLowerCase() === "enter") {
         e.preventDefault();
-        if (!dispInput) {
+        if (dispInput[fld] === false) {
           setDispInput({ [fld]: true });
+          onInput && onInput({ [fld]: vlr });
         }
       }
     },
-    [dispInput]
+    [dispInput, onInput, setDispInput]
   );
 
   const reset = React.useCallback(
@@ -111,6 +164,7 @@ export const useForm = (
       } else {
         setValues(initials);
       }
+      setDirty(false);
     },
     [initials, setValues]
   );
@@ -118,7 +172,6 @@ export const useForm = (
   const submit = React.useCallback(() => {
     if (!valid) return;
     reset(values);
-    // setDirty(false);
     onSubmit && onSubmit(values);
   }, [valid, values, onSubmit, reset]);
 
@@ -129,13 +182,14 @@ export const useForm = (
         _setValidates((validates) => ({ ...validates, [name]: validate }));
       }
       // inicializa se não houver valor default
-      // if (values[name] === undefined) {
-      //   setValues({ [name]: "" });
-      // }
+      if (values[name] === undefined) {
+        setValues({ [name]: "" });
+      }
 
       return {
         name,
         value: values[name] || "",
+        disabled: disableds[name] || false,
         onChange,
         onBlur,
         onKeyDown,
@@ -143,29 +197,45 @@ export const useForm = (
         helperText: errors[name],
       };
     },
-    [errors, onBlur, onChange, onKeyDown, values, validates]
+    [
+      errors,
+      onBlur,
+      onChange,
+      onKeyDown,
+      values,
+      validates,
+      setValues,
+      disableds,
+    ]
   );
 
   const validate = React.useCallback(() => {
-    for (const field in values) {
-      setErrors({
-        [field]: values[field],
-      });
+    const errorsAux = { ...errors };
+    for (const fld in values) {
+      const err = validates[fld] && validates[fld](values[fld] || "");
+      errorsAux[fld] = err;
+      _setErrors(errorsAux);
     }
-  }, [values, setErrors]);
+    setValid(
+      Object.keys(errorsAux).reduce((response, key) => {
+        return !response || errorsAux[key] === undefined;
+      }, true)
+    );
+  }, [values, errors, validates, _setErrors]);
 
   const frm = {
     values,
-    errors,
-    dirty,
-    valid,
-    initials,
     setValues,
-    setErrors,
+    errors,
+    valid,
+    validate,
+    initials,
     reset,
+    disableds,
+    setDisableds,
+    dirty,
     submit,
     getInputProps,
-    validate,
   };
   return frm;
 };

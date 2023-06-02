@@ -40,7 +40,7 @@ export function AgendaTelefone() {
           onWhere={handleWhere}
           onOrder={handleOrder}
         >
-          <AgendaTelefoneForm id={selected} />
+          <AgendaTelefoneForm ids={selected} />
         </AgendaTelefoneList>
       </section>
     </Page>

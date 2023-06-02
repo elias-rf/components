@@ -1,5 +1,5 @@
 import { trpc } from "@/utils/trpc/trpc";
-import { Table } from "../../../components/table/table";
+import { Table } from "../../../components/search/table";
 import { EsterilizacaoExternaProdutoSchema } from "./est-ext-produto-schema";
 
 type EsterilizacaoExternaProdutoProp = {

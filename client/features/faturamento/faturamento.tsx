@@ -1,5 +1,5 @@
 import { TFieldDef, TIds } from "@/types";
-import { Table } from "../../components/table";
+import { Table } from "../../components/search";
 
 export type FaturamentoProps = {
   data: any[];

@@ -1,48 +1,45 @@
-import { TableReactCompact } from "@/client/components/table-react";
+import type { TColumn, TRow } from "@/client/components/grid";
+import { Grid } from "@/client/components/grid";
+import { TFilter, TSelection, TSort } from "@/types";
 import { trpc } from "@/utils/trpc/trpc";
-import {
-  ColumnFiltersState,
-  OnChangeFn,
-  RowSelectionState,
-  SortingState,
-} from "@tanstack/react-table";
-import { agendaTelefoneColumns } from "./agenda-telefone.cols";
+import { agendaTelefoneColumns } from "./agenda-telefone-columns";
 
 type TAgendaTelefoneListProps = {
-  selected: RowSelectionState;
-  onSelect: OnChangeFn<RowSelectionState>;
-  where: ColumnFiltersState;
-  onWhere: OnChangeFn<ColumnFiltersState>;
-  order: SortingState;
-  onOrder: OnChangeFn<SortingState>;
-  children?: (row: any) => any;
+  selection: TSelection;
+  onSelection: (selection: TSelection) => void;
+  filter: TFilter;
+  onFilter: (filter: TFilter) => void;
+  sort: TSort;
+  onSort: (sort: TSort) => void;
+  children?: (args: { row: TRow; columns: TColumn[] }) => React.ReactNode;
 };
 
 export function AgendaTelefoneList({
-  selected,
-  onSelect,
-  where,
-  onWhere,
-  order,
-  onOrder,
+  selection,
+  onSelection,
+  filter,
+  onFilter,
+  sort,
+  onSort,
   children,
 }: TAgendaTelefoneListProps) {
-  const dataList = trpc.agendaTelefone.list.useQuery({ where, order });
-
+  const dataList = trpc.agendaTelefone.list.useQuery({});
+  const getId = (row: any) => row.agenda_telefone_id;
   return (
     <>
-      <TableReactCompact
+      <Grid
+        rows={dataList.data ?? []}
         columns={agendaTelefoneColumns}
-        data={dataList.data}
-        sort={order}
-        setSort={onOrder}
-        setRowSelection={onSelect}
-        rowSelection={selected}
-        filters={where}
-        setFilters={onWhere}
+        getId={getId}
+        selection={selection}
+        onSelection={onSelection}
+        filter={filter}
+        onFilter={onFilter}
+        sort={sort}
+        onSort={onSort}
       >
         {children}
-      </TableReactCompact>
+      </Grid>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { TIds, TOrder, TWhere } from "@/types";
-import { Table } from "../../components/table/table";
+import { Table } from "../../components/search/table";
 
 export type TGroupSubjectList = any;
 

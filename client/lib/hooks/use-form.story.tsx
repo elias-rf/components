@@ -16,9 +16,16 @@ const formFields = { t1: "t1.0", t2: "t2.0" };
 
 const InputAux = () => {
   const onSubmit = (form: any) => {
-    console.log("form", form);
+    console.log("OnSubmit form", form);
   };
-  const form = useForm(onSubmit, formFields);
+  const onInput = (form: any) => {
+    console.log("OnInput form", form);
+  };
+  const form = useForm({
+    onSubmit,
+    onInput,
+    initialValues: formFields,
+  });
 
   return (
     <>

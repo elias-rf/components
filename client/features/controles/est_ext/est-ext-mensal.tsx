@@ -1,6 +1,6 @@
 import { trpc } from "@/utils/trpc/trpc";
 import React from "react";
-import { Table } from "../../../components/table/table";
+import { Table } from "../../../components/search/table";
 import { esterilizacaoExternaMensalSchema } from "./est-ext-mensal-schema";
 
 type EsterilizacaoExternaMensalProp = {

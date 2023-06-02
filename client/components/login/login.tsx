@@ -1,6 +1,4 @@
-import { Field } from "@/client/components/form/field";
-import { Form } from "@/client/components/form/form";
-import { useForm } from "@/client/components/form/use-form";
+import { useForm } from "@/client/lib/hooks/use-form";
 import { zValidate, zd } from "@/utils/zod/zod";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Avatar from "@mui/material/Avatar";
@@ -17,10 +15,18 @@ export type TLoginProps = {
 };
 
 export function Login({ onInput }: TLoginProps) {
-  const form = useForm(onInput,{
-    user: "",
-    password: "",
-  })
+  const form = useForm({
+    onSubmit,
+    initialValues: {
+      user: "",
+      password: "",
+    },
+  });
+
+  function onSubmit(values: { [field: string]: string }) {
+    const { user, password } = values;
+    onInput({ user, password });
+  }
 
   return (
     <Container
@@ -49,39 +55,35 @@ export function Login({ onInput }: TLoginProps) {
           component="div"
           sx={{ mt: 1 }}
         >
-          <Form form={form}>
-            <Field
-              name="user"
-              validate={zValidate(zd.string().min(4,'o usuário deve ter 4 caracteres ou mais'))}
-              field={(field) => (
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="user"
-                  label="Usuário"
-                  name="user"
-                  autoFocus
-                  {...field.getInputProps()}
-                />
-              )} />
-
-            <Field
-              name="password"
-              validate={zValidate(zd.string().min(4, 'a senha deve ter 4 caracteres ou mais'))}
-              field={(field) => (
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="password"
-                  label="Senha"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  {...field.getInputProps()}
-                />
-              )} />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="user"
+            label="Usuário"
+            autoFocus
+            {...form.getInputProps(
+              "user",
+              zValidate(
+                zd.string().min(3, "o usuário deve ter 3 caracteres ou mais")
+              )
+            )}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="password"
+            label="Senha"
+            type="password"
+            autoComplete="current-password"
+            {...form.getInputProps(
+              "password",
+              zValidate(
+                zd.string().min(3, "a senha deve ter 3 caracteres ou mais")
+              )
+            )}
+          />
           <Button
             onClick={() => form.submit()}
             fullWidth
@@ -90,7 +92,6 @@ export function Login({ onInput }: TLoginProps) {
           >
             Entrar
           </Button>
-          </Form>
         </Box>
       </Box>
     </Container>

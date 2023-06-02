@@ -1,12 +1,15 @@
-export function knexMockHistory({ history }: any) {
-  const response: any = {};
-  for (const prop in history) {
-    if (prop !== "all" && history[prop].length > 0) {
-      response[prop] = history[prop].map(({ bindings, sql }: any) => ({
-        bindings,
-        sql,
-      }));
+export function knexMockHistory(tracker: any, show = ["bindings", "sql"]) {
+  const history = tracker.history;
+  const all = history.all;
+
+  return all.map(({ bindings, sql }: any) => {
+    const response: any = {};
+    if (show.includes("bindings")) {
+      response.bindings = bindings;
     }
-  }
-  return response;
+    if (show.includes("sql")) {
+      response.sql = sql;
+    }
+    return response;
+  });
 }

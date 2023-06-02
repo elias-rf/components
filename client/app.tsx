@@ -1,5 +1,4 @@
 import { TrpcProvider } from "@/utils/trpc/trpc-provider";
-import { MantineProvider } from "@mantine/core";
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Layout } from "./features/layout";
@@ -48,109 +47,104 @@ const Permissao = React.lazy(async () => import("./pages/sistema/permissoes"));
 export function App() {
   return (
     <TrpcProvider>
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-      >
-        <BrowserRouter>
-          <Suspense
-            fallback={
-              <Layout>
-                <Loading />
-              </Layout>
-            }
-          >
-            <Routes>
-              <Route element={<Layout />}>
+      <BrowserRouter>
+        <Suspense
+          fallback={
+            <Layout>
+              <Loading />
+            </Layout>
+          }
+        >
+          <Routes>
+            <Route element={<Layout />}>
+              <Route
+                path="/"
+                element={<Home />}
+              />
+
+              <Route
+                path="/dashboard"
+                element={<Dashboard />}
+              />
+
+              <Route path="comercial">
                 <Route
-                  path="/"
-                  element={<Home />}
+                  path="precos"
+                  element={<Precos />}
                 />
-
                 <Route
-                  path="/dashboard"
-                  element={<Dashboard />}
+                  path="cliente"
+                  element={<Cliente />}
                 />
-
-                <Route path="comercial">
-                  <Route
-                    path="precos"
-                    element={<Precos />}
-                  />
-                  <Route
-                    path="cliente"
-                    element={<Cliente />}
-                  />
-                  <Route
-                    path="faturamento"
-                    element={<Faturamento />}
-                  />
-                  <Route
-                    path="vendas30dias"
-                    element={<Vendas30Dias />}
-                  />
-                </Route>
-
-                <Route path="industrial">
-                  <Route
-                    path="controles"
-                    element={<Controles />}
-                  />
-                  <Route
-                    path="ordemProducao"
-                    element={<OrdemProducao />}
-                  />
-                  <Route
-                    path="transferencia"
-                    element={<Transferencia />}
-                  />
-                </Route>
-
-                <Route path="sistema">
-                  <Route
-                    path="usuario"
-                    element={<Usuario />}
-                  />
-                  <Route
-                    path="permissao"
-                    element={<Permissao />}
-                  />
-                </Route>
-
-                <Route path="outros">
-                  <Route
-                    path="agenda"
-                    element={<Agenda />}
-                  >
-                    <Route
-                      path=":currentId"
-                      element={<Agenda />}
-                    />
-                  </Route>
-                </Route>
+                <Route
+                  path="faturamento"
+                  element={<Faturamento />}
+                />
+                <Route
+                  path="vendas30dias"
+                  element={<Vendas30Dias />}
+                />
               </Route>
 
-              <Route
-                path="/login"
-                element={<Login />}
-              />
+              <Route path="industrial">
+                <Route
+                  path="controles"
+                  element={<Controles />}
+                />
+                <Route
+                  path="ordemProducao"
+                  element={<OrdemProducao />}
+                />
+                <Route
+                  path="transferencia"
+                  element={<Transferencia />}
+                />
+              </Route>
 
-              <Route
-                path="/logout"
-                element={<Logout />}
-              />
-              <Route
-                path="/403"
-                element={<Page403 />}
-              />
-              <Route
-                path="*"
-                element={<Page404 />}
-              />
-            </Routes>
-          </Suspense>
-        </BrowserRouter>
-      </MantineProvider>
+              <Route path="sistema">
+                <Route
+                  path="usuario"
+                  element={<Usuario />}
+                />
+                <Route
+                  path="permissao"
+                  element={<Permissao />}
+                />
+              </Route>
+
+              <Route path="outros">
+                <Route
+                  path="agenda"
+                  element={<Agenda />}
+                >
+                  <Route
+                    path=":currentId"
+                    element={<Agenda />}
+                  />
+                </Route>
+              </Route>
+            </Route>
+
+            <Route
+              path="/login"
+              element={<Login />}
+            />
+
+            <Route
+              path="/logout"
+              element={<Logout />}
+            />
+            <Route
+              path="/403"
+              element={<Page403 />}
+            />
+            <Route
+              path="*"
+              element={<Page404 />}
+            />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
     </TrpcProvider>
   );
 }

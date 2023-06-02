@@ -1,29 +1,31 @@
 import React from "react";
 
 export const useInput = (
-  defaultValue: string,
-  onInput: (value: string) => void
+  onInput: (value: string) => void,
+  initialValue = ""
 ) => {
-  const [value, setValue] = React.useState(defaultValue);
-  const [sended, setSended] = React.useState(false);
+  const [value, setValue] = React.useState(initialValue);
+  const [dispInput, setDispInput] = React.useState(false);
 
   const sendValue = () => {
-    if (sended) return;
-    setSended(true);
+    if (dispInput) return;
+    setDispInput(true);
     onInput(value);
   };
 
-  const onChange = (event: any) => {
-    setValue(event.currentTarget.value);
-    setSended(false);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const vlr = e.currentTarget.value;
+    setValue(vlr);
+    if (dispInput) setDispInput(false);
   };
 
   const onBlur = () => {
     sendValue();
   };
 
-  const onKeyDown = (event: any) => {
-    if (event.key === "Enter") {
+  const onKeyDown = (e: any) => {
+    if (e.key.toLowerCase() === "enter") {
+      e.preventDefault();
       sendValue();
     }
   };

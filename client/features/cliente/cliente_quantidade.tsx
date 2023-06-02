@@ -1,7 +1,7 @@
 import type { TIds } from "@/types";
 import { day } from "@/utils/date/day";
 import { trpc } from "@/utils/trpc/trpc";
-import { Table } from "../../components/table";
+import { Table } from "../../components/search";
 import { getSchema } from "./get-shema";
 
 type ClienteQuantidadeProps = {

@@ -1,6 +1,6 @@
 import { trpc } from "@/utils/trpc/trpc";
 import { ReactNode } from "react";
-import { Table } from "../../../components/table/table";
+import { Table } from "../../../components/search/table";
 import { operacaoProdutoSchema } from "./operacao-produto.schema";
 
 type OperacaoProdutoProps = {

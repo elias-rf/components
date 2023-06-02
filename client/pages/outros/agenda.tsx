@@ -27,7 +27,7 @@ export default function Agenda() {
         onWhere={setWhere}
         onOrder={setOrder}
       >
-        <AgendaTelefoneForm id={selected} />
+        <AgendaTelefoneForm ids={selected} />
       </AgendaTelefoneList>
     </>
   );
