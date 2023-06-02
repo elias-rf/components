@@ -43,19 +43,15 @@ export class NfSaidaModel extends CrudModel {
           "CONVERT(CHAR(10),[MestreNota].[DtEmissao],120) AS dia, CategPro.NmCategoria, Sum(ItemNota.Quantidade) AS quantidade"
         )
       )
-      .orderByRaw("[MestreNota].[DtEmissao] desc")
-      .groupByRaw("[MestreNota].[DtEmissao], CategPro.NmCategoria")
-      .where(
-        this.connection.raw("[MestreNota].[DtEmissao] between ? and ?", [
-          inicio,
-          fim,
-        ])
-      )
-      .andWhere(
-        this.connection.raw(
-          "MestreNota.CdFilial= 1 AND NatOpe.Nop= 5151 AND MestreNota.Tipo<> 'C' AND MestreNota.NotadeComplemento= 'N'"
-        )
-      );
+      .orderBy("MestreNota.DtEmissao", "desc")
+      .groupBy("MestreNota.DtEmissao")
+      .groupBy("CategPro.NmCategoria")
+      .whereBetween("MestreNota.DtEmissao", [inicio, fim])
+      .where("MestreNota.CdFilial", 1)
+      .where("NatOpe.Nop", 5151)
+      .where("MestreNota.NotadeComplemento", "N")
+      .where("MestreNota.Tipo","<>", "C")
+
 
     for (const item of qry) {
       aux[item.dia] = {

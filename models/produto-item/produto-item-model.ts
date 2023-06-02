@@ -1,7 +1,7 @@
 import type { TConnections } from "@/config/connections";
 import { TModels } from "@/models/models";
-import { TIds, TSelect } from "@/types";
-import { assertIds } from "@/utils/asserts/assert-ids";
+import { TId, TSelect } from "@/types";
+import { assertId } from "@/utils/asserts/assert-id";
 import { CrudModel } from "@/utils/crud/crud-model";
 import { produto_item } from "./produto-item.table";
 
@@ -20,18 +20,18 @@ export class ProdutoItemModel extends CrudModel {
     models.produtoItem = this;
   }
 
-  produtoPlano = async ({ ids, select }: { ids: TIds; select?: TSelect }) => {
-    assertIds(ids, produto_item.fields);
+  produtoPlano = async ({ id, select }: { id: TId; select?: TSelect }) => {
+    assertId(id, produto_item.fields);
 
     let { produto_plano_id } = await this.models.produtoItem.read({
-      ids,
+      id,
       select: ["produto_plano_id"],
     });
 
     if (produto_plano_id) {
       produto_plano_id = produto_plano_id?.trim();
       return this.models.produtoPlano.read({
-        ids: [{ id: "produto_plano_id", value: produto_plano_id }],
+        id: { produto_plano_id: produto_plano_id },
         select,
       });
     }

@@ -53,7 +53,6 @@ export class EsterilizacaoExternaModel extends CrudModel {
         ])
       );
 
-    console.log(`🚀 ~ file:  ~ returnqry.map ~ rec:`, qry);
     return qry.map((rec: any) => {
       rec.dia_semana = day(rec.dia).format("ddd");
       return rec;

@@ -1,4 +1,4 @@
-import { TFieldDef, TIds, TOrder, TSelect, TTableDef, TWhere } from "@/types";
+import { TId, TOrder, TSelect, TTableDef, TWhere } from "@/types";
 import { TConnection } from "../../config/connections";
 
 export interface TEstoquePk {
@@ -14,12 +14,7 @@ export type TEstoqueFields = keyof Required<TEstoque>;
 export type TEstoqueIds = {
   [pk in keyof Required<TEstoquePk>]: any;
 };
-export type TEstoqueSelect = TSelect;
-export type TEstoqueWhere = TWhere;
-export type TEstoqueOrder = TOrder;
 
-export type TEstoqueSchema = () => Promise<TFieldDef[]>;
-export type TEstoqueClear = () => Promise<TEstoque>;
 export type TEstoqueList = (args: {
   where?: TWhere[];
   order?: TOrder[];
@@ -43,7 +38,7 @@ export type TEstoqueUpdate = (args: {
 export type TEstoqueDel = (args: { id: TEstoqueIds }) => Promise<number>;
 
 export type TEstoqueIncrement = (args: {
-  id: TIds;
+  id: TId;
   quantidade: number;
 }) => Promise<any>;
 

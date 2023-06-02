@@ -6,6 +6,7 @@ import { zod } from "@/utils/zod/zod";
 import { Knex } from "knex";
 import { z } from "zod";
 import { nf_saida_fv } from "./nf-saida-fv.table";
+
 export class NfSaidaFvModel extends CrudModel {
   connection: Knex;
   models: TModels;

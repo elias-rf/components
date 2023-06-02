@@ -55,7 +55,7 @@ export class UsuarioModel extends CrudModel {
 
     try {
       const rec = await this.models.usuario.list({
-        filters: [{ id: "nome_login", value: user }],
+        filter: { nome_login: user },
       });
       record = rec[0];
     } catch (err: any) {

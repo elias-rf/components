@@ -1,6 +1,7 @@
+import { models } from "@/models/models";
 import { publicProcedure, router } from "@/utils/trpc/trpc-server";
 import { zd } from "@/utils/zod/zod";
-import { zsFilters } from "@/utils/zod/zs-filters";
+import { zsFilter } from "@/utils/zod/zs-filter";
 import {
   createZod,
   delZod,
@@ -9,48 +10,41 @@ import {
   selectZod,
   updateZod,
 } from "../../utils/trpc/inputs";
-import { container } from "../container";
 
-const model = container.resolve("ordemProducaoModel");
+const model = models.ordemProducao;
 
 export const ordemProducaoRouter = router({
-  list: publicProcedure
-    .input(listZod)
-    .query((req) => model.query.list(req.input)),
-  read: publicProcedure
-    .input(readZod)
-    .query((req) => model.query.read(req.input)),
+  list: publicProcedure.input(listZod).query((req) => model.list(req.input)),
+  read: publicProcedure.input(readZod).query((req) => model.read(req.input)),
   update: publicProcedure
     .input(updateZod)
-    .mutation((req) => model.mutation.update(req.input)),
+    .mutation((req) => model.update(req.input)),
   create: publicProcedure
     .input(createZod)
-    .mutation((req) => model.mutation.create(req.input)),
-  del: publicProcedure
-    .input(delZod)
-    .mutation((req) => model.mutation.del(req.input)),
+    .mutation((req) => model.create(req.input)),
+  del: publicProcedure.input(delZod).mutation((req) => model.del(req.input)),
   controle: publicProcedure
-    .input(zd.object({ id: zsFilters, serie: zd.string() }))
-    .query((req) => model.query.controle(req.input)),
+    .input(zd.object({ id: zsFilter, serie: zd.string() }))
+    .query((req) => model.controle(req.input)),
   dataFabricacao: publicProcedure
-    .input(zd.object({ id: zsFilters }))
-    .query((req) => model.query.dataFabricacao(req.input)),
+    .input(zd.object({ id: zsFilter }))
+    .query((req) => model.dataFabricacao(req.input)),
   dataValidade: publicProcedure
-    .input(zd.object({ id: zsFilters }))
-    .query((req) => model.query.dataValidade(req.input)),
+    .input(zd.object({ id: zsFilter }))
+    .query((req) => model.dataValidade(req.input)),
   ehControleValido: publicProcedure
     .input(zd.object({ controle: zd.string() }))
-    .query((req) => model.query.ehControleValido(req.input)),
+    .query((req) => model.ehControleValido(req.input)),
   etiquetaExterna: publicProcedure
-    .input(zd.object({ id: zsFilters }))
-    .query((req) => model.query.etiquetaExterna(req.input)),
+    .input(zd.object({ id: zsFilter }))
+    .query((req) => model.etiquetaExterna(req.input)),
   fromControle: publicProcedure
     .input(zd.object({ controle: zd.string() }))
-    .query((req) => model.query.fromControle(req.input)),
+    .query((req) => model.fromControle(req.input)),
   produtoItem: publicProcedure
-    .input(zd.object({ id: zsFilters, select: selectZod }))
-    .query((req) => model.query.produtoItem(req.input)),
+    .input(zd.object({ id: zsFilter, select: selectZod }))
+    .query((req) => model.produtoItem(req.input)),
   produtoPlano: publicProcedure
-    .input(zd.object({ id: zsFilters, select: selectZod }))
-    .query((req) => model.query.produtoPlano(req.input)),
+    .input(zd.object({ id: zsFilter, select: selectZod }))
+    .query((req) => model.produtoPlano(req.input)),
 });

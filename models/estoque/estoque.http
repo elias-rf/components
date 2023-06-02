@@ -1,3 +1,7 @@
-### Index
-GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"estoque"}
-Content-Type: application/json
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
+### LIST
+GET {{host}}/api/trpc/estoque.list
+?input={"sort":{"produto_plano_id":"asc"}}

@@ -16,19 +16,17 @@ describe("list", () => {
       .select("tOperacaoOrdemProducao")
       .response([{ kOperacaoOP: "1" }]);
     const rsp = await list({
-      filters: [{ id: "ordem_producao_operacao_id", value: "1" }],
-      sorts: [{ id: "ordem_producao_operacao_id", desc: false }],
+      filter: { ordem_producao_operacao_id: "1" },
+      sort: { ordem_producao_operacao_id: "asc" },
       select: ["ordem_producao_operacao_id"],
     });
 
     expect(rsp).toEqual([{ ordem_producao_operacao_id: "1" }]);
-    expect(knexMockHistory(tracker)).toEqual({
-      select: [
-        {
-          bindings: [50, "1"],
-          sql: "select top (@p0) [kOperacaoOP] from [tOperacaoOrdemProducao] where ([kOperacaoOP] = @p1) order by [kOperacaoOP] asc",
-        },
-      ],
-    });
+    expect(knexMockHistory(tracker)).toEqual([
+      {
+        bindings: [50, "1"],
+        sql: "select top (@p0) [kOperacaoOP] from [tOperacaoOrdemProducao] where ([kOperacaoOP] = @p1) order by [kOperacaoOP] asc",
+      },
+    ]);
   });
 });

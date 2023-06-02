@@ -14,18 +14,16 @@ describe("read", () => {
   it("read", async () => {
     tracker.on.select("CadPro").response([{ CdProduto: "1" }]);
     const rsp = await read({
-      ids: [{ id: "produto_plano_id", value: 1 }],
+      id: { produto_plano_id: 1 },
       select: ["produto_plano_id"],
     });
 
     expect(rsp).toEqual({ produto_plano_id: "1" });
-    expect(knexMockHistory(tracker)).toEqual({
-      select: [
-        {
-          bindings: [1],
-          sql: "select [CdProduto] from [CadPro] where ([CdProduto] = @p0)",
-        },
-      ],
-    });
+    expect(knexMockHistory(tracker)).toEqual([
+      {
+        bindings: [1],
+        sql: "select [CdProduto] from [CadPro] where ([CdProduto] = @p0)",
+      },
+    ]);
   });
 });

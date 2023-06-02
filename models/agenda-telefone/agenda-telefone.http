@@ -4,7 +4,7 @@
 
 ### LIST
 GET {{host}}/api/trpc/agendaTelefone.list
-?input={"order":[["agenda_telefone_id","asc"]]}
+?input={"sort":{"agenda_telefone_id":"asc"}}
 
 ### READ
 GET {{host}}/api/trpc/agendaTelefone.read

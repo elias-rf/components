@@ -1,40 +1,30 @@
 import type { TConnections } from "@/config/connections";
 import { TModels } from "@/models/models";
 import { CrudModel } from "@/utils/crud/crud-model";
-import { setProp } from "@/utils/object/set-prop";
 import { estoque } from "./estoque.table";
 
-export type TEstoqueModel = {
-  query: {
-    list: EstoqueModel["list"];
-    read: EstoqueModel["read"];
-    clear: EstoqueModel["clear"];
-    count: EstoqueModel["count"];
-  };
-  mutation: {
-    increment: EstoqueModel["increment"];
-    create: EstoqueModel["create"];
-    update: EstoqueModel["update"];
-    del: EstoqueModel["del"];
-  };
-};
-
 export class EstoqueModel extends CrudModel {
-  constructor(args: { connections: TConnections; models: TModels }) {
-    super(args.connections[estoque.database], estoque);
-    this.register(args);
+  models: TModels;
+  constructor({
+    connections,
+    models,
+  }: {
+    connections: TConnections;
+    models: TModels;
+  }) {
+    super(connections[estoque.database], estoque);
+    this.models = models;
+    models.estoque = this;
   }
 
-  register = (args: { connections: TConnections; models: TModels }) => {
-    const { models } = args;
-    setProp(models, "estoque.query.list", this.list);
-    setProp(models, "estoque.query.read", this.read);
-    setProp(models, "estoque.query.clear", this.clear);
-    setProp(models, "estoque.query.count", this.count);
-    setProp(models, "estoque.mutation.create", this.create);
-    setProp(models, "estoque.mutation.update", this.update);
-    setProp(models, "estoque.mutation.del", this.del);
-    setProp(models, "estoque.mutation.increment", this.increment);
-    return models;
-  };
+  // async increment({ id, quantidade }: { id: TId; quantidade: number }) {
+  //   assertAny(isNumber(quantidade), "quantidade dever ser numérica");
+  //   assertId(id, estoque.fields);
+
+  //   const qry = await this.connection(estoque.table)
+  //     .increment("EstAtual", quantidade)
+  //     .where(knexId(id, estoque.fields))
+  //     .returning(["EstAtual"]);
+  //   return { estoque_atual: qry[0].EstAtual };
+  // }
 }

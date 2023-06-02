@@ -16,18 +16,16 @@ describe("read", () => {
       .select("tOperacaoOrdemProducao")
       .response([{ kOperacaoOP: "1" }]);
     const rsp = await read({
-      ids: [{ id: "ordem_producao_operacao_id", value: 1 }],
+      id: { ordem_producao_operacao_id: 1 },
       select: ["ordem_producao_operacao_id"],
     });
 
     expect(rsp).toEqual({ ordem_producao_operacao_id: "1" });
-    expect(knexMockHistory(tracker)).toEqual({
-      select: [
-        {
-          bindings: [1],
-          sql: "select [kOperacaoOP] from [tOperacaoOrdemProducao] where ([kOperacaoOP] = @p0)",
-        },
-      ],
-    });
+    expect(knexMockHistory(tracker)).toEqual([
+      {
+        bindings: [1],
+        sql: "select [kOperacaoOP] from [tOperacaoOrdemProducao] where ([kOperacaoOP] = @p0)",
+      },
+    ]);
   });
 });

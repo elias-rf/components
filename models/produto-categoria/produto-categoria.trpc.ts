@@ -6,24 +6,18 @@ import {
   readZod,
   updateZod,
 } from "../../utils/trpc/inputs";
-import { container } from "../container";
+import { models } from "../models";
 
-const model = container.resolve("produtoCategoriaModel");
+const model = models.produtoCategoria;
 
 export const produtoCategoriaRouter = router({
-  list: publicProcedure
-    .input(listZod)
-    .query((req) => model.query.list(req.input)),
-  read: publicProcedure
-    .input(readZod)
-    .query((req) => model.query.read(req.input)),
+  list: publicProcedure.input(listZod).query((req) => model.list(req.input)),
+  read: publicProcedure.input(readZod).query((req) => model.read(req.input)),
   update: publicProcedure
     .input(updateZod)
-    .mutation((req) => model.mutation.update(req.input)),
+    .mutation((req) => model.update(req.input)),
   create: publicProcedure
     .input(createZod)
-    .mutation((req) => model.mutation.create(req.input)),
-  del: publicProcedure
-    .input(delZod)
-    .mutation((req) => model.mutation.del(req.input)),
+    .mutation((req) => model.create(req.input)),
+  del: publicProcedure.input(delZod).mutation((req) => model.del(req.input)),
 });

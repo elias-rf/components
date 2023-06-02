@@ -1,13 +1,12 @@
 import type { TConnections } from "@/config/connections";
 import { TModels } from "@/models/models";
-import { TIds, TSelect } from "@/types";
-import { assertIds } from "@/utils/asserts/assert-ids";
+import { TId, TSelect } from "@/types";
+import { assertId } from "@/utils/asserts/assert-id";
 import { CrudModel } from "@/utils/crud/crud-model";
 import { day } from "@/utils/date/day";
 import { isEmpty } from "@/utils/identify/is-empty";
 import { isUndefined } from "@/utils/identify/is-undefined";
 import { module10 } from "@/utils/string/module10";
-import autoBind from "auto-bind";
 import { ordem_producao } from "./ordem-producao.table";
 
 export class OrdemProducaoModel extends CrudModel {
@@ -23,60 +22,60 @@ export class OrdemProducaoModel extends CrudModel {
     super(connections[ordem_producao.database], ordem_producao);
     this.models = models;
     models.ordemProducao = this;
-    autoBind(this);
   }
 
-  async controle({ ids, serie }: { ids: TIds; serie: string }) {
-    assertIds(ids, ordem_producao.fields);
-    const id = ids[0].value;
+  async controle({ id, serie }: { id: TId; serie: string }) {
+    assertId(id, ordem_producao.fields);
+    const fieldId = Object.keys(id)[0];
+    const valueId = id[fieldId];
     const serial = "000000"
-      .concat((parseInt(id) / 100).toString())
+      .concat((parseInt(valueId) / 100).toString())
       .slice(-6)
       .concat("00000".concat(serie).slice(-5));
     const dv = module10(serial);
     return serial.concat(dv);
   }
 
-  async dataFabricacao({ ids }: { ids: TIds }) {
-    assertIds(ids, ordem_producao.fields);
-    const id = ids[0].value.toString();
+  async dataFabricacao({ id }: { id: TId }) {
+    assertId(id, ordem_producao.fields);
+    const fieldId = Object.keys(id)[0];
+    const valueId = id[fieldId].toString();
 
     let response = await this.models.ordemProducaoOperacao.list({
-      filters: [
-        { id: "operacao_id", value: "3059" },
-        { id: "ordem_producao_id", value: id },
-      ],
-      sorts: [{ id: "data_hora_inicio", desc: true }],
+      filter: { operacao_id: "3059", ordem_producao_id: valueId },
+      sort: { data_hora_inicio: "desc" },
       select: ["data_hora_inicio"],
     });
 
     if (response.length === 0 || isEmpty(response[0].data_hora_inicio)) {
       response = await this.models.ordemProducaoOperacao.list({
-        filters: [
-          { id: "operacao_id", value: "3060" },
-          { id: "ordem_producao_id", value: id.ordem_producao_id },
-        ],
-        sorts: [{ id: "data_hora_inicio", desc: true }],
+        filter: {
+          operacao_id: "3060",
+          ordem_producao_id: id.ordem_producao_id,
+        },
+        sort: { data_hora_inicio: "desc" },
         select: ["data_hora_inicio"],
       });
     }
     if (response.length === 0 || isEmpty(response[0].data_hora_inicio)) {
       response = await this.models.ordemProducaoOperacao.list({
-        filters: [
-          { id: "operacao_id", value: "4020" },
-          { id: "ordem_producao_id", value: id.ordem_producao_id },
-        ],
-        sorts: [{ id: "data_hora_inicio", desc: true }],
+        filter: {
+          operacao_id: "4020",
+          ordem_producao_id: id.ordem_producao_id,
+        },
+
+        sort: { data_hora_inicio: "desc" },
         select: ["data_hora_inicio"],
       });
     }
     if (response.length === 0 || isEmpty(response[0].data_hora_inicio)) {
       response = await this.models.ordemProducaoOperacao.list({
-        filters: [
-          { id: "operacao_id", value: "3160" },
-          { id: "ordem_producao_id", value: id.ordem_producao_id },
-        ],
-        sorts: [{ id: "data_hora_inicio", desc: true }],
+        filter: {
+          operacao_id: "3160",
+          ordem_producao_id: id.ordem_producao_id,
+        },
+
+        sort: { data_hora_inicio: "desc" },
         select: ["data_hora_inicio"],
       });
     }
@@ -90,11 +89,11 @@ export class OrdemProducaoModel extends CrudModel {
     return "";
   }
 
-  async dataValidade({ ids }: { ids: TIds }) {
-    assertIds(ids, ordem_producao.fields);
+  async dataValidade({ id }: { id: TId }) {
+    assertId(id, ordem_producao.fields);
     // const id = ids[0].value;
     const fabricacao = await this.models.ordemProducao.dataFabricacao({
-      ids,
+      id,
     });
     if (fabricacao === "") {
       throw new Error("Ordem de produção não possui 3059, 3060, 4020 ou 3160");
@@ -116,29 +115,28 @@ export class OrdemProducaoModel extends CrudModel {
     return false;
   }
 
-  async etiquetaExterna(ids: TIds) {
-    assertIds(ids, ordem_producao.fields);
-    let response;
-    if (isUndefined(ids[0].value)) response = [];
-    response = await this.models.etiquetaExterna.list({
-      filters: [
-        {
-          id: "etiqueta_externa_id",
-          value: ids[0].value.substring(0, 6) + "?",
-        },
-      ],
-      sorts: [{ id: "etiqueta_externa_id", desc: false }],
+  async etiquetaExterna(id: TId) {
+    assertId(id, ordem_producao.fields);
+
+    const fieldId = Object.keys(id)[0];
+    const valueId = id[fieldId];
+
+    if (isUndefined(valueId)) return [];
+    return this.models.etiquetaExterna.list({
+      filter: {
+        etiqueta_externa_id: valueId.substring(0, 6) + "?",
+      },
+      sort: { etiqueta_externa_id: "asc" },
     });
-    return response;
   }
 
   async fromControle({ controle }: { controle: string }) {
     return controle.slice(0, 6) + "00";
   }
 
-  async produtoItem({ ids, select }: { ids: TIds; select?: TSelect }) {
+  async produtoItem({ id, select }: { id: TId; select?: TSelect }) {
     const ordemProducao = await this.models.ordemProducao.read({
-      ids,
+      id,
       select: ["produto_item_id"],
     });
 
@@ -146,23 +144,21 @@ export class OrdemProducaoModel extends CrudModel {
       return {};
     }
     return this.models.produtoItem.read({
-      ids: [{ id: "produto_item_id", value: ordemProducao.produto_item_id }],
+      id: { produto_item_id: ordemProducao.produto_item_id },
       select,
     });
   }
 
-  async produtoPlano({ ids, select }: { ids: TIds; select?: TSelect }) {
+  async produtoPlano({ id, select }: { id: TId; select?: TSelect }) {
     const { produto_item_id } = await this.models.ordemProducao.produtoItem({
-      ids,
+      id,
+      select: ["produto_item_id"],
     });
 
     return await this.models.produtoItem.produtoPlano({
-      ids: [
-        {
-          id: "produto_item_id",
-          value: produto_item_id,
-        },
-      ],
+      id: {
+        produto_item_id: produto_item_id,
+      },
       select,
     });
   }

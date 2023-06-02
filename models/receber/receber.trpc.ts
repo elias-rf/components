@@ -1,3 +1,4 @@
+import { models } from "@/models/models";
 import { publicProcedure, router } from "@/utils/trpc/trpc-server";
 import {
   createZod,
@@ -6,24 +7,17 @@ import {
   readZod,
   updateZod,
 } from "../../utils/trpc/inputs";
-import { container } from "../container";
 
-const model = container.resolve("receberModel");
+const model = models.receber;
 
 export const receberRouter = router({
-  list: publicProcedure
-    .input(listZod)
-    .query((req) => model.query.list(req.input)),
-  read: publicProcedure
-    .input(readZod)
-    .query((req) => model.query.read(req.input)),
+  list: publicProcedure.input(listZod).query((req) => model.list(req.input)),
+  read: publicProcedure.input(readZod).query((req) => model.read(req.input)),
   update: publicProcedure
     .input(updateZod)
-    .mutation((req) => model.mutation.update(req.input)),
+    .mutation((req) => model.update(req.input)),
   create: publicProcedure
     .input(createZod)
-    .mutation((req) => model.mutation.create(req.input)),
-  del: publicProcedure
-    .input(delZod)
-    .mutation((req) => model.mutation.del(req.input)),
+    .mutation((req) => model.create(req.input)),
+  del: publicProcedure.input(delZod).mutation((req) => model.del(req.input)),
 });

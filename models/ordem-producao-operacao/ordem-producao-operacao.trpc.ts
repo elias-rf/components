@@ -7,26 +7,20 @@ import {
   readZod,
   updateZod,
 } from "../../utils/trpc/inputs";
-import { container } from "../container";
+import { models } from "../models";
 
-const model = container.resolve("ordemProducaoOperacaoModel");
+const model = models.ordemProducaoOperacao;
 
 export const ordemProducaoOperacaoRouter = router({
-  list: publicProcedure
-    .input(listZod)
-    .query((req) => model.query.list(req.input)),
-  read: publicProcedure
-    .input(readZod)
-    .query((req) => model.query.read(req.input)),
+  list: publicProcedure.input(listZod).query((req) => model.list(req.input)),
+  read: publicProcedure.input(readZod).query((req) => model.read(req.input)),
   update: publicProcedure
     .input(updateZod)
-    .mutation((req) => model.mutation.update(req.input)),
+    .mutation((req) => model.update(req.input)),
   create: publicProcedure
     .input(createZod)
-    .mutation((req) => model.mutation.create(req.input)),
-  del: publicProcedure
-    .input(delZod)
-    .mutation((req) => model.mutation.del(req.input)),
+    .mutation((req) => model.create(req.input)),
+  del: publicProcedure.input(delZod).mutation((req) => model.del(req.input)),
   diario: publicProcedure
     .input(
       zd.object({
@@ -35,7 +29,7 @@ export const ordemProducaoOperacaoRouter = router({
         fim: zd.string(),
       })
     )
-    .query((req) => model.query.diario(req.input)),
+    .query((req) => model.diario(req.input)),
   mensal: publicProcedure
     .input(
       zd.object({
@@ -43,7 +37,7 @@ export const ordemProducaoOperacaoRouter = router({
         mes: zd.string(),
       })
     )
-    .query((req) => model.query.mensal(req.input)),
+    .query((req) => model.mensal(req.input)),
   modelo: publicProcedure
     .input(
       zd.object({
@@ -52,7 +46,7 @@ export const ordemProducaoOperacaoRouter = router({
         produto: zd.string(),
       })
     )
-    .query((req) => model.query.modelo(req.input)),
+    .query((req) => model.modelo(req.input)),
   produto: publicProcedure
     .input(
       zd.object({
@@ -61,7 +55,7 @@ export const ordemProducaoOperacaoRouter = router({
         produto: zd.string(),
       })
     )
-    .query((req) => model.query.produto(req.input)),
+    .query((req) => model.produto(req.input)),
   turno: publicProcedure
     .input(
       zd.object({
@@ -69,5 +63,5 @@ export const ordemProducaoOperacaoRouter = router({
         data: zd.string(),
       })
     )
-    .query((req) => model.query.turno(req.input)),
+    .query((req) => model.turno(req.input)),
 });

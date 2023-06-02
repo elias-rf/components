@@ -18,13 +18,11 @@ describe("ordemProducaoOperacaoMethods", () => {
       operacao: "3020",
     });
     expect(rsp).toEqual([{ quantidade: 1 }]);
-    expect(knexMockHistory(tracker)).toEqual({
-      select: [
-        {
-          bindings: ["3020", "2020-01"],
-          sql: `select CONVERT(CHAR(7),[DataInicio],120) AS mes, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade from [tOperacaoOrdemProducao] where [fkOperacao] = @p0 group by CONVERT(CHAR(7),[DataInicio],120) having CONVERT(CHAR(7),[DataInicio],120)>=@p1 order by CONVERT(CHAR(7),[DataInicio],120) desc`,
-        },
-      ],
-    });
+    expect(knexMockHistory(tracker)).toEqual([
+      {
+        bindings: ["3020", "2020-01"],
+        sql: `select CONVERT(CHAR(7),[DataInicio],120) AS mes, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade from [tOperacaoOrdemProducao] where [fkOperacao] = @p0 group by CONVERT(CHAR(7),[DataInicio],120) having CONVERT(CHAR(7),[DataInicio],120)>=@p1 order by CONVERT(CHAR(7),[DataInicio],120) desc`,
+      },
+    ]);
   });
 });

@@ -1,6 +1,6 @@
 import type { TConnections } from "@/config/connections";
 import { TModels } from "@/models/models";
-import { TIds } from "@/types";
+import { TId } from "@/types";
 import { CrudModel } from "@/utils/crud/crud-model";
 import { zd, zod } from "@/utils/zod/zod";
 import { group_subject } from "./group-subject.table";
@@ -20,23 +20,23 @@ export class GroupSubjectModel extends CrudModel {
     this.models = models;
   }
 
-  async can({ ids }: { ids: TIds }) {
+  async can({ id }: { id: TId }) {
     zod(
-      ids,
+      id,
       zd.object({
         group_id: zd.string(),
         subject_id: zd.string(),
       })
     );
     let rsp = false;
-    const subject_id = ids.find((id) => id.id === "subject_id") || {
-      value: "",
-    };
+
     const list = await this.models.groupSubject.list({
-      filters: ids,
+      filter: { group_id: id.group_id },
+      limit: 10000,
     });
+
     for (const rec of list) {
-      if (subject_id.value.startsWith(rec.idSubject)) {
+      if (id.subject_id.startsWith(rec.subject_id)) {
         rsp = true;
       }
     }

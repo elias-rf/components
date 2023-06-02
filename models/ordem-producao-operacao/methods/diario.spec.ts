@@ -23,13 +23,11 @@ describe("ordemProducaoOperacaoMethods", () => {
     expect(rsp).toEqual([
       { dia: "2020-01-01", diaSemana: "qua", quantidade: 1 },
     ]);
-    expect(knexMockHistory(tracker)).toEqual({
-      select: [
-        {
-          bindings: ["3058", "2020-01-01", "2020-01-31"],
-          sql: `select [DataInicio] as [dia], sum([QtdConforme]) as [quantidade] from [tOperacaoOrdemProducao] where [fkOperacao] = @p0 and [DataInicio] between @p1 and @p2 group by [DataInicio] order by [DataInicio] desc`,
-        },
-      ],
-    });
+    expect(knexMockHistory(tracker)).toEqual([
+      {
+        bindings: ["3058", "2020-01-01", "2020-01-31"],
+        sql: `select [DataInicio] as [dia], sum([QtdConforme]) as [quantidade] from [tOperacaoOrdemProducao] where [fkOperacao] = @p0 and [DataInicio] between @p1 and @p2 group by [DataInicio] order by [DataInicio] desc`,
+      },
+    ]);
   });
 });
