@@ -22,12 +22,10 @@ const entity = [
 
 describe("knexIncremnt", () => {
   it("deve renomear select para field", () => {
-    expect(
-      knexIncrement({ id: "agenda_telefone_id", value: 1 }, entity)
-    ).toEqual(["id", 1]);
+    expect(knexIncrement({ agenda_telefone_id: 1 }, entity)).toEqual(["id", 1]);
   });
   it("deve disparar erro", () => {
-    expect(() => knexIncrement({ id: "field", value: 1 }, entity)).toThrow(
+    expect(() => knexIncrement({ field: 1 }, entity)).toThrow(
       "field não é campo válido use: agenda_telefone_id,email,nome,setor"
     );
   });

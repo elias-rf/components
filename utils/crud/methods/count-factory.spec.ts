@@ -42,16 +42,14 @@ describe("crudCount", () => {
 
   it("count", async () => {
     const rsp = await count({
-      filters: [{ id: "agenda_telefone_id", value: "=10" }],
+      filter: { agenda_telefone_id: "=10" },
     });
     expect(rsp).toEqual([]);
-    expect(knexMockHistory(tracker)).toEqual({
-      select: [
-        {
-          bindings: ["10"],
-          sql: "select count(*) as [ttl] from [phonebook] where ([id] = @p0)",
-        },
-      ],
-    });
+    expect(knexMockHistory(tracker)).toEqual([
+      {
+        bindings: ["10"],
+        sql: "select count(*) as [ttl] from [phonebook] where ([id] = @p0)",
+      },
+    ]);
   });
 });

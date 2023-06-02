@@ -1,6 +1,6 @@
 import type { TGenericObject, TReadArgs, TTableDef } from "@/types";
 import { knexId } from "@/utils/api/knex-id";
-import { assertIds } from "@/utils/asserts/assert-ids";
+import { assertId } from "@/utils/asserts/assert-id";
 import { Knex } from "knex";
 import { assertSelect } from "../../asserts/assert-select";
 import { namesFromTable } from "../../schema/names-from-table";
@@ -11,10 +11,10 @@ import {
 
 export function crudReadFactory(connection: Knex, table: TTableDef) {
   const response = async ({
-    ids,
+    id,
     select = [],
   }: TReadArgs): Promise<TGenericObject> => {
-    assertIds(ids, table.fields);
+    assertId(id, table.fields);
     assertSelect(select as string[], table.fields);
 
     const tbl = table.table;
@@ -22,7 +22,7 @@ export function crudReadFactory(connection: Knex, table: TTableDef) {
       select = namesFromTable(table);
     }
 
-    let qry = connection(tbl).where(knexId(ids, table.fields));
+    let qry = connection(tbl).where(knexId(id, table.fields));
     if (select) qry = qry.select(renameNameToField(select, table.fields));
 
     const data = await qry;

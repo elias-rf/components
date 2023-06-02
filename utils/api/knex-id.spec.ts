@@ -12,20 +12,10 @@ describe("knexWhere", () => {
     const knex = Knex({ client: "mssql" });
     const expectedOut = knex
       .from("table")
-      .where(
-        knexId(
-          [
-            { id: "f1", value: "1" },
-            { id: "f2", value: 2 },
-          ],
-          schema
-        )
-      )
+      .where(knexId({ f1: "1", f2: 2 }, schema))
       .toString();
     expect(expectedOut).toBe(
       "select * from [table] where ([F1] = '1' and [F2] = 2)"
     );
   });
-
-
 });

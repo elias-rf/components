@@ -56,13 +56,11 @@ describe("crudCreate", () => {
       data: { agenda_telefone_id: 10 },
     });
     expect(rsp).toEqual({ agenda_telefone_id: 10 });
-    expect(knexMockHistory(tracker)).toEqual({
-      insert: [
-        {
-          bindings: [10],
-          sql: "insert into [phonebook] ([id]) output inserted.[id], inserted.[name], inserted.[department], inserted.[email] values (@p0)",
-        },
-      ],
-    });
+    expect(knexMockHistory(tracker)).toEqual([
+      {
+        bindings: [10],
+        sql: "insert into [phonebook] ([id]) output inserted.[id], inserted.[name], inserted.[department], inserted.[email] values (@p0)",
+      },
+    ]);
   });
 });

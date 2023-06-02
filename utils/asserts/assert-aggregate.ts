@@ -13,11 +13,11 @@ export function assertAggregate(
   const nameList = fields.map((field) => field.name);
   const fieldsInvalidos = [];
   let fieldsLivres = nameList.sort();
-
-  if (!nameList.includes(id.id)) {
-    fieldsInvalidos.push(id.id);
+  const field = Object.keys(id)[0];
+  if (!nameList.includes(field)) {
+    fieldsInvalidos.push(field);
   }
-  fieldsLivres = fieldsLivres.filter((f) => f !== id.id);
+  fieldsLivres = fieldsLivres.filter((f) => f !== field);
 
   if (fieldsInvalidos.length > 0) {
     throw new Error(

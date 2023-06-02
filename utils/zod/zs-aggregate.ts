@@ -1,3 +1,3 @@
 import { zd } from "@/utils/zod/zod";
 
-export const zsAggregate = zd.object({ id: zd.string(), label: zd.string() });
+export const zsAggregate = zd.record(zd.string());

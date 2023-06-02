@@ -14,13 +14,13 @@ describe("knexWhere", () => {
       .from("table")
       .where(
         knexWhere(
-          [
-            { id: "f1", value: "1" },
-            { id: "f2", value: ">= 2" },
-            { id: "f3", value: "?1?" },
-            { id: "f4", value: "1<>2" },
-            { id: "f5", value: "-" },
-          ],
+          {
+            f1: "1",
+            f2: ">= 2",
+            f3: "?1?",
+            f4: "1<>2",
+            f5: "-",
+          },
           schema
         )
       )
@@ -40,13 +40,13 @@ describe("knexWhere", () => {
       .from("table")
       .where(
         knexWhere(
-          [
-            { id: "f1", value: "1" },
-            { id: "f2", value: ">= 2" },
-            { id: "f3", value: "?1?" },
-            { id: "f4", value: "1<>2" },
-            { id: "f5", value: "-" },
-          ],
+          {
+            f1: "1",
+            f2: ">= 2",
+            f3: "?1?",
+            f4: "1<>2",
+            f5: "-",
+          },
           schema
         )
       )

@@ -1,21 +1,21 @@
-import { TFilters } from "@/types";
+import { TFilter } from "@/types";
 import type { TEquality } from "@/utils/api/getEquality";
 import { getEquality } from "@/utils/api/getEquality";
 
 /*
-[
-  {id:'',value: 'value'}
-  {id:'',value: '=value'}
-  {id:'',value: '>= value'}
-  {id:'',value: '> value'}
-  {id:'',value: '<= value'}
-  {id:'',value: '< value'}
-  {id:'',value: '?value'}
-  {id:'',value: '?value?'}
-  {id:'',value: 'value?'}
-  {id:'',value: 'value1 <> value2'}
-  {id:'',value: '-'}
-]
+{
+  field:'value',
+  field:'=value',
+  field:'>= value',
+  field:'> value',
+  field:'<= value',
+  field:'< value',
+  field:'?value',
+  field:'?value?',
+  field:'value?',
+  field:'value1 <> value2',
+  field:'-',
+}
 */
 
 const where = (type: string, builder: any, equalities: TEquality[]) => {
@@ -31,10 +31,12 @@ const where = (type: string, builder: any, equalities: TEquality[]) => {
  * Converte o filter do cliente para where do servidor
  */
 export const knexWhere = (
-  filters: TFilters = [],
+  filter: TFilter = {},
   schema: { field: string; name: string }[]
 ) => {
-  let equalities = filters.map((filter) => getEquality(filter));
+  let equalities = Object.keys(filter).map((field) =>
+    getEquality({ [field]: filter[field] })
+  );
 
   const conv = schema.reduce<Record<string, string>>((resp, item) => {
     resp[item.name] = item.field;

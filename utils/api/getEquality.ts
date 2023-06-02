@@ -1,17 +1,17 @@
 import { TFilter } from "@/types";
 
 /*
-  {id:'fld',value: 'value'} => {field:'fld',equality:'=',value:'value'}
-  {id:'fld',value: '=value'} => {field:'fld',equality:'=',value:'value'}
-  {id:'fld',value: '>= value'} => {field:'fld',equality:'>=',value:'value'}
-  {id:'fld',value: '> value'} => {field:'fld',equality:'>',value:'value'}
-  {id:'fld',value: '<= value'} => {field:'fld',equality:'<=',value:'value'}
-  {id:'fld',value: '< value'} => {field:'fld',equality:'<',value:'value'}
-  {id:'fld',value: '?value'} => {field:'fld',equality:'like',value:'%value'}
-  {id:'fld',value: '?value?'} => {field:'fld',equality:'like',value:'%value%'}
-  {id:'fld',value: 'value?'} => {field:'fld',equality:'like',value:'value%'}
-  {id:'fld',value: 'value1 <> value2'} => {field:'fld',equality:'between',value:['value1','value2']}'}
-  {id:'fld',value: '-'} => {field:'fld',equality:'null',value:''}
+  {fld: 'value'} => {field:'fld',equality:'=',value:'value'}
+  {fld: '=value'} => {field:'fld',equality:'=',value:'value'}
+  {fld: '>= value'} => {field:'fld',equality:'>=',value:'value'}
+  {fld: '> value'} => {field:'fld',equality:'>',value:'value'}
+  {fld: '<= value'} => {field:'fld',equality:'<=',value:'value'}
+  {fld: '< value'} => {field:'fld',equality:'<',value:'value'}
+  {fld: '?value'} => {field:'fld',equality:'like',value:'%value'}
+  {fld: '?value?'} => {field:'fld',equality:'like',value:'%value%'}
+  {fld: 'value?'} => {field:'fld',equality:'like',value:'value%'}
+  {fld: 'value1 <> value2'} => {field:'fld',equality:'between',value:['value1','value2']}'}
+  {fld: '-'} => {field:'fld',equality:'null',value:''}
 */
 
 export type TEquality = {
@@ -24,9 +24,9 @@ export type TEquality = {
  * Recebe igualdade como parte do valor e separa em campo, igualdade e valor.
  */
 export const getEquality = (param: TFilter): TEquality => {
-  const field = param.id;
+  const field = Object.keys(param)[0];
   let equality = "=";
-  let value: string | string[] = param.value;
+  let value: string | string[] = param[field];
 
   if (value.startsWith("=")) {
     equality = "=";

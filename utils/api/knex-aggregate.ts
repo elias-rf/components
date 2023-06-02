@@ -11,7 +11,8 @@ export const knexAggregate = (
     resp[item.name] = item.field;
     return resp;
   }, {});
-  const field = conv[sum.id];
+  const field = Object.keys(sum)[0];
+  const label = sum[field];
 
-  return { [sum.label]: field };
+  return { [label]: conv[field] || field };
 };

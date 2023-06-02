@@ -42,25 +42,23 @@ describe("crudUpdate", () => {
 
   it("update sem parametros", async () => {
     await expect(() =>
-      update({ ids: [{ id: "table", value: "agenda_telefone" }], data: {} })
+      update({ id: { table: "agenda_telefone" }, data: {} })
     ).rejects.toThrow(
       "table não é id válido use: agenda_telefone_id,email,nome,setor"
     );
   });
   it("update", async () => {
     const rsp = await update({
-      ids: [{ id: "agenda_telefone_id", value: "10" }],
+      id: { agenda_telefone_id: "10" },
       data: { agenda_telefone_id: 10 },
       select: ["agenda_telefone_id"],
     });
     expect(rsp).toEqual({ agenda_telefone_id: 10 });
-    expect(knexMockHistory(tracker)).toEqual({
-      update: [
-        {
-          bindings: [10, "10"],
-          sql: "update [phonebook] set [id] = @p0 output inserted.[id] where ([id] = @p1)",
-        },
-      ],
-    });
+    expect(knexMockHistory(tracker)).toEqual([
+      {
+        bindings: [10, "10"],
+        sql: "update [phonebook] set [id] = @p0 output inserted.[id] where ([id] = @p1)",
+      },
+    ]);
   });
 });

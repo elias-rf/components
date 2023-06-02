@@ -8,16 +8,18 @@ export function assertIncrement(
 ): asserts inc is TIncrement {
   assertAny(
     zsIncrement.safeParse(inc).success,
-    "increment deve ser {id:string, value:number}"
+    "increment deve ser {[field:string]:number}"
   );
   const nameList = fields.map((field) => field.name);
   const fieldsInvalidos = [];
   let fieldsLivres = nameList.sort();
 
-  if (!nameList.includes(inc.id)) {
-    fieldsInvalidos.push(inc.id);
+  for (const incField in inc) {
+    if (!nameList.includes(incField)) {
+      fieldsInvalidos.push(incField);
+    }
+    fieldsLivres = fieldsLivres.filter((f) => f !== incField);
   }
-  fieldsLivres = fieldsLivres.filter((f) => f !== inc.id);
 
   if (fieldsInvalidos.length > 0) {
     throw new Error(

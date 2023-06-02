@@ -53,17 +53,15 @@ describe("crudIncrement", () => {
 
   it("increment", async () => {
     const rsp = await increment({
-      filters: [{ id: "agenda_telefone_id", value: "10" }],
-      increment: { id: "agenda_telefone_id", value: 2 },
+      filter: { agenda_telefone_id: "10" },
+      increment: { agenda_telefone_id: 2 },
     });
     expect(rsp).toEqual([]);
-    expect(knexMockHistory(tracker)).toEqual({
-      update: [
-        {
-          bindings: [2, "10"],
-          sql: "update [phonebook] set [id] = [id] + @p0 output  where ([id] = @p1)",
-        },
-      ],
-    });
+    expect(knexMockHistory(tracker)).toEqual([
+      {
+        bindings: [2, "10"],
+        sql: "update [phonebook] set [id] = [id] + @p0 output  where ([id] = @p1)",
+      },
+    ]);
   });
 });

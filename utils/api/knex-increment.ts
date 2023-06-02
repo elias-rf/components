@@ -7,12 +7,18 @@ export const knexIncrement = (
 ): [string, number] => {
   assertIncrement(inc, schema);
 
-  const conv = schema.reduce<Record<string, string>>((resp, item) => {
+  const converter = schema.reduce<Record<string, string>>((resp, item) => {
     resp[item.name] = item.field;
     return resp;
   }, {});
 
-  const field = conv[inc.id];
+  const response = Object.entries(inc).reduce<[string, number]>(
+    (resp, [key]) => {
+      resp = [converter[key], inc[key]];
+      return resp;
+    },
+    [] as any
+  );
 
-  return [field, inc.value];
+  return response;
 };

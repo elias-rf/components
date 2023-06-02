@@ -1,10 +1,10 @@
 import { zd } from "@/utils/zod/zod";
 import { zsAggregate } from "@/utils/zod/zs-aggregate";
 import { zsData } from "@/utils/zod/zs-data";
-import { zsFilters } from "@/utils/zod/zs-filters";
+import { zsFilter } from "@/utils/zod/zs-filter";
 import { zsLimit } from "@/utils/zod/zs-limit";
 import { zsSelect } from "@/utils/zod/zs-select";
-import { zsSorts } from "@/utils/zod/zs-sorts";
+import { zsSort } from "@/utils/zod/zs-sort";
 
 export const selectZod = zd.array(zd.string());
 
@@ -12,9 +12,9 @@ export const idZod = zd.record(zd.any());
 export const dataZod = zd.record(zd.any());
 
 export const listZod = zd.object({
-  filters: zsFilters.optional(),
+  filter: zsFilter.optional(),
   limit: zsLimit.optional(),
-  sorts: zsSorts.optional(),
+  sort: zsSort.optional(),
   select: zsSelect.optional(),
   group: zsSelect.optional(),
   sum: zsAggregate.optional(),
@@ -23,20 +23,20 @@ export const listZod = zd.object({
 });
 
 export const countZod = zd.object({
-  filters: zsFilters.optional(),
+  filter: zsFilter.optional(),
 });
 
 export const readZod = zd.object({
-  ids: zsFilters,
+  id: zsFilter,
   select: zsSelect.optional(),
 });
 
 export const delZod = zd.object({
-  ids: zsFilters,
+  id: zsFilter,
 });
 
 export const updateZod = zd.object({
-  ids: zsFilters,
+  id: zsFilter,
   data: zsData,
   select: selectZod.optional(),
 });
@@ -48,6 +48,6 @@ export const createZod = zd.object({
 
 export const incrementZod = zd.object({
   increment: zd.record(zd.number()),
-  filters: zsFilters,
+  filter: zsFilter,
   select: zsSelect.optional(),
 });

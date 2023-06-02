@@ -53,16 +53,14 @@ describe("crudDel", () => {
 
   it("del", async () => {
     const rsp = await del({
-      ids: [{ id: "agenda_telefone_id", value: 10 }],
+      id: { agenda_telefone_id: 10 },
     });
     expect(rsp).toEqual([]);
-    expect(knexMockHistory(tracker)).toEqual({
-      delete: [
-        {
-          bindings: [10],
-          sql: "delete from [phonebook] where ([id] = @p0);select @@rowcount",
-        },
-      ],
-    });
+    expect(knexMockHistory(tracker)).toEqual([
+      {
+        bindings: [10],
+        sql: "delete from [phonebook] where ([id] = @p0);select @@rowcount",
+      },
+    ]);
   });
 });

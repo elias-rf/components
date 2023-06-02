@@ -22,12 +22,12 @@ const entity = [
 
 describe("knexAggregate", () => {
   it("deve renomear select para field", () => {
-    expect(
-      knexAggregate({ id: "agenda_telefone_id", label: "ttl" }, entity)
-    ).toEqual({ ttl: "id" });
+    expect(knexAggregate({ agenda_telefone_id: "ttl" }, entity)).toEqual({
+      ttl: "id",
+    });
   });
   it("deve disparar erro", () => {
-    expect(() => knexAggregate({ id: "field", label: "ttl" }, entity)).toThrow(
+    expect(() => knexAggregate({ field: "ttl" }, entity)).toThrow(
       "field não é id válido use: agenda_telefone_id,email,nome,setor"
     );
   });

@@ -20,11 +20,12 @@ import { knexSelect } from "@/utils/api/knex-select";
 import { knexWhere } from "@/utils/api/knex-where";
 import { assertAggregate } from "@/utils/asserts/assert-aggregate";
 import { assertData } from "@/utils/asserts/assert-data";
-import { assertFilters } from "@/utils/asserts/assert-filters";
-import { assertIds } from "@/utils/asserts/assert-ids";
+import { assertFilter } from "@/utils/asserts/assert-filter";
+import { assertId } from "@/utils/asserts/assert-id";
 import { assertLimit } from "@/utils/asserts/assert-limit";
 import { assertSelect } from "@/utils/asserts/assert-select";
-import { assertSorts } from "@/utils/asserts/assert-sorts";
+import { assertSort } from "@/utils/asserts/assert-sort";
+import { isEmpty } from "@/utils/identify/is-empty";
 import { namesFromTable } from "@/utils/schema/names-from-table";
 import { recordClear } from "@/utils/schema/record-clear";
 import {
@@ -34,7 +35,7 @@ import {
 import autoBind from "auto-bind";
 import { Knex } from "knex";
 
-export class CrudModel {
+export class CrudModel<T = TGenericObject> {
   connection: Knex;
   table: TTableDef;
 
@@ -45,29 +46,27 @@ export class CrudModel {
   }
 
   async list({
-    filters = [],
-    sorts = [],
+    filter = {},
+    sort = {},
     limit = 50,
     select = ["*"],
     group = [],
     sum,
     min,
     max,
-  }: TListArgs = {}): Promise<TGenericObject[]> {
+  }: TListArgs = {}): Promise<T[]> {
     // valida parametros
     assertLimit(limit);
-    assertFilters(filters, this.table.fields);
-    assertSorts(sorts, this.table.fields);
+    assertFilter(filter, this.table.fields);
+    assertSort(sort, this.table.fields);
     assertSelect(select as string[], this.table.fields);
     assertSelect(group as string[], this.table.fields);
 
     let qry = this.connection(this.table.table);
     if (select) qry = qry.select(knexSelect(select, this.table.fields));
     if (limit) qry = qry.limit(limit);
-    if (filters.length > 0)
-      qry = qry.where(knexWhere(filters, this.table.fields));
-    if (sorts.length > 0)
-      qry = qry.orderBy(knexOrder(sorts, this.table.fields));
+    if (!isEmpty(filter)) qry = qry.where(knexWhere(filter, this.table.fields));
+    if (!isEmpty(sort)) qry = qry.orderBy(knexOrder(sort, this.table.fields));
     if (sum) {
       assertAggregate(sum as TAggregate, this.table.fields);
       qry = qry.sum(knexAggregate(sum, this.table.fields));
@@ -88,8 +87,8 @@ export class CrudModel {
     return renameFieldToName(data, this.table.fields);
   }
 
-  async read({ ids, select = [] }: TReadArgs): Promise<TGenericObject> {
-    assertIds(ids, this.table.fields);
+  async read({ id, select = [] }: TReadArgs): Promise<T> {
+    assertId(id, this.table.fields);
     assertSelect(select as string[], this.table.fields);
 
     if (select.length === 0) {
@@ -97,7 +96,7 @@ export class CrudModel {
     }
 
     const tbl = this.table.table;
-    let qry = this.connection(tbl).where(knexId(ids, this.table.fields));
+    let qry = this.connection(tbl).where(knexId(id, this.table.fields));
     if (select) qry = qry.select(renameNameToField(select, this.table.fields));
 
     const data = await qry;
@@ -105,11 +104,11 @@ export class CrudModel {
     return rec || ({} as TGenericObject);
   }
 
-  async count({ filters = [], count = { ttl: "*" }, select }: TCountArgs) {
-    assertFilters(filters, this.table.fields);
+  async count({ filter = {}, count = { ttl: "*" }, select }: TCountArgs) {
+    assertFilter(filter, this.table.fields);
 
     let qry = this.connection(this.table.table)
-      .where(knexWhere(filters, this.table.fields))
+      .where(knexWhere(filter, this.table.fields))
       .count(count);
     if (select) qry = qry.select(renameNameToField(select, this.table.fields));
     const data = await qry;
@@ -121,11 +120,11 @@ export class CrudModel {
   }
 
   async update({
-    ids,
+    id,
     data,
     select = ["*"],
   }: TUpdateArgs): Promise<TGenericObject> {
-    assertIds(ids, this.table.fields);
+    assertId(id, this.table.fields);
     assertData(data, this.table.fields);
     assertSelect(select as TSelect, this.table.fields);
 
@@ -134,7 +133,7 @@ export class CrudModel {
 
     qry = qry
       .update(renameNameToField(data, this.table.fields))
-      .where(knexId(ids, this.table.fields))
+      .where(knexId(id, this.table.fields))
       .returning(knexSelect(select, this.table.fields));
     const resp = await qry;
     return renameFieldToName(resp[0], this.table.fields);
@@ -155,14 +154,14 @@ export class CrudModel {
     return renameFieldToName(qry, this.table.fields);
   }
 
-  async del({ ids }: TDelArgs): Promise<number> {
-    assertIds(ids, this.table.fields);
+  async del({ id }: TDelArgs): Promise<number> {
+    assertId(id, this.table.fields);
 
     const tbl = this.table.table;
 
     const qry = await this.connection(tbl)
       .del()
-      .where(knexId(ids, this.table.fields));
+      .where(knexId(id, this.table.fields));
     if (Array.isArray(qry) && qry.length > 0) {
       return qry[0];
     }
@@ -170,21 +169,24 @@ export class CrudModel {
   }
 
   async increment({
-    filters = [],
+    filter = {},
     increment,
     select = [],
   }: TIncrementArgs): Promise<TGenericObject[]> {
-    assertFilters(filters, this.table.fields);
+    assertFilter(filter, this.table.fields);
     assertSelect(select as string[], this.table.fields);
 
-    if (select.length > 0) {
+    if (select.length === 0) {
       select = namesFromTable(this.table);
     }
+
     const inc = knexIncrement(increment, this.table.fields);
+
     const data: TGenericObject[] = await this.connection(this.table.table)
-      .where(knexWhere(filters, this.table.fields))
+      .where(knexWhere(filter, this.table.fields))
       .increment(...inc)
-      .returning(select as string[]);
+      .returning(knexSelect(select, this.table.fields));
+
     return renameFieldToName(data, this.table.fields);
   }
 }

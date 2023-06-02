@@ -1,24 +1,21 @@
-import { TIds } from "@/types";
+import { TId } from "@/types";
 import { assertAny } from "@/utils/asserts/assert-any";
-import { zsIds } from "@/utils/zod/zs-ids";
+import { zsId } from "@/utils/zod/zs-id";
 
-export function assertIds(
-  ids: TIds,
+export function assertId(
+  id: TId,
   fields: { name: string }[]
-): asserts ids is TIds {
-  assertAny(
-    zsIds.safeParse(ids).success,
-    "id deve ser [{id:string, value:any}]"
-  );
+): asserts id is TId {
+  assertAny(zsId.safeParse(id).success, "id deve ser {[field:string]:any}");
   const nameList = fields.map((field) => field.name);
   const fieldsInvalidos = [];
   let fieldsLivres = nameList.sort();
 
-  for (const id of ids) {
-    if (!nameList.includes(id.id)) {
-      fieldsInvalidos.push(id.id);
+  for (const field in id) {
+    if (!nameList.includes(field)) {
+      fieldsInvalidos.push(field);
     }
-    fieldsLivres = fieldsLivres.filter((f) => f !== id.id);
+    fieldsLivres = fieldsLivres.filter((f) => f !== field);
   }
   if (fieldsInvalidos.length > 0) {
     throw new Error(

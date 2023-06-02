@@ -1,7 +1,7 @@
 import type { TGenericObject, TIncrementArgs, TTableDef } from "@/types";
 import { knexIncrement } from "@/utils/api/knex-increment";
 import { knexWhere } from "@/utils/api/knex-where";
-import { assertFilters } from "@/utils/asserts/assert-filters";
+import { assertFilter } from "@/utils/asserts/assert-filter";
 import { Knex } from "knex";
 import { assertSelect } from "../../asserts/assert-select";
 import { namesFromTable } from "../../schema/names-from-table";
@@ -9,11 +9,11 @@ import { renameFieldToName } from "../../schema/rename-fields";
 
 export function incrementFactory(db: Knex, schema: TTableDef) {
   const response = async ({
-    filters = [],
+    filter = {},
     increment,
     select = [],
   }: TIncrementArgs): Promise<TGenericObject[]> => {
-    assertFilters(filters, schema.fields);
+    assertFilter(filter, schema.fields);
     assertSelect(select as string[], schema.fields);
     const tbl = schema.table;
     const entity = schema;
@@ -22,7 +22,7 @@ export function incrementFactory(db: Knex, schema: TTableDef) {
     }
     const inc = knexIncrement(increment, schema.fields);
     const data: TGenericObject[] = await db(tbl)
-      .where(knexWhere(filters, entity.fields))
+      .where(knexWhere(filter, entity.fields))
       .increment(...inc)
       .returning(select as string[]);
     return renameFieldToName(data, schema.fields);

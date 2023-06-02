@@ -1,25 +1,29 @@
 import type { TGenericObject } from "./index";
 
+/**
+ * Objeto que representa filtro
+ * {id:'>2', name:'A?'}
+ */
 export type TFilter = {
-  id: string;
-  value: string;
+  [field: string]: string;
 };
 
-export type TFilters = TFilter[];
-
+/**
+ * Objeto que representa ordenação
+ * {id:'asc', name:'desc'}
+ */
 export type TSort = {
-  id: string;
-  desc: boolean;
+  [field: string]: "asc" | "desc";
 };
 
-export type TSorts = TSort[];
+/**
+ * Objeto que representa registro único
+ * {nf:1, serie:'2'}
+ */
+export type TId = { [field: string]: any };
 
 /** Lista de registros selecionados */
-export type TSelection = Record<string, boolean>;
-
-/** Objeto que representa registro único */
-export type TId = { id: string; value: any };
-export type TIds = TId[];
+export type TSelection = TId[];
 
 /**
  * Tipos para Queries
@@ -28,8 +32,8 @@ export type TIds = TId[];
 /** SQL.WHERE */
 export type TWhere = [string, string, any];
 
-export type TAggregate = { id: string; label: string };
-export type TIncrement = { id: string; value: number };
+export type TAggregate = { [field: string]: string };
+export type TIncrement = { [field: string]: number };
 
 /** SQL.SELECT */
 export type TSelect = string[];
@@ -46,8 +50,8 @@ export type TSelected = { [fields: string]: any };
 /** Argumentos para modelo de listagem */
 export type TListArgs = {
   limit?: number;
-  filters?: TFilters;
-  sorts?: TSorts;
+  filter?: TFilter;
+  sort?: TSort;
   select?: TSelect;
   sum?: TAggregate;
   min?: TAggregate;
@@ -56,14 +60,14 @@ export type TListArgs = {
 };
 
 /** Argumentos para modelo de registro */
-export type TReadArgs = { ids: TIds; select?: TSelect };
+export type TReadArgs = { id: TId; select?: TSelect };
 
 /** Argumentos para modelo de exclusão */
-export type TDelArgs = { ids: TIds };
+export type TDelArgs = { id: TId };
 
 /** Argumentos para modelo de alteração */
 export type TUpdateArgs = {
-  ids: TIds;
+  id: TId;
   data: TGenericObject;
   select?: TSelect;
 };
@@ -75,13 +79,13 @@ export type TCreateArgs = {
 };
 
 export type TCountArgs = {
-  filters?: TFilters;
+  filter?: TFilter;
   count?: TGenericObject;
   select?: TSelect;
 };
 
 export type TIncrementArgs = {
-  filters: TFilters;
+  filter: TFilter;
   increment: TIncrement;
   select?: TSelect;
 };

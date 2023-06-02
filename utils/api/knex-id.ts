@@ -1,8 +1,8 @@
-import { TIds } from "@/types";
+import { TId } from "@/types";
 
-const where = (type: string, builder: any, ids: TIds) => {
+const where = (type: string, builder: any, ids: TId[]) => {
   ids.forEach((id) => {
-    return builder.where(id.id, id.value);
+    return builder.where(id);
   });
 };
 
@@ -10,19 +10,20 @@ const where = (type: string, builder: any, ids: TIds) => {
  * Converte o filter do cliente para where do servidor
  */
 export const knexId = (
-  ids: TIds = [],
+  id: TId = {},
   schema: { field: string; name: string }[]
 ) => {
   const conv = schema.reduce<Record<string, string>>((resp, item) => {
     resp[item.name] = item.field;
     return resp;
   }, {});
-  ids = ids.map((id) => ({
-    id: conv[id.id] || id.id,
-    value: id.value,
-  }));
+
+  const idList: TId[] = [];
+  for (const field in id) {
+    idList.push({ [conv[field]]: id[field] });
+  }
 
   return (builder: any) => {
-    where("where", builder, ids);
+    where("where", builder, idList);
   };
 };

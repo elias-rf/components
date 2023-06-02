@@ -16,12 +16,12 @@ const config: StorybookConfig = {
     storyStoreV7: true,
   },
   staticDirs: ["../public"],
-  async viteFinal(config) {
-    config.server.proxy = {
-      "/api": "http://localhost:3333",
-    };
-    return config;
-  },
+  // async viteFinal(config) {
+  //   config.server.proxy = {
+  //     "/api": "http://localhost:3333",
+  //   };
+  //   return config;
+  // },
   docs: {
     autodocs: "tag",
   },
