@@ -35,3 +35,5 @@ export type TreeData = {
   label: string;
   child?: TreeData;
 }[];
+
+export type TFormStatus = "edit" | "new" | "view";

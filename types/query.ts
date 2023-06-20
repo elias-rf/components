@@ -25,6 +25,9 @@ export type TId = { [field: string]: any };
 /** Lista de registros selecionados */
 export type TSelection = TId[];
 
+/** Registro do banco de dados */
+export type TRecord = { [field: string]: any };
+
 /**
  * Tipos para Queries
  */
@@ -49,9 +52,9 @@ export type TSelected = { [fields: string]: any };
 
 /** Argumentos para modelo de listagem */
 export type TListArgs = {
-  limit?: number;
   filter?: TFilter;
   sort?: TSort;
+  limit?: number;
   select?: TSelect;
   sum?: TAggregate;
   min?: TAggregate;
