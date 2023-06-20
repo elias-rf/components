@@ -4,11 +4,6 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  settings: {
-    react: {
-      version: "999.999.999",
-    },
-  },
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -26,16 +21,22 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint", "promise"],
+  plugins: ["@typescript-eslint", "react", "promise"],
   rules: {
     "@typescript-eslint/ban-ts-comment": 0,
     "@typescript-eslint/no-explicit-any": 0,
-    "no-unused-vars": 0,
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
         destructuredArrayIgnorePattern: "^_",
       },
     ],
+    "no-unused-vars": 0,
+    yoda: "error",
+  },
+  settings: {
+    react: {
+      version: "999.999.999",
+    },
   },
 };
