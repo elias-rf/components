@@ -1,4 +1,4 @@
-import { TColumn } from "@/client/components/grid";
+import { TColumn } from "@/client/components/table";
 
 export const agendaTelefoneColumns: TColumn[] = [
   { name: "agenda_telefone_id", label: "Ramal" },
