@@ -1,11 +1,9 @@
-import type { TIds } from "@/types";
+import { Table } from "@/client/components/table";
 import { day } from "@/utils/date/day";
 import { trpc } from "@/utils/trpc/trpc";
-import { Table } from "../../components/search";
 import { getSchema } from "./get-shema";
-
 type ClienteQuantidadeProps = {
-  id: TIds;
+  id: number;
   dia?: string;
 };
 
@@ -15,20 +13,22 @@ export function ClienteQuantidade({ id, dia }: ClienteQuantidadeProps) {
     .startOf("month")
     .format("YYYY-MM-DD");
   const fim = day(dia).subtract(1, "month").endOf("month").format("YYYY-MM-DD");
-  const schema = getSchema({ inicio, fim });
-  const dataVendaMensalQuantidade = trpc.cliente.vendaMensalQuantidade.useQuery(
+  const columns = getSchema({ inicio, fim });
+  const dataList = trpc.cliente.vendaMensalQuantidade.useQuery(
     {
       inicio,
       fim,
-      cliente: id.cliente_id,
+      cliente: id,
+    },
+    {
+      enabled: !!id,
     }
   );
 
   return (
     <Table
-      name="ClienteQuantidade"
-      data={dataVendaMensalQuantidade.data}
-      schema={schema}
+      rows={dataList.data ?? []}
+      columns={columns}
     />
   );
 }

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ClienteValorMedio } from "./cliente_valor_medio";
+import { ClienteValorMedio } from "./cliente-valor-medio";
 
 const meta: Meta<typeof ClienteValorMedio> = {
   component: ClienteValorMedio,
   args: {
-    id: { cliente_id: 1 },
+    id: 1,
   },
 };
 
