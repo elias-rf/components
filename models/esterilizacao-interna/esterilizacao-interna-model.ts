@@ -5,6 +5,8 @@ import { zsr } from "@/utils/zod/z-refine";
 import { zd, zod } from "@/utils/zod/zod";
 import { Knex } from "knex";
 import { esterilizacao_interna } from "./esterilizacao-interna.table";
+import { day } from "@/utils/date/day";
+
 export class EsterilizacaoInternaModel extends CrudModel {
   connection: Knex;
   models: TModels;
@@ -31,7 +33,7 @@ export class EsterilizacaoInternaModel extends CrudModel {
   }): Promise<{ dia: string; dia_semana: string; quantidade: number }[]> {
     zod(inicio, zd.string().superRefine(zsr.date));
     zod(fim, zd.string().superRefine(zsr.date));
-    const qry = this.connection("tOperacaoOrdemProducao")
+    const qry = await this.connection("tOperacaoOrdemProducao")
       .select(
         this.connection.raw("DataInicio as dia, Sum(QtdConforme) AS quantidade")
       )
@@ -39,7 +41,11 @@ export class EsterilizacaoInternaModel extends CrudModel {
       .groupBy("DataInicio")
       .whereBetween("DataInicio", [inicio, fim])
       .where(this.connection.raw("fkOperacao in (3058, 3158)"));
-    return qry;
+    return qry.map((rec: any) => {
+      rec.dia_semana = day(rec.dia).format("ddd");
+      rec.dia = rec.dia.toISOString().substring(0, 10);
+      return rec;
+    });
   }
 
   async mensal({ mes }: { mes: string }) {

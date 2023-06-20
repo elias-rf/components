@@ -55,6 +55,7 @@ export class EsterilizacaoExternaModel extends CrudModel {
 
     return qry.map((rec: any) => {
       rec.dia_semana = day(rec.dia).format("ddd");
+      rec.dia = rec.dia.toISOString().substring(0, 10);
       return rec;
     });
   }

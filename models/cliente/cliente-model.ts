@@ -5,9 +5,9 @@ import { formatMoney } from "@/utils/format/format-money";
 import { zsr } from "@/utils/zod/z-refine";
 import { zd, zod } from "@/utils/zod/zod";
 import { cliente } from "./cliente.table";
-import { TPeriodoCliente, TVendaMensalResp } from "./cliente.type";
+import { TCliente, TPeriodoCliente, TVendaMensalResp } from "./cliente.type";
 
-export class ClienteModel extends CrudModel {
+export class ClienteModel extends CrudModel<TCliente> {
   models: TModels;
 
   constructor({

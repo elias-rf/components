@@ -1,21 +1,15 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
 ### Index
-GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"esterilizacaoInterna"}
+GET {{host}}/api/trpc?input={"jsonrpc":"2.0","id":"2","method":"index","params":"esterilizacaoInterna"}
 Content-Type: application/json
 
 
 ### Diario
-POST http://localhost:3000/api/rpc
-Content-Type: application/json
-
-{
-  "jsonrpc":"2.0",
-  "id":"1",
-  "method":"esterilizacaoInternaDiario",
-  "params":{
-    "inicio":"2020-01-01",
-    "fim":"2020-01-31"
-  }
-}
+GET {{host}}/api/trpc/esterilizacaoInterna.diario
+?input={"inicio":"2020-01-01","fim":"2020-01-31"}
 
 ### Mensal
 POST http://localhost:3000/api/rpc

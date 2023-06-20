@@ -44,7 +44,7 @@ export const cliente: TTableDef = {
     {
       field: "FgAtivo",
       label: "Habilitado",
-      name: "is_ativo",
+      name: "eh_ativo",
       typeField: "string",
     },
     {

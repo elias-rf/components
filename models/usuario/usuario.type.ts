@@ -1,7 +1,4 @@
-import { TOrder, TSelect, TWhere } from "@/types";
-import { TFieldDef } from "@/types/model";
 //#region import
-import { TCurrentUser } from "@/types";
 
 //#endregion
 export interface TUsuarioPk {
@@ -19,78 +16,6 @@ export interface TUsuario extends TUsuarioPk {
   group_id?: string;
 }
 
-export type TUsuarioFields = keyof Required<TUsuario>;
-
 export type TUsuarioIds = {
   [pk in keyof Required<TUsuarioPk>]: any;
 };
-export type TUsuarioSelect = TSelect;
-export type TUsuarioWhere = TWhere;
-export type TUsuarioOrder = TOrder;
-
-export type TUsuarioSchema = () => Promise<TFieldDef[]>;
-export type TUsuarioClear = () => Promise<TUsuario>;
-export type TUsuarioList = (args: {
-  where?: TWhere[];
-  order?: TOrder[];
-  limit?: number;
-  select?: TSelect;
-}) => Promise<TUsuario[]>;
-export type TUsuarioRead = (args: {
-  id: TUsuarioIds;
-  select?: TSelect;
-}) => Promise<TUsuario>;
-
-export type TUsuarioCreate = (args: {
-  data: TUsuario;
-  select?: TSelect;
-}) => Promise<TUsuario>;
-export type TUsuarioUpdate = (args: {
-  id: TUsuarioIds;
-  data: TUsuario;
-  select?: TSelect;
-}) => Promise<TUsuario>;
-export type TUsuarioDel = (args: { id: TUsuarioIds }) => Promise<number>;
-
-//#region def
-export type TUsuarioLogin = (args: {
-  user: string;
-  password: string;
-}) => Promise<TCurrentUser>;
-export type TUsuarioLogout = () => Promise<boolean>;
-export type TUsuarioMe = (_?: void, ctx?: any) => Promise<TCurrentUser>;
-//#endregion
-
-export type TUsuarioCrud = {
-  query: {
-    schema: TUsuarioSchema;
-    clear: TUsuarioClear;
-    list: TUsuarioList;
-    read: TUsuarioRead;
-  };
-  mutation: {
-    create: TUsuarioCreate;
-    update: TUsuarioUpdate;
-    del: TUsuarioDel;
-  };
-};
-
-export type TUsuarioModel = TUsuarioCrud & {
-  //#region query
-
-  //#endregion
-  //#region mutation
-
-  //#endregion
-  //#region type
-  query: {
-    me: TUsuarioMe;
-  };
-  mutation: {
-    login: TUsuarioLogin;
-    logout: TUsuarioLogout;
-  };
-  //#endregion
-};
-
-export type TUsuarioRpc = TUsuarioModel;
