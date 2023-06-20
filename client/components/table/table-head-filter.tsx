@@ -1,16 +1,16 @@
 import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
-import TableCell from "@mui/material/TableCell";
+import MuiTableCell from "@mui/material/TableCell";
 import TextField from "@mui/material/TextField";
-import { TColumn } from "./grid";
+import { TColumn } from "./table";
 
-export type TGridHeadFilterProps = {
+export type TTableHeadFilterProps = {
   col: TColumn;
 };
 
-export function GridHeadFilter({ col, ...rest }: TGridHeadFilterProps) {
+export function TableHeadFilter({ col, ...rest }: TTableHeadFilterProps) {
   return (
-    <TableCell
+    <MuiTableCell
       variant="head"
       padding="none"
     >
@@ -31,6 +31,6 @@ export function GridHeadFilter({ col, ...rest }: TGridHeadFilterProps) {
         }}
         {...rest}
       />
-    </TableCell>
+    </MuiTableCell>
   );
 }

@@ -1,8 +1,9 @@
 import { TFilter, TSelection, TSort } from "@/types";
+import { deepEqual } from "@/utils/object/deep-equal";
 import type { Meta, StoryObj } from "@storybook/react";
 import { JsonViewer } from "@textea/json-viewer";
 import React from "react";
-import { Grid, TColumn, TRow } from "./grid";
+import { TColumn, TRow, Table } from "./table";
 
 function createData(
   dessert: string,
@@ -42,22 +43,22 @@ const schema: TColumn[] = [
   { label: "Protein (g)", name: "protein", align: "right", width: 90 },
 ];
 
-const meta: Meta<typeof Grid> = {
-  component: Grid,
+const meta: Meta<typeof Table> = {
+  component: Table,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Grid>;
+type Story = StoryObj<typeof Table>;
 
 export const Default: Story = {
   render: () => {
     return (
       <>
-        <Grid
+        <Table
           columns={schema}
           rows={data}
-        ></Grid>
+        ></Table>
       </>
     );
   },
@@ -67,16 +68,16 @@ const GridStory = () => {
   const [selection, setSelection] = React.useState<TSelection>([]);
   const [sort, setSort] = React.useState<TSort>({});
   const [filter, onFilter] = React.useState<TFilter>({});
-  const getId = (row: TRow) => row.dessert;
+  const getId = (row: TRow) => ({ dessert: row.dessert });
 
-  function onSelection(e: TSelection) {
-    if (e[0] === selection[0]) return setSelection([]);
-    setSelection(e);
+  function onSelection(selected: TSelection) {
+    if (deepEqual(selected, selection)) return setSelection([]);
+    setSelection(selected);
   }
 
   return (
     <>
-      <Grid
+      <Table
         rows={data}
         columns={schema}
         selection={selection}
@@ -88,7 +89,6 @@ const GridStory = () => {
         getId={getId}
       >
         {({ row }) => {
-          if (getId(row) !== selection[0]) return null;
           return (
             <tr>
               <td colSpan={100}>
@@ -101,7 +101,7 @@ const GridStory = () => {
             </tr>
           );
         }}
-      </Grid>
+      </Table>
 
       <JsonViewer
         value={{

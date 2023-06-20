@@ -1,14 +1,17 @@
-import { TFilter, TSelection, TSort } from "@/types";
-import Table from "@mui/material/Table";
+import { TFilter, TId, TSelection, TSort } from "@/types";
+import { deepEqual } from "@/utils/object/deep-equal";
+import MuiTable from "@mui/material/Table";
+import MuiTableCell from "@mui/material/TableCell";
+import MuiTableRow from "@mui/material/TableRow";
 import { useTheme } from "@mui/material/styles";
 import { useForm } from "../../lib/hooks/use-form";
-import { GridBody } from "./grid-body";
-import { GridBodyCol } from "./grid-body-col";
-import { GridBodyRow } from "./grid-body-row";
-import { GridHead } from "./grid-head";
-import { GridHeadCol } from "./grid-head-col";
-import { GridHeadFilter } from "./grid-head-filter";
-import { GridHeadRow } from "./grid-head-row";
+import { TableBody } from "./table-body";
+import { TableBodyCol } from "./table-body-col";
+import { TableBodyRow } from "./table-body-row";
+import { TableHead } from "./table-head";
+import { TableHeadCol } from "./table-head-col";
+import { TableHeadFilter } from "./table-head-filter";
+import { TableHeadRow } from "./table-head-row";
 
 export type TColumn = {
   label: string;
@@ -21,7 +24,7 @@ export type TColumn = {
 
 export type TRow = { [field: string]: any };
 
-export type TGridProps = {
+export type TTableProps = {
   rows: TRow[];
   columns: TColumn[];
   filter?: TFilter;
@@ -37,13 +40,13 @@ export type TGridProps = {
   BodyRowSlot?: any;
   BodyColSlot?: any;
   HeadFilterSlot?: any;
-  getId?: (row: TRow) => string;
+  getId?: (row: TRow) => TId;
   children?: (args: { row: TRow; columns: TColumn[] }) => React.ReactNode;
 };
 
-const getIdDefault = (row: TRow) => JSON.stringify(row);
+const getIdDefault = (row: TRow) => row;
 
-export function Grid({
+export function Table({
   rows: data = [],
   columns,
   selection = [],
@@ -53,15 +56,15 @@ export function Grid({
   filter,
   onFilter,
   getId = getIdDefault,
-  HeadSlot = GridHead,
-  HeadRowSlot = GridHeadRow,
-  HeadColSlot = GridHeadCol,
-  HeadFilterSlot = GridHeadFilter,
-  BodySlot = GridBody,
-  BodyRowSlot = GridBodyRow,
-  BodyColSlot = GridBodyCol,
+  HeadSlot = TableHead,
+  HeadRowSlot = TableHeadRow,
+  HeadColSlot = TableHeadCol,
+  HeadFilterSlot = TableHeadFilter,
+  BodySlot = TableBody,
+  BodyRowSlot = TableBodyRow,
+  BodyColSlot = TableBodyCol,
   children,
-}: TGridProps) {
+}: TTableProps) {
   const theme = useTheme();
 
   const form = useForm({ onInput, initialValues: filter });
@@ -73,7 +76,7 @@ export function Grid({
     onFilter && onFilter(filteredObj);
   }
 
-  const handleOnSelection = (row: any) => {
+  const handleOnSelection = (row: TRow) => {
     onSelection && onSelection([getId(row)]);
   };
 
@@ -89,8 +92,15 @@ export function Grid({
     onSort && onSort({ [col.name]: ord });
   };
 
+  function isSelected(row: TRow, selection: TSelection) {
+    const id = getId(row);
+    const response = selection.findIndex((selected) => deepEqual(selected, id));
+
+    return response >= 0;
+  }
+
   return (
-    <Table
+    <MuiTable
       sx={{ minWidth: 650 }}
       size="small"
       stickyHeader
@@ -99,7 +109,7 @@ export function Grid({
         <HeadRowSlot>
           {columns.map((column) => (
             <HeadColSlot
-              key={column.name}
+              key={`label-${column.name}`}
               col={column}
               sort={sort}
               width={column.width}
@@ -116,7 +126,7 @@ export function Grid({
           <HeadRowSlot>
             {columns.map((column) => (
               <HeadFilterSlot
-                key={column.name}
+                key={`filter-${column.name}`}
                 col={column}
                 {...form.getInputProps(column.name)}
               />
@@ -133,10 +143,9 @@ export function Grid({
                 {
                   "&:last-child td, &:last-child th": { border: 0 },
                 },
-                selection.includes(getId(row)) && {
-                  backgroundColor: theme.palette.grey[300],
-                },
               ]}
+              selected={isSelected(row, selection)}
+              hover={true}
               onClick={() => handleOnSelection(row)}
             >
               {columns.map((column) => (
@@ -147,10 +156,18 @@ export function Grid({
                 />
               ))}
             </BodyRowSlot>
-            {children && children({ row, columns })}
+            {children ? (
+              isSelected(row, selection) ? (
+                <MuiTableRow>
+                  <MuiTableCell colSpan={columns.length}>
+                    {children({ row, columns })}
+                  </MuiTableCell>
+                </MuiTableRow>
+              ) : null
+            ) : null}
           </>
         ))}
       </BodySlot>
-    </Table>
+    </MuiTable>
   );
 }

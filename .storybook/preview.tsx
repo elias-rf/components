@@ -1,14 +1,19 @@
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import type { Preview } from "@storybook/react";
 import "uno.css";
 import { TrpcProvider } from "../utils/trpc/trpc-provider";
 
+const theme = createTheme({});
+
 const preview: Preview = {
   decorators: [
-    (Story)=>  (
+    (Story) => (
       <TrpcProvider>
-        <Story />
+        <ThemeProvider theme={theme}>
+          <Story />
+        </ThemeProvider>
       </TrpcProvider>
-    )
+    ),
   ],
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
@@ -19,7 +24,6 @@ const preview: Preview = {
       },
     },
   },
-
 };
 
 export const globalTypes = {

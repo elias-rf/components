@@ -1,7 +1,7 @@
-import TableCell from "@mui/material/TableCell";
-import { TColumn } from "./grid";
+import MuiTableCell from "@mui/material/TableCell";
+import { TColumn } from "./table";
 
-export type TGridHeadColProps = {
+export type TTableHeadColProps = {
   col: TColumn;
   sort: { [field: string]: "asc" | "desc" | undefined };
 };
@@ -19,9 +19,9 @@ const ShowSortIcon = ({
   return <span>{"⇅"}</span>;
 };
 
-export function GridHeadCol({ col, sort, ...rest }: TGridHeadColProps) {
+export function TableHeadCol({ col, sort, ...rest }: TTableHeadColProps) {
   return (
-    <TableCell
+    <MuiTableCell
       align={col.align}
       variant="head"
       {...rest}
@@ -31,6 +31,6 @@ export function GridHeadCol({ col, sort, ...rest }: TGridHeadColProps) {
         col={col}
         sort={sort}
       />
-    </TableCell>
+    </MuiTableCell>
   );
 }

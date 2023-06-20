@@ -4,6 +4,6 @@ type TIfProps = {
 };
 
 export function If({ condition, children }: TIfProps) {
-  if (condition) return <>{children}</>;
+  if (condition) return children;
   return null;
 }

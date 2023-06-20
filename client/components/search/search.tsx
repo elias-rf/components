@@ -1,8 +1,14 @@
 import { TWhere } from "@/types";
+import Button from "@mui/material/Button";
+import Chip from "@mui/material/Chip";
+import MenuItem from "@mui/material/MenuItem";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Unstable_Grid2";
 import React, { useState } from "react";
 
 type TSearchProps = {
-  schema: { name: string; typeField: string; label: string }[];
+  schema: { name: string; typeField?: string; label: string }[];
   where: TWhere[];
   onWhere: (event: TWhere[]) => void;
 };
@@ -10,7 +16,7 @@ type TSearchProps = {
 // retorna uma lista de igualdades de acordo como o tipo do campo
 function getEqualitys(
   field: string,
-  schema: { name: string; typeField: string }[]
+  schema: { name: string; typeField?: string }[]
 ) {
   const equalitys: any = {
     "=": "igual a",
@@ -18,15 +24,15 @@ function getEqualitys(
     "<=": "menor ou igual",
     ">": "maior que",
     ">=": "maior ou igual",
-    "*abc*": "contêm",
-    "abc*": "começa com",
-    "*abc": "termina com",
-    null: "(vazio)",
+    "?abc?": "contêm",
+    "abc?": "começa com",
+    "?abc": "termina com",
+    "-": "(vazio)",
   };
 
   const aux = schema.find((item: { name: string }) => item.name === field);
 
-  const tipo = aux?.typeField;
+  const tipo = aux?.typeField || "string";
 
   switch (tipo) {
     case "boolean":
@@ -88,7 +94,8 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
     setValueInput("");
   }
 
-  function handleSelectField(value: string) {
+  function handleSelectField(event: SelectChangeEvent) {
+    const value = event.target.value;
     setFieldSelect(value);
     if (Object.keys(getEqualitys(value, schema)).includes(equalitySelect)) {
       return;
@@ -116,60 +123,102 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
   }
 
   return (
-    <div>
-      <div className={"flex flex-wrap"}>
+    <Grid
+      container
+      spacing={1}
+      direction={"column"}
+    >
+      <Grid
+        container
+        spacing={1}
+      >
         {whr.map((item, idx) => (
-          <div
-            className={"px-1 pb-1"}
-            key={idx}
-          >
-            <BadgeClose
-              onClose={() => handleDel(idx)}
+          <Grid key={idx}>
+            <Chip
+              size="small"
+              label={`${getFieldTitle(item[0], schema)} ${getEqualityName(
+                item[1]
+              )} ${item[2]}`}
+              onDelete={() => handleDel(idx)}
               onClick={() => handleEdit(idx)}
-              variant="outline"
-              color="gray"
-            >
-              {`${getFieldTitle(item[0], schema)} ${getEqualityName(item[1])} ${
-                item[2]
-              }`}
-            </BadgeClose>
-          </div>
+              variant="outlined"
+            />
+          </Grid>
         ))}
-      </div>
+      </Grid>
 
-      <div className={"flex"}>
-        <Select
-          value={fieldSelect}
-          onChange={handleSelectField}
-          data={schema.map(
-            ({ name, label }: { name: string; label?: string }) => ({
-              value: name,
-              label: label || name,
-            })
-          )}
-        ></Select>
-        <Space w={"xs"} />
-        <Select
-          value={equalitySelect}
-          onChange={(value) => setEqualitySelect(value || "")}
-          data={Object.entries(getEqualitys(fieldSelect, schema)).map(
-            ([key, value]: any) => ({ value: key, label: value })
-          )}
-        ></Select>
-        <Space w={"xs"} />
-        <TextInput
-          name="valor"
-          value={valueInput}
-          onChange={handleInput}
-        />
-        <Space w={"xs"} />
-        <Button
-          onClick={handleAdd}
-          variant="outline"
+      <Grid
+        container
+        spacing={1}
+        alignItems="center"
+      >
+        <Grid
+          xs={12}
+          sm={3}
         >
-          Filtrar
-        </Button>
-      </div>
-    </div>
+          <Select
+            label="Campo"
+            value={fieldSelect}
+            onChange={handleSelectField}
+            size="small"
+            fullWidth
+          >
+            {schema.map(({ name, label }: { name: string; label?: string }) => (
+              <MenuItem
+                value={name}
+                key={name}
+              >
+                {label || name}
+              </MenuItem>
+            ))}
+          </Select>
+        </Grid>
+        <Grid
+          xs={12}
+          sm={3}
+        >
+          <Select
+            label="Igualdade"
+            value={equalitySelect}
+            size="small"
+            fullWidth
+            onChange={(event) => setEqualitySelect(event.target.value || "")}
+          >
+            {Object.entries(getEqualitys(fieldSelect, schema)).map(
+              ([key, value]: any) => (
+                <MenuItem
+                  value={key}
+                  key={key}
+                >
+                  {value}
+                </MenuItem>
+              )
+            )}
+          </Select>
+        </Grid>
+        <Grid
+          xs={12}
+          sm={4}
+        >
+          <TextField
+            label="Valor"
+            name="valor"
+            size="small"
+            value={valueInput}
+            onChange={handleInput}
+            fullWidth
+          />
+        </Grid>
+        <Grid xs={2}>
+          <Button
+            onClick={handleAdd}
+            variant="outlined"
+            fullWidth
+          >
+            Filtrar
+          </Button>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }
