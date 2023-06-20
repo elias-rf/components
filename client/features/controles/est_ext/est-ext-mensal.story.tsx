@@ -1,3 +1,4 @@
+import { TSelection } from "@/types";
 import type { Meta, StoryObj } from "@storybook/react";
 import { EsterilizacaoExternaMensal } from "./est-ext-mensal";
 
@@ -13,8 +14,8 @@ export const Est_Ext_Mensal: Story = {
     return (
       <EsterilizacaoExternaMensal
         mesInicial={{ mes: "2020-01" }}
-        mesCorrente={{ mes: "2020-01" }}
-        onSelect={(event) => console.log(event)}
+        mesCorrente={[{ mes: "2020-01" }]}
+        onSelection={(event: TSelection) => console.log(event)}
       />
     );
   },

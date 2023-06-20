@@ -3,16 +3,16 @@
 @host = {{hostname}}:{{port}}
 
 ### Index
-GET {{host}}/api/rpc
-?rpc={"jsonrpc":"2.0","id":"1","method":"index", "params":"esterilizacaoExterna"}
+GET {{host}}/api/trpc/esterilizacaoExterna.mensal
+?input={"mes":"2018-12"}
 
 ### esterilizacaoExternaDiario
-GET {{host}}/api/rpc
-?rpc={"jsonrpc":"2.0","id":"1","method":"esterilizacaoExternaDiario", "params":{"inicio":"2020-01-01","fim":"2020-01-31"}}
+GET {{host}}/api/trpc/esterilizacaoExterna.diario
+?input={"inicio":"2020-01-01","fim":"2020-01-31"}
 
-### esterilizacaoExternaSchemaDiario
-GET {{host}}/api/rpc
-?rpc={"jsonrpc":"2.0","id":"1","method":"esterilizacaoExternaSchemaDiario", "params":{"inicio":"2020-01-01","fim":"2020-01-31"}}
+### esterilizacaoExternaProduto
+GET {{host}}/api/trpc/esterilizacaoExterna.produto
+?input={"data":"2020-01-01"}
 
 ### Echo
 POST {{host}}/api/rpc

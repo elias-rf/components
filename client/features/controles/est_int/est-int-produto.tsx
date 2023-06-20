@@ -1,34 +1,38 @@
+import { Table } from "@/client/components/table";
 import { trpc } from "@/utils/trpc/trpc";
-import { Table } from "../../../components/search";
-import { EsterilizacaoInternaProdutoSchema } from "./est-int-produto-schema";
+import { EsterilizacaoInternaProdutoSchema } from "./est-int-produto_schema";
 
 type EsterilizacaoInternaProdutoProp = {
   children?: any;
-  diaCorrente: { dia?: string };
-  produtoCorrente: { produto?: string };
-  onSelect?: (event: any) => void;
+  diaCorrente: { dia?: string }[];
+  produtoCorrente: { produto?: string }[];
+  onSelection?: (event: any) => void;
 };
 
 export function EsterilizacaoInternaProduto({
   diaCorrente,
-  children,
   produtoCorrente,
-  onSelect,
+  onSelection,
+  children,
 }: EsterilizacaoInternaProdutoProp) {
-  const dataProduto = trpc.esterilizacaoInterna.modelo.useQuery({
-    data: diaCorrente.dia || "",
-    produto: produtoCorrente.produto || "",
-  });
+  const dataProduto = trpc.esterilizacaoInterna.produto.useQuery(
+    {
+      data: diaCorrente[0].dia || "",
+    },
+    { enabled: diaCorrente.length > 0 }
+  );
 
   return (
     <Table
-      name="produto"
-      data={dataProduto.data}
-      schema={EsterilizacaoInternaProdutoSchema}
-      selected={produtoCorrente}
-      onSelect={onSelect}
+      rows={dataProduto.data || []}
+      columns={EsterilizacaoInternaProdutoSchema}
+      selection={produtoCorrente || []}
+      onSelection={onSelection}
+      getId={(rec: any) => ({
+        produto: rec.produto,
+      })}
     >
-      {children}
+      {() => <>{children}</>}
     </Table>
   );
 }

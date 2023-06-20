@@ -11,9 +11,8 @@ export const Est_Ext_Modelo: Story = {
   render: () => {
     return (
       <EsterilizacaoExternaModelo
-        diaCorrente={{ dia: "2020-01-01" }}
-        produtoCorrente={{ produto: "cat1" }}
-        onSelect={(event: any) => console.log(event)}
+        diaCorrente={[{ dia: "2020-01-01" }]}
+        produtoCorrente={[{ produto: "cat1" }]}
       />
     );
   },

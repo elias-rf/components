@@ -1,3 +1,4 @@
+import { TSelection } from "@/types";
 import type { Meta, StoryObj } from "@storybook/react";
 import { EsterilizacaoExternaProduto } from "./est-ext-produto";
 
@@ -12,9 +13,9 @@ export const Est_Ext_Produto: Story = {
   render: () => {
     return (
       <EsterilizacaoExternaProduto
-        diaCorrente={{ dia: "2020-01-01" }}
-        produtoCorrente={{ produto: "cat1" }}
-        onSelect={(event: any) => console.log(event)}
+        diaCorrente={[{ dia: "2020-01-01" }]}
+        produtoCorrente={[{ produto: "cat1" }]}
+        onSelection={(event: TSelection) => console.log(event)}
       />
     );
   },

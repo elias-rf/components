@@ -1,41 +1,48 @@
+import { Table } from "@/client/components/table";
+import { TSelection } from "@/types";
 import { day } from "@/utils/date/day";
 import { trpc } from "@/utils/trpc/trpc";
 import React from "react";
-import { Table } from "../../../components/search/table";
+import { esterilizacaoExternaDiarioSchema } from "./est-ext-diario_schema";
 
-type EsterilizacaoExternaDiarioProp = {
+type TEsterilizacaoExternaDiarioProp = {
+  mesCorrente: { mes?: string }[];
+  diaCorrente: { dia?: string }[];
+  onSelection: (event: TSelection) => void;
   children?: React.ReactNode;
-  mesCorrente: { mes?: string };
-  diaCorrente: { dia?: string };
-  onSelect: (event: any) => void;
 };
 
-const schema: any = [{}];
-
 export function EsterilizacaoExternaDiario({
-  children,
   mesCorrente,
   diaCorrente,
-  onSelect,
-}: EsterilizacaoExternaDiarioProp) {
-  const dataDiario = trpc.esterilizacaoExterna.diario.useQuery({
-    inicio: day(mesCorrente.mes + "-01")
-      .startOf("month")
-      .format("YYYY-MM-DD"),
-    fim: day(mesCorrente.mes + "-01")
-      .endOf("month")
-      .format("YYYY-MM-DD"),
-  });
+  onSelection,
+  children,
+}: TEsterilizacaoExternaDiarioProp) {
+  const dataDiario = trpc.esterilizacaoExterna.diario.useQuery(
+    {
+      inicio: day(mesCorrente[0].mes + "-01")
+        .startOf("month")
+        .format("YYYY-MM-DD"),
+      fim: day(mesCorrente[0].mes + "-01")
+        .endOf("month")
+        .format("YYYY-MM-DD"),
+    },
+    {
+      enabled: mesCorrente.length > 0,
+    }
+  );
 
   return (
     <Table
-      name="diario"
-      data={dataDiario.data}
-      schema={schema}
-      selected={diaCorrente}
-      onSelect={onSelect}
+      rows={dataDiario.data || []}
+      columns={esterilizacaoExternaDiarioSchema}
+      selection={diaCorrente || []}
+      onSelection={onSelection}
+      getId={(rec: any) => ({
+        dia: rec.dia,
+      })}
     >
-      {children}
+      {() => <>{children}</>}
     </Table>
   );
 }

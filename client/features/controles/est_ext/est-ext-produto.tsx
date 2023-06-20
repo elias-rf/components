@@ -1,33 +1,38 @@
+import { Table } from "@/client/components/table";
 import { trpc } from "@/utils/trpc/trpc";
-import { Table } from "../../../components/search/table";
-import { EsterilizacaoExternaProdutoSchema } from "./est-ext-produto-schema";
+import { EsterilizacaoExternaProdutoSchema } from "./est-ext-produto_schema";
 
 type EsterilizacaoExternaProdutoProp = {
   children?: any;
-  diaCorrente: { dia?: string };
-  produtoCorrente: { produto?: string };
-  onSelect?: (event: any) => void;
+  diaCorrente: { dia?: string }[];
+  produtoCorrente: { produto?: string }[];
+  onSelection?: (event: any) => void;
 };
 
 export function EsterilizacaoExternaProduto({
   diaCorrente,
   children,
   produtoCorrente,
-  onSelect,
+  onSelection,
 }: EsterilizacaoExternaProdutoProp) {
-  const dataProduto = trpc.esterilizacaoExterna.produto.useQuery({
-    data: diaCorrente.dia || "",
-  });
+  const dataProduto = trpc.esterilizacaoExterna.produto.useQuery(
+    {
+      data: diaCorrente[0].dia || "",
+    },
+    { enabled: diaCorrente.length > 0 }
+  );
 
   return (
     <Table
-      name="produto"
-      data={dataProduto.data}
-      schema={EsterilizacaoExternaProdutoSchema}
-      selected={produtoCorrente}
-      onSelect={onSelect}
+      rows={dataProduto.data || []}
+      columns={EsterilizacaoExternaProdutoSchema}
+      selection={produtoCorrente || []}
+      onSelection={onSelection}
+      getId={(rec: any) => ({
+        produto: rec.produto,
+      })}
     >
-      {children}
+      {() => <>{children}</>}
     </Table>
   );
 }

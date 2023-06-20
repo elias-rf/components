@@ -1,28 +1,28 @@
+import { Table } from "@/client/components/table";
 import { trpc } from "@/utils/trpc/trpc";
-import { Table } from "../../../components/search/table";
-import { esterilizacaoExternaModeloSchema } from "./est-ext-modelo-schema";
+import { esterilizacaoExternaModeloSchema } from "./est-ext-modelo_schema";
 
 type EsterilizacaoExternaModeloProp = {
-  diaCorrente: { dia?: string };
-  produtoCorrente: { produto?: string };
-  onSelect: (event: any) => void;
+  diaCorrente: { dia?: string }[];
+  produtoCorrente: { produto?: string }[];
 };
 
 export function EsterilizacaoExternaModelo({
   diaCorrente,
   produtoCorrente,
-  onSelect,
 }: EsterilizacaoExternaModeloProp) {
-  const dataModelo = trpc.esterilizacaoExterna.modelo.useQuery({
-    data: diaCorrente.dia || "",
-    produto: produtoCorrente.produto || "",
-  });
+  const dataModelo = trpc.esterilizacaoExterna.modelo.useQuery(
+    {
+      data: diaCorrente[0].dia || "",
+      produto: produtoCorrente[0].produto || "",
+    },
+    { enabled: diaCorrente.length > 0 && produtoCorrente.length > 0 }
+  );
 
   return (
     <Table
-      data={dataModelo.data}
-      schema={esterilizacaoExternaModeloSchema}
-      onSelect={onSelect}
+      rows={dataModelo.data || []}
+      columns={esterilizacaoExternaModeloSchema}
     />
   );
 }
