@@ -1,46 +1,78 @@
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
 import React from "react";
-
-import { Tab } from "../../components/tabs/tab";
-import { Tabs } from "../../components/tabs/tabs";
 import { EstExt } from "./est_ext/est-ext";
 import { EstInt } from "./est_int/est-int";
 import { Operacao } from "./operacao/operacao";
 import { Transferencia } from "./transferencia/transferencia";
 
+function TabPanel({
+  children,
+  value,
+  index,
+}: {
+  children: React.ReactNode;
+  value: string;
+  index: string;
+}) {
+  if (value !== index) {
+    return null;
+  }
+
+  return <Box sx={{ p: 3 }}>{children}</Box>;
+}
+
 export function Controles() {
-  const [active, setActive] = React.useState("");
+  const [tab, setTab] = React.useState("");
 
   return (
-    <div className={"max-h-screen overflow-auto"}>
+    <Box>
       <Tabs
-        active={active}
-        onChange={(event, id) => setActive(id)}
+        value={tab}
+        onChange={(_, id) => setTab(id)}
       >
         <Tab
-          id="operacao"
-          title="Operação"
-        >
-          <Operacao />
-        </Tab>
+          value="operacao"
+          label="Operação"
+        ></Tab>
         <Tab
-          id="est-int"
-          title="Esterilização Int"
-        >
-          <EstInt />
-        </Tab>
+          value="est-int"
+          label="Esterilização Int"
+        ></Tab>
         <Tab
-          id="est-ext"
-          title="Esterilização Ext"
-        >
-          <EstExt />
-        </Tab>
+          value="est-ext"
+          label="Esterilização Ext"
+        ></Tab>
         <Tab
-          id="transferencia"
-          title="Transferência"
-        >
-          <Transferencia />
-        </Tab>
+          value="transferencia"
+          label="Transferência"
+        ></Tab>
       </Tabs>
-    </div>
+      <TabPanel
+        index={tab}
+        value={"operacao"}
+      >
+        <Operacao />
+      </TabPanel>
+      <TabPanel
+        index={tab}
+        value={"est-int"}
+      >
+        <EstInt />
+      </TabPanel>
+      <TabPanel
+        index={tab}
+        value={"est-ext"}
+      >
+        <EstExt />
+      </TabPanel>
+      <TabPanel
+        index={tab}
+        value={"transferencia"}
+      >
+        <Transferencia />
+      </TabPanel>
+    </Box>
   );
 }
