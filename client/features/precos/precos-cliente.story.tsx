@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { PrecosCliente } from "./precos_cliente";
+import { PrecosCliente } from "./precos-cliente";
 
 const meta: Meta<typeof PrecosCliente> = {
   component: PrecosCliente,
