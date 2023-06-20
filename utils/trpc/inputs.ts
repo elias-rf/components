@@ -2,6 +2,7 @@ import { zd } from "@/utils/zod/zod";
 import { zsAggregate } from "@/utils/zod/zs-aggregate";
 import { zsData } from "@/utils/zod/zs-data";
 import { zsFilter } from "@/utils/zod/zs-filter";
+import { zsId } from "@/utils/zod/zs-id";
 import { zsLimit } from "@/utils/zod/zs-limit";
 import { zsSelect } from "@/utils/zod/zs-select";
 import { zsSort } from "@/utils/zod/zs-sort";
@@ -27,16 +28,16 @@ export const countZod = zd.object({
 });
 
 export const readZod = zd.object({
-  id: zsFilter,
+  id: zsId,
   select: zsSelect.optional(),
 });
 
 export const delZod = zd.object({
-  id: zsFilter,
+  id: zsId,
 });
 
 export const updateZod = zd.object({
-  id: zsFilter,
+  id: zsId,
   data: zsData,
   select: selectZod.optional(),
 });
