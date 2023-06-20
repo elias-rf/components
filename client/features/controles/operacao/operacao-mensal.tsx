@@ -1,15 +1,14 @@
-import { TIds } from "@/types";
+import { Table } from "@/client/components/table";
 import { trpc } from "@/utils/trpc/trpc";
 import React from "react";
-import { Table } from "../../../components/search/table";
-import { operacaoMensalSchema } from "./operacao-mensal.schema";
+import { operacaoMensalSchema } from "./operacao-mensal_schema";
 
 type OperacaoMensalProps = {
-  operacao: TIds;
-  mesInicial: TIds;
-  mesCorrente: TIds;
+  operacao: { operacao?: string };
+  mesInicial: { mes?: string };
+  mesCorrente: { mes?: string }[];
+  onSelection?: (event: any) => void;
   children?: React.ReactNode;
-  onSelect?: (event: any) => void;
 };
 
 export function OperacaoMensal({
@@ -17,22 +16,24 @@ export function OperacaoMensal({
   mesInicial,
   mesCorrente,
   children,
-  onSelect,
+  onSelection,
 }: OperacaoMensalProps) {
   const mensal = trpc.ordemProducaoOperacao.mensal.useQuery({
-    operacao: operacao.operacao,
-    mes: mesInicial.mes,
+    operacao: operacao.operacao || "",
+    mes: mesInicial.mes || "",
   });
 
   return (
     <Table
-      name="mensal"
-      data={mensal.data}
-      schema={operacaoMensalSchema}
-      selected={mesCorrente}
-      onSelect={onSelect}
+      rows={mensal.data}
+      columns={operacaoMensalSchema}
+      selection={mesCorrente}
+      onSelection={onSelection}
+      getId={(rec: any) => ({
+        mes: rec.mes,
+      })}
     >
-      {children}
+      {() => <>{children}</>}
     </Table>
   );
 }

@@ -11,7 +11,7 @@ export const Transferencia_Mensal: Story = {
   render: () => {
     return (
       <TransferenciaMensal
-        mesCorrente={{ mes: "2020-01" }}
+        mesCorrente={[{ mes: "2020-01" }]}
         dia="2020-01-01"
       />
     );

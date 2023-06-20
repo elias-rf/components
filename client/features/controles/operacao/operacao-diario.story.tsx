@@ -13,8 +13,8 @@ export const Operacao_Diario: Story = {
     return (
       <OperacaoDiario
         operacao={{ operacao: "3059" }}
-        mes={{ mes: "2020-01" }}
-        diaCorrente={{ dia: "2020-01-01" }}
+        mes={[{ mes: "2020-01" }]}
+        diaCorrente={[{ dia: "2020-01-01" }]}
       />
     );
   },

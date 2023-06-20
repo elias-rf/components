@@ -11,9 +11,9 @@ export const Operacao_Modelo: Story = {
   render: () => {
     return (
       <OperacaoModelo
-        operacao={{ operacao: "1010" }}
-        dia={{ dia: "2021-01-08" }}
-        produto={{ produto: "Liteflex" }}
+        operacao={{ operacao: "3058" }}
+        dia={[{ dia: "2020-01-01" }]}
+        produtoCorrente={[]}
         onSelectEvent={(event: any) => console.log(event)}
       />
     );

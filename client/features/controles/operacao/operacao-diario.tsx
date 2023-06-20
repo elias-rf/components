@@ -1,16 +1,16 @@
-import { TIds } from "@/types";
+import { Table } from "@/client/components/table";
+import { TSelection } from "@/types";
 import { day } from "@/utils/date/day";
 import { trpc } from "@/utils/trpc/trpc";
 import React from "react";
-import { Table } from "../../../components/search/table";
-import { operacaoDiarioSchema } from "./operacao-diario.schema";
+import { operacaoDiarioSchema } from "./operacao-diario_schema";
 
 type OperacaoDiarioProp = {
-  operacao: TIds;
-  mes: TIds;
-  diaCorrente: TIds;
+  operacao: { operacao?: string };
+  mes: { mes?: string }[];
+  diaCorrente: { dia?: string }[];
+  onSelection?: (event: TSelection) => void;
   children?: React.ReactNode;
-  onSelect?: (event: any) => void;
 };
 
 export function OperacaoDiario({
@@ -18,27 +18,29 @@ export function OperacaoDiario({
   mes,
   diaCorrente,
   children,
-  onSelect,
+  onSelection,
 }: OperacaoDiarioProp) {
   const diario = trpc.ordemProducaoOperacao.diario.useQuery({
-    operacao: operacao.operacao,
-    inicio: day(mes.mes + "-01")
+    operacao: operacao.operacao || "",
+    inicio: day(mes[0].mes + "-01")
       .startOf("month")
       .format("YYYY-MM-DD"),
-    fim: day(mes.mes + "-01")
+    fim: day(mes[0].mes + "-01")
       .endOf("month")
       .format("YYYY-MM-DD"),
   });
 
   return (
     <Table
-      name="diario"
-      data={diario.data}
-      schema={operacaoDiarioSchema}
-      selected={diaCorrente}
-      onSelect={onSelect}
+      rows={diario.data || []}
+      columns={operacaoDiarioSchema}
+      selection={diaCorrente}
+      onSelection={onSelection}
+      getId={(rec: any) => ({
+        dia: rec.dia,
+      })}
     >
-      {children}
+      {() => <>{children}</>}
     </Table>
   );
 }

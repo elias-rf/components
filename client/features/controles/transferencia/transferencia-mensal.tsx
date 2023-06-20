@@ -1,12 +1,12 @@
-import { TIds } from "@/types";
+import { Table } from "@/client/components/table";
+import { TSelection } from "@/types";
 import { day } from "@/utils/date/day";
 import { trpc } from "@/utils/trpc/trpc";
 import React from "react";
-import { Table } from "../../../components/search/table";
-import { transferenciaMensalSchema } from "./transferencia-mensal.schema";
+import { transferenciaMensalSchema } from "./transferencia-mensal_schema";
 
 type TransferenciaMensalProps = {
-  mesCorrente: TIds;
+  mesCorrente: TSelection;
   children?: React.ReactNode;
   dia?: string;
   onSelectEvent?: (event: any) => void;
@@ -26,13 +26,15 @@ export function TransferenciaMensal({
 
   return (
     <Table
-      name="mensal"
-      data={dataTransferenciaMensal.data}
-      schema={transferenciaMensalSchema}
-      selected={mesCorrente}
-      onSelect={onSelectEvent}
+      rows={dataTransferenciaMensal.data || []}
+      columns={transferenciaMensalSchema}
+      selection={mesCorrente}
+      onSelection={onSelectEvent}
+      getId={(rec: any) => ({
+        mes: rec.mes,
+      })}
     >
-      {children}
+      {() => <>{children}</>}
     </Table>
   );
 }

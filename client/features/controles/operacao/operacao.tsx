@@ -1,7 +1,8 @@
+import { TSelection } from "@/types";
 import { day } from "@/utils/date/day";
-import React from "react";
-import { Label } from "../../../components/form-old";
-import { Select } from "../../../components/select/select";
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
+import React, { useMemo } from "react";
 import { OperacaoDiario } from "./operacao-diario";
 import { OperacaoMensal } from "./operacao-mensal";
 import { OperacaoModelo } from "./operacao-modelo";
@@ -10,76 +11,116 @@ import { OperacaoTurno } from "./operacao-turno";
 
 type OperacaoProp = {
   dia?: string;
+  onState?: (event: any) => void;
 };
 
-export function Operacao({ dia }: OperacaoProp) {
-  const [mesCorrente, setMesCorrente] = React.useState<{ mes?: string }>({});
-  const [diaCorrente, setDiaCorrente] = React.useState<{ dia?: string }>({});
-  const [produtoCorrente, setProdutoCorrente] = React.useState<{
-    produto?: string;
-  }>({});
+export function Operacao({ onState, dia }: OperacaoProp) {
+  const [mesCorrente, setMesCorrente] = React.useState<{ mes?: string }[]>([]);
+  const [diaCorrente, setDiaCorrente] = React.useState<{ dia?: string }[]>([]);
+  const [produtoCorrente, setProdutoCorrente] = React.useState<
+    {
+      produto?: string;
+    }[]
+  >([]);
   const [operacaoCorrente, setOperacaoCorrente] = React.useState<{
     operacao?: string;
   }>({
     operacao: "3058",
   });
 
-  const mesInicial = { mes: day(dia).subtract(13, "month").format("YYYY-MM") };
+  const mesInicial = useMemo(
+    () => ({ mes: day(dia).subtract(13, "month").format("YYYY-MM") }),
+    [dia]
+  );
 
-  function handleOnChange(event: any) {
-    if (event.name === "mensal") setMesCorrente(event.value);
-    if (event.name === "diario") setDiaCorrente(event.value);
-    if (event.name === "produto") setProdutoCorrente(event.value);
+  function handleOnChangeMensal(event: TSelection) {
+    if (event[0].mes && event[0].mes === mesCorrente[0]?.mes) {
+      return setMesCorrente([]);
+    }
+    setMesCorrente([{ mes: event[0].mes }]);
   }
 
-  function handleSelect(event: any) {
-    setOperacaoCorrente(event.value);
+  function handleOnChangeDiario(event: TSelection) {
+    if (event[0].dia && event[0].dia === diaCorrente[0]?.dia) {
+      return setDiaCorrente([]);
+    }
+    setDiaCorrente([{ dia: event[0].dia }]);
   }
+
+  function handleOnChangeProduto(event: TSelection) {
+    if (event[0].produto && event[0].produto === produtoCorrente[0]?.produto) {
+      return setProdutoCorrente([]);
+    }
+    setProdutoCorrente([{ produto: event[0].produto }]);
+  }
+
+  function handleSelect(event: React.ChangeEvent<HTMLInputElement>) {
+    setOperacaoCorrente({ operacao: event.target.value });
+  }
+
+  React.useEffect(() => {
+    onState &&
+      onState({
+        mesInicial,
+        mesCorrente,
+        diaCorrente,
+        produtoCorrente,
+        operacaoCorrente,
+      });
+  }, [
+    onState,
+    mesInicial,
+    mesCorrente,
+    diaCorrente,
+    produtoCorrente,
+    operacaoCorrente,
+  ]);
 
   return (
     <div className={"flex"}>
       <div className={"p-2"}>
         <div className={"mb-2 space-x-2"}>
-          <Label name="operacao">Operação</Label>
-          <Select
-            name="operacao"
+          <TextField
+            id="operacao"
+            select
+            label="Operação"
             value={operacaoCorrente.operacao || ""}
             onChange={handleSelect}
           >
-            <option value="1010">1010 - Montagem lado 1</option>
-            <option value="1015">1015 - Torneamento radial</option>
-            <option value="2010">2010 - Montagem lado 2</option>
-            <option value="2018">2018 - Fresagem</option>
-            <option value="2025">2025 - Desmontagem e limpeza</option>
-            <option value="3042">3042 - Inspeção</option>
-            <option value="3045">3045 - Dioptria</option>
-            <option value="3058">3058 - Esterilização a vapor</option>
-            <option value="3065">3065 - Empacotamento</option>
-            <option value="3070">3070 - Inspeção final</option>
-          </Select>
+            <MenuItem value="1010">1010 - Montagem lado 1</MenuItem>
+            <MenuItem value="1015">1015 - Torneamento radial</MenuItem>
+            <MenuItem value="2010">2010 - Montagem lado 2</MenuItem>
+            <MenuItem value="2018">2018 - Fresagem</MenuItem>
+            <MenuItem value="2025">2025 - Desmontagem e limpeza</MenuItem>
+            <MenuItem value="3042">3042 - Inspeção</MenuItem>
+            <MenuItem value="3045">3045 - Dioptria</MenuItem>
+            <MenuItem value="3058">3058 - Esterilização a vapor</MenuItem>
+            <MenuItem value="3065">3065 - Empacotamento</MenuItem>
+            <MenuItem value="3070">3070 - Inspeção final</MenuItem>
+          </TextField>
         </div>
         <OperacaoMensal
           operacao={operacaoCorrente}
           mesInicial={mesInicial}
           mesCorrente={mesCorrente}
-          onSelect={handleOnChange}
+          onSelection={handleOnChangeMensal}
         >
           <OperacaoDiario
             operacao={operacaoCorrente}
             mes={mesCorrente}
             diaCorrente={diaCorrente}
-            onSelect={handleOnChange}
+            onSelection={handleOnChangeDiario}
           >
             <OperacaoProduto
               operacao={operacaoCorrente}
               dia={diaCorrente}
               produtoCorrente={produtoCorrente}
-              onSelect={handleOnChange}
+              onSelect={handleOnChangeProduto}
             >
               <OperacaoModelo
                 operacao={operacaoCorrente}
                 dia={diaCorrente}
-                produto={produtoCorrente}
+                produtoCorrente={produtoCorrente}
               />
             </OperacaoProduto>
             <OperacaoTurno

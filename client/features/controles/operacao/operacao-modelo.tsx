@@ -1,27 +1,31 @@
+import { Table } from "@/client/components/table";
 import { trpc } from "@/utils/trpc/trpc";
 import React from "react";
-import { Table } from "../../../components/search/table";
-import { operacaoModeloSchema } from "./operacao-modelo.schema";
+import { operacaoModeloSchema } from "./operacao-modelo_schema";
 
 type OperacaoModelProps = {
   operacao: { operacao?: string };
-  dia: { dia?: string };
-  produto: { produto?: string };
-  children?: React.ReactNode;
+  dia: { dia?: string }[];
+  produtoCorrente: { produto?: string }[];
   onSelectEvent?: (event: any) => void;
+  children?: React.ReactNode;
 };
 
-export function OperacaoModelo({ operacao, dia, produto }: OperacaoModelProps) {
+export function OperacaoModelo({
+  operacao,
+  dia,
+  produtoCorrente,
+}: OperacaoModelProps) {
   const modelo = trpc.ordemProducaoOperacao.modelo.useQuery({
     operacao: operacao.operacao || "",
-    data: dia.dia || "",
-    produto: produto.produto || "",
+    data: dia[0]?.dia || "",
+    produto: produtoCorrente[0]?.produto || "",
   });
 
   return (
     <Table
-      data={modelo.data}
-      schema={operacaoModeloSchema}
+      rows={modelo.data}
+      columns={operacaoModeloSchema}
     ></Table>
   );
 }

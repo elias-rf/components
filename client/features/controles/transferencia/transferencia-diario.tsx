@@ -1,12 +1,12 @@
+import { Table } from "@/client/components/table";
 import { day } from "@/utils/date/day";
 import { trpc } from "@/utils/trpc/trpc";
 import { ReactNode } from "react";
-import { Table } from "../../../components/search/table";
-import { transferenciaDiarioSchema } from "./transferencia-diario.schema";
+import { transferenciaDiarioSchema } from "./transferencia-diario_schema";
 
 type TransferenciaDiarioProps = {
-  mesCorrente: { mes?: string };
-  diaCorrente: { dia?: string };
+  mesCorrente: { mes?: string }[];
+  diaCorrente: { dia?: string }[];
   onSelect?: (event: any) => void;
   children?: ReactNode;
 };
@@ -18,23 +18,25 @@ export function TransferenciaDiario({
   children,
 }: TransferenciaDiarioProps) {
   const dataTransferenciaDiario = trpc.nfSaida.transferenciaDiario.useQuery({
-    inicio: day(mesCorrente.mes + "-01")
+    inicio: day(mesCorrente[0]?.mes + "-01")
       .startOf("month")
       .format("YYYY-MM-DD"),
-    fim: day(mesCorrente.mes + "-01")
+    fim: day(mesCorrente[0]?.mes + "-01")
       .endOf("month")
       .format("YYYY-MM-DD"),
   });
 
   return (
     <Table
-      name="diario"
-      data={dataTransferenciaDiario.data}
-      schema={transferenciaDiarioSchema}
-      selected={diaCorrente}
-      onSelect={onSelect}
+      rows={dataTransferenciaDiario.data || []}
+      columns={transferenciaDiarioSchema}
+      selection={diaCorrente}
+      onSelection={onSelect}
+      getId={(rec: any) => ({
+        dia: rec.dia,
+      })}
     >
-      {children}
+      {() => <>{children}</>}
     </Table>
   );
 }

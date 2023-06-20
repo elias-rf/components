@@ -11,9 +11,9 @@ export const Operacao_Turno: Story = {
   render: () => {
     return (
       <OperacaoTurno
-        operacao={{ operacao: "1010" }}
-        dia={{ dia: "2021-01-08" }}
-        onSelect={(event: any) => console.log(event)}
+        operacao={{ operacao: "3058" }}
+        dia={[{ dia: "2020-01-01" }]}
+        onSelection={(event: any) => console.log(event)}
       />
     );
   },

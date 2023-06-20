@@ -1,24 +1,29 @@
+import { Table } from "@/client/components/table";
+import { TSelection } from "@/types";
 import { trpc } from "@/utils/trpc/trpc";
-import { Table } from "../../../components/search/table";
-import { operacaoTurnoSchema } from "./operacao-turno.schema";
+import { operacaoTurnoSchema } from "./operacao-turno_schema";
 
 type OperacaoTurnoProps = {
   operacao: { operacao?: string };
-  dia: { dia?: string };
-  onSelect?: (event: any) => void;
+  dia: { dia?: string }[];
+  onSelection?: (event: TSelection) => void;
 };
 
-export function OperacaoTurno({ operacao, dia, onSelect }: OperacaoTurnoProps) {
+export function OperacaoTurno({
+  operacao,
+  dia,
+  onSelection,
+}: OperacaoTurnoProps) {
   const turno = trpc.ordemProducaoOperacao.turno.useQuery({
     operacao: operacao.operacao || "",
-    data: dia.dia || "",
+    data: dia[0].dia || "",
   });
 
   return (
     <Table
-      data={turno.data}
-      schema={operacaoTurnoSchema}
-      onSelect={onSelect}
+      rows={turno.data}
+      columns={operacaoTurnoSchema}
+      onSelection={onSelection}
     ></Table>
   );
 }

@@ -1,10 +1,10 @@
+import { Table } from "@/client/components/table";
 import { trpc } from "@/utils/trpc/trpc";
 import React from "react";
-import { Table } from "../../../components/search/table";
-import { transferenciaModeloSchema } from "./transferencia-modelo.schema";
+import { transferenciaModeloSchema } from "./transferencia-modelo_schema";
 
 type TransferenciaModeloProps = {
-  diaCorrente: { dia?: string };
+  diaCorrente: { dia?: string }[];
   children?: React.ReactNode;
 };
 
@@ -13,15 +13,15 @@ export function TransferenciaModelo({
   children,
 }: TransferenciaModeloProps) {
   const dataTransferenciaModelo = trpc.nfSaida.transferenciaModelo.useQuery({
-    data: diaCorrente.dia || "",
+    data: diaCorrente[0]?.dia || "",
   });
 
   return (
     <Table
-      data={dataTransferenciaModelo.data}
-      schema={transferenciaModeloSchema}
+      rows={dataTransferenciaModelo.data}
+      columns={transferenciaModeloSchema}
     >
-      {children}
+      {() => <>{children}</>}
     </Table>
   );
 }
