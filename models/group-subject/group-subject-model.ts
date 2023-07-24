@@ -1,11 +1,12 @@
 import type { TConnections } from "@/config/connections";
 import { TModels } from "@/models/models";
-import { TId } from "@/types";
 import { CrudModel } from "@/utils/crud/crud-model";
-import { zd, zod } from "@/utils/zod/zod";
+import { renameFieldToName } from "@/utils/schema/rename-fields";
+import { Knex } from "knex";
 import { group_subject } from "./group-subject.table";
 
 export class GroupSubjectModel extends CrudModel {
+  connection: Knex;
   models: TModels;
 
   constructor({
@@ -16,30 +17,49 @@ export class GroupSubjectModel extends CrudModel {
     models: TModels;
   }) {
     super(connections[group_subject.database], group_subject);
+    this.connection = connections[group_subject.database];
     models.groupSubject = this;
     this.models = models;
   }
 
-  async can({ id }: { id: TId }) {
-    zod(
-      id,
-      zd.object({
-        group_id: zd.string(),
-        subject_id: zd.string(),
-      })
-    );
-    let rsp = false;
+  async listPermissions({
+    group_id,
+    subject_ids,
+  }: {
+    group_id: string;
+    subject_ids: string[];
+  }) {
+    const resp = await this.connection("groupSubject")
+      .select("idSubject")
+      .where({ idGroup: group_id })
+      .whereIn("idSubject", subject_ids);
 
-    const list = await this.models.groupSubject.list({
-      filter: { group_id: id.group_id },
-      limit: 10000,
+    return renameFieldToName(resp, this.table.fields);
+  }
+
+  async can({
+    usuario_id,
+    subject_id,
+  }: {
+    usuario_id: number;
+    subject_id: string;
+  }) {
+    const groups = await this.models.usuario.read({
+      id: { usuario_id },
+      select: ["group_id"],
     });
 
-    for (const rec of list) {
-      if (id.subject_id.startsWith(rec.subject_id)) {
-        rsp = true;
-      }
+    const groupList = groups.group_id.split(",");
+
+    if (groupList.includes("0")) {
+      return true;
     }
-    return rsp;
+
+    const permissions = await this.connection("groupSubject")
+      .select("idSubject")
+      .whereIn("idGroup", groupList)
+      .where("idSubject", subject_id);
+
+    return permissions.length > 0;
   }
 }

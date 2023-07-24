@@ -12,6 +12,7 @@ import { etiquetaExternaRouter } from "./etiqueta-externa/etiqueta-externa.trpc"
 import { etiquetaInternaRouter } from "./etiqueta-interna/etiqueta-interna.trpc";
 import { fornecedorRouter } from "./fornecedor/fornecedor.trpc";
 import { groupSubjectRouter } from "./group-subject/group-subject.trpc";
+import { groupRouter } from "./group/group.trpc";
 import { maquinaRouter } from "./maquina/maquina.trpc";
 import { nfCfopRouter } from "./nf-cfop/nf-cfop.trpc";
 import { nfEntradaControleRouter } from "./nf-entrada-controle/nf-entrada-controle.trpc";
@@ -34,6 +35,7 @@ import { produtoItemRouter } from "./produto-item/produto-item.trpc";
 import { produtoPlanoRouter } from "./produto-plano/produto-plano.trpc";
 import { produtoRouter } from "./produto/produto.trpc";
 import { receberRouter } from "./receber/receber.trpc";
+import { sysResourceRouter } from "./sys-resource/sys-resource.trpc";
 import { usuarioRouter } from "./usuario/usuario.trpc";
 import { vendedorMetaRouter } from "./vendedor-meta/vendedor-meta.trpc";
 import { vendedorRouter } from "./vendedor/vendedor.trpc";
@@ -41,6 +43,7 @@ import { vendedorRouter } from "./vendedor/vendedor.trpc";
 
 export const appRouter = router({
   // @index(['./**/*.trpc.ts'], (f, _) => `${_.camelCase(f.name.slice(0,-4))}: ${_.camelCase(f.name.slice(0,-4))}Router,`)
+  sysResource: sysResourceRouter,
   agendaTelefone: agendaTelefoneRouter,
   cidade: cidadeRouter,
   cliente: clienteRouter,
@@ -53,6 +56,7 @@ export const appRouter = router({
   etiquetaInterna: etiquetaInternaRouter,
   fornecedor: fornecedorRouter,
   groupSubject: groupSubjectRouter,
+  group: groupRouter,
   maquina: maquinaRouter,
   nfCfop: nfCfopRouter,
   nfEntradaControle: nfEntradaControleRouter,

@@ -6,6 +6,7 @@ import { DiamanteModel } from "@/models/diamante/diamante-model";
 import { EmpregadoModel } from "@/models/empregado/empregado-model";
 import { EstoqueModel } from "@/models/estoque/estoque-model";
 import { FornecedorModel } from "@/models/fornecedor/fornecedor-model";
+import { GroupModel } from "@/models/group/group-model";
 import { MaquinaModel } from "@/models/maquina/maquina-model";
 import { NfCfopModel } from "@/models/nf-cfop/nf-cfop-model";
 import { NfEntradaControleModel } from "@/models/nf-entrada-controle/nf-entrada-controle-model";
@@ -24,6 +25,7 @@ import { ProdutoControleModel } from "@/models/produto-controle/produto-controle
 import { ProdutoEstatisticaModel } from "@/models/produto-estatistica/produto-estatistica-model";
 import { ProdutoModel } from "@/models/produto/produto-model";
 import { ReceberModel } from "@/models/receber/receber-model";
+import { SysResourceModel } from "@/models/sys-resource/sys-resource_model";
 import { UsuarioModel } from "@/models/usuario/usuario-model";
 import { VendedorMetaModel } from "@/models/vendedor-meta/vendedor-meta-model";
 import { VendedorModel } from "@/models/vendedor/vendedor-model";
@@ -39,8 +41,10 @@ import { ProdutoItemModel } from "./produto-item/produto-item-model";
 import { ProdutoPlanoModel } from "./produto-plano/produto-plano-model";
 
 export type TModels = {
+  sysResource: SysResourceModel;
   agendaTelefone: AgendaTelefoneModel;
   cidade: CidadeModel;
+  group: GroupModel;
   cliente: ClienteModel;
   diamante: DiamanteModel;
   empregado: EmpregadoModel;
@@ -81,8 +85,10 @@ export type TModels = {
 export const models = {} as TModels;
 
 export const modelsRegister = (args: any) => {
+  new SysResourceModel(args);
   new AgendaTelefoneModel(args);
   new CidadeModel(args);
+  new GroupModel(args);
   new ClienteModel(args);
   new DiamanteModel(args);
   new EmpregadoModel(args);

@@ -79,12 +79,14 @@ describe("ordemProducaoModel", () => {
       },
     ]);
     const response = await modelsMock.ordemProducao.etiquetaExterna({
-      ordem_producao_id: "00000100",
+      id: {
+        ordem_producao_id: "00000100",
+      },
     });
 
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: [50, "000001%"],
+        bindings: [1000, "000001%"],
         sql: "select top (@p0) [controle], [qtdImpressao], [dataFabricacao] from [tEtiqueta] where ([controle] like @p1) order by [controle] asc",
       },
     ]);

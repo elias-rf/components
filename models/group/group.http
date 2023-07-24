@@ -1,0 +1,17 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
+### LIST
+GET {{host}}/api/trpc/group.list
+?input={"sort":{"group_id":"asc"}}
+
+### READ
+GET {{host}}/api/trpc/group.read
+?input={"id":{"agenda_telefone_id":"1"}}
+
+### CREATE
+POST {{host}}/api/trpc/group.create
+Content-Type: application/json
+
+{"agenda_telefone_id":"1", "nome":"Fulano"}

@@ -8,7 +8,6 @@ import {
 import { publicProcedure, router } from "@/utils/trpc/trpc-server";
 
 import { zd } from "@/utils/zod/zod";
-import { zsId } from "@/utils/zod/zs-id";
 import { models } from "../models";
 
 const model = models.groupSubject;
@@ -40,6 +39,11 @@ export const groupSubjectRouter = router({
       return model.del(req.input);
     }),
   can: publicProcedure
-    .input(zd.object({ id: zsId }))
+    .input(zd.object({ usuario_id: zd.number(), subject_id: zd.string() }))
     .query((req) => model.can(req.input)),
+  listPermissions: publicProcedure
+    .input(
+      zd.object({ group_id: zd.string(), subject_ids: zd.array(zd.string()) })
+    )
+    .query((req) => model.listPermissions(req.input)),
 });

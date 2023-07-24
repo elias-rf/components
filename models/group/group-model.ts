@@ -1,10 +1,9 @@
 import type { TConnections } from "@/config/connections";
 import { TModels } from "@/models/models";
 import { CrudModel } from "@/utils/crud/crud-model";
-import { estoque } from "./estoque.table";
+import { grupo } from "./group.table";
 
-export class EstoqueModel extends CrudModel {
-  models: TModels;
+export class GroupModel extends CrudModel {
   constructor({
     connections,
     models,
@@ -12,8 +11,7 @@ export class EstoqueModel extends CrudModel {
     connections: TConnections;
     models: TModels;
   }) {
-    super(connections[estoque.database], estoque);
-    this.models = models;
-    models.estoque = this;
+    super(connections[grupo.database], grupo);
+    models.group = this;
   }
 }

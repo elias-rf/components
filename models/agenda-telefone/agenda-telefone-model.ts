@@ -1,8 +1,8 @@
 import type { TConnections } from "@/config/connections";
-import { TModels } from "@/models/models";
+import type { TModels } from "@/models/models";
 import { CrudModel } from "@/utils/crud/crud-model";
 import { agenda_telefone } from "./agenda-telefone.table";
-import { TAgendaTelefone } from "./agenda-telefone.type";
+import type { TAgendaTelefone } from "./agenda-telefone.type";
 
 export class AgendaTelefoneModel extends CrudModel<TAgendaTelefone> {
   constructor({

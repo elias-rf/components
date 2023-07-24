@@ -13,13 +13,17 @@ describe("esterilizacaoInterna", () => {
   });
 
   test("diario", async () => {
-    tracker.on.select("tOperacaoOrdemProducao").response([{ quantidade: 1 }]);
+    tracker.on
+      .select("tOperacaoOrdemProducao")
+      .response([{ quantidade: 1, dia: new Date("2020-01-01T00:00:00") }]);
     const rsp = await models.esterilizacaoInterna.diario({
       inicio: "2020-01-01",
       fim: "2020-01-31",
     });
 
-    expect(rsp).toEqual([{ quantidade: 1 }]);
+    expect(rsp).toEqual([
+      { quantidade: 1, dia: "2020-01-01", dia_semana: "qua" },
+    ]);
 
     expect(knexMockHistory(tracker)).toEqual([
       {

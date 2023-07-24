@@ -2,7 +2,7 @@ import { connectionsMock } from "@/mocks/connections.mock";
 import { knexMockHistory } from "@/mocks/knex-mock-history";
 import { modelsMock } from "@/mocks/models.mock";
 import { createTracker } from "knex-mock-client";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 describe("NfEntradaModel", () => {
   const tracker = createTracker(connectionsMock.oftalmo);

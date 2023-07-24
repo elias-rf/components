@@ -15,7 +15,7 @@ describe("esterilizacaoInterna", () => {
   test("diario", async () => {
     tracker.on
       .select("tEsterilizacaoExterna")
-      .response([{ dia: "2020-01-01", quantidade: 2 }]);
+      .response([{ dia: new Date("2020-01-01T00:00:00"), quantidade: 2 }]);
 
     const rsp = await models.esterilizacaoExterna.diario({
       inicio: "2020-01-01",

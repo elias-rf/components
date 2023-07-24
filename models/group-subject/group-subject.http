@@ -7,13 +7,14 @@ GET {{host}}/api/rpc
 ?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"groupSubject"}
 
 ### LIST
-GET {{host}}/api/rpc
-?rpc={"jsonrpc":"2.0","id":"1","method":"groupSubjectList","params":{}}
+GET {{host}}/api/trpc/groupSubject.list
+?input={"filter":{"group_id":"28"}}
 
-### READ
-GET {{host}}/api/rpc
-?rpc={"jsonrpc":"2.0","id":1,"method":"groupSubjectRead","params":{"id":{"group_id":"dev","subject_id":"/sistema/permissao"}}}
+### LISTSubject
+GET {{host}}/api/trpc/groupSubject.listPermissions
+?input={"group_id":"28","subject_ids":["prm1", "prm2", "prm3", "prm4"]}
+
 
 ### CAN
-GET {{host}}/api/rpc
-?rpc={"jsonrpc":"2.0","id":1,"method":"groupSubjectCan","params":{"id":{"group_id":"dev","subject_id":"/comercial/precos"}}}
+GET {{host}}/api/trpc/groupSubject.can
+?input={"usuario_id":1,"subject_id":"cliente_read"}
