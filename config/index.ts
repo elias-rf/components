@@ -15,6 +15,7 @@ interface Config {
     mock?: boolean;
   };
   db: {
+    sys: Knex.Config;
     oftalmo: Knex.Config;
     plano: Knex.Config;
     fullvision: Knex.Config;
@@ -36,6 +37,14 @@ export const config: Config = {
     secret: process.env.auth_secret || "S3gr3d0",
   },
   db: {
+    sys: {
+      client: "better-sqlite3",
+      debug: false,
+      useNullAsDefault: true,
+      connection: {
+        filename: "./sys.sqlite",
+      },
+    },
     oftalmo: {
       client: "mssql",
       debug: false,

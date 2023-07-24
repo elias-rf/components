@@ -1,0 +1,266 @@
+@contribuicao = "<p>Nossa vida espiritual depende do sangue que nos revela o querer do Senhor</p>"
+@ebd_id = "3301"
+
+###
+POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao
+Content-Type: application/json;charset=UTF-8
+
+{
+    "nome": "FELIPE JOSE DE OLIVEIRA",
+    "cpf": "69110514600",
+    "denominacao_id": 21,
+    "denominacao_outras": "",
+    "celular": "(31) 99955-5857",
+    "email": "avilmarsants14@gmail.com",
+    "cidade": "Nova Lima",
+    "uf": "MG",
+    "funcao": "",
+    "funcao_id": "",
+    "trabalho_id": "",
+    "ebd_id":{{ebd_id}},
+    "categoria_id": "2",
+    "contribuicao": {{contribuicao}},
+    "aceite_termo": true
+}
+
+###
+POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao
+Content-Type: application/json;charset=UTF-8
+
+{
+    "nome": "ATAÍDES ALVES RIBEIRO",
+    "cpf": "57247226668",
+    "denominacao_id": 21,
+    "denominacao_outras": "",
+    "celular": "(31) 99955-5857",
+    "email": "avilmarsantos@14gmail.com",
+    "cidade": "Belo Horizonte",
+    "uf": "MG",
+    "funcao": "",
+    "funcao_id": "",
+    "trabalho_id": "",
+    "ebd_id":{{ebd_id}},
+    "categoria_id": "2",
+    "contribuicao": {{contribuicao}},
+    "aceite_termo": true
+}
+
+###
+POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao
+Content-Type: application/json;charset=UTF-8
+
+{
+    "nome": "DAYANE DE SOUZA AUGUSTO",
+    "cpf": "14999553759",
+    "denominacao_id": 21,
+    "denominacao_outras": "",
+    "celular": "(31) 99955-5857",
+    "email": "avilmarsantos@yahoo.com.br",
+    "cidade": "Nova Lima",
+    "uf": "MG",
+    "funcao": "",
+    "funcao_id": "",
+    "trabalho_id": "",
+    "ebd_id":{{ebd_id}},
+    "categoria_id": "2",
+    "contribuicao": {{contribuicao}},
+    "aceite_termo": true
+}
+
+###
+POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao
+Content-Type: application/json;charset=UTF-8
+
+{
+    "nome": "OCILENE LOPES DE OLIVEIRA",
+    "cpf": "06935116643",
+    "denominacao_id": 21,
+    "denominacao_outras": "",
+    "celular": "(31) 99955-5857",
+    "email": "avilmarsantos@yahoo.com.br",
+    "cidade": "Nova Lima",
+    "uf": "MG",
+    "funcao": "",
+    "funcao_id": "",
+    "trabalho_id": "",
+    "ebd_id":{{ebd_id}},
+    "categoria_id": "2",
+    "contribuicao": {{contribuicao}},
+    "aceite_termo": true
+}
+
+###
+POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao
+Content-Type: application/json;charset=UTF-8
+
+{
+    "nome": "MARIA RAPOSO DA SILVA",
+    "cpf": "81772483753",
+    "denominacao_id": 21,
+    "denominacao_outras": "",
+    "celular": "(31) 99659-5928",
+    "email": "mariaraposoicm@gmail.com",
+    "cidade": "Nova Lima",
+    "uf": "MG",
+    "funcao": "",
+    "funcao_id": "",
+    "trabalho_id": "",
+    "ebd_id":{{ebd_id}},
+    "categoria_id": "2",
+    "contribuicao": {{contribuicao}},
+    "aceite_termo": true
+}
+
+###
+POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao
+Content-Type: application/json;charset=UTF-8
+
+{
+    "nome": "ELIAS RIBEIRO FILHO",
+    "cpf": "00370987721",
+    "denominacao_id": 21,
+    "denominacao_outras": "",
+    "celular": "(31) 97113-0911",
+    "email": "eliasribeiro@gmail.com",
+    "cidade": "Nova Lima",
+    "uf": "MG",
+    "funcao": "",
+    "funcao_id": "",
+    "trabalho_id": "",
+    "ebd_id":{{ebd_id}},
+    "categoria_id": "2",
+    "contribuicao": {{contribuicao}},
+    "aceite_termo": true
+}
+
+###
+POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao
+Content-Type: application/json;charset=UTF-8
+
+{
+    "nome": "IASMIN SILVA RIBEIRO",
+    "cpf": "13558035780",
+    "denominacao_id": 21,
+    "denominacao_outras": "",
+    "celular": "(31) 99707-9808",
+    "email": "iasminsribeiro@homail.com",
+    "cidade": "Nova Lima",
+    "uf": "MG",
+    "funcao": "",
+    "funcao_id": "",
+    "trabalho_id": "",
+    "ebd_id":{{ebd_id}},
+    "categoria_id": "2",
+    "contribuicao": {{contribuicao}},
+    "aceite_termo": true
+}
+
+###
+POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao
+Content-Type: application/json;charset=UTF-8
+
+{
+    "nome": "JOELMA ALVES DE MACEDO",
+    "cpf": "09679806669",
+    "denominacao_id": 21,
+    "denominacao_outras": "",
+    "celular": "(31) 99809-2321",
+    "email": "joelmamarcedo2018@gmail.com",
+    "cidade": "Nova Lima",
+    "uf": "MG",
+    "funcao": "",
+    "funcao_id": "",
+    "trabalho_id": "",
+    "ebd_id":{{ebd_id}},
+    "categoria_id": "2",
+    "contribuicao": {{contribuicao}},
+    "aceite_termo": true
+}
+
+###
+POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao
+Content-Type: application/json;charset=UTF-8
+
+{
+    "nome": "DIONATAN DOS SANTOS BARBOSA",
+    "cpf": "10640136605",
+    "denominacao_id": 21,
+    "denominacao_outras": "",
+    "celular": "(31) 99955-5857",
+    "email": "avilmarsantos@yahoo.com.br",
+    "cidade": "Nova Lima",
+    "uf": "MG",
+    "funcao": "",
+    "funcao_id": "",
+    "trabalho_id": "",
+    "ebd_id":{{ebd_id}},
+    "categoria_id": "2",
+    "contribuicao": {{contribuicao}},
+    "aceite_termo": true
+}
+
+###
+POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao
+Content-Type: application/json;charset=UTF-8
+
+{
+    "nome": "CLAUDIA DIAS SANTOS CHAVES",
+    "cpf": "10515823775",
+    "denominacao_id": 21,
+    "denominacao_outras": "",
+    "celular": "(31) 99955-5857",
+    "email": "avilmarsantos@yahoo.com.br",
+    "cidade": "Nova Lima",
+    "uf": "MG",
+    "funcao": "",
+    "funcao_id": "",
+    "trabalho_id": "",
+    "ebd_id":{{ebd_id}},
+    "categoria_id": "2",
+    "contribuicao": {{contribuicao}},
+    "aceite_termo": true
+}
+
+###
+POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao
+Content-Type: application/json;charset=UTF-8
+
+{
+    "nome": "MIROSLAVIA MARIA EPIFANIO",
+    "cpf": "43407390734",
+    "denominacao_id": 21,
+    "denominacao_outras": "",
+    "celular": "(31) 99889-2480",
+    "email": "miroslaviabh@gmail.com",
+    "cidade": "Nova lima",
+    "uf": "MG",
+    "funcao": "",
+    "funcao_id": "",
+    "trabalho_id": "",
+    "ebd_id":{{ebd_id}},
+    "categoria_id": "2",
+    "contribuicao": {{contribuicao}},
+    "aceite_termo": true
+}
+
+###
+POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao
+Content-Type: application/json;charset=UTF-8
+
+{
+    "nome": "ALENICE APARECIDA PEREIRA DE ASSUNÇÃO",
+    "cpf": "08553107663",
+    "denominacao_id": 21,
+    "denominacao_outras": "",
+    "celular": "(31) 3520-1432",
+    "email": "alenice@gmail.com",
+    "cidade": "Nova Lima",
+    "uf": "MG",
+    "funcao": "",
+    "funcao_id": "",
+    "trabalho_id": "",
+    "ebd_id":{{ebd_id}},
+    "categoria_id": "2",
+    "contribuicao": {{contribuicao}},
+    "aceite_termo": true
+}

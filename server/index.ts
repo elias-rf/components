@@ -6,7 +6,6 @@
 
 import { config } from "@/config";
 import { app } from "./app";
-// import "./global";
 
 const start = async () => {
   try {

@@ -2,10 +2,15 @@ import type { TConnections } from "@/config/connections";
 import Knex from "knex";
 import { MockClient } from "knex-mock-client";
 
-export const knexMock = Knex({ client: MockClient, dialect: "mssql" });
+export const knexMockMsql = Knex({ client: MockClient, dialect: "mssql" });
+// export const knexMockSqlite = Knex({
+//   client: MockClient,
+//   dialect: "better-sqlite3",
+// });
 
 export const connectionsMock = {
-  plano: knexMock,
-  oftalmo: knexMock,
-  fullvision: knexMock,
+  sys: knexMockMsql,
+  plano: knexMockMsql,
+  oftalmo: knexMockMsql,
+  fullvision: knexMockMsql,
 } as TConnections;
