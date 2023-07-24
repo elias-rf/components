@@ -1,131 +1,122 @@
-import { fetchTrpc } from "@/utils/trpc/trpc";
-import { Button } from "@mantine/core";
-import React, { useState } from "react";
-import { twMerge } from "tailwind-merge";
-import { BadgeClose } from "../../components/badge-close";
-import { Label } from "../../components/form-old";
-import { Input } from "../../components/input";
+import { useArray } from "@/client/lib/hooks/use-array";
+import { useInput } from "@/client/lib/hooks/use-input";
+import { trpc } from "@/utils/trpc/trpc";
+import { Chip, TextField, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import React from "react";
 
-type TLista = {
-  controle: string;
-  lido: boolean;
-  transferido: boolean;
-};
+// 000001000017 , 000001000025, 000001000033
 
 export function Transferencia() {
-  const [op, setOp] = React.useState(""); // 18818400  188184000029
-  const [controle, setControle] = React.useState("");
   const [quantidade, setQuantidade] = React.useState("");
-  const [lista, setLista] = useState<TLista[]>([]);
+  const [lista, setLista] = useArray<string>([]);
   const [msg, setMsg] = React.useState<string>("");
+  const inputQuantidade = useInput(handleQuantidade);
+  const inputSerial = useInput(addList);
+  const utils = trpc.useContext();
+  // const quantidadeRef = React.useRef();
+  const createTransferencia = trpc.nfEntrada.transferenciaCreate.useMutation({
+    onSuccess: () => {
+      setQuantidade("");
+      setLista.empty();
+    },
+    onError: (error) => {
+      setMsg(error.message);
+    },
+  });
 
-  function read(controle: string) {
-    let flag = false;
-    const lst = lista.map((item) => {
-      if (item.controle === controle) {
-        item.lido = true;
-        flag = true;
-      }
-      return item;
-    });
-    setLista(lst);
-    return flag;
+  function handleQuantidade(value: string) {
+    setQuantidade(value);
+    // quantidadeRef.current && quantidadeRef.current.focus();
   }
 
-  React.useEffect(() => {
-    if (controle.length === 12) {
-      const setado = read(controle);
-      if (setado) {
-        setMsg("");
-      } else {
-        setMsg(controle + " não encontrado");
-      }
-      setControle("");
+  async function addList(value: string) {
+    if (await utils.ordemProducao.ehControleValido.fetch({ controle: value })) {
+      if (!lista.includes(value)) setLista.push(value);
+      setMsg("");
+    } else {
+      setMsg("Controle inválido: " + value);
     }
-  }, [controle]);
-
-  async function readControles() {
-    const rsp = await ordemProducaoService.listEtiquetas([op]);
-    const resp = rsp.map((item: any) => ({
-      controle: item.controle || "",
-      lido: false,
-      transferido: false,
-    }));
-    setLista(resp);
+    inputSerial.setValue("");
   }
 
-  function readLength() {
-    return lista.filter((item) => item.lido).length;
-  }
-
-  function unread(controle: string) {
-    const lst = lista.map((item) => {
-      if (item.controle === controle) {
-        item.lido = false;
-      }
-      return item;
-    });
-    setLista(lst);
+  function delList(idx: any) {
+    setLista.removeAt(idx);
+    setMsg("");
   }
 
   async function transfer() {
-    if (readLength() !== parseInt(quantidade)) {
-      setMsg("Quantidade lida está incorreta");
-      return;
-    }
-    try {
-      await fetchTrpc.nfEntrada.transferenciaCreate.mutate({
-        controles: lista.map((item) => item.controle),
-      });
-    } catch (e: any) {
-      setMsg(e.message);
-    }
+    createTransferencia.mutate({
+      controles: lista,
+    });
   }
 
   return (
     <>
-      <Label name="op">Ordem Produção</Label>
-      <Input
-        autoComplete="off"
-        name="op"
-        value={op}
-        onChange={(e) => setOp(e.value)}
-      />
-      <Label name="qtd">Quantidade Física</Label>
-      <Input
-        autoComplete="off"
-        name="quantidade"
-        value={quantidade}
-        onChange={(e) => setQuantidade(e.value)}
-      />
-      <Button onClick={readControles}>Buscar</Button>
-      <Label name="serial">Serial</Label>
-      <Input
-        autoComplete="off"
-        name="controle"
-        value={controle}
-        onChange={(e) => setControle(e.value)}
-      />
-      <Button onClick={transfer}>Transferir</Button>
-      <div
-        className={twMerge(
-          "text-3xl font-bold text-red-500",
-          readLength() === parseInt(quantidade) ? "text-blue-500" : ""
-        )}
+      <Typography variant="h5">Transferência</Typography>
+      <Grid2
+        container
+        spacing={2}
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="center"
       >
-        {readLength()} unidades
-        <div className={"text-3xl font-bold text-red-500"}>{msg}</div>
-      </div>
-      <div className={"flex flex-wrap"}>
-        {lista.map((item, idx) => (
-          <BadgeClose
-            onClose={() => unread(item.controle)}
-            name={item.controle}
-            key={idx + item.controle}
-            className={"font-mono text-sm " + (item.lido ? "bg-red-400" : "")}
+        <Grid2>
+          <TextField
+            label="Quantidade Física"
+            autoComplete="off"
+            size="small"
+            {...inputQuantidade.props}
+            disabled={parseInt(quantidade) > 0}
+          />
+        </Grid2>
+      </Grid2>
+      <Grid2
+        container
+        spacing={2}
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="center"
+      >
+        <Grid2>
+          <TextField
+            label="Serial"
+            autoComplete="off"
+            size="small"
+            {...inputSerial.props}
+            disabled={isNaN(parseInt(quantidade))}
+          />
+        </Grid2>
+        <Grid2>
+          <Button
+            variant="contained"
+            onClick={transfer}
+            disabled={lista.length !== parseInt(quantidade)}
           >
-            {item.controle}
-          </BadgeClose>
+            Transferir
+          </Button>
+        </Grid2>
+      </Grid2>
+      <Typography
+        variant="h5"
+        className={
+          "text-3xl font-bold " +
+          (lista.length == parseInt(quantidade)
+            ? "text-blue-500"
+            : "text-red-500")
+        }
+      >
+        {lista.length} unidades
+        <div className={"text-3xl font-bold text-red-500"}>{msg}</div>
+      </Typography>
+      <div className={"flex flex-wrap"}>
+        {lista.map((serie, idx) => (
+          <Chip
+            key={idx + serie}
+            label={serie}
+            onDelete={() => delList(idx)}
+          />
         ))}
       </div>
     </>

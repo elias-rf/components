@@ -1,4 +1,5 @@
 import { TSelection } from "@/types";
+import Box from "@mui/material/Box";
 import React from "react";
 import { TransferenciaDiario } from "./transferencia-diario";
 import { TransferenciaMensal } from "./transferencia-mensal";
@@ -39,13 +40,31 @@ export function Transferencia({ onState, dia }: TransferenciaProp) {
           dia={dia}
           onSelectEvent={handleOnChangeMensal}
         >
-          <TransferenciaDiario
-            onSelect={handleOnChangeDiario}
-            diaCorrente={diaCorrente}
-            mesCorrente={mesCorrente}
+          {" "}
+          <Box
+            sx={{
+              mb: 4,
+              p: 1,
+              border: "2px solid rgba(25, 118, 210, 0.2)",
+            }}
           >
-            <TransferenciaModelo diaCorrente={diaCorrente} />
-          </TransferenciaDiario>
+            <TransferenciaDiario
+              onSelect={handleOnChangeDiario}
+              diaCorrente={diaCorrente}
+              mesCorrente={mesCorrente}
+            >
+              {" "}
+              <Box
+                sx={{
+                  mb: 4,
+                  p: 1,
+                  border: "2px solid rgba(25, 118, 210, 0.2)",
+                }}
+              >
+                <TransferenciaModelo diaCorrente={diaCorrente} />
+              </Box>
+            </TransferenciaDiario>
+          </Box>
         </TransferenciaMensal>
       </div>
       <div className={"p-2"}></div>

@@ -15,22 +15,17 @@ import Typography from "@mui/material/Typography";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { groupSubjectColumns } from "./group-subject_columns";
-import { GroupSubjectForm } from "./group-subject_form";
-
-export type TGroupSubjectList = any;
+import { usuarioColumns } from "./usuario_columns";
+import { UsuarioForm } from "./usuario_form";
 
 const dataClear = {
-  group_id: "",
-  subject_id: "",
+  usuario_id: "",
+  email: "",
+  nome: "",
+  setor: "",
 };
 
-/**
- * Componente para manipular Agenda de Ramais
- *
- * @returns {*} componente react
- */
-export function GroupSubject({ onState }: any) {
+export function Usuario({ onState }: any) {
   // Form
   const form = useForm({ defaultValues: dataClear, mode: "onTouched" });
   const [status, setStatus] = React.useState<TFormStatus>("view");
@@ -39,7 +34,7 @@ export function GroupSubject({ onState }: any) {
   const [filter, setFilter] = React.useState<TFilter>({});
   const [sort, setSort] = React.useState<TSort>({});
   // Data
-  trpc.groupSubject.read.useQuery(
+  trpc.usuario.read.useQuery(
     { id: selection[0] },
     {
       enabled: selection[0] !== undefined,
@@ -48,12 +43,11 @@ export function GroupSubject({ onState }: any) {
       },
     }
   );
-  const dataList = trpc.groupSubject.list.useQuery({ filter, sort });
+  const dataList = trpc.usuario.list.useQuery({ filter, sort });
 
   function getId(row: any) {
     return {
-      group_id: row.group_id,
-      subject_id: row.subject_id,
+      usuario_id: row.usuario_id,
     };
   }
 
@@ -76,21 +70,21 @@ export function GroupSubject({ onState }: any) {
     onState && onState({ filter, selection, sort, status });
   }, [onState, status, selection, filter, sort]);
 
-  const dataUpdate = trpc.groupSubject.update.useMutation({
+  const dataUpdate = trpc.usuario.update.useMutation({
     onSuccess: () => {
-      trpcUtils.groupSubject.invalidate();
+      trpcUtils.usuario.invalidate();
     },
   });
 
-  const dataCreate = trpc.groupSubject.create.useMutation({
+  const dataCreate = trpc.usuario.create.useMutation({
     onSuccess: () => {
-      trpcUtils.groupSubject.invalidate();
+      trpcUtils.usuario.invalidate();
     },
   });
 
-  const dataDel = trpc.groupSubject.del.useMutation({
+  const dataDel = trpc.usuario.del.useMutation({
     onSuccess: () => {
-      trpcUtils.groupSubject.invalidate();
+      trpcUtils.usuario.invalidate();
     },
   });
 
@@ -120,7 +114,7 @@ export function GroupSubject({ onState }: any) {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Typography variant="h5">Permissões</Typography>
+          <Typography variant="h5">Usuários</Typography>
           <Stack
             direction="row"
             spacing={2}
@@ -151,7 +145,7 @@ export function GroupSubject({ onState }: any) {
         </Stack>
         {status === "new" ? (
           <Box sx={{ py: 1 }}>
-            <GroupSubjectForm
+            <UsuarioForm
               form={form}
               status={status}
             />
@@ -161,10 +155,9 @@ export function GroupSubject({ onState }: any) {
             />
           </Box>
         ) : null}
-
         <Table
           rows={dataList.data ?? []}
-          columns={groupSubjectColumns}
+          columns={usuarioColumns}
           getId={getId}
           selection={selection}
           filter={filter}
@@ -206,7 +199,7 @@ export function GroupSubject({ onState }: any) {
                 </Grid2>
               </Grid2>
               <Grid2>
-                <GroupSubjectForm
+                <UsuarioForm
                   form={form}
                   status={status}
                 />

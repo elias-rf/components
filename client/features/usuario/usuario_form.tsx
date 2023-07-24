@@ -1,186 +1,149 @@
-import { TUsuario, TUsuarioIds } from "@/models/usuario/usuario.type";
-import { isEmpty } from "@/utils/identify/is-empty";
-import { recordClear } from "@/utils/schema/record-clear";
+import { TFormStatus } from "@/types";
 import { trpc } from "@/utils/trpc/trpc";
-import { Button } from "@mantine/core";
-import React from "react";
-import { FormProvider, useForm } from "react-hook-form";
-import { Field } from "../../components/field";
-import { isNumber } from "../../lib/valid/isNumber";
-import { usuarioSchema } from "./usuario-schema";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import Autocomplete from "@mui/material/Autocomplete";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import TextField from "@mui/material/TextField";
+import Grid2 from "@mui/material/Unstable_Grid2";
+import { UseFormReturn } from "react-hook-form";
+import { usuarioColumns } from "./usuario_columns";
+
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 type TUsuarioFormProps = {
-  id: TUsuarioIds;
-  onCreate?: (rec: TUsuario) => void;
-  onUpdate?: (rec: TUsuario) => void;
-  onDel?: (ok: number) => void;
+  form: UseFormReturn<any>;
+  status: TFormStatus;
 };
 
-type TStatus = "edit" | "new" | "view";
-
-const dataClear = recordClear(usuarioSchema);
-
-export function UsuarioForm({
-  id,
-  onCreate,
-  onUpdate,
-  onDel,
-}: TUsuarioFormProps) {
-  const utils = trpc.useContext();
-  const dataRead = trpc.usuario.read.useQuery({ id });
-
-  const dataUpdate = trpc.agendaTelefone.update.useMutation({
-    onSuccess: (rec) => {
-      utils.agendaTelefone.invalidate();
-      if (onUpdate) onUpdate(rec);
-    },
-  });
-  const dataCreate = trpc.agendaTelefone.create.useMutation({
-    onSuccess: (rec) => {
-      utils.agendaTelefone.invalidate();
-      if (onCreate) onCreate(rec);
-    },
-  });
-  const dataDel = trpc.agendaTelefone.del.useMutation({
-    onSuccess: (ok) => {
-      utils.agendaTelefone.invalidate();
-      if (onDel) onDel(ok);
-    },
-  });
-
-  const [status, setStatus] = React.useState<TStatus>("new");
-
-  const formMethods = useForm({ defaultValues: dataClear });
-
-  // atualiza state do form quando com o ID passado
-  React.useEffect(() => {
-    if (isEmpty(id) || !isNumber(id.usuario_id)) {
-      return formMethods.reset(dataClear);
-    }
-  }, [id]);
-
-  // atualiza state do form quando for lido do servidor
-  React.useEffect(() => {
-    if (dataRead.data && dataRead.data.usuario_id) {
-      formMethods.reset(dataRead.data);
-      setStatus("view");
-    }
-  }, [dataRead.data]);
-
-  function handleButtonCancel() {
-    setStatus("view");
-    formMethods.reset();
-    console.log("cancel");
-  }
-
-  function handleButtonEdit() {
-    setStatus("edit");
-  }
-
-  function handleButtonNew() {
-    setStatus("new");
-    formMethods.reset(dataClear);
-  }
-
-  function handleButtonDel() {
-    setStatus("view");
-    dataDel.mutate({ id });
-  }
-
-  function handleButtonSave() {
-    setStatus("view");
-    if (status === "edit")
-      dataUpdate.mutate({ id, data: formMethods.getValues() });
-    if (status === "new") dataCreate.mutate({ data: formMethods.getValues() });
-  }
-
-  const onSubmitHandler = (values: any) => {
-    console.log(`Submitted`);
-    console.log(values);
-  };
+export function UsuarioForm({ form, status }: TUsuarioFormProps) {
+  const groupList = trpc.group.list.useQuery({ sort: { name: "asc" } });
 
   return (
-    <section className={"mt-2"}>
-      {status === "view" ? (
-        <div className={"flex justify-end"}>
-          <Button
-            className={"mr-4 w-24"}
-            size="small"
-            color="primary"
-            onClick={handleButtonEdit}
-            name="edit"
-            data-testid="buttonEdit"
-          >
-            Editar
-          </Button>
-          <Button
-            className={"mr-4 w-24"}
-            size="small"
-            color="secondary"
-            onClick={handleButtonNew}
-            name="new"
-            data-testid="buttonNew"
-          >
-            Novo
-          </Button>
-          <Button
-            className={"w-24"}
-            size="small"
-            color="secondary"
-            onClick={handleButtonDel}
-            name="del"
-            data-testid="buttonDel"
-          >
-            Excluir
-          </Button>
-        </div>
-      ) : null}
-      <FormProvider {...formMethods}>
-        <form
-          className="form"
-          onSubmit={formMethods.handleSubmit(onSubmitHandler)}
-          autoComplete="off"
-        >
-          <div className={"flex-wrap gap-2 sm:flex"}>
-            {usuarioSchema.map((field) => (
-              <React.Fragment key={field.name}>
-                <Field
-                  type="text"
-                  {...field}
-                  disabled={status === "view"}
-                  key={field.name}
-                />
-              </React.Fragment>
-            ))}
-          </div>
-        </form>
-      </FormProvider>
-      {status === "view" ? null : (
-        <div className={"flex justify-end"}>
-          {formMethods.formState.isDirty ? (
-            <Button
-              className={"mr-4 w-24"}
+    <Grid2
+      container
+      spacing={2}
+    >
+      <Grid2
+        xs={12}
+        sm={2}
+        lg={1}
+      >
+        <TextField
+          required
+          fullWidth
+          size="small"
+          variant="filled"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          disabled={status === "view"}
+          label={usuarioColumns[0].label}
+          {...form.register(usuarioColumns[0].name)}
+        />
+      </Grid2>
+      <Grid2
+        xs={12}
+        sm={10}
+        lg={5}
+      >
+        <TextField
+          required
+          fullWidth
+          size="small"
+          variant="filled"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          label={usuarioColumns[1].label}
+          {...form.register(usuarioColumns[1].name)}
+          disabled={status === "view"}
+        />
+      </Grid2>
+      <Grid2
+        xs={12}
+        sm={4}
+        lg={2}
+      >
+        <TextField
+          fullWidth
+          required
+          size="small"
+          variant="filled"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          label={usuarioColumns[2].label}
+          {...form.register(usuarioColumns[2].name)}
+          disabled={status === "view"}
+        />
+      </Grid2>
+      <Grid2
+        xs={12}
+        sm={8}
+        lg={4}
+      >
+        <TextField
+          fullWidth
+          size="small"
+          variant="filled"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          label={usuarioColumns[3].label}
+          {...form.register(usuarioColumns[3].name)}
+          disabled={status === "view"}
+        />
+      </Grid2>
+      <Grid2
+        xs={4}
+        sm={2}
+        lg={1}
+      >
+        <FormControlLabel
+          control={<Checkbox />}
+          label={usuarioColumns[4].label}
+          {...form.register(usuarioColumns[4].name)}
+        />
+      </Grid2>
+      <Grid2
+        xs={8}
+        sm={6}
+        lg={4}
+      >
+        <Autocomplete
+          multiple
+          disableCloseOnSelect
+          options={["Option 1", "Option 2", "Option 3"]}
+          getOptionLabel={(option) => option}
+          renderOption={(props, option, { selected }) => (
+            <li {...props}>
+              <Checkbox
+                icon={icon}
+                checkedIcon={checkedIcon}
+                style={{ marginRight: 8 }}
+                checked={selected}
+              />
+              {option}
+            </li>
+          )}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              fullWidth
               size="small"
-              color="primary"
-              onClick={handleButtonSave}
-              name="save"
-              data-testid="buttonSave"
-            >
-              Salvar
-            </Button>
-          ) : null}
-          <Button
-            className={"w-24"}
-            size="small"
-            color="secondary"
-            onClick={handleButtonCancel}
-            name="cancel"
-            data-testid="buttonCancel"
-          >
-            Cancelar
-          </Button>
-        </div>
-      )}
-    </section>
+              variant="filled"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              label="Grupos de permissões"
+              disabled={status === "view"}
+            />
+          )}
+        />
+      </Grid2>
+    </Grid2>
   );
 }

@@ -1,5 +1,6 @@
 import { TSelection } from "@/types";
 import { day } from "@/utils/date/day";
+import Box from "@mui/material/Box";
 import React from "react";
 import { EsterilizacaoInternaDiario } from "./est-int-diario";
 import { EsterilizacaoInternaMensal } from "./est-int-mensal";
@@ -53,22 +54,38 @@ export function EstInt({ onState, dia }: EsterilizacaoInternaProp) {
           mesCorrente={mesCorrente}
           onSelection={handleOnChangeMensal}
         >
-          <EsterilizacaoInternaDiario
-            mesCorrente={mesCorrente}
-            diaCorrente={diaCorrente}
-            onSelection={handleOnChangeDiario}
+          <Box
+            sx={{
+              mb: 4,
+              p: 1,
+              border: "2px solid rgba(25, 118, 210, 0.2)",
+            }}
           >
-            <EsterilizacaoInternaProduto
+            <EsterilizacaoInternaDiario
+              mesCorrente={mesCorrente}
               diaCorrente={diaCorrente}
-              produtoCorrente={produtoCorrente}
-              onSelection={handleOnChangeProduto}
+              onSelection={handleOnChangeDiario}
             >
-              <EsterilizacaoInternaModelo
-                diaCorrente={diaCorrente}
-                produtoCorrente={produtoCorrente}
-              ></EsterilizacaoInternaModelo>
-            </EsterilizacaoInternaProduto>
-          </EsterilizacaoInternaDiario>
+              <Box
+                sx={{
+                  mb: 4,
+                  p: 1,
+                  border: "2px solid rgba(25, 118, 210, 0.2)",
+                }}
+              >
+                <EsterilizacaoInternaProduto
+                  diaCorrente={diaCorrente}
+                  produtoCorrente={produtoCorrente}
+                  onSelection={handleOnChangeProduto}
+                >
+                  <EsterilizacaoInternaModelo
+                    diaCorrente={diaCorrente}
+                    produtoCorrente={produtoCorrente}
+                  ></EsterilizacaoInternaModelo>
+                </EsterilizacaoInternaProduto>
+              </Box>
+            </EsterilizacaoInternaDiario>
+          </Box>
         </EsterilizacaoInternaMensal>
       </div>
     </div>

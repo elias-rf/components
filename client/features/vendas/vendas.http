@@ -1,61 +1,10 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
+
 ### Venda Mensal
 POST http://localhost:3000/api/knex/sql/oftalmo
-Content-Type: application/json
-
-{
-  "from":[{"raw":"MestreNota, ItemNota, CadVen, NatOpe, CadPro, CategPro"}],
-  "select":[
-    {"NmCategoria": "CategPro.NmCategoria" },
-    {"CdCliente": "MestreNota.CdCliente" },
-    {"raw":"CONVERT(char(7), dbo.MestreNota.DtEmissao, 126) AS anoMes, sum(case MestreNota.tipo when 'E' then ItemNota.Quantidade * -1 when 'S' then ItemNota.Quantidade end) as quantidade, sum(itemNota.VlLiquido * (case MestreNota.tipo when 'E' then ItemNota.Quantidade * -1 when 'S' then ItemNota.Quantidade end)) AS valor"}
-  ],
-  "where":[
-    ["MestreNota.CdCliente", "CdCliente"],
-    ["MestreNota.DtEmissao", ">=", "inicio"],
-    ["MestreNota.DtEmissao", "<=", "fim"]
-  ],
-  "whereRaw": [
-    "MestreNota.FgEstatistica = 'S' AND MestreNota.CdFilial = 2 AND ItemNota.CdFilial = MestreNota.CdFilial AND ItemNota.Serie = MestreNota.Serie AND ItemNota.Modelo = MestreNota.Modelo AND ItemNota.NumNota = MestreNota.NumNota AND CadPro.CdCategoria = CategPro.CdCategoria AND ItemNota.Sequencia > 0 AND NatOpe.Nop = MestreNota.Nop AND CadVen.CdVendedor = MestreNota.CdVendedor AND CadPro.CdProduto = ItemNota.CdProduto AND CadPro.FgEstatistica = 'S' AND CadVen.FgControle = 'S' AND MestreNota.Tipo <> 'C' AND ItemNota.ImprimeComponentes = 'N'"
-  ],
-  "whereIn": [["cidadeserf.uf", ["uf"]]],
-  "groupByRaw":["CdCliente, NmCategoria, CONVERT(char(7), dbo.MestreNota.DtEmissao, 126)"],
-  "orderByRaw":["CONVERT(CHAR(7),[mestrenota].[DtEmissao],126) DESC"]
-}
 
 ### Venda diaria
-POST http://localhost:3000/api/knex/sql/oftalmo
-Content-Type: application/json
-
-{
-  "from":[{"raw":"MestreNota, ItemNota, CadVen, NatOpe, CadPro, CadCli, CategPro, CidadesERF"}],
-  "select":[
-    "NmCategoria", "MestreNota.DtEmissao",
-    {"raw":"sum(MestreNota.DtEmissao) as quantidade, itemNota.Quantidade * (case MestreNota.tipo when 'E' then case mestrenota.cdcliente when 3158 then ItemNota.VlLiquido * -3 else ItemNota.VlLiquido * -1 end when 'S' then case mestrenota.cdcliente when 3158 then ItemNota.VlLiquido * 3 else ItemNota.VlLiquido end end) as valor"}
-  ],
-  "where":[
-    ["MestreNota.FgEstatistica", "S"],
-    ["MestreNota.CdFilial", 2],
-    ["CadPro.FgEstatistica", "S"],
-    ["CadVen.FgControle", "S"],
-    ["ItemNota.ImprimeComponentes", "N"],
-    ["ItemNota.Sequencia", ">", 0],
-    ["MestreNota.Tipo", "<>", "C"],
-    ["MestreNota.DtEmissao", ">=", "inicio"],
-    ["MestreNota.DtEmissao", "<=", "fim"]
-  ],
-  "whereRaw": [
-    "ItemNota.CdFilial = MestreNota.CdFilial",
-    "ItemNota.Serie = MestreNota.Serie",
-    "ItemNota.Modelo = MestreNota.Modelo",
-    "ItemNota.NumNota = MestreNota.NumNota",
-    "CadPro.CdCategoria = CategPro.CdCategoria",
-    "NatOpe.Nop = MestreNota.Nop",
-    "CadVen.CdVendedor = MestreNota.CdVendedor",
-    "CadCli.CdCliente = MestreNota.CdCliente",
-    "CadPro.CdProduto = ItemNota.CdProduto",
-    "cadcli.Cidade = cidadeserf.NmCidadeIBGE"
-  ],
-  "whereIn": [["cidadeserf.uf", ["uf"]]],
-  "groupBy":["NmCategoria","MestreNota.DtEmissao"],
-  "orderBy":["NmCategoria",["MestreNota.DtEmissao", "desc"]]
-}
+GET {{host}}/api/trpc/nfSaida.vendaDiario?input={"fim":"2020-01-01","inicio":"2020-02-01","uf":["MG"]}

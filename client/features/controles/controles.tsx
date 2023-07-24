@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
+import Typography from "@mui/material/Typography";
 import React from "react";
 import { EstExt } from "./est_ext/est-ext";
 import { EstInt } from "./est_int/est-int";
@@ -27,7 +28,8 @@ export function Controles() {
   const [tab, setTab] = React.useState("");
 
   return (
-    <Box>
+    <>
+      <Typography variant="h5">Controle de Produção</Typography>
       <Tabs
         value={tab}
         onChange={(_, id) => setTab(id)}
@@ -73,6 +75,6 @@ export function Controles() {
       >
         <Transferencia />
       </TabPanel>
-    </Box>
+    </>
   );
 }

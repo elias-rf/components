@@ -1,5 +1,6 @@
 import { TSelection } from "@/types";
 import { day } from "@/utils/date/day";
+import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import React, { useMemo } from "react";
@@ -105,29 +106,45 @@ export function Operacao({ onState, dia }: OperacaoProp) {
           mesCorrente={mesCorrente}
           onSelection={handleOnChangeMensal}
         >
-          <OperacaoDiario
-            operacao={operacaoCorrente}
-            mes={mesCorrente}
-            diaCorrente={diaCorrente}
-            onSelection={handleOnChangeDiario}
+          <Box
+            sx={{
+              mb: 4,
+              p: 1,
+              border: "2px solid rgba(25, 118, 210, 0.2)",
+            }}
           >
-            <OperacaoProduto
+            <OperacaoDiario
               operacao={operacaoCorrente}
-              dia={diaCorrente}
-              produtoCorrente={produtoCorrente}
-              onSelect={handleOnChangeProduto}
+              mes={mesCorrente}
+              diaCorrente={diaCorrente}
+              onSelection={handleOnChangeDiario}
             >
-              <OperacaoModelo
-                operacao={operacaoCorrente}
-                dia={diaCorrente}
-                produtoCorrente={produtoCorrente}
-              />
-            </OperacaoProduto>
-            <OperacaoTurno
-              operacao={operacaoCorrente}
-              dia={diaCorrente}
-            ></OperacaoTurno>
-          </OperacaoDiario>
+              <Box
+                sx={{
+                  mb: 4,
+                  p: 1,
+                  border: "2px solid rgba(25, 118, 210, 0.2)",
+                }}
+              >
+                <OperacaoProduto
+                  operacao={operacaoCorrente}
+                  dia={diaCorrente}
+                  produtoCorrente={produtoCorrente}
+                  onSelect={handleOnChangeProduto}
+                >
+                  <OperacaoModelo
+                    operacao={operacaoCorrente}
+                    dia={diaCorrente}
+                    produtoCorrente={produtoCorrente}
+                  />
+                </OperacaoProduto>
+                <OperacaoTurno
+                  operacao={operacaoCorrente}
+                  dia={diaCorrente}
+                ></OperacaoTurno>
+              </Box>
+            </OperacaoDiario>
+          </Box>
         </OperacaoMensal>
       </div>
     </div>

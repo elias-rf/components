@@ -14,17 +14,22 @@ interface Items {
   saldoCombo: number;
 }
 
+export type TGrupos =
+  | "hilite"
+  | "liteflex"
+  | "metil"
+  | "enlite"
+  | "disponivel"
+  | "combo1"
+  | "combo2"
+  | "total"
+  | "desconto";
+
 interface Tablela2Props {
-  dados: {
-    hilite: Items;
-    liteflex: Items;
-    metil: Items;
-    enlite: Items;
-    disponivel: Items;
-  }[];
+  dados: { [key in TGrupos]: Items }[];
   produtos: {
     label: string;
-    grupo: "hilite" | "liteflex" | "metil" | "enlite" | "disponivel";
+    grupo: TGrupos;
   }[];
 }
 

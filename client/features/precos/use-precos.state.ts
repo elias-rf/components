@@ -2,8 +2,9 @@ import { round } from "@/utils/number/round";
 import React from "react";
 import { inteiro, moeda } from "../../lib/text-box-formats";
 import { calculadora } from "./calculadora";
+import { TGrupos } from "./precos-vendedor";
 
-const produtos = ["hilite", "liteflex", "metil", "enlite"];
+const produtos: TGrupos[] = ["hilite", "liteflex", "metil", "enlite"];
 
 const stateProdDefault = {
   quantidade: 0,
@@ -25,7 +26,7 @@ if (typeof window !== "undefined") {
   stateStorage = window.localStorage.getItem("precosState") || "{}";
 }
 
-let stateDefault = {
+let stateDefault: Record<TGrupos, any> = {
   hilite: { ...stateProdDefault },
   liteflex: { ...stateProdDefault },
   metil: { ...stateProdDefault },

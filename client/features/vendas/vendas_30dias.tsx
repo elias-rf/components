@@ -1,3 +1,7 @@
+import { day } from "@/utils/date/day";
+import { formatMoney } from "@/utils/format/format-money";
+import { trpc } from "@/utils/trpc/trpc";
+import { Typography } from "@mui/material";
 import React from "react";
 import {
   Line,
@@ -7,28 +11,25 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { formatDiario } from "./format-diario";
 
-import { day } from "@/utils/date/day";
-import { formatMoney } from "@/utils/format/format-money";
+type Vendas30diasProp = {
+  dia?: string;
+  onState?: (event: any) => void;
+};
 
 /**
  * Componente para manipular Agenda de Ramais
  *
  * @returns {*} componente react
  */
-export function Vendas30dias() {
-  const nfSaidaStore = () => {};
-  const [dataVendaDiario, getVendaDiario] = nfSaidaStore((state) => [
-    state.dataVendaDiario,
-    state.getVendaDiario,
-  ]);
-  const width = "100%";
-  const height = 300;
+export function Vendas30dias({ onState, dia }: Vendas30diasProp) {
+  const fim = day(dia).format("YYYY-MM-DD");
 
-  React.useEffect(() => {
-    const fim = day().format("YYYY-MM-DD");
-    const inicio = day().subtract(90, "days").format("YYYY-MM-DD");
-    getVendaDiario({
+  const inicio = day(dia).subtract(90, "days").format("YYYY-MM-DD");
+
+  const dataVendaDiario = trpc.nfSaida.vendaDiario.useQuery(
+    {
       inicio,
       fim,
       uf: [
@@ -63,11 +64,19 @@ export function Vendas30dias() {
         "EX",
         "FV",
       ],
-    });
-  }, []);
+    },
+    { select: (data) => formatDiario(data, fim) }
+  );
+  const width = "100%";
+  const height = 300;
+
+  React.useEffect(() => {
+    onState && onState({ inicio, fim, data: dataVendaDiario.data });
+  }, [onState, inicio, fim, dataVendaDiario.data]);
 
   return (
     <>
+      <Typography variant="h5">Vendas 30 dias</Typography>
       <div className={"py-2"}>
         <h2 className={"text-center text-lg"}>Liteflex</h2>
         <ResponsiveContainer
@@ -75,7 +84,7 @@ export function Vendas30dias() {
           height={height}
         >
           <LineChart
-            data={dataVendaDiario?.liteflex}
+            data={dataVendaDiario.data?.liteflex}
             syncId="implante"
           >
             <Line
@@ -100,7 +109,9 @@ export function Vendas30dias() {
             <XAxis dataKey="dia" />
             <Tooltip
               formatter={(value: number, name: string) =>
-                name === "Valor médio" ? `R$ ${formatMoney(value, 2)}` : value
+                name === "Valor médio"
+                  ? `R$ ${formatMoney(value, 2)}`
+                  : value.toString()
               }
             />
           </LineChart>
@@ -112,7 +123,7 @@ export function Vendas30dias() {
           width={width}
           height={height}
         >
-          <LineChart data={dataVendaDiario?.hilite}>
+          <LineChart data={dataVendaDiario.data?.hilite}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -148,7 +159,7 @@ export function Vendas30dias() {
           height={height}
         >
           <LineChart
-            data={dataVendaDiario?.enlite}
+            data={dataVendaDiario.data?.enlite}
             syncId="implante"
           >
             <Line
@@ -185,7 +196,7 @@ export function Vendas30dias() {
           width={width}
           height={height}
         >
-          <LineChart data={dataVendaDiario?.metil}>
+          <LineChart data={dataVendaDiario.data?.metil}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -220,7 +231,7 @@ export function Vendas30dias() {
           width={width}
           height={height}
         >
-          <LineChart data={dataVendaDiario?.anel}>
+          <LineChart data={dataVendaDiario.data?.anel}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -255,7 +266,7 @@ export function Vendas30dias() {
           width={width}
           height={height}
         >
-          <LineChart data={dataVendaDiario?.enliteLiteflex}>
+          <LineChart data={dataVendaDiario.data?.enliteLiteflex}>
             <Line
               type="monotone"
               yAxisId="right"

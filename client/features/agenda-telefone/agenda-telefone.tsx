@@ -1,4 +1,3 @@
-import { Comment } from "@/client/components/comment";
 import { ButtonCancel } from "@/client/components/form/button-cancel";
 import { ButtonDel } from "@/client/components/form/button-del";
 import { ButtonEdit } from "@/client/components/form/button-edit";
@@ -16,7 +15,6 @@ import Typography from "@mui/material/Typography";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Page } from "../../components/page/page";
 import { agendaTelefoneColumns } from "./agenda-telefone_columns";
 import { AgendaTelefoneForm } from "./agenda-telefone_form";
 
@@ -110,129 +108,131 @@ export function AgendaTelefone({ onState }: any) {
 
   return (
     <>
-      <Comment>agenda-telefone</Comment>
-      <Page>
+      <Stack
+        direction="column"
+        spacing={2}
+      >
         <Stack
-          direction="column"
-          spacing={2}
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
         >
+          <Typography variant="h5">Agenda de Ramais</Typography>
           <Stack
             direction="row"
-            justifyContent="space-between"
-            alignItems="center"
+            spacing={2}
           >
-            <Typography variant="h5">Agenda de Ramais</Typography>
-            <Stack
-              direction="row"
-              spacing={2}
+            {status === "new" ? (
+              <>
+                <ButtonSave
+                  form={form}
+                  onStatus={setStatus}
+                  onClick={handleButtonSave}
+                />
+                <ButtonCancel
+                  form={form}
+                  status={status}
+                  onStatus={setStatus}
+                />
+              </>
+            ) : null}
+            {status !== "new" ? (
+              <ButtonNew
+                form={form}
+                status={status}
+                onStatus={setStatus}
+                onClick={handleButtonNew}
+              />
+            ) : null}
+          </Stack>
+        </Stack>
+        {status === "new" ? (
+          <Box sx={{ py: 1 }}>
+            <AgendaTelefoneForm
+              form={form}
+              status={status}
+            />
+            <Divider
+              variant="middle"
+              sx={{ pt: 2 }}
+            />
+          </Box>
+        ) : null}
+        <Table
+          rows={dataList.data ?? []}
+          columns={agendaTelefoneColumns}
+          getId={getId}
+          selection={selection}
+          filter={filter}
+          sort={sort}
+          onSelection={handleSelection}
+          onFilter={handleFilter}
+          onSort={handleSort}
+        >
+          {() => (
+            <Grid2
+              container
+              direction={"column"}
+              spacing={1}
+              sx={{
+                mb: 4,
+                p: 1,
+                border: "2px solid rgba(25, 118, 210, 0.2)",
+              }}
             >
-              {status === "new" ? (
-                <>
+              <Grid2
+                container
+                direction={"row"}
+                spacing={2}
+              >
+                <Grid2>
+                  <ButtonEdit
+                    form={form}
+                    status={status}
+                    onStatus={setStatus}
+                  />
+                </Grid2>
+                <Grid2>
+                  <ButtonDel
+                    form={form}
+                    status={status}
+                    onStatus={setStatus}
+                    onClick={handleButtonDel}
+                  />
+                </Grid2>
+              </Grid2>
+              <Grid2>
+                <AgendaTelefoneForm
+                  form={form}
+                  status={status}
+                />
+              </Grid2>
+              <Grid2
+                container
+                direction="row"
+                justifyContent="flex-end"
+                alignItems="center"
+                spacing={2}
+              >
+                <Grid2>
                   <ButtonSave
                     form={form}
                     onStatus={setStatus}
                     onClick={handleButtonSave}
                   />
+                </Grid2>
+                <Grid2>
                   <ButtonCancel
                     form={form}
                     status={status}
                     onStatus={setStatus}
                   />
-                </>
-              ) : null}
-              {status !== "new" ? (
-                <ButtonNew
-                  form={form}
-                  status={status}
-                  onStatus={setStatus}
-                  onClick={handleButtonNew}
-                />
-              ) : null}
-            </Stack>
-          </Stack>
-          {status === "new" ? (
-            <Box sx={{ py: 1 }}>
-              <AgendaTelefoneForm
-                form={form}
-                status={status}
-              />
-              <Divider
-                variant="middle"
-                sx={{ pt: 2 }}
-              />
-            </Box>
-          ) : null}
-          <Table
-            rows={dataList.data ?? []}
-            columns={agendaTelefoneColumns}
-            getId={getId}
-            selection={selection}
-            filter={filter}
-            sort={sort}
-            onSelection={handleSelection}
-            onFilter={handleFilter}
-            onSort={handleSort}
-          >
-            {() => (
-              <Grid2
-                container
-                direction={"column"}
-                spacing={1}
-              >
-                <Grid2
-                  container
-                  direction={"row"}
-                  spacing={2}
-                >
-                  <Grid2>
-                    <ButtonEdit
-                      form={form}
-                      status={status}
-                      onStatus={setStatus}
-                    />
-                  </Grid2>
-                  <Grid2>
-                    <ButtonDel
-                      form={form}
-                      status={status}
-                      onStatus={setStatus}
-                      onClick={handleButtonDel}
-                    />
-                  </Grid2>
-                </Grid2>
-                <Grid2>
-                  <AgendaTelefoneForm
-                    form={form}
-                    status={status}
-                  />
-                </Grid2>
-                <Grid2
-                  container
-                  direction="row"
-                  justifyContent="flex-end"
-                  alignItems="center"
-                  spacing={2}
-                >
-                  <Grid2>
-                    <ButtonSave
-                      form={form}
-                      onStatus={setStatus}
-                      onClick={handleButtonSave}
-                    />
-                  </Grid2>
-                  <Grid2>
-                    <ButtonCancel
-                      form={form}
-                      status={status}
-                      onStatus={setStatus}
-                    />
-                  </Grid2>
                 </Grid2>
               </Grid2>
-            )}
-          </Table>
-        </Stack>
-      </Page>
+            </Grid2>
+          )}
+        </Table>
+      </Stack>
     </>
   );
 }

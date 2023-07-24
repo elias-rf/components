@@ -1,6 +1,6 @@
+import { Table } from "@/client/components/table";
 import { day } from "@/utils/date/day";
 import React from "react";
-import { Table } from "../../../components/search/table";
 import {
   mensal,
   mensalProduto,
@@ -48,40 +48,40 @@ export function Vendas() {
     <div className={"flex"}>
       <div className={"p-2"}>
         <Table
-          data={mensal(dataVendaAnalitico)}
+          rows={mensal(dataVendaAnalitico)}
           selected={mesCorrente}
-          dispatch={handleMensal}
-          schema={mesSchema}
+          onSelected={handleMensal}
+          columns={mesSchema}
         >
           <Table
-            data={mensalProduto(mesCorrente, dataVendaAnalitico)}
-            dispatch={handleProduto}
-            schema={produtoSchema}
+            rows={mensalProduto(mesCorrente, dataVendaAnalitico)}
+            onSelected={handleProduto}
+            columns={produtoSchema}
           ></Table>
           <Table
-            data={mensalVendedor(mesCorrente, dataVendaAnalitico)}
+            rows={mensalVendedor(mesCorrente, dataVendaAnalitico)}
             selected={vendedorCorrente}
-            dispatch={handleVendedor}
-            schema={vendedorSchema}
+            onSelected={handleVendedor}
+            columns={vendedorSchema}
           >
             <Table
-              data={mensalVendedorProduto(
+              rows={mensalVendedorProduto(
                 mesCorrente,
                 vendedorCorrente,
                 dataVendaAnalitico
               )}
               selected={produtoCorrente}
-              dispatch={handleProduto}
-              schema={produtoSchema}
+              onSelected={handleProduto}
+              columns={produtoSchema}
             ></Table>
             <Table
-              data={mensalVendedorUf(
+              rows={mensalVendedorUf(
                 mesCorrente,
                 vendedorCorrente,
                 dataVendaAnalitico
               )}
-              dispatch={handleUf}
-              schema={ufSchema}
+              onSelected={handleUf}
+              columns={ufSchema}
             ></Table>
           </Table>
         </Table>

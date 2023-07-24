@@ -1,5 +1,6 @@
 import { TSelection } from "@/types";
 import { day } from "@/utils/date/day";
+import Box from "@mui/material/Box";
 import React from "react";
 import { EsterilizacaoExternaDiario } from "./est-ext-diario";
 import { EsterilizacaoExternaMensal } from "./est-ext-mensal";
@@ -53,22 +54,40 @@ export function EstExt({ onState, dia }: EsterilizacaoExternaProp) {
           mesCorrente={mesCorrente}
           onSelection={handleOnChangeMensal}
         >
-          <EsterilizacaoExternaDiario
-            mesCorrente={mesCorrente}
-            diaCorrente={diaCorrente}
-            onSelection={handleOnChangeDiario}
+          {" "}
+          <Box
+            sx={{
+              mb: 4,
+              p: 1,
+              border: "2px solid rgba(25, 118, 210, 0.2)",
+            }}
           >
-            <EsterilizacaoExternaProduto
+            <EsterilizacaoExternaDiario
+              mesCorrente={mesCorrente}
               diaCorrente={diaCorrente}
-              produtoCorrente={produtoCorrente}
-              onSelection={handleOnChangeProduto}
+              onSelection={handleOnChangeDiario}
             >
-              <EsterilizacaoExternaModelo
-                diaCorrente={diaCorrente}
-                produtoCorrente={produtoCorrente}
-              ></EsterilizacaoExternaModelo>
-            </EsterilizacaoExternaProduto>
-          </EsterilizacaoExternaDiario>
+              {" "}
+              <Box
+                sx={{
+                  mb: 4,
+                  p: 1,
+                  border: "2px solid rgba(25, 118, 210, 0.2)",
+                }}
+              >
+                <EsterilizacaoExternaProduto
+                  diaCorrente={diaCorrente}
+                  produtoCorrente={produtoCorrente}
+                  onSelection={handleOnChangeProduto}
+                >
+                  <EsterilizacaoExternaModelo
+                    diaCorrente={diaCorrente}
+                    produtoCorrente={produtoCorrente}
+                  ></EsterilizacaoExternaModelo>
+                </EsterilizacaoExternaProduto>
+              </Box>
+            </EsterilizacaoExternaDiario>
+          </Box>
         </EsterilizacaoExternaMensal>
       </div>
     </div>
