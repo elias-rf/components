@@ -1,4 +1,5 @@
 import { zValidate, zd } from "@/utils/zod/zod";
+import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -36,25 +37,51 @@ const InputAux = () => {
         <Stack spacing={2}>
           <TextField
             label="T1"
+            variant="filled"
+            size="small"
             required
             {...form.getInputProps("t1", zValidate(zd.string().min(4)))}
           />
 
           <TextField
             label="T2"
+            variant="filled"
+            size="small"
             required
             {...form.getInputProps("t2", zValidate(zd.string().min(4)))}
           />
 
           <TextField
             label="T3"
+            variant="filled"
+            size="small"
             required
             {...form.getInputProps("t3", zValidate(zd.string().min(4)))}
           />
-          <button onClick={() => form.submit()}>Submit</button>
-          <button onClick={() => form.reset()}>Reset</button>
-          <button onClick={() => form.reset(form.values)}>Reset New</button>
-          <button onClick={() => form.validate()}>Validate</button>
+          <Button
+            variant="contained"
+            onClick={() => form.submit()}
+          >
+            Submit
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => form.reset()}
+          >
+            Reset
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => form.reset(form.values)}
+          >
+            Reset New
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => form.validate()}
+          >
+            Validate
+          </Button>
         </Stack>
 
         <JsonViewer

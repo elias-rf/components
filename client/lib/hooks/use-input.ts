@@ -30,5 +30,5 @@ export const useInput = (
     }
   };
 
-  return { onChange, onBlur, onKeyDown, value };
+  return { setValue, value, props: { onChange, onBlur, onKeyDown, value } };
 };
