@@ -1,6 +1,7 @@
 import { TrpcProvider } from "@/utils/trpc/trpc-provider";
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { PrivateRoute } from "./components/private-route";
 import { Layout } from "./features/layout";
 import { Dashboard } from "./pages/dashboard";
 import { Home } from "./pages/home";
@@ -8,14 +9,12 @@ import { Loading } from "./pages/loading";
 import { Login } from "./pages/login";
 import { Logout } from "./pages/logout";
 
-console.log(process.env.NODE_ENV);
-
 // utilidades
 const Page403 = React.lazy(async () => import("./pages/page_403"));
 const Page404 = React.lazy(async () => import("./pages/page_404"));
 
 // comercial
-const Cliente = React.lazy(async () => import("./pages/comercial/cliente"));
+const Clientes = React.lazy(async () => import("./pages/comercial/clientes"));
 const Faturamento = React.lazy(
   async () => import("./pages/comercial/faturamento")
 );
@@ -28,9 +27,6 @@ const Vendas30Dias = React.lazy(
 const Controles = React.lazy(
   async () => import("./pages/industrial/controles")
 );
-const OrdemProducao = React.lazy(
-  async () => import("./pages/industrial/ordem_producao")
-);
 
 const Transferencia = React.lazy(
   async () => import("./pages/industrial/transferencia")
@@ -42,73 +38,105 @@ const Agenda = React.lazy(async () => import("./pages/outros/agenda"));
 // sistema
 const Usuario = React.lazy(async () => import("./pages/sistema/usuarios"));
 const Permissao = React.lazy(async () => import("./pages/sistema/permissoes"));
+const Profile = React.lazy(async () => import("./pages/profile"));
 
 /** Componente com todas a rotas da aplicativo */
 export function App() {
   return (
     <TrpcProvider>
-      <BrowserRouter>
-        <Suspense
-          fallback={
-            <Layout>
-              <Loading />
-            </Layout>
-          }
-        >
+      <Suspense fallback={<Loading />}>
+        <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>
               <Route
                 path="/"
-                element={<Home />}
+                element={
+                  <PrivateRoute>
+                    <Home />
+                  </PrivateRoute>
+                }
               />
 
               <Route
                 path="/dashboard"
-                element={<Dashboard />}
+                element={
+                  <PrivateRoute>
+                    <Dashboard />
+                  </PrivateRoute>
+                }
               />
 
               <Route path="comercial">
                 <Route
                   path="precos"
-                  element={<Precos />}
+                  element={
+                    <PrivateRoute>
+                      <Precos />
+                    </PrivateRoute>
+                  }
                 />
                 <Route
                   path="cliente"
-                  element={<Cliente />}
+                  element={
+                    <PrivateRoute>
+                      <Clientes />
+                    </PrivateRoute>
+                  }
                 />
                 <Route
                   path="faturamento"
-                  element={<Faturamento />}
+                  element={
+                    <PrivateRoute>
+                      <Faturamento />
+                    </PrivateRoute>
+                  }
                 />
                 <Route
                   path="vendas30dias"
-                  element={<Vendas30Dias />}
+                  element={
+                    <PrivateRoute>
+                      <Vendas30Dias />
+                    </PrivateRoute>
+                  }
                 />
               </Route>
 
               <Route path="industrial">
                 <Route
                   path="controles"
-                  element={<Controles />}
+                  element={
+                    <PrivateRoute>
+                      <Controles />
+                    </PrivateRoute>
+                  }
                 />
-                <Route
-                  path="ordemProducao"
-                  element={<OrdemProducao />}
-                />
+
                 <Route
                   path="transferencia"
-                  element={<Transferencia />}
+                  element={
+                    <PrivateRoute>
+                      <Transferencia />
+                    </PrivateRoute>
+                  }
                 />
               </Route>
 
               <Route path="sistema">
                 <Route
                   path="usuario"
-                  element={<Usuario />}
+                  element={
+                    <PrivateRoute>
+                      <Usuario />
+                    </PrivateRoute>
+                  }
                 />
                 <Route
                   path="permissao"
-                  element={<Permissao />}
+                  element={
+                    <PrivateRoute>
+                      <Permissao />
+                    </PrivateRoute>
+                  }
                 />
               </Route>
 
@@ -123,6 +151,14 @@ export function App() {
                   />
                 </Route>
               </Route>
+              <Route
+                path="/profile"
+                element={
+                  <PrivateRoute>
+                    <Profile />
+                  </PrivateRoute>
+                }
+              />
             </Route>
 
             <Route
@@ -134,6 +170,7 @@ export function App() {
               path="/logout"
               element={<Logout />}
             />
+
             <Route
               path="/403"
               element={<Page403 />}
@@ -143,8 +180,8 @@ export function App() {
               element={<Page404 />}
             />
           </Routes>
-        </Suspense>
-      </BrowserRouter>
+        </BrowserRouter>
+      </Suspense>
     </TrpcProvider>
   );
 }

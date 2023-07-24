@@ -16,8 +16,8 @@ export const menu = [
       />
     ),
     items: [
-      { label: "Calculadora de preços", to: "/comercial/calculadora" },
-      { label: "Vendas 30 dias", to: "/comercial/venda" },
+      { label: "Calculadora de preços", to: "/comercial/precos" },
+      { label: "Vendas 30 dias", to: "/comercial/vendas30dias" },
       { label: "Clientes", to: "/comercial/cliente" },
     ],
   },
@@ -30,7 +30,7 @@ export const menu = [
       />
     ),
     items: [
-      { label: "Controles de produção", to: "/industrial/controle" },
+      { label: "Controles de produção", to: "/industrial/controles" },
       { label: "Transferência", to: "/industrial/transferencia" },
     ],
   },

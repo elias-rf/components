@@ -1,20 +1,14 @@
-import { Page } from "../../components/page/page";
-import { PageTitle } from "../../components/page/page_title";
-import { Auth } from "../../features/auth";
+import Box from "@mui/material/Box";
 import { Vendas30dias as Vendas } from "../../features/vendas/vendas_30dias";
 
 /**
  * Componente para manipular Agenda de Ramais
- *
  * @returns {*} componente react
  */
 export default function Vendas30dias() {
   return (
-    <Auth>
-      <Page>
-        <PageTitle title="Vendas 30 Dias" />
-        <Vendas />
-      </Page>
-    </Auth>
+    <Box sx={{ p: 1 }}>
+      <Vendas />
+    </Box>
   );
 }

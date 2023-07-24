@@ -1,15 +1,10 @@
-import { Page } from "../../components/page/page";
-import { PageTitle } from "../../components/page/page_title";
-import { Auth } from "../../features/auth";
+import Box from "@mui/material/Box";
 import { Controles as Control } from "../../features/controles/controles";
 
 export default function Controles() {
   return (
-    <Auth>
-      <Page>
-        <PageTitle title="Controle de Produção" />
-        <Control />
-      </Page>
-    </Auth>
+    <Box sx={{ p: 1 }}>
+      <Control />
+    </Box>
   );
 }

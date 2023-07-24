@@ -1,26 +1,24 @@
-import { trpc } from "@/utils/trpc/trpc";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/client/store/auth";
+import { Navigate, useLocation } from "react-router-dom";
 import logo from "../assets/images/logo.svg";
 import { Page } from "../components/page/page";
-import { isAuthenticated } from "../lib/is-authenticated";
 
 export function Home() {
-  const navigate = useNavigate();
-  const me = trpc.usuario.me.useQuery();
+  const location = useLocation();
+  const isAuthenticated = useAuth((state) => state.isAuthenticated);
 
-  React.useEffect(() => {
-    if (me.data) {
-      if (isAuthenticated(me.data)) return navigate("/dashboard");
-      navigate("/login");
-    }
-  }, [me.data]);
-
-  return (
+  return isAuthenticated() ? (
+    <Navigate
+      replace={true}
+      to="/dashboard"
+      state={{ from: `${location.pathname}${location.search}` }}
+    />
+  ) : (
     <Page>
       <img
         src={logo}
         alt="logo"
+        width={`100%`}
       />
     </Page>
   );

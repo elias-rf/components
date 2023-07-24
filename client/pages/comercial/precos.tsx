@@ -1,10 +1,10 @@
-import { Auth } from "../../features/auth";
-import { PrecosCliente } from "../../features/precos/precos_cliente";
+import Box from "@mui/material/Box";
+import { PrecosCliente } from "../../features/precos/precos-cliente";
 
 export default function Precos() {
   return (
-    <Auth>
+    <Box sx={{ p: 1 }}>
       <PrecosCliente />
-    </Auth>
+    </Box>
   );
 }

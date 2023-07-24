@@ -1,4 +1,4 @@
-import { trpc } from "@/utils/trpc/trpc";
+import { useAuth } from "@/client/store/auth";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { SpinnerIcon } from "../components/spinner/spinner-icon";
@@ -9,16 +9,13 @@ import { SpinnerIcon } from "../components/spinner/spinner-icon";
  * @returns {*} componente <LoginView />
  */
 export function Logout() {
+  const logout = useAuth((state) => state.logout);
   const navigate = useNavigate();
-  const logout = trpc.usuario.logout.useMutation();
-  React.useEffect(() => {
-    logout.mutate();
-    sessionStorage.removeItem("token");
-  }, []);
 
   React.useEffect(() => {
+    logout();
     navigate("/");
-  }, [logout.data]);
+  }, []);
 
   return (
     <div className={"flex justify-center"}>

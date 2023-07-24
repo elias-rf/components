@@ -1,3 +1,5 @@
+import { Toast } from "@/client/components/toast";
+import { useAuth } from "@/client/store/auth";
 import { trpc } from "@/utils/trpc/trpc";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,42 +12,33 @@ import { Login as LoginComponent } from "../components/login/login";
  */
 export function Login() {
   const login = trpc.usuario.login.useMutation();
-  const [error, setError] = React.useState("");
-  const [spinner, setSpinner] = React.useState(false);
+  const saveLogin = useAuth((state) => state.login);
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    setSpinner(false);
-    if (login.data && login.data.usuario_id > 0) {
-      sessionStorage.setItem("token", login.data.token);
-      while (sessionStorage.getItem("token") !== login.data.token) {
-        console.log("Gravando sessionStorage");
-      }
+    if (login.data && login.data.usuario_id && login.data.usuario_id > 0) {
+      saveLogin(login.data);
       navigate("/");
     }
   }, [login.data]);
-
   React.useEffect(() => {
-    setSpinner(false);
-    setError(login.error?.message || "");
+    console.log("login error", login.error?.message);
   }, [login.error]);
 
   async function handleInput(user: { user: string; password: string }) {
-    setSpinner(true);
-    setError("");
     login.mutate(user);
   }
 
   return (
     <div className={"flex justify-center"}>
-      <div>
-        <LoginComponent
-          title="Intranet Visiontech"
-          onInput={handleInput}
-          loading={spinner}
-          error={error}
+      <LoginComponent onInput={handleInput} />
+      {login.error && (
+        <Toast
+          open={true}
+          message={login.error.message || ""}
+          severity="error"
         />
-      </div>
+      )}
     </div>
   );
 }
