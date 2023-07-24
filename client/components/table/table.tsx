@@ -4,6 +4,7 @@ import MuiTable from "@mui/material/Table";
 import MuiTableCell from "@mui/material/TableCell";
 import MuiTableRow from "@mui/material/TableRow";
 import { useTheme } from "@mui/material/styles";
+import React from "react";
 import { useForm } from "../../lib/hooks/use-form";
 import { TableBody } from "./table-body";
 import { TableBodyCol } from "./table-body-col";
@@ -136,9 +137,9 @@ export function Table({
       </HeadSlot>
       <BodySlot>
         {data.map((row) => (
-          <>
+          <React.Fragment key={JSON.stringify(getId(row))}>
             <BodyRowSlot
-              key={getId(row)}
+              key={JSON.stringify(getId(row))}
               sx={[
                 {
                   "&:last-child td, &:last-child th": { border: 0 },
@@ -165,7 +166,7 @@ export function Table({
                 </MuiTableRow>
               ) : null
             ) : null}
-          </>
+          </React.Fragment>
         ))}
       </BodySlot>
     </MuiTable>

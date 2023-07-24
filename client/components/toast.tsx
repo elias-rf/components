@@ -3,7 +3,7 @@ import Snackbar from "@mui/material/Snackbar";
 
 export type TToast = {
   open: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   severity?: AlertColor;
   message: string;
 };
@@ -19,6 +19,7 @@ export function Toast({ open, onClose, severity = "info", message }: TToast) {
         onClose={onClose}
         severity={severity}
         sx={{ width: "100%" }}
+        variant="filled"
       >
         {message}
       </Alert>

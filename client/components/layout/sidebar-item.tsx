@@ -20,7 +20,6 @@ export const SidebarItem = ({ item, onClick, path }: TSidebarItemProps) => {
   React.useEffect(() => {
     if (item.items) {
       if (item.items.find((item) => item.to === path)) {
-        console.log(item.items.find((item) => item.to === path));
         setOpen(true);
       }
     }

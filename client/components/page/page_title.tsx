@@ -1,6 +1,11 @@
 import React from "react";
 import { SpinnerIcon } from "../spinner/spinner-icon";
-import { TPageTitleProps } from "./page.types";
+
+type TPageTitleProps = {
+  title: string;
+  loading?: boolean;
+  children?: React.ReactNode;
+};
 
 export function PageTitle({
   children,
@@ -15,15 +20,15 @@ export function PageTitle({
     <section
       data-name={title}
       className={
-        "inline-flex justify-between w-full mb-2 bg-gray-300 flex-nowrap"
+        "mb-2 inline-flex w-full flex-nowrap justify-between bg-gray-300"
       }
     >
       <div className={"inline-flex flex-nowrap"}>
         <p className={"ml-1 text-xl font-bold text-gray-700"}>{title}</p>
-        <div className={"mt-1 ml-1"}>
+        <div className={"ml-1 mt-1"}>
           <SpinnerIcon
             show={loading}
-            className={"w-5 h-5"}
+            className={"h-5 w-5"}
           />
         </div>
       </div>

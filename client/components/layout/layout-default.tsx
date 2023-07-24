@@ -1,60 +1,24 @@
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Typography } from "@mui/material";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import { styled, useTheme } from "@mui/material/styles";
 import * as React from "react";
+import { AppBar } from "./layout-default_app-bar";
+import { Main } from "./layout-default_main";
 import { Sidebar } from "./sidebar";
 import { TSidebarItem } from "./sidebar.type";
 import { Topbar } from "./topbar";
 
 const drawerWidth = 240;
-
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
-  open?: boolean;
-}>(({ theme, open }) => ({
-  flexGrow: 1,
-  transition: theme.transitions.create("margin", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  marginLeft: `-${drawerWidth}px`,
-  ...(open && {
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  }),
-}));
-
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})<AppBarProps>(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -70,6 +34,7 @@ interface TLayoutDefaultProps {
   path: string;
   menu: TSidebarItem[];
   children: React.ReactNode;
+  user: any;
 }
 
 export function LayoutDefault({
@@ -77,9 +42,20 @@ export function LayoutDefault({
   children,
   menu,
   path,
+  user,
 }: TLayoutDefaultProps) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(window.innerWidth >= drawerWidth * 3);
+
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const openMenu = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -95,6 +71,7 @@ export function LayoutDefault({
       <AppBar
         position="fixed"
         open={open}
+        width={drawerWidth}
       >
         <Toolbar>
           <IconButton
@@ -106,7 +83,7 @@ export function LayoutDefault({
           >
             <MenuIcon />
           </IconButton>
-          <Topbar />
+          <Topbar onClick={onClick} />
         </Toolbar>
       </AppBar>
       <Drawer
@@ -122,8 +99,34 @@ export function LayoutDefault({
         anchor="left"
         open={open}
       >
-        <div className="flex justify-between items-center">
-          <Typography className="pl-2">TESTE</Typography>
+        <div className="flex items-center justify-between">
+          <Button
+            id="demo-positioned-button"
+            aria-controls={open ? "demo-positioned-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            {user?.nome}
+          </Button>
+          <Menu
+            id="demo-positioned-menu"
+            aria-labelledby="demo-positioned-button"
+            anchorEl={anchorEl}
+            open={openMenu}
+            onClose={handleCloseMenu}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+          >
+            <MenuItem onClick={() => onClick("/profile")}>Profile</MenuItem>
+            <MenuItem onClick={() => onClick("/logout")}>Logout</MenuItem>
+          </Menu>
           <DrawerHeader>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "ltr" ? (
@@ -141,7 +144,10 @@ export function LayoutDefault({
           path={path}
         />
       </Drawer>
-      <Main open={open}>
+      <Main
+        open={open}
+        width={drawerWidth}
+      >
         <DrawerHeader />
         {children}
       </Main>
