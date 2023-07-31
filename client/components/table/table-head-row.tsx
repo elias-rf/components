@@ -1,4 +1,4 @@
-import MuiTableRow from "@mui/material/TableRow";
+import { TableRow as MuiTableRow } from "@/client/components/ui";
 
 export type TTableHeadRowProps = {
   children: any;

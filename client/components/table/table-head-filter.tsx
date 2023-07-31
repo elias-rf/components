@@ -1,7 +1,9 @@
+import {
+  InputAdornment,
+  TableCell as MuiTableCell,
+  TextField,
+} from "@/client/components/ui";
 import SearchIcon from "@mui/icons-material/Search";
-import InputAdornment from "@mui/material/InputAdornment";
-import MuiTableCell from "@mui/material/TableCell";
-import TextField from "@mui/material/TextField";
 import { TColumn } from "./table";
 
 export type TTableHeadFilterProps = {

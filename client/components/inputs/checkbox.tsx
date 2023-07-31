@@ -2,7 +2,9 @@ import MuiCheckbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
 export function Checkbox({
-  field: { onChange, onBlur, value },
+  onChange,
+  onBlur,
+  value,
   required,
   disabled,
   label,

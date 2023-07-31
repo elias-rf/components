@@ -1,4 +1,4 @@
-import MuiTableHead from "@mui/material/TableHead";
+import { TableHead as MuiTableHead } from "@/client/components/ui";
 
 export type TTableHeadProps = {
   children: any;

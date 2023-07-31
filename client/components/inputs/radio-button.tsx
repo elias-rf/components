@@ -1,11 +1,15 @@
-import FormControl from "@mui/material/FormControl";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormLabel from "@mui/material/FormLabel";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@/client/components/ui";
 
 export function RadioButton({
-  field: { onChange, onBlur, value },
+  onChange,
+  onBlur,
+  value,
   label,
   items,
   labels,
@@ -16,8 +20,9 @@ export function RadioButton({
     <FormControl
       required={required}
       disabled={disabled}
+      variant="outlined"
     >
-      <FormLabel>{label}</FormLabel>
+      <FormLabel sx={{ fontSize: "12px" }}>{label}</FormLabel>
       <RadioGroup
         row
         value={value}
@@ -31,6 +36,7 @@ export function RadioButton({
             control={<Radio />}
             disabled={disabled}
             label={labels ? labels[items.indexOf(item)] : item}
+            sx={{ height: "30px" }}
           />
         ))}
       </RadioGroup>

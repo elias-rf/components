@@ -1,15 +1,19 @@
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import {
+  Checkbox,
+  FormField,
+  FormFields,
+  NumberField,
+  RadioButton,
+  Select,
+  Switch,
+  TextField,
+  TextFieldMultiple,
+} from "@/client/components/inputs";
+import { Divider } from "@/client/components/ui";
 import type { Meta, StoryObj } from "@storybook/react";
 import { JsonViewer } from "@textea/json-viewer";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { Checkbox } from "./checkbox";
-import { Formfield } from "./formfield";
-import { NumberField } from "./number-field";
-import { RadioButton } from "./radio-button";
-import { Select } from "./select";
-import { Switch } from "./switch";
-import { TextField } from "./text-field";
-import { TextFieldMultiple } from "./text-field-multiple";
 
 const meta: Meta<typeof TextField> = {
   component: TextField,
@@ -19,106 +23,203 @@ export default meta;
 type Story = StoryObj<typeof TextField>;
 
 function InputAux() {
+  const [required, setRequired] = React.useState(true);
+  const [disabled, setDisabled] = React.useState(false);
+
   const form = useForm({
     mode: "onTouched",
     defaultValues: {
-      TextField: "a1",
-      NumberField: "1.1",
       Checkbox: true,
       Switch: true,
-      TextFieldMultiple: ["a1"],
       RadioButton: "a1",
-      Select: "a1",
     },
   });
+
   const watchAllFields = form.watch();
+
   return (
     <>
-      <Grid2
-        container
-        spacing={2}
-      >
-        <Formfield
+      <FormFields>
+        <FormField
           name="TextField"
+          defaultValue={"a"}
           control={form.control}
-          render={(field: any) => (
+          rules={{ required: "Requerido", minLength: 5 }}
+          xs={12}
+          sm={6}
+          render={({
+            field: { value, onChange, onBlur },
+            fieldState: { error },
+          }: any) => (
             <TextField
               label="TextField"
-              {...field}
+              required={required}
+              disabled={disabled}
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error ? true : false}
+              helperText={error?.message}
             />
           )}
         />
-        <Formfield
+        <FormField
           name="NumberField"
+          defaultValue="1.1"
           control={form.control}
-          render={(field: any) => (
+          rules={{ required: "Requerido", minLength: 5 }}
+          xs={12}
+          sm={6}
+          render={({
+            field: { value, onChange, onBlur },
+            fieldState: { error },
+          }: any) => (
             <NumberField
               label="NumberField"
-              prefix="US$ "
-              {...field}
+              required={required}
+              disabled={disabled}
+              prefix="BRL "
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error ? true : false}
+              helperText={error?.message}
             />
           )}
         />
-        <Formfield
-          name="Checkbox"
-          control={form.control}
-          render={(field: any) => (
-            <Checkbox
-              label="Checkbox"
-              {...field}
-            />
-          )}
-        />
-        <Formfield
-          name="Switch"
-          control={form.control}
-          render={(field: any) => (
-            <Switch
-              label="Switch"
-              {...field}
-            />
-          )}
-        />
-        <Formfield
+
+        <FormField
           name="TextFieldMultiple"
+          defaultValue={["a1"]}
           control={form.control}
-          render={(field: any) => (
+          rules={{ required: "Requerido", minLength: 5 }}
+          xs={12}
+          sm={6}
+          render={({
+            field: { value, onChange, onBlur },
+            fieldState: { error },
+          }: any) => (
             <TextFieldMultiple
               label="TextFieldMultiple"
               items={["a1", "a2"]}
               labels={["A1", "A2"]}
-              {...field}
+              required={required}
+              disabled={disabled}
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error ? true : false}
+              helperText={error?.message}
             />
           )}
         />
-        <Formfield
-          name="RadioButton"
-          control={form.control}
-          render={(field: any) => (
-            <RadioButton
-              label="RadioButton"
-              items={["a1", "a2", "a3"]}
-              labels={["A1", "A2", "A3"]}
-              required={true}
-              disabled={false}
-              {...field}
-            />
-          )}
-        />
-        <Formfield
+
+        <FormField
           name="Select"
+          defaultValue="a1"
           control={form.control}
-          render={(field: any) => (
+          rules={{ required: "Requerido", minLength: 5 }}
+          xs={12}
+          sm={6}
+          render={({
+            field: { value, onChange, onBlur },
+            fieldState: { error },
+          }: any) => (
             <Select
               label="Select"
               items={["a1", "a2", "a3"]}
               labels={["A1", "A2", "A3"]}
-              {...field}
+              required={required}
+              disabled={disabled}
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error ? true : false}
+              helperText={error?.message}
             />
           )}
         />
-      </Grid2>
-      <JsonViewer value={{ values: watchAllFields, state: form.formState }} />
+        <FormField
+          name="Checkbox"
+          defaultValue={true}
+          control={form.control}
+          xs={12}
+          sm={6}
+          render={({
+            field: { value, onChange, onBlur },
+            fieldState: { error },
+          }: any) => (
+            <Checkbox
+              label="Checkbox"
+              required={required}
+              disabled={disabled}
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error ? true : false}
+              helperText={error?.message}
+            />
+          )}
+        />
+        <FormField
+          name="Switch"
+          defaultValue={true}
+          control={form.control}
+          xs={12}
+          sm={6}
+          render={({
+            field: { value, onChange, onBlur },
+            fieldState: { error },
+          }: any) => (
+            <Switch
+              label="Switch"
+              required={required}
+              disabled={disabled}
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error ? true : false}
+              helperText={error?.message}
+            />
+          )}
+        />
+        <FormField
+          name="RadioButton"
+          defaultValue="a1"
+          control={form.control}
+          xs={12}
+          sm={6}
+          render={({
+            field: { value, onChange, onBlur },
+            fieldState: { error },
+          }: any) => (
+            <RadioButton
+              label="RadioButton"
+              items={["a1", "a2", "a3"]}
+              labels={["A1", "A2", "A3"]}
+              required={required}
+              disabled={disabled}
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error ? true : false}
+              helperText={error?.message}
+            />
+          )}
+        />
+      </FormFields>
+      <Divider />
+      <Switch
+        label="required"
+        value={required}
+        onChange={(e: any) => setRequired(e)}
+      />
+      <Switch
+        label="disabled"
+        value={disabled}
+        onChange={(e: any) => setDisabled(e)}
+      />
+      <JsonViewer value={{ values: watchAllFields }} />
     </>
   );
 }

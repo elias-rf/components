@@ -1,10 +1,8 @@
+import { Select } from "@/client/components/inputs";
+import { TextField } from "@/client/components/inputs/text-field";
+import { Button, Chip, Grid } from "@/client/components/ui";
 import { TWhere } from "@/types";
-import Button from "@mui/material/Button";
-import Chip from "@mui/material/Chip";
-import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Unstable_Grid2";
+import { SelectChangeEvent } from "@mui/material/Select";
 import React, { useState } from "react";
 
 type TSearchProps = {
@@ -13,7 +11,7 @@ type TSearchProps = {
   onWhere: (event: TWhere[]) => void;
 };
 
-// retorna uma lista de igualdades de acordo como o tipo do campo
+// retorna uma lista de igualdades de acordo como o tipo do campoß
 function getEqualitys(
   field: string,
   schema: { name: string; typeField?: string }[]
@@ -125,7 +123,7 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
   return (
     <Grid
       container
-      spacing={1}
+      spacing={2}
       direction={"column"}
     >
       <Grid
@@ -160,18 +158,9 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
             label="Campo"
             value={fieldSelect}
             onChange={handleSelectField}
-            size="small"
-            fullWidth
-          >
-            {schema.map(({ name, label }: { name: string; label?: string }) => (
-              <MenuItem
-                value={name}
-                key={name}
-              >
-                {label || name}
-              </MenuItem>
-            ))}
-          </Select>
+            items={schema.map(({ name }: { name: string }) => name)}
+            labels={schema.map(({ label }: { label: string }) => label)}
+          />
         </Grid>
         <Grid
           xs={12}
@@ -182,19 +171,16 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
             value={equalitySelect}
             size="small"
             fullWidth
-            onChange={(event) => setEqualitySelect(event.target.value || "")}
-          >
-            {Object.entries(getEqualitys(fieldSelect, schema)).map(
-              ([key, value]: any) => (
-                <MenuItem
-                  value={key}
-                  key={key}
-                >
-                  {value}
-                </MenuItem>
-              )
+            onChange={(event: any) =>
+              setEqualitySelect(event.target.value || "")
+            }
+            items={Object.entries(getEqualitys(fieldSelect, schema)).map(
+              ([key]) => key
             )}
-          </Select>
+            labels={Object.entries(getEqualitys(fieldSelect, schema)).map(
+              ([_key, value]) => value
+            )}
+          />
         </Grid>
         <Grid
           xs={12}

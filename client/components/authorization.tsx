@@ -4,7 +4,7 @@ import Page403 from "../pages/page_403";
 
 interface AuthorizationProps {
   children: React.ReactNode;
-  can: boolean;
+  can?: boolean;
 }
 
 export function Authorization({ children, can }: AuthorizationProps) {

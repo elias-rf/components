@@ -1,58 +1,39 @@
-import MuiTextField from "@mui/material/TextField";
+import { TextField as MuiTextField } from "@/client/components/ui";
+import { NumericFormat } from "react-number-format";
 
-import React from "react";
-import { NumericFormat, NumericFormatProps } from "react-number-format";
-
-interface CustomProps {
-  onChange: (event: { target: { name: string; value: string } }) => void;
-  name: string;
-}
-
-const NumericFormatCustom = React.forwardRef<NumericFormatProps, CustomProps>(
-  function NumericFormatCustom(props, ref) {
-    const { onChange, ...other } = props;
-
-    return (
-      <NumericFormat
-        {...other}
-        getInputRef={ref}
-        onValueChange={(values) => {
-          onChange({
-            target: {
-              name: props.name,
-              value: values.value,
-            },
-          });
-        }}
-        thousandSeparator="."
-        decimalSeparator=","
-        fixedDecimalScale
-        decimalScale={2}
-        valueIsNumericString
-      />
-    );
-  }
-);
-
-export function NumberField2({
-  field: { onChange, onBlur, value },
+export const NumberField = ({
   label,
-}: any) {
+  onChange,
+  onBlur,
+  value,
+  required,
+  disabled,
+  error,
+  helperText,
+  decimals = 2,
+}: any) => {
   return (
-    <MuiTextField
+    <NumericFormat
       fullWidth
       size="small"
       variant="outlined"
-      label={label}
       InputLabelProps={{
         shrink: true,
       }}
+      thousandSeparator="."
+      decimalSeparator=","
+      fixedDecimalScale
+      decimalScale={decimals}
+      valueIsNumericString
       value={value}
-      onChange={onChange}
+      customInput={MuiTextField}
+      label={label}
+      onValueChange={(values) => onChange(values.value)}
       onBlur={onBlur}
-      InputProps={{
-        inputComponent: NumericFormatCustom as any,
-      }}
+      error={error}
+      helperText={helperText}
+      required={required}
+      disabled={disabled}
     />
   );
-}
+};

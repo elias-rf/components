@@ -1,4 +1,4 @@
-import Typography from "@mui/material/Typography";
+import { Typography } from "@/client/components/ui";
 
 export const Topbar = ({ onClick }: { onClick: (to: string) => void }) => {
   return (

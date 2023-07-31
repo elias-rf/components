@@ -1,5 +1,5 @@
+import { Button } from "@/client/components/ui";
 import type { TFormStatus } from "@/types";
-import Button from "@mui/material/Button";
 import { UseFormReturn } from "react-hook-form";
 
 export type TButtonSaveProps = {

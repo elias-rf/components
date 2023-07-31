@@ -1,6 +1,6 @@
 import React from "react";
 
-import Button from "@mui/material/Button";
+import { Button } from "@/client/components/ui/button";
 import { Modal } from "./modal";
 
 interface IMessageBoxProps {

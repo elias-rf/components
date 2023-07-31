@@ -2,7 +2,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import MuiSwitch from "@mui/material/Switch";
 
 export function Switch({
-  field: { onChange, onBlur, value },
+  onChange,
+  onBlur,
+  value,
   required,
   disabled,
   label,
@@ -15,7 +17,7 @@ export function Switch({
       control={
         <MuiSwitch
           checked={value}
-          onChange={onChange}
+          onChange={(e) => onChange(e.target.checked)}
           onBlur={onBlur}
         />
       }

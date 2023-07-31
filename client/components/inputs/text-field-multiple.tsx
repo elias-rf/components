@@ -1,25 +1,30 @@
+import { Box, TextField as MuiTextField } from "@/client/components/ui";
 import Autocomplete from "@mui/material/Autocomplete";
-import Box from "@mui/material/Box";
-import MuiTextField from "@mui/material/TextField";
 
 type TextFieldMultipleProps = {
   required?: boolean;
+  disabled?: boolean;
   label: string;
   items: string[];
   labels?: string[];
-  field: {
-    onChange: (vlr: string[]) => void;
-    onBlur: (e: any) => void;
-    value: string[];
-  };
+  onChange: (vlr: string[]) => void;
+  onBlur: (e: any) => void;
+  value: string[];
+  error?: boolean;
+  helperText?: string;
 };
 
 export function TextFieldMultiple({
-  field: { onChange, onBlur, value },
+  onChange,
+  onBlur,
+  value,
   required,
+  disabled,
   label,
   labels,
   items,
+  error,
+  helperText,
 }: TextFieldMultipleProps) {
   function handleChange(e: any, vlr: any) {
     onChange(vlr);
@@ -41,6 +46,7 @@ export function TextFieldMultiple({
       value={value}
       onBlur={onBlur}
       options={items}
+      disabled={disabled}
       getOptionLabel={getLabel}
       renderOption={(props, option) => (
         <Box
@@ -54,11 +60,14 @@ export function TextFieldMultiple({
         <MuiTextField
           {...params}
           required={required}
+          disabled={disabled}
           label={label}
           variant="outlined"
           InputLabelProps={{
             shrink: true,
           }}
+          error={error}
+          helperText={helperText}
         />
       )}
     />

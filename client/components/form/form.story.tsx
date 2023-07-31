@@ -1,12 +1,13 @@
-import { ButtonCancel } from "@/client/components/form/button-cancel";
-import { ButtonDel } from "@/client/components/form/button-del";
-import { ButtonEdit } from "@/client/components/form/button-edit";
-import { ButtonNew } from "@/client/components/form/button-new";
-import { ButtonSave } from "@/client/components/form/button-save";
+import {
+  ButtonCancel,
+  ButtonDel,
+  ButtonEdit,
+  ButtonNew,
+  ButtonSave,
+} from "@/client/components/form";
+import { TextField } from "@/client/components/inputs/text-field";
+import { Box, Stack } from "@/client/components/ui";
 import type { TFormStatus } from "@/types";
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { useForm } from "react-hook-form";

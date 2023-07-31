@@ -1,8 +1,10 @@
+import {
+  Table as MuiTable,
+  TableCell as MuiTableCell,
+  TableRow as MuiTableRow,
+} from "@/client/components/ui";
 import { TFilter, TId, TSelection, TSort } from "@/types";
 import { deepEqual } from "@/utils/object/deep-equal";
-import MuiTable from "@mui/material/Table";
-import MuiTableCell from "@mui/material/TableCell";
-import MuiTableRow from "@mui/material/TableRow";
 import { useTheme } from "@mui/material/styles";
 import React from "react";
 import { useForm } from "../../lib/hooks/use-form";
