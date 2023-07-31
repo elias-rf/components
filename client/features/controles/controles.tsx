@@ -1,7 +1,4 @@
-import Box from "@mui/material/Box";
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
-import Typography from "@mui/material/Typography";
+import { Box, Tab, Tabs, Typography } from "@/client/components/ui";
 import React from "react";
 import { EstExt } from "./est_ext/est-ext";
 import { EstInt } from "./est_int/est-int";
@@ -32,7 +29,7 @@ export function Controles() {
       <Typography variant="h5">Controle de Produção</Typography>
       <Tabs
         value={tab}
-        onChange={(_, id) => setTab(id)}
+        onChange={(_: any, id: any) => setTab(id)}
       >
         <Tab
           value="operacao"

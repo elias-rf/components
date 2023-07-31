@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+import { Box } from "@/client/components/ui";
 import { AgendaTelefone } from "../../features/agenda-telefone/agenda-telefone";
 
 /**

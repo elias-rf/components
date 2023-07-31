@@ -1,19 +1,21 @@
+import {
+  Box,
+  Checkbox,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@/client/components/ui";
 import { trpc } from "@/utils/trpc/trpc";
 import AdminPanelSettingsTwoToneIcon from "@mui/icons-material/AdminPanelSettingsTwoTone";
 import CloseIcon from "@mui/icons-material/Close";
-import Box from "@mui/material/Box";
-import Checkbox from "@mui/material/Checkbox";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Unstable_Grid2";
 import React from "react";
 
 export function Permissions({
@@ -45,10 +47,9 @@ export function Permissions({
   }
   function handlePermission(permission: string) {
     if (groupCurrent === 0) return;
-
+    const data = permited.data || [];
     const exist =
-      permited.data.findIndex((prm: any) => permission === prm.subject_id) !==
-      -1;
+      data.findIndex((prm: any) => permission === prm.subject_id) !== -1;
 
     if (exist) {
       delPermited.mutate({
@@ -113,7 +114,7 @@ export function Permissions({
                       key={group.group_id}
                     >
                       <ListItemButton
-                        onClick={() => handleGroup(group.group_id)}
+                        onClick={() => handleGroup(group.group_id || 0)}
                         selected={group.group_id === groupCurrent}
                       >
                         <ListItemText primary={group.name} />

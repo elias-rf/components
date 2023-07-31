@@ -1,8 +1,6 @@
+import { Box, MenuItem, TextField } from "@/client/components/ui";
 import { TSelection } from "@/types";
 import { day } from "@/utils/date/day";
-import Box from "@mui/material/Box";
-import MenuItem from "@mui/material/MenuItem";
-import TextField from "@mui/material/TextField";
 import React, { useMemo } from "react";
 import { OperacaoDiario } from "./operacao-diario";
 import { OperacaoMensal } from "./operacao-mensal";

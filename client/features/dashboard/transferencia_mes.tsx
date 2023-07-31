@@ -1,7 +1,6 @@
+import { Grid, Typography } from "@/client/components/ui";
 import { day } from "@/utils/date/day";
 import { trpc } from "@/utils/trpc/trpc";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Unstable_Grid2";
 
 function quantidadeProduto(data: any[] | undefined, prod: string) {
   if (!data) return 0;

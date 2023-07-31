@@ -1,6 +1,6 @@
+import { Box } from "@/client/components/ui";
 import { TSelection } from "@/types";
 import { day } from "@/utils/date/day";
-import Box from "@mui/material/Box";
 import React from "react";
 import { EsterilizacaoExternaDiario } from "./est-ext-diario";
 import { EsterilizacaoExternaMensal } from "./est-ext-mensal";

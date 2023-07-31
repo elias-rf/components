@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+import { Box } from "@/client/components/ui";
 import { PrecosCliente } from "../../features/precos/precos-cliente";
 
 export default function Precos() {

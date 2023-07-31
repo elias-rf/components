@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+import { Box } from "@/client/components/ui";
 import { GroupSubject } from "../../features/permissoes/group-subject";
 
 export default function Permissoes() {

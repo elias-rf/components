@@ -1,6 +1,5 @@
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
+import { Stack, TextField } from "@/client/components/ui";
+import { Button } from "@/client/components/ui/button";
 import type { Meta, StoryObj } from "@storybook/react";
 import { JsonViewer } from "@textea/json-viewer";
 import { useForm } from "react-hook-form";

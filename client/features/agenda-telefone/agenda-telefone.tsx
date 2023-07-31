@@ -4,15 +4,11 @@ import { ButtonEdit } from "@/client/components/form/button-edit";
 import { ButtonNew } from "@/client/components/form/button-new";
 import { ButtonSave } from "@/client/components/form/button-save";
 import { Table } from "@/client/components/table";
+import { Box, Divider, Grid, Stack, Typography } from "@/client/components/ui";
 import type { TFilter, TFormStatus, TSelection, TSort } from "@/types";
 import { deepEqual } from "@/utils/object/deep-equal";
 import { toStringProperties } from "@/utils/object/to-string-properties";
 import { trpc } from "@/utils/trpc/trpc";
-import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import Grid2 from "@mui/material/Unstable_Grid2";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { agendaTelefoneColumns } from "./agenda-telefone_columns";
@@ -170,66 +166,65 @@ export function AgendaTelefone({ onState }: any) {
           onSort={handleSort}
         >
           {() => (
-            <Grid2
+            <Grid
               container
               direction={"column"}
               spacing={1}
               sx={{
                 mb: 4,
                 p: 1,
-                border: "2px solid rgba(25, 118, 210, 0.2)",
               }}
             >
-              <Grid2
+              <Grid
                 container
                 direction={"row"}
                 spacing={2}
               >
-                <Grid2>
+                <Grid>
                   <ButtonEdit
                     form={form}
                     status={status}
                     onStatus={setStatus}
                   />
-                </Grid2>
-                <Grid2>
+                </Grid>
+                <Grid>
                   <ButtonDel
                     form={form}
                     status={status}
                     onStatus={setStatus}
                     onClick={handleButtonDel}
                   />
-                </Grid2>
-              </Grid2>
-              <Grid2>
+                </Grid>
+              </Grid>
+              <Grid>
                 <AgendaTelefoneForm
                   form={form}
                   status={status}
                 />
-              </Grid2>
-              <Grid2
+              </Grid>
+              <Grid
                 container
                 direction="row"
                 justifyContent="flex-end"
                 alignItems="center"
                 spacing={2}
               >
-                <Grid2>
+                <Grid>
                   <ButtonSave
                     form={form}
                     onStatus={setStatus}
                     onClick={handleButtonSave}
                   />
-                </Grid2>
-                <Grid2>
+                </Grid>
+                <Grid>
                   <ButtonCancel
                     form={form}
                     status={status}
                     onStatus={setStatus}
                   />
-                </Grid2>
-              </Grid2>
-            </Grid2>
+                </Grid>
+              </Grid>
+            </Grid>
           )}
         </Table>
       </Stack>

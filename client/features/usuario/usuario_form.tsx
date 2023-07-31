@@ -1,12 +1,13 @@
+import {
+  Autocomplete,
+  Checkbox,
+  FormControlLabel,
+  Grid,
+  TextField,
+} from "@/client/components/ui";
 import { TFormStatus } from "@/types";
-import { trpc } from "@/utils/trpc/trpc";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
-import Autocomplete from "@mui/material/Autocomplete";
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import TextField from "@mui/material/TextField";
-import Grid2 from "@mui/material/Unstable_Grid2";
 import { UseFormReturn } from "react-hook-form";
 import { usuarioColumns } from "./usuario_columns";
 
@@ -19,14 +20,14 @@ type TUsuarioFormProps = {
 };
 
 export function UsuarioForm({ form, status }: TUsuarioFormProps) {
-  const groupList = trpc.group.list.useQuery({ sort: { name: "asc" } });
+  // const groupList = trpc.group.list.useQuery({ sort: { name: "asc" } });
 
   return (
-    <Grid2
+    <Grid
       container
       spacing={2}
     >
-      <Grid2
+      <Grid
         xs={12}
         sm={2}
         lg={1}
@@ -43,8 +44,8 @@ export function UsuarioForm({ form, status }: TUsuarioFormProps) {
           label={usuarioColumns[0].label}
           {...form.register(usuarioColumns[0].name)}
         />
-      </Grid2>
-      <Grid2
+      </Grid>
+      <Grid
         xs={12}
         sm={10}
         lg={5}
@@ -61,8 +62,8 @@ export function UsuarioForm({ form, status }: TUsuarioFormProps) {
           {...form.register(usuarioColumns[1].name)}
           disabled={status === "view"}
         />
-      </Grid2>
-      <Grid2
+      </Grid>
+      <Grid
         xs={12}
         sm={4}
         lg={2}
@@ -79,8 +80,8 @@ export function UsuarioForm({ form, status }: TUsuarioFormProps) {
           {...form.register(usuarioColumns[2].name)}
           disabled={status === "view"}
         />
-      </Grid2>
-      <Grid2
+      </Grid>
+      <Grid
         xs={12}
         sm={8}
         lg={4}
@@ -96,8 +97,8 @@ export function UsuarioForm({ form, status }: TUsuarioFormProps) {
           {...form.register(usuarioColumns[3].name)}
           disabled={status === "view"}
         />
-      </Grid2>
-      <Grid2
+      </Grid>
+      <Grid
         xs={4}
         sm={2}
         lg={1}
@@ -107,8 +108,8 @@ export function UsuarioForm({ form, status }: TUsuarioFormProps) {
           label={usuarioColumns[4].label}
           {...form.register(usuarioColumns[4].name)}
         />
-      </Grid2>
-      <Grid2
+      </Grid>
+      <Grid
         xs={8}
         sm={6}
         lg={4}
@@ -117,8 +118,8 @@ export function UsuarioForm({ form, status }: TUsuarioFormProps) {
           multiple
           disableCloseOnSelect
           options={["Option 1", "Option 2", "Option 3"]}
-          getOptionLabel={(option) => option}
-          renderOption={(props, option, { selected }) => (
+          getOptionLabel={(option: any) => option}
+          renderOption={(props: any, option: any, { selected }: any) => (
             <li {...props}>
               <Checkbox
                 icon={icon}
@@ -129,7 +130,7 @@ export function UsuarioForm({ form, status }: TUsuarioFormProps) {
               {option}
             </li>
           )}
-          renderInput={(params) => (
+          renderInput={(params: any) => (
             <TextField
               {...params}
               fullWidth
@@ -143,7 +144,7 @@ export function UsuarioForm({ form, status }: TUsuarioFormProps) {
             />
           )}
         />
-      </Grid2>
-    </Grid2>
+      </Grid>
+    </Grid>
   );
 }

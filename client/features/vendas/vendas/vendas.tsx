@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Table } from "@/client/components/table";
 import { day } from "@/utils/date/day";
 import React from "react";

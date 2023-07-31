@@ -1,5 +1,5 @@
+import { Box } from "@/client/components/ui";
 import { TSelection } from "@/types";
-import Box from "@mui/material/Box";
 import React from "react";
 import { TransferenciaDiario } from "./transferencia-diario";
 import { TransferenciaMensal } from "./transferencia-mensal";

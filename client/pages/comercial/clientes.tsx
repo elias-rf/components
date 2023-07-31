@@ -1,5 +1,5 @@
+import { Box } from "@/client/components/ui";
 import { Cliente } from "@/client/features/cliente/cliente";
-import Box from "@mui/material/Box";
 
 export default function Clientes() {
   return (

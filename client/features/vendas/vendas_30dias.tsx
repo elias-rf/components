@@ -1,7 +1,7 @@
+import { Typography } from "@/client/components/ui";
 import { day } from "@/utils/date/day";
 import { formatMoney } from "@/utils/format/format-money";
 import { trpc } from "@/utils/trpc/trpc";
-import { Typography } from "@mui/material";
 import React from "react";
 import {
   Line,

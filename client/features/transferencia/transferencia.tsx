@@ -1,9 +1,13 @@
+import {
+  Button,
+  Chip,
+  Grid,
+  TextField,
+  Typography,
+} from "@/client/components/ui";
 import { useArray } from "@/client/lib/hooks/use-array";
 import { useInput } from "@/client/lib/hooks/use-input";
 import { trpc } from "@/utils/trpc/trpc";
-import { Chip, TextField, Typography } from "@mui/material";
-import Button from "@mui/material/Button";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import React from "react";
 
 // 000001000017 , 000001000025, 000001000033
@@ -55,14 +59,14 @@ export function Transferencia() {
   return (
     <>
       <Typography variant="h5">Transferência</Typography>
-      <Grid2
+      <Grid
         container
         spacing={2}
         direction="row"
         justifyContent="flex-start"
         alignItems="center"
       >
-        <Grid2>
+        <Grid>
           <TextField
             label="Quantidade Física"
             autoComplete="off"
@@ -70,16 +74,16 @@ export function Transferencia() {
             {...inputQuantidade.props}
             disabled={parseInt(quantidade) > 0}
           />
-        </Grid2>
-      </Grid2>
-      <Grid2
+        </Grid>
+      </Grid>
+      <Grid
         container
         spacing={2}
         direction="row"
         justifyContent="flex-start"
         alignItems="center"
       >
-        <Grid2>
+        <Grid>
           <TextField
             label="Serial"
             autoComplete="off"
@@ -87,8 +91,8 @@ export function Transferencia() {
             {...inputSerial.props}
             disabled={isNaN(parseInt(quantidade))}
           />
-        </Grid2>
-        <Grid2>
+        </Grid>
+        <Grid>
           <Button
             variant="contained"
             onClick={transfer}
@@ -96,8 +100,8 @@ export function Transferencia() {
           >
             Transferir
           </Button>
-        </Grid2>
-      </Grid2>
+        </Grid>
+      </Grid>
       <Typography
         variant="h5"
         className={

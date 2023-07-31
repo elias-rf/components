@@ -1,5 +1,4 @@
-import Input from "@mui/material/Input";
-import Stack from "@mui/material/Stack";
+import { Input, Stack } from "@/client/components/ui";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useInput } from "./use-input";
 

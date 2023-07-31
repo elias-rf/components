@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+import { Box } from "@/client/components/ui";
 import { Usuario } from "../../features/usuario/usuario";
 
 export default function Usuarios() {

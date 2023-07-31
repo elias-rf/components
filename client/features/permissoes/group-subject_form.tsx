@@ -1,6 +1,5 @@
+import { Grid, TextField } from "@/client/components/ui";
 import { TFormStatus } from "@/types";
-import TextField from "@mui/material/TextField";
-import Grid2 from "@mui/material/Unstable_Grid2";
 import { UseFormReturn } from "react-hook-form";
 
 type TGroupSubjectFormProps = {
@@ -10,11 +9,11 @@ type TGroupSubjectFormProps = {
 
 export function GroupSubjectForm({ form, status }: TGroupSubjectFormProps) {
   return (
-    <Grid2
+    <Grid
       container
       spacing={2}
     >
-      <Grid2 xs={6}>
+      <Grid xs={6}>
         <TextField
           required
           fullWidth
@@ -27,8 +26,8 @@ export function GroupSubjectForm({ form, status }: TGroupSubjectFormProps) {
           disabled={status === "view"}
           {...form.register("group_id")}
         />
-      </Grid2>
-      <Grid2 xs={6}>
+      </Grid>
+      <Grid xs={6}>
         <TextField
           fullWidth
           size="small"
@@ -40,7 +39,7 @@ export function GroupSubjectForm({ form, status }: TGroupSubjectFormProps) {
           disabled={status === "view"}
           {...form.register("subject_id")}
         />
-      </Grid2>
-    </Grid2>
+      </Grid>
+    </Grid>
   );
 }
