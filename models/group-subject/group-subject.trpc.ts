@@ -1,3 +1,4 @@
+import { TGroupSubject } from "@/models/group-subject/group-subject.type";
 import {
   TCreateArgs,
   TDelArgs,
@@ -6,7 +7,6 @@ import {
   TUpdateArgs,
 } from "@/types";
 import { publicProcedure, router } from "@/utils/trpc/trpc-server";
-
 import { zd } from "@/utils/zod/zod";
 import { models } from "../models";
 
@@ -16,7 +16,7 @@ export const groupSubjectRouter = router({
   list: publicProcedure
     .input((qry) => qry as TListArgs)
     .query((req) => {
-      return model.list(req.input);
+      return model.list(req.input) as Promise<TGroupSubject[]>;
     }),
   read: publicProcedure
     .input((qry) => qry as TReadArgs)
@@ -39,11 +39,14 @@ export const groupSubjectRouter = router({
       return model.del(req.input);
     }),
   can: publicProcedure
-    .input(zd.object({ usuario_id: zd.number(), subject_id: zd.string() }))
+    .input(zd.object({ user_id: zd.number(), subject_id: zd.string() }))
     .query((req) => model.can(req.input)),
   listPermissions: publicProcedure
     .input(
       zd.object({ group_id: zd.string(), subject_ids: zd.array(zd.string()) })
     )
-    .query((req) => model.listPermissions(req.input)),
+    .query(
+      (req) =>
+        model.listPermissions(req.input) as Promise<{ subject_id: string }[]>
+    ),
 });

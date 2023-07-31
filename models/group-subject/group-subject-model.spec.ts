@@ -12,7 +12,7 @@ describe("group-subject-model", () => {
     tracker.on.select("groupSubject").response([{ idSubject: "prm1" }]);
 
     const rsp = await modelsMock.groupSubject.can({
-      usuario_id: 1,
+      user_id: 1,
       subject_id: "prm1",
     });
 

@@ -37,15 +37,9 @@ export class GroupSubjectModel extends CrudModel {
     return renameFieldToName(resp, this.table.fields);
   }
 
-  async can({
-    usuario_id,
-    subject_id,
-  }: {
-    usuario_id: number;
-    subject_id: string;
-  }) {
+  async can({ user_id, subject_id }: { user_id: number; subject_id: string }) {
     const groups = await this.models.usuario.read({
-      id: { usuario_id },
+      id: { user_id },
       select: ["group_id"],
     });
 

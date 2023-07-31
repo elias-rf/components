@@ -1,14 +1,10 @@
 import { TFieldDef, TOrder, TSelect, TWhere } from "@/types";
-//#region import
-//#endregion
+
 export interface TGrupoPk {
-  nome_grupo?: string;
-  uf_old?: string;
+  group_id?: number;
 }
 export interface TGrupo extends TGrupoPk {
-  grupo_id?: string;
-  uf_id?: number;
-  uf?: string;
+  name?: string;
 }
 
 export type TGrupoFields = keyof Required<TGrupo>;

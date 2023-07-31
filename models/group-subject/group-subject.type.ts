@@ -1,10 +1,11 @@
 import { TFieldDef, TOrder, TSelect, TWhere } from "@/types";
-//#region import
-//#endregion
+
 export interface TGroupSubjectPk {
   group_id?: string;
   subject_id?: string;
 }
+
+export type TGroupSubject = TGroupSubjectPk;
 
 export type TGroupSubjectFields = keyof Required<TGroupSubject>;
 
@@ -41,8 +42,6 @@ export type TGroupSubjectDel = (args: {
   id: TGroupSubjectIds;
 }) => Promise<number>;
 
-//#region def
-export type TGroupSubject = TGroupSubjectPk;
 export type TGroupSubjectCan = (args: {
   id: TGroupSubjectIds;
 }) => Promise<boolean>;
@@ -63,14 +62,7 @@ export type TGroupSubjectCrud = {
 };
 
 export type TGroupSubjectModel = TGroupSubjectCrud & {
-  //#region query
-
-  //#endregion
-  //#region mutation
-  //#endregion
-  //#region type
   query: { can: TGroupSubjectCan };
-  //#endregion
 };
 
 export type TGroupSubjectRpc = TGroupSubjectModel;
