@@ -15,14 +15,14 @@ type TButtonVariant = "contained" | "outlined" | "text";
 
 type TButtonProps = {
   children: string;
-  color: TButtonColor;
-  disabled: boolean;
-  endIcon: any;
-  startIcon: any;
-  fullWidth: boolean;
-  href: string;
-  size: TButtonSize;
-  variant: TButtonVariant;
+  color?: TButtonColor;
+  disabled?: boolean;
+  endIcon?: any;
+  startIcon?: any;
+  fullWidth?: boolean;
+  href?: string;
+  size?: TButtonSize;
+  variant?: TButtonVariant;
   onClick: (e: any) => void;
 };
 

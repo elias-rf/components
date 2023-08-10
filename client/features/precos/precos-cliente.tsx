@@ -14,7 +14,7 @@ const produtos: { grupo: TGrupos; label: string }[] = [
 const style = {
   produto: "px-3 py-2 text-xl font-bold text-left text-white bg-blue-900",
   quantidade:
-    "text-xl pr-1 w-32 font-bold text-right bg-blue-100 border-transparent",
+    "text-xl pr-1 w-32 font-bold text-right bg-blue-100 border-transparent ",
   tabela: "text-xl pr-1 w-40 text-right bg-yellow-50 border-transparent",
   ofertado:
     "text-xl pr-1 w-40 font-bold text-right bg-yellow-400 border-transparent",
@@ -79,7 +79,10 @@ function Produto({
         </td>
       </tr>
       <tr>
-        <td className="py-1" />
+        <td
+          colSpan={4}
+          className="border-0 border-t-2 border-solid border-gray-400 py-1"
+        />
       </tr>
     </React.Fragment>
   );
@@ -100,7 +103,7 @@ export function PrecosCliente() {
         {" >>> Lentes + Metilcelulose + Injetores"}
       </p>
       <p className={"text-lg font-bold"}>Descontos por quantidades e pacotes</p>
-      <div className="my-2 w-min border border-black bg-gray-200 p-4">
+      <div className="my-2 w-min border border-solid border-black bg-gray-200 p-4">
         <table className="text-right">
           <tbody>
             <tr>
@@ -117,7 +120,7 @@ export function PrecosCliente() {
                 className="px-2"
               ></td>
               <td
-                className="min-w-[150px] border-2 border-gray-400 bg-white px-4 text-center align-top font-bold"
+                className="min-w-[150px] border-2 border-solid border-gray-400 bg-white px-4 text-center align-top font-bold"
                 rowSpan={9}
               >
                 <p className="mb-3 mt-1 text-xl">Combo 1</p>
@@ -143,7 +146,7 @@ export function PrecosCliente() {
                 className="px-2"
               ></td>
               <td
-                className="w-96 min-w-[150px] border-2 border-gray-400 bg-white px-4 text-center align-top font-bold"
+                className="w-96 min-w-[150px] border-2 border-solid border-gray-400 bg-white px-4 text-center align-top font-bold"
                 rowSpan={9}
               >
                 <p className="mb-3 mt-1 text-xl">Combo 2</p>

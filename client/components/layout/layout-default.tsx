@@ -72,6 +72,7 @@ export function LayoutDefault({
         position="fixed"
         open={open}
         width={drawerWidth}
+        className="print:invisible"
       >
         <Toolbar>
           <IconButton
@@ -98,20 +99,11 @@ export function LayoutDefault({
         variant="persistent"
         anchor="left"
         open={open}
+        className="print:invisible"
       >
         <div className="flex items-center justify-between">
-          <Button
-            id="demo-positioned-button"
-            aria-controls={open ? "demo-positioned-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-          >
-            {user?.nome}
-          </Button>
+          <Button onClick={handleClick}>{user?.nome}</Button>
           <Menu
-            id="demo-positioned-menu"
-            aria-labelledby="demo-positioned-button"
             anchorEl={anchorEl}
             open={openMenu}
             onClose={handleCloseMenu}
@@ -149,7 +141,7 @@ export function LayoutDefault({
         width={drawerWidth}
       >
         <DrawerHeader />
-        {children}
+        <Box className="print:visible">{children}</Box>
       </Main>
     </Box>
   );
