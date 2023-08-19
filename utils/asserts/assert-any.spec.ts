@@ -1,4 +1,5 @@
 import { assertAny } from "@/utils/asserts/assert-any";
+import { expect, it, describe } from "vitest";
 
 describe("assertAny", () => {
   it("must be true", () => {

@@ -1,4 +1,5 @@
 import { deepEqual } from "./deep-equal";
+import { expect, it, describe } from "vitest";
 
 describe("deepEqual", () => {
   it("deve comparar objetos vazios", () => {

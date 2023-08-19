@@ -1,4 +1,5 @@
 import { zsLimit } from "@/utils/zod/zs-limit";
+import { expect, it, describe } from "vitest";
 
 describe("limit", () => {
   it("deve invalidar limit não inteiros", () => {

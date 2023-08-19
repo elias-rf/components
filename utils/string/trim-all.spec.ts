@@ -1,4 +1,5 @@
 import { trimAll } from "./trim-all";
+import { expect, it, describe } from "vitest";
 
 describe("trimAll", () => {
   it("deve limpar 1 caracter", () => {

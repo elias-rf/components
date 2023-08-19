@@ -1,4 +1,5 @@
 import { template } from "./template";
+import { expect, it, describe } from "vitest";
 
 describe("template", () => {
   it("deve substituir com object", () => {

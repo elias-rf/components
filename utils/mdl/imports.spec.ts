@@ -1,4 +1,5 @@
 import { parseImport, stringifyImport } from "./imports";
+import { expect, it, describe } from "vitest";
 
 describe("imports", () => {
   it("import default", () => {

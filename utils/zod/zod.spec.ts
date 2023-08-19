@@ -1,4 +1,5 @@
 import { zd, zod } from "./zod";
+import { expect, it, describe } from "vitest";
 
 describe("zod validator", () => {
   it("string text", () => {

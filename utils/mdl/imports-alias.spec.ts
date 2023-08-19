@@ -1,4 +1,5 @@
 import { parseAlias, stringifyAlias } from "./imports-alias";
+import { expect, it, describe } from "vitest";
 
 describe("import alias", () => {
   it("sem alias", () => {

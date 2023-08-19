@@ -1,4 +1,5 @@
 import { zDate } from "./z-date";
+import { expect, it, describe } from "vitest";
 
 describe("valida Data", () => {
   it("deve aceitar data ISO", () => {
