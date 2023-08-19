@@ -1,4 +1,4 @@
-import { Button } from "@/client/components/ui";
+import { Button } from "@mui/material";
 import type { TFormStatus } from "@/types";
 import { UseFormReturn } from "react-hook-form";
 

@@ -1,4 +1,4 @@
-import { Box, TextField as MuiTextField } from "@/client/components/ui";
+import { Box, TextField as MuiTextField } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 
 type TextFieldMultipleProps = {

@@ -1,4 +1,4 @@
-import { Box } from "@/client/components/ui";
+import { Box } from "@mui/material";
 import { Vendas30dias as Vendas } from "../../features/vendas/vendas_30dias";
 
 /**

@@ -1,12 +1,12 @@
 import { Table } from "@/client/components/table";
-import { Box, Stack, Typography } from "@/client/components/ui";
+import { Box, Stack, Typography } from "@mui/material";
 import { Permissions } from "@/client/features/permissions";
 import type { TFilter, TFormStatus, TSelection, TSort } from "@/types";
 import { day } from "@/utils/date/day";
 import { deepEqual } from "@/utils/object/deep-equal";
 import { toStringProperties } from "@/utils/object/to-string-properties";
 import { recordClear } from "@/utils/schema/record-clear";
-import { trpc } from "@/utils/trpc/trpc";
+import { trpc } from "@/rpc/utils/trpc";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { clienteColumns } from "./cliente-columns";

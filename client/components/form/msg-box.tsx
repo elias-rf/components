@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from "@/client/components/ui";
+} from "@mui/material";
 
 export const MsgBox = ({
   show,

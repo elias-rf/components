@@ -1,6 +1,6 @@
 import { Select } from "@/client/components/inputs";
 import { TextField } from "@/client/components/inputs/text-field";
-import { Button, Chip, Grid } from "@/client/components/ui";
+import { Button, Chip, Grid } from "@mui/material";
 import { TWhere } from "@/types";
 import { SelectChangeEvent } from "@mui/material/Select";
 import React, { useState } from "react";

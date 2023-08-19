@@ -9,7 +9,7 @@ import {
   TextField,
   TextFieldMultiple,
 } from "@/client/components/inputs";
-import { Divider } from "@/client/components/ui";
+import { Divider } from "@mui/material";
 import type { Meta, StoryObj } from "@storybook/react";
 import { JsonViewer } from "@textea/json-viewer";
 import React from "react";

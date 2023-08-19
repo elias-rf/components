@@ -1,4 +1,4 @@
-import { Grid } from "@/client/components/ui";
+import { Grid } from "@mui/material";
 import type { Grid2Props } from "@mui/material/Unstable_Grid2/Grid2Props";
 import { Controller } from "react-hook-form";
 

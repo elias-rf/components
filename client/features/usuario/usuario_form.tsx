@@ -4,7 +4,7 @@ import {
   FormControlLabel,
   Grid,
   TextField,
-} from "@/client/components/ui";
+} from "@mui/material";
 import { TFormStatus } from "@/types";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";

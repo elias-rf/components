@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { UseFormReturn } from "react-hook-form";
-import { vi } from "vitest";
+import { vi, describe, test, expect } from "vitest";
 import { ButtonNew } from "./button-new";
 
 describe("ButtonNew", () => {

@@ -1,6 +1,6 @@
 import { Table } from "@/client/components/table";
 import { TSelection } from "@/types";
-import { trpc } from "@/utils/trpc/trpc";
+import { trpc } from "@/rpc/utils/trpc";
 import { ReactNode } from "react";
 import { operacaoProdutoSchema } from "./operacao-produto_schema";
 

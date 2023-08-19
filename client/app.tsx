@@ -1,4 +1,4 @@
-import { TrpcProvider } from "@/utils/trpc/trpc-provider";
+import { TrpcProvider } from "@/rpc/utils/trpc-provider";
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./components/private-route";

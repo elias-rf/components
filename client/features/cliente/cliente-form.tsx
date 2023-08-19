@@ -1,5 +1,5 @@
 import { Checkbox, FormJson, TextField } from "@/client/components/inputs";
-import { Grid, Tab, Tabs } from "@/client/components/ui";
+import { Grid, Tab, Tabs } from "@mui/material";
 import { ClienteQuantidade } from "@/client/features/cliente/cliente-quantidade";
 import { ClienteValor } from "@/client/features/cliente/cliente-valor";
 import { ClienteValorMedio } from "@/client/features/cliente/cliente-valor-medio";

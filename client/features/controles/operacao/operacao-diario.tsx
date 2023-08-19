@@ -1,7 +1,7 @@
 import { Table } from "@/client/components/table";
 import { TSelection } from "@/types";
 import { day } from "@/utils/date/day";
-import { trpc } from "@/utils/trpc/trpc";
+import { trpc } from "@/rpc/utils/trpc";
 import React from "react";
 import { operacaoDiarioSchema } from "./operacao-diario_schema";
 

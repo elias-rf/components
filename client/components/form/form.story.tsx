@@ -6,7 +6,7 @@ import {
   ButtonSave,
 } from "@/client/components/form";
 import { TextField } from "@/client/components/inputs/text-field";
-import { Box, Stack } from "@/client/components/ui";
+import { Box, Stack } from "@mui/material";
 import type { TFormStatus } from "@/types";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";

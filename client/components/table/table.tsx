@@ -2,7 +2,7 @@ import {
   Table as MuiTable,
   TableCell as MuiTableCell,
   TableRow as MuiTableRow,
-} from "@/client/components/ui";
+} from "@mui/material";
 import { TFilter, TId, TSelection, TSort } from "@/types";
 import { deepEqual } from "@/utils/object/deep-equal";
 import { useTheme } from "@mui/material/styles";

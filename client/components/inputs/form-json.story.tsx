@@ -1,6 +1,6 @@
 import type { TFormJsonField } from "@/client/components/inputs";
 import { FormJson, Switch, TextField } from "@/client/components/inputs";
-import { Divider } from "@/client/components/ui";
+import { Divider } from "@mui/material";
 import { day } from "@/utils/date/day";
 import type { Meta, StoryObj } from "@storybook/react";
 import { JsonViewer } from "@textea/json-viewer";

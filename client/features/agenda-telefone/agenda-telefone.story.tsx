@@ -1,4 +1,4 @@
-import { Box } from "@/client/components/ui";
+import { Box } from "@mui/material";
 import type { Meta, StoryObj } from "@storybook/react";
 import { JsonViewer } from "@textea/json-viewer";
 import React from "react";

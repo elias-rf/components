@@ -1,20 +1,20 @@
-import { Button } from "@/client/components/ui";
+import { Button } from "@mui/material";
 import type { TFormStatus } from "@/types";
 import { UseFormReturn } from "react-hook-form";
 
 export type TButtonCancelProps = {
   form: UseFormReturn<any>;
-  status: TFormStatus;
-  onStatus: (status: TFormStatus) => void;
   onClick?: () => void;
+  onStatus: (status: TFormStatus) => void;
+  status: TFormStatus;
   sx?: any;
 };
 
 export const ButtonCancel = ({
-  status,
   form,
-  onStatus,
   onClick,
+  onStatus,
+  status,
   sx,
 }: TButtonCancelProps) => {
   function handleButtonCancel() {

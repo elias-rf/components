@@ -2,7 +2,7 @@ import {
   InputAdornment,
   TableCell as MuiTableCell,
   TextField,
-} from "@/client/components/ui";
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { TColumn } from "./table";
 

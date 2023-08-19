@@ -1,9 +1,9 @@
-import { Alert, Snackbar, TAlertColor } from "@/client/components/ui";
+import { Alert, Snackbar, AlertColor } from "@mui/material";
 
 export type TToast = {
   open: boolean;
   onClose?: () => void;
-  severity?: TAlertColor;
+  severity?: AlertColor;
   message: string;
 };
 

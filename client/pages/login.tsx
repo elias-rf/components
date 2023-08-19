@@ -1,6 +1,6 @@
 import { Toast } from "@/client/components/toast";
 import { useAuth } from "@/client/store/auth";
-import { trpc } from "@/utils/trpc/trpc";
+import { trpc } from "@/rpc/utils/trpc";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Login as LoginComponent } from "../components/login/login";

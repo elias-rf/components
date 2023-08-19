@@ -1,5 +1,5 @@
 import { Table } from "@/client/components/table";
-import { trpc } from "@/utils/trpc/trpc";
+import { trpc } from "@/rpc/utils/trpc";
 import { esterilizacaoInternaModeloSchema } from "./est-int-modelo_schema";
 
 type EsterilizacaoInternaModeloProp = {

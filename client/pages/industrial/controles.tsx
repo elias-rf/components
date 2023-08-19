@@ -1,4 +1,4 @@
-import { Box } from "@/client/components/ui";
+import { Box } from "@mui/material";
 import { Controles as Control } from "../../features/controles/controles";
 
 export default function Controles() {

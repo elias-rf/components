@@ -1,4 +1,4 @@
-import { Button } from "@/client/components/ui/button";
+import { Button } from "@mui/material";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Toast } from "./toast";

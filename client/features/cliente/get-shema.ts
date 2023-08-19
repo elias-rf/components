@@ -1,5 +1,5 @@
 import { TColumn } from "@/client/components/table";
-import { TPeriodo } from "@/models/cliente/cliente.type";
+import { TPeriodo } from "@/models/others/cliente.type";
 import { day } from "@/utils/date/day";
 import { zsr } from "@/utils/zod/z-refine";
 import { zd, zod } from "@/utils/zod/zod";

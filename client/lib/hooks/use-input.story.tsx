@@ -1,4 +1,4 @@
-import { Input, Stack } from "@/client/components/ui";
+import { Input, Stack } from "@mui/material";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useInput } from "./use-input";
 

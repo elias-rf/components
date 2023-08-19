@@ -12,8 +12,8 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-} from "@/client/components/ui";
-import { trpc } from "@/utils/trpc/trpc";
+} from "@mui/material";
+import { trpc } from "@/rpc/utils/trpc";
 import AdminPanelSettingsTwoToneIcon from "@mui/icons-material/AdminPanelSettingsTwoTone";
 import CloseIcon from "@mui/icons-material/Close";
 import React from "react";

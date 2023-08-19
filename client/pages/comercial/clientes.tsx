@@ -1,4 +1,4 @@
-import { Box } from "@/client/components/ui";
+import { Box } from "@mui/material";
 import { Cliente } from "@/client/features/cliente/cliente";
 
 export default function Clientes() {

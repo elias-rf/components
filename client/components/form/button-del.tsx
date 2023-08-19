@@ -1,22 +1,22 @@
-import { Button } from "@/client/components/ui";
+import { Button } from "@mui/material";
 import type { TFormStatus } from "@/types";
 import React from "react";
 import { UseFormReturn } from "react-hook-form";
 import { MsgBox } from "./msg-box";
 
 export type TButtonDelProps = {
-  onClick: () => void;
   form: UseFormReturn<any>;
-  status: TFormStatus;
+  onClick: () => void;
   onStatus: (status: TFormStatus) => void;
+  status: TFormStatus;
   sx?: any;
 };
 
 export const ButtonDel = ({
   form,
-  status,
-  onStatus,
   onClick,
+  onStatus,
+  status,
   sx,
 }: TButtonDelProps) => {
   const [showConfirm, setShowConfirm] = React.useState(false);

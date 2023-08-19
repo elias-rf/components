@@ -1,5 +1,5 @@
 import { useAuth } from "@/client/store/auth";
-import { trpc } from "@/utils/trpc/trpc";
+import { trpc } from "@/rpc/utils/trpc";
 import React from "react";
 import { Authorization } from "../components/authorization";
 

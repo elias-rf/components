@@ -1,4 +1,4 @@
-import { Grid } from "@/client/components/ui";
+import { Grid } from "@mui/material";
 
 type TFormfieldsProps = {
   children: React.ReactNode;

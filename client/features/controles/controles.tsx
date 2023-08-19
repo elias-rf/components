@@ -1,4 +1,4 @@
-import { Box, Tab, Tabs, Typography } from "@/client/components/ui";
+import { Box, Tab, Tabs, Typography } from "@mui/material";
 import React from "react";
 import { EstExt } from "./est_ext/est-ext";
 import { EstInt } from "./est_int/est-int";

@@ -1,4 +1,4 @@
-import { Box } from "@/client/components/ui";
+import { Box } from "@mui/material";
 import { TSelection } from "@/types";
 import React from "react";
 import { TransferenciaDiario } from "./transferencia-diario";

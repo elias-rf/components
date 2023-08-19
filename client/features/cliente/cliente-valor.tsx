@@ -1,6 +1,6 @@
 import { Table } from "@/client/components/table";
 import { day } from "@/utils/date/day";
-import { trpc } from "@/utils/trpc/trpc";
+import { trpc } from "@/rpc/utils/trpc";
 import { getSchema } from "./get-shema";
 
 type ClienteValorProps = {

@@ -1,4 +1,4 @@
-import { TextField as MuiTextField } from "@/client/components/ui";
+import { TextField as MuiTextField } from "@mui/material";
 
 export function TextField({
   onChange,
