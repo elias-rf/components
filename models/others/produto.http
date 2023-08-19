@@ -1,2 +1,0 @@
-### Index
-GET http://localhost:3000/api/rpc?rpc={"jsonrpc":"2.0","id":"2","method":"index","params":"produtoItem"}
