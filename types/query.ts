@@ -1,4 +1,5 @@
 import type { TGenericObject } from "./index";
+import Objection from "objection";
 
 /**
  * Objeto que representa filtro
@@ -56,21 +57,21 @@ export type TListArgs = {
   sort?: TSort;
   limit?: number;
   select?: TSelect;
-  sum?: TAggregate;
-  min?: TAggregate;
-  max?: TAggregate;
+  sum?: Objection.ColumnRef;
+  min?: Objection.ColumnRef;
+  max?: Objection.ColumnRef;
   group?: TSelect;
 };
 
 /** Argumentos para modelo de registro */
-export type TReadArgs = { id: TId; select?: TSelect };
+export type TReadArgs = { id: any | any[]; select?: TSelect };
 
 /** Argumentos para modelo de exclusão */
-export type TDelArgs = { id: TId };
+export type TDelArgs = { id: any | any[] };
 
 /** Argumentos para modelo de alteração */
 export type TUpdateArgs = {
-  id: TId;
+  id: any | any[];
   data: TGenericObject;
   select?: TSelect;
 };
