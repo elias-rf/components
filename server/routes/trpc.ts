@@ -1,5 +1,5 @@
-import { appRouter } from "@/models/app-router";
-import { createContext } from "@/utils/trpc/context-server";
+import { appRouter } from "@/rpc/app-router";
+import { createContext } from "@/rpc/utils/context-server";
 import { fastifyTRPCPlugin } from "@trpc/server/adapters/fastify";
 import type { FastifyPluginCallback } from "fastify";
 
