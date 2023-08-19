@@ -1,12 +1,13 @@
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import type { Preview } from "@storybook/react";
 import "uno.css";
-import { TrpcProvider } from "../utils/trpc/trpc-provider";
+import '../client/index.css';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { TrpcProvider } from "../rpc/utils/trpc-provider";
 
 const theme = createTheme({});
 
 const preview: Preview = {
-  decorators: [
+    decorators: [
     (Story) => (
       <TrpcProvider>
         <ThemeProvider theme={theme}>
@@ -24,10 +25,6 @@ const preview: Preview = {
       },
     },
   },
-};
-
-export const globalTypes = {
-  darkMode: true,
 };
 
 export default preview;
