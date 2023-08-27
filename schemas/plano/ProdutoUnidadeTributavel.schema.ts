@@ -1,0 +1,95 @@
+import { Schema } from "../schemas.type";
+
+export const ProdutoUnidadeTributavel: Schema =
+  {
+  "database": "plano",
+  "table": "ProdutoUnidadeTributavel",
+  "primary": [],
+  "fields": {
+    "CdEmpresa": {
+      "table": "ProdutoUnidadeTributavel",
+      "name": "CdEmpresa",
+      "data_type": "numeric",
+      "max_length": 9,
+      "numeric_precision": 14,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "CdProduto": {
+      "table": "ProdutoUnidadeTributavel",
+      "name": "CdProduto",
+      "data_type": "varchar",
+      "max_length": 18,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "UnidadeTributavel": {
+      "table": "ProdutoUnidadeTributavel",
+      "name": "UnidadeTributavel",
+      "data_type": "char",
+      "max_length": 4,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "QtdeComercial": {
+      "table": "ProdutoUnidadeTributavel",
+      "name": "QtdeComercial",
+      "data_type": "numeric",
+      "max_length": 5,
+      "numeric_precision": 9,
+      "numeric_scale": 5,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "QtdeTributavel": {
+      "table": "ProdutoUnidadeTributavel",
+      "name": "QtdeTributavel",
+      "data_type": "numeric",
+      "max_length": 5,
+      "numeric_precision": 9,
+      "numeric_scale": 5,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    }
+  }
+}

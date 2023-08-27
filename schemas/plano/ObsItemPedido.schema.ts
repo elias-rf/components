@@ -1,0 +1,95 @@
+import { Schema } from "../schemas.type";
+
+export const ObsItemPedido: Schema =
+  {
+  "database": "plano",
+  "table": "ObsItemPedido",
+  "primary": [],
+  "fields": {
+    "CdFilial": {
+      "table": "ObsItemPedido",
+      "name": "CdFilial",
+      "data_type": "int",
+      "max_length": 4,
+      "numeric_precision": 10,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "NumPedido": {
+      "table": "ObsItemPedido",
+      "name": "NumPedido",
+      "data_type": "int",
+      "max_length": 4,
+      "numeric_precision": 10,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "Tipo": {
+      "table": "ObsItemPedido",
+      "name": "Tipo",
+      "data_type": "char",
+      "max_length": 1,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "Sequencia": {
+      "table": "ObsItemPedido",
+      "name": "Sequencia",
+      "data_type": "int",
+      "max_length": 4,
+      "numeric_precision": 10,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "Observacao": {
+      "table": "ObsItemPedido",
+      "name": "Observacao",
+      "data_type": "varchar",
+      "max_length": 512,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": true,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    }
+  }
+}

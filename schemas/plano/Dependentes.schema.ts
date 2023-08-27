@@ -1,0 +1,95 @@
+import { Schema } from "../schemas.type";
+
+export const Dependentes: Schema =
+  {
+  "database": "plano",
+  "table": "Dependentes",
+  "primary": [],
+  "fields": {
+    "CdCliente": {
+      "table": "Dependentes",
+      "name": "CdCliente",
+      "data_type": "money",
+      "max_length": 8,
+      "numeric_precision": 19,
+      "numeric_scale": 4,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "CdFuncionario": {
+      "table": "Dependentes",
+      "name": "CdFuncionario",
+      "data_type": "money",
+      "max_length": 8,
+      "numeric_precision": 19,
+      "numeric_scale": 4,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "Sequencia": {
+      "table": "Dependentes",
+      "name": "Sequencia",
+      "data_type": "smallint",
+      "max_length": 2,
+      "numeric_precision": 5,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "NmDependente": {
+      "table": "Dependentes",
+      "name": "NmDependente",
+      "data_type": "char",
+      "max_length": 40,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "DtNctoDependente": {
+      "table": "Dependentes",
+      "name": "DtNctoDependente",
+      "data_type": "datetime",
+      "max_length": 8,
+      "numeric_precision": 23,
+      "numeric_scale": 3,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    }
+  }
+}

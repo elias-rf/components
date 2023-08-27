@@ -1,0 +1,95 @@
+import { Schema } from "../schemas.type";
+
+export const SaisConflitantes: Schema =
+  {
+  "database": "plano",
+  "table": "SaisConflitantes",
+  "primary": [],
+  "fields": {
+    "CdSalOrigem": {
+      "table": "SaisConflitantes",
+      "name": "CdSalOrigem",
+      "data_type": "varchar",
+      "max_length": 15,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "CdSalDestino": {
+      "table": "SaisConflitantes",
+      "name": "CdSalDestino",
+      "data_type": "varchar",
+      "max_length": 15,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "FgTipoAdvertencia": {
+      "table": "SaisConflitantes",
+      "name": "FgTipoAdvertencia",
+      "data_type": "char",
+      "max_length": 1,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "DtUltAlteracao": {
+      "table": "SaisConflitantes",
+      "name": "DtUltAlteracao",
+      "data_type": "datetime",
+      "max_length": 8,
+      "numeric_precision": 23,
+      "numeric_scale": 3,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "Observacao": {
+      "table": "SaisConflitantes",
+      "name": "Observacao",
+      "data_type": "varchar",
+      "max_length": 1024,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": true,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    }
+  }
+}

@@ -1,0 +1,95 @@
+import { Schema } from "../schemas.type";
+
+export const HistoricoCupom: Schema =
+  {
+  "database": "plano",
+  "table": "HistoricoCupom",
+  "primary": [],
+  "fields": {
+    "CdFilial": {
+      "table": "HistoricoCupom",
+      "name": "CdFilial",
+      "data_type": "numeric",
+      "max_length": 9,
+      "numeric_precision": 14,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "NroPDV": {
+      "table": "HistoricoCupom",
+      "name": "NroPDV",
+      "data_type": "smallint",
+      "max_length": 2,
+      "numeric_precision": 5,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "NumCupom": {
+      "table": "HistoricoCupom",
+      "name": "NumCupom",
+      "data_type": "numeric",
+      "max_length": 5,
+      "numeric_precision": 9,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "Sequencia": {
+      "table": "HistoricoCupom",
+      "name": "Sequencia",
+      "data_type": "smallint",
+      "max_length": 2,
+      "numeric_precision": 5,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "Ocorrencia": {
+      "table": "HistoricoCupom",
+      "name": "Ocorrencia",
+      "data_type": "varchar",
+      "max_length": 128,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    }
+  }
+}

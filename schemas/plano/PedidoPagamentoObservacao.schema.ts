@@ -1,0 +1,95 @@
+import { Schema } from "../schemas.type";
+
+export const PedidoPagamentoObservacao: Schema =
+  {
+  "database": "plano",
+  "table": "PedidoPagamentoObservacao",
+  "primary": [],
+  "fields": {
+    "CdEmpresa": {
+      "table": "PedidoPagamentoObservacao",
+      "name": "CdEmpresa",
+      "data_type": "numeric",
+      "max_length": 9,
+      "numeric_precision": 14,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "CdFilial": {
+      "table": "PedidoPagamentoObservacao",
+      "name": "CdFilial",
+      "data_type": "numeric",
+      "max_length": 9,
+      "numeric_precision": 14,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "NumPedido": {
+      "table": "PedidoPagamentoObservacao",
+      "name": "NumPedido",
+      "data_type": "numeric",
+      "max_length": 5,
+      "numeric_precision": 9,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "Tipo": {
+      "table": "PedidoPagamentoObservacao",
+      "name": "Tipo",
+      "data_type": "char",
+      "max_length": 1,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "Observacao": {
+      "table": "PedidoPagamentoObservacao",
+      "name": "Observacao",
+      "data_type": "varchar",
+      "max_length": 2048,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    }
+  }
+}

@@ -1,0 +1,95 @@
+import { Schema } from "../schemas.type";
+
+export const ECFIdentificacao: Schema =
+  {
+  "database": "plano",
+  "table": "ECFIdentificacao",
+  "primary": [],
+  "fields": {
+    "CNPJFilial": {
+      "table": "ECFIdentificacao",
+      "name": "CNPJFilial",
+      "data_type": "money",
+      "max_length": 8,
+      "numeric_precision": 19,
+      "numeric_scale": 4,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "NumECF": {
+      "table": "ECFIdentificacao",
+      "name": "NumECF",
+      "data_type": "smallint",
+      "max_length": 2,
+      "numeric_precision": 5,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "NumFabricacao": {
+      "table": "ECFIdentificacao",
+      "name": "NumFabricacao",
+      "data_type": "varchar",
+      "max_length": 64,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "ControleFilial": {
+      "table": "ECFIdentificacao",
+      "name": "ControleFilial",
+      "data_type": "money",
+      "max_length": 8,
+      "numeric_precision": 19,
+      "numeric_scale": 4,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    },
+    "ControleFab": {
+      "table": "ECFIdentificacao",
+      "name": "ControleFab",
+      "data_type": "varchar",
+      "max_length": 64,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": false,
+      "default_value": null,
+      "is_primary_key": false,
+      "is_unique": false,
+      "has_auto_increment": false,
+      "foreign_key_table": null,
+      "foreign_key_column": null,
+      "is_generated": false,
+      "generation_expression": null
+    }
+  }
+}
