@@ -1,5 +1,4 @@
 import type { TGenericObject } from "./index";
-import Objection from "objection";
 
 /**
  * Objeto que representa filtro
@@ -57,10 +56,11 @@ export type TListArgs = {
   sort?: TSort;
   limit?: number;
   select?: TSelect;
-  sum?: Objection.ColumnRef;
-  min?: Objection.ColumnRef;
-  max?: Objection.ColumnRef;
+  sum?: any;
+  min?: any;
+  max?: any;
   group?: TSelect;
+  with?: any[];
 };
 
 /** Argumentos para modelo de registro */
