@@ -1,3 +1,5 @@
 import { zd } from "./zod";
 
-export const zsSort = zd.record(zd.enum(["asc", "desc"]));
+export const zsSort = zd.array(
+  zd.tuple([zd.string(), zd.enum(["asc", "desc"])])
+);

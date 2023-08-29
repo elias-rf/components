@@ -4,7 +4,7 @@ import { zsSort } from "./zs-sort";
 describe("zsSorts", () => {
   it("deve invalidar order não formatados corretamente", () => {
     expect(zsSort.safeParse([])).toMatchObject({
-      success: false,
+      success: true,
     });
     expect(zsSort.safeParse("field")).toMatchObject({
       success: false,
@@ -19,12 +19,12 @@ describe("zsSorts", () => {
   });
 
   it("deve validar order correto", () => {
-    expect(zsSort.safeParse({ fld_1: "asc" })).toMatchObject({
+    expect(zsSort.safeParse( [['fld_1', "asc"]] )).toMatchObject({
       success: true,
     });
   });
 
   it("deve validar order vazio", () => {
-    expect(zsSort.safeParse({})).toMatchObject({ success: true });
+    expect(zsSort.safeParse([])).toMatchObject({ success: true });
   });
 });
