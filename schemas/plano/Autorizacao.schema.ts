@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TAutorizacao = keyof typeof Autorizacao.fields
 
-export const Autorizacao: Schema =
-  {
+export const Autorizacao = {
   "database": "plano",
   "table": "Autorizacao",
   "primary": [],
@@ -59,3 +58,4 @@ export const Autorizacao: Schema =
     }
   }
 }
+  

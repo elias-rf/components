@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtOperacaoOrdemProducaoOld = keyof typeof tOperacaoOrdemProducaoOld.fields
 
-export const tOperacaoOrdemProducaoOld: Schema =
-  {
+export const tOperacaoOrdemProducaoOld = {
   "database": "oftalmo",
   "table": "tOperacaoOrdemProducaoOld",
   "primary": [
@@ -418,3 +417,4 @@ export const tOperacaoOrdemProducaoOld: Schema =
     }
   }
 }
+  

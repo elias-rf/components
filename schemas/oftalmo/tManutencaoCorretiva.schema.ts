@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtManutencaoCorretiva = keyof typeof tManutencaoCorretiva.fields
 
-export const tManutencaoCorretiva: Schema =
-  {
+export const tManutencaoCorretiva = {
   "database": "oftalmo",
   "table": "tManutencaoCorretiva",
   "primary": [
@@ -197,3 +196,4 @@ export const tManutencaoCorretiva: Schema =
     }
   }
 }
+  

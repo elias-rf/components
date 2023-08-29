@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TMapaEntregaAcerto = keyof typeof MapaEntregaAcerto.fields
 
-export const MapaEntregaAcerto: Schema =
-  {
+export const MapaEntregaAcerto = {
   "database": "plano",
   "table": "MapaEntregaAcerto",
   "primary": [],
@@ -195,3 +194,4 @@ export const MapaEntregaAcerto: Schema =
     }
   }
 }
+  

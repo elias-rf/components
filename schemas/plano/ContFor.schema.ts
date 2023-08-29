@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TContFor = keyof typeof ContFor.fields
 
-export const ContFor: Schema =
-  {
+export const ContFor = {
   "database": "plano",
   "table": "ContFor",
   "primary": [],
@@ -110,3 +109,4 @@ export const ContFor: Schema =
     }
   }
 }
+  

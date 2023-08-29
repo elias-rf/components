@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTitCobrLinhaDigitavel = keyof typeof TitCobrLinhaDigitavel.fields
 
-export const TitCobrLinhaDigitavel: Schema =
-  {
+export const TitCobrLinhaDigitavel = {
   "database": "plano",
   "table": "TitCobrLinhaDigitavel",
   "primary": [],
@@ -144,3 +143,4 @@ export const TitCobrLinhaDigitavel: Schema =
     }
   }
 }
+  

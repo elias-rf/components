@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Ttbl_Sistema_Variavel = keyof typeof tbl_Sistema_Variavel.fields
 
-export const tbl_Sistema_Variavel: Schema =
-  {
+export const tbl_Sistema_Variavel = {
   "database": "oftalmo",
   "table": "tbl_Sistema_Variavel",
   "primary": [
@@ -61,3 +60,4 @@ export const tbl_Sistema_Variavel: Schema =
     }
   }
 }
+  

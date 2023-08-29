@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTempDanfeAux = keyof typeof TempDanfeAux.fields
 
-export const TempDanfeAux: Schema =
-  {
+export const TempDanfeAux = {
   "database": "plano",
   "table": "TempDanfeAux",
   "primary": [],
@@ -127,3 +126,4 @@ export const TempDanfeAux: Schema =
     }
   }
 }
+  

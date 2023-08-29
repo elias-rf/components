@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNotaConcessionariaMestre = keyof typeof NotaConcessionariaMestre.fields
 
-export const NotaConcessionariaMestre: Schema =
-  {
+export const NotaConcessionariaMestre = {
   "database": "plano",
   "table": "NotaConcessionariaMestre",
   "primary": [],
@@ -467,3 +466,4 @@ export const NotaConcessionariaMestre: Schema =
     }
   }
 }
+  

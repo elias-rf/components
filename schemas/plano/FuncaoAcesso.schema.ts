@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TFuncaoAcesso = keyof typeof FuncaoAcesso.fields
 
-export const FuncaoAcesso: Schema =
-  {
+export const FuncaoAcesso = {
   "database": "plano",
   "table": "FuncaoAcesso",
   "primary": [],
@@ -59,3 +58,4 @@ export const FuncaoAcesso: Schema =
     }
   }
 }
+  

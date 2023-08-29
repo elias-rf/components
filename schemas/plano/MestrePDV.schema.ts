@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TMestrePDV = keyof typeof MestrePDV.fields
 
-export const MestrePDV: Schema =
-  {
+export const MestrePDV = {
   "database": "plano",
   "table": "MestrePDV",
   "primary": [],
@@ -875,3 +874,4 @@ export const MestrePDV: Schema =
     }
   }
 }
+  

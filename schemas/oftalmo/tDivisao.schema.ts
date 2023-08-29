@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtDivisao = keyof typeof tDivisao.fields
 
-export const tDivisao: Schema =
-  {
+export const tDivisao = {
   "database": "oftalmo",
   "table": "tDivisao",
   "primary": [
@@ -61,3 +60,4 @@ export const tDivisao: Schema =
     }
   }
 }
+  

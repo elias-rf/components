@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TArqDupHistorico = keyof typeof ArqDupHistorico.fields
 
-export const ArqDupHistorico: Schema =
-  {
+export const ArqDupHistorico = {
   "database": "plano",
   "table": "ArqDupHistorico",
   "primary": [],
@@ -161,3 +160,4 @@ export const ArqDupHistorico: Schema =
     }
   }
 }
+  

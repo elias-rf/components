@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCadCliBloqueioCred = keyof typeof CadCliBloqueioCred.fields
 
-export const CadCliBloqueioCred: Schema =
-  {
+export const CadCliBloqueioCred = {
   "database": "plano",
   "table": "CadCliBloqueioCred",
   "primary": [],
@@ -76,3 +75,4 @@ export const CadCliBloqueioCred: Schema =
     }
   }
 }
+  

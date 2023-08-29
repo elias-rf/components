@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TLayOutRemessa = keyof typeof LayOutRemessa.fields
 
-export const LayOutRemessa: Schema =
-  {
+export const LayOutRemessa = {
   "database": "plano",
   "table": "LayOutRemessa",
   "primary": [
@@ -27,3 +26,4 @@ export const LayOutRemessa: Schema =
     }
   }
 }
+  

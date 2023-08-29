@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Ttbl_Produto_MinMax = keyof typeof tbl_Produto_MinMax.fields
 
-export const tbl_Produto_MinMax: Schema =
-  {
+export const tbl_Produto_MinMax = {
   "database": "oftalmo",
   "table": "tbl_Produto_MinMax",
   "primary": [
@@ -78,3 +77,4 @@ export const tbl_Produto_MinMax: Schema =
     }
   }
 }
+  

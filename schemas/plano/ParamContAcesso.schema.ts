@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TParamContAcesso = keyof typeof ParamContAcesso.fields
 
-export const ParamContAcesso: Schema =
-  {
+export const ParamContAcesso = {
   "database": "plano",
   "table": "ParamContAcesso",
   "primary": [],
@@ -76,3 +75,4 @@ export const ParamContAcesso: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TMovimentoSerie = keyof typeof MovimentoSerie.fields
 
-export const MovimentoSerie: Schema =
-  {
+export const MovimentoSerie = {
   "database": "plano",
   "table": "MovimentoSerie",
   "primary": [],
@@ -212,3 +211,4 @@ export const MovimentoSerie: Schema =
     }
   }
 }
+  

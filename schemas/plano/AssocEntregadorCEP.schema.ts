@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TAssocEntregadorCEP = keyof typeof AssocEntregadorCEP.fields
 
-export const AssocEntregadorCEP: Schema =
-  {
+export const AssocEntregadorCEP = {
   "database": "plano",
   "table": "AssocEntregadorCEP",
   "primary": [],
@@ -59,3 +58,4 @@ export const AssocEntregadorCEP: Schema =
     }
   }
 }
+  

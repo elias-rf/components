@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfiguracaoEmailCR = keyof typeof ConfiguracaoEmailCR.fields
 
-export const ConfiguracaoEmailCR: Schema =
-  {
+export const ConfiguracaoEmailCR = {
   "database": "plano",
   "table": "ConfiguracaoEmailCR",
   "primary": [
@@ -95,3 +94,4 @@ export const ConfiguracaoEmailCR: Schema =
     }
   }
 }
+  

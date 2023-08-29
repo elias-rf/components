@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TFaseSacola = keyof typeof FaseSacola.fields
 
-export const FaseSacola: Schema =
-  {
+export const FaseSacola = {
   "database": "plano",
   "table": "FaseSacola",
   "primary": [
@@ -44,3 +43,4 @@ export const FaseSacola: Schema =
     }
   }
 }
+  

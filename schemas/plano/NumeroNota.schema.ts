@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNumeroNota = keyof typeof NumeroNota.fields
 
-export const NumeroNota: Schema =
-  {
+export const NumeroNota = {
   "database": "plano",
   "table": "NumeroNota",
   "primary": [],
@@ -76,3 +75,4 @@ export const NumeroNota: Schema =
     }
   }
 }
+  

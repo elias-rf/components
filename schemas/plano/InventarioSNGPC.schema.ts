@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TInventarioSNGPC = keyof typeof InventarioSNGPC.fields
 
-export const InventarioSNGPC: Schema =
-  {
+export const InventarioSNGPC = {
   "database": "plano",
   "table": "InventarioSNGPC",
   "primary": [],
@@ -127,3 +126,4 @@ export const InventarioSNGPC: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TExcMP = keyof typeof ExcMP.fields
 
-export const ExcMP: Schema =
-  {
+export const ExcMP = {
   "database": "plano",
   "table": "ExcMP",
   "primary": [],
@@ -314,3 +313,4 @@ export const ExcMP: Schema =
     }
   }
 }
+  

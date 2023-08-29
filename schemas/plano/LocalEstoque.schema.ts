@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TLocalEstoque = keyof typeof LocalEstoque.fields
 
-export const LocalEstoque: Schema =
-  {
+export const LocalEstoque = {
   "database": "plano",
   "table": "LocalEstoque",
   "primary": [
@@ -44,3 +43,4 @@ export const LocalEstoque: Schema =
     }
   }
 }
+  

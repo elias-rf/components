@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TSaldosFinan = keyof typeof SaldosFinan.fields
 
-export const SaldosFinan: Schema =
-  {
+export const SaldosFinan = {
   "database": "plano",
   "table": "SaldosFinan",
   "primary": [],
@@ -76,3 +75,4 @@ export const SaldosFinan: Schema =
     }
   }
 }
+  

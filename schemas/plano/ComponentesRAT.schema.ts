@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TComponentesRAT = keyof typeof ComponentesRAT.fields
 
-export const ComponentesRAT: Schema =
-  {
+export const ComponentesRAT = {
   "database": "plano",
   "table": "ComponentesRAT",
   "primary": [],
@@ -229,3 +228,4 @@ export const ComponentesRAT: Schema =
     }
   }
 }
+  

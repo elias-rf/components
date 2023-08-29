@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type THistoricoCupom = keyof typeof HistoricoCupom.fields
 
-export const HistoricoCupom: Schema =
-  {
+export const HistoricoCupom = {
   "database": "plano",
   "table": "HistoricoCupom",
   "primary": [],
@@ -93,3 +92,4 @@ export const HistoricoCupom: Schema =
     }
   }
 }
+  

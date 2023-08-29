@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Ttbl_Op_Loop_Conformidade = keyof typeof tbl_Op_Loop_Conformidade.fields
 
-export const tbl_Op_Loop_Conformidade: Schema =
-  {
+export const tbl_Op_Loop_Conformidade = {
   "database": "oftalmo",
   "table": "tbl_Op_Loop_Conformidade",
   "primary": [
@@ -163,3 +162,4 @@ export const tbl_Op_Loop_Conformidade: Schema =
     }
   }
 }
+  

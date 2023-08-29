@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTipoLIberacao = keyof typeof TipoLIberacao.fields
 
-export const TipoLIberacao: Schema =
-  {
+export const TipoLIberacao = {
   "database": "plano",
   "table": "TipoLIberacao",
   "primary": [
@@ -44,3 +43,4 @@ export const TipoLIberacao: Schema =
     }
   }
 }
+  

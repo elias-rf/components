@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Tlixo = keyof typeof lixo.fields
 
-export const lixo: Schema =
-  {
+export const lixo = {
   "database": "plano",
   "table": "lixo",
   "primary": [
@@ -27,3 +26,4 @@ export const lixo: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TFilialSugestaoCFOP = keyof typeof FilialSugestaoCFOP.fields
 
-export const FilialSugestaoCFOP: Schema =
-  {
+export const FilialSugestaoCFOP = {
   "database": "plano",
   "table": "FilialSugestaoCFOP",
   "primary": [],
@@ -110,3 +109,4 @@ export const FilialSugestaoCFOP: Schema =
     }
   }
 }
+  

@@ -1,12 +1,23 @@
-import { Schema } from "../schemas.type";
+export type Ttbl_Produto = keyof typeof tbl_Produto.fields
 
-export const tbl_Produto: Schema =
-  {
+export const tbl_Produto = {
   "database": "oftalmo",
   "table": "tbl_Produto",
   "primary": [
     "kProduto"
   ],
+  "relations": {
+    "produtoItem": {
+      "source": [
+        "kProduto"
+      ],
+      "type": "hasMany",
+      "table": "tbl_Produto_Item",
+      "target": [
+        "fkProduto"
+      ]
+    }
+  },
   "fields": {
     "kProduto": {
       "table": "tbl_Produto",
@@ -639,3 +650,4 @@ export const tbl_Produto: Schema =
     }
   }
 }
+  

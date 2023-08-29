@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TFrenteVersoSacolas = keyof typeof FrenteVersoSacolas.fields
 
-export const FrenteVersoSacolas: Schema =
-  {
+export const FrenteVersoSacolas = {
   "database": "plano",
   "table": "FrenteVersoSacolas",
   "primary": [
@@ -44,3 +43,4 @@ export const FrenteVersoSacolas: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TInfBancos = keyof typeof InfBancos.fields
 
-export const InfBancos: Schema =
-  {
+export const InfBancos = {
   "database": "plano",
   "table": "InfBancos",
   "primary": [],
@@ -59,3 +58,4 @@ export const InfBancos: Schema =
     }
   }
 }
+  

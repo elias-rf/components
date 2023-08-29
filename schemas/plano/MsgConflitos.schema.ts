@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TMsgConflitos = keyof typeof MsgConflitos.fields
 
-export const MsgConflitos: Schema =
-  {
+export const MsgConflitos = {
   "database": "plano",
   "table": "MsgConflitos",
   "primary": [],
@@ -161,3 +160,4 @@ export const MsgConflitos: Schema =
     }
   }
 }
+  

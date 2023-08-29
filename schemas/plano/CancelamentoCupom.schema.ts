@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCancelamentoCupom = keyof typeof CancelamentoCupom.fields
 
-export const CancelamentoCupom: Schema =
-  {
+export const CancelamentoCupom = {
   "database": "plano",
   "table": "CancelamentoCupom",
   "primary": [],
@@ -144,3 +143,4 @@ export const CancelamentoCupom: Schema =
     }
   }
 }
+  

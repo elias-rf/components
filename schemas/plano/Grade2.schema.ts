@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TGrade2 = keyof typeof Grade2.fields
 
-export const Grade2: Schema =
-  {
+export const Grade2 = {
   "database": "plano",
   "table": "Grade2",
   "primary": [
@@ -44,3 +43,4 @@ export const Grade2: Schema =
     }
   }
 }
+  

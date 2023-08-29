@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TMetaVendedor = keyof typeof MetaVendedor.fields
 
-export const MetaVendedor: Schema =
-  {
+export const MetaVendedor = {
   "database": "plano",
   "table": "MetaVendedor",
   "primary": [],
@@ -110,3 +109,4 @@ export const MetaVendedor: Schema =
     }
   }
 }
+  

@@ -1,10 +1,14 @@
-import { Schema } from "../schemas.type";
+export type TNfMestre = keyof typeof NfMestre.fields
 
-export const NfMestre: Schema =
-  {
+export const NfMestre = {
   "database": "plano",
   "table": "NfMestre",
-  "primary": [],
+  "primary": [
+    "CdEmpresa",
+    "Modelo",
+    "NroNf",
+    "Serie"
+  ],
   "fields": {
     "CdEmpresa": {
       "table": "NfMestre",
@@ -1368,3 +1372,4 @@ export const NfMestre: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TSuporteObsDiaria = keyof typeof SuporteObsDiaria.fields
 
-export const SuporteObsDiaria: Schema =
-  {
+export const SuporteObsDiaria = {
   "database": "plano",
   "table": "SuporteObsDiaria",
   "primary": [],
@@ -59,3 +58,4 @@ export const SuporteObsDiaria: Schema =
     }
   }
 }
+  

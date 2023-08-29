@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TDepositoClasse = keyof typeof DepositoClasse.fields
 
-export const DepositoClasse: Schema =
-  {
+export const DepositoClasse = {
   "database": "plano",
   "table": "DepositoClasse",
   "primary": [],
@@ -144,3 +143,4 @@ export const DepositoClasse: Schema =
     }
   }
 }
+  

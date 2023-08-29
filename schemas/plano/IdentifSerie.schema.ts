@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TIdentifSerie = keyof typeof IdentifSerie.fields
 
-export const IdentifSerie: Schema =
-  {
+export const IdentifSerie = {
   "database": "plano",
   "table": "IdentifSerie",
   "primary": [],
@@ -110,3 +109,4 @@ export const IdentifSerie: Schema =
     }
   }
 }
+  

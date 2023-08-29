@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TLotes = keyof typeof Lotes.fields
 
-export const Lotes: Schema =
-  {
+export const Lotes = {
   "database": "plano",
   "table": "Lotes",
   "primary": [],
@@ -399,3 +398,4 @@ export const Lotes: Schema =
     }
   }
 }
+  

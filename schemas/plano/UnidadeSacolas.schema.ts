@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TUnidadeSacolas = keyof typeof UnidadeSacolas.fields
 
-export const UnidadeSacolas: Schema =
-  {
+export const UnidadeSacolas = {
   "database": "plano",
   "table": "UnidadeSacolas",
   "primary": [
@@ -61,3 +60,4 @@ export const UnidadeSacolas: Schema =
     }
   }
 }
+  

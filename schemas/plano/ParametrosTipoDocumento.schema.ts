@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TParametrosTipoDocumento = keyof typeof ParametrosTipoDocumento.fields
 
-export const ParametrosTipoDocumento: Schema =
-  {
+export const ParametrosTipoDocumento = {
   "database": "plano",
   "table": "ParametrosTipoDocumento",
   "primary": [],
@@ -127,3 +126,4 @@ export const ParametrosTipoDocumento: Schema =
     }
   }
 }
+  

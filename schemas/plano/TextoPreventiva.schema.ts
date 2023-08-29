@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTextoPreventiva = keyof typeof TextoPreventiva.fields
 
-export const TextoPreventiva: Schema =
-  {
+export const TextoPreventiva = {
   "database": "plano",
   "table": "TextoPreventiva",
   "primary": [
@@ -44,3 +43,4 @@ export const TextoPreventiva: Schema =
     }
   }
 }
+  

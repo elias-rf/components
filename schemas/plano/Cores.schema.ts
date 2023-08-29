@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCores = keyof typeof Cores.fields
 
-export const Cores: Schema =
-  {
+export const Cores = {
   "database": "plano",
   "table": "Cores",
   "primary": [
@@ -44,3 +43,4 @@ export const Cores: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNfLogConferencia = keyof typeof NfLogConferencia.fields
 
-export const NfLogConferencia: Schema =
-  {
+export const NfLogConferencia = {
   "database": "plano",
   "table": "NfLogConferencia",
   "primary": [],
@@ -144,3 +143,4 @@ export const NfLogConferencia: Schema =
     }
   }
 }
+  

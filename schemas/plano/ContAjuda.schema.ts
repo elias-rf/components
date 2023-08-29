@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TContAjuda = keyof typeof ContAjuda.fields
 
-export const ContAjuda: Schema =
-  {
+export const ContAjuda = {
   "database": "plano",
   "table": "ContAjuda",
   "primary": [],
@@ -42,3 +41,4 @@ export const ContAjuda: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TRamoAtividade = keyof typeof RamoAtividade.fields
 
-export const RamoAtividade: Schema =
-  {
+export const RamoAtividade = {
   "database": "plano",
   "table": "RamoAtividade",
   "primary": [
@@ -44,3 +43,4 @@ export const RamoAtividade: Schema =
     }
   }
 }
+  

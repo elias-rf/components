@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TMovCreCliente = keyof typeof MovCreCliente.fields
 
-export const MovCreCliente: Schema =
-  {
+export const MovCreCliente = {
   "database": "plano",
   "table": "MovCreCliente",
   "primary": [],
@@ -212,3 +211,4 @@ export const MovCreCliente: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTemp411QSANTOS = keyof typeof Temp411QSANTOS.fields
 
-export const Temp411QSANTOS: Schema =
-  {
+export const Temp411QSANTOS = {
   "database": "plano",
   "table": "Temp411QSANTOS",
   "primary": [
@@ -163,3 +162,4 @@ export const Temp411QSANTOS: Schema =
     }
   }
 }
+  

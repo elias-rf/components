@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTabBan = keyof typeof TabBan.fields
 
-export const TabBan: Schema =
-  {
+export const TabBan = {
   "database": "plano",
   "table": "TabBan",
   "primary": [
@@ -231,3 +230,4 @@ export const TabBan: Schema =
     }
   }
 }
+  

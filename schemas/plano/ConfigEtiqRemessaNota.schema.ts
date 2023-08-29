@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfigEtiqRemessaNota = keyof typeof ConfigEtiqRemessaNota.fields
 
-export const ConfigEtiqRemessaNota: Schema =
-  {
+export const ConfigEtiqRemessaNota = {
   "database": "plano",
   "table": "ConfigEtiqRemessaNota",
   "primary": [
@@ -1047,3 +1046,4 @@ export const ConfigEtiqRemessaNota: Schema =
     }
   }
 }
+  

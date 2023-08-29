@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfiguracaoWMS = keyof typeof ConfiguracaoWMS.fields
 
-export const ConfiguracaoWMS: Schema =
-  {
+export const ConfiguracaoWMS = {
   "database": "plano",
   "table": "ConfiguracaoWMS",
   "primary": [
@@ -180,3 +179,4 @@ export const ConfiguracaoWMS: Schema =
     }
   }
 }
+  

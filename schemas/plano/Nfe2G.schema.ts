@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNfe2G = keyof typeof Nfe2G.fields
 
-export const Nfe2G: Schema =
-  {
+export const Nfe2G = {
   "database": "plano",
   "table": "Nfe2G",
   "primary": [],
@@ -501,3 +500,4 @@ export const Nfe2G: Schema =
     }
   }
 }
+  

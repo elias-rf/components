@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TComponentesCombo = keyof typeof ComponentesCombo.fields
 
-export const ComponentesCombo: Schema =
-  {
+export const ComponentesCombo = {
   "database": "plano",
   "table": "ComponentesCombo",
   "primary": [
@@ -95,3 +94,4 @@ export const ComponentesCombo: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TProtocolo = keyof typeof Protocolo.fields
 
-export const Protocolo: Schema =
-  {
+export const Protocolo = {
   "database": "plano",
   "table": "Protocolo",
   "primary": [
@@ -469,3 +468,4 @@ export const Protocolo: Schema =
     }
   }
 }
+  

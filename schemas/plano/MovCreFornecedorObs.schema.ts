@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TMovCreFornecedorObs = keyof typeof MovCreFornecedorObs.fields
 
-export const MovCreFornecedorObs: Schema =
-  {
+export const MovCreFornecedorObs = {
   "database": "plano",
   "table": "MovCreFornecedorObs",
   "primary": [],
@@ -59,3 +58,4 @@ export const MovCreFornecedorObs: Schema =
     }
   }
 }
+  

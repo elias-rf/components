@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TAcumuladoresParciais = keyof typeof AcumuladoresParciais.fields
 
-export const AcumuladoresParciais: Schema =
-  {
+export const AcumuladoresParciais = {
   "database": "plano",
   "table": "AcumuladoresParciais",
   "primary": [],
@@ -42,3 +41,4 @@ export const AcumuladoresParciais: Schema =
     }
   }
 }
+  

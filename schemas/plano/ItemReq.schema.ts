@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TItemReq = keyof typeof ItemReq.fields
 
-export const ItemReq: Schema =
-  {
+export const ItemReq = {
   "database": "plano",
   "table": "ItemReq",
   "primary": [],
@@ -93,3 +92,4 @@ export const ItemReq: Schema =
     }
   }
 }
+  

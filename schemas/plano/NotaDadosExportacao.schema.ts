@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNotaDadosExportacao = keyof typeof NotaDadosExportacao.fields
 
-export const NotaDadosExportacao: Schema =
-  {
+export const NotaDadosExportacao = {
   "database": "plano",
   "table": "NotaDadosExportacao",
   "primary": [],
@@ -110,3 +109,4 @@ export const NotaDadosExportacao: Schema =
     }
   }
 }
+  

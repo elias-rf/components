@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCadProDCB = keyof typeof CadProDCB.fields
 
-export const CadProDCB: Schema =
-  {
+export const CadProDCB = {
   "database": "plano",
   "table": "CadProDCB",
   "primary": [],
@@ -59,3 +58,4 @@ export const CadProDCB: Schema =
     }
   }
 }
+  

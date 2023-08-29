@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfiguracaoNFCeSAT = keyof typeof ConfiguracaoNFCeSAT.fields
 
-export const ConfiguracaoNFCeSAT: Schema =
-  {
+export const ConfiguracaoNFCeSAT = {
   "database": "plano",
   "table": "ConfiguracaoNFCeSAT",
   "primary": [],
@@ -637,3 +636,4 @@ export const ConfiguracaoNFCeSAT: Schema =
     }
   }
 }
+  

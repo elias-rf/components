@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfigRemessaLab = keyof typeof ConfigRemessaLab.fields
 
-export const ConfigRemessaLab: Schema =
-  {
+export const ConfigRemessaLab = {
   "database": "plano",
   "table": "ConfigRemessaLab",
   "primary": [],
@@ -42,3 +41,4 @@ export const ConfigRemessaLab: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TObsMapaECF = keyof typeof ObsMapaECF.fields
 
-export const ObsMapaECF: Schema =
-  {
+export const ObsMapaECF = {
   "database": "plano",
   "table": "ObsMapaECF",
   "primary": [],
@@ -59,3 +58,4 @@ export const ObsMapaECF: Schema =
     }
   }
 }
+  

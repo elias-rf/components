@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTabDif = keyof typeof TabDif.fields
 
-export const TabDif: Schema =
-  {
+export const TabDif = {
   "database": "plano",
   "table": "TabDif",
   "primary": [],
@@ -195,3 +194,4 @@ export const TabDif: Schema =
     }
   }
 }
+  

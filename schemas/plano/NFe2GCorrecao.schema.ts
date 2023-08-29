@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNFe2GCorrecao = keyof typeof NFe2GCorrecao.fields
 
-export const NFe2GCorrecao: Schema =
-  {
+export const NFe2GCorrecao = {
   "database": "plano",
   "table": "NFe2GCorrecao",
   "primary": [],
@@ -195,3 +194,4 @@ export const NFe2GCorrecao: Schema =
     }
   }
 }
+  

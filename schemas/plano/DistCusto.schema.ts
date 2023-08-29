@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TDistCusto = keyof typeof DistCusto.fields
 
-export const DistCusto: Schema =
-  {
+export const DistCusto = {
   "database": "plano",
   "table": "DistCusto",
   "primary": [],
@@ -178,3 +177,4 @@ export const DistCusto: Schema =
     }
   }
 }
+  

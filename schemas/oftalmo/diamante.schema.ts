@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Tdiamante = keyof typeof diamante.fields
 
-export const diamante: Schema =
-  {
+export const diamante = {
   "database": "oftalmo",
   "table": "diamante",
   "primary": [],
@@ -212,3 +211,4 @@ export const diamante: Schema =
     }
   }
 }
+  

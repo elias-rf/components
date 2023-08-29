@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfiguracaoNCM = keyof typeof ConfiguracaoNCM.fields
 
-export const ConfiguracaoNCM: Schema =
-  {
+export const ConfiguracaoNCM = {
   "database": "plano",
   "table": "ConfiguracaoNCM",
   "primary": [],
@@ -501,3 +500,4 @@ export const ConfiguracaoNCM: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCadproObservacaoCompra = keyof typeof CadproObservacaoCompra.fields
 
-export const CadproObservacaoCompra: Schema =
-  {
+export const CadproObservacaoCompra = {
   "database": "plano",
   "table": "CadproObservacaoCompra",
   "primary": [
@@ -61,3 +60,4 @@ export const CadproObservacaoCompra: Schema =
     }
   }
 }
+  

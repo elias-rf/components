@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TContasReceberChequeFornecedor = keyof typeof ContasReceberChequeFornecedor.fields
 
-export const ContasReceberChequeFornecedor: Schema =
-  {
+export const ContasReceberChequeFornecedor = {
   "database": "plano",
   "table": "ContasReceberChequeFornecedor",
   "primary": [],
@@ -280,3 +279,4 @@ export const ContasReceberChequeFornecedor: Schema =
     }
   }
 }
+  

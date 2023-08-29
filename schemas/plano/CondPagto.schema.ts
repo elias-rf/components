@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCondPagto = keyof typeof CondPagto.fields
 
-export const CondPagto: Schema =
-  {
+export const CondPagto = {
   "database": "plano",
   "table": "CondPagto",
   "primary": [
@@ -520,3 +519,4 @@ export const CondPagto: Schema =
     }
   }
 }
+  

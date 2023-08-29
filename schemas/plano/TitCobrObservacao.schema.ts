@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTitCobrObservacao = keyof typeof TitCobrObservacao.fields
 
-export const TitCobrObservacao: Schema =
-  {
+export const TitCobrObservacao = {
   "database": "plano",
   "table": "TitCobrObservacao",
   "primary": [],
@@ -110,3 +109,4 @@ export const TitCobrObservacao: Schema =
     }
   }
 }
+  

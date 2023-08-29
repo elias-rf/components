@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNatOpeNaoAutorizada = keyof typeof NatOpeNaoAutorizada.fields
 
-export const NatOpeNaoAutorizada: Schema =
-  {
+export const NatOpeNaoAutorizada = {
   "database": "plano",
   "table": "NatOpeNaoAutorizada",
   "primary": [],
@@ -59,3 +58,4 @@ export const NatOpeNaoAutorizada: Schema =
     }
   }
 }
+  

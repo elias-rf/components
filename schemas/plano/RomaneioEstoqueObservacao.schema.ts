@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TRomaneioEstoqueObservacao = keyof typeof RomaneioEstoqueObservacao.fields
 
-export const RomaneioEstoqueObservacao: Schema =
-  {
+export const RomaneioEstoqueObservacao = {
   "database": "plano",
   "table": "RomaneioEstoqueObservacao",
   "primary": [],
@@ -76,3 +75,4 @@ export const RomaneioEstoqueObservacao: Schema =
     }
   }
 }
+  

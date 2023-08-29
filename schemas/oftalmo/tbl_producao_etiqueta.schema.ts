@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Ttbl_producao_etiqueta = keyof typeof tbl_producao_etiqueta.fields
 
-export const tbl_producao_etiqueta: Schema =
-  {
+export const tbl_producao_etiqueta = {
   "database": "oftalmo",
   "table": "tbl_producao_etiqueta",
   "primary": [
@@ -61,3 +60,4 @@ export const tbl_producao_etiqueta: Schema =
     }
   }
 }
+  

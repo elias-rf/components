@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type THistoricoTitCoBr = keyof typeof HistoricoTitCoBr.fields
 
-export const HistoricoTitCoBr: Schema =
-  {
+export const HistoricoTitCoBr = {
   "database": "plano",
   "table": "HistoricoTitCoBr",
   "primary": [],
@@ -178,3 +177,4 @@ export const HistoricoTitCoBr: Schema =
     }
   }
 }
+  

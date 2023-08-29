@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCupomFiscalTEFMestre = keyof typeof CupomFiscalTEFMestre.fields
 
-export const CupomFiscalTEFMestre: Schema =
-  {
+export const CupomFiscalTEFMestre = {
   "database": "plano",
   "table": "CupomFiscalTEFMestre",
   "primary": [],
@@ -195,3 +194,4 @@ export const CupomFiscalTEFMestre: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TObsItemRetornoCotacao = keyof typeof ObsItemRetornoCotacao.fields
 
-export const ObsItemRetornoCotacao: Schema =
-  {
+export const ObsItemRetornoCotacao = {
   "database": "plano",
   "table": "ObsItemRetornoCotacao",
   "primary": [],
@@ -93,3 +92,4 @@ export const ObsItemRetornoCotacao: Schema =
     }
   }
 }
+  

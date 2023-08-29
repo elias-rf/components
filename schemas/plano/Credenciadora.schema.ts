@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCredenciadora = keyof typeof Credenciadora.fields
 
-export const Credenciadora: Schema =
-  {
+export const Credenciadora = {
   "database": "plano",
   "table": "Credenciadora",
   "primary": [
@@ -61,3 +60,4 @@ export const Credenciadora: Schema =
     }
   }
 }
+  

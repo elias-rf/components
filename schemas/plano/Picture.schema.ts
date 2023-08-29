@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TPicture = keyof typeof Picture.fields
 
-export const Picture: Schema =
-  {
+export const Picture = {
   "database": "plano",
   "table": "Picture",
   "primary": [
@@ -61,3 +60,4 @@ export const Picture: Schema =
     }
   }
 }
+  

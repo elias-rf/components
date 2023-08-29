@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTempCombo = keyof typeof TempCombo.fields
 
-export const TempCombo: Schema =
-  {
+export const TempCombo = {
   "database": "plano",
   "table": "TempCombo",
   "primary": [],
@@ -212,3 +211,4 @@ export const TempCombo: Schema =
     }
   }
 }
+  

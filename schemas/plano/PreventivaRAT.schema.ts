@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TPreventivaRAT = keyof typeof PreventivaRAT.fields
 
-export const PreventivaRAT: Schema =
-  {
+export const PreventivaRAT = {
   "database": "plano",
   "table": "PreventivaRAT",
   "primary": [],
@@ -212,3 +211,4 @@ export const PreventivaRAT: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TProdutoCodificacaoNVE = keyof typeof ProdutoCodificacaoNVE.fields
 
-export const ProdutoCodificacaoNVE: Schema =
-  {
+export const ProdutoCodificacaoNVE = {
   "database": "plano",
   "table": "ProdutoCodificacaoNVE",
   "primary": [
@@ -78,3 +77,4 @@ export const ProdutoCodificacaoNVE: Schema =
     }
   }
 }
+  

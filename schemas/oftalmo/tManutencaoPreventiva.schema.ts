@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtManutencaoPreventiva = keyof typeof tManutencaoPreventiva.fields
 
-export const tManutencaoPreventiva: Schema =
-  {
+export const tManutencaoPreventiva = {
   "database": "oftalmo",
   "table": "tManutencaoPreventiva",
   "primary": [
@@ -197,3 +196,4 @@ export const tManutencaoPreventiva: Schema =
     }
   }
 }
+  

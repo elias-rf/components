@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TParametroIntegracao = keyof typeof ParametroIntegracao.fields
 
-export const ParametroIntegracao: Schema =
-  {
+export const ParametroIntegracao = {
   "database": "plano",
   "table": "ParametroIntegracao",
   "primary": [
@@ -214,3 +213,4 @@ export const ParametroIntegracao: Schema =
     }
   }
 }
+  

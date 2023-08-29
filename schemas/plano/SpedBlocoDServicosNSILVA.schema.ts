@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TSpedBlocoDServicosNSILVA = keyof typeof SpedBlocoDServicosNSILVA.fields
 
-export const SpedBlocoDServicosNSILVA: Schema =
-  {
+export const SpedBlocoDServicosNSILVA = {
   "database": "plano",
   "table": "SpedBlocoDServicosNSILVA",
   "primary": [],
@@ -144,3 +143,4 @@ export const SpedBlocoDServicosNSILVA: Schema =
     }
   }
 }
+  

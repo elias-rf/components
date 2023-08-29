@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtEsterilizacaoInternaOld = keyof typeof tEsterilizacaoInternaOld.fields
 
-export const tEsterilizacaoInternaOld: Schema =
-  {
+export const tEsterilizacaoInternaOld = {
   "database": "oftalmo",
   "table": "tEsterilizacaoInternaOld",
   "primary": [
@@ -163,3 +162,4 @@ export const tEsterilizacaoInternaOld: Schema =
     }
   }
 }
+  

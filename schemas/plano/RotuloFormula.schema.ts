@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TRotuloFormula = keyof typeof RotuloFormula.fields
 
-export const RotuloFormula: Schema =
-  {
+export const RotuloFormula = {
   "database": "plano",
   "table": "RotuloFormula",
   "primary": [],
@@ -127,3 +126,4 @@ export const RotuloFormula: Schema =
     }
   }
 }
+  

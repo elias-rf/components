@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TPharmaLinkComprovante = keyof typeof PharmaLinkComprovante.fields
 
-export const PharmaLinkComprovante: Schema =
-  {
+export const PharmaLinkComprovante = {
   "database": "plano",
   "table": "PharmaLinkComprovante",
   "primary": [],
@@ -76,3 +75,4 @@ export const PharmaLinkComprovante: Schema =
     }
   }
 }
+  

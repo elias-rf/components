@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCancelamentoTitCobr = keyof typeof CancelamentoTitCobr.fields
 
-export const CancelamentoTitCobr: Schema =
-  {
+export const CancelamentoTitCobr = {
   "database": "plano",
   "table": "CancelamentoTitCobr",
   "primary": [],
@@ -127,3 +126,4 @@ export const CancelamentoTitCobr: Schema =
     }
   }
 }
+  

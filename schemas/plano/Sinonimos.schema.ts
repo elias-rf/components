@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TSinonimos = keyof typeof Sinonimos.fields
 
-export const Sinonimos: Schema =
-  {
+export const Sinonimos = {
   "database": "plano",
   "table": "Sinonimos",
   "primary": [],
@@ -42,3 +41,4 @@ export const Sinonimos: Schema =
     }
   }
 }
+  

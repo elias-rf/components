@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTabSal = keyof typeof TabSal.fields
 
-export const TabSal: Schema =
-  {
+export const TabSal = {
   "database": "plano",
   "table": "TabSal",
   "primary": [],
@@ -110,3 +109,4 @@ export const TabSal: Schema =
     }
   }
 }
+  

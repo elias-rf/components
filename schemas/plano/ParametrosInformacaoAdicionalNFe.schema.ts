@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TParametrosInformacaoAdicionalNFe = keyof typeof ParametrosInformacaoAdicionalNFe.fields
 
-export const ParametrosInformacaoAdicionalNFe: Schema =
-  {
+export const ParametrosInformacaoAdicionalNFe = {
   "database": "plano",
   "table": "ParametrosInformacaoAdicionalNFe",
   "primary": [],
@@ -76,3 +75,4 @@ export const ParametrosInformacaoAdicionalNFe: Schema =
     }
   }
 }
+  

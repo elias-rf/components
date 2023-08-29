@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TAcumuladoresManipulacao = keyof typeof AcumuladoresManipulacao.fields
 
-export const AcumuladoresManipulacao: Schema =
-  {
+export const AcumuladoresManipulacao = {
   "database": "plano",
   "table": "AcumuladoresManipulacao",
   "primary": [],
@@ -161,3 +160,4 @@ export const AcumuladoresManipulacao: Schema =
     }
   }
 }
+  

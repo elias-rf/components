@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TVidalinkComprovante = keyof typeof VidalinkComprovante.fields
 
-export const VidalinkComprovante: Schema =
-  {
+export const VidalinkComprovante = {
   "database": "plano",
   "table": "VidalinkComprovante",
   "primary": [],
@@ -93,3 +92,4 @@ export const VidalinkComprovante: Schema =
     }
   }
 }
+  

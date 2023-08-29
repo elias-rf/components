@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TProtocoloHist = keyof typeof ProtocoloHist.fields
 
-export const ProtocoloHist: Schema =
-  {
+export const ProtocoloHist = {
   "database": "plano",
   "table": "ProtocoloHist",
   "primary": [
@@ -61,3 +60,4 @@ export const ProtocoloHist: Schema =
     }
   }
 }
+  

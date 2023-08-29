@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCadCliOcorrencias = keyof typeof CadCliOcorrencias.fields
 
-export const CadCliOcorrencias: Schema =
-  {
+export const CadCliOcorrencias = {
   "database": "plano",
   "table": "CadCliOcorrencias",
   "primary": [],
@@ -144,3 +143,4 @@ export const CadCliOcorrencias: Schema =
     }
   }
 }
+  

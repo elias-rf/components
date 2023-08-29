@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtSistemaMesVT = keyof typeof tSistemaMesVT.fields
 
-export const tSistemaMesVT: Schema =
-  {
+export const tSistemaMesVT = {
   "database": "oftalmo",
   "table": "tSistemaMesVT",
   "primary": [
@@ -95,3 +94,4 @@ export const tSistemaMesVT: Schema =
     }
   }
 }
+  

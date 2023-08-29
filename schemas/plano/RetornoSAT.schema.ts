@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TRetornoSAT = keyof typeof RetornoSAT.fields
 
-export const RetornoSAT: Schema =
-  {
+export const RetornoSAT = {
   "database": "plano",
   "table": "RetornoSAT",
   "primary": [],
@@ -161,3 +160,4 @@ export const RetornoSAT: Schema =
     }
   }
 }
+  

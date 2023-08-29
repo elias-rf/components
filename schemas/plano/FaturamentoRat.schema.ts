@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TFaturamentoRat = keyof typeof FaturamentoRat.fields
 
-export const FaturamentoRat: Schema =
-  {
+export const FaturamentoRat = {
   "database": "plano",
   "table": "FaturamentoRat",
   "primary": [
@@ -78,3 +77,4 @@ export const FaturamentoRat: Schema =
     }
   }
 }
+  

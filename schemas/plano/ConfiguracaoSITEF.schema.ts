@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfiguracaoSITEF = keyof typeof ConfiguracaoSITEF.fields
 
-export const ConfiguracaoSITEF: Schema =
-  {
+export const ConfiguracaoSITEF = {
   "database": "plano",
   "table": "ConfiguracaoSITEF",
   "primary": [
@@ -180,3 +179,4 @@ export const ConfiguracaoSITEF: Schema =
     }
   }
 }
+  

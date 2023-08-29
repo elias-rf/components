@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTitCobr = keyof typeof TitCobr.fields
 
-export const TitCobr: Schema =
-  {
+export const TitCobr = {
   "database": "plano",
   "table": "TitCobr",
   "primary": [],
@@ -1113,3 +1112,4 @@ export const TitCobr: Schema =
     }
   }
 }
+  

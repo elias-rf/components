@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TECFS = keyof typeof ECFS.fields
 
-export const ECFS: Schema =
-  {
+export const ECFS = {
   "database": "plano",
   "table": "ECFS",
   "primary": [],
@@ -76,3 +75,4 @@ export const ECFS: Schema =
     }
   }
 }
+  

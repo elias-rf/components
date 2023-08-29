@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TObsPedido = keyof typeof ObsPedido.fields
 
-export const ObsPedido: Schema =
-  {
+export const ObsPedido = {
   "database": "plano",
   "table": "ObsPedido",
   "primary": [],
@@ -144,3 +143,4 @@ export const ObsPedido: Schema =
     }
   }
 }
+  

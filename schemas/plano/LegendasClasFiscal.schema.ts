@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TLegendasClasFiscal = keyof typeof LegendasClasFiscal.fields
 
-export const LegendasClasFiscal: Schema =
-  {
+export const LegendasClasFiscal = {
   "database": "plano",
   "table": "LegendasClasFiscal",
   "primary": [
@@ -61,3 +60,4 @@ export const LegendasClasFiscal: Schema =
     }
   }
 }
+  

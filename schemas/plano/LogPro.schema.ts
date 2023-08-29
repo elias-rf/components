@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TLogPro = keyof typeof LogPro.fields
 
-export const LogPro: Schema =
-  {
+export const LogPro = {
   "database": "plano",
   "table": "LogPro",
   "primary": [],
@@ -110,3 +109,4 @@ export const LogPro: Schema =
     }
   }
 }
+  

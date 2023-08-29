@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtMaquinaCheckList = keyof typeof tMaquinaCheckList.fields
 
-export const tMaquinaCheckList: Schema =
-  {
+export const tMaquinaCheckList = {
   "database": "oftalmo",
   "table": "tMaquinaCheckList",
   "primary": [],
@@ -42,3 +41,4 @@ export const tMaquinaCheckList: Schema =
     }
   }
 }
+  

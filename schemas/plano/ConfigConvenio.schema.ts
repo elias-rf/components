@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfigConvenio = keyof typeof ConfigConvenio.fields
 
-export const ConfigConvenio: Schema =
-  {
+export const ConfigConvenio = {
   "database": "plano",
   "table": "ConfigConvenio",
   "primary": [],
@@ -93,3 +92,4 @@ export const ConfigConvenio: Schema =
     }
   }
 }
+  

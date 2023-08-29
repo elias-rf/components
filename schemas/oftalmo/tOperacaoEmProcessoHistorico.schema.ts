@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtOperacaoEmProcessoHistorico = keyof typeof tOperacaoEmProcessoHistorico.fields
 
-export const tOperacaoEmProcessoHistorico: Schema =
-  {
+export const tOperacaoEmProcessoHistorico = {
   "database": "oftalmo",
   "table": "tOperacaoEmProcessoHistorico",
   "primary": [
@@ -95,3 +94,4 @@ export const tOperacaoEmProcessoHistorico: Schema =
     }
   }
 }
+  

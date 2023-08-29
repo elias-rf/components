@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TObsItemNota = keyof typeof ObsItemNota.fields
 
-export const ObsItemNota: Schema =
-  {
+export const ObsItemNota = {
   "database": "plano",
   "table": "ObsItemNota",
   "primary": [],
@@ -127,3 +126,4 @@ export const ObsItemNota: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNotaPartilhaICMSMestre = keyof typeof NotaPartilhaICMSMestre.fields
 
-export const NotaPartilhaICMSMestre: Schema =
-  {
+export const NotaPartilhaICMSMestre = {
   "database": "plano",
   "table": "NotaPartilhaICMSMestre",
   "primary": [],
@@ -161,3 +160,4 @@ export const NotaPartilhaICMSMestre: Schema =
     }
   }
 }
+  

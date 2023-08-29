@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TcidadesERF = keyof typeof cidadesERF.fields
 
-export const cidadesERF: Schema =
-  {
+export const cidadesERF = {
   "database": "plano",
   "table": "cidadesERF",
   "primary": [],
@@ -93,3 +92,4 @@ export const cidadesERF: Schema =
     }
   }
 }
+  

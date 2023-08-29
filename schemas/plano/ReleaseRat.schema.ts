@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TReleaseRat = keyof typeof ReleaseRat.fields
 
-export const ReleaseRat: Schema =
-  {
+export const ReleaseRat = {
   "database": "plano",
   "table": "ReleaseRat",
   "primary": [
@@ -95,3 +94,4 @@ export const ReleaseRat: Schema =
     }
   }
 }
+  

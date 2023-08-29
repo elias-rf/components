@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TFinanceiras = keyof typeof Financeiras.fields
 
-export const Financeiras: Schema =
-  {
+export const Financeiras = {
   "database": "plano",
   "table": "Financeiras",
   "primary": [
@@ -61,3 +60,4 @@ export const Financeiras: Schema =
     }
   }
 }
+  

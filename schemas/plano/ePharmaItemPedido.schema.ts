@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TePharmaItemPedido = keyof typeof ePharmaItemPedido.fields
 
-export const ePharmaItemPedido: Schema =
-  {
+export const ePharmaItemPedido = {
   "database": "plano",
   "table": "ePharmaItemPedido",
   "primary": [],
@@ -229,3 +228,4 @@ export const ePharmaItemPedido: Schema =
     }
   }
 }
+  

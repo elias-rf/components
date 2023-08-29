@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TSaisConflitantes = keyof typeof SaisConflitantes.fields
 
-export const SaisConflitantes: Schema =
-  {
+export const SaisConflitantes = {
   "database": "plano",
   "table": "SaisConflitantes",
   "primary": [],
@@ -93,3 +92,4 @@ export const SaisConflitantes: Schema =
     }
   }
 }
+  

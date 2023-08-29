@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TMedicoAMIVida = keyof typeof MedicoAMIVida.fields
 
-export const MedicoAMIVida: Schema =
-  {
+export const MedicoAMIVida = {
   "database": "plano",
   "table": "MedicoAMIVida",
   "primary": [
@@ -78,3 +77,4 @@ export const MedicoAMIVida: Schema =
     }
   }
 }
+  

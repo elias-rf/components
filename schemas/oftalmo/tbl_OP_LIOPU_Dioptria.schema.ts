@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Ttbl_OP_LIOPU_Dioptria = keyof typeof tbl_OP_LIOPU_Dioptria.fields
 
-export const tbl_OP_LIOPU_Dioptria: Schema =
-  {
+export const tbl_OP_LIOPU_Dioptria = {
   "database": "oftalmo",
   "table": "tbl_OP_LIOPU_Dioptria",
   "primary": [
@@ -180,3 +179,4 @@ export const tbl_OP_LIOPU_Dioptria: Schema =
     }
   }
 }
+  

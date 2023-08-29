@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TModEtiqExterna = keyof typeof ModEtiqExterna.fields
 
-export const ModEtiqExterna: Schema =
-  {
+export const ModEtiqExterna = {
   "database": "plano",
   "table": "ModEtiqExterna",
   "primary": [
@@ -44,3 +43,4 @@ export const ModEtiqExterna: Schema =
     }
   }
 }
+  

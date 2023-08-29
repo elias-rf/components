@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type THistoricoTitCoBrAnterior = keyof typeof HistoricoTitCoBrAnterior.fields
 
-export const HistoricoTitCoBrAnterior: Schema =
-  {
+export const HistoricoTitCoBrAnterior = {
   "database": "plano",
   "table": "HistoricoTitCoBrAnterior",
   "primary": [],
@@ -161,3 +160,4 @@ export const HistoricoTitCoBrAnterior: Schema =
     }
   }
 }
+  

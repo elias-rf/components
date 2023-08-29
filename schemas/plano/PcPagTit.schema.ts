@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TPcPagTit = keyof typeof PcPagTit.fields
 
-export const PcPagTit: Schema =
-  {
+export const PcPagTit = {
   "database": "plano",
   "table": "PcPagTit",
   "primary": [],
@@ -348,3 +347,4 @@ export const PcPagTit: Schema =
     }
   }
 }
+  

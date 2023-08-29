@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Ttbl_OP_LIO = keyof typeof tbl_OP_LIO.fields
 
-export const tbl_OP_LIO: Schema =
-  {
+export const tbl_OP_LIO = {
   "database": "oftalmo",
   "table": "tbl_OP_LIO",
   "primary": [
@@ -248,3 +247,4 @@ export const tbl_OP_LIO: Schema =
     }
   }
 }
+  

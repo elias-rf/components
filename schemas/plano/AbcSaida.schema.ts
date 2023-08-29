@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TAbcSaida = keyof typeof AbcSaida.fields
 
-export const AbcSaida: Schema =
-  {
+export const AbcSaida = {
   "database": "plano",
   "table": "AbcSaida",
   "primary": [],
@@ -93,3 +92,4 @@ export const AbcSaida: Schema =
     }
   }
 }
+  

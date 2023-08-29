@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TPharmaLinkItemPedido = keyof typeof PharmaLinkItemPedido.fields
 
-export const PharmaLinkItemPedido: Schema =
-  {
+export const PharmaLinkItemPedido = {
   "database": "plano",
   "table": "PharmaLinkItemPedido",
   "primary": [],
@@ -195,3 +194,4 @@ export const PharmaLinkItemPedido: Schema =
     }
   }
 }
+  

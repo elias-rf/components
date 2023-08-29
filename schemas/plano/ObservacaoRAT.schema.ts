@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TObservacaoRAT = keyof typeof ObservacaoRAT.fields
 
-export const ObservacaoRAT: Schema =
-  {
+export const ObservacaoRAT = {
   "database": "plano",
   "table": "ObservacaoRAT",
   "primary": [],
@@ -76,3 +75,4 @@ export const ObservacaoRAT: Schema =
     }
   }
 }
+  

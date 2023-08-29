@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TePharmaPrescritor = keyof typeof ePharmaPrescritor.fields
 
-export const ePharmaPrescritor: Schema =
-  {
+export const ePharmaPrescritor = {
   "database": "plano",
   "table": "ePharmaPrescritor",
   "primary": [
@@ -44,3 +43,4 @@ export const ePharmaPrescritor: Schema =
     }
   }
 }
+  

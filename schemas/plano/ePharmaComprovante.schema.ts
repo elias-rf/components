@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TePharmaComprovante = keyof typeof ePharmaComprovante.fields
 
-export const ePharmaComprovante: Schema =
-  {
+export const ePharmaComprovante = {
   "database": "plano",
   "table": "ePharmaComprovante",
   "primary": [],
@@ -76,3 +75,4 @@ export const ePharmaComprovante: Schema =
     }
   }
 }
+  

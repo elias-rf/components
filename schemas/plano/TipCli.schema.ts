@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTipCli = keyof typeof TipCli.fields
 
-export const TipCli: Schema =
-  {
+export const TipCli = {
   "database": "plano",
   "table": "TipCli",
   "primary": [
@@ -78,3 +77,4 @@ export const TipCli: Schema =
     }
   }
 }
+  

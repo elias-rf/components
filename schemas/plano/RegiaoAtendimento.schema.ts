@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TRegiaoAtendimento = keyof typeof RegiaoAtendimento.fields
 
-export const RegiaoAtendimento: Schema =
-  {
+export const RegiaoAtendimento = {
   "database": "plano",
   "table": "RegiaoAtendimento",
   "primary": [
@@ -44,3 +43,4 @@ export const RegiaoAtendimento: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCadProEcommerce = keyof typeof CadProEcommerce.fields
 
-export const CadProEcommerce: Schema =
-  {
+export const CadProEcommerce = {
   "database": "plano",
   "table": "CadProEcommerce",
   "primary": [],
@@ -110,3 +109,4 @@ export const CadProEcommerce: Schema =
     }
   }
 }
+  

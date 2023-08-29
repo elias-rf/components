@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TMestreFormula = keyof typeof MestreFormula.fields
 
-export const MestreFormula: Schema =
-  {
+export const MestreFormula = {
   "database": "plano",
   "table": "MestreFormula",
   "primary": [],
@@ -739,3 +738,4 @@ export const MestreFormula: Schema =
     }
   }
 }
+  

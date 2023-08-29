@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TFaltasFor = keyof typeof FaltasFor.fields
 
-export const FaltasFor: Schema =
-  {
+export const FaltasFor = {
   "database": "plano",
   "table": "FaltasFor",
   "primary": [],
@@ -110,3 +109,4 @@ export const FaltasFor: Schema =
     }
   }
 }
+  

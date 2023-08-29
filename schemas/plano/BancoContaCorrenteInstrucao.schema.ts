@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TBancoContaCorrenteInstrucao = keyof typeof BancoContaCorrenteInstrucao.fields
 
-export const BancoContaCorrenteInstrucao: Schema =
-  {
+export const BancoContaCorrenteInstrucao = {
   "database": "plano",
   "table": "BancoContaCorrenteInstrucao",
   "primary": [],
@@ -93,3 +92,4 @@ export const BancoContaCorrenteInstrucao: Schema =
     }
   }
 }
+  

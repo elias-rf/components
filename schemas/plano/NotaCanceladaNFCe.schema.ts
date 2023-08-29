@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNotaCanceladaNFCe = keyof typeof NotaCanceladaNFCe.fields
 
-export const NotaCanceladaNFCe: Schema =
-  {
+export const NotaCanceladaNFCe = {
   "database": "plano",
   "table": "NotaCanceladaNFCe",
   "primary": [],
@@ -127,3 +126,4 @@ export const NotaCanceladaNFCe: Schema =
     }
   }
 }
+  

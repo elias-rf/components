@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TExcNI = keyof typeof ExcNI.fields
 
-export const ExcNI: Schema =
-  {
+export const ExcNI = {
   "database": "plano",
   "table": "ExcNI",
   "primary": [],
@@ -569,3 +568,4 @@ export const ExcNI: Schema =
     }
   }
 }
+  

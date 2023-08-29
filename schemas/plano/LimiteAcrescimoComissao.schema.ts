@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TLimiteAcrescimoComissao = keyof typeof LimiteAcrescimoComissao.fields
 
-export const LimiteAcrescimoComissao: Schema =
-  {
+export const LimiteAcrescimoComissao = {
   "database": "plano",
   "table": "LimiteAcrescimoComissao",
   "primary": [
@@ -44,3 +43,4 @@ export const LimiteAcrescimoComissao: Schema =
     }
   }
 }
+  

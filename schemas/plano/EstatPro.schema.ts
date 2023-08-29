@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TEstatPro = keyof typeof EstatPro.fields
 
-export const EstatPro: Schema =
-  {
+export const EstatPro = {
   "database": "plano",
   "table": "EstatPro",
   "primary": [],
@@ -314,3 +313,4 @@ export const EstatPro: Schema =
     }
   }
 }
+  

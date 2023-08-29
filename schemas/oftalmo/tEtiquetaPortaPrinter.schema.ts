@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtEtiquetaPortaPrinter = keyof typeof tEtiquetaPortaPrinter.fields
 
-export const tEtiquetaPortaPrinter: Schema =
-  {
+export const tEtiquetaPortaPrinter = {
   "database": "oftalmo",
   "table": "tEtiquetaPortaPrinter",
   "primary": [],
@@ -42,3 +41,4 @@ export const tEtiquetaPortaPrinter: Schema =
     }
   }
 }
+  

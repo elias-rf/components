@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TSpedFiscalRegE110 = keyof typeof SpedFiscalRegE110.fields
 
-export const SpedFiscalRegE110: Schema =
-  {
+export const SpedFiscalRegE110 = {
   "database": "plano",
   "table": "SpedFiscalRegE110",
   "primary": [],
@@ -229,3 +228,4 @@ export const SpedFiscalRegE110: Schema =
     }
   }
 }
+  

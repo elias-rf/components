@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TExcIP = keyof typeof ExcIP.fields
 
-export const ExcIP: Schema =
-  {
+export const ExcIP = {
   "database": "plano",
   "table": "ExcIP",
   "primary": [],
@@ -450,3 +449,4 @@ export const ExcIP: Schema =
     }
   }
 }
+  

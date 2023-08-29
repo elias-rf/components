@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TFilialDownloadXML = keyof typeof FilialDownloadXML.fields
 
-export const FilialDownloadXML: Schema =
-  {
+export const FilialDownloadXML = {
   "database": "plano",
   "table": "FilialDownloadXML",
   "primary": [],
@@ -59,3 +58,4 @@ export const FilialDownloadXML: Schema =
     }
   }
 }
+  

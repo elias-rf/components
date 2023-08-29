@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TLogIntegracao = keyof typeof LogIntegracao.fields
 
-export const LogIntegracao: Schema =
-  {
+export const LogIntegracao = {
   "database": "plano",
   "table": "LogIntegracao",
   "primary": [
@@ -129,3 +128,4 @@ export const LogIntegracao: Schema =
     }
   }
 }
+  

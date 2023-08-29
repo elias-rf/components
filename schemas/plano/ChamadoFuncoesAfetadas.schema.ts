@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TChamadoFuncoesAfetadas = keyof typeof ChamadoFuncoesAfetadas.fields
 
-export const ChamadoFuncoesAfetadas: Schema =
-  {
+export const ChamadoFuncoesAfetadas = {
   "database": "plano",
   "table": "ChamadoFuncoesAfetadas",
   "primary": [],
@@ -110,3 +109,4 @@ export const ChamadoFuncoesAfetadas: Schema =
     }
   }
 }
+  

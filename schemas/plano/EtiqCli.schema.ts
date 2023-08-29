@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TEtiqCli = keyof typeof EtiqCli.fields
 
-export const EtiqCli: Schema =
-  {
+export const EtiqCli = {
   "database": "plano",
   "table": "EtiqCli",
   "primary": [],
@@ -42,3 +41,4 @@ export const EtiqCli: Schema =
     }
   }
 }
+  

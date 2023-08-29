@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCadastroSais = keyof typeof CadastroSais.fields
 
-export const CadastroSais: Schema =
-  {
+export const CadastroSais = {
   "database": "plano",
   "table": "CadastroSais",
   "primary": [
@@ -146,3 +145,4 @@ export const CadastroSais: Schema =
     }
   }
 }
+  

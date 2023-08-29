@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCadProFoto = keyof typeof CadProFoto.fields
 
-export const CadProFoto: Schema =
-  {
+export const CadProFoto = {
   "database": "plano",
   "table": "CadProFoto",
   "primary": [
@@ -44,3 +43,4 @@ export const CadProFoto: Schema =
     }
   }
 }
+  

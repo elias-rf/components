@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Tphonebook = keyof typeof phonebook.fields
 
-export const phonebook: Schema =
-  {
+export const phonebook = {
   "database": "oftalmo",
   "table": "phonebook",
   "primary": [
@@ -78,3 +77,4 @@ export const phonebook: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TProducaoLinhaFluxo = keyof typeof ProducaoLinhaFluxo.fields
 
-export const ProducaoLinhaFluxo: Schema =
-  {
+export const ProducaoLinhaFluxo = {
   "database": "plano",
   "table": "ProducaoLinhaFluxo",
   "primary": [],
@@ -195,3 +194,4 @@ export const ProducaoLinhaFluxo: Schema =
     }
   }
 }
+  

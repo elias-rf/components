@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCustoTempVITOR = keyof typeof CustoTempVITOR.fields
 
-export const CustoTempVITOR: Schema =
-  {
+export const CustoTempVITOR = {
   "database": "plano",
   "table": "CustoTempVITOR",
   "primary": [],
@@ -246,3 +245,4 @@ export const CustoTempVITOR: Schema =
     }
   }
 }
+  

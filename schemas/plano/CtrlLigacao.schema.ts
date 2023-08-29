@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCtrlLigacao = keyof typeof CtrlLigacao.fields
 
-export const CtrlLigacao: Schema =
-  {
+export const CtrlLigacao = {
   "database": "plano",
   "table": "CtrlLigacao",
   "primary": [],
@@ -229,3 +228,4 @@ export const CtrlLigacao: Schema =
     }
   }
 }
+  

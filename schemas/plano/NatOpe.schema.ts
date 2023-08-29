@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNatOpe = keyof typeof NatOpe.fields
 
-export const NatOpe: Schema =
-  {
+export const NatOpe = {
   "database": "plano",
   "table": "NatOpe",
   "primary": [
@@ -1795,3 +1794,4 @@ export const NatOpe: Schema =
     }
   }
 }
+  

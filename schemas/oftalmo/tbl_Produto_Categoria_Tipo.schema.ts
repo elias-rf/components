@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Ttbl_Produto_Categoria_Tipo = keyof typeof tbl_Produto_Categoria_Tipo.fields
 
-export const tbl_Produto_Categoria_Tipo: Schema =
-  {
+export const tbl_Produto_Categoria_Tipo = {
   "database": "oftalmo",
   "table": "tbl_Produto_Categoria_Tipo",
   "primary": [
@@ -44,3 +43,4 @@ export const tbl_Produto_Categoria_Tipo: Schema =
     }
   }
 }
+  

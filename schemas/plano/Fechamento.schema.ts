@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TFechamento = keyof typeof Fechamento.fields
 
-export const Fechamento: Schema =
-  {
+export const Fechamento = {
   "database": "plano",
   "table": "Fechamento",
   "primary": [],
@@ -76,3 +75,4 @@ export const Fechamento: Schema =
     }
   }
 }
+  

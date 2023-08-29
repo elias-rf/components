@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TProdutoLink = keyof typeof ProdutoLink.fields
 
-export const ProdutoLink: Schema =
-  {
+export const ProdutoLink = {
   "database": "plano",
   "table": "ProdutoLink",
   "primary": [
@@ -78,3 +77,4 @@ export const ProdutoLink: Schema =
     }
   }
 }
+  

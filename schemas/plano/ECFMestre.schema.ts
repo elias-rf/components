@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TECFMestre = keyof typeof ECFMestre.fields
 
-export const ECFMestre: Schema =
-  {
+export const ECFMestre = {
   "database": "plano",
   "table": "ECFMestre",
   "primary": [],
@@ -416,3 +415,4 @@ export const ECFMestre: Schema =
     }
   }
 }
+  

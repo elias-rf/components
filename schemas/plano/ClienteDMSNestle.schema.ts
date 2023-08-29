@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TClienteDMSNestle = keyof typeof ClienteDMSNestle.fields
 
-export const ClienteDMSNestle: Schema =
-  {
+export const ClienteDMSNestle = {
   "database": "plano",
   "table": "ClienteDMSNestle",
   "primary": [],
@@ -76,3 +75,4 @@ export const ClienteDMSNestle: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCidade = keyof typeof Cidade.fields
 
-export const Cidade: Schema =
-  {
+export const Cidade = {
   "database": "plano",
   "table": "Cidade",
   "primary": [
@@ -61,3 +60,4 @@ export const Cidade: Schema =
     }
   }
 }
+  

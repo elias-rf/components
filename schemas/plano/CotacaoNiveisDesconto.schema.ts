@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCotacaoNiveisDesconto = keyof typeof CotacaoNiveisDesconto.fields
 
-export const CotacaoNiveisDesconto: Schema =
-  {
+export const CotacaoNiveisDesconto = {
   "database": "plano",
   "table": "CotacaoNiveisDesconto",
   "primary": [],
@@ -93,3 +92,4 @@ export const CotacaoNiveisDesconto: Schema =
     }
   }
 }
+  

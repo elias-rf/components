@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCadastroClasseTerapeutica = keyof typeof CadastroClasseTerapeutica.fields
 
-export const CadastroClasseTerapeutica: Schema =
-  {
+export const CadastroClasseTerapeutica = {
   "database": "plano",
   "table": "CadastroClasseTerapeutica",
   "primary": [],
@@ -93,3 +92,4 @@ export const CadastroClasseTerapeutica: Schema =
     }
   }
 }
+  

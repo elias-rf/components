@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TFilial = keyof typeof Filial.fields
 
-export const Filial: Schema =
-  {
+export const Filial = {
   "database": "plano",
   "table": "Filial",
   "primary": [
@@ -2594,3 +2593,4 @@ export const Filial: Schema =
     }
   }
 }
+  

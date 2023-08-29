@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TBloqueioPedido = keyof typeof BloqueioPedido.fields
 
-export const BloqueioPedido: Schema =
-  {
+export const BloqueioPedido = {
   "database": "plano",
   "table": "BloqueioPedido",
   "primary": [],
@@ -59,3 +58,4 @@ export const BloqueioPedido: Schema =
     }
   }
 }
+  

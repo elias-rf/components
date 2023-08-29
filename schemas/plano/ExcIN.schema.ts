@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TExcIN = keyof typeof ExcIN.fields
 
-export const ExcIN: Schema =
-  {
+export const ExcIN = {
   "database": "plano",
   "table": "ExcIN",
   "primary": [],
@@ -620,3 +619,4 @@ export const ExcIN: Schema =
     }
   }
 }
+  

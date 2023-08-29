@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtAuditoria = keyof typeof tAuditoria.fields
 
-export const tAuditoria: Schema =
-  {
+export const tAuditoria = {
   "database": "oftalmo",
   "table": "tAuditoria",
   "primary": [
@@ -112,3 +111,4 @@ export const tAuditoria: Schema =
     }
   }
 }
+  

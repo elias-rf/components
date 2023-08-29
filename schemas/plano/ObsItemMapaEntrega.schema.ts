@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TObsItemMapaEntrega = keyof typeof ObsItemMapaEntrega.fields
 
-export const ObsItemMapaEntrega: Schema =
-  {
+export const ObsItemMapaEntrega = {
   "database": "plano",
   "table": "ObsItemMapaEntrega",
   "primary": [],
@@ -161,3 +160,4 @@ export const ObsItemMapaEntrega: Schema =
     }
   }
 }
+  

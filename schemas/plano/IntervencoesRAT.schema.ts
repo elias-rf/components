@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TIntervencoesRAT = keyof typeof IntervencoesRAT.fields
 
-export const IntervencoesRAT: Schema =
-  {
+export const IntervencoesRAT = {
   "database": "plano",
   "table": "IntervencoesRAT",
   "primary": [],
@@ -331,3 +330,4 @@ export const IntervencoesRAT: Schema =
     }
   }
 }
+  

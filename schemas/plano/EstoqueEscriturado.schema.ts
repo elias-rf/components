@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TEstoqueEscriturado = keyof typeof EstoqueEscriturado.fields
 
-export const EstoqueEscriturado: Schema =
-  {
+export const EstoqueEscriturado = {
   "database": "plano",
   "table": "EstoqueEscriturado",
   "primary": [],
@@ -161,3 +160,4 @@ export const EstoqueEscriturado: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfiguracaoImpressaoEtiqueta = keyof typeof ConfiguracaoImpressaoEtiqueta.fields
 
-export const ConfiguracaoImpressaoEtiqueta: Schema =
-  {
+export const ConfiguracaoImpressaoEtiqueta = {
   "database": "plano",
   "table": "ConfiguracaoImpressaoEtiqueta",
   "primary": [],
@@ -790,3 +789,4 @@ export const ConfiguracaoImpressaoEtiqueta: Schema =
     }
   }
 }
+  

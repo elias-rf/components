@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfiguracaoImpPreco = keyof typeof ConfiguracaoImpPreco.fields
 
-export const ConfiguracaoImpPreco: Schema =
-  {
+export const ConfiguracaoImpPreco = {
   "database": "plano",
   "table": "ConfiguracaoImpPreco",
   "primary": [
@@ -163,3 +162,4 @@ export const ConfiguracaoImpPreco: Schema =
     }
   }
 }
+  

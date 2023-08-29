@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TSpedBlocoHHECTOR = keyof typeof SpedBlocoHHECTOR.fields
 
-export const SpedBlocoHHECTOR: Schema =
-  {
+export const SpedBlocoHHECTOR = {
   "database": "plano",
   "table": "SpedBlocoHHECTOR",
   "primary": [
@@ -61,3 +60,4 @@ export const SpedBlocoHHECTOR: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfiguracaoRemessaNotasFiscaisLogoMarca = keyof typeof ConfiguracaoRemessaNotasFiscaisLogoMarca.fields
 
-export const ConfiguracaoRemessaNotasFiscaisLogoMarca: Schema =
-  {
+export const ConfiguracaoRemessaNotasFiscaisLogoMarca = {
   "database": "plano",
   "table": "ConfiguracaoRemessaNotasFiscaisLogoMarca",
   "primary": [],
@@ -59,3 +58,4 @@ export const ConfiguracaoRemessaNotasFiscaisLogoMarca: Schema =
     }
   }
 }
+  

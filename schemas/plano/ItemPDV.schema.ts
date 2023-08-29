@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TItemPDV = keyof typeof ItemPDV.fields
 
-export const ItemPDV: Schema =
-  {
+export const ItemPDV = {
   "database": "plano",
   "table": "ItemPDV",
   "primary": [],
@@ -1096,3 +1095,4 @@ export const ItemPDV: Schema =
     }
   }
 }
+  

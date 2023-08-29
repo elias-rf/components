@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTabMovCTroco = keyof typeof TabMovCTroco.fields
 
-export const TabMovCTroco: Schema =
-  {
+export const TabMovCTroco = {
   "database": "plano",
   "table": "TabMovCTroco",
   "primary": [],
@@ -110,3 +109,4 @@ export const TabMovCTroco: Schema =
     }
   }
 }
+  

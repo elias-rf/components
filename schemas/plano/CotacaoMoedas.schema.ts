@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCotacaoMoedas = keyof typeof CotacaoMoedas.fields
 
-export const CotacaoMoedas: Schema =
-  {
+export const CotacaoMoedas = {
   "database": "plano",
   "table": "CotacaoMoedas",
   "primary": [],
@@ -59,3 +58,4 @@ export const CotacaoMoedas: Schema =
     }
   }
 }
+  

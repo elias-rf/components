@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TProdutoUnidadeTributavel = keyof typeof ProdutoUnidadeTributavel.fields
 
-export const ProdutoUnidadeTributavel: Schema =
-  {
+export const ProdutoUnidadeTributavel = {
   "database": "plano",
   "table": "ProdutoUnidadeTributavel",
   "primary": [],
@@ -93,3 +92,4 @@ export const ProdutoUnidadeTributavel: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCidadesIBGE = keyof typeof CidadesIBGE.fields
 
-export const CidadesIBGE: Schema =
-  {
+export const CidadesIBGE = {
   "database": "plano",
   "table": "CidadesIBGE",
   "primary": [],
@@ -59,3 +58,4 @@ export const CidadesIBGE: Schema =
     }
   }
 }
+  

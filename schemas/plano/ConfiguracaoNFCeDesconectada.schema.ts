@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfiguracaoNFCeDesconectada = keyof typeof ConfiguracaoNFCeDesconectada.fields
 
-export const ConfiguracaoNFCeDesconectada: Schema =
-  {
+export const ConfiguracaoNFCeDesconectada = {
   "database": "plano",
   "table": "ConfiguracaoNFCeDesconectada",
   "primary": [],
@@ -246,3 +245,4 @@ export const ConfiguracaoNFCeDesconectada: Schema =
     }
   }
 }
+  

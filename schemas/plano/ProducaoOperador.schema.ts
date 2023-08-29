@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TProducaoOperador = keyof typeof ProducaoOperador.fields
 
-export const ProducaoOperador: Schema =
-  {
+export const ProducaoOperador = {
   "database": "plano",
   "table": "ProducaoOperador",
   "primary": [
@@ -61,3 +60,4 @@ export const ProducaoOperador: Schema =
     }
   }
 }
+  

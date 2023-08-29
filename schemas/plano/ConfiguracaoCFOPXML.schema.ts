@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfiguracaoCFOPXML = keyof typeof ConfiguracaoCFOPXML.fields
 
-export const ConfiguracaoCFOPXML: Schema =
-  {
+export const ConfiguracaoCFOPXML = {
   "database": "plano",
   "table": "ConfiguracaoCFOPXML",
   "primary": [],
@@ -93,3 +92,4 @@ export const ConfiguracaoCFOPXML: Schema =
     }
   }
 }
+  

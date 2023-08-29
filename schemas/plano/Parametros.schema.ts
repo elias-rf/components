@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TParametros = keyof typeof Parametros.fields
 
-export const Parametros: Schema =
-  {
+export const Parametros = {
   "database": "plano",
   "table": "Parametros",
   "primary": [],
@@ -1334,3 +1333,4 @@ export const Parametros: Schema =
     }
   }
 }
+  

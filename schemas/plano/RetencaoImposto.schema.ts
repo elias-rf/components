@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TRetencaoImposto = keyof typeof RetencaoImposto.fields
 
-export const RetencaoImposto: Schema =
-  {
+export const RetencaoImposto = {
   "database": "plano",
   "table": "RetencaoImposto",
   "primary": [],
@@ -195,3 +194,4 @@ export const RetencaoImposto: Schema =
     }
   }
 }
+  

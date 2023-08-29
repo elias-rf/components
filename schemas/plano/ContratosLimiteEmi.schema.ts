@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TContratosLimiteEmi = keyof typeof ContratosLimiteEmi.fields
 
-export const ContratosLimiteEmi: Schema =
-  {
+export const ContratosLimiteEmi = {
   "database": "plano",
   "table": "ContratosLimiteEmi",
   "primary": [],
@@ -59,3 +58,4 @@ export const ContratosLimiteEmi: Schema =
     }
   }
 }
+  

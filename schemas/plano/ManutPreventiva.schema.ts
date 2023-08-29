@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TManutPreventiva = keyof typeof ManutPreventiva.fields
 
-export const ManutPreventiva: Schema =
-  {
+export const ManutPreventiva = {
   "database": "plano",
   "table": "ManutPreventiva",
   "primary": [],
@@ -110,3 +109,4 @@ export const ManutPreventiva: Schema =
     }
   }
 }
+  

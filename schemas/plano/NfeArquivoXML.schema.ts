@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNfeArquivoXML = keyof typeof NfeArquivoXML.fields
 
-export const NfeArquivoXML: Schema =
-  {
+export const NfeArquivoXML = {
   "database": "plano",
   "table": "NfeArquivoXML",
   "primary": [],
@@ -161,3 +160,4 @@ export const NfeArquivoXML: Schema =
     }
   }
 }
+  

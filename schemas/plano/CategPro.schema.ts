@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCategPro = keyof typeof CategPro.fields
 
-export const CategPro: Schema =
-  {
+export const CategPro = {
   "database": "plano",
   "table": "CategPro",
   "primary": [
@@ -146,3 +145,4 @@ export const CategPro: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Ttbl_Sistema_AutoNumber = keyof typeof tbl_Sistema_AutoNumber.fields
 
-export const tbl_Sistema_AutoNumber: Schema =
-  {
+export const tbl_Sistema_AutoNumber = {
   "database": "oftalmo",
   "table": "tbl_Sistema_AutoNumber",
   "primary": [
@@ -61,3 +60,4 @@ export const tbl_Sistema_AutoNumber: Schema =
     }
   }
 }
+  

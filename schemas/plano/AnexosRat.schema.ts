@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TAnexosRat = keyof typeof AnexosRat.fields
 
-export const AnexosRat: Schema =
-  {
+export const AnexosRat = {
   "database": "plano",
   "table": "AnexosRat",
   "primary": [
@@ -95,3 +94,4 @@ export const AnexosRat: Schema =
     }
   }
 }
+  

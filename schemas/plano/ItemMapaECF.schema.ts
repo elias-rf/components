@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TItemMapaECF = keyof typeof ItemMapaECF.fields
 
-export const ItemMapaECF: Schema =
-  {
+export const ItemMapaECF = {
   "database": "plano",
   "table": "ItemMapaECF",
   "primary": [],
@@ -416,3 +415,4 @@ export const ItemMapaECF: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Ttbl_Menu_controle = keyof typeof tbl_Menu_controle.fields
 
-export const tbl_Menu_controle: Schema =
-  {
+export const tbl_Menu_controle = {
   "database": "oftalmo",
   "table": "tbl_Menu_controle",
   "primary": [
@@ -163,3 +162,4 @@ export const tbl_Menu_controle: Schema =
     }
   }
 }
+  

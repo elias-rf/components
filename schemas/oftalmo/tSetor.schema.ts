@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtSetor = keyof typeof tSetor.fields
 
-export const tSetor: Schema =
-  {
+export const tSetor = {
   "database": "oftalmo",
   "table": "tSetor",
   "primary": [],
@@ -76,3 +75,4 @@ export const tSetor: Schema =
     }
   }
 }
+  

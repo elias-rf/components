@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNFCeTempItem = keyof typeof NFCeTempItem.fields
 
-export const NFCeTempItem: Schema =
-  {
+export const NFCeTempItem = {
   "database": "plano",
   "table": "NFCeTempItem",
   "primary": [],
@@ -705,3 +704,4 @@ export const NFCeTempItem: Schema =
     }
   }
 }
+  

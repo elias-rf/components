@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCartaoFidelidadeDebito = keyof typeof CartaoFidelidadeDebito.fields
 
-export const CartaoFidelidadeDebito: Schema =
-  {
+export const CartaoFidelidadeDebito = {
   "database": "plano",
   "table": "CartaoFidelidadeDebito",
   "primary": [],
@@ -127,3 +126,4 @@ export const CartaoFidelidadeDebito: Schema =
     }
   }
 }
+  

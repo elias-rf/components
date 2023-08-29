@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TSubTipoFor = keyof typeof SubTipoFor.fields
 
-export const SubTipoFor: Schema =
-  {
+export const SubTipoFor = {
   "database": "plano",
   "table": "SubTipoFor",
   "primary": [
@@ -44,3 +43,4 @@ export const SubTipoFor: Schema =
     }
   }
 }
+  

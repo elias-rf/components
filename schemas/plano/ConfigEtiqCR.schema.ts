@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfigEtiqCR = keyof typeof ConfigEtiqCR.fields
 
-export const ConfigEtiqCR: Schema =
-  {
+export const ConfigEtiqCR = {
   "database": "plano",
   "table": "ConfigEtiqCR",
   "primary": [
@@ -214,3 +213,4 @@ export const ConfigEtiqCR: Schema =
     }
   }
 }
+  

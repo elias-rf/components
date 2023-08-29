@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TParametrosComandoSQL = keyof typeof ParametrosComandoSQL.fields
 
-export const ParametrosComandoSQL: Schema =
-  {
+export const ParametrosComandoSQL = {
   "database": "plano",
   "table": "ParametrosComandoSQL",
   "primary": [
@@ -44,3 +43,4 @@ export const ParametrosComandoSQL: Schema =
     }
   }
 }
+  

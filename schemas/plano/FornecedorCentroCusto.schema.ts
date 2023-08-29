@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TFornecedorCentroCusto = keyof typeof FornecedorCentroCusto.fields
 
-export const FornecedorCentroCusto: Schema =
-  {
+export const FornecedorCentroCusto = {
   "database": "plano",
   "table": "FornecedorCentroCusto",
   "primary": [],
@@ -59,3 +58,4 @@ export const FornecedorCentroCusto: Schema =
     }
   }
 }
+  

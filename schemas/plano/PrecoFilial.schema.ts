@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TPrecoFilial = keyof typeof PrecoFilial.fields
 
-export const PrecoFilial: Schema =
-  {
+export const PrecoFilial = {
   "database": "plano",
   "table": "PrecoFilial",
   "primary": [],
@@ -688,3 +687,4 @@ export const PrecoFilial: Schema =
     }
   }
 }
+  

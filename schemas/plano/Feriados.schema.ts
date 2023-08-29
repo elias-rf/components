@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TFeriados = keyof typeof Feriados.fields
 
-export const Feriados: Schema =
-  {
+export const Feriados = {
   "database": "plano",
   "table": "Feriados",
   "primary": [],
@@ -42,3 +41,4 @@ export const Feriados: Schema =
     }
   }
 }
+  

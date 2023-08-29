@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TComprovanteTRN = keyof typeof ComprovanteTRN.fields
 
-export const ComprovanteTRN: Schema =
-  {
+export const ComprovanteTRN = {
   "database": "plano",
   "table": "ComprovanteTRN",
   "primary": [],
@@ -76,3 +75,4 @@ export const ComprovanteTRN: Schema =
     }
   }
 }
+  

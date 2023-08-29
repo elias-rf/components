@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTitCobrReceitas = keyof typeof TitCobrReceitas.fields
 
-export const TitCobrReceitas: Schema =
-  {
+export const TitCobrReceitas = {
   "database": "plano",
   "table": "TitCobrReceitas",
   "primary": [],
@@ -161,3 +160,4 @@ export const TitCobrReceitas: Schema =
     }
   }
 }
+  

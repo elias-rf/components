@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Ttbl_Sistema_NCM = keyof typeof tbl_Sistema_NCM.fields
 
-export const tbl_Sistema_NCM: Schema =
-  {
+export const tbl_Sistema_NCM = {
   "database": "oftalmo",
   "table": "tbl_Sistema_NCM",
   "primary": [
@@ -61,3 +60,4 @@ export const tbl_Sistema_NCM: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TKardex = keyof typeof Kardex.fields
 
-export const Kardex: Schema =
-  {
+export const Kardex = {
   "database": "plano",
   "table": "Kardex",
   "primary": [],
@@ -144,3 +143,4 @@ export const Kardex: Schema =
     }
   }
 }
+  

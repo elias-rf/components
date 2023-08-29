@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TClassesERIBEIRO = keyof typeof ClassesERIBEIRO.fields
 
-export const ClassesERIBEIRO: Schema =
-  {
+export const ClassesERIBEIRO = {
   "database": "plano",
   "table": "ClassesERIBEIRO",
   "primary": [
@@ -61,3 +60,4 @@ export const ClassesERIBEIRO: Schema =
     }
   }
 }
+  

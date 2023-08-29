@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TLancCheque = keyof typeof LancCheque.fields
 
-export const LancCheque: Schema =
-  {
+export const LancCheque = {
   "database": "plano",
   "table": "LancCheque",
   "primary": [],
@@ -246,3 +245,4 @@ export const LancCheque: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TECFDocumentoNaoFiscal = keyof typeof ECFDocumentoNaoFiscal.fields
 
-export const ECFDocumentoNaoFiscal: Schema =
-  {
+export const ECFDocumentoNaoFiscal = {
   "database": "plano",
   "table": "ECFDocumentoNaoFiscal",
   "primary": [],
@@ -212,3 +211,4 @@ export const ECFDocumentoNaoFiscal: Schema =
     }
   }
 }
+  

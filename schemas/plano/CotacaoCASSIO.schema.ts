@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCotacaoCASSIO = keyof typeof CotacaoCASSIO.fields
 
-export const CotacaoCASSIO: Schema =
-  {
+export const CotacaoCASSIO = {
   "database": "plano",
   "table": "CotacaoCASSIO",
   "primary": [],
@@ -93,3 +92,4 @@ export const CotacaoCASSIO: Schema =
     }
   }
 }
+  

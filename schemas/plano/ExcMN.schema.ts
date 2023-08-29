@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TExcMN = keyof typeof ExcMN.fields
 
-export const ExcMN: Schema =
-  {
+export const ExcMN = {
   "database": "plano",
   "table": "ExcMN",
   "primary": [],
@@ -467,3 +466,4 @@ export const ExcMN: Schema =
     }
   }
 }
+  

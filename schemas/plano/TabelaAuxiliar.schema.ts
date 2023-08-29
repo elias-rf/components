@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTabelaAuxiliar = keyof typeof TabelaAuxiliar.fields
 
-export const TabelaAuxiliar: Schema =
-  {
+export const TabelaAuxiliar = {
   "database": "plano",
   "table": "TabelaAuxiliar",
   "primary": [],
@@ -93,3 +92,4 @@ export const TabelaAuxiliar: Schema =
     }
   }
 }
+  

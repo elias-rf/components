@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TECFTotalizador = keyof typeof ECFTotalizador.fields
 
-export const ECFTotalizador: Schema =
-  {
+export const ECFTotalizador = {
   "database": "plano",
   "table": "ECFTotalizador",
   "primary": [],
@@ -280,3 +279,4 @@ export const ECFTotalizador: Schema =
     }
   }
 }
+  

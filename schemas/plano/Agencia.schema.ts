@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TAgencia = keyof typeof Agencia.fields
 
-export const Agencia: Schema =
-  {
+export const Agencia = {
   "database": "plano",
   "table": "Agencia",
   "primary": [],
@@ -93,3 +92,4 @@ export const Agencia: Schema =
     }
   }
 }
+  

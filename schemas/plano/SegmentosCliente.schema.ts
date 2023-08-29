@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TSegmentosCliente = keyof typeof SegmentosCliente.fields
 
-export const SegmentosCliente: Schema =
-  {
+export const SegmentosCliente = {
   "database": "plano",
   "table": "SegmentosCliente",
   "primary": [],
@@ -42,3 +41,4 @@ export const SegmentosCliente: Schema =
     }
   }
 }
+  

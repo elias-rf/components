@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TLstTrn = keyof typeof LstTrn.fields
 
-export const LstTrn: Schema =
-  {
+export const LstTrn = {
   "database": "plano",
   "table": "LstTrn",
   "primary": [],
@@ -59,3 +58,4 @@ export const LstTrn: Schema =
     }
   }
 }
+  

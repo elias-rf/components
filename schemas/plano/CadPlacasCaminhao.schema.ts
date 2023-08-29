@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCadPlacasCaminhao = keyof typeof CadPlacasCaminhao.fields
 
-export const CadPlacasCaminhao: Schema =
-  {
+export const CadPlacasCaminhao = {
   "database": "plano",
   "table": "CadPlacasCaminhao",
   "primary": [
@@ -112,3 +111,4 @@ export const CadPlacasCaminhao: Schema =
     }
   }
 }
+  

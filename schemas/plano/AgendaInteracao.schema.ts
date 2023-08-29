@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TAgendaInteracao = keyof typeof AgendaInteracao.fields
 
-export const AgendaInteracao: Schema =
-  {
+export const AgendaInteracao = {
   "database": "plano",
   "table": "AgendaInteracao",
   "primary": [],
@@ -178,3 +177,4 @@ export const AgendaInteracao: Schema =
     }
   }
 }
+  

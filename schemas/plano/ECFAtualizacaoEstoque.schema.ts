@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TECFAtualizacaoEstoque = keyof typeof ECFAtualizacaoEstoque.fields
 
-export const ECFAtualizacaoEstoque: Schema =
-  {
+export const ECFAtualizacaoEstoque = {
   "database": "plano",
   "table": "ECFAtualizacaoEstoque",
   "primary": [],
@@ -127,3 +126,4 @@ export const ECFAtualizacaoEstoque: Schema =
     }
   }
 }
+  

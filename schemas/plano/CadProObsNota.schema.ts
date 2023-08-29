@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCadProObsNota = keyof typeof CadProObsNota.fields
 
-export const CadProObsNota: Schema =
-  {
+export const CadProObsNota = {
   "database": "plano",
   "table": "CadProObsNota",
   "primary": [
@@ -61,3 +60,4 @@ export const CadProObsNota: Schema =
     }
   }
 }
+  

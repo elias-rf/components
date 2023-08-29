@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtPlanItem = keyof typeof tPlanItem.fields
 
-export const tPlanItem: Schema =
-  {
+export const tPlanItem = {
   "database": "oftalmo",
   "table": "tPlanItem",
   "primary": [
@@ -61,3 +60,4 @@ export const tPlanItem: Schema =
     }
   }
 }
+  

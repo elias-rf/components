@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TEmailVidalink = keyof typeof EmailVidalink.fields
 
-export const EmailVidalink: Schema =
-  {
+export const EmailVidalink = {
   "database": "plano",
   "table": "EmailVidalink",
   "primary": [],
@@ -25,3 +24,4 @@ export const EmailVidalink: Schema =
     }
   }
 }
+  

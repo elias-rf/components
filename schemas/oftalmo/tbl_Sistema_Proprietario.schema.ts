@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Ttbl_Sistema_Proprietario = keyof typeof tbl_Sistema_Proprietario.fields
 
-export const tbl_Sistema_Proprietario: Schema =
-  {
+export const tbl_Sistema_Proprietario = {
   "database": "oftalmo",
   "table": "tbl_Sistema_Proprietario",
   "primary": [
@@ -333,3 +332,4 @@ export const tbl_Sistema_Proprietario: Schema =
     }
   }
 }
+  

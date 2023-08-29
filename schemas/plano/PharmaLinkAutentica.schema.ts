@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TPharmaLinkAutentica = keyof typeof PharmaLinkAutentica.fields
 
-export const PharmaLinkAutentica: Schema =
-  {
+export const PharmaLinkAutentica = {
   "database": "plano",
   "table": "PharmaLinkAutentica",
   "primary": [
@@ -44,3 +43,4 @@ export const PharmaLinkAutentica: Schema =
     }
   }
 }
+  

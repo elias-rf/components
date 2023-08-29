@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCadastroDCB = keyof typeof CadastroDCB.fields
 
-export const CadastroDCB: Schema =
-  {
+export const CadastroDCB = {
   "database": "plano",
   "table": "CadastroDCB",
   "primary": [
@@ -78,3 +77,4 @@ export const CadastroDCB: Schema =
     }
   }
 }
+  

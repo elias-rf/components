@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNotaEntradaRecuperacaoSTItemMovimento = keyof typeof NotaEntradaRecuperacaoSTItemMovimento.fields
 
-export const NotaEntradaRecuperacaoSTItemMovimento: Schema =
-  {
+export const NotaEntradaRecuperacaoSTItemMovimento = {
   "database": "plano",
   "table": "NotaEntradaRecuperacaoSTItemMovimento",
   "primary": [],
@@ -246,3 +245,4 @@ export const NotaEntradaRecuperacaoSTItemMovimento: Schema =
     }
   }
 }
+  

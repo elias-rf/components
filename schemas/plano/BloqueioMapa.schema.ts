@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TBloqueioMapa = keyof typeof BloqueioMapa.fields
 
-export const BloqueioMapa: Schema =
-  {
+export const BloqueioMapa = {
   "database": "plano",
   "table": "BloqueioMapa",
   "primary": [],
@@ -110,3 +109,4 @@ export const BloqueioMapa: Schema =
     }
   }
 }
+  

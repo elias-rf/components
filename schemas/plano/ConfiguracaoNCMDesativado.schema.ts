@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfiguracaoNCMDesativado = keyof typeof ConfiguracaoNCMDesativado.fields
 
-export const ConfiguracaoNCMDesativado: Schema =
-  {
+export const ConfiguracaoNCMDesativado = {
   "database": "plano",
   "table": "ConfiguracaoNCMDesativado",
   "primary": [
@@ -27,3 +26,4 @@ export const ConfiguracaoNCMDesativado: Schema =
     }
   }
 }
+  

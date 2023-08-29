@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TLancDiversos = keyof typeof LancDiversos.fields
 
-export const LancDiversos: Schema =
-  {
+export const LancDiversos = {
   "database": "plano",
   "table": "LancDiversos",
   "primary": [],
@@ -297,3 +296,4 @@ export const LancDiversos: Schema =
     }
   }
 }
+  

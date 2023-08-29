@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TECFMeiosPagamento = keyof typeof ECFMeiosPagamento.fields
 
-export const ECFMeiosPagamento: Schema =
-  {
+export const ECFMeiosPagamento = {
   "database": "plano",
   "table": "ECFMeiosPagamento",
   "primary": [],
@@ -297,3 +296,4 @@ export const ECFMeiosPagamento: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Tdtproperties = keyof typeof dtproperties.fields
 
-export const dtproperties: Schema =
-  {
+export const dtproperties = {
   "database": "oftalmo",
   "table": "dtproperties",
   "primary": [],
@@ -127,3 +126,4 @@ export const dtproperties: Schema =
     }
   }
 }
+  

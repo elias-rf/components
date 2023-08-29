@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTabelaSelic = keyof typeof TabelaSelic.fields
 
-export const TabelaSelic: Schema =
-  {
+export const TabelaSelic = {
   "database": "plano",
   "table": "TabelaSelic",
   "primary": [
@@ -61,3 +60,4 @@ export const TabelaSelic: Schema =
     }
   }
 }
+  

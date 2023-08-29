@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TMovCreditoFornecedor = keyof typeof MovCreditoFornecedor.fields
 
-export const MovCreditoFornecedor: Schema =
-  {
+export const MovCreditoFornecedor = {
   "database": "plano",
   "table": "MovCreditoFornecedor",
   "primary": [],
@@ -127,3 +126,4 @@ export const MovCreditoFornecedor: Schema =
     }
   }
 }
+  

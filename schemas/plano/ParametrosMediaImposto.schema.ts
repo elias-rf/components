@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TParametrosMediaImposto = keyof typeof ParametrosMediaImposto.fields
 
-export const ParametrosMediaImposto: Schema =
-  {
+export const ParametrosMediaImposto = {
   "database": "plano",
   "table": "ParametrosMediaImposto",
   "primary": [],
@@ -161,3 +160,4 @@ export const ParametrosMediaImposto: Schema =
     }
   }
 }
+  

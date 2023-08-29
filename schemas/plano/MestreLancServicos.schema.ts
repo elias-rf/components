@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TMestreLancServicos = keyof typeof MestreLancServicos.fields
 
-export const MestreLancServicos: Schema =
-  {
+export const MestreLancServicos = {
   "database": "plano",
   "table": "MestreLancServicos",
   "primary": [],
@@ -450,3 +449,4 @@ export const MestreLancServicos: Schema =
     }
   }
 }
+  

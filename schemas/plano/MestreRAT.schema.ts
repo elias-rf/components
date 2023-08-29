@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TMestreRAT = keyof typeof MestreRAT.fields
 
-export const MestreRAT: Schema =
-  {
+export const MestreRAT = {
   "database": "plano",
   "table": "MestreRAT",
   "primary": [],
@@ -739,3 +738,4 @@ export const MestreRAT: Schema =
     }
   }
 }
+  

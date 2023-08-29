@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNfe2GCancelamento = keyof typeof Nfe2GCancelamento.fields
 
-export const Nfe2GCancelamento: Schema =
-  {
+export const Nfe2GCancelamento = {
   "database": "plano",
   "table": "Nfe2GCancelamento",
   "primary": [],
@@ -178,3 +177,4 @@ export const Nfe2GCancelamento: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TItemNotaIPI = keyof typeof ItemNotaIPI.fields
 
-export const ItemNotaIPI: Schema =
-  {
+export const ItemNotaIPI = {
   "database": "plano",
   "table": "ItemNotaIPI",
   "primary": [],
@@ -178,3 +177,4 @@ export const ItemNotaIPI: Schema =
     }
   }
 }
+  

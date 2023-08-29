@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TEstoqueEscrituradoCorrecao = keyof typeof EstoqueEscrituradoCorrecao.fields
 
-export const EstoqueEscrituradoCorrecao: Schema =
-  {
+export const EstoqueEscrituradoCorrecao = {
   "database": "plano",
   "table": "EstoqueEscrituradoCorrecao",
   "primary": [],
@@ -195,3 +194,4 @@ export const EstoqueEscrituradoCorrecao: Schema =
     }
   }
 }
+  

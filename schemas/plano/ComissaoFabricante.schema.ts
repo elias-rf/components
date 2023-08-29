@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TComissaoFabricante = keyof typeof ComissaoFabricante.fields
 
-export const ComissaoFabricante: Schema =
-  {
+export const ComissaoFabricante = {
   "database": "plano",
   "table": "ComissaoFabricante",
   "primary": [],
@@ -76,3 +75,4 @@ export const ComissaoFabricante: Schema =
     }
   }
 }
+  

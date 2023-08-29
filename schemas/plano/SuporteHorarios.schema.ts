@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TSuporteHorarios = keyof typeof SuporteHorarios.fields
 
-export const SuporteHorarios: Schema =
-  {
+export const SuporteHorarios = {
   "database": "plano",
   "table": "SuporteHorarios",
   "primary": [],
@@ -59,3 +58,4 @@ export const SuporteHorarios: Schema =
     }
   }
 }
+  

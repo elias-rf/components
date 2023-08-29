@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TECFItem = keyof typeof ECFItem.fields
 
-export const ECFItem: Schema =
-  {
+export const ECFItem = {
   "database": "plano",
   "table": "ECFItem",
   "primary": [],
@@ -212,3 +211,4 @@ export const ECFItem: Schema =
     }
   }
 }
+  

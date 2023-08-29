@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNatOpePlanoContasNota = keyof typeof NatOpePlanoContasNota.fields
 
-export const NatOpePlanoContasNota: Schema =
-  {
+export const NatOpePlanoContasNota = {
   "database": "plano",
   "table": "NatOpePlanoContasNota",
   "primary": [],
@@ -59,3 +58,4 @@ export const NatOpePlanoContasNota: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCALCSENHA = keyof typeof CALCSENHA.fields
 
-export const CALCSENHA: Schema =
-  {
+export const CALCSENHA = {
   "database": "plano",
   "table": "CALCSENHA",
   "primary": [
@@ -112,3 +111,4 @@ export const CALCSENHA: Schema =
     }
   }
 }
+  

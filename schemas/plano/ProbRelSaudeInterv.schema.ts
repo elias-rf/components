@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TProbRelSaudeInterv = keyof typeof ProbRelSaudeInterv.fields
 
-export const ProbRelSaudeInterv: Schema =
-  {
+export const ProbRelSaudeInterv = {
   "database": "plano",
   "table": "ProbRelSaudeInterv",
   "primary": [],
@@ -93,3 +92,4 @@ export const ProbRelSaudeInterv: Schema =
     }
   }
 }
+  

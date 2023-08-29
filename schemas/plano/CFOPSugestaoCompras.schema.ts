@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCFOPSugestaoCompras = keyof typeof CFOPSugestaoCompras.fields
 
-export const CFOPSugestaoCompras: Schema =
-  {
+export const CFOPSugestaoCompras = {
   "database": "plano",
   "table": "CFOPSugestaoCompras",
   "primary": [],
@@ -127,3 +126,4 @@ export const CFOPSugestaoCompras: Schema =
     }
   }
 }
+  

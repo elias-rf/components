@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtSistemaUnidade = keyof typeof tSistemaUnidade.fields
 
-export const tSistemaUnidade: Schema =
-  {
+export const tSistemaUnidade = {
   "database": "oftalmo",
   "table": "tSistemaUnidade",
   "primary": [
@@ -61,3 +60,4 @@ export const tSistemaUnidade: Schema =
     }
   }
 }
+  

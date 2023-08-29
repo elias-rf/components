@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNotaComprovanteRecLocal = keyof typeof NotaComprovanteRecLocal.fields
 
-export const NotaComprovanteRecLocal: Schema =
-  {
+export const NotaComprovanteRecLocal = {
   "database": "plano",
   "table": "NotaComprovanteRecLocal",
   "primary": [],
@@ -178,3 +177,4 @@ export const NotaComprovanteRecLocal: Schema =
     }
   }
 }
+  

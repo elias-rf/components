@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNotaEntradaGNREMestre = keyof typeof NotaEntradaGNREMestre.fields
 
-export const NotaEntradaGNREMestre: Schema =
-  {
+export const NotaEntradaGNREMestre = {
   "database": "plano",
   "table": "NotaEntradaGNREMestre",
   "primary": [],
@@ -212,3 +211,4 @@ export const NotaEntradaGNREMestre: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TDependentes = keyof typeof Dependentes.fields
 
-export const Dependentes: Schema =
-  {
+export const Dependentes = {
   "database": "plano",
   "table": "Dependentes",
   "primary": [],
@@ -93,3 +92,4 @@ export const Dependentes: Schema =
     }
   }
 }
+  

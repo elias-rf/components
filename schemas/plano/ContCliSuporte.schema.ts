@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TContCliSuporte = keyof typeof ContCliSuporte.fields
 
-export const ContCliSuporte: Schema =
-  {
+export const ContCliSuporte = {
   "database": "plano",
   "table": "ContCliSuporte",
   "primary": [],
@@ -76,3 +75,4 @@ export const ContCliSuporte: Schema =
     }
   }
 }
+  

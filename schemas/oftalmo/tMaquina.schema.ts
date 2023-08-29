@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TtMaquina = keyof typeof tMaquina.fields
 
-export const tMaquina: Schema =
-  {
+export const tMaquina = {
   "database": "oftalmo",
   "table": "tMaquina",
   "primary": [
@@ -146,3 +145,4 @@ export const tMaquina: Schema =
     }
   }
 }
+  

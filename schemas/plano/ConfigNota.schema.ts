@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfigNota = keyof typeof ConfigNota.fields
 
-export const ConfigNota: Schema =
-  {
+export const ConfigNota = {
   "database": "plano",
   "table": "ConfigNota",
   "primary": [],
@@ -3867,3 +3866,4 @@ export const ConfigNota: Schema =
     }
   }
 }
+  

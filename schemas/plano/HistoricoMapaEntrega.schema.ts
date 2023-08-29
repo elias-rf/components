@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type THistoricoMapaEntrega = keyof typeof HistoricoMapaEntrega.fields
 
-export const HistoricoMapaEntrega: Schema =
-  {
+export const HistoricoMapaEntrega = {
   "database": "plano",
   "table": "HistoricoMapaEntrega",
   "primary": [],
@@ -110,3 +109,4 @@ export const HistoricoMapaEntrega: Schema =
     }
   }
 }
+  

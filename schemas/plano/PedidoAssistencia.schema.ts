@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TPedidoAssistencia = keyof typeof PedidoAssistencia.fields
 
-export const PedidoAssistencia: Schema =
-  {
+export const PedidoAssistencia = {
   "database": "plano",
   "table": "PedidoAssistencia",
   "primary": [],
@@ -110,3 +109,4 @@ export const PedidoAssistencia: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTEFRetorno = keyof typeof TEFRetorno.fields
 
-export const TEFRetorno: Schema =
-  {
+export const TEFRetorno = {
   "database": "plano",
   "table": "TEFRetorno",
   "primary": [],
@@ -93,3 +92,4 @@ export const TEFRetorno: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TTaxaFca = keyof typeof TaxaFca.fields
 
-export const TaxaFca: Schema =
-  {
+export const TaxaFca = {
   "database": "plano",
   "table": "TaxaFca",
   "primary": [
@@ -44,3 +43,4 @@ export const TaxaFca: Schema =
     }
   }
 }
+  

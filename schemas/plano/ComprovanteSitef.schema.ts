@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TComprovanteSitef = keyof typeof ComprovanteSitef.fields
 
-export const ComprovanteSitef: Schema =
-  {
+export const ComprovanteSitef = {
   "database": "plano",
   "table": "ComprovanteSitef",
   "primary": [],
@@ -144,3 +143,4 @@ export const ComprovanteSitef: Schema =
     }
   }
 }
+  

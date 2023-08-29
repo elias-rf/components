@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TProducaoEtiquetaInterna = keyof typeof ProducaoEtiquetaInterna.fields
 
-export const ProducaoEtiquetaInterna: Schema =
-  {
+export const ProducaoEtiquetaInterna = {
   "database": "plano",
   "table": "ProducaoEtiquetaInterna",
   "primary": [],
@@ -76,3 +75,4 @@ export const ProducaoEtiquetaInterna: Schema =
     }
   }
 }
+  

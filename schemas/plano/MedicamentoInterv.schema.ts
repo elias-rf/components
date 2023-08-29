@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TMedicamentoInterv = keyof typeof MedicamentoInterv.fields
 
-export const MedicamentoInterv: Schema =
-  {
+export const MedicamentoInterv = {
   "database": "plano",
   "table": "MedicamentoInterv",
   "primary": [],
@@ -127,3 +126,4 @@ export const MedicamentoInterv: Schema =
     }
   }
 }
+  

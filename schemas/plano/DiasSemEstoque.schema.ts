@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TDiasSemEstoque = keyof typeof DiasSemEstoque.fields
 
-export const DiasSemEstoque: Schema =
-  {
+export const DiasSemEstoque = {
   "database": "plano",
   "table": "DiasSemEstoque",
   "primary": [],
@@ -76,3 +75,4 @@ export const DiasSemEstoque: Schema =
     }
   }
 }
+  

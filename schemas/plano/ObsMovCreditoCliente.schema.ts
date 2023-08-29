@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TObsMovCreditoCliente = keyof typeof ObsMovCreditoCliente.fields
 
-export const ObsMovCreditoCliente: Schema =
-  {
+export const ObsMovCreditoCliente = {
   "database": "plano",
   "table": "ObsMovCreditoCliente",
   "primary": [],
@@ -93,3 +92,4 @@ export const ObsMovCreditoCliente: Schema =
     }
   }
 }
+  

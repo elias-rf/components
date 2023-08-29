@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TConfiguracaoNFeLogoMarca = keyof typeof ConfiguracaoNFeLogoMarca.fields
 
-export const ConfiguracaoNFeLogoMarca: Schema =
-  {
+export const ConfiguracaoNFeLogoMarca = {
   "database": "plano",
   "table": "ConfiguracaoNFeLogoMarca",
   "primary": [],
@@ -59,3 +58,4 @@ export const ConfiguracaoNFeLogoMarca: Schema =
     }
   }
 }
+  

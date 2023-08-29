@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TVersaoLiberada = keyof typeof VersaoLiberada.fields
 
-export const VersaoLiberada: Schema =
-  {
+export const VersaoLiberada = {
   "database": "plano",
   "table": "VersaoLiberada",
   "primary": [],
@@ -76,3 +75,4 @@ export const VersaoLiberada: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TECFIdentificacao = keyof typeof ECFIdentificacao.fields
 
-export const ECFIdentificacao: Schema =
-  {
+export const ECFIdentificacao = {
   "database": "plano",
   "table": "ECFIdentificacao",
   "primary": [],
@@ -93,3 +92,4 @@ export const ECFIdentificacao: Schema =
     }
   }
 }
+  

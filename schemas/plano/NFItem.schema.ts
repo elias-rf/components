@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNFItem = keyof typeof NFItem.fields
 
-export const NFItem: Schema =
-  {
+export const NFItem = {
   "database": "plano",
   "table": "NFItem",
   "primary": [],
@@ -1300,3 +1299,4 @@ export const NFItem: Schema =
     }
   }
 }
+  

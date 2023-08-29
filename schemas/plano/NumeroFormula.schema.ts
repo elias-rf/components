@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TNumeroFormula = keyof typeof NumeroFormula.fields
 
-export const NumeroFormula: Schema =
-  {
+export const NumeroFormula = {
   "database": "plano",
   "table": "NumeroFormula",
   "primary": [
@@ -44,3 +43,4 @@ export const NumeroFormula: Schema =
     }
   }
 }
+  

@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCancelamentoSAT = keyof typeof CancelamentoSAT.fields
 
-export const CancelamentoSAT: Schema =
-  {
+export const CancelamentoSAT = {
   "database": "plano",
   "table": "CancelamentoSAT",
   "primary": [],
@@ -195,3 +194,4 @@ export const CancelamentoSAT: Schema =
     }
   }
 }
+  

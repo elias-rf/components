@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TAssocFornecedor = keyof typeof AssocFornecedor.fields
 
-export const AssocFornecedor: Schema =
-  {
+export const AssocFornecedor = {
   "database": "plano",
   "table": "AssocFornecedor",
   "primary": [],
@@ -161,3 +160,4 @@ export const AssocFornecedor: Schema =
     }
   }
 }
+  

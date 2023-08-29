@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TFinanceirasAutorizadasFilial = keyof typeof FinanceirasAutorizadasFilial.fields
 
-export const FinanceirasAutorizadasFilial: Schema =
-  {
+export const FinanceirasAutorizadasFilial = {
   "database": "plano",
   "table": "FinanceirasAutorizadasFilial",
   "primary": [],
@@ -195,3 +194,4 @@ export const FinanceirasAutorizadasFilial: Schema =
     }
   }
 }
+  

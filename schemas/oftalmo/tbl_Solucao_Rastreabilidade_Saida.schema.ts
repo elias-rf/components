@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type Ttbl_Solucao_Rastreabilidade_Saida = keyof typeof tbl_Solucao_Rastreabilidade_Saida.fields
 
-export const tbl_Solucao_Rastreabilidade_Saida: Schema =
-  {
+export const tbl_Solucao_Rastreabilidade_Saida = {
   "database": "oftalmo",
   "table": "tbl_Solucao_Rastreabilidade_Saida",
   "primary": [
@@ -95,3 +94,4 @@ export const tbl_Solucao_Rastreabilidade_Saida: Schema =
     }
   }
 }
+  

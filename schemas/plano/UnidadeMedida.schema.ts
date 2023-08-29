@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TUnidadeMedida = keyof typeof UnidadeMedida.fields
 
-export const UnidadeMedida: Schema =
-  {
+export const UnidadeMedida = {
   "database": "plano",
   "table": "UnidadeMedida",
   "primary": [
@@ -44,3 +43,4 @@ export const UnidadeMedida: Schema =
     }
   }
 }
+  

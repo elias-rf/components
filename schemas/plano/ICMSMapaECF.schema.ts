@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TICMSMapaECF = keyof typeof ICMSMapaECF.fields
 
-export const ICMSMapaECF: Schema =
-  {
+export const ICMSMapaECF = {
   "database": "plano",
   "table": "ICMSMapaECF",
   "primary": [],
@@ -110,3 +109,4 @@ export const ICMSMapaECF: Schema =
     }
   }
 }
+  

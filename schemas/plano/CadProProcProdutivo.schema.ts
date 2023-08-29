@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCadProProcProdutivo = keyof typeof CadProProcProdutivo.fields
 
-export const CadProProcProdutivo: Schema =
-  {
+export const CadProProcProdutivo = {
   "database": "plano",
   "table": "CadProProcProdutivo",
   "primary": [],
@@ -93,3 +92,4 @@ export const CadProProcProdutivo: Schema =
     }
   }
 }
+  

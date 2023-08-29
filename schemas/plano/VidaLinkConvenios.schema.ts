@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TVidaLinkConvenios = keyof typeof VidaLinkConvenios.fields
 
-export const VidaLinkConvenios: Schema =
-  {
+export const VidaLinkConvenios = {
   "database": "plano",
   "table": "VidaLinkConvenios",
   "primary": [
@@ -44,3 +43,4 @@ export const VidaLinkConvenios: Schema =
     }
   }
 }
+  

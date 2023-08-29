@@ -1,7 +1,6 @@
-import { Schema } from "../schemas.type";
+export type TCorCapsula = keyof typeof CorCapsula.fields
 
-export const CorCapsula: Schema =
-  {
+export const CorCapsula = {
   "database": "plano",
   "table": "CorCapsula",
   "primary": [
@@ -44,3 +43,4 @@ export const CorCapsula: Schema =
     }
   }
 }
+  
