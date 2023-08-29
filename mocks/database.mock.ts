@@ -7,8 +7,6 @@ for (const table in database) {
   database[table].knex(knexMockMsql);
 }
 
-export const databaseMock = database;
-
 export function getTracker() {
   return createTracker(knexMockMsql);
 }
