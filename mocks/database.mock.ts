@@ -1,12 +1,7 @@
-import { createTracker } from "knex-mock-client";
-import * as database from "../database";
-import { knexMockMsql } from "./connections.mock";
+import { createTracker } from 'knex-mock-client'
 
-for (const table in database) {
-  //@ts-ignore
-  database[table].knex(knexMockMsql);
-}
+import { knexMockMsql } from './connections.mock'
 
 export function getTracker() {
-  return createTracker(knexMockMsql);
+  return createTracker(knexMockMsql)
 }
