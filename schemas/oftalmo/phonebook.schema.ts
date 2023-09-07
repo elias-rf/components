@@ -5,7 +5,7 @@ export const phonebook = {
   "table": "phonebook",
   "primary": [
     "id"
-  ],
+  ] as const,
   "fields": {
     "id": {
       "table": "phonebook",
@@ -77,4 +77,3 @@ export const phonebook = {
     }
   }
 }
-  

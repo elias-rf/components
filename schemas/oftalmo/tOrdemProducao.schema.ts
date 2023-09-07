@@ -5,7 +5,7 @@ export const tOrdemProducao = {
   "table": "tOrdemProducao",
   "primary": [
     "kOp"
-  ],
+  ] as const,
   "fields": {
     "kOp": {
       "table": "tOrdemProducao",
@@ -859,4 +859,3 @@ export const tOrdemProducao = {
     }
   }
 }
-  

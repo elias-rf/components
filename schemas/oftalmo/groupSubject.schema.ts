@@ -3,7 +3,7 @@ export type TgroupSubject = keyof typeof groupSubject.fields
 export const groupSubject = {
   database: 'oftalmo',
   table: 'groupSubject',
-  primary: ['idGroup', 'idSubject'],
+  primary: ['idGroup', 'idSubject'] as const,
   fields: {
     idGroup: {
       table: 'groupSubject',

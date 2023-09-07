@@ -1,7 +1,7 @@
 export type TSchema = {
   database: string
   table: string
-  primary: string[]
+  primary:readonly string[]
   relations?: {
     [relation: string]: {
       source: string[]
