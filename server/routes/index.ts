@@ -1,12 +1,12 @@
 // import { trpcMiddle } from "./trpc";
 
-import { FastifyPluginCallback } from "fastify";
-import { systemRoute } from "./system";
-import { trpcRoute } from "./trpc";
+import { FastifyPluginCallback } from 'fastify'
+import { systemRoute } from './system'
+import { registerPrimServer } from '@/rpc/prim-server'
 
-const prefix = "/api";
+const prefix = '/api'
 export const routes: FastifyPluginCallback = (fastify, options, done) => {
-  fastify.register(systemRoute, { prefix });
-  fastify.register(trpcRoute, { prefix });
-  done();
-};
+  registerPrimServer(fastify)
+  fastify.register(systemRoute, { prefix })
+  done()
+}
