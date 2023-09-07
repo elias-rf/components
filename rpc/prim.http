@@ -1,0 +1,25 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+@resource = agendaTelefone
+
+
+### List
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+	"method": "agendaTelefone/list",
+	"args": {"where":[["id",165]]},
+	"id": "1"
+}
+
+### Read
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+	"method": "agendaTelefone/read",
+	"args": {"id":[["id",165]]},
+	"id": "1"
+}
