@@ -1,18 +1,24 @@
 import { dbOftalmo } from '@/controllers/db-oftalmo.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import {
-  Ttbl_Funcionario,
-  tbl_Funcionario,
-} from '@/schemas/oftalmo/tbl_Funcionario.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { tbl_Funcionario } from '@/schemas/oftalmo/tbl_Funcionario.schema'
 import type { TSchema } from '@/schemas/schema.type'
 
-class EmpregadoController extends OrmTable<Ttbl_Funcionario> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TEmpregadoFields = keyof typeof tbl_Funcionario.fields
+export type TEmpregadoKeys = (typeof tbl_Funcionario.primary)[number]
+
+function empregadoControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TEmpregadoFields, TEmpregadoKeys>(db, schema)
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
   }
 }
 
-export const empregadoController = new EmpregadoController(
+export const empregadoController = empregadoControllerFactory(
   dbOftalmo,
   tbl_Funcionario
 )

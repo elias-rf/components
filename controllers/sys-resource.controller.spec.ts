@@ -14,8 +14,8 @@ describe('SysResourceModel', () => {
     tracker.on.select('resource').response([{ resource_id: '1' }])
 
     const rsp = await sysResourceController.list({
-      filter: [['resource_id', '1']],
-      sort: [['resource_id', 'asc']],
+      where: [['resource_id', '1']],
+      orderBy: [['resource_id', 'asc']],
     })
 
     expect(rsp).toEqual([{ resource_id: '1' }])

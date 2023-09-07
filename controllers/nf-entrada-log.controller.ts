@@ -1,18 +1,24 @@
 import { dbPlano } from '@/controllers/db-plano.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import {
-  NfLogConferencia,
-  TNfLogConferencia,
-} from '@/schemas/plano/NfLogConferencia.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { NfLogConferencia } from '@/schemas/plano/NfLogConferencia.schema'
 import { TSchema } from '@/schemas/schema.type'
 
-class NfEntradaLogController extends OrmTable<TNfLogConferencia> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TNfEntradaLogFields = keyof typeof NfLogConferencia.fields
+export type TNfEntradaLogKeys = (typeof NfLogConferencia.primary)[number]
+
+function nfEntradaLogControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TNfEntradaLogFields, TNfEntradaLogKeys>(db, schema)
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
   }
 }
 
-export const nfEntradaLogController = new NfEntradaLogController(
+export const nfEntradaLogController = nfEntradaLogControllerFactory(
   dbPlano,
   NfLogConferencia
 )

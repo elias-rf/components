@@ -1,12 +1,21 @@
 import { dbOftalmo } from '@/controllers/db-oftalmo.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import { TtMaquina, tMaquina } from '@/schemas/oftalmo/tMaquina.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { tMaquina } from '@/schemas/oftalmo/tMaquina.schema'
 import { TSchema } from '@/schemas/schema.type'
 
-class MaquinaController extends OrmTable<TtMaquina> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TMaquinaFields = keyof typeof tMaquina.fields
+export type TMaquinaKeys = (typeof tMaquina.primary)[number]
+
+function maquinaControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TMaquinaFields, TMaquinaKeys>(db, schema)
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
   }
 }
 
-export const maquinaController = new MaquinaController(dbOftalmo, tMaquina)
+export const maquinaController = maquinaControllerFactory(dbOftalmo, tMaquina)

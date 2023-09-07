@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest'
 import { knexMockMsql } from '@/mocks/connections.mock'
 import { dbOftalmo } from '@/controllers/db-oftalmo.db'
 
-describe('AgendaTelefoneModel', () => {
+describe('agendaTelefoneController', () => {
   const tracker = getTracker()
   dbOftalmo.knex = knexMockMsql
 
@@ -14,8 +14,8 @@ describe('AgendaTelefoneModel', () => {
     tracker.on.select('phonebook').response([{ id: '1' }])
 
     const rsp = await agendaTelefoneController.list({
-      filter: [['id', 1]],
-      sort: [['id', 'asc']],
+      where: [['id', 1]],
+      orderBy: [['id', 'asc']],
     })
 
     expect(rsp).toEqual([{ id: '1' }])
@@ -29,7 +29,7 @@ describe('AgendaTelefoneModel', () => {
 
   it('read', async () => {
     tracker.reset()
-    tracker.on.select('phonebook').response([{ id: '1' }])
+    tracker.on.select('phonebook').response({ id: '1' })
 
     const rsp = await agendaTelefoneController.read({
       id: [['id', 1]],

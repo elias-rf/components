@@ -1,23 +1,20 @@
 import { config } from '@/config'
 import { dbOftalmo } from '@/controllers/db-oftalmo.db'
-import { TUsuario } from '@/database'
-import { OrmDatabase, OrmTable } from '@/orm'
-import {
-  Ttbl_Seguranca_Usuario,
-  tbl_Seguranca_Usuario,
-} from '@/schemas/oftalmo/tbl_Seguranca_Usuario.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { tbl_Seguranca_Usuario } from '@/schemas/oftalmo/tbl_Seguranca_Usuario.schema'
 import type { TCurrentUser } from '@/types'
 import { day } from '@/utils/date/day'
 import { passwordVerify } from '@/utils/string/password-verify'
-
 import type { TSchema } from '@/schemas/schema.type'
+import { PrimFastifyContext } from '@doseofted/prim-rpc-plugins/fastify'
 
-class UsuarioController extends OrmTable<Ttbl_Seguranca_Usuario> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
-  }
+export type TUsuarioFields = keyof typeof tbl_Seguranca_Usuario.fields
+export type TUsuarioKeys = (typeof tbl_Seguranca_Usuario.primary)[number]
 
-  async me(ctx: any) {
+function usuarioControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TUsuarioFields, TUsuarioKeys>(db, schema)
+
+  const me = async (ctx: any) => {
     const resp = ctx.req.user
     if (resp && resp.iat) {
       resp.iat = day.unix(resp.iat).format('YYYY-MM-DDTHH:mm:ss')
@@ -25,17 +22,25 @@ class UsuarioController extends OrmTable<Ttbl_Seguranca_Usuario> {
     }
     return (resp as TCurrentUser) || 'NOT_LOGGED'
   }
+  me.rpc = true
 
-  async logout(ctx: any) {
+  const logout = async (ctx: any) => {
     ctx.res.clearCookie('token', { path: '/' })
     return true
   }
+  logout.rpc = true
 
-  async login(
-    { user, password }: { user: string; password: string },
-    ctx: any
-  ) {
-    let record: TUsuario
+  async function login({
+    user,
+    password,
+  }: {
+    user: string
+    password: string
+  }): Promise<TCurrentUser>
+  async function login(
+    this: PrimFastifyContext,
+    { user, password }: { user: string; password: string }
+  ): Promise<TCurrentUser> {
     if (!user) {
       throw new Error('Usuário não informado')
     }
@@ -44,14 +49,9 @@ class UsuarioController extends OrmTable<Ttbl_Seguranca_Usuario> {
       throw new Error('Senha não informada')
     }
 
-    try {
-      const rec = await this.list({
-        filter: [['NomeUsuario', user]],
-      })
-      record = rec[0]
-    } catch (err: any) {
-      throw new Error(`erro de acesso ao banco de dados: ${err.message}`)
-    }
+    const [record] = await orm.list({
+      where: [['NomeUsuario', user]],
+    })
 
     if (!record) {
       throw new Error('Usuário não cadastrado')
@@ -72,17 +72,30 @@ class UsuarioController extends OrmTable<Ttbl_Seguranca_Usuario> {
       nome: record.nome || '',
       group_id: record.idGroup || '',
     }
-    resp.token = await ctx.res.jwtSign(resp)
+    resp.token = await this.reply.jwtSign(resp)
 
-    ctx.res.setCookie('token', resp.token, {
+    this.reply.setCookie('token', resp.token, {
       maxAge: config.auth.expiration,
       path: '/',
     })
     return resp
   }
+  login.rpc = true
+
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
+    me,
+    logout,
+    login,
+  }
 }
 
-export const usuarioController = new UsuarioController(
+export const usuarioController = usuarioControllerFactory(
   dbOftalmo,
   tbl_Seguranca_Usuario
 )

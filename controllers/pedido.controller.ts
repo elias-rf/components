@@ -1,15 +1,21 @@
 import { dbPlano } from '@/controllers/db-plano.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import {
-  MestrePedido,
-  TMestrePedido,
-} from '@/schemas/plano/MestrePedido.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { MestrePedido } from '@/schemas/plano/MestrePedido.schema'
 import { TSchema } from '@/schemas/schema.type'
 
-class PedidoController extends OrmTable<TMestrePedido> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TPedidoFields = keyof typeof MestrePedido.fields
+export type TPedidoKeys = (typeof MestrePedido.primary)[number]
+
+function pedidoControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TPedidoFields, TPedidoKeys>(db, schema)
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
   }
 }
 
-export const pedidoController = new PedidoController(dbPlano, MestrePedido)
+export const pedidoController = pedidoControllerFactory(dbPlano, MestrePedido)

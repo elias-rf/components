@@ -1,25 +1,31 @@
 import { dbPlano } from '@/controllers/db-plano.db'
 import { nfSaidaFvController } from '@/controllers/nf-saida-fv.controller'
-import { NfSaida } from '@/database'
-import { OrmDatabase, OrmTable } from '@/orm'
-import { MestreNota, TMestreNota } from '@/schemas/plano/MestreNota.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { MestreNota } from '@/schemas/plano/MestreNota.schema'
 import type { TSchema } from '@/schemas/schema.type'
 import { zsr } from '@/utils/zod/z-refine'
 import { zd, zod } from '@/utils/zod/zod'
 import { z } from 'zod'
 
-class NfSaidaController extends OrmTable<TMestreNota> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
-  }
+export type TNfSaidaFields = keyof typeof MestreNota.fields
+export type TNfSaidaKeys = (typeof MestreNota.primary)[number]
 
-  async transferenciaDiario({ inicio, fim }: { inicio: string; fim: string }) {
+function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TNfSaidaFields, TNfSaidaKeys>(db, schema)
+
+  const transferenciaDiario = async ({
+    inicio,
+    fim,
+  }: {
+    inicio: string
+    fim: string
+  }) => {
     zod(inicio, zd.string().superRefine(zsr.date))
     zod(fim, zd.string().superRefine(zsr.date))
 
     const aux: any = {}
     const rsp = []
-    const knex = NfSaida.knex()
+    const knex = db.knex
     const qry: any = await knex<
       any,
       { dia: string; NmCategoria: string; quantidade: number }
@@ -55,12 +61,13 @@ class NfSaidaController extends OrmTable<TMestreNota> {
     }
     return rsp
   }
+  transferenciaDiario.rpc = true
 
-  async transferenciaMensal({ mes }: { mes: string }) {
+  const transferenciaMensal = async ({ mes }: { mes: string }) => {
     zod(mes, zd.string().superRefine(zsr.month))
     const aux: any = {}
     const rsp = []
-    const knex = NfSaida.knex()
+    const knex = db.knex
     const qry = await knex(
       knex.raw(
         'NatOpe INNER JOIN (CategPro INNER JOIN (CadPro INNER JOIN (MestreNota INNER JOIN ItemNota ON (MestreNota.Serie = ItemNota.Serie) AND (MestreNota.NumNota = ItemNota.NumNota) AND (MestreNota.CdFilial = ItemNota.CdFilial)) ON CadPro.CdProduto = ItemNota.CdProduto) ON CategPro.CdCategoria = CadPro.CdCategoria) ON (ItemNota.Nop = NatOpe.Nop) AND (NatOpe.Nop = MestreNota.Nop)'
@@ -100,10 +107,11 @@ class NfSaidaController extends OrmTable<TMestreNota> {
 
     return rsp
   }
+  transferenciaMensal.rpc = true
 
-  async transferenciaModelo({ data }: { data: string }) {
+  const transferenciaModelo = async ({ data }: { data: string }) => {
     zod(data, zd.string().superRefine(zsr.date))
-    const knex = NfSaida.knex()
+    const knex = db.knex
     const qry = await knex(
       knex.raw(
         'NatOpe INNER JOIN (CategPro INNER JOIN (CadPro INNER JOIN (MestreNota INNER JOIN ItemNota ON (MestreNota.Serie = ItemNota.Serie) AND (MestreNota.NumNota = ItemNota.NumNota) AND (MestreNota.CdFilial = ItemNota.CdFilial)) ON CadPro.CdProduto = ItemNota.CdProduto) ON CategPro.CdCategoria = CadPro.CdCategoria) ON (ItemNota.Nop = NatOpe.Nop) AND (NatOpe.Nop = MestreNota.Nop)'
@@ -124,11 +132,18 @@ class NfSaidaController extends OrmTable<TMestreNota> {
       )
     return qry
   }
+  transferenciaModelo.rpc = true
 
-  async vendaAnalitico({ inicio, fim }: { inicio: string; fim: string }) {
+  const vendaAnalitico = async ({
+    inicio,
+    fim,
+  }: {
+    inicio: string
+    fim: string
+  }) => {
     zod(inicio, z.string().superRefine(zsr.date))
     zod(fim, z.string().superRefine(zsr.date))
-    const knex = NfSaida.knex()
+    const knex = db.knex
     const qryPlano = knex('MestreNota')
       .select(knex.raw("'VT' as origem"))
       .select([
@@ -174,8 +189,9 @@ class NfSaidaController extends OrmTable<TMestreNota> {
     const resp: any = await Promise.all([qryPlano, qryFullvision])
     return resp[0].concat(resp[1])
   }
+  vendaAnalitico.rpc = true
 
-  async vendaDiario({
+  const vendaDiario = async ({
     inicio,
     fim,
     uf,
@@ -183,11 +199,11 @@ class NfSaidaController extends OrmTable<TMestreNota> {
     inicio: string
     fim: string
     uf: string[]
-  }) {
+  }) => {
     zod(inicio, z.string().superRefine(zsr.date))
     zod(fim, z.string().superRefine(zsr.date))
     zod(uf, z.array(z.string()))
-    const knex = NfSaida.knex()
+    const knex = db.knex
     const qry = await knex<
       any,
       {
@@ -234,8 +250,9 @@ class NfSaidaController extends OrmTable<TMestreNota> {
       valor: number
     }[]
   }
+  vendaDiario.rpc = true
 
-  async vendaMensalCliente({
+  const vendaMensalCliente = async ({
     inicio,
     fim,
     cliente,
@@ -243,11 +260,11 @@ class NfSaidaController extends OrmTable<TMestreNota> {
     inicio: string
     fim: string
     cliente: number
-  }) {
+  }) => {
     zod(inicio, z.string().superRefine(zsr.date))
     zod(fim, z.string().superRefine(zsr.date))
     zod(cliente, z.number())
-    const knex = NfSaida.knex()
+    const knex = db.knex
     const rsp = knex<
       any,
       {
@@ -300,6 +317,21 @@ class NfSaidaController extends OrmTable<TMestreNota> {
       valor: number
     }[]
   }
+  vendaMensalCliente.rpc = true
+
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    vendaMensalCliente,
+    vendaDiario,
+    transferenciaDiario,
+    transferenciaMensal,
+    vendaAnalitico,
+    transferenciaModelo,
+  }
 }
 
-export const nfSaidaController = new NfSaidaController(dbPlano, MestreNota)
+export const nfSaidaController = nfSaidaControllerFactory(dbPlano, MestreNota)

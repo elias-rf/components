@@ -1,15 +1,24 @@
 import { dbPlano } from '@/controllers/db-plano.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import { Lotes, TLotes } from '@/schemas/plano/Lotes.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { Lotes } from '@/schemas/plano/Lotes.schema'
 import { TSchema } from '@/schemas/schema.type'
 
-class ProdutoControleController extends OrmTable<TLotes> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TProdutoControleFields = keyof typeof Lotes.fields
+export type TProdutoControleKeys = (typeof Lotes.primary)[number]
+
+function produtoControleControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TProdutoControleFields, TProdutoControleKeys>(db, schema)
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
   }
 }
 
-export const produtoControleController = new ProdutoControleController(
+export const produtoControleController = produtoControleControllerFactory(
   dbPlano,
   Lotes
 )

@@ -1,12 +1,21 @@
 import { dbPlano } from '@/controllers/db-plano.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import { CadVen, TCadVen } from '@/schemas/plano/CadVen.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { CadVen } from '@/schemas/plano/CadVen.schema'
 import type { TSchema } from '@/schemas/schema.type'
 
-class VendedorController extends OrmTable<TCadVen> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TVendedorFields = keyof typeof CadVen.fields
+export type TVendedorKeys = (typeof CadVen.primary)[number]
+
+function vendedorControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TVendedorFields, TVendedorKeys>(db, schema)
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm: orm,
   }
 }
 
-export const vendedorController = new VendedorController(dbPlano, CadVen)
+export const vendedorController = vendedorControllerFactory(dbPlano, CadVen)

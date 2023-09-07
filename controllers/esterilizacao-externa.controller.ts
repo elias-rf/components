@@ -1,30 +1,35 @@
 import { dbOftalmo } from '@/controllers/db-oftalmo.db'
-import { EsterilizacaoExterna } from '@/database'
-import { OrmDatabase, OrmTable } from '@/orm'
-import {
-  TtEsterilizacaoExterna,
-  tEsterilizacaoExterna,
-} from '@/schemas/oftalmo/tEsterilizacaoExterna.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { tEsterilizacaoExterna } from '@/schemas/oftalmo/tEsterilizacaoExterna.schema'
 import type { TSchema } from '@/schemas/schema.type'
 import { day } from '@/utils/date/day'
 import { zsr } from '@/utils/zod/z-refine'
 import { zd, zod } from '@/utils/zod/zod'
 
-class EsterilizacaoExternaController extends OrmTable<TtEsterilizacaoExterna> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
-  }
+export type TEsterilizacaoExternaFields =
+  keyof typeof tEsterilizacaoExterna.fields
+export type TEsterilizacaoExternaKeys =
+  (typeof tEsterilizacaoExterna.primary)[number]
 
-  async diario({
+function esterilizacaoExternaControllerFactory(
+  db: OrmDatabase,
+  schema: TSchema
+) {
+  const orm = ormTable<TEsterilizacaoExternaFields, TEsterilizacaoExternaKeys>(
+    db,
+    schema
+  )
+
+  const diario = async ({
     inicio,
     fim,
   }: {
     inicio: string
     fim: string
-  }): Promise<{ dia: string; dia_semana: string; quantidade: number }[]> {
+  }): Promise<{ dia: string; dia_semana: string; quantidade: number }[]> => {
     zod(inicio, zd.string().superRefine(zsr.date))
     zod(fim, zd.string().superRefine(zsr.date))
-    const knex = EsterilizacaoExterna.knex()
+    const knex = db.knex
     const qry = await knex(
       knex.raw(
         'tEsterilizacaoExterna LEFT JOIN (SELECT tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoExterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt'
@@ -47,10 +52,11 @@ class EsterilizacaoExternaController extends OrmTable<TtEsterilizacaoExterna> {
       return rec
     })
   }
+  diario.rpc = true
 
-  async mensal({ mes }: { mes: string }) {
+  const mensal = async ({ mes }: { mes: string }) => {
     zod(mes, zd.string().superRefine(zsr.month))
-    const knex = EsterilizacaoExterna.knex()
+    const knex = db.knex
     const qry = await knex(
       knex.raw(
         'tEsterilizacaoExterna LEFT JOIN (SELECT tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoExterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt'
@@ -68,11 +74,12 @@ class EsterilizacaoExternaController extends OrmTable<TtEsterilizacaoExterna> {
       )
     return qry
   }
+  mensal.rpc = true
 
-  async modelo({ data, produto }: { data: string; produto: string }) {
+  const modelo = ({ data, produto }: { data: string; produto: string }) => {
     zod(data, zd.string().superRefine(zsr.date))
     zod(produto, zd.string())
-    const knex = EsterilizacaoExterna.knex()
+    const knex = db.knex
     const qry = knex(
       knex.raw(
         'tEsterilizacaoExterna LEFT JOIN (SELECT tbl_Produto.fkCategoria, tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoExterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt'
@@ -88,17 +95,17 @@ class EsterilizacaoExternaController extends OrmTable<TtEsterilizacaoExterna> {
       .where('tEsterilizacaoExterna.Data', data)
       .where(knex.raw("IsNull([fkCategoria],'Metil')=?", produto))
 
-    const response = await qry
-    return response
+    return qry
   }
+  modelo.rpc = true
 
-  async produto({
+  const produto = ({
     data,
   }: {
     data: string
-  }): Promise<{ produto: string; quantidade: number }[]> {
+  }): Promise<{ produto: string; quantidade: number }[]> => {
     zod(data, zd.string().superRefine(zsr.date))
-    const knex = EsterilizacaoExterna.knex()
+    const knex = db.knex
     const qry = knex(
       knex.raw(
         'tEsterilizacaoExterna LEFT JOIN (SELECT tbl_Produto.fkCategoria, tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoExterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt'
@@ -113,10 +120,23 @@ class EsterilizacaoExternaController extends OrmTable<TtEsterilizacaoExterna> {
       .groupBy('fkCategoria')
       .where(knex.raw('tEsterilizacaoExterna.Data=?', [data]))
 
-    const response = await qry
-    return response
+    return qry
+  }
+  produto.rpc = true
+
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
+    diario,
+    mensal,
+    modelo,
+    produto,
   }
 }
 
 export const esterilizacaoExternaController =
-  new EsterilizacaoExternaController(dbOftalmo, tEsterilizacaoExterna)
+  esterilizacaoExternaControllerFactory(dbOftalmo, tEsterilizacaoExterna)

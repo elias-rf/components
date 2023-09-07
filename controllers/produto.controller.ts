@@ -1,12 +1,24 @@
 import { dbOftalmo } from '@/controllers/db-oftalmo.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import { Ttbl_Produto, tbl_Produto } from '@/schemas/oftalmo/tbl_Produto.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { tbl_Produto } from '@/schemas/oftalmo/tbl_Produto.schema'
 import { TSchema } from '@/schemas/schema.type'
 
-class ProdutoController extends OrmTable<Ttbl_Produto> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TProdutoFields = keyof typeof tbl_Produto.fields
+export type TProdutoKeys = (typeof tbl_Produto.primary)[number]
+
+function produtoControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TProdutoFields, TProdutoKeys>(db, schema)
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm: orm,
   }
 }
 
-export const produtoController = new ProdutoController(dbOftalmo, tbl_Produto)
+export const produtoController = produtoControllerFactory(
+  dbOftalmo,
+  tbl_Produto
+)

@@ -2,9 +2,16 @@ import { getTracker } from '@/mocks/database.mock'
 import { knexMockHistory } from '@/mocks/knex-mock-history'
 import { describe, expect, it } from 'vitest'
 import { nfSaidaController } from './nf-saida.controller'
+import { dbPlano } from '@/controllers/db-plano.db'
+import { knexMockMsql } from '@/mocks/connections.mock'
+import { dbOftalmo } from '@/controllers/db-oftalmo.db'
+import { dbFullvision } from '@/controllers/db-fullvision.db'
 
 describe('nfSaidaModel', () => {
   const tracker = getTracker()
+  dbOftalmo.knex = knexMockMsql
+  dbPlano.knex = knexMockMsql
+  dbFullvision.knex = knexMockMsql
 
   it('transferenciaDiario', async () => {
     tracker.reset()
@@ -156,11 +163,11 @@ describe('nfSaidaModel', () => {
 
     expect(knexMockHistory(tracker, ['sql'])).toEqual([
       {
-        sql: "select 'VT' as origem, [CategPro].[NmCategoria], [MestreNota].[DtEmissao], [MestreNota].[NumNota], [MestreNota].[Serie], [MestreNota].[Tipo], [ItemNota].[CdProduto], [ItemNota].[Quantidade], [ItemNota].[VlTotal], [CadPro].[Descricao], [MestreNota].[CdVendedor], [CadVen].[NmVendedor], [CidadesERF].[uf] from [MestreNota] inner join [ItemNota] on [ItemNota].[CdFilial] = [MestreNota].[CdFilial] and [ItemNota].[NumNota] = [MestreNota].[NumNota] and [ItemNota].[Serie] = [MestreNota].[Serie] and [ItemNota].[Modelo] = [MestreNota].[Modelo] inner join [CadVen] on [MestreNota].[CdVendedor] = [CadVen].[CdVendedor] inner join [CadCli] on [MestreNota].[CdCliente] = [CadCli].[CdCliente] inner join [cidadesErf] on [CadCli].[Cidade] = [cidadesErf].[NmCidadeIBGE] inner join [CadPro] on [ItemNota].[CdProduto] = [CadPro].[CdProduto] inner join [CategPro] on [CadPro].[CdCategoria] = [CategPro].[CdCategoria] where [MestreNota].[CdFilial] = @p0 and [CadVen].[FgControle] = @p1 and [MestreNota].[FgEstatistica] = @p2 and [CadPro].[FgEstatistica] = @p3 and [ItemNota].[ImprimeComponentes] = @p4 and [ItemNota].[Sequencia] <> @p5 and [MestreNota].[cdcliente] <> @p6 and [MestreNota].[DtEmissao] between @p7 and @p8 and [MestreNota].[Tipo] in (@p9, @p10)",
+        sql: "select 'FV' as origem, [CategPro].[NmCategoria], [MestreNota].[DtEmissao], [MestreNota].[NumNota], [MestreNota].[Serie], [MestreNota].[Tipo], [ItemNota].[CdProduto], [ItemNota].[Quantidade], [ItemNota].[VlTotal], [CadPro].[Descricao], [MestreNota].[CdVendedor], [CadVen].[NmVendedor], [CidadesERF].[uf] from [MestreNota] inner join [ItemNota] on [ItemNota].[CdFilial] = [MestreNota].[CdFilial] and [ItemNota].[NumNota] = [MestreNota].[NumNota] and [ItemNota].[Serie] = [MestreNota].[Serie] and [ItemNota].[Modelo] = [MestreNota].[Modelo] inner join [CadVen] on [MestreNota].[CdVendedor] = [CadVen].[CdVendedor] inner join [CadCli] on [MestreNota].[CdCliente] = [CadCli].[CdCliente] inner join [cidadesErf] on [CadCli].[Cidade] = [cidadesErf].[NmCidadeIBGE] inner join [CadPro] on [ItemNota].[CdProduto] = [CadPro].[CdProduto] inner join [CategPro] on [CadPro].[CdCategoria] = [CategPro].[CdCategoria] where [MestreNota].[CdFilial] = @p0 and [CadVen].[FgControle] = @p1 and [MestreNota].[FgEstatistica] = @p2 and [CadPro].[FgEstatistica] = @p3 and [ItemNota].[ImprimeComponentes] = @p4 and [ItemNota].[Sequencia] <> @p5 and [MestreNota].[cdcliente] <> @p6 and [MestreNota].[DtEmissao] between @p7 and @p8 and [MestreNota].[Tipo] in (@p9, @p10)",
       },
 
       {
-        sql: "select 'FV' as origem, [CategPro].[NmCategoria], [MestreNota].[DtEmissao], [MestreNota].[NumNota], [MestreNota].[Serie], [MestreNota].[Tipo], [ItemNota].[CdProduto], [ItemNota].[Quantidade], [ItemNota].[VlTotal], [CadPro].[Descricao], [MestreNota].[CdVendedor], [CadVen].[NmVendedor], [CidadesERF].[uf] from [MestreNota] inner join [ItemNota] on [ItemNota].[CdFilial] = [MestreNota].[CdFilial] and [ItemNota].[NumNota] = [MestreNota].[NumNota] and [ItemNota].[Serie] = [MestreNota].[Serie] and [ItemNota].[Modelo] = [MestreNota].[Modelo] inner join [CadVen] on [MestreNota].[CdVendedor] = [CadVen].[CdVendedor] inner join [CadCli] on [MestreNota].[CdCliente] = [CadCli].[CdCliente] inner join [cidadesErf] on [CadCli].[Cidade] = [cidadesErf].[NmCidadeIBGE] inner join [CadPro] on [ItemNota].[CdProduto] = [CadPro].[CdProduto] inner join [CategPro] on [CadPro].[CdCategoria] = [CategPro].[CdCategoria] where [MestreNota].[CdFilial] = @p0 and [CadVen].[FgControle] = @p1 and [MestreNota].[FgEstatistica] = @p2 and [CadPro].[FgEstatistica] = @p3 and [ItemNota].[ImprimeComponentes] = @p4 and [ItemNota].[Sequencia] <> @p5 and [MestreNota].[cdcliente] <> @p6 and [MestreNota].[DtEmissao] between @p7 and @p8 and [MestreNota].[Tipo] in (@p9, @p10)",
+        sql: "select 'VT' as origem, [CategPro].[NmCategoria], [MestreNota].[DtEmissao], [MestreNota].[NumNota], [MestreNota].[Serie], [MestreNota].[Tipo], [ItemNota].[CdProduto], [ItemNota].[Quantidade], [ItemNota].[VlTotal], [CadPro].[Descricao], [MestreNota].[CdVendedor], [CadVen].[NmVendedor], [CidadesERF].[uf] from [MestreNota] inner join [ItemNota] on [ItemNota].[CdFilial] = [MestreNota].[CdFilial] and [ItemNota].[NumNota] = [MestreNota].[NumNota] and [ItemNota].[Serie] = [MestreNota].[Serie] and [ItemNota].[Modelo] = [MestreNota].[Modelo] inner join [CadVen] on [MestreNota].[CdVendedor] = [CadVen].[CdVendedor] inner join [CadCli] on [MestreNota].[CdCliente] = [CadCli].[CdCliente] inner join [cidadesErf] on [CadCli].[Cidade] = [cidadesErf].[NmCidadeIBGE] inner join [CadPro] on [ItemNota].[CdProduto] = [CadPro].[CdProduto] inner join [CategPro] on [CadPro].[CdCategoria] = [CategPro].[CdCategoria] where [MestreNota].[CdFilial] = @p0 and [CadVen].[FgControle] = @p1 and [MestreNota].[FgEstatistica] = @p2 and [CadPro].[FgEstatistica] = @p3 and [ItemNota].[ImprimeComponentes] = @p4 and [ItemNota].[Sequencia] <> @p5 and [MestreNota].[cdcliente] <> @p6 and [MestreNota].[DtEmissao] between @p7 and @p8 and [MestreNota].[Tipo] in (@p9, @p10)",
       },
     ])
   })

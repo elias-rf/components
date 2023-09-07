@@ -1,18 +1,29 @@
 import { dbOftalmo } from '@/controllers/db-oftalmo.db'
-import { OrmDatabase, OrmTable } from '@/orm'
+import { OrmDatabase, ormTable } from '@/orm'
 import {
   Ttbl_Sistema_Grupo,
   tbl_Sistema_Grupo,
 } from '@/schemas/oftalmo/tbl_Sistema_Grupo.schema'
 import { TSchema } from '@/schemas/schema.type'
 
-class GroupModelController extends OrmTable<Ttbl_Sistema_Grupo> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TGroupFields = keyof typeof tbl_Sistema_Grupo.fields
+export type TGroupKeys = (typeof tbl_Sistema_Grupo.primary)[number]
+
+function groupControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TGroupFields, TGroupKeys>(db, schema)
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
   }
 }
 
-export const groupModelController = new GroupModelController(
+export const groupController = groupControllerFactory(
   dbOftalmo,
   tbl_Sistema_Grupo
 )
+
+export type TGroupController = Ttbl_Sistema_Grupo

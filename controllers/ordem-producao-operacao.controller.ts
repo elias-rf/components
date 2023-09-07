@@ -1,10 +1,6 @@
 import { dbOftalmo } from '@/controllers/db-oftalmo.db'
-import { OrdemProducaoOperacao } from '@/database'
-import { OrmDatabase, OrmTable } from '@/orm'
-import {
-  TtOperacaoOrdemProducao,
-  tOperacaoOrdemProducao,
-} from '@/schemas/oftalmo/tOperacaoOrdemProducao.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { tOperacaoOrdemProducao } from '@/schemas/oftalmo/tOperacaoOrdemProducao.schema'
 import { TSchema } from '@/schemas/schema.type'
 import { day } from '@/utils/date/day'
 import { zDate } from '@/utils/zod/z-date'
@@ -12,58 +8,80 @@ import { zsr } from '@/utils/zod/z-refine'
 import { zd, zod } from '@/utils/zod/zod'
 import { raw } from 'objection'
 
-class OrdemProducaoOperacaoController extends OrmTable<TtOperacaoOrdemProducao> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
-  }
+export type TOrdemProducaoOperacaoFields =
+  keyof typeof tOperacaoOrdemProducao.fields
+export type TOrdemProducaoOperacaoKeys =
+  (typeof tOperacaoOrdemProducao.primary)[number]
 
-  async diario({
+function ordemProducaoOperacaoControllerFactory(
+  db: OrmDatabase,
+  schema: TSchema
+) {
+  const orm = ormTable<
+    TOrdemProducaoOperacaoFields,
+    TOrdemProducaoOperacaoKeys
+  >(db, schema)
+
+  const diario = async ({
     operacao,
     inicio,
     fim,
   }: {
-    operacao: string
+    operacao: number
     inicio: string
     fim: string
-  }) {
-    zod(operacao, zd.string().length(4))
+  }): Promise<
+    Array<{ dia: string; diaSemana: string; quantidade: number }>
+  > => {
+    zod(operacao, zd.number())
     zDate(inicio)
     zDate(fim)
 
-    const qry = OrdemProducaoOperacao.query()
-      .select('DataInicio as dia')
-      .sum('QtdConforme as quantidade')
-      .orderBy('DataInicio', 'desc')
-      .groupBy('DataInicio')
-      .where({ fkOperacao: operacao })
-      .whereBetween('DataInicio', [inicio, fim])
+    const data = await db.run({
+      from: orm.getTableName(),
+      select: ['DataInicio as dia'],
+      sum: 'QtdConforme as quantidade',
+      orderBy: [['DataInicio', 'desc']],
+      groupBy: ['DataInicio'],
+      where: [
+        ['fkOperacao', operacao],
+        ['DataInicio', 'between', [inicio, fim]],
+      ],
+    })
 
-    const data = await qry
     return data.map((item: any) => {
       item.diaSemana = day.utc(item.dia).format('ddd')
       item.dia = day.utc(item.dia).format('YYYY-MM-DD')
       return item
     })
   }
+  diario.rpc = true
 
-  async mensal({ operacao, mes }: { operacao: string; mes: string }) {
-    zod(operacao, zd.string())
+  const mensal = async ({
+    operacao,
+    mes,
+  }: {
+    operacao: number
+    mes: string
+  }) => {
+    zod(operacao, zd.number())
     zod(mes, zd.string().superRefine(zsr.month))
 
-    const qry = await OrdemProducaoOperacao.query()
-      .select(
-        raw(
-          'CONVERT(CHAR(7),[DataInicio],120) AS mes, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade'
-        )
-      )
-      .orderByRaw('CONVERT(CHAR(7),[DataInicio],120) desc')
-      .groupBy(raw('CONVERT(CHAR(7),[DataInicio],120)'))
-      .having(raw('CONVERT(CHAR(7),[DataInicio],120)>=?', [mes]))
-      .where({ fkOperacao: operacao })
+    const qry = await db.run({
+      from: orm.getTableName(),
+      selectRaw: [
+        'CONVERT(CHAR(7),[DataInicio],120) AS mes, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade',
+      ],
+      orderByRaw: ['CONVERT(CHAR(7),[DataInicio],120) desc'],
+      groupByRaw: ['CONVERT(CHAR(7),[DataInicio],120)'],
+      havingRaw: ['CONVERT(CHAR(7),[DataInicio],120)>=?', [mes]],
+      where: [['fkOperacao', operacao]],
+    })
     return qry
   }
+  mensal.rpc = true
 
-  async modelo({
+  const modelo = async ({
     operacao,
     data,
     produto,
@@ -71,11 +89,11 @@ class OrdemProducaoOperacaoController extends OrmTable<TtOperacaoOrdemProducao> 
     operacao: string
     data: string
     produto: string
-  }) {
+  }) => {
     zod(operacao, zd.string())
     zod(produto, zd.string())
     zod(data, zd.string().superRefine(zsr.date))
-    const knex = OrdemProducaoOperacao.knex()
+    const knex = db.knex
     const qry = await knex(
       knex.raw(
         '((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp'
@@ -98,11 +116,18 @@ class OrdemProducaoOperacaoController extends OrmTable<TtOperacaoOrdemProducao> 
       })
     return qry
   }
+  modelo.rpc = true
 
-  async produto({ operacao, data }: { operacao: string; data: string }) {
+  const produto = async ({
+    operacao,
+    data,
+  }: {
+    operacao: string
+    data: string
+  }) => {
     zod(operacao, zd.string())
     zod(data, zd.string().superRefine(zsr.date))
-    const knex = OrdemProducaoOperacao.knex()
+    const knex = db.knex
     const qry = await knex<any, { produto: string; quantidade: number }[]>(
       knex.raw(
         '((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp'
@@ -118,11 +143,18 @@ class OrdemProducaoOperacaoController extends OrmTable<TtOperacaoOrdemProducao> 
       .where({ fkOperacao: operacao, DataInicio: data })
     return qry as { produto: string; quantidade: number }[]
   }
+  produto.rpc = true
 
-  async turno({ operacao, data }: { operacao: string; data: string }) {
+  const turno = async ({
+    operacao,
+    data,
+  }: {
+    operacao: string
+    data: string
+  }) => {
     zod(operacao, zd.string())
     zod(data, zd.string().superRefine(zsr.date))
-    const knex = OrdemProducaoOperacao.knex()
+    const knex = db.knex
     const qry = await knex(
       knex.raw(
         '((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp'
@@ -141,7 +173,21 @@ class OrdemProducaoOperacaoController extends OrmTable<TtOperacaoOrdemProducao> 
       .where({ fkOperacao: operacao, DataInicio: data })
     return qry
   }
+  turno.rpc = true
+
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    diario,
+    mensal,
+    modelo,
+    produto,
+    turno,
+  }
 }
 
 export const ordemProducaoOperacaoController =
-  new OrdemProducaoOperacaoController(dbOftalmo, tOperacaoOrdemProducao)
+  ordemProducaoOperacaoControllerFactory(dbOftalmo, tOperacaoOrdemProducao)

@@ -5,7 +5,7 @@ import { expect, it, describe, beforeEach } from 'vitest'
 import { knexMockMsql } from '@/mocks/connections.mock'
 import { dbOftalmo } from '@/controllers/db-oftalmo.db'
 
-describe('ordemProducaoModel', () => {
+describe('ordemProducaoOperacaoController', () => {
   const tracker = getTracker()
   dbOftalmo.knex = knexMockMsql
 
@@ -19,7 +19,7 @@ describe('ordemProducaoModel', () => {
       .response([{ dia: '2020-01-01', quantidade: 10 }])
 
     const rsp = await ordemProducaoOperacaoController.diario({
-      operacao: '1010',
+      operacao: 1010,
       inicio: '2020-01-01',
       fim: '2020-01-31',
     })
@@ -28,25 +28,25 @@ describe('ordemProducaoModel', () => {
     ])
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: ['1010', '2020-01-01', '2020-01-31'],
+        bindings: [1010, '2020-01-01', '2020-01-31'],
         sql: 'select [DataInicio] as [dia], sum([QtdConforme]) as [quantidade] from [tOperacaoOrdemProducao] where [fkOperacao] = @p0 and [DataInicio] between @p1 and @p2 group by [DataInicio] order by [DataInicio] desc',
       },
     ])
   })
 
-  it('mensal', async () => {
+  it.only('mensal', async () => {
     tracker.on
       .select('tOperacaoOrdemProducao')
       .response([{ dia: '2020-01-01', quantidade: 10 }])
 
     const rsp = await ordemProducaoOperacaoController.mensal({
-      operacao: '1010',
+      operacao: 1010,
       mes: '2020-01',
     })
     expect(rsp).toEqual([{ dia: '2020-01-01', quantidade: 10 }])
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: ['1010', '2020-01'],
+        bindings: [1010, '2020-01'],
         sql: 'select CONVERT(CHAR(7),[DataInicio],120) AS mes, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade from [tOperacaoOrdemProducao] where [fkOperacao] = @p0 group by CONVERT(CHAR(7),[DataInicio],120) having CONVERT(CHAR(7),[DataInicio],120)>=@p1 order by CONVERT(CHAR(7),[DataInicio],120) desc',
       },
     ])

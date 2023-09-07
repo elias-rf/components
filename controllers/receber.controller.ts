@@ -1,12 +1,21 @@
 import { dbPlano } from '@/controllers/db-plano.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import { TTitCobr, TitCobr } from '@/schemas/plano/TitCobr.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { TitCobr } from '@/schemas/plano/TitCobr.schema'
 import { TSchema } from '@/schemas/schema.type'
 
-class ReceberController extends OrmTable<TTitCobr> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TReceberFields = keyof typeof TitCobr.fields
+export type TReceberKeys = (typeof TitCobr.primary)[number]
+
+function receberControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TReceberFields, TReceberKeys>(db, schema)
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
   }
 }
 
-export const receberController = new ReceberController(dbPlano, TitCobr)
+export const receberController = receberControllerFactory(dbPlano, TitCobr)

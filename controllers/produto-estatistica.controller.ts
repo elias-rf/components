@@ -1,15 +1,28 @@
 import { dbPlano } from '@/controllers/db-plano.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import { EstatPro, TEstatPro } from '@/schemas/plano/EstatPro.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { EstatPro } from '@/schemas/plano/EstatPro.schema'
 import { TSchema } from '@/schemas/schema.type'
 
-class ProdutoEstatisticaController extends OrmTable<TEstatPro> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TProdutoEstatisticaFields = keyof typeof EstatPro.fields
+export type TProdutoEstatisticaKeys = (typeof EstatPro.primary)[number]
+
+function produtoEstatisticaControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TProdutoEstatisticaFields, TProdutoEstatisticaKeys>(
+    db,
+    schema
+  )
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    increment: orm.increment,
+    orm,
   }
 }
 
-export const produtoEstatisticaController = new ProdutoEstatisticaController(
+export const produtoEstatisticaController = produtoEstatisticaControllerFactory(
   dbPlano,
   EstatPro
 )

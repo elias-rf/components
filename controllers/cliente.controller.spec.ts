@@ -1,9 +1,9 @@
+import { dbPlano } from '@/controllers/db-plano.db'
+import { knexMockMsql } from '@/mocks/connections.mock'
 import { getTracker } from '@/mocks/database.mock'
 import { knexMockHistory } from '@/mocks/knex-mock-history'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { clienteController } from './cliente.controller'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { dbPlano } from '@/controllers/db-plano.db'
 
 describe('rpc de cliente', () => {
   const tracker = getTracker()
@@ -32,7 +32,7 @@ describe('rpc de cliente', () => {
   it('lista com argumentos', async () => {
     tracker.on.select('CadCli').response([{ CdCliente: 1 }])
     const rsp = await clienteController.list({
-      filter: [['CdCliente', 1]],
+      where: [['CdCliente', 1]],
       select: ['CdCliente'],
     })
     expect(rsp).toEqual([

@@ -4,10 +4,14 @@ import { describe, expect, it } from 'vitest'
 import { nfSaidaFvController } from './nf-saida-fv.controller'
 import { knexMockMsql } from '@/mocks/connections.mock'
 import { dbPlano } from '@/controllers/db-plano.db'
+import { dbOftalmo } from '@/controllers/db-oftalmo.db'
+import { dbFullvision } from '@/controllers/db-fullvision.db'
 
-describe('nfSaidaFvModel', () => {
+describe('nfSaidaFvController', () => {
   const tracker = getTracker()
   dbPlano.knex = knexMockMsql
+  dbOftalmo.knex = knexMockMsql
+  dbFullvision.knex = knexMockMsql
 
   it('vendaDiario', async () => {
     tracker.reset()

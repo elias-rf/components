@@ -21,9 +21,8 @@ describe('ordemProducaoController', () => {
     tracker.on.select('tOperacaoOrdemProducao').response([{ fkOp: 1 }])
     tracker.on.select('tTipoDeOP').response([{ kTipoOP: 1 }])
     const rsp = await ordemProducaoController.list({
-      filter: [['kOp', 1]],
+      where: [['kOp', 1]],
       select: ['kOp'],
-      related: '[operacao,tipo]',
     })
 
     expect(rsp).toEqual([{ kOp: 1, fkTipoOP: 1 }])
@@ -62,6 +61,7 @@ describe('ordemProducaoController', () => {
       },
     ])
   })
+
   it('controle', async () => {
     const rsp = await ordemProducaoController.controle({
       id: [['kOp', 100]],

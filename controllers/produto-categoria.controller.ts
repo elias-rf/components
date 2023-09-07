@@ -1,15 +1,27 @@
 import { dbPlano } from '@/controllers/db-plano.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import { CategPro, TCategPro } from '@/schemas/plano/CategPro.schema'
-import { TSchema } from '@/schemas/schema.type'
+import { OrmDatabase, ormTable } from '@/orm'
+import { CategPro } from '@/schemas/plano/CategPro.schema'
+import type { TSchema } from '@/schemas/schema.type'
 
-class ProdutoCategoriaController extends OrmTable<TCategPro> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TProdutoCategoriaFields = keyof typeof CategPro.fields
+export type TProdutoCategoriaKeys = (typeof CategPro.primary)[number]
+
+function produtoCategoriaControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TProdutoCategoriaFields, TProdutoCategoriaKeys>(
+    db,
+    schema
+  )
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
   }
 }
 
-export const produtoCategoriaController = new ProdutoCategoriaController(
+export const produtoCategoriaController = produtoCategoriaControllerFactory(
   dbPlano,
   CategPro
 )

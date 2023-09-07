@@ -16,8 +16,8 @@ describe('ordemProducaoModel', () => {
   it('list', async () => {
     tracker.on.select('tEtiqueta').response([{ controle: '1' }])
     const rsp = await etiquetaExternaController.list({
-      filter: [['controle', '1']],
-      sort: [['controle', 'asc']],
+      where: [['controle', '1']],
+      orderBy: [['controle', 'asc']],
     })
 
     expect(rsp).toEqual([{ controle: '1' }])

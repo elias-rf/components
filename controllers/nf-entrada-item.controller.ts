@@ -1,15 +1,24 @@
 import { dbPlano } from '@/controllers/db-plano.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import { NFItem, TNFItem } from '@/schemas/plano/NFItem.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { NFItem } from '@/schemas/plano/NFItem.schema'
 import { TSchema } from '@/schemas/schema.type'
 
-class NfEntradaItemController extends OrmTable<TNFItem> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TNfEntradaItemFields = keyof typeof NFItem.fields
+export type TNfEntradaItemKeys = (typeof NFItem.primary)[number]
+
+function nfEntradaItemControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TNfEntradaItemFields, TNfEntradaItemKeys>(db, schema)
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
   }
 }
 
-export const nfEntradaItemController = new NfEntradaItemController(
+export const nfEntradaItemController = nfEntradaItemControllerFactory(
   dbPlano,
   NFItem
 )

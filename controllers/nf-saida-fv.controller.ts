@@ -1,22 +1,28 @@
 import { dbFullvision } from '@/controllers/db-fullvision.db'
-import { NfSaidaFv } from '@/database'
-import { OrmDatabase, OrmTable } from '@/orm'
-import { MestreNota, TMestreNota } from '@/schemas/plano/MestreNota.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { MestreNota } from '@/schemas/plano/MestreNota.schema'
 import { TSchema } from '@/schemas/schema.type'
 import { zsr } from '@/utils/zod/z-refine'
 import { zod } from '@/utils/zod/zod'
 import { z } from 'zod'
 
-class NfSaidaFvController extends OrmTable<TMestreNota> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
-  }
+export type TNfSaidaFvFields = keyof typeof MestreNota.fields
+export type TNfSaidaFvKeys = (typeof MestreNota.primary)[number]
 
-  async vendaAnalitico({ inicio, fim }: { inicio: string; fim: string }) {
+function nfSaidaFvControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TNfSaidaFvFields, TNfSaidaFvKeys>(db, schema)
+
+  const vendaAnalitico = async ({
+    inicio,
+    fim,
+  }: {
+    inicio: string
+    fim: string
+  }) => {
     zod(inicio, z.string().superRefine(zsr.date))
     zod(fim, z.string().superRefine(zsr.date))
-    const knex = NfSaidaFv.knex()
-    const qryPlano = NfSaidaFv.query()
+    const knex = db.knex
+    const qryPlano = knex('MestreNota')
       .select(knex.raw("'FV' as origem"))
       .select([
         'CategPro.NmCategoria',
@@ -56,8 +62,9 @@ class NfSaidaFvController extends OrmTable<TMestreNota> {
       .whereIn('MestreNota.Tipo', ['E', 'S'])
     return qryPlano
   }
+  vendaAnalitico.rpc = true
 
-  async vendaDiario({
+  const vendaDiario = async ({
     inicio,
     fim,
     uf,
@@ -65,11 +72,11 @@ class NfSaidaFvController extends OrmTable<TMestreNota> {
     inicio: string
     fim: string
     uf: string[]
-  }) {
+  }) => {
     zod(inicio, z.string().superRefine(zsr.date))
     zod(fim, z.string().superRefine(zsr.date))
     zod(uf, z.array(z.string()))
-    const knex = NfSaidaFv.knex()
+    const knex = db.knex
     const qry = await knex<
       any,
       {
@@ -116,8 +123,9 @@ class NfSaidaFvController extends OrmTable<TMestreNota> {
       valor: number
     }[]
   }
+  vendaDiario.rpc = true
 
-  async vendaMensalCliente({
+  const vendaMensalCliente = async ({
     inicio,
     fim,
     cliente,
@@ -125,11 +133,11 @@ class NfSaidaFvController extends OrmTable<TMestreNota> {
     inicio: string
     fim: string
     cliente: number
-  }) {
+  }) => {
     zod(inicio, z.string().superRefine(zsr.date))
     zod(fim, z.string().superRefine(zsr.date))
     zod(cliente, z.number())
-    const knex = NfSaidaFv.knex()
+    const knex = db.knex
     const rsp = knex<
       any,
       {
@@ -182,9 +190,21 @@ class NfSaidaFvController extends OrmTable<TMestreNota> {
       valor: number
     }[]
   }
+  vendaMensalCliente.rpc = true
+
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    vendaAnalitico,
+    vendaDiario,
+    vendaMensalCliente,
+  }
 }
 
-export const nfSaidaFvController = new NfSaidaFvController(
+export const nfSaidaFvController = nfSaidaFvControllerFactory(
   dbFullvision,
   MestreNota
 )

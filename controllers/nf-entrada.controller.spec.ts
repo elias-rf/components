@@ -16,8 +16,8 @@ describe('nfEntradaController', () => {
     tracker.on.select('NfMestre').response([{ NroNf: 1 }])
 
     const rsp = await nfEntradaController.list({
-      filter: [['NroNf', 1]],
-      sort: [['NroNf', 'asc']],
+      where: [['NroNf', 1]],
+      orderBy: [['NroNf', 'asc']],
       select: ['NroNf'],
     })
 
@@ -109,7 +109,7 @@ describe('nfEntradaController', () => {
         sql: 'update [Estoque] set [EstAtual] = [EstAtual] + @p0 where [CdEmpresa] = @p1 and [CdProduto] = @p2;select @@rowcount',
       },
       {
-        sql: 'update [EstatPro] set [quantidade_compra] = [quantidade_compra] + @p0 where [CdEmpresa] = @p1 and [MesRef] = @p2 and [AnoRef] = @p3 and [CdProduto] = @p4;select @@rowcount',
+        sql: 'update [EstatPro] set [QtdCompras] = [QtdCompras] + @p0 where [CdEmpresa] = @p1 and [MesRef] = @p2 and [AnoRef] = @p3 and [CdProduto] = @p4;select @@rowcount',
       },
 
       {

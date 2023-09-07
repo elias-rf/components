@@ -1,12 +1,22 @@
 import { dbOftalmo } from '@/controllers/db-oftalmo.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import { Tdiamante, diamante } from '@/schemas/oftalmo/diamante.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { diamante } from '@/schemas/oftalmo/diamante.schema'
 import type { TSchema } from '@/schemas/schema.type'
 
-class DiamanteController extends OrmTable<Tdiamante> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TDiamanteFields = keyof typeof diamante.fields
+export type TDiamanteKeys = (typeof diamante.primary)[number]
+
+function diamanteControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TDiamanteFields, TDiamanteKeys>(db, schema)
+
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
   }
 }
 
-export const diamanteController = new DiamanteController(dbOftalmo, diamante)
+export const diamanteController = diamanteControllerFactory(dbOftalmo, diamante)

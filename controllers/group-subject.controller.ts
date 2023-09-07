@@ -1,34 +1,39 @@
 import { dbOftalmo } from '@/controllers/db-oftalmo.db'
 import { usuarioController } from '@/controllers/usuario.controller'
-import { GroupSubject } from '@/database'
-import { OrmDatabase, OrmTable } from '@/orm'
-import {
-  TgroupSubject,
-  groupSubject,
-} from '@/schemas/oftalmo/groupSubject.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { groupSubject } from '@/schemas/oftalmo/groupSubject.schema'
 import { TSchema } from '@/schemas/schema.type'
 
-class GroupSubjectModel extends OrmTable<TgroupSubject> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
-  }
+export type TGroupSubjectFields = keyof typeof groupSubject.fields
+export type TGroupSubjectKeys = (typeof groupSubject.primary)[number]
 
-  async listPermissions({
+function groupSubjectControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TGroupSubjectFields, TGroupSubjectKeys>(db, schema)
+
+  const listPermissions = async ({
     idGroup,
     idSubjectList,
   }: {
     idGroup: string
     idSubjectList: string[]
-  }) {
-    const resp = await GroupSubject.query()
-      .select('idSubject')
-      .where({ idGroup })
-      .whereIn('idSubject', idSubjectList)
-
+  }) => {
+    const resp = await orm.list({
+      select: ['idSubject'],
+      where: [
+        ['idGroup', idGroup],
+        ['idSubject', 'in', idSubjectList],
+      ],
+    })
     return resp
   }
 
-  async can({ kUsuario, idSubject }: { kUsuario: number; idSubject: string }) {
+  const can = async ({
+    kUsuario,
+    idSubject,
+  }: {
+    kUsuario: number
+    idSubject: string
+  }) => {
     const { idGroup } = await usuarioController.read({
       id: [['kUsuario', kUsuario]],
       select: ['idGroup'],
@@ -40,13 +45,28 @@ class GroupSubjectModel extends OrmTable<TgroupSubject> {
       return true
     }
 
-    const permissions = await GroupSubject.query()
-      .select('idSubject')
-      .whereIn('idGroup', idGroupList)
-      .where('idSubject', idSubject)
-
+    const permissions = await orm.list({
+      select: ['idSubject'],
+      where: [
+        ['idGroup', 'in', idGroupList],
+        ['idSubject', idSubject],
+      ],
+    })
     return permissions.length > 0
+  }
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
+    listPermissions,
+    can,
   }
 }
 
-export const groupSubjectModel = new GroupSubjectModel(dbOftalmo, groupSubject)
+export const groupSubjectController = groupSubjectControllerFactory(
+  dbOftalmo,
+  groupSubject
+)

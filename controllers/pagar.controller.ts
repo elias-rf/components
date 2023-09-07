@@ -1,12 +1,21 @@
 import { dbPlano } from '@/controllers/db-plano.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import { ArqDup, TArqDup } from '@/schemas/plano/ArqDup.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { ArqDup } from '@/schemas/plano/ArqDup.schema'
 import { TSchema } from '@/schemas/schema.type'
 
-class PagarController extends OrmTable<TArqDup> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TPagarFields = keyof typeof ArqDup.fields
+export type TPagarKeys = (typeof ArqDup.primary)[number]
+
+function pagarControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TPagarFields, TPagarKeys>(db, schema)
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
   }
 }
 
-export const pagarController = new PagarController(dbPlano, ArqDup)
+export const pagarController = pagarControllerFactory(dbPlano, ArqDup)

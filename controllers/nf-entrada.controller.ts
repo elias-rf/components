@@ -6,19 +6,20 @@ import { nfEntradaLogController } from '@/controllers/nf-entrada-log.controller'
 import { ordemProducaoController } from '@/controllers/ordem-producao.controller'
 import { produtoControleController } from '@/controllers/produto-controle.controller'
 import { produtoEstatisticaController } from '@/controllers/produto-estatistica.controller'
-import { OrmTable, OrmDatabase } from '@/orm'
-import { TCadPro } from '@/schemas/plano/CadPro.schema'
-import { NfMestre, TNfMestre } from '@/schemas/plano/NfMestre.schema'
+import { TProdutoPlanoFields } from '@/controllers/produto-plano.controller'
+import { OrmDatabase, ormTable } from '@/orm'
+import { NfMestre } from '@/schemas/plano/NfMestre.schema'
 import { TSchema } from '@/schemas/schema.type'
 import { day } from '@/utils/date/day'
 import { isEmpty } from '@/utils/identify/is-empty'
 
-class NfEntradaController extends OrmTable<TNfMestre> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
-  }
+export type TNfEntradaFields = keyof typeof NfMestre.fields
+export type TNfEntradaKeys = (typeof NfMestre.primary)[number]
 
-  async transferenciaCreate({ controles }: { controles: string[] }) {
+function nfEntradaControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TNfEntradaFields, TNfEntradaKeys>(db, schema)
+
+  async function transferenciaCreate({ controles }: { controles: string[] }) {
     if (controles.length === 0)
       throw new Error(`Controles não foram enviados para a transferência`)
 
@@ -42,7 +43,7 @@ class NfEntradaController extends OrmTable<TNfMestre> {
     const { CdProduto } = (await ordemProducaoController.produtoPlano({
       id: [['kOp', kOp]],
       select: ['CdProduto'],
-    })) as Record<TCadPro, any>
+    })) as Record<TProdutoPlanoFields, any>
 
     if (isEmpty(CdProduto)) {
       throw new Error(`Ordem de produção ${kOp} não possui vinculo com Plano`)
@@ -68,7 +69,7 @@ class NfEntradaController extends OrmTable<TNfMestre> {
     const hoje = day().format('YYYY-MM-DD')
     const agora = day().format('HH:mm:ss')
 
-    const nf = await this.read({
+    const nf = await orm.read({
       id: [
         ['CdEmpresa', 1],
         ['NroNf', kOp],
@@ -82,7 +83,7 @@ class NfEntradaController extends OrmTable<TNfMestre> {
       throw new Error(`Ordem de produção ${kOp} já está cadastrada`)
     }
 
-    await this.create({
+    await orm.create({
       data: {
         CdEmpresa: 1,
         NroNf: kOp,
@@ -150,7 +151,7 @@ class NfEntradaController extends OrmTable<TNfMestre> {
         CdContribuicaoApuradaPISCOFINS: 0,
         CdEmpresa: 1,
         CdFornecedor: 1,
-        CdProduto: CdProduto,
+        CdProduto: CdProduto.toString(),
         CdTipoCreditoPISCOFINS: 0,
         DtEntr: `${hoje} ${agora}`,
         FgCompoeBaseSub: 'S',
@@ -188,7 +189,7 @@ class NfEntradaController extends OrmTable<TNfMestre> {
     })
 
     await estoqueController.increment({
-      filter: [
+      where: [
         ['CdEmpresa', 1],
         ['CdProduto', CdProduto.toString() || ''],
       ],
@@ -196,7 +197,7 @@ class NfEntradaController extends OrmTable<TNfMestre> {
     })
 
     await produtoEstatisticaController.increment({
-      filter: [
+      where: [
         ['CdEmpresa', 1],
         ['MesRef', parseInt(day().format('MM'))],
         ['AnoRef', parseInt(day().format('YY'))],
@@ -209,14 +210,14 @@ class NfEntradaController extends OrmTable<TNfMestre> {
       await produtoControleController.create({
         data: {
           CdFilial: 1,
-          NumNfEntrada: parseInt(CdProduto || '0'),
+          NumNfEntrada: CdProduto,
           SerieNfEntrada: 'XX',
           Modelo: '1',
           CdFornecedor: 1,
           Aspecto: ' ',
           CdLote: ctrl,
           CdNRA: ' ',
-          CdProduto: CdProduto || '',
+          CdProduto: CdProduto.toString(),
           Densidade: 0,
           DtAnalise: fabricacao || '',
           DtEntrada: hoje,
@@ -239,7 +240,7 @@ class NfEntradaController extends OrmTable<TNfMestre> {
           CdFornecedor: 1,
           Modelo: '1',
           NumLote: ctrl,
-          CdProduto: CdProduto || '',
+          CdProduto: CdProduto.toString(),
           Quantidade: 1,
         },
       })
@@ -260,6 +261,16 @@ class NfEntradaController extends OrmTable<TNfMestre> {
 
     return true
   }
+  transferenciaCreate.rpc = true
+
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    transferenciaCreate,
+  }
 }
 
-export const nfEntradaController = new NfEntradaController(dbPlano, NfMestre)
+export const nfEntradaController = nfEntradaControllerFactory(dbPlano, NfMestre)

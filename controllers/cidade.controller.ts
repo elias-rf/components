@@ -1,12 +1,21 @@
 import { dbPlano } from '@/controllers/db-plano.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import { cidadesERF, TcidadesERF } from '@/schemas/plano/cidadesERF.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { cidadesERF } from '@/schemas/plano/cidadesERF.schema'
 import type { TSchema } from '@/schemas/schema.type'
 
-class CidadeController extends OrmTable<TcidadesERF> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
+export type TCidadeFields = keyof typeof cidadesERF.fields
+export type TCidadeKeys = (typeof cidadesERF.primary)[number]
+
+function cidadeControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TCidadeFields, TCidadeKeys>(db, schema)
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    orm,
   }
 }
 
-export const cidadeController = new CidadeController(dbPlano, cidadesERF)
+export const cidadeController = cidadeControllerFactory(dbPlano, cidadesERF)

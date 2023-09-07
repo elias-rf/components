@@ -1,42 +1,55 @@
 import { dbOftalmo } from '@/controllers/db-oftalmo.db'
-import { OrmDatabase, OrmTable } from '@/orm'
-import {
-  Ttbl_Produto_Item,
-  tbl_Produto_Item,
-} from '@/schemas/oftalmo/tbl_Produto_Item.schema'
+import { OrmDatabase, ormTable } from '@/orm'
+import { tbl_Produto_Item } from '@/schemas/oftalmo/tbl_Produto_Item.schema'
 import type { TSchema } from '@/schemas/schema.type'
-import { TCadPro } from '@/schemas/plano/CadPro.schema'
-import { produtoPlanoController } from './produto-plano.controller'
+import {
+  TProdutoPlanoFields,
+  produtoPlanoController,
+} from './produto-plano.controller'
 
-class ProdutoItemController extends OrmTable<Ttbl_Produto_Item> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
-  }
+export type TProdutoItemFields = keyof typeof tbl_Produto_Item.fields
+export type TProdutoItemKeys = (typeof tbl_Produto_Item.primary)[number]
 
-  produtoPlano = async ({
+function produtoItemControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TProdutoItemFields, TProdutoItemKeys>(db, schema)
+
+  const produtoPlano = async ({
     id,
     select,
   }: {
-    id: [string, any][]
-    select?: Array<TCadPro>
+    id: Array<[TProdutoItemKeys, any]>
+    select?: Array<TProdutoPlanoFields>
   }) => {
-    let { IdVisiontech } = await this.read({
-      id: [['kProdutoItem', id[0][1]]],
+    const selected = produtoPlanoController.orm.validSelect(select)
+    orm.validId(id)
+
+    const produtoItem = await orm.read({
+      id,
       select: ['IdVisiontech'],
     })
 
-    if (IdVisiontech) {
-      IdVisiontech = IdVisiontech?.trim()
+    if (typeof produtoItem.IdVisiontech === 'string') {
+      produtoItem.IdVisiontech = produtoItem.IdVisiontech.trim()
       return produtoPlanoController.read({
-        id: [['CdProduto', IdVisiontech]],
-        select,
+        id: [['CdProduto', produtoItem.IdVisiontech]],
+        ...selected,
       })
     }
     return []
   }
+  produtoPlano.rpc = true
+
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    produtoPlano,
+  }
 }
 
-export const produtoItemController = new ProdutoItemController(
+export const produtoItemController = produtoItemControllerFactory(
   dbOftalmo,
   tbl_Produto_Item
 )

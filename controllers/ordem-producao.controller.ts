@@ -1,24 +1,25 @@
 import { dbOftalmo } from '@/controllers/db-oftalmo.db'
 import { etiquetaExternaController } from '@/controllers/etiqueta-externa.controller'
 import { ordemProducaoOperacaoController } from '@/controllers/ordem-producao-operacao.controller'
-import { produtoItemController } from '@/controllers/produto-item.controller'
-import { OrmDatabase, OrmTable } from '@/orm'
 import {
-  TtOrdemProducao,
-  tOrdemProducao,
-} from '@/schemas/oftalmo/tOrdemProducao.schema'
+  produtoItemController,
+  TProdutoItemFields,
+} from '@/controllers/produto-item.controller'
+import { TProdutoPlanoFields } from '@/controllers/produto-plano.controller'
+import { OrmDatabase, ormTable } from '@/orm'
+import { tOrdemProducao } from '@/schemas/oftalmo/tOrdemProducao.schema'
 import { Ttbl_Produto_Item } from '@/schemas/oftalmo/tbl_Produto_Item.schema'
-import { TCadPro } from '@/schemas/plano/CadPro.schema'
 import type { TSchema } from '@/schemas/schema.type'
 import { day } from '@/utils/date/day'
 import { isEmpty } from '@/utils/identify/is-empty'
 import { isUndefined } from '@/utils/identify/is-undefined'
 import { module10 } from '@/utils/string/module10'
 
-class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
-  constructor(db: OrmDatabase, schema: TSchema) {
-    super(db, schema)
-  }
+export type TOrdemProducaoFields = keyof typeof tOrdemProducao.fields
+export type TOrdemProducaoKeys = (typeof tOrdemProducao.primary)[number]
+
+function ordemProducaoControllerFactory(db: OrmDatabase, schema: TSchema) {
+  const orm = ormTable<TOrdemProducaoFields, TOrdemProducaoKeys>(db, schema)
 
   /**
    * Async function that controls something.
@@ -28,8 +29,14 @@ class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
    * @param {string} args.serie - A serie
    * @return {Promise<string>} A string containing a serial concatenated with a dv
    */
-  async controle({ id, serie }: { id: [['kOp', number]]; serie: string }) {
-    this.validId(id)
+  const controle = async ({
+    id,
+    serie,
+  }: {
+    id: [['kOp', number]]
+    serie: string
+  }) => {
+    orm.validId(id)
     const [[_, value]] = id
     const serial = '000000'
       .concat((value / 100).toString())
@@ -38,6 +45,7 @@ class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
     const dv = module10(serial)
     return serial.concat(dv)
   }
+  controle.rpc = true
 
   /**
    * Async function to fetch the manufacturing date of an order based on its id.
@@ -49,44 +57,44 @@ class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
    * @return {Promise<string>} The manufacturing date of the order, in the
    *   format "YYYY-MM-DD", or an empty string if it could not be found.
    */
-  async dataFabricacao({ id }: { id: [['kOp', number]] }) {
+  async function dataFabricacao({ id }: { id: [['kOp', number]] }) {
     const [[_, value]] = id
     let response = await ordemProducaoOperacaoController.list({
-      filter: [
+      where: [
         ['fkOperacao', 3059],
         ['fkOp', value],
       ],
-      sort: [['DataHoraInicio', 'desc']],
+      orderBy: [['DataHoraInicio', 'desc']],
       select: ['DataHoraInicio'],
     })
 
     if (response.length === 0 || isEmpty(response[0].DataHoraInicio)) {
       response = await ordemProducaoOperacaoController.list({
-        filter: [
+        where: [
           ['fkOperacao', 3060],
           ['fkOp', value],
         ],
-        sort: [['DataHoraInicio', 'desc']],
+        orderBy: [['DataHoraInicio', 'desc']],
         select: ['DataHoraInicio'],
       })
     }
     if (response.length === 0 || isEmpty(response[0].DataHoraInicio)) {
       response = await ordemProducaoOperacaoController.list({
-        filter: [
+        where: [
           ['fkOperacao', 4020],
           ['fkOp', value],
         ],
-        sort: [['DataHoraInicio', 'desc']],
+        orderBy: [['DataHoraInicio', 'desc']],
         select: ['DataHoraInicio'],
       })
     }
     if (response.length === 0 || isEmpty(response[0].DataHoraInicio)) {
       response = await ordemProducaoOperacaoController.list({
-        filter: [
+        where: [
           ['fkOperacao', 3160],
           ['fkOp', value],
         ],
-        sort: [['DataHoraInicio', 'desc']],
+        orderBy: [['DataHoraInicio', 'desc']],
         select: ['DataHoraInicio'],
       })
     }
@@ -99,6 +107,7 @@ class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
     }
     return ''
   }
+  dataFabricacao.rpc = true
 
   /**
    * Validates if the given id is valid and retrieves the data fabricacao for it.
@@ -108,14 +117,15 @@ class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
    * @throws {Error} When the data fabricacao is blank for the given id.
    * @return {string} The validade date in the format 'YYYY-MM-DD'.
    */
-  async dataValidade({ id }: { id: [['kOp', number]] }) {
-    const fabricacao = await this.dataFabricacao({ id })
+  const dataValidade = async ({ id }: { id: [['kOp', number]] }) => {
+    const fabricacao = await dataFabricacao({ id })
     if (fabricacao === '') {
       throw new Error('Ordem de produção não possui 3059, 3060, 4020 ou 3160')
     }
     const validade = day(fabricacao).add(5, 'y').format('YYYY-MM-DD')
     return validade
   }
+  dataValidade.rpc = true
 
   /**
    * Checks whether the provided control string is valid.
@@ -124,7 +134,7 @@ class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
    * @return {Promise<boolean>} a promise that resolves to true if the provided
    * control string is valid, otherwise false
    */
-  async ehControleValido({ controle }: { controle: string }) {
+  const ehControleValido = async ({ controle }: { controle: string }) => {
     if (!controle) return false
 
     if (controle.length === 12) {
@@ -136,6 +146,7 @@ class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
     }
     return false
   }
+  ehControleValido.rpc = true
 
   /**
    * Asynchronously retrieves a list of external labels given an id.
@@ -144,17 +155,18 @@ class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
    * @param {TId} args.id - The id of the external label.
    * @return {Promise<Array>} A promise that resolves to an array of external labels.
    */
-  async etiquetaExterna({ id }: { id: [['kOp', number]] }) {
+  const etiquetaExterna = async ({ id }: { id: [['kOp', number]] }) => {
     const [[_, value]] = id
     if (isUndefined(value)) return []
     return etiquetaExternaController.list({
-      filter: [
+      where: [
         ['controle', 'like', ('000000' + value.toString()).slice(-8, -2) + '%'],
       ],
-      sort: [['controle', 'asc']],
+      orderBy: [['controle', 'asc']],
       limit: 1000,
     })
   }
+  etiquetaExterna.rpc = true
 
   /**
    * Asynchronously generates a new string by slicing the first 6 characters of the input
@@ -165,9 +177,10 @@ class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
    * @return {Promise<string>} - A promise that resolves to a string representing the
    *      modified input string.
    */
-  async fromControle({ controle }: { controle: string }) {
+  const fromControle = async ({ controle }: { controle: string }) => {
     return parseInt(controle.slice(0, 6) + '00')
   }
+  fromControle.rpc = true
 
   /**
    * Retrieves a specific product item based on its ID.
@@ -177,14 +190,14 @@ class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
    * @param {TSelect} [args.select] - An optional array of fields to select.
    * @return {Promise<Object>} - A promise that resolves to the product item object with the specified ID and selected fields (if provided).
    */
-  async produtoItem({
+  const produtoItem = async ({
     id,
     select,
   }: {
     id: [['kOp', number]]
-    select?: Array<Ttbl_Produto_Item>
-  }): Promise<Record<Ttbl_Produto_Item, any> | object> {
-    const ordemProducao = await this.read({
+    select?: Array<TProdutoItemFields>
+  }): Promise<Record<TProdutoItemFields, any> | object> => {
+    const ordemProducao = await orm.read({
       id: [['kOp', id[0][1]]],
       select: ['fkProdutoItem'],
     })
@@ -197,7 +210,7 @@ class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
       select,
     })
   }
-
+  produtoItem.rpc = true
   /**
    * Retrieves a product plan by its ID from the database.
    *
@@ -207,14 +220,14 @@ class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
    * @param {TSelect} [args.select] - The fields to select.
    * @return {Promise<unknown>} The product plan.
    */
-  async produtoPlano({
+  const produtoPlano = async ({
     id,
     select,
   }: {
     id: [['kOp', number]]
-    select?: Array<TCadPro>
-  }): Promise<Record<TCadPro, any> | object> {
-    const { kProdutoItem } = (await this.produtoItem({
+    select?: Array<TProdutoPlanoFields>
+  }): Promise<Record<TProdutoPlanoFields, any> | object> => {
+    const { kProdutoItem } = (await produtoItem({
       id: [['kOp', id[0][1]]],
       select: ['kProdutoItem'],
     })) as Record<Ttbl_Produto_Item, any>
@@ -227,9 +240,26 @@ class OrdemProducaoController extends OrmTable<TtOrdemProducao> {
       select,
     })
   }
+  produtoPlano.rpc = true
+
+  return {
+    list: orm.list,
+    read: orm.read,
+    update: orm.update,
+    create: orm.create,
+    del: orm.del,
+    controle,
+    dataFabricacao,
+    dataValidade,
+    ehControleValido,
+    etiquetaExterna,
+    produtoItem,
+    produtoPlano,
+    fromControle,
+  }
 }
 
-export const ordemProducaoController = new OrdemProducaoController(
+export const ordemProducaoController = ordemProducaoControllerFactory(
   dbOftalmo,
   tOrdemProducao
 )

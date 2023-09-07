@@ -23,7 +23,7 @@ describe('produtoItemController', () => {
   //     .response([{ kProdutoItem: "1", fkProduto: "1" }]);
   //   tracker.on.select("tbl_Produto").response([{ kProduto: "1" }]);
   //   const rsp = await produtoItemController.list({
-  //     filter: { kProdutoItem: "1" },
+  //     where: { kProdutoItem: "1" },
   //     sort: { kProdutoItem: "asc" },
   //     select: ["kProdutoItem", { produto: ["kProduto"] }],
   //   });
@@ -44,8 +44,8 @@ describe('produtoItemController', () => {
   it('list', async () => {
     tracker.on.select('tbl_Produto_Item').response([{ kProdutoItem: 1 }])
     const rsp = await produtoItemController.list({
-      filter: [['kProdutoItem', 1]],
-      sort: [['kProdutoItem', 'asc']],
+      where: [['kProdutoItem', 1]],
+      orderBy: [['kProdutoItem', 'asc']],
     })
 
     expect(rsp).toEqual([{ kProdutoItem: 1 }])
