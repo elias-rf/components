@@ -1,9 +1,14 @@
 // https://icon-sets.iconify.design/material-symbols/chevron-right-rounded/
 export type TChevronIconProps = {
-  rotate: 0 | 90 | 180 | 270;
-};
+  variant?: 'right' | 'down' | 'left' | 'up'
+}
 
-export function ChevronIcon({ rotate = 0 }: TChevronIconProps) {
+export function ChevronIcon({ variant }: TChevronIconProps) {
+  let rotate = 0
+  if (variant === 'down') rotate = 90
+  if (variant === 'left') rotate = 180
+  if (variant === 'up') rotate = 270
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18,5 +23,5 @@ export function ChevronIcon({ rotate = 0 }: TChevronIconProps) {
         />
       </g>
     </svg>
-  );
+  )
 }
