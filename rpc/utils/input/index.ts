@@ -1,5 +1,0 @@
-export * from './input-create'
-export * from './input-del'
-export * from './input-update'
-export * from './input-list'
-export * from './input-read'
