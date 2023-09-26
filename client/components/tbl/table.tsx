@@ -1,6 +1,6 @@
 import { TData, TId, TOrderBy, TSelection, TWhere } from '@/types'
 import { filterNonEmptyProperties } from '@/utils/object/filter-non-empty-properties'
-import { equalityFromObject } from '@/utils/query/equality'
+import { equalityFromObject, equalityToObject } from '@/utils/query/equality'
 import React from 'react'
 import { cn } from '@/client/lib/cn'
 import SearchIcon from '@mui/icons-material/Search'
@@ -30,9 +30,9 @@ export type TTableProps = {
   HeadFilterSlot?: any
   HeadRowSlot?: any
   HeadSlot?: any
-  onOrderBy?: (e: TOrderBy<string>) => void
+  onOrderBy?: (e: TOrderBy<any>) => void
   onSelection?: (e: TSelection<any>) => void
-  onWhere?: (e: TWhere<string>) => void
+  onWhere?: (e: TWhere<any>) => void
   orderBy?: TOrderBy<string>
   rows: TRow[]
   selection?: TSelection<string>
@@ -46,22 +46,16 @@ export function Table({
   onSelection,
   orderBy,
   onOrderBy,
-  where,
+  where = [],
   onWhere,
   getId = getIdDefault,
   children,
 }: TTableProps) {
-  const defaultValues: { [field: string]: string } =
-    where?.reduce(
-      (acc, cur) => ({
-        ...acc,
-        [cur[0]]: `${cur[1]}${cur.length === 3 ? ` ${cur[2]}` : ''}`,
-      }),
-      {}
-    ) || {}
+  const defaultValues: { [field: string]: string } = equalityToObject(where)
 
   function handleInput(value: string, name: string) {
     defaultValues[name] = value
+
     const filteredObj = equalityFromObject(
       filterNonEmptyProperties(defaultValues)
     )
@@ -136,7 +130,6 @@ export function Table({
                 <td
                   className="border border-gray-300 dark:border-gray-500"
                   key={`whr-${col.name}`}
-                  onClick={() => handleOnSort(col)}
                 >
                   <div className="flex flex-nowrap">
                     <InputFilter
@@ -169,7 +162,7 @@ export function Table({
               >
                 {columns.map((col) => (
                   <td
-                    className="px-4 py-2"
+                    className="p-1.5"
                     key={col.name}
                   >
                     {row[col.name]}

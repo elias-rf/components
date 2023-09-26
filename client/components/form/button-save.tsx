@@ -1,13 +1,13 @@
-import { Button } from "@mui/material";
-import type { TFormStatus } from "@/types";
-import { UseFormReturn } from "react-hook-form";
+import { Button } from '@mui/material'
+import type { TFormStatus } from '@/types'
+import { UseFormReturn } from 'react-hook-form'
 
 export type TButtonSaveProps = {
-  onClick: () => void;
-  form: UseFormReturn<any>;
-  onStatus: (status: TFormStatus) => void;
-  sx?: any;
-};
+  onClick: () => void
+  form: UseFormReturn<any>
+  onStatus?: (status: TFormStatus) => void
+  sx?: any
+}
 export const ButtonSave = ({
   form,
   onStatus,
@@ -15,9 +15,9 @@ export const ButtonSave = ({
   sx,
 }: TButtonSaveProps) => {
   function handleButtonSave() {
-    onClick();
-    form.reset();
-    onStatus("view");
+    onClick()
+    form.reset()
+    onStatus && onStatus('view')
   }
 
   return (
@@ -30,5 +30,5 @@ export const ButtonSave = ({
     >
       Salvar
     </Button>
-  );
-};
+  )
+}

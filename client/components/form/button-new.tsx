@@ -1,14 +1,14 @@
-import { Button } from "@mui/material";
-import type { TFormStatus } from "@/types";
-import { UseFormReturn } from "react-hook-form";
+import { Button } from '@mui/material'
+import type { TFormStatus } from '@/types'
+import { UseFormReturn } from 'react-hook-form'
 
 export type TButtonNewProps = {
-  onClick: () => void;
-  form: UseFormReturn<any>;
-  status: TFormStatus;
-  onStatus: (status: TFormStatus) => void;
-  sx?: any;
-};
+  onClick: () => void
+  form: UseFormReturn<any>
+  status: TFormStatus
+  onStatus?: (status: TFormStatus) => void
+  sx?: any
+}
 export const ButtonNew = ({
   onStatus,
   status,
@@ -17,9 +17,9 @@ export const ButtonNew = ({
   sx,
 }: TButtonNewProps) => {
   function handleButtonNew() {
-    onClick();
-    form.reset();
-    onStatus("new");
+    onClick()
+    form.reset()
+    onStatus && onStatus('new')
   }
 
   return (
@@ -27,10 +27,10 @@ export const ButtonNew = ({
       size="small"
       onClick={handleButtonNew}
       variant="outlined"
-      disabled={status !== "view"}
+      disabled={status !== 'view'}
       sx={sx}
     >
       Novo
     </Button>
-  );
-};
+  )
+}

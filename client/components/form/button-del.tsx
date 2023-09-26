@@ -1,16 +1,16 @@
-import { Button } from "@mui/material";
-import type { TFormStatus } from "@/types";
-import React from "react";
-import { UseFormReturn } from "react-hook-form";
-import { MsgBox } from "./msg-box";
+import { Button } from '@mui/material'
+import type { TFormStatus } from '@/types'
+import React from 'react'
+import { UseFormReturn } from 'react-hook-form'
+import { MsgBox } from './msg-box'
 
 export type TButtonDelProps = {
-  form: UseFormReturn<any>;
-  onClick: () => void;
-  onStatus: (status: TFormStatus) => void;
-  status: TFormStatus;
-  sx?: any;
-};
+  form: UseFormReturn<any>
+  onClick: () => void
+  onStatus?: (status: TFormStatus) => void
+  status: TFormStatus
+  sx?: any
+}
 
 export const ButtonDel = ({
   form,
@@ -19,18 +19,18 @@ export const ButtonDel = ({
   status,
   sx,
 }: TButtonDelProps) => {
-  const [showConfirm, setShowConfirm] = React.useState(false);
+  const [showConfirm, setShowConfirm] = React.useState(false)
 
   function handleButtonDel() {
-    setShowConfirm(true);
+    setShowConfirm(true)
   }
 
   async function handleButtonDelConfirm(confirm: boolean) {
-    setShowConfirm(false);
+    setShowConfirm(false)
     if (confirm) {
-      onClick();
-      form.reset();
-      onStatus("view");
+      onClick()
+      form.reset()
+      onStatus && onStatus('view')
     }
   }
 
@@ -41,7 +41,7 @@ export const ButtonDel = ({
         onClick={handleButtonDel}
         variant="outlined"
         color="error"
-        disabled={status !== "view"}
+        disabled={status !== 'view'}
         sx={sx}
       >
         Excluir
@@ -51,5 +51,5 @@ export const ButtonDel = ({
         handleClose={handleButtonDelConfirm}
       />
     </>
-  );
-};
+  )
+}

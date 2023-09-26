@@ -1,33 +1,39 @@
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import MenuIcon from "@mui/icons-material/Menu";
-import { Box, Button, Divider, Drawer, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
-import CssBaseline from "@mui/material/CssBaseline";
-import { styled, useTheme } from "@mui/material/styles";
-import * as React from "react";
-import { AppBar } from "./layout-default_app-bar";
-import { Main } from "./layout-default_main";
-import { Sidebar } from "./sidebar";
-import { TSidebarItem } from "./sidebar.type";
-import { Topbar } from "./topbar";
+import { ChevronIcon } from '@/client/components/icons/chevron-icon'
+import MenuIcon from '@mui/icons-material/Menu'
+import {
+  Button,
+  Divider,
+  Drawer,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+} from '@mui/material'
+import { styled } from '@mui/material/styles'
+import * as React from 'react'
+import { AppBar } from './layout-default_app-bar'
+import { Main } from './layout-default_main'
+import { Sidebar } from './sidebar'
+import { TSidebarItem } from './sidebar.type'
+import { Topbar } from './topbar'
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
-  justifyContent: "flex-end",
-}));
+  justifyContent: 'flex-end',
+}))
 
 interface TLayoutDefaultProps {
-  onClick: (to: string) => void;
-  path: string;
-  menu: TSidebarItem[];
-  children: React.ReactNode;
-  user: any;
+  onClick: (to: string) => void
+  path: string
+  menu: TSidebarItem[]
+  children: React.ReactNode
+  user: any
 }
 
 export function LayoutDefault({
@@ -37,30 +43,28 @@ export function LayoutDefault({
   path,
   user,
 }: TLayoutDefaultProps) {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(window.innerWidth >= drawerWidth * 3);
+  const [open, setOpen] = React.useState(window.innerWidth >= drawerWidth * 3)
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const openMenu = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const openMenu = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleCloseMenu = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleDrawerClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
+    <div className="flex">
       <AppBar
         position="fixed"
         open={open}
@@ -73,7 +77,7 @@ export function LayoutDefault({
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
+            sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
             <MenuIcon />
           </IconButton>
@@ -84,9 +88,9 @@ export function LayoutDefault({
         sx={{
           width: drawerWidth,
           flexShrink: 0,
-          "& .MuiDrawer-paper": {
+          '& .MuiDrawer-paper': {
             width: drawerWidth,
-            boxSizing: "border-box",
+            boxSizing: 'border-box',
           },
         }}
         variant="persistent"
@@ -101,24 +105,20 @@ export function LayoutDefault({
             open={openMenu}
             onClose={handleCloseMenu}
             anchorOrigin={{
-              vertical: "top",
-              horizontal: "left",
+              vertical: 'top',
+              horizontal: 'left',
             }}
             transformOrigin={{
-              vertical: "top",
-              horizontal: "left",
+              vertical: 'top',
+              horizontal: 'left',
             }}
           >
-            <MenuItem onClick={() => onClick("/profile")}>Profile</MenuItem>
-            <MenuItem onClick={() => onClick("/logout")}>Logout</MenuItem>
+            <MenuItem onClick={() => onClick('/profile')}>Profile</MenuItem>
+            <MenuItem onClick={() => onClick('/logout')}>Logout</MenuItem>
           </Menu>
           <DrawerHeader>
             <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "ltr" ? (
-                <ChevronLeftIcon />
-              ) : (
-                <ChevronRightIcon />
-              )}
+              <ChevronIcon variant="left" />
             </IconButton>
           </DrawerHeader>
         </div>
@@ -134,8 +134,8 @@ export function LayoutDefault({
         width={drawerWidth}
       >
         <DrawerHeader />
-        <Box className="print:visible">{children}</Box>
+        <div className="print:visible">{children}</div>
       </Main>
-    </Box>
-  );
+    </div>
+  )
 }

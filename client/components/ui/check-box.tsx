@@ -1,7 +1,9 @@
+import { Helper } from '@/client/components/ui/helper'
+import { Label } from '@/client/components/ui/label'
 import { cn } from '@/client/lib/cn'
 import React from 'react'
 
-type ToggleProps = {
+export type TCheckBoxProps = {
   disabled?: boolean
   helper?: string
   label?: string
@@ -19,7 +21,7 @@ export function CheckBox({
   disabled = false,
   onChange,
   variant = 'none',
-}: ToggleProps) {
+}: TCheckBoxProps) {
   const id = React.useId()
   function handleChange(e: any) {
     onChange && onChange(e.target.checked)
@@ -41,30 +43,16 @@ export function CheckBox({
             onChange={handleChange}
           />
         </div>
-        <div className="ml-2 text-sm">
-          {label ? (
-            <label
-              htmlFor={id}
-              className={cn(
-                'text-sm font-medium text-gray-900 dark:text-gray-300',
-                { 'text-gray-400 dark:text-gray-500': disabled },
-                { 'text-green-700 dark:text-green-500': variant === 'success' },
-                { 'text-red-700 dark:text-red-500': variant === 'error' }
-              )}
-            >
-              {label} {required ? '*' : null}
-            </label>
-          ) : null}
-
-          <p
-            className={cn(
-              'text-xs text-gray-500 dark:text-gray-400',
-              { 'text-green-600 dark:text-green-500': variant === 'success' },
-              { 'text-red-600 dark:text-red-500': variant === 'error' }
-            )}
+        <div className="text-sm">
+          <Label
+            id={id}
+            variant={variant}
+            required={required}
+            disabled={disabled}
           >
-            {helper}
-          </p>
+            {label}
+          </Label>
+          <Helper variant={variant}>{helper}</Helper>
         </div>
       </div>
     </>

@@ -1,95 +1,68 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
-import { useForm } from "@/client/lib/hooks/use-form";
-import { zValidate, zd } from "@/utils/zod/zod";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Avatar from "@mui/material/Avatar";
-import Container from "@mui/material/Container";
-import CssBaseline from "@mui/material/CssBaseline";
+import { Button } from '@/client/components/ui/button'
+import { Input } from '@/client/components/ui/input'
+import { Modal } from '@/client/components/ui/modal'
+import { useForm, Controller } from 'react-hook-form'
 
 export type TLoginProps = {
-  onInput: ({ user, password }: { user: string; password: string }) => void;
-};
+  onInput: ({ user, password }: { user: string; password: string }) => void
+}
 
 export function Login({ onInput }: TLoginProps) {
   const form = useForm({
-    onSubmit,
-    initialValues: {
-      user: "",
-      password: "",
-    },
-  });
+    mode: 'onTouched',
+    defaultValues: { user: '', password: '' },
+  })
 
-  function onSubmit(values: { [field: string]: string }) {
-    const { user, password } = values;
-    onInput({ user, password });
+  function handleInput() {
+    onInput(form.getValues())
   }
 
   return (
-    <Container
-      component="main"
-      maxWidth="xs"
+    <Modal
+      show={true}
+      title="Login"
+      closeable={false}
     >
-      <CssBaseline />
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography
-          component="h1"
-          variant="h5"
-        >
-          Login
-        </Typography>
-        <Box
-          component="div"
-          sx={{ mt: 1 }}
-        >
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="user"
-            label="Usuário"
-            autoFocus
-            {...form.getInputProps(
-              "user",
-              zValidate(
-                zd.string().min(3, "o usuário deve ter 3 caracteres ou mais")
-              )
-            )}
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="password"
-            label="Senha"
-            type="password"
-            autoComplete="current-password"
-            {...form.getInputProps(
-              "password",
-              zValidate(
-                zd.string().min(3, "a senha deve ter 3 caracteres ou mais")
-              )
-            )}
-          />
-          <Button
-            onClick={() => form.submit()}
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Entrar
-          </Button>
-        </Box>
-      </Box>
-    </Container>
-  );
+      <div className="m-4 w-60 flex flex-col alignItems-center gap-4 pb-4">
+        <Controller
+          name="user"
+          control={form.control}
+          rules={{
+            required: 'Usuário é obrigatório',
+          }}
+          render={({ field, fieldState }) => (
+            <Input
+              required
+              label="Usuário"
+              variant={fieldState.error && 'error'}
+              helper={fieldState.error?.message}
+              value={field.value}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+            />
+          )}
+        />
+        <Controller
+          name="password"
+          control={form.control}
+          rules={{
+            required: 'Senha é obrigatório',
+          }}
+          render={({ field, fieldState }) => (
+            <Input
+              required
+              label="Senha"
+              type="password"
+              variant={fieldState.error && 'error'}
+              helper={fieldState.error?.message}
+              value={field.value}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+            />
+          )}
+        />
+        <Button onClick={handleInput}>Entrar</Button>
+      </div>
+    </Modal>
+  )
 }

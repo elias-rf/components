@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from './button'
 import { Modal } from './modal'
 
-interface IMessageBoxProps {
+export type TMessageBoxProps = {
   children: React.ReactNode
   title: string
   option1: string
@@ -18,7 +18,7 @@ export function MessageBox({
   option2,
   option3,
   onClick,
-}: IMessageBoxProps) {
+}: TMessageBoxProps) {
   return (
     <>
       <Modal

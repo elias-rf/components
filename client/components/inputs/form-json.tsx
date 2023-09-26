@@ -1,6 +1,4 @@
-import { Grid2Props } from "@mui/material/Unstable_Grid2";
 import {
-  Checkbox,
   DateField,
   FormField,
   FormFields,
@@ -10,25 +8,26 @@ import {
   Switch,
   TextField,
   TextFieldMultiple,
-} from "./index";
+} from './index'
+import { CheckBox } from '@/client/components/ui/check-box'
 
 type TComponentsProps = {
-  component: any;
-  label: string;
-  required?: boolean;
-  disabled?: boolean;
-  value: any;
-  onChange: any;
-  onBlur: any;
-  error: boolean;
-  helperText: string;
-  items?: string[];
-  labels?: string[];
-};
+  component: any
+  label: string
+  required?: boolean
+  disabled?: boolean
+  value: any
+  onChange: any
+  onBlur: any
+  error: boolean
+  helperText: string
+  items?: string[]
+  labels?: string[]
+}
 
 function Components(props: TComponentsProps) {
   const components = {
-    Checkbox,
+    CheckBox,
     FormField,
     FormFields,
     Switch,
@@ -38,34 +37,30 @@ function Components(props: TComponentsProps) {
     Select,
     RadioButton,
     DateField,
-  };
-  type TComponent = keyof typeof components;
-  const Component = components[props.component as TComponent] || TextField;
+  }
+  type TComponent = keyof typeof components
+  const Component = components[props.component as TComponent] || TextField
 
-  return <Component {...props} />;
+  return <Component {...props} />
 }
 
 export type TFormJsonField = {
-  name: string;
-  component: string;
-  label: string;
-  defaultValue: any;
-  required?: boolean;
-  disabled?: boolean;
-  items?: string[];
-  labels?: string[];
-  rules?: any;
-  xs?: Grid2Props["xs"];
-  sm?: Grid2Props["sm"];
-  md?: Grid2Props["md"];
-  lg?: Grid2Props["lg"];
-  xl?: Grid2Props["xl"];
-};
+  name: string
+  component: string
+  label: string
+  defaultValue: any
+  required?: boolean
+  disabled?: boolean
+  items?: string[]
+  labels?: string[]
+  rules?: any
+  className?: string
+}
 
 type TFormJson = {
-  form: any;
-  fields: TFormJsonField[];
-};
+  form: any
+  fields: TFormJsonField[]
+}
 
 export function FormJson({ form, fields }: TFormJson) {
   return (
@@ -79,11 +74,7 @@ export function FormJson({ form, fields }: TFormJson) {
               control={form.control}
               defaultValue={fld.defaultValue}
               rules={fld.rules}
-              xs={fld.xs}
-              sm={fld.sm}
-              md={fld.md}
-              lg={fld.lg}
-              xl={fld.xl}
+              className={fld.className}
               render={({
                 field: { value, onChange, onBlur },
                 fieldState: { error },
@@ -103,9 +94,9 @@ export function FormJson({ form, fields }: TFormJson) {
                 />
               )}
             />
-          );
+          )
         })}
       </FormFields>
     </>
-  );
+  )
 }

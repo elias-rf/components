@@ -1,9 +1,13 @@
 import { TWhere, TSelection, TOrderBy, TId } from '@/types'
 import { deepEqual } from '@/utils/object/deep-equal'
-import type { Story } from '@ladle/react'
+import type { Story, StoryDefault } from '@ladle/react'
 import { JsonViewer } from '@textea/json-viewer'
 import React from 'react'
 import { TColumn, TRow, Table } from './table'
+
+export default {
+  title: 'Components / Table',
+} satisfies StoryDefault
 
 function createData(
   dessert: string,
@@ -43,7 +47,7 @@ const schema: TColumn[] = [
   { label: 'Protein (g)', name: 'protein', align: 'right', width: 90 },
 ]
 
-export const Default: Story = () => {
+export const DefaultTable: Story = () => {
   return (
     <>
       <Table

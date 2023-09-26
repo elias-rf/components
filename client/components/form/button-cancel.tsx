@@ -1,14 +1,14 @@
-import { Button } from "@mui/material";
-import type { TFormStatus } from "@/types";
-import { UseFormReturn } from "react-hook-form";
+import { Button } from '@mui/material'
+import type { TFormStatus } from '@/types'
+import { UseFormReturn } from 'react-hook-form'
 
 export type TButtonCancelProps = {
-  form: UseFormReturn<any>;
-  onClick?: () => void;
-  onStatus: (status: TFormStatus) => void;
-  status: TFormStatus;
-  sx?: any;
-};
+  form: UseFormReturn<any>
+  onClick?: () => void
+  onStatus?: (status: TFormStatus) => void
+  status: TFormStatus
+  sx?: any
+}
 
 export const ButtonCancel = ({
   form,
@@ -18,9 +18,9 @@ export const ButtonCancel = ({
   sx,
 }: TButtonCancelProps) => {
   function handleButtonCancel() {
-    if (onClick) onClick();
-    form.reset();
-    onStatus("view");
+    if (onClick) onClick()
+    form.reset()
+    onStatus && onStatus('view')
   }
 
   return (
@@ -28,10 +28,10 @@ export const ButtonCancel = ({
       size="small"
       onClick={handleButtonCancel}
       variant="outlined"
-      disabled={status === "view"}
+      disabled={status === 'view'}
       sx={sx}
     >
       Cancelar
     </Button>
-  );
-};
+  )
+}

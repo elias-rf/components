@@ -1,13 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Story, StoryDefault } from '@ladle/react'
 import { CheckIcon } from './check-icon'
+import '@/client/index.css'
 
-const meta: Meta<typeof CheckIcon> = {
-  component: CheckIcon,
-}
+export default {
+  title: 'Components / Icons / CheckIcon',
+} satisfies StoryDefault
 
-export default meta
-type Story = StoryObj<typeof CheckIcon>
-
-export const Default: Story = {
-  render: () => <CheckIcon />,
-}
+export const Padrao: Story = () => <CheckIcon />

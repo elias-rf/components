@@ -1,45 +1,49 @@
+import { Helper } from '@/client/components/ui/helper'
+import { Label } from '@/client/components/ui/label'
 import { cn } from '@/client/lib/cn'
+import React from 'react'
 
 type TTextareaProps = {
-  label?: string
-  helper?: string
-  onChange?: (e: any) => void
-  onBlur?: (e: any) => void
-  onKeyDown?: (e: any) => void
-  value?: string
-  required?: boolean
   disabled?: boolean
-  variant?: 'success' | 'error'
+  helper?: string
+  label?: string
+  onBlur?: (e: any) => void
+  onChange?: (e: any) => void
+  onKeyDown?: (e: any) => void
+  required?: boolean
   rows?: number
+  value: string
+  variant?: 'success' | 'error' | 'none'
 }
 
 export function Textarea({
-  label,
-  value,
-  helper = '',
-  required = false,
   disabled = false,
-  onChange,
+  helper = '',
+  label,
   onBlur,
+  onChange,
   onKeyDown,
-  variant,
+  required = false,
   rows = 3,
+  value,
+  variant = 'none',
 }: TTextareaProps) {
+  const id = React.useId()
+
+  function handleChange(e: any) {
+    onChange && onChange(e.target.value)
+  }
+
   return (
     <div>
-      {label ? (
-        <label
-          htmlFor="first_name"
-          className={cn(
-            'block text-sm font-medium text-gray-900 dark:text-white',
-            { 'text-gray-400 dark:text-gray-500': disabled },
-            { 'text-green-700 dark:text-green-500': variant === 'success' },
-            { 'text-red-700 dark:text-red-500': variant === 'error' }
-          )}
-        >
-          {label} {required ? '*' : null}
-        </label>
-      ) : null}
+      <Label
+        id={id}
+        required={required}
+        disabled={disabled}
+        variant={variant}
+      >
+        {label}
+      </Label>
       <textarea
         rows={rows}
         className={cn(
@@ -58,20 +62,12 @@ export function Textarea({
           }
         )}
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
         onBlur={onBlur}
         onKeyDown={onKeyDown}
         disabled={disabled}
       />
-      <p
-        className={cn(
-          'text-xs text-gray-500 dark:text-gray-400',
-          { 'text-green-600 dark:text-green-500': variant === 'success' },
-          { 'text-red-600 dark:text-red-500': variant === 'error' }
-        )}
-      >
-        {helper}
-      </p>
+      <Helper variant={variant}>{helper}</Helper>
     </div>
   )
 }

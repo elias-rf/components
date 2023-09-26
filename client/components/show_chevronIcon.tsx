@@ -1,8 +1,12 @@
-import { ChevronIcon } from "./icons/chevron-icon";
+import { ChevronIcon } from './icons/chevron-icon'
 interface ShowChevronIconProps {
-  opened: boolean;
+  opened: boolean
 }
 
 export function ShowChevronIcon({ opened }: ShowChevronIconProps) {
-  return opened ? <ChevronIcon rotate={90} /> : <ChevronIcon rotate={0} />;
+  return opened ? (
+    <ChevronIcon variant={'down'} />
+  ) : (
+    <ChevronIcon variant={'right'} />
+  )
 }

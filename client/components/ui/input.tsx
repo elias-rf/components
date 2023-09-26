@@ -1,3 +1,5 @@
+import { Helper } from '@/client/components/ui/helper'
+import { Label } from '@/client/components/ui/label'
 import { cn } from '@/client/lib/cn'
 import React from 'react'
 
@@ -38,19 +40,15 @@ export function Input({
 
   return (
     <div>
-      {label ? (
-        <label
-          htmlFor={id}
-          className={cn(
-            'block text-sm font-medium text-gray-900 dark:text-white',
-            { 'text-gray-400 dark:text-gray-500': disabled },
-            { 'text-green-700 dark:text-green-500': variant === 'success' },
-            { 'text-red-700 dark:text-red-500': variant === 'error' }
-          )}
-        >
-          {label} {required ? '*' : null}
-        </label>
-      ) : null}
+      <Label
+        id={id}
+        required={required}
+        disabled={disabled}
+        variant={variant}
+      >
+        {label}
+      </Label>
+
       <input
         type={type}
         id={id}
@@ -75,15 +73,7 @@ export function Input({
         onKeyDown={onKeyDown}
         disabled={disabled}
       />
-      <p
-        className={cn(
-          'pt-1 text-xs text-gray-500 dark:text-gray-400',
-          { 'text-green-600 dark:text-green-500': variant === 'success' },
-          { 'text-red-600 dark:text-red-500': variant === 'error' }
-        )}
-      >
-        {helper}
-      </p>
+      <Helper variant={variant}>{helper}</Helper>
     </div>
   )
 }

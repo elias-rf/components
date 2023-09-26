@@ -1,7 +1,7 @@
 import { Button } from '@/client/components/ui/button'
 import React from 'react'
 
-interface ModalProps {
+export type TModalProps = {
   show: boolean
   title?: React.ReactNode
   closeable?: boolean
@@ -15,7 +15,7 @@ export function Modal({
   closeable = true,
   children,
   onClose,
-}: ModalProps) {
+}: TModalProps) {
   if (!show) {
     return null
   }

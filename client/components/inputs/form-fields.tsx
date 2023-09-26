@@ -1,17 +1,12 @@
-import { Grid } from "@mui/material";
+import { cn } from '@/client/lib/cn'
 
 type TFormfieldsProps = {
-  children: React.ReactNode;
-  spacing?: number;
-};
+  children: React.ReactNode
+  className?: string
+}
 
-export function FormFields({ children, spacing = 2 }: TFormfieldsProps) {
+export function FormFields({ children, className }: TFormfieldsProps) {
   return (
-    <Grid
-      container
-      spacing={spacing}
-    >
-      {children}
-    </Grid>
-  );
+    <div className={cn('grid gap-3 grid-cols-12', className)}>{children}</div>
+  )
 }

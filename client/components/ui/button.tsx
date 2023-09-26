@@ -1,6 +1,6 @@
 import { cn } from '@/client/lib/cn'
 
-type ButtonProps = {
+export type TButtonProps = {
   children: React.ReactNode
   onClick?: () => void
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -93,7 +93,7 @@ export function Button({
   size = 'md',
   color = 'primary',
   className,
-}: ButtonProps) {
+}: TButtonProps) {
   return (
     <button
       className={cn(

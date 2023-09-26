@@ -1,10 +1,12 @@
-import { cn } from '@/client/lib/cn'
+import { Helper } from '@/client/components/ui/helper'
+import { Label } from '@/client/components/ui/label'
 import React from 'react'
 
-type SelectProps = {
+export type TSelectProps = {
   disabled?: boolean
   helper?: string
   label?: string
+  onBlur?: (e: any) => void
   onChange?: (e: string) => void
   options: [string, any][]
   required?: boolean
@@ -16,12 +18,13 @@ export function Select({
   disabled = false,
   helper,
   label,
+  onBlur,
   onChange,
   options,
   required = false,
   value,
   variant = 'none',
-}: SelectProps) {
+}: TSelectProps) {
   const id = React.useId()
 
   function handleChange(e: any) {
@@ -29,24 +32,20 @@ export function Select({
   }
 
   return (
-    <>
-      {label ? (
-        <label
-          htmlFor={id}
-          className={cn(
-            'block text-sm font-medium text-gray-900 dark:text-white',
-            { 'text-gray-400 dark:text-gray-500': disabled },
-            { 'text-green-700 dark:text-green-500': variant === 'success' },
-            { 'text-red-700 dark:text-red-500': variant === 'error' }
-          )}
-        >
-          {label} {required ? '*' : null}
-        </label>
-      ) : null}
+    <div>
+      <Label
+        id={id}
+        required={required}
+        disabled={disabled}
+        variant={variant}
+      >
+        {label}
+      </Label>
       <select
         id={id}
         disabled={disabled}
         value={value}
+        onBlur={onBlur}
         onChange={handleChange}
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       >
@@ -62,15 +61,7 @@ export function Select({
           )
         })}
       </select>
-      <p
-        className={cn(
-          'pt-1 text-xs text-gray-500 dark:text-gray-400',
-          { 'text-green-600 dark:text-green-500': variant === 'success' },
-          { 'text-red-600 dark:text-red-500': variant === 'error' }
-        )}
-      >
-        {helper}
-      </p>
-    </>
+      <Helper variant={variant}>{helper}</Helper>
+    </div>
   )
 }

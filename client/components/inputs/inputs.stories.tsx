@@ -1,5 +1,4 @@
 import {
-  Checkbox,
   FormField,
   FormFields,
   NumberField,
@@ -8,45 +7,37 @@ import {
   Switch,
   TextField,
   TextFieldMultiple,
-} from "@/client/components/inputs";
-import { Divider } from "@mui/material";
-import type { Meta, StoryObj } from "@storybook/react";
-import { JsonViewer } from "@textea/json-viewer";
-import React from "react";
-import { useForm } from "react-hook-form";
-
-const meta: Meta<typeof TextField> = {
-  component: TextField,
-};
-
-export default meta;
-type Story = StoryObj<typeof TextField>;
+} from '@/client/components/inputs'
+import { Divider } from '@mui/material'
+import type { Story } from '@ladle/react'
+import { JsonViewer } from '@textea/json-viewer'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { CheckBox } from '@/client/components/ui/check-box'
 
 function InputAux() {
-  const [required, setRequired] = React.useState(true);
-  const [disabled, setDisabled] = React.useState(false);
+  const [required, setRequired] = React.useState(true)
+  const [disabled, setDisabled] = React.useState(false)
 
   const form = useForm({
-    mode: "onTouched",
+    mode: 'onTouched',
     defaultValues: {
       Checkbox: true,
       Switch: true,
-      RadioButton: "a1",
+      RadioButton: 'a1',
     },
-  });
+  })
 
-  const watchAllFields = form.watch();
+  const watchAllFields = form.watch()
 
   return (
     <>
       <FormFields>
         <FormField
           name="TextField"
-          defaultValue={"a"}
+          defaultValue={'a'}
           control={form.control}
-          rules={{ required: "Requerido", minLength: 5 }}
-          xs={12}
-          sm={6}
+          rules={{ required: 'Requerido', minLength: 5 }}
           render={({
             field: { value, onChange, onBlur },
             fieldState: { error },
@@ -67,9 +58,7 @@ function InputAux() {
           name="NumberField"
           defaultValue="1.1"
           control={form.control}
-          rules={{ required: "Requerido", minLength: 5 }}
-          xs={12}
-          sm={6}
+          rules={{ required: 'Requerido', minLength: 5 }}
           render={({
             field: { value, onChange, onBlur },
             fieldState: { error },
@@ -90,19 +79,17 @@ function InputAux() {
 
         <FormField
           name="TextFieldMultiple"
-          defaultValue={["a1"]}
+          defaultValue={['a1']}
           control={form.control}
-          rules={{ required: "Requerido", minLength: 5 }}
-          xs={12}
-          sm={6}
+          rules={{ required: 'Requerido', minLength: 5 }}
           render={({
             field: { value, onChange, onBlur },
             fieldState: { error },
           }: any) => (
             <TextFieldMultiple
               label="TextFieldMultiple"
-              items={["a1", "a2"]}
-              labels={["A1", "A2"]}
+              items={['a1', 'a2']}
+              labels={['A1', 'A2']}
               required={required}
               disabled={disabled}
               value={value}
@@ -118,17 +105,15 @@ function InputAux() {
           name="Select"
           defaultValue="a1"
           control={form.control}
-          rules={{ required: "Requerido", minLength: 5 }}
-          xs={12}
-          sm={6}
+          rules={{ required: 'Requerido', minLength: 5 }}
           render={({
             field: { value, onChange, onBlur },
             fieldState: { error },
           }: any) => (
             <Select
               label="Select"
-              items={["a1", "a2", "a3"]}
-              labels={["A1", "A2", "A3"]}
+              items={['a1', 'a2', 'a3']}
+              labels={['A1', 'A2', 'A3']}
               required={required}
               disabled={disabled}
               value={value}
@@ -143,19 +128,16 @@ function InputAux() {
           name="Checkbox"
           defaultValue={true}
           control={form.control}
-          xs={12}
-          sm={6}
           render={({
             field: { value, onChange, onBlur },
             fieldState: { error },
           }: any) => (
-            <Checkbox
+            <CheckBox
               label="Checkbox"
               required={required}
               disabled={disabled}
               value={value}
               onChange={onChange}
-              onBlur={onBlur}
               error={error ? true : false}
               helperText={error?.message}
             />
@@ -165,8 +147,6 @@ function InputAux() {
           name="Switch"
           defaultValue={true}
           control={form.control}
-          xs={12}
-          sm={6}
           render={({
             field: { value, onChange, onBlur },
             fieldState: { error },
@@ -187,16 +167,14 @@ function InputAux() {
           name="RadioButton"
           defaultValue="a1"
           control={form.control}
-          xs={12}
-          sm={6}
           render={({
             field: { value, onChange, onBlur },
             fieldState: { error },
           }: any) => (
             <RadioButton
               label="RadioButton"
-              items={["a1", "a2", "a3"]}
-              labels={["A1", "A2", "A3"]}
+              items={['a1', 'a2', 'a3']}
+              labels={['A1', 'A2', 'A3']}
               required={required}
               disabled={disabled}
               value={value}
@@ -221,11 +199,9 @@ function InputAux() {
       />
       <JsonViewer value={{ values: watchAllFields }} />
     </>
-  );
+  )
 }
 
-export const Default: Story = {
-  render: () => {
-    return <InputAux />;
-  },
-};
+export const Default: Story = () => {
+  return <InputAux />
+}

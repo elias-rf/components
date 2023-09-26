@@ -1,20 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Story } from '@ladle/react'
 import { ChevronIcon } from './chevron-icon'
 
-const meta: Meta<typeof ChevronIcon> = {
-  component: ChevronIcon,
-}
+export const Default: Story = (props: any) => <ChevronIcon {...props} />
 
-export default meta
-type Story = StoryObj<typeof ChevronIcon>
-
-export const Default: Story = {
-  argTypes: {
-    variant: {
-      options: ['right', 'down', 'left', 'up'],
-      control: { type: 'radio' },
-    },
+Default.argTypes = {
+  variant: {
+    options: ['right', 'down', 'left', 'up'],
+    control: { type: 'radio' },
+    defaultValue: 'right',
   },
-
-  render: (props: any) => <ChevronIcon {...props} />,
 }

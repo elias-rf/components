@@ -1,19 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Story } from '@ladle/react'
 import { SortIcon } from './sort-icon'
 
-const meta: Meta<typeof SortIcon> = {
-  component: SortIcon,
-}
+export const Default: Story = (props: any) => <SortIcon {...props} />
 
-export default meta
-type Story = StoryObj<typeof SortIcon>
-
-export const Default: Story = {
-  argTypes: {
-    direction: {
-      control: { type: 'radio' },
-      options: ['up', 'down', 'both', 'none'],
-    },
+Default.argTypes = {
+  direction: {
+    control: { type: 'radio' },
+    options: ['up', 'down', 'both', 'none'],
+    defaultValue: 'up',
   },
-  render: (props: any) => <SortIcon {...props} />,
 }

@@ -1,63 +1,68 @@
+import { TData, TId, TOrderBy, TSelection, TWhere } from '@/types'
+import { filterNonEmptyProperties } from '@/utils/object/filter-non-empty-properties'
+import { equalityFromObject } from '@/utils/query/equality'
 import {
   Table as MuiTable,
   TableCell as MuiTableCell,
   TableRow as MuiTableRow,
-} from "@mui/material";
-import { TFilter, TId, TSelection, TSort } from "@/types";
-import { deepEqual } from "@/utils/object/deep-equal";
-import { useTheme } from "@mui/material/styles";
-import React from "react";
-import { useForm } from "../../lib/hooks/use-form";
-import { TableBody } from "./table-body";
-import { TableBodyCol } from "./table-body-col";
-import { TableBodyRow } from "./table-body-row";
-import { TableHead } from "./table-head";
-import { TableHeadCol } from "./table-head-col";
-import { TableHeadFilter } from "./table-head-filter";
-import { TableHeadRow } from "./table-head-row";
+} from '@mui/material'
+import { useTheme } from '@mui/material/styles'
+import React from 'react'
+import { useFormButtons } from '../../lib/hooks/use-form-buttons'
+import { TableBody } from './table-body'
+import { TableBodyCol } from './table-body-col'
+import { TableBodyRow } from './table-body-row'
+import { TableHead } from './table-head'
+import { TableHeadCol } from './table-head-col'
+import { TableHeadFilter } from './table-head-filter'
+import { TableHeadRow } from './table-head-row'
 
 export type TColumn = {
-  label: string;
-  name: string;
-  align?: "center" | "left" | "right" | "inherit" | "justify" | undefined;
-  format?: (v: any) => any;
-  sortable?: boolean;
-  width?: number;
-};
+  label: string
+  name: string
+  align?: 'center' | 'left' | 'right' | 'inherit' | 'justify' | undefined
+  format?: (v: any) => any
+  sortable?: boolean
+  width?: number
+}
 
-export type TRow = { [field: string]: any };
+export type TRow = { [field: string]: any }
 
 export type TTableProps = {
-  rows: TRow[];
-  columns: TColumn[];
-  filter?: TFilter;
-  onFilter?: (e: TFilter) => void;
-  sort?: TSort;
-  onSort?: (e: TSort) => void;
-  selection?: TSelection;
-  onSelection?: (e: TSelection) => void;
-  HeadSlot?: any;
-  HeadRowSlot?: any;
-  HeadColSlot?: any;
-  BodySlot?: any;
-  BodyRowSlot?: any;
-  BodyColSlot?: any;
-  HeadFilterSlot?: any;
-  getId?: (row: TRow) => TId;
-  children?: (args: { row: TRow; columns: TColumn[] }) => React.ReactNode;
-};
+  BodyColSlot?: any
+  BodyRowSlot?: any
+  BodySlot?: any
+  children?: (args: { row: TRow; columns: TColumn[] }) => React.ReactNode
+  columns: TColumn[]
+  getId?: (row: TData<string>) => TId<string>
+  HeadColSlot?: any
+  HeadFilterSlot?: any
+  HeadRowSlot?: any
+  HeadSlot?: any
+  onOrderBy?: (e: TOrderBy<string>) => void
+  onSelection?: (e: TSelection<any>) => void
+  onWhere?: (e: TWhere<string>) => void
+  orderBy?: TOrderBy<string>
+  rows: TRow[]
+  selection?: TSelection<string>
+  where?: TWhere<string>
+}
 
-const getIdDefault = (row: TRow) => row;
+const getIdDefault = (row: TRow) =>
+  Object.keys(row).reduce((acc, key) => {
+    acc.push([key, row[key]])
+    return acc
+  }, [] as TId<string>)
 
 export function Table({
   rows: data = [],
   columns,
   selection = [],
   onSelection,
-  sort,
-  onSort,
-  filter,
-  onFilter,
+  orderBy,
+  onOrderBy,
+  where,
+  onWhere,
   getId = getIdDefault,
   HeadSlot = TableHead,
   HeadRowSlot = TableHeadRow,
@@ -68,43 +73,59 @@ export function Table({
   BodyColSlot = TableBodyCol,
   children,
 }: TTableProps) {
-  const theme = useTheme();
+  const theme = useTheme()
 
-  const form = useForm({ onInput, initialValues: filter });
+  const form = useFormButtons({
+    onInput,
+    initialValues: where?.reduce(
+      (acc, cur) => ({
+        ...acc,
+        [cur[0]]: `${cur[1]}${cur.length === 3 ? ` ${cur[2]}` : ''}`,
+      }),
+      {}
+    ),
+  })
 
   function onInput() {
-    const filteredObj = Object.fromEntries(
-      Object.entries(form.values).filter(([_, value]) => value !== "")
-    );
-    onFilter && onFilter(filteredObj);
+    const filteredObj = equalityFromObject(
+      filterNonEmptyProperties(form.values)
+    )
+    onWhere && onWhere(filteredObj)
   }
 
   const handleOnSelection = (row: TRow) => {
-    onSelection && onSelection([getId(row)]);
-  };
+    onSelection && onSelection(getId(row))
+  }
 
   const handleOnSort = (col: any) => {
-    if (!sort) return;
-    if (col.sortable === false) return;
-    let ord = sort[col.name];
-    if (ord === "asc") {
-      ord = "desc";
+    if (!orderBy || !onOrderBy) return
+    if (col.sortable === false) return
+    if (orderBy.length === 0) return onOrderBy([[col.name, 'asc']])
+    const field = orderBy[0][0]
+    let ord = orderBy[0][1]
+    if (field !== col.name) ord = 'desc'
+    if (ord === 'asc') {
+      ord = 'desc'
     } else {
-      ord = "asc";
+      ord = 'asc'
     }
-    onSort && onSort({ [col.name]: ord });
-  };
+    onOrderBy && onOrderBy([[col.name, ord]])
+  }
 
-  function isSelected(row: TRow, selection: TSelection) {
-    const id = getId(row);
-    const response = selection.findIndex((selected) => deepEqual(selected, id));
+  function isSelected(row: TRow, selection: TSelection<string>) {
+    const id = getId(row)
 
-    return response >= 0;
+    if (selection.length === 0 || selection.length !== id.length) return false
+    for (let i = 0; i < selection.length; i++) {
+      if (id[i][0] !== selection[i][0]) return false
+      if (id[i][1] !== selection[i][1]) return false
+    }
+    return true
   }
 
   return (
     <MuiTable
-      sx={{ minWidth: 650 }}
+      sx={{ minWidth: 320 }}
       size="small"
       stickyHeader
     >
@@ -114,7 +135,7 @@ export function Table({
             <HeadColSlot
               key={`label-${column.name}`}
               col={column}
-              sort={sort}
+              sort={orderBy}
               width={column.width}
               onClick={() => handleOnSort(column)}
               sx={[
@@ -125,7 +146,7 @@ export function Table({
             />
           ))}
         </HeadRowSlot>
-        {filter ? (
+        {where ? (
           <HeadRowSlot>
             {columns.map((column) => (
               <HeadFilterSlot
@@ -144,7 +165,7 @@ export function Table({
               key={JSON.stringify(getId(row))}
               sx={[
                 {
-                  "&:last-child td, &:last-child th": { border: 0 },
+                  '&:last-child td, &:last-child th': { border: 0 },
                 },
               ]}
               selected={isSelected(row, selection)}
@@ -172,5 +193,5 @@ export function Table({
         ))}
       </BodySlot>
     </MuiTable>
-  );
+  )
 }

@@ -36,10 +36,12 @@ export function InputFilter({ value, name, onInput }: InputFilterProps) {
   return (
     <input
       value={vlr}
+      name={name}
       onKeyDown={handleKeyDown}
       onBlur={handleBlur}
       onChange={handleChange}
       className="w-full p-1 text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      autoComplete="off"
     />
   )
 }
