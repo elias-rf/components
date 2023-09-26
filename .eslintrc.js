@@ -5,38 +5,37 @@ module.exports = {
     node: true,
   },
   extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:promise/recommended",
-    "plugin:storybook/recommended",
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:promise/recommended',
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  plugins: ["@typescript-eslint", "react", "promise"],
+  plugins: ['@typescript-eslint', 'react', 'promise'],
   rules: {
-    "@typescript-eslint/ban-ts-comment": 0,
-    "@typescript-eslint/no-explicit-any": 0,
-    "@typescript-eslint/no-unused-vars": [
-      "error",
+    '@typescript-eslint/ban-ts-comment': 0,
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/no-unused-vars': [
+      'error',
       {
-        destructuredArrayIgnorePattern: "^_",
+        destructuredArrayIgnorePattern: '^_',
       },
     ],
-    "no-unused-vars": 0,
-    yoda: "error",
+    'no-unused-vars': 0,
+    yoda: 'error',
   },
   settings: {
     react: {
-      version: "999.999.999",
+      version: '999.999.999',
     },
   },
-};
+}
