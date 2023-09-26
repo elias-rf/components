@@ -1,233 +1,143 @@
-import { ButtonCancel } from "@/client/components/form/button-cancel";
-import { ButtonDel } from "@/client/components/form/button-del";
-import { ButtonEdit } from "@/client/components/form/button-edit";
-import { ButtonNew } from "@/client/components/form/button-new";
-import { ButtonSave } from "@/client/components/form/button-save";
-import { Table } from "@/client/components/table";
-import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
-import type { TFilter, TFormStatus, TSelection, TSort } from "@/types";
-import { deepEqual } from "@/utils/object/deep-equal";
-import { toStringProperties } from "@/utils/object/to-string-properties";
-import { trpc } from "@/rpc/utils/trpc";
-import React from "react";
-import { useForm } from "react-hook-form";
-import { agendaTelefoneColumns } from "./agenda-telefone_columns";
-import { AgendaTelefoneForm } from "./agenda-telefone_form";
+import { AgendaTelefoneTable } from '@/client/features/agenda-telefone/agenda-telefone_table'
+import { whereType } from '@/client/lib/where-type'
+import {
+  TAgendaTelefoneFields,
+  TAgendaTelefoneKeys,
+} from '@/controllers/agenda-telefone.controller'
+import { rpc } from '@/rpc/rpc-client'
+import type {
+  TData,
+  TFormStatus,
+  TId,
+  TOrderBy,
+  TSelection,
+  TWhere,
+} from '@/types'
+import { deepEqual } from '@/utils/object/deep-equal'
+import React from 'react'
+import { useForm } from 'react-hook-form'
 
 const dataClear = {
-  agenda_telefone_id: "",
-  email: "",
-  nome: "",
-  setor: "",
-};
+  id: '',
+  name: '',
+  email: '',
+  department: '',
+}
 
 /**
  * Agenda de Ramais
  */
 export function AgendaTelefone({ onState }: any) {
   // Form
-  const form = useForm({ defaultValues: dataClear, mode: "onTouched" });
-  const [status, setStatus] = React.useState<TFormStatus>("view");
-  // List
-  const [selection, setSelection] = React.useState<TSelection>([]);
-  const [filter, setFilter] = React.useState<TFilter>({});
-  const [sort, setSort] = React.useState<TSort>({});
+  const form = useForm({ defaultValues: dataClear, mode: 'onTouched' })
+  const [status, setStatus] = React.useState<TFormStatus>('view')
+
+  // Filters
+  const [selection, setSelection] = React.useState<
+    TSelection<TAgendaTelefoneKeys>
+  >([])
+  const [where, setWhere] = React.useState<TWhere<TAgendaTelefoneFields>>([])
+  const [orderBy, setOrderBy] = React.useState<TOrderBy<TAgendaTelefoneFields>>(
+    []
+  )
   // Data
-  trpc.agendaTelefone.read.useQuery(
-    { id: selection[0] },
-    {
-      enabled: selection[0] !== undefined,
-      onSuccess: (rec) => {
-        form.reset(toStringProperties(rec));
-      },
+  const [list, setList] = React.useState<TData<TAgendaTelefoneFields>[]>([])
+
+  // Read Data
+  React.useEffect(() => {
+    async function getData() {
+      const data = await rpc.agendaTelefone.read({ id: selection })
+      form.reset(data)
     }
-  );
-  const dataList = trpc.agendaTelefone.list.useQuery({ filter, sort });
-
-  function getId(row: any) {
-    return {
-      agenda_telefone_id: row.agenda_telefone_id,
-    };
-  }
-
-  function handleSelection(selected: TSelection) {
-    if (deepEqual(selected, selection)) return setSelection([]);
-    setSelection(selected);
-    setStatus("view");
-  }
-
-  function handleFilter(filterEvent: TFilter) {
-    setFilter(filterEvent);
-  }
-  function handleSort(sortEvent: TSort) {
-    setSort(sortEvent);
-  }
-
-  const trpcUtils = trpc.useContext();
+    if (selection.length > 0) getData()
+  }, [form, selection])
 
   React.useEffect(() => {
-    onState && onState({ filter, selection, sort, status });
-  }, [onState, status, selection, filter, sort]);
+    getList(where, orderBy)
+  }, [where, orderBy])
 
-  const dataUpdate = trpc.agendaTelefone.update.useMutation({
-    onSuccess: () => {
-      trpcUtils.agendaTelefone.invalidate();
-    },
-  });
-
-  const dataCreate = trpc.agendaTelefone.create.useMutation({
-    onSuccess: () => {
-      trpcUtils.agendaTelefone.invalidate();
-    },
-  });
-
-  const dataDel = trpc.agendaTelefone.del.useMutation({
-    onSuccess: () => {
-      trpcUtils.agendaTelefone.invalidate();
-    },
-  });
-
-  function handleButtonNew() {
-    form.reset(dataClear);
-    setSelection([]);
+  async function getList(
+    where: TWhere<TAgendaTelefoneFields>,
+    orderBy: TOrderBy<TAgendaTelefoneFields>
+  ) {
+    const data = await rpc.agendaTelefone.list({ where, orderBy })
+    setList(data)
   }
 
-  function handleButtonDel() {
-    dataDel.mutate({ id: selection[0] });
+  function getId(row: TData<TAgendaTelefoneFields>): TId<'id'> {
+    return [['id', row.id]]
   }
 
-  function handleButtonSave() {
-    if (status === "edit")
-      dataUpdate.mutate({ data: form.getValues(), id: selection[0] });
-    if (status === "new") dataCreate.mutate({ data: form.getValues() });
+  function handleSelection(selected: TSelection<TAgendaTelefoneKeys>) {
+    if (deepEqual(selected, selection)) return setSelection([])
+    setSelection(selected)
+    setStatus('view')
+  }
+
+  function handleWhere(where: TWhere<TAgendaTelefoneFields>) {
+    where = whereType(where, 'id', 'int')
+    setWhere(where)
+  }
+  function handleOrderBy(orderBy: TOrderBy<TAgendaTelefoneFields>) {
+    setOrderBy(orderBy)
+  }
+
+  React.useEffect(() => {
+    onState && onState({ where, selection, orderBy, status })
+  }, [onState, status, selection, where, orderBy])
+
+  function handleNew() {
+    setStatus('new')
+    form.reset(dataClear)
+    setSelection([])
+  }
+
+  async function handleDel() {
+    await rpc.agendaTelefone.del({ id: selection })
+    await getList(where, orderBy)
+    setStatus('view')
+    setSelection([])
+  }
+
+  async function handleSave() {
+    if (status === 'edit') {
+      await rpc.agendaTelefone.update({
+        data: form.getValues(),
+        id: selection,
+      })
+    }
+    if (status === 'new') {
+      await rpc.agendaTelefone.create({ data: form.getValues() })
+    }
+    await getList(where, orderBy)
+    setStatus('view')
+  }
+
+  function handleCancel() {
+    setStatus('view')
+  }
+
+  function handleEdit() {
+    setStatus('edit')
   }
 
   return (
-    <>
-      <Stack
-        direction="column"
-        spacing={2}
-      >
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Typography variant="h5">Agenda de Ramais</Typography>
-          <Stack
-            direction="row"
-            spacing={2}
-          >
-            {status === "new" ? (
-              <>
-                <ButtonSave
-                  form={form}
-                  onStatus={setStatus}
-                  onClick={handleButtonSave}
-                />
-                <ButtonCancel
-                  form={form}
-                  status={status}
-                  onStatus={setStatus}
-                />
-              </>
-            ) : null}
-            {status !== "new" ? (
-              <ButtonNew
-                form={form}
-                status={status}
-                onStatus={setStatus}
-                onClick={handleButtonNew}
-              />
-            ) : null}
-          </Stack>
-        </Stack>
-        {status === "new" ? (
-          <Box sx={{ py: 1 }}>
-            <AgendaTelefoneForm
-              form={form}
-              status={status}
-            />
-            <Divider
-              variant="middle"
-              sx={{ pt: 2 }}
-            />
-          </Box>
-        ) : null}
-        <Table
-          rows={dataList.data ?? []}
-          columns={agendaTelefoneColumns}
-          getId={getId}
-          selection={selection}
-          filter={filter}
-          sort={sort}
-          onSelection={handleSelection}
-          onFilter={handleFilter}
-          onSort={handleSort}
-        >
-          {() => (
-            <Grid
-              container
-              direction={"column"}
-              spacing={1}
-              sx={{
-                mb: 4,
-                p: 1,
-              }}
-            >
-              <Grid
-                container
-                direction={"row"}
-                spacing={2}
-              >
-                <Grid>
-                  <ButtonEdit
-                    form={form}
-                    status={status}
-                    onStatus={setStatus}
-                  />
-                </Grid>
-                <Grid>
-                  <ButtonDel
-                    form={form}
-                    status={status}
-                    onStatus={setStatus}
-                    onClick={handleButtonDel}
-                  />
-                </Grid>
-              </Grid>
-              <Grid>
-                <AgendaTelefoneForm
-                  form={form}
-                  status={status}
-                />
-              </Grid>
-              <Grid
-                container
-                direction="row"
-                justifyContent="flex-end"
-                alignItems="center"
-                spacing={2}
-              >
-                <Grid>
-                  <ButtonSave
-                    form={form}
-                    onStatus={setStatus}
-                    onClick={handleButtonSave}
-                  />
-                </Grid>
-                <Grid>
-                  <ButtonCancel
-                    form={form}
-                    status={status}
-                    onStatus={setStatus}
-                  />
-                </Grid>
-              </Grid>
-            </Grid>
-          )}
-        </Table>
-      </Stack>
-    </>
-  );
+    <AgendaTelefoneTable
+      form={form}
+      getId={getId}
+      onCancel={handleCancel}
+      onDel={handleDel}
+      onEdit={handleEdit}
+      onNew={handleNew}
+      onOrderBy={handleOrderBy}
+      onSave={handleSave}
+      onSelection={handleSelection}
+      onWhere={handleWhere}
+      orderBy={orderBy}
+      rows={list}
+      selection={selection}
+      status={status}
+      where={where}
+    />
+  )
 }

@@ -1,11 +1,11 @@
-import { TColumn } from "@/client/components/table";
+import { TColumn } from '@/client/components/table'
 
 export const agendaTelefoneColumns: TColumn[] = [
-  { name: "agenda_telefone_id", label: "Ramal" },
+  { name: 'id', label: 'Ramal' },
   {
-    name: "nome",
-    label: "Nome",
+    name: 'name',
+    label: 'Nome',
   },
-  { name: "setor", label: "Setor" },
-  { name: "email", label: "Email" },
-];
+  { name: 'department', label: 'Setor' },
+  { name: 'email', label: 'Email' },
+]

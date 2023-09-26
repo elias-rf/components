@@ -1,67 +1,95 @@
-import { FormJson } from "@/client/components/inputs";
-import { TFormStatus } from "@/types";
-import { UseFormReturn } from "react-hook-form";
+import { Input } from '@/client/components/ui/input'
+import { Controller, UseFormReturn } from 'react-hook-form'
 
 type TAgendaTelefoneFormProps = {
-  form: UseFormReturn<any>;
-  status: TFormStatus;
-};
+  form: UseFormReturn<any>
+  disabled: boolean
+}
 
 export const AgendaTelefoneForm = ({
   form,
-  status,
+  disabled,
 }: TAgendaTelefoneFormProps) => {
-  const fields = [
-    {
-      name: "agenda_telefone_id",
-      component: "TextField",
-      label: "Ramal",
-      defaultValue: " ",
-      required: true,
-      disabled: status === "view",
-      xs: 12,
-      sm: 2,
-      lg: 1,
-    },
-    {
-      name: "nome",
-      component: "TextField",
-      label: "Nome",
-      defaultValue: " ",
-      required: true,
-      disabled: status === "view",
-      xs: 12,
-      sm: 10,
-      lg: 5,
-    },
-    {
-      name: "setor",
-      component: "TextField",
-      label: "Setor",
-      defaultValue: " ",
-      disabled: status === "view",
-      xs: 12,
-      sm: 4,
-      lg: 2,
-    },
-    {
-      name: "email",
-      component: "TextField",
-      label: "Email",
-      defaultValue: " ",
-      disabled: status === "view",
-      xs: 12,
-      sm: 8,
-      lg: 4,
-    },
-  ];
-
   return (
     <>
-      <FormJson
-        form={form}
-        fields={fields}
-      />
+      <div className="grid gap-3 grid-cols-12">
+        <div className="col-span-12 sm:col-span-2 lg:col-span-1">
+          <Controller
+            name="id"
+            control={form.control}
+            rules={{
+              required: 'Ramal é obrigatório',
+            }}
+            render={({ field, fieldState }) => (
+              <Input
+                required
+                label="Ramal"
+                disabled={disabled}
+                variant={fieldState.error && 'error'}
+                helper={fieldState.error?.message}
+                value={field.value}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+              />
+            )}
+          />
+        </div>
+        <div className="col-span-12 sm:col-span-10 lg:col-span-5">
+          <Controller
+            name="name"
+            control={form.control}
+            rules={{
+              required: 'Nome é obrigatório',
+            }}
+            render={({ field, fieldState }) => (
+              <Input
+                required
+                label="Nome"
+                disabled={disabled}
+                variant={fieldState.error && 'error'}
+                helper={fieldState.error?.message}
+                value={field.value}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+              />
+            )}
+          />
+        </div>
+        <div className="col-span-12 sm:col-span-4 lg:col-span-2">
+          <Controller
+            name="department"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Input
+                label="Setor"
+                disabled={disabled}
+                variant={fieldState.error && 'error'}
+                helper={fieldState.error?.message}
+                value={field.value}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+              />
+            )}
+          />
+        </div>
+        <div className="col-span-12 sm:col-span-8 lg:col-span-4">
+          <Controller
+            name="email"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Input
+                label="Email"
+                disabled={disabled}
+                variant={fieldState.error && 'error'}
+                helper={fieldState.error?.message}
+                value={field.value}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+              />
+            )}
+          />
+        </div>
+      </div>
     </>
-  );
-};
+  )
+}
