@@ -3,10 +3,16 @@ import { createMethodHandler } from '@doseofted/prim-rpc-plugins/fastify'
 import { module } from '@/controllers'
 import multipartPlugin from '@fastify/multipart'
 
-export function registerPrimServer(fastify: any) {
+export function registerRpcServer(fastify: any) {
   const methodHandler = createMethodHandler({
     fastify,
     multipartPlugin,
+    contextTransform(request, reply): any {
+      return {
+        request: { user: request.user },
+        reply: { jwtSign: reply.jwtSign },
+      }
+    },
   })
 
   createPrimServer({

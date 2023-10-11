@@ -20,10 +20,10 @@ function produtoItemControllerFactory(db: OrmDatabase, schema: TSchema) {
     id: Array<[TProdutoItemKeys, any]>
     select?: Array<TProdutoPlanoFields>
   }) => {
-    const selected = produtoPlanoController.orm.validSelect(select)
-    orm.validId(id)
+    // const selected = produtoPlanoController.orm.util.validSelect(select)
+    orm.util.validId(id)
 
-    const produtoItem = await orm.read({
+    const produtoItem = await orm.rpc.read({
       id,
       select: ['IdVisiontech'],
     })
@@ -32,7 +32,7 @@ function produtoItemControllerFactory(db: OrmDatabase, schema: TSchema) {
       produtoItem.IdVisiontech = produtoItem.IdVisiontech.trim()
       return produtoPlanoController.read({
         id: [['CdProduto', produtoItem.IdVisiontech]],
-        ...selected,
+        select,
       })
     }
     return []
@@ -40,11 +40,7 @@ function produtoItemControllerFactory(db: OrmDatabase, schema: TSchema) {
   produtoPlano.rpc = true
 
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
+    ...orm.rpc,
     produtoPlano,
   }
 }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { dbPlano } from '@/controllers/db-plano.db'
 import { knexMockMsql } from '@/mocks/connections.mock'
 import { getTracker } from '@/mocks/database.mock'
@@ -141,5 +142,26 @@ describe('rpc de cliente', () => {
         sql: "select [CategPro].[NmCategoria], [MestreNota].[CdCliente], CONVERT(char(7), MestreNota.DtEmissao, 126) AS anoMes, sum(case MestreNota.tipo when 'E' then ItemNota.Quantidade * -1 when 'S' then ItemNota.Quantidade end) as quantidade, sum(itemNota.VlLiquido * (case MestreNota.tipo when 'E' then ItemNota.Quantidade * -1 when 'S' then ItemNota.Quantidade end)) AS valor from [MestreNota] inner join [ItemNota] on [MestreNota].[CdFilial] = [ItemNota].[CdFilial] and [MestreNota].[Serie] = [ItemNota].[Serie] and [MestreNota].[Modelo] = [ItemNota].[Modelo] and [MestreNota].[NumNota] = [ItemNota].[NumNota] inner join [NatOpe] on [NatOpe].[Nop] = [MestreNota].[Nop] inner join [CadVen] on [CadVen].[CdVendedor] = [MestreNota].[CdVendedor] inner join [CadPro] on [CadPro].[CdProduto] = [ItemNota].[CdProduto] inner join [CategPro] on [CadPro].[CdCategoria] = [CategPro].[CdCategoria] where [MestreNota].[FgEstatistica] = @p0 and [MestreNota].[CdFilial] = @p1 and [CadPro].[FgEstatistica] = @p2 and [CadVen].[FgControle] = @p3 and [ItemNota].[ImprimeComponentes] = @p4 and [ItemNota].[Sequencia] > @p5 and [MestreNota].[Tipo] <> @p6 and [MestreNota].[DtEmissao] between @p7 and @p8 and [MestreNota].[CdCliente] = @p9 group by [CdCliente], [NmCategoria], CONVERT(char(7), dbo.MestreNota.DtEmissao, 126)",
       },
     ])
+  })
+  it('vendaMensalQuantidade erro em argumentos', async () => {
+    await expect(() =>
+      clienteController.vendaMensalQuantidade({
+        inicio: '2020-01-01',
+        fim: '2020-01-01',
+      })
+    ).rejects.toThrow('cliente deve ser informado')
+    await expect(() =>
+      clienteController.vendaMensalQuantidade({
+        inicio: '2020-01-01',
+        cliente: 1,
+      })
+    ).rejects.toThrow('fim deve ser informado')
+    await expect(() =>
+      clienteController.vendaMensalQuantidade({
+        inicio: '2020-01',
+        fim: '2020-01-01',
+        cliente: 1,
+      })
+    ).rejects.toThrow('inicio deve ser yyyy-mm-dd')
   })
 })

@@ -6,7 +6,6 @@ import { day } from '@/utils/date/day'
 import { zDate } from '@/utils/zod/z-date'
 import { zsr } from '@/utils/zod/z-refine'
 import { zd, zod } from '@/utils/zod/zod'
-import { raw } from 'objection'
 
 export type TOrdemProducaoOperacaoFields =
   keyof typeof tOperacaoOrdemProducao.fields
@@ -33,12 +32,12 @@ function ordemProducaoOperacaoControllerFactory(
   }): Promise<
     Array<{ dia: string; diaSemana: string; quantidade: number }>
   > => {
-    zod(operacao, zd.number())
+    // zod(operacao, zd.string())
     zDate(inicio)
     zDate(fim)
 
     const data = await db.run({
-      from: orm.getTableName(),
+      from: orm.util.getTableName(),
       select: ['DataInicio as dia'],
       sum: 'QtdConforme as quantidade',
       orderBy: [['DataInicio', 'desc']],
@@ -64,11 +63,11 @@ function ordemProducaoOperacaoControllerFactory(
     operacao: number
     mes: string
   }) => {
-    zod(operacao, zd.number())
-    zod(mes, zd.string().superRefine(zsr.month))
+    // zod(operacao, zd.string())
+    // zod(mes, zd.string().superRefine(zsr.month))
 
     const qry = await db.run({
-      from: orm.getTableName(),
+      from: orm.util.getTableName(),
       selectRaw: [
         'CONVERT(CHAR(7),[DataInicio],120) AS mes, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade',
       ],
@@ -161,7 +160,7 @@ function ordemProducaoOperacaoControllerFactory(
       )
     )
       .select(
-        raw(
+        knex.raw(
           "case when tOperacaoOrdemProducao.HoraInicio <='06:00:00' then 'T3' when tOperacaoOrdemProducao.HoraInicio <='14:00:00' then 'T1' when tOperacaoOrdemProducao.HoraInicio <='22:30:00' then 'T2' else 'T3' end as turno, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade"
         )
       )
@@ -176,11 +175,7 @@ function ordemProducaoOperacaoControllerFactory(
   turno.rpc = true
 
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
+    ...orm.rpc,
     diario,
     mensal,
     modelo,

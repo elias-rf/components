@@ -9,14 +9,7 @@ export type TDiamanteKeys = (typeof diamante.primary)[number]
 function diamanteControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TDiamanteFields, TDiamanteKeys>(db, schema)
 
-  return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
-  }
+  return { ...orm.rpc }
 }
 
 export const diamanteController = diamanteControllerFactory(dbOftalmo, diamante)

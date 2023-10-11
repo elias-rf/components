@@ -9,12 +9,7 @@ export type TVendedorMetaKeys = (typeof vendedor.primary)[number]
 function vendedorMetaControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TVendedorMetaFields, TVendedorMetaKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
+    ...orm.rpc,
   }
 }
 

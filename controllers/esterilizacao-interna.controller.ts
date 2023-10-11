@@ -46,7 +46,11 @@ function esterilizacaoInternaControllerFactory(
   }
   diario.rpc = true
 
-  const mensal = async ({ mes }: { mes: string }) => {
+  const mensal = async ({
+    mes,
+  }: {
+    mes: string
+  }): Promise<{ mes: string; quantidade: number }[]> => {
     zod(mes, zd.string().superRefine(zsr.month))
 
     const qry = await db.run({
@@ -71,7 +75,7 @@ function esterilizacaoInternaControllerFactory(
   }: {
     data: string
     produto: string
-  }) => {
+  }): Promise<{ modelo: string; quantidade: number }[]> => {
     zod(data, zd.string().superRefine(zsr.date))
     zod(produto, zd.string())
     const knex = db.knex
@@ -92,7 +96,7 @@ function esterilizacaoInternaControllerFactory(
         fkCategoria: produto,
       })
       .whereIn('fkOperacao', [3058, 3158])
-    return qry
+    return qry as { modelo: string; quantidade: number }[]
   }
   modelo.rpc = true
 
@@ -119,11 +123,7 @@ function esterilizacaoInternaControllerFactory(
   produto.rpc = true
 
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
+    ...orm.rpc,
     diario,
     mensal,
     modelo,

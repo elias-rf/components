@@ -9,12 +9,7 @@ export type TEstoqueKeys = (typeof Estoque.primary)[number]
 function estoqueControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TEstoqueFields, TEstoqueKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    increment: orm.increment,
+    ...orm.rpc,
   }
 }
 

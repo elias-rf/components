@@ -1,9 +1,9 @@
+import { dbOftalmo } from '@/controllers/db-oftalmo.db'
+import { knexMockMsql } from '@/mocks/connections.mock'
 import { getTracker } from '@/mocks/database.mock'
 import { knexMockHistory } from '@/mocks/knex-mock-history'
+import { beforeEach, describe, expect, it } from 'vitest'
 import { ordemProducaoOperacaoController } from './ordem-producao-operacao.controller'
-import { expect, it, describe, beforeEach } from 'vitest'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { dbOftalmo } from '@/controllers/db-oftalmo.db'
 
 describe('ordemProducaoOperacaoController', () => {
   const tracker = getTracker()
@@ -34,7 +34,7 @@ describe('ordemProducaoOperacaoController', () => {
     ])
   })
 
-  it.only('mensal', async () => {
+  it('mensal', async () => {
     tracker.on
       .select('tOperacaoOrdemProducao')
       .response([{ dia: '2020-01-01', quantidade: 10 }])
@@ -102,7 +102,7 @@ describe('ordemProducaoOperacaoController', () => {
     expect(knexMockHistory(tracker)).toEqual([
       {
         bindings: ['1010', '2020-01-01'],
-        sql: "select [case when tOperacaoOrdemProducao].[HoraInicio <='06:00:00' then 'T3' when tOperacaoOrdemProducao].[HoraInicio <='14:00:00' then 'T1' when tOperacaoOrdemProducao].[HoraInicio <='22:30:00' then 'T2' else 'T3' end] as [turno, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade] as [_sql],  as [_args],  as [_as] from ((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp where [fkOperacao] = @p0 and [DataInicio] = @p1 group by case when tOperacaoOrdemProducao.HoraInicio <='06:00:00' then 'T3' when tOperacaoOrdemProducao.HoraInicio <='14:00:00' then 'T1' when tOperacaoOrdemProducao.HoraInicio <='22:30:00' then 'T2' else 'T3' end",
+        sql: "select case when tOperacaoOrdemProducao.HoraInicio <='06:00:00' then 'T3' when tOperacaoOrdemProducao.HoraInicio <='14:00:00' then 'T1' when tOperacaoOrdemProducao.HoraInicio <='22:30:00' then 'T2' else 'T3' end as turno, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade from ((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp where [fkOperacao] = @p0 and [DataInicio] = @p1 group by case when tOperacaoOrdemProducao.HoraInicio <='06:00:00' then 'T3' when tOperacaoOrdemProducao.HoraInicio <='14:00:00' then 'T1' when tOperacaoOrdemProducao.HoraInicio <='22:30:00' then 'T2' else 'T3' end",
       },
     ])
   })

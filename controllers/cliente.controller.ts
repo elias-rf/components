@@ -4,11 +4,23 @@ import { OrmDatabase, ormTable } from '@/orm'
 import { CadCli } from '@/schemas/plano/CadCli.schema'
 import type { TSchema } from '@/schemas/schema.type'
 import { formatMoney } from '@/utils/format/format-money'
-import { zsr } from '@/utils/zod/z-refine'
-import { zd, zod } from '@/utils/zod/zod'
+import * as vb from 'valibot'
 
 export type TClienteFields = keyof typeof CadCli.fields
 export type TClienteKeys = (typeof CadCli.primary)[number]
+
+const schemaCliente = vb.nonOptional(
+  vb.number('cliente deve ser number'),
+  'cliente deve ser informado'
+)
+const schemaInicio = vb.nonOptional(
+  vb.string([vb.regex(/\d{4}-\d{2}-\d{2}/, 'inicio deve ser yyyy-mm-dd')]),
+  'inicio deve ser informado'
+)
+const schemaFim = vb.nonOptional(
+  vb.string([vb.regex(/\d{4}-\d{2}-\d{2}/, 'fim deve ser yyyy-mm-dd')]),
+  'fim deve ser informado'
+)
 
 function clienteControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TClienteFields, TClienteKeys>(db, schema)
@@ -18,13 +30,13 @@ function clienteControllerFactory(db: OrmDatabase, schema: TSchema) {
     fim: string
     cliente: number
   }) {
-    zod(
-      args,
-      zd.object({
-        inicio: zd.string().superRefine(zsr.date),
-        fim: zd.string().superRefine(zsr.date),
-        cliente: zd.number(),
-      })
+    vb.parse(
+      vb.object({
+        inicio: schemaInicio,
+        fim: schemaFim,
+        cliente: schemaCliente,
+      }),
+      args
     )
 
     const data = await nfSaidaController.vendaMensalCliente(args)
@@ -58,13 +70,13 @@ function clienteControllerFactory(db: OrmDatabase, schema: TSchema) {
     fim: string
     cliente: number
   }) => {
-    zod(
-      args,
-      zd.object({
-        inicio: zd.string().superRefine(zsr.date),
-        fim: zd.string().superRefine(zsr.date),
-        cliente: zd.number(),
-      })
+    vb.parse(
+      vb.object({
+        inicio: schemaInicio,
+        fim: schemaFim,
+        cliente: schemaCliente,
+      }),
+      args
     )
 
     const data = await nfSaidaController.vendaMensalCliente(args)
@@ -99,13 +111,13 @@ function clienteControllerFactory(db: OrmDatabase, schema: TSchema) {
     fim: string
     cliente: number
   }) => {
-    zod(
-      args,
-      zd.object({
-        inicio: zd.string().superRefine(zsr.date),
-        fim: zd.string().superRefine(zsr.date),
-        cliente: zd.number(),
-      })
+    vb.parse(
+      vb.object({
+        inicio: schemaInicio,
+        fim: schemaFim,
+        cliente: schemaCliente,
+      }),
+      args
     )
 
     const data = await nfSaidaController.vendaMensalCliente(args)
@@ -134,12 +146,7 @@ function clienteControllerFactory(db: OrmDatabase, schema: TSchema) {
   vendaMensalValor.rpc = true
 
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
+    ...orm.rpc,
     vendaMensalQuantidade,
     vendaMensalValor,
     vendaMensalValorMedio,

@@ -69,7 +69,7 @@ function nfEntradaControllerFactory(db: OrmDatabase, schema: TSchema) {
     const hoje = day().format('YYYY-MM-DD')
     const agora = day().format('HH:mm:ss')
 
-    const nf = await orm.read({
+    const nf = await orm.rpc.read({
       id: [
         ['CdEmpresa', 1],
         ['NroNf', kOp],
@@ -83,7 +83,7 @@ function nfEntradaControllerFactory(db: OrmDatabase, schema: TSchema) {
       throw new Error(`Ordem de produção ${kOp} já está cadastrada`)
     }
 
-    await orm.create({
+    await orm.rpc.create({
       data: {
         CdEmpresa: 1,
         NroNf: kOp,
@@ -264,11 +264,7 @@ function nfEntradaControllerFactory(db: OrmDatabase, schema: TSchema) {
   transferenciaCreate.rpc = true
 
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
+    ...orm.rpc,
     transferenciaCreate,
   }
 }

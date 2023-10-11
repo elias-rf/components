@@ -9,12 +9,7 @@ export type TNfSaidaItemKeys = (typeof ItemNota.primary)[number]
 function nfSaidaItemControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TNfSaidaItemFields, TNfSaidaItemKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
+    ...orm.rpc,
   }
 }
 

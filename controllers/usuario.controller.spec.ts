@@ -1,11 +1,11 @@
+import { dbOftalmo } from '@/controllers/db-oftalmo.db'
+import { knexMockMsql } from '@/mocks/connections.mock'
 import { getTracker } from '@/mocks/database.mock'
 import { knexMockHistory } from '@/mocks/knex-mock-history'
+import { beforeEach, describe, expect, it, test } from 'vitest'
 import { usuarioController } from './usuario.controller'
-import { describe, expect, it, test, beforeEach } from 'vitest'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { dbOftalmo } from '@/controllers/db-oftalmo.db'
 
-describe('UsuarioModel', () => {
+describe('usuarioController', () => {
   const tracker = getTracker()
   dbOftalmo.knex = knexMockMsql
 
@@ -14,9 +14,11 @@ describe('UsuarioModel', () => {
   })
 
   it('me', async () => {
-    const rsp = await usuarioController.me({ req: { user: { idUser: '1' } } })
+    const rsp = await usuarioController.me.call({
+      request: { user: { usuario_id: '1' } },
+    })
     expect(rsp).toEqual({
-      idUser: '1',
+      usuario_id: '1',
     })
   })
 
@@ -44,7 +46,7 @@ describe('UsuarioModel', () => {
     )
 
     expect(rsp).toEqual({
-      group_id: '',
+      group_ids: '',
       nome: '',
       nome_login: 'nome',
       token: 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',

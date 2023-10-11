@@ -9,12 +9,7 @@ export type TPedidoKeys = (typeof MestrePedido.primary)[number]
 function pedidoControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TPedidoFields, TPedidoKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
+    ...orm.rpc,
   }
 }
 

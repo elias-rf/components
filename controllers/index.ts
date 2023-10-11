@@ -41,19 +41,13 @@ import { vendedorController } from './vendedor.controller'
 // @endindex
 
 export const module = {
+  sys: {
+    list,
+  },
   // @index(['./**/*.controller.ts'], (f, _) => `${_.camelCase(f.name.slice(0,-10))}: {...${_.camelCase(f.name.slice(0,-10))}Controller},`)
   agendaTelefone: { ...agendaTelefoneController },
   cidade: { ...cidadeController },
-  cliente: {
-    list: clienteController.list,
-    read: clienteController.read,
-    update: clienteController.update,
-    del: clienteController.del,
-    create: clienteController.create,
-    vendaMensalQuantidade: clienteController.vendaMensalQuantidade,
-    vendaMensalValorMedio: clienteController.vendaMensalValorMedio,
-    vendaMensalValor: clienteController.vendaMensalValor,
-  },
+  cliente: { ...clienteController },
   diamante: { ...diamanteController },
   empregado: { ...empregadoController },
   esterilizacaoExterna: { ...esterilizacaoExternaController },
@@ -87,19 +81,32 @@ export const module = {
   produto: { ...produtoController },
   receber: { ...receberController },
   sysResource: { ...sysResourceController },
-  usuario: {
-    list: usuarioController.list,
-    read: usuarioController.read,
-    update: usuarioController.update,
-    del: usuarioController.del,
-    create: usuarioController.create,
-    login: usuarioController.login,
-    logout: usuarioController.logout,
-    me: usuarioController.me,
-  },
+  usuario: { ...usuarioController },
   vendedorMeta: { ...vendedorMetaController },
   vendedor: { ...vendedorController },
   // @endindex
 }
 
+type TProcedure<T> = { [K in keyof T]: TProcedure<T[K]> }
+
+function list() {
+  const moduleKeys = Object.keys(module) as unknown as Array<KModule>
+  const response = moduleKeys.reduce<{
+    [mdl: string]: string[]
+  }>((resp, moduleKey) => {
+    const methodKeys = Object.keys(module[moduleKey]) as unknown as Array<
+      keyof TProcedure<TModule[typeof moduleKey]>
+    >
+    const rpcMethods = methodKeys.filter((fnc) => module[moduleKey][fnc].rpc)
+    resp[moduleKey] = rpcMethods.map((rpcMethod) => {
+      return rpcMethod
+    })
+    return resp
+  }, {})
+  return response
+}
+
+list.rpc = true
+
 export type TModule = typeof module
+type KModule = keyof TModule

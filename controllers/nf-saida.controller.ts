@@ -320,11 +320,7 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
   vendaMensalCliente.rpc = true
 
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
+    ...orm.rpc,
     vendaMensalCliente,
     vendaDiario,
     transferenciaDiario,

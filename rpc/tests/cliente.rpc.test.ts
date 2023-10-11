@@ -6,7 +6,7 @@ import { dbPlano } from '@/controllers/db-plano.db'
 import { knexMockHistory } from '@/mocks/knex-mock-history'
 import { clientMock } from '@/mocks/prim'
 
-describe('clienteRouter', () => {
+describe('clienteRpc', () => {
   const tracker = getTracker()
   dbOftalmo.knex = knexMockMsql
   dbPlano.knex = knexMockMsql

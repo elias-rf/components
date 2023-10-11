@@ -9,12 +9,7 @@ export type TVendedorKeys = (typeof CadVen.primary)[number]
 function vendedorControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TVendedorFields, TVendedorKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm: orm,
+    ...orm.rpc,
   }
 }
 

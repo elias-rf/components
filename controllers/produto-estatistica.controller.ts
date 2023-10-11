@@ -12,13 +12,7 @@ function produtoEstatisticaControllerFactory(db: OrmDatabase, schema: TSchema) {
     schema
   )
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    increment: orm.increment,
-    orm,
+    ...orm.rpc,
   }
 }
 

@@ -2,11 +2,11 @@
 
 import { FastifyPluginCallback } from 'fastify'
 import { systemRoute } from './system'
-import { registerPrimServer } from '@/rpc/prim-server'
+import { registerRpcServer } from '@/rpc/rpc-server'
 
 const prefix = '/api'
 export const routes: FastifyPluginCallback = (fastify, options, done) => {
-  registerPrimServer(fastify)
+  registerRpcServer(fastify)
   fastify.register(systemRoute, { prefix })
   done()
 }

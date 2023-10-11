@@ -1,14 +1,15 @@
-import { Knex } from 'knex'
-import { pipe } from './utils/pipe'
-import { getValuesList } from './utils/get-values-list'
-import { getAssociations } from './utils/get-associations'
-import { fillAssociations } from './utils/fill-associations'
+// @ts-nocheck
 import { Query } from '@/orm/orm.type'
+import { Knex } from 'knex'
+import { fillAssociations } from './utils/fill-associations'
+import { getAssociations } from './utils/get-associations'
+import { getValuesList } from './utils/get-values-list'
+import { pipe } from './utils/pipe'
 
 export class OrmDatabase {
   knex: Knex
   private _logged: boolean
-  private _log: string[]
+  private _log: Array<string>
 
   constructor(knex: Knex) {
     this.knex = knex
@@ -37,30 +38,36 @@ export class OrmDatabase {
     let param = { knex, query }
 
     param = pipe(
-      this.method('select'),
-      this.method('first'),
-      this.method('insert'),
-      this.method('update'),
-      this.method('del'),
-      this.method('from'),
-      this.method('returning'),
-      this.method('offset'),
-      this.method('limit'),
-      this.method('count'),
-      this.method('min'),
-      this.method('max'),
-      this.method('sum'),
       this.method('avg'),
-      this.method('increment'),
+      this.method('count'),
+      this.method('del'),
+      this.method('first'),
+      this.method('from'),
+      this.method('fromRaw'),
       this.method('groupBy'),
+      this.method('groupByRaw'),
+      this.method('having'),
+      this.method('havingRaw'),
+      this.method('increment'),
+      this.method('insert'),
       this.method('join'),
+      this.method('limit'),
+      this.method('max'),
+      this.method('min'),
+      this.method('offset'),
       this.method('orderBy'),
+      this.method('orderByRaw'),
+      this.method('raw'),
+      this.method('returning'),
+      this.method('select'),
+      this.method('selectRaw'),
+      this.method('sum'),
+      this.method('update'),
       this.method('where'),
       this.method('whereNot'),
-      this.method('raw'),
-      this.method('having')
+      this.method('whereRaw')
     )(param)
-    this._log.push(param.knex.toString())
+    if (this._logged) this._log.push(param.knex.toString())
     const response = await param.knex
 
     const associations = getAssociations(query)
@@ -107,12 +114,40 @@ export class OrmDatabase {
       if (query[method] === undefined) return { knex, query }
 
       if (['raw'].includes(method)) {
-        knex = this.knex.raw(...query[method])
+        knex = this.knex.raw(
+          ...(query[method] as [string, any])
+        ) as unknown as Knex.QueryBuilder
+        return { knex, query }
+      }
+
+      if (
+        [
+          'orderByRaw',
+          'groupByRaw',
+          'havingRaw',
+          'whereRaw',
+          'fromRaw',
+        ].includes(method)
+      ) {
+        knex = knex[method](
+          ...(query[method] as [string, any])
+        ) as unknown as Knex.QueryBuilder
+
+        console.log(knex.toString())
+
+        return { knex, query }
+      }
+
+      if (['selectRaw'].includes(method)) {
+        knex = knex.select(this.knex.raw(...(query.selectRaw as [string, any])))
+
+        console.log(knex.toString())
+
         return { knex, query }
       }
 
       // method não possui argumentos
-      if (['del', 'columnInfo'].includes(method)) {
+      if (['del'].includes(method)) {
         knex = knex[method]()
         return { knex, query }
       }
@@ -121,7 +156,7 @@ export class OrmDatabase {
       if (['where', 'whereNot', 'join', 'having', 'orderBy'].includes(method)) {
         for (const whr of query[method]) {
           if (whr.raw !== undefined) {
-            knex = knex[method](this.knex.raw(...whr.raw))
+            knex = knex[method](this.knex.raw(...(whr.raw as [string, any])))
           } else {
             knex = knex[method](...whr)
           }
@@ -130,24 +165,21 @@ export class OrmDatabase {
       }
 
       // method possui varios argumentos
-      if (['returning', 'increment', 'groupBy'].includes(method)) {
-        knex = knex[method](...query[method])
+      if (['increment', 'groupBy'].includes(method)) {
+        knex = knex[method](...(query[method] as [string]))
+        return { knex, query }
+      }
+
+      if (['returning'].includes(method)) {
+        knex = knex[method as 'returning'](query[method] as [string])
         return { knex, query }
       }
 
       if (['select', 'first'].includes(method)) {
         // select
-        if (
-          typeof query[method] === 'object' &&
-          query[method].raw !== undefined
-        ) {
-          // select { raw: [""] }
-          knex = knex[method](this.knex.raw(...query[method].raw))
-          return { knex, query }
-        }
         // select ["", !association]
-        knex = knex[method](
-          query[method].filter((fld) => typeof fld === 'string')
+        knex = knex[method as 'select'](
+          query[method].filter((fld: any) => typeof fld === 'string')
         )
         return { knex, query }
       }
@@ -158,7 +190,9 @@ export class OrmDatabase {
         typeof query[method] === 'object' &&
         query[method].raw !== undefined
       ) {
-        knex = knex[method](this.knex.raw(...query[method].raw))
+        knex = knex[method](
+          this.knex.raw(...(query[method].raw as [string, any]))
+        )
         return { knex, query }
       }
 

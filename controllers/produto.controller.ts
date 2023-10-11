@@ -9,12 +9,7 @@ export type TProdutoKeys = (typeof tbl_Produto.primary)[number]
 function produtoControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TProdutoFields, TProdutoKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm: orm,
+    ...orm.rpc,
   }
 }
 

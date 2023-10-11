@@ -9,12 +9,7 @@ export type TProdutoPlanoKeys = (typeof CadPro.primary)[number]
 function produtoPlanoControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TProdutoPlanoFields, TProdutoPlanoKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
+    ...orm.rpc,
   }
 }
 

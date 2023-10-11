@@ -1,10 +1,10 @@
+import { dbOftalmo } from '@/controllers/db-oftalmo.db'
+import { dbSys } from '@/controllers/db-sys.db'
+import { groupSubjectController } from '@/controllers/group-subject.controller'
+import { knexMockMsql } from '@/mocks/connections.mock'
 import { getTracker } from '@/mocks/database.mock'
 import { knexMockHistory } from '@/mocks/knex-mock-history'
-import { expect, it, describe } from 'vitest'
-import { dbSys } from '@/controllers/db-sys.db'
-import { dbOftalmo } from '@/controllers/db-oftalmo.db'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { groupSubjectController } from '@/controllers/group-subject.controller'
+import { describe, expect, it } from 'vitest'
 
 describe('group-subject-model', () => {
   const tracker = getTracker()
@@ -47,7 +47,7 @@ describe('group-subject-model', () => {
     expect(knexMockHistory(tracker)).toEqual([
       {
         bindings: [50, '28', 'prm1', 'prm2'],
-        sql: 'select top (@p0) [idSubject] from [groupSubject] where [idGroup] = @p1 and [idSubject] in (@p2, @p3)',
+        sql: 'select top (@p0) [idSubject] from [groupSubject] where [idGroup] in (@p1) and [idSubject] in (@p2, @p3)',
       },
     ])
   })

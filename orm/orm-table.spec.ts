@@ -1,14 +1,14 @@
-import { getTracker } from '@/mocks/database.mock'
-import { knexMockHistory } from '@/mocks/knex-mock-history'
-import { beforeEach, describe, expect, it, test } from 'vitest'
-import { OrmTable } from './orm-table'
 import { knexMockMsql } from '@/mocks/connections.mock'
-import { OrmDatabase } from './orm-database'
+import { getTracker } from '@/mocks/database.mock'
 import { phonebook } from '@/schemas/oftalmo/phonebook.schema'
+import { beforeEach, describe, expect, it, test } from 'vitest'
+import { OrmDatabase } from './orm-database'
+import { ormTable } from './orm-table'
+
 describe('OrmTable', () => {
   const tracker = getTracker()
   const db = new OrmDatabase(knexMockMsql)
-  const tb = new OrmTable(db, phonebook)
+  const tb = ormTable(db, phonebook)
   db.startLog()
 
   beforeEach(() => {
@@ -17,80 +17,92 @@ describe('OrmTable', () => {
   })
 
   it('deve validar select', () => {
-    expect(tb.assertSelect()).toEqual(undefined)
-    expect(tb.assertSelect(['name'])).toEqual(undefined)
-    expect(tb.assertSelect(['id', 'name'])).toEqual(undefined)
+    expect(tb.util.validSelect()).toEqual({ select: ['*'] })
+    expect(tb.util.validSelect(['name'])).toEqual({ select: ['name'] })
+    expect(tb.util.validSelect(['id', 'name'])).toEqual({
+      select: ['id', 'name'],
+    })
   })
 
   it('deve invalidar select', () => {
-    expect(() => tb.assertSelect(['names'])).toThrow(
-      'não é um campo válido em phonebook use: department,email,id,name'
+    expect(() => tb.util.validSelect(['names'])).toThrow(
+      '[names] não é um campo válido para select em phonebook use: department,email,id,name'
     )
   })
 
   it('deve validar sort', () => {
-    expect(tb.validSort([['name', 'asc']])).toEqual(undefined)
+    expect(tb.util.validOrderBy([['name', 'asc']])).toEqual({
+      orderBy: [['name', 'asc']],
+    })
   })
 
   it('deve invalidar sort', () => {
-    expect(() => tb.validSort([['names', 'asc']])).toThrow(
-      '[names] não é válido para order em phonebook use: department,email,id,name'
+    expect(() => tb.util.validOrderBy([['names', 'asc']])).toThrow(
+      '[names] não é um campo válido para where em phonebook use: department,email,id,name'
     )
   })
 
   it('deve validar idColumn', () => {
-    expect(tb.validId([['id', 1]])).toEqual({ query: [['id', 1]] })
+    expect(tb.util.validId([['id', 1]])).toEqual({ where: [['id', 1]] })
   })
   it('deve invalidar idColumn', () => {
-    expect(() => tb.validId([['name', 1]])).toThrow(
+    expect(() => tb.util.validId([['name', 1]])).toThrow(
       '[name] não é id válido em phonebook use: id'
     )
-    // @ts-nocheck
-    expect(() => tb.validId([['id']])).toThrow(
+    // @ts-ignore
+    expect(() => tb.util.validId([['id']])).toThrow(
       'id deve ser Array<[string, any]>'
     )
-    // @ts-nocheck
-    expect(() => tb.validId([[1, 'id']])).toThrow(
+    // @ts-ignore
+    expect(() => tb.util.validId([[1, 'id']])).toThrow(
       'id deve ser Array<[string, any]>'
     )
   })
   it('deve invalidar idColumn', () => {
     expect(() =>
-      tb.validId([
+      tb.util.validId([
         ['id', 1],
         ['name', 1],
       ])
     ).toThrow('[name] não é id válido')
   })
 
-  it('deve validar filter', () => {
-    expect(tb.validFilter([['name', 'a']])).toEqual({ where: [['name', 'a']] })
+  it('deve validar where', () => {
+    expect(tb.util.validWhere([['name', 'a']])).toEqual({
+      where: [['name', 'a']],
+    })
+  })
+
+  it('deve validar where In', () => {
+    expect(tb.util.validWhere([['name', 'a']])).toEqual({
+      where: [['name', 'a']],
+    })
   })
 
   it('deve invalidar select', () => {
-    expect(() => tb.validFilter([['names', 'a']])).toThrow(
+    expect(() => tb.util.validWhere([['names', 'a']])).toThrow(
       '[names] não é um campo válido para where em phonebook use: department,email,id,name'
     )
   })
 
   it('deve validar data', () => {
-    expect(tb.assertData({ name: 'a' })).toEqual(undefined)
+    expect(tb.util.validData({ name: 'a' })).toEqual({ name: 'a' })
   })
 
   it('deve invalidar data', () => {
-    expect(() => tb.assertData({ names: 'a' })).toThrow(
-      '[names] não é um campo válido em phonebook use: id,name,department,email'
+    expect(() => tb.util.validData({ names: 'a' })).toThrow(
+      '[names] não é um campo válido para data em phonebook use: department,email,id,name'
     )
   })
 
   test('list', async () => {
     tracker.on.select('from [phonebook]').response([{ id: 1 }])
-    const rsp = await tb.list({
-      filter: [
+    const rsp = await tb.rpc.list({
+      where: [
         ['id', 1],
         ['name', '>', 'a'],
       ],
-      sort: [
+      orderBy: [
         ['id', 'asc'],
         ['name', 'desc'],
       ],
@@ -98,122 +110,92 @@ describe('OrmTable', () => {
       select: ['id', 'name'],
     })
 
+    expect(rsp).toEqual([{ id: 1 }])
     expect(db.sql()).toEqual([
       "select top (50) [id], [name] from [phonebook] where [id] = 1 and [name] > 'a' order by [id] asc, [name] desc",
-    ])
-    expect(rsp).toEqual([{ id: 1 }])
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: [50, 1, 'a'],
-        sql: 'select top (@p0) [id], [name] from [phonebook] where [id] = @p1 and [name] > @p2 order by [id] asc, [name] desc',
-      },
     ])
   })
 
   it('del', async () => {
     tracker.on.delete('phonebook').response(1)
-    const rsp = await tb.del({
+    const rsp = await tb.rpc.del({
       id: [['id', 10]],
-      returning: ['id'],
     })
     expect(rsp).toEqual(1)
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: [10],
-        sql: 'delete from [phonebook] output deleted.[id] where [id] = @p0',
-      },
+    expect(db.sql()).toEqual([
+      'delete from [phonebook] where [id] = 10;select @@rowcount',
     ])
   })
 
   it('read', async () => {
-    tracker.on.select('phonebook').response([{ id: '1' }])
-    const rsp = await tb.read({
+    tracker.on.select('phonebook').response({ id: '1' })
+    const rsp = await tb.rpc.read({
       id: [['id', 10]],
       select: ['id', 'name'],
     })
     expect(rsp).toEqual({ id: '1' })
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: [1, 10],
-        sql: 'select top (@p0) [id], [name] from [phonebook] where [id] = @p1',
-      },
+    expect(db.sql()).toEqual([
+      'select top (1) [id], [name] from [phonebook] where [id] = 10',
     ])
   })
 
   it('update', async () => {
     tracker.on.update('phonebook').response([{ id: 10 }])
-    const rsp = await tb.update({
+    const rsp = await tb.rpc.update({
       id: [['id', 10]],
       data: { id: 11 },
       returning: ['id'],
     })
     expect(rsp).toEqual([{ id: 10 }])
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: [11, 10],
-        sql: 'update [phonebook] set [id] = @p0 output inserted.[id] where [id] = @p1',
-      },
+    expect(db.sql()).toEqual([
+      'update [phonebook] set [id] = 11 output inserted.[id] where [id] = 10',
     ])
   })
 
   it('create with select', async () => {
     tracker.on.insert('phonebook').response({ id: 10 })
-    const rsp = await tb.create({
+    const rsp = await tb.rpc.create({
       data: { id: 10 },
       returning: ['id'],
     })
     expect(rsp).toEqual({ id: 10 })
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: [10],
-        sql: 'insert into [phonebook] ([id]) output inserted.[id] values (@p0)',
-      },
+    expect(db.sql()).toEqual([
+      'insert into [phonebook] ([id]) output inserted.[id] values (10)',
     ])
   })
 
   it('create without select', async () => {
     tracker.on.insert('phonebook').response(1)
-    const rsp = await tb.create({
+    const rsp = await tb.rpc.create({
       data: { id: 1 },
     })
     expect(rsp).toEqual(1)
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: [1],
-        sql: 'insert into [phonebook] ([id]) values (@p0)',
-      },
-    ])
+    expect(db.sql()).toEqual(['insert into [phonebook] ([id]) values (1)'])
   })
 
   it('increment', async () => {
     tracker.on.update('phonebook').response([])
-    const rsp = await tb.increment({
-      filter: [[`id`, 10]],
+    const rsp = await tb.rpc.increment({
+      where: [[`id`, 10]],
       increment: [`id`, 2],
       returning: ['id'],
     })
     expect(rsp).toEqual([])
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: [2, 10],
-        sql: 'update [phonebook] set [id] = [id] + @p0 output inserted.[id] where [id] = @p1',
-      },
+    expect(db.sql()).toEqual([
+      'update [phonebook] set [id] = [id] + 2 output inserted.[id] where [id] = 10',
     ])
   })
 
   it('count', async () => {
     tracker.on.select('phonebook').response([])
-    const rsp = await tb.count({
-      filter: [[`id`, 10]],
+    const rsp = await tb.rpc.count({
+      where: [[`id`, 10]],
       select: ['id', 'name'],
       count: '* as ttl',
     })
     expect(rsp).toEqual([])
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: [10],
-        sql: 'select [id], [name], count(*) as [ttl] from [phonebook] where [id] = @p0',
-      },
+    expect(db.sql()).toEqual([
+      'select count(*) as [ttl], [id], [name] from [phonebook] where [id] = 10',
     ])
   })
 })

@@ -8,14 +8,7 @@ export type TAgendaTelefoneKeys = (typeof phonebook.primary)[number]
 
 function agendaTelefoneControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TAgendaTelefoneFields, TAgendaTelefoneKeys>(db, schema)
-  return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
-  }
+  return { ...orm.rpc }
 }
 
 export const agendaTelefoneController = agendaTelefoneControllerFactory(

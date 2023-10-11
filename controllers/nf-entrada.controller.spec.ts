@@ -111,7 +111,6 @@ describe('nfEntradaController', () => {
       {
         sql: 'update [EstatPro] set [QtdCompras] = [QtdCompras] + @p0 where [CdEmpresa] = @p1 and [MesRef] = @p2 and [AnoRef] = @p3 and [CdProduto] = @p4;select @@rowcount',
       },
-
       {
         sql: 'insert into [Lotes] ([Aspecto], [CdFilial], [CdFornecedor], [CdLote], [CdNRA], [CdProduto], [Densidade], [DtAnalise], [DtEntrada], [DtFabricacao], [DtLimiteUso], [DtValidade], [FatorCorrecao], [Modelo], [NumNfEntrada], [PercentualDiluicao], [QtdeAdquirida], [SaldoPeso], [SerieNfEntrada], [SituacaoLote], [TipoLote]) values (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20)',
       },

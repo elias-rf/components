@@ -10,11 +10,7 @@ export type TEtiquetaInternaKeys =
 function etiquetaInternaControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TEtiquetaInternaFields, TEtiquetaInternaKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
+    ...orm.rpc,
   }
 }
 

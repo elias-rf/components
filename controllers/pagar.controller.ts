@@ -9,12 +9,7 @@ export type TPagarKeys = (typeof ArqDup.primary)[number]
 function pagarControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TPagarFields, TPagarKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
+    ...orm.rpc,
   }
 }
 

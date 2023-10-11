@@ -9,11 +9,7 @@ export type TEtiquetaExternaKeys = (typeof tEtiqueta.primary)[number]
 function etiquetaExternaControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TEtiquetaExternaFields, TEtiquetaExternaKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
+    ...orm.rpc,
   }
 }
 

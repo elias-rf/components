@@ -54,7 +54,11 @@ function esterilizacaoExternaControllerFactory(
   }
   diario.rpc = true
 
-  const mensal = async ({ mes }: { mes: string }) => {
+  const mensal = async ({
+    mes,
+  }: {
+    mes: string
+  }): Promise<{ mes: string; quantidade: number }[]> => {
     zod(mes, zd.string().superRefine(zsr.month))
     const knex = db.knex
     const qry = await knex(
@@ -76,7 +80,13 @@ function esterilizacaoExternaControllerFactory(
   }
   mensal.rpc = true
 
-  const modelo = ({ data, produto }: { data: string; produto: string }) => {
+  const modelo = ({
+    data,
+    produto,
+  }: {
+    data: string
+    produto: string
+  }): Promise<{ modelo: string; quantidade: number }[]> => {
     zod(data, zd.string().superRefine(zsr.date))
     zod(produto, zd.string())
     const knex = db.knex
@@ -99,14 +109,14 @@ function esterilizacaoExternaControllerFactory(
   }
   modelo.rpc = true
 
-  const produto = ({
+  const produto = async ({
     data,
   }: {
     data: string
   }): Promise<{ produto: string; quantidade: number }[]> => {
     zod(data, zd.string().superRefine(zsr.date))
     const knex = db.knex
-    const qry = knex(
+    const qry = await knex(
       knex.raw(
         'tEsterilizacaoExterna LEFT JOIN (SELECT tbl_Produto.fkCategoria, tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoExterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt'
       )
@@ -120,17 +130,12 @@ function esterilizacaoExternaControllerFactory(
       .groupBy('fkCategoria')
       .where(knex.raw('tEsterilizacaoExterna.Data=?', [data]))
 
-    return qry
+    return qry as { produto: string; quantidade: number }[]
   }
   produto.rpc = true
 
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
+    ...orm.rpc,
     diario,
     mensal,
     modelo,

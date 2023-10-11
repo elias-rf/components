@@ -8,14 +8,7 @@ export type TEmpregadoKeys = (typeof tbl_Funcionario.primary)[number]
 
 function empregadoControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TEmpregadoFields, TEmpregadoKeys>(db, schema)
-  return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
-  }
+  return { ...orm.rpc }
 }
 
 export const empregadoController = empregadoControllerFactory(

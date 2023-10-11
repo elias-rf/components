@@ -17,15 +17,23 @@ function groupSubjectControllerFactory(db: OrmDatabase, schema: TSchema) {
     idGroup: string
     idSubjectList: string[]
   }) => {
-    const resp = await orm.list({
+    const groups = idGroup.split(',')
+    if (groups.includes('0')) {
+      return idSubjectList.map((idSubject) => ({
+        idSubject,
+      }))
+    }
+    const resp = await orm.rpc.list({
       select: ['idSubject'],
       where: [
-        ['idGroup', idGroup],
+        ['idGroup', 'in', groups],
         ['idSubject', 'in', idSubjectList],
       ],
     })
+
     return resp
   }
+  listPermissions.rpc = true
 
   const can = async ({
     kUsuario,
@@ -45,7 +53,7 @@ function groupSubjectControllerFactory(db: OrmDatabase, schema: TSchema) {
       return true
     }
 
-    const permissions = await orm.list({
+    const permissions = await orm.rpc.list({
       select: ['idSubject'],
       where: [
         ['idGroup', 'in', idGroupList],
@@ -54,13 +62,10 @@ function groupSubjectControllerFactory(db: OrmDatabase, schema: TSchema) {
     })
     return permissions.length > 0
   }
+  can.rpc = true
+
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
+    ...orm.rpc,
     listPermissions,
     can,
   }

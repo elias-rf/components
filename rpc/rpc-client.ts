@@ -7,7 +7,7 @@ let endpoint = '/api/rpc'
 if (process.env.NODE_ENV === 'development')
   endpoint = 'http://localhost:3333/api/rpc'
 
-export const prim = createPrimClient<TModule>({
+export const rpc = createPrimClient<TModule>({
   endpoint,
   methodPlugin: createMethodPlugin(),
 })

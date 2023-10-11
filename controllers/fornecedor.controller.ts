@@ -9,12 +9,7 @@ export type TFornecedorKeys = (typeof CadFor.primary)[number]
 function fornecedorControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TFornecedorFields, TFornecedorKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm: orm,
+    ...orm.rpc,
   }
 }
 

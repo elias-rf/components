@@ -9,12 +9,7 @@ export type TSysResourceKeys = keyof typeof resource.fields
 function sysResourceControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TSysResourceFields, TSysResourceKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
+    ...orm.rpc,
   }
 }
 

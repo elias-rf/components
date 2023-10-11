@@ -2,8 +2,8 @@ import { dbOftalmo } from '@/controllers/db-oftalmo.db'
 import { etiquetaExternaController } from '@/controllers/etiqueta-externa.controller'
 import { ordemProducaoOperacaoController } from '@/controllers/ordem-producao-operacao.controller'
 import {
-  produtoItemController,
   TProdutoItemFields,
+  produtoItemController,
 } from '@/controllers/produto-item.controller'
 import { TProdutoPlanoFields } from '@/controllers/produto-plano.controller'
 import { OrmDatabase, ormTable } from '@/orm'
@@ -36,7 +36,7 @@ function ordemProducaoControllerFactory(db: OrmDatabase, schema: TSchema) {
     id: [['kOp', number]]
     serie: string
   }) => {
-    orm.validId(id)
+    orm.util.validId(id)
     const [[_, value]] = id
     const serial = '000000'
       .concat((value / 100).toString())
@@ -197,7 +197,7 @@ function ordemProducaoControllerFactory(db: OrmDatabase, schema: TSchema) {
     id: [['kOp', number]]
     select?: Array<TProdutoItemFields>
   }): Promise<Record<TProdutoItemFields, any> | object> => {
-    const ordemProducao = await orm.read({
+    const ordemProducao = await orm.rpc.read({
       id: [['kOp', id[0][1]]],
       select: ['fkProdutoItem'],
     })
@@ -243,11 +243,7 @@ function ordemProducaoControllerFactory(db: OrmDatabase, schema: TSchema) {
   produtoPlano.rpc = true
 
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
+    ...orm.rpc,
     controle,
     dataFabricacao,
     dataValidade,

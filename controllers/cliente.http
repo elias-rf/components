@@ -1,0 +1,21 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+@resource = agendaTelefone
+
+
+### ordemProducaoOperacao/produto
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "cliente/vendaMensalValorMedio",
+  "args": [
+    {
+      "inicio": "2019-02-01",
+      "fim": "2020-01-31",
+      "cliente": 1
+    }
+  ],
+  "id": "1"
+}

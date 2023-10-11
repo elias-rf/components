@@ -1,39 +1,26 @@
 @hostname = http://localhost
 @port = 3333
 @host = {{hostname}}:{{port}}
+@resource = agendaTelefone
 
-### Index
-GET {{host}}/api/rpc
-?rpc={"jsonrpc":"2.0","id":"1","method":"help"}
 
-### Index
-GET {{host}}/api/rpc
-?rpc={"jsonrpc":"2.0","id":"1","method":"help", "params":"agendaTelefone"}
-
-### Echo
+### Login
+# @name login
 POST {{host}}/api/rpc
 Content-Type: application/json
 
 {
-  "jsonrpc":"2.0",
-  "id":"1",
-  "method":"echoRequest",
-  "params":{
-    "inicio":"2020-01-01",
-    "fim":"2020-01-31",
-    "operacao": "1010"
-  }
+	"method": "usuario/login",
+	"args": {"user":"elias", "password":"jkl"},
+	"id": "1"
 }
 
-### Echo
-GET {{host}}/api/rpc
-?rpc={  "jsonrpc":"2.0","id":"1","method":"echoRequest","params":{"inicio":"2020-01-01","fim":"2020-01-31","operacao": "1020"}}
+### Me
+POST {{host}}/api/rpc
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.result.token}}
 
-### agendaTelefoneSchema
-GET {{host}}/api/rpc
-?rpc={"jsonrpc":"2.0","id":"1","method":"agendaTelefoneSchema"}
-
-
-
-### TESTE
-GET {{host}}/api/teste
+{
+	"method": "usuario/me",
+	"id": "1"
+}

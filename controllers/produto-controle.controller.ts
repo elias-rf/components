@@ -9,12 +9,7 @@ export type TProdutoControleKeys = (typeof Lotes.primary)[number]
 function produtoControleControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TProdutoControleFields, TProdutoControleKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
+    ...orm.rpc,
   }
 }
 

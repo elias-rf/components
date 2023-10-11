@@ -9,12 +9,7 @@ export type TPedidoItemKeys = (typeof ItemPedido.primary)[number]
 function pedidoItemControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TPedidoItemFields, TPedidoItemKeys>(db, schema)
   return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
+    ...orm.rpc,
   }
 }
 

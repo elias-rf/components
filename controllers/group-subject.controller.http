@@ -1,0 +1,19 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
+
+### ordemProducaoOperacao/produto
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "groupSubject/listPermissions",
+  "args": [
+    {
+      "idGroup": "28,0",
+      "idSubjectList": ["prm1","prm2"]
+    }
+  ],
+  "id": "1"
+}

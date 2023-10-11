@@ -8,14 +8,7 @@ export type TCidadeKeys = (typeof cidadesERF.primary)[number]
 
 function cidadeControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TCidadeFields, TCidadeKeys>(db, schema)
-  return {
-    list: orm.list,
-    read: orm.read,
-    update: orm.update,
-    create: orm.create,
-    del: orm.del,
-    orm,
-  }
+  return { ...orm.rpc }
 }
 
 export const cidadeController = cidadeControllerFactory(dbPlano, cidadesERF)
