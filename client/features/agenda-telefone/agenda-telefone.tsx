@@ -1,5 +1,11 @@
-import { AgendaTelefoneTable } from '@/client/features/agenda-telefone/agenda-telefone_table'
+import { Table } from '@/client/components/table'
+import { Button } from '@/client/components/ui/button'
+import { Title } from '@/client/components/ui/title'
+import { agendaTelefoneColumns } from '@/client/features/agenda-telefone/components/agenda-telefone_columns'
+import { AgendaTelefoneForm } from '@/client/features/agenda-telefone/components/agenda-telefone_form'
+import { formStatus } from '@/client/lib/form-status'
 import { whereType } from '@/client/lib/where-type'
+import { usePageSize } from '@/client/store/page-size'
 import {
   TAgendaTelefoneFields,
   TAgendaTelefoneKeys,
@@ -27,10 +33,11 @@ const dataClear = {
 /**
  * Agenda de Ramais
  */
-export function AgendaTelefone({ onState }: any) {
+export function AgendaTelefone() {
+  const pageHeight = usePageSize((state) => state.height * 0.7)
   // Form
   const form = useForm({ defaultValues: dataClear, mode: 'onTouched' })
-  const [status, setStatus] = React.useState<TFormStatus>('view')
+  const [status, setStatus] = React.useState<TFormStatus>('none')
 
   // Filters
   const [selection, setSelection] = React.useState<
@@ -43,6 +50,8 @@ export function AgendaTelefone({ onState }: any) {
   // Data
   const [list, setList] = React.useState<TData<TAgendaTelefoneFields>[]>([])
 
+  const frmStatus = formStatus(status)
+
   // Read Data
   React.useEffect(() => {
     async function getData() {
@@ -52,10 +61,6 @@ export function AgendaTelefone({ onState }: any) {
     if (selection.length > 0) getData()
   }, [form, selection])
 
-  React.useEffect(() => {
-    getList(where, orderBy)
-  }, [where, orderBy])
-
   async function getList(
     where: TWhere<TAgendaTelefoneFields>,
     orderBy: TOrderBy<TAgendaTelefoneFields>
@@ -64,12 +69,19 @@ export function AgendaTelefone({ onState }: any) {
     setList(data)
   }
 
-  function getId(row: TData<TAgendaTelefoneFields>): TId<'id'> {
+  React.useEffect(() => {
+    getList(where, orderBy)
+  }, [where, orderBy])
+
+  function getId(row: TData<TAgendaTelefoneFields>): TId<TAgendaTelefoneKeys> {
     return [['id', row.id]]
   }
 
   function handleSelection(selected: TSelection<TAgendaTelefoneKeys>) {
-    if (deepEqual(selected, selection)) return setSelection([])
+    if (deepEqual(selected, selection)) {
+      setStatus('none')
+      return setSelection([])
+    }
     setSelection(selected)
     setStatus('view')
   }
@@ -78,13 +90,10 @@ export function AgendaTelefone({ onState }: any) {
     where = whereType(where, 'id', 'int')
     setWhere(where)
   }
+
   function handleOrderBy(orderBy: TOrderBy<TAgendaTelefoneFields>) {
     setOrderBy(orderBy)
   }
-
-  React.useEffect(() => {
-    onState && onState({ where, selection, orderBy, status })
-  }, [onState, status, selection, where, orderBy])
 
   function handleNew() {
     setStatus('new')
@@ -114,6 +123,11 @@ export function AgendaTelefone({ onState }: any) {
   }
 
   function handleCancel() {
+    if (status === 'new') {
+      setStatus('none')
+      return
+    }
+
     setStatus('view')
   }
 
@@ -122,22 +136,45 @@ export function AgendaTelefone({ onState }: any) {
   }
 
   return (
-    <AgendaTelefoneTable
-      form={form}
-      getId={getId}
-      onCancel={handleCancel}
-      onDel={handleDel}
-      onEdit={handleEdit}
-      onNew={handleNew}
-      onOrderBy={handleOrderBy}
-      onSave={handleSave}
-      onSelection={handleSelection}
-      onWhere={handleWhere}
-      orderBy={orderBy}
-      rows={list}
-      selection={selection}
-      status={status}
-      where={where}
-    />
+    <div data-name="AgendaTelefone">
+      <div className="flex flex-row justify-between align-center">
+        <Title>Agenda de Ramais</Title>
+        <div className="flex flex-row space-x-2">
+          <Button
+            onClick={handleNew}
+            disabled={frmStatus.createDisabled}
+            size="sm"
+            outline
+          >
+            NOVO
+          </Button>
+        </div>
+      </div>
+      <Table
+        rows={list ?? []}
+        columns={agendaTelefoneColumns}
+        getId={getId}
+        selection={selection}
+        where={where}
+        orderBy={orderBy}
+        onSelection={handleSelection}
+        onWhere={handleWhere}
+        onOrderBy={handleOrderBy}
+        height={`${pageHeight}px`}
+      />
+
+      {status !== 'none' ? (
+        <div className="p-1 mb-2 border border-gray-300">
+          <AgendaTelefoneForm
+            form={form}
+            onCancel={handleCancel}
+            onDel={handleDel}
+            onEdit={handleEdit}
+            onSave={handleSave}
+            status={status}
+          />
+        </div>
+      ) : null}
+    </div>
   )
 }

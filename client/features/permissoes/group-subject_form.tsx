@@ -1,45 +1,55 @@
-import { Grid, TextField } from "@mui/material";
-import { TFormStatus } from "@/types";
-import { UseFormReturn } from "react-hook-form";
-
+import { Input } from '@/client/components/ui/input'
+import { Controller, UseFormReturn } from 'react-hook-form'
 type TGroupSubjectFormProps = {
-  form: UseFormReturn<any>;
-  status: TFormStatus;
-};
+  form: UseFormReturn<any>
+  disabled: boolean
+}
 
-export function GroupSubjectForm({ form, status }: TGroupSubjectFormProps) {
+export function GroupSubjectForm({ form, disabled }: TGroupSubjectFormProps) {
   return (
-    <Grid
-      container
-      spacing={2}
-    >
-      <Grid xs={6}>
-        <TextField
-          required
-          fullWidth
-          size="small"
-          variant="filled"
-          InputLabelProps={{
-            shrink: true,
+    <div className="grid gap-3 grid-cols-12">
+      <div className="col-span-6">
+        <Controller
+          name="idGroup"
+          control={form.control}
+          rules={{
+            required: 'Grupo é obrigatório',
           }}
-          label={"Grupo"}
-          disabled={status === "view"}
-          {...form.register("group_id")}
+          render={({ field, fieldState }) => (
+            <Input
+              required
+              label={'Grupo'}
+              disabled={disabled}
+              helper={fieldState.error?.message}
+              variant={fieldState.error && 'error'}
+              value={field.value}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+            />
+          )}
         />
-      </Grid>
-      <Grid xs={6}>
-        <TextField
-          fullWidth
-          size="small"
-          variant="filled"
-          InputLabelProps={{
-            shrink: true,
+      </div>
+      <div className="col-span-6">
+        <Controller
+          name="idSubject"
+          control={form.control}
+          rules={{
+            required: 'Assunto é obrigatório',
           }}
-          label={"Recurso"}
-          disabled={status === "view"}
-          {...form.register("subject_id")}
+          render={({ field, fieldState }) => (
+            <Input
+              required
+              label={'Recurso'}
+              disabled={disabled}
+              helper={fieldState.error?.message}
+              variant={fieldState.error && 'error'}
+              value={field.value}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+            />
+          )}
         />
-      </Grid>
-    </Grid>
-  );
+      </div>
+    </div>
+  )
 }

@@ -1,18 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { BrowserRouter } from "react-router-dom";
-import Precos from "./precos";
+import { Story } from '@ladle/react'
+import { BrowserRouter } from 'react-router-dom'
+import Precos from './precos'
 
-const meta: Meta<typeof Precos> = {
-  component: Precos,
-};
+export default {
+  title: 'pages/comercial/precos',
+}
 
-export default meta;
-type Story = StoryObj<typeof Precos>;
-
-export const Default: Story = {
-  render: () => (
-    <BrowserRouter>
-      <Precos />
-    </BrowserRouter>
-  ),
-};
+export const Default: Story = () => (
+  <BrowserRouter>
+    <Precos />
+  </BrowserRouter>
+)

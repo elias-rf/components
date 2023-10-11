@@ -1,128 +1,110 @@
-import {
-  Button,
-  Chip,
-  Grid,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { useArray } from "@/client/lib/hooks/use-array";
-import { useInput } from "@/client/lib/hooks/use-input";
-import { trpc } from "@/rpc/utils/trpc";
-import React from "react";
+import { Input } from '@/client/components/ui/input'
+import { Title } from '@/client/components/ui/title'
+import { cn } from '@/client/lib/cn'
+import { useArray } from '@/client/lib/hooks/use-array'
+import { rpc } from '@/rpc/rpc-client'
+import { Button } from 'flowbite-react'
+import React from 'react'
 
 // 000001000017 , 000001000025, 000001000033
 
 export function Transferencia() {
-  const [quantidade, setQuantidade] = React.useState("");
-  const [lista, setLista] = useArray<string>([]);
-  const [msg, setMsg] = React.useState<string>("");
-  const inputQuantidade = useInput(handleQuantidade);
-  const inputSerial = useInput(addList);
-  const utils = trpc.useContext();
-  // const quantidadeRef = React.useRef();
-  const createTransferencia = trpc.nfEntrada.transferenciaCreate.useMutation({
-    onSuccess: () => {
-      setQuantidade("");
-      setLista.empty();
-    },
-    onError: (error) => {
-      setMsg(error.message);
-    },
-  });
+  const [quantidade, setQuantidade] = React.useState('')
+  const [serial, setSerial] = React.useState('')
+  const [lista, setLista] = useArray<string>([])
+  const [msg, setMsg] = React.useState<string>('')
+  const quantidadeRef = React.useRef<HTMLInputElement>(null)
 
   function handleQuantidade(value: string) {
-    setQuantidade(value);
-    // quantidadeRef.current && quantidadeRef.current.focus();
+    if (isNaN(parseInt(value))) return
+    setQuantidade(value)
+    quantidadeRef.current && quantidadeRef.current.focus()
   }
 
   async function addList(value: string) {
-    if (await utils.ordemProducao.ehControleValido.fetch({ controle: value })) {
-      if (!lista.includes(value)) setLista.push(value);
-      setMsg("");
+    setSerial(value)
+    if (value.length == 0 || quantidade.length == 0) return
+    if (await rpc.ordemProducao.ehControleValido({ controle: value })) {
+      if (!lista.includes(value)) setLista.push(value)
+      setMsg('')
     } else {
-      setMsg("Controle inválido: " + value);
+      setMsg('Controle inválido: ' + value)
     }
-    inputSerial.setValue("");
+    setSerial('')
   }
 
   function delList(idx: any) {
-    setLista.removeAt(idx);
-    setMsg("");
+    setLista.removeAt(idx)
+    setMsg('')
   }
 
   async function transfer() {
-    createTransferencia.mutate({
-      controles: lista,
-    });
+    try {
+      await rpc.nfEntrada.transferenciaCreate({ controles: lista })
+      setQuantidade('')
+      setLista.empty()
+    } catch (e: any) {
+      setMsg(e.message)
+    }
   }
 
   return (
     <>
-      <Typography variant="h5">Transferência</Typography>
-      <Grid
-        container
-        spacing={2}
-        direction="row"
-        justifyContent="flex-start"
-        alignItems="center"
-      >
-        <Grid>
-          <TextField
+      <Title>Transferência</Title>
+      <div className="flex flex-row space-x-2 justifyContent-start alignItems-center">
+        <div>
+          <Input
+            value={quantidade}
             label="Quantidade Física"
-            autoComplete="off"
-            size="small"
-            {...inputQuantidade.props}
+            onInput={handleQuantidade}
             disabled={parseInt(quantidade) > 0}
           />
-        </Grid>
-      </Grid>
-      <Grid
-        container
-        spacing={2}
-        direction="row"
-        justifyContent="flex-start"
-        alignItems="center"
-      >
-        <Grid>
-          <TextField
+        </div>
+      </div>
+      <div className="flex flex-row space-x-2 justifyContent-start alignItems-center">
+        <div>
+          <Input
+            value={serial}
             label="Serial"
-            autoComplete="off"
-            size="small"
-            {...inputSerial.props}
-            disabled={isNaN(parseInt(quantidade))}
+            onInput={addList}
+            ref={quantidadeRef}
           />
-        </Grid>
-        <Grid>
+        </div>
+        <div>
           <Button
-            variant="contained"
             onClick={transfer}
             disabled={lista.length !== parseInt(quantidade)}
           >
             Transferir
           </Button>
-        </Grid>
-      </Grid>
-      <Typography
-        variant="h5"
-        className={
-          "text-3xl font-bold " +
-          (lista.length == parseInt(quantidade)
-            ? "text-blue-500"
-            : "text-red-500")
-        }
+        </div>
+      </div>
+      <div
+        className={cn(
+          'text-3xl font-bold ',
+          lista.length == parseInt(quantidade)
+            ? 'text-blue-500'
+            : 'text-red-500'
+        )}
       >
         {lista.length} unidades
-        <div className={"text-3xl font-bold text-red-500"}>{msg}</div>
-      </Typography>
-      <div className={"flex flex-wrap"}>
+        <div className={'text-3xl font-bold text-red-500'}>{msg}</div>
+      </div>
+      <div className={'flex flex-wrap space-x-2'}>
         {lista.map((serie, idx) => (
-          <Chip
-            key={idx + serie}
-            label={serie}
-            onDelete={() => delList(idx)}
-          />
+          <React.Fragment key={idx + serie}>
+            <Button
+              pill
+              size="xs"
+              color="gray"
+              outline
+              onClick={() => delList(idx)}
+            >
+              {serie}
+            </Button>
+          </React.Fragment>
         ))}
       </div>
     </>
-  );
+  )
 }

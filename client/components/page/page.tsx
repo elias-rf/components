@@ -1,13 +1,26 @@
-export type TPageTitleProps = {
-  title: string;
-  loading?: boolean;
-  children?: React.ReactNode;
-};
+import { useElementSize } from '@/client/lib/hooks/use-element-size'
+import { usePageSize } from '@/client/store/page-size'
+import React from 'react'
 
 export type TPageProps = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
-export function Page({ children }: TPageProps) {
-  return <section className={"mx-2 my-1 flex flex-col"}>{children}</section>;
+export const Page = ({ children }: TPageProps) => {
+  const pageSize = usePageSize()
+  const [pageRef, size] = useElementSize()
+
+  React.useEffect(() => {
+    pageSize.setSize(size)
+  }, [size])
+
+  return (
+    <div
+      ref={pageRef}
+      className={'px-2  h-[90%]'}
+      data-name="Page"
+    >
+      {children}
+    </div>
+  )
 }

@@ -1,13 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { twMerge } from "tailwind-merge";
+import { cn } from '@/client/lib/cn'
+import React from 'react'
+import { Link } from 'wouter'
 
 type TAProps = {
-  href: string;
-  onClickEvent?: (e: React.SyntheticEvent) => void;
-  children: React.ReactElement | string;
-  className?: string;
-};
+  href: string
+  onClickEvent?: (e: React.SyntheticEvent) => void
+  children: React.ReactElement | string
+  className?: string
+}
 
 export function Anchor({
   href,
@@ -18,12 +18,12 @@ export function Anchor({
 }: TAProps) {
   return (
     <Link
-      to={href}
+      href={href}
       onClick={onClickEvent}
-      className={twMerge("block w-full", className)}
+      className={cn('block w-full', className)}
       {...others}
     >
       {children}
     </Link>
-  );
+  )
 }

@@ -1,9 +1,9 @@
-import { TColumn } from "@/client/components/table";
+import { TColumn } from '@/types'
 
 export const groupSubjectColumns: TColumn[] = [
-  { name: "group_id", label: "Grupo" },
+  { name: 'idGroup', label: 'Grupo' },
   {
-    name: "subject_id",
-    label: "Recurso",
+    name: 'idSubject',
+    label: 'Recurso',
   },
-];
+]

@@ -1,50 +1,50 @@
-import { Select } from "@/client/components/inputs";
-import { TextField } from "@/client/components/inputs/text-field";
-import { Button, Chip, Grid } from "@mui/material";
-import { TWhere } from "@/types";
-import { SelectChangeEvent } from "@mui/material/Select";
-import React, { useState } from "react";
+import { Button } from '@/client/components/ui/button'
+import { Chip } from '@/client/components/ui/chip'
+import { Input } from '@/client/components/ui/input'
+import { Select } from '@/client/components/ui/select'
+import { TWhere } from '@/types'
+import React, { useState } from 'react'
 
 type TSearchProps = {
-  schema: { name: string; typeField?: string; label: string }[];
-  where: TWhere[];
-  onWhere: (event: TWhere[]) => void;
-};
+  schema: { name: string; typeField?: string; label: string }[]
+  where: TWhere<any>
+  onWhere: (event: TWhere<any>) => void
+}
 
 // retorna uma lista de igualdades de acordo como o tipo do campoß
 function getEqualitys(
   field: string,
   schema: { name: string; typeField?: string }[]
 ) {
-  const equalitys: any = {
-    "=": "igual a",
-    "<": "menor que",
-    "<=": "menor ou igual",
-    ">": "maior que",
-    ">=": "maior ou igual",
-    "?abc?": "contêm",
-    "abc?": "começa com",
-    "?abc": "termina com",
-    "-": "(vazio)",
-  };
+  const equalitys: { [key: string]: string } = {
+    '=': 'igual a',
+    '<': 'menor que',
+    '<=': 'menor ou igual',
+    '>': 'maior que',
+    '>=': 'maior ou igual',
+    '?abc?': 'contêm',
+    'abc?': 'começa com',
+    '?abc': 'termina com',
+    '-': '(vazio)',
+  }
 
-  const aux = schema.find((item: { name: string }) => item.name === field);
+  const aux = schema.find((item: { name: string }) => item.name === field)
 
-  const tipo = aux?.typeField || "string";
+  const tipo = aux?.typeField || 'string'
 
   switch (tipo) {
-    case "boolean":
-      return { "=": "igual a" };
-    case "string":
+    case 'boolean':
+      return { '=': 'igual a' }
+    case 'string':
       // eslint-disable-next-line no-case-declarations
-      const rsp = { ...equalitys };
-      delete rsp["<"];
-      delete rsp["<="];
-      delete rsp[">"];
-      delete rsp[">="];
-      return rsp;
+      const rsp = { ...equalitys }
+      delete rsp['<']
+      delete rsp['<=']
+      delete rsp['>']
+      delete rsp['>=']
+      return rsp
     default:
-      return equalitys;
+      return equalitys
   }
 }
 
@@ -53,158 +53,131 @@ function getFieldTitle(
   field: string,
   schema: { name: string; label: string }[]
 ) {
-  const aux = schema.find((col: { name: string }) => col.name === field);
-  const rsp = aux?.label;
-  return rsp || "";
+  const aux = schema.find((col: { name: string }) => col.name === field)
+  const rsp = aux?.label
+  return rsp || ''
 }
 
 // retorna o nome da igualdade
 function getEqualityName(equality: string) {
-  let rsp = equality;
-  if (rsp === "like") {
-    rsp = "⊂";
+  let rsp = equality
+  if (rsp === 'like') {
+    rsp = '⊂'
   }
-  return rsp || "";
+  return rsp || ''
 }
 
 export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
-  const [whr, setWhr] = useState<TWhere[]>([]); // where de trabalho
-  const [fieldSelect, setFieldSelect] = useState(schema[0]?.name); // campo selecionado, default 1o campo.
-  const [equalitySelect, setEqualitySelect] = useState<string>("="); // igualdade selecionada, default =
-  const [valueInput, setValueInput] = useState(""); // valor selecionado, default ""
+  const [whr, setWhr] = useState<TWhere<any>>([]) // where de trabalho
+  const [fieldSelect, setFieldSelect] = useState(schema[0]?.name) // campo selecionado, default 1o campo.
+  const [equalitySelect, setEqualitySelect] = useState<string>('=') // igualdade selecionada, default =
+  const [valueInput, setValueInput] = useState('') // valor selecionado, default ""
 
   React.useEffect(() => {
-    setWhr(where);
-  }, [where]);
+    setWhr(where)
+  }, [where])
 
   function handleAdd() {
-    let flag = true;
-    const response = [...whr];
+    let flag = true
+    const response = [...whr]
     response.forEach((flt) => {
       if (flt[0] === fieldSelect && flt[1] === equalitySelect) {
-        flt[2] = valueInput;
-        flag = false;
+        flt[2] = valueInput
+        flag = false
       }
-    });
-    if (flag) response.push([fieldSelect, equalitySelect, valueInput]);
-    setWhr(response);
-    onWhere(response);
-    setValueInput("");
+    })
+    if (flag) response.push([fieldSelect, equalitySelect, valueInput])
+    setWhr(response)
+    onWhere(response)
+    setValueInput('')
   }
 
-  function handleSelectField(event: SelectChangeEvent) {
-    const value = event.target.value;
-    setFieldSelect(value);
+  function handleSelectField(value: string) {
+    setFieldSelect(value)
     if (Object.keys(getEqualitys(value, schema)).includes(equalitySelect)) {
-      return;
+      return
     }
-    setEqualitySelect("=");
+    setEqualitySelect('=')
   }
 
-  function handleInput(e: any) {
-    setValueInput(e.currentTarget.value);
+  function handleInput(value: string) {
+    setValueInput(value)
   }
 
   function handleDel(idx: number) {
-    const aux = [...whr];
-    aux.splice(idx, 1);
-    setWhr(aux);
-    onWhere(aux);
+    const aux = [...whr]
+    aux.splice(idx, 1)
+    setWhr(aux)
+    onWhere(aux)
   }
 
   function handleEdit(idx: number) {
-    const flt = [...whr[idx]];
+    const flt = [...whr[idx]]
 
-    setFieldSelect(flt[0]);
-    setEqualitySelect(flt[1]);
-    setValueInput(flt[2]);
+    setFieldSelect(flt[0])
+    setEqualitySelect(flt[1])
+    setValueInput(flt[2])
   }
 
   return (
-    <Grid
-      container
-      spacing={2}
-      direction={"column"}
-    >
-      <Grid
-        container
-        spacing={1}
-      >
+    <div className="flex flex-col space-y-2">
+      <div className="flex flex-wrap gap-2 items-center">
         {whr.map((item, idx) => (
-          <Grid key={idx}>
+          <div
+            className=""
+            key={idx}
+          >
             <Chip
-              size="small"
-              label={`${getFieldTitle(item[0], schema)} ${getEqualityName(
-                item[1]
-              )} ${item[2]}`}
-              onDelete={() => handleDel(idx)}
+              onClose={() => handleDel(idx)}
               onClick={() => handleEdit(idx)}
-              variant="outlined"
-            />
-          </Grid>
+              outline
+            >{`${getFieldTitle(item[0], schema)} ${getEqualityName(item[1])} ${
+              item[2]
+            }`}</Chip>
+          </div>
         ))}
-      </Grid>
+      </div>
 
-      <Grid
-        container
-        spacing={1}
-        alignItems="center"
-      >
-        <Grid
-          xs={12}
-          sm={3}
-        >
+      <div className="flex flex-wrap sm:flex-nowrap space-x-2  items-end">
+        <div className="basis-full">
           <Select
             label="Campo"
             value={fieldSelect}
             onChange={handleSelectField}
-            items={schema.map(({ name }: { name: string }) => name)}
-            labels={schema.map(({ label }: { label: string }) => label)}
+            options={schema.map(
+              ({ label, name }: { label: string; name: string }) => [
+                label,
+                name,
+              ]
+            )}
           />
-        </Grid>
-        <Grid
-          xs={12}
-          sm={3}
-        >
+        </div>
+        <div className="basis-full">
           <Select
             label="Igualdade"
             value={equalitySelect}
-            size="small"
-            fullWidth
-            onChange={(event: any) =>
-              setEqualitySelect(event.target.value || "")
-            }
-            items={Object.entries(getEqualitys(fieldSelect, schema)).map(
-              ([key]) => key
-            )}
-            labels={Object.entries(getEqualitys(fieldSelect, schema)).map(
-              ([_key, value]) => value
+            onChange={(value: string) => setEqualitySelect(value || '')}
+            options={Object.entries(getEqualitys(fieldSelect, schema)).map(
+              ([key, value]: [string, string]) => [value, key]
             )}
           />
-        </Grid>
-        <Grid
-          xs={12}
-          sm={4}
-        >
-          <TextField
+        </div>
+        <div className="basis-full">
+          <Input
             label="Valor"
-            name="valor"
-            size="small"
             value={valueInput}
-            onChange={handleInput}
-            fullWidth
+            onInput={handleInput}
           />
-        </Grid>
-        <Grid xs={2}>
+        </div>
+        <div className="basis-32">
           <Button
             onClick={handleAdd}
-            variant="outlined"
-            fullWidth
+            outline
           >
-            Filtrar
+            FILTRAR
           </Button>
-        </Grid>
-      </Grid>
-    </Grid>
-  );
+        </div>
+      </div>
+    </div>
+  )
 }

@@ -1,9 +1,9 @@
-import type { Story, StoryDefault } from '@ladle/react'
-import { CheckIcon } from './check-icon'
+import { CheckIcon } from '@/client/components/icons/check-icon'
 import '@/client/index.css'
+import type { Story, StoryDefault } from '@ladle/react'
 
 export default {
-  title: 'Components / Icons / CheckIcon',
+  title: 'Components / Icons / Check Icon',
 } satisfies StoryDefault
 
 export const Padrao: Story = () => <CheckIcon />

@@ -1,21 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Login } from "./login";
+import { Story, StoryDefault } from '@ladle/react'
+import { Login } from './login'
 
-const meta: Meta<typeof Login> = {
-  component: Login,
-  argTypes: { onInput: { action: "onInput" } },
-  args: {},
-};
+export default {
+  title: 'components / login',
+} satisfies StoryDefault
 
-export default meta;
-type Story = StoryObj<typeof Login>;
-
-export const Default: Story = {
-  render: (props) => {
-    return (
-      <>
-        <Login {...props} />
-      </>
-    );
-  },
-};
+export const Default: Story<any> = (props) => {
+  return (
+    <>
+      <Login {...props} />
+    </>
+  )
+}

@@ -1,233 +1,220 @@
-import {
-  ButtonCancel,
-  ButtonDel,
-  ButtonEdit,
-  ButtonNew,
-  ButtonSave,
-} from "@/client/components/form";
-import { Table } from "@/client/components/table";
-import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
-import type { TFilter, TFormStatus, TSelection, TSort } from "@/types";
-import { deepEqual } from "@/utils/object/deep-equal";
-import { toStringProperties } from "@/utils/object/to-string-properties";
-import { trpc } from "@/rpc/utils/trpc";
-import React from "react";
-import { useForm } from "react-hook-form";
-import { usuarioColumns } from "./usuario_columns";
-import { UsuarioForm } from "./usuario_form";
+import { Can } from '@/client/components/can'
+import { Table } from '@/client/components/table'
+import { Button } from '@/client/components/ui/button'
+import { Title } from '@/client/components/ui/title'
+import { Permissions } from '@/client/features/permissions'
+import { usuarioColumns } from '@/client/features/usuario/components/usuario_columns'
+import { UsuarioForm } from '@/client/features/usuario/components/usuario_form'
+import { formStatus } from '@/client/lib/form-status'
+import { whereType } from '@/client/lib/where-type'
+import { Loading } from '@/client/pages/loading'
+import { useAuth } from '@/client/store/auth'
+import { usePageSize } from '@/client/store/page-size'
+import { TUsuarioFields, TUsuarioKeys } from '@/controllers/usuario.controller'
+import { rpc } from '@/rpc/rpc-client'
+import type {
+  TData,
+  TFormStatus,
+  TId,
+  TOrderBy,
+  TSelection,
+  TWhere,
+} from '@/types'
+import { deepEqual } from '@/utils/object/deep-equal'
+import { omit } from '@/utils/object/omit'
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { useEffectOnce } from 'usehooks-ts'
 
 const dataClear = {
-  usuario_id: "",
-  email: "",
-  nome: "",
-  setor: "",
-};
+  kUsuario: '',
+  email: '',
+  nome: '',
+  setor: '',
+  Ativo: true,
+  idGroup: '',
+  NomeUsuario: '',
+}
 
-export function Usuario({ onState }: any) {
+type TUsuario = typeof dataClear
+
+const permissions = {
+  usuario_permissao: 'Atribuir permissões de acesso para usuários',
+  usuario_read: 'Visualizar dados do usuário',
+  usuario_update: 'Alterar dados do usuário',
+}
+type TPermissions = keyof typeof permissions
+type TCan = { [prm in TPermissions]: boolean }
+
+export function Usuario() {
+  const pageHeight = usePageSize((state) => state.height * 0.7)
+
   // Form
-  const form = useForm({ defaultValues: dataClear, mode: "onTouched" });
-  const [status, setStatus] = React.useState<TFormStatus>("view");
+  const form = useForm({ defaultValues: dataClear, mode: 'onTouched' })
   // List
-  const [selection, setSelection] = React.useState<TSelection>([]);
-  const [filter, setFilter] = React.useState<TFilter>({});
-  const [sort, setSort] = React.useState<TSort>({});
+  const [selection, setSelection] = React.useState<TSelection<TUsuarioKeys>>([])
+  const [where, setWhere] = React.useState<TWhere<TUsuarioFields>>([])
+  const [orderBy, setOrderBy] = React.useState<TOrderBy<TUsuarioFields>>([])
   // Data
-  trpc.usuario.read.useQuery(
-    { id: selection[0] },
-    {
-      enabled: selection[0] !== undefined,
-      onSuccess: (rec) => {
-        form.reset(toStringProperties(rec));
-      },
+
+  const idGroups = useAuth((state) => state.user.group_ids)
+  const [can, setCan] = useState<Partial<TCan>>()
+  const [status, setStatus] = useState<TFormStatus>('none')
+
+  const [list, setList] = React.useState<TData<TUsuarioFields>[]>([])
+
+  const frmStatus = formStatus(status)
+
+  useEffectOnce(() => {
+    async function getData() {
+      const data = await rpc.groupSubject.listPermissions({
+        idGroup: idGroups || '',
+        idSubjectList: Object.keys(permissions),
+      })
+      const can = data.reduce(
+        (acc, cur) => ({ ...acc, [cur.idSubject]: true }),
+        {}
+      )
+      setCan(can)
     }
-  );
-  const dataList = trpc.usuario.list.useQuery({ filter, sort });
+    getData()
+  })
 
-  function getId(row: any) {
-    return {
-      usuario_id: row.usuario_id,
-    };
-  }
+  // Read Data
+  React.useEffect(() => {
+    async function getData() {
+      const data = await rpc.usuario.read({ id: selection })
+      form.reset(data)
+    }
+    if (selection.length > 0) getData()
+  }, [form, selection])
 
-  function handleSelection(selected: TSelection) {
-    if (deepEqual(selected, selection)) return setSelection([]);
-    setSelection(selected);
-    setStatus("view");
+  async function getList(
+    where: TWhere<TUsuarioFields>,
+    orderBy: TOrderBy<TUsuarioFields>
+  ) {
+    const data = await rpc.usuario.list({ where, orderBy })
+    setList(data)
   }
-
-  function handleFilter(filterEvent: TFilter) {
-    setFilter(filterEvent);
-  }
-  function handleSort(sortEvent: TSort) {
-    setSort(sortEvent);
-  }
-
-  const trpcUtils = trpc.useContext();
 
   React.useEffect(() => {
-    onState && onState({ filter, selection, sort, status });
-  }, [onState, status, selection, filter, sort]);
+    getList(where, orderBy)
+  }, [where, orderBy])
 
-  const dataUpdate = trpc.usuario.update.useMutation({
-    onSuccess: () => {
-      trpcUtils.usuario.invalidate();
-    },
-  });
-
-  const dataCreate = trpc.usuario.create.useMutation({
-    onSuccess: () => {
-      trpcUtils.usuario.invalidate();
-    },
-  });
-
-  const dataDel = trpc.usuario.del.useMutation({
-    onSuccess: () => {
-      trpcUtils.usuario.invalidate();
-    },
-  });
-
-  function handleButtonNew() {
-    form.reset(dataClear);
-    setSelection([]);
+  function getId(row: TData<TUsuarioFields>): TId<TUsuarioKeys> {
+    return [['kUsuario', row.kUsuario]]
   }
 
-  function handleButtonDel() {
-    dataDel.mutate({ id: selection[0] });
+  function handleSelection(selected: TSelection<TUsuarioKeys>) {
+    if (deepEqual(selected, selection)) {
+      setStatus('none')
+      return setSelection([])
+    }
+    setSelection(selected)
+    setStatus('view')
   }
 
-  function handleButtonSave() {
-    if (status === "edit")
-      dataUpdate.mutate({ data: form.getValues(), id: selection[0] });
-    if (status === "new") dataCreate.mutate({ data: form.getValues() });
+  function handleWhere(where: TWhere<TUsuarioFields>) {
+    where = whereType(where, 'kUsuario', 'int')
+    setWhere(where)
   }
+
+  function handleOrderBy(orderBy: TOrderBy<TUsuarioFields>) {
+    setOrderBy(orderBy)
+  }
+
+  function handleNew() {
+    setStatus('new')
+    form.reset(dataClear)
+    setSelection([])
+  }
+
+  async function handleDel() {
+    await rpc.usuario.del({ id: selection })
+    await getList(where, orderBy)
+    setStatus('view')
+    setSelection([])
+  }
+
+  async function handleSave() {
+    let record = form.getValues()
+    if (status === 'edit') {
+      record = omit(record, ['kUsuario']) as TUsuario
+      await rpc.usuario.update({
+        data: record,
+        id: selection,
+      })
+    }
+    if (status === 'new') {
+      await rpc.usuario.create({ data: record })
+    }
+    await getList(where, orderBy)
+    setStatus('view')
+  }
+
+  function handleCancel() {
+    if (status === 'new') {
+      setStatus('none')
+      return
+    }
+
+    setStatus('view')
+  }
+
+  function handleEdit() {
+    setStatus('edit')
+  }
+
+  if (can === undefined) return <Loading />
 
   return (
-    <>
-      <Stack
-        direction="column"
-        spacing={2}
-      >
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Typography variant="h5">Usuários</Typography>
-          <Stack
-            direction="row"
-            spacing={2}
-          >
-            {status === "new" ? (
-              <>
-                <ButtonSave
-                  form={form}
-                  onStatus={setStatus}
-                  onClick={handleButtonSave}
-                />
-                <ButtonCancel
-                  form={form}
-                  status={status}
-                  onStatus={setStatus}
-                />
-              </>
-            ) : null}
-            {status !== "new" ? (
-              <ButtonNew
-                form={form}
-                status={status}
-                onStatus={setStatus}
-                onClick={handleButtonNew}
-              />
-            ) : null}
-          </Stack>
-        </Stack>
-        {status === "new" ? (
-          <Box sx={{ py: 1 }}>
-            <UsuarioForm
-              form={form}
-              status={status}
-            />
-            <Divider
-              variant="middle"
-              sx={{ pt: 2 }}
-            />
-          </Box>
-        ) : null}
-        <Table
-          rows={dataList.data ?? []}
-          columns={usuarioColumns}
-          getId={getId}
-          selection={selection}
-          filter={filter}
-          sort={sort}
-          onSelection={handleSelection}
-          onFilter={handleFilter}
-          onSort={handleSort}
-        >
-          {() => (
-            <Grid
-              container
-              direction={"column"}
-              spacing={1}
-              sx={{
-                mb: 4,
-                p: 1,
-                border: "2px solid rgba(25, 118, 210, 0.2)",
-              }}
+    <Can can={can.usuario_read}>
+      <div data-name="Cliente">
+        <div className="flex flex-row justify-between align-center">
+          <div className="flex flex-row">
+            <Title>Usuários</Title>
+            <Can
+              can={can.usuario_permissao}
+              response={null}
             >
-              <Grid
-                container
-                direction={"row"}
-                spacing={2}
-              >
-                <Grid>
-                  <ButtonEdit
-                    form={form}
-                    status={status}
-                    onStatus={setStatus}
-                  />
-                </Grid>
-                <Grid>
-                  <ButtonDel
-                    form={form}
-                    status={status}
-                    onStatus={setStatus}
-                    onClick={handleButtonDel}
-                  />
-                </Grid>
-              </Grid>
-              <Grid>
-                <UsuarioForm
-                  form={form}
-                  status={status}
-                />
-              </Grid>
-              <Grid
-                container
-                direction="row"
-                justifyContent="flex-end"
-                alignItems="center"
-                spacing={2}
-              >
-                <Grid>
-                  <ButtonSave
-                    form={form}
-                    onStatus={setStatus}
-                    onClick={handleButtonSave}
-                  />
-                </Grid>
-                <Grid>
-                  <ButtonCancel
-                    form={form}
-                    status={status}
-                    onStatus={setStatus}
-                  />
-                </Grid>
-              </Grid>
-            </Grid>
-          )}
-        </Table>
-      </Stack>
-    </>
-  );
+              <Permissions permissions={permissions} />
+            </Can>
+          </div>
+
+          <Button
+            onClick={handleNew}
+            disabled={frmStatus.createDisabled}
+            size="sm"
+            outline
+          >
+            NOVO
+          </Button>
+        </div>
+      </div>
+      <Table
+        columns={usuarioColumns}
+        getId={getId}
+        height={`${pageHeight}px`}
+        onOrderBy={handleOrderBy}
+        onSelection={handleSelection}
+        onWhere={handleWhere}
+        orderBy={orderBy}
+        rows={list}
+        selection={selection}
+        where={where}
+      />
+      {status !== 'none' ? (
+        <div className="p-1 mb-2 border border-gray-300">
+          <UsuarioForm
+            form={form}
+            onCancel={handleCancel}
+            onDel={handleDel}
+            onEdit={handleEdit}
+            onSave={handleSave}
+            status={status}
+          />
+        </div>
+      ) : null}
+    </Can>
+  )
 }

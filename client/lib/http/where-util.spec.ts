@@ -1,31 +1,31 @@
-import { describe, expect, it } from "vitest";
-import { whereUtil } from "./where-util";
+import { describe, expect, it } from 'vitest'
+import { whereUtil } from './where-util'
 
-describe("whereUtil", () => {
-  it("setUnique", () => {
+describe('whereUtil', () => {
+  it('setUnique', () => {
     expect(
-      whereUtil.setUnique(
+      whereUtil.setValue(
         [
-          ["id", "=", "ab"],
-          ["name", "=", "fulano"],
+          ['id', '=', 'ab'],
+          ['name', '=', 'fulano'],
         ],
-        "id",
-        "bc"
+        'id',
+        'bc'
       )
     ).toEqual([
-      ["id", "=", "bc"],
-      ["name", "=", "fulano"],
-    ]);
-  });
-  it("getValue", () => {
+      ['id', '=', 'bc'],
+      ['name', '=', 'fulano'],
+    ])
+  })
+  it('getValue', () => {
     expect(
       whereUtil.getValue(
         [
-          ["id", "=", "ab"],
-          ["name", "=", "fulano"],
+          ['id', '=', 'ab'],
+          ['name', '=', 'fulano'],
         ],
-        "id"
+        'id'
       )
-    ).toEqual("ab");
-  });
-});
+    ).toEqual('ab')
+  })
+})

@@ -1,94 +1,66 @@
-import { TData, TId, TOrderBy, TSelection, TWhere } from '@/types'
-import { filterNonEmptyProperties } from '@/utils/object/filter-non-empty-properties'
-import { equalityFromObject } from '@/utils/query/equality'
+import { SearchIcon } from '@/client/components/icons/search-icon'
+import { cn } from '@/client/lib/cn'
 import {
-  Table as MuiTable,
-  TableCell as MuiTableCell,
-  TableRow as MuiTableRow,
-} from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+  TColumn,
+  TData,
+  TId,
+  TOrderBy,
+  TRow,
+  TSelection,
+  TWhere,
+} from '@/types'
+import { filterNonEmptyProperties } from '@/utils/object/filter-non-empty-properties'
+import { equalityFromObject, equalityToObject } from '@/utils/query/equality'
 import React from 'react'
-import { useFormButtons } from '../../lib/hooks/use-form-buttons'
-import { TableBody } from './table-body'
-import { TableBodyCol } from './table-body-col'
-import { TableBodyRow } from './table-body-row'
-import { TableHead } from './table-head'
-import { TableHeadCol } from './table-head-col'
-import { TableHeadFilter } from './table-head-filter'
-import { TableHeadRow } from './table-head-row'
-
-export type TColumn = {
-  label: string
-  name: string
-  align?: 'center' | 'left' | 'right' | 'inherit' | 'justify' | undefined
-  format?: (v: any) => any
-  sortable?: boolean
-  width?: number
-}
-
-export type TRow = { [field: string]: any }
+import { getIdDefault } from './get-id-default'
+import { InputFilter } from './input-filter'
+import { ShowSortIcon } from './show-sort-icon'
 
 export type TTableProps = {
-  BodyColSlot?: any
-  BodyRowSlot?: any
-  BodySlot?: any
   children?: (args: { row: TRow; columns: TColumn[] }) => React.ReactNode
   columns: TColumn[]
   getId?: (row: TData<string>) => TId<string>
-  HeadColSlot?: any
-  HeadFilterSlot?: any
-  HeadRowSlot?: any
-  HeadSlot?: any
-  onOrderBy?: (e: TOrderBy<string>) => void
+  height?: string
+  onOrderBy?: (e: TOrderBy<any>) => void
   onSelection?: (e: TSelection<any>) => void
-  onWhere?: (e: TWhere<string>) => void
+  onWhere?: (e: TWhere<any>) => void
   orderBy?: TOrderBy<string>
   rows: TRow[]
   selection?: TSelection<string>
   where?: TWhere<string>
 }
 
-const getIdDefault = (row: TRow) =>
-  Object.keys(row).reduce((acc, key) => {
-    acc.push([key, row[key]])
-    return acc
-  }, [] as TId<string>)
+type AlignMap = {
+  [K in Required<TColumn>['align']]: string
+}
+
+const align: AlignMap = {
+  left: 'text-left',
+  right: 'text-right',
+  center: 'text-center',
+  justify: 'text-justify',
+}
 
 export function Table({
-  rows: data = [],
-  columns,
-  selection = [],
-  onSelection,
-  orderBy,
-  onOrderBy,
-  where,
-  onWhere,
-  getId = getIdDefault,
-  HeadSlot = TableHead,
-  HeadRowSlot = TableHeadRow,
-  HeadColSlot = TableHeadCol,
-  HeadFilterSlot = TableHeadFilter,
-  BodySlot = TableBody,
-  BodyRowSlot = TableBodyRow,
-  BodyColSlot = TableBodyCol,
   children,
+  columns,
+  getId = getIdDefault,
+  height,
+  onOrderBy,
+  onSelection,
+  onWhere,
+  orderBy,
+  rows = [],
+  selection = [],
+  where,
 }: TTableProps) {
-  const theme = useTheme()
+  const defaultValues: { [field: string]: string } = equalityToObject(where)
 
-  const form = useFormButtons({
-    onInput,
-    initialValues: where?.reduce(
-      (acc, cur) => ({
-        ...acc,
-        [cur[0]]: `${cur[1]}${cur.length === 3 ? ` ${cur[2]}` : ''}`,
-      }),
-      {}
-    ),
-  })
+  function handleInput(value: string, name: string) {
+    defaultValues[name] = value
 
-  function onInput() {
     const filteredObj = equalityFromObject(
-      filterNonEmptyProperties(form.values)
+      filterNonEmptyProperties(defaultValues)
     )
     onWhere && onWhere(filteredObj)
   }
@@ -97,10 +69,19 @@ export function Table({
     onSelection && onSelection(getId(row))
   }
 
-  const handleOnSort = (col: any) => {
+  function isSortable(col: any) {
+    if (!orderBy || !onOrderBy) return false
+    if (col.sortable === false) return false
+    return true
+  }
+
+  function handleOnSort(col: any) {
     if (!orderBy || !onOrderBy) return
     if (col.sortable === false) return
-    if (orderBy.length === 0) return onOrderBy([[col.name, 'asc']])
+    if (orderBy.length === 0) {
+      onOrderBy && onOrderBy([[col.name, 'asc']])
+      return
+    }
     const field = orderBy[0][0]
     let ord = orderBy[0][1]
     if (field !== col.name) ord = 'desc'
@@ -124,74 +105,91 @@ export function Table({
   }
 
   return (
-    <MuiTable
-      sx={{ minWidth: 320 }}
-      size="small"
-      stickyHeader
+    <div
+      className="overflow-auto"
+      style={{ height }}
     >
-      <HeadSlot>
-        <HeadRowSlot>
-          {columns.map((column) => (
-            <HeadColSlot
-              key={`label-${column.name}`}
-              col={column}
-              sort={orderBy}
-              width={column.width}
-              onClick={() => handleOnSort(column)}
-              sx={[
-                {
-                  backgroundColor: theme.palette.grey[100],
-                },
-              ]}
-            />
-          ))}
-        </HeadRowSlot>
-        {where ? (
-          <HeadRowSlot>
-            {columns.map((column) => (
-              <HeadFilterSlot
-                key={`filter-${column.name}`}
-                col={column}
-                {...form.getInputProps(column.name)}
-              />
+      <table className="relative w-full text-sm text-left text-gray-500 whitespace-no-wrap border-blue-400 table-auto dark:text-gray-400">
+        <thead className="sticky top-0 bg-gray-50">
+          <tr className="bg-gray-50">
+            {columns.map((col: TColumn) => (
+              <th
+                className={cn(
+                  'px-2 py-1 bg-gray-50',
+                  align[col.align || 'left'],
+                  {
+                    'cursor-pointer': isSortable(col),
+                  }
+                )}
+                style={{ width: col.width }}
+                key={`col-${col.name}`}
+                onClick={() => handleOnSort(col)}
+              >
+                {col.label}
+                {isSortable(col) && (
+                  <ShowSortIcon
+                    col={col}
+                    orderBy={orderBy}
+                  />
+                )}
+              </th>
             ))}
-          </HeadRowSlot>
-        ) : null}
-      </HeadSlot>
-      <BodySlot>
-        {data.map((row) => (
-          <React.Fragment key={JSON.stringify(getId(row))}>
-            <BodyRowSlot
-              key={JSON.stringify(getId(row))}
-              sx={[
-                {
-                  '&:last-child td, &:last-child th': { border: 0 },
-                },
-              ]}
-              selected={isSelected(row, selection)}
-              hover={true}
-              onClick={() => handleOnSelection(row)}
-            >
-              {columns.map((column) => (
-                <BodyColSlot
-                  key={column.name}
-                  row={row}
-                  col={column}
-                />
+          </tr>
+          {where ? (
+            <tr className="bg-gray-50">
+              {columns.map((col: TColumn) => (
+                <td
+                  className="p-0 bg-gray-50 dark:border-gray-500"
+                  key={`whr-${col.name}`}
+                >
+                  <div className="flex border border-gray-300 flex-nowrap">
+                    <InputFilter
+                      name={col.name}
+                      value={defaultValues[col.name] || ''}
+                      onInput={handleInput}
+                    />
+                    <SearchIcon className="w-3" />
+                  </div>
+                </td>
               ))}
-            </BodyRowSlot>
-            {children ? (
-              isSelected(row, selection) ? (
-                <MuiTableRow>
-                  <MuiTableCell colSpan={columns.length}>
-                    {children({ row, columns })}
-                  </MuiTableCell>
-                </MuiTableRow>
-              ) : null
-            ) : null}
-          </React.Fragment>
-        ))}
-      </BodySlot>
-    </MuiTable>
+            </tr>
+          ) : null}
+        </thead>
+        <tbody>
+          {rows.map((row: TRow) => (
+            <React.Fragment key={getId(row).toString()}>
+              <tr
+                className={cn(
+                  'bg-white border-b dark:bg-gray-800 dark:border-gray-700',
+
+                  {
+                    'bg-gray-200 dark:bg-gray-700': isSelected(row, selection),
+                    'hover:bg-gray-100 dark:hover:bg-gray-600': !isSelected(
+                      row,
+                      selection
+                    ),
+                  }
+                )}
+                onClick={() => handleOnSelection(row)}
+              >
+                {columns.map((col) => (
+                  <td
+                    className={cn('p-1.5', col.align && align[col.align])}
+                    key={col.name}
+                  >
+                    {col.format ? col.format(row[col.name]) : row[col.name]}
+                  </td>
+                ))}
+              </tr>
+              {isSelected(row, selection) && children ? (
+                <tr>
+                  <td colSpan={100}>{children({ row, columns })}</td>
+                </tr>
+              ) : null}
+            </React.Fragment>
+          ))}
+        </tbody>
+      </table>
+    </div>
   )
 }

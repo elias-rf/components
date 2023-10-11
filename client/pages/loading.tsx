@@ -1,10 +1,9 @@
-import { Page } from "../components/page/page";
-import { PageTitle } from "../components/page/page_title";
+import { SpinnerIcon } from '@/client/components/icons/spinner-icon'
 
 export function Loading() {
   return (
-    <Page>
-      <PageTitle title={"Aguarde..."} loading={true}></PageTitle>
-    </Page>
-  );
+    <div className={'flex items-center justify-center h-full'}>
+      <SpinnerIcon className={'w-48 h-48'} />
+    </div>
+  )
 }

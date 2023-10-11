@@ -1,18 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { BrowserRouter } from "react-router-dom";
-import Vendas30dias from "./vendas_30dias";
+import '@/client/index.css'
+import type { Story, StoryDefault } from '@ladle/react'
+import { BrowserRouter } from 'react-router-dom'
+import Vendas30dias from './vendas_30dias'
 
-const meta: Meta<typeof Vendas30dias> = {
-  component: Vendas30dias,
-};
+export default {
+  title: 'Pages/Comercial/vendas_30dias',
+} satisfies StoryDefault
 
-export default meta;
-type Story = StoryObj<typeof Vendas30dias>;
-
-export const Default: Story = {
-  render: () => (
-    <BrowserRouter>
-      <Vendas30dias />
-    </BrowserRouter>
-  ),
-};
+export const Default: Story = () => (
+  <BrowserRouter>
+    <Vendas30dias />
+  </BrowserRouter>
+)

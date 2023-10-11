@@ -1,25 +1,13 @@
-import { useAuth } from "@/client/store/auth";
-import { Navigate, useLocation } from "react-router-dom";
-import logo from "../assets/images/logo.svg";
-import { Page } from "../components/page/page";
+import logo from '../assets/images/logo.svg'
 
 export function Home() {
-  const location = useLocation();
-  const isAuthenticated = useAuth((state) => state.isAuthenticated);
-
-  return isAuthenticated() ? (
-    <Navigate
-      replace={true}
-      to="/dashboard"
-      state={{ from: `${location.pathname}${location.search}` }}
-    />
-  ) : (
-    <Page>
+  return (
+    <div className="flex items-center justify-center h-full">
       <img
         src={logo}
         alt="logo"
-        width={`100%`}
+        width={'100%'}
       />
-    </Page>
-  );
+    </div>
+  )
 }

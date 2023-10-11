@@ -1,125 +1,162 @@
-import { Table } from "@/client/components/table";
-import { Box, Stack, Typography } from "@mui/material";
-import { Permissions } from "@/client/features/permissions";
-import type { TFilter, TFormStatus, TSelection, TSort } from "@/types";
-import { day } from "@/utils/date/day";
-import { deepEqual } from "@/utils/object/deep-equal";
-import { toStringProperties } from "@/utils/object/to-string-properties";
-import { recordClear } from "@/utils/schema/record-clear";
-import { trpc } from "@/rpc/utils/trpc";
-import React from "react";
-import { useForm } from "react-hook-form";
-import { clienteColumns } from "./cliente-columns";
-import { ClienteForm } from "./cliente-form";
+import { Can } from '@/client/components/can'
+import { Table } from '@/client/components/table'
+import { Title } from '@/client/components/ui/title'
+import { Permissions } from '@/client/features/permissions'
+import { whereType } from '@/client/lib/where-type'
+import { Loading } from '@/client/pages/loading'
+import { useAuth } from '@/client/store/auth'
+import { usePageSize } from '@/client/store/page-size'
+import { TClienteFields, TClienteKeys } from '@/controllers/cliente.controller'
+import { rpc } from '@/rpc/rpc-client'
+import type {
+  TData,
+  TFormStatus,
+  TId,
+  TOrderBy,
+  TSelection,
+  TWhere,
+} from '@/types'
+import { day } from '@/utils/date/day'
+import { deepEqual } from '@/utils/object/deep-equal'
+import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { useEffectOnce } from 'usehooks-ts'
+import { clienteColumns } from './components/cliente-columns'
+import { ClienteForm } from './components/cliente-form'
 
-const dataClear = recordClear(clienteColumns);
+const dataClear = {}
 
-const permissions = [
-  { id: "cliente_read", label: "Visualizar dados do cliente próprio" },
-  { id: "cliente_read_all", label: "Visualizar dados de todos os cliente" },
-];
+const permissions = {
+  cliente_permissao: 'Atribuir permissões do cliente',
+  cliente_read: 'Visualizar dados do cliente próprio',
+  cliente_read_all: 'Visualizar dados de todos os cliente',
+}
+type TPermissions = keyof typeof permissions
+type TCan = { [prm in TPermissions]: boolean }
 
 /**
  * Agenda de Ramais
  */
-export function Cliente({ onState }: any) {
+export function Cliente() {
+  const pageHeight = usePageSize((state) => state.height * 0.5)
+
   // Form
-  const form = useForm({ defaultValues: dataClear, mode: "onTouched" });
-  const [status, setStatus] = React.useState<TFormStatus>("view");
-  // List
-  const [selection, setSelection] = React.useState<TSelection>([
-    {
-      cliente_id: 0,
-    },
-  ]);
-  const [filter, setFilter] = React.useState<TFilter>({});
-  const [sort, setSort] = React.useState<TSort>({});
+  const form = useForm({ defaultValues: dataClear, mode: 'onTouched' })
+  // Filters
+  const [selection, setSelection] = useState<TId<TClienteKeys>>([
+    ['CdCliente', 0],
+  ])
+  const [where, setWhere] = useState<TWhere<TClienteFields>>([])
+  const [orderBy, setOrderBy] = useState<TOrderBy<TClienteFields>>([])
+  const idGroups = useAuth((state) => state.user.group_ids)
+  const [can, setCan] = useState<Partial<TCan>>()
+  const [status, setStatus] = useState<TFormStatus>('none')
+
   // Data
-  trpc.cliente.read.useQuery(
-    { id: selection[0] },
-    {
-      enabled: selection[0] !== undefined,
-      onSuccess: (rec) => {
-        form.reset(toStringProperties(rec));
-      },
+  const [list, setList] = useState<TData<TClienteFields>[]>([])
+
+  useEffectOnce(() => {
+    async function getData() {
+      const data = await rpc.groupSubject.listPermissions({
+        idGroup: idGroups || '',
+        idSubjectList: Object.keys(permissions),
+      })
+      const can = data.reduce(
+        (acc, cur) => ({ ...acc, [cur.idSubject]: true }),
+        {}
+      )
+      setCan(can)
     }
-  );
-  const dataList = trpc.cliente.list.useQuery(
-    { filter, sort },
-    {
-      select: (rows) => {
-        return rows.map((row) => {
-          row.data_cadastro = day(row.data_cadastro).format("YYYY-MM-DD");
-          return row;
-        });
-      },
+    getData()
+  })
+
+  // Read Data
+  useEffect(() => {
+    async function getData() {
+      const data = await rpc.cliente.read({ id: selection })
+      form.reset(data)
     }
-  );
+    if (selection.length > 0) getData()
+  }, [form, selection])
 
-  function getId(row: any) {
-    return {
-      cliente_id: row.cliente_id,
-    };
+  async function getList(
+    where: TWhere<TClienteFields>,
+    orderBy: TOrderBy<TClienteFields>
+  ) {
+    const data = await rpc.cliente.list({
+      where,
+      orderBy,
+      select: clienteColumns.map((it) => it.name) as TClienteFields[],
+    })
+    setList(
+      data.map((row) => {
+        row.DtCadastro = day(row.DtCadastro).format('YYYY-MM-DD')
+        return row
+      })
+    )
   }
 
-  function handleSelection(selected: TSelection) {
-    if (deepEqual(selected, selection)) return setSelection([]);
-    setSelection(selected);
-    setStatus("view");
+  useEffect(() => {
+    getList(where, orderBy)
+  }, [where, orderBy])
+
+  function getId(row: TData<TClienteFields>): TId<TClienteKeys> {
+    return [['CdCliente', row.CdCliente]]
   }
 
-  function handleFilter(filterEvent: TFilter) {
-    setFilter(filterEvent);
-  }
-  function handleSort(sortEvent: TSort) {
-    setSort(sortEvent);
+  function handleSelection(selected: TSelection<TClienteKeys>) {
+    if (deepEqual(selected, selection)) {
+      setStatus('none')
+      return setSelection([])
+    }
+    setSelection(selected)
+    setStatus('view')
   }
 
-  React.useEffect(() => {
-    onState && onState({ filter, selection, sort, status });
-  }, [onState, status, selection, filter, sort]);
+  function handleWhere(where: TWhere<TClienteFields>) {
+    where = whereType(where, 'CdCliente', 'int')
+    setWhere(where)
+  }
+  function handleOrderBy(orderBy: TOrderBy<TClienteFields>) {
+    setOrderBy(orderBy)
+  }
+
+  if (can === undefined) return <Loading />
 
   return (
-    <>
-      <Stack
-        direction="column"
-        spacing={2}
+    <Can can={can.cliente_read || can.cliente_read_all}>
+      <div
+        data-name="Cliente"
+        className="flex flex-row my-1 space-x-2"
       >
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
+        <Title>Histórico do cliente</Title>
+        <Can
+          can={can.cliente_permissao}
+          response={null}
         >
-          <Typography variant="h5">Histórico do cliente</Typography>
           <Permissions permissions={permissions} />
-        </Stack>
-        <Table
-          rows={dataList.data ?? []}
-          columns={clienteColumns}
-          getId={getId}
-          selection={selection}
-          filter={filter}
-          sort={sort}
-          onSelection={handleSelection}
-          onFilter={handleFilter}
-          onSort={handleSort}
-        >
-          {() => (
-            <Box
-              sx={{
-                mb: 4,
-                p: 1,
-                border: "2px solid rgba(25, 118, 210, 0.2)",
-              }}
-            >
-              <ClienteForm
-                form={form}
-                status={status}
-              />
-            </Box>
-          )}
-        </Table>
-      </Stack>
-    </>
-  );
+        </Can>
+      </div>
+      <Table
+        columns={clienteColumns}
+        getId={getId}
+        height={`${pageHeight}px`}
+        onOrderBy={handleOrderBy}
+        onSelection={handleSelection}
+        onWhere={handleWhere}
+        orderBy={orderBy}
+        rows={list ?? []}
+        selection={selection}
+        where={where}
+      />
+      {status !== 'none' ? (
+        <div className="p-1 mb-2 border border-gray-300">
+          <ClienteForm
+            form={form}
+            disabled
+          />
+        </div>
+      ) : null}
+    </Can>
+  )
 }

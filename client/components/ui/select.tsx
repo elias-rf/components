@@ -7,8 +7,8 @@ export type TSelectProps = {
   helper?: string
   label?: string
   onBlur?: (e: any) => void
-  onChange?: (e: string) => void
-  options: [string, any][]
+  onChange?: (value: string) => void
+  options: [label: string, value: any][]
   required?: boolean
   value: string
   variant?: 'success' | 'error' | 'none'
@@ -32,7 +32,7 @@ export function Select({
   }
 
   return (
-    <div>
+    <div className="w-full">
       <Label
         id={id}
         required={required}

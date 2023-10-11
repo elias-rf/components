@@ -1,8 +1,8 @@
-import { Typography } from "@mui/material";
-import { day } from "@/utils/date/day";
-import { formatMoney } from "@/utils/format/format-money";
-import { trpc } from "@/rpc/utils/trpc";
-import React from "react";
+import { Title } from '@/client/components/ui/title'
+import { rpc } from '@/rpc/rpc-client'
+import { day } from '@/utils/date/day'
+import { formatMoney } from '@/utils/format/format-money'
+import React from 'react'
 import {
   Line,
   LineChart,
@@ -10,81 +10,82 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-} from "recharts";
-import { formatDiario } from "./format-diario";
+} from 'recharts'
+import { TFormatDiarios, formatDiario } from './format-diario'
 
 type Vendas30diasProp = {
-  dia?: string;
-  onState?: (event: any) => void;
-};
+  dia?: string
+  onState?: (event: any) => void
+}
 
 /**
  * Componente para manipular Agenda de Ramais
  *
  * @returns {*} componente react
  */
-export function Vendas30dias({ onState, dia }: Vendas30diasProp) {
-  const fim = day(dia).format("YYYY-MM-DD");
+export function Vendas30dias({ dia }: Vendas30diasProp) {
+  const fim = day(dia).format('YYYY-MM-DD')
+  const inicio = day(dia).subtract(90, 'days').format('YYYY-MM-DD')
+  const [list, setList] = React.useState<TFormatDiarios>({})
 
-  const inicio = day(dia).subtract(90, "days").format("YYYY-MM-DD");
-
-  const dataVendaDiario = trpc.nfSaida.vendaDiario.useQuery(
-    {
+  async function getList(inicio: string, fim: string) {
+    const data = await rpc.nfSaida.vendaDiario({
       inicio,
       fim,
       uf: [
-        "AC",
-        "AL",
-        "AM",
-        "AP",
-        "BA",
-        "CE",
-        "DF",
-        "ES",
-        "GO",
-        "MA",
-        "MG",
-        "MS",
-        "MT",
-        "PA",
-        "PB",
-        "PE",
-        "PI",
-        "PR",
-        "RJ",
-        "RN",
-        "RO",
-        "RR",
-        "RS",
-        "SC",
-        "SE",
-        "SP1",
-        "SP2",
-        "TO",
-        "EX",
-        "FV",
+        'AC',
+        'AL',
+        'AM',
+        'AP',
+        'BA',
+        'CE',
+        'DF',
+        'ES',
+        'GO',
+        'MA',
+        'MG',
+        'MS',
+        'MT',
+        'PA',
+        'PB',
+        'PE',
+        'PI',
+        'PR',
+        'RJ',
+        'RN',
+        'RO',
+        'RR',
+        'RS',
+        'SC',
+        'SE',
+        'SP1',
+        'SP2',
+        'TO',
+        'EX',
+        'FV',
       ],
-    },
-    { select: (data) => formatDiario(data, fim) }
-  );
-  const width = "100%";
-  const height = 300;
+    })
+    setList(formatDiario(data, fim))
+  }
 
   React.useEffect(() => {
-    onState && onState({ inicio, fim, data: dataVendaDiario.data });
-  }, [onState, inicio, fim, dataVendaDiario.data]);
+    getList(inicio, fim)
+  }, [inicio, fim])
+
+  const width = '100%'
+  const height = 300
 
   return (
     <>
-      <Typography variant="h5">Vendas 30 dias</Typography>
-      <div className={"py-2"}>
-        <h2 className={"text-center text-lg"}>Liteflex</h2>
+      <Title>Vendas 30 dias</Title>
+      <div className={'py-2'}>
+        <h2 className={'text-center text-lg'}>Liteflex</h2>
         <ResponsiveContainer
           width={width}
           height={height}
         >
           <LineChart
-            data={dataVendaDiario.data?.liteflex}
+            data={list?.liteflex}
             syncId="implante"
           >
             <Line
@@ -109,7 +110,7 @@ export function Vendas30dias({ onState, dia }: Vendas30diasProp) {
             <XAxis dataKey="dia" />
             <Tooltip
               formatter={(value: number, name: string) =>
-                name === "Valor médio"
+                name === 'Valor médio'
                   ? `R$ ${formatMoney(value, 2)}`
                   : value.toString()
               }
@@ -117,13 +118,13 @@ export function Vendas30dias({ onState, dia }: Vendas30diasProp) {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className={"py-2"}>
-        <h2 className={"text-center text-lg"}>Hilite</h2>
+      <div className={'py-2'}>
+        <h2 className={'text-center text-lg'}>Hilite</h2>
         <ResponsiveContainer
           width={width}
           height={height}
         >
-          <LineChart data={dataVendaDiario.data?.hilite}>
+          <LineChart data={list?.hilite}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -146,20 +147,20 @@ export function Vendas30dias({ onState, dia }: Vendas30diasProp) {
             <XAxis dataKey="dia" />
             <Tooltip
               formatter={(value: number, name: string) =>
-                name === "Valor médio" ? `R$ ${formatMoney(value, 2)}` : value
+                name === 'Valor médio' ? `R$ ${formatMoney(value, 2)}` : value
               }
             />
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className={"py-2"}>
-        <h2 className={"text-center text-lg"}>Enlite</h2>
+      <div className={'py-2'}>
+        <h2 className={'text-center text-lg'}>Enlite</h2>
         <ResponsiveContainer
           width={width}
           height={height}
         >
           <LineChart
-            data={dataVendaDiario.data?.enlite}
+            data={list?.enlite}
             syncId="implante"
           >
             <Line
@@ -184,19 +185,19 @@ export function Vendas30dias({ onState, dia }: Vendas30diasProp) {
             <XAxis dataKey="dia" />
             <Tooltip
               formatter={(value: number, name: string) =>
-                name === "Valor médio" ? `R$ ${formatMoney(value, 2)}` : value
+                name === 'Valor médio' ? `R$ ${formatMoney(value, 2)}` : value
               }
             />
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className={"py-2"}>
-        <h2 className={"text-center text-lg"}>Metil</h2>
+      <div className={'py-2'}>
+        <h2 className={'text-center text-lg'}>Metil</h2>
         <ResponsiveContainer
           width={width}
           height={height}
         >
-          <LineChart data={dataVendaDiario.data?.metil}>
+          <LineChart data={list?.metil}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -219,19 +220,19 @@ export function Vendas30dias({ onState, dia }: Vendas30diasProp) {
             <XAxis dataKey="dia" />
             <Tooltip
               formatter={(value: number, name: string) =>
-                name === "Valor médio" ? `R$ ${formatMoney(value, 2)}` : value
+                name === 'Valor médio' ? `R$ ${formatMoney(value, 2)}` : value
               }
             />
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className={"py-2"}>
-        <h2 className={"text-center text-lg"}>Corneal Ring</h2>
+      <div className={'py-2'}>
+        <h2 className={'text-center text-lg'}>Corneal Ring</h2>
         <ResponsiveContainer
           width={width}
           height={height}
         >
-          <LineChart data={dataVendaDiario.data?.anel}>
+          <LineChart data={list?.anel}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -254,19 +255,19 @@ export function Vendas30dias({ onState, dia }: Vendas30diasProp) {
             <XAxis dataKey="dia" />
             <Tooltip
               formatter={(value: number, name: string) =>
-                name === "Valor médio" ? `R$ ${formatMoney(value, 2)}` : value
+                name === 'Valor médio' ? `R$ ${formatMoney(value, 2)}` : value
               }
             />
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className={"py-2"}>
-        <h2 className={"text-center text-lg"}>Liteflex + Enlite</h2>
+      <div className={'py-2'}>
+        <h2 className={'text-center text-lg'}>Liteflex + Enlite</h2>
         <ResponsiveContainer
           width={width}
           height={height}
         >
-          <LineChart data={dataVendaDiario.data?.enliteLiteflex}>
+          <LineChart data={list?.enliteLiteflex}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -289,12 +290,12 @@ export function Vendas30dias({ onState, dia }: Vendas30diasProp) {
             <XAxis dataKey="dia" />
             <Tooltip
               formatter={(value: number, name: string) =>
-                name === "Valor médio" ? `R$ ${formatMoney(value, 2)}` : value
+                name === 'Valor médio' ? `R$ ${formatMoney(value, 2)}` : value
               }
             />
           </LineChart>
         </ResponsiveContainer>
       </div>
     </>
-  );
+  )
 }

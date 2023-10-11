@@ -1,29 +1,20 @@
-import { useAuth } from "@/client/store/auth";
-import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import { LayoutDefault } from "../components/layout/layout-default";
-import { menu } from "../menu";
+import { Page } from '@/client/components/page/page'
+import { NoPrint } from '@/client/components/ui/no-print'
+import { Navbar } from '@/client/features/navbar'
 
 /** feature Layout com menu de páginas do aplicativo */
 export function Layout({ children }: { children?: any }) {
-  const user = useAuth((state) => state.user);
-  const [path, setPath] = React.useState("/main");
-  const navigate = useNavigate();
-
-  async function handleMenu(to: string) {
-    navigate(to);
-    setPath(to);
-  }
-
   return (
-    <LayoutDefault
-      menu={menu}
-      onClick={handleMenu}
-      path={path}
-      user={user}
+    <div
+      className="flex flex-col w-full h-screen"
+      data-name="Layout"
     >
-      <Outlet />
-      {children}
-    </LayoutDefault>
-  );
+      <NoPrint>
+        <Navbar />
+      </NoPrint>
+      <div className="h-full overflow-y-auto">
+        <Page>{children}</Page>
+      </div>
+    </div>
+  )
 }
