@@ -9,57 +9,11 @@ import { LRUCache } from 'lru-cache'
  * @param {object} options Options for the cache.
  */
 export function MultiKeyCache(options: any = { max: 10 }) {
-  const dispose = options.dispose
+  const cache = new LRUCache(options)
 
-  options.dispose = function (value: any, key: string) {
-    self._dispose(key)
-    if (dispose) {
-      dispose(value, key)
-    }
-  }
-
-  const self: {
-    cache: LRUCache<string, any, unknown>
-    _keyMap: any
-    _dispose: (keyHash: string) => void
-    set: (keyValues: any, object: any) => void
-    has: (keyValues: any) => boolean
-    get: (keyValues: any) => any
-    purge: (keyValues: any) => void
-    delete: (keyValues: any) => void
-    reset: () => void
-    itemCount: () => number
-    length: () => number
-    fetch: (keyValues: any) => Promise<any>
-    keys: () => Array<string>
-  } = {
-    cache: undefined as any,
-    _keyMap: {} as { [key: string]: any },
-
-    /**
-     * Removes mappings when objects are disposed by the LRU.
-     * @param {string} keyHash Key hash for the disposed object.
-     */
-    _dispose(keyHash: string) {
-      const keyValues = parse(keyHash)
-      for (const key in keyValues) {
-        const value = keyValues[key]
-        if (!self._keyMap[key]) {
-          continue
-        }
-        if (!Array.isArray(self._keyMap[key][value])) {
-          continue
-        }
-        const map = self._keyMap[key][value]
-        const index = map.indexOf(keyHash)
-        if (~index) {
-          map.splice(index, 1)
-        }
-        if (map.length === 0) {
-          delete self._keyMap[key][value]
-        }
-      }
-    },
+  const self = {
+    ...cache,
+    cache,
 
     /**
      * Puts an object into the cache with the given key values.
@@ -67,19 +21,9 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      * @param object Object to store in the cache.
      */
 
-    set(keyValues: any, object: any) {
+    set(keyValues: any, object?: any, options?: any) {
       const keyHash = hash(keyValues)
-      for (const key in keyValues) {
-        const value = keyValues[key]
-        if (!self._keyMap[key]) {
-          self._keyMap[key] = {}
-        }
-        if (!self._keyMap[key][value]) {
-          self._keyMap[key][value] = []
-        }
-        self._keyMap[key][value].push(keyHash)
-      }
-      self.cache.set(keyHash, object)
+      self.cache.set(keyHash, object, options)
     },
 
     /**
@@ -104,7 +48,7 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      * @return If found, the object with the given key values. `undefined`
      *   otherwise.
      */
-    get(keyValues) {
+    get(keyValues: any) {
       const keyHash = hash(keyValues)
       return self.cache.get(keyHash)
     },
@@ -114,12 +58,12 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      * @param {Object} keyValues Key values that identify the object in the cache.
      * @return {Boolean} `true` if found, `false` otherwise.
      */
-    has(keyValues) {
+    has(keyValues: any) {
       const keyHash = hash(keyValues)
       return self.cache.has(keyHash)
     },
 
-    delete(keyValues) {
+    delete(keyValues: any) {
       const keyHash = hash(keyValues)
       return self.cache.delete(keyHash)
     },
@@ -138,27 +82,11 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      *
      * @param {Object} keyValues Key values to identify the objects to remove.
      */
-    purge(keyValues) {
-      const delKeyHashSet = {} as { [key: string]: boolean }
-
-      for (const key in keyValues) {
-        const value = keyValues[key]
-
-        if (!self._keyMap[key]) {
-          continue
+    purge(filter: (keyValues: any) => boolean) {
+      for (const key of self.keys()) {
+        if (filter(parse(key))) {
+          self.cache.delete(key)
         }
-        if (!Array.isArray(self._keyMap[key][value])) {
-          continue
-        }
-
-        const map = self._keyMap[key][value]
-        for (let i = 0; i < map.length; i++) {
-          delKeyHashSet[map[i]] = true
-        }
-      }
-
-      for (const keyHash in delKeyHashSet) {
-        self.cache.delete(keyHash)
       }
     },
 
@@ -167,21 +95,17 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      */
     reset() {
       self.cache.clear()
-      self._keyMap = {}
     },
 
-    fetch(keyValues) {
+    fetch(keyValues: any, options: any) {
       const keyHash = hash(keyValues)
-      return self.cache.fetch(keyHash)
+      return self.cache.fetch(keyHash, options)
     },
 
     keys() {
-      return Array.from(self.cache.keys())
+      return Array.from(self.cache.keys()) as string[]
     },
   }
-
-  self.cache = new LRUCache(options)
-
   return self
 }
 

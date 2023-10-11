@@ -1,8 +1,8 @@
 import { MultiKeyCache } from '@/utils/multi-key-cache'
-import exp from 'constants'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 describe('MultiKeyCache', () => {
+  const status = {}
   describe('interface', function () {
     const cache = MultiKeyCache({ max: 1 })
 
@@ -95,10 +95,8 @@ describe('MultiKeyCache', () => {
       cache.set({ a: '2', b: '1' }, '2-1')
       cache.set({ a: '2', b: '2' }, '2-2')
 
-      cache.purge({ a: '1' })
-      ;['1', '2', '3'].forEach(function (n) {
-        expect(cache.get({ a: '1', b: n })).toBeUndefined()
-      })
+      cache.purge((key: any) => key.a === '1')
+      expect(cache.keys()).toEqual(['{"a":"2","b":"2"}', '{"a":"2","b":"1"}'])
     })
 
     it('should report when items are in the cache', function () {
@@ -118,71 +116,80 @@ describe('MultiKeyCache', () => {
 
   describe('lru', function () {
     it('should properly evict entries', function () {
-      const cache = MultiKeyCache({ max: 2 })
-      cache.set({ k: 1 }, 'one')
+      const cache = MultiKeyCache({
+        max: 2,
+        status,
+      })
+      cache.set({ k: 1 }, 'one', { status })
       cache.set({ k: 2 }, 'two')
       cache.get({ k: 1 })
       cache.set({ k: 3 }, 'three')
       expect(cache.get({ k: 2 })).toBeUndefined()
     })
 
-    it('should override dispose option', function () {
-      const cache = MultiKeyCache({
-        max: 2,
-        dispose: function () {},
-      })
-      cache.set({ a: '1', b: '2' }, '1-2')
-      cache.purge({ a: '1' })
-    })
-
     it('should gracefully handle invalid disposals', function () {
       const cache = MultiKeyCache({ max: 10 })
-      cache._dispose('{"a":1}')
       cache.set({ a: 1 })
-      cache._dispose('{"a":3}')
       cache.set({ b: 2 })
-      cache._keyMap['b'][2] = []
-      cache._dispose('{"b":2}')
     })
   })
   describe('fetch', function () {
-    it.only('deve gerir depend', function () {
+    it('deve gerir depend', function () {
       const cache = MultiKeyCache({ max: 10 })
-      const key = {
-        depend: 'cliente',
-        id: [['id', 1]],
+      cache.set(
+        {
+          depend: ['cliente'],
+        },
+        1
+      )
+      cache.set(
+        {
+          depend: ['cliente', 'user'],
+        },
+        1
+      )
+      cache.purge((key: any) => key.depend.includes('user'))
+      expect(cache.keys()).toEqual(['{"depend":["cliente"]}'])
+    })
+
+    it('deve executar fetch', async () => {
+      const fn = (response: number) => {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(response)
+          }, 200)
+        })
       }
-      cache.set(key, 1)
-      key.id = [['id', 2]]
-      cache.set(key, 1)
-      expect(cache._keyMap).toEqual({
-        depend: {
-          cliente: [
-            '{"depend":"cliente","id":[["id",1]]}',
-            '{"depend":"cliente","id":[["id",2]]}',
-          ],
-        },
-        id: {
-          'id,1': ['{"depend":"cliente","id":[["id",1]]}'],
-          'id,2': ['{"depend":"cliente","id":[["id",2]]}'],
-        },
-      })
+
+      const fetchFunction = (
+        key: string,
+        staleValue: any,
+        { context }: any
+      ) => {
+        return context.method(JSON.parse(key))
+      }
+      const cache = MultiKeyCache({ max: 10, fetchMethod: fetchFunction })
+      expect(
+        await cache.fetch({ id: 1 }, { status, context: { method: fn } })
+      ).toEqual({ id: 1 })
+
+      expect(await cache.fetch({ id: 3 }, { context: { method: fn } })).toEqual(
+        { id: 3 }
+      )
+      expect(
+        await cache.fetch({ id: 1 }, { status, context: { method: fn } })
+      ).toEqual({ id: 1 })
+
+      expect(cache.keys()).toEqual(['{"id":1}', '{"id":3}'])
     })
-    it('deve gerenciar depend', function () {
-      const cache = MultiKeyCache({ max: 10 })
-      const key1 = { depend: { user: true, cliente: true }, id: [['id', 1]] }
-      const key2 = { depend: 'user', id: [['id', 2]] }
-      cache.set(key1, [{ id: 1 }])
-      cache.set(key2, [{ id: 2 }])
-      console.log(cache._keyMap)
-      expect(cache.keys()).toEqual([
-        '{"depend":"user","id":[["id",2]]}',
-        '{"depend":"user","id":[["id",1]]}',
-      ])
-      expect(cache.get(key1)).toEqual([{ id: 1 }])
-      expect(cache.get(key2)).toEqual([{ id: 2 }])
-      cache.purge({ depend: 'user' })
-      expect(cache.keys()).toEqual([])
-    })
+  })
+
+  it('deve trabalhar com caches independentes', () => {
+    const cache1 = MultiKeyCache()
+    const cache2 = MultiKeyCache()
+    cache1.set({ a: 1 }, '1')
+    cache2.set({ a: 1 }, '2')
+    expect(cache1.get({ a: 1 })).toEqual('1')
+    expect(cache2.get({ a: 1 })).toEqual('2')
   })
 })
