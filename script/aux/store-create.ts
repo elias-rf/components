@@ -1,26 +1,27 @@
+// @ts-nocheck
 // node -r esbuild-runner/register type_create.ts produto_item
-import * as changeCase from "change-case";
-import fs from "fs";
-import { getSegments } from "./get-segments";
+import * as changeCase from 'change-case'
+import fs from 'fs'
+import { getSegments } from './get-segments'
 
 function getFile(tableNameParam: string) {
   try {
     return fs.readFileSync(
       `../model/${tableNameParam}/${tableNameParam}.store.ts`,
-      { encoding: "utf-8" }
-    );
+      { encoding: 'utf-8' }
+    )
   } catch (error) {
-    return "";
+    return ''
   }
 }
 
 export function storeCreate(fileName: string) {
-  const tableNamePascal = changeCase.pascalCase(fileName);
-  const tableNameCamel = changeCase.camelCase(fileName);
-  const tableNameParam = changeCase.paramCase(fileName);
+  const tableNamePascal = changeCase.pascalCase(fileName)
+  const tableNameCamel = changeCase.camelCase(fileName)
+  const tableNameParam = changeCase.paramCase(fileName)
 
-  const file = getFile(tableNameParam);
-  const segments = getSegments(file);
+  const file = getFile(tableNameParam)
+  const segments = getSegments(file)
 
   const template = `import { create } from "zustand";
 import { TField } from "@/types/model";
@@ -117,11 +118,11 @@ export const ${tableNameCamel}Store(
     ${segments.store}
   }));
 }
-`;
+`
 
   fs.writeFileSync(
     `../model/${tableNameParam}/${tableNameParam}.store.ts`,
     template
-  );
-  console.log("store:", fileName, "created");
+  )
+  console.log('store:', fileName, 'created')
 }

@@ -46,7 +46,12 @@ describe('MultiKeyCache', () => {
     let cache: any
 
     beforeEach(function () {
-      cache = MultiKeyCache()
+      cache = MultiKeyCache({
+        max: 10,
+        logger(args: any) {
+          console.log(args)
+        },
+      })
     })
 
     it('should not find values that are not in the cache', function () {
@@ -117,8 +122,10 @@ describe('MultiKeyCache', () => {
   describe('lru', function () {
     it('should properly evict entries', function () {
       const cache = MultiKeyCache({
-        max: 2,
-        status,
+        max: 1,
+        logger(args: any) {
+          console.log(args)
+        },
       })
       cache.set({ k: 1 }, 'one', { status })
       cache.set({ k: 2 }, 'two')
@@ -128,14 +135,24 @@ describe('MultiKeyCache', () => {
     })
 
     it('should gracefully handle invalid disposals', function () {
-      const cache = MultiKeyCache({ max: 10 })
+      const cache = MultiKeyCache({
+        max: 10,
+        logger(args: any) {
+          console.log(args)
+        },
+      })
       cache.set({ a: 1 })
       cache.set({ b: 2 })
     })
   })
   describe('fetch', function () {
     it('deve gerir depend', function () {
-      const cache = MultiKeyCache({ max: 10 })
+      const cache = MultiKeyCache({
+        max: 10,
+        logger(args: any) {
+          console.log(args)
+        },
+      })
       cache.set(
         {
           depend: ['cliente'],
@@ -168,16 +185,28 @@ describe('MultiKeyCache', () => {
       ) => {
         return context.method(JSON.parse(key))
       }
-      const cache = MultiKeyCache({ max: 10, fetchMethod: fetchFunction })
+      const cache = MultiKeyCache({
+        max: 10,
+        fetchMethod: fetchFunction,
+        logger(args: any) {
+          console.log(args)
+        },
+      })
       expect(
-        await cache.fetch({ id: 1 }, { status, context: { method: fn } })
+        await cache.fetch(
+          { id: 1 },
+          { status, context: { method: fn, name: 'teste' } }
+        )
       ).toEqual({ id: 1 })
 
-      expect(await cache.fetch({ id: 3 }, { context: { method: fn } })).toEqual(
-        { id: 3 }
-      )
       expect(
-        await cache.fetch({ id: 1 }, { status, context: { method: fn } })
+        await cache.fetch({ id: 3 }, { context: { method: fn, name: 'teste' } })
+      ).toEqual({ id: 3 })
+      expect(
+        await cache.fetch(
+          { id: 1 },
+          { status, context: { method: fn, name: 'teste' } }
+        )
       ).toEqual({ id: 1 })
 
       expect(cache.keys()).toEqual(['{"id":1}', '{"id":3}'])

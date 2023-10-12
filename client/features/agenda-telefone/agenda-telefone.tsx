@@ -3,6 +3,7 @@ import { Button } from '@/client/components/ui/button'
 import { Title } from '@/client/components/ui/title'
 import { agendaTelefoneColumns } from '@/client/features/agenda-telefone/components/agenda-telefone_columns'
 import { AgendaTelefoneForm } from '@/client/features/agenda-telefone/components/agenda-telefone_form'
+import { cache } from '@/client/lib/cache'
 import { formStatus } from '@/client/lib/form-status'
 import { whereType } from '@/client/lib/where-type'
 import { usePageSize } from '@/client/store/page-size'
@@ -55,7 +56,15 @@ export function AgendaTelefone() {
   // Read Data
   React.useEffect(() => {
     async function getData() {
-      const data = await rpc.agendaTelefone.read({ id: selection })
+      const data = (await cache.fetch(
+        { id: selection, table: 'agendaTelefone' },
+        {
+          context: {
+            method: rpc.agendaTelefone.read,
+            name: 'agendaTelefone.read',
+          },
+        }
+      )) as TData<TAgendaTelefoneFields>
       form.reset(data)
     }
     if (selection.length > 0) getData()
@@ -65,7 +74,15 @@ export function AgendaTelefone() {
     where: TWhere<TAgendaTelefoneFields>,
     orderBy: TOrderBy<TAgendaTelefoneFields>
   ) {
-    const data = await rpc.agendaTelefone.list({ where, orderBy })
+    const data = (await cache.fetch(
+      { where, orderBy, table: 'agendaTelefone' },
+      {
+        context: {
+          method: rpc.agendaTelefone.list,
+          name: 'agendaTelefone.list',
+        },
+      }
+    )) as TData<TAgendaTelefoneFields>[]
     setList(data)
   }
 
@@ -102,6 +119,7 @@ export function AgendaTelefone() {
   }
 
   async function handleDel() {
+    cache.purgeTable('agendaTelefone')
     await rpc.agendaTelefone.del({ id: selection })
     await getList(where, orderBy)
     setStatus('view')
@@ -110,12 +128,14 @@ export function AgendaTelefone() {
 
   async function handleSave() {
     if (status === 'edit') {
+      cache.purgeTable('agendaTelefone')
       await rpc.agendaTelefone.update({
         data: form.getValues(),
         id: selection,
       })
     }
     if (status === 'new') {
+      cache.purgeTable('agendaTelefone')
       await rpc.agendaTelefone.create({ data: form.getValues() })
     }
     await getList(where, orderBy)

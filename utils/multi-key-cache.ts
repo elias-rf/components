@@ -10,6 +10,8 @@ import { LRUCache } from 'lru-cache'
  */
 export function MultiKeyCache(options: any = { max: 10 }) {
   const cache = new LRUCache(options)
+  const logger = options.logger ? options.logger : () => {}
+  logger({ status: 'MultiKeyCache created', options })
 
   const self = {
     ...cache,
@@ -21,9 +23,11 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      * @param object Object to store in the cache.
      */
 
-    set(keyValues: any, object?: any, options?: any) {
+    set(keyValues: any, object?: any, options: any = {}) {
       const keyHash = hash(keyValues)
+      options.status = { keyHash }
       self.cache.set(keyHash, object, options)
+      logger(options.status)
     },
 
     /**
@@ -48,9 +52,12 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      * @return If found, the object with the given key values. `undefined`
      *   otherwise.
      */
-    get(keyValues: any) {
+    get(keyValues: any, options: any = {}) {
       const keyHash = hash(keyValues)
-      return self.cache.get(keyHash)
+      options.status = { keyHash }
+      const response = self.cache.get(keyHash, options)
+      logger(options.status)
+      return response
     },
 
     /**
@@ -58,13 +65,17 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      * @param {Object} keyValues Key values that identify the object in the cache.
      * @return {Boolean} `true` if found, `false` otherwise.
      */
-    has(keyValues: any) {
+    has(keyValues: any, options: any = {}) {
       const keyHash = hash(keyValues)
-      return self.cache.has(keyHash)
+      options.status = { keyHash }
+      const response = self.cache.has(keyHash, options)
+      logger(options.status)
+      return response
     },
 
     delete(keyValues: any) {
       const keyHash = hash(keyValues)
+      logger({ status: 'delete', keyHash })
       return self.cache.delete(keyHash)
     },
 
@@ -83,11 +94,24 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      * @param {Object} keyValues Key values to identify the objects to remove.
      */
     purge(filter: (keyValues: any) => boolean) {
+      const list = []
       for (const key of self.keys()) {
         if (filter(parse(key))) {
-          self.cache.delete(key)
+          list.push(key)
         }
       }
+      for (const key of list) {
+        self.cache.delete(key)
+      }
+      logger({ status: 'purge', count: list.length, list })
+    },
+
+    purgeTable(table: string) {
+      self.purge((key: any) => {
+        if (key.tables && key.tables.includes(table)) return true
+        if (key.table && key.table === table) return true
+        return false
+      })
     },
 
     /**
@@ -95,11 +119,15 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      */
     reset() {
       self.cache.clear()
+      logger({ status: 'reset' })
     },
 
-    fetch(keyValues: any, options: any) {
+    fetch(keyValues: any, options: any = {}) {
       const keyHash = hash(keyValues)
-      return self.cache.fetch(keyHash, options)
+      options.status = { method: options.context.name, keyHash }
+      const response = self.cache.fetch(keyHash, options)
+      logger(options.status)
+      return response
     },
 
     keys() {
