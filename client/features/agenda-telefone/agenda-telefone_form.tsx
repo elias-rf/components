@@ -1,28 +1,24 @@
 import { Button } from '@/client/components/ui/button'
 import { Input } from '@/client/components/ui/input'
-import { formStatus } from '@/client/lib/form-status'
+import { useAgendaTelefone } from '@/client/features/agenda-telefone/agenda-telefone_store'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box'
-import { TFormStatus } from '@/types'
-import { Controller, UseFormReturn } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
+import { useEffectOnce } from 'usehooks-ts'
 
-type TAgendaTelefoneFormProps = {
-  form: UseFormReturn<any>
-  onCancel?: () => void
-  onDel?: () => void
-  onEdit?: () => void
-  onSave?: () => void
-  status?: TFormStatus
-}
+export const AgendaTelefoneForm = () => {
+  const formButtonStatus = useAgendaTelefone.use.formButtonStatus()()
+  const handleCancel = useAgendaTelefone.use.handleCancel()
+  const handleDelete = useAgendaTelefone.use.handleDelete()
+  const handleEdit = useAgendaTelefone.use.handleEdit()
+  const handleSave = useAgendaTelefone.use.handleSave()
+  const recordClear = useAgendaTelefone.use.recordClear()
+  const setForm = useAgendaTelefone.use.setForm()
 
-export const AgendaTelefoneForm = ({
-  form,
-  onCancel,
-  onDel,
-  onEdit,
-  onSave,
-  status = 'none',
-}: TAgendaTelefoneFormProps) => {
-  const frmStatus = formStatus(status)
+  const form = useForm({ defaultValues: recordClear, mode: 'onTouched' })
+
+  useEffectOnce(() => {
+    setForm(form)
+  })
 
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',
@@ -33,10 +29,10 @@ export const AgendaTelefoneForm = ({
 
   async function handleDel() {
     const response = await confirm(
-      'Tem certeza que deseja apagar ' + form.getValues('name')
+      'Tem certeza que deseja apagar ' + form?.getValues('name')
     )
     if (response === 'option1') {
-      onDel && onDel()
+      handleDelete()
     }
   }
 
@@ -44,8 +40,8 @@ export const AgendaTelefoneForm = ({
     <div data-name="AgendaTelefoneForm">
       <div className="flex my-2 space-x-2 flex-rows">
         <Button
-          onClick={onEdit}
-          disabled={frmStatus.editDisabled}
+          onClick={handleEdit}
+          disabled={formButtonStatus.editDisabled}
           size="sm"
           outline
         >
@@ -53,7 +49,7 @@ export const AgendaTelefoneForm = ({
         </Button>
         <Button
           onClick={handleDel}
-          disabled={frmStatus.delDisabled}
+          disabled={formButtonStatus.delDisabled}
           size="sm"
           outline
         >
@@ -64,20 +60,20 @@ export const AgendaTelefoneForm = ({
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
           <Controller
             name="id"
-            control={form.control}
+            control={form?.control}
             rules={{
               required: 'Ramal é obrigatório',
             }}
             render={({ field, fieldState }) => (
               <Input
-                required
-                label="Ramal"
-                disabled={frmStatus.formDisabled}
-                variant={fieldState.error && 'error'}
+                disabled={formButtonStatus.formDisabled}
                 helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
+                label="Ramal"
                 onBlur={field.onBlur}
+                onChange={field.onChange}
+                required
+                value={field.value}
+                variant={fieldState.error && 'error'}
               />
             )}
           />
@@ -85,7 +81,7 @@ export const AgendaTelefoneForm = ({
         <div className="col-span-12 sm:col-span-10 lg:col-span-5">
           <Controller
             name="name"
-            control={form.control}
+            control={form?.control}
             rules={{
               required: 'Nome é obrigatório',
             }}
@@ -93,7 +89,7 @@ export const AgendaTelefoneForm = ({
               <Input
                 required
                 label="Nome"
-                disabled={frmStatus.formDisabled}
+                disabled={formButtonStatus.formDisabled}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -106,11 +102,11 @@ export const AgendaTelefoneForm = ({
         <div className="col-span-12 sm:col-span-4 lg:col-span-2">
           <Controller
             name="department"
-            control={form.control}
+            control={form?.control}
             render={({ field, fieldState }) => (
               <Input
                 label="Setor"
-                disabled={frmStatus.formDisabled}
+                disabled={formButtonStatus.formDisabled}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -123,11 +119,11 @@ export const AgendaTelefoneForm = ({
         <div className="col-span-12 sm:col-span-8 lg:col-span-4">
           <Controller
             name="email"
-            control={form.control}
+            control={form?.control}
             render={({ field, fieldState }) => (
               <Input
                 label="Email"
-                disabled={frmStatus.formDisabled}
+                disabled={formButtonStatus.formDisabled}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -139,26 +135,22 @@ export const AgendaTelefoneForm = ({
         </div>
       </div>
       <div className="flex justify-end my-2 space-x-2 flex-rows align-center">
-        {onSave ? (
-          <Button
-            onClick={onSave}
-            disabled={frmStatus.saveDisabled}
-            size="sm"
-            outline
-          >
-            SAVE
-          </Button>
-        ) : null}
-        {onCancel ? (
-          <Button
-            onClick={onCancel}
-            disabled={frmStatus.cancelDisabled}
-            size="sm"
-            outline
-          >
-            CANCEL
-          </Button>
-        ) : null}
+        <Button
+          onClick={handleSave}
+          disabled={formButtonStatus.saveDisabled}
+          size="sm"
+          outline
+        >
+          SAVE
+        </Button>
+        <Button
+          onClick={handleCancel}
+          disabled={formButtonStatus.cancelDisabled}
+          size="sm"
+          outline
+        >
+          CANCEL
+        </Button>
       </div>
       <MsgBox />
     </div>
