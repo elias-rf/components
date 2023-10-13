@@ -12,9 +12,8 @@ import type { TFormStatus } from '@/types'
  *   - saveDisabled: A boolean indicating whether the save button should be shown.
  *   - cancelDisabled: A boolean indicating whether the cancel button should be shown.
  */
-export function formStatus(status: TFormStatus) {
+export function formButtonStatus(status: TFormStatus) {
   const response = {
-    status,
     editDisabled: true,
     createDisabled: false,
     delDisabled: true,
@@ -38,8 +37,6 @@ export function formStatus(status: TFormStatus) {
       response.cancelDisabled = false
       response.formDisabled = false
       break
-    default:
-      response.status = 'none'
   }
   return response
 }

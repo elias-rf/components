@@ -1,9 +1,9 @@
 import { describe, expect, test } from 'vitest'
-import { formStatus } from './form-status'
+import { formButtonStatus } from './form-button-status'
 
 describe('formStatus', () => {
   test('get view', () => {
-    expect(formStatus('view')).toEqual({
+    expect(formButtonStatus('view')).toEqual({
       status: 'view',
       editDisabled: false,
       createDisabled: false,
@@ -14,7 +14,7 @@ describe('formStatus', () => {
     })
   })
   test('get edit', () => {
-    expect(formStatus('edit')).toEqual({
+    expect(formButtonStatus('edit')).toEqual({
       status: 'edit',
       editDisabled: true,
       createDisabled: false,
@@ -25,7 +25,7 @@ describe('formStatus', () => {
     })
   })
   test('get new', () => {
-    expect(formStatus('new')).toEqual({
+    expect(formButtonStatus('new')).toEqual({
       status: 'new',
       editDisabled: true,
       createDisabled: false,
@@ -36,7 +36,7 @@ describe('formStatus', () => {
     })
   })
   test('get none', () => {
-    expect(formStatus('none')).toEqual({
+    expect(formButtonStatus('none')).toEqual({
       status: 'none',
       editDisabled: true,
       createDisabled: false,

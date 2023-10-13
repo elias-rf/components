@@ -45,6 +45,7 @@
     "@fastify/jwt": "^7.2.1",
     "@fastify/multipart": "^8.0.0",
     "better-sqlite3": "^8.7.0",
+    "change-case": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "dayjs": "^1.11.10",
     "dotenv-flow": "^4.0.0",
@@ -63,7 +64,6 @@
     "valibot": "^0.18.0",
     "wouter": "^2.11.0",
     "zod": "^3.22.2",
-    "change-case": "^5.0.1",
     "zustand": "^4.4.2"
   },
   "devDependencies": {
@@ -111,6 +111,7 @@
     "clsx": "^2.0.0",
     "cross-env": "^7.0.3",
     "cross-fetch": "^4.0.0",
+    "deep-object-diff": "^1.1.9",
     "ejs": "^3.1.9",
     "esbuild": "^0.19.4",
     "esbuild-node-externals": "^1.9.0",

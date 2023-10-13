@@ -14,7 +14,7 @@ export const cache = MultiKeyCache({
   max: 100,
   ttl: 30000,
   fetchMethod,
-  logger(args: any) {
-    console.log(args)
-  },
+  // logger(args: any) {
+  //   console.log(args)
+  // },
 })

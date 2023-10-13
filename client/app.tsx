@@ -3,7 +3,7 @@ import React, { Suspense } from 'react'
 // import { PrivateRoute } from './components/private-route'
 import { Layout } from './features/layout'
 // import { Dashboard } from './pages/dashboard'
-import { useAuth } from '@/client/store/auth'
+import { isAuthenticated } from '@/client/store/auth'
 import { Flowbite } from 'flowbite-react'
 import { Toaster } from 'react-hot-toast'
 import { Route, Switch, useLocation } from 'wouter'
@@ -44,13 +44,13 @@ const Profile = React.lazy(async () => import('./pages/profile'))
 /** Componente com todas a rotas da aplicativo */
 export function App() {
   const [location, setLocation] = useLocation()
-  const isAuthenticated = useAuth((state) => state.isAuthenticated)
+  // const isAuthenticated = useAuth((state) => state.isAuthenticated)
 
   React.useEffect(() => {
     if (!isAuthenticated() && location !== '/login') {
       setLocation('/login')
     }
-  }, [location, isAuthenticated, setLocation])
+  }, [location, setLocation])
 
   return (
     <Flowbite>

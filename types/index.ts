@@ -37,6 +37,14 @@ export type TreeData = {
 }[]
 
 export type TFormStatus = 'edit' | 'new' | 'view' | 'none'
+export type TFormButtonStatus = {
+  editDisabled: boolean
+  createDisabled: boolean
+  delDisabled: boolean
+  saveDisabled: boolean
+  cancelDisabled: boolean
+  formDisabled: boolean
+}
 
 export type TColumn = {
   label: string
