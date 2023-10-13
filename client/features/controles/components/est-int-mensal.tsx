@@ -1,46 +1,33 @@
 import { Table } from '@/client/components/table'
-import { rpc } from '@/rpc/rpc-client'
-import { TSelection } from '@/types'
-import { getFieldId } from '@/utils/query/get-field-id'
+import { useControles } from '@/client/features/controles/controles_store'
 import React from 'react'
 import { esterilizacaoInternaMensalSchema } from './est-int-mensal_schema'
 
 type EsterilizacaoInternaMensalProp = {
   children?: React.ReactNode
-  mesCorrente: ['mes', string][]
-  mesInicial: ['mes', string][]
-  onSelection?: (event: TSelection<any>) => void
 }
 
 export function EsterilizacaoInternaMensal({
-  mesInicial,
-  mesCorrente,
-  onSelection,
   children,
 }: EsterilizacaoInternaMensalProp) {
-  const [data, setData] = React.useState<
-    {
-      mes: string
-      quantidade: number
-    }[]
-  >([])
+  const mes = useControles.use.mes()
+  const setMes = useControles.use.setMes()
+  const mesInicial = useControles.use.mesInicio()
+  const fetchEsterilizacaoInternaMensal =
+    useControles.use.fetchEsterilizacaoInternaMensal()
+  const esterilizacaoInternaMensal =
+    useControles.use.esterilizacaoInternaMensal()
 
   React.useEffect(() => {
-    async function getData() {
-      const data = await rpc.esterilizacaoInterna.mensal({
-        mes: getFieldId('mes', mesInicial),
-      })
-      setData(data)
-    }
-    getData()
+    fetchEsterilizacaoInternaMensal()
   }, [mesInicial])
 
   return (
     <Table
-      rows={data || []}
+      rows={esterilizacaoInternaMensal || []}
       columns={esterilizacaoInternaMensalSchema}
-      selection={mesCorrente}
-      onSelection={onSelection}
+      selection={mes}
+      onSelection={setMes}
       getId={(rec: any) => [['mes', rec.mes]]}
     >
       {() => <>{children}</>}

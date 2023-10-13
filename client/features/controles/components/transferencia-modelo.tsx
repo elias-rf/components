@@ -1,36 +1,24 @@
 import { Table } from '@/client/components/table'
-import { rpc } from '@/rpc/rpc-client'
-import { TId } from '@/types'
-import { getFieldId } from '@/utils/query/get-field-id'
+import { useControles } from '@/client/features/controles/controles_store'
 import React from 'react'
 import { transferenciaModeloSchema } from './transferencia-modelo_schema'
 
 type TransferenciaModeloProps = {
-  diaCorrente: TId<'dia'>
   children?: React.ReactNode
 }
 
-export function TransferenciaModelo({
-  diaCorrente,
-  children,
-}: TransferenciaModeloProps) {
-  const [data, setData] = React.useState<
-    { modelo: string; quantidade: number }[]
-  >([])
+export function TransferenciaModelo({ children }: TransferenciaModeloProps) {
+  const dia = useControles.use.dia()
+  const fetchTransferenciaModelo = useControles.use.fetchTransferenciaModelo()
+  const transferenciaModelo = useControles.use.transferenciaModelo()
 
   React.useEffect(() => {
-    async function getData() {
-      const data = await rpc.nfSaida.transferenciaModelo({
-        data: getFieldId('dia', diaCorrente),
-      })
-      setData(data)
-    }
-    getData()
-  }, [diaCorrente])
+    fetchTransferenciaModelo()
+  }, [dia])
 
   return (
     <Table
-      rows={data}
+      rows={transferenciaModelo}
       columns={transferenciaModeloSchema}
     >
       {() => <>{children}</>}

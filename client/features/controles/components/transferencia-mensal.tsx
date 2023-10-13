@@ -1,50 +1,29 @@
 import { Table } from '@/client/components/table'
-import { rpc } from '@/rpc/rpc-client'
-import { TId, TSelection } from '@/types'
-import { day } from '@/utils/date/day'
-import { getFieldId } from '@/utils/query/get-field-id'
+import { useControles } from '@/client/features/controles/controles_store'
 import React from 'react'
 import { transferenciaMensalSchema } from './transferencia-mensal_schema'
 
 type TransferenciaMensalProps = {
-  mesCorrente: TSelection<'mes'>
   children?: React.ReactNode
-  dia?: string
-  onSelectEvent?: (event: TSelection<'mes'>) => void
 }
 
-export function TransferenciaMensal({
-  children,
-  mesCorrente,
-  dia,
-  onSelectEvent,
-}: TransferenciaMensalProps) {
-  const [data, setData] = React.useState<
-    {
-      mes: string
-      quantidade: number
-    }[]
-  >([])
+export function TransferenciaMensal({ children }: TransferenciaMensalProps) {
+  const mes = useControles.use.mes()
+  const mesInicial = useControles.use.mesInicio()
+  const setMes = useControles.use.setMes()
+  const fetchTransferenciaMensal = useControles.use.fetchOperacaoMensal()
+  const transferenciaMensal = useControles.use.operacaoMensal()
 
   React.useEffect(() => {
-    async function getData() {
-      const mesInicial: TId<'mes'> = [
-        ['mes', day(dia).subtract(13, 'month').format('YYYY-MM')],
-      ]
-      const data = await rpc.nfSaida.transferenciaMensal({
-        mes: getFieldId('mes', mesInicial),
-      })
-      setData(data)
-    }
-    getData()
-  }, [dia])
+    fetchTransferenciaMensal()
+  }, [mesInicial])
 
   return (
     <Table
-      rows={data || []}
+      rows={transferenciaMensal || []}
       columns={transferenciaMensalSchema}
-      selection={mesCorrente}
-      onSelection={onSelectEvent}
+      selection={mes}
+      onSelection={setMes}
       getId={(rec: any) => [['mes', rec.mes]]}
     >
       {() => <>{children}</>}

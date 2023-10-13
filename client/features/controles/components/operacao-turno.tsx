@@ -1,44 +1,22 @@
 import { Table } from '@/client/components/table'
-import { rpc } from '@/rpc/rpc-client'
-import { TSelection } from '@/types'
-import { getFieldId } from '@/utils/query/get-field-id'
+import { useControles } from '@/client/features/controles/controles_store'
 import React from 'react'
 import { operacaoTurnoSchema } from './operacao-turno_schema'
 
-type OperacaoTurnoProps = {
-  operacao: ['operacao', string][]
-  dia: ['dia', string][]
-  onSelection?: (event: TSelection<any>) => void
-}
-
-export function OperacaoTurno({
-  operacao,
-  dia,
-  onSelection,
-}: OperacaoTurnoProps) {
-  const [data, setData] = React.useState<
-    {
-      produto: string
-      quantidade: number
-    }[]
-  >([])
+export function OperacaoTurno() {
+  const operacao = useControles.use.operacao()
+  const dia = useControles.use.dia()
+  const fetchOperacaoProduto = useControles.use.fetchOperacaoProduto()
+  const operacaoProduto = useControles.use.operacaoProduto()
 
   React.useEffect(() => {
-    async function getData() {
-      const data = await rpc.ordemProducaoOperacao.turno({
-        operacao: getFieldId('operacao', operacao) || '',
-        data: getFieldId('dia', dia),
-      })
-      setData(data)
-    }
-    getData()
+    fetchOperacaoProduto()
   }, [dia, operacao])
 
   return (
     <Table
-      rows={data}
+      rows={operacaoProduto}
       columns={operacaoTurnoSchema}
-      onSelection={onSelection}
     ></Table>
   )
 }

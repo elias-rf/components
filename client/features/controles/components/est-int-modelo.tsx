@@ -1,36 +1,23 @@
 import { Table } from '@/client/components/table'
-import { rpc } from '@/rpc/rpc-client'
-import { getFieldId } from '@/utils/query/get-field-id'
+import { useControles } from '@/client/features/controles/controles_store'
 import React from 'react'
 import { esterilizacaoInternaModeloSchema } from './est-int-modelo_schema'
 
-type EsterilizacaoInternaModeloProp = {
-  diaCorrente: ['dia', string][]
-  produtoCorrente: ['produto', string][]
-}
-
-export function EsterilizacaoInternaModelo({
-  diaCorrente,
-  produtoCorrente,
-}: EsterilizacaoInternaModeloProp) {
-  const [data, setData] = React.useState<
-    { modelo: string; quantidade: number }[]
-  >([])
+export function EsterilizacaoInternaModelo() {
+  const dia = useControles.use.dia()
+  const produto = useControles.use.produto()
+  const fetchEsterilizacaoInternaModelo =
+    useControles.use.fetchEsterilizacaoInternaModelo()
+  const esterilizacaoInternaModelo =
+    useControles.use.esterilizacaoInternaModelo()
 
   React.useEffect(() => {
-    async function getData() {
-      const data = await rpc.esterilizacaoInterna.modelo({
-        data: getFieldId('dia', diaCorrente),
-        produto: getFieldId('produto', produtoCorrente),
-      })
-      setData(data)
-    }
-    getData()
-  }, [diaCorrente, produtoCorrente])
+    fetchEsterilizacaoInternaModelo()
+  }, [dia, produto])
 
   return (
     <Table
-      rows={data || []}
+      rows={esterilizacaoInternaModelo || []}
       columns={esterilizacaoInternaModeloSchema}
     ></Table>
   )

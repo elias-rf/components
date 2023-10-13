@@ -1,45 +1,33 @@
 import { Table } from '@/client/components/table'
-import { rpc } from '@/rpc/rpc-client'
-import { getFieldId } from '@/utils/query/get-field-id'
+import { useControles } from '@/client/features/controles/controles_store'
 import React from 'react'
 import { EsterilizacaoInternaProdutoSchema } from './est-int-produto_schema'
 
 type EsterilizacaoInternaProdutoProp = {
   children?: any
-  diaCorrente: ['dia', string][]
-  produtoCorrente: ['produto', string][]
-  onSelection?: (event: any) => void
 }
 
 export function EsterilizacaoInternaProduto({
-  diaCorrente,
-  produtoCorrente,
-  onSelection,
   children,
 }: EsterilizacaoInternaProdutoProp) {
-  const [data, setData] = React.useState<
-    {
-      produto: string
-      quantidade: number
-    }[]
-  >([])
+  const produto = useControles.use.produto()
+  const setProduto = useControles.use.setProduto()
+  const dia = useControles.use.dia()
+  const fetchEsterilizacaoInternaProduto =
+    useControles.use.fetchEsterilizacaoInternaProduto()
+  const esterilizacaoInternaProduto =
+    useControles.use.esterilizacaoInternaProduto()
 
   React.useEffect(() => {
-    async function getData() {
-      const data = await rpc.esterilizacaoExterna.produto({
-        data: getFieldId('dia', diaCorrente),
-      })
-      setData(data)
-    }
-    getData()
-  }, [diaCorrente, produtoCorrente])
+    fetchEsterilizacaoInternaProduto()
+  }, [dia, produto])
 
   return (
     <Table
-      rows={data || []}
+      rows={esterilizacaoInternaProduto || []}
       columns={EsterilizacaoInternaProdutoSchema}
-      selection={produtoCorrente || []}
-      onSelection={onSelection}
+      selection={produto || []}
+      onSelection={setProduto}
       getId={(rec: any) => [['produto', rec.produto]]}
     >
       {() => <>{children}</>}

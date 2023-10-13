@@ -1,53 +1,29 @@
 import { Table } from '@/client/components/table'
-import { rpc } from '@/rpc/rpc-client'
-import { TSelection } from '@/types'
-import { day } from '@/utils/date/day'
-import { getFieldId } from '@/utils/query/get-field-id'
+import { useControles } from '@/client/features/controles/controles_store'
 import React, { ReactNode } from 'react'
 import { transferenciaDiarioSchema } from './transferencia-diario_schema'
 
 type TransferenciaDiarioProps = {
-  mesCorrente: ['mes', string][]
-  diaCorrente: ['dia', string][]
-  onSelect?: (event: TSelection<'dia'>) => void
   children?: ReactNode
 }
 
-export function TransferenciaDiario({
-  mesCorrente,
-  diaCorrente,
-  onSelect,
-  children,
-}: TransferenciaDiarioProps) {
-  const [data, setData] = React.useState<
-    {
-      dia: string
-      diaSemana: string
-      quantidade: number
-    }[]
-  >([])
+export function TransferenciaDiario({ children }: TransferenciaDiarioProps) {
+  const mes = useControles.use.mes()
+  const dia = useControles.use.dia()
+  const setDia = useControles.use.setDia()
+  const fetchTransferenciaDiario = useControles.use.fetchTransferenciaDiario()
+  const transferenciaDiario = useControles.use.transferenciaDiario()
 
   React.useEffect(() => {
-    async function getData() {
-      const data = await rpc.nfSaida.transferenciaDiario({
-        inicio: day(getFieldId('mes', mesCorrente) + '-01')
-          .startOf('month')
-          .format('YYYY-MM-DD'),
-        fim: day(getFieldId('mes', mesCorrente) + '-01')
-          .endOf('month')
-          .format('YYYY-MM-DD'),
-      })
-      setData(data)
-    }
-    getData()
-  }, [mesCorrente])
+    fetchTransferenciaDiario()
+  }, [mes])
 
   return (
     <Table
-      rows={data || []}
+      rows={transferenciaDiario || []}
       columns={transferenciaDiarioSchema}
-      selection={diaCorrente}
-      onSelection={onSelect}
+      selection={dia}
+      onSelection={setDia}
       getId={(rec: any) => [['dia', rec.dia]]}
     >
       {() => <>{children}</>}

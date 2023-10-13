@@ -6,10 +6,5 @@ export default {
 }
 
 export const Transferencia_Mensal: Story = () => {
-  return (
-    <TransferenciaMensal
-      mesCorrente={[['mes', '2020-01']]}
-      dia="2020-01-01"
-    />
-  )
+  return <TransferenciaMensal />
 }

@@ -1,67 +1,18 @@
 import { Select } from '@/client/components/ui/select'
-import { TSelection } from '@/types'
-import { day } from '@/utils/date/day'
+import { useControles } from '@/client/features/controles/controles_store'
 import { getFieldId } from '@/utils/query/get-field-id'
-import React, { useMemo } from 'react'
 import { OperacaoDiario } from './components/operacao-diario'
 import { OperacaoMensal } from './components/operacao-mensal'
 import { OperacaoModelo } from './components/operacao-modelo'
 import { OperacaoProduto } from './components/operacao-produto'
 import { OperacaoTurno } from './components/operacao-turno'
 
-type OperacaoProp = {
-  dia?: string
-}
-
-export function Operacao({ dia }: OperacaoProp) {
-  const [mesCorrente, setMesCorrente] = React.useState<['mes', string][]>([])
-  const [diaCorrente, setDiaCorrente] = React.useState<['dia', string][]>([])
-  const [produtoCorrente, setProdutoCorrente] = React.useState<
-    ['produto', string][]
-  >([])
-  const [operacaoCorrente, setOperacaoCorrente] = React.useState<
-    ['operacao', string][]
-  >([['operacao', '3058']])
-
-  const mesInicial: ['mes', string][] = useMemo(
-    () => [['mes', day(dia).subtract(13, 'month').format('YYYY-MM')]],
-    [dia]
-  )
-
-  function handleOnChangeMensal(event: TSelection<any>) {
-    if (
-      getFieldId('mes', event) &&
-      getFieldId('mes', event) === getFieldId('mes', mesCorrente)
-    ) {
-      return setMesCorrente([])
-    }
-    setMesCorrente([['mes', getFieldId('mes', event)]])
-  }
-
-  function handleOnChangeDiario(event: TSelection<any>) {
-    if (
-      getFieldId('dia', event) &&
-      getFieldId('dia', event) === getFieldId('dia', diaCorrente)
-    ) {
-      setDiaCorrente([])
-      return
-    }
-    setDiaCorrente([['dia', getFieldId('dia', event)]])
-  }
-
-  function handleOnChangeProduto(event: TSelection<any>) {
-    if (
-      getFieldId('produto', event) &&
-      getFieldId('produto', event) === getFieldId('produto', produtoCorrente)
-    ) {
-      setProdutoCorrente([])
-      return
-    }
-    setProdutoCorrente([['produto', getFieldId('produto', event)]])
-  }
+export function Operacao() {
+  const operacao = useControles.use.operacao()
+  const setOperacao = useControles.use.setOperacao()
 
   function handleSelect(value: string) {
-    setOperacaoCorrente([['operacao', value]])
+    setOperacao([['operacao', value]])
   }
 
   return (
@@ -69,7 +20,7 @@ export function Operacao({ dia }: OperacaoProp) {
       <div className={'mb-2 max-w-md'}>
         <Select
           label="Operação"
-          value={getFieldId('operacao', operacaoCorrente) || ''}
+          value={getFieldId('operacao', operacao) || ''}
           onChange={handleSelect}
           options={[
             ['1010 - Montagem lado 1', '1010'],
@@ -85,36 +36,14 @@ export function Operacao({ dia }: OperacaoProp) {
           ]}
         />
       </div>
-      <OperacaoMensal
-        operacao={operacaoCorrente}
-        mesInicial={mesInicial}
-        mesCorrente={mesCorrente}
-        onSelection={handleOnChangeMensal}
-      >
+      <OperacaoMensal>
         <div className={'mb-4 p-1 border-2 border-gray-200 w-full'}>
-          <OperacaoDiario
-            operacao={operacaoCorrente}
-            mes={mesCorrente}
-            diaCorrente={diaCorrente}
-            onSelection={handleOnChangeDiario}
-          >
+          <OperacaoDiario>
             <div className={'mb-4 p-1 border-2 border-gray-200'}>
-              <OperacaoProduto
-                operacao={operacaoCorrente}
-                dia={diaCorrente}
-                produtoCorrente={produtoCorrente}
-                onSelect={handleOnChangeProduto}
-              >
-                <OperacaoModelo
-                  operacao={operacaoCorrente}
-                  dia={diaCorrente}
-                  produtoCorrente={produtoCorrente}
-                />
+              <OperacaoProduto>
+                <OperacaoModelo />
               </OperacaoProduto>
-              <OperacaoTurno
-                operacao={operacaoCorrente}
-                dia={diaCorrente}
-              ></OperacaoTurno>
+              <OperacaoTurno />
             </div>
           </OperacaoDiario>
         </div>

@@ -6,12 +6,5 @@ export default {
 }
 
 export const Operacao_Produto: Story = () => {
-  return (
-    <OperacaoProduto
-      operacao={[['operacao', '3058']]}
-      dia={[['dia', '2020-01-01']]}
-      produtoCorrente={[['produto', 'cat1']]}
-      onSelect={(event: any) => console.log(event)}
-    />
-  )
+  return <OperacaoProduto />
 }

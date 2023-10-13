@@ -6,5 +6,5 @@ export default {
 }
 
 export const Transferencia_Modelo: Story = () => {
-  return <TransferenciaModelo diaCorrente={[['dia', '2020-01-01']]} />
+  return <TransferenciaModelo />
 }

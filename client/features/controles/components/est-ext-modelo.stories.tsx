@@ -6,10 +6,5 @@ export default {
 }
 
 export const Default: Story = () => {
-  return (
-    <EsterilizacaoExternaModelo
-      diaCorrente={[['dia', '2020-01-01']]}
-      produtoCorrente={[['produto', 'cat1']]}
-    />
-  )
+  return <EsterilizacaoExternaModelo />
 }

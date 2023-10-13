@@ -6,11 +6,5 @@ export default {
 }
 
 export const Default: Story = () => {
-  return (
-    <OperacaoTurno
-      operacao={[['operacao', '3058']]}
-      dia={[['dia', '2020-01-01']]}
-      onSelection={(event: any) => console.log(event)}
-    />
-  )
+  return <OperacaoTurno />
 }

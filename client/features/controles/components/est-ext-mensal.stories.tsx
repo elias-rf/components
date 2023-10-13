@@ -1,5 +1,4 @@
 import { EsterilizacaoExternaMensal } from '@/client/features/controles/components/est-ext-mensal'
-import { TSelection } from '@/types'
 import type { Story } from '@ladle/react'
 
 export default {
@@ -7,11 +6,5 @@ export default {
 }
 
 export const Default: Story = () => {
-  return (
-    <EsterilizacaoExternaMensal
-      mesInicial={[['mes', '2020-01']]}
-      mesCorrente={[['mes', '2020-01']]}
-      onSelection={(event: TSelection<any>) => console.log(event)}
-    />
-  )
+  return <EsterilizacaoExternaMensal />
 }

@@ -1,53 +1,33 @@
 import { Table } from '@/client/components/table'
-import { rpc } from '@/rpc/rpc-client'
-import { TSelection } from '@/types'
-import { day } from '@/utils/date/day'
-import { getFieldId } from '@/utils/query/get-field-id'
+import { useControles } from '@/client/features/controles/controles_store'
 import React from 'react'
 import { esterilizacaoExternaDiarioSchema } from './est-ext-diario_schema'
 
 type TEsterilizacaoExternaDiarioProp = {
-  mesCorrente: ['mes', string][]
-  diaCorrente: ['dia', string][]
-  onSelection: (event: TSelection<any>) => void
   children?: React.ReactNode
 }
 
 export function EsterilizacaoExternaDiario({
-  mesCorrente,
-  diaCorrente,
-  onSelection,
   children,
 }: TEsterilizacaoExternaDiarioProp) {
-  const [data, setData] = React.useState<
-    {
-      dia: string
-      dia_semana: string
-      quantidade: number
-    }[]
-  >([])
+  const mes = useControles.use.mes()
+  const dia = useControles.use.dia()
+  const setDia = useControles.use.setDia()
+  const fetchEsterilizacaoExternaDiario =
+    useControles.use.fetchEsterilizacaoExternaDiario()
+  const esterilizacaoExternaDiario =
+    useControles.use.esterilizacaoExternaDiario()
 
   React.useEffect(() => {
-    async function getData() {
-      const data = await rpc.esterilizacaoExterna.diario({
-        inicio: day(getFieldId('mes', mesCorrente) + '-01')
-          .startOf('month')
-          .format('YYYY-MM-DD'),
-        fim: day(getFieldId('mes', mesCorrente) + '-01')
-          .endOf('month')
-          .format('YYYY-MM-DD'),
-      })
-      setData(data)
-    }
-    getData()
-  }, [mesCorrente])
+    fetchEsterilizacaoExternaDiario()
+  }, [mes])
 
   return (
     <Table
-      rows={data || []}
+      rows={esterilizacaoExternaDiario || []}
       columns={esterilizacaoExternaDiarioSchema}
-      selection={diaCorrente || []}
-      onSelection={onSelection}
+      selection={dia || []}
+      onSelection={setDia}
       getId={(rec: any) => [['dia', rec.dia]]}
     >
       {() => <>{children}</>}
