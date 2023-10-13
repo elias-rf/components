@@ -8,11 +8,6 @@ export default {
   },
 }
 
-export const Quantidade: Story = (props: any) => {
-  return (
-    <ClienteQuantidade
-      id={props.id}
-      dia="2020-02-01"
-    />
-  )
+export const Quantidade: Story = () => {
+  return <ClienteQuantidade />
 }

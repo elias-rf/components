@@ -8,15 +8,7 @@ export default {
 export const Default: Story = () => {
   return (
     <>
-      <ClienteTable
-        list={[]}
-        selection={[]}
-        where={[]}
-        orderBy={[]}
-        onSelection={() => {}}
-        onWhere={() => {}}
-        onOrderBy={() => {}}
-      />
+      <ClienteTable />
     </>
   )
 }

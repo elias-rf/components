@@ -208,7 +208,6 @@ const useClienteBase = create<ClienteState>()((set, get) => ({
 }))
 
 useClienteBase.subscribe((state: any, prev: any) =>
-  // console.log(JSON.stringify(state, null, 2))
   console.log(diff(prev, state))
 )
 
