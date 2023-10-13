@@ -1,5 +1,5 @@
 import { useElementSize } from '@/client/lib/hooks/use-element-size'
-import { usePageSize } from '@/client/store/page-size'
+import { setSize } from '@/client/store/page-size'
 import React from 'react'
 
 export type TPageProps = {
@@ -7,11 +7,11 @@ export type TPageProps = {
 }
 
 export const Page = ({ children }: TPageProps) => {
-  const pageSize = usePageSize()
+  // const pageSize = usePageSize()
   const [pageRef, size] = useElementSize()
 
   React.useEffect(() => {
-    pageSize.setSize(size)
+    setSize(size)
   }, [size])
 
   return (
