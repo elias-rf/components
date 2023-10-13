@@ -1,18 +1,25 @@
 import { Input } from '@/client/components/ui/input'
+import { useCliente } from '@/client/features/cliente/cliente_store'
 import { ClienteQuantidade } from '@/client/features/cliente/components/cliente-quantidade'
 import { ClienteValor } from '@/client/features/cliente/components/cliente-valor'
 import { ClienteValorMedio } from '@/client/features/cliente/components/cliente-valor-medio'
 import { Tab, Tabs } from '@mui/material'
-import React from 'react'
-import { Controller, UseFormReturn } from 'react-hook-form'
+import { useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import { useEffectOnce } from 'usehooks-ts'
 
-type TClienteFormProps = {
-  form: UseFormReturn<any>
-  disabled: boolean
-}
+export function ClienteForm() {
+  const formButtonStatus = useCliente.use.formButtonStatus()()
+  const recordClear = useCliente.use.recordClear()
+  const setForm = useCliente.use.setForm()
 
-export function ClienteForm({ form, disabled }: TClienteFormProps) {
-  const [tab, setTab] = React.useState(0)
+  const [tab, setTab] = useState(0)
+  const form = useForm({ defaultValues: recordClear, mode: 'onTouched' })
+
+  useEffectOnce(() => {
+    setForm(form)
+  })
+
   return (
     <>
       <div className="grid grid-cols-12 gap-3">
@@ -22,13 +29,13 @@ export function ClienteForm({ form, disabled }: TClienteFormProps) {
             control={form.control}
             render={({ field, fieldState }) => (
               <Input
-                label="Cód."
-                disabled={disabled}
-                variant={fieldState.error && 'error'}
+                disabled={formButtonStatus.formDisabled}
                 helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
+                label="Cód."
                 onBlur={field.onBlur}
+                onChange={field.onChange}
+                value={field.value}
+                variant={fieldState.error && 'error'}
               />
             )}
           />
@@ -40,7 +47,7 @@ export function ClienteForm({ form, disabled }: TClienteFormProps) {
             render={({ field, fieldState }) => (
               <Input
                 label="Nome"
-                disabled={disabled}
+                disabled={formButtonStatus.formDisabled}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -57,7 +64,7 @@ export function ClienteForm({ form, disabled }: TClienteFormProps) {
             render={({ field, fieldState }) => (
               <Input
                 label="Cidade"
-                disabled={disabled}
+                disabled={formButtonStatus.formDisabled}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -69,12 +76,12 @@ export function ClienteForm({ form, disabled }: TClienteFormProps) {
         </div>
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
           <Controller
-            name="UF"
+            name="Uf"
             control={form.control}
             render={({ field, fieldState }) => (
               <Input
-                label="Uf"
-                disabled={disabled}
+                label="UF"
+                disabled={formButtonStatus.formDisabled}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -91,7 +98,7 @@ export function ClienteForm({ form, disabled }: TClienteFormProps) {
             render={({ field, fieldState }) => (
               <Input
                 label="CNPJ"
-                disabled={disabled}
+                disabled={formButtonStatus.formDisabled}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -108,7 +115,7 @@ export function ClienteForm({ form, disabled }: TClienteFormProps) {
             render={({ field, fieldState }) => (
               <Input
                 label="Vend"
-                disabled={disabled}
+                disabled={formButtonStatus.formDisabled}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -125,7 +132,7 @@ export function ClienteForm({ form, disabled }: TClienteFormProps) {
             render={({ field, fieldState }) => (
               <Input
                 label="Ativo"
-                disabled={disabled}
+                disabled={formButtonStatus.formDisabled}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -142,7 +149,7 @@ export function ClienteForm({ form, disabled }: TClienteFormProps) {
             render={({ field, fieldState }) => (
               <Input
                 label="EMail"
-                disabled={disabled}
+                disabled={formButtonStatus.formDisabled}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -159,7 +166,7 @@ export function ClienteForm({ form, disabled }: TClienteFormProps) {
             render={({ field, fieldState }) => (
               <Input
                 label="Identidade"
-                disabled={disabled}
+                disabled={formButtonStatus.formDisabled}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -176,7 +183,7 @@ export function ClienteForm({ form, disabled }: TClienteFormProps) {
             render={({ field, fieldState }) => (
               <Input
                 label="Data Cadastro"
-                disabled={disabled}
+                disabled={formButtonStatus.formDisabled}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -204,9 +211,9 @@ export function ClienteForm({ form, disabled }: TClienteFormProps) {
               value={2}
             />
           </Tabs>
-          {tab === 0 && <ClienteValor id={form.getValues('CdCliente')} />}
-          {tab === 1 && <ClienteQuantidade id={form.getValues('CdCliente')} />}
-          {tab === 2 && <ClienteValorMedio id={form.getValues('CdCliente')} />}
+          {tab === 0 && <ClienteValor />}
+          {tab === 1 && <ClienteQuantidade />}
+          {tab === 2 && <ClienteValorMedio />}
         </div>
       </div>
     </>

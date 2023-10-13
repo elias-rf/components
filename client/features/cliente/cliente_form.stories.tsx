@@ -1,4 +1,4 @@
-import { ClienteForm } from '@/client/features/cliente/components/cliente-form'
+import { ClienteForm } from '@/client/features/cliente/cliente_form'
 import type { Story } from '@ladle/react'
 import { useForm } from 'react-hook-form'
 
