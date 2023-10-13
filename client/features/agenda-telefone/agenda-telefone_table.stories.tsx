@@ -8,15 +8,7 @@ export default {
 export const Default: Story = () => {
   return (
     <div className="flex flex-col space-y-4">
-      <AgendaTelefoneTable
-        list={[]}
-        selection={[]}
-        where={[]}
-        orderBy={[]}
-        onSelection={() => {}}
-        onWhere={() => {}}
-        onOrderBy={() => {}}
-      />
+      <AgendaTelefoneTable />
     </div>
   )
 }
