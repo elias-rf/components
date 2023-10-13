@@ -19,13 +19,16 @@ const tabs = [
 export const Default: Story = () => {
   const [select, setSelect] = React.useState('profile')
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col">
       <Tabs
         selected={select}
         tabs={tabs}
         onChange={setSelect}
       />
-      <JsonViewer value={{ select }} />
+      <div className="p-2 border border-gray-400">
+        {select}
+        <JsonViewer value={{ select }} />
+      </div>
     </div>
   )
 }
