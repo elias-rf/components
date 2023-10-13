@@ -2,7 +2,7 @@ import { Button } from '@/client/components/ui/button'
 import { Input } from '@/client/components/ui/input'
 import { SelectBadge } from '@/client/components/ui/select-badge'
 import { Toggle } from '@/client/components/ui/toggle'
-import { formStatus } from '@/client/lib/form-status'
+import { formButtonStatus } from '@/client/lib/form-button-status'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box'
 import { rpc } from '@/rpc/rpc-client'
 import { TFormStatus } from '@/types'
@@ -29,7 +29,7 @@ export function UsuarioForm({
 }: TUsuarioFormProps) {
   const [listGroups, setListGroups] = useState<[string, string][]>([])
 
-  const frmStatus = formStatus(status)
+  const frmStatus = formButtonStatus(status)
 
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',

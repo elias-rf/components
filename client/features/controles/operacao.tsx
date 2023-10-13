@@ -11,10 +11,9 @@ import { OperacaoTurno } from './components/operacao-turno'
 
 type OperacaoProp = {
   dia?: string
-  onState?: (event: any) => void
 }
 
-export function Operacao({ onState, dia }: OperacaoProp) {
+export function Operacao({ dia }: OperacaoProp) {
   const [mesCorrente, setMesCorrente] = React.useState<['mes', string][]>([])
   const [diaCorrente, setDiaCorrente] = React.useState<['dia', string][]>([])
   const [produtoCorrente, setProdutoCorrente] = React.useState<
@@ -64,24 +63,6 @@ export function Operacao({ onState, dia }: OperacaoProp) {
   function handleSelect(value: string) {
     setOperacaoCorrente([['operacao', value]])
   }
-
-  React.useEffect(() => {
-    onState &&
-      onState({
-        mesInicial,
-        mesCorrente,
-        diaCorrente,
-        produtoCorrente,
-        operacaoCorrente,
-      })
-  }, [
-    onState,
-    mesInicial,
-    mesCorrente,
-    diaCorrente,
-    produtoCorrente,
-    operacaoCorrente,
-  ])
 
   return (
     <>

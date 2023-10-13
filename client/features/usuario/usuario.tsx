@@ -5,7 +5,7 @@ import { Title } from '@/client/components/ui/title'
 import { Permissions } from '@/client/features/permissions'
 import { usuarioColumns } from '@/client/features/usuario/components/usuario_columns'
 import { UsuarioForm } from '@/client/features/usuario/components/usuario_form'
-import { formStatus } from '@/client/lib/form-status'
+import { formButtonStatus } from '@/client/lib/form-button-status'
 import { whereType } from '@/client/lib/where-type'
 import { Loading } from '@/client/pages/loading'
 import { useAuth } from '@/client/store/auth'
@@ -63,7 +63,7 @@ export function Usuario() {
 
   const [list, setList] = React.useState<TData<TUsuarioFields>[]>([])
 
-  const frmStatus = formStatus(status)
+  const frmStatus = formButtonStatus(status)
 
   useEffectOnce(() => {
     async function getData() {

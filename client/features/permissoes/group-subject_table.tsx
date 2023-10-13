@@ -1,7 +1,7 @@
 import { Table } from '@/client/components/table'
 import { Button } from '@/client/components/ui/button'
 import { Title } from '@/client/components/ui/title'
-import { formStatus } from '@/client/lib/form-status'
+import { formButtonStatus } from '@/client/lib/form-button-status'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box'
 import {
   TGroupSubjectFields,
@@ -82,7 +82,7 @@ export function GroupSubjectTable({
   status = 'none',
   where,
 }: GroupSubjectTableProps) {
-  const frmStatus = formStatus(status)
+  const frmStatus = formButtonStatus(status)
 
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',
