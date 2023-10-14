@@ -1,10 +1,10 @@
 import { Button } from '@/client/components/ui/button'
 import { Title } from '@/client/components/ui/title'
-import { useAgendaTelefone } from '@/client/features/agenda-telefone/agenda-telefone_store'
+import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store'
 
 export function AgendaTelefoneHead() {
-  const formButtonStatus = useAgendaTelefone.use.formButtonStatus()()
-  const handleNew = useAgendaTelefone.use.handleNew()
+  const formButtonStatus = agendaTelefoneStore.use.formButtonStatus()()
+  const handleNew = agendaTelefoneStore.use.handleNew()
 
   return (
     <div className="flex flex-row justify-between my-1 align-center">

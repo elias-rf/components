@@ -1,24 +1,31 @@
 import { Button } from '@/client/components/ui/button'
 import { Input } from '@/client/components/ui/input'
-import { useAgendaTelefone } from '@/client/features/agenda-telefone/agenda-telefone_store'
+import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box'
+import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useEffectOnce } from 'usehooks-ts'
 
 export const AgendaTelefoneForm = () => {
-  const formButtonStatus = useAgendaTelefone.use.formButtonStatus()()
-  const handleCancel = useAgendaTelefone.use.handleCancel()
-  const handleDelete = useAgendaTelefone.use.handleDelete()
-  const handleEdit = useAgendaTelefone.use.handleEdit()
-  const handleSave = useAgendaTelefone.use.handleSave()
-  const recordClear = useAgendaTelefone.use.recordClear()
-  const setForm = useAgendaTelefone.use.setForm()
+  const formButtonStatus = agendaTelefoneStore.use.formButtonStatus()()
+  const handleCancel = agendaTelefoneStore.use.handleCancel()
+  const handleDelete = agendaTelefoneStore.use.handleDelete()
+  const handleEdit = agendaTelefoneStore.use.handleEdit()
+  const handleSave = agendaTelefoneStore.use.handleSave()
+  const recordClear = agendaTelefoneStore.use.recordClear()
+  const setForm = agendaTelefoneStore.use.setForm()
+  const fetchRecord = agendaTelefoneStore.use.fetchRecord()
+  const selection = agendaTelefoneStore.use.selection()
 
   const form = useForm({ defaultValues: recordClear, mode: 'onTouched' })
 
   useEffectOnce(() => {
     setForm(form)
   })
+
+  useEffect(() => {
+    fetchRecord()
+  }, [selection])
 
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',
