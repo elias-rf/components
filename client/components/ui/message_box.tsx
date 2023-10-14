@@ -27,11 +27,11 @@ export function MessageBox({
         closeable={false}
       >
         {/*content*/}
-        <div className="border-1 flex w-full flex-col rounded-lg bg-white shadow-lg outline-none focus:outline-none">
+        <div className="flex flex-col w-full bg-white rounded-lg shadow-lg outline-none border-1 focus:outline-none">
           {/*body*/}
           <div className="flex-auto p-2">{children}</div>
           {/*footer*/}
-          <div className="flex items-center justify-end space-x-2 p-2">
+          <div className="flex items-center justify-end p-2 space-x-2">
             {option1 ? (
               <Button onClick={() => onClick('option1')}>{option1}</Button>
             ) : null}

@@ -28,7 +28,9 @@ export function Label({
         className
       )}
     >
-      {children} {required ? '*' : null}
+      <span className="whitespace-nowrap">
+        {children} {required ? '*' : null}
+      </span>
     </label>
   )
 }

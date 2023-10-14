@@ -9,11 +9,11 @@ export default {
 }
 
 const tabs = [
-  { label: 'Profile', id: 'profile' },
-  { label: 'Dashboard', id: 'dashboard' },
-  { label: 'Settings', id: 'settings' },
-  { label: 'Contacts', id: 'contacts' },
-  { label: 'Disabled', id: 'disabled', disabled: true },
+  { label: 'Profile', value: 'profile' },
+  { label: 'Dashboard', value: 'dashboard' },
+  { label: 'Settings', value: 'settings' },
+  { label: 'Contacts', value: 'contacts' },
+  { label: 'Disabled', value: 'disabled', disabled: true },
 ]
 
 export const Default: Story = () => {
@@ -21,7 +21,7 @@ export const Default: Story = () => {
   return (
     <div className="flex flex-col">
       <Tabs
-        selected={select}
+        value={select}
         tabs={tabs}
         onChange={setSelect}
       />

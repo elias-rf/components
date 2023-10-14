@@ -1,8 +1,9 @@
+import { Button } from '@/client/components/ui/button'
 import { MessageBox } from '@/client/components/ui/message_box'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
-import React from 'react'
-import ReactJson from 'react-json-view'
+import { JsonViewer } from '@textea/json-viewer'
+import { useState } from 'react'
 
 export default {
   title: 'Components / UI / messageBox',
@@ -10,22 +11,24 @@ export default {
 }
 
 export const Default: Story = () => {
-  const [disp, setDisp] = React.useState({})
+  const [disp, setDisp] = useState({})
+  const [message, setMessage] = useState('')
   return (
     <div className="flex flex-col space-y-4">
+      <Button onClick={() => setMessage('Mensagem para mostrar')}>Show</Button>
       <MessageBox
         title="Titulo"
-        onClick={setDisp}
+        onClick={(btn) => {
+          setDisp(btn)
+          setMessage('')
+        }}
         option1="OK"
         option2="Cancel"
         option3="Close"
       >
-        Mensagem para mostrar
+        {message}
       </MessageBox>
-      <ReactJson
-        src={{ disp }}
-        theme="flat"
-      />
+      <JsonViewer value={{ disp }} />
     </div>
   )
 }
