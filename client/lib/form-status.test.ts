@@ -4,7 +4,6 @@ import { formButtonStatus } from './form-button-status'
 describe('formStatus', () => {
   test('get view', () => {
     expect(formButtonStatus('view')).toEqual({
-      status: 'view',
       editDisabled: false,
       createDisabled: false,
       delDisabled: false,
@@ -15,7 +14,6 @@ describe('formStatus', () => {
   })
   test('get edit', () => {
     expect(formButtonStatus('edit')).toEqual({
-      status: 'edit',
       editDisabled: true,
       createDisabled: false,
       delDisabled: true,
@@ -26,7 +24,6 @@ describe('formStatus', () => {
   })
   test('get new', () => {
     expect(formButtonStatus('new')).toEqual({
-      status: 'new',
       editDisabled: true,
       createDisabled: false,
       delDisabled: true,
@@ -37,7 +34,6 @@ describe('formStatus', () => {
   })
   test('get none', () => {
     expect(formButtonStatus('none')).toEqual({
-      status: 'none',
       editDisabled: true,
       createDisabled: false,
       delDisabled: true,

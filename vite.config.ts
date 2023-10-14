@@ -30,7 +30,7 @@ export default defineConfig({
   test: {
     root: './',
     globals: true,
-    environment: 'jsdom', // or 'jsdom', 'node'
+    environment: 'jsdom',
     snapshotFormat: { escapeString: false },
     setupFiles: [path.resolve(__dirname, './setup-tests.ts')],
     exclude: [
