@@ -121,7 +121,7 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
 
   return (
     <div className="flex flex-col space-y-2">
-      <div className="flex flex-wrap gap-2 items-center">
+      <div className="flex flex-wrap items-center gap-2">
         {whr.map((item, idx) => (
           <div
             className=""
@@ -138,7 +138,7 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
         ))}
       </div>
 
-      <div className="flex flex-wrap sm:flex-nowrap space-x-2  items-end">
+      <div className="flex flex-wrap items-end space-x-2 sm:flex-nowrap">
         <div className="basis-full">
           <Select
             label="Campo"
@@ -173,6 +173,7 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
           <Button
             onClick={handleAdd}
             outline
+            size="sm"
           >
             FILTRAR
           </Button>
