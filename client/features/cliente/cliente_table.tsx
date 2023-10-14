@@ -1,8 +1,9 @@
 import { Table } from '@/client/components/table'
-import { useCliente } from '@/client/features/cliente/cliente_store'
+import { clienteStore } from '@/client/features/cliente/cliente_store'
 import { usePageSize } from '@/client/store/page-size'
 import { TClienteFields, TClienteKeys } from '@/controllers/cliente.controller'
 import type { TData, TId } from '@/types'
+import { useEffect } from 'react'
 import { clienteColumns } from './components/cliente-columns'
 
 /**
@@ -11,17 +12,22 @@ import { clienteColumns } from './components/cliente-columns'
 export function ClienteTable() {
   const pageHeight = usePageSize((state) => state.height * 0.5)
 
-  const list = useCliente.use.list()
-  const orderBy = useCliente.use.orderBy()
-  const selection = useCliente.use.selection()
-  const setOrderBy = useCliente.use.setOrderBy()
-  const setSelection = useCliente.use.setSelection()
-  const setWhere = useCliente.use.setWhere()
-  const where = useCliente.use.where()
+  const list = clienteStore.use.list()
+  const orderBy = clienteStore.use.orderBy()
+  const selection = clienteStore.use.selection()
+  const setOrderBy = clienteStore.use.setOrderBy()
+  const setSelection = clienteStore.use.setSelection()
+  const setWhere = clienteStore.use.setWhere()
+  const where = clienteStore.use.where()
+  const fetchList = clienteStore.use.fetchList()
 
   function getId(row: TData<TClienteFields>): TId<TClienteKeys> {
     return [['CdCliente', row.CdCliente]]
   }
+
+  useEffect(() => {
+    fetchList()
+  }, [where, orderBy])
 
   return (
     <>

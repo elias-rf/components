@@ -1,19 +1,34 @@
 import { Input } from '@/client/components/ui/input'
-import { useCliente } from '@/client/features/cliente/cliente_store'
+import { Tabs } from '@/client/components/ui/tabs'
+import { clienteStore } from '@/client/features/cliente/cliente_store'
 import { ClienteQuantidade } from '@/client/features/cliente/components/cliente-quantidade'
 import { ClienteValor } from '@/client/features/cliente/components/cliente-valor'
 import { ClienteValorMedio } from '@/client/features/cliente/components/cliente-valor-medio'
-import { Tab, Tabs } from '@mui/material'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useEffectOnce } from 'usehooks-ts'
 
-export function ClienteForm() {
-  const formButtonStatus = useCliente.use.formButtonStatus()()
-  const recordClear = useCliente.use.recordClear()
-  const setForm = useCliente.use.setForm()
+const tabs = [
+  {
+    label: 'Valor',
+    value: 'valor',
+  },
+  {
+    label: 'Quantidade',
+    value: 'quantidade',
+  },
+  {
+    label: 'Valor Médio',
+    value: 'valor-medio',
+  },
+]
 
-  const [tab, setTab] = useState(0)
+export function ClienteForm() {
+  const formButtonStatus = clienteStore.use.formButtonStatus()()
+  const recordClear = clienteStore.use.recordClear()
+  const setForm = clienteStore.use.setForm()
+
+  const [tab, setTab] = useState('')
   const form = useForm({ defaultValues: recordClear, mode: 'onTouched' })
 
   useEffectOnce(() => {
@@ -196,24 +211,13 @@ export function ClienteForm() {
         <div className="col-span-12">
           <Tabs
             value={tab}
-            onChange={(_: any, tab: any) => setTab(tab)}
-          >
-            <Tab
-              label="Quantidade"
-              value={0}
-            />
-            <Tab
-              label="Valor"
-              value={1}
-            />
-            <Tab
-              label="Valor Médio"
-              value={2}
-            />
-          </Tabs>
-          {tab === 0 && <ClienteValor />}
-          {tab === 1 && <ClienteQuantidade />}
-          {tab === 2 && <ClienteValorMedio />}
+            onChange={setTab}
+            tabs={tabs}
+          />
+
+          {tab === 'valor' && <ClienteValor />}
+          {tab === 'quantidade' && <ClienteQuantidade />}
+          {tab === 'valor-medio' && <ClienteValorMedio />}
         </div>
       </div>
     </>

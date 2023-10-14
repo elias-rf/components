@@ -15,9 +15,8 @@ import {
 import { day } from '@/utils/date/day'
 import { deepEqual } from '@/utils/object/deep-equal'
 import { getFieldId } from '@/utils/query/get-field-id'
-import { diff } from 'deep-object-diff'
 import { UseFormReturn } from 'react-hook-form'
-import { create } from 'zustand'
+import { createStore } from 'zustand/vanilla'
 
 const recordClear = {
   CdCliente: '',
@@ -60,7 +59,7 @@ interface ClienteState {
   fim: string
 }
 
-const useClienteBase = create<ClienteState>()((set, get) => ({
+const clienteStoreBase = createStore<ClienteState>()((set, get) => ({
   record: recordClear,
   vendaMensalQuantidade: [],
   inicio: day().subtract(1, 'year').startOf('month').format('YYYY-MM-DD'),
@@ -98,10 +97,12 @@ const useClienteBase = create<ClienteState>()((set, get) => ({
   setForm: (form) => {
     set(() => ({ form }))
   },
+
   setOrderBy: (orderBy) => {
     set(() => ({ orderBy }))
-    get().fetchList()
+    // get().fetchList()
   },
+
   setSelection: (selection) => {
     if (deepEqual(selection, get().selection)) {
       set(() => ({
@@ -114,10 +115,10 @@ const useClienteBase = create<ClienteState>()((set, get) => ({
       return
     }
     set(() => ({ selection, status: 'view' }))
-    get().fetchRecord()
-    get().fetchVendaMensalQuantidade()
-    get().fetchVendaMensalValor()
-    get().fetchVendaMensalValorMedio()
+    // get().fetchRecord()
+    // get().fetchVendaMensalQuantidade()
+    // get().fetchVendaMensalValor()
+    // get().fetchVendaMensalValorMedio()
   },
 
   fetchRecord: async () => {
@@ -125,7 +126,7 @@ const useClienteBase = create<ClienteState>()((set, get) => ({
     if (id.length === 0) return recordClear
     const record = (await cache.fetch(
       {
-        id: get().selection,
+        id,
         select: Object.keys(recordClear),
         table: 'cliente',
       },
@@ -160,6 +161,7 @@ const useClienteBase = create<ClienteState>()((set, get) => ({
     set(() => ({ vendaMensalQuantidade: record }))
     return record
   },
+
   fetchVendaMensalValor: async () => {
     const id = get().selection
     if (id.length === 0) return []
@@ -179,6 +181,7 @@ const useClienteBase = create<ClienteState>()((set, get) => ({
     set(() => ({ vendaMensalValor: record }))
     return record
   },
+
   fetchVendaMensalValorMedio: async () => {
     const id = get().selection
     if (id.length === 0) return []
@@ -203,14 +206,8 @@ const useClienteBase = create<ClienteState>()((set, get) => ({
     where = whereType(where, 'CdCliente', 'int')
 
     set(() => ({ where }))
-    get().fetchList()
+    // get().fetchList()
   },
 }))
 
-useClienteBase.subscribe((state: any, prev: any) =>
-  console.log(diff(prev, state))
-)
-
-useClienteBase.getState().fetchList()
-
-export const useCliente = createSelectors(useClienteBase)
+export const clienteStore = createSelectors(clienteStoreBase)

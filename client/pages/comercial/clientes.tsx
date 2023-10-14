@@ -1,7 +1,7 @@
 import { Can } from '@/client/components/can'
 import { ClienteForm } from '@/client/features/cliente/cliente_form'
 import { ClienteHead } from '@/client/features/cliente/cliente_head'
-import { useCliente } from '@/client/features/cliente/cliente_store'
+import { clienteStore } from '@/client/features/cliente/cliente_store'
 import { ClienteTable } from '@/client/features/cliente/cliente_table'
 import { Loading } from '@/client/pages/loading'
 import { useAuth } from '@/client/store/auth'
@@ -18,7 +18,7 @@ type TPermissions = keyof typeof permissions
 type TCan = { [prm in TPermissions]: boolean }
 
 export default function Clientes() {
-  const status = useCliente.use.status()
+  const status = clienteStore.use.status()
   const [can, setCan] = useState<Partial<TCan>>()
   const idGroups = useAuth((state) => state.user.group_ids)
 
