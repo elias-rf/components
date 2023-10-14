@@ -4,6 +4,7 @@ import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-te
 import { useMessageBox } from '@/client/lib/hooks/use-message-box'
 import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { useEffectOnce } from 'usehooks-ts'
 
 export const AgendaTelefoneForm = () => {
@@ -24,7 +25,20 @@ export const AgendaTelefoneForm = () => {
   })
 
   useEffect(() => {
-    fetchRecord()
+    toast.promise(
+      fetchRecord(),
+      {
+        loading: 'Carregando cadastro...',
+        success: 'Cadastro carregado com sucesso!',
+        error: 'Erro ao carregar cadastro!',
+      },
+      {
+        id: 'agenda-telefone-form',
+        style: {
+          minWidth: '250px',
+        },
+      }
+    )
   }, [selection])
 
   const { MsgBox, confirm } = useMessageBox({

@@ -8,6 +8,7 @@ import {
 } from '@/controllers/agenda-telefone.controller'
 import type { TData, TId } from '@/types'
 import { useEffect } from 'react'
+import toast from 'react-hot-toast'
 import { useStore } from 'zustand'
 
 /**
@@ -33,7 +34,20 @@ export function AgendaTelefoneTable() {
   }
 
   useEffect(() => {
-    fetchList()
+    toast.promise(
+      fetchList(),
+      {
+        loading: 'Carregando agenda de telefones...',
+        success: 'Agenda de telefones carregada com sucesso!',
+        error: 'Erro ao carregar agenda de telefones!',
+      },
+      {
+        id: 'agenda-telefone-table',
+        style: {
+          minWidth: '300px',
+        },
+      }
+    )
   }, [where, orderBy])
 
   return (
