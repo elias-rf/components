@@ -1,5 +1,4 @@
 import { Story } from '@ladle/react'
-import { Box } from '@mui/material'
 import { Usuario } from './usuario'
 
 export default {
@@ -9,9 +8,9 @@ export default {
 export const Default: Story = () => {
   return (
     <>
-      <Box sx={{ border: '1px solid cyan' }}>
+      <div className="p-2">
         <Usuario />
-      </Box>
+      </div>
     </>
   )
 }

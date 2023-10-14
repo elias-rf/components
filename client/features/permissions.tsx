@@ -1,9 +1,10 @@
+import { ShieldIcon } from '@/client/components/icons/shield-icon'
+import { Button } from '@/client/components/ui/button'
+import { CheckBox } from '@/client/components/ui/check-box'
 import { TGroupSubjectFields } from '@/controllers/group-subject.controller'
 import { TGroupFields } from '@/controllers/group.controller'
 import { rpc } from '@/rpc/rpc-client'
 import { TData } from '@/types'
-import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone'
-import { Checkbox, IconButton } from '@mui/material'
 import { ListGroup, Modal } from 'flowbite-react'
 import React from 'react'
 
@@ -74,12 +75,12 @@ export function Permissions({
 
   return (
     <>
-      <IconButton
-        aria-label="delete"
+      <Button
+        color="light"
         onClick={() => setShow(true)}
       >
-        <AdminPanelSettingsTwoToneIcon />
-      </IconButton>
+        <ShieldIcon />
+      </Button>
       <Modal
         onClose={() => setShow(false)}
         show={show}
@@ -112,20 +113,16 @@ export function Permissions({
                     key={permission}
                     onClick={() => handlePermission(permission)}
                   >
-                    <Checkbox
-                      edge="start"
-                      checked={
+                    <CheckBox
+                      label={permissions[permission]}
+                      value={
                         permited
                           ? permited.findIndex(
                               (prm) => permission === prm.idSubject
                             ) !== -1
                           : false
                       }
-                      tabIndex={-1}
-                      disableRipple
                     />
-
-                    {permissions[permission]}
                   </ListGroup.Item>
                 ))}
               </ListGroup>

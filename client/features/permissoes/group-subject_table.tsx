@@ -8,7 +8,6 @@ import {
   TGroupSubjectKeys,
 } from '@/controllers/group-subject.controller'
 import { TData, TFormStatus, TId, TOrderBy, TSelection, TWhere } from '@/types'
-import { Divider } from '@mui/material'
 import { groupSubjectColumns } from './group-subject_columns'
 import { GroupSubjectForm } from './group-subject_form'
 
@@ -103,7 +102,7 @@ export function GroupSubjectTable({
   return (
     <>
       <div className="flex flex-col space-y-2">
-        <div className="flex container flex-row justify-between align-center">
+        <div className="container flex flex-row justify-between align-center">
           <Title>Permissões</Title>
           <div className="flex flex-row space-x-2">
             {status === 'new' ? (
@@ -130,10 +129,6 @@ export function GroupSubjectTable({
               form={form}
               disabled={frmStatus.formDisabled}
             />
-            <Divider
-              variant="middle"
-              sx={{ pt: 2 }}
-            />
           </div>
         ) : null}
         <Table
@@ -149,7 +144,7 @@ export function GroupSubjectTable({
         >
           {() => (
             <div className="border-b-2 border-black dark:border-white">
-              <div className="flex flex-rows space-x-2 my-2">
+              <div className="flex my-2 space-x-2 flex-rows">
                 <Button
                   onClick={onEdit}
                   disabled={frmStatus.editDisabled}
@@ -173,7 +168,7 @@ export function GroupSubjectTable({
                   disabled={frmStatus.formDisabled}
                 />
               </div>
-              <div className="flex flex-rows justify-end align-center space-x-2 my-2">
+              <div className="flex justify-end my-2 space-x-2 flex-rows align-center">
                 <ButtonsSaveCancel
                   onSave={onSave}
                   onCancel={onCancel}
