@@ -1,3 +1,4 @@
+import '@/client/features/controles/controles_store.mock'
 import { Operacao } from '@/client/features/controles/operacao'
 import { Story } from '@ladle/react'
 

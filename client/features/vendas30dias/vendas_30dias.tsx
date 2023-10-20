@@ -1,8 +1,7 @@
 import { Title } from '@/client/components/ui/title'
-import { rpc } from '@/rpc/rpc-client'
-import { day } from '@/utils/date/day'
+import { vendas30DiasStore } from '@/client/features/vendas30dias/vendas30dias.store'
 import { formatMoney } from '@/utils/format/format-money'
-import React from 'react'
+import toast from 'react-hot-toast'
 import {
   Line,
   LineChart,
@@ -11,66 +10,30 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
-import { TFormatDiarios, formatDiario } from './format-diario'
-
-type Vendas30diasProp = {
-  dia?: string
-  onState?: (event: any) => void
-}
+import { useEffectOnce } from 'usehooks-ts'
 
 /**
  * Componente para manipular Agenda de Ramais
  *
  * @returns {*} componente react
  */
-export function Vendas30dias({ dia }: Vendas30diasProp) {
-  const fim = day(dia).format('YYYY-MM-DD')
-  const inicio = day(dia).subtract(90, 'days').format('YYYY-MM-DD')
-  const [list, setList] = React.useState<TFormatDiarios>({})
+export function Vendas30dias() {
+  const list = vendas30DiasStore.use.list()
+  const fetchList = vendas30DiasStore.use.fetchList()
 
-  async function getList(inicio: string, fim: string) {
-    const data = await rpc.nfSaida.vendaDiario({
-      inicio,
-      fim,
-      uf: [
-        'AC',
-        'AL',
-        'AM',
-        'AP',
-        'BA',
-        'CE',
-        'DF',
-        'ES',
-        'GO',
-        'MA',
-        'MG',
-        'MS',
-        'MT',
-        'PA',
-        'PB',
-        'PE',
-        'PI',
-        'PR',
-        'RJ',
-        'RN',
-        'RO',
-        'RR',
-        'RS',
-        'SC',
-        'SE',
-        'SP1',
-        'SP2',
-        'TO',
-        'EX',
-        'FV',
-      ],
-    })
-    setList(formatDiario(data, fim))
-  }
-
-  React.useEffect(() => {
-    getList(inicio, fim)
-  }, [inicio, fim])
+  useEffectOnce(() => {
+    toast.promise(
+      fetchList(),
+      {
+        loading: 'lendo...',
+        success: 'sucesso!',
+        error: 'Erro ao carregar vendas!',
+      },
+      {
+        id: 'vendas30dias-table',
+      }
+    )
+  })
 
   const width = '100%'
   const height = 300
@@ -79,7 +42,7 @@ export function Vendas30dias({ dia }: Vendas30diasProp) {
     <>
       <Title>Vendas 30 dias</Title>
       <div className={'py-2'}>
-        <h2 className={'text-center text-lg'}>Liteflex</h2>
+        <h2 className={'text-center text-lg dark:text-gray-100'}>Liteflex</h2>
         <ResponsiveContainer
           width={width}
           height={height}
@@ -92,14 +55,14 @@ export function Vendas30dias({ dia }: Vendas30diasProp) {
               type="monotone"
               yAxisId="right"
               dataKey="valor"
-              stroke="#008800"
+              stroke="#0d0"
               name="Valor médio"
             />
             <Line
               type="monotone"
               yAxisId="left"
               dataKey="quantidade"
-              stroke="#0000ff"
+              stroke="#58f"
               name="Quantidade"
             />
             <YAxis yAxisId="left" />
@@ -119,7 +82,7 @@ export function Vendas30dias({ dia }: Vendas30diasProp) {
         </ResponsiveContainer>
       </div>
       <div className={'py-2'}>
-        <h2 className={'text-center text-lg'}>Hilite</h2>
+        <h2 className={'text-center text-lg dark:text-gray-100'}>Hilite</h2>
         <ResponsiveContainer
           width={width}
           height={height}
@@ -129,14 +92,14 @@ export function Vendas30dias({ dia }: Vendas30diasProp) {
               type="monotone"
               yAxisId="right"
               dataKey="valor"
-              stroke="#008800"
+              stroke="#0d0"
               name="Valor médio"
             />
             <Line
               type="monotone"
               yAxisId="left"
               dataKey="quantidade"
-              stroke="#0000ff"
+              stroke="#58f"
               name="Quantidade"
             />
             <YAxis yAxisId="left" />
@@ -154,7 +117,7 @@ export function Vendas30dias({ dia }: Vendas30diasProp) {
         </ResponsiveContainer>
       </div>
       <div className={'py-2'}>
-        <h2 className={'text-center text-lg'}>Enlite</h2>
+        <h2 className={'text-center text-lg dark:text-gray-100'}>Enlite</h2>
         <ResponsiveContainer
           width={width}
           height={height}
@@ -167,14 +130,14 @@ export function Vendas30dias({ dia }: Vendas30diasProp) {
               type="monotone"
               yAxisId="right"
               dataKey="valor"
-              stroke="#008800"
+              stroke="#0d0"
               name="Valor médio"
             />
             <Line
               type="monotone"
               yAxisId="left"
               dataKey="quantidade"
-              stroke="#0000ff"
+              stroke="#58f"
               name="Quantidade"
             />
             <YAxis yAxisId="left" />
@@ -192,7 +155,7 @@ export function Vendas30dias({ dia }: Vendas30diasProp) {
         </ResponsiveContainer>
       </div>
       <div className={'py-2'}>
-        <h2 className={'text-center text-lg'}>Metil</h2>
+        <h2 className={'text-center text-lg dark:text-gray-100'}>Metil</h2>
         <ResponsiveContainer
           width={width}
           height={height}
@@ -202,14 +165,14 @@ export function Vendas30dias({ dia }: Vendas30diasProp) {
               type="monotone"
               yAxisId="right"
               dataKey="valor"
-              stroke="#008800"
+              stroke="#0d0"
               name="Valor médio"
             />
             <Line
               type="monotone"
               yAxisId="left"
               dataKey="quantidade"
-              stroke="#0000ff"
+              stroke="#58f"
               name="Quantidade"
             />
             <YAxis yAxisId="left" />
@@ -227,7 +190,9 @@ export function Vendas30dias({ dia }: Vendas30diasProp) {
         </ResponsiveContainer>
       </div>
       <div className={'py-2'}>
-        <h2 className={'text-center text-lg'}>Corneal Ring</h2>
+        <h2 className={'text-center text-lg dark:text-gray-100'}>
+          Corneal Ring
+        </h2>
         <ResponsiveContainer
           width={width}
           height={height}
@@ -237,14 +202,14 @@ export function Vendas30dias({ dia }: Vendas30diasProp) {
               type="monotone"
               yAxisId="right"
               dataKey="valor"
-              stroke="#008800"
+              stroke="#009900"
               name="Valor médio"
             />
             <Line
               type="monotone"
               yAxisId="left"
               dataKey="quantidade"
-              stroke="#0000ff"
+              stroke="#58f"
               name="Quantidade"
             />
             <YAxis yAxisId="left" />
@@ -262,7 +227,9 @@ export function Vendas30dias({ dia }: Vendas30diasProp) {
         </ResponsiveContainer>
       </div>
       <div className={'py-2'}>
-        <h2 className={'text-center text-lg'}>Liteflex + Enlite</h2>
+        <h2 className={'text-center text-lg dark:text-gray-100'}>
+          Liteflex + Enlite
+        </h2>
         <ResponsiveContainer
           width={width}
           height={height}
@@ -272,14 +239,14 @@ export function Vendas30dias({ dia }: Vendas30diasProp) {
               type="monotone"
               yAxisId="right"
               dataKey="valor"
-              stroke="#008800"
+              stroke="#0d0"
               name="Valor médio"
             />
             <Line
               type="monotone"
               yAxisId="left"
               dataKey="quantidade"
-              stroke="#0000ff"
+              stroke="#58f"
               name="Quantidade"
             />
             <YAxis yAxisId="left" />

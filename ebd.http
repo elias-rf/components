@@ -1,5 +1,5 @@
 @contribuicao = "<p>Nossa vida espiritual depende do sangue que nos revela o querer do Senhor</p>"
-@ebd_id = "3521"
+@ebd_id = "3561"
 
 ###
 POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao

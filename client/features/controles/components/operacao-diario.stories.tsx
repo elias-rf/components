@@ -1,4 +1,5 @@
 import { OperacaoDiario } from '@/client/features/controles/components/operacao-diario'
+import '@/client/features/controles/controles_store.mock'
 import { Story } from '@ladle/react'
 
 export default {

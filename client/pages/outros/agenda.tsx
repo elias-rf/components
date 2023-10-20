@@ -11,10 +11,12 @@ export default function Agenda() {
 
   return (
     <div data-name="AgendaTelefone">
-      <AgendaTelefoneHead />
-      <AgendaTelefoneTable />
+      <AgendaTelefoneHead />{' '}
+      <div className="border border-gray-400 dark:border-gray-500">
+        <AgendaTelefoneTable />
+      </div>
       {status !== 'none' ? (
-        <div className="p-1 mb-2 border border-gray-300">
+        <div className="p-1 mb-2 border border-gray-400 dark:border-gray-500">
           <AgendaTelefoneForm />
         </div>
       ) : null}

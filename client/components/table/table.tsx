@@ -110,12 +110,12 @@ export function Table({
       style={{ height }}
     >
       <table className="relative w-full text-sm text-left text-gray-500 whitespace-no-wrap border-blue-400 table-auto dark:text-gray-400">
-        <thead className="sticky top-0 bg-gray-50">
-          <tr className="bg-gray-50">
+        <thead className="sticky top-0">
+          <tr>
             {columns.map((col: TColumn) => (
               <th
                 className={cn(
-                  'px-2 py-1 bg-gray-50',
+                  'px-2 py-1 bg-gray-50 dark:bg-gray-800',
                   align[col.align || 'left'],
                   {
                     'cursor-pointer': isSortable(col),
@@ -142,13 +142,13 @@ export function Table({
                   className="p-0 bg-gray-50 dark:border-gray-500"
                   key={`whr-${col.name}`}
                 >
-                  <div className="flex border border-gray-300 flex-nowrap">
+                  <div className="flex border border-gray-300 flex-nowrap dark:bg-gray-700">
                     <InputFilter
                       name={col.name}
                       value={defaultValues[col.name] || ''}
                       onInput={handleInput}
                     />
-                    <SearchIcon className="w-3" />
+                    <SearchIcon className="w-3 " />
                   </div>
                 </td>
               ))}
@@ -160,7 +160,7 @@ export function Table({
             <React.Fragment key={getId(row).toString()}>
               <tr
                 className={cn(
-                  'bg-white border-b dark:bg-gray-800 dark:border-gray-700',
+                  'bg-white border-b dark:bg-gray-900 dark:border-gray-700',
 
                   {
                     'bg-gray-200 dark:bg-gray-700': isSelected(row, selection),
@@ -176,6 +176,7 @@ export function Table({
                   <td
                     className={cn('p-1.5', col.align && align[col.align])}
                     key={col.name}
+                    style={{ width: col.width }}
                   >
                     {col.format ? col.format(row[col.name]) : row[col.name]}
                   </td>

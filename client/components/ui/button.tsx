@@ -1,20 +1,15 @@
 import { cn } from '@/client/lib/cn'
+import { getAccessKey } from '@/utils/string/get-access-key'
+import { ReactNode } from 'react'
 
 export type TButtonProps = {
-  children: React.ReactNode
-  onClick?: () => void
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-  disabled?: boolean
-  outline?: boolean
-  color?:
-    | 'primary'
-    | 'alternative'
-    | 'dark'
-    | 'light'
-    | 'green'
-    | 'red'
-    | 'yellow'
+  children: ReactNode
   className?: string
+  color?: keyof typeof colorClass
+  disabled?: boolean
+  onClick?: () => void
+  outline?: boolean
+  size?: keyof typeof sizeClass
 }
 
 const sizeClass = {
@@ -85,6 +80,25 @@ const disabledOutlineClass = {
     'text-purple-700/50 border-purple-700/50 dark:border-purple-400/50 dark:text-purple-400/50',
 }
 
+function AccessLabel({
+  children,
+}: {
+  accessKey?: string
+  children: ReactNode
+}) {
+  if (typeof children !== 'string') return <span>{children}</span>
+
+  const chd = getAccessKey(children)
+
+  return (
+    <span>
+      {chd.initial}
+      <span className="font-bold underline">{chd.middle}</span>
+      {chd.final}
+    </span>
+  )
+}
+
 export function Button({
   children,
   onClick,
@@ -97,7 +111,7 @@ export function Button({
   return (
     <button
       className={cn(
-        'focus:ring-4 font-medium rounded-lg text-sm focus:outline-none',
+        'focus:ring-2 font-medium rounded-lg text-sm focus:outline-none',
         sizeClass[size],
         { 'bg-transparent border': outline },
         { [colorClass[color]]: !outline && !disabled },
@@ -109,8 +123,9 @@ export function Button({
       )}
       disabled={disabled}
       onClick={onClick}
+      accessKey={getAccessKey(children).accessKey}
     >
-      {children}
+      <AccessLabel>{children}</AccessLabel>
     </button>
   )
 }

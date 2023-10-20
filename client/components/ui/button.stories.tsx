@@ -5,7 +5,7 @@ import type { Story } from '@ladle/react'
 export default {
   title: 'components / ui / button',
   args: {
-    children: 'Button text',
+    children: '[B]utton text',
     size: 'md',
     color: 'primary',
     disabled: false,

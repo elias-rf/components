@@ -1,5 +1,4 @@
-import { Vendas30dias as Vendas } from '@/client/features/vendas/vendas_30dias'
-import { Box } from '@mui/material'
+import { Vendas30dias as Vendas } from '@/client/features/vendas30dias/vendas_30dias'
 
 /**
  * Componente para manipular Agenda de Ramais
@@ -7,8 +6,8 @@ import { Box } from '@mui/material'
  */
 export default function Vendas30dias() {
   return (
-    <Box sx={{ p: 1 }}>
+    <div className="p-2">
       <Vendas />
-    </Box>
+    </div>
   )
 }

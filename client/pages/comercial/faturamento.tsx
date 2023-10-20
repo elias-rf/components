@@ -1,5 +1,5 @@
-import { Vendas } from "../../features/vendas/vendas/vendas";
+import { Vendas } from '../../features/faturamento/faturamento'
 
 export default function Faturamento() {
-  return <Vendas />;
+  return <Vendas />
 }

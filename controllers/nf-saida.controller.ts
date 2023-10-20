@@ -3,6 +3,7 @@ import { nfSaidaFvController } from '@/controllers/nf-saida-fv.controller'
 import { OrmDatabase, ormTable } from '@/orm'
 import { MestreNota } from '@/schemas/plano/MestreNota.schema'
 import type { TSchema } from '@/schemas/schema.type'
+import { day } from '@/utils/date/day'
 import { zsr } from '@/utils/zod/z-refine'
 import { zd, zod } from '@/utils/zod/zod'
 import { z } from 'zod'
@@ -203,15 +204,25 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
     zod(inicio, z.string().superRefine(zsr.date))
     zod(fim, z.string().superRefine(zsr.date))
     zod(uf, z.array(z.string()))
+
     const knex = db.knex
-    const qry = await knex<
-      any,
+    const qry = (await knex<
+      {
+        NmCategoria: string
+        DtEmissao: string
+        quantidade: number
+        'MestreNota.FgEstatistica': string
+        'CadPro.FgEstatistica': string
+        'MestreNota.CdFilial': number
+        'ItemNota.ImprimeComponentes': string
+        'CadVen.FgControle': string
+      },
       {
         NmCategoria: string
         DtEmissao: string
         quantidade: number
         valor: number
-      }
+      }[]
     >(
       knex.raw(
         'MestreNota, ItemNota, CadVen, NatOpe, CadPro, CadCli, CategPro, CidadesERF'
@@ -242,13 +253,18 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
       .whereIn('cidadeserf.uf', uf)
       .groupBy('NmCategoria', 'MestreNota.DtEmissao')
       .orderBy('NmCategoria')
-      .orderBy('MestreNota.DtEmissao', 'desc')
-    return qry as {
+      .orderBy('MestreNota.DtEmissao', 'desc')) as unknown as {
       NmCategoria: string
       DtEmissao: string
       quantidade: number
       valor: number
     }[]
+
+    const response = qry.map((item) => {
+      item.DtEmissao = day(item.DtEmissao).format('YYYY-MM-DD')
+      return item
+    })
+    return response
   }
   vendaDiario.rpc = true
 

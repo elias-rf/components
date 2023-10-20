@@ -36,12 +36,12 @@ type TFormatDiario = {
 }
 
 export type TFormatDiarios = {
-  liteflex?: TFormatDiario[]
-  metil?: TFormatDiario[]
-  enlite?: TFormatDiario[]
-  hilite?: TFormatDiario[]
-  anel?: TFormatDiario[]
-  enliteLiteflex?: TFormatDiario[]
+  liteflex: TFormatDiario[]
+  metil: TFormatDiario[]
+  enlite: TFormatDiario[]
+  hilite: TFormatDiario[]
+  anel: TFormatDiario[]
+  enliteLiteflex: TFormatDiario[]
 }
 
 export function formatDiario(origem: any[], fim: string): TFormatDiarios {

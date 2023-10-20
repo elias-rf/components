@@ -108,8 +108,8 @@ export function MultiKeyCache(options: any = { max: 10 }) {
 
     purgeTable(table: string) {
       self.purge((key: any) => {
-        if (key.tables && key.tables.includes(table)) return true
-        if (key.table && key.table === table) return true
+        if (key._tables && key._tables.includes(table)) return true
+        if (key._table && key._table === table) return true
         return false
       })
     },
@@ -124,7 +124,7 @@ export function MultiKeyCache(options: any = { max: 10 }) {
 
     fetch(keyValues: any, options: any = {}) {
       const keyHash = hash(keyValues)
-      options.status = { method: options.context.name, keyHash }
+      options.status = { method: keyValues._method, keyHash }
       const response = self.cache.fetch(keyHash, options)
       logger(options.status)
       return response

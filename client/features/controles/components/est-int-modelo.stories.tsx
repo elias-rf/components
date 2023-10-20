@@ -1,4 +1,5 @@
 import { EsterilizacaoInternaModelo } from '@/client/features/controles/components/est-int-modelo'
+import '@/client/features/controles/controles_store.mock'
 import type { Story } from '@ladle/react'
 
 export default {

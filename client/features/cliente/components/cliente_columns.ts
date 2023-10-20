@@ -10,7 +10,7 @@ export const clienteColumns: TColumn[] = [
   {
     label: 'Nome',
     name: 'RzSocial',
-    width: '20%',
+    width: '25%',
   },
   {
     label: 'Cidade',
@@ -40,11 +40,6 @@ export const clienteColumns: TColumn[] = [
   {
     label: 'Email',
     name: 'EMail',
-    width: '10%',
-  },
-  {
-    label: 'Identidade',
-    name: 'NumIdentidade',
     width: '10%',
   },
   {

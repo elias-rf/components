@@ -17,7 +17,7 @@ export function Operacao() {
 
   return (
     <>
-      <div className={'mb-2 max-w-md'}>
+      <div className={'my-2 max-w-md'}>
         <Select
           label="Operação"
           value={getFieldId('operacao', operacao) || ''}
@@ -36,18 +36,20 @@ export function Operacao() {
           ]}
         />
       </div>
-      <OperacaoMensal>
-        <div className={'mb-4 p-1 border-2 border-gray-200 w-full'}>
-          <OperacaoDiario>
-            <div className={'mb-4 p-1 border-2 border-gray-200'}>
-              <OperacaoProduto>
-                <OperacaoModelo />
-              </OperacaoProduto>
-              <OperacaoTurno />
-            </div>
-          </OperacaoDiario>
-        </div>
-      </OperacaoMensal>
+      <div className="max-w-md">
+        <OperacaoMensal>
+          <div className={'mb-4 p-1 border-2 border-gray-200 w-full'}>
+            <OperacaoDiario>
+              <div className={'mb-4 p-1 border-2 border-gray-200'}>
+                <OperacaoProduto>
+                  <OperacaoModelo />
+                </OperacaoProduto>
+                <OperacaoTurno />
+              </div>
+            </OperacaoDiario>
+          </div>
+        </OperacaoMensal>
+      </div>
     </>
   )
 }

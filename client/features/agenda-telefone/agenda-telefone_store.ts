@@ -1,186 +1,125 @@
 import { cache } from '@/client/lib/cache'
 import { createSelectors } from '@/client/lib/create-selectors'
-import { formButtonStatus } from '@/client/lib/form-button-status'
-import { whereType } from '@/client/lib/where-type'
+import {
+  TCreateButtonsStore,
+  createButtonsStore,
+} from '@/client/store/create-buttons-store'
+import {
+  TCreateListStore,
+  createListStore,
+} from '@/client/store/create-list-store'
+import {
+  TCreateRecordStore,
+  createRecordStore,
+} from '@/client/store/create-record-store'
 import {
   TAgendaTelefoneFields,
   TAgendaTelefoneKeys,
 } from '@/controllers/agenda-telefone.controller'
 import { rpc } from '@/rpc/rpc-client'
-import {
-  TData,
-  TFormButtonStatus,
-  TFormStatus,
-  TOrderBy,
-  TSelection,
-  TWhere,
-} from '@/types'
-import { deepEqual } from '@/utils/object/deep-equal'
-import { UseFormReturn } from 'react-hook-form'
-import toast from 'react-hot-toast'
+import { TData } from '@/types'
+import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
+
+const tableName = 'agendaTelefone' as const
 
 const recordClear = {
   id: '',
   name: '',
   email: '',
   department: '',
-}
+} as TData<TAgendaTelefoneFields>
 
-interface AgendaTelefoneState {
-  fetchList: () => Promise<TData<TAgendaTelefoneFields>[]> // store
-  fetchRecord: () => Promise<TData<TAgendaTelefoneFields>> // store
-  form: UseFormReturn<typeof recordClear, any> | undefined // store
-  formButtonStatus: () => TFormButtonStatus // head form
-  handleCancel: () => void // form
-  handleDelete: () => void // form
-  handleEdit: () => void // form
-  handleNew: () => void // head
-  handleSave: () => void // form
-  list: TData<TAgendaTelefoneFields>[] // table
-  orderBy: TOrderBy<TAgendaTelefoneFields> // table
-  record: TData<TAgendaTelefoneFields> // store
-  recordClear: typeof recordClear // form
-  // resetRecord: () => void
-  selection: TSelection<TAgendaTelefoneKeys> // table
-  setForm: (form: UseFormReturn<typeof recordClear, any>) => void // form
-  setOrderBy: (orderBy: TOrderBy<TAgendaTelefoneFields>) => void // table
-  setSelection: (selection: TSelection<TAgendaTelefoneKeys>) => void // table
-  // setStatus: (status: TFormStatus) => void
-  setWhere: (where: TWhere<TAgendaTelefoneFields>) => void // table
-  status: TFormStatus // store
-  where: TWhere<TAgendaTelefoneFields> // table
-}
+type AgendaTelefoneState = {
+  fetchList: () => Promise<TData<TAgendaTelefoneFields>[]>
+  fetchRecord: () => Promise<TData<TAgendaTelefoneFields>>
+  onDelete: () => void
+  onSave: () => void
+  recordClear: TData<TAgendaTelefoneFields>
+} & TCreateButtonsStore &
+  TCreateListStore<TAgendaTelefoneFields, TAgendaTelefoneKeys> &
+  TCreateRecordStore<TAgendaTelefoneFields>
 
 const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
-  (set, get) => ({
-    where: [],
-    orderBy: [['id', 'asc']],
-    selection: [],
-    status: 'none',
-    record: recordClear,
-    list: [],
-    form: undefined,
-    recordClear: recordClear,
-    formButtonStatus: () => formButtonStatus(get().status),
+  devtools(
+    (set, get) => ({
+      ...createListStore<TAgendaTelefoneFields, TAgendaTelefoneKeys>(set, get),
+      ...createRecordStore(set),
+      ...createButtonsStore(set, get),
 
-    setWhere: (where) => {
-      where = whereType(where, 'id', 'int')
+      recordClear: recordClear,
 
-      set(() => ({ where }))
-      // get().fetchList()
-    },
-
-    setOrderBy: (orderBy) => {
-      set(() => ({ orderBy }))
-      // get().fetchList()
-    },
-
-    setSelection: (selection) => {
-      if (deepEqual(selection, get().selection)) {
-        set(() => ({ selection: [], status: 'none' }))
-        return
-      }
-      set(() => ({ selection, status: 'view' }))
-      // get().fetchRecord()
-    },
-
-    setForm: (form) => {
-      set(() => ({ form }))
-    },
-
-    // resetRecord: () => {
-    //   set(() => ({ record: recordClear }))
-    //   get().form?.reset(recordClear)
-    // },
-
-    fetchList: async () => {
-      try {
+      fetchList: async () => {
         const list = (await cache.fetch(
           {
             where: get().where,
             orderBy: get().orderBy,
-            table: 'agendaTelefone',
+            _table: tableName,
+            _method: `${tableName}.list`,
           },
           {
             context: {
-              method: rpc.agendaTelefone.list,
-              name: 'agendaTelefone.list',
+              method: rpc[tableName].list,
             },
           }
         )) as TData<TAgendaTelefoneFields>[]
-        set(() => ({ list }))
+        set(() => ({ list }), false, 'fetchList')
         return list
-      } catch (error: any) {
-        toast.error(error.message)
-        set(() => ({ list: [] }))
-        return []
-      }
-    },
+      },
 
-    fetchRecord: async () => {
-      const id = get().selection
-      if (id.length === 0) return recordClear
-      try {
+      fetchRecord: async () => {
+        const id = get().selection
+        if (id.length === 0) return recordClear
         const record = (await cache.fetch(
-          { id: get().selection, table: 'agendaTelefone' },
+          {
+            id: get().selection,
+            _table: tableName,
+            _method: `${tableName}.read`,
+          },
           {
             context: {
-              method: rpc.agendaTelefone.read,
-              name: 'agendaTelefone.read',
+              method: rpc[tableName].read,
             },
           }
         )) as TData<TAgendaTelefoneFields>
-        set(() => ({ record }))
-        get().form?.reset(record)
+        set(() => ({ record }), false, 'fetchRecord')
         return record
-      } catch (error: any) {
-        toast.error(error.message)
-        set(() => ({ record: recordClear }))
-        get().form?.reset(recordClear)
-        return recordClear
-      }
-    },
+      },
 
-    handleNew: () => {
-      set(() => ({ record: recordClear, status: 'new', selection: [] }))
-    },
+      onSave: async () => {
+        cache.purgeTable(tableName)
+        if (get().status === 'edit') {
+          await rpc[tableName].update({
+            data: get().record || {},
+            id: get().selection,
+          })
+        }
+        if (get().status === 'new') {
+          await rpc[tableName].create({ data: get().record || {} })
+        }
+        await get().fetchList()
+        set(() => ({ status: 'view' }), false, 'onSave')
+      },
 
-    handleEdit: () => {
-      set(() => ({ status: 'edit' }))
-    },
-
-    handleSave: async () => {
-      if (get().status === 'edit') {
-        cache.purgeTable('agendaTelefone')
-        await rpc.agendaTelefone.update({
-          data: get().form?.getValues() || {},
-          id: get().selection,
-        })
-      }
-      if (get().status === 'new') {
-        cache.purgeTable('agendaTelefone')
-        await rpc.agendaTelefone.create({ data: get().form?.getValues() || {} })
-      }
-      await get().fetchList()
-      set(() => ({ status: 'view' }))
-    },
-
-    handleDelete: async () => {
-      cache.purgeTable('agendaTelefone')
-      await rpc.agendaTelefone.del({ id: get().selection })
-      await get().fetchList()
-      set(() => ({ status: 'view', selection: [] }))
-    },
-
-    handleCancel: () => {
-      if (get().status === 'new') {
-        set(() => ({ status: 'none' }))
-        return
-      }
-      set(() => ({ status: 'view' }))
-    },
-  })
+      onDelete: async () => {
+        cache.purgeTable(tableName)
+        await rpc[tableName].del({ id: get().selection })
+        await get().fetchList()
+        set(
+          () => ({ record: get().recordClear, status: 'none', selection: [] }),
+          false,
+          'onDelete'
+        )
+      },
+    }),
+    {
+      name: 'intranet',
+      store: tableName,
+      serialize: { options: true },
+    }
+  )
 )
+
+agendaTelefoneStoreBase.getState().setOrderBy([['id', 'asc']])
 
 export const agendaTelefoneStore = createSelectors(agendaTelefoneStoreBase)

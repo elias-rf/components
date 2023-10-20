@@ -8,7 +8,7 @@ export default {
 export const Default: Story = () => {
   return (
     <>
-      <Vendas30dias dia="2020-02-01" />
+      <Vendas30dias />
     </>
   )
 }

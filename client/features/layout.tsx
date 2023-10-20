@@ -6,7 +6,7 @@ import { Navbar } from '@/client/features/navbar'
 export function Layout({ children }: { children?: any }) {
   return (
     <div
-      className="flex flex-col w-full h-screen"
+      className="flex flex-col w-full h-screen dark:bg-gray-900"
       data-name="Layout"
     >
       <NoPrint>

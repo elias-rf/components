@@ -78,6 +78,8 @@ export function Permissions({
       <Button
         color="light"
         onClick={() => setShow(true)}
+        className="px-2"
+        size="sm"
       >
         <ShieldIcon />
       </Button>

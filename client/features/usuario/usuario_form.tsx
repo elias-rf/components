@@ -2,34 +2,47 @@ import { Button } from '@/client/components/ui/button'
 import { Input } from '@/client/components/ui/input'
 import { SelectBadge } from '@/client/components/ui/select-badge'
 import { Toggle } from '@/client/components/ui/toggle'
-import { formButtonStatus } from '@/client/lib/form-button-status'
+import { usuarioStore } from '@/client/features/usuario/usuario_store'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box'
 import { rpc } from '@/rpc/rpc-client'
-import { TFormStatus } from '@/types'
-import { useState } from 'react'
-import { Controller, UseFormReturn } from 'react-hook-form'
+import { useEffect, useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { useEffectOnce } from 'usehooks-ts'
 
-type TUsuarioFormProps = {
-  form: UseFormReturn<any>
-  onCancel?: () => void
-  onDel?: () => void
-  onEdit?: () => void
-  onSave?: () => void
-  status?: TFormStatus
-}
-
-export function UsuarioForm({
-  form,
-  onCancel,
-  onDel,
-  onEdit,
-  onSave,
-  status = 'none',
-}: TUsuarioFormProps) {
+export function UsuarioForm() {
   const [listGroups, setListGroups] = useState<[string, string][]>([])
 
-  const frmStatus = formButtonStatus(status)
+  const status = usuarioStore.use.status()
+  const onCancel = usuarioStore.use.onCancel()
+  const onDelete = usuarioStore.use.onDelete()
+  const onEdit = usuarioStore.use.onEdit()
+  const onSave = usuarioStore.use.onSave()
+  const recordClear = usuarioStore.use.recordClear()
+  const fetchRecord = usuarioStore.use.fetchRecord()
+  const selection = usuarioStore.use.selection()
+  const record = usuarioStore.use.record()
+  const setRecord = usuarioStore.use.setRecord()
+
+  const form = useForm({ defaultValues: recordClear, mode: 'onTouched' })
+
+  useEffect(() => {
+    form.reset(record)
+  }, [record])
+
+  useEffect(() => {
+    toast.promise(
+      fetchRecord(),
+      {
+        loading: 'lendo...',
+        success: 'sucesso!',
+        error: 'Erro ao carregar cadastro!',
+      },
+      {
+        id: 'usuario-form',
+      }
+    )
+  }, [selection])
 
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',
@@ -37,6 +50,15 @@ export function UsuarioForm({
     option1: 'CONFIRMAR',
     option2: 'CANCELAR',
   })
+
+  async function handleDel() {
+    const response = await confirm(
+      'Tem certeza que deseja apagar ' + form?.getValues('nome')
+    )
+    if (response === 'option1') {
+      onDelete()
+    }
+  }
 
   useEffectOnce(() => {
     async function getData() {
@@ -53,33 +75,24 @@ export function UsuarioForm({
     getData()
   })
 
-  async function handleDel() {
-    const response = await confirm(
-      'Tem certeza que deseja apagar ' + form.getValues('name')
-    )
-    if (response === 'option1') {
-      onDel && onDel()
-    }
-  }
-
   return (
-    <div data-name="AgendaTelefoneForm">
+    <div data-name="UsuarioForm">
       <div className="flex my-2 space-x-2 flex-rows">
         <Button
           onClick={onEdit}
-          disabled={frmStatus.editDisabled}
+          disabled={['none', 'edit', 'new'].includes(status)}
           size="sm"
           outline
         >
-          EDITAR
+          [E]DITAR
         </Button>
         <Button
           onClick={handleDel}
-          disabled={frmStatus.delDisabled}
+          disabled={['none', 'edit', 'new'].includes(status)}
           size="sm"
           outline
         >
-          EXCLUIR
+          E[X]CLUIR
         </Button>
       </div>
       <div className="grid grid-cols-12 gap-3">
@@ -94,7 +107,7 @@ export function UsuarioForm({
               <Input
                 required
                 label="Usuario"
-                disabled={frmStatus.formDisabled}
+                disabled={['none', 'view'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -115,7 +128,7 @@ export function UsuarioForm({
               <Input
                 required
                 label="Usuario"
-                disabled={frmStatus.formDisabled}
+                disabled={['none', 'view'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -136,7 +149,7 @@ export function UsuarioForm({
               <Input
                 required
                 label="Login"
-                disabled={frmStatus.formDisabled}
+                disabled={['none', 'view'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -157,7 +170,7 @@ export function UsuarioForm({
               <Input
                 required
                 label="Email"
-                disabled={frmStatus.formDisabled}
+                disabled={['none', 'view'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -178,7 +191,7 @@ export function UsuarioForm({
               <Toggle
                 required
                 label="Ativo"
-                disabled={frmStatus.formDisabled}
+                disabled={['none', 'view'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -198,7 +211,7 @@ export function UsuarioForm({
               <SelectBadge
                 required
                 label="Grupo"
-                disabled={frmStatus.formDisabled}
+                disabled={['none', 'view'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value ? field.value.split(',') : []}
@@ -213,22 +226,25 @@ export function UsuarioForm({
       <div className="flex justify-end my-2 space-x-2 flex-rows">
         {onSave ? (
           <Button
-            onClick={onSave}
-            disabled={frmStatus.saveDisabled}
+            onClick={() => {
+              setRecord(form.getValues())
+              onSave()
+            }}
+            disabled={['none', 'view'].includes(status)}
             size="sm"
             outline
           >
-            SAVE
+            [S]AVE
           </Button>
         ) : null}
         {onCancel ? (
           <Button
             onClick={onCancel}
-            disabled={frmStatus.cancelDisabled}
+            disabled={['none', 'view'].includes(status)}
             size="sm"
             outline
           >
-            CANCEL
+            [C]ANCEL
           </Button>
         ) : null}
       </div>

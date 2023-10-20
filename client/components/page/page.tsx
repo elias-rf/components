@@ -17,7 +17,7 @@ export const Page = ({ children }: TPageProps) => {
   return (
     <div
       ref={pageRef}
-      className={'px-2  h-[90%]'}
+      className={'px-2  h-[90%] '}
       data-name="Page"
     >
       {children}

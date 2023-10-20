@@ -1,5 +1,21 @@
 import { EsterilizacaoExternaModelo } from '@/client/features/controles/components/est-ext-modelo'
+import { fetcherMock } from '@/mocks/fetcher-mock'
 import type { Story } from '@ladle/react'
+
+fetcherMock({
+  'esterilizacaoExterna/modelo': () => {
+    return [
+      {
+        modelo: 'Modelo 1',
+        quantidade: 10,
+      },
+      {
+        modelo: 'Modelo 2',
+        quantidade: 20,
+      },
+    ]
+  },
+})
 
 export default {
   title: 'features/controles/est_ext/est-ext-modelo',

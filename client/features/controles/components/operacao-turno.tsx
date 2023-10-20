@@ -6,16 +6,16 @@ import { operacaoTurnoSchema } from './operacao-turno_schema'
 export function OperacaoTurno() {
   const operacao = useControles.use.operacao()
   const dia = useControles.use.dia()
-  const fetchOperacaoProduto = useControles.use.fetchOperacaoProduto()
-  const operacaoProduto = useControles.use.operacaoProduto()
+  const fetchOperacaoTurno = useControles.use.fetchOperacaoTurno()
+  const operacaoTurno = useControles.use.operacaoTurno()
 
   React.useEffect(() => {
-    fetchOperacaoProduto()
+    fetchOperacaoTurno()
   }, [dia, operacao])
 
   return (
     <Table
-      rows={operacaoProduto}
+      rows={operacaoTurno}
       columns={operacaoTurnoSchema}
     ></Table>
   )

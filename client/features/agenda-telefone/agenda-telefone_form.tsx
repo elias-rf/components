@@ -5,38 +5,35 @@ import { useMessageBox } from '@/client/lib/hooks/use-message-box'
 import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import { useEffectOnce } from 'usehooks-ts'
 
 export const AgendaTelefoneForm = () => {
-  const formButtonStatus = agendaTelefoneStore.use.formButtonStatus()()
-  const handleCancel = agendaTelefoneStore.use.handleCancel()
-  const handleDelete = agendaTelefoneStore.use.handleDelete()
-  const handleEdit = agendaTelefoneStore.use.handleEdit()
-  const handleSave = agendaTelefoneStore.use.handleSave()
+  const status = agendaTelefoneStore.use.status()
+  const onCancel = agendaTelefoneStore.use.onCancel()
+  const onDelete = agendaTelefoneStore.use.onDelete()
+  const onEdit = agendaTelefoneStore.use.onEdit()
+  const onSave = agendaTelefoneStore.use.onSave()
   const recordClear = agendaTelefoneStore.use.recordClear()
-  const setForm = agendaTelefoneStore.use.setForm()
   const fetchRecord = agendaTelefoneStore.use.fetchRecord()
   const selection = agendaTelefoneStore.use.selection()
+  const record = agendaTelefoneStore.use.record()
+  const setRecord = agendaTelefoneStore.use.setRecord()
 
   const form = useForm({ defaultValues: recordClear, mode: 'onTouched' })
 
-  useEffectOnce(() => {
-    setForm(form)
-  })
+  useEffect(() => {
+    form.reset(record)
+  }, [record])
 
   useEffect(() => {
     toast.promise(
       fetchRecord(),
       {
-        loading: 'Carregando cadastro...',
-        success: 'Cadastro carregado com sucesso!',
+        loading: 'lendo...',
+        success: 'sucesso!',
         error: 'Erro ao carregar cadastro!',
       },
       {
         id: 'agenda-telefone-form',
-        style: {
-          minWidth: '250px',
-        },
       }
     )
   }, [selection])
@@ -44,8 +41,8 @@ export const AgendaTelefoneForm = () => {
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',
     message: 'Confirma a exclusão do registro ?',
-    option1: 'CONFIRMAR',
-    option2: 'CANCELAR',
+    option1: '[S]im',
+    option2: '[N]ão',
   })
 
   async function handleDel() {
@@ -53,7 +50,7 @@ export const AgendaTelefoneForm = () => {
       'Tem certeza que deseja apagar ' + form?.getValues('name')
     )
     if (response === 'option1') {
-      handleDelete()
+      onDelete()
     }
   }
 
@@ -61,20 +58,20 @@ export const AgendaTelefoneForm = () => {
     <div data-name="AgendaTelefoneForm">
       <div className="flex my-2 space-x-2 flex-rows">
         <Button
-          onClick={handleEdit}
-          disabled={formButtonStatus.editDisabled}
+          onClick={onEdit}
+          disabled={['none', 'edit', 'new'].includes(status)}
           size="sm"
           outline
         >
-          EDITAR
+          [E]DITAR
         </Button>
         <Button
           onClick={handleDel}
-          disabled={formButtonStatus.delDisabled}
+          disabled={['none', 'edit', 'new'].includes(status)}
           size="sm"
           outline
         >
-          EXCLUIR
+          E[X]CLUIR
         </Button>
       </div>
       <div className="grid grid-cols-12 gap-3">
@@ -87,7 +84,7 @@ export const AgendaTelefoneForm = () => {
             }}
             render={({ field, fieldState }) => (
               <Input
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'view'].includes(status)}
                 helper={fieldState.error?.message}
                 label="Ramal"
                 onBlur={field.onBlur}
@@ -110,7 +107,7 @@ export const AgendaTelefoneForm = () => {
               <Input
                 required
                 label="Nome"
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'view'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -127,7 +124,7 @@ export const AgendaTelefoneForm = () => {
             render={({ field, fieldState }) => (
               <Input
                 label="Setor"
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'view'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -144,7 +141,7 @@ export const AgendaTelefoneForm = () => {
             render={({ field, fieldState }) => (
               <Input
                 label="Email"
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'view'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -157,20 +154,26 @@ export const AgendaTelefoneForm = () => {
       </div>
       <div className="flex justify-end my-2 space-x-2 flex-rows align-center">
         <Button
-          onClick={handleSave}
-          disabled={formButtonStatus.saveDisabled}
+          onClick={() => {
+            setRecord(form.getValues())
+            onSave()
+          }}
+          disabled={['none', 'view'].includes(status)}
           size="sm"
           outline
         >
-          SAVE
+          [S]AVE
         </Button>
         <Button
-          onClick={handleCancel}
-          disabled={formButtonStatus.cancelDisabled}
+          onClick={() => {
+            form.reset()
+            onCancel()
+          }}
+          disabled={['none', 'view'].includes(status)}
           size="sm"
           outline
         >
-          CANCEL
+          [C]ANCEL
         </Button>
       </div>
       <MsgBox />

@@ -47,7 +47,7 @@ function ButtonsSaveCancel({
           size="sm"
           outline
         >
-          SAVE
+          [S]AVE
         </Button>
       ) : null}
       {onCancel ? (
@@ -57,7 +57,7 @@ function ButtonsSaveCancel({
           size="sm"
           outline
         >
-          CANCEL
+          [C]ANCEL
         </Button>
       ) : null}
     </>
@@ -118,7 +118,7 @@ export function GroupSubjectTable({
                 size="sm"
                 outline
               >
-                NOVO
+                [N]OVO
               </Button>
             )}
           </div>
@@ -151,7 +151,7 @@ export function GroupSubjectTable({
                   size="sm"
                   outline
                 >
-                  EDITAR
+                  [E]DITAR
                 </Button>
                 <Button
                   onClick={handleDel}
@@ -159,7 +159,7 @@ export function GroupSubjectTable({
                   size="sm"
                   outline
                 >
-                  EXCLUIR
+                  E[X]CLUIR
                 </Button>
               </div>
               <div>

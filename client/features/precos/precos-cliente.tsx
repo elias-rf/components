@@ -101,11 +101,11 @@ export function PrecosCliente() {
   return (
     <>
       <div className="flex flex-col">
-        <p>
-          <span className="text-2xl font-bold text-blue-600">Combos</span>
+        <p className="dark:text-gray-100">
+          <span className="text-2xl font-bold text-blue-600 ">Combos</span>
           {' >>> Lentes + Metilcelulose + Injetores'}
         </p>
-        <p className={'text-lg font-bold'}>
+        <p className={'text-lg font-bold dark:text-gray-100'}>
           Descontos por quantidades e pacotes
         </p>
         <div className="p-4 my-2 bg-gray-200 border border-black border-solid w-min">

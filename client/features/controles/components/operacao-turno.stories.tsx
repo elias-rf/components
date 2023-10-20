@@ -1,4 +1,5 @@
 import { OperacaoTurno } from '@/client/features/controles/components/operacao-turno'
+import '@/client/features/controles/controles_store.mock'
 import { Story } from '@ladle/react'
 
 export default {

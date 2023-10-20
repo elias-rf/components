@@ -11,8 +11,8 @@ export function TransferenciaMensal({ children }: TransferenciaMensalProps) {
   const mes = useControles.use.mes()
   const mesInicial = useControles.use.mesInicio()
   const setMes = useControles.use.setMes()
-  const fetchTransferenciaMensal = useControles.use.fetchOperacaoMensal()
-  const transferenciaMensal = useControles.use.operacaoMensal()
+  const fetchTransferenciaMensal = useControles.use.fetchTransferenciaMensal()
+  const transferenciaMensal = useControles.use.transferenciaMensal()
 
   React.useEffect(() => {
     fetchTransferenciaMensal()

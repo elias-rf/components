@@ -7,10 +7,10 @@ import { Transferencia } from '@/client/features/controles/transferencia'
 import { useState } from 'react'
 
 const tabs = [
-  { label: 'Operação', id: 'operacao' },
-  { label: 'Esterilização Int', id: 'estint' },
-  { label: 'Esterilização Ext', id: 'estext' },
-  { label: 'Transferência', id: 'transferencia' },
+  { label: 'Operação', value: 'operacao' },
+  { label: 'Esterilização Int', value: 'estint' },
+  { label: 'Esterilização Ext', value: 'estext' },
+  { label: 'Transferência', value: 'transferencia' },
 ]
 
 export default function Controles() {
@@ -20,7 +20,7 @@ export default function Controles() {
     <>
       <Title>Controle de Produção</Title>
       <Tabs
-        selected={select}
+        value={select}
         tabs={tabs}
         onChange={setSelect}
       />

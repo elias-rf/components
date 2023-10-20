@@ -1,17 +1,12 @@
 import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon'
-import { useAuth } from '@/client/store/auth'
-import {
-  Avatar,
-  DarkThemeToggle,
-  Dropdown,
-  Navbar as FbNavbar,
-} from 'flowbite-react'
+import { DarkToggle } from '@/client/components/ui/dark-toggle'
+import { authStore } from '@/client/store/auth_store'
+import { Avatar, Dropdown, Navbar as FbNavbar } from 'flowbite-react'
 import { useLocation } from 'wouter'
 
 export function Navbar() {
   const [_, setLocation] = useLocation()
-
-  const user = useAuth((state) => state.user)
+  const user = authStore.use.user()
 
   function handleLink(to: string) {
     setLocation(to)
@@ -33,7 +28,7 @@ export function Navbar() {
             Visiontech
           </span>
         </FbNavbar.Brand>
-        <div className="flex items-center md:order-2">
+        <div className="flex items-center space-x-2 md:order-2">
           <Dropdown
             arrowIcon={false}
             inline
@@ -56,7 +51,7 @@ export function Navbar() {
             </Dropdown.Item>
           </Dropdown>
           <FbNavbar.Toggle />
-          <DarkThemeToggle />
+          <DarkToggle />
         </div>
         <FbNavbar.Collapse>
           <Dropdown
@@ -97,6 +92,9 @@ export function Navbar() {
             </Dropdown.Item>
             <Dropdown.Item onClick={() => handleLink('/sistema/permissao')}>
               Permissões
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleLink('/sistema/grupos')}>
+              Grupos
             </Dropdown.Item>
           </Dropdown>
           <Dropdown

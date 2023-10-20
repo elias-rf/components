@@ -40,3 +40,7 @@ export function formButtonStatus(status: TFormStatus) {
   }
   return response
 }
+
+// [none] = edit, del, save, cancel, form
+// [view] = save, cancel, form
+// [edit, new] = edit, del

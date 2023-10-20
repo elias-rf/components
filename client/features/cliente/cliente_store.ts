@@ -1,21 +1,20 @@
 import { cache } from '@/client/lib/cache'
 import { createSelectors } from '@/client/lib/create-selectors'
-import { formButtonStatus } from '@/client/lib/form-button-status'
-import { whereType } from '@/client/lib/where-type'
+import {
+  TCreateListStore,
+  createListStore,
+} from '@/client/store/create-list-store'
+import {
+  TCreateRecordStore,
+  createRecordStore,
+} from '@/client/store/create-record-store'
 import { TClienteFields, TClienteKeys } from '@/controllers/cliente.controller'
 import { rpc } from '@/rpc/rpc-client'
-import {
-  TData,
-  TFormButtonStatus,
-  TFormStatus,
-  TOrderBy,
-  TSelection,
-  TWhere,
-} from '@/types'
+import { TData, TFormStatus } from '@/types'
 import { day } from '@/utils/date/day'
-import { deepEqual } from '@/utils/object/deep-equal'
 import { getFieldId } from '@/utils/query/get-field-id'
-import { UseFormReturn } from 'react-hook-form'
+import { ms } from '@/utils/string/ms'
+import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
 
 const recordClear = {
@@ -31,7 +30,7 @@ const recordClear = {
   DtCadastro: '',
 }
 
-interface ClienteState {
+type ClienteState = {
   recordClear: typeof recordClear // form
   record: typeof recordClear // store
   vendaMensalQuantidade: any[]
@@ -41,173 +40,150 @@ interface ClienteState {
   vendaMensalValorMedio: any[]
   fetchVendaMensalValorMedio: () => Promise<any[]>
   fetchList: () => Promise<TData<TClienteFields>[]> // store
-  form: UseFormReturn<typeof recordClear, any> | undefined // store
-
-  formButtonStatus: () => TFormButtonStatus // head form
-  list: TData<TClienteFields>[] // table
-  orderBy: TOrderBy<TClienteFields> // table
-
   status: TFormStatus // store
-  where: TWhere<TClienteFields> // table
-  setForm: (form: UseFormReturn<typeof recordClear, any>) => void // form
-  selection: TSelection<TClienteKeys> // table
-  setOrderBy: (orderBy: TOrderBy<TClienteFields>) => void // table
-  setSelection: (selection: TSelection<TClienteKeys>) => void // table
   fetchRecord: () => Promise<typeof recordClear> // store
-  setWhere: (where: TWhere<TClienteFields>) => void // table
   inicio: string
   fim: string
-}
+} & TCreateListStore<TClienteFields, TClienteKeys> &
+  TCreateRecordStore<TClienteFields>
 
-const clienteStoreBase = createStore<ClienteState>()((set, get) => ({
-  record: recordClear,
-  vendaMensalQuantidade: [],
-  inicio: day().subtract(1, 'year').startOf('month').format('YYYY-MM-DD'),
-  fim: day().subtract(1, 'month').endOf('month').format('YYYY-MM-DD'),
-  vendaMensalValor: [],
-  vendaMensalValorMedio: [],
-  recordClear: recordClear,
-  selection: [],
-  form: undefined,
-  where: [],
-  orderBy: [['CdCliente', 'asc']],
-  fetchList: async () => {
-    const list = (await cache.fetch(
-      {
-        where: get().where,
-        orderBy: get().orderBy,
-        select: Object.keys(recordClear),
-        table: 'cliente',
+const clienteStoreBase = createStore<ClienteState>()(
+  devtools(
+    (set, get) => ({
+      ...createListStore<TClienteFields, TClienteKeys>(set, get),
+      ...createRecordStore(set),
+      recordClear: recordClear,
+
+      inicio: day().subtract(1, 'year').startOf('month').format('YYYY-MM-DD'),
+      fim: day().subtract(1, 'month').endOf('month').format('YYYY-MM-DD'),
+      vendaMensalQuantidade: [],
+      vendaMensalValor: [],
+      vendaMensalValorMedio: [],
+
+      fetchList: async () => {
+        const list = (await cache.fetch(
+          {
+            where: get().where,
+            orderBy: get().orderBy,
+            select: Object.keys(recordClear),
+            _table: 'cliente',
+            _method: 'cliente.list',
+          },
+          {
+            context: {
+              method: rpc.cliente.list,
+            },
+          }
+        )) as TData<TClienteFields>[]
+        set(() => ({ list }), false, 'fetchList')
+        return list
       },
-      {
-        context: {
-          method: rpc.cliente.list,
-          name: 'cliente.list',
-        },
-      }
-    )) as TData<TClienteFields>[]
-    set(() => ({ list }))
-    return list
-  },
 
-  status: 'none',
-  list: [],
+      status: 'none',
 
-  formButtonStatus: () => formButtonStatus(get().status),
-  setForm: (form) => {
-    set(() => ({ form }))
-  },
+      fetchRecord: async () => {
+        const id = get().selection
+        if (id.length === 0) return recordClear
+        const record = (await cache.fetch(
+          {
+            id,
+            select: Object.keys(recordClear),
+            _table: 'cliente',
+            _method: 'cliente.read',
+          },
+          {
+            context: {
+              method: rpc.cliente.read,
+            },
+          }
+        )) as TData<TClienteFields>
+        set(() => ({ record }), false, 'fetchRecord')
+        return record
+      },
 
-  setOrderBy: (orderBy) => {
-    set(() => ({ orderBy }))
-    // get().fetchList()
-  },
+      fetchVendaMensalQuantidade: async () => {
+        const id = get().selection
+        if (id.length === 0) return []
+        const record = (await cache.fetch(
+          {
+            cliente: parseInt(getFieldId('CdCliente', id)),
+            inicio: get().inicio,
+            fim: get().fim,
+            _method: 'cliente.vendaMensalQuantidade',
+          },
+          {
+            ttl: ms('10m'),
+            context: {
+              method: rpc.cliente.vendaMensalQuantidade,
+            },
+          }
+        )) as any[]
+        set(
+          () => ({ vendaMensalQuantidade: record }),
+          false,
+          'fetchVendaMensalQuantidade'
+        )
+        return record
+      },
 
-  setSelection: (selection) => {
-    if (deepEqual(selection, get().selection)) {
-      set(() => ({
-        selection: [],
-        status: 'none',
-        vendaMensalQuantidade: [],
-        vendaMensalValor: [],
-        vendaMensalValorMedio: [],
-      }))
-      return
+      fetchVendaMensalValor: async () => {
+        const id = get().selection
+        if (id.length === 0) return []
+        const record = (await cache.fetch(
+          {
+            cliente: parseInt(getFieldId('CdCliente', id)),
+            inicio: get().inicio,
+            fim: get().fim,
+            _method: 'cliente.vendaMensalValor',
+          },
+          {
+            ttl: ms('10m'),
+            context: {
+              method: rpc.cliente.vendaMensalValor,
+            },
+          }
+        )) as any[]
+        set(
+          () => ({ vendaMensalValor: record }),
+          false,
+          'fetchVendaMensalValor'
+        )
+        return record
+      },
+
+      fetchVendaMensalValorMedio: async () => {
+        const id = get().selection
+        if (id.length === 0) return []
+        const record = (await cache.fetch(
+          {
+            cliente: parseInt(getFieldId('CdCliente', id)),
+            inicio: get().inicio,
+            fim: get().fim,
+            _method: 'cliente.vendaMensalValorMedio',
+          },
+          {
+            ttl: ms('10m'),
+            context: {
+              method: rpc.cliente.vendaMensalValorMedio,
+            },
+          }
+        )) as any[]
+        set(
+          () => ({ vendaMensalValorMedio: record }),
+          false,
+          'fetchVendaMensalValorMedio'
+        )
+        return record
+      },
+    }),
+    {
+      name: 'intranet',
+      store: 'cliente',
+      serialize: { options: true },
     }
-    set(() => ({ selection, status: 'view' }))
-    // get().fetchRecord()
-    // get().fetchVendaMensalQuantidade()
-    // get().fetchVendaMensalValor()
-    // get().fetchVendaMensalValorMedio()
-  },
+  )
+)
 
-  fetchRecord: async () => {
-    const id = get().selection
-    if (id.length === 0) return recordClear
-    const record = (await cache.fetch(
-      {
-        id,
-        select: Object.keys(recordClear),
-        table: 'cliente',
-      },
-      {
-        context: {
-          method: rpc.cliente.read,
-          name: 'cliente.read',
-        },
-      }
-    )) as TData<TClienteFields>
-    set(() => ({ record }))
-    get().form?.reset(record)
-    return record
-  },
-
-  fetchVendaMensalQuantidade: async () => {
-    const id = get().selection
-    if (id.length === 0) return []
-    const record = (await cache.fetch(
-      {
-        cliente: parseInt(getFieldId('CdCliente', id)),
-        inicio: get().inicio,
-        fim: get().fim,
-      },
-      {
-        context: {
-          method: rpc.cliente.vendaMensalQuantidade,
-          name: 'cliente.vendaMensalQuantidade',
-        },
-      }
-    )) as any[]
-    set(() => ({ vendaMensalQuantidade: record }))
-    return record
-  },
-
-  fetchVendaMensalValor: async () => {
-    const id = get().selection
-    if (id.length === 0) return []
-    const record = (await cache.fetch(
-      {
-        cliente: parseInt(getFieldId('CdCliente', id)),
-        inicio: get().inicio,
-        fim: get().fim,
-      },
-      {
-        context: {
-          method: rpc.cliente.vendaMensalValor,
-          name: 'cliente.vendaMensalValor',
-        },
-      }
-    )) as any[]
-    set(() => ({ vendaMensalValor: record }))
-    return record
-  },
-
-  fetchVendaMensalValorMedio: async () => {
-    const id = get().selection
-    if (id.length === 0) return []
-    const record = (await cache.fetch(
-      {
-        cliente: parseInt(getFieldId('CdCliente', id)),
-        inicio: get().inicio,
-        fim: get().fim,
-      },
-      {
-        context: {
-          method: rpc.cliente.vendaMensalValorMedio,
-          name: 'cliente.vendaMensalValorMedio',
-        },
-      }
-    )) as any[]
-    set(() => ({ vendaMensalValorMedio: record }))
-    return record
-  },
-
-  setWhere: (where) => {
-    where = whereType(where, 'CdCliente', 'int')
-
-    set(() => ({ where }))
-    // get().fetchList()
-  },
-}))
+clienteStoreBase.getState().setOrderBy([['CdCliente', 'asc']])
 
 export const clienteStore = createSelectors(clienteStoreBase)

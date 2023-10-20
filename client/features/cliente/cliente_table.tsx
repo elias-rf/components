@@ -4,7 +4,8 @@ import { usePageSize } from '@/client/store/page-size'
 import { TClienteFields, TClienteKeys } from '@/controllers/cliente.controller'
 import type { TData, TId } from '@/types'
 import { useEffect } from 'react'
-import { clienteColumns } from './components/cliente-columns'
+import toast from 'react-hot-toast'
+import { clienteColumns } from './components/cliente_columns'
 
 /**
  * Cliente
@@ -26,11 +27,24 @@ export function ClienteTable() {
   }
 
   useEffect(() => {
-    fetchList()
+    toast.promise(
+      fetchList(),
+      {
+        loading: 'Carregando clientes...',
+        success: 'Clientes carregados com sucesso!',
+        error: 'Erro ao carregar clientes!',
+      },
+      {
+        id: 'cliente-table',
+        style: {
+          minWidth: '300px',
+        },
+      }
+    )
   }, [where, orderBy])
 
   return (
-    <>
+    <div data-name="ClienteTable">
       <Table
         rows={list ?? []}
         columns={clienteColumns}
@@ -43,6 +57,6 @@ export function ClienteTable() {
         onOrderBy={setOrderBy}
         height={`${pageHeight}px`}
       />
-    </>
+    </div>
   )
 }

@@ -75,7 +75,7 @@ export function Transferencia() {
             onClick={transfer}
             disabled={lista.length !== parseInt(quantidade)}
           >
-            Transferir
+            [T]ransferir
           </Button>
         </div>
       </div>

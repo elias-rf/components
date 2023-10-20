@@ -5,6 +5,7 @@ export default {
   title: 'components / icons / spinner icon',
   args: {
     show: 'true',
+    className: 'w-20 h-20 dark:fill-gray-200',
   },
 } satisfies StoryDefault
 

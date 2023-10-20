@@ -9,7 +9,6 @@ import {
 import type { TData, TId } from '@/types'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
-import { useStore } from 'zustand'
 
 /**
  * Agenda de Ramais
@@ -17,17 +16,14 @@ import { useStore } from 'zustand'
 export function AgendaTelefoneTable() {
   const pageHeight = usePageSize((state) => state.height * 0.7)
 
+  const fetchList = agendaTelefoneStore.use.fetchList()
   const list = agendaTelefoneStore.use.list()
   const orderBy = agendaTelefoneStore.use.orderBy()
-  const selection = useStore(agendaTelefoneStore, (state) => state.selection)
-  const setOrderBy = useStore(agendaTelefoneStore, (state) => state.setOrderBy)
-  const setSelection = useStore(
-    agendaTelefoneStore,
-    (state) => state.setSelection
-  )
-  const setWhere = useStore(agendaTelefoneStore, (state) => state.setWhere)
+  const selection = agendaTelefoneStore.use.selection()
+  const setOrderBy = agendaTelefoneStore.use.setOrderBy()
+  const setSelection = agendaTelefoneStore.use.setSelection()
+  const setWhere = agendaTelefoneStore.use.setWhere()
   const where = agendaTelefoneStore.use.where()
-  const fetchList = agendaTelefoneStore.use.fetchList()
 
   function getId(row: TData<TAgendaTelefoneFields>): TId<TAgendaTelefoneKeys> {
     return [['id', row.id]]
@@ -37,15 +33,12 @@ export function AgendaTelefoneTable() {
     toast.promise(
       fetchList(),
       {
-        loading: 'Carregando agenda de telefones...',
-        success: 'Agenda de telefones carregada com sucesso!',
+        loading: 'lendo...',
+        success: 'sucesso!',
         error: 'Erro ao carregar agenda de telefones!',
       },
       {
         id: 'agenda-telefone-table',
-        style: {
-          minWidth: '300px',
-        },
       }
     )
   }, [where, orderBy])
@@ -53,16 +46,16 @@ export function AgendaTelefoneTable() {
   return (
     <div data-name="AgendaTelefoneTable">
       <Table
-        rows={list ?? []}
         columns={agendaTelefoneColumns}
         getId={getId}
-        selection={selection}
-        where={where}
-        orderBy={orderBy}
+        height={`${pageHeight}px`}
+        onOrderBy={setOrderBy}
         onSelection={setSelection}
         onWhere={setWhere}
-        onOrderBy={setOrderBy}
-        height={`${pageHeight}px`}
+        orderBy={orderBy}
+        rows={list ?? []}
+        selection={selection}
+        where={where}
       />
     </div>
   )

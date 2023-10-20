@@ -1,4 +1,5 @@
 import { OperacaoMensal } from '@/client/features/controles/components/operacao-mensal'
+import '@/client/features/controles/controles_store.mock'
 import { Story } from '@ladle/react'
 
 export default {

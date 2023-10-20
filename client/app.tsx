@@ -1,7 +1,8 @@
 import React, { Suspense } from 'react'
 import { Layout } from './features/layout'
 // import { Dashboard } from './pages/dashboard'
-import { isAuthenticated } from '@/client/store/auth'
+
+import { authStore } from '@/client/store/auth_store'
 import { Flowbite } from 'flowbite-react'
 import { Toaster } from 'react-hot-toast'
 import { Route, Switch, useLocation } from 'wouter'
@@ -37,22 +38,29 @@ const Agenda = React.lazy(async () => import('./pages/outros/agenda'))
 // sistema
 const Usuario = React.lazy(async () => import('./pages/sistema/usuarios'))
 const Permissao = React.lazy(async () => import('./pages/sistema/permissoes'))
+const Grupos = React.lazy(async () => import('./pages/sistema/grupos'))
 const Profile = React.lazy(async () => import('./pages/profile'))
 
 /** Componente com todas a rotas da aplicativo */
 export function App() {
   const [location, setLocation] = useLocation()
-  // const isAuthenticated = useAuth((state) => state.isAuthenticated)
+  const isAuthenticated = authStore.use.isAuthenticated()
 
   React.useEffect(() => {
     if (!isAuthenticated() && location !== '/login') {
       setLocation('/login')
     }
-  }, [location, setLocation])
+  }, [location, setLocation, isAuthenticated])
 
   return (
     <Flowbite>
-      <Toaster position="top-right" />
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          className:
+            'dark:bg-gray-800 dark:text-gray-200 border border-gray-600',
+        }}
+      />
       <Layout>
         <Suspense fallback={<Loading />}>
           <Switch>
@@ -79,6 +87,9 @@ export function App() {
             </Route>
             <Route path="/sistema/permissao">
               <Permissao />
+            </Route>
+            <Route path="/sistema/grupos">
+              <Grupos />
             </Route>
             <Route path="/outros/agenda">
               <Agenda />

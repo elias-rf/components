@@ -4,9 +4,9 @@ import { clienteStore } from '@/client/features/cliente/cliente_store'
 import { ClienteQuantidade } from '@/client/features/cliente/components/cliente-quantidade'
 import { ClienteValor } from '@/client/features/cliente/components/cliente-valor'
 import { ClienteValorMedio } from '@/client/features/cliente/components/cliente-valor-medio'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { useEffectOnce } from 'usehooks-ts'
+import toast from 'react-hot-toast'
 
 const tabs = [
   {
@@ -24,16 +24,35 @@ const tabs = [
 ]
 
 export function ClienteForm() {
-  const formButtonStatus = clienteStore.use.formButtonStatus()()
+  const status = clienteStore.use.status()
   const recordClear = clienteStore.use.recordClear()
-  const setForm = clienteStore.use.setForm()
+  const fetchRecord = clienteStore.use.fetchRecord()
+  const selection = clienteStore.use.selection()
+  const record = clienteStore.use.record()
 
   const [tab, setTab] = useState('')
   const form = useForm({ defaultValues: recordClear, mode: 'onTouched' })
 
-  useEffectOnce(() => {
-    setForm(form)
-  })
+  useEffect(() => {
+    form.reset(record)
+  }, [record])
+
+  useEffect(() => {
+    toast.promise(
+      fetchRecord(),
+      {
+        loading: 'Carregando cliente...',
+        success: 'Cliente carregado com sucesso!',
+        error: 'Erro ao carregar cliente!',
+      },
+      {
+        id: 'cliente-form',
+        style: {
+          minWidth: '350px',
+        },
+      }
+    )
+  }, [selection])
 
   return (
     <>
@@ -44,7 +63,7 @@ export function ClienteForm() {
             control={form.control}
             render={({ field, fieldState }) => (
               <Input
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'edit', 'new'].includes(status)}
                 helper={fieldState.error?.message}
                 label="Cód."
                 onBlur={field.onBlur}
@@ -62,7 +81,7 @@ export function ClienteForm() {
             render={({ field, fieldState }) => (
               <Input
                 label="Nome"
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'edit', 'new'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -79,7 +98,7 @@ export function ClienteForm() {
             render={({ field, fieldState }) => (
               <Input
                 label="Cidade"
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'edit', 'new'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -96,7 +115,7 @@ export function ClienteForm() {
             render={({ field, fieldState }) => (
               <Input
                 label="UF"
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'edit', 'new'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -113,7 +132,7 @@ export function ClienteForm() {
             render={({ field, fieldState }) => (
               <Input
                 label="CNPJ"
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'edit', 'new'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -130,7 +149,7 @@ export function ClienteForm() {
             render={({ field, fieldState }) => (
               <Input
                 label="Vend"
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'edit', 'new'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -147,7 +166,7 @@ export function ClienteForm() {
             render={({ field, fieldState }) => (
               <Input
                 label="Ativo"
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'edit', 'new'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -164,7 +183,7 @@ export function ClienteForm() {
             render={({ field, fieldState }) => (
               <Input
                 label="EMail"
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'edit', 'new'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -181,7 +200,7 @@ export function ClienteForm() {
             render={({ field, fieldState }) => (
               <Input
                 label="Identidade"
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'edit', 'new'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -198,7 +217,7 @@ export function ClienteForm() {
             render={({ field, fieldState }) => (
               <Input
                 label="Data Cadastro"
-                disabled={formButtonStatus.formDisabled}
+                disabled={['none', 'edit', 'new'].includes(status)}
                 variant={fieldState.error && 'error'}
                 helper={fieldState.error?.message}
                 value={field.value}
@@ -215,7 +234,7 @@ export function ClienteForm() {
             tabs={tabs}
           />
 
-          {tab === 'valor' && <ClienteValor />}
+          {tab === 'valor' ? <ClienteValor /> : null}
           {tab === 'quantidade' && <ClienteQuantidade />}
           {tab === 'valor-medio' && <ClienteValorMedio />}
         </div>

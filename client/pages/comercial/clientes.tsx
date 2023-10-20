@@ -4,7 +4,7 @@ import { ClienteHead } from '@/client/features/cliente/cliente_head'
 import { clienteStore } from '@/client/features/cliente/cliente_store'
 import { ClienteTable } from '@/client/features/cliente/cliente_table'
 import { Loading } from '@/client/pages/loading'
-import { useAuth } from '@/client/store/auth'
+import { authStore } from '@/client/store/auth_store'
 import { rpc } from '@/rpc/rpc-client'
 import { useState } from 'react'
 import { useEffectOnce } from 'usehooks-ts'
@@ -20,7 +20,7 @@ type TCan = { [prm in TPermissions]: boolean }
 export default function Clientes() {
   const status = clienteStore.use.status()
   const [can, setCan] = useState<Partial<TCan>>()
-  const idGroups = useAuth((state) => state.user.group_ids)
+  const idGroups = authStore.use.user()?.group_ids
 
   useEffectOnce(() => {
     async function getData() {
@@ -45,9 +45,11 @@ export default function Clientes() {
         can={can}
         permissions={permissions}
       />
-      <ClienteTable />
+      <div className="border border-gray-400 dark:border-gray-500">
+        <ClienteTable />
+      </div>
       {status !== 'none' ? (
-        <div className="p-1 mb-2 border border-gray-300">
+        <div className="p-1 mb-2 border border-gray-400 dark:border-gray-500">
           <ClienteForm />
         </div>
       ) : null}

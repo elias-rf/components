@@ -1,0 +1,45 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
+
+###
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+"method": "esterilizacaoExterna/mensal",
+  "args": [
+    {
+      "mes": "2022-09"
+    }
+  ],
+  "id": "1"
+}
+
+###
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "esterilizacaoExterna/diario",
+  "args": [
+    {
+      "inicio": "2021-01-01",
+      "fim": "2022-01-31"
+    }
+  ],
+  "id": "1"
+}
+
+###
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "esterilizacaoExterna/produto",
+  "args": [
+    {"data": "2022-01-18"}
+  ],
+  "id": "1"
+}

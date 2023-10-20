@@ -10,6 +10,10 @@ export type TCurrentUser = {
   token?: string
 }
 
+export type TCan = {
+  [permission: string]: boolean
+}
+
 /** Tipos aceitos por Input */
 export type TInputType =
   | 'button'

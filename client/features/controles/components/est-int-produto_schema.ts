@@ -8,5 +8,6 @@ export const EsterilizacaoInternaProdutoSchema: TColumn[] = [
   {
     name: 'quantidade',
     label: 'Quantidade',
+    align: 'right',
   },
 ]

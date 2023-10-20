@@ -1,4 +1,6 @@
 import '@/client/index.css'
+import '@/mocks/fetcher-mock'
+
 import type { Story, StoryDefault } from '@ladle/react'
 import { BrowserRouter } from 'react-router-dom'
 import Vendas30dias from './vendas_30dias'

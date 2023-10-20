@@ -114,7 +114,7 @@ function esterilizacaoExternaControllerFactory(
   }: {
     data: string
   }): Promise<{ produto: string; quantidade: number }[]> => {
-    zod(data, zd.string().superRefine(zsr.date))
+    // zod(data, zd.string().superRefine(zsr.date))
     const knex = db.knex
     const qry = await knex(
       knex.raw(
