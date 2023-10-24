@@ -130,7 +130,7 @@ describe('OrmTable', () => {
   it('read', async () => {
     tracker.on.select('phonebook').response({ id: '1' })
     const rsp = await tb.rpc.read({
-      id: [['id', 10]],
+      where: [['id', 10]],
       select: ['id', 'name'],
     })
     expect(rsp).toEqual({ id: '1' })

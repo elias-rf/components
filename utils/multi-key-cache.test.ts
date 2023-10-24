@@ -3,44 +3,6 @@ import { beforeEach, describe, expect, it } from 'vitest'
 
 describe('MultiKeyCache', () => {
   const status = {}
-  describe('interface', function () {
-    const cache = MultiKeyCache({ max: 1 })
-
-    it('should expose a `set` method', function () {
-      expect(cache.set).toBeDefined()
-      expect(typeof cache.set).toBe('function')
-    })
-
-    it('should expose a `get` method', function () {
-      expect(cache.get).toBeDefined()
-      expect(typeof cache.get).to.equal('function')
-    })
-
-    it('should expose a `has` method', function () {
-      expect(cache.has).toBeDefined()
-      expect(typeof cache.has).to.equal('function')
-    })
-
-    it('should expose a `purge` method', function () {
-      expect(cache.purge).toBeDefined()
-      expect(typeof cache.purge).to.equal('function')
-    })
-
-    it('should expose a `reset` method', function () {
-      expect(cache.reset).toBeDefined()
-      expect(typeof cache.reset).to.equal('function')
-    })
-
-    it('should expose a `itemCount` method', function () {
-      expect(typeof cache.itemCount).to.equal('function')
-      expect(cache.itemCount()).to.equal(0)
-    })
-
-    it('should expose a `length` method', function () {
-      expect(typeof cache.length).to.equal('function')
-      expect(cache.length()).to.equal(1)
-    })
-  }) // end 'interface'
 
   describe('behaviors', function () {
     let cache: any
@@ -71,9 +33,13 @@ describe('MultiKeyCache', () => {
       cache.set(keyValuesTwo, objectTwo)
       cache.set(keyValuesThree, objectThree)
 
-      expect(cache.get(keyValuesOne)).to.equal(objectOne)
-      expect(cache.get(keyValuesTwo)).to.equal(objectTwo)
-      expect(cache.get(keyValuesThree)).to.equal(objectThree)
+      expect(cache.get(keyValuesOne)).toEqual(objectOne)
+      expect(cache.get(keyValuesTwo)).toEqual(objectTwo)
+      expect(cache.get(keyValuesThree)).toEqual(objectThree)
+      expect(cache.itemCount()).toEqual(3)
+      expect(cache.length()).toEqual(10)
+      cache.delete(keyValuesOne)
+      expect(cache.itemCount()).toEqual(2)
     })
 
     it('should get and set values with keys in different orders', function () {
@@ -220,5 +186,19 @@ describe('MultiKeyCache', () => {
     cache2.set({ a: 1 }, '2')
     expect(cache1.get({ a: 1 })).toEqual('1')
     expect(cache2.get({ a: 1 })).toEqual('2')
+  })
+  it('should purge table', function () {
+    const cache = MultiKeyCache()
+    cache.set({ a: '1', b: '1', _table: 'tbl1' }, '1-1')
+    cache.set({ a: '1', b: '2', _table: 'tbl1' }, '1-2')
+    cache.set({ a: '1', b: '3', _table: 'tbl1' }, '1-3')
+    cache.set({ a: '2', b: '1', _table: 'tbl2' }, '2-1')
+    cache.set({ a: '2', b: '2', _table: 'tbl2' }, '2-2')
+
+    cache.purgeTable('tbl1')
+    expect(cache.keys()).toEqual([
+      '{"_table":"tbl2","a":"2","b":"2"}',
+      '{"_table":"tbl2","a":"2","b":"1"}',
+    ])
   })
 })

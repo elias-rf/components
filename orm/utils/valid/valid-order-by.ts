@@ -1,5 +1,5 @@
-import { getFields } from '@/orm/utils/get-fields'
-import { getTableName } from '@/orm/utils/get-table-name'
+import { getFields } from '@/orm/utils/schema/get-fields'
+import { getTable } from '@/orm/utils/schema/get-table'
 import { TSchema } from '@/schemas/schema.type'
 
 export function validOrderBy(
@@ -32,7 +32,7 @@ export function validOrderBy(
         fieldsInvalidos.length === 1
           ? 'é um campo válido'
           : 'são campos válidos'
-      } para where em ${getTableName(schema)} use: ${fieldsLivres}`
+      } para where em ${getTable(schema)} use: ${fieldsLivres}`
     )
   }
   return { orderBy }

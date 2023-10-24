@@ -1,9 +1,6 @@
 // @ts-nocheck
 import { Query } from '@/orm/orm.type'
 import { Knex } from 'knex'
-import { fillAssociations } from './utils/fill-associations'
-import { getAssociations } from './utils/get-associations'
-import { getValuesList } from './utils/get-values-list'
 import { pipe } from './utils/pipe'
 
 export class OrmDatabase {
@@ -70,41 +67,6 @@ export class OrmDatabase {
     if (this._logged) this._log.push(param.knex.toString())
     const response = await param.knex
 
-    const associations = getAssociations(query)
-    if (associations.length > 0) {
-      for (const association of associations) {
-        const field = Object.keys(association)[0]
-        const multipleKeys = Array.isArray(association[field].source)
-        if (multipleKeys) {
-          const valuesList = getValuesList(response, association[field].source)
-          const keysTarget = association[field].target
-          const responseAssociation = []
-          for (const value of valuesList) {
-            const query = {
-              select: association[field].select,
-              from: association[field].from,
-              where: value.map((v: any, i: number) => [keysTarget[i], v]),
-            }
-            responseAssociation.push(...(await this.run(query)))
-          }
-          fillAssociations(response, responseAssociation, association)
-        } else {
-          const query: Query = {
-            select: association[field].select,
-            from: association[field].from,
-            where: [
-              [
-                association[field].target,
-                'in',
-                getValuesList(response, association[field].source),
-              ],
-            ],
-          }
-          const responseAssociation = await this.run(query)
-          fillAssociations(response, responseAssociation, association)
-        }
-      }
-    }
     return response
   }
 

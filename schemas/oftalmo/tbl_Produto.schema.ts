@@ -4,14 +4,6 @@ export const tbl_Produto = {
   database: 'oftalmo',
   table: 'tbl_Produto',
   primary: ['kProduto'] as const,
-  relations: {
-    produtoItem: {
-      source: ['kProduto'],
-      type: 'hasMany',
-      table: 'tbl_Produto_Item',
-      target: ['fkProduto'],
-    },
-  },
   fields: {
     kProduto: {
       table: 'tbl_Produto',

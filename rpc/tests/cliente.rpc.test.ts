@@ -1,10 +1,10 @@
-import { dbOftalmo } from '@/controllers/db-oftalmo.db'
-import { beforeEach, describe, test, expect } from 'vitest'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
+import { dbPlano } from '@/controllers/db/db-plano.db'
 import { knexMockMsql } from '@/mocks/connections.mock'
 import { getTracker } from '@/mocks/database.mock'
-import { dbPlano } from '@/controllers/db-plano.db'
 import { knexMockHistory } from '@/mocks/knex-mock-history'
 import { clientMock } from '@/mocks/prim'
+import { beforeEach, describe, expect, test } from 'vitest'
 
 describe('clienteRpc', () => {
   const tracker = getTracker()
@@ -35,7 +35,7 @@ describe('clienteRpc', () => {
     tracker.on.select('CadCli').response([{ id: '1' }])
 
     const rsp = await clientMock.cliente.read({
-      id: [['CdCliente', 1]],
+      where: [['CdCliente', 1]],
       select: ['CdCliente'],
     })
 

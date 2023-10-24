@@ -1,7 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`zFilters > not pass 1`] = `"__vite_ssr_import_0__.zFilters is not a function"`;
-
-exports[`zFilters > not pass 2`] = `"__vite_ssr_import_0__.zFilters is not a function"`;
-
-exports[`zFilters > not pass 3`] = `"__vite_ssr_import_0__.zFilters is not a function"`;

@@ -19,4 +19,9 @@ describe('hashObject', () => {
       '[1,{"a":3,"b":{"c":2},"n":12}]'
     )
   })
+  it('deve trabalhar com Object', () => {
+    expect(hashObject(new Object({ n: 12, a: 3, b: { c: 2 } }))).toEqual(
+      '{"a":3,"b":{"c":2},"n":12}'
+    )
+  })
 })

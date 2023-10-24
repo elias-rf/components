@@ -1,7 +1,5 @@
 import fetchMock from 'fetch-mock/esm/client'
 
-import { fakerPT_BR as faker } from '@faker-js/faker'
-
 export const uid = (id = 0) => {
   return () => {
     return id++
@@ -24,33 +22,15 @@ export function createRecord(fake: any, qtd: number = 1) {
   return records
 }
 
-const database = {
-  'usuario/login': (args: any) => {
-    return {
-      usuario_id: 1,
-      nome_login: args[0].user,
-      nome: 'FULANO',
-      group_ids: '42,20,0',
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
-    }
-  },
-
-  'nfSaida/vendaDiario': () => {
-    return createRecord(
-      {
-        NmCategoria: () => faker.helpers.arrayElement(['LITEFLEX', 'ENLITE']),
-        DtEmissao: () => faker.date.recent({ days: 50 }),
-        quantidade: faker.number.int,
-        valor: faker.number.int,
-      },
-      50
-    )
-  },
-}
-
 export const tracker = fetchMock
 
-export function fetcherMock(api: { [method: string]: (arg: any) => any }) {
+export function fetcherMock(
+  api:
+    | {
+        [method: string]: (arg: any) => any
+      }
+    | { [method: string]: any }
+) {
   fetchMock.mock(
     (url, options: any) => {
       const body = JSON.parse(options.body) as {
@@ -89,5 +69,3 @@ export function fetcherMock(api: { [method: string]: (arg: any) => any }) {
     }
   )
 }
-
-// fetcherMock(database)

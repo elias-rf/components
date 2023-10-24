@@ -1,4 +1,7 @@
-import { getFieldType as gtFieldType } from '@/orm/utils/get-field-type'
+import { getFieldType as gtFieldType } from '@/orm/utils/schema/get-field-type'
+// import { getInclude } from '@/orm/utils/get-include'
+import { getIncludeData } from '@/orm/utils/get-include-data'
+import { selectFromInclude } from '@/orm/utils/valid/select-from-include'
 import { validData as vldData } from '@/orm/utils/valid/valid-data'
 import { validFirst as vldFirst } from '@/orm/utils/valid/valid-first'
 import { validGroupBy as vldGroupBy } from '@/orm/utils/valid/valid-group-by'
@@ -16,28 +19,29 @@ export function ormTable<TFields extends string, TKeys extends string>(
   db: OrmDatabase,
   schema: TSchema
 ) {
-  const read: {
-    ({
-      id,
-      select,
-    }: {
-      id: TId<TKeys>
-      select?: TSelect<TFields> | undefined
-    }): Promise<TData<TFields>>
-    rpc: boolean
-  } = async ({
-    id,
+  const read = async ({
+    where,
     select = [],
+    include,
   }: {
-    id: TId<TKeys>
+    where: TId<TKeys>
     select?: TSelect<TFields>
+    include?: any
   }) => {
+    if (include) {
+      select = selectFromInclude(select, include, schema)
+    }
     const qry = {
       from: getTableName(),
-      ...validId(id),
+      ...validId(where),
       ...validFirst(select),
     }
-    return db.run(qry as Query) as Promise<TData<TFields>>
+    let response = (await db.run(qry as Query)) as TData<TFields>
+    if (include) {
+      response = await getIncludeData(response, include, schema)
+    }
+
+    return response
   }
   read.rpc = true
 
@@ -50,6 +54,7 @@ export function ormTable<TFields extends string, TKeys extends string>(
     sum,
     min,
     max,
+    include,
   }: {
     select?: TSelect<TFields>
     where?: TWhere<TFields>
@@ -59,19 +64,30 @@ export function ormTable<TFields extends string, TKeys extends string>(
     sum?: any
     min?: any
     max?: any
+    include?: any
   } = {}) => {
+    if (include) {
+      select = selectFromInclude(select, include, schema)
+    }
     const qry: any = {
       from: getTableName(),
       ...validWhere(where),
-      ...validSelect(select),
       ...validOrderBy(orderBy),
       ...validGroupBy(groupBy),
+      ...validSelect(select),
     }
+
     if (limit) qry.limit = limit
     if (sum) qry.sum = sum
     if (min) qry.min = min
     if (max) qry.max = max
-    return db.run(qry as Query) as Promise<Array<TData<TFields>>>
+    let response = (await db.run(qry as Query)) as Array<TData<TFields>>
+
+    if (include) {
+      response = await getIncludeData(response, include, schema)
+    }
+
+    return response
   }
   list.rpc = true
 
@@ -205,7 +221,7 @@ export function ormTable<TFields extends string, TKeys extends string>(
   }
 
   const getIdColumns = () => {
-    return schema.primary as Array<TKeys>
+    return schema.primary as unknown as TKeys[]
   }
 
   const getTableName = () => {

@@ -37,6 +37,8 @@ const dest = Knex({
   },
 })
 
+const obj: { [table: string]: any } = {}
+
 function objToTable(obj: any) {
   const response = [['table', 'count', 'id', 'updated', 'jumped']] as any[]
   for (const prop in obj) {
@@ -53,8 +55,6 @@ function objToTable(obj: any) {
   })
 }
 
-const obj: { [table: string]: any } = {}
-
 async function copy(table: string, key: string, exc: string[] = []) {
   obj[table] = { count: 0, id: 0, updated: 0, jumped: 0 } as any
   const data = await source(table).select('*').limit(5000).orderBy(key, 'desc')
@@ -63,8 +63,8 @@ async function copy(table: string, key: string, exc: string[] = []) {
     5,
     async (row, index) => {
       const resp = await dest(table).where(key, row[key])
-      obj[table].count = index
-      obj[table].id = row[key]
+      if (index) obj[table].count = index
+      if (row[key]) obj[table].id = row[key]
 
       if (resp.length === 0) {
         await dest(table).insert(omit(row, exc))
@@ -85,18 +85,17 @@ async function copy(table: string, key: string, exc: string[] = []) {
 }
 
 async function main() {
+  await copy('LotesNota', 'NumLote')
   await copy('CadCli', 'CdCliente')
   await copy('CadPro', 'CdProduto')
   await copy('CadVen', 'CdVendedor')
   await copy('CategPro', 'CdCategoria')
   await copy('Estoque', 'CdProduto')
-  await copy('ItemNota', 'NumNota')
+  await copy('ItemNota', 'NumNota', ['PlanoContaSped'])
   await copy('MestreNota', 'NumNota')
   await copy('NFItem', 'NroNF')
   await copy('NfMestre', 'NroNf')
   await copy('ObsNota', 'NumNota')
-
-  // process.exit(0)
 }
 
 main()

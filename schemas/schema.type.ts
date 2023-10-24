@@ -1,13 +1,13 @@
+import { TWhere } from '@/types'
+
 export type TSchema = {
   database: string
   table: string
-  primary:readonly string[]
+  primary: readonly string[]
   relations?: {
     [relation: string]: {
-      source: string[]
-      type: string // "hasMany" | "hasOne";
-      table: string
-      target: string[]
+      method: () => Promise<(args: any) => any>
+      where: TWhere<string>
     }
   }
   fields: {

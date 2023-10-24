@@ -1,5 +1,5 @@
-import { getFields } from '@/orm/utils/get-fields'
-import { getTableName } from '@/orm/utils/get-table-name'
+import { getFields } from '@/orm/utils/schema/get-fields'
+import { getTable } from '@/orm/utils/schema/get-table'
 import { TSchema } from '@/schemas/schema.type'
 import { isEmpty } from '@/utils/identify/is-empty'
 
@@ -27,7 +27,7 @@ export function validGroupBy(groupBy: any, schema: TSchema) {
         fieldsInvalidos.length === 1
           ? 'é um campo válido'
           : 'são campos válidos'
-      } para select em ${getTableName(schema)} use: ${fieldsLivres}`
+      } para select em ${getTable(schema)} use: ${fieldsLivres}`
     )
   }
   return { groupBy }

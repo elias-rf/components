@@ -1,11 +1,11 @@
+import { getFieldType } from '@/orm/utils/schema/get-field-type'
+import { getPrimary } from '@/orm/utils/schema/get-primary'
+import { getTable } from '@/orm/utils/schema/get-table'
 import { TSchema } from '@/schemas/schema.type'
-import { getIdFields } from '@/orm/utils/get-id-fields'
-import { getFieldType } from '@/orm/utils/get-field-type'
 import { getType } from '@/utils/identify/get-type'
-import { getTableName } from '@/orm/utils/get-table-name'
 
 export function validId<T>(id: Array<[T, any]>, schema: TSchema) {
-  const idColumns = getIdFields(schema)
+  const idColumns = getPrimary(schema)
   const fieldsInvalidos: string[] = []
   let fieldsLivres = [...idColumns].sort()
 
@@ -32,7 +32,7 @@ export function validId<T>(id: Array<[T, any]>, schema: TSchema) {
       // field deve ser do tipo correto
       if (getType(value) !== getFieldType(field, schema)) {
         throw new Error(
-          `${getTableName(schema)}.${field} deve ser do tipo ${getFieldType(
+          `${getTable(schema)}.${field} deve ser do tipo ${getFieldType(
             field,
             schema
           )} mas é ${getType(value)}`
@@ -47,7 +47,7 @@ export function validId<T>(id: Array<[T, any]>, schema: TSchema) {
       `[${fieldsInvalidos}] não ${
         fieldsInvalidos.length === 1 ? 'é id válido' : 'são ids válidos'
       }${
-        fieldsLivres.length > 0 ? ` em ${getTableName(schema)} use: ` : ''
+        fieldsLivres.length > 0 ? ` em ${getTable(schema)} use: ` : ''
       }${fieldsLivres}`
     )
   }
@@ -56,7 +56,7 @@ export function validId<T>(id: Array<[T, any]>, schema: TSchema) {
     throw new Error(
       `[${fieldsLivres}] não ${
         fieldsLivres.length === 1 ? 'foi usado' : 'foram usados'
-      } em ${getTableName(schema)} use: ${fieldsLivres}`
+      } em ${getTable(schema)} use: ${fieldsLivres}`
     )
   }
   return { where: id }

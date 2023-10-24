@@ -37,6 +37,8 @@ const dest = Knex({
   },
 })
 
+const obj: { [table: string]: any } = {}
+
 function objToTable(obj: any) {
   const response = [['table', 'count', 'id', 'updated', 'jumped']] as any[]
   for (const prop in obj) {
@@ -52,8 +54,6 @@ function objToTable(obj: any) {
     singleLine: true,
   })
 }
-
-const obj: { [table: string]: any } = {}
 
 async function copy(table: string, key: string, exc: string[] = []) {
   obj[table] = { count: 0, id: 0, updated: 0, jumped: 0 } as any
@@ -71,7 +71,11 @@ async function copy(table: string, key: string, exc: string[] = []) {
           await dest(table).insert(omit(row, exc))
           obj[table].updated++
         } catch (e: any) {
-          console.log(`🚀 ~ file: sync-data-visiontech.ts:75 ~ e:`, e)
+          console.log(
+            `🚀 ~ file: sync-data-visiontech.ts:75 ~ e:`,
+            row,
+            e.message
+          )
         }
       } else {
         obj[table].jumped++
@@ -91,20 +95,18 @@ async function copy(table: string, key: string, exc: string[] = []) {
 }
 
 async function main() {
-  // await copy('tOrdemProducao', 'kOp', ['ts', 'raio'])
-  // await copy('phonebook', 'id')
-  // await copy('tEsterilizacaoExterna', 'kLoteEstExt')
-  // await copy('tEsterilizacaoInterna', 'kLoteEstInt')
-  // await copy('tEtiqueta', 'controle')
-  // await copy('tbl_producao_Etiqueta', 'NumControle')
+  await copy('tOrdemProducao', 'kOp', ['ts', 'raio'])
+  await copy('phonebook', 'id')
+  await copy('tEsterilizacaoExterna', 'kLoteEstExt')
+  await copy('tEsterilizacaoInterna', 'kLoteEstInt')
+  await copy('tEtiqueta', 'controle')
+  await copy('tbl_producao_Etiqueta', 'NumControle')
   await copy('tOperacaoOrdemProducao', 'kOperacaoOP', [
     'DataInicio',
     'DataFim',
     'HoraInicio',
     'HoraFim',
   ])
-
-  // process.exit(0)
 }
 
 main()

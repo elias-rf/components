@@ -1,5 +1,5 @@
 import { TSchema } from '@/schemas/schema.type'
 
-export function getTableName(schema: TSchema) {
+export function getTable(schema: TSchema) {
   return schema.table
 }

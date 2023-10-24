@@ -1,5 +1,5 @@
-import { dbOftalmo } from '@/controllers/db-oftalmo.db'
-import { dbPlano } from '@/controllers/db-plano.db'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
+import { dbPlano } from '@/controllers/db/db-plano.db'
 import { knexMockMsql } from '@/mocks/connections.mock'
 import { getTracker } from '@/mocks/database.mock'
 import { clientMock } from '@/mocks/prim'
@@ -34,7 +34,7 @@ describe('cidadeRpc', () => {
     tracker.on.select('cidadesERF').response([{ id: '1' }])
 
     const rsp = await clientMock.cidade.read({
-      id: [['CdCidadeIBGE', '1']],
+      where: [['CdCidadeIBGE', '1']],
       select: ['CdCidadeIBGE'],
     })
 
