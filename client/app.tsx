@@ -1,11 +1,9 @@
-import React, { Suspense } from 'react'
-import { Layout } from './features/layout'
-// import { Dashboard } from './pages/dashboard'
-
 import { authStore } from '@/client/store/auth_store'
 import { Flowbite } from 'flowbite-react'
+import React, { Suspense } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { Route, Switch, useLocation } from 'wouter'
+import { Layout } from './features/layout'
 import { Home } from './pages/home'
 import { Loading } from './pages/loading'
 import { Login } from './pages/login'
@@ -27,6 +25,9 @@ const Vendas30Dias = React.lazy(
 
 // industrial
 const Controles = React.lazy(async () => import('./pages/industrial/controles'))
+const LotesSaida = React.lazy(
+  async () => import('./pages/industrial/lotes-saida')
+)
 
 const Transferencia = React.lazy(
   async () => import('./pages/industrial/transferencia')
@@ -78,6 +79,9 @@ export function App() {
             </Route>
             <Route path="/industrial/controles">
               <Controles />
+            </Route>
+            <Route path="/industrial/lotesSaida">
+              <LotesSaida />
             </Route>
             <Route path="/industrial/transferencia">
               <Transferencia />

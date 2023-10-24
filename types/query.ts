@@ -18,3 +18,4 @@ export type TPks = string[]
 
 /** Objeto com chave primária de um registro */
 export type TSelected = { [fields: string]: any }
+export type TInclude = { [name: string]: (string | [string, string, any])[] }

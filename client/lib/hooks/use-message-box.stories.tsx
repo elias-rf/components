@@ -1,5 +1,5 @@
+import { JsonView } from '@/client/components/json-view/json-view'
 import type { Story } from '@ladle/react'
-import { JsonViewer } from '@textea/json-viewer'
 import React from 'react'
 import { useMessageBox } from './use-message-box'
 
@@ -27,8 +27,8 @@ export const Default: Story = () => {
       <button onClick={showState}>Show Msg</button>
       Response {state}
       <MsgBox />
-      <JsonViewer
-        value={{
+      <JsonView
+        data={{
           state,
         }}
       />

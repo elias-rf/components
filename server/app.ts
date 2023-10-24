@@ -1,5 +1,6 @@
 // fastify-jwt.d.ts
 import { config } from '@/config'
+import { __dirname } from '@/utils/dirname'
 import cookie from '@fastify/cookie'
 import cors from '@fastify/cors'
 import jwt from '@fastify/jwt'
@@ -40,7 +41,7 @@ app.register(jwt, {
   },
 })
 app.register(staticFiles, {
-  root: path.join(__dirname, '../public'),
+  root: path.join(__dirname(import.meta.url), '../public'),
 })
 
 app.addHook('onRequest', async (request) => {

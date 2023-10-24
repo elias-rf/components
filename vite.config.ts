@@ -31,6 +31,10 @@ export default defineConfig({
     root: './',
     globals: true,
     environment: 'jsdom',
+    coverage: {
+      enabled: false,
+      provider: 'v8',
+    },
     snapshotFormat: { escapeString: false },
     setupFiles: [path.resolve(__dirname, './setup-tests.ts')],
     exclude: [
