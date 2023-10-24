@@ -1,0 +1,22 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+@resource = produtoPlano
+
+### ordemProducaoOperacao/produto
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "{{resource}}/list",
+  "args": [
+    {
+      "limit": "50",
+      "select":["Descricao"],
+      "include":{
+        "fornecedor":["RzSocial"]
+      }
+    }
+  ],
+  "id": "1"
+}

@@ -1,0 +1,22 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+@resource = produtoItem
+
+
+### ordemProducaoOperacao/produto
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "{{resource}}/list",
+  "args": [
+    {
+      "limit": "5",
+      "select":["kProdutoItem","NomeProdutoItem"],
+      "orderBy":[["kProdutoItem","desc"]],
+      "include":{"produto":["NomeComercial"]}
+    }
+  ],
+  "id": "1"
+}

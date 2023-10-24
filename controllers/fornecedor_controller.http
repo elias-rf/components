@@ -1,0 +1,21 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+@resource = fornecedor
+
+
+### ordemProducaoOperacao/produto
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "{{resource}}/list",
+  "args": [
+    {
+      "limit": "5",
+      "where":[["CdFornecedor",1]],
+      "select":["*"]
+    }
+  ],
+  "id": "1"
+}
