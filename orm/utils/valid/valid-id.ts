@@ -1,11 +1,11 @@
-import { getFieldType } from '@/orm/utils/schema/get-field-type'
+import { getFields } from '@/orm/utils/schema/get-fields'
 import { getPrimary } from '@/orm/utils/schema/get-primary'
 import { getTable } from '@/orm/utils/schema/get-table'
 import { TSchema } from '@/schemas/schema.type'
-import { getType } from '@/utils/identify/get-type'
 
 export function validId<T>(id: Array<[T, any]>, schema: TSchema) {
   const idColumns = getPrimary(schema)
+  const fieldColumns = getFields(schema)
   const fieldsInvalidos: string[] = []
   let fieldsLivres = [...idColumns].sort()
 
@@ -21,23 +21,13 @@ export function validId<T>(id: Array<[T, any]>, schema: TSchema) {
       throw new Error('id deve ser Array<[string, any]>')
 
     // field deve ser [string, any]
-    const [field, value] = fields
+    const [field] = fields
     if (typeof field !== 'string' || fields.length !== 2)
       throw new Error('id deve ser Array<[string, any]>')
 
     // field não é id
-    if (!idColumns.includes(field)) {
+    if (!idColumns.includes(field) && !fieldColumns.includes(field)) {
       fieldsInvalidos.push(field)
-    } else {
-      // field deve ser do tipo correto
-      if (getType(value) !== getFieldType(field, schema)) {
-        throw new Error(
-          `${getTable(schema)}.${field} deve ser do tipo ${getFieldType(
-            field,
-            schema
-          )} mas é ${getType(value)}`
-        )
-      }
     }
     fieldsLivres = fieldsLivres.filter((fld) => fld !== field)
   }

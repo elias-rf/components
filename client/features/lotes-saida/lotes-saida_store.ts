@@ -64,7 +64,7 @@ const lotesSaidaStoreBase = createStore<LotesSaidaState>()(
             ],
             include: {
               produto: ['Descricao'],
-              nfSaida: ['CdCliente'],
+              nfSaida: ['CdCliente', ['Tipo', 'S']],
               'nfSaida.cliente': ['RzSocial', 'Uf'],
             },
             _table: tableName,

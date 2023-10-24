@@ -47,7 +47,7 @@ describe('OrmTable', () => {
   })
   it('deve invalidar idColumn', () => {
     expect(() => tb.util.validId([['name', 1]])).toThrow(
-      '[name] não é id válido em phonebook use: id'
+      '[id] não foi usado em phonebook use: id'
     )
     // @ts-ignore
     expect(() => tb.util.validId([['id']])).toThrow(
@@ -57,14 +57,6 @@ describe('OrmTable', () => {
     expect(() => tb.util.validId([[1, 'id']])).toThrow(
       'id deve ser Array<[string, any]>'
     )
-  })
-  it('deve invalidar idColumn', () => {
-    expect(() =>
-      tb.util.validId([
-        ['id', 1],
-        ['name', 1],
-      ])
-    ).toThrow('[name] não é id válido')
   })
 
   it('deve validar where', () => {

@@ -1,6 +1,6 @@
 import { validId } from '@/orm/utils/valid/valid-id'
-import { describe, expect, test } from 'vitest'
 import { MestreNota } from '@/schemas/plano/MestreNota.schema'
+import { describe, expect, test } from 'vitest'
 
 describe('validId', () => {
   test('schema incompleto', () => {
@@ -22,6 +22,7 @@ describe('validId', () => {
           ['NumNota', 1],
           ['Serie', '1'],
           ['Modelo', '1'],
+          ['CdCliente', 1],
         ],
         MestreNota
       )
@@ -31,6 +32,7 @@ describe('validId', () => {
         ['NumNota', 1],
         ['Serie', '1'],
         ['Modelo', '1'],
+        ['CdCliente', 1],
       ],
     })
   })
@@ -60,11 +62,5 @@ describe('validId', () => {
         MestreNota
       )
     ).toThrow('[CdFornecedor] não é id válido')
-  })
-
-  test('id com tipo incorreto', () => {
-    expect(() => validId([['CdFilial', '1']], MestreNota)).toThrow(
-      'MestreNota.CdFilial deve ser do tipo number mas é string'
-    )
   })
 })
