@@ -1,8 +1,8 @@
+import { JsonView } from '@/client/components/json-view/json-view'
 import { Select, TSelectProps } from '@/client/components/ui/select'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 import React from 'react'
-import ReactJson from 'react-json-view'
 
 export default {
   title: 'components/ui/select',
@@ -35,10 +35,7 @@ export const Default: Story<TSelectProps> = (props: TSelectProps) => {
         onChange={(e: string) => setVlr(e)}
       />
 
-      <ReactJson
-        src={{ vlr, props }}
-        theme="flat"
-      />
+      <JsonView data={{ vlr, props }} />
     </div>
   )
 }

@@ -1,7 +1,7 @@
+import { JsonView } from '@/client/components/json-view/json-view'
 import { CheckBox, TCheckBoxProps } from '@/client/components/ui/check-box'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
-import { JsonViewer } from '@textea/json-viewer'
 import React from 'react'
 
 export default {
@@ -28,7 +28,7 @@ export const Default: Story<TCheckBoxProps> = (props: TCheckBoxProps) => {
         value={vlr}
         onChange={(e: any) => setVlr(e)}
       ></CheckBox>
-      <JsonViewer value={{ props, vlr }} />
+      <JsonView data={{ props, vlr }} />
     </div>
   )
 }

@@ -1,7 +1,7 @@
+import { JsonView } from '@/client/components/json-view/json-view'
 import { Textarea } from '@/client/components/ui/textarea'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
-import { JsonViewer } from '@textea/json-viewer'
 import React from 'react'
 
 export default {
@@ -30,7 +30,7 @@ export const Default: Story = (props) => {
         value={vlr}
         onChange={(e: any) => setVlr(e.target.value)}
       />
-      <JsonViewer value={{ vlr, props }} />
+      <JsonView data={{ vlr, props }} />
     </div>
   )
 }

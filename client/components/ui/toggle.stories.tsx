@@ -1,7 +1,7 @@
+import { JsonView } from '@/client/components/json-view/json-view'
 import { TToggleProps, Toggle } from '@/client/components/ui/toggle'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
-import { JsonViewer } from '@textea/json-viewer'
 import React from 'react'
 
 export default {
@@ -28,7 +28,7 @@ export const Default: Story<TToggleProps> = (props: TToggleProps) => {
         value={vlr}
         onChange={(e: any) => setVlr(e)}
       ></Toggle>
-      <JsonViewer value={{ props, vlr }} />
+      <JsonView data={{ props, vlr }} />
     </div>
   )
 }

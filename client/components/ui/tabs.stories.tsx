@@ -1,7 +1,7 @@
+import { JsonView } from '@/client/components/json-view/json-view'
 import { Tabs } from '@/client/components/ui/tabs'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
-import { JsonViewer } from '@textea/json-viewer'
 import React from 'react'
 
 export default {
@@ -27,7 +27,7 @@ export const Default: Story = () => {
       />
       <div className="p-2 border border-gray-400">
         {select}
-        <JsonViewer value={{ select }} />
+        <JsonView data={{ select }} />
       </div>
     </div>
   )

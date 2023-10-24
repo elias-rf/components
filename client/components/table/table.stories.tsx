@@ -1,7 +1,7 @@
+import { JsonView } from '@/client/components/json-view/json-view'
 import { TColumn, TId, TOrderBy, TRow, TSelection, TWhere } from '@/types'
 import { deepEqual } from '@/utils/object/deep-equal'
 import type { Story } from '@ladle/react'
-import { JsonViewer } from '@textea/json-viewer'
 import React from 'react'
 import { Table } from './table'
 
@@ -93,8 +93,8 @@ export const Full: Story = () => {
           return (
             <tr>
               <td colSpan={100}>
-                <JsonViewer
-                  value={{
+                <JsonView
+                  data={{
                     row,
                   }}
                 />
@@ -104,8 +104,8 @@ export const Full: Story = () => {
         }}
       </Table>
 
-      <JsonViewer
-        value={{
+      <JsonView
+        data={{
           selection,
           sort,
           filter,

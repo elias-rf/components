@@ -1,3 +1,4 @@
+import { JsonView } from '@/client/components/json-view/json-view'
 import {
   SelectBadge,
   TSelectBadgeProps,
@@ -5,7 +6,6 @@ import {
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 import React from 'react'
-import ReactJson from 'react-json-view'
 
 export default {
   title: 'components/ui/select-badge',
@@ -43,10 +43,7 @@ export const Default: Story<TSelectBadgeProps> = (props: TSelectBadgeProps) => {
         onChange={(e: string[]) => setVlr(e.sort())}
       />
 
-      <ReactJson
-        src={{ value: vlr, props }}
-        theme="flat"
-      />
+      <JsonView data={{ value: vlr, props }} />
     </div>
   )
 }

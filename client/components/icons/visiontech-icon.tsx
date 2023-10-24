@@ -1,8 +1,6 @@
 export function VisiontechIcon({ className }: { className?: string }) {
   return (
     <svg
-      width="1562px"
-      height="465px"
       viewBox="0 0 1578.5 470.16"
       xmlns="http://www.w3.org/2000/svg"
       className={className}

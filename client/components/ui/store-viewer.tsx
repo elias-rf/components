@@ -1,5 +1,5 @@
+import { JsonView } from '@/client/components/json-view/json-view'
 import { pick } from '@/utils/object/pick'
-import { JsonViewer } from '@textea/json-viewer'
 import { useEffect, useState } from 'react'
 
 export function StoreViewer({
@@ -21,11 +21,5 @@ export function StoreViewer({
     return () => unsubscribe()
   }, [])
 
-  return (
-    <JsonViewer
-      value={value}
-      theme="auto"
-      defaultInspectDepth={1}
-    />
-  )
+  return <JsonView data={value} />
 }

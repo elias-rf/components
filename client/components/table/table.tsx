@@ -10,6 +10,7 @@ import {
   TWhere,
 } from '@/types'
 import { filterNonEmptyProperties } from '@/utils/object/filter-non-empty-properties'
+import { get } from '@/utils/object/get'
 import { equalityFromObject, equalityToObject } from '@/utils/query/equality'
 import React from 'react'
 import { getIdDefault } from './get-id-default'
@@ -178,7 +179,9 @@ export function Table({
                     key={col.name}
                     style={{ width: col.width }}
                   >
-                    {col.format ? col.format(row[col.name]) : row[col.name]}
+                    {col.format
+                      ? col.format(get(row, col.name))
+                      : get(row, col.name)}
                   </td>
                 ))}
               </tr>

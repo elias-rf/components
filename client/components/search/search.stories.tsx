@@ -1,6 +1,6 @@
+import { JsonView } from '@/client/components/json-view/json-view'
 import type { TWhere } from '@/types'
 import { Story, StoryDefault } from '@ladle/react'
-import { JsonViewer } from '@textea/json-viewer'
 import React from 'react'
 import { Search } from './search'
 
@@ -39,12 +39,7 @@ function SearchStory(props: any) {
         schema={schema}
         onWhere={handleOnWhere}
       />
-      <JsonViewer
-        rootName="where"
-        value={where}
-        highlightUpdates
-        className="text-xs"
-      />
+      <JsonView data={where} />
     </div>
   )
 }

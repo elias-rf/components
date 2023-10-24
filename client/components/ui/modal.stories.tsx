@@ -1,22 +1,24 @@
 import { Modal, TModalProps } from '@/client/components/ui/modal'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
+import { useState } from 'react'
 
 export default {
   title: 'Components / UI / modal',
   argTypes: {
     onClose: { action: 'clicked' },
   },
-  args: {
-    show: true,
-    closeable: true,
-    title: <div className="text-blue-500">Modal box</div>,
-  },
 }
 
-export const Default: Story<TModalProps> = (props: TModalProps) => {
+export const Default: Story<TModalProps> = () => {
+  const [show, setShow] = useState(true)
   return (
-    <Modal {...props}>
+    <Modal
+      title={<div className="text-blue-500">Modal box</div>}
+      show={show}
+      closeable
+      onClose={() => setShow(false)}
+    >
       <>MODAL CONTENT</>
     </Modal>
   )
