@@ -12,7 +12,7 @@ import {
   TCreateRecordStore,
   createRecordStore,
 } from '@/client/store/create-record-store'
-import { TUsuarioFields, TUsuarioKeys } from '@/controllers/usuario.controller'
+import { TUsuarioFields, TUsuarioKeys } from '@/controllers/usuario_controller'
 import { rpc } from '@/rpc/rpc-client'
 import { TData } from '@/types'
 import { devtools } from 'zustand/middleware'

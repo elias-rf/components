@@ -1,16 +1,15 @@
 import { TColumn } from '@/types'
 import { day } from '@/utils/date/day'
-import { zsr } from '@/utils/zod/z-refine'
-import { zd, zod } from '@/utils/zod/zod'
-
+import { isoDate, object, parse, string } from 'valibot'
 export function getSchema(args: { inicio: string; fim: string }): TColumn[] {
-  zod(
-    args,
-    zd.object({
-      inicio: zd.string().superRefine(zsr.date),
-      fim: zd.string().superRefine(zsr.date),
-    })
+  parse(
+    object({
+      inicio: string([isoDate('data inicial inválida')]),
+      fim: string([isoDate('data final inválida')]),
+    }),
+    args
   )
+
   const rsp: TColumn[] = [
     {
       name: 'categoria',

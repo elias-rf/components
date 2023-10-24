@@ -82,6 +82,9 @@ export function Navbar() {
             >
               Transferência
             </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleLink('/industrial/lotesSaida')}>
+              Rastreamento de produtos
+            </Dropdown.Item>
           </Dropdown>
           <Dropdown
             label={<div className="dark:text-gray-200">Sistema</div>}

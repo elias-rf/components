@@ -12,7 +12,7 @@ import {
   TCreateRecordStore,
   createRecordStore,
 } from '@/client/store/create-record-store'
-import { TGroupFields, TGroupKeys } from '@/controllers/group.controller'
+import { TGroupFields, TGroupKeys } from '@/controllers/group_controller'
 import { rpc } from '@/rpc/rpc-client'
 import { TData } from '@/types'
 import { omit } from '@/utils/object/omit'

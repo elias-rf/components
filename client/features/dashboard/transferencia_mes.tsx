@@ -1,7 +1,6 @@
 import { Title } from '@/client/components/ui/title'
 import { rpc } from '@/rpc/rpc-client'
 import { day } from '@/utils/date/day'
-import { Grid } from '@mui/material'
 import React from 'react'
 
 function quantidadeProduto(data: any[] | undefined, prod: string) {
@@ -25,8 +24,8 @@ export function TransferenciaMes() {
   }, [mesInicial])
 
   return (
-    <Grid container>
-      <Grid xs={12}>
+    <div className="grid">
+      <div className="grid-cols-12">
         <Title>Produção</Title>
         <div className={'flex'}>
           <div className={'w-80 border border-gray-600 p-2'}>
@@ -88,7 +87,7 @@ export function TransferenciaMes() {
             </div>
           </div>
         </div>
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   )
 }

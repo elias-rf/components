@@ -5,7 +5,7 @@ import { usePageSize } from '@/client/store/page-size'
 import {
   TAgendaTelefoneFields,
   TAgendaTelefoneKeys,
-} from '@/controllers/agenda-telefone.controller'
+} from '@/controllers/agenda-telefone_controller'
 import type { TData, TId } from '@/types'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'

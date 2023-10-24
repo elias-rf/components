@@ -4,12 +4,10 @@ import { fetcherMock } from '@/mocks/fetcher-mock'
 import { Story } from '@ladle/react'
 
 fetcherMock({
-  'cliente/vendaMensalValorMedio': () => {
-    return [
-      { categoria: 'produto 1', '2020-01': '10,10' },
-      { categoria: 'produto 2', '2020-02': '20,20' },
-    ]
-  },
+  'cliente/vendaMensalValorMedio': [
+    { categoria: 'produto 1', '2020-01': '10,10' },
+    { categoria: 'produto 2', '2020-02': '20,20' },
+  ],
 })
 
 clienteStore.setState(() => ({

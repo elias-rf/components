@@ -13,37 +13,37 @@ import {
   createRecordStore,
 } from '@/client/store/create-record-store'
 import {
-  TAgendaTelefoneFields,
-  TAgendaTelefoneKeys,
-} from '@/controllers/agenda-telefone_controller'
+  TNfSaidaLoteFields,
+  TNfSaidaLoteKeys,
+} from '@/controllers/nf-saida-lote_controller'
 import { rpc } from '@/rpc/rpc-client'
 import { TData } from '@/types'
 import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
 
-const tableName = 'agendaTelefone' as const
+const tableName = 'nfSaidaLote' as const
 
 const recordClear = {
-  id: '',
-  name: '',
-  email: '',
-  department: '',
-} as TData<TAgendaTelefoneFields>
+  CdFilial: '',
+  NumNota: '',
+  Serie: '',
+  Modelo: '',
+} as TData<TNfSaidaLoteFields>
 
-type AgendaTelefoneState = {
-  fetchList: () => Promise<TData<TAgendaTelefoneFields>[]>
-  fetchRecord: () => Promise<TData<TAgendaTelefoneFields>>
+type LotesSaidaState = {
+  fetchList: () => Promise<TData<TNfSaidaLoteFields>[]>
+  fetchRecord: () => Promise<TData<TNfSaidaLoteFields>>
   onDelete: () => void
   onSave: () => void
-  recordClear: TData<TAgendaTelefoneFields>
+  recordClear: TData<TNfSaidaLoteFields>
 } & TCreateButtonsStore &
-  TCreateListStore<TAgendaTelefoneFields, TAgendaTelefoneKeys> &
-  TCreateRecordStore<TAgendaTelefoneFields>
+  TCreateListStore<TNfSaidaLoteFields, TNfSaidaLoteKeys> &
+  TCreateRecordStore<TNfSaidaLoteFields>
 
-const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
+const lotesSaidaStoreBase = createStore<LotesSaidaState>()(
   devtools(
     (set, get) => ({
-      ...createListStore<TAgendaTelefoneFields, TAgendaTelefoneKeys>(set, get),
+      ...createListStore<TNfSaidaLoteFields, TNfSaidaLoteKeys>(set, get),
       ...createRecordStore(set),
       ...createButtonsStore(set, get),
 
@@ -54,6 +54,19 @@ const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
           {
             where: get().where,
             orderBy: get().orderBy,
+            select: [
+              'CdFilial',
+              'NumNota',
+              'DtEmissao',
+              'CdProduto',
+              'NumLote',
+              'Sequencia',
+            ],
+            include: {
+              produto: ['Descricao'],
+              nfSaida: ['CdCliente'],
+              'nfSaida.cliente': ['RzSocial', 'Uf'],
+            },
             _table: tableName,
             _method: `${tableName}.list`,
           },
@@ -62,7 +75,7 @@ const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
               method: rpc[tableName].list,
             },
           }
-        )) as TData<TAgendaTelefoneFields>[]
+        )) as TData<TNfSaidaLoteFields>[]
         set(() => ({ list }), false, 'fetchList')
         return list
       },
@@ -81,7 +94,7 @@ const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
               method: rpc[tableName].read,
             },
           }
-        )) as TData<TAgendaTelefoneFields>
+        )) as TData<TNfSaidaLoteFields>
         set(() => ({ record }), false, 'fetchRecord')
         return record
       },
@@ -120,6 +133,6 @@ const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
   )
 )
 
-agendaTelefoneStoreBase.getState().setOrderBy([['id', 'asc']])
+lotesSaidaStoreBase.getState().setOrderBy([['NumLote', 'desc']])
 
-export const agendaTelefoneStore = createSelectors(agendaTelefoneStoreBase)
+export const lotesSaidaStore = createSelectors(lotesSaidaStoreBase)

@@ -1,18 +1,16 @@
 import { Table } from '@/client/components/table'
 import { clienteStore } from '@/client/features/cliente/cliente_store'
 import { usePageSize } from '@/client/store/page-size'
-import { TClienteFields, TClienteKeys } from '@/controllers/cliente.controller'
+import { TClienteFields, TClienteKeys } from '@/controllers/cliente_controller'
 import type { TData, TId } from '@/types'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { clienteColumns } from './components/cliente_columns'
 
-/**
- * Cliente
- */
 export function ClienteTable() {
   const pageHeight = usePageSize((state) => state.height * 0.5)
 
+  const fetchList = clienteStore.use.fetchList()
   const list = clienteStore.use.list()
   const orderBy = clienteStore.use.orderBy()
   const selection = clienteStore.use.selection()
@@ -20,7 +18,6 @@ export function ClienteTable() {
   const setSelection = clienteStore.use.setSelection()
   const setWhere = clienteStore.use.setWhere()
   const where = clienteStore.use.where()
-  const fetchList = clienteStore.use.fetchList()
 
   function getId(row: TData<TClienteFields>): TId<TClienteKeys> {
     return [['CdCliente', row.CdCliente]]
@@ -30,15 +27,12 @@ export function ClienteTable() {
     toast.promise(
       fetchList(),
       {
-        loading: 'Carregando clientes...',
-        success: 'Clientes carregados com sucesso!',
-        error: 'Erro ao carregar clientes!',
+        loading: 'lendo...',
+        success: 'sucesso!',
+        error: 'Erro ao carregar lista!',
       },
       {
         id: 'cliente-table',
-        style: {
-          minWidth: '300px',
-        },
       }
     )
   }, [where, orderBy])
@@ -46,16 +40,16 @@ export function ClienteTable() {
   return (
     <div data-name="ClienteTable">
       <Table
-        rows={list ?? []}
         columns={clienteColumns}
         getId={getId}
-        selection={selection}
-        where={where}
-        orderBy={orderBy}
+        height={`${pageHeight}px`}
+        onOrderBy={setOrderBy}
         onSelection={setSelection}
         onWhere={setWhere}
-        onOrderBy={setOrderBy}
-        height={`${pageHeight}px`}
+        orderBy={orderBy}
+        rows={list ?? []}
+        selection={selection}
+        where={where}
       />
     </div>
   )

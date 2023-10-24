@@ -2,7 +2,7 @@ import { GroupSubjectTable } from '@/client/features/permissoes/group-subject_ta
 import {
   TGroupSubjectFields,
   TGroupSubjectKeys,
-} from '@/controllers/group-subject.controller'
+} from '@/controllers/group-subject_controller'
 import { rpc } from '@/rpc/rpc-client'
 import type {
   TData,
@@ -46,7 +46,7 @@ export function GroupSubject() {
   // Read Data
   React.useEffect(() => {
     async function getData() {
-      const data = await rpc.groupSubject.read({ id: selection })
+      const data = await rpc.groupSubject.read({ where: selection })
       form.reset(data)
     }
     if (selection.length > 0) getData()

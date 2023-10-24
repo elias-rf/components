@@ -8,7 +8,7 @@ import {
   TCreateRecordStore,
   createRecordStore,
 } from '@/client/store/create-record-store'
-import { TClienteFields, TClienteKeys } from '@/controllers/cliente.controller'
+import { TClienteFields, TClienteKeys } from '@/controllers/cliente_controller'
 import { rpc } from '@/rpc/rpc-client'
 import { TData, TFormStatus } from '@/types'
 import { day } from '@/utils/date/day'

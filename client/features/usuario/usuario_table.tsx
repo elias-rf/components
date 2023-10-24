@@ -4,7 +4,7 @@ import { usuarioColumns } from '@/client/features/usuario/components/usuario_col
 import { usuarioStore } from '@/client/features/usuario/usuario_store'
 import { authStore } from '@/client/store/auth_store'
 import { usePageSize } from '@/client/store/page-size'
-import { TUsuarioFields, TUsuarioKeys } from '@/controllers/usuario.controller'
+import { TUsuarioFields, TUsuarioKeys } from '@/controllers/usuario_controller'
 import type { TData, TId } from '@/types'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'

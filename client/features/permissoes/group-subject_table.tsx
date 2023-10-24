@@ -6,7 +6,7 @@ import { useMessageBox } from '@/client/lib/hooks/use-message-box'
 import {
   TGroupSubjectFields,
   TGroupSubjectKeys,
-} from '@/controllers/group-subject.controller'
+} from '@/controllers/group-subject_controller'
 import { TData, TFormStatus, TId, TOrderBy, TSelection, TWhere } from '@/types'
 import { groupSubjectColumns } from './group-subject_columns'
 import { GroupSubjectForm } from './group-subject_form'

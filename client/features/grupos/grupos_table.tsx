@@ -4,7 +4,7 @@ import { gruposColumns } from '@/client/features/grupos/components/grupos_column
 import { gruposStore } from '@/client/features/grupos/grupos_store'
 import { authStore } from '@/client/store/auth_store'
 import { usePageSize } from '@/client/store/page-size'
-import { TGroupFields, TGroupKeys } from '@/controllers/group.controller'
+import { TGroupFields, TGroupKeys } from '@/controllers/group_controller'
 import type { TData, TId } from '@/types'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
