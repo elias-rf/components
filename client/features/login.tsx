@@ -26,7 +26,6 @@ export function Login() {
 
   return (
     <div className={'flex justify-center'}>
-      login
       <LoginComponent onInput={handleInput} />
     </div>
   )

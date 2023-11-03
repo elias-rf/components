@@ -11,7 +11,7 @@ export default function Agenda() {
 
   return (
     <div data-name="AgendaTelefone">
-      <AgendaTelefoneHead />{' '}
+      <AgendaTelefoneHead />
       <div className="border border-gray-400 dark:border-gray-500">
         <AgendaTelefoneTable />
       </div>

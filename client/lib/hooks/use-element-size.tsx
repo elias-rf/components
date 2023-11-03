@@ -9,10 +9,9 @@ interface Size {
   height: number
 }
 
-export function useElementSize<T extends HTMLElement = HTMLDivElement>(): [
-  (node: T | null) => void,
-  Size,
-] {
+export function useElementSize<T extends HTMLElement = HTMLDivElement>(
+  setSizeState: (size: Size) => void
+): [(node: T | null) => void, Size] {
   // Mutable values like 'ref.current' aren't valid dependencies
   // because mutating them doesn't re-render the component.
   // Instead, we use a state as a ref to be reactive.
@@ -26,12 +25,14 @@ export function useElementSize<T extends HTMLElement = HTMLDivElement>(): [
 
   // Prevent too many rendering using useCallback
   const handleSize = useCallback(() => {
-    setSize({
+    const size = {
       left: ref?.offsetLeft || 0,
       top: ref?.offsetTop || 0,
       width: ref?.offsetWidth || 0,
       height: ref?.offsetHeight || 0,
-    })
+    }
+    setSizeState && setSizeState(size)
+    setSize(size)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref?.offsetLeft, ref?.offsetTop, ref?.offsetHeight, ref?.offsetWidth])

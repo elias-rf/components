@@ -7,12 +7,7 @@ export type TPageProps = {
 }
 
 export const Page = ({ children }: TPageProps) => {
-  // const pageSize = usePageSize()
-  const [pageRef, size] = useElementSize()
-
-  React.useEffect(() => {
-    setSize(size)
-  }, [size])
+  const [pageRef] = useElementSize(setSize)
 
   return (
     <div

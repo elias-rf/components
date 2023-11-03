@@ -1,5 +1,4 @@
 import { authStore } from '@/client/store/auth_store'
-import { Flowbite } from 'flowbite-react'
 import React, { Suspense } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { Route, Switch, useLocation } from 'wouter'
@@ -54,65 +53,56 @@ export function App() {
   }, [location, setLocation, isAuthenticated])
 
   return (
-    <Flowbite>
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          className:
-            'dark:bg-gray-800 dark:text-gray-200 border border-gray-600',
-        }}
-      />
-      <Layout>
-        <Suspense fallback={<Loading />}>
-          <Switch>
-            <Route path="/">
-              <Home />
-            </Route>
-            <Route path="/comercial/precos">
-              <Precos />
-            </Route>
-            <Route path="/comercial/vendas30dias">
-              <Vendas30Dias />
-            </Route>
-            <Route path="/comercial/cliente">
-              <Clientes />
-            </Route>
-            <Route path="/industrial/controles">
-              <Controles />
-            </Route>
-            <Route path="/industrial/lotesSaida">
-              <LotesSaida />
-            </Route>
-            <Route path="/industrial/transferencia">
-              <Transferencia />
-            </Route>
-            <Route path="/sistema/usuario">
-              <Usuario />
-            </Route>
-            <Route path="/sistema/permissao">
-              <Permissao />
-            </Route>
-            <Route path="/sistema/grupos">
-              <Grupos />
-            </Route>
-            <Route path="/outros/agenda">
-              <Agenda />
-            </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/logout">
-              <Logout />
-            </Route>
-            <Route>
-              <Page404 />
-            </Route>
-          </Switch>
-        </Suspense>
-      </Layout>
-    </Flowbite>
+    <Layout>
+      <Suspense fallback={<Loading />}>
+        <Switch>
+          <Route path="/">
+            <Home />
+          </Route>
+          <Route path="/comercial/precos">
+            <Precos />
+          </Route>
+          <Route path="/comercial/vendas30dias">
+            <Vendas30Dias />
+          </Route>
+          <Route path="/comercial/cliente">
+            <Clientes />
+          </Route>
+          <Route path="/industrial/controles">
+            <Controles />
+          </Route>
+          <Route path="/industrial/lotesSaida">
+            <LotesSaida />
+          </Route>
+          <Route path="/industrial/transferencia">
+            <Transferencia />
+          </Route>
+          <Route path="/sistema/usuario">
+            <Usuario />
+          </Route>
+          <Route path="/sistema/permissao">
+            <Permissao />
+          </Route>
+          <Route path="/sistema/grupos">
+            <Grupos />
+          </Route>
+          <Route path="/outros/agenda">
+            <Agenda />
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/logout">
+            <Logout />
+          </Route>
+          <Route>
+            <Page404 />
+          </Route>
+        </Switch>
+      </Suspense>
+    </Layout>
   )
 }

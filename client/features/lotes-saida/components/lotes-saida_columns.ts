@@ -31,6 +31,12 @@ export const lotesSaidaColumns: TColumn[] = [
     sortable: false,
   },
   {
+    name: 'nfSaida.Tipo',
+    label: 'Tipo',
+    width: '1%',
+    sortable: false,
+  },
+  {
     name: 'nfSaida.cliente.RzSocial',
     label: 'Cliente',
     width: '10%',

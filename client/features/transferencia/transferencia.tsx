@@ -1,9 +1,9 @@
+import { Button } from '@/client/components/ui/button'
 import { Input } from '@/client/components/ui/input'
 import { Title } from '@/client/components/ui/title'
 import { cn } from '@/client/lib/cn'
 import { useArray } from '@/client/lib/hooks/use-array'
 import { rpc } from '@/rpc/rpc-client'
-import { Button } from 'flowbite-react'
 import React from 'react'
 
 // 000001000017 , 000001000025, 000001000033
@@ -94,9 +94,7 @@ export function Transferencia() {
         {lista.map((serie, idx) => (
           <React.Fragment key={idx + serie}>
             <Button
-              pill
               size="xs"
-              color="gray"
               outline
               onClick={() => delList(idx)}
             >

@@ -1,11 +1,12 @@
 import { ShieldIcon } from '@/client/components/icons/shield-icon'
 import { Button } from '@/client/components/ui/button'
 import { CheckBox } from '@/client/components/ui/check-box'
+import { ListGroup } from '@/client/components/ui/list-group'
+import { Modal } from '@/client/components/ui/modal'
 import { TGroupSubjectFields } from '@/controllers/group-subject_controller'
 import { TGroupFields } from '@/controllers/group_controller'
 import { rpc } from '@/rpc/rpc-client'
 import { TData } from '@/types'
-import { ListGroup, Modal } from 'flowbite-react'
 import React from 'react'
 
 export function Permissions({
@@ -86,51 +87,48 @@ export function Permissions({
       <Modal
         onClose={() => setShow(false)}
         show={show}
-        size="4xl"
+        title="Segurança"
       >
-        <Modal.Header>Segurança</Modal.Header>
-        <Modal.Body>
-          <div className="flex space-x-4">
-            <div>
-              <p>Grupos</p>
-              {groupList?.map((group) => (
-                <ListGroup
-                  key={group.kGrupo}
-                  className="overflow-y-auto max-h-96"
+        <div className="flex p-4 space-x-4">
+          <div>
+            <p>Grupos</p>
+            {groupList?.map((group) => (
+              <ListGroup
+                key={group.kGrupo}
+                className="overflow-y-auto max-h-96"
+              >
+                <ListGroup.Item
+                  active={group.kGrupo === groupCurrent}
+                  onClick={() => handleGroup(group.kGrupo || 0)}
                 >
-                  <ListGroup.Item
-                    active={group.kGrupo === groupCurrent}
-                    onClick={() => handleGroup(group.kGrupo || 0)}
-                  >
-                    {group.NomeGrupo}
-                  </ListGroup.Item>
-                </ListGroup>
-              ))}
-            </div>
-            <div>
-              <p>Permissões</p>
-              <ListGroup>
-                {Object.keys(permissions).map((permission) => (
-                  <ListGroup.Item
-                    key={permission}
-                    onClick={() => handlePermission(permission)}
-                  >
-                    <CheckBox
-                      label={permissions[permission]}
-                      value={
-                        permited
-                          ? permited.findIndex(
-                              (prm) => permission === prm.idSubject
-                            ) !== -1
-                          : false
-                      }
-                    />
-                  </ListGroup.Item>
-                ))}
+                  {group.NomeGrupo}
+                </ListGroup.Item>
               </ListGroup>
-            </div>
+            ))}
           </div>
-        </Modal.Body>
+          <div>
+            <p>Permissões</p>
+            <ListGroup>
+              {Object.keys(permissions).map((permission) => (
+                <ListGroup.Item
+                  key={permission}
+                  onClick={() => handlePermission(permission)}
+                >
+                  <CheckBox
+                    label={permissions[permission]}
+                    value={
+                      permited
+                        ? permited.findIndex(
+                            (prm) => permission === prm.idSubject
+                          ) !== -1
+                        : false
+                    }
+                  />
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          </div>
+        </div>
       </Modal>
     </>
   )

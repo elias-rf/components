@@ -1,7 +1,9 @@
 import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon'
+import { Avatar } from '@/client/components/ui/avatar'
 import { DarkToggle } from '@/client/components/ui/dark-toggle'
+import { Dropdown } from '@/client/components/ui/dropdown'
+import { Navbar as FbNavbar } from '@/client/components/ui/navbar'
 import { authStore } from '@/client/store/auth_store'
-import { Avatar, Dropdown, Navbar as FbNavbar } from 'flowbite-react'
 import { useLocation } from 'wouter'
 
 export function Navbar() {
@@ -16,7 +18,6 @@ export function Navbar() {
     <>
       <FbNavbar
         data-name="Navbar"
-        fluid
         className="z-20 bg-gray-100 border-gray-200 dark:border-gray-700"
       >
         <FbNavbar.Brand
@@ -31,16 +32,13 @@ export function Navbar() {
         <div className="flex items-center space-x-2 md:order-2">
           <Dropdown
             arrowIcon={false}
-            inline
-            label={
-              <Avatar
-                rounded
-                size="xs"
-              />
-            }
+            label={<Avatar />}
+            position="right"
           >
             <Dropdown.Header>
-              <span className="block text-sm">{user.nome}</span>
+              <div className="px-4 py-1 text-sm text-gray-900 dark:text-white">
+                <span className="block text-sm">{user.nome}</span>
+              </div>
             </Dropdown.Header>
             <Dropdown.Item onClick={() => handleLink('/profile')}>
               alterar senha
@@ -54,10 +52,7 @@ export function Navbar() {
           <DarkToggle />
         </div>
         <FbNavbar.Collapse>
-          <Dropdown
-            label={<div className="dark:text-gray-200">Comercial</div>}
-            inline
-          >
+          <Dropdown label={<div className="dark:text-gray-200">Comercial</div>}>
             <Dropdown.Item onClick={() => handleLink('/comercial/precos')}>
               Calculadora de preços
             </Dropdown.Item>
@@ -72,7 +67,6 @@ export function Navbar() {
           </Dropdown>
           <Dropdown
             label={<div className="dark:text-gray-200">Industrial</div>}
-            inline
           >
             <Dropdown.Item onClick={() => handleLink('/industrial/controles')}>
               Controles de produção
@@ -86,10 +80,7 @@ export function Navbar() {
               Rastreamento de produtos
             </Dropdown.Item>
           </Dropdown>
-          <Dropdown
-            label={<div className="dark:text-gray-200">Sistema</div>}
-            inline
-          >
+          <Dropdown label={<div className="dark:text-gray-200">Sistema</div>}>
             <Dropdown.Item onClick={() => handleLink('/sistema/usuario')}>
               Usuários
             </Dropdown.Item>
@@ -100,10 +91,7 @@ export function Navbar() {
               Grupos
             </Dropdown.Item>
           </Dropdown>
-          <Dropdown
-            label={<div className="dark:text-gray-200">Outros</div>}
-            inline
-          >
+          <Dropdown label={<div className="dark:text-gray-200">Outros</div>}>
             <Dropdown.Item onClick={() => handleLink('/outros/agenda')}>
               Agenda de ramais
             </Dropdown.Item>
