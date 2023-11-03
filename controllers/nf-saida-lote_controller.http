@@ -24,3 +24,50 @@ Content-Type: application/json
   ],
   "id": "1"
 }
+
+###
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "{{resource}}/list",
+  "args": [
+  {
+    "include": {
+      "nfSaida": [
+        "CdCliente",
+        "Tipo"
+      ],
+      "nfSaida.cliente": [
+        "RzSocial",
+        "Uf"
+      ],
+      "produto": [
+        "Descricao"
+      ]
+    },
+    "orderBy": [
+      [
+        "NumLote",
+        "desc"
+      ]
+    ],
+    "select": [
+      "CdFilial",
+      "NumNota",
+      "DtEmissao",
+      "CdProduto",
+      "NumLote",
+      "Sequencia"
+    ],
+    "where": [
+      [
+        "NumLote",
+        "like",
+        "1999%"
+      ]
+    ]
+  }
+],
+  "id": "1"
+}

@@ -54,3 +54,6 @@ app.addHook('onRequest', async (request) => {
 })
 
 app.register(routes)
+// app.get('/*', function (req, res) {
+//   res.sendFile(path.join(__dirname(import.meta.url), './public', 'index.html'))
+// })
