@@ -13,17 +13,17 @@ export function validId<T>(id: Array<[T, any]>, schema: TSchema) {
   if (idColumns.length === 0)
     throw new Error(`${schema.table} não possui primary keys`)
   // id formato incorreto
-  if (!Array.isArray(id)) throw new Error('id deve ser Array<[string, any]>')
+  if (!Array.isArray(id)) throw new Error('where deve ser Array<[string, any]>')
 
   for (const fields of id) {
     // field deve ser array
     if (!Array.isArray(fields))
-      throw new Error('id deve ser Array<[string, any]>')
+      throw new Error('where deve ser Array<[string, any]>')
 
     // field deve ser [string, any]
     const [field] = fields
     if (typeof field !== 'string' || fields.length !== 2)
-      throw new Error('id deve ser Array<[string, any]>')
+      throw new Error('where deve ser Array<[string, any]>')
 
     // field não é id
     if (!idColumns.includes(field) && !fieldColumns.includes(field)) {

@@ -9,6 +9,16 @@ POST {{host}}/api/rpc
 Content-Type: application/json
 
 {
+  "method": "cliente/list",
+  "args": [    {      "id": [  [    "CdCliente",    2  ]]    }  ],
+  "id": "1"
+}
+
+### ordemProducaoOperacao/produto
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
   "method": "cliente/vendaMensalValorMedio",
   "args": [
     {

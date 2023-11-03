@@ -86,7 +86,7 @@ const clienteStoreBase = createStore<ClienteState>()(
         if (id.length === 0) return recordClear
         const record = (await cache.fetch(
           {
-            id,
+            where: id,
             select: Object.keys(recordClear),
             _table: 'cliente',
             _method: 'cliente.read',

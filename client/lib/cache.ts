@@ -7,7 +7,7 @@ const fetchMethod = (
   _staleValue: any,
   { context }: { context: { method: (args: any) => Promise<any> } }
 ) => {
-  const args = omit(JSON.parse(key), ['_tables', '_table', '_name'])
+  const args = omit(JSON.parse(key), ['_tables', '_table', '_name', '_method'])
   return context.method(args) as Promise<ReturnType<typeof context.method>>
 }
 
