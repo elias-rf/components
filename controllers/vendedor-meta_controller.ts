@@ -1,9 +1,15 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { vendedor } from '@/schemas/oftalmo/vendedor.schema'
 import type { TSchema } from '@/schemas/schema.type'
 
-export type TVendedorMetaFields = keyof typeof vendedor.fields
+export const vendedor = {
+  database: 'oftalmo',
+  table: 'vendedor',
+  primary: ['id'] as const,
+  fields: ['id', 'uf', 'meta'],
+}
+
+export type TVendedorMetaFields = (typeof vendedor.fields)[number]
 export type TVendedorMetaKeys = (typeof vendedor.primary)[number]
 
 function vendedorMetaControllerFactory(db: OrmDatabase, schema: TSchema) {

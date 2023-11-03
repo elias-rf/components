@@ -1,6 +1,6 @@
 import { getFields } from '@/orm/utils/schema/get-fields'
 import { getTable } from '@/orm/utils/schema/get-table'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 
 export function validOrderBy(
   orderBy: Array<[string, 'asc' | 'desc']>,
@@ -8,7 +8,7 @@ export function validOrderBy(
 ): { orderBy?: Array<[string, 'asc' | 'desc']> } {
   const nameList = getFields(schema)
   const fieldsInvalidos = []
-  let fieldsLivres = nameList.sort()
+  let fieldsLivres = nameList
 
   if (!Array.isArray(orderBy))
     throw new Error(`sort deve ser Array<[string, "asc" | "desc"]>`)

@@ -1,21 +1,41 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { tbl_Produto_Item } from '@/schemas/oftalmo/tbl_Produto_Item.schema'
 import type { TSchema } from '@/schemas/schema.type'
 import {
   TProdutoPlanoFields,
   produtoPlanoController,
 } from './produto-plano_controller'
 
-export type TProdutoItemFields = keyof typeof tbl_Produto_Item.fields
-export type TProdutoItemKeys = (typeof tbl_Produto_Item.primary)[number]
-;(tbl_Produto_Item as TSchema).relations = {
-  produto: {
-    method: () =>
-      import('./produto_controller').then((m) => m.produtoController.read),
-    where: [['kProduto', 'fkProduto']],
+export const tbl_Produto_Item: TSchema = {
+  table: 'tbl_Produto_Item',
+  primary: ['kProdutoItem'] as const,
+  relations: {
+    produto: {
+      method: () =>
+        import('./produto_controller').then((m) => m.produtoController.read),
+      where: [['kProduto', 'fkProduto']],
+    },
   },
+  fields: [
+    'kProdutoItem',
+    'NomeProdutoItem',
+    'fkProduto',
+    'QtdMinima',
+    'QtdAtual',
+    'QtdMaxima',
+    'QtdSeguranca',
+    'ConsumoMedioMes',
+    'ValorVenda',
+    'IdVisiontech',
+    'ForaDeLinha',
+    'GrupoCredito',
+    'fkProdutoItemAssociado',
+    'AvisoEstoqueMinMax',
+  ],
 }
+
+export type TProdutoItemFields = (typeof tbl_Produto_Item.fields)[number]
+export type TProdutoItemKeys = (typeof tbl_Produto_Item.primary)[number]
 
 function produtoItemControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TProdutoItemFields, TProdutoItemKeys>(db, schema)

@@ -1,9 +1,23 @@
 import { dbPlano } from '@/controllers/db/db-plano.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { LotesNotaEntrada } from '@/schemas/plano/LotesNotaEntrada.schema'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 
-export type TNfEntradaControleFields = keyof typeof LotesNotaEntrada.fields
+export const LotesNotaEntrada: TSchema = {
+  table: 'LotesNotaEntrada',
+  primary: ['NumNota', 'Serie'] as const,
+  fields: [
+    'NumNota',
+    'CdFornecedor',
+    'Serie',
+    'CdProduto',
+    'NumLote',
+    'Quantidade',
+    'CdFilial',
+    'Modelo',
+  ],
+}
+
+export type TNfEntradaControleFields = (typeof LotesNotaEntrada.fields)[number]
 export type TNfEntradaControleKeys = (typeof LotesNotaEntrada.primary)[number]
 
 function nfEntradaControleControllerFactory(db: OrmDatabase, schema: TSchema) {

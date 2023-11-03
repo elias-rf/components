@@ -1,15 +1,14 @@
+import { MestreNota } from '@/controllers/nf-saida_controller'
 import { validId } from '@/orm/utils/valid/valid-id'
-import { MestreNota } from '@/schemas/plano/MestreNota.schema'
 import { describe, expect, test } from 'vitest'
 
 describe('validId', () => {
   test('schema incompleto', () => {
     expect(() =>
       validId([['CdFilial', 1]], {
-        database: 'sqlite',
         table: 'MestreNota',
         primary: [],
-        fields: {},
+        fields: [],
       })
     ).toThrow('MestreNota não possui primary keys')
   })

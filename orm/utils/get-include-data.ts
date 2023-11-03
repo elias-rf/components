@@ -1,4 +1,4 @@
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 import { TData, TInclude, TWhere } from '@/types'
 import { clone } from '@/utils/array/clone'
 import { isEmpty } from '@/utils/identify/is-empty'

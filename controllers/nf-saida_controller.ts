@@ -1,32 +1,128 @@
 import { dbPlano } from '@/controllers/db/db-plano.db'
 import { nfSaidaFvController } from '@/controllers/nf-saida-fv_controller'
 import { OrmDatabase, ormTable } from '@/orm'
-import { MestreNota } from '@/schemas/plano/MestreNota.schema'
 import type { TSchema } from '@/schemas/schema.type'
 import { day } from '@/utils/date/day'
 import { array, isoDate, number, parse, regex, string, union } from 'valibot'
 
-export type TNfSaidaFields = keyof typeof MestreNota.fields
-export type TNfSaidaKeys = (typeof MestreNota.primary)[number]
-;(MestreNota as TSchema).relations = {
-  itens: {
-    method: () =>
-      import('./nf-saida-item_controller').then(
-        (m) => m.nfSaidaItemController.list
-      ),
-    where: [
-      ['CdFilial', 'CdFilial'],
-      ['Serie', 'Serie'],
-      ['Modelo', 'Modelo'],
-      ['NumNota', 'NumNota'],
-    ],
+export const MestreNota: TSchema = {
+  table: 'MestreNota',
+  primary: ['CdFilial', 'Serie', 'Modelo', 'NumNota'] as const,
+  relations: {
+    itens: {
+      method: () =>
+        import('./nf-saida-item_controller').then(
+          (m) => m.nfSaidaItemController.list
+        ),
+      where: [
+        ['CdFilial', 'CdFilial'],
+        ['Serie', 'Serie'],
+        ['Modelo', 'Modelo'],
+        ['NumNota', 'NumNota'],
+      ],
+    },
+    cliente: {
+      method: () =>
+        import('./cliente_controller').then((m) => m.clienteController.read),
+      where: [['CdCliente', 'CdCliente']],
+    },
   },
-  cliente: {
-    method: () =>
-      import('./cliente_controller').then((m) => m.clienteController.read),
-    where: [['CdCliente', 'CdCliente']],
-  },
+  fields: [
+    'CdFilial',
+    'NumNota',
+    'Serie',
+    'Modelo',
+    'DtEmissao',
+    'Tipo',
+    'CdCliente',
+    'CdVendedor',
+    'FgEstatistica',
+    'FgEstoque',
+    'VlTotal',
+    'VlBaseCalculo',
+    'BaseSubstituicao',
+    'IcmsSubstituicao',
+    'VlIcms',
+    'VlIRRF',
+    'VlISS',
+    'VlProdutos',
+    'VlFrete',
+    'VlSeguro',
+    'VlAcessorias',
+    'VlIPI',
+    'Servico',
+    'VlServico',
+    'NumPedido',
+    'OrdemCompra',
+    'NumNotaOrigem',
+    'DtUltAlteracao',
+    'Horario',
+    'FgRatearDescontoAcrescimo',
+    'FgDesconto',
+    'VlDesconto',
+    'NumCupomFiscalOrigem',
+    'NumPDVOrigem',
+    'CdFilialAssociada',
+    'CdVendedorExtra',
+    'NotadeComplemento',
+    'VlTroco',
+    'VlBaseCalculoIRRF',
+    'PercAliqIRRF',
+    'VlBaseCalculoIN381',
+    'PercAliqIN381',
+    'VlIN381',
+    'PercParticipPrazo',
+    'PercParticipVista',
+    'RedutorComissao',
+    'GrupoFiscal',
+    'CdTipoVenda',
+    'CdFuncionario',
+    'CdUsuario',
+    'Nop',
+    'NopFiscal',
+    'VlImpostoDiferido',
+    'CdLocalEstoque',
+    'VlIPIFrete',
+    'VlBaseCalculoII',
+    'VlII',
+    'DtSaida',
+    'VlBaseCalculoIPI',
+    'VlPISSubstituido',
+    'VlCofinsSubstituido',
+    'VlBaseCalculoPIS',
+    'VlPIS',
+    'VlBaseCalculoCOFINS',
+    'VlCofins',
+    'VlAproximadoImpostoNota',
+    'CdSituacaoDocumento',
+    'SerieNotaOrigem',
+    'ModeloNotaOrigem',
+    'VlDeducaoFiscal',
+    'DescricaoNop',
+    'TipoNota',
+    'IndicadorFormaPgto',
+    'FinalidadeNf',
+    'FgVendaConsumidor',
+    'FgDiferencialAliquota',
+    'SituacaoNfe',
+    'AmbienteNfe',
+    'NumOrdemFaturamento',
+    'FgImportacao',
+    'IndicadorPresenca',
+    'FgNfTerceiros',
+    'VlAproximadoImpostoFederal',
+    'VlAproximadoImpostoEstadual',
+    'VlAproximadoImpostoMunicipal',
+    'VlFCP',
+    'VlFCPST',
+    'NomeAdquirente',
+    'CPFCNPJAdquirente',
+    'percComissao',
+  ] as const,
 }
+
+export type TNfSaidaFields = (typeof MestreNota.fields)[number]
+export type TNfSaidaKeys = (typeof MestreNota.primary)[number]
 
 function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TNfSaidaFields, TNfSaidaKeys>(db, schema)

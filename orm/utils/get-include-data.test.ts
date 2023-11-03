@@ -1,5 +1,5 @@
 import { getIncludeData } from '@/orm/utils/get-include-data'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 import { TInclude, TWhere } from '@/types'
 import { describe, expect, test } from 'vitest'
 

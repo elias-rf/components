@@ -1,6 +1,6 @@
 import { getFields } from '@/orm/utils/schema/get-fields'
 import { getTable } from '@/orm/utils/schema/get-table'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 import { TSelect } from '@/types'
 import { isEmpty } from '@/utils/identify/is-empty'
 
@@ -14,7 +14,7 @@ export function validSelect<TFields>(
 ): { select: TSelect<TFields> } {
   const nameList = getFields(schema)
   const fieldsInvalidos = []
-  let fieldsLivres = nameList.sort()
+  let fieldsLivres = nameList
 
   if (typeof select === 'undefined' || isEmpty(select)) return { select: ['*'] }
   if (!Array.isArray(select)) throw new Error('select deve ser Array<string>')

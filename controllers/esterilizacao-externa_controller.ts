@@ -1,14 +1,30 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { tEsterilizacaoExterna } from '@/schemas/oftalmo/tEsterilizacaoExterna.schema'
 import type { TSchema } from '@/schemas/schema.type'
 import { day } from '@/utils/date/day'
 import { isoDate, object, parse, regex, string } from 'valibot'
 
+export const esterilizacaoExternaSchema: TSchema = {
+  table: 'tEsterilizacaoExterna',
+  primary: ['kLoteEstExt'] as const,
+  fields: [
+    'kLoteEstExt',
+    'Data',
+    'DataRetorno',
+    'Quantidade',
+    'QtdCaixa',
+    'Fechado',
+    'Resultado',
+    'UsuarioResultado',
+    'Obs',
+    'LoteEto',
+  ],
+}
+
 export type TEsterilizacaoExternaFields =
-  keyof typeof tEsterilizacaoExterna.fields
+  (typeof esterilizacaoExternaSchema.fields)[number]
 export type TEsterilizacaoExternaKeys =
-  (typeof tEsterilizacaoExterna.primary)[number]
+  (typeof esterilizacaoExternaSchema.primary)[number]
 
 function esterilizacaoExternaControllerFactory(
   db: OrmDatabase,
@@ -155,4 +171,4 @@ function esterilizacaoExternaControllerFactory(
 }
 
 export const esterilizacaoExternaController =
-  esterilizacaoExternaControllerFactory(dbOftalmo, tEsterilizacaoExterna)
+  esterilizacaoExternaControllerFactory(dbOftalmo, esterilizacaoExternaSchema)

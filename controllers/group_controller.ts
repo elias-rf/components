@@ -1,13 +1,16 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import {
-  Ttbl_Seguranca_Grupo,
-  tbl_Seguranca_Grupo,
-} from '@/schemas/oftalmo/tbl_Seguranca_Grupo.schema'
-import { TSchema } from '@/schemas/schema.type'
 
-export type TGroupFields = keyof typeof tbl_Seguranca_Grupo.fields
-export type TGroupKeys = (typeof tbl_Seguranca_Grupo.primary)[number]
+import type { TSchema } from '@/schemas/schema.type'
+
+export const groupSchema: TSchema = {
+  table: 'tbl_Seguranca_Grupo',
+  primary: ['kGrupo'],
+  fields: ['kGrupo', 'NomeGrupo'] as const,
+}
+
+export type TGroupFields = (typeof groupSchema.fields)[number]
+export type TGroupKeys = (typeof groupSchema.primary)[number]
 
 function groupControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TGroupFields, TGroupKeys>(db, schema)
@@ -16,9 +19,4 @@ function groupControllerFactory(db: OrmDatabase, schema: TSchema) {
   }
 }
 
-export const groupController = groupControllerFactory(
-  dbOftalmo,
-  tbl_Seguranca_Grupo
-)
-
-export type TGroupController = Ttbl_Seguranca_Grupo
+export const groupController = groupControllerFactory(dbOftalmo, groupSchema)

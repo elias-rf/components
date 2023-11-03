@@ -1,9 +1,30 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { tMaquina } from '@/schemas/oftalmo/tMaquina.schema'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 
-export type TMaquinaFields = keyof typeof tMaquina.fields
+export const tMaquina: TSchema = {
+  table: 'tMaquina',
+  primary: ['kMaquina'] as const,
+  fields: [
+    'kMaquina',
+
+    'NomeMaquina',
+
+    'Serie',
+
+    'fkDivisao',
+
+    'fkSetor',
+
+    'Descricao',
+
+    'FrequenciaManutencao',
+
+    'Ativo',
+  ],
+}
+
+export type TMaquinaFields = (typeof tMaquina.fields)[number]
 export type TMaquinaKeys = (typeof tMaquina.primary)[number]
 
 function maquinaControllerFactory(db: OrmDatabase, schema: TSchema) {

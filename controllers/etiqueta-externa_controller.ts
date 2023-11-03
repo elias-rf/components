@@ -1,10 +1,17 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { tEtiqueta } from '@/schemas/oftalmo/tEtiqueta.schema'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 
-export type TEtiquetaExternaFields = keyof typeof tEtiqueta.fields
-export type TEtiquetaExternaKeys = (typeof tEtiqueta.primary)[number]
+export const etiquetaExternaSchema: TSchema = {
+  table: 'tEtiqueta',
+  primary: ['controle'] as const,
+  fields: ['controle', 'qtdImpressao', 'dataFabricacao'],
+}
+
+export type TEtiquetaExternaFields =
+  (typeof etiquetaExternaSchema.fields)[number]
+export type TEtiquetaExternaKeys =
+  (typeof etiquetaExternaSchema.primary)[number]
 
 function etiquetaExternaControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TEtiquetaExternaFields, TEtiquetaExternaKeys>(db, schema)
@@ -15,5 +22,5 @@ function etiquetaExternaControllerFactory(db: OrmDatabase, schema: TSchema) {
 
 export const etiquetaExternaController = etiquetaExternaControllerFactory(
   dbOftalmo,
-  tEtiqueta
+  etiquetaExternaSchema
 )

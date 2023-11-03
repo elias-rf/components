@@ -1,12 +1,12 @@
 import { getFields } from '@/orm/utils/schema/get-fields'
 import { getTable } from '@/orm/utils/schema/get-table'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 import { isEmpty } from '@/utils/identify/is-empty'
 
 export function validGroupBy(groupBy: any, schema: TSchema) {
   const nameList = getFields(schema)
   const fieldsInvalidos = []
-  let fieldsLivres = nameList.sort()
+  let fieldsLivres = nameList
 
   if (isEmpty(groupBy)) return {}
   if (!Array.isArray(groupBy)) throw new Error('select deve ser Array<string>')

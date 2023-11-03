@@ -1,6 +1,6 @@
 import { getFields } from '@/orm/utils/schema/get-fields'
 import { getTable } from '@/orm/utils/schema/get-table'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 import { isEmpty } from '@/utils/identify/is-empty'
 
 function fieldName(field: string) {
@@ -13,7 +13,7 @@ export function validFirst(
 ): { first?: Array<string> } {
   const nameList = getFields(schema)
   const fieldsInvalidos = []
-  let fieldsLivres = nameList.sort()
+  let fieldsLivres = nameList
 
   if (isEmpty(first)) return { first: ['*'] }
   if (!Array.isArray(first)) throw new Error('select deve ser Array<string>')

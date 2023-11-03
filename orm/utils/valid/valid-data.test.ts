@@ -1,6 +1,11 @@
 import { validData } from '@/orm/utils/valid/valid-data'
-import { phonebook } from '@/schemas/oftalmo/phonebook.schema'
 import { describe, expect, test } from 'vitest'
+
+const phonebook = {
+  table: 'phonebook',
+  primary: ['id'] as const,
+  fields: ['id', 'name', 'department', 'email'] as const,
+}
 
 describe('validData', () => {
   test('válido', () => {
@@ -8,7 +13,7 @@ describe('validData', () => {
   })
   test('campo inválido', () => {
     expect(() => validData({ ids: 1 }, phonebook)).toThrow(
-      '[ids] não é um campo válido para data em phonebook use: department,email,id,name'
+      '[ids] não é um campo válido para data em phonebook use: id,name,department,email'
     )
   })
 })

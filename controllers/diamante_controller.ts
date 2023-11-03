@@ -1,10 +1,39 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { diamante } from '@/schemas/oftalmo/diamante.schema'
 import type { TSchema } from '@/schemas/schema.type'
 
-export type TDiamanteFields = keyof typeof diamante.fields
-export type TDiamanteKeys = (typeof diamante.primary)[number]
+export const diamanteSchema: TSchema = {
+  table: 'diamante',
+  primary: ['id'] as const,
+  fields: [
+    'id',
+
+    'diamante',
+
+    'tipo',
+
+    'raio',
+
+    'espessura',
+
+    'fkMaquina',
+
+    'fkFuncionario',
+
+    'dataEntrada',
+
+    'ordemInicial',
+
+    'dataSaida',
+
+    'ordemFinal',
+
+    'qtdCortes',
+  ],
+}
+
+export type TDiamanteFields = (typeof diamanteSchema.fields)[number]
+export type TDiamanteKeys = (typeof diamanteSchema.primary)[number]
 
 function diamanteControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TDiamanteFields, TDiamanteKeys>(db, schema)
@@ -12,4 +41,7 @@ function diamanteControllerFactory(db: OrmDatabase, schema: TSchema) {
   return { ...orm.rpc }
 }
 
-export const diamanteController = diamanteControllerFactory(dbOftalmo, diamante)
+export const diamanteController = diamanteControllerFactory(
+  dbOftalmo,
+  diamanteSchema
+)

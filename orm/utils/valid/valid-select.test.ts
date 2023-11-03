@@ -1,6 +1,11 @@
 import { validSelect } from '@/orm/utils/valid/valid-select'
 import { describe, expect, test } from 'vitest'
-import { phonebook } from '@/schemas/oftalmo/phonebook.schema'
+
+const phonebook = {
+  table: 'phonebook',
+  primary: ['id'] as const,
+  fields: ['id', 'name', 'department', 'email'] as const,
+}
 
 describe('validSelect', () => {
   test('válido vazio', () => {
@@ -19,7 +24,7 @@ describe('validSelect', () => {
 
   test('campo inválido', () => {
     expect(() => validSelect(['ids'], phonebook)).toThrow(
-      '[ids] não é um campo válido para select em phonebook use: department,email,id,name'
+      '[ids] não é um campo válido para select em phonebook use: id,name,department,email'
     )
   })
 })

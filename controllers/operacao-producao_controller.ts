@@ -1,9 +1,23 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { tOperacaoDeProducao } from '@/schemas/oftalmo/tOperacaoDeProducao.schema'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 
-export type TOperacaoProducaoFields = keyof typeof tOperacaoDeProducao.fields
+export const tOperacaoDeProducao = {
+  database: 'oftalmo',
+  table: 'tOperacaoDeProducao',
+  primary: ['kOperacao'],
+  fields: [
+    'kOperacao',
+    'Operacao',
+    'EhRetrabalho',
+    'Especial',
+    'Descricao',
+    'Amostragem',
+  ],
+}
+
+export type TOperacaoProducaoFields =
+  (typeof tOperacaoDeProducao.fields)[number]
 export type TOperacaoProducaoKeys = (typeof tOperacaoDeProducao.primary)[number]
 
 function operacaoProducaoControllerFactory(db: OrmDatabase, schema: TSchema) {

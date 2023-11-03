@@ -1,9 +1,30 @@
 import { dbPlano } from '@/controllers/db/db-plano.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { NfLogConferencia } from '@/schemas/plano/NfLogConferencia.schema'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 
-export type TNfEntradaLogFields = keyof typeof NfLogConferencia.fields
+export const NfLogConferencia: TSchema = {
+  table: 'NfLogConferencia',
+  primary: ['NumNota', 'Serie', 'Modelo'] as const,
+  fields: [
+    'CdFilial',
+
+    'NumNota',
+
+    'Serie',
+
+    'CdFornecedor',
+
+    'Data',
+
+    'Usuario',
+
+    'Operacao',
+
+    'Modelo',
+  ],
+}
+
+export type TNfEntradaLogFields = (typeof NfLogConferencia.fields)[number]
 export type TNfEntradaLogKeys = (typeof NfLogConferencia.primary)[number]
 
 function nfEntradaLogControllerFactory(db: OrmDatabase, schema: TSchema) {

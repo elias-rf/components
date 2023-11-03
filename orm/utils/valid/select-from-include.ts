@@ -1,5 +1,5 @@
 import { getFields } from '@/orm/utils/schema/get-fields'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 import { TInclude, TSelect } from '@/types'
 import { pushUnique } from '@/utils/array/push-unique'
 

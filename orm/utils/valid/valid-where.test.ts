@@ -1,6 +1,11 @@
 import { validWhere } from '@/orm/utils/valid/valid-where'
-import { phonebook } from '@/schemas/oftalmo/phonebook.schema'
 import { describe, expect, test } from 'vitest'
+
+const phonebook = {
+  table: 'phonebook',
+  primary: ['id'] as const,
+  fields: ['id', 'name', 'department', 'email'] as const,
+}
 
 describe('validWhere', () => {
   test('válido', () => {
@@ -8,12 +13,7 @@ describe('validWhere', () => {
   })
   test('campo inválido', () => {
     expect(() => validWhere([['ids', 1]], phonebook)).toThrow(
-      '[ids] não é um campo válido para where em phonebook use: department,email,id,name'
+      '[ids] não é um campo válido para where em phonebook use: id,name,department,email'
     )
   })
-  // test('tipo inválido', () => {
-  //   expect(() => validWhere([['id', '1']], phonebook)).toThrow(
-  //     'phonebook.id deve ser do tipo number mas é string'
-  //   )
-  // })
 })

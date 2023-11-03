@@ -1,6 +1,11 @@
 import { validOrderBy } from '@/orm/utils/valid/valid-order-by'
 import { describe, expect, test } from 'vitest'
-import { phonebook } from '@/schemas/oftalmo/phonebook.schema'
+
+const phonebook = {
+  table: 'phonebook',
+  primary: ['id'] as const,
+  fields: ['id', 'name', 'department', 'email'] as const,
+}
 
 describe('validOrder', () => {
   test('válido', () => {
@@ -10,7 +15,7 @@ describe('validOrder', () => {
   })
   test('campo inválido', () => {
     expect(() => validOrderBy([['ids', 'asc']], phonebook)).toThrow(
-      '[ids] não é um campo válido para where em phonebook use: department,email,id,name'
+      '[ids] não é um campo válido para where em phonebook use: id,name,department,email'
     )
   })
   test('tipo inválido', () => {

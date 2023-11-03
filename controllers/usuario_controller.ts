@@ -1,13 +1,32 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { tbl_Seguranca_Usuario } from '@/schemas/oftalmo/tbl_Seguranca_Usuario.schema'
 import type { TSchema } from '@/schemas/schema.type'
 import type { TCurrentUser } from '@/types'
 import { day } from '@/utils/date/day'
 import { passwordVerify } from '@/utils/string/password-verify'
 import { PrimFastifyContext } from '@doseofted/prim-rpc-plugins/fastify'
 
-export type TUsuarioFields = keyof typeof tbl_Seguranca_Usuario.fields
+export const tbl_Seguranca_Usuario = {
+  database: 'oftalmo',
+  table: 'tbl_Seguranca_Usuario',
+  primary: ['kUsuario'] as const,
+  fields: [
+    'kUsuario',
+    'NomeUsuario',
+    'Senha',
+    'fkGrupo',
+    'email',
+    'fkFuncionario',
+    'Ativo',
+    'hash',
+    'nome',
+    'setor',
+    'nivel',
+    'idGroup',
+  ] as const,
+}
+
+export type TUsuarioFields = (typeof tbl_Seguranca_Usuario.fields)[number]
 export type TUsuarioKeys = (typeof tbl_Seguranca_Usuario.primary)[number]
 
 function usuarioControllerFactory(db: OrmDatabase, schema: TSchema) {

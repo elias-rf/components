@@ -7,33 +7,88 @@ import {
 } from '@/controllers/produto-item_controller'
 import { TProdutoPlanoFields } from '@/controllers/produto-plano_controller'
 import { OrmDatabase, ormTable } from '@/orm'
-import { tOrdemProducao } from '@/schemas/oftalmo/tOrdemProducao.schema'
-import { Ttbl_Produto_Item } from '@/schemas/oftalmo/tbl_Produto_Item.schema'
 import type { TSchema } from '@/schemas/schema.type'
 import { day } from '@/utils/date/day'
 import { isEmpty } from '@/utils/identify/is-empty'
 import { isUndefined } from '@/utils/identify/is-undefined'
 import { module10 } from '@/utils/string/module10'
 
-export type TOrdemProducaoFields = keyof typeof tOrdemProducao.fields
-export type TOrdemProducaoKeys = (typeof tOrdemProducao.primary)[number]
-;(tOrdemProducao as TSchema).relations = {
-  operacoes: {
-    method: () =>
-      import('./ordem-producao-operacao_controller').then(
-        (m) => m.ordemProducaoOperacaoController.list
-      ),
-    where: [['fkOp', 'kOp']],
-  },
-  produtoItem: {
-    method: () =>
-      import('./produto-item_controller').then(
-        (m) => m.produtoItemController.read
-      ),
+export const tOrdemProducao: TSchema = {
+  table: 'tOrdemProducao',
+  primary: ['kOp'] as const,
+  relations: {
+    operacoes: {
+      method: () =>
+        import('./ordem-producao-operacao_controller').then(
+          (m) => m.ordemProducaoOperacaoController.list
+        ),
+      where: [['fkOp', 'kOp']],
+    },
+    produtoItem: {
+      method: () =>
+        import('./produto-item_controller').then(
+          (m) => m.produtoItemController.read
+        ),
 
-    where: [['kProdutoItem', 'fkProdutoItem']],
+      where: [['kProdutoItem', 'fkProdutoItem']],
+    },
   },
+  fields: [
+    'kOp',
+    'ChaveAntiga',
+    'fkTipoOP',
+    'DataEmissao',
+    'DataFechamento',
+    'Travado',
+    'fkOpPai',
+    'LoteFabricante',
+    'NomeUsuario',
+    'fkOPBotao',
+    'fkOPBotaoAntiga',
+    'ViaAntiga',
+    'fkOPLoop',
+    'fkOPLoopAntiga',
+    'fkProdutoItem',
+    'Quantidade',
+    'QtdEmProcesso',
+    'Broca',
+    'fkLoteEstExt',
+    'fkLoteEstInt',
+    'EspessuraBotao',
+    'DiametroBotao',
+    'LoteBotaoTerceiro',
+    'QtdFilamentosLoop',
+    'EspessuraLoop',
+    'ModeloLoop',
+    'TamanhoLoop',
+    'Partida',
+    'ClasseOP',
+    'fkPrimeiraOperacao',
+    'CalcularEmProcesso',
+    'Selecao',
+    'QtdEstExt_tmp',
+    'Obs',
+    'Expiracao',
+    'OPVerificada',
+    'CriticaLancamento',
+    'fkOPMestre',
+    'DataUltimoLancamento',
+    'IndiceRefracao',
+    'IndiceRefracao2',
+    'EtiqInternaImpressa',
+    'ExportadoSANKHYA',
+    'deleted',
+    'ts',
+    'versao',
+    'emProcesso',
+    'fkOperacaoEmProcesso',
+    'loteTamboreamento',
+    'raio',
+  ] as const,
 }
+
+export type TOrdemProducaoFields = (typeof tOrdemProducao.fields)[number]
+export type TOrdemProducaoKeys = (typeof tOrdemProducao.primary)[number]
 
 function ordemProducaoControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TOrdemProducaoFields, TOrdemProducaoKeys>(db, schema)
@@ -247,7 +302,7 @@ function ordemProducaoControllerFactory(db: OrmDatabase, schema: TSchema) {
     const { kProdutoItem } = (await produtoItem({
       id: [['kOp', id[0][1]]],
       select: ['kProdutoItem'],
-    })) as Record<Ttbl_Produto_Item, any>
+    })) as Record<TProdutoItemFields, any>
 
     if (kProdutoItem === undefined) {
       return {}

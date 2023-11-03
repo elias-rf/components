@@ -1,9 +1,50 @@
 import { dbPlano } from '@/controllers/db/db-plano.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { EstatPro } from '@/schemas/plano/EstatPro.schema'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 
-export type TProdutoEstatisticaFields = keyof typeof EstatPro.fields
+export const EstatPro: TSchema = {
+  table: 'EstatPro',
+  primary: ['CdEmpresa', 'AnoRef', 'MesRef', 'CdProduto'] as const,
+  fields: [
+    'CdEmpresa',
+
+    'AnoRef',
+
+    'MesRef',
+
+    'CdProduto',
+
+    'EstInicial',
+
+    'Entradas',
+
+    'Saidas',
+
+    'Ajustes',
+
+    'QtdCompras',
+
+    'QtdMedio',
+
+    'QtdVendas',
+
+    'VlCusto',
+
+    'VlMedio',
+
+    'VlVendas',
+
+    'VlCustoMedio',
+
+    'VlVenda',
+
+    'VlAtacado',
+
+    'EstInicialPsico',
+  ] as const,
+}
+
+export type TProdutoEstatisticaFields = (typeof EstatPro.fields)[number]
 export type TProdutoEstatisticaKeys = (typeof EstatPro.primary)[number]
 
 function produtoEstatisticaControllerFactory(db: OrmDatabase, schema: TSchema) {

@@ -1,28 +1,60 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { tOperacaoOrdemProducao } from '@/schemas/oftalmo/tOperacaoOrdemProducao.schema'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 import { day } from '@/utils/date/day'
 import { isoDate, number, object, parse, regex, string, union } from 'valibot'
 
+export const tOperacaoOrdemProducao: TSchema = {
+  table: 'tOperacaoOrdemProducao',
+  primary: ['kOperacaoOP'],
+  relations: {
+    operacao: {
+      method: () =>
+        import('./operacao-producao_controller').then(
+          (m) => m.operacaoProducaoController.read
+        ),
+      where: [['kOperacao', 'fkOperacao']],
+    },
+    empregado: {
+      method: () =>
+        import('./empregado_controller').then(
+          (m) => m.empregadoController.read
+        ),
+      where: [['kEmpregado', 'fkEmpregado']],
+    },
+  },
+  fields: [
+    'kOperacaoOP',
+    'fkOp',
+    'fkOperacaoLP',
+    'fkOperacao',
+    'fkFuncionario',
+    'fkMaquina',
+    'DataHoraInicio',
+    'DataInicio',
+    'HoraInicio',
+    'DataHoraFim',
+    'DataFim',
+    'HoraFim',
+    'QtdInicial',
+    'QtdConforme',
+    'QtdRetrabalho',
+    'fkOperacaoRetrab',
+    'Complemento',
+    'fkOPFilha',
+    'ViaFilhaAntiga',
+    'IdPagina',
+    'OPAntiga',
+    'ClasseOP',
+    'EspPriAlca',
+    'EspSegAlca',
+  ] as const,
+}
+
 export type TOrdemProducaoOperacaoFields =
-  keyof typeof tOperacaoOrdemProducao.fields
+  (typeof tOperacaoOrdemProducao.fields)[number]
 export type TOrdemProducaoOperacaoKeys =
   (typeof tOperacaoOrdemProducao.primary)[number]
-;(tOperacaoOrdemProducao as TSchema).relations = {
-  operacao: {
-    method: () =>
-      import('./operacao-producao_controller').then(
-        (m) => m.operacaoProducaoController.read
-      ),
-    where: [['kOperacao', 'fkOperacao']],
-  },
-  empregado: {
-    method: () =>
-      import('./empregado_controller').then((m) => m.empregadoController.read),
-    where: [['kEmpregado', 'fkEmpregado']],
-  },
-}
 
 function ordemProducaoOperacaoControllerFactory(
   db: OrmDatabase,

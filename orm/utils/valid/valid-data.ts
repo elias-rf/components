@@ -1,6 +1,6 @@
 import { getFields } from '@/orm/utils/schema/get-fields'
 import { getTable } from '@/orm/utils/schema/get-table'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 import { TData } from '@/types'
 
 export function validData<TFields extends string>(
@@ -9,7 +9,7 @@ export function validData<TFields extends string>(
 ) {
   const nameList = getFields(schema)
   const fieldsInvalidos = []
-  let fieldsLivres = nameList.sort()
+  let fieldsLivres = nameList
 
   if (typeof data !== 'object' || Array.isArray(data))
     throw new Error('data deve ser Record<string, any>')

@@ -1,10 +1,17 @@
 import { dbSys } from '@/controllers/db/db-sys.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { TSchema } from '@/schemas/schema.type'
-import { resource } from '@/schemas/sys/resource.schema'
+import type { TSchema } from '@/schemas/schema.type'
 
-export type TSysResourceFields = keyof typeof resource.fields
-export type TSysResourceKeys = keyof typeof resource.fields
+export const resource = {
+  database: 'sys',
+  table: 'resource',
+  relations: {},
+  primary: ['resource_id'] as const,
+  fields: ['resource_id', 'description'],
+}
+
+export type TSysResourceFields = (typeof resource.fields)[number]
+export type TSysResourceKeys = (typeof resource.primary)[number]
 
 function sysResourceControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TSysResourceFields, TSysResourceKeys>(db, schema)

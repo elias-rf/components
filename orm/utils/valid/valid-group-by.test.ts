@@ -1,6 +1,11 @@
 import { validGroupBy } from '@/orm/utils/valid/valid-group-by'
 import { describe, expect, test } from 'vitest'
-import { phonebook } from '@/schemas/oftalmo/phonebook.schema'
+
+const phonebook = {
+  table: 'phonebook',
+  primary: ['id'] as const,
+  fields: ['id', 'name', 'department', 'email'] as const,
+}
 
 describe('validGroupBy', () => {
   test('válido vazio', () => {
@@ -13,7 +18,7 @@ describe('validGroupBy', () => {
 
   test('campo inválido', () => {
     expect(() => validGroupBy(['ids'], phonebook)).toThrow(
-      '[ids] não é um campo válido para select em phonebook use: department,email,id,name'
+      '[ids] não é um campo válido para select em phonebook use: id,name,department,email'
     )
   })
 })

@@ -1,4 +1,4 @@
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 
 /**
  * Returns the primary ID fields from the given schema.

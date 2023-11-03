@@ -1,6 +1,6 @@
 import { getFields } from '@/orm/utils/schema/get-fields'
 import { getTable } from '@/orm/utils/schema/get-table'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 
 export function validWhere(
   where: Array<[string, any?, any?]>,
@@ -8,7 +8,7 @@ export function validWhere(
 ): { where?: Array<[string, any?, any?]> } {
   const nameList = getFields(schema)
   const fieldsInvalidos = []
-  let fieldsLivres = nameList.sort()
+  let fieldsLivres = nameList
   if (!Array.isArray(where))
     throw new Error('where deve ser [string, any?, any?][]')
 
@@ -21,19 +21,7 @@ export function validWhere(
     if (!nameList.includes(field)) {
       fieldsInvalidos.push(field)
     }
-    // else {
-    //   if (
-    //     getType(value) !== getFieldType(field, schema) &&
-    //     !['in'].includes(equality)
-    //   ) {
-    //     throw new Error(
-    //       `${getTableName(schema)}.${field} deve ser do tipo ${getFieldType(
-    //         field,
-    //         schema
-    //       )} mas é ${getType(value)}`
-    //     )
-    //   }
-    // }
+
     fieldsLivres = fieldsLivres.filter((f) => f !== field)
   }
   if (fieldsInvalidos.length > 0) {

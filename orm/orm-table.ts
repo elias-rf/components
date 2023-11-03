@@ -1,5 +1,3 @@
-import { getFieldType as gtFieldType } from '@/orm/utils/schema/get-field-type'
-// import { getInclude } from '@/orm/utils/get-include'
 import { getIncludeData } from '@/orm/utils/get-include-data'
 import { selectFromInclude } from '@/orm/utils/valid/select-from-include'
 import { validData as vldData } from '@/orm/utils/valid/valid-data'
@@ -228,16 +226,11 @@ export function ormTable<TFields extends string, TKeys extends string>(
     return schema.table
   }
 
-  const getFieldType = (field: string) => {
-    return gtFieldType(field, schema)
-  }
-
   return {
     rpc: { list, read, count, update, create, del, increment },
     util: {
       getFields,
       getIdColumns,
-      getFieldType,
       validWhere,
       validOrderBy,
       validId,

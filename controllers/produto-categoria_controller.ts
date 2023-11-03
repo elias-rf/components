@@ -1,9 +1,31 @@
 import { dbPlano } from '@/controllers/db/db-plano.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { CategPro } from '@/schemas/plano/CategPro.schema'
 import type { TSchema } from '@/schemas/schema.type'
 
-export type TProdutoCategoriaFields = keyof typeof CategPro.fields
+export const CategPro = {
+  database: 'plano',
+  table: 'CategPro',
+  primary: ['CdCategoria'],
+  fields: [
+    'CdCategoria',
+
+    'NmCategoria',
+
+    'CdDepartamento',
+
+    'FgListaPreco',
+
+    'DtUltAlteracao',
+
+    'Mensagem',
+
+    'PercDescMaxGerente',
+
+    'PercDescMaxVendedor',
+  ],
+}
+
+export type TProdutoCategoriaFields = (typeof CategPro.fields)[number]
 export type TProdutoCategoriaKeys = (typeof CategPro.primary)[number]
 
 function produtoCategoriaControllerFactory(db: OrmDatabase, schema: TSchema) {

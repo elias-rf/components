@@ -1,4 +1,4 @@
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 import { TSelect, TWhere } from '@/types'
 import { describe, expect, test } from 'vitest'
 import { selectFromInclude } from './select-from-include'
@@ -27,11 +27,7 @@ const schema = {
       ] as TWhere<string>,
     },
   },
-  fields: {
-    id: {},
-    nome: {},
-    id_esposa: {},
-  },
+  fields: ['id', 'nome', 'id_esposa'],
 } as unknown as TSchema
 
 const include = {

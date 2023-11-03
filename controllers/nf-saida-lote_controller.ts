@@ -1,9 +1,34 @@
 import { dbPlano } from '@/controllers/db/db-plano.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { LotesNota } from '@/schemas/plano/LotesNota.schema'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 
-export type TNfSaidaLoteFields = keyof typeof LotesNota.fields
+export const LotesNota: TSchema = {
+  table: 'LotesNota',
+  primary: ['CdFilial', 'Serie', 'Modelo', 'NumNota', 'Sequencia'] as const,
+  fields: [
+    'CdFilial',
+
+    'NumNota',
+
+    'Serie',
+
+    'Sequencia',
+
+    'DtEmissao',
+
+    'CdProduto',
+
+    'NumLote',
+
+    'Quantidade',
+
+    'Modelo',
+
+    'Cdlote',
+  ],
+}
+
+export type TNfSaidaLoteFields = (typeof LotesNota.fields)[number]
 export type TNfSaidaLoteKeys = (typeof LotesNota.primary)[number]
 ;(LotesNota as TSchema).relations = {
   nfSaidaItem: {

@@ -1,9 +1,14 @@
 import { knexMockMsql } from '@/mocks/connections.mock'
 import { getTracker } from '@/mocks/database.mock'
-import { phonebook } from '@/schemas/oftalmo/phonebook.schema'
 import { beforeEach, describe, expect, it, test } from 'vitest'
 import { OrmDatabase } from './orm-database'
 import { ormTable } from './orm-table'
+
+const phonebook = {
+  table: 'phonebook',
+  primary: ['id'] as const,
+  fields: ['id', 'name', 'department', 'email'] as const,
+}
 
 describe('OrmTable', () => {
   const tracker = getTracker()
@@ -26,7 +31,7 @@ describe('OrmTable', () => {
 
   it('deve invalidar select', () => {
     expect(() => tb.util.validSelect(['names'])).toThrow(
-      '[names] não é um campo válido para select em phonebook use: department,email,id,name'
+      '[names] não é um campo válido para select em phonebook use: id,name,department,email'
     )
   })
 
@@ -38,7 +43,7 @@ describe('OrmTable', () => {
 
   it('deve invalidar sort', () => {
     expect(() => tb.util.validOrderBy([['names', 'asc']])).toThrow(
-      '[names] não é um campo válido para where em phonebook use: department,email,id,name'
+      '[names] não é um campo válido para where em phonebook use: id,name,department,email'
     )
   })
 
@@ -51,11 +56,11 @@ describe('OrmTable', () => {
     )
     // @ts-ignore
     expect(() => tb.util.validId([['id']])).toThrow(
-      'id deve ser Array<[string, any]>'
+      'where deve ser Array<[string, any]>'
     )
     // @ts-ignore
     expect(() => tb.util.validId([[1, 'id']])).toThrow(
-      'id deve ser Array<[string, any]>'
+      'where deve ser Array<[string, any]>'
     )
   })
 
@@ -73,7 +78,7 @@ describe('OrmTable', () => {
 
   it('deve invalidar select', () => {
     expect(() => tb.util.validWhere([['names', 'a']])).toThrow(
-      '[names] não é um campo válido para where em phonebook use: department,email,id,name'
+      '[names] não é um campo válido para where em phonebook use: id,name,department,email'
     )
   })
 
@@ -83,7 +88,7 @@ describe('OrmTable', () => {
 
   it('deve invalidar data', () => {
     expect(() => tb.util.validData({ names: 'a' })).toThrow(
-      '[names] não é um campo válido para data em phonebook use: department,email,id,name'
+      '[names] não é um campo válido para data em phonebook use: id,name,department,email'
     )
   })
 

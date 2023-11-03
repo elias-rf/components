@@ -1,10 +1,10 @@
 import { dbFullvision } from '@/controllers/db/db-fullvision.db'
+import { MestreNota } from '@/controllers/nf-saida_controller'
 import { OrmDatabase, ormTable } from '@/orm'
-import { MestreNota } from '@/schemas/plano/MestreNota.schema'
-import { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type'
 import { array, isoDate, number, object, parse, string, union } from 'valibot'
 
-export type TNfSaidaFvFields = keyof typeof MestreNota.fields
+export type TNfSaidaFvFields = (typeof MestreNota.fields)[number]
 export type TNfSaidaFvKeys = (typeof MestreNota.primary)[number]
 
 function nfSaidaFvControllerFactory(db: OrmDatabase, schema: TSchema) {

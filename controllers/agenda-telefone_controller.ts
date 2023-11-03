@@ -1,10 +1,15 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
 import { OrmDatabase, ormTable } from '@/orm'
-import { phonebook } from '@/schemas/oftalmo/phonebook.schema'
 import type { TSchema } from '@/schemas/schema.type'
 
-export type TAgendaTelefoneFields = keyof typeof phonebook.fields
-export type TAgendaTelefoneKeys = (typeof phonebook.primary)[number]
+export const agendaTelefoneSchema = {
+  table: 'phonebook',
+  primary: ['id'] as const,
+  fields: ['id', 'name', 'department', 'email'] as const,
+}
+
+export type TAgendaTelefoneFields = (typeof agendaTelefoneSchema.fields)[number]
+export type TAgendaTelefoneKeys = (typeof agendaTelefoneSchema.primary)[number]
 
 function agendaTelefoneControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TAgendaTelefoneFields, TAgendaTelefoneKeys>(db, schema)
@@ -13,5 +18,5 @@ function agendaTelefoneControllerFactory(db: OrmDatabase, schema: TSchema) {
 
 export const agendaTelefoneController = agendaTelefoneControllerFactory(
   dbOftalmo,
-  phonebook
+  agendaTelefoneSchema
 )
