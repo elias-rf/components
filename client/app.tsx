@@ -1,6 +1,5 @@
 import { authStore } from '@/client/store/auth_store'
 import React, { Suspense } from 'react'
-import { Toaster } from 'react-hot-toast'
 import { Route, Switch, useLocation } from 'wouter'
 import { Layout } from './features/layout'
 import { Home } from './pages/home'

@@ -31,7 +31,7 @@ export default function Clientes() {
       const can = data.reduce(
         (acc, cur) => ({ ...acc, [cur.idSubject]: true }),
         {}
-      )
+      ) as TCan
       setCan(can)
     }
     getData()
