@@ -1,4 +1,4 @@
-import { Vendas30dias as Vendas } from '@/client/features/vendas30dias/vendas_30dias'
+import { Vendas30dias as Vendas } from '@/client/features/vendas30dias/vendas-30dias'
 
 /**
  * Componente para manipular Agenda de Ramais

@@ -1,5 +1,5 @@
 import { Table } from '@/client/components/table'
-import { Input } from '@/client/components/ui/input'
+import { Input } from '@/client/components/ui/input/input'
 import { lotesSaidaColumns } from '@/client/features/lotes-saida/components/lotes-saida_columns'
 import { lotesSaidaStore } from '@/client/features/lotes-saida/lotes-saida_store'
 import { usePageSize } from '@/client/store/page-size'

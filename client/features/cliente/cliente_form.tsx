@@ -1,5 +1,5 @@
-import { Input } from '@/client/components/ui/input'
-import { Tabs } from '@/client/components/ui/tabs'
+import { Input } from '@/client/components/ui/input/input'
+import { Tabs } from '@/client/components/ui/tabs/tabs'
 import { clienteStore } from '@/client/features/cliente/cliente_store'
 import { ClienteQuantidade } from '@/client/features/cliente/components/cliente-quantidade'
 import { ClienteValor } from '@/client/features/cliente/components/cliente-valor'
@@ -7,21 +7,6 @@ import { ClienteValorMedio } from '@/client/features/cliente/components/cliente-
 import { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-
-const tabs = [
-  {
-    label: 'Valor',
-    value: 'valor',
-  },
-  {
-    label: 'Quantidade',
-    value: 'quantidade',
-  },
-  {
-    label: 'Valor Médio',
-    value: 'valor-medio',
-  },
-]
 
 export function ClienteForm() {
   const status = clienteStore.use.status()
@@ -229,14 +214,28 @@ export function ClienteForm() {
         </div>
         <div className="col-span-12">
           <Tabs
-            value={tab}
+            selected={tab}
             onChange={setTab}
-            tabs={tabs}
-          />
-
-          {tab === 'valor' ? <ClienteValor /> : null}
-          {tab === 'quantidade' && <ClienteQuantidade />}
-          {tab === 'valor-medio' && <ClienteValorMedio />}
+          >
+            <Tabs.Tab
+              label="Valor"
+              name="valor"
+            >
+              <ClienteValor />
+            </Tabs.Tab>
+            <Tabs.Tab
+              label="Quantidade"
+              name="quantidade"
+            >
+              <ClienteQuantidade />
+            </Tabs.Tab>
+            <Tabs.Tab
+              label="Valor Médio"
+              name="valor-medio"
+            >
+              <ClienteValorMedio />
+            </Tabs.Tab>
+          </Tabs>
         </div>
       </div>
     </>

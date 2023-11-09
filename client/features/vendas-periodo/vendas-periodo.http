@@ -1,0 +1,41 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+@resource = agendaTelefone
+
+###
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "nfSaida/list",
+  "args": [
+    {
+      "select":["CdFilial","NumNota", "CdCliente","CdVendedor"],
+      "orderBy":[["DtEmissao","desc"]],
+      "limit":5,
+      "include":{
+        "cliente":["*"],
+        "itens":["VlTotal","Quantidade"],
+        "itens.produto":["Descricao"]
+      }
+    }
+  ],
+  "id": "1"
+}
+
+###
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "nfSaida/vendaDiario",
+  "args": [
+    {
+      "inicio": "2023-10-01",
+      "fim": "2023-10-14",
+      "uf": []
+    }
+  ],
+  "id": "1"
+}

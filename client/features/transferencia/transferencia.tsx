@@ -1,8 +1,8 @@
 import { Button } from '@/client/components/ui/button'
-import { Input } from '@/client/components/ui/input'
+import { Input } from '@/client/components/ui/input/input'
 import { Title } from '@/client/components/ui/title'
 import { cn } from '@/client/lib/cn'
-import { useArray } from '@/client/lib/hooks/use-array'
+import { useStateArray } from '@/client/lib/hooks/use-state-array'
 import { rpc } from '@/rpc/rpc-client'
 import React from 'react'
 
@@ -11,7 +11,7 @@ import React from 'react'
 export function Transferencia() {
   const [quantidade, setQuantidade] = React.useState('')
   const [serial, setSerial] = React.useState('')
-  const [lista, setLista] = useArray<string>([])
+  const lista = useStateArray<string>([])
   const [msg, setMsg] = React.useState<string>('')
   const quantidadeRef = React.useRef<HTMLInputElement>(null)
 
@@ -25,7 +25,7 @@ export function Transferencia() {
     setSerial(value)
     if (value.length == 0 || quantidade.length == 0) return
     if (await rpc.ordemProducao.ehControleValido({ controle: value })) {
-      if (!lista.includes(value)) setLista.push(value)
+      if (!lista.includes(value)) lista.push(value)
       setMsg('')
     } else {
       setMsg('Controle inválido: ' + value)
@@ -34,15 +34,15 @@ export function Transferencia() {
   }
 
   function delList(idx: any) {
-    setLista.removeAt(idx)
+    lista.removeAt(idx)
     setMsg('')
   }
 
   async function transfer() {
     try {
-      await rpc.nfEntrada.transferenciaCreate({ controles: lista })
+      await rpc.nfEntrada.transferenciaCreate({ controles: lista.value })
       setQuantidade('')
-      setLista.empty()
+      lista.empty()
     } catch (e: any) {
       setMsg(e.message)
     }
@@ -73,7 +73,7 @@ export function Transferencia() {
         <div>
           <Button
             onClick={transfer}
-            disabled={lista.length !== parseInt(quantidade)}
+            disabled={lista.value.length !== parseInt(quantidade)}
           >
             [T]ransferir
           </Button>
@@ -82,16 +82,16 @@ export function Transferencia() {
       <div
         className={cn(
           'text-3xl font-bold ',
-          lista.length == parseInt(quantidade)
+          lista.value.length == parseInt(quantidade)
             ? 'text-blue-500'
             : 'text-red-500'
         )}
       >
-        {lista.length} unidades
+        {lista.value.length} unidades
         <div className={'text-3xl font-bold text-red-500'}>{msg}</div>
       </div>
       <div className={'flex flex-wrap space-x-2'}>
-        {lista.map((serie, idx) => (
+        {lista.value.map((serie, idx) => (
           <React.Fragment key={idx + serie}>
             <Button
               size="xs"

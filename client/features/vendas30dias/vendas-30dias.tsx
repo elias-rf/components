@@ -1,5 +1,5 @@
 import { Title } from '@/client/components/ui/title'
-import { vendas30DiasStore } from '@/client/features/vendas30dias/vendas30dias.store'
+import { vendas30DiasStore } from '@/client/features/vendas30dias/vendas-30dias.store'
 import { formatMoney } from '@/utils/format/format-money'
 import toast from 'react-hot-toast'
 import {
@@ -41,7 +41,7 @@ export function Vendas30dias() {
   return (
     <>
       <Title>Vendas 30 dias</Title>
-      <div className={'py-2'}>
+      <div className="py-2">
         <h2 className={'text-center text-lg dark:text-gray-100'}>Liteflex</h2>
         <ResponsiveContainer
           width={width}
@@ -81,7 +81,7 @@ export function Vendas30dias() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className={'py-2'}>
+      <div className="py-2">
         <h2 className={'text-center text-lg dark:text-gray-100'}>Hilite</h2>
         <ResponsiveContainer
           width={width}
@@ -116,7 +116,7 @@ export function Vendas30dias() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className={'py-2'}>
+      <div className="py-2">
         <h2 className={'text-center text-lg dark:text-gray-100'}>Enlite</h2>
         <ResponsiveContainer
           width={width}
@@ -154,7 +154,7 @@ export function Vendas30dias() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className={'py-2'}>
+      <div className="py-2">
         <h2 className={'text-center text-lg dark:text-gray-100'}>Metil</h2>
         <ResponsiveContainer
           width={width}
@@ -189,7 +189,7 @@ export function Vendas30dias() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className={'py-2'}>
+      <div className="py-2">
         <h2 className={'text-center text-lg dark:text-gray-100'}>
           Corneal Ring
         </h2>
@@ -226,7 +226,7 @@ export function Vendas30dias() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div className={'py-2'}>
+      <div className="py-2">
         <h2 className={'text-center text-lg dark:text-gray-100'}>
           Liteflex + Enlite
         </h2>

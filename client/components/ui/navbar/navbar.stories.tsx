@@ -1,3 +1,4 @@
+import { PersonIcon } from '@/client/components/icons/person-icon'
 import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon'
 import { Avatar } from '@/client/components/ui/avatar'
 import { DarkToggle } from '@/client/components/ui/dark-toggle'
@@ -24,7 +25,11 @@ export const Default: Story = () => {
         <Navbar.Menu>
           <Dropdown
             arrowIcon={false}
-            label={<Avatar />}
+            label={
+              <Avatar>
+                <PersonIcon />
+              </Avatar>
+            }
             position="right"
           >
             <Dropdown.Header>

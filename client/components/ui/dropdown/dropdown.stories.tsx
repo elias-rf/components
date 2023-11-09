@@ -1,3 +1,4 @@
+import { PersonIcon } from '@/client/components/icons/person-icon'
 import { Avatar } from '@/client/components/ui/avatar'
 import { Dropdown } from '@/client/components/ui/dropdown'
 import '@/client/index.css'
@@ -36,7 +37,12 @@ export const Default: Story = () => {
       </Dropdown>
       <Dropdown
         arrowIcon={false}
-        label={<Avatar />}
+        label={
+          <Avatar>
+            <PersonIcon />
+          </Avatar>
+        }
+        position="right"
       >
         <Dropdown.Header>
           <span className="block text-sm">TESTE</span>

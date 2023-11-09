@@ -1,14 +1,14 @@
 import { Story } from '@ladle/react'
-import { Vendas30dias } from './vendas_30dias'
+import { VendasPeriodo } from './vendas-periodo'
 
 export default {
-  title: 'features/vendas/vendas_30dias',
+  title: 'features/vendas/vendas periodo',
 }
 
 export const Default: Story = () => {
   return (
     <>
-      <Vendas30dias />
+      <VendasPeriodo />
     </>
   )
 }

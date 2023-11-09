@@ -1,5 +1,5 @@
 import { Button } from '@/client/components/ui/button'
-import { Input } from '@/client/components/ui/input'
+import { Input } from '@/client/components/ui/input/input'
 import { SelectBadge } from '@/client/components/ui/select-badge'
 import { Toggle } from '@/client/components/ui/toggle'
 import { usuarioStore } from '@/client/features/usuario/usuario_store'

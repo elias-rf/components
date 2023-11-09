@@ -18,7 +18,7 @@ const Clientes = React.lazy(async () => import('./pages/comercial/clientes'))
 // )
 const Precos = React.lazy(async () => import('./pages/comercial/precos'))
 const Vendas30Dias = React.lazy(
-  async () => import('./pages/comercial/vendas_30dias')
+  async () => import('./pages/comercial/vendas-30dias')
 )
 
 // industrial

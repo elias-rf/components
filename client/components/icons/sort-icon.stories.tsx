@@ -10,6 +10,14 @@ export default {
       defaultValue: 'up',
     },
   },
+  args: {
+    className: 'w-40 h-40',
+  },
 } satisfies StoryDefault
 
-export const Default: Story = (props: any) => <SortIcon {...props} />
+export const Default: Story = (props: any) => (
+  <>
+    <SortIcon {...props} />
+    <span className="align-middle">{'◀︎'}</span>
+  </>
+)

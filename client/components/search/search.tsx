@@ -1,6 +1,6 @@
 import { Button } from '@/client/components/ui/button'
 import { Chip } from '@/client/components/ui/chip'
-import { Input } from '@/client/components/ui/input'
+import { Input } from '@/client/components/ui/input/input'
 import { Select } from '@/client/components/ui/select'
 import { TWhere } from '@/types'
 import React, { useState } from 'react'

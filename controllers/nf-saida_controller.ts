@@ -127,6 +127,11 @@ export type TNfSaidaKeys = (typeof MestreNota.primary)[number]
 function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
   const orm = ormTable<TNfSaidaFields, TNfSaidaKeys>(db, schema)
 
+  /**
+   * TRANSFERENCIA DIARIO
+   * @param param0
+   * @returns
+   */
   const transferenciaDiario = async ({
     inicio,
     fim,
@@ -177,6 +182,11 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
   }
   transferenciaDiario.rpc = true
 
+  /**
+   * TRANSFERENCIA MENSAL
+   * @param param0
+   * @returns
+   */
   const transferenciaMensal = async ({ mes }: { mes: string }) => {
     parse(string([regex(/^\d{4}-(?:0[1-9]|1[0-2])$/, 'mês inválido')]), mes)
 
@@ -224,6 +234,11 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
   }
   transferenciaMensal.rpc = true
 
+  /**
+   * TRANSFERENCIA MODELO
+   * @param param0
+   * @returns
+   */
   const transferenciaModelo = async ({ data }: { data: string }) => {
     parse(string([isoDate('data inválida')]), data)
 
@@ -250,6 +265,11 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
   }
   transferenciaModelo.rpc = true
 
+  /**
+   * VENDA ANALITICO
+   * @param param0
+   * @returns
+   */
   const vendaAnalitico = async ({
     inicio,
     fim,
@@ -308,6 +328,11 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
   }
   vendaAnalitico.rpc = true
 
+  /**
+   * VENDA DIARIO
+   * @param param0
+   * @returns
+   */
   const vendaDiario = async ({
     inicio,
     fim,
@@ -316,13 +341,20 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
     inicio: string
     fim: string
     uf: string[]
-  }) => {
+  }): Promise<
+    {
+      NmCategoria: string
+      DtEmissao: string
+      valor: number
+      quantidade: number
+    }[]
+  > => {
     parse(string([isoDate('data inicial inválida')]), inicio)
     parse(string([isoDate('data final inválida')]), fim)
     parse(array(string('uf deve ser string')), uf)
 
     const knex = db.knex
-    const qry = (await knex<
+    let qry = knex<
       {
         NmCategoria: string
         DtEmissao: string
@@ -366,17 +398,21 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
       .whereRaw(
         'ItemNota.CdFilial = MestreNota.CdFilial and ItemNota.Serie = MestreNota.Serie and ItemNota.Modelo = MestreNota.Modelo and ItemNota.NumNota = MestreNota.NumNota and CadPro.CdCategoria = CategPro.CdCategoria and NatOpe.Nop = MestreNota.Nop and CadVen.CdVendedor = MestreNota.CdVendedor and CadCli.CdCliente = MestreNota.CdCliente and CadPro.CdProduto = ItemNota.CdProduto and Cadcli.Cidade = cidadeserf.NmCidadeIBGE'
       )
-      .whereIn('cidadeserf.uf', uf)
+
       .groupBy('NmCategoria', 'MestreNota.DtEmissao')
       .orderBy('NmCategoria')
-      .orderBy('MestreNota.DtEmissao', 'desc')) as unknown as {
+      .orderBy('MestreNota.DtEmissao', 'desc')
+    if (uf.length > 0) {
+      qry = qry.whereIn('cidadeserf.uf', uf)
+    }
+    const result = (await qry) as unknown as {
       NmCategoria: string
       DtEmissao: string
       quantidade: number
       valor: number
     }[]
 
-    const response = qry.map((item) => {
+    const response = result.map((item) => {
       item.DtEmissao = day(item.DtEmissao).format('YYYY-MM-DD')
       return item
     })
@@ -384,6 +420,11 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
   }
   vendaDiario.rpc = true
 
+  /**
+   * VENDA MENSAL CLIENTE
+   * @param param0
+   * @returns
+   */
   const vendaMensalCliente = async ({
     inicio,
     fim,
@@ -456,9 +497,9 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
     ...orm.rpc,
     vendaMensalCliente,
     vendaDiario,
+    vendaAnalitico,
     transferenciaDiario,
     transferenciaMensal,
-    vendaAnalitico,
     transferenciaModelo,
   }
 }

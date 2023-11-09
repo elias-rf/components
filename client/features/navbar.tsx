@@ -1,3 +1,4 @@
+import { PersonIcon } from '@/client/components/icons/person-icon'
 import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon'
 import { Avatar } from '@/client/components/ui/avatar'
 import { DarkToggle } from '@/client/components/ui/dark-toggle'
@@ -32,7 +33,11 @@ export function Navbar() {
         <div className="flex items-center space-x-2 md:order-2">
           <Dropdown
             arrowIcon={false}
-            label={<Avatar />}
+            label={
+              <Avatar>
+                <PersonIcon />
+              </Avatar>
+            }
             position="right"
           >
             <Dropdown.Header>

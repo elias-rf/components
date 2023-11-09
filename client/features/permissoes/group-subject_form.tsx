@@ -1,4 +1,4 @@
-import { Input } from '@/client/components/ui/input'
+import { Input } from '@/client/components/ui/input/input'
 import { Controller, UseFormReturn } from 'react-hook-form'
 type TGroupSubjectFormProps = {
   form: UseFormReturn<any>

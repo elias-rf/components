@@ -1,7 +1,9 @@
-export function MoonIcon() {
+import { cn } from '@/client/lib/cn'
+
+export function MoonIcon({ className }: { className?: string }) {
   return (
     <svg
-      className="w-5 h-5"
+      className={cn('w-5 h-5 inline-block', className)}
       fill="currentColor"
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"

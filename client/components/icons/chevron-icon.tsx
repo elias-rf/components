@@ -1,9 +1,12 @@
+import { cn } from '@/client/lib/cn'
+
 // https://icon-sets.iconify.design/material-symbols/chevron-right-rounded/
 export type TChevronIconProps = {
   variant?: 'right' | 'down' | 'left' | 'up'
+  className?: string
 }
 
-export function ChevronIcon({ variant }: TChevronIconProps) {
+export function ChevronIcon({ variant, className }: TChevronIconProps) {
   let rotate = 0
   if (variant === 'down') rotate = 90
   if (variant === 'left') rotate = 180
@@ -12,8 +15,7 @@ export function ChevronIcon({ variant }: TChevronIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      className={cn('w-5 h-5 inline-block', className)}
       viewBox="0 0 24 24"
     >
       <g transform={`rotate(${rotate} 12 12)`}>

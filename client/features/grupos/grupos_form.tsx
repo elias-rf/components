@@ -1,5 +1,5 @@
 import { Button } from '@/client/components/ui/button'
-import { Input } from '@/client/components/ui/input'
+import { Input } from '@/client/components/ui/input/input'
 import { gruposStore } from '@/client/features/grupos/grupos_store'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box'
 import { useEffect } from 'react'

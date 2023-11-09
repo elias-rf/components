@@ -1,4 +1,5 @@
 import { Helper } from '@/client/components/ui/helper'
+import { useInput } from '@/client/components/ui/input/use-input'
 import { Label } from '@/client/components/ui/label'
 import { cn } from '@/client/lib/cn'
 import React from 'react'
@@ -7,13 +8,14 @@ type TInputProps = {
   label?: string
   helper?: string
   onChange?: (e: string) => void
-  onBlur?: (e: any) => void
-  onInput?: (e: any) => void
+  onBlur?: (e: string) => void
+  onInput?: (e: string) => void
   value?: string
   type?: string
   required?: boolean
   disabled?: boolean
   variant?: 'success' | 'error'
+  className?: string
 }
 
 export const Input = React.forwardRef<HTMLInputElement, TInputProps>(
@@ -29,41 +31,12 @@ export const Input = React.forwardRef<HTMLInputElement, TInputProps>(
       onBlur,
       onInput,
       variant,
+      className,
     },
     ref
   ) => {
+    const ip = useInput({ value, onInput, onBlur, onChange })
     const id = React.useId()
-    const [vlr, setVlr] = React.useState(value)
-    const [dispInput, setDispInput] = React.useState(false)
-
-    React.useEffect(() => {
-      setVlr(value)
-    }, [value])
-
-    const sendValue = () => {
-      if (dispInput) return
-      setDispInput(true)
-      onInput && onInput(vlr)
-    }
-
-    const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-      const vlr = e.currentTarget.value
-      setVlr(vlr)
-      if (dispInput) setDispInput(false)
-      onChange && onChange(vlr)
-    }
-
-    const handleBlur: React.FocusEventHandler<HTMLInputElement> = () => {
-      sendValue()
-      onBlur && onBlur(vlr)
-    }
-
-    const handleKeyDown = (e: any) => {
-      if (e.key.toLowerCase() === 'enter') {
-        e.preventDefault()
-        sendValue()
-      }
-    }
 
     return (
       <div>
@@ -92,12 +65,13 @@ export const Input = React.forwardRef<HTMLInputElement, TInputProps>(
             {
               'bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:bg-red-100 dark:border-red-400':
                 variant === 'error',
-            }
+            },
+            className
           )}
-          value={vlr}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          onKeyDown={handleKeyDown}
+          value={ip.value}
+          onChange={ip.handleChange}
+          onBlur={ip.handleBlur}
+          onKeyDown={ip.handleKeyDown}
           disabled={disabled}
           ref={ref}
         />

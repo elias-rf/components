@@ -1,7 +1,7 @@
 import { Button } from '@/client/components/ui/button'
-import { Input } from '@/client/components/ui/input'
+import { Input } from '@/client/components/ui/input/input'
 import { Modal } from '@/client/components/ui/modal'
-import { useForm, Controller } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 
 export type TLoginProps = {
   onInput: ({ user, password }: { user: string; password: string }) => void

@@ -10,6 +10,14 @@ export default {
       defaultValue: 'right',
     },
   },
+  args: {
+    className: 'w-40 h-40',
+  },
 } satisfies StoryDefault
 
-export const Default: Story = (props: any) => <ChevronIcon {...props} />
+export const Default: Story = (props: any) => (
+  <>
+    <ChevronIcon {...props} />
+    <span className="align-middle">{'◀︎'}</span>
+  </>
+)
