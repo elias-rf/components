@@ -8,6 +8,8 @@ dotenv.config({
 
 tls.DEFAULT_MIN_VERSION = 'TLSv1'
 
+console.log('@@@@@@@', JSON.parse(process.env.db_oftalmo || ''))
+
 type TSqlConfig = {
   client: string
   debug: boolean
