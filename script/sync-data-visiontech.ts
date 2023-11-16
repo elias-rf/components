@@ -84,8 +84,6 @@ async function copy(table: string, key: string, exc: string[] = []) {
     },
     (err: any) => {
       if (err) {
-        console.log(`🚀 ~ file: sync-data-visiontech.ts:80 ~ copy ~ err:`, err)
-
         printAt(20, 1, err.message + ' #####')
       } else {
         obj[table] = 'done'

@@ -5,7 +5,9 @@ export type TWhere<TFields> = Array<
 >
 export type TSelect<TFields> = Array<TFields | '*'>
 export type TOrderBy<TFields> = Array<[TFields, 'asc' | 'desc']>
-export type TData<TFields extends string> = Record<TFields, any>
+export type TData<TFields extends string> = {
+  [fields in TFields]: any
+} & Record<TFields, any>
 
 /** Lista de registros selecionados */
 export type TSelection<T> = TId<T>

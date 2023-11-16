@@ -8,8 +8,6 @@ dotenv.config({
 
 tls.DEFAULT_MIN_VERSION = 'TLSv1'
 
-console.log('@@@@@@@', JSON.parse(process.env.db_oftalmo || ''))
-
 type TSqlConfig = {
   client: string
   debug: boolean
@@ -35,6 +33,7 @@ interface Config {
   }
   db: {
     sys: Knex.Config
+    log: Knex.Config
     oftalmo: TSqlConfig
     plano: TSqlConfig
     fullvision: TSqlConfig
@@ -62,6 +61,14 @@ export const config: Config = {
       useNullAsDefault: true,
       connection: {
         filename: './sys.sqlite',
+      },
+    },
+    log: {
+      client: 'better-sqlite3',
+      debug: false,
+      useNullAsDefault: true,
+      connection: {
+        filename: './log.sqlite',
       },
     },
     oftalmo: JSON.parse(process.env.db_oftalmo || ''),

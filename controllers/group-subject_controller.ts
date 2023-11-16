@@ -3,7 +3,7 @@ import { usuarioController } from '@/controllers/usuario_controller'
 import { OrmDatabase, ormTable } from '@/orm'
 import type { TSchema } from '@/schemas/schema.type'
 
-export const groupSubject: TSchema = {
+export const groupSubject = {
   table: 'groupSubject',
   primary: ['idGroup', 'idSubject'] as const,
   fields: ['idGroup', 'idSubject'] as const,

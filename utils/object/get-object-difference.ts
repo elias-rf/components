@@ -15,14 +15,14 @@ export function getObjectDifference(
   obj2: { [key: string]: any }
 ) {
   const diff = Object.keys(obj1).reduce((result, key) => {
-    if (!obj2.hasOwnProperty(key)) {
-      result.push(key);
+    if (!Object.hasOwn(obj2, key)) {
+      result.push(key)
     }
-    return result;
-  }, Object.keys(obj2));
+    return result
+  }, Object.keys(obj2))
   return Object.fromEntries(
     diff.map((key) => {
-      return [key, obj2[key]];
+      return [key, obj2[key]]
     })
-  );
+  )
 }

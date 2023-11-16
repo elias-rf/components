@@ -1,10 +1,10 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-export const __filename = (importMetaUrl: any) => fileURLToPath(importMetaUrl)
+export const filename = (importMetaUrl: any) => fileURLToPath(importMetaUrl)
 
-export const __filenameRelative = (importMetaUrl: any) =>
-  path.relative(process.cwd(), __filename(importMetaUrl))
+export const filenameRelative = (importMetaUrl: any) =>
+  path.relative(process.cwd(), filename(importMetaUrl))
 
-export const __dirname = (importMetaUrl: any) =>
-  path.dirname(__filename(importMetaUrl))
+export const dirname = (importMetaUrl: any) =>
+  path.dirname(filename(importMetaUrl))

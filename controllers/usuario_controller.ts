@@ -11,16 +11,16 @@ export const tbl_Seguranca_Usuario = {
   table: 'tbl_Seguranca_Usuario',
   primary: ['kUsuario'] as const,
   fields: [
-    'kUsuario',
-    'NomeUsuario',
+    'kUsuario', // id
+    'nome', // nome sobrenome
+    'email', // email de contato
+    'setor', // grupos de acesso
+    'fkFuncionario', // id funcional
+    'NomeUsuario', // login
+    'hash', // password
+    'Ativo', // enabled
     'Senha',
     'fkGrupo',
-    'email',
-    'fkFuncionario',
-    'Ativo',
-    'hash',
-    'nome',
-    'setor',
     'nivel',
     'idGroup',
   ] as const,
@@ -83,7 +83,7 @@ function usuarioControllerFactory(db: OrmDatabase, schema: TSchema) {
       usuario_id: record.kUsuario || 0,
       nome_login: record.NomeUsuario || '',
       nome: record.nome || '',
-      group_ids: record.idGroup || '',
+      group_ids: record.setor || '',
     }
 
     resp.token = await this.reply.jwtSign(resp)

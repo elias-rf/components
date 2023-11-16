@@ -55,6 +55,7 @@ export type TColumn = {
   name: string
   align?: 'center' | 'left' | 'right' | 'justify'
   format?: (v: any) => any
+  parse?: (v: any) => any
   sortable?: boolean
   width?: string
 }

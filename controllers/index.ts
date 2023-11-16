@@ -12,6 +12,7 @@ import { etiquetaInternaController } from './etiqueta-interna_controller'
 import { fornecedorController } from './fornecedor_controller'
 import { groupSubjectController } from './group-subject_controller'
 import { groupController } from './group_controller'
+import { logController } from './log_controller'
 import { maquinaController } from './maquina_controller'
 import { nfCfopController } from './nf-cfop_controller'
 import { nfEntradaControleController } from './nf-entrada-controle_controller'
@@ -59,6 +60,7 @@ export const module = {
   fornecedor: { ...fornecedorController },
   group: { ...groupController },
   groupSubject: { ...groupSubjectController },
+  log: { ...logController },
   maquina: { ...maquinaController },
   nfCfop: { ...nfCfopController },
   nfEntrada: { ...nfEntradaController },
