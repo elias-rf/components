@@ -54,11 +54,6 @@ const vendasPeriodoStoreBase = createStore<VendasPeriodoState>()(
         )) as any[]
         const response = formatDiario(list) as TList
 
-        console.log(
-          `🚀 ~ file: vendas-periodo.store.ts:57 ~ fetchList: ~ response:`,
-          response
-        )
-
         set(() => ({ list: response }), false, 'fetchList')
         return response
       },

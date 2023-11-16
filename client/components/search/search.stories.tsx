@@ -39,7 +39,10 @@ function SearchStory(props: any) {
         schema={schema}
         onWhere={handleOnWhere}
       />
-      <JsonView data={where} />
+      <JsonView
+        data={where}
+        className="p-2 mt-4 border-2 border-gray-500"
+      />
     </div>
   )
 }

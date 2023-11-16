@@ -15,7 +15,7 @@ export function ClienteHead({ can, permissions }: TClienteHeadProps) {
     >
       <Title>Histórico do cliente</Title>
       <Can
-        can={can.cliente_permissao}
+        can={can('cliente_permissao')}
         response={null}
       >
         <Permissions permissions={permissions} />

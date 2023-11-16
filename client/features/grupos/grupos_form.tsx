@@ -1,9 +1,11 @@
 import { Button } from '@/client/components/ui/button'
+import { FormField } from '@/client/components/ui/form-field'
 import { Input } from '@/client/components/ui/input/input'
+import { Label } from '@/client/components/ui/label'
 import { gruposStore } from '@/client/features/grupos/grupos_store'
+import { useForm } from '@/client/lib/hooks/use-form'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box'
 import { useEffect } from 'react'
-import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 export const GruposForm = () => {
@@ -18,7 +20,7 @@ export const GruposForm = () => {
   const record = gruposStore.use.record()
   const setRecord = gruposStore.use.setRecord()
 
-  const form = useForm({ defaultValues: recordClear, mode: 'onTouched' })
+  const form = useForm({ value: recordClear })
 
   useEffect(() => {
     form.reset(record)
@@ -47,7 +49,7 @@ export const GruposForm = () => {
 
   async function handleDel() {
     const response = await confirm(
-      'Tem certeza que deseja apagar ' + form?.getValues('NomeGrupo')
+      'Tem certeza que deseja apagar ' + form.value.NomeGrupo + '?'
     )
     if (response === 'option1') {
       onDelete()
@@ -76,52 +78,40 @@ export const GruposForm = () => {
       </div>
       <div className="grid grid-cols-12 gap-3">
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <Controller
-            name="kGrupo"
-            control={form?.control}
-            rules={{
-              required: 'Ramal é obrigatório',
-            }}
-            render={({ field, fieldState }) => (
-              <Input
-                disabled={['none', 'view'].includes(status)}
-                helper={fieldState.error?.message}
-                label="Ramal"
-                onBlur={field.onBlur}
-                onChange={field.onChange}
-                required
-                value={field.value}
-                variant={fieldState.error && 'error'}
-              />
-            )}
-          />
+          <FormField>
+            <Label
+              required
+              id="kGrupo"
+            >
+              Ramal
+            </Label>
+            <Input
+              disabled={['none', 'view'].includes(status)}
+              onInput={form.handleChange}
+              value={form.value.kGrupo}
+            />
+          </FormField>
         </div>
         <div className="col-span-12 sm:col-span-10 lg:col-span-5">
-          <Controller
-            name="NomeGrupo"
-            control={form?.control}
-            rules={{
-              required: 'Nome é obrigatório',
-            }}
-            render={({ field, fieldState }) => (
-              <Input
-                required
-                label="Nome"
-                disabled={['none', 'view'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label
+              required
+              id="NomeGrupo"
+            >
+              Nome
+            </Label>
+            <Input
+              disabled={['none', 'view'].includes(status)}
+              value={form.value.NomeGrupo}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
       </div>
       <div className="flex justify-end my-2 space-x-2 flex-rows align-center">
         <Button
           onClick={() => {
-            setRecord(form.getValues())
+            setRecord(form.value)
             onSave()
           }}
           disabled={['none', 'view'].includes(status)}

@@ -68,7 +68,7 @@ const gruposStoreBase = createStore<GruposState>()(
         if (id.length === 0) return recordClear
         const record = (await cache.fetch(
           {
-            id: get().selection,
+            where: get().selection,
             _table: tableName,
             _method: `${tableName}.read`,
           },

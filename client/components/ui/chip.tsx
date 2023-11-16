@@ -94,7 +94,7 @@ export function Chip({
       <div className="inline-flex rounded-md shadow-sm">
         <button
           className={cn(
-            'focus:ring-4 font-medium rounded-l-lg px-2 text-sm focus:outline-none',
+            'whitespace-nowrap focus:ring-4 font-medium rounded-l-lg px-2 text-sm focus:outline-none',
             { 'bg-transparent border': outline },
             { [colorClass[color]]: !outline && !disabled },
             { [outlineClass[color]]: outline && !disabled },
@@ -124,7 +124,6 @@ export function Chip({
         >
           <svg
             className="w-2 h-2"
-            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 14 14"

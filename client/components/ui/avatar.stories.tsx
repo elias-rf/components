@@ -10,8 +10,8 @@ export default {
 export const Default: Story = () => {
   return (
     <div className="flex flex-col space-y-4">
-      <Avatar>
-        <PersonIcon className="fill-red-600" />
+      <Avatar className="w-12 h-12 bg-green-400">
+        <PersonIcon className="w-12 h-12 fill-red-600" />
       </Avatar>
     </div>
   )

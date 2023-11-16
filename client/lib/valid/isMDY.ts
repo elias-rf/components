@@ -1,10 +1,5 @@
-import { day } from "@/utils/date/day";
+import { isoDate, string } from 'valibot'
 
-export const isMDY = (message = "Valor deve ser ano-mes-dia") => {
-  return (value: any) => {
-    if (day(value, "YYYY-MM-DD", true).isValid()) {
-      return null;
-    }
-    return message;
-  };
-};
+export const isMDY = (message = 'Valor deve ser ano-mes-dia') => {
+  return string(message, [isoDate(message)])
+}

@@ -1,17 +1,21 @@
 import { Button } from '@/client/components/ui/button'
+import { FormField } from '@/client/components/ui/form-field'
 import { Input } from '@/client/components/ui/input/input'
+import { Label } from '@/client/components/ui/label'
 import { SelectBadge } from '@/client/components/ui/select-badge'
 import { Toggle } from '@/client/components/ui/toggle'
 import { usuarioStore } from '@/client/features/usuario/usuario_store'
+import { useForm } from '@/client/lib/hooks/use-form'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box'
 import { rpc } from '@/rpc/rpc-client'
 import { useEffect, useState } from 'react'
-import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useEffectOnce } from 'usehooks-ts'
 
 export function UsuarioForm() {
-  const [listGroups, setListGroups] = useState<[string, string][]>([])
+  const [listGroups, setListGroups] = useState<
+    { label: string; value: string }[]
+  >([])
 
   const status = usuarioStore.use.status()
   const onCancel = usuarioStore.use.onCancel()
@@ -24,7 +28,7 @@ export function UsuarioForm() {
   const record = usuarioStore.use.record()
   const setRecord = usuarioStore.use.setRecord()
 
-  const form = useForm({ defaultValues: recordClear, mode: 'onTouched' })
+  const form = useForm({ value: recordClear })
 
   useEffect(() => {
     form.reset(record)
@@ -53,7 +57,7 @@ export function UsuarioForm() {
 
   async function handleDel() {
     const response = await confirm(
-      'Tem certeza que deseja apagar ' + form?.getValues('nome')
+      'Tem certeza que deseja apagar ' + form.value.nome + '?'
     )
     if (response === 'option1') {
       onDelete()
@@ -65,11 +69,12 @@ export function UsuarioForm() {
       const data = await rpc.group.list({
         orderBy: [['NomeGrupo', 'asc']],
       })
-      const list = data.map(
-        (item) => [item.NomeGrupo, item.kGrupo] as [string, string]
-      )
-      list.unshift(['Administrador', '0'])
-      list.unshift(['', ''])
+      const list: { label: string; value: string }[] = data.map((item) => ({
+        label: item.NomeGrupo,
+        value: item.kGrupo,
+      }))
+      list.unshift({ label: 'Administrador', value: '0' })
+      list.unshift({ label: '', value: '' })
       setListGroups(list)
     }
     getData()
@@ -97,137 +102,104 @@ export function UsuarioForm() {
       </div>
       <div className="grid grid-cols-12 gap-3">
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <Controller
-            name="kUsuario"
-            control={form.control}
-            rules={{
-              required: 'Código é obrigatório',
-            }}
-            render={({ field, fieldState }) => (
-              <Input
-                required
-                label="Usuario"
-                disabled={['none', 'view'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label
+              required
+              id="kUsuario"
+            >
+              Usuário
+            </Label>
+            <Input
+              disabled={['none', 'view'].includes(status)}
+              value={form.value.kUsuario}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-12 sm:col-span-10 lg:col-span-5">
-          <Controller
-            name="nome"
-            control={form.control}
-            rules={{
-              required: 'Nome é obrigatório',
-            }}
-            render={({ field, fieldState }) => (
-              <Input
-                required
-                label="Usuario"
-                disabled={['none', 'view'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label
+              required
+              id="nome"
+            >
+              Usuario
+            </Label>
+            <Input
+              disabled={['none', 'view'].includes(status)}
+              value={form.value.nome}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-12 sm:col-span-4 lg:col-span-2">
-          <Controller
-            name="NomeUsuario"
-            control={form.control}
-            rules={{
-              required: 'Ramal é obrigatório',
-            }}
-            render={({ field, fieldState }) => (
-              <Input
-                required
-                label="Login"
-                disabled={['none', 'view'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label
+              required
+              id="NomeUsuario"
+            >
+              Login
+            </Label>
+            <Input
+              disabled={['none', 'view'].includes(status)}
+              value={form.value.NomeUsuario}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-10 sm:col-span-6 lg:col-span-3">
-          <Controller
-            name="email"
-            control={form.control}
-            rules={{
-              required: 'Ramal é obrigatório',
-            }}
-            render={({ field, fieldState }) => (
-              <Input
-                required
-                label="Email"
-                disabled={['none', 'view'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label
+              required
+              id="email"
+            >
+              Email
+            </Label>
+            <Input
+              id="email"
+              name="email"
+              disabled={['none', 'view'].includes(status)}
+              value={form.value.email}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-2 sm:col-span-2 lg:col-span-1">
-          <Controller
-            name="Ativo"
-            control={form.control}
-            rules={{
-              required: 'Ramal é obrigatório',
-            }}
-            render={({ field, fieldState }) => (
-              <Toggle
-                required
-                label="Ativo"
-                disabled={['none', 'view'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-              />
-            )}
-          />
+          <FormField>
+            <Label
+              required
+              id="Ativo"
+            >
+              Ativo
+            </Label>
+            <Toggle
+              disabled={['none', 'view'].includes(status)}
+              value={form.value.Ativo}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-12">
-          <Controller
-            name="idGroup"
-            control={form.control}
-            rules={{
-              required: 'Ramal é obrigatório',
-            }}
-            render={({ field, fieldState }) => (
-              <SelectBadge
-                required
-                label="Grupo"
-                disabled={['none', 'view'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value ? field.value.split(',') : []}
-                onChange={(value) => field.onChange(value.join(','))}
-                onBlur={field.onBlur}
-                options={listGroups}
-              />
-            )}
-          />
+          <FormField>
+            <Label
+              required
+              id="setor"
+            >
+              Grupo
+            </Label>
+            <SelectBadge
+              disabled={['none', 'view'].includes(status)}
+              value={form.value ? form.value.setor.split(',') : []}
+              onInput={(value) => form.handleChange(value.join(','), 'setor')}
+              options={listGroups}
+            />
+          </FormField>
         </div>
       </div>
       <div className="flex justify-end my-2 space-x-2 flex-rows">
         {onSave ? (
           <Button
             onClick={() => {
-              setRecord(form.getValues())
+              setRecord(form.value)
               onSave()
             }}
             disabled={['none', 'view'].includes(status)}

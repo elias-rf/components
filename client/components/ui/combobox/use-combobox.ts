@@ -1,5 +1,5 @@
 import { useStateMutable } from '@/client/lib/hooks/use-state-mutable'
-import { useId, useRef } from 'react'
+import { useRef, useState } from 'react'
 
 type TOptions = { label: string; value: string }[]
 export type TUseCombobox = {
@@ -31,18 +31,20 @@ export function useCombobox({
   value,
   options,
   onInput,
+  onChange,
 }: {
   value: string
   options: TOptions
-  onInput: (value: string) => void
+  onInput?: (value: string) => void
+  onChange?: (value: string) => void
 }) {
   const refInput = useRef<any>(null)
-  const id = useId()
   const cbVlr = useStateMutable({ value })
   const cbLbl = useStateMutable({ value: getLabel(value, options) })
   const cbOpt = useStateMutable({ value: options })
   const cbShowOptions = useStateMutable({ value: false })
   const cbSelected = useStateMutable({ value })
+  const [dispInput, setDispInput] = useState('')
 
   function handleChange(label: any) {
     const lbl = typeof label === 'string' ? label : label.target.value
@@ -52,7 +54,11 @@ export function useCombobox({
     cbSelected.value = vlr
     cbOpt.value = getOptions(lbl, options)
     cbShowOptions.value = vlr === ''
-    if (vlr !== '') onInput(vlr)
+    if (vlr !== '' && dispInput !== vlr) {
+      onChange && onChange(vlr)
+      onInput && onInput(vlr)
+      setDispInput(vlr)
+    }
   }
 
   function handleKeys(key: any) {
@@ -93,7 +99,6 @@ export function useCombobox({
   }
 
   return {
-    id,
     refInput,
     value: cbVlr,
     label: cbLbl,

@@ -1,6 +1,6 @@
 import { GroupSubjectForm } from '@/client/features/permissoes/group-subject_form'
+import { useForm } from '@/client/lib/hooks/use-form'
 import { Story } from '@ladle/react'
-import { useForm } from 'react-hook-form'
 
 export default {
   title: 'features/permissoes/group-subject_form',
@@ -8,8 +8,7 @@ export default {
 
 export const Form: Story = () => {
   const form = useForm({
-    mode: 'onTouched',
-    defaultValues: { agenda_telefone_id: '', nome: '', setor: '', email: '' },
+    value: { agenda_telefone_id: '', nome: '', setor: '', email: '' },
   })
   return (
     <GroupSubjectForm

@@ -1,5 +1,6 @@
 import { Button } from '@/client/components/ui/button'
 import { Input } from '@/client/components/ui/input/input'
+import { Label } from '@/client/components/ui/label'
 import { Title } from '@/client/components/ui/title'
 import { cn } from '@/client/lib/cn'
 import { useStateArray } from '@/client/lib/hooks/use-state-array'
@@ -53,9 +54,11 @@ export function Transferencia() {
       <Title>Transferência</Title>
       <div className="flex flex-row space-x-2 justifyContent-start alignItems-center">
         <div>
+          <Label id="quantidade">Quantidade Física</Label>
           <Input
+            id="quantidade"
+            name="quantidade"
             value={quantidade}
-            label="Quantidade Física"
             onInput={handleQuantidade}
             disabled={parseInt(quantidade) > 0}
           />
@@ -63,9 +66,9 @@ export function Transferencia() {
       </div>
       <div className="flex flex-row space-x-2 justifyContent-start alignItems-center">
         <div>
+          <Label id="serial">Serial</Label>
           <Input
             value={serial}
-            label="Serial"
             onInput={addList}
             ref={quantidadeRef}
           />

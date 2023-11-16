@@ -26,6 +26,9 @@ export const authStoreBase = createStore<AuthState>()(
         user: {},
         permissions: {},
 
+        /**
+         * Executa o login no servidor
+         */
         login: async (user: any) => {
           const login = await rpc.usuario.login(user)
           if (login && login.usuario_id && login.usuario_id > 0) {
@@ -34,12 +37,24 @@ export const authStoreBase = createStore<AuthState>()(
           }
           return login
         },
+
+        /**
+         * Apaga as informações de login no cliente
+         */
         logout: () => {
           set({ token: '', user: {}, permissions: {} }, false, 'logout')
         },
+
+        /**
+         * Retorna true se existe usuario logado
+         */
         isAuthenticated: () => {
           return get().token !== ''
         },
+
+        /**
+         * Busca todas as permissoes do usuario
+         */
         fetchPermissions: async () => {
           const groups = get().user.group_ids?.split(',')
           const permissions = await rpc.groupSubject.list({
@@ -70,7 +85,12 @@ export const authStoreBase = createStore<AuthState>()(
           return response
         },
         can: (permission) => {
-          const response = get().canList({ [permission]: false })[permission]
+          const groups = get().user.group_ids?.split(',')
+          let response = get().canList({ [permission]: false })[permission]
+          if (groups?.includes('0')) {
+            response = true
+          }
+
           return response
         },
       }),

@@ -1,21 +1,16 @@
 import { JsonView } from '@/client/components/json-view/json-view'
 import { CheckBox, TCheckBoxProps } from '@/client/components/ui/check-box'
 import '@/client/index.css'
-import type { Story } from '@ladle/react'
+import { Story, action } from '@ladle/react'
 import React from 'react'
 
 export default {
-  title: 'components / ui / checkBox',
+  title: 'components / ui / check Box',
   args: {
     disabled: false,
-    label: 'Label',
-    value: false,
-    required: true,
     variant: 'none',
-    helper: 'Ajuda',
-  },
-  argTypes: {
-    onChange: { action: 'changed' },
+    name: 'name',
+    id: 'id',
   },
 }
 
@@ -26,7 +21,14 @@ export const Default: Story<TCheckBoxProps> = (props: TCheckBoxProps) => {
       <CheckBox
         {...props}
         value={vlr}
-        onChange={(e: any) => setVlr(e)}
+        onChange={(value: boolean) => {
+          setVlr(value)
+          action('onChange')({ value })
+        }}
+        onInput={(value: boolean, name: string) => {
+          setVlr(value)
+          action('onInput')({ value, name })
+        }}
       ></CheckBox>
       <JsonView data={{ props, vlr }} />
     </div>

@@ -1,4 +1,5 @@
 import { GroupSubjectTable } from '@/client/features/permissoes/group-subject_table'
+import { useForm } from '@/client/lib/hooks/use-form'
 import {
   TGroupSubjectFields,
   TGroupSubjectKeys,
@@ -14,7 +15,6 @@ import type {
 } from '@/types'
 import { deepEqual } from '@/utils/object/deep-equal'
 import React from 'react'
-import { useForm } from 'react-hook-form'
 
 export type TGroupSubjectList = any
 
@@ -30,7 +30,7 @@ const dataClear = {
  */
 export function GroupSubject() {
   // Form
-  const form = useForm({ defaultValues: dataClear, mode: 'onTouched' })
+  const form = useForm({ value: dataClear })
   const [status, setStatus] = React.useState<TFormStatus>('view')
   // List
   const [selection, setSelection] = React.useState<
@@ -47,7 +47,7 @@ export function GroupSubject() {
   React.useEffect(() => {
     async function getData() {
       const data = await rpc.groupSubject.read({ where: selection })
-      form.reset(data)
+      form.reset(data || dataClear)
     }
     if (selection.length > 0) getData()
   }, [form, selection])
@@ -102,12 +102,12 @@ export function GroupSubject() {
   async function handleSave() {
     if (status === 'edit') {
       await rpc.groupSubject.update({
-        data: form.getValues(),
+        data: form.value,
         id: selection,
       })
     }
     if (status === 'new') {
-      await rpc.groupSubject.create({ data: form.getValues() })
+      await rpc.groupSubject.create({ data: form.value })
     }
     await getList(where, orderBy)
     setStatus('view')

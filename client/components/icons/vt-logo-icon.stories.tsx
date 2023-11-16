@@ -5,7 +5,7 @@ import type { Story, StoryDefault } from '@ladle/react'
 export default {
   title: 'Components / Icons / Vt logo Icon',
   args: {
-    className: 'w-40',
+    className: 'w-40 h-40',
   },
   argTypes: {
     color: {
@@ -19,5 +19,6 @@ export default {
 export const Padrao: Story = (props: any) => (
   <div className="p-4 bg-gray-300">
     <VtLogoIcon {...props} />
+    <span className="align-middle">{'◀︎'}</span>
   </div>
 )

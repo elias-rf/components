@@ -1,4 +1,6 @@
-import { Select } from '@/client/components/ui/select'
+import { FormField } from '@/client/components/ui/form-field'
+import { Label } from '@/client/components/ui/label'
+import { Select } from '@/client/components/ui/select/select'
 import { useControles } from '@/client/features/controles/controles_store'
 import { getFieldId } from '@/utils/query/get-field-id'
 import { OperacaoDiario } from './components/operacao-diario'
@@ -18,23 +20,30 @@ export function Operacao() {
   return (
     <>
       <div className={'my-2 max-w-md'}>
-        <Select
-          label="Operação"
-          value={getFieldId('operacao', operacao) || ''}
-          onChange={handleSelect}
-          options={[
-            ['1010 - Montagem lado 1', '1010'],
-            ['1015 - Torneamento radial', '1015'],
-            ['2010 - Montagem lado 2', '2010'],
-            ['2018 - Fresagem', '2018'],
-            ['2025 - Desmontagem e limpeza', '2025'],
-            ['3042 - Inspeção', '3042'],
-            ['3045 - Dioptria', '3045'],
-            ['3058 - Esterilização a vapor', '3058'],
-            ['3065 - Empacotamento', '3065'],
-            ['3070 - Inspeção final', '3070'],
-          ]}
-        />
+        <FormField>
+          <Label id="operacao">Operação</Label>
+          <Select
+            value={getFieldId('operacao', operacao) || ''}
+            onChange={handleSelect}
+          >
+            <Select.Option value="1010">1010 - Montagem lado 1</Select.Option>
+            <Select.Option value="1015">
+              1015 - Torneamento radial
+            </Select.Option>
+            <Select.Option value="2010">2010 - Montagem lado 2</Select.Option>
+            <Select.Option value="2018">2018 - Fresagem</Select.Option>
+            <Select.Option value="2025">
+              2025 - Desmontagem e limpeza
+            </Select.Option>
+            <Select.Option value="3042">3042 - Inspeção</Select.Option>
+            <Select.Option value="3045">3045 - Dioptria</Select.Option>
+            <Select.Option value="3058">
+              3058 - Esterilizacao a vapor
+            </Select.Option>
+            <Select.Option value="3065">3065 - Empacotamento</Select.Option>
+            <Select.Option value="3070">3070 - Inspecao final</Select.Option>
+          </Select>
+        </FormField>
       </div>
       <div className="max-w-md">
         <OperacaoMensal>

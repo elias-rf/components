@@ -1,7 +1,9 @@
 import { Button } from '@/client/components/ui/button'
 import { Chip } from '@/client/components/ui/chip'
+import { FormField } from '@/client/components/ui/form-field'
 import { Input } from '@/client/components/ui/input/input'
-import { Select } from '@/client/components/ui/select'
+import { Label } from '@/client/components/ui/label'
+import { Select } from '@/client/components/ui/select/select'
 import { TWhere } from '@/types'
 import React, { useState } from 'react'
 
@@ -88,7 +90,7 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
     })
     if (flag) response.push([fieldSelect, equalitySelect, valueInput])
     setWhr(response)
-    onWhere(response)
+    onWhere && onWhere(response)
     setValueInput('')
   }
 
@@ -108,7 +110,7 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
     const aux = [...whr]
     aux.splice(idx, 1)
     setWhr(aux)
-    onWhere(aux)
+    onWhere && onWhere(aux)
   }
 
   function handleEdit(idx: number) {
@@ -140,34 +142,54 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
 
       <div className="flex flex-wrap items-end space-x-2 sm:flex-nowrap">
         <div className="basis-full">
-          <Select
-            label="Campo"
-            value={fieldSelect}
-            onChange={handleSelectField}
-            options={schema.map(
-              ({ label, name }: { label: string; name: string }) => [
-                label,
-                name,
-              ]
-            )}
-          />
+          <FormField>
+            <Label id="field">Campo</Label>
+            <Select
+              id="field"
+              value={fieldSelect}
+              onChange={handleSelectField}
+            >
+              {schema.map((item) => (
+                <Select.Option
+                  key={item.name}
+                  value={item.name}
+                >
+                  {item.label}
+                </Select.Option>
+              ))}
+            </Select>
+          </FormField>
         </div>
         <div className="basis-full">
-          <Select
-            label="Igualdade"
-            value={equalitySelect}
-            onChange={(value: string) => setEqualitySelect(value || '')}
-            options={Object.entries(getEqualitys(fieldSelect, schema)).map(
-              ([key, value]: [string, string]) => [value, key]
-            )}
-          />
+          <FormField>
+            <Label id="equality">Igualdade</Label>
+            <Select
+              id="equality"
+              value={equalitySelect}
+              onChange={(value: string) => setEqualitySelect(value || '')}
+            >
+              {Object.entries(getEqualitys(fieldSelect, schema)).map(
+                ([key, value]: [string, string]) => (
+                  <Select.Option
+                    key={key}
+                    value={key}
+                  >
+                    {value}
+                  </Select.Option>
+                )
+              )}
+            </Select>
+          </FormField>
         </div>
         <div className="basis-full">
-          <Input
-            label="Valor"
-            value={valueInput}
-            onInput={handleInput}
-          />
+          <FormField>
+            <Label id="value">Valor</Label>
+            <Input
+              id="value"
+              value={valueInput}
+              onInput={handleInput}
+            />
+          </FormField>
         </div>
         <div className="basis-32">
           <Button

@@ -1,13 +1,11 @@
 import { Combobox } from '@/client/components/ui/combobox'
 import '@/client/index.css'
 import { useState } from '@/client/lib/hooks/use-state'
-import { Story } from '@ladle/react'
+import { Story, action } from '@ladle/react'
 
 export default {
   title: 'components/ui/Combobox',
   args: {
-    label: 'Combobox an option',
-    helper: 'Mensagem',
     required: true,
     disabled: false,
     options: [
@@ -34,9 +32,13 @@ export const Default: Story = ({ options }: any) => {
   return (
     <div className="">
       <Combobox
-        label="Combobox2"
+        id="Combobox2"
+        name="Combobox2"
         value={teste.get()}
-        onInput={teste.set}
+        onInput={(value: string, name: string) => {
+          action('onInput')({ value, name })
+          teste.set(value)
+        }}
         options={options}
       />
       Result: {teste.get()}

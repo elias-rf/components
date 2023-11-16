@@ -3,15 +3,14 @@ import { useEffect, useState } from 'react'
 export function useInput({
   value,
   onInput,
-  onBlur,
   onChange,
 }: {
   value: any
-  onChange?: (e: string) => void
-  onBlur?: (e: string) => void
-  onInput?: (e: string) => void
+  onChange?: (value: string, name: string) => void
+  onInput?: (value: string, name: string) => void
 }) {
   const [vlr, setVlr] = useState(value)
+  const [name, setName] = useState('')
   const [dispInput, setDispInput] = useState(false)
 
   useEffect(() => {
@@ -21,22 +20,26 @@ export function useInput({
   const sendValue = () => {
     if (dispInput) return
     setDispInput(true)
-    onInput && onInput(vlr || '')
+    onInput && onInput(vlr || '', name)
   }
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const vlr = e.currentTarget.value
+    if (!name) setName(e.currentTarget.name || e.currentTarget.id)
     setVlr(vlr)
     if (dispInput) setDispInput(false)
-    onChange && onChange(vlr)
+    onChange && onChange(vlr, name)
   }
 
-  const handleBlur = () => {
+  const handleBlur = (e: any) => {
+    if (!name) setName(e.currentTarget.name || e.currentTarget.id)
+
     sendValue()
-    onBlur && onBlur(vlr || '')
   }
 
   const handleKeyDown = (e: any) => {
+    if (!name) setName(e.currentTarget.name || e.currentTarget.id)
+
     if (e.key.toLowerCase() === 'enter') {
       e.preventDefault()
       sendValue()

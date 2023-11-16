@@ -1,3 +1,5 @@
+import { cn } from '@/client/lib/cn'
+
 const colorProp = {
   black: '#000',
   white: '#fff',
@@ -15,7 +17,7 @@ export function VtLogoIcon({
     <svg
       viewBox="0 0 365 470"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={cn('w-5 h-5 inline-block', className)}
     >
       <path
         d="m221.37 30.32c-41.45-44.4-118.91-39.46-173.01 11.05-54.1 50.5-64.36 127.44-22.91 171.84s118.91 39.45 173.01-11.06c54.1-50.5 64.36-127.44 22.91-171.83zm-46 131.77c-40.81 38.1-99.26 41.8-130.55 8.28-31.3-33.52-23.58-91.58 17.23-129.68 40.81-38.09 99.26-41.8 130.55-8.28 31.3 33.52 23.58 91.58-17.23 129.68z"

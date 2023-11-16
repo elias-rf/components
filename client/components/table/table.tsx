@@ -1,17 +1,10 @@
 import { SearchIcon } from '@/client/components/icons/search-icon'
 import { cn } from '@/client/lib/cn'
-import {
-  TColumn,
-  TData,
-  TId,
-  TOrderBy,
-  TRow,
-  TSelection,
-  TWhere,
-} from '@/types'
+import { TColumn, TId, TOrderBy, TRow, TSelection, TWhere } from '@/types'
 import { filterNonEmptyProperties } from '@/utils/object/filter-non-empty-properties'
 import { get } from '@/utils/object/get'
-import { equalityFromObject, equalityToObject } from '@/utils/query/equality'
+import { formatWhere } from '@/utils/query/format-where'
+import { parseWhere } from '@/utils/query/parse-where'
 import React from 'react'
 import { getIdDefault } from './get-id-default'
 import { InputFilter } from './input-filter'
@@ -20,7 +13,7 @@ import { ShowSortIcon } from './show-sort-icon'
 export type TTableProps = {
   children?: (args: { row: TRow; columns: TColumn[] }) => React.ReactNode
   columns: TColumn[]
-  getId?: (row: TData<string>) => TId<string>
+  getId?: (row: any) => TId<any>
   height?: string
   onOrderBy?: (e: TOrderBy<any>) => void
   onSelection?: (e: TSelection<any>) => void
@@ -55,13 +48,17 @@ export function Table({
   selection = [],
   where,
 }: TTableProps) {
-  const defaultValues: { [field: string]: string } = equalityToObject(where)
+  const defaultValues: { [field: string]: string } = formatWhere(
+    where || [],
+    columns
+  )
 
-  function handleInput(value: string, name: string) {
+  function handleWhere(value: string, name: string) {
     defaultValues[name] = value
 
-    const filteredObj = equalityFromObject(
-      filterNonEmptyProperties(defaultValues)
+    const filteredObj = parseWhere(
+      filterNonEmptyProperties(defaultValues),
+      columns
     )
     onWhere && onWhere(filteredObj)
   }
@@ -147,7 +144,7 @@ export function Table({
                     <InputFilter
                       name={col.name}
                       value={defaultValues[col.name] || ''}
-                      onInput={handleInput}
+                      onInput={handleWhere}
                     />
                     <SearchIcon className="w-3 " />
                   </div>

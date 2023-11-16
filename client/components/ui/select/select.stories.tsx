@@ -1,5 +1,5 @@
 import { JsonView } from '@/client/components/json-view/json-view'
-import { Select, TSelectProps } from '@/client/components/ui/select'
+import { Select, TSelectProps } from '@/client/components/ui/select/select'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 import React from 'react'
@@ -7,15 +7,8 @@ import React from 'react'
 export default {
   title: 'components/ui/select',
   args: {
-    label: 'Select an option',
-    helper: 'Mensagem',
     required: true,
     disabled: false,
-    options: [
-      ['United States', 'US'],
-      ['Canada', 'CA'],
-      ['France', 'FR'],
-    ],
   },
   argTypes: {
     variant: {
@@ -33,7 +26,11 @@ export const Default: Story<TSelectProps> = (props: TSelectProps) => {
         {...props}
         value={vlr}
         onChange={(e: string) => setVlr(e)}
-      />
+      >
+        <Select.Option value="US">United States</Select.Option>
+        <Select.Option value="CA">Canada</Select.Option>
+        <Select.Option value="FR">France</Select.Option>
+      </Select>
 
       <JsonView data={{ vlr, props }} />
     </div>

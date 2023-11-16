@@ -1,5 +1,5 @@
 import { CheckBox } from '@/client/components/ui/check-box'
-import { ListGroup } from '@/client/components/ui/list-group'
+import { ListGroup } from '@/client/components/ui/list-group/list-group'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 
@@ -25,19 +25,13 @@ export const Default: Story = () => {
           key={11}
           onClick={() => console.log('permission 2')}
         >
-          <CheckBox
-            label={'Teste 2'}
-            value={true}
-          />
+          <CheckBox value={true} />
         </ListGroup.Item>
         <ListGroup.Item
           key={111}
           onClick={() => console.log('permission 3')}
         >
-          <CheckBox
-            label={'Teste 3'}
-            value={false}
-          />
+          <CheckBox value={false} />
         </ListGroup.Item>
       </ListGroup>
     </>

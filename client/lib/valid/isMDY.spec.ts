@@ -1,26 +1,21 @@
-import { describe, expect, it } from "vitest";
-import { isMDY } from "./isMDY";
+import { valid } from '@/client/lib/valid'
+import { isMDY } from '@/client/lib/valid/isMDY'
+import { describe, expect, it } from 'vitest'
 
-describe("number", () => {
-  const msg = "Valor deve ser ano-mes-dia";
-  it("true", () => {
-    const req = isMDY();
-    expect(req("2021-02-01")).toBe(null);
-  });
+describe('number', () => {
+  const msg = 'Valor deve ser ano-mes-dia'
+  const req = isMDY(msg)
+  it('true', () => {
+    expect(valid(req)('2021-02-01')).toBe('')
+  })
 
-  it("false", () => {
-    const req = isMDY();
-    expect(req(null)).toBe(msg);
-    expect(req(undefined)).toBe(msg);
-    expect(req("")).toBe(msg);
-    expect(req("1")).toBe(msg);
-    expect(req(1)).toBe(msg);
-    expect(req(new Date())).toBe(msg);
-    expect(req("20-02-01")).toBe(msg);
-  });
-
-  it("custom message", () => {
-    const req = isMDY("data");
-    expect(req(null)).toBe("data");
-  });
-});
+  it('false', () => {
+    expect(valid(req)(null)).toBe(msg)
+    expect(valid(req)(undefined)).toBe(msg)
+    expect(valid(req)('')).toBe(msg)
+    expect(valid(req)('1')).toBe(msg)
+    expect(valid(req)(1)).toBe(msg)
+    expect(valid(req)(new Date())).toBe(msg)
+    expect(valid(req)('20-02-01')).toBe(msg)
+  })
+})

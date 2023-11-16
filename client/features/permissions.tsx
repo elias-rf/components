@@ -1,27 +1,26 @@
 import { ShieldIcon } from '@/client/components/icons/shield-icon'
 import { Button } from '@/client/components/ui/button'
 import { CheckBox } from '@/client/components/ui/check-box'
-import { ListGroup } from '@/client/components/ui/list-group'
+import { Label } from '@/client/components/ui/label'
+import { ListGroup } from '@/client/components/ui/list-group/list-group'
 import { Modal } from '@/client/components/ui/modal'
 import { TGroupSubjectFields } from '@/controllers/group-subject_controller'
 import { TGroupFields } from '@/controllers/group_controller'
 import { rpc } from '@/rpc/rpc-client'
 import { TData } from '@/types'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 export function Permissions({
   permissions = {},
 }: {
   permissions: { [id: string]: string }
 }) {
-  const [show, setShow] = React.useState(false)
-  const [groupList, setGroupList] = React.useState<TData<TGroupFields>[]>([])
-  const [permited, setPermited] = React.useState<TData<TGroupSubjectFields>[]>(
-    []
-  )
-  const [groupCurrent, setGroupCurrent] = React.useState(0)
+  const [show, setShow] = useState(false)
+  const [groupList, setGroupList] = useState<TData<TGroupFields>[]>([])
+  const [permited, setPermited] = useState<TData<TGroupSubjectFields>[]>([])
+  const [groupCurrent, setGroupCurrent] = useState(0)
 
-  React.useEffect(() => {
+  useEffect(() => {
     async function getData() {
       const data = await rpc.group.list({
         orderBy: [['NomeGrupo', 'asc']],
@@ -114,16 +113,24 @@ export function Permissions({
                   key={permission}
                   onClick={() => handlePermission(permission)}
                 >
-                  <CheckBox
-                    label={permissions[permission]}
-                    value={
-                      permited
-                        ? permited.findIndex(
-                            (prm) => permission === prm.idSubject
-                          ) !== -1
-                        : false
-                    }
-                  />
+                  <div className="flex flex-row items-center gap-x-2">
+                    <CheckBox
+                      id={permission}
+                      value={
+                        permited
+                          ? permited.findIndex(
+                              (prm) => permission === prm.idSubject
+                            ) !== -1
+                          : false
+                      }
+                    />
+                    <Label
+                      className="align-middle"
+                      id={permission}
+                    >
+                      {permissions[permission]}
+                    </Label>
+                  </div>
                 </ListGroup.Item>
               ))}
             </ListGroup>

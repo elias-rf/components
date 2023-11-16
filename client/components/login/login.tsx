@@ -1,7 +1,9 @@
 import { Button } from '@/client/components/ui/button'
-import { Input } from '@/client/components/ui/input/input'
+import { FormField } from '@/client/components/ui/form-field'
+import { Input } from '@/client/components/ui/input'
+import { Label } from '@/client/components/ui/label'
 import { Modal } from '@/client/components/ui/modal'
-import { Controller, useForm } from 'react-hook-form'
+import { useForm } from '@/client/lib/hooks/use-form'
 
 export type TLoginProps = {
   onInput: ({ user, password }: { user: string; password: string }) => void
@@ -9,12 +11,11 @@ export type TLoginProps = {
 
 export function Login({ onInput }: TLoginProps) {
   const form = useForm({
-    mode: 'onTouched',
-    defaultValues: { user: '', password: '' },
+    value: { user: '', password: '' },
   })
 
   function handleInput() {
-    onInput(form.getValues())
+    onInput(form.value)
   }
 
   return (
@@ -23,44 +24,38 @@ export function Login({ onInput }: TLoginProps) {
       title="Login"
       closeable={false}
     >
-      <div className="m-4 w-60 flex flex-col alignItems-center gap-4 pb-4">
-        <Controller
-          name="user"
-          control={form.control}
-          rules={{
-            required: 'Usuário é obrigatório',
-          }}
-          render={({ field, fieldState }) => (
-            <Input
-              required
-              label="Usuário"
-              variant={fieldState.error && 'error'}
-              helper={fieldState.error?.message}
-              value={field.value}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-            />
-          )}
-        />
-        <Controller
-          name="password"
-          control={form.control}
-          rules={{
-            required: 'Senha é obrigatório',
-          }}
-          render={({ field, fieldState }) => (
-            <Input
-              required
-              label="Senha"
-              type="password"
-              variant={fieldState.error && 'error'}
-              helper={fieldState.error?.message}
-              value={field.value}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-            />
-          )}
-        />
+      <div className="flex flex-col gap-4 pb-4 m-4 w-60 alignItems-center">
+        <FormField>
+          <Label
+            required
+            id="user"
+          >
+            Usuário
+          </Label>
+          <Input
+            id="user"
+            name="user"
+            value={form.value.user}
+            onInput={form.handleChange}
+          />
+        </FormField>
+
+        <FormField>
+          <Label
+            required
+            id="password"
+          >
+            Senha
+          </Label>
+          <Input
+            id="password"
+            name="password"
+            type="password"
+            value={form.value.password}
+            onInput={form.handleChange}
+          />
+        </FormField>
+
         <Button onClick={handleInput}>Entrar</Button>
       </div>
     </Modal>

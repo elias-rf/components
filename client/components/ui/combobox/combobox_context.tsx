@@ -1,8 +1,5 @@
 import { createContext } from 'react'
 
-export const ShowContext = createContext({
-  show: false,
-  setShow: (show: boolean) => {
-    show
-  },
+export const ComboboxContext = createContext<any>({
+  cb: null,
 })

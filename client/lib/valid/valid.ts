@@ -1,27 +1,9 @@
-interface ValidatorFunc {
-  (value: any): string | null;
-}
+import { BaseSchema, safeParse } from 'valibot'
 
-interface Validator {
-  (message: string): ValidatorFunc;
-}
-
-export const valid = (
-  value: any,
-  validator: ValidatorFunc | ValidatorFunc[]
-) => {
-  let validators: ValidatorFunc[] = [];
-  if (!Array.isArray(validator)) {
-    validators = [validator];
-  } else {
-    validators = validator;
+export const valid = (schema: BaseSchema<any, any>) => (value: any) => {
+  const resp = safeParse(schema, value)
+  if (resp.success) {
+    return ''
   }
-
-  for (const v of validators) {
-    const resp = v(value);
-    if (resp) {
-      return resp;
-    }
-  }
-  return null;
-};
+  return resp.issues[0].message
+}

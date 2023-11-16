@@ -6,7 +6,7 @@ import type { Story } from '@ladle/react'
 import React from 'react'
 
 export default {
-  title: 'Components / UI / tabs1',
+  title: 'Components / UI / tabs',
 }
 
 export const Default: Story = () => {

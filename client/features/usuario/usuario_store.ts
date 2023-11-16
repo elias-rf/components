@@ -15,6 +15,7 @@ import {
 import { TUsuarioFields, TUsuarioKeys } from '@/controllers/usuario_controller'
 import { rpc } from '@/rpc/rpc-client'
 import { TData } from '@/types'
+import { omit } from '@/utils/object/omit'
 import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
 
@@ -22,11 +23,11 @@ const tableName = 'usuario' as const
 
 const recordClear: TData<TUsuarioFields> = {
   kUsuario: '',
-  NomeUsuario: '',
   nome: '',
   email: '',
   setor: '',
-  idGroup: '',
+  fkFuncionario: '',
+  NomeUsuario: '',
   Ativo: true,
 } as TData<TUsuarioFields>
 
@@ -72,7 +73,8 @@ const usuarioStoreBase = createStore<TUsuarioState>()(
         if (id.length === 0) return recordClear
         const record = (await cache.fetch(
           {
-            id: get().selection,
+            where: get().selection,
+            select: Object.keys(recordClear),
             _table: tableName,
             _method: `${tableName}.read`,
           },
@@ -90,7 +92,7 @@ const usuarioStoreBase = createStore<TUsuarioState>()(
         cache.purgeTable(tableName)
         if (get().status === 'edit') {
           await rpc[tableName].update({
-            data: get().record || {},
+            data: omit(get().record, ['kUsuario']),
             id: get().selection,
           })
         }

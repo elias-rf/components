@@ -1,11 +1,13 @@
+import { FormField } from '@/client/components/ui/form-field'
 import { Input } from '@/client/components/ui/input/input'
+import { Label } from '@/client/components/ui/label'
 import { Tabs } from '@/client/components/ui/tabs/tabs'
 import { clienteStore } from '@/client/features/cliente/cliente_store'
 import { ClienteQuantidade } from '@/client/features/cliente/components/cliente-quantidade'
 import { ClienteValor } from '@/client/features/cliente/components/cliente-valor'
 import { ClienteValorMedio } from '@/client/features/cliente/components/cliente-valor-medio'
+import { useForm } from '@/client/lib/hooks/use-form'
 import { useEffect, useState } from 'react'
-import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 export function ClienteForm() {
@@ -16,7 +18,7 @@ export function ClienteForm() {
   const record = clienteStore.use.record()
 
   const [tab, setTab] = useState('')
-  const form = useForm({ defaultValues: recordClear, mode: 'onTouched' })
+  const form = useForm({ value: recordClear })
 
   useEffect(() => {
     form.reset(record)
@@ -43,174 +45,124 @@ export function ClienteForm() {
     <>
       <div className="grid grid-cols-12 gap-3">
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <Controller
-            name="CdCliente"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Input
-                disabled={['none', 'edit', 'new'].includes(status)}
-                helper={fieldState.error?.message}
-                label="Cód."
-                onBlur={field.onBlur}
-                onChange={field.onChange}
-                value={field.value}
-                variant={fieldState.error && 'error'}
-              />
-            )}
-          />
+          <FormField>
+            <Label id="CdCliente">Cód.</Label>
+            <Input
+              disabled={['none', 'edit', 'new'].includes(status)}
+              id="CdCliente"
+              name="CdCliente"
+              onInput={form.handleChange}
+              value={form.value.CdCliente}
+            />
+          </FormField>
         </div>
         <div className="col-span-12 sm:col-span-10 lg:col-span-6">
-          <Controller
-            name="RzSocial"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Input
-                label="Nome"
-                disabled={['none', 'edit', 'new'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label id="RzSocial">Nome</Label>
+            <Input
+              id="RzSocial"
+              name="RzSocial"
+              disabled={['none', 'edit', 'new'].includes(status)}
+              value={form.value.RzSocial}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-12 sm:col-span-6 lg:col-span-4">
-          <Controller
-            name="Cidade"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Input
-                label="Cidade"
-                disabled={['none', 'edit', 'new'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label id="Cidade">Cidade</Label>
+            <Input
+              id="Cidade"
+              name="Cidade"
+              disabled={['none', 'edit', 'new'].includes(status)}
+              value={form.value.Cidade}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <Controller
-            name="Uf"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Input
-                label="UF"
-                disabled={['none', 'edit', 'new'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label id="Uf">UF</Label>
+            <Input
+              id="Uf"
+              name="Uf"
+              disabled={['none', 'edit', 'new'].includes(status)}
+              value={form.value.Uf}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-12 sm:col-span-4 lg:col-span-2">
-          <Controller
-            name="CGC"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Input
-                label="CNPJ"
-                disabled={['none', 'edit', 'new'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label id="CGC">CNPJ</Label>
+            <Input
+              id="CGC"
+              name="CGC"
+              disabled={['none', 'edit', 'new'].includes(status)}
+              value={form.value.CGC}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <Controller
-            name="CdVendedor"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Input
-                label="Vend"
-                disabled={['none', 'edit', 'new'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label id="CdVendedor">Vend</Label>
+            <Input
+              id="CdVendedor"
+              name="CdVendedor"
+              disabled={['none', 'edit', 'new'].includes(status)}
+              value={form.value.CdVendedor}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <Controller
-            name="FgAtivo"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Input
-                label="Ativo"
-                disabled={['none', 'edit', 'new'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label id="FgAtivo">Ativo</Label>
+            <Input
+              id="FgAtivo"
+              name="FgAtivo"
+              disabled={['none', 'edit', 'new'].includes(status)}
+              value={form.value.FgAtivo}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-12 sm:col-span-8 lg:col-span-4">
-          <Controller
-            name="EMail"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Input
-                label="EMail"
-                disabled={['none', 'edit', 'new'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label id="EMail">EMail</Label>
+            <Input
+              id="EMail"
+              name="EMail"
+              disabled={['none', 'edit', 'new'].includes(status)}
+              value={form.value.EMail}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-12 sm:col-span-6 lg:col-span-4">
-          <Controller
-            name="NumIdentidade"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Input
-                label="Identidade"
-                disabled={['none', 'edit', 'new'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label id="NumIdentidade">Identidade</Label>
+            <Input
+              id="NumIdentidade"
+              name="NumIdentidade"
+              disabled={['none', 'edit', 'new'].includes(status)}
+              value={form.value.NumIdentidade}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-12 sm:col-span-6 lg:col-span-4">
-          <Controller
-            name="DtCadastro"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Input
-                label="Data Cadastro"
-                disabled={['none', 'edit', 'new'].includes(status)}
-                variant={fieldState.error && 'error'}
-                helper={fieldState.error?.message}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-              />
-            )}
-          />
+          <FormField>
+            <Label id="DtCadastro">Data Cadastro</Label>
+            <Input
+              id="DtCadastro"
+              name="DtCadastro"
+              disabled={['none', 'edit', 'new'].includes(status)}
+              value={form.value.DtCadastro}
+              onInput={form.handleChange}
+            />
+          </FormField>
         </div>
         <div className="col-span-12">
           <Tabs

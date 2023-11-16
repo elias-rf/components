@@ -1,54 +1,46 @@
+import { FormField } from '@/client/components/ui/form-field'
 import { Input } from '@/client/components/ui/input/input'
-import { Controller, UseFormReturn } from 'react-hook-form'
+import { Label } from '@/client/components/ui/label'
+
 type TGroupSubjectFormProps = {
-  form: UseFormReturn<any>
+  form: any
   disabled: boolean
 }
 
 export function GroupSubjectForm({ form, disabled }: TGroupSubjectFormProps) {
   return (
-    <div className="grid gap-3 grid-cols-12">
+    <div className="grid grid-cols-12 gap-3">
       <div className="col-span-6">
-        <Controller
-          name="idGroup"
-          control={form.control}
-          rules={{
-            required: 'Grupo é obrigatório',
-          }}
-          render={({ field, fieldState }) => (
-            <Input
-              required
-              label={'Grupo'}
-              disabled={disabled}
-              helper={fieldState.error?.message}
-              variant={fieldState.error && 'error'}
-              value={field.value}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-            />
-          )}
-        />
+        <FormField>
+          <Label
+            required
+            id="idGroup"
+          >
+            Grupo
+          </Label>
+          <Input
+            disabled={disabled}
+            value={form.value.idGroup}
+            onInput={form.handleChange}
+          />
+        </FormField>
       </div>
       <div className="col-span-6">
-        <Controller
-          name="idSubject"
-          control={form.control}
-          rules={{
-            required: 'Assunto é obrigatório',
-          }}
-          render={({ field, fieldState }) => (
-            <Input
-              required
-              label={'Recurso'}
-              disabled={disabled}
-              helper={fieldState.error?.message}
-              variant={fieldState.error && 'error'}
-              value={field.value}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-            />
-          )}
-        />
+        <FormField>
+          <Label
+            required
+            id="idSubject"
+          >
+            Recurso
+          </Label>
+          <Input
+            id="idSubject"
+            name="idSubject"
+            disabled={disabled}
+            value={form.value}
+            onInput={form.handleChange}
+          />
+        </FormField>
       </div>
     </div>
   )
