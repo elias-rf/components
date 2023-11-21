@@ -1,7 +1,7 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
-import { day } from '@/utils/date/day'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { day } from '@/utils/date/day.js'
 import { isoDate, number, object, parse, regex, string, union } from 'valibot'
 
 export const tOperacaoOrdemProducao: TSchema = {
@@ -10,14 +10,14 @@ export const tOperacaoOrdemProducao: TSchema = {
   relations: {
     operacao: {
       method: () =>
-        import('./operacao-producao_controller').then(
+        import('./operacao-producao_controller.js').then(
           (m) => m.operacaoProducaoController.read
         ),
       where: [['kOperacao', 'fkOperacao']],
     },
     empregado: {
       method: () =>
-        import('./empregado_controller').then(
+        import('./empregado_controller.js').then(
           (m) => m.empregadoController.read
         ),
       where: [['kEmpregado', 'fkEmpregado']],
@@ -57,7 +57,7 @@ export type TOrdemProducaoOperacaoKeys =
   (typeof tOperacaoOrdemProducao.primary)[number]
 
 function ordemProducaoOperacaoControllerFactory(
-  db: OrmDatabase,
+  db: AdapterKnex,
   schema: TSchema
 ) {
   const orm = ormTable<
@@ -165,7 +165,7 @@ function ordemProducaoOperacaoControllerFactory(
         produto,
       }
     )
-    const knex = db.knex
+    const knex = db.getDriver()
     const qry = await knex(
       knex.raw(
         '((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp'
@@ -207,7 +207,7 @@ function ordemProducaoOperacaoControllerFactory(
         data,
       }
     )
-    const knex = db.knex
+    const knex = db.getDriver()
     const qry = await knex<any, { produto: string; quantidade: number }[]>(
       knex.raw(
         '((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp'
@@ -242,7 +242,7 @@ function ordemProducaoOperacaoControllerFactory(
         data,
       }
     )
-    const knex = db.knex
+    const knex = db.getDriver()
     const qry = await knex(
       knex.raw(
         '((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp'

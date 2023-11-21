@@ -1,10 +1,10 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 import {
   TProdutoPlanoFields,
   produtoPlanoController,
-} from './produto-plano_controller'
+} from './produto-plano_controller.js'
 
 export const tbl_Produto_Item: TSchema = {
   table: 'tbl_Produto_Item',
@@ -12,7 +12,7 @@ export const tbl_Produto_Item: TSchema = {
   relations: {
     produto: {
       method: () =>
-        import('./produto_controller').then((m) => m.produtoController.read),
+        import('./produto_controller.js').then((m) => m.produtoController.read),
       where: [['kProduto', 'fkProduto']],
     },
   },
@@ -37,7 +37,7 @@ export const tbl_Produto_Item: TSchema = {
 export type TProdutoItemFields = (typeof tbl_Produto_Item.fields)[number]
 export type TProdutoItemKeys = (typeof tbl_Produto_Item.primary)[number]
 
-function produtoItemControllerFactory(db: OrmDatabase, schema: TSchema) {
+function produtoItemControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TProdutoItemFields, TProdutoItemKeys>(db, schema)
 
   const produtoPlano = async ({

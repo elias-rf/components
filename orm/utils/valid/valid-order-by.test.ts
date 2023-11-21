@@ -1,4 +1,4 @@
-import { validOrderBy } from '@/orm/utils/valid/valid-order-by'
+import { validOrderBy } from '@/orm/utils/valid/valid-order-by.js'
 import { describe, expect, test } from 'vitest'
 
 const phonebook = {

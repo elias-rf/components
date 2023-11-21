@@ -1,7 +1,7 @@
-import { getFields } from '@/orm/utils/schema/get-fields'
-import type { TSchema } from '@/schemas/schema.type'
-import { TInclude, TSelect } from '@/types'
-import { pushUnique } from '@/utils/array/push-unique'
+import { getFields } from '@/orm/utils/schema/get-fields.js'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { TInclude, TSelect } from '@/types/index.js'
+import { pushUnique } from '@/utils/array/push-unique.js'
 
 export function selectFromInclude(
   select: TSelect<string>,

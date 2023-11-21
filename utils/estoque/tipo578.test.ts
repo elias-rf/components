@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { Tipo578 } from './tipo578'
+import { Tipo578 } from './tipo578.js'
 
 describe('tipo578', () => {
   test('deve calcular máximo', () => {

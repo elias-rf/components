@@ -1,8 +1,8 @@
-import { JsonView } from '@/client/components/json-view/json-view'
+import { JsonView } from '@/client/components/json-view/json-view.js'
 import {
   SelectBadge,
   TSelectBadgeProps,
-} from '@/client/components/ui/select-badge'
+} from '@/client/components/ui/select-badge.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 import React from 'react'

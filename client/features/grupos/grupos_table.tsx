@@ -1,13 +1,13 @@
-import { Can } from '@/client/components/can'
-import { Table } from '@/client/components/table'
-import { gruposColumns } from '@/client/features/grupos/components/grupos_columns'
-import { gruposStore } from '@/client/features/grupos/grupos_store'
-import { authStore } from '@/client/store/auth_store'
-import { usePageSize } from '@/client/store/page-size'
-import { TGroupFields, TGroupKeys } from '@/controllers/group_controller'
-import type { TData, TId } from '@/types'
+import { Can } from '@/client/components/can.js'
+import { Table } from '@/client/components/table/table.js'
+import { gruposColumns } from '@/client/features/grupos/components/grupos_columns.js'
+import { gruposStore } from '@/client/features/grupos/grupos_store.js'
+import { authStore } from '@/client/store/auth_store.js'
+import { usePageSize } from '@/client/store/page-size.js'
+import { TGroupFields, TGroupKeys } from '@/controllers/group_controller.js'
+import type { TData, TId } from '@/types/index.js'
 import { useEffect } from 'react'
-import toast from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 
 export function GruposTable() {
   const pageHeight = usePageSize((state) => state.height * 0.7)

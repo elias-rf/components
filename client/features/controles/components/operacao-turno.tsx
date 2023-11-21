@@ -1,7 +1,7 @@
-import { Table } from '@/client/components/table'
-import { useControles } from '@/client/features/controles/controles_store'
+import { Table } from '@/client/components/table/table.js'
+import { useControles } from '@/client/features/controles/controles_store.js'
 import React from 'react'
-import { operacaoTurnoSchema } from './operacao-turno_schema'
+import { operacaoTurnoSchema } from './operacao-turno_schema.js'
 
 export function OperacaoTurno() {
   const operacao = useControles.use.operacao()

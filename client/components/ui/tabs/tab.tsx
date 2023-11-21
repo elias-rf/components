@@ -1,6 +1,6 @@
-import { cn } from '@/client/lib/cn'
+import { cn } from '@/client/lib/cn.js'
 import { ReactNode, useContext, useEffect } from 'react'
-import { TabsContext } from './tabs_context'
+import { TabsContext } from './tabs_context.js'
 
 export function Tab({
   name,

@@ -1,4 +1,4 @@
-import { ShowContext } from '@/client/components/ui/navbar/navbar_context'
+import { ShowContext } from '@/client/components/ui/navbar/navbar_context.js'
 import { useContext } from 'react'
 
 export function NavbarToggle() {

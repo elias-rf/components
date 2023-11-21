@@ -1,4 +1,4 @@
-import { Button, TButtonProps } from '@/client/components/ui/button'
+import { Button, TButtonProps } from '@/client/components/ui/button.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 

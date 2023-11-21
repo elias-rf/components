@@ -1,5 +1,5 @@
-import { whereType } from '@/client/lib/where-type'
-import { describe, test, expect } from 'vitest'
+import { whereType } from '@/client/lib/where-type.js'
+import { describe, expect, test } from 'vitest'
 
 describe('whereType', () => {
   test('whereType', () => {

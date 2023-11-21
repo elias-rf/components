@@ -1,6 +1,6 @@
-import { createSelectors } from '@/client/lib/create-selectors'
-import { rpc } from '@/rpc/rpc-client'
-import { TCurrentUser } from '@/types'
+import { createSelectors } from '@/client/lib/create-selectors.js'
+import { rpc } from '@/rpc/rpc-client.js'
+import { TCurrentUser } from '@/types/index.js'
 import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
 
@@ -30,7 +30,7 @@ export const authStoreBase = createStore<AuthState>()(
          * Executa o login no servidor
          */
         login: async (user: any) => {
-          const login = await rpc.usuario.login(user)
+          const login = await rpc.usuario.login$(user)
           if (login && login.usuario_id && login.usuario_id > 0) {
             set(() => ({ token: login.token, user: login }), false, 'login')
             await get().fetchPermissions()

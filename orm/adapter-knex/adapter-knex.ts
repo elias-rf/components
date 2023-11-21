@@ -1,28 +1,34 @@
 // @ts-nocheck
-import { Query } from '@/orm/orm.type'
+import { TDbAdapter, TQuery } from '@/orm/orm.type.js'
 import { Knex } from 'knex'
-import { pipe } from './utils/pipe'
+import { pipe } from '../utils/pipe.js'
 
-export class OrmDatabase {
+export class AdapterKnex implements TDbAdapter {
   knex: Knex
   private _logged: boolean
   private _log: Array<string>
 
-  constructor(knex: Knex) {
-    this.knex = knex
+  constructor(driver: Knex) {
+    this.knex = driver
     this._log = []
     this._logged = false
   }
 
-  resetLog() {
-    this._log = []
+  setDriver(driver: Knex) {
+    this.knex = driver
   }
+
+  getDriver() {
+    return this.knex
+  }
+
   startLog() {
-    this.resetLog()
+    this._log = []
     this._logged = true
   }
+
   stopLog() {
-    this.resetLog()
+    this._log = []
     this._logged = false
   }
 
@@ -30,7 +36,7 @@ export class OrmDatabase {
     return this._log
   }
 
-  async run(query: Query) {
+  async run(query: TQuery) {
     const knex = this.knex.queryBuilder()
     let param = { knex, query }
 
@@ -70,8 +76,8 @@ export class OrmDatabase {
     return response
   }
 
-  private method(method: keyof Query) {
-    return ({ knex, query }: { knex: Knex.QueryBuilder; query: Query }) => {
+  private method(method: keyof TQuery) {
+    return ({ knex, query }: { knex: Knex.QueryBuilder; query: TQuery }) => {
       // method não foi usado
       if (query[method] === undefined) return { knex, query }
 

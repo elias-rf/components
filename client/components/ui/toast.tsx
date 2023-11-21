@@ -1,7 +1,7 @@
-import { CheckIcon } from '@/client/components/icons/check-icon'
-import { WarningIcon } from '@/client/components/icons/warning-icon'
-import { ErrorIcon } from '@/client/components/icons/error-icon'
-import { CloseIcon } from '@/client/components/icons/close-icon'
+import { CheckIcon } from '@/client/components/icons/check-icon.js'
+import { CloseIcon } from '@/client/components/icons/close-icon.js'
+import { ErrorIcon } from '@/client/components/icons/error-icon.js'
+import { WarningIcon } from '@/client/components/icons/warning-icon.js'
 
 export type TToastProps = {
   open: boolean

@@ -1,6 +1,6 @@
-import { Combobox } from '@/client/components/ui/combobox'
+import { Combobox } from '@/client/components/ui/combobox/combobox.js'
 import '@/client/index.css'
-import { useState } from '@/client/lib/hooks/use-state'
+import { useState } from '@/client/lib/hooks/use-state.js'
 import { Story, action } from '@ladle/react'
 
 export default {

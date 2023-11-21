@@ -1,13 +1,13 @@
-import { JsonView } from '@/client/components/json-view/json-view'
-import { Button } from '@/client/components/ui/button'
-import { FormField } from '@/client/components/ui/form-field'
-import { Helper } from '@/client/components/ui/helper'
-import { Input } from '@/client/components/ui/input'
-import { Label } from '@/client/components/ui/label'
-import { valid } from '@/client/lib/valid'
+import { JsonView } from '@/client/components/json-view/json-view.js'
+import { Button } from '@/client/components/ui/button.js'
+import { FormField } from '@/client/components/ui/form-field/form-field.js'
+import { Helper } from '@/client/components/ui/helper.js'
+import { Input } from '@/client/components/ui/input/input.js'
+import { Label } from '@/client/components/ui/label.js'
+import { valid } from '@/client/lib/valid/valid.js'
 import { Story, action } from '@ladle/react'
 import { coerce, email, minLength, minValue, number, string } from 'valibot'
-import { useForm } from './use-form'
+import { useForm } from './use-form.js'
 
 export default {
   title: 'lib/hooks/ use Form',

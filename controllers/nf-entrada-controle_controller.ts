@@ -1,6 +1,6 @@
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const LotesNotaEntrada: TSchema = {
   table: 'LotesNotaEntrada',
@@ -20,7 +20,7 @@ export const LotesNotaEntrada: TSchema = {
 export type TNfEntradaControleFields = (typeof LotesNotaEntrada.fields)[number]
 export type TNfEntradaControleKeys = (typeof LotesNotaEntrada.primary)[number]
 
-function nfEntradaControleControllerFactory(db: OrmDatabase, schema: TSchema) {
+function nfEntradaControleControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfEntradaControleFields, TNfEntradaControleKeys>(
     db,
     schema

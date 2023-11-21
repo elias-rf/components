@@ -1,5 +1,5 @@
-import { JsonView } from '@/client/components/json-view/json-view'
-import { Input } from '@/client/components/ui/input/input'
+import { JsonView } from '@/client/components/json-view/json-view.js'
+import { Input } from '@/client/components/ui/input/input.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 import React from 'react'

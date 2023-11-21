@@ -1,4 +1,4 @@
-import { SpinnerIcon } from '@/client/components/icons/spinner-icon'
+import { SpinnerIcon } from '@/client/components/icons/spinner-icon.js'
 
 export function Loading() {
   return (

@@ -1,5 +1,5 @@
-import { TWhere } from '@/types'
-import { isEmpty } from '@/utils/identify/is-empty'
+import { TWhere } from '@/types/index.js'
+import { isEmpty } from '@/utils/identify/is-empty.js'
 
 export const whereUtil = {
   setValue(where: TWhere<any>, field: string, value: any): TWhere<any> {

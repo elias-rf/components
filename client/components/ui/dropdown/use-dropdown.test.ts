@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 import { describe, expect, it } from 'vitest'
-import { useCombobox } from './use-dropdown'
+import { useCombobox } from './use-dropdown.js'
 
 const options = [
   { label: 'Brazil', value: 'BR' },

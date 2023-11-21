@@ -1,4 +1,4 @@
-import { inteiro, moeda } from '../../../lib/text-box-formats'
+import { inteiro, moeda } from '../../../lib/text-box-formats.js'
 
 export function listVenda(data: any[]) {
   const quantidade: { [idx: string]: string }[] = []

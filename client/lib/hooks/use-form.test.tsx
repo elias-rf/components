@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 import { minLength, safeParse, string } from 'valibot'
 import { describe, expect, it } from 'vitest'
-import { useForm } from './use-form'
+import { useForm } from './use-form.js'
 
 describe('useForm hook', () => {
   it('deve alterar value quando handleChange é chamado', () => {

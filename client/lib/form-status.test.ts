@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { formButtonStatus } from './form-button-status'
+import { formButtonStatus } from './form-button-status.js'
 
 describe('formStatus', () => {
   test('get view', () => {

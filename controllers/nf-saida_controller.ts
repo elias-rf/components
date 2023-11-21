@@ -1,8 +1,8 @@
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { nfSaidaFvController } from '@/controllers/nf-saida-fv_controller'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
-import { day } from '@/utils/date/day'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { nfSaidaFvController } from '@/controllers/nf-saida-fv_controller.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { day } from '@/utils/date/day.js'
 import { array, isoDate, number, parse, regex, string, union } from 'valibot'
 
 export const MestreNota: TSchema = {
@@ -11,7 +11,7 @@ export const MestreNota: TSchema = {
   relations: {
     itens: {
       method: () =>
-        import('./nf-saida-item_controller').then(
+        import('./nf-saida-item_controller.js').then(
           (m) => m.nfSaidaItemController.list
         ),
       where: [
@@ -23,7 +23,7 @@ export const MestreNota: TSchema = {
     },
     cliente: {
       method: () =>
-        import('./cliente_controller').then((m) => m.clienteController.read),
+        import('./cliente_controller.js').then((m) => m.clienteController.read),
       where: [['CdCliente', 'CdCliente']],
     },
   },
@@ -124,7 +124,7 @@ export const MestreNota: TSchema = {
 export type TNfSaidaFields = (typeof MestreNota.fields)[number]
 export type TNfSaidaKeys = (typeof MestreNota.primary)[number]
 
-function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
+function nfSaidaControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfSaidaFields, TNfSaidaKeys>(db, schema)
 
   /**
@@ -144,7 +144,7 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
 
     const aux: any = {}
     const rsp = []
-    const knex = db.knex
+    const knex = db.getDriver()
     const qry: any = await knex<
       any,
       { dia: string; NmCategoria: string; quantidade: number }
@@ -192,7 +192,7 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
 
     const aux: any = {}
     const rsp = []
-    const knex = db.knex
+    const knex = db.getDriver()
     const qry = await knex(
       knex.raw(
         'NatOpe INNER JOIN (CategPro INNER JOIN (CadPro INNER JOIN (MestreNota INNER JOIN ItemNota ON (MestreNota.Serie = ItemNota.Serie) AND (MestreNota.NumNota = ItemNota.NumNota) AND (MestreNota.CdFilial = ItemNota.CdFilial)) ON CadPro.CdProduto = ItemNota.CdProduto) ON CategPro.CdCategoria = CadPro.CdCategoria) ON (ItemNota.Nop = NatOpe.Nop) AND (NatOpe.Nop = MestreNota.Nop)'
@@ -242,7 +242,7 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
   const transferenciaModelo = async ({ data }: { data: string }) => {
     parse(string([isoDate('data inválida')]), data)
 
-    const knex = db.knex
+    const knex = db.getDriver()
     const qry = await knex(
       knex.raw(
         'NatOpe INNER JOIN (CategPro INNER JOIN (CadPro INNER JOIN (MestreNota INNER JOIN ItemNota ON (MestreNota.Serie = ItemNota.Serie) AND (MestreNota.NumNota = ItemNota.NumNota) AND (MestreNota.CdFilial = ItemNota.CdFilial)) ON CadPro.CdProduto = ItemNota.CdProduto) ON CategPro.CdCategoria = CadPro.CdCategoria) ON (ItemNota.Nop = NatOpe.Nop) AND (NatOpe.Nop = MestreNota.Nop)'
@@ -280,7 +280,7 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
     parse(string([isoDate('data inicial inválida')]), inicio)
     parse(string([isoDate('data final inválida')]), fim)
 
-    const knex = db.knex
+    const knex = db.getDriver()
     const qryPlano = knex('MestreNota')
       .select(knex.raw("'VT' as origem"))
       .select([
@@ -353,7 +353,7 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
     parse(string([isoDate('data final inválida')]), fim)
     parse(array(string('uf deve ser string')), uf)
 
-    const knex = db.knex
+    const knex = db.getDriver()
     let qry = knex<
       {
         NmCategoria: string
@@ -438,7 +438,7 @@ function nfSaidaControllerFactory(db: OrmDatabase, schema: TSchema) {
     parse(string([isoDate('data final inválida')]), fim)
     parse(union([string(), number()]), cliente)
 
-    const knex = db.knex
+    const knex = db.getDriver()
     const rsp = knex<
       any,
       {

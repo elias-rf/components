@@ -1,26 +1,26 @@
-import { source } from "./source";
+import { source } from './source.js'
 
 async function delNaoConforme(lista: { kOperacaoOp: string }[]) {
   for (const item of lista) {
-    const resp = await source("tNaoConformidadeOperacaoProducao")
-      .where("fkOperacaoOP", item.kOperacaoOp)
-      .del();
-    console.log(item, resp);
+    const resp = await source('tNaoConformidadeOperacaoProducao')
+      .where('fkOperacaoOP', item.kOperacaoOp)
+      .del()
+    console.log(item, resp)
   }
 }
 
 async function listOP() {
-  const operacaoProducao = await source("tOperacaoOrdemProducaoOld")
-    .select(["kOperacaoOP"])
-    .limit(10);
+  const operacaoProducao = await source('tOperacaoOrdemProducaoOld')
+    .select(['kOperacaoOP'])
+    .limit(10)
   // delete tNaoConformidadeOperacaoProducao where fkOperacaoOP in (select kOperacaoOP from tOperacaoOrdemProducaoOld);
-  return operacaoProducao;
+  return operacaoProducao
 }
 
 async function main() {
-  const lista = await listOP(); // (, );
-  await delNaoConforme(lista);
-  process.exit(0);
+  const lista = await listOP() // (, );
+  await delNaoConforme(lista)
+  process.exit(0)
 }
 
-main();
+main()

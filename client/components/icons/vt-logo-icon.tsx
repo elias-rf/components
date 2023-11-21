@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/cn'
+import { cn } from '@/client/lib/cn.js'
 
 const colorProp = {
   black: '#000',

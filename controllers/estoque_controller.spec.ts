@@ -1,13 +1,13 @@
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { estoqueController } from '@/controllers/estoque_controller'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { getTracker } from '@/mocks/database.mock'
-import { knexMockHistory } from '@/mocks/knex-mock-history'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { estoqueController } from '@/controllers/estoque_controller.js'
+import { knexMockMsql } from '@/mocks/connections.mock.js'
+import { getTracker } from '@/mocks/database.mock.js'
+import { knexMockHistory } from '@/mocks/knex-mock-history.js'
 import { beforeEach, describe, expect, test } from 'vitest'
 
 describe('EstoqueModel', () => {
   const tracker = getTracker()
-  dbPlano.knex = knexMockMsql
+  dbPlano.setDriver(knexMockMsql)
 
   beforeEach(() => {
     tracker.reset()
@@ -16,13 +16,13 @@ describe('EstoqueModel', () => {
   test('increment', async () => {
     tracker.on.update('Estoque').response([{ EstAtual: '1' }])
 
-    const rsp = await estoqueController.increment({
+    const rsp = await estoqueController.increment$({
       where: [
         ['CdProduto', '1'],
         ['CdEmpresa', 1],
       ],
       increment: ['EstAtual', 2],
-      returning: ['EstAtual'],
+      select: ['EstAtual'],
     })
 
     expect(rsp).toEqual([{ EstAtual: '1' }])

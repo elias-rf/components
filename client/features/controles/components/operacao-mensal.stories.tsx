@@ -1,4 +1,4 @@
-import { OperacaoMensal } from '@/client/features/controles/components/operacao-mensal'
+import { OperacaoMensal } from '@/client/features/controles/components/operacao-mensal.js'
 import '@/client/features/controles/controles_store.mock'
 import { Story } from '@ladle/react'
 

@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/cn'
+import { cn } from '@/client/lib/cn.js'
 import { ReactNode } from 'react'
 
 export function Avatar({

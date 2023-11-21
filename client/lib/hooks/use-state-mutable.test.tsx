@@ -2,7 +2,7 @@ import { render } from '@testing-library/react'
 import { act, renderHook } from '@testing-library/react-hooks'
 import { useEffect } from 'react'
 import { describe, expect, it, vi } from 'vitest'
-import { useStateMutable } from './use-state-mutable'
+import { useStateMutable } from './use-state-mutable.js'
 
 describe('useStateMutable', () => {
   it('should return an object', () => {

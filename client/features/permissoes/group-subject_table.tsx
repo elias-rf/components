@@ -1,15 +1,22 @@
-import { Table } from '@/client/components/table'
-import { Button } from '@/client/components/ui/button'
-import { Title } from '@/client/components/ui/title'
-import { formButtonStatus } from '@/client/lib/form-button-status'
-import { useMessageBox } from '@/client/lib/hooks/use-message-box'
+import { Table } from '@/client/components/table/table.js'
+import { Button } from '@/client/components/ui/button.js'
+import { Title } from '@/client/components/ui/title.js'
+import { formButtonStatus } from '@/client/lib/form-button-status.js'
+import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import {
   TGroupSubjectFields,
   TGroupSubjectKeys,
-} from '@/controllers/group-subject_controller'
-import { TData, TFormStatus, TId, TOrderBy, TSelection, TWhere } from '@/types'
-import { groupSubjectColumns } from './group-subject_columns'
-import { GroupSubjectForm } from './group-subject_form'
+} from '@/controllers/group-subject_controller.js'
+import {
+  TData,
+  TFormStatus,
+  TId,
+  TOrderBy,
+  TSelection,
+  TWhere,
+} from '@/types/index.js'
+import { groupSubjectColumns } from './group-subject_columns.js'
+import { GroupSubjectForm } from './group-subject_form.js'
 
 type GroupSubjectTableProps = {
   form?: any

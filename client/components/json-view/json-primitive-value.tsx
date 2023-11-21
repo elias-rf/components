@@ -1,5 +1,5 @@
-import { JsonRenderProps } from './data-render'
-import * as DataTypeDetection from './data-type-detection'
+import { JsonRenderProps } from './data-render.js'
+import * as DataTypeDetection from './data-type-detection.js'
 
 export function JsonPrimitiveValue({
   field,

@@ -1,10 +1,10 @@
-import { PersonIcon } from '@/client/components/icons/person-icon'
-import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon'
-import { Avatar } from '@/client/components/ui/avatar'
-import { DarkToggle } from '@/client/components/ui/dark-toggle'
-import { Dropdown } from '@/client/components/ui/dropdown'
-import { Navbar as FbNavbar } from '@/client/components/ui/navbar'
-import { authStore } from '@/client/store/auth_store'
+import { PersonIcon } from '@/client/components/icons/person-icon.js'
+import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon.js'
+import { Avatar } from '@/client/components/ui/avatar.js'
+import { DarkToggle } from '@/client/components/ui/dark-toggle.js'
+import { Dropdown } from '@/client/components/ui/dropdown/dropdown.js'
+import { Navbar as FbNavbar } from '@/client/components/ui/navbar/navbar.js'
+import { authStore } from '@/client/store/auth_store.js'
 import { useLocation } from 'wouter'
 
 export function Navbar() {

@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
-import { Flex } from './flex'
-import { Tipo4 } from './tipo4'
+import { Flex } from './flex.js'
+import { Tipo4 } from './tipo4.js'
 
 describe('tipo4', () => {
   test('deve calcular máximo', () => {

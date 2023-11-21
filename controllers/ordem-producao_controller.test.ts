@@ -1,15 +1,15 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { getTracker } from '@/mocks/database.mock'
-import { knexMockHistory } from '@/mocks/knex-mock-history'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { knexMockMsql } from '@/mocks/connections.mock.js'
+import { getTracker } from '@/mocks/database.mock.js'
+import { knexMockHistory } from '@/mocks/knex-mock-history.js'
 import { beforeEach, describe, expect, it, test } from 'vitest'
-import { ordemProducaoController } from './ordem-producao_controller'
+import { ordemProducaoController } from './ordem-producao_controller.js'
 
 describe('ordemProducaoController', () => {
   const tracker = getTracker()
-  dbOftalmo.knex = knexMockMsql
-  dbPlano.knex = knexMockMsql
+  dbOftalmo.setDriver(knexMockMsql)
+  dbPlano.setDriver(knexMockMsql)
 
   beforeEach(() => {
     dbOftalmo.startLog()
@@ -278,8 +278,8 @@ describe('ordemProducaoController', () => {
   it('delete', async () => {
     tracker.on.delete('tOrdemProducao').response(1)
 
-    const rsp = await ordemProducaoController.del({
-      id: [['kOp', 1]],
+    const rsp = await ordemProducaoController.del$({
+      where: [['kOp', 1]],
     })
 
     expect(rsp).toEqual(1)
@@ -295,10 +295,10 @@ describe('ordemProducaoController', () => {
     tracker.on.update('tOrdemProducao').response({ id: 10 })
     // tracker.on.select('tOrdemProducao').response([{ id: 10 }])
 
-    const rsp = await ordemProducaoController.update({
-      id: [['kOp', 1]],
+    const rsp = await ordemProducaoController.update$({
+      where: [['kOp', 1]],
       data: { kOp: 10 },
-      returning: ['kOp'],
+      select: ['kOp'],
     })
 
     expect(rsp).toEqual({ id: 10 })
@@ -313,7 +313,7 @@ describe('ordemProducaoController', () => {
   it('create', async () => {
     tracker.on.insert('tOrdemProducao').response(1)
 
-    const rsp = await ordemProducaoController.create({
+    const rsp = await ordemProducaoController.create$({
       data: { kOp: 10 },
     })
 

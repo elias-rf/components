@@ -1,6 +1,6 @@
-import { Helper } from '@/client/components/ui/helper'
-import { Label } from '@/client/components/ui/label'
-import { cn } from '@/client/lib/cn'
+import { Helper } from '@/client/components/ui/helper.js'
+import { Label } from '@/client/components/ui/label.js'
+import { cn } from '@/client/lib/cn.js'
 import React from 'react'
 
 type TTextareaProps = {

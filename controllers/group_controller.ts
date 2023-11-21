@@ -1,7 +1,7 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { OrmDatabase, ormTable } from '@/orm'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
 
-import type { TSchema } from '@/schemas/schema.type'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const groupSchema: TSchema = {
   table: 'tbl_Seguranca_Grupo',
@@ -12,7 +12,7 @@ export const groupSchema: TSchema = {
 export type TGroupFields = (typeof groupSchema.fields)[number]
 export type TGroupKeys = (typeof groupSchema.primary)[number]
 
-function groupControllerFactory(db: OrmDatabase, schema: TSchema) {
+function groupControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TGroupFields, TGroupKeys>(db, schema)
   return {
     ...orm.rpc,

@@ -1,6 +1,6 @@
 import { minLength, string } from 'valibot'
 import { describe, expect, it } from 'vitest'
-import { valid } from './index'
+import { valid } from './index.js'
 
 describe('Validação', () => {
   it('isRequired', () => {

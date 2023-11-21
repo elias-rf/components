@@ -1,7 +1,7 @@
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
-import { formatMoney } from '@/utils/format/format-money'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { formatMoney } from '@/utils/format/format-money.js'
 import {
   isoDate,
   nonOptional,
@@ -212,11 +212,11 @@ export type TClienteKeys = (typeof clienteSchema.primary)[number]
 ;(clienteSchema as TSchema).relations = {
   nfSaida: {
     method: () =>
-      import('./nf-saida_controller').then((m) => m.nfSaidaController.list),
+      import('./nf-saida_controller.js').then((m) => m.nfSaidaController.list),
     where: [['CdProduto', 'CdProduto']],
   },
 }
-function clienteControllerFactory(db: OrmDatabase, schema: TSchema) {
+function clienteControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TClienteFields, TClienteKeys>(db, schema)
 
   async function vendaMensalQuantidade(args: {
@@ -242,7 +242,7 @@ function clienteControllerFactory(db: OrmDatabase, schema: TSchema) {
       args
     )
 
-    const { nfSaidaController } = await import('./nf-saida_controller')
+    const { nfSaidaController } = await import('./nf-saida_controller.js')
     const data = await nfSaidaController.vendaMensalCliente(args)
 
     const rsp: any = {}
@@ -285,7 +285,7 @@ function clienteControllerFactory(db: OrmDatabase, schema: TSchema) {
       }),
       args
     )
-    const { nfSaidaController } = await import('./nf-saida_controller')
+    const { nfSaidaController } = await import('./nf-saida_controller.js')
     const data = await nfSaidaController.vendaMensalCliente(args)
     const rsp: any = {}
     data.forEach(
@@ -329,7 +329,7 @@ function clienteControllerFactory(db: OrmDatabase, schema: TSchema) {
       }),
       args
     )
-    const { nfSaidaController } = await import('./nf-saida_controller')
+    const { nfSaidaController } = await import('./nf-saida_controller.js')
     const data = await nfSaidaController.vendaMensalCliente(args)
     const rsp: any = {}
     data.forEach(

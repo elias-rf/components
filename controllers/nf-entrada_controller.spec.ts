@@ -1,15 +1,15 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { getTracker } from '@/mocks/database.mock'
-import { knexMockHistory } from '@/mocks/knex-mock-history'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { knexMockMsql } from '@/mocks/connections.mock.js'
+import { getTracker } from '@/mocks/database.mock.js'
+import { knexMockHistory } from '@/mocks/knex-mock-history.js'
 import { describe, expect, it, vi } from 'vitest'
-import { nfEntradaController } from './nf-entrada_controller'
+import { nfEntradaController } from './nf-entrada_controller.js'
 
 describe('nfEntradaController', () => {
   const tracker = getTracker()
-  dbPlano.knex = knexMockMsql
-  dbOftalmo.knex = knexMockMsql
+  dbPlano.setDriver(knexMockMsql)
+  dbOftalmo.setDriver(knexMockMsql)
 
   it('list', async () => {
     tracker.reset()
@@ -72,7 +72,7 @@ describe('nfEntradaController', () => {
     tracker.on.insert('Lotes').response([])
     tracker.on.insert('NfLogConferencia').response([])
 
-    const rsp = await nfEntradaController.transferenciaCreate({
+    const rsp = await nfEntradaController.transferenciaCreate$({
       controles: ['000001000017'],
     })
 

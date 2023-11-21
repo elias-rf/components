@@ -1,14 +1,13 @@
-// @ts-nocheck
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { getTracker } from '@/mocks/database.mock'
-import { knexMockHistory } from '@/mocks/knex-mock-history'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { knexMockMsql } from '@/mocks/connections.mock.js'
+import { getTracker } from '@/mocks/database.mock.js'
+import { knexMockHistory } from '@/mocks/knex-mock-history.js'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { clienteController } from './cliente_controller'
+import { clienteController } from './cliente_controller.js'
 
 describe('rpc de cliente', () => {
   const tracker = getTracker()
-  dbPlano.knex = knexMockMsql
+  dbPlano.setDriver(knexMockMsql)
 
   beforeEach(() => {
     tracker.reset()
@@ -69,22 +68,22 @@ describe('rpc de cliente', () => {
     tracker.on.insert('CadCli').response({ CdCliente: 1 })
     tracker.on.delete('CadCli').response(1)
 
-    const crt = await clienteController.create({
+    const crt = await clienteController.create$({
       data: {
         CdCliente: 1,
         DtCadastro: '2020-01-01',
         EMail: '',
         NumIdentidade: '',
       },
-      returning: ['CdCliente'],
+      select: ['CdCliente'],
     })
 
     expect(crt).toEqual({
       CdCliente: 1,
     })
 
-    const dlt = await clienteController.del({
-      id: [['CdCliente', 10]],
+    const dlt = await clienteController.del$({
+      where: [['CdCliente', 10]],
     })
     expect(dlt).toEqual(1)
     expect(knexMockHistory(tracker)).toEqual([
@@ -101,10 +100,10 @@ describe('rpc de cliente', () => {
 
   it('update', async () => {
     tracker.on.update('CadCli').response({ CdCliente: 1 })
-    const rsp = await clienteController.update({
-      id: [['CdCliente', 1]],
+    const rsp = await clienteController.update$({
+      where: [['CdCliente', 1]],
       data: { EMail: '' },
-      returning: ['CdCliente'],
+      select: ['CdCliente'],
     })
     expect(rsp).toEqual({ CdCliente: 1 })
     expect(knexMockHistory(tracker)).toEqual([
@@ -145,12 +144,14 @@ describe('rpc de cliente', () => {
   })
   it('vendaMensalQuantidade erro em argumentos', async () => {
     await expect(() =>
+      /* @ts-ignore */
       clienteController.vendaMensalQuantidade({
         inicio: '2020-01-01',
         fim: '2020-01-01',
       })
     ).rejects.toThrow('cliente deve ser informado')
     await expect(() =>
+      /* @ts-ignore */
       clienteController.vendaMensalQuantidade({
         inicio: '2020-01-01',
         cliente: 1,

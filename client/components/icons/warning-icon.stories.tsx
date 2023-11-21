@@ -1,4 +1,4 @@
-import { WarningIcon } from '@/client/components/icons/warning-icon'
+import { WarningIcon } from '@/client/components/icons/warning-icon.js'
 import '@/client/index.css'
 import type { Story, StoryDefault } from '@ladle/react'
 

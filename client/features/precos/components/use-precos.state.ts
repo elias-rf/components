@@ -1,8 +1,8 @@
-import { round } from '@/utils/number/round'
+import { round } from '@/utils/number/round.js'
 import React from 'react'
-import { inteiro, moeda } from '../../../lib/text-box-formats'
-import { calculadora } from './calculadora'
-import { TGrupos } from './precos-vendedor'
+import { inteiro, moeda } from '../../../lib/text-box-formats.js'
+import { calculadora } from './calculadora.js'
+import { TGrupos } from './precos-vendedor.js'
 
 const produtos: TGrupos[] = ['hilite', 'liteflex', 'metil', 'enlite']
 

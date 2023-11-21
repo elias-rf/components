@@ -1,5 +1,5 @@
-import { JsonView } from '@/client/components/json-view/json-view'
-import { Select, TSelectProps } from '@/client/components/ui/select/select'
+import { JsonView } from '@/client/components/json-view/json-view.js'
+import { Select, TSelectProps } from '@/client/components/ui/select/select.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 import React from 'react'

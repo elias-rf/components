@@ -1,6 +1,6 @@
-import { whereType } from '@/client/lib/where-type'
-import { TData, TId, TOrderBy, TWhere } from '@/types'
-import { deepEqual } from '@/utils/object/deep-equal'
+import { whereType } from '@/client/lib/where-type.js'
+import { TData, TId, TOrderBy, TWhere } from '@/types/index.js'
+import { deepEqual } from '@/utils/object/deep-equal.js'
 
 export type TCreateListStore<TFields extends string, TKeys extends string> = {
   list: TData<TFields>[]

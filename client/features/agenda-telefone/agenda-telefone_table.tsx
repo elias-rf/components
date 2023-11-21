@@ -1,14 +1,14 @@
-import { Table } from '@/client/components/table'
-import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store'
-import { agendaTelefoneColumns } from '@/client/features/agenda-telefone/components/agenda-telefone_columns'
-import { usePageSize } from '@/client/store/page-size'
+import { Table } from '@/client/components/table/table.js'
+import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store.js'
+import { agendaTelefoneColumns } from '@/client/features/agenda-telefone/components/agenda-telefone_columns.js'
+import { usePageSize } from '@/client/store/page-size.js'
 import {
   TAgendaTelefoneFields,
   TAgendaTelefoneKeys,
-} from '@/controllers/agenda-telefone_controller'
-import type { TData, TId } from '@/types'
+} from '@/controllers/agenda-telefone_controller.js'
+import type { TData, TId } from '@/types/index.js'
 import { useEffect } from 'react'
-import toast from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 
 /**
  * Agenda de Ramais

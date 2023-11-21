@@ -1,4 +1,4 @@
-import { hashObject } from '@/utils/object/hash-object'
+import { hashObject } from '@/utils/object/hash-object.js'
 import { LRUCache } from 'lru-cache'
 
 // https://github.com/rsandor/mkc/tree/master

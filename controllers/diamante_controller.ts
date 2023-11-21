@@ -1,6 +1,6 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const diamanteSchema: TSchema = {
   table: 'diamante',
@@ -35,7 +35,7 @@ export const diamanteSchema: TSchema = {
 export type TDiamanteFields = (typeof diamanteSchema.fields)[number]
 export type TDiamanteKeys = (typeof diamanteSchema.primary)[number]
 
-function diamanteControllerFactory(db: OrmDatabase, schema: TSchema) {
+function diamanteControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TDiamanteFields, TDiamanteKeys>(db, schema)
 
   return { ...orm.rpc }

@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 import { describe, expect, it } from 'vitest'
-import { useState } from './use-state'
+import { useState } from './use-state.js'
 
 describe('useState', () => {
   it('deve aceitar e atualizar string', () => {

@@ -4,8 +4,8 @@
  * @description usa fastify, trpc
  */
 
-import { config } from '@/config'
-import { app } from './app'
+import { config } from '@/config/index.js'
+import { app } from './app.js'
 
 const start = async () => {
   try {

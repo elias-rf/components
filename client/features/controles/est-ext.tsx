@@ -1,7 +1,7 @@
-import { EsterilizacaoExternaDiario } from './components/est-ext-diario'
-import { EsterilizacaoExternaMensal } from './components/est-ext-mensal'
-import { EsterilizacaoExternaModelo } from './components/est-ext-modelo'
-import { EsterilizacaoExternaProduto } from './components/est-ext-produto'
+import { EsterilizacaoExternaDiario } from './components/est-ext-diario.js'
+import { EsterilizacaoExternaMensal } from './components/est-ext-mensal.js'
+import { EsterilizacaoExternaModelo } from './components/est-ext-modelo.js'
+import { EsterilizacaoExternaProduto } from './components/est-ext-produto.js'
 
 export function EstExt() {
   return (

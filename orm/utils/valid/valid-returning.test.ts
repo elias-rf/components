@@ -1,4 +1,4 @@
-import { validReturning } from '@/orm/utils/valid/valid-returning'
+import { validReturning } from '@/orm/utils/valid/valid-returning.js'
 import { describe, expect, test } from 'vitest'
 
 const phonebook = {

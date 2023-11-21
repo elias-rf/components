@@ -1,4 +1,4 @@
-import { GroupSubject } from '@/client/features/permissoes/group-subject'
+import { GroupSubject } from '@/client/features/permissoes/group-subject.js'
 import { Story } from '@ladle/react'
 
 export default {

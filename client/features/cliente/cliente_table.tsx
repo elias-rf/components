@@ -1,11 +1,14 @@
-import { Table } from '@/client/components/table'
-import { clienteStore } from '@/client/features/cliente/cliente_store'
-import { usePageSize } from '@/client/store/page-size'
-import { TClienteFields, TClienteKeys } from '@/controllers/cliente_controller'
-import type { TData, TId } from '@/types'
+import { Table } from '@/client/components/table/table.js'
+import { clienteStore } from '@/client/features/cliente/cliente_store.js'
+import { usePageSize } from '@/client/store/page-size.js'
+import {
+  TClienteFields,
+  TClienteKeys,
+} from '@/controllers/cliente_controller.js'
+import type { TData, TId } from '@/types/index.js'
 import { useEffect } from 'react'
-import toast from 'react-hot-toast'
-import { clienteColumns } from './components/cliente_columns'
+import { toast } from 'react-hot-toast'
+import { clienteColumns } from './components/cliente_columns.js'
 
 export function ClienteTable() {
   const pageHeight = usePageSize((state) => state.height * 0.5)

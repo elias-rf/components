@@ -1,6 +1,6 @@
-import { clienteStore } from '@/client/features/cliente/cliente_store'
-import { ClienteValorMedio } from '@/client/features/cliente/components/cliente-valor-medio'
-import { fetcherMock } from '@/mocks/fetcher-mock'
+import { clienteStore } from '@/client/features/cliente/cliente_store.js'
+import { ClienteValorMedio } from '@/client/features/cliente/components/cliente-valor-medio.js'
+import { fetcherMock } from '@/mocks/fetcher-mock.js'
 import { Story } from '@ladle/react'
 
 fetcherMock({

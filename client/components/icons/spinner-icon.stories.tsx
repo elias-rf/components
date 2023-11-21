@@ -1,5 +1,5 @@
 import { Story, StoryDefault } from '@ladle/react'
-import { SpinnerIcon } from './spinner-icon'
+import { SpinnerIcon } from './spinner-icon.js'
 
 export default {
   title: 'components / icons / spinner icon',

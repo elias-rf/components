@@ -2,7 +2,7 @@
  * recebe Where no padrao [[field,equalitity,value]] e retorna {field:value}
  */
 
-import { TColumn, TWhere } from '@/types'
+import { TColumn, TWhere } from '@/types/index.js'
 
 export function formatWhere(where: TWhere<string>, columns: TColumn[]) {
   if (!where) return {}

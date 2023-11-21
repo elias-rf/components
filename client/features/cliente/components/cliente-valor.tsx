@@ -1,8 +1,8 @@
-import { Table } from '@/client/components/table'
-import { clienteStore } from '@/client/features/cliente/cliente_store'
+import { Table } from '@/client/components/table/table.js'
+import { clienteStore } from '@/client/features/cliente/cliente_store.js'
 import { useEffect } from 'react'
-import toast from 'react-hot-toast'
-import { getSchema } from './get-shema'
+import { toast } from 'react-hot-toast'
+import { getSchema } from './get-shema.js'
 
 export function ClienteValor() {
   const vendaMensalValor = clienteStore.use.vendaMensalValor()

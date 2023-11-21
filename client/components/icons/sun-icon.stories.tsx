@@ -1,4 +1,4 @@
-import { SunIcon } from '@/client/components/icons/sun-icon'
+import { SunIcon } from '@/client/components/icons/sun-icon.js'
 import type { Story, StoryDefault } from '@ladle/react'
 
 export default {

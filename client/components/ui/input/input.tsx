@@ -1,6 +1,6 @@
-import { useInput } from '@/client/components/ui/input/use-input'
-import { themeInput } from '@/client/components/ui/theme-input'
-import { cn } from '@/client/lib/cn'
+import { useInput } from '@/client/components/ui/input/use-input.js'
+import { themeInput } from '@/client/components/ui/theme-input.js'
+import { cn } from '@/client/lib/cn.js'
 import React from 'react'
 
 type TInputProps = {

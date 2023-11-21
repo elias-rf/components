@@ -1,5 +1,5 @@
-import { valid } from '@/client/lib/valid'
-import { isMDY } from '@/client/lib/valid/isMDY'
+import { isMDY } from '@/client/lib/valid/isMDY.js'
+import { valid } from '@/client/lib/valid/valid.js'
 import { describe, expect, it } from 'vitest'
 
 describe('number', () => {

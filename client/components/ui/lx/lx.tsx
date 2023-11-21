@@ -1,4 +1,4 @@
-import { LxItem } from '@/client/components/ui/lx/lx-item'
+import { LxItem } from '@/client/components/ui/lx/lx-item.js'
 import { Children, useEffect } from 'react'
 
 function Lx({ children, child }: { children: React.ReactNode; child: any }) {

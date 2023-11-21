@@ -1,17 +1,17 @@
-import { dbFullvision } from '@/controllers/db/db-fullvision.db'
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { getTracker } from '@/mocks/database.mock'
-import { knexMockHistory } from '@/mocks/knex-mock-history'
+import { dbFullvision } from '@/controllers/db/db-fullvision.db.js'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { knexMockMsql } from '@/mocks/connections.mock.js'
+import { getTracker } from '@/mocks/database.mock.js'
+import { knexMockHistory } from '@/mocks/knex-mock-history.js'
 import { describe, expect, it } from 'vitest'
-import { nfSaidaFvController } from './nf-saida-fv_controller'
+import { nfSaidaFvController } from './nf-saida-fv_controller.js'
 
 describe('nfSaidaFvController', () => {
   const tracker = getTracker()
-  dbPlano.knex = knexMockMsql
-  dbOftalmo.knex = knexMockMsql
-  dbFullvision.knex = knexMockMsql
+  dbPlano.setDriver(knexMockMsql)
+  dbOftalmo.setDriver(knexMockMsql)
+  dbFullvision.setDriver(knexMockMsql)
 
   it('vendaDiario', async () => {
     tracker.reset()

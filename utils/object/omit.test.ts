@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { omit } from './omit'
+import { omit } from './omit.js'
 
 describe('omit', () => {
   test('omit all properties', () => {

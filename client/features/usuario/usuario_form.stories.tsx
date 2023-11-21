@@ -1,5 +1,5 @@
 import { Story } from '@ladle/react'
-import { UsuarioForm } from './usuario_form'
+import { UsuarioForm } from './usuario_form.js'
 
 export default {
   title: 'features/usuario/usuario_form',

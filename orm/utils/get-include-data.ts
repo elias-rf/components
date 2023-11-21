@@ -1,7 +1,7 @@
-import type { TSchema } from '@/schemas/schema.type'
-import { TData, TInclude, TWhere } from '@/types'
-import { clone } from '@/utils/array/clone'
-import { isEmpty } from '@/utils/identify/is-empty'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { TData, TInclude, TWhere } from '@/types/index.js'
+import { clone } from '@/utils/array/clone.js'
+import { isEmpty } from '@/utils/identify/is-empty.js'
 
 function setWhere(data: TData<string>, where: TWhere<string>): TWhere<string> {
   return where.map((whr) => {

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button } from './button'
-import { Modal } from './modal'
+import { Button } from './button.js'
+import { Modal } from './modal.js'
 
 export type TMessageBoxProps = {
   children: React.ReactNode

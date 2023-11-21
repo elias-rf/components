@@ -1,4 +1,4 @@
-import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon'
+import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon.js'
 import '@/client/index.css'
 import type { Story, StoryDefault } from '@ladle/react'
 

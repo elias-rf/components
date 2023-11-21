@@ -1,4 +1,4 @@
-import DataRender, { StyleProps } from './data-render'
+import DataRender, { StyleProps } from './data-render.js'
 
 export interface Props {
   data: any

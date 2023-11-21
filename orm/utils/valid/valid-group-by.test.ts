@@ -1,4 +1,4 @@
-import { validGroupBy } from '@/orm/utils/valid/valid-group-by'
+import { validGroupBy } from '@/orm/utils/valid/valid-group-by.js'
 import { describe, expect, test } from 'vitest'
 
 const phonebook = {

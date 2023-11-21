@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Page403 from '../pages/page_403'
+import Page403 from '../pages/page_403.js'
 
 interface TCanProps {
   children: React.ReactNode

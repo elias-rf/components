@@ -1,13 +1,13 @@
-import { isEmpty } from "@/utils/identify/is-empty";
-import React, { useEffect } from "react";
+import { isEmpty } from '@/utils/identify/is-empty.js'
+import React, { useEffect } from 'react'
 
 interface TextboxProps {
-  field: string;
-  onChange: ({ field, value }: { field: string; value: string }) => void;
-  value: any;
-  inputRef?: any;
-  list?: string;
-  [prop: string]: any;
+  field: string
+  onChange: ({ field, value }: { field: string; value: string }) => void
+  value: any
+  inputRef?: any
+  list?: string
+  [prop: string]: any
 }
 
 /**
@@ -25,33 +25,33 @@ export function Textbox({
   inputRef,
   ...others
 }: TextboxProps) {
-  const [valueAux, setValueAux] = React.useState("");
+  const [valueAux, setValueAux] = React.useState('')
 
   useEffect(() => {
     if (isEmpty(value)) {
-      setValueAux("");
+      setValueAux('')
     } else {
-      setValueAux(value);
+      setValueAux(value)
     }
-  }, [value]);
+  }, [value])
 
   const handleOnChange = (e: any) => {
-    setValueAux(e.target.value);
-  };
+    setValueAux(e.target.value)
+  }
 
   const handleOnBlur = () => {
     if (valueAux !== value) {
-      onChange({ field: field, value: valueAux });
+      onChange({ field: field, value: valueAux })
     }
-  };
+  }
 
   const handleKeyPress = (e: any) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       if (valueAux !== value) {
-        onChange({ field: field, value: valueAux });
+        onChange({ field: field, value: valueAux })
       }
     }
-  };
+  }
 
   return (
     <input
@@ -63,8 +63,8 @@ export function Textbox({
       aria-label={field}
       list={list}
       ref={inputRef}
-      className="h-6 w-full border border-gray-400 px-2 py-1 text-gray-700 focus:border-gray-600"
+      className="w-full h-6 px-2 py-1 text-gray-700 border border-gray-400 focus:border-gray-600"
       {...others}
     />
-  );
+  )
 }

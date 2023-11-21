@@ -1,5 +1,5 @@
-import { CheckBox } from '@/client/components/ui/check-box'
-import { ListGroup } from '@/client/components/ui/list-group/list-group'
+import { CheckBox } from '@/client/components/ui/check-box.js'
+import { ListGroup } from '@/client/components/ui/list-group/list-group.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 

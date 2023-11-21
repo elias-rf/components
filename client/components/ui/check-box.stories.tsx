@@ -1,5 +1,5 @@
-import { JsonView } from '@/client/components/json-view/json-view'
-import { CheckBox, TCheckBoxProps } from '@/client/components/ui/check-box'
+import { JsonView } from '@/client/components/json-view/json-view.js'
+import { CheckBox, TCheckBoxProps } from '@/client/components/ui/check-box.js'
 import '@/client/index.css'
 import { Story, action } from '@ladle/react'
 import React from 'react'

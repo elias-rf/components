@@ -1,4 +1,4 @@
-import { OperacaoProduto } from '@/client/features/controles/components/operacao-produto'
+import { OperacaoProduto } from '@/client/features/controles/components/operacao-produto.js'
 import '@/client/features/controles/controles_store.mock'
 import { Story } from '@ladle/react'
 

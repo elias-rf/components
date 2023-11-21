@@ -1,5 +1,5 @@
 import type { Story } from '@ladle/react'
-import { Login } from './login'
+import { Login } from './login.js'
 
 export default {
   title: 'features/login',

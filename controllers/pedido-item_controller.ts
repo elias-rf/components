@@ -1,6 +1,6 @@
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const ItemPedido = {
   database: 'plano',
@@ -134,7 +134,7 @@ export const ItemPedido = {
 export type TPedidoItemFields = (typeof ItemPedido.fields)[number]
 export type TPedidoItemKeys = (typeof ItemPedido.primary)[number]
 
-function pedidoItemControllerFactory(db: OrmDatabase, schema: TSchema) {
+function pedidoItemControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TPedidoItemFields, TPedidoItemKeys>(db, schema)
   return {
     ...orm.rpc,

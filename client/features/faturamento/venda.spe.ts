@@ -6,7 +6,7 @@ import {
   mensalVendedor,
   mensalVendedorProduto,
   mensalVendedorUf,
-} from './venda'
+} from './venda.js'
 
 const data = [
   {

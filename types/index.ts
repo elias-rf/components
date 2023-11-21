@@ -1,5 +1,5 @@
-export * from './model'
-export * from './query'
+export * from './model.js'
+export * from './query.js'
 
 /** Dados do usuário logado */
 export type TCurrentUser = {

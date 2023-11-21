@@ -1,8 +1,8 @@
-import { JsonView } from '@/client/components/json-view/json-view'
-import type { TWhere } from '@/types'
+import { JsonView } from '@/client/components/json-view/json-view.js'
+import type { TWhere } from '@/types/index.js'
 import { Story, StoryDefault } from '@ladle/react'
 import React from 'react'
-import { Search } from './search'
+import { Search } from './search.js'
 
 export default {
   title: 'components / search',

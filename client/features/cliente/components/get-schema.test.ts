@@ -1,4 +1,4 @@
-import { getSchema } from '@/client/features/cliente/components/get-shema'
+import { getSchema } from '@/client/features/cliente/components/get-shema.js'
 import { describe, expect, test } from 'vitest'
 
 describe('getSchema', () => {

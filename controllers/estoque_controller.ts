@@ -1,6 +1,6 @@
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const estoqueSchema: TSchema = {
   table: 'Estoque',
@@ -63,7 +63,7 @@ export const estoqueSchema: TSchema = {
 export type TEstoqueFields = (typeof estoqueSchema.fields)[number]
 export type TEstoqueKeys = (typeof estoqueSchema.primary)[number]
 
-function estoqueControllerFactory(db: OrmDatabase, schema: TSchema) {
+function estoqueControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TEstoqueFields, TEstoqueKeys>(db, schema)
   return {
     ...orm.rpc,

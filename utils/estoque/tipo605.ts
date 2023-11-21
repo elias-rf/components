@@ -1,4 +1,4 @@
-import { Caixa } from './caixa'
+import { Caixa } from './caixa.js'
 
 export class Tipo605 extends Caixa {
   constructor() {

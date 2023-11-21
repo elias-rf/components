@@ -1,5 +1,5 @@
-import { ShowContext } from '@/client/components/ui/navbar/navbar_context'
-import { cn } from '@/client/lib/cn'
+import { ShowContext } from '@/client/components/ui/navbar/navbar_context.js'
+import { cn } from '@/client/lib/cn.js'
 import { ReactNode, useContext } from 'react'
 
 export function NavbarCollapse({ children }: { children: ReactNode }) {

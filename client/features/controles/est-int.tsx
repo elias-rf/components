@@ -1,7 +1,7 @@
-import { EsterilizacaoInternaDiario } from './components/est-int-diario'
-import { EsterilizacaoInternaMensal } from './components/est-int-mensal'
-import { EsterilizacaoInternaModelo } from './components/est-int-modelo'
-import { EsterilizacaoInternaProduto } from './components/est-int-produto'
+import { EsterilizacaoInternaDiario } from './components/est-int-diario.js'
+import { EsterilizacaoInternaMensal } from './components/est-int-mensal.js'
+import { EsterilizacaoInternaModelo } from './components/est-int-modelo.js'
+import { EsterilizacaoInternaProduto } from './components/est-int-produto.js'
 
 export function EstInt() {
   return (

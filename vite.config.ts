@@ -7,7 +7,7 @@ import react from '@vitejs/plugin-react'
 import dotenv from 'dotenv-flow'
 import path from 'node:path'
 import { defineConfig } from 'vitest/config'
-import { day } from './utils/date/day'
+import { day } from './utils/date/day.js'
 
 dotenv.config()
 

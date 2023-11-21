@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { Flex } from './flex'
+import { Flex } from './flex.js'
 
 describe('flex', () => {
   test('deve rotacionar para p1', () => {

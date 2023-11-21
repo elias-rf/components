@@ -1,14 +1,14 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { getTracker } from '@/mocks/database.mock'
-import { clientMock } from '@/mocks/prim'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { knexMockMsql } from '@/mocks/connections.mock.js'
+import { getTracker } from '@/mocks/database.mock.js'
+import { clientMock } from '@/mocks/prim.js'
 import { beforeEach, describe, expect, test } from 'vitest'
 
 describe('cidadeRpc', () => {
   const tracker = getTracker()
-  dbOftalmo.knex = knexMockMsql
-  dbPlano.knex = knexMockMsql
+  dbOftalmo.setDriver(knexMockMsql)
+  dbPlano.setDriver(knexMockMsql)
 
   beforeEach(() => {
     dbOftalmo.startLog()
@@ -47,8 +47,8 @@ describe('cidadeRpc', () => {
   test('update', async () => {
     tracker.on.update('cidadesERF').response(1)
 
-    const rsp = await clientMock.cidade.update({
-      id: [['CdCidadeIBGE', '1']],
+    const rsp = await clientMock.cidade.update$({
+      where: [['CdCidadeIBGE', '1']],
       data: { NmCidadeIBGE: 'test' },
     })
 
@@ -61,7 +61,7 @@ describe('cidadeRpc', () => {
   test('create', async () => {
     tracker.on.insert('cidadesERF').response(1)
 
-    const rsp = await clientMock.cidade.create({
+    const rsp = await clientMock.cidade.create$({
       data: { CdCidadeIBGE: '1', NmCidadeIBGE: 'test' },
     })
 
@@ -74,8 +74,8 @@ describe('cidadeRpc', () => {
   test('del', async () => {
     tracker.on.delete('cidadesERF').response(1)
 
-    const rsp = await clientMock.cidade.del({
-      id: [['CdCidadeIBGE', '1']],
+    const rsp = await clientMock.cidade.del$({
+      where: [['CdCidadeIBGE', '1']],
     })
 
     expect(rsp).toEqual(1)

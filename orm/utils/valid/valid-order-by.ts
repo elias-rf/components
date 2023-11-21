@@ -1,6 +1,6 @@
-import { getFields } from '@/orm/utils/schema/get-fields'
-import { getTable } from '@/orm/utils/schema/get-table'
-import type { TSchema } from '@/schemas/schema.type'
+import { getFields } from '@/orm/utils/schema/get-fields.js'
+import { getTable } from '@/orm/utils/schema/get-table.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export function validOrderBy(
   orderBy: Array<[string, 'asc' | 'desc']>,

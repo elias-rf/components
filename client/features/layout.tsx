@@ -1,6 +1,6 @@
-import { Page } from '@/client/components/page/page'
-import { NoPrint } from '@/client/components/ui/no-print'
-import { Navbar } from '@/client/features/navbar'
+import { Page } from '@/client/components/page/page.js'
+import { NoPrint } from '@/client/components/ui/no-print.js'
+import { Navbar } from '@/client/features/navbar.js'
 
 /** feature Layout com menu de páginas do aplicativo */
 export function Layout({ children }: { children?: any }) {

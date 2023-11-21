@@ -1,10 +1,10 @@
-import { Button } from '@/client/components/ui/button'
-import { Input } from '@/client/components/ui/input/input'
-import { Label } from '@/client/components/ui/label'
-import { Title } from '@/client/components/ui/title'
-import { cn } from '@/client/lib/cn'
-import { useStateArray } from '@/client/lib/hooks/use-state-array'
-import { rpc } from '@/rpc/rpc-client'
+import { Button } from '@/client/components/ui/button.js'
+import { Input } from '@/client/components/ui/input/input.js'
+import { Label } from '@/client/components/ui/label.js'
+import { Title } from '@/client/components/ui/title.js'
+import { cn } from '@/client/lib/cn.js'
+import { useStateArray } from '@/client/lib/hooks/use-state-array.js'
+import { rpc } from '@/rpc/rpc-client.js'
 import React from 'react'
 
 // 000001000017 , 000001000025, 000001000033
@@ -41,7 +41,7 @@ export function Transferencia() {
 
   async function transfer() {
     try {
-      await rpc.nfEntrada.transferenciaCreate({ controles: lista.value })
+      await rpc.nfEntrada.transferenciaCreate$({ controles: lista.value })
       setQuantidade('')
       lista.empty()
     } catch (e: any) {

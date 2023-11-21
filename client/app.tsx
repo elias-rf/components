@@ -1,44 +1,48 @@
-import { authStore } from '@/client/store/auth_store'
+import { authStore } from '@/client/store/auth_store.js'
 import React, { Suspense } from 'react'
 import { Route, Switch, useLocation } from 'wouter'
-import { Layout } from './features/layout'
-import { Home } from './pages/home'
-import { Loading } from './pages/loading'
-import { Login } from './pages/login'
-import { Logout } from './pages/logout'
+import { Layout } from './features/layout.js'
+import { Home } from './pages/home.js'
+import { Loading } from './pages/loading.js'
+import { Login } from './pages/login.js'
+import { Logout } from './pages/logout.js'
 
 // utilidades
 // const Page403 = React.lazy(async () => import('./pages/page_403'))
-const Page404 = React.lazy(async () => import('./pages/page_404'))
+const Page404 = React.lazy(async () => import('./pages/page_404.js'))
 
 // comercial
-const Clientes = React.lazy(async () => import('./pages/comercial/clientes'))
+const Clientes = React.lazy(async () => import('./pages/comercial/clientes.js'))
 // const Faturamento = React.lazy(
 //   async () => import('./pages/comercial/faturamento')
 // )
-const Precos = React.lazy(async () => import('./pages/comercial/precos'))
+const Precos = React.lazy(async () => import('./pages/comercial/precos.js'))
 const Vendas30Dias = React.lazy(
-  async () => import('./pages/comercial/vendas-30dias')
+  async () => import('./pages/comercial/vendas-30dias.js')
 )
 
 // industrial
-const Controles = React.lazy(async () => import('./pages/industrial/controles'))
+const Controles = React.lazy(
+  async () => import('./pages/industrial/controles.js')
+)
 const LotesSaida = React.lazy(
-  async () => import('./pages/industrial/lotes-saida')
+  async () => import('./pages/industrial/lotes-saida.js')
 )
 
 const Transferencia = React.lazy(
-  async () => import('./pages/industrial/transferencia')
+  async () => import('./pages/industrial/transferencia.js')
 )
 
 // outros
-const Agenda = React.lazy(async () => import('./pages/outros/agenda'))
+const Agenda = React.lazy(async () => import('./pages/outros/agenda.js'))
 
 // sistema
-const Usuario = React.lazy(async () => import('./pages/sistema/usuarios'))
-const Permissao = React.lazy(async () => import('./pages/sistema/permissoes'))
-const Grupos = React.lazy(async () => import('./pages/sistema/grupos'))
-const Profile = React.lazy(async () => import('./pages/profile'))
+const Usuario = React.lazy(async () => import('./pages/sistema/usuarios.js'))
+const Permissao = React.lazy(
+  async () => import('./pages/sistema/permissoes.js')
+)
+const Grupos = React.lazy(async () => import('./pages/sistema/grupos.js'))
+const Profile = React.lazy(async () => import('./pages/profile.js'))
 
 /** Componente com todas a rotas da aplicativo */
 export function App() {

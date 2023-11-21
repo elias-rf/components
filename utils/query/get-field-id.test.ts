@@ -1,5 +1,5 @@
-import { getFieldId } from '@/utils/query/get-field-id'
-import { describe, test, expect } from 'vitest'
+import { getFieldId } from '@/utils/query/get-field-id.js'
+import { describe, expect, test } from 'vitest'
 
 describe('getFieldId', () => {
   test('deve retornar id field', () => {

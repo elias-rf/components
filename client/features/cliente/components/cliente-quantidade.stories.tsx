@@ -1,7 +1,7 @@
-import { StoreViewer } from '@/client/components/ui/store-viewer'
-import { clienteStore } from '@/client/features/cliente/cliente_store'
-import { ClienteQuantidade } from '@/client/features/cliente/components/cliente-quantidade'
-import { fetcherMock } from '@/mocks/fetcher-mock'
+import { StoreViewer } from '@/client/components/ui/store-viewer.js'
+import { clienteStore } from '@/client/features/cliente/cliente_store.js'
+import { ClienteQuantidade } from '@/client/features/cliente/components/cliente-quantidade.js'
+import { fetcherMock } from '@/mocks/fetcher-mock.js'
 import { Story } from '@ladle/react'
 
 fetcherMock({

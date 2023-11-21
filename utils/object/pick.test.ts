@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { pick } from './pick'
+import { pick } from './pick.js'
 
 describe('pick', () => {
   test('pick all properties', () => {

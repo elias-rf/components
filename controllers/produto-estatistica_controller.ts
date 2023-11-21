@@ -1,6 +1,6 @@
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const EstatPro: TSchema = {
   table: 'EstatPro',
@@ -47,7 +47,7 @@ export const EstatPro: TSchema = {
 export type TProdutoEstatisticaFields = (typeof EstatPro.fields)[number]
 export type TProdutoEstatisticaKeys = (typeof EstatPro.primary)[number]
 
-function produtoEstatisticaControllerFactory(db: OrmDatabase, schema: TSchema) {
+function produtoEstatisticaControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TProdutoEstatisticaFields, TProdutoEstatisticaKeys>(
     db,
     schema

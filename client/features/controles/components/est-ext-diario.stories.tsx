@@ -1,4 +1,4 @@
-import { EsterilizacaoExternaDiario } from '@/client/features/controles/components/est-ext-diario'
+import { EsterilizacaoExternaDiario } from '@/client/features/controles/components/est-ext-diario.js'
 import '@/client/features/controles/controles_store.mock'
 import type { Story } from '@ladle/react'
 

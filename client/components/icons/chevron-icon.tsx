@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/cn'
+import { cn } from '@/client/lib/cn.js'
 
 // https://icon-sets.iconify.design/material-symbols/chevron-right-rounded/
 export type TChevronIconProps = {

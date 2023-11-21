@@ -1,4 +1,4 @@
-import { TColumn, TOrderBy } from '@/types'
+import { TColumn, TOrderBy } from '@/types/index.js'
 
 export function ShowSortIcon({
   col,

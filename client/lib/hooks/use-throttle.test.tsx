@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 import { describe, expect, it, vi } from 'vitest'
-import { useThrottle } from './use-throttle'
+import { useThrottle } from './use-throttle.js'
 
 describe('useThrottle', () => {
   it('should throttle the function call', () => {

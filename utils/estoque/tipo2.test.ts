@@ -1,7 +1,7 @@
-import { Enlite } from '@/utils/estoque/enlite'
+import { Enlite } from '@/utils/estoque/enlite.js'
 import { describe, expect, test } from 'vitest'
-import { Flex } from './flex'
-import { Tipo2 } from './tipo2'
+import { Flex } from './flex.js'
+import { Tipo2 } from './tipo2.js'
 
 describe('tipo2', () => {
   test('deve calcular máximo', () => {

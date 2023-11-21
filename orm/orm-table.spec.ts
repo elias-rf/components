@@ -1,8 +1,8 @@
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { getTracker } from '@/mocks/database.mock'
+import { knexMockMsql } from '@/mocks/connections.mock.js'
+import { getTracker } from '@/mocks/database.mock.js'
 import { beforeEach, describe, expect, it, test } from 'vitest'
-import { OrmDatabase } from './orm-database'
-import { ormTable } from './orm-table'
+import { AdapterKnex } from './adapter-knex/adapter-knex.js'
+import { ormTable } from './orm-table.js'
 
 const phonebook = {
   table: 'phonebook',
@@ -12,13 +12,13 @@ const phonebook = {
 
 describe('OrmTable', () => {
   const tracker = getTracker()
-  const db = new OrmDatabase(knexMockMsql)
+  const db = new AdapterKnex(knexMockMsql)
   const tb = ormTable(db, phonebook)
   db.startLog()
 
   beforeEach(() => {
     tracker.reset()
-    db.resetLog()
+    db.startLog()
   })
 
   it('deve validar select', () => {
@@ -70,6 +70,12 @@ describe('OrmTable', () => {
     })
   })
 
+  it('deve invalidar where', () => {
+    expect(() => tb.util.validWhere([['name2', 'a']])).toThrow(
+      '[name2] não é um campo válido para where em phonebook use: id,name,department,email'
+    )
+  })
+
   it('deve validar where In', () => {
     expect(tb.util.validWhere([['name', 'a']])).toEqual({
       where: [['name', 'a']],
@@ -115,8 +121,8 @@ describe('OrmTable', () => {
 
   it('del', async () => {
     tracker.on.delete('phonebook').response(1)
-    const rsp = await tb.rpc.del({
-      id: [['id', 10]],
+    const rsp = await tb.rpc.del$({
+      where: [['id', 10]],
     })
     expect(rsp).toEqual(1)
     expect(db.sql()).toEqual([
@@ -138,10 +144,10 @@ describe('OrmTable', () => {
 
   it('update', async () => {
     tracker.on.update('phonebook').response([{ id: 10 }])
-    const rsp = await tb.rpc.update({
-      id: [['id', 10]],
+    const rsp = await tb.rpc.update$({
+      where: [['id', 10]],
       data: { id: 11 },
-      returning: ['id'],
+      select: ['id'],
     })
     expect(rsp).toEqual([{ id: 10 }])
     expect(db.sql()).toEqual([
@@ -151,9 +157,9 @@ describe('OrmTable', () => {
 
   it('create with select', async () => {
     tracker.on.insert('phonebook').response({ id: 10 })
-    const rsp = await tb.rpc.create({
+    const rsp = await tb.rpc.create$({
       data: { id: 10 },
-      returning: ['id'],
+      select: ['id'],
     })
     expect(rsp).toEqual({ id: 10 })
     expect(db.sql()).toEqual([
@@ -163,7 +169,7 @@ describe('OrmTable', () => {
 
   it('create without select', async () => {
     tracker.on.insert('phonebook').response(1)
-    const rsp = await tb.rpc.create({
+    const rsp = await tb.rpc.create$({
       data: { id: 1 },
     })
     expect(rsp).toEqual(1)
@@ -172,10 +178,10 @@ describe('OrmTable', () => {
 
   it('increment', async () => {
     tracker.on.update('phonebook').response([])
-    const rsp = await tb.rpc.increment({
+    const rsp = await tb.rpc.increment$({
       where: [[`id`, 10]],
       increment: [`id`, 2],
-      returning: ['id'],
+      select: ['id'],
     })
     expect(rsp).toEqual([])
     expect(db.sql()).toEqual([

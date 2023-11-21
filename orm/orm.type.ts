@@ -1,4 +1,4 @@
-import { TOrderBy, TSelect, TWhere } from '@/types'
+import { TOrderBy, TSelect, TWhere } from '@/types/index.js'
 
 export type Association = {
   [association: string]: {
@@ -12,7 +12,7 @@ export type Association = {
 
 type TRaw = [raw: string, args?: any]
 
-export type Query = Partial<{
+export type TQuery = Partial<{
   avg: string
   count: string
   del: true
@@ -42,3 +42,10 @@ export type Query = Partial<{
   whereRaw: TRaw
   whereNot: TWhere<string>
 }>
+
+export interface TDbAdapter {
+  startLog: () => void
+  stopLog: () => void
+  sql: () => string[]
+  run: (query: any) => Promise<any>
+}

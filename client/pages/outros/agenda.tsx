@@ -1,7 +1,7 @@
-import { AgendaTelefoneForm } from '@/client/features/agenda-telefone/agenda-telefone_form'
-import { AgendaTelefoneHead } from '@/client/features/agenda-telefone/agenda-telefone_head'
-import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store'
-import { AgendaTelefoneTable } from '@/client/features/agenda-telefone/agenda-telefone_table'
+import { AgendaTelefoneForm } from '@/client/features/agenda-telefone/agenda-telefone_form.js'
+import { AgendaTelefoneHead } from '@/client/features/agenda-telefone/agenda-telefone_head.js'
+import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store.js'
+import { AgendaTelefoneTable } from '@/client/features/agenda-telefone/agenda-telefone_table.js'
 
 /**
  * Agenda de Ramais

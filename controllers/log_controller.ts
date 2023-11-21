@@ -1,6 +1,6 @@
-import { dbLog } from '@/controllers/db/db-log.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbLog } from '@/controllers/db/db-log.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const logSchema = {
   table: 'log',
@@ -21,7 +21,7 @@ export const logSchema = {
 export type TlogFields = (typeof logSchema.fields)[number]
 export type TlogKeys = (typeof logSchema.primary)[number]
 
-function logControllerFactory(db: OrmDatabase, schema: TSchema) {
+function logControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TlogFields, TlogKeys>(db, schema)
 
   return { ...orm.rpc }

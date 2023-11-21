@@ -1,16 +1,16 @@
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { estoqueController } from '@/controllers/estoque_controller'
-import { nfEntradaControleController } from '@/controllers/nf-entrada-controle_controller'
-import { nfEntradaItemController } from '@/controllers/nf-entrada-item_controller'
-import { nfEntradaLogController } from '@/controllers/nf-entrada-log_controller'
-import { ordemProducaoController } from '@/controllers/ordem-producao_controller'
-import { produtoControleController } from '@/controllers/produto-controle_controller'
-import { produtoEstatisticaController } from '@/controllers/produto-estatistica_controller'
-import { TProdutoPlanoFields } from '@/controllers/produto-plano_controller'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
-import { day } from '@/utils/date/day'
-import { isEmpty } from '@/utils/identify/is-empty'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { estoqueController } from '@/controllers/estoque_controller.js'
+import { nfEntradaControleController } from '@/controllers/nf-entrada-controle_controller.js'
+import { nfEntradaItemController } from '@/controllers/nf-entrada-item_controller.js'
+import { nfEntradaLogController } from '@/controllers/nf-entrada-log_controller.js'
+import { ordemProducaoController } from '@/controllers/ordem-producao_controller.js'
+import { produtoControleController } from '@/controllers/produto-controle_controller.js'
+import { produtoEstatisticaController } from '@/controllers/produto-estatistica_controller.js'
+import { TProdutoPlanoFields } from '@/controllers/produto-plano_controller.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { day } from '@/utils/date/day.js'
+import { isEmpty } from '@/utils/identify/is-empty.js'
 
 export const NfMestre: TSchema = {
   table: 'NfMestre',
@@ -102,7 +102,7 @@ export const NfMestre: TSchema = {
 export type TNfEntradaFields = (typeof NfMestre.fields)[number]
 export type TNfEntradaKeys = (typeof NfMestre.primary)[number]
 
-function nfEntradaControllerFactory(db: OrmDatabase, schema: TSchema) {
+function nfEntradaControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfEntradaFields, TNfEntradaKeys>(db, schema)
 
   async function transferenciaCreate({ controles }: { controles: string[] }) {
@@ -169,7 +169,7 @@ function nfEntradaControllerFactory(db: OrmDatabase, schema: TSchema) {
       throw new Error(`Ordem de produção ${kOp} já está cadastrada`)
     }
 
-    await orm.rpc.create({
+    await orm.rpc.create$({
       data: {
         CdEmpresa: 1,
         NroNf: kOp,
@@ -231,7 +231,7 @@ function nfEntradaControllerFactory(db: OrmDatabase, schema: TSchema) {
       },
     })
 
-    await nfEntradaItemController.create({
+    await nfEntradaItemController.create$({
       data: {
         CdBaseCalculoCreditoPISCOFINS: 0,
         CdContribuicaoApuradaPISCOFINS: 0,
@@ -274,7 +274,7 @@ function nfEntradaControllerFactory(db: OrmDatabase, schema: TSchema) {
       },
     })
 
-    await estoqueController.increment({
+    await estoqueController.increment$({
       where: [
         ['CdEmpresa', 1],
         ['CdProduto', CdProduto.toString() || ''],
@@ -282,7 +282,7 @@ function nfEntradaControllerFactory(db: OrmDatabase, schema: TSchema) {
       increment: ['EstAtual', quantidade],
     })
 
-    await produtoEstatisticaController.increment({
+    await produtoEstatisticaController.increment$({
       where: [
         ['CdEmpresa', 1],
         ['MesRef', parseInt(day().format('MM'))],
@@ -293,7 +293,7 @@ function nfEntradaControllerFactory(db: OrmDatabase, schema: TSchema) {
     })
 
     for (const ctrl of controles) {
-      await produtoControleController.create({
+      await produtoControleController.create$({
         data: {
           CdFilial: 1,
           NumNfEntrada: CdProduto,
@@ -318,7 +318,7 @@ function nfEntradaControllerFactory(db: OrmDatabase, schema: TSchema) {
           TipoLote: 'C',
         },
       })
-      await nfEntradaControleController.create({
+      await nfEntradaControleController.create$({
         data: {
           CdFilial: 1,
           NumNota: kOp,
@@ -332,7 +332,7 @@ function nfEntradaControllerFactory(db: OrmDatabase, schema: TSchema) {
       })
     }
 
-    await nfEntradaLogController.create({
+    await nfEntradaLogController.create$({
       data: {
         CdFilial: 1,
         NumNota: kOp,
@@ -351,7 +351,7 @@ function nfEntradaControllerFactory(db: OrmDatabase, schema: TSchema) {
 
   return {
     ...orm.rpc,
-    transferenciaCreate,
+    transferenciaCreate$: transferenciaCreate,
   }
 }
 

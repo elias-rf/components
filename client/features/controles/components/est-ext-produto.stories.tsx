@@ -1,5 +1,5 @@
-import { EsterilizacaoExternaProduto } from '@/client/features/controles/components/est-ext-produto'
-import { fetcherMock } from '@/mocks/fetcher-mock'
+import { EsterilizacaoExternaProduto } from '@/client/features/controles/components/est-ext-produto.js'
+import { fetcherMock } from '@/mocks/fetcher-mock.js'
 import type { Story } from '@ladle/react'
 
 fetcherMock({

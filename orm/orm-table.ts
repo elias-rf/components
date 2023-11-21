@@ -1,20 +1,20 @@
-import { getIncludeData } from '@/orm/utils/get-include-data'
-import { selectFromInclude } from '@/orm/utils/valid/select-from-include'
-import { validData as vldData } from '@/orm/utils/valid/valid-data'
-import { validFirst as vldFirst } from '@/orm/utils/valid/valid-first'
-import { validGroupBy as vldGroupBy } from '@/orm/utils/valid/valid-group-by'
-import { validId as vldId } from '@/orm/utils/valid/valid-id'
-import { validOrderBy as vldOrderBy } from '@/orm/utils/valid/valid-order-by'
-import { validReturning as vldReturning } from '@/orm/utils/valid/valid-returning'
-import { validSelect as vldSelect } from '@/orm/utils/valid/valid-select'
-import { validWhere as vldWhere } from '@/orm/utils/valid/valid-where'
-import type { TSchema } from '@/schemas/schema.type'
-import { TData, TId, TOrderBy, TSelect, TWhere } from '@/types'
-import { OrmDatabase } from './orm-database'
-import type { Query } from './orm.type'
+import { getIncludeData } from '@/orm/utils/get-include-data.js'
+import { selectFromInclude } from '@/orm/utils/valid/select-from-include.js'
+import { validData as vldData } from '@/orm/utils/valid/valid-data.js'
+import { validFirst as vldFirst } from '@/orm/utils/valid/valid-first.js'
+import { validGroupBy as vldGroupBy } from '@/orm/utils/valid/valid-group-by.js'
+import { validId as vldId } from '@/orm/utils/valid/valid-id.js'
+import { validOrderBy as vldOrderBy } from '@/orm/utils/valid/valid-order-by.js'
+import { validReturning as vldReturning } from '@/orm/utils/valid/valid-returning.js'
+import { validSelect as vldSelect } from '@/orm/utils/valid/valid-select.js'
+import { validWhere as vldWhere } from '@/orm/utils/valid/valid-where.js'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { TData, TId, TOrderBy, TSelect, TWhere } from '@/types/index.js'
+import { AdapterKnex } from './adapter-knex/adapter-knex.js'
+import type { TQuery } from './orm.type.js'
 
 export function ormTable<TFields extends string, TKeys extends string>(
-  db: OrmDatabase,
+  db: AdapterKnex,
   schema: TSchema
 ) {
   const read = async ({
@@ -34,7 +34,7 @@ export function ormTable<TFields extends string, TKeys extends string>(
       ...validId(where),
       ...validFirst(select),
     }
-    let response = (await db.run(qry as Query)) as TData<TFields>
+    let response = (await db.run(qry as TQuery)) as TData<TFields>
     if (include) {
       response = await getIncludeData(response, include, schema)
     }
@@ -79,7 +79,7 @@ export function ormTable<TFields extends string, TKeys extends string>(
     if (sum) qry.sum = sum
     if (min) qry.min = min
     if (max) qry.max = max
-    let response = (await db.run(qry as Query)) as Array<TData<TFields>>
+    let response = (await db.run(qry as TQuery)) as Array<TData<TFields>>
 
     if (include) {
       response = await getIncludeData(response, include, schema)
@@ -105,25 +105,25 @@ export function ormTable<TFields extends string, TKeys extends string>(
       count,
     }
 
-    return db.run(qry as Query) as Promise<TData<TFields> | number>
+    return db.run(qry as TQuery) as Promise<TData<TFields> | number>
   }
   count.rpc = true
 
   const update = async ({
-    id,
+    where,
     data,
-    returning,
+    select,
   }: {
-    id: TId<TKeys>
+    where: TId<TKeys>
     data: Partial<TData<TFields>>
-    returning?: TSelect<TFields>
+    select?: TSelect<TFields>
   }) => {
     const qry = {
       from: getTableName(),
       update: validData(data),
-      ...validId(id),
-      ...validReturning(returning),
-    } as unknown as Query
+      ...validId(where),
+      ...validReturning(select),
+    } as unknown as TQuery
 
     return db.run(qry) as Promise<TData<TFields> | number>
   }
@@ -131,43 +131,43 @@ export function ormTable<TFields extends string, TKeys extends string>(
 
   const create = async ({
     data,
-    returning,
+    select,
   }: {
     data: Partial<TData<TFields>>
-    returning?: TSelect<TFields>
+    select?: TSelect<TFields>
   }) => {
     const qry = {
       from: getTableName(),
       insert: validData(data),
-      ...validReturning(returning),
-    } as unknown as Query
+      ...validReturning(select),
+    } as unknown as TQuery
 
     return db.run(qry) as Promise<TData<TFields> | number>
   }
   create.rpc = true
 
   const del = async ({
-    id,
-    returning,
+    where,
+    select,
   }: {
-    id: [TKeys, any][]
-    returning?: TSelect<TFields>
+    where: [TKeys, any][]
+    select?: TSelect<TFields>
   }): Promise<Record<TFields, any> | number> => {
     return db.run({
       del: true,
       from: getTableName(),
-      ...validId(id),
-      ...validReturning(returning),
-    } as unknown as Query) as Record<TFields, any> | number
+      ...validId(where),
+      ...validReturning(select),
+    } as unknown as TQuery) as Record<TFields, any> | number
   }
   del.rpc = true
 
   const increment = async ({
     increment,
     where = [],
-    returning,
+    select,
   }: {
-    returning?: TSelect<TFields>
+    select?: TSelect<TFields>
     where?: TWhere<TFields>
     increment: [TFields, number]
   }): Promise<Record<TFields, any> | number> => {
@@ -175,8 +175,8 @@ export function ormTable<TFields extends string, TKeys extends string>(
       from: getTableName(),
       increment,
       ...validWhere(where),
-      ...validReturning(returning),
-    } as unknown as Query
+      ...validReturning(select),
+    } as unknown as TQuery
 
     return db.run(qry) as Record<TFields, any> | number
   }
@@ -227,7 +227,15 @@ export function ormTable<TFields extends string, TKeys extends string>(
   }
 
   return {
-    rpc: { list, read, count, update, create, del, increment },
+    rpc: {
+      list,
+      read,
+      count,
+      update$: update,
+      create$: create,
+      del$: del,
+      increment$: increment,
+    },
     util: {
       getFields,
       getIdColumns,

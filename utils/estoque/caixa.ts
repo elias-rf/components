@@ -1,7 +1,7 @@
-import { round } from '@/utils/number/round'
-import { Enlite } from './enlite'
-import { Flex } from './flex'
-import { Produto } from './produto'
+import { round } from '@/utils/number/round.js'
+import { Enlite } from './enlite.js'
+import { Flex } from './flex.js'
+import { Produto } from './produto.js'
 
 export class Caixa {
   name = 'caixa'

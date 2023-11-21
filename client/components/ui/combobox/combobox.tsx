@@ -1,8 +1,8 @@
-import { SortIcon } from '@/client/components/icons/sort-icon'
-import { ComboboxItem } from '@/client/components/ui/combobox/combobox-item'
-import { useCombobox } from '@/client/components/ui/combobox/use-combobox'
-import { themeInput } from '@/client/components/ui/theme-input'
-import { cn } from '@/client/lib/cn'
+import { SortIcon } from '@/client/components/icons/sort-icon.js'
+import { ComboboxItem } from '@/client/components/ui/combobox/combobox-item.js'
+import { useCombobox } from '@/client/components/ui/combobox/use-combobox.js'
+import { themeInput } from '@/client/components/ui/theme-input.js'
+import { cn } from '@/client/lib/cn.js'
 import { useRef } from 'react'
 import { useOnClickOutside } from 'usehooks-ts'
 

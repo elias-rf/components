@@ -1,4 +1,4 @@
-import { TId } from '@/types'
+import { TId } from '@/types/index.js'
 
 export function getFieldId<T>(field: string, id: TId<T>) {
   for (const fld of id) {

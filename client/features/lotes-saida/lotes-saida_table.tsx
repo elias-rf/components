@@ -1,15 +1,15 @@
-import { Table } from '@/client/components/table'
-import { Input } from '@/client/components/ui/input/input'
-import { lotesSaidaColumns } from '@/client/features/lotes-saida/components/lotes-saida_columns'
-import { lotesSaidaStore } from '@/client/features/lotes-saida/lotes-saida_store'
-import { usePageSize } from '@/client/store/page-size'
+import { Table } from '@/client/components/table/table.js'
+import { Input } from '@/client/components/ui/input/input.js'
+import { lotesSaidaColumns } from '@/client/features/lotes-saida/components/lotes-saida_columns.js'
+import { lotesSaidaStore } from '@/client/features/lotes-saida/lotes-saida_store.js'
+import { usePageSize } from '@/client/store/page-size.js'
 import {
   TNfSaidaLoteFields,
   TNfSaidaLoteKeys,
-} from '@/controllers/nf-saida-lote_controller'
-import type { TData, TId } from '@/types'
+} from '@/controllers/nf-saida-lote_controller.js'
+import type { TData, TId } from '@/types/index.js'
 import { useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 
 export function LotesSaidaTable() {
   const pageHeight = usePageSize((state) => state.height * 0.9)

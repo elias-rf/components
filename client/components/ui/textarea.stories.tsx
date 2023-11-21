@@ -1,5 +1,5 @@
-import { JsonView } from '@/client/components/json-view/json-view'
-import { Textarea } from '@/client/components/ui/textarea'
+import { JsonView } from '@/client/components/json-view/json-view.js'
+import { Textarea } from '@/client/components/ui/textarea.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 import React from 'react'

@@ -1,4 +1,4 @@
-import { round } from '@/utils/number/round'
+import { round } from '@/utils/number/round.js'
 
 type TFormatDiario = {
   dia: string

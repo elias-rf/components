@@ -1,7 +1,6 @@
 // fastify-jwt.d.ts
-import { config } from '@/config'
-// import { __dirname } from '@/utils/dirname'
-import { pick } from '@/utils/object/pick'
+import { config } from '@/config/index.js'
+import { pick } from '@/utils/object/pick.js'
 import cookie from '@fastify/cookie'
 import cors from '@fastify/cors'
 import jwt from '@fastify/jwt'
@@ -9,9 +8,11 @@ import staticFiles from '@fastify/static'
 import Fastify from 'fastify'
 import { nanoid } from 'nanoid'
 import path from 'node:path'
-import { routes } from './routes'
+import * as url from 'url'
+import { routes } from './routes/index.js'
 
-// __dirname(import.meta)
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
+// const __filename = url.fileURLToPath(import.meta.url)
 
 const envToLogger = {
   development: {

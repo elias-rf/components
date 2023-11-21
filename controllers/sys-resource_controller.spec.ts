@@ -1,13 +1,13 @@
-import { dbSys } from '@/controllers/db/db-sys.db'
-import { sysResourceController } from '@/controllers/sys-resource_controller'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { getTracker } from '@/mocks/database.mock'
-import { knexMockHistory } from '@/mocks/knex-mock-history'
+import { dbSys } from '@/controllers/db/db-sys.db.js'
+import { sysResourceController } from '@/controllers/sys-resource_controller.js'
+import { knexMockMsql } from '@/mocks/connections.mock.js'
+import { getTracker } from '@/mocks/database.mock.js'
+import { knexMockHistory } from '@/mocks/knex-mock-history.js'
 import { describe, expect, it } from 'vitest'
 
 describe('SysResourceModel', () => {
   const tracker = getTracker()
-  dbSys.knex = knexMockMsql
+  dbSys.setDriver(knexMockMsql)
 
   it('list', async () => {
     tracker.reset()
@@ -48,8 +48,8 @@ describe('SysResourceModel', () => {
     tracker.reset()
     tracker.on.delete('resource').response(1)
 
-    const rsp = await sysResourceController.del({
-      id: [['resource_id', '1']],
+    const rsp = await sysResourceController.del$({
+      where: [['resource_id', '1']],
     })
 
     expect(rsp).toEqual(1)
@@ -66,10 +66,10 @@ describe('SysResourceModel', () => {
     tracker.on.update('resource').response({ resource_id: '10' })
     tracker.on.select('resource').response([{ resource_id: '10' }])
 
-    const rsp = await sysResourceController.update({
-      id: [['resource_id', '10']],
+    const rsp = await sysResourceController.update$({
+      where: [['resource_id', '10']],
       data: { resource_id: '10' },
-      returning: ['resource_id'],
+      select: ['resource_id'],
     })
 
     expect(rsp).toEqual({ resource_id: '10' })
@@ -85,7 +85,7 @@ describe('SysResourceModel', () => {
     tracker.reset()
     tracker.on.insert('resource').response(1)
 
-    const rsp = await sysResourceController.create({
+    const rsp = await sysResourceController.create$({
       data: { resource_id: '10' },
     })
 

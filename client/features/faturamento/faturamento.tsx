@@ -1,6 +1,6 @@
 // @ts-nocheck
-import { Table } from '@/client/components/table'
-import { day } from '@/utils/date/day'
+import { Table } from '@/client/components/table.js'
+import { day } from '@/utils/date/day.js'
 import React from 'react'
 import {
   mensal,
@@ -12,7 +12,7 @@ import {
   produtoSchema,
   ufSchema,
   vendedorSchema,
-} from './venda'
+} from './venda.js'
 
 export function Vendas() {
   const getVendaAnalitico = nfSaidaStore((state) => state.getVendaAnalitico)

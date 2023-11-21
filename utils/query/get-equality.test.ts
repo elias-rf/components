@@ -1,4 +1,4 @@
-import { getEquality } from '@/utils/query/get-equality'
+import { getEquality } from '@/utils/query/get-equality.js'
 import { describe, expect, test } from 'vitest'
 
 describe('equality', () => {

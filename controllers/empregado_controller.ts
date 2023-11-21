@@ -1,6 +1,6 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const empregadoSchema: TSchema = {
   table: 'tbl_Funcionario',
@@ -19,7 +19,7 @@ export const empregadoSchema: TSchema = {
 export type TEmpregadoFields = (typeof empregadoSchema.fields)[number]
 export type TEmpregadoKeys = (typeof empregadoSchema.primary)[number]
 
-function empregadoControllerFactory(db: OrmDatabase, schema: TSchema) {
+function empregadoControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TEmpregadoFields, TEmpregadoKeys>(db, schema)
   return { ...orm.rpc }
 }

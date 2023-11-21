@@ -1,7 +1,7 @@
-import { Table } from '@/client/components/table'
-import { useControles } from '@/client/features/controles/controles_store'
+import { Table } from '@/client/components/table/table.js'
+import { useControles } from '@/client/features/controles/controles_store.js'
 import React from 'react'
-import { esterilizacaoExternaMensalSchema } from './est-ext-mensal_schema'
+import { esterilizacaoExternaMensalSchema } from './est-ext-mensal_schema.js'
 
 type EsterilizacaoExternaMensalProp = {
   children?: React.ReactNode

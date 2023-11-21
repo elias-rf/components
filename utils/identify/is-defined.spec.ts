@@ -1,13 +1,13 @@
-import { expect, it } from "vitest";
-import { isDefined } from "./is-defined";
+import { expect, it } from 'vitest'
+import { isDefined } from './is-defined.js'
 
-it("deve ser defined", () => {
-  expect(isDefined(undefined)).toBeFalsy();
-  expect(isDefined(null)).toBeFalsy();
-  expect(isDefined("")).toBeTruthy();
-  expect(isDefined(0)).toBeTruthy();
-  expect(isDefined(true)).toBeTruthy();
-  expect(isDefined(false)).toBeTruthy();
-  expect(isDefined([])).toBeTruthy();
-  expect(isDefined({})).toBeTruthy();
-});
+it('deve ser defined', () => {
+  expect(isDefined(undefined)).toBeFalsy()
+  expect(isDefined(null)).toBeFalsy()
+  expect(isDefined('')).toBeTruthy()
+  expect(isDefined(0)).toBeTruthy()
+  expect(isDefined(true)).toBeTruthy()
+  expect(isDefined(false)).toBeTruthy()
+  expect(isDefined([])).toBeTruthy()
+  expect(isDefined({})).toBeTruthy()
+})

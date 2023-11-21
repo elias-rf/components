@@ -1,5 +1,5 @@
 import '@/client/features/controles/controles_store.mock'
-import { Transferencia } from '@/client/features/controles/transferencia'
+import { Transferencia } from '@/client/features/controles/transferencia.js'
 import { Story } from '@ladle/react'
 
 export default {

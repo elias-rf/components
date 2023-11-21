@@ -1,5 +1,5 @@
-import { describe, test, expect } from 'vitest'
-import { isIdEqual } from './is-id-equal'
+import { describe, expect, test } from 'vitest'
+import { isIdEqual } from './is-id-equal.js'
 
 describe('isIdEqual', () => {
   test('should return true', () => {

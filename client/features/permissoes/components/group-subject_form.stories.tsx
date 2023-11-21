@@ -1,5 +1,5 @@
-import { GroupSubjectForm } from '@/client/features/permissoes/group-subject_form'
-import { useForm } from '@/client/lib/hooks/use-form'
+import { GroupSubjectForm } from '@/client/features/permissoes/group-subject_form.js'
+import { useForm } from '@/client/lib/hooks/use-form.js'
 import { Story } from '@ladle/react'
 
 export default {

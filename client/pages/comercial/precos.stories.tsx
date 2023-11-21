@@ -1,5 +1,5 @@
 import { Story } from '@ladle/react'
-import Precos from './precos'
+import Precos from './precos.js'
 
 export default {
   title: 'pages/comercial/precos',

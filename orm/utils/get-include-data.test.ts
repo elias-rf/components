@@ -1,6 +1,6 @@
-import { getIncludeData } from '@/orm/utils/get-include-data'
-import type { TSchema } from '@/schemas/schema.type'
-import { TInclude, TWhere } from '@/types'
+import { getIncludeData } from '@/orm/utils/get-include-data.js'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { TInclude, TWhere } from '@/types/index.js'
 import { describe, expect, test } from 'vitest'
 
 const schema = {

@@ -1,5 +1,5 @@
 import { Story } from '@ladle/react'
-import { Permissions } from './permissions'
+import { Permissions } from './permissions.js'
 
 export default {
   title: 'features/permissions',

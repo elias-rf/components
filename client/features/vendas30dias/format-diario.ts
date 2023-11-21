@@ -1,5 +1,5 @@
-import { day } from '@/utils/date/day'
-import { round } from '@/utils/number/round'
+import { day } from '@/utils/date/day.js'
+import { round } from '@/utils/number/round.js'
 
 function getSum(lista: any[], produto: string, data: day.Dayjs) {
   const dataInicial = data.add(-30, 'day').format('YYYY-MM-DD')

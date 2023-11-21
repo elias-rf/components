@@ -1,4 +1,4 @@
-import fetchMock from 'fetch-mock/esm/client'
+import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
 
 export const uid = (id = 0) => {
   return () => {
@@ -22,8 +22,6 @@ export function createRecord(fake: any, qtd: number = 1) {
   return records
 }
 
-export const tracker = fetchMock
-
 export function fetcherMock(
   api:
     | {
@@ -31,41 +29,18 @@ export function fetcherMock(
       }
     | { [method: string]: any }
 ) {
-  fetchMock.mock(
-    (url, options: any) => {
-      const body = JSON.parse(options.body) as {
-        id: number
-        method: string
-        args: any
-      }
-      if (Object.hasOwn(api, body.method)) {
-        console.log(body.method, 'ok')
-        return true
-      }
-      console.log(
-        'fetch não encontrado:',
-        JSON.stringify(
-          {
-            method: body.method,
-            args: body.args,
-          },
-          null,
-          2
-        )
-      )
-      return false
-    },
-    (_url: string, options: any) => {
-      const body = JSON.parse(options.body) as {
-        id: number
-        method: string
-        args: any
-      }
-      const result = api[body.method](body.args)
-      return {
-        id: body.id,
-        result,
-      }
+  mockedFetch.add(async (request: any) => {
+    const body = JSON.parse(request.options?.body) as {
+      id: number
+      method: string
+      args: any
     }
-  )
+    if (Object.hasOwn(api, body.method)) {
+      const result = api[body.method](body.args)
+      return { body: { id: body.id, result } }
+    }
+  })
 }
+
+fetcherMock.reset = mockedFetch.clear
+fetcherMock.history = mockedFetch.history

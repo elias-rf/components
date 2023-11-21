@@ -1,19 +1,22 @@
-import { cache } from '@/client/lib/cache'
-import { createSelectors } from '@/client/lib/create-selectors'
+import { cache } from '@/client/lib/cache.js'
+import { createSelectors } from '@/client/lib/create-selectors.js'
 import {
   TCreateListStore,
   createListStore,
-} from '@/client/store/create-list-store'
+} from '@/client/store/create-list-store.js'
 import {
   TCreateRecordStore,
   createRecordStore,
-} from '@/client/store/create-record-store'
-import { TClienteFields, TClienteKeys } from '@/controllers/cliente_controller'
-import { rpc } from '@/rpc/rpc-client'
-import { TData, TFormStatus } from '@/types'
-import { day } from '@/utils/date/day'
-import { getFieldId } from '@/utils/query/get-field-id'
-import { ms } from '@/utils/string/ms'
+} from '@/client/store/create-record-store.js'
+import {
+  TClienteFields,
+  TClienteKeys,
+} from '@/controllers/cliente_controller.js'
+import { rpc } from '@/rpc/rpc-client.js'
+import { TData, TFormStatus } from '@/types/index.js'
+import { day } from '@/utils/date/day.js'
+import { getFieldId } from '@/utils/query/get-field-id.js'
+import { ms } from '@/utils/string/ms.js'
 import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
 

@@ -1,6 +1,6 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const etiquetaExternaSchema: TSchema = {
   table: 'tEtiqueta',
@@ -13,7 +13,7 @@ export type TEtiquetaExternaFields =
 export type TEtiquetaExternaKeys =
   (typeof etiquetaExternaSchema.primary)[number]
 
-function etiquetaExternaControllerFactory(db: OrmDatabase, schema: TSchema) {
+function etiquetaExternaControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TEtiquetaExternaFields, TEtiquetaExternaKeys>(db, schema)
   return {
     ...orm.rpc,

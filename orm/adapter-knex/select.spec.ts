@@ -1,18 +1,18 @@
-import { knexMockMsql } from '../../mocks/connections.mock'
-import { OrmDatabase } from '../orm-database'
-import { getTracker } from '../../mocks/database.mock'
-import { knexMockHistory } from '../../mocks/knex-mock-history'
-import { describe, beforeEach, test, expect } from 'vitest'
+import { beforeEach, describe, expect, test } from 'vitest'
+import { knexMockMsql } from '../../mocks/connections.mock.js'
+import { getTracker } from '../../mocks/database.mock.js'
+import { knexMockHistory } from '../../mocks/knex-mock-history.js'
+import { AdapterKnex } from './adapter-knex.js'
 
 describe('select', () => {
-  const orm = new OrmDatabase(knexMockMsql)
+  const orm = new AdapterKnex(knexMockMsql)
   orm.startLog()
   const tracker = getTracker()
 
   beforeEach(() => {
     tracker.reset()
     tracker.on.select('select').response([])
-    orm.resetLog()
+    orm.startLog()
   })
 
   test('from', async () => {

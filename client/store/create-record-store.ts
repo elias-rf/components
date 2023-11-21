@@ -1,4 +1,4 @@
-import { TData } from '@/types'
+import { TData } from '@/types/index.js'
 
 export type TCreateRecordStore<TFields extends string> = {
   record: TData<TFields>

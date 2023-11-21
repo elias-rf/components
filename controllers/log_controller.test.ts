@@ -1,13 +1,13 @@
-import { dbLog } from '@/controllers/db/db-log.db'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { getTracker } from '@/mocks/database.mock'
-import { knexMockHistory } from '@/mocks/knex-mock-history'
+import { dbLog } from '@/controllers/db/db-log.db.js'
+import { knexMockMsql } from '@/mocks/connections.mock.js'
+import { getTracker } from '@/mocks/database.mock.js'
+import { knexMockHistory } from '@/mocks/knex-mock-history.js'
 import { describe, expect, it } from 'vitest'
-import { logController } from './log_controller'
+import { logController } from './log_controller.js'
 
 describe('logController', () => {
   const tracker = getTracker()
-  dbLog.knex = knexMockMsql
+  dbLog.setDriver(knexMockMsql)
 
   it('list', async () => {
     tracker.reset()
@@ -48,8 +48,8 @@ describe('logController', () => {
     tracker.reset()
     tracker.on.delete('log').response(1)
 
-    const rsp = await logController.del({
-      id: [['reqId', 1]],
+    const rsp = await logController.del$({
+      where: [['reqId', 1]],
     })
 
     expect(rsp).toEqual(1)
@@ -66,10 +66,10 @@ describe('logController', () => {
     tracker.on.update('log').response({ reqId: 10 })
     tracker.on.select('log').response([{ reqId: 10 }])
 
-    const rsp = await logController.update({
-      id: [['reqId', 1]],
+    const rsp = await logController.update$({
+      where: [['reqId', 1]],
       data: { reqId: 10 },
-      returning: ['reqId'],
+      select: ['reqId'],
     })
 
     expect(rsp).toEqual({ reqId: 10 })
@@ -85,7 +85,7 @@ describe('logController', () => {
     tracker.reset()
     tracker.on.insert('log').response(1)
 
-    const rsp = await logController.create({
+    const rsp = await logController.create$({
       data: { reqId: 10 },
     })
 

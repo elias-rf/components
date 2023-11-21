@@ -1,4 +1,4 @@
-import { Modal, TModalProps } from '@/client/components/ui/modal'
+import { Modal, TModalProps } from '@/client/components/ui/modal.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 import { useState } from 'react'

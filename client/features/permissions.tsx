@@ -1,13 +1,13 @@
-import { ShieldIcon } from '@/client/components/icons/shield-icon'
-import { Button } from '@/client/components/ui/button'
-import { CheckBox } from '@/client/components/ui/check-box'
-import { Label } from '@/client/components/ui/label'
-import { ListGroup } from '@/client/components/ui/list-group/list-group'
-import { Modal } from '@/client/components/ui/modal'
-import { TGroupSubjectFields } from '@/controllers/group-subject_controller'
-import { TGroupFields } from '@/controllers/group_controller'
-import { rpc } from '@/rpc/rpc-client'
-import { TData } from '@/types'
+import { ShieldIcon } from '@/client/components/icons/shield-icon.js'
+import { Button } from '@/client/components/ui/button.js'
+import { CheckBox } from '@/client/components/ui/check-box.js'
+import { Label } from '@/client/components/ui/label.js'
+import { ListGroup } from '@/client/components/ui/list-group/list-group.js'
+import { Modal } from '@/client/components/ui/modal.js'
+import { TGroupSubjectFields } from '@/controllers/group-subject_controller.js'
+import { TGroupFields } from '@/controllers/group_controller.js'
+import { rpc } from '@/rpc/rpc-client.js'
+import { TData } from '@/types/index.js'
 import React, { useEffect, useState } from 'react'
 
 export function Permissions({
@@ -56,14 +56,14 @@ export function Permissions({
       data.findIndex((prm: any) => permission === prm.idSubject) !== -1
 
     if (exist) {
-      await rpc.groupSubject.del({
-        id: [
+      await rpc.groupSubject.del$({
+        where: [
           ['idGroup', groupCurrent.toString()],
           ['idSubject', permission],
         ],
       })
     } else {
-      await rpc.groupSubject.create({
+      await rpc.groupSubject.create$({
         data: {
           idGroup: groupCurrent,
           idSubject: permission,

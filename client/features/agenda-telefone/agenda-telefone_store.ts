@@ -1,23 +1,23 @@
-import { cache } from '@/client/lib/cache'
-import { createSelectors } from '@/client/lib/create-selectors'
+import { cache } from '@/client/lib/cache.js'
+import { createSelectors } from '@/client/lib/create-selectors.js'
 import {
   TCreateButtonsStore,
   createButtonsStore,
-} from '@/client/store/create-buttons-store'
+} from '@/client/store/create-buttons-store.js'
 import {
   TCreateListStore,
   createListStore,
-} from '@/client/store/create-list-store'
+} from '@/client/store/create-list-store.js'
 import {
   TCreateRecordStore,
   createRecordStore,
-} from '@/client/store/create-record-store'
+} from '@/client/store/create-record-store.js'
 import {
   TAgendaTelefoneFields,
   TAgendaTelefoneKeys,
-} from '@/controllers/agenda-telefone_controller'
-import { rpc } from '@/rpc/rpc-client'
-import { TData } from '@/types'
+} from '@/controllers/agenda-telefone_controller.js'
+import { rpc } from '@/rpc/rpc-client.js'
+import { TData } from '@/types/index.js'
 import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
 
@@ -82,6 +82,12 @@ const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
             },
           }
         )) as TData<TAgendaTelefoneFields>
+
+        console.log(
+          `🚀 ~ file: agenda-telefone_store.ts:86 ~ fetchRecord: ~ record:`,
+          record
+        )
+
         set(() => ({ record }), false, 'fetchRecord')
         return record
       },
@@ -89,13 +95,13 @@ const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
       onSave: async () => {
         cache.purgeTable(tableName)
         if (get().status === 'edit') {
-          await rpc[tableName].update({
+          await rpc[tableName].update$({
             data: get().record || {},
-            id: get().selection,
+            where: get().selection,
           })
         }
         if (get().status === 'new') {
-          await rpc[tableName].create({ data: get().record || {} })
+          await rpc[tableName].create$({ data: get().record || {} })
         }
         await get().fetchList()
         set(() => ({ status: 'view' }), false, 'onSave')
@@ -103,7 +109,7 @@ const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
 
       onDelete: async () => {
         cache.purgeTable(tableName)
-        await rpc[tableName].del({ id: get().selection })
+        await rpc[tableName].del$({ where: get().selection })
         await get().fetchList()
         set(
           () => ({ record: get().recordClear, status: 'none', selection: [] }),
@@ -121,5 +127,8 @@ const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
 )
 
 agendaTelefoneStoreBase.getState().setOrderBy([['id', 'asc']])
+agendaTelefoneStoreBase
+  .getState()
+  .setRecord(agendaTelefoneStoreBase.getState().recordClear)
 
 export const agendaTelefoneStore = createSelectors(agendaTelefoneStoreBase)

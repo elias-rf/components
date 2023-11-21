@@ -1,5 +1,5 @@
-import { expect, test } from "vitest";
-import { config } from "./index";
-test("config.schema", () => {
-  expect(Object.keys(config)).toEqual(["app", "auth", "db"]);
-});
+import { expect, test } from 'vitest'
+import { config } from './index.js'
+test('config.schema', () => {
+  expect(Object.keys(config)).toEqual(['app', 'auth', 'db'])
+})

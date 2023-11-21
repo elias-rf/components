@@ -1,7 +1,7 @@
-import { GruposForm } from '@/client/features/grupos/grupos_form'
-import { GruposHead } from '@/client/features/grupos/grupos_head'
-import { gruposStore } from '@/client/features/grupos/grupos_store'
-import { GruposTable } from '@/client/features/grupos/grupos_table'
+import { GruposForm } from '@/client/features/grupos/grupos_form.js'
+import { GruposHead } from '@/client/features/grupos/grupos_head.js'
+import { gruposStore } from '@/client/features/grupos/grupos_store.js'
+import { GruposTable } from '@/client/features/grupos/grupos_table.js'
 
 export default function Grupos() {
   const status = gruposStore.use.status()

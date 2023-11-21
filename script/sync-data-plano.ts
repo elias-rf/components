@@ -1,5 +1,5 @@
-import { printAt } from '@/script/screen'
-import { omit } from '@/utils/object/omit'
+import { printAt } from '@/script/screen.js'
+import { omit } from '@/utils/object/omit.js'
 import { eachOfLimit } from 'async'
 import Knex from 'knex'
 import { table } from 'table'

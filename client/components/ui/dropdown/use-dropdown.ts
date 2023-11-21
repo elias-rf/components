@@ -1,4 +1,4 @@
-import { useStateMutable } from '@/client/lib/hooks/use-state-mutable'
+import { useStateMutable } from '@/client/lib/hooks/use-state-mutable.js'
 import { useId, useRef } from 'react'
 
 type TOptions = { label: string; value: string }[]

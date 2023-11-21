@@ -1,6 +1,6 @@
 // https://icon-sets.iconify.design/material-symbols/chevron-right-rounded/
 
-import { cn } from '@/client/lib/cn'
+import { cn } from '@/client/lib/cn.js'
 
 export function CloseIcon({ className }: { className?: string }) {
   return (

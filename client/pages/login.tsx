@@ -1,4 +1,4 @@
-import { Login as LoginComponent } from '../features/login'
+import { Login as LoginComponent } from '../features/login.js'
 
 /**
  * Componente para tela de login

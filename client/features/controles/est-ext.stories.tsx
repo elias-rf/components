@@ -1,5 +1,5 @@
 import '@/client/features/controles/controles_store.mock'
-import { EstExt } from '@/client/features/controles/est-ext'
+import { EstExt } from '@/client/features/controles/est-ext.js'
 import type { Story } from '@ladle/react'
 
 export default {

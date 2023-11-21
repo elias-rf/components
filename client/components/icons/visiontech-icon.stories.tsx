@@ -1,4 +1,4 @@
-import { VisiontechIcon } from '@/client/components/icons/visiontech-icon'
+import { VisiontechIcon } from '@/client/components/icons/visiontech-icon.js'
 import '@/client/index.css'
 import type { Story, StoryDefault } from '@ladle/react'
 

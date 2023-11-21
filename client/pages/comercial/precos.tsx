@@ -1,7 +1,7 @@
-import { Can } from '@/client/components/can'
-import { PrecosHead } from '@/client/features/precos/precos-head'
-import { authStore } from '@/client/store/auth_store'
-import { PrecosCliente } from '../../features/precos/precos-cliente'
+import { Can } from '@/client/components/can.js'
+import { PrecosHead } from '@/client/features/precos/precos-head.js'
+import { authStore } from '@/client/store/auth_store.js'
+import { PrecosCliente } from '../../features/precos/precos-cliente.js'
 
 const permissions = {
   precos_permissao: 'Atribuir permissões de preços',

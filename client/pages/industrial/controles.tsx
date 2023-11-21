@@ -1,9 +1,9 @@
-import { Tabs } from '@/client/components/ui/tabs/tabs'
-import { Title } from '@/client/components/ui/title'
-import { EstExt } from '@/client/features/controles/est-ext'
-import { EstInt } from '@/client/features/controles/est-int'
-import { Operacao } from '@/client/features/controles/operacao'
-import { Transferencia } from '@/client/features/controles/transferencia'
+import { Tabs } from '@/client/components/ui/tabs/tabs.js'
+import { Title } from '@/client/components/ui/title.js'
+import { EstExt } from '@/client/features/controles/est-ext.js'
+import { EstInt } from '@/client/features/controles/est-int.js'
+import { Operacao } from '@/client/features/controles/operacao.js'
+import { Transferencia } from '@/client/features/controles/transferencia.js'
 import { useState } from 'react'
 
 export default function Controles() {

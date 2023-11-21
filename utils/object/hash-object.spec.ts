@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { hashObject } from './hash-object'
+import { hashObject } from './hash-object.js'
 
 describe('hashObject', () => {
   it('deve trabalhar com undefined', () => {

@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { get } from './get'
+import { get } from './get.js'
 
 describe('get', () => {
   test('get nivel 1', () => {

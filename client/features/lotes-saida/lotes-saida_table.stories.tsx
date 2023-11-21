@@ -1,9 +1,9 @@
-import { createRecord, fetcherMock, uid } from '@/mocks/fetcher-mock'
+import { createRecord, fetcherMock, uid } from '@/mocks/fetcher-mock.js'
 
-import { Page } from '@/client/components/page/page'
-import { StoreViewer } from '@/client/components/ui/store-viewer'
-import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store'
-import { AgendaTelefoneTable } from '@/client/features/agenda-telefone/agenda-telefone_table'
+import { Page } from '@/client/components/page/page.js'
+import { StoreViewer } from '@/client/components/ui/store-viewer.js'
+import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store.js'
+import { AgendaTelefoneTable } from '@/client/features/agenda-telefone/agenda-telefone_table.js'
 import { fakerPT_BR as faker } from '@faker-js/faker'
 import type { Story } from '@ladle/react'
 

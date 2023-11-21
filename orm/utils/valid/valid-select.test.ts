@@ -1,4 +1,4 @@
-import { validSelect } from '@/orm/utils/valid/valid-select'
+import { validSelect } from '@/orm/utils/valid/valid-select.js'
 import { describe, expect, test } from 'vitest'
 
 const phonebook = {

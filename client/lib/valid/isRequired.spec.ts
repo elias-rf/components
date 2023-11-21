@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { valid } from './index'
-import { isRequired } from './isRequired'
+import { valid } from './index.js'
+import { isRequired } from './isRequired.js'
 
 describe('required', () => {
   it('default', () => {

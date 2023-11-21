@@ -1,4 +1,4 @@
-import { TColumn } from '@/types'
+import { TColumn } from '@/types/index.js'
 
 export const agendaTelefoneColumns: TColumn[] = [
   { name: 'id', label: 'Ramal', width: '5%' },

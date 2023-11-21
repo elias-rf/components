@@ -1,7 +1,7 @@
-import type { TSchema } from '@/schemas/schema.type'
-import { TSelect, TWhere } from '@/types'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { TSelect, TWhere } from '@/types/index.js'
 import { describe, expect, test } from 'vitest'
-import { selectFromInclude } from './select-from-include'
+import { selectFromInclude } from './select-from-include.js'
 
 const schema = {
   database: 'test',

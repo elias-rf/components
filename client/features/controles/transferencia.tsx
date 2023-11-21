@@ -1,6 +1,6 @@
-import { TransferenciaDiario } from './components/transferencia-diario'
-import { TransferenciaMensal } from './components/transferencia-mensal'
-import { TransferenciaModelo } from './components/transferencia-modelo'
+import { TransferenciaDiario } from './components/transferencia-diario.js'
+import { TransferenciaMensal } from './components/transferencia-mensal.js'
+import { TransferenciaModelo } from './components/transferencia-modelo.js'
 
 export function Transferencia() {
   return (

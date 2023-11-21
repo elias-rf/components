@@ -1,7 +1,7 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
-import { day } from '@/utils/date/day'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { day } from '@/utils/date/day.js'
 import { isoDate, object, parse, regex, string } from 'valibot'
 
 export const esterilizacaoExternaSchema: TSchema = {
@@ -27,7 +27,7 @@ export type TEsterilizacaoExternaKeys =
   (typeof esterilizacaoExternaSchema.primary)[number]
 
 function esterilizacaoExternaControllerFactory(
-  db: OrmDatabase,
+  db: AdapterKnex,
   schema: TSchema
 ) {
   const orm = ormTable<TEsterilizacaoExternaFields, TEsterilizacaoExternaKeys>(
@@ -49,7 +49,7 @@ function esterilizacaoExternaControllerFactory(
       }),
       { inicio, fim }
     )
-    const knex = db.knex
+    const knex = db.getDriver()
     const qry = await knex(
       knex.raw(
         'tEsterilizacaoExterna LEFT JOIN (SELECT tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoExterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt'
@@ -80,7 +80,7 @@ function esterilizacaoExternaControllerFactory(
     mes: string
   }): Promise<{ mes: string; quantidade: number }[]> => {
     parse(string([regex(/^\d{4}-(?:0[1-9]|1[0-2])$/, 'mês inválido')]), mes)
-    const knex = db.knex
+    const knex = db.getDriver()
     const qry = await knex(
       knex.raw(
         'tEsterilizacaoExterna LEFT JOIN (SELECT tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoExterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt'
@@ -114,7 +114,7 @@ function esterilizacaoExternaControllerFactory(
       }),
       { data, produto }
     )
-    const knex = db.knex
+    const knex = db.getDriver()
     const qry = knex(
       knex.raw(
         'tEsterilizacaoExterna LEFT JOIN (SELECT tbl_Produto.fkCategoria, tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoExterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt'
@@ -142,7 +142,7 @@ function esterilizacaoExternaControllerFactory(
     parse(object({ data: string([isoDate('data inicial inválida')]) }), {
       data,
     })
-    const knex = db.knex
+    const knex = db.getDriver()
     const qry = await knex(
       knex.raw(
         'tEsterilizacaoExterna LEFT JOIN (SELECT tbl_Produto.fkCategoria, tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoExterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt'

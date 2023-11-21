@@ -1,13 +1,16 @@
-import { Can } from '@/client/components/can'
-import { Table } from '@/client/components/table'
-import { usuarioColumns } from '@/client/features/usuario/components/usuario_columns'
-import { usuarioStore } from '@/client/features/usuario/usuario_store'
-import { authStore } from '@/client/store/auth_store'
-import { usePageSize } from '@/client/store/page-size'
-import { TUsuarioFields, TUsuarioKeys } from '@/controllers/usuario_controller'
-import type { TData, TId } from '@/types'
+import { Can } from '@/client/components/can.js'
+import { Table } from '@/client/components/table/table.js'
+import { usuarioColumns } from '@/client/features/usuario/components/usuario_columns.js'
+import { usuarioStore } from '@/client/features/usuario/usuario_store.js'
+import { authStore } from '@/client/store/auth_store.js'
+import { usePageSize } from '@/client/store/page-size.js'
+import {
+  TUsuarioFields,
+  TUsuarioKeys,
+} from '@/controllers/usuario_controller.js'
+import type { TData, TId } from '@/types/index.js'
 import { useEffect } from 'react'
-import toast from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 
 export function UsuarioTable() {
   const pageHeight = usePageSize((state) => state.height * 0.7)

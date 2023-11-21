@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 import { describe, expect, it, vi } from 'vitest'
-import { useTimeout } from './use-timeout'
+import { useTimeout } from './use-timeout.js'
 
 describe('useTimeout', () => {
   it('should delay the execution of the callback', () => {

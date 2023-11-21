@@ -1,3 +1,3 @@
-export * from './orm-database'
-export * from './orm-table'
-export * from './orm.type'
+export * from './adapter-knex/adapter-knex.js'
+export * from './orm-table.js'
+export * from './orm.type.js'

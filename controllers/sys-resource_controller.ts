@@ -1,6 +1,6 @@
-import { dbSys } from '@/controllers/db/db-sys.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbSys } from '@/controllers/db/db-sys.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const resource = {
   database: 'sys',
@@ -13,7 +13,7 @@ export const resource = {
 export type TSysResourceFields = (typeof resource.fields)[number]
 export type TSysResourceKeys = (typeof resource.primary)[number]
 
-function sysResourceControllerFactory(db: OrmDatabase, schema: TSchema) {
+function sysResourceControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TSysResourceFields, TSysResourceKeys>(db, schema)
   return {
     ...orm.rpc,

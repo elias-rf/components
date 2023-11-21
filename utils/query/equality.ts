@@ -1,5 +1,5 @@
-import { TWhere } from '@/types'
-import { getEquality } from '@/utils/query/get-equality'
+import { TWhere } from '@/types/index.js'
+import { getEquality } from '@/utils/query/get-equality.js'
 
 export function equalityToObject(where?: TWhere<string>) {
   if (!where) return {}

@@ -1,25 +1,25 @@
-import { describe, expect, it } from "vitest";
-import { group } from "./group";
+import { describe, expect, it } from 'vitest'
+import { group } from './group.js'
 
 const data = [
-  { id: 1, uf: "ES", value: 1 },
-  { id: 2, uf: "MG", value: 2 },
-  { id: 3, uf: "ES", value: 3 },
-  { id: 4, uf: "MG", value: 4 },
-];
+  { id: 1, uf: 'ES', value: 1 },
+  { id: 2, uf: 'MG', value: 2 },
+  { id: 3, uf: 'ES', value: 3 },
+  { id: 4, uf: 'MG', value: 4 },
+]
 
-describe("groupBy", () => {
-  it("group by 1 feld", () => {
-    const cb = (vlr: any) => vlr.uf;
+describe('groupBy', () => {
+  it('group by 1 feld', () => {
+    const cb = (vlr: any) => vlr.uf
     expect(group(data, cb)).toEqual({
       ES: [
-        { id: 1, uf: "ES", value: 1 },
-        { id: 3, uf: "ES", value: 3 },
+        { id: 1, uf: 'ES', value: 1 },
+        { id: 3, uf: 'ES', value: 3 },
       ],
       MG: [
-        { id: 2, uf: "MG", value: 2 },
-        { id: 4, uf: "MG", value: 4 },
+        { id: 2, uf: 'MG', value: 2 },
+        { id: 4, uf: 'MG', value: 4 },
       ],
-    });
-  });
-});
+    })
+  })
+})

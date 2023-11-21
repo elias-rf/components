@@ -1,4 +1,4 @@
-import { Chip, TChipProps } from '@/client/components/ui/chip'
+import { Chip, TChipProps } from '@/client/components/ui/chip.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 

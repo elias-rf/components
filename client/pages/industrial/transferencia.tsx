@@ -1,4 +1,4 @@
-import { Transferencia } from '@/client/features/transferencia/transferencia'
+import { Transferencia } from '@/client/features/transferencia/transferencia.js'
 
 export default function IndustrialTransferencia() {
   return (

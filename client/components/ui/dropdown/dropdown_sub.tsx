@@ -1,5 +1,5 @@
-import { ChevronIcon } from '@/client/components/icons/chevron-icon'
-import { cn } from '@/client/lib/cn'
+import { ChevronIcon } from '@/client/components/icons/chevron-icon.js'
+import { cn } from '@/client/lib/cn.js'
 import { ReactNode, useRef, useState } from 'react'
 import { useOnClickOutside } from 'usehooks-ts'
 

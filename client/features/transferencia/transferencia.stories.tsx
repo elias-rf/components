@@ -1,5 +1,5 @@
 import { Story } from '@ladle/react'
-import { Transferencia } from './transferencia'
+import { Transferencia } from './transferencia.js'
 
 export default {
   title: 'features/transferencia',

@@ -1,0 +1,57 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+@resource = agendaTelefone
+
+
+### LIST
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "{{resource}}/list",
+  "args": {"where":[["id",182]]},
+  "id": "1"
+}
+
+### READ
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "{{resource}}/read",
+  "args": {"where": [["id",99]]},
+  "id": "1"
+}
+
+### CREATE
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "{{resource}}/create$",
+  "args": {"data": {"id":99,"name":"fulano","department":"dev","email":"fulano@mail.com"},"select":["*"]},
+  "id": "1"
+}
+
+
+### UPDATE
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "{{resource}}/update$",
+  "args": {"where": [["id",99]],"data": {"name":"cicrano"},"select":["*"]},
+  "id": "1"
+}
+
+
+### DELETE
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "{{resource}}/del$",
+  "args": {"where": [["id",99]]},
+  "id": "1"
+}

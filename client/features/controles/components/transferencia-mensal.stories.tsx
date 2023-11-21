@@ -1,4 +1,4 @@
-import { TransferenciaMensal } from '@/client/features/controles/components/transferencia-mensal'
+import { TransferenciaMensal } from '@/client/features/controles/components/transferencia-mensal.js'
 import '@/client/features/controles/controles_store.mock'
 import { Story } from '@ladle/react'
 

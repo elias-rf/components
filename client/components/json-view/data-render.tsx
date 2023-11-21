@@ -1,7 +1,7 @@
-import * as DataTypeDetection from './data-type-detection'
-import { JsonArray } from './json-array'
-import { JsonObject } from './json-object'
-import { JsonPrimitiveValue } from './json-primitive-value'
+import * as DataTypeDetection from './data-type-detection.js'
+import { JsonArray } from './json-array.js'
+import { JsonObject } from './json-object.js'
+import { JsonPrimitiveValue } from './json-primitive-value.js'
 
 export interface StyleProps {
   container: string

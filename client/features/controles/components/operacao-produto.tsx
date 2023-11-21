@@ -1,7 +1,7 @@
-import { Table } from '@/client/components/table'
-import { useControles } from '@/client/features/controles/controles_store'
+import { Table } from '@/client/components/table/table.js'
+import { useControles } from '@/client/features/controles/controles_store.js'
 import React, { ReactNode } from 'react'
-import { operacaoProdutoSchema } from './operacao-produto_schema'
+import { operacaoProdutoSchema } from './operacao-produto_schema.js'
 
 type OperacaoProdutoProps = {
   children?: ReactNode

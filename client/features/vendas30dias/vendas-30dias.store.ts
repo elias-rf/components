@@ -1,8 +1,8 @@
-import { formatDiario } from '@/client/features/vendas30dias/format-diario'
-import { cache } from '@/client/lib/cache'
-import { createSelectors } from '@/client/lib/create-selectors'
-import { rpc } from '@/rpc/rpc-client'
-import { day } from '@/utils/date/day'
+import { formatDiario } from '@/client/features/vendas30dias/format-diario.js'
+import { cache } from '@/client/lib/cache.js'
+import { createSelectors } from '@/client/lib/create-selectors.js'
+import { rpc } from '@/rpc/rpc-client.js'
+import { day } from '@/utils/date/day.js'
 import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
 

@@ -1,9 +1,16 @@
-import { JsonView } from '@/client/components/json-view/json-view'
-import { TColumn, TId, TOrderBy, TRow, TSelection, TWhere } from '@/types'
-import { deepEqual } from '@/utils/object/deep-equal'
+import { JsonView } from '@/client/components/json-view/json-view.js'
+import {
+  TColumn,
+  TId,
+  TOrderBy,
+  TRow,
+  TSelection,
+  TWhere,
+} from '@/types/index.js'
+import { deepEqual } from '@/utils/object/deep-equal.js'
 import type { Story } from '@ladle/react'
 import React from 'react'
-import { Table } from './table'
+import { Table } from './table.js'
 
 export default {
   title: 'components/table',

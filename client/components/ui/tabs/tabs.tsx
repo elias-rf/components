@@ -1,7 +1,7 @@
-import { useStateMutable } from '@/client/lib/hooks/use-state-mutable'
+import { useStateMutable } from '@/client/lib/hooks/use-state-mutable.js'
 import { ReactNode, useEffect } from 'react'
-import { Tab } from './tab'
-import { TabsContext } from './tabs_context'
+import { Tab } from './tab.js'
+import { TabsContext } from './tabs_context.js'
 
 export type TTabsProps = {
   selected: string

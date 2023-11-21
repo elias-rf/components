@@ -1,5 +1,5 @@
-import { Chip } from '@/client/components/ui/chip'
-import { Select } from '@/client/components/ui/select/select'
+import { Chip } from '@/client/components/ui/chip.js'
+import { Select } from '@/client/components/ui/select/select.js'
 import { useEffect, useState } from 'react'
 
 export type TSelectBadgeProps = {

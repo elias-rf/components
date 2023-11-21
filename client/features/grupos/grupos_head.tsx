@@ -1,9 +1,9 @@
-import { Can } from '@/client/components/can'
-import { Button } from '@/client/components/ui/button'
-import { Title } from '@/client/components/ui/title'
-import { gruposStore } from '@/client/features/grupos/grupos_store'
-import { Permissions } from '@/client/features/permissions'
-import { authStore } from '@/client/store/auth_store'
+import { Can } from '@/client/components/can.js'
+import { Button } from '@/client/components/ui/button.js'
+import { Title } from '@/client/components/ui/title.js'
+import { gruposStore } from '@/client/features/grupos/grupos_store.js'
+import { Permissions } from '@/client/features/permissions.js'
+import { authStore } from '@/client/store/auth_store.js'
 
 const permissionsList = {
   grupos_permissao: 'Atribuir permissões de acesso para usuários',

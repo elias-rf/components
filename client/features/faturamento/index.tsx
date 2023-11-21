@@ -1,1 +1,1 @@
-export * from './faturamento'
+export * from './faturamento.js'

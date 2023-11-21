@@ -1,13 +1,13 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { getTracker } from '@/mocks/database.mock'
-import { knexMockHistory } from '@/mocks/knex-mock-history'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { knexMockMsql } from '@/mocks/connections.mock.js'
+import { getTracker } from '@/mocks/database.mock.js'
+import { knexMockHistory } from '@/mocks/knex-mock-history.js'
 import { describe, expect, it } from 'vitest'
-import { agendaTelefoneController } from './agenda-telefone_controller'
+import { agendaTelefoneController } from './agenda-telefone_controller.js'
 
 describe('agendaTelefoneController', () => {
   const tracker = getTracker()
-  dbOftalmo.knex = knexMockMsql
+  dbOftalmo.setDriver(knexMockMsql)
 
   it('list', async () => {
     tracker.reset()
@@ -48,8 +48,8 @@ describe('agendaTelefoneController', () => {
     tracker.reset()
     tracker.on.delete('phonebook').response(1)
 
-    const rsp = await agendaTelefoneController.del({
-      id: [['id', 1]],
+    const rsp = await agendaTelefoneController.del$({
+      where: [['id', 1]],
     })
 
     expect(rsp).toEqual(1)
@@ -66,10 +66,10 @@ describe('agendaTelefoneController', () => {
     tracker.on.update('phonebook').response({ id: 10 })
     tracker.on.select('phonebook').response([{ id: 10 }])
 
-    const rsp = await agendaTelefoneController.update({
-      id: [['id', 1]],
+    const rsp = await agendaTelefoneController.update$({
+      where: [['id', 1]],
       data: { id: 10 },
-      returning: ['id'],
+      select: ['id'],
     })
 
     expect(rsp).toEqual({ id: 10 })
@@ -85,7 +85,7 @@ describe('agendaTelefoneController', () => {
     tracker.reset()
     tracker.on.insert('phonebook').response(1)
 
-    const rsp = await agendaTelefoneController.create({
+    const rsp = await agendaTelefoneController.create$({
       data: { id: 10 },
     })
 

@@ -1,9 +1,9 @@
-import { Can } from '@/client/components/can'
-import { ClienteForm } from '@/client/features/cliente/cliente_form'
-import { ClienteHead } from '@/client/features/cliente/cliente_head'
-import { clienteStore } from '@/client/features/cliente/cliente_store'
-import { ClienteTable } from '@/client/features/cliente/cliente_table'
-import { authStore } from '@/client/store/auth_store'
+import { Can } from '@/client/components/can.js'
+import { ClienteForm } from '@/client/features/cliente/cliente_form.js'
+import { ClienteHead } from '@/client/features/cliente/cliente_head.js'
+import { clienteStore } from '@/client/features/cliente/cliente_store.js'
+import { ClienteTable } from '@/client/features/cliente/cliente_table.js'
+import { authStore } from '@/client/store/auth_store.js'
 
 const permissions = {
   cliente_permissao: 'Atribuir permissões do cliente',

@@ -1,7 +1,7 @@
-import { isObject } from "./is-object";
+import { isObject } from './is-object.js'
 
 export function isNonEmptyObject<T extends object, U>(
   term: T | U
 ): term is NonNullable<T> {
-  return isObject(term) && Object.keys(term).length > 0;
+  return isObject(term) && Object.keys(term).length > 0
 }

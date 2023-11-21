@@ -1,6 +1,6 @@
-import { Title } from '@/client/components/ui/title'
-import { rpc } from '@/rpc/rpc-client'
-import { day } from '@/utils/date/day'
+import { Title } from '@/client/components/ui/title.js'
+import { rpc } from '@/rpc/rpc-client.js'
+import { day } from '@/utils/date/day.js'
 import React from 'react'
 
 function quantidadeProduto(data: any[] | undefined, prod: string) {

@@ -1,21 +1,21 @@
-import { cache } from '@/client/lib/cache'
-import { createSelectors } from '@/client/lib/create-selectors'
+import { cache } from '@/client/lib/cache.js'
+import { createSelectors } from '@/client/lib/create-selectors.js'
 import {
   TCreateButtonsStore,
   createButtonsStore,
-} from '@/client/store/create-buttons-store'
+} from '@/client/store/create-buttons-store.js'
 import {
   TCreateListStore,
   createListStore,
-} from '@/client/store/create-list-store'
+} from '@/client/store/create-list-store.js'
 import {
   TCreateRecordStore,
   createRecordStore,
-} from '@/client/store/create-record-store'
-import { TGroupFields, TGroupKeys } from '@/controllers/group_controller'
-import { rpc } from '@/rpc/rpc-client'
-import { TData } from '@/types'
-import { omit } from '@/utils/object/omit'
+} from '@/client/store/create-record-store.js'
+import { TGroupFields, TGroupKeys } from '@/controllers/group_controller.js'
+import { rpc } from '@/rpc/rpc-client.js'
+import { TData } from '@/types/index.js'
+import { omit } from '@/utils/object/omit.js'
 import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
 
@@ -87,13 +87,13 @@ const gruposStoreBase = createStore<GruposState>()(
         const data = omit(get().record || {}, ['kGrupo'])
 
         if (get().status === 'edit') {
-          await rpc[tableName].update({
+          await rpc[tableName].update$({
             data,
-            id: get().selection,
+            where: get().selection,
           })
         }
         if (get().status === 'new') {
-          await rpc[tableName].create({ data })
+          await rpc[tableName].create$({ data })
         }
         await get().fetchList()
         set(() => ({ status: 'view' }), false, 'onSave')
@@ -101,7 +101,7 @@ const gruposStoreBase = createStore<GruposState>()(
 
       onDelete: async () => {
         cache.purgeTable(tableName)
-        await rpc[tableName].del({ id: get().selection })
+        await rpc[tableName].del$({ where: get().selection })
         await get().fetchList()
         set(
           () => ({ record: get().recordClear, status: 'none', selection: [] }),

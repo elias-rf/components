@@ -1,4 +1,4 @@
-import { dirname, filename, filenameRelative } from '@/utils/dirname'
+import { dirname, filename, filenameRelative } from '@/utils/dirname.js'
 import { describe, expect, test } from 'vitest'
 
 describe('dirname', () => {

@@ -1,4 +1,4 @@
-import { TWhere } from '@/types'
+import { TWhere } from '@/types/index.js'
 
 export function whereType(where: TWhere<any>, field: string, type: string) {
   where.forEach((whr) => {

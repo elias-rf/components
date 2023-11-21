@@ -1,6 +1,6 @@
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const ArqDup: TSchema = {
   table: 'ArqDup',
@@ -79,7 +79,7 @@ export const ArqDup: TSchema = {
 export type TPagarFields = (typeof ArqDup.fields)[number]
 export type TPagarKeys = (typeof ArqDup.primary)[number]
 
-function pagarControllerFactory(db: OrmDatabase, schema: TSchema) {
+function pagarControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TPagarFields, TPagarKeys>(db, schema)
   return {
     ...orm.rpc,

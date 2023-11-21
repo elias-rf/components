@@ -1,6 +1,6 @@
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const CategPro = {
   database: 'plano',
@@ -28,7 +28,7 @@ export const CategPro = {
 export type TProdutoCategoriaFields = (typeof CategPro.fields)[number]
 export type TProdutoCategoriaKeys = (typeof CategPro.primary)[number]
 
-function produtoCategoriaControllerFactory(db: OrmDatabase, schema: TSchema) {
+function produtoCategoriaControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TProdutoCategoriaFields, TProdutoCategoriaKeys>(
     db,
     schema

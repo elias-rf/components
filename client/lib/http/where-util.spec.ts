@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { whereUtil } from './where-util'
+import { whereUtil } from './where-util.js'
 
 describe('whereUtil', () => {
   it('setUnique', () => {

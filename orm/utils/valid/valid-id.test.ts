@@ -1,5 +1,5 @@
-import { MestreNota } from '@/controllers/nf-saida_controller'
-import { validId } from '@/orm/utils/valid/valid-id'
+import { MestreNota } from '@/controllers/nf-saida_controller.js'
+import { validId } from '@/orm/utils/valid/valid-id.js'
 import { describe, expect, test } from 'vitest'
 
 describe('validId', () => {

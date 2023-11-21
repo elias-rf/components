@@ -1,4 +1,4 @@
-import { TFormStatus } from '@/types'
+import { TFormStatus } from '@/types/index.js'
 
 export type TCreateButtonsStore = {
   status: TFormStatus

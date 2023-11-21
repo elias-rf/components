@@ -1,5 +1,5 @@
-import { TColumn } from '@/types'
-import { day } from '@/utils/date/day'
+import { TColumn } from '@/types/index.js'
+import { day } from '@/utils/date/day.js'
 
 export const lotesSaidaColumns: TColumn[] = [
   { name: 'NumLote', label: 'Controle', width: '1%', sortable: false },

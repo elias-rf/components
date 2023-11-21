@@ -1,7 +1,7 @@
 @hostname = http://localhost
 @port = 3333
 @host = {{hostname}}:{{port}}
-@resource = agendaTelefone
+@resource = sys
 
 
 ### ordemProducaoOperacao/produto
@@ -9,12 +9,7 @@ POST {{host}}/api/rpc
 Content-Type: application/json
 
 {
-  "method": "sys/list",
-  "args": [
-    {
-      "operacao": "3058",
-      "data": "2020-01-01"
-    }
-  ],
+  "method": "{{resource}}/list",
+  "args": {},
   "id": "1"
 }

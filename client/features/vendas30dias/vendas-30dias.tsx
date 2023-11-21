@@ -1,7 +1,7 @@
-import { Title } from '@/client/components/ui/title'
-import { vendas30DiasStore } from '@/client/features/vendas30dias/vendas-30dias.store'
-import { formatMoney } from '@/utils/format/format-money'
-import toast from 'react-hot-toast'
+import { Title } from '@/client/components/ui/title.js'
+import { vendas30DiasStore } from '@/client/features/vendas30dias/vendas-30dias.store.js'
+import { formatMoney } from '@/utils/format/format-money.js'
+import { toast } from 'react-hot-toast'
 import {
   Line,
   LineChart,

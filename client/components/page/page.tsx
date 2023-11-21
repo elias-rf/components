@@ -1,5 +1,5 @@
-import { useElementSize } from '@/client/lib/hooks/use-element-size'
-import { setSize } from '@/client/store/page-size'
+import { useElementSize } from '@/client/lib/hooks/use-element-size.js'
+import { setSize } from '@/client/store/page-size.js'
 import React from 'react'
 
 export type TPageProps = {

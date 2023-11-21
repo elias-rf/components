@@ -1,4 +1,4 @@
-import { validData } from '@/orm/utils/valid/valid-data'
+import { validData } from '@/orm/utils/valid/valid-data.js'
 import { describe, expect, test } from 'vitest'
 
 const phonebook = {

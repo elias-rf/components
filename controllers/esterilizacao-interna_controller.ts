@@ -1,7 +1,7 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
-import { day } from '@/utils/date/day'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { day } from '@/utils/date/day.js'
 import { isoDate, object, parse, regex, string } from 'valibot'
 
 export const esterilizacaoInternaSchema: TSchema = {
@@ -34,7 +34,7 @@ export type TEsterilizacaoInternaKeys =
   (typeof esterilizacaoInternaSchema.primary)[number]
 
 function esterilizacaoInternaControllerFactory(
-  db: OrmDatabase,
+  db: AdapterKnex,
   schema: TSchema
 ) {
   const orm = ormTable<TEsterilizacaoInternaFields, TEsterilizacaoInternaKeys>(
@@ -108,7 +108,7 @@ function esterilizacaoInternaControllerFactory(
       }),
       { data, produto }
     )
-    const knex = db.knex
+    const knex = db.getDriver()
     const qry = await knex(
       knex.raw(
         '((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp'
@@ -138,7 +138,7 @@ function esterilizacaoInternaControllerFactory(
     parse(object({ data: string([isoDate('data inicial inválida')]) }), {
       data,
     })
-    const knex = db.knex
+    const knex = db.getDriver()
     const qry = await knex(
       knex.raw(
         '((tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem) INNER JOIN (tOperacaoDeProducao INNER JOIN tOperacaoOrdemProducao ON tOperacaoDeProducao.kOperacao = tOperacaoOrdemProducao.fkOperacao) ON tOrdemProducao.kOp = tOperacaoOrdemProducao.fkOp'

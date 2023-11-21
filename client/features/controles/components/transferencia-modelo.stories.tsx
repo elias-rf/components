@@ -1,4 +1,4 @@
-import { TransferenciaModelo } from '@/client/features/controles/components/transferencia-modelo'
+import { TransferenciaModelo } from '@/client/features/controles/components/transferencia-modelo.js'
 import '@/client/features/controles/controles_store.mock'
 import { Story } from '@ladle/react'
 

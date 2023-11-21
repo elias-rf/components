@@ -2,8 +2,8 @@
  * recebe Where no padrao {field:value} e retorna [[field,equalitity,value]]
  */
 
-import { TColumn, TWhere } from '@/types'
-import { getEquality } from '@/utils/query/get-equality'
+import { TColumn, TWhere } from '@/types/index.js'
+import { getEquality } from '@/utils/query/get-equality.js'
 
 export function parseWhere(
   filter: { [field: string]: any },

@@ -1,17 +1,17 @@
-import { dbFullvision } from '@/controllers/db/db-fullvision.db'
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { getTracker } from '@/mocks/database.mock'
-import { knexMockHistory } from '@/mocks/knex-mock-history'
+import { dbFullvision } from '@/controllers/db/db-fullvision.db.js'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { knexMockMsql } from '@/mocks/connections.mock.js'
+import { getTracker } from '@/mocks/database.mock.js'
+import { knexMockHistory } from '@/mocks/knex-mock-history.js'
 import { describe, expect, it } from 'vitest'
-import { nfSaidaController } from './nf-saida_controller'
+import { nfSaidaController } from './nf-saida_controller.js'
 
 describe('nfSaidaModel', () => {
   const tracker = getTracker()
-  dbOftalmo.knex = knexMockMsql
-  dbPlano.knex = knexMockMsql
-  dbFullvision.knex = knexMockMsql
+  dbOftalmo.setDriver(knexMockMsql)
+  dbPlano.setDriver(knexMockMsql)
+  dbFullvision.setDriver(knexMockMsql)
 
   it('transferenciaDiario', async () => {
     tracker.reset()

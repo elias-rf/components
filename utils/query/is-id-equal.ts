@@ -1,4 +1,4 @@
-import { TId } from '@/types'
+import { TId } from '@/types/index.js'
 
 export function isIdEqual(id1: TId<string>, id2: TId<string>) {
   if (id1.length !== id2.length) return false

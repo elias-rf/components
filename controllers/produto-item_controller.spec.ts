@@ -1,15 +1,15 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { knexMockMsql } from '@/mocks/connections.mock'
-import { getTracker } from '@/mocks/database.mock'
-import { knexMockHistory } from '@/mocks/knex-mock-history'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { knexMockMsql } from '@/mocks/connections.mock.js'
+import { getTracker } from '@/mocks/database.mock.js'
+import { knexMockHistory } from '@/mocks/knex-mock-history.js'
 import { beforeEach, describe, expect, it, test } from 'vitest'
-import { produtoItemController } from './produto-item_controller'
+import { produtoItemController } from './produto-item_controller.js'
 
 describe('produtoItemController', () => {
   const tracker = getTracker()
-  dbOftalmo.knex = knexMockMsql
-  dbPlano.knex = knexMockMsql
+  dbOftalmo.setDriver(knexMockMsql)
+  dbPlano.setDriver(knexMockMsql)
 
   beforeEach(() => {
     dbPlano.startLog()

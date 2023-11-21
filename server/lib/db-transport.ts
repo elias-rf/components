@@ -1,5 +1,5 @@
-import { logController } from '@/controllers/log_controller'
-import { day } from '@/utils/date/day'
+import { logController } from '@/controllers/log_controller.js'
+import { day } from '@/utils/date/day.js'
 
 type TLog = {
   msg: string
@@ -51,7 +51,7 @@ export default async function dbTransport() {
         log[logs.reqId].responseTime = logs.responseTime
         log[logs.reqId].status = logs.res.statusCode
         if (!['GET', 'POST', 'OPTIONS'].includes(log[logs.reqId].method)) {
-          await logController.create({ data: log[logs.reqId] })
+          await logController.create$({ data: log[logs.reqId] })
         }
         delete log[logs.reqId]
       }

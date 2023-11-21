@@ -1,9 +1,9 @@
+import { TModule, module } from '@/controllers/index.js'
 import {
   createPrimClient,
   createPrimServer,
   testing,
 } from '@doseofted/prim-rpc'
-import { module, TModule } from '@/controllers'
 
 const plugins = testing.createPrimTestingPlugins()
 

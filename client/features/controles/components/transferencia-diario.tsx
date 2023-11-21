@@ -1,7 +1,7 @@
-import { Table } from '@/client/components/table'
-import { useControles } from '@/client/features/controles/controles_store'
+import { Table } from '@/client/components/table/table.js'
+import { useControles } from '@/client/features/controles/controles_store.js'
 import React, { ReactNode } from 'react'
-import { transferenciaDiarioSchema } from './transferencia-diario_schema'
+import { transferenciaDiarioSchema } from './transferencia-diario_schema.js'
 
 type TransferenciaDiarioProps = {
   children?: ReactNode

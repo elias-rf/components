@@ -1,17 +1,17 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { etiquetaExternaController } from '@/controllers/etiqueta-externa_controller'
-import { ordemProducaoOperacaoController } from '@/controllers/ordem-producao-operacao_controller'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { etiquetaExternaController } from '@/controllers/etiqueta-externa_controller.js'
+import { ordemProducaoOperacaoController } from '@/controllers/ordem-producao-operacao_controller.js'
 import {
   TProdutoItemFields,
   produtoItemController,
-} from '@/controllers/produto-item_controller'
-import { TProdutoPlanoFields } from '@/controllers/produto-plano_controller'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
-import { day } from '@/utils/date/day'
-import { isEmpty } from '@/utils/identify/is-empty'
-import { isUndefined } from '@/utils/identify/is-undefined'
-import { module10 } from '@/utils/string/module10'
+} from '@/controllers/produto-item_controller.js'
+import { TProdutoPlanoFields } from '@/controllers/produto-plano_controller.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { day } from '@/utils/date/day.js'
+import { isEmpty } from '@/utils/identify/is-empty.js'
+import { isUndefined } from '@/utils/identify/is-undefined.js'
+import { module10 } from '@/utils/string/module10.js'
 
 export const tOrdemProducao: TSchema = {
   table: 'tOrdemProducao',
@@ -19,14 +19,14 @@ export const tOrdemProducao: TSchema = {
   relations: {
     operacoes: {
       method: () =>
-        import('./ordem-producao-operacao_controller').then(
+        import('./ordem-producao-operacao_controller.js').then(
           (m) => m.ordemProducaoOperacaoController.list
         ),
       where: [['fkOp', 'kOp']],
     },
     produtoItem: {
       method: () =>
-        import('./produto-item_controller').then(
+        import('./produto-item_controller.js').then(
           (m) => m.produtoItemController.read
         ),
 
@@ -90,7 +90,7 @@ export const tOrdemProducao: TSchema = {
 export type TOrdemProducaoFields = (typeof tOrdemProducao.fields)[number]
 export type TOrdemProducaoKeys = (typeof tOrdemProducao.primary)[number]
 
-function ordemProducaoControllerFactory(db: OrmDatabase, schema: TSchema) {
+function ordemProducaoControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TOrdemProducaoFields, TOrdemProducaoKeys>(db, schema)
 
   /**

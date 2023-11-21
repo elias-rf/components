@@ -1,4 +1,4 @@
-import { Title } from '@/client/components/ui/title'
+import { Title } from '@/client/components/ui/title.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 

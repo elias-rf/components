@@ -1,5 +1,5 @@
-import { OrmDatabase } from '@/orm'
+import { config } from '@/config/index.js'
+import { AdapterKnex } from '@/orm/index.js'
 import Knex from 'knex'
-import { config } from '@/config'
 
-export const dbSys = new OrmDatabase(Knex(config.db.sys))
+export const dbSys = new AdapterKnex(Knex(config.db.sys))

@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 import { describe, expect, it, vi } from 'vitest'
-import { useInterval } from './use-interval'
+import { useInterval } from './use-interval.js'
 
 describe('useInterval', () => {
   it('should execute the callback at regular intervals', () => {

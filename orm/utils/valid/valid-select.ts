@@ -1,8 +1,8 @@
-import { getFields } from '@/orm/utils/schema/get-fields'
-import { getTable } from '@/orm/utils/schema/get-table'
-import type { TSchema } from '@/schemas/schema.type'
-import { TSelect } from '@/types'
-import { isEmpty } from '@/utils/identify/is-empty'
+import { getFields } from '@/orm/utils/schema/get-fields.js'
+import { getTable } from '@/orm/utils/schema/get-table.js'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { TSelect } from '@/types/index.js'
+import { isEmpty } from '@/utils/identify/is-empty.js'
 
 function fieldName(field: string) {
   return field.split(' ')[0]

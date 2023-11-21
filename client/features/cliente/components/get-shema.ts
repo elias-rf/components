@@ -1,5 +1,5 @@
-import { TColumn } from '@/types'
-import { day } from '@/utils/date/day'
+import { TColumn } from '@/types/index.js'
+import { day } from '@/utils/date/day.js'
 import { isoDate, object, parse, string } from 'valibot'
 export function getSchema(args: { inicio: string; fim: string }): TColumn[] {
   parse(

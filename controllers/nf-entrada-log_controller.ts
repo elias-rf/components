@@ -1,6 +1,6 @@
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const NfLogConferencia: TSchema = {
   table: 'NfLogConferencia',
@@ -27,7 +27,7 @@ export const NfLogConferencia: TSchema = {
 export type TNfEntradaLogFields = (typeof NfLogConferencia.fields)[number]
 export type TNfEntradaLogKeys = (typeof NfLogConferencia.primary)[number]
 
-function nfEntradaLogControllerFactory(db: OrmDatabase, schema: TSchema) {
+function nfEntradaLogControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfEntradaLogFields, TNfEntradaLogKeys>(db, schema)
   return {
     ...orm.rpc,

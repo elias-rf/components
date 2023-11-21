@@ -1,6 +1,6 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const tMaquina: TSchema = {
   table: 'tMaquina',
@@ -27,7 +27,7 @@ export const tMaquina: TSchema = {
 export type TMaquinaFields = (typeof tMaquina.fields)[number]
 export type TMaquinaKeys = (typeof tMaquina.primary)[number]
 
-function maquinaControllerFactory(db: OrmDatabase, schema: TSchema) {
+function maquinaControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TMaquinaFields, TMaquinaKeys>(db, schema)
   return {
     ...orm.rpc,

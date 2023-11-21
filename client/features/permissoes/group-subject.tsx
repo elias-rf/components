@@ -1,10 +1,10 @@
-import { GroupSubjectTable } from '@/client/features/permissoes/group-subject_table'
-import { useForm } from '@/client/lib/hooks/use-form'
+import { GroupSubjectTable } from '@/client/features/permissoes/group-subject_table.js'
+import { useForm } from '@/client/lib/hooks/use-form.js'
 import {
   TGroupSubjectFields,
   TGroupSubjectKeys,
-} from '@/controllers/group-subject_controller'
-import { rpc } from '@/rpc/rpc-client'
+} from '@/controllers/group-subject_controller.js'
+import { rpc } from '@/rpc/rpc-client.js'
 import type {
   TData,
   TFormStatus,
@@ -12,8 +12,8 @@ import type {
   TOrderBy,
   TSelection,
   TWhere,
-} from '@/types'
-import { deepEqual } from '@/utils/object/deep-equal'
+} from '@/types/index.js'
+import { deepEqual } from '@/utils/object/deep-equal.js'
 import React from 'react'
 
 export type TGroupSubjectList = any
@@ -93,7 +93,7 @@ export function GroupSubject() {
   }
 
   async function handleDel() {
-    await rpc.groupSubject.del({ id: selection })
+    await rpc.groupSubject.del$({ where: selection })
     await getList(where, orderBy)
     setStatus('view')
     setSelection([])
@@ -101,13 +101,13 @@ export function GroupSubject() {
 
   async function handleSave() {
     if (status === 'edit') {
-      await rpc.groupSubject.update({
+      await rpc.groupSubject.update$({
         data: form.value,
-        id: selection,
+        where: selection,
       })
     }
     if (status === 'new') {
-      await rpc.groupSubject.create({ data: form.value })
+      await rpc.groupSubject.create$({ data: form.value })
     }
     await getList(where, orderBy)
     setStatus('view')

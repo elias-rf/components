@@ -1,4 +1,4 @@
-import { VisiontechIcon } from '@/client/components/icons/visiontech-icon'
+import { VisiontechIcon } from '@/client/components/icons/visiontech-icon.js'
 
 export function Home() {
   return (

@@ -1,2 +1,2 @@
-export * from "./isRequired";
-export * from "./valid";
+export * from './isRequired.js'
+export * from './valid.js'

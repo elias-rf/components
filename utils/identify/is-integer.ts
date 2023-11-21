@@ -1,5 +1,5 @@
-import { isNumber } from "./is-number";
+import { isNumber } from './is-number.js'
 
 export function isInteger(term: any): term is number {
-  return isNumber(term) && Number.isInteger(term);
+  return isNumber(term) && Number.isInteger(term)
 }

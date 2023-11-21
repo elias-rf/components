@@ -1,5 +1,5 @@
 import { Story } from '@ladle/react'
-import { UsuarioTable } from './usuario_table'
+import { UsuarioTable } from './usuario_table.js'
 
 export default {
   title: 'features/usuario/usuario',

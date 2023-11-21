@@ -1,5 +1,5 @@
-import { day } from '@/utils/date/day'
-import { formatMoney } from '@/utils/format/format-money'
+import { day } from '@/utils/date/day.js'
+import { formatMoney } from '@/utils/format/format-money.js'
 
 export type Record = {
   origem: string

@@ -1,4 +1,4 @@
-import { MultiKeyCache } from '@/utils/multi-key-cache'
+import { MultiKeyCache } from '@/utils/multi-key-cache.js'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 describe('MultiKeyCache', () => {

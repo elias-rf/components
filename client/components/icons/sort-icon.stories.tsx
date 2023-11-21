@@ -1,4 +1,4 @@
-import { SortIcon } from '@/client/components/icons/sort-icon'
+import { SortIcon } from '@/client/components/icons/sort-icon.js'
 import type { Story, StoryDefault } from '@ladle/react'
 
 export default {

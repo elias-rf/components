@@ -1,9 +1,9 @@
-import { cache } from '@/client/lib/cache'
-import { createSelectors } from '@/client/lib/create-selectors'
-import { rpc } from '@/rpc/rpc-client'
-import { day } from '@/utils/date/day'
-import { getFieldId } from '@/utils/query/get-field-id'
-import { isIdEqual } from '@/utils/query/is-id-equal'
+import { cache } from '@/client/lib/cache.js'
+import { createSelectors } from '@/client/lib/create-selectors.js'
+import { rpc } from '@/rpc/rpc-client.js'
+import { day } from '@/utils/date/day.js'
+import { getFieldId } from '@/utils/query/get-field-id.js'
+import { isIdEqual } from '@/utils/query/is-id-equal.js'
 import { create } from 'zustand'
 
 interface ControlesState {

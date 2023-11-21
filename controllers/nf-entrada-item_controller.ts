@@ -1,6 +1,6 @@
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const NFItem: TSchema = {
   table: 'NFItem',
@@ -88,7 +88,7 @@ export const NFItem: TSchema = {
 export type TNfEntradaItemFields = (typeof NFItem.fields)[number]
 export type TNfEntradaItemKeys = (typeof NFItem.primary)[number]
 
-function nfEntradaItemControllerFactory(db: OrmDatabase, schema: TSchema) {
+function nfEntradaItemControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfEntradaItemFields, TNfEntradaItemKeys>(db, schema)
   return {
     ...orm.rpc,

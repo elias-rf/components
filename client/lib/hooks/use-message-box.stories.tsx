@@ -1,7 +1,7 @@
-import { JsonView } from '@/client/components/json-view/json-view'
+import { JsonView } from '@/client/components/json-view/json-view.js'
 import type { Story } from '@ladle/react'
 import React from 'react'
-import { useMessageBox } from './use-message-box'
+import { useMessageBox } from './use-message-box.js'
 
 export default {
   title: 'lib/hooks/useMessageBox',

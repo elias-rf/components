@@ -1,4 +1,4 @@
-import { EsterilizacaoInternaProduto } from '@/client/features/controles/components/est-int-produto'
+import { EsterilizacaoInternaProduto } from '@/client/features/controles/components/est-int-produto.js'
 import '@/client/features/controles/controles_store.mock'
 import type { Story } from '@ladle/react'
 

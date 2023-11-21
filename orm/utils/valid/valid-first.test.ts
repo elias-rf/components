@@ -1,4 +1,4 @@
-import { validFirst } from '@/orm/utils/valid/valid-first'
+import { validFirst } from '@/orm/utils/valid/valid-first.js'
 import { describe, expect, test } from 'vitest'
 
 const phonebook = {

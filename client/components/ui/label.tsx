@@ -1,6 +1,6 @@
-import { AccessLabel } from '@/client/components/ui/access-label'
-import { cn } from '@/client/lib/cn'
-import { getAccessKey } from '@/utils/string/get-access-key'
+import { AccessLabel } from '@/client/components/ui/access-label.js'
+import { cn } from '@/client/lib/cn.js'
+import { getAccessKey } from '@/utils/string/get-access-key.js'
 
 type TLabelProps = {
   children?: React.ReactNode

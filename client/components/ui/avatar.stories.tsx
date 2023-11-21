@@ -1,5 +1,5 @@
-import { PersonIcon } from '@/client/components/icons/person-icon'
-import { Avatar } from '@/client/components/ui/avatar'
+import { PersonIcon } from '@/client/components/icons/person-icon.js'
+import { Avatar } from '@/client/components/ui/avatar.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 

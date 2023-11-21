@@ -1,2 +1,2 @@
-export * from './combobox'
-export * from './use-combobox'
+export * from './combobox.js'
+export * from './use-combobox.js'

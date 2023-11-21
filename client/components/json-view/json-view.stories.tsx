@@ -1,4 +1,4 @@
-import { JsonView } from '@/client/components/json-view/json-view'
+import { JsonView } from '@/client/components/json-view/json-view.js'
 import '@/client/index.css'
 import type { Story, StoryDefault } from '@ladle/react'
 

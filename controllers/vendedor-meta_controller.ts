@@ -1,6 +1,6 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const vendedor = {
   database: 'oftalmo',
@@ -12,7 +12,7 @@ export const vendedor = {
 export type TVendedorMetaFields = (typeof vendedor.fields)[number]
 export type TVendedorMetaKeys = (typeof vendedor.primary)[number]
 
-function vendedorMetaControllerFactory(db: OrmDatabase, schema: TSchema) {
+function vendedorMetaControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TVendedorMetaFields, TVendedorMetaKeys>(db, schema)
   return {
     ...orm.rpc,

@@ -1,6 +1,6 @@
-import { dbPlano } from '@/controllers/db/db-plano.db'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export const LotesNota: TSchema = {
   table: 'LotesNota',
@@ -33,7 +33,7 @@ export type TNfSaidaLoteKeys = (typeof LotesNota.primary)[number]
 ;(LotesNota as TSchema).relations = {
   nfSaidaItem: {
     method: () =>
-      import('./nf-saida-item_controller').then(
+      import('./nf-saida-item_controller.js').then(
         (m) => m.nfSaidaItemController.read
       ),
     where: [
@@ -45,7 +45,7 @@ export type TNfSaidaLoteKeys = (typeof LotesNota.primary)[number]
   },
   nfSaida: {
     method: () =>
-      import('./nf-saida_controller').then((m) => m.nfSaidaController.read),
+      import('./nf-saida_controller.js').then((m) => m.nfSaidaController.read),
     where: [
       ['CdFilial', 'CdFilial'],
       ['NumNota', 'NumNota'],
@@ -55,14 +55,14 @@ export type TNfSaidaLoteKeys = (typeof LotesNota.primary)[number]
   },
   produto: {
     method: () =>
-      import('./produto-plano_controller').then(
+      import('./produto-plano_controller.js').then(
         (m) => m.produtoPlanoController.read
       ),
     where: [['CdProduto', 'CdProduto']],
   },
 }
 
-function nfSaidaLoteControllerFactory(db: OrmDatabase, schema: TSchema) {
+function nfSaidaLoteControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfSaidaLoteFields, TNfSaidaLoteKeys>(db, schema)
   return {
     ...orm.rpc,

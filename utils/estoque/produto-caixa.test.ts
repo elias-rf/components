@@ -1,4 +1,4 @@
-import { produtoCaixa } from '@/utils/estoque/produto-caixa'
+import { produtoCaixa } from '@/utils/estoque/produto-caixa.js'
 import { describe, expect, test } from 'vitest'
 
 describe('produtoCaixa', () => {

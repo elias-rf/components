@@ -1,7 +1,7 @@
-import { Table } from '@/client/components/table'
-import { useControles } from '@/client/features/controles/controles_store'
+import { Table } from '@/client/components/table/table.js'
+import { useControles } from '@/client/features/controles/controles_store.js'
 import React from 'react'
-import { esterilizacaoInternaModeloSchema } from './est-int-modelo_schema'
+import { esterilizacaoInternaModeloSchema } from './est-int-modelo_schema.js'
 
 export function EsterilizacaoInternaModelo() {
   const dia = useControles.use.dia()

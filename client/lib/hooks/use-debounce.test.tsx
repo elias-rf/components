@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 import { describe, expect, it, vi } from 'vitest'
-import { useDebounce } from './use-debounce'
+import { useDebounce } from './use-debounce.js'
 
 describe('useDebounce', () => {
   it('should debounce the function call', () => {

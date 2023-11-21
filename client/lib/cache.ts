@@ -1,6 +1,6 @@
-import { MultiKeyCache } from '@/utils/multi-key-cache'
-import { omit } from '@/utils/object/omit'
-import { ms } from '@/utils/string/ms'
+import { MultiKeyCache } from '@/utils/multi-key-cache.js'
+import { omit } from '@/utils/object/omit.js'
+import { ms } from '@/utils/string/ms.js'
 
 const fetchMethod = (
   key: string,

@@ -1,5 +1,5 @@
-import { TColumn } from '@/types'
-import { parseWhere } from '@/utils/query/parse-where'
+import { TColumn } from '@/types/index.js'
+import { parseWhere } from '@/utils/query/parse-where.js'
 import { describe, expect, test } from 'vitest'
 
 const columns: TColumn[] = [

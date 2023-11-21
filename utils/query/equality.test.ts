@@ -1,5 +1,5 @@
-import { TWhere } from '@/types'
-import { equalityFromObject, equalityToObject } from '@/utils/query/equality'
+import { TWhere } from '@/types/index.js'
+import { equalityFromObject, equalityToObject } from '@/utils/query/equality.js'
 import { describe, expect, test } from 'vitest'
 
 describe('equality', () => {

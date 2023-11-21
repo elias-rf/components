@@ -1,4 +1,4 @@
-import { validWhere } from '@/orm/utils/valid/valid-where'
+import { validWhere } from '@/orm/utils/valid/valid-where.js'
 import { describe, expect, test } from 'vitest'
 
 const phonebook = {

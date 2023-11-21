@@ -1,10 +1,10 @@
-import { NavbarBrand } from '@/client/components/ui/navbar/navbar_brand'
-import { NavbarCollapse } from '@/client/components/ui/navbar/navbar_collapse'
-import { ShowContext } from '@/client/components/ui/navbar/navbar_context'
-import { NavbarItem } from '@/client/components/ui/navbar/navbar_item'
-import { NavbarMenu } from '@/client/components/ui/navbar/navbar_menu'
-import { NavbarToggle } from '@/client/components/ui/navbar/navbar_toggle'
-import { cn } from '@/client/lib/cn'
+import { NavbarBrand } from '@/client/components/ui/navbar/navbar_brand.js'
+import { NavbarCollapse } from '@/client/components/ui/navbar/navbar_collapse.js'
+import { ShowContext } from '@/client/components/ui/navbar/navbar_context.js'
+import { NavbarItem } from '@/client/components/ui/navbar/navbar_item.js'
+import { NavbarMenu } from '@/client/components/ui/navbar/navbar_menu.js'
+import { NavbarToggle } from '@/client/components/ui/navbar/navbar_toggle.js'
+import { cn } from '@/client/lib/cn.js'
 import { useState } from 'react'
 
 function Navbar({

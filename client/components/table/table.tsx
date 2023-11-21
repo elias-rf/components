@@ -1,14 +1,21 @@
-import { SearchIcon } from '@/client/components/icons/search-icon'
-import { cn } from '@/client/lib/cn'
-import { TColumn, TId, TOrderBy, TRow, TSelection, TWhere } from '@/types'
-import { filterNonEmptyProperties } from '@/utils/object/filter-non-empty-properties'
-import { get } from '@/utils/object/get'
-import { formatWhere } from '@/utils/query/format-where'
-import { parseWhere } from '@/utils/query/parse-where'
+import { SearchIcon } from '@/client/components/icons/search-icon.js'
+import { cn } from '@/client/lib/cn.js'
+import {
+  TColumn,
+  TId,
+  TOrderBy,
+  TRow,
+  TSelection,
+  TWhere,
+} from '@/types/index.js'
+import { filterNonEmptyProperties } from '@/utils/object/filter-non-empty-properties.js'
+import { get } from '@/utils/object/get.js'
+import { formatWhere } from '@/utils/query/format-where.js'
+import { parseWhere } from '@/utils/query/parse-where.js'
 import React from 'react'
-import { getIdDefault } from './get-id-default'
-import { InputFilter } from './input-filter'
-import { ShowSortIcon } from './show-sort-icon'
+import { getIdDefault } from './get-id-default.js'
+import { InputFilter } from './input-filter.js'
+import { ShowSortIcon } from './show-sort-icon.js'
 
 export type TTableProps = {
   children?: (args: { row: TRow; columns: TColumn[] }) => React.ReactNode

@@ -1,10 +1,10 @@
 import '@/mocks/fetcher-mock'
 
-import { Page } from '@/client/components/page/page'
-import { StoreViewer } from '@/client/components/ui/store-viewer'
-import { clienteStore } from '@/client/features/cliente/cliente_store'
-import { ClienteTable } from '@/client/features/cliente/cliente_table'
-import { fetcherMock } from '@/mocks/fetcher-mock'
+import { Page } from '@/client/components/page/page.js'
+import { StoreViewer } from '@/client/components/ui/store-viewer.js'
+import { clienteStore } from '@/client/features/cliente/cliente_store.js'
+import { ClienteTable } from '@/client/features/cliente/cliente_table.js'
+import { fetcherMock } from '@/mocks/fetcher-mock.js'
 import { Story } from '@ladle/react'
 
 fetcherMock({

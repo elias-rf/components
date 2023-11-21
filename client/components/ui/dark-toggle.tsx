@@ -1,6 +1,6 @@
-import { MoonIcon } from '@/client/components/icons/moon-icon'
-import { SunIcon } from '@/client/components/icons/sun-icon'
-import { Button } from '@/client/components/ui/button'
+import { MoonIcon } from '@/client/components/icons/moon-icon.js'
+import { SunIcon } from '@/client/components/icons/sun-icon.js'
+import { Button } from '@/client/components/ui/button.js'
 import { useEffect, useState } from 'react'
 import { useEffectOnce } from 'usehooks-ts'
 

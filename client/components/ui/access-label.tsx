@@ -1,4 +1,4 @@
-import { getAccessKey } from '@/utils/string/get-access-key'
+import { getAccessKey } from '@/utils/string/get-access-key.js'
 import { ReactNode } from 'react'
 
 type TAccessLabel = {

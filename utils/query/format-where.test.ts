@@ -1,5 +1,5 @@
-import { TColumn } from '@/types'
-import { formatWhere } from '@/utils/query/format-where'
+import { TColumn } from '@/types/index.js'
+import { formatWhere } from '@/utils/query/format-where.js'
 import { describe, expect, test } from 'vitest'
 
 const columns: TColumn[] = [

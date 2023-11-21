@@ -1,4 +1,4 @@
-import { Button } from '@/client/components/ui/button'
+import { Button } from '@/client/components/ui/button.js'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, test } from 'vitest'
 

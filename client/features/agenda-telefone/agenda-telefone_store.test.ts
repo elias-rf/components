@@ -1,27 +1,49 @@
-import { createRecord, fetcherMock, uid } from '@/mocks/fetcher-mock'
+import { createRecord, fetcherMock, uid } from '@/mocks/fetcher-mock.js'
+import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
 
-import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store'
+import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store.js'
 import { fakerPT_BR as faker } from '@faker-js/faker'
 import { describe, expect, test } from 'vitest'
 
-fetcherMock({
-  'agendaTelefone/list': () => {
-    return createRecord(
-      {
-        id: uid(100),
-        name: faker.person.fullName,
-        department: faker.commerce.department,
-        email: faker.internet.email,
-      },
-      50
-    )
-  },
-  'agendaTelefone/read': () => ({
-    id: '100',
-    name: 'Fulano da Silva',
-    department: 'Setor de TI',
-    email: 'fulano@mail.com',
-  }),
+mockedFetch.clear()
+mockedFetch.add(async (request: any) => {
+  const body = JSON.parse(request.options?.body)
+  switch (body.method) {
+    case 'agendaTelefone/list':
+      return {
+        body: {
+          id: body.id,
+          result: createRecord(
+            {
+              id: uid(100),
+              name: faker.person.fullName,
+              department: faker.commerce.department,
+              email: faker.internet.email,
+            },
+            50
+          ),
+        },
+      }
+    case 'agendaTelefone/read':
+      return {
+        body: {
+          id: body.id,
+          result: {
+            id: '100',
+            name: 'Fulano da Silva',
+            department: 'Setor de TI',
+            email: 'fulano@mail.com',
+          },
+        },
+      }
+    default:
+      return {
+        body: {
+          id: body.id,
+          result: [],
+        },
+      }
+  }
 })
 
 describe('useAgendaTelefone', () => {

@@ -1,7 +1,7 @@
-import { JsonView } from '@/client/components/json-view/json-view'
-import { useStateMutable } from '@/client/lib/hooks/use-state-mutable'
+import { JsonView } from '@/client/components/json-view/json-view.js'
+import { useStateMutable } from '@/client/lib/hooks/use-state-mutable.js'
 import { Story, StoryDefault } from '@ladle/react'
-import { Lx } from './lx'
+import { Lx } from './lx.js'
 
 export default {
   title: 'lx',

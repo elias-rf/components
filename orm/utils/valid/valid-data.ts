@@ -1,7 +1,7 @@
-import { getFields } from '@/orm/utils/schema/get-fields'
-import { getTable } from '@/orm/utils/schema/get-table'
-import type { TSchema } from '@/schemas/schema.type'
-import { TData } from '@/types'
+import { getFields } from '@/orm/utils/schema/get-fields.js'
+import { getTable } from '@/orm/utils/schema/get-table.js'
+import type { TSchema } from '@/schemas/schema.type.js'
+import { TData } from '@/types/index.js'
 
 export function validData<TFields extends string>(
   data: Partial<TData<TFields>> | undefined,

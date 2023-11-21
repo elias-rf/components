@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/cn'
+import { cn } from '@/client/lib/cn.js'
 
 export function PersonIcon({ className }: { className?: string }) {
   return (

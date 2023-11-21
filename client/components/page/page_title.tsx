@@ -1,5 +1,5 @@
 import React from 'react'
-import { SpinnerIcon } from '../icons/spinner-icon'
+import { SpinnerIcon } from '../icons/spinner-icon.js'
 
 type TPageTitleProps = {
   title: string

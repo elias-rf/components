@@ -1,4 +1,4 @@
-import { ShowContext } from '@/client/components/ui/dropdown/dropdown_context'
+import { ShowContext } from '@/client/components/ui/dropdown/dropdown_context.js'
 import { ReactNode, useContext } from 'react'
 
 export function DropdownItem({

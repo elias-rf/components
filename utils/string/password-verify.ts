@@ -1,4 +1,4 @@
-import { passwordHash } from "./password-hash";
+import { passwordHash } from './password-hash.js'
 
 /**
  * Checking the password hash
@@ -11,8 +11,8 @@ import { passwordHash } from "./password-hash";
 export function passwordVerify(
   password: string,
   original: string,
-  algoritm = "sha256"
+  algoritm = 'sha256'
 ) {
-  const passHash = passwordHash(password, algoritm);
-  return passHash === original;
+  const passHash = passwordHash(password, algoritm)
+  return passHash === original
 }

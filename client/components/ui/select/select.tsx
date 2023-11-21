@@ -1,6 +1,6 @@
-import { SelectOption } from '@/client/components/ui/select/select-option'
-import { themeInput } from '@/client/components/ui/theme-input'
-import { cn } from '@/client/lib/cn'
+import { SelectOption } from '@/client/components/ui/select/select-option.js'
+import { themeInput } from '@/client/components/ui/theme-input.js'
+import { cn } from '@/client/lib/cn.js'
 
 export type TSelectProps = {
   disabled?: boolean

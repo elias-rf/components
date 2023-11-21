@@ -1,12 +1,12 @@
-import { Enlite } from '@/utils/estoque/enlite'
-import { Flex } from '@/utils/estoque/flex'
-import { Tipo1 } from '@/utils/estoque/tipo1'
-import { Tipo2 } from '@/utils/estoque/tipo2'
-import { Tipo3 } from '@/utils/estoque/tipo3'
-import { Tipo334 } from '@/utils/estoque/tipo334'
-import { Tipo4 } from '@/utils/estoque/tipo4'
-import { Tipo578 } from '@/utils/estoque/tipo578'
-import { Tipo605 } from '@/utils/estoque/tipo605'
+import { Enlite } from '@/utils/estoque/enlite.js'
+import { Flex } from '@/utils/estoque/flex.js'
+import { Tipo1 } from '@/utils/estoque/tipo1.js'
+import { Tipo2 } from '@/utils/estoque/tipo2.js'
+import { Tipo3 } from '@/utils/estoque/tipo3.js'
+import { Tipo334 } from '@/utils/estoque/tipo334.js'
+import { Tipo4 } from '@/utils/estoque/tipo4.js'
+import { Tipo578 } from '@/utils/estoque/tipo578.js'
+import { Tipo605 } from '@/utils/estoque/tipo605.js'
 
 export function produtoCaixa(qtdFlex: number, qtdEnlite: number) {
   const response = {

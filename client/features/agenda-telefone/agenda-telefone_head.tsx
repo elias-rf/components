@@ -1,6 +1,6 @@
-import { Button } from '@/client/components/ui/button'
-import { Title } from '@/client/components/ui/title'
-import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store'
+import { Button } from '@/client/components/ui/button.js'
+import { Title } from '@/client/components/ui/title.js'
+import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store.js'
 
 export function AgendaTelefoneHead() {
   const onNew = agendaTelefoneStore.use.onNew()

@@ -1,8 +1,8 @@
-import { inteiro, moeda } from '@/client/lib/text-box-formats'
+import { inteiro, moeda } from '@/client/lib/text-box-formats.js'
 import React from 'react'
-import { PrecosVendedor, TGrupos } from './components/precos-vendedor'
-import { Textbox } from './components/textbox'
-import { usePrecosState } from './components/use-precos.state'
+import { PrecosVendedor, TGrupos } from './components/precos-vendedor.js'
+import { Textbox } from './components/textbox.js'
+import { usePrecosState } from './components/use-precos.state.js'
 
 const produtos: { grupo: TGrupos; label: string }[] = [
   { grupo: 'hilite', label: 'HiLite' },
@@ -133,8 +133,8 @@ export function PrecosCliente() {
                     {snap.hilite.quantidade > 0
                       ? 'HiLite'
                       : snap.liteflex.quantidade > 0
-                      ? 'LiteFlex'
-                      : ''}
+                        ? 'LiteFlex'
+                        : ''}
                   </p>
                   <p className="text-sm">{'+ Metil'}</p>
                   <p className="text-sm">{'+ Enlite'}</p>
@@ -159,8 +159,8 @@ export function PrecosCliente() {
                     {snap.hilite.quantidade > 0
                       ? 'HiLite'
                       : snap.liteflex.quantidade > 0
-                      ? 'LiteFlex'
-                      : ''}
+                        ? 'LiteFlex'
+                        : ''}
                   </p>
                   <p className="text-sm">{'+ Enlite'}</p>
                   <p className="text-sm">

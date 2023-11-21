@@ -1,10 +1,10 @@
-import { Button } from '@/client/components/ui/button'
-import { Chip } from '@/client/components/ui/chip'
-import { FormField } from '@/client/components/ui/form-field'
-import { Input } from '@/client/components/ui/input/input'
-import { Label } from '@/client/components/ui/label'
-import { Select } from '@/client/components/ui/select/select'
-import { TWhere } from '@/types'
+import { Button } from '@/client/components/ui/button.js'
+import { Chip } from '@/client/components/ui/chip.js'
+import { FormField } from '@/client/components/ui/form-field/index.js'
+import { Input } from '@/client/components/ui/input/index.js'
+import { Label } from '@/client/components/ui/label.js'
+import { Select } from '@/client/components/ui/select/select.js'
+import { TWhere } from '@/types/index.js'
 import React, { useState } from 'react'
 
 type TSearchProps = {

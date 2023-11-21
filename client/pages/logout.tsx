@@ -1,5 +1,5 @@
-import { SpinnerIcon } from '@/client/components/icons/spinner-icon'
-import { authStore } from '@/client/store/auth_store'
+import { SpinnerIcon } from '@/client/components/icons/spinner-icon.js'
+import { authStore } from '@/client/store/auth_store.js'
 import React from 'react'
 import { useLocation } from 'wouter'
 

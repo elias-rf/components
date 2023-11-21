@@ -1,12 +1,12 @@
-import { Button } from '@/client/components/ui/button'
-import { FormField } from '@/client/components/ui/form-field'
-import { Input } from '@/client/components/ui/input/input'
-import { Label } from '@/client/components/ui/label'
-import { gruposStore } from '@/client/features/grupos/grupos_store'
-import { useForm } from '@/client/lib/hooks/use-form'
-import { useMessageBox } from '@/client/lib/hooks/use-message-box'
+import { Button } from '@/client/components/ui/button.js'
+import { FormField } from '@/client/components/ui/form-field/form-field.js'
+import { Input } from '@/client/components/ui/input/input.js'
+import { Label } from '@/client/components/ui/label.js'
+import { gruposStore } from '@/client/features/grupos/grupos_store.js'
+import { useForm } from '@/client/lib/hooks/use-form.js'
+import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { useEffect } from 'react'
-import toast from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 
 export const GruposForm = () => {
   const status = gruposStore.use.status()

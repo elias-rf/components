@@ -1,5 +1,5 @@
-import { cn } from '@/client/lib/cn'
-import { getAccessKey } from '@/utils/string/get-access-key'
+import { cn } from '@/client/lib/cn.js'
+import { getAccessKey } from '@/utils/string/get-access-key.js'
 import { ReactNode } from 'react'
 
 export type TButtonProps = {

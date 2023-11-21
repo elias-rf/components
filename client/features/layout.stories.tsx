@@ -1,4 +1,4 @@
-import { Layout } from '@/client/features/layout'
+import { Layout } from '@/client/features/layout.js'
 import type { Story } from '@ladle/react'
 import React from 'react'
 

@@ -1,6 +1,6 @@
 import * as React from 'react'
-import DataRender, { ExpandableRenderProps } from './data-render'
-import { useBool } from './hooks'
+import DataRender, { ExpandableRenderProps } from './data-render.js'
+import { useBool } from './hooks.js'
 
 export function ExpandableObject({
   field,

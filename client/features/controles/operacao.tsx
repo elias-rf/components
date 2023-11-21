@@ -1,13 +1,13 @@
-import { FormField } from '@/client/components/ui/form-field'
-import { Label } from '@/client/components/ui/label'
-import { Select } from '@/client/components/ui/select/select'
-import { useControles } from '@/client/features/controles/controles_store'
-import { getFieldId } from '@/utils/query/get-field-id'
-import { OperacaoDiario } from './components/operacao-diario'
-import { OperacaoMensal } from './components/operacao-mensal'
-import { OperacaoModelo } from './components/operacao-modelo'
-import { OperacaoProduto } from './components/operacao-produto'
-import { OperacaoTurno } from './components/operacao-turno'
+import { FormField } from '@/client/components/ui/form-field/form-field.js'
+import { Label } from '@/client/components/ui/label.js'
+import { Select } from '@/client/components/ui/select/select.js'
+import { useControles } from '@/client/features/controles/controles_store.js'
+import { getFieldId } from '@/utils/query/get-field-id.js'
+import { OperacaoDiario } from './components/operacao-diario.js'
+import { OperacaoMensal } from './components/operacao-mensal.js'
+import { OperacaoModelo } from './components/operacao-modelo.js'
+import { OperacaoProduto } from './components/operacao-produto.js'
+import { OperacaoTurno } from './components/operacao-turno.js'
 
 export function Operacao() {
   const operacao = useControles.use.operacao()

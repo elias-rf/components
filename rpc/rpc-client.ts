@@ -1,6 +1,6 @@
-import type { TModule } from '@/controllers'
+import type { TModule } from '@/controllers/index.js'
 import { createPrimClient } from '@doseofted/prim-rpc'
-import { createMethodPlugin } from './plugins/browser-fetch'
+import { createMethodPlugin } from './plugins/browser-fetch.js'
 
 let endpoint = '/api/rpc'
 

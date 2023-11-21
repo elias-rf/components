@@ -1,24 +1,37 @@
-import { createRecord, fetcherMock, uid } from '@/mocks/fetcher-mock'
+import { createRecord, uid } from '@/mocks/fetcher-mock.js'
+import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
 
-import { Page } from '@/client/components/page/page'
-import { StoreViewer } from '@/client/components/ui/store-viewer'
-import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store'
-import { AgendaTelefoneTable } from '@/client/features/agenda-telefone/agenda-telefone_table'
+import { Page } from '@/client/components/page/page.js'
+import { StoreViewer } from '@/client/components/ui/store-viewer.js'
+import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store.js'
+import { AgendaTelefoneTable } from '@/client/features/agenda-telefone/agenda-telefone_table.js'
+import { db } from '@/utils/record/database.js'
 import { fakerPT_BR as faker } from '@faker-js/faker'
 import type { Story } from '@ladle/react'
 
-fetcherMock({
-  'agendaTelefone/list': () => {
-    return createRecord(
-      {
-        id: uid(100),
-        name: faker.person.fullName,
-        department: faker.commerce.department,
-        email: faker.internet.email,
-      },
-      50
-    )
-  },
+mockedFetch.clear()
+mockedFetch.add(async (request: any) => {
+  const body = JSON.parse(request.options?.body)
+
+  switch (body.method) {
+    case 'agendaTelefone/list':
+      return {
+        body: {
+          id: body.id,
+          result: db.agenda_telefone
+            .where(body.args[0].where)
+            .orderBy(body.args[0].orderBy)
+            .get(),
+        },
+      }
+    default:
+      return {
+        body: {
+          id: body.id,
+          result: [],
+        },
+      }
+  }
 })
 
 export default {
@@ -32,7 +45,8 @@ export const Default: Story = () => {
         <AgendaTelefoneTable />
         <StoreViewer
           store={agendaTelefoneStore}
-          properties={['list', 'orderBy', 'selection', 'where', 'record']}
+          properties={['orderBy', 'selection', 'where', 'record', 'list']}
+          className="text-xs"
         />
       </Page>
     </div>

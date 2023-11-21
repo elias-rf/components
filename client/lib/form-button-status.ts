@@ -1,4 +1,4 @@
-import type { TFormStatus } from '@/types'
+import type { TFormStatus } from '@/types/index.js'
 
 /**
  * Generates a response object based on the given form status.

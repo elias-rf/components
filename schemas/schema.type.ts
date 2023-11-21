@@ -1,4 +1,4 @@
-import { TWhere } from '@/types'
+import { TWhere } from '@/types/index.js'
 
 export type TSchema = {
   table: string

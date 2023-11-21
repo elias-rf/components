@@ -1,7 +1,7 @@
-import { getFields } from '@/orm/utils/schema/get-fields'
-import { getPrimary } from '@/orm/utils/schema/get-primary'
-import { getTable } from '@/orm/utils/schema/get-table'
-import type { TSchema } from '@/schemas/schema.type'
+import { getFields } from '@/orm/utils/schema/get-fields.js'
+import { getPrimary } from '@/orm/utils/schema/get-primary.js'
+import { getTable } from '@/orm/utils/schema/get-table.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 
 export function validId<T>(id: Array<[T, any]>, schema: TSchema) {
   const idColumns = getPrimary(schema)

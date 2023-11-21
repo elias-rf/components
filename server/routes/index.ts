@@ -1,8 +1,8 @@
 // import { trpcMiddle } from "./trpc";
 
+import { registerRpcServer } from '@/rpc/rpc-server.js'
 import { FastifyPluginCallback } from 'fastify'
-import { systemRoute } from './system'
-import { registerRpcServer } from '@/rpc/rpc-server'
+import { systemRoute } from './system.js'
 
 const prefix = '/api'
 export const routes: FastifyPluginCallback = (fastify, options, done) => {

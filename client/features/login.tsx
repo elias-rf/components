@@ -1,7 +1,7 @@
-import { authStore } from '@/client/store/auth_store'
-import toast from 'react-hot-toast'
+import { authStore } from '@/client/store/auth_store.js'
+import { toast } from 'react-hot-toast'
 import { useLocation } from 'wouter'
-import { Login as LoginComponent } from '../components/login/login'
+import { Login as LoginComponent } from '../components/login/login.js'
 
 /**
  * Componente para tela de login

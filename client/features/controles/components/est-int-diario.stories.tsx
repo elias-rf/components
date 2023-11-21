@@ -1,5 +1,5 @@
-import { EsterilizacaoInternaDiario } from '@/client/features/controles/components/est-int-diario'
-import { fetcherMock } from '@/mocks/fetcher-mock'
+import { EsterilizacaoInternaDiario } from '@/client/features/controles/components/est-int-diario.js'
+import { fetcherMock } from '@/mocks/fetcher-mock.js'
 import type { Story } from '@ladle/react'
 
 fetcherMock({

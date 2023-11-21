@@ -1,5 +1,5 @@
-import { JsonRenderProps } from './data-render'
-import { ExpandableObject } from './expandable-object'
+import { JsonRenderProps } from './data-render.js'
+import { ExpandableObject } from './expandable-object.js'
 
 export function JsonObject({
   field,

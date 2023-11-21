@@ -1,5 +1,5 @@
 import type { Story } from '@ladle/react'
-import { useInput } from './use-input'
+import { useInput } from './use-input.js'
 
 export default {
   title: 'lib/hooks/use-input',

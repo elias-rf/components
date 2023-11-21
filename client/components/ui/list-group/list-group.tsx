@@ -1,6 +1,6 @@
-import { cn } from '@/client/lib/cn'
+import { cn } from '@/client/lib/cn.js'
 import { ReactNode } from 'react'
-import { ListGroupItem } from './list-group-item'
+import { ListGroupItem } from './list-group-item.js'
 
 function ListGroup({
   children,

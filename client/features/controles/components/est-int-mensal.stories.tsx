@@ -1,7 +1,7 @@
 import '@/mocks/fetcher-mock'
 
-import { EsterilizacaoInternaMensal } from '@/client/features/controles/components/est-int-mensal'
-import { fetcherMock } from '@/mocks/fetcher-mock'
+import { EsterilizacaoInternaMensal } from '@/client/features/controles/components/est-int-mensal.js'
+import { fetcherMock } from '@/mocks/fetcher-mock.js'
 import type { Story } from '@ladle/react'
 
 fetcherMock({

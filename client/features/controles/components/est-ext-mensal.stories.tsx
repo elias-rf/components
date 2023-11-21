@@ -1,7 +1,7 @@
 import '@/mocks/fetcher-mock'
 
-import { EsterilizacaoExternaMensal } from '@/client/features/controles/components/est-ext-mensal'
-import { fetcherMock } from '@/mocks/fetcher-mock'
+import { EsterilizacaoExternaMensal } from '@/client/features/controles/components/est-ext-mensal.js'
+import { fetcherMock } from '@/mocks/fetcher-mock.js'
 import type { Story } from '@ladle/react'
 
 fetcherMock({

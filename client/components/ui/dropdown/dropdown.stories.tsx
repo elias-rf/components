@@ -1,6 +1,6 @@
-import { PersonIcon } from '@/client/components/icons/person-icon'
-import { Avatar } from '@/client/components/ui/avatar'
-import { Dropdown } from '@/client/components/ui/dropdown'
+import { PersonIcon } from '@/client/components/icons/person-icon.js'
+import { Avatar } from '@/client/components/ui/avatar.js'
+import { Dropdown } from '@/client/components/ui/dropdown/dropdown.js'
 import '@/client/index.css'
 import { Story, action } from '@ladle/react'
 

@@ -1,6 +1,6 @@
-import { Caixa } from './caixa'
-import { Flex } from './flex'
-import { Produto } from './produto'
+import { Caixa } from './caixa.js'
+import { Flex } from './flex.js'
+import { Produto } from './produto.js'
 
 export class Tipo1 extends Caixa {
   constructor() {

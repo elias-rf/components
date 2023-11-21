@@ -1,13 +1,13 @@
-import { dbFullvision } from '@/controllers/db/db-fullvision.db'
-import { MestreNota } from '@/controllers/nf-saida_controller'
-import { OrmDatabase, ormTable } from '@/orm'
-import type { TSchema } from '@/schemas/schema.type'
+import { dbFullvision } from '@/controllers/db/db-fullvision.db.js'
+import { MestreNota } from '@/controllers/nf-saida_controller.js'
+import { AdapterKnex, ormTable } from '@/orm/index.js'
+import type { TSchema } from '@/schemas/schema.type.js'
 import { array, isoDate, number, object, parse, string, union } from 'valibot'
 
 export type TNfSaidaFvFields = (typeof MestreNota.fields)[number]
 export type TNfSaidaFvKeys = (typeof MestreNota.primary)[number]
 
-function nfSaidaFvControllerFactory(db: OrmDatabase, schema: TSchema) {
+function nfSaidaFvControllerFactory(db: AdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfSaidaFvFields, TNfSaidaFvKeys>(db, schema)
 
   const vendaAnalitico = async ({
@@ -27,7 +27,7 @@ function nfSaidaFvControllerFactory(db: OrmDatabase, schema: TSchema) {
         fim,
       }
     )
-    const knex = db.knex
+    const knex = db.getDriver()
     const qryPlano = knex('MestreNota')
       .select(knex.raw("'FV' as origem"))
       .select([
@@ -91,7 +91,7 @@ function nfSaidaFvControllerFactory(db: OrmDatabase, schema: TSchema) {
         uf,
       }
     )
-    const knex = db.knex
+    const knex = db.getDriver()
     const qry = await knex<
       any,
       {
@@ -157,7 +157,7 @@ function nfSaidaFvControllerFactory(db: OrmDatabase, schema: TSchema) {
       }),
       { inicio, fim, cliente }
     )
-    const knex = db.knex
+    const knex = db.getDriver()
     const rsp = knex<
       any,
       {
