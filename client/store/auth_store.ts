@@ -72,6 +72,9 @@ export const authStoreBase = createStore<AuthState>()(
             'fetchPermissions'
           )
         },
+        /**
+         * Retorna uma lista boolean para cada permission informada
+         */
         canList: (permissions) => {
           const response = {} as { [permission: string]: any }
           const groups = get().user.group_ids?.split(',')
@@ -84,6 +87,10 @@ export const authStoreBase = createStore<AuthState>()(
           })
           return response
         },
+
+        /**
+         * Retorna true se o usuario tem a permissão
+         */
         can: (permission) => {
           const groups = get().user.group_ids?.split(',')
           let response = get().canList({ [permission]: false })[permission]

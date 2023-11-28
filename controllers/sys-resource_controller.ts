@@ -3,6 +3,10 @@ import { TAdapterKnex } from '@/orm/adapter-knex.js'
 import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 
+/**
+ * sysResource
+ */
+
 export const resource = {
   database: 'sys',
   table: 'resource',

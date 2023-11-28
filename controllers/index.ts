@@ -1,4 +1,4 @@
-// @index(['./**/*_controller.ts'], (f, _) => `import { ${_.camelCase(f.name.slice(0,-10))}Controller } from "${f.path}";`)
+// @index(['./**/*_controller.ts'], (f, _) => `import { ${_.camelCase(f.name.slice(0,-10))}Controller } from "${f.path}.js";`)
 import { agendaTelefoneController } from './agenda-telefone_controller.js'
 import { cidadeController } from './cidade_controller.js'
 import { clienteController } from './cliente_controller.js'
@@ -43,6 +43,7 @@ import { vendedorController } from './vendedor_controller.js'
 // @endindex
 
 export const module = {
+  // UTILIDADE
   sys: {
     list,
   },

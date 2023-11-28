@@ -16,6 +16,7 @@ export default function Precos() {
       <PrecosHead
         can={can}
         permissions={permissions}
+        className="print:hidden"
       />
       <div className="p-2">
         <PrecosCliente />
