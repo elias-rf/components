@@ -1,5 +1,6 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 
 export const tbl_Produto: TSchema = {
@@ -49,7 +50,7 @@ export const tbl_Produto: TSchema = {
 export type TProdutoFields = (typeof tbl_Produto.fields)[number]
 export type TProdutoKeys = (typeof tbl_Produto.primary)[number]
 
-function produtoControllerFactory(db: AdapterKnex, schema: TSchema) {
+function produtoControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TProdutoFields, TProdutoKeys>(db, schema)
   return {
     ...orm.rpc,

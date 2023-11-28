@@ -1,5 +1,5 @@
 import { config } from '@/config/index.js'
-import { AdapterKnex } from '@/orm/index.js'
+import { adapterKnex } from '@/orm/adapter-knex.js'
 import Knex from 'knex'
 
-export const dbLog = new AdapterKnex(Knex(config.db.log))
+export const dbLog = adapterKnex(Knex(config.db.log))

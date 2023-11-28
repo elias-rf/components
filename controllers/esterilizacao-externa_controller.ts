@@ -1,5 +1,6 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { day } from '@/utils/date/day.js'
 import { isoDate, object, parse, regex, string } from 'valibot'
@@ -27,7 +28,7 @@ export type TEsterilizacaoExternaKeys =
   (typeof esterilizacaoExternaSchema.primary)[number]
 
 function esterilizacaoExternaControllerFactory(
-  db: AdapterKnex,
+  db: TAdapterKnex,
   schema: TSchema
 ) {
   const orm = ormTable<TEsterilizacaoExternaFields, TEsterilizacaoExternaKeys>(

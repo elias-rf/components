@@ -22,7 +22,7 @@ describe('EstoqueModel', () => {
         ['CdEmpresa', 1],
       ],
       increment: ['EstAtual', 2],
-      select: ['EstAtual'],
+      returning: ['EstAtual'],
     })
 
     expect(rsp).toEqual([{ EstAtual: '1' }])
@@ -30,7 +30,7 @@ describe('EstoqueModel', () => {
     expect(knexMockHistory(tracker)).toEqual([
       {
         bindings: [2, '1', 1],
-        sql: `update [Estoque] set [EstAtual] = [EstAtual] + @p0 output inserted.[EstAtual] where [CdProduto] = @p1 and [CdEmpresa] = @p2`,
+        sql: 'update [Estoque] set [EstAtual] = [EstAtual] + @p0 output inserted.[EstAtual] where [CdProduto] = @p1 and [CdEmpresa] = @p2',
       },
     ])
   })

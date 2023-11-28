@@ -1,5 +1,6 @@
 import { dbPlano } from '@/controllers/db/db-plano.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 
 export const ItemNota: TSchema = {
@@ -267,7 +268,7 @@ export const ItemNota: TSchema = {
 export type TNfSaidaItemFields = (typeof ItemNota.fields)[number]
 export type TNfSaidaItemKeys = (typeof ItemNota.primary)[number]
 
-function nfSaidaItemControllerFactory(db: AdapterKnex, schema: TSchema) {
+function nfSaidaItemControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfSaidaItemFields, TNfSaidaItemKeys>(db, schema)
   return {
     ...orm.rpc,

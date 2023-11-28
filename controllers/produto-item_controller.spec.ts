@@ -43,10 +43,10 @@ describe('produtoItemController', () => {
       id: [['kProdutoItem', 10]],
       select: ['CdProduto'],
     })
-    expect(dbOftalmo.sql()).toEqual([
+    expect(dbOftalmo.log()).toEqual([
       'select top (1) [IdVisiontech] from [tbl_Produto_Item] where [kProdutoItem] = 10',
     ])
-    expect(dbPlano.sql()).toEqual([
+    expect(dbPlano.log()).toEqual([
       "select top (1) [CdProduto] from [CadPro] where [CdProduto] = '1'",
     ])
     expect(rsp).toEqual({ CdProduto: '1' })

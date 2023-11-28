@@ -1,5 +1,6 @@
 import { dbPlano } from '@/controllers/db/db-plano.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 
 export const MestrePedido: TSchema = {
@@ -193,7 +194,7 @@ export const MestrePedido: TSchema = {
 export type TPedidoFields = (typeof MestrePedido.fields)[number]
 export type TPedidoKeys = (typeof MestrePedido.primary)[number]
 
-function pedidoControllerFactory(db: AdapterKnex, schema: TSchema) {
+function pedidoControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TPedidoFields, TPedidoKeys>(db, schema)
   return {
     ...orm.rpc,

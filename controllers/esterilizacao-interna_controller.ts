@@ -1,5 +1,6 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { day } from '@/utils/date/day.js'
 import { isoDate, object, parse, regex, string } from 'valibot'
@@ -34,7 +35,7 @@ export type TEsterilizacaoInternaKeys =
   (typeof esterilizacaoInternaSchema.primary)[number]
 
 function esterilizacaoInternaControllerFactory(
-  db: AdapterKnex,
+  db: TAdapterKnex,
   schema: TSchema
 ) {
   const orm = ormTable<TEsterilizacaoInternaFields, TEsterilizacaoInternaKeys>(
@@ -56,7 +57,7 @@ function esterilizacaoInternaControllerFactory(
       }),
       { inicio, fim }
     )
-    const qry = await db.run({
+    const qry = await db({
       from: 'tOperacaoOrdemProducao',
       selectRaw: ['DataInicio as dia, Sum(QtdConforme) AS quantidade'],
       orderBy: [['DataInicio', 'desc']],
@@ -78,7 +79,7 @@ function esterilizacaoInternaControllerFactory(
     mes: string
   }): Promise<{ mes: string; quantidade: number }[]> => {
     parse(string([regex(/^\d{4}-(?:0[1-9]|1[0-2])$/, 'mês inválido')]), mes)
-    const qry = await db.run({
+    const qry = await db({
       from: 'tOperacaoOrdemProducao',
       selectRaw: [
         'CONVERT(CHAR(7),[DataInicio],120) AS mes, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade',

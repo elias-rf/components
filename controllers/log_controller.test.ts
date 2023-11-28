@@ -69,7 +69,7 @@ describe('logController', () => {
     const rsp = await logController.update$({
       where: [['reqId', 1]],
       data: { reqId: 10 },
-      select: ['reqId'],
+      returning: ['reqId'],
     })
 
     expect(rsp).toEqual({ reqId: 10 })

@@ -1,5 +1,6 @@
 import { dbPlano } from '@/controllers/db/db-plano.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 
 export const LotesNota: TSchema = {
@@ -62,7 +63,7 @@ export type TNfSaidaLoteKeys = (typeof LotesNota.primary)[number]
   },
 }
 
-function nfSaidaLoteControllerFactory(db: AdapterKnex, schema: TSchema) {
+function nfSaidaLoteControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfSaidaLoteFields, TNfSaidaLoteKeys>(db, schema)
   return {
     ...orm.rpc,

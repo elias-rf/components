@@ -7,7 +7,8 @@ import { ordemProducaoController } from '@/controllers/ordem-producao_controller
 import { produtoControleController } from '@/controllers/produto-controle_controller.js'
 import { produtoEstatisticaController } from '@/controllers/produto-estatistica_controller.js'
 import { TProdutoPlanoFields } from '@/controllers/produto-plano_controller.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { day } from '@/utils/date/day.js'
 import { isEmpty } from '@/utils/identify/is-empty.js'
@@ -102,7 +103,7 @@ export const NfMestre: TSchema = {
 export type TNfEntradaFields = (typeof NfMestre.fields)[number]
 export type TNfEntradaKeys = (typeof NfMestre.primary)[number]
 
-function nfEntradaControllerFactory(db: AdapterKnex, schema: TSchema) {
+function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfEntradaFields, TNfEntradaKeys>(db, schema)
 
   async function transferenciaCreate({ controles }: { controles: string[] }) {

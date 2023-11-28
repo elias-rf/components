@@ -6,7 +6,8 @@ import {
   produtoItemController,
 } from '@/controllers/produto-item_controller.js'
 import { TProdutoPlanoFields } from '@/controllers/produto-plano_controller.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { day } from '@/utils/date/day.js'
 import { isEmpty } from '@/utils/identify/is-empty.js'
@@ -90,7 +91,7 @@ export const tOrdemProducao: TSchema = {
 export type TOrdemProducaoFields = (typeof tOrdemProducao.fields)[number]
 export type TOrdemProducaoKeys = (typeof tOrdemProducao.primary)[number]
 
-function ordemProducaoControllerFactory(db: AdapterKnex, schema: TSchema) {
+function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TOrdemProducaoFields, TOrdemProducaoKeys>(db, schema)
 
   /**

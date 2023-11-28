@@ -1,6 +1,7 @@
 import { dbPlano } from '@/controllers/db/db-plano.db.js'
 import { nfSaidaFvController } from '@/controllers/nf-saida-fv_controller.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex, TQueryKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { day } from '@/utils/date/day.js'
 import { array, isoDate, number, parse, regex, string, union } from 'valibot'
@@ -124,7 +125,7 @@ export const MestreNota: TSchema = {
 export type TNfSaidaFields = (typeof MestreNota.fields)[number]
 export type TNfSaidaKeys = (typeof MestreNota.primary)[number]
 
-function nfSaidaControllerFactory(db: AdapterKnex, schema: TSchema) {
+function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfSaidaFields, TNfSaidaKeys>(db, schema)
 
   /**
@@ -144,29 +145,23 @@ function nfSaidaControllerFactory(db: AdapterKnex, schema: TSchema) {
 
     const aux: any = {}
     const rsp = []
-    const knex = db.getDriver()
-    const qry: any = await knex<
-      any,
-      { dia: string; NmCategoria: string; quantidade: number }
-    >(
-      knex.raw(
-        'NatOpe INNER JOIN (CategPro INNER JOIN (CadPro INNER JOIN (MestreNota INNER JOIN ItemNota ON (MestreNota.Serie = ItemNota.Serie) AND (MestreNota.NumNota = ItemNota.NumNota) AND (MestreNota.CdFilial = ItemNota.CdFilial)) ON CadPro.CdProduto = ItemNota.CdProduto) ON CategPro.CdCategoria = CadPro.CdCategoria) ON (ItemNota.Nop = NatOpe.Nop) AND (NatOpe.Nop = MestreNota.Nop)'
-      )
-    )
-      .select(
-        knex.raw(
-          'CONVERT(CHAR(10),[MestreNota].[DtEmissao],120) AS dia, CategPro.NmCategoria, Sum(ItemNota.Quantidade) AS quantidade'
-        )
-      )
-      .orderBy('MestreNota.DtEmissao', 'desc')
-      .groupBy('MestreNota.DtEmissao')
-      .groupBy('CategPro.NmCategoria')
-      .whereBetween('MestreNota.DtEmissao', [inicio, fim])
-      .where('MestreNota.CdFilial', 1)
-      .where('NatOpe.Nop', 5151)
-      .where('MestreNota.NotadeComplemento', 'N')
-      .where('MestreNota.Tipo', '<>', 'C')
-
+    const qry = await db({
+      fromRaw: [
+        'NatOpe INNER JOIN (CategPro INNER JOIN (CadPro INNER JOIN (MestreNota INNER JOIN ItemNota ON (MestreNota.Serie = ItemNota.Serie) AND (MestreNota.NumNota = ItemNota.NumNota) AND (MestreNota.CdFilial = ItemNota.CdFilial)) ON CadPro.CdProduto = ItemNota.CdProduto) ON CategPro.CdCategoria = CadPro.CdCategoria) ON (ItemNota.Nop = NatOpe.Nop) AND (NatOpe.Nop = MestreNota.Nop)',
+      ],
+      selectRaw: [
+        'CONVERT(CHAR(10),[MestreNota].[DtEmissao],120) AS dia, CategPro.NmCategoria, Sum(ItemNota.Quantidade) AS quantidade',
+      ],
+      orderBy: [['MestreNota.DtEmissao', 'desc']],
+      groupBy: ['MestreNota.DtEmissao', 'CategPro.NmCategoria'],
+      where: [
+        ['MestreNota.DtEmissao', 'between', [inicio, fim]],
+        ['MestreNota.CdFilial', 1],
+        ['NatOpe.Nop', 5151],
+        ['MestreNota.NotadeComplemento', 'N'],
+        ['MestreNota.Tipo', '<>', 'C'],
+      ],
+    })
     for (const item of qry) {
       aux[item.dia] = {
         ...aux[item.dia],
@@ -192,32 +187,25 @@ function nfSaidaControllerFactory(db: AdapterKnex, schema: TSchema) {
 
     const aux: any = {}
     const rsp = []
-    const knex = db.getDriver()
-    const qry = await knex(
-      knex.raw(
-        'NatOpe INNER JOIN (CategPro INNER JOIN (CadPro INNER JOIN (MestreNota INNER JOIN ItemNota ON (MestreNota.Serie = ItemNota.Serie) AND (MestreNota.NumNota = ItemNota.NumNota) AND (MestreNota.CdFilial = ItemNota.CdFilial)) ON CadPro.CdProduto = ItemNota.CdProduto) ON CategPro.CdCategoria = CadPro.CdCategoria) ON (ItemNota.Nop = NatOpe.Nop) AND (NatOpe.Nop = MestreNota.Nop)'
-      )
-    )
-      .select(
-        knex.raw(
-          'CONVERT(CHAR(7),[MestreNota].[DtEmissao],120) AS mes, CategPro.NmCategoria, Sum(ItemNota.Quantidade) AS quantidade'
-        )
-      )
-      .orderByRaw('CONVERT(CHAR(7),[MestreNota].[DtEmissao],120) desc')
-      .groupBy(
-        knex.raw(
-          'CONVERT(CHAR(7),[MestreNota].[DtEmissao],120), CategPro.NmCategoria'
-        )
-      )
-      .where(
-        knex.raw('CONVERT(CHAR(7),[MestreNota].[DtEmissao],120)>=?', [mes])
-      )
-      .andWhere(
-        knex.raw(
-          "MestreNota.CdFilial= 1 AND NatOpe.Nop= 5151 AND MestreNota.Tipo<> 'C' AND MestreNota.NotadeComplemento= 'N'"
-        )
-      )
-
+    const qry = await db({
+      fromRaw: [
+        'NatOpe INNER JOIN (CategPro INNER JOIN (CadPro INNER JOIN (MestreNota INNER JOIN ItemNota ON (MestreNota.Serie = ItemNota.Serie) AND (MestreNota.NumNota = ItemNota.NumNota) AND (MestreNota.CdFilial = ItemNota.CdFilial)) ON CadPro.CdProduto = ItemNota.CdProduto) ON CategPro.CdCategoria = CadPro.CdCategoria) ON (ItemNota.Nop = NatOpe.Nop) AND (NatOpe.Nop = MestreNota.Nop)',
+      ],
+      selectRaw: [
+        'CONVERT(CHAR(7),[MestreNota].[DtEmissao],120) AS mes, CategPro.NmCategoria, Sum(ItemNota.Quantidade) AS quantidade',
+      ],
+      groupByRaw: [
+        'CONVERT(CHAR(7),[MestreNota].[DtEmissao],120), CategPro.NmCategoria',
+      ],
+      orderByRaw: ['CONVERT(CHAR(7),[MestreNota].[DtEmissao],120) desc'],
+      whereRaw: ['CONVERT(CHAR(7),[MestreNota].[DtEmissao],120)>=?', [mes]],
+      where: [
+        ['MestreNota.CdFilial', 1],
+        ['NatOpe.Nop', 5151],
+        ['MestreNota.Tipo', '<>', 'C'],
+        ['MestreNota.NotadeComplemento', 'N'],
+      ],
+    })
     for (const item of qry) {
       aux[item.mes] = {
         ...aux[item.mes],
@@ -242,25 +230,24 @@ function nfSaidaControllerFactory(db: AdapterKnex, schema: TSchema) {
   const transferenciaModelo = async ({ data }: { data: string }) => {
     parse(string([isoDate('data inválida')]), data)
 
-    const knex = db.getDriver()
-    const qry = await knex(
-      knex.raw(
-        'NatOpe INNER JOIN (CategPro INNER JOIN (CadPro INNER JOIN (MestreNota INNER JOIN ItemNota ON (MestreNota.Serie = ItemNota.Serie) AND (MestreNota.NumNota = ItemNota.NumNota) AND (MestreNota.CdFilial = ItemNota.CdFilial)) ON CadPro.CdProduto = ItemNota.CdProduto) ON CategPro.CdCategoria = CadPro.CdCategoria) ON (ItemNota.Nop = NatOpe.Nop) AND (NatOpe.Nop = MestreNota.Nop)'
-      )
-    )
-      .select(
-        knex.raw(
-          'CadPro.Descricao as modelo, Sum(ItemNota.Quantidade) AS quantidade'
-        )
-      )
-      .orderByRaw('CadPro.Descricao asc')
-      .groupBy(knex.raw('CadPro.Descricao'))
-      .where(knex.raw('MestreNota.DtEmissao = ?', [data]))
-      .andWhere(
-        knex.raw(
-          "MestreNota.CdFilial=1 AND NatOpe.Nop=5151 AND MestreNota.Tipo<>'C' AND MestreNota.NotadeComplemento='N'"
-        )
-      )
+    const qry = await db({
+      fromRaw: [
+        'NatOpe INNER JOIN (CategPro INNER JOIN (CadPro INNER JOIN (MestreNota INNER JOIN ItemNota ON (MestreNota.Serie = ItemNota.Serie) AND (MestreNota.NumNota = ItemNota.NumNota) AND (MestreNota.CdFilial = ItemNota.CdFilial)) ON CadPro.CdProduto = ItemNota.CdProduto) ON CategPro.CdCategoria = CadPro.CdCategoria) ON (ItemNota.Nop = NatOpe.Nop) AND (NatOpe.Nop = MestreNota.Nop)',
+      ],
+      selectRaw: [
+        'CadPro.Descricao as modelo, Sum(ItemNota.Quantidade) AS quantidade',
+      ],
+
+      orderBy: [['CadPro.Descricao', 'asc']],
+      groupBy: ['CadPro.Descricao'],
+      where: [
+        ['MestreNota.DtEmissao', data],
+        ['MestreNota.CdFilial', 1],
+        ['NatOpe.Nop', 5151],
+        ['MestreNota.Tipo', '<>', 'C'],
+        ['MestreNota.NotadeComplemento', 'N'],
+      ],
+    })
     return qry
   }
   transferenciaModelo.rpc = true
@@ -280,10 +267,10 @@ function nfSaidaControllerFactory(db: AdapterKnex, schema: TSchema) {
     parse(string([isoDate('data inicial inválida')]), inicio)
     parse(string([isoDate('data final inválida')]), fim)
 
-    const knex = db.getDriver()
-    const qryPlano = knex('MestreNota')
-      .select(knex.raw("'VT' as origem"))
-      .select([
+    const qryPlano = await db({
+      from: 'MestreNota',
+      selectRaw: ["'VT' as origem"],
+      select: [
         'CategPro.NmCategoria',
         'MestreNota.DtEmissao',
         'MestreNota.NumNota',
@@ -296,29 +283,35 @@ function nfSaidaControllerFactory(db: AdapterKnex, schema: TSchema) {
         'MestreNota.CdVendedor',
         'CadVen.NmVendedor',
         'CidadesERF.uf',
-      ])
-      .join('ItemNota', function () {
-        this.on('ItemNota.CdFilial', '=', 'MestreNota.CdFilial')
-          .andOn('ItemNota.NumNota', '=', 'MestreNota.NumNota')
-          .andOn('ItemNota.Serie', '=', 'MestreNota.Serie')
-          .andOn('ItemNota.Modelo', '=', 'MestreNota.Modelo')
-      })
-      .join('CadVen', 'MestreNota.CdVendedor', 'CadVen.CdVendedor')
-      .join('CadCli', 'MestreNota.CdCliente', 'CadCli.CdCliente')
-      .join('cidadesErf', 'CadCli.Cidade', 'cidadesErf.NmCidadeIBGE')
-      .join('CadPro', 'ItemNota.CdProduto', 'CadPro.CdProduto')
-      .join('CategPro', 'CadPro.CdCategoria', 'CategPro.CdCategoria')
-      .where({
-        'MestreNota.CdFilial': 2,
-        'CadVen.FgControle': 'S',
-        'MestreNota.FgEstatistica': 'S',
-        'CadPro.FgEstatistica': 'S',
-        'ItemNota.ImprimeComponentes': 'N',
-      })
-      .where('ItemNota.Sequencia', '<>', 0)
-      .where('MestreNota.cdcliente', '<>', 3158)
-      .whereBetween('MestreNota.DtEmissao', [inicio, fim])
-      .whereIn('MestreNota.Tipo', ['E', 'S'])
+      ],
+      join: [
+        [
+          'ItemNota',
+          {
+            'ItemNota.CdFilial': 'MestreNota.CdFilial',
+            'ItemNota.NumNota': 'MestreNota.NumNota',
+            'ItemNota.Serie': 'MestreNota.Serie',
+            'ItemNota.Modelo': 'MestreNota.Modelo',
+          },
+        ],
+        ['CadVen', 'MestreNota.CdVendedor', 'CadVen.CdVendedor'],
+        ['CadCli', 'MestreNota.CdCliente', 'CadCli.CdCliente'],
+        ['cidadesErf', 'CadCli.Cidade', 'cidadesErf.NmCidadeIBGE'],
+        ['CadPro', 'ItemNota.CdProduto', 'CadPro.CdProduto'],
+        ['CategPro', 'CadPro.CdCategoria', 'CategPro.CdCategoria'],
+      ],
+      where: [
+        ['MestreNota.CdFilial', 2],
+        ['CadVen.FgControle', 'S'],
+        ['MestreNota.FgEstatistica', 'S'],
+        ['CadPro.FgEstatistica', 'S'],
+        ['ItemNota.ImprimeComponentes', 'N'],
+        ['ItemNota.Sequencia', '<>', 0],
+        ['MestreNota.cdcliente', '<>', 3158],
+        ['MestreNota.DtEmissao', 'between', [inicio, fim]],
+        ['MestreNota.Tipo', 'in', ['E', 'S']],
+      ],
+    })
     const qryFullvision = nfSaidaFvController.vendaAnalitico({
       inicio,
       fim,
@@ -330,8 +323,6 @@ function nfSaidaControllerFactory(db: AdapterKnex, schema: TSchema) {
 
   /**
    * VENDA DIARIO
-   * @param param0
-   * @returns
    */
   const vendaDiario = async ({
     inicio,
@@ -353,59 +344,39 @@ function nfSaidaControllerFactory(db: AdapterKnex, schema: TSchema) {
     parse(string([isoDate('data final inválida')]), fim)
     parse(array(string('uf deve ser string')), uf)
 
-    const knex = db.getDriver()
-    let qry = knex<
-      {
-        NmCategoria: string
-        DtEmissao: string
-        quantidade: number
-        'MestreNota.FgEstatistica': string
-        'CadPro.FgEstatistica': string
-        'MestreNota.CdFilial': number
-        'ItemNota.ImprimeComponentes': string
-        'CadVen.FgControle': string
-      },
-      {
-        NmCategoria: string
-        DtEmissao: string
-        quantidade: number
-        valor: number
-      }[]
-    >(
-      knex.raw(
-        'MestreNota, ItemNota, CadVen, NatOpe, CadPro, CadCli, CategPro, CidadesERF'
-      )
-    )
-      .select([
-        'NmCategoria',
-        'MestreNota.DtEmissao',
-        knex.raw(
-          "sum(itemNota.Quantidade * (case MestreNota.tipo when 'E' then ItemNota.VlLiquido * -1 else ItemNota.VlLiquido end)) as valor"
-        ),
-      ])
-      .sum({ quantidade: 'ItemNota.Quantidade' })
-      .where({
-        'MestreNota.FgEstatistica': 'S',
-        'MestreNota.CdFilial': 2,
-        'CadPro.FgEstatistica': 'S',
-        'CadVen.FgControle': 'S',
-        'ItemNota.ImprimeComponentes': 'N',
-      })
-      .where('ItemNota.Sequencia', '>', 0)
-      .where('MestreNota.Tipo', '<>', 'C')
-      .where('MestreNota.cdcliente', '<>', 3158)
-      .whereBetween('MestreNota.DtEmissao', [inicio, fim])
-      .whereRaw(
-        'ItemNota.CdFilial = MestreNota.CdFilial and ItemNota.Serie = MestreNota.Serie and ItemNota.Modelo = MestreNota.Modelo and ItemNota.NumNota = MestreNota.NumNota and CadPro.CdCategoria = CategPro.CdCategoria and NatOpe.Nop = MestreNota.Nop and CadVen.CdVendedor = MestreNota.CdVendedor and CadCli.CdCliente = MestreNota.CdCliente and CadPro.CdProduto = ItemNota.CdProduto and Cadcli.Cidade = cidadeserf.NmCidadeIBGE'
-      )
-
-      .groupBy('NmCategoria', 'MestreNota.DtEmissao')
-      .orderBy('NmCategoria')
-      .orderBy('MestreNota.DtEmissao', 'desc')
-    if (uf.length > 0) {
-      qry = qry.whereIn('cidadeserf.uf', uf)
+    let qry: TQueryKnex = {
+      fromRaw: [
+        'MestreNota, ItemNota, CadVen, NatOpe, CadPro, CadCli, CategPro, CidadesERF',
+      ],
+      select: ['NmCategoria', 'MestreNota.DtEmissao'],
+      selectRaw: [
+        "sum(itemNota.Quantidade * (case MestreNota.tipo when 'E' then ItemNota.VlLiquido * -1 else ItemNota.VlLiquido end)) as valor",
+      ],
+      sum: ['ItemNota.Quantidade as quantidade'],
+      where: [
+        ['MestreNota.FgEstatistica', 'S'],
+        ['MestreNota.CdFilial', 2],
+        ['CadPro.FgEstatistica', 'S'],
+        ['CadVen.FgControle', 'S'],
+        ['ItemNota.ImprimeComponentes', 'N'],
+        ['ItemNota.Sequencia', '>', 0],
+        ['MestreNota.Tipo', '<>', 'C'],
+        ['MestreNota.cdcliente', '<>', 3158],
+        ['MestreNota.DtEmissao', 'between', [inicio, fim]],
+      ],
+      whereRaw: [
+        'ItemNota.CdFilial = MestreNota.CdFilial and ItemNota.Serie = MestreNota.Serie and ItemNota.Modelo = MestreNota.Modelo and ItemNota.NumNota = MestreNota.NumNota and CadPro.CdCategoria = CategPro.CdCategoria and NatOpe.Nop = MestreNota.Nop and CadVen.CdVendedor = MestreNota.CdVendedor and CadCli.CdCliente = MestreNota.CdCliente and CadPro.CdProduto = ItemNota.CdProduto and Cadcli.Cidade = cidadeserf.NmCidadeIBGE',
+      ],
+      groupBy: ['NmCategoria', 'MestreNota.DtEmissao'],
+      orderBy: [
+        ['NmCategoria', 'asc'],
+        ['MestreNota.DtEmissao', 'desc'],
+      ],
     }
-    const result = (await qry) as unknown as {
+    if (uf.length > 0) {
+      qry.where?.push(['cidadeserf.uf', 'in', uf])
+    }
+    const result = (await db(qry)) as unknown as {
       NmCategoria: string
       DtEmissao: string
       quantidade: number
@@ -422,8 +393,6 @@ function nfSaidaControllerFactory(db: AdapterKnex, schema: TSchema) {
 
   /**
    * VENDA MENSAL CLIENTE
-   * @param param0
-   * @returns
    */
   const vendaMensalCliente = async ({
     inicio,
@@ -438,52 +407,53 @@ function nfSaidaControllerFactory(db: AdapterKnex, schema: TSchema) {
     parse(string([isoDate('data final inválida')]), fim)
     parse(union([string(), number()]), cliente)
 
-    const knex = db.getDriver()
-    const rsp = knex<
-      any,
-      {
-        NmCategoria: string
-        CdCliente: number
-        anoMes: string
-        quantidade: number
-        valor: number
-      }
-    >('MestreNota')
-      .join('ItemNota', {
-        'MestreNota.CdFilial': 'ItemNota.CdFilial',
-        'MestreNota.Serie': 'ItemNota.Serie',
-        'MestreNota.Modelo': 'ItemNota.Modelo',
-        'MestreNota.NumNota': 'ItemNota.NumNota',
-      })
-      .join('NatOpe', { 'NatOpe.Nop': 'MestreNota.Nop' })
-      .join('CadVen', { 'CadVen.CdVendedor': 'MestreNota.CdVendedor' })
-      .join('CadPro', {
-        'CadPro.CdProduto': 'ItemNota.CdProduto',
-      })
-      .join('CategPro', {
-        'CadPro.CdCategoria': 'CategPro.CdCategoria',
-      })
-      .where({
-        'MestreNota.FgEstatistica': 'S',
-        'MestreNota.CdFilial': 2,
-        'CadPro.FgEstatistica': 'S',
-        'CadVen.FgControle': 'S',
-        'ItemNota.ImprimeComponentes': 'N',
-      })
-      .select([
-        'CategPro.NmCategoria',
-        'MestreNota.CdCliente',
-        knex.raw(
-          "CONVERT(char(7), MestreNota.DtEmissao, 126) AS anoMes, sum(case MestreNota.tipo when 'E' then ItemNota.Quantidade * -1 when 'S' then ItemNota.Quantidade end) as quantidade, sum(itemNota.VlLiquido * (case MestreNota.tipo when 'E' then ItemNota.Quantidade * -1 when 'S' then ItemNota.Quantidade end)) AS valor"
-        ),
-      ])
-      .groupBy('CdCliente', 'NmCategoria')
-      .groupByRaw('CONVERT(char(7), dbo.MestreNota.DtEmissao, 126)')
-      .where('ItemNota.Sequencia', '>', 0)
-      .where('MestreNota.Tipo', '<>', 'C')
-      .whereBetween('MestreNota.DtEmissao', [inicio, fim])
-      .where({ 'MestreNota.CdCliente': cliente })
-    return (await rsp) as {
+    const rsp: TQueryKnex = {
+      from: 'MestreNota',
+      join: [
+        [
+          'ItemNota',
+          {
+            'MestreNota.CdFilial': 'ItemNota.CdFilial',
+            'MestreNota.Serie': 'ItemNota.Serie',
+            'MestreNota.Modelo': 'ItemNota.Modelo',
+            'MestreNota.NumNota': 'ItemNota.NumNota',
+          },
+        ],
+        ['NatOpe', { 'NatOpe.Nop': 'MestreNota.Nop' }],
+        ['CadVen', { 'CadVen.CdVendedor': 'MestreNota.CdVendedor' }],
+        [
+          'CadPro',
+          {
+            'CadPro.CdProduto': 'ItemNota.CdProduto',
+          },
+        ],
+        [
+          'CategPro',
+          {
+            'CadPro.CdCategoria': 'CategPro.CdCategoria',
+          },
+        ],
+      ],
+      where: [
+        ['MestreNota.FgEstatistica', 'S'],
+        ['MestreNota.CdFilial', 2],
+        ['CadPro.FgEstatistica', 'S'],
+        ['CadVen.FgControle', 'S'],
+        ['ItemNota.ImprimeComponentes', 'N'],
+        ['ItemNota.Sequencia', '>', 0],
+        ['MestreNota.Tipo', '<>', 'C'],
+        ['MestreNota.DtEmissao', 'between', [inicio, fim]],
+        ['MestreNota.CdCliente', cliente],
+      ],
+      select: ['CategPro.NmCategoria', 'MestreNota.CdCliente'],
+      selectRaw: [
+        "CONVERT(char(7), MestreNota.DtEmissao, 126) AS anoMes, sum(case MestreNota.tipo when 'E' then ItemNota.Quantidade * -1 when 'S' then ItemNota.Quantidade end) as quantidade, sum(itemNota.VlLiquido * (case MestreNota.tipo when 'E' then ItemNota.Quantidade * -1 when 'S' then ItemNota.Quantidade end)) AS valor",
+      ],
+      groupBy: ['CdCliente', 'NmCategoria'],
+      groupByRaw: ['CONVERT(char(7), dbo.MestreNota.DtEmissao, 126)'],
+    }
+
+    return (await db(rsp)) as {
       NmCategoria: string
       CdCliente: number
       anoMes: string

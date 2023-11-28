@@ -1,5 +1,6 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 
 import type { TSchema } from '@/schemas/schema.type.js'
 
@@ -12,7 +13,7 @@ export const groupSchema: TSchema = {
 export type TGroupFields = (typeof groupSchema.fields)[number]
 export type TGroupKeys = (typeof groupSchema.primary)[number]
 
-function groupControllerFactory(db: AdapterKnex, schema: TSchema) {
+function groupControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TGroupFields, TGroupKeys>(db, schema)
   return {
     ...orm.rpc,

@@ -1,6 +1,7 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
 import { usuarioController } from '@/controllers/usuario_controller.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 
 export const groupSubject = {
@@ -12,7 +13,7 @@ export const groupSubject = {
 export type TGroupSubjectFields = (typeof groupSubject.fields)[number]
 export type TGroupSubjectKeys = (typeof groupSubject.primary)[number]
 
-function groupSubjectControllerFactory(db: AdapterKnex, schema: TSchema) {
+function groupSubjectControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TGroupSubjectFields, TGroupSubjectKeys>(db, schema)
 
   const listPermissions = async ({

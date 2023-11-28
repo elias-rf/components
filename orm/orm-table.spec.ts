@@ -1,7 +1,7 @@
 import { knexMockMsql } from '@/mocks/connections.mock.js'
 import { getTracker } from '@/mocks/database.mock.js'
 import { beforeEach, describe, expect, it, test } from 'vitest'
-import { AdapterKnex } from './adapter-knex/adapter-knex.js'
+import { adapterKnex } from './adapter-knex.js'
 import { ormTable } from './orm-table.js'
 
 const phonebook = {
@@ -12,7 +12,7 @@ const phonebook = {
 
 describe('OrmTable', () => {
   const tracker = getTracker()
-  const db = new AdapterKnex(knexMockMsql)
+  const db = adapterKnex(knexMockMsql)
   const tb = ormTable(db, phonebook)
   db.startLog()
 
@@ -114,7 +114,7 @@ describe('OrmTable', () => {
     })
 
     expect(rsp).toEqual([{ id: 1 }])
-    expect(db.sql()).toEqual([
+    expect(db.log()).toEqual([
       "select top (50) [id], [name] from [phonebook] where [id] = 1 and [name] > 'a' order by [id] asc, [name] desc",
     ])
   })
@@ -125,7 +125,7 @@ describe('OrmTable', () => {
       where: [['id', 10]],
     })
     expect(rsp).toEqual(1)
-    expect(db.sql()).toEqual([
+    expect(db.log()).toEqual([
       'delete from [phonebook] where [id] = 10;select @@rowcount',
     ])
   })
@@ -137,7 +137,7 @@ describe('OrmTable', () => {
       select: ['id', 'name'],
     })
     expect(rsp).toEqual({ id: '1' })
-    expect(db.sql()).toEqual([
+    expect(db.log()).toEqual([
       'select top (1) [id], [name] from [phonebook] where [id] = 10',
     ])
   })
@@ -147,10 +147,10 @@ describe('OrmTable', () => {
     const rsp = await tb.rpc.update$({
       where: [['id', 10]],
       data: { id: 11 },
-      select: ['id'],
+      returning: ['id'],
     })
     expect(rsp).toEqual([{ id: 10 }])
-    expect(db.sql()).toEqual([
+    expect(db.log()).toEqual([
       'update [phonebook] set [id] = 11 output inserted.[id] where [id] = 10',
     ])
   })
@@ -159,10 +159,10 @@ describe('OrmTable', () => {
     tracker.on.insert('phonebook').response({ id: 10 })
     const rsp = await tb.rpc.create$({
       data: { id: 10 },
-      select: ['id'],
+      returning: ['id'],
     })
     expect(rsp).toEqual({ id: 10 })
-    expect(db.sql()).toEqual([
+    expect(db.log()).toEqual([
       'insert into [phonebook] ([id]) output inserted.[id] values (10)',
     ])
   })
@@ -173,7 +173,7 @@ describe('OrmTable', () => {
       data: { id: 1 },
     })
     expect(rsp).toEqual(1)
-    expect(db.sql()).toEqual(['insert into [phonebook] ([id]) values (1)'])
+    expect(db.log()).toEqual(['insert into [phonebook] ([id]) values (1)'])
   })
 
   it('increment', async () => {
@@ -181,10 +181,10 @@ describe('OrmTable', () => {
     const rsp = await tb.rpc.increment$({
       where: [[`id`, 10]],
       increment: [`id`, 2],
-      select: ['id'],
+      returning: ['id'],
     })
     expect(rsp).toEqual([])
-    expect(db.sql()).toEqual([
+    expect(db.log()).toEqual([
       'update [phonebook] set [id] = [id] + 2 output inserted.[id] where [id] = 10',
     ])
   })
@@ -194,11 +194,11 @@ describe('OrmTable', () => {
     const rsp = await tb.rpc.count({
       where: [[`id`, 10]],
       select: ['id', 'name'],
-      count: '* as ttl',
+      count: ['* as ttl'],
     })
     expect(rsp).toEqual([])
-    expect(db.sql()).toEqual([
-      'select count(*) as [ttl], [id], [name] from [phonebook] where [id] = 10',
+    expect(db.log()).toEqual([
+      'select [id], [name], count(*) as [ttl] from [phonebook] where [id] = 10',
     ])
   })
 })

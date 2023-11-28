@@ -1,5 +1,6 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import type { TCurrentUser } from '@/types/index.js'
 import { day } from '@/utils/date/day.js'
@@ -29,7 +30,7 @@ export const tbl_Seguranca_Usuario = {
 export type TUsuarioFields = (typeof tbl_Seguranca_Usuario.fields)[number]
 export type TUsuarioKeys = (typeof tbl_Seguranca_Usuario.primary)[number]
 
-function usuarioControllerFactory(db: AdapterKnex, schema: TSchema) {
+function usuarioControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TUsuarioFields, TUsuarioKeys>(db, schema)
 
   async function me(this: any) {

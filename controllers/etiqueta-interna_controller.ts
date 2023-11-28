@@ -1,5 +1,6 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 
 export const etiquetaInternaSchema: TSchema = {
@@ -13,7 +14,7 @@ export type TEtiquetaInternaFields =
 export type TEtiquetaInternaKeys =
   (typeof etiquetaInternaSchema.primary)[number]
 
-function etiquetaInternaControllerFactory(db: AdapterKnex, schema: TSchema) {
+function etiquetaInternaControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TEtiquetaInternaFields, TEtiquetaInternaKeys>(db, schema)
   return {
     ...orm.rpc,

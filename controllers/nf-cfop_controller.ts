@@ -1,5 +1,6 @@
 import { dbPlano } from '@/controllers/db/db-plano.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 
 export const NatOpe: TSchema = {
@@ -117,7 +118,7 @@ export const NatOpe: TSchema = {
 export type TNfCfopFields = (typeof NatOpe.fields)[number]
 export type TNfCfopKeys = (typeof NatOpe.primary)[number]
 
-function nfCfopControllerFactory(db: AdapterKnex, schema: TSchema) {
+function nfCfopControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfCfopFields, TNfCfopKeys>(db, schema)
   return {
     ...orm.rpc,

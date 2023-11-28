@@ -1,5 +1,6 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { day } from '@/utils/date/day.js'
 import { isoDate, number, object, parse, regex, string, union } from 'valibot'
@@ -57,7 +58,7 @@ export type TOrdemProducaoOperacaoKeys =
   (typeof tOperacaoOrdemProducao.primary)[number]
 
 function ordemProducaoOperacaoControllerFactory(
-  db: AdapterKnex,
+  db: TAdapterKnex,
   schema: TSchema
 ) {
   const orm = ormTable<
@@ -92,10 +93,10 @@ function ordemProducaoOperacaoControllerFactory(
       }
     )
 
-    const data = await db.run({
+    const data = await db({
       from: orm.util.getTableName(),
       select: ['DataInicio as dia'],
-      sum: 'QtdConforme as quantidade',
+      sum: ['QtdConforme as quantidade'],
       orderBy: [['DataInicio', 'desc']],
       groupBy: ['DataInicio'],
       where: [
@@ -130,7 +131,7 @@ function ordemProducaoOperacaoControllerFactory(
       { operacao, mes }
     )
 
-    const qry = await db.run({
+    const qry = await db({
       from: orm.util.getTableName(),
       selectRaw: [
         'CONVERT(CHAR(7),[DataInicio],120) AS mes, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade',

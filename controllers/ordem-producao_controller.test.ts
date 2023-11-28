@@ -298,7 +298,7 @@ describe('ordemProducaoController', () => {
     const rsp = await ordemProducaoController.update$({
       where: [['kOp', 1]],
       data: { kOp: 10 },
-      select: ['kOp'],
+      returning: ['kOp'],
     })
 
     expect(rsp).toEqual({ id: 10 })

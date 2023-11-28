@@ -1,5 +1,6 @@
 import { dbPlano } from '@/controllers/db/db-plano.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 
 export const fornecedorSchema: TSchema = {
@@ -50,7 +51,7 @@ export const fornecedorSchema: TSchema = {
 export type TFornecedorFields = (typeof fornecedorSchema.fields)[number]
 export type TFornecedorKeys = (typeof fornecedorSchema.primary)[number]
 
-function fornecedorControllerFactory(db: AdapterKnex, schema: TSchema) {
+function fornecedorControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TFornecedorFields, TFornecedorKeys>(db, schema)
   return {
     ...orm.rpc,

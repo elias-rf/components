@@ -26,7 +26,7 @@ describe('clienteRpc', () => {
     })
 
     expect(rsp).toEqual([{ id: '1' }])
-    expect(dbPlano.sql()).toEqual([
+    expect(dbPlano.log()).toEqual([
       'select top (50) * from [CadCli] where [CdCliente] = 1 order by [CdCliente] asc',
     ])
   })
@@ -40,7 +40,7 @@ describe('clienteRpc', () => {
     })
 
     expect(rsp).toEqual({ id: '1' })
-    expect(dbPlano.sql()).toEqual([
+    expect(dbPlano.log()).toEqual([
       'select top (1) [CdCliente] from [CadCli] where [CdCliente] = 1',
     ])
   })
@@ -54,7 +54,7 @@ describe('clienteRpc', () => {
     })
 
     expect(rsp).toEqual(1)
-    expect(dbPlano.sql()).toEqual([
+    expect(dbPlano.log()).toEqual([
       "update [CadCli] set [RzSocial] = 'test' where [CdCliente] = 1;select @@rowcount",
     ])
   })
@@ -67,7 +67,7 @@ describe('clienteRpc', () => {
     })
 
     expect(rsp).toEqual(1)
-    expect(dbPlano.sql()).toEqual([
+    expect(dbPlano.log()).toEqual([
       "insert into [CadCli] ([CdCliente], [RzSocial]) values (1, 'test')",
     ])
   })
@@ -80,7 +80,7 @@ describe('clienteRpc', () => {
     })
 
     expect(rsp).toEqual(1)
-    expect(dbPlano.sql()).toEqual([
+    expect(dbPlano.log()).toEqual([
       'delete from [CadCli] where [CdCliente] = 1;select @@rowcount',
     ])
   })

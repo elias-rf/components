@@ -1,4 +1,4 @@
-import { TDriverMock, TQuery } from '@/orm/driver-mock/driver-mock.js'
+import { TDriverMock } from '@/orm/driver-mock/driver-mock.js'
 
 type TMethod = 'from' | 'where' | 'select' | 'orderBy' | 'insert' | 'update'
 

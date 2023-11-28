@@ -69,7 +69,7 @@ describe('SysResourceModel', () => {
     const rsp = await sysResourceController.update$({
       where: [['resource_id', '10']],
       data: { resource_id: '10' },
-      select: ['resource_id'],
+      returning: ['resource_id'],
     })
 
     expect(rsp).toEqual({ resource_id: '10' })

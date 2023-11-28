@@ -7,7 +7,6 @@ export function fnInsert({
   data: Record<string, any>[]
   query: TQuery
 }) {
-  console.log('fnInsert', data, query)
   query.insert && data.push(query.insert)
   return { data, query }
 }

@@ -1,5 +1,6 @@
 import { dbPlano } from '@/controllers/db/db-plano.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { formatMoney } from '@/utils/format/format-money.js'
 import {
@@ -216,7 +217,7 @@ export type TClienteKeys = (typeof clienteSchema.primary)[number]
     where: [['CdProduto', 'CdProduto']],
   },
 }
-function clienteControllerFactory(db: AdapterKnex, schema: TSchema) {
+function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TClienteFields, TClienteKeys>(db, schema)
 
   async function vendaMensalQuantidade(args: {

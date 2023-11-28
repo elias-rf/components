@@ -25,7 +25,7 @@ describe('agendaTelefoneRpc', () => {
     })
 
     expect(rsp).toEqual([{ id: 1 }])
-    expect(dbOftalmo.sql()).toEqual([
+    expect(dbOftalmo.log()).toEqual([
       'select top (50) * from [phonebook] where [id] = 1 order by [id] asc',
     ])
   })
@@ -39,7 +39,7 @@ describe('agendaTelefoneRpc', () => {
     })
 
     expect(rsp).toEqual({ id: 1 })
-    expect(dbOftalmo.sql()).toEqual([
+    expect(dbOftalmo.log()).toEqual([
       'select top (1) [id] from [phonebook] where [id] = 1',
     ])
   })
@@ -53,7 +53,7 @@ describe('agendaTelefoneRpc', () => {
     })
 
     expect(rsp).toEqual(1)
-    expect(dbOftalmo.sql()).toEqual([
+    expect(dbOftalmo.log()).toEqual([
       "update [phonebook] set [name] = 'test' where [id] = 1;select @@rowcount",
     ])
   })
@@ -66,7 +66,7 @@ describe('agendaTelefoneRpc', () => {
     })
 
     expect(rsp).toEqual(1)
-    expect(dbOftalmo.sql()).toEqual([
+    expect(dbOftalmo.log()).toEqual([
       "insert into [phonebook] ([id], [name]) values (1, 'test')",
     ])
   })
@@ -79,7 +79,7 @@ describe('agendaTelefoneRpc', () => {
     })
 
     expect(rsp).toEqual(1)
-    expect(dbOftalmo.sql()).toEqual([
+    expect(dbOftalmo.log()).toEqual([
       'delete from [phonebook] where [id] = 1;select @@rowcount',
     ])
   })

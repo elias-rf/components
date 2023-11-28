@@ -1,5 +1,6 @@
 import { dbPlano } from '@/controllers/db/db-plano.db.js'
-import { AdapterKnex, ormTable } from '@/orm/index.js'
+import { TAdapterKnex } from '@/orm/adapter-knex.js'
+import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 
 export const EstatPro: TSchema = {
@@ -47,7 +48,10 @@ export const EstatPro: TSchema = {
 export type TProdutoEstatisticaFields = (typeof EstatPro.fields)[number]
 export type TProdutoEstatisticaKeys = (typeof EstatPro.primary)[number]
 
-function produtoEstatisticaControllerFactory(db: AdapterKnex, schema: TSchema) {
+function produtoEstatisticaControllerFactory(
+  db: TAdapterKnex,
+  schema: TSchema
+) {
   const orm = ormTable<TProdutoEstatisticaFields, TProdutoEstatisticaKeys>(
     db,
     schema

@@ -4,10 +4,10 @@ import type { TSchema } from '@/schemas/schema.type.js'
 import { TSelect } from '@/types/index.js'
 import { isEmpty } from '@/utils/identify/is-empty.js'
 
-export function validReturning(
-  returning: TSelect<string> | undefined,
+export function validReturning<TFields>(
+  returning: TSelect<TFields> | undefined,
   schema: TSchema
-): { returning?: Array<string> } {
+): { returning?: TSelect<TFields> } {
   const nameList = getFields(schema)
   const fieldsInvalidos = []
   let fieldsLivres = nameList

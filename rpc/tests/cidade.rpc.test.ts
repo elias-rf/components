@@ -25,7 +25,7 @@ describe('cidadeRpc', () => {
     })
 
     expect(rsp).toEqual([{ id: '1' }])
-    expect(dbPlano.sql()).toEqual([
+    expect(dbPlano.log()).toEqual([
       "select top (50) * from [cidadesERF] where [CdCidadeIBGE] = '1' order by [CdCidadeIBGE] asc",
     ])
   })
@@ -39,7 +39,7 @@ describe('cidadeRpc', () => {
     })
 
     expect(rsp).toEqual({ id: '1' })
-    expect(dbPlano.sql()).toEqual([
+    expect(dbPlano.log()).toEqual([
       "select top (1) [CdCidadeIBGE] from [cidadesERF] where [CdCidadeIBGE] = '1'",
     ])
   })
@@ -53,7 +53,7 @@ describe('cidadeRpc', () => {
     })
 
     expect(rsp).toEqual(1)
-    expect(dbPlano.sql()).toEqual([
+    expect(dbPlano.log()).toEqual([
       "update [cidadesERF] set [NmCidadeIBGE] = 'test' where [CdCidadeIBGE] = '1';select @@rowcount",
     ])
   })
@@ -66,7 +66,7 @@ describe('cidadeRpc', () => {
     })
 
     expect(rsp).toEqual(1)
-    expect(dbPlano.sql()).toEqual([
+    expect(dbPlano.log()).toEqual([
       "insert into [cidadesERF] ([CdCidadeIBGE], [NmCidadeIBGE]) values ('1', 'test')",
     ])
   })
@@ -79,7 +79,7 @@ describe('cidadeRpc', () => {
     })
 
     expect(rsp).toEqual(1)
-    expect(dbPlano.sql()).toEqual([
+    expect(dbPlano.log()).toEqual([
       "delete from [cidadesERF] where [CdCidadeIBGE] = '1';select @@rowcount",
     ])
   })

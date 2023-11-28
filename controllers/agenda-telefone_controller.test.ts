@@ -2,33 +2,31 @@ import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
 import { knexMockMsql } from '@/mocks/connections.mock.js'
 import { getTracker } from '@/mocks/database.mock.js'
 import { knexMockHistory } from '@/mocks/knex-mock-history.js'
-import { describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, test } from 'vitest'
 import { agendaTelefoneController } from './agenda-telefone_controller.js'
 
 describe('agendaTelefoneController', () => {
   const tracker = getTracker()
   dbOftalmo.setDriver(knexMockMsql)
 
-  it('list', async () => {
+  beforeEach(() => {
+    dbOftalmo.startLog()
     tracker.reset()
-    tracker.on.select('phonebook').response([{ id: '1' }])
+  })
 
+  test('list', async () => {
+    tracker.on.select('phonebook').response([{ id: '1' }])
     const rsp = await agendaTelefoneController.list({
       where: [['id', 1]],
       orderBy: [['id', 'asc']],
     })
-
     expect(rsp).toEqual([{ id: '1' }])
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: [50, 1],
-        sql: 'select top (@p0) * from [phonebook] where [id] = @p1 order by [id] asc',
-      },
+    expect(dbOftalmo.log()).toEqual([
+      'select top (50) * from [phonebook] where [id] = 1 order by [id] asc',
     ])
   })
 
-  it('read', async () => {
-    tracker.reset()
+  test('read', async () => {
     tracker.on.select('phonebook').response({ id: '1' })
 
     const rsp = await agendaTelefoneController.read({
@@ -36,16 +34,12 @@ describe('agendaTelefoneController', () => {
     })
 
     expect(rsp).toEqual({ id: '1' })
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: [1, 1],
-        sql: 'select top (@p0) * from [phonebook] where [id] = @p1',
-      },
+    expect(dbOftalmo.log()).toEqual([
+      'select top (1) * from [phonebook] where [id] = 1',
     ])
   })
 
-  it('delete', async () => {
-    tracker.reset()
+  test('delete', async () => {
     tracker.on.delete('phonebook').response(1)
 
     const rsp = await agendaTelefoneController.del$({
@@ -53,36 +47,28 @@ describe('agendaTelefoneController', () => {
     })
 
     expect(rsp).toEqual(1)
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: [1],
-        sql: 'delete from [phonebook] where [id] = @p0;select @@rowcount',
-      },
+    expect(dbOftalmo.log()).toEqual([
+      'delete from [phonebook] where [id] = 1;select @@rowcount',
     ])
   })
 
-  it('update', async () => {
-    tracker.reset()
+  test('update', async () => {
     tracker.on.update('phonebook').response({ id: 10 })
     tracker.on.select('phonebook').response([{ id: 10 }])
-
+    dbOftalmo.startLog()
     const rsp = await agendaTelefoneController.update$({
       where: [['id', 1]],
       data: { id: 10 },
-      select: ['id'],
+      returning: ['id'],
+      debug: true,
     })
-
     expect(rsp).toEqual({ id: 10 })
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: [10, 1],
-        sql: 'update [phonebook] set [id] = @p0 output inserted.[id] where [id] = @p1',
-      },
+    expect(dbOftalmo.log()).toEqual([
+      'update [phonebook] set [id] = 10 output inserted.[id] where [id] = 1',
     ])
   })
 
-  it('create', async () => {
-    tracker.reset()
+  test('create', async () => {
     tracker.on.insert('phonebook').response(1)
 
     const rsp = await agendaTelefoneController.create$({
@@ -90,11 +76,8 @@ describe('agendaTelefoneController', () => {
     })
 
     expect(rsp).toEqual(1)
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: [10],
-        sql: 'insert into [phonebook] ([id]) values (@p0)',
-      },
+    expect(dbOftalmo.log()).toEqual([
+      'insert into [phonebook] ([id]) values (10)',
     ])
   })
 })
