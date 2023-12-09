@@ -18,7 +18,6 @@ const envToLogger = {
   development: {
     transport: {
       target: 'pino-pretty',
-
       options: {
         translateTime: 'HH:MM:ss Z',
         ignore: 'pid,hostname',
@@ -44,11 +43,11 @@ const envToLogger = {
       },
     },
   },
-  production: {
-    transport: {
-      target: path.join(__dirname, 'lib/db-transport'),
-    },
-  },
+  // production: {
+  //   transport: {
+  //     target: path.join(__dirname, 'lib/db-transport.mjs'),
+  //   },
+  // },
   test: false,
 }
 
@@ -97,6 +96,3 @@ app.addHook('onRequest', async (request) => {
 })
 
 app.register(routes)
-// app.get('/*', function (req, res) {
-//   res.sendFile(path.join(__dirname(import.meta.url), './public', 'index.html'))
-// })
