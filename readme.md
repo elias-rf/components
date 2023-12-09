@@ -1,11 +1,6 @@
+# Libraries
+
 [Tailwind](https://tailwindcss.com/docs/flex-basis)
-
-[TanStack Table](https://tanstack.com/table/v8/docs/api/core/table)
-
-[UnoCSS](https://unocss.dev/presets/icons)
-
-[Icones](https://icones.js.org/collection/fluent)
-
 
 # Modules
 
@@ -17,8 +12,32 @@
 
 4. mocks
 
-4. models
+5. models
 
-5. server
+6. server
 
-6. client
+7. client
+
+# Server
+
+## Security
+
+### Groups
+
+Analista Qualidade
+Auxiliar Manutenção
+Auxiliar Produção
+Auxiliar Qualidade
+Consultor Comercial
+Diretoria
+Estoquista
+Gestor Comercial
+Gestor Estoque
+Gestor Financeiro
+Gestor Industrial
+Gestor Qualidade
+Inspetor Qualidade
+Instrutor
+Líder Manutenção
+Líder Produção
+TI

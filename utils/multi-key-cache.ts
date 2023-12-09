@@ -1,5 +1,11 @@
 import { hashObject } from '@/utils/object/hash-object.js'
-import { LRUCache } from 'lru-cache'
+import { Cache, TCacheOptions } from './cache.js'
+
+type TMultiKeyCacheOptions = {
+  max?: number
+  onEvent?: (event: any, description?: any) => void
+  ttl?: number
+}
 
 // https://github.com/rsandor/mkc/tree/master
 
@@ -8,10 +14,13 @@ import { LRUCache } from 'lru-cache'
  * @class
  * @param {object} options Options for the cache.
  */
-export function MultiKeyCache(options: any = { max: 10 }) {
-  const cache = new LRUCache(options)
-  const logger = options.logger ? options.logger : () => {}
-  logger({ status: 'MultiKeyCache created', options })
+export function MultiKeyCache(options: TCacheOptions = {}) {
+  const opt = {
+    max: 50,
+    ...options,
+  }
+  const cache = new Cache(options)
+  opt.onEvent && opt.onEvent('MultiKeyCache created', opt)
 
   const self = {
     ...cache,
@@ -23,11 +32,14 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      * @param object Object to store in the cache.
      */
 
-    set(keyValues: any, object?: any, options: any = {}) {
+    set(
+      keyValues: any,
+      object: any,
+      options?: { ttl?: number; size?: number; isPermanet?: boolean }
+    ) {
       const keyHash = hash(keyValues)
-      options.status = { keyHash }
       self.cache.set(keyHash, object, options)
-      logger(options.status)
+      opt.onEvent && opt.onEvent('set', keyHash)
     },
 
     /**
@@ -52,11 +64,11 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      * @return If found, the object with the given key values. `undefined`
      *   otherwise.
      */
-    get(keyValues: any, options: any = {}) {
+    get(keyValues: any) {
       const keyHash = hash(keyValues)
-      options.status = { keyHash }
-      const response = self.cache.get(keyHash, options)
-      logger(options.status)
+
+      const response = self.cache.get(keyHash)
+      opt.onEvent && opt.onEvent('get', keyHash)
       return response
     },
 
@@ -65,17 +77,16 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      * @param {Object} keyValues Key values that identify the object in the cache.
      * @return {Boolean} `true` if found, `false` otherwise.
      */
-    has(keyValues: any, options: any = {}) {
+    has(keyValues: any) {
       const keyHash = hash(keyValues)
-      options.status = { keyHash }
-      const response = self.cache.has(keyHash, options)
-      logger(options.status)
+      const response = self.cache.has(keyHash)
+      opt.onEvent && opt.onEvent('has', keyHash)
       return response
     },
 
     delete(keyValues: any) {
       const keyHash = hash(keyValues)
-      logger({ status: 'delete', keyHash })
+      opt.onEvent && opt.onEvent('delete', keyHash)
       return self.cache.delete(keyHash)
     },
 
@@ -94,6 +105,7 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      * @param {Object} keyValues Key values to identify the objects to remove.
      */
     purge(filter: (keyValues: any) => boolean) {
+      if (typeof filter !== 'function') return
       const list = []
       for (const key of self.keys()) {
         if (filter(parse(key))) {
@@ -103,7 +115,7 @@ export function MultiKeyCache(options: any = { max: 10 }) {
       for (const key of list) {
         self.cache.delete(key)
       }
-      logger({ status: 'purge', count: list.length, list })
+      opt.onEvent && opt.onEvent('purge', { count: list.length, list })
     },
 
     purgeTable(table: string) {
@@ -118,15 +130,18 @@ export function MultiKeyCache(options: any = { max: 10 }) {
      * Clears the entire cache.
      */
     reset() {
-      self.cache.clear()
-      logger({ status: 'reset' })
+      self.cache.clearAll()
+      opt.onEvent && opt.onEvent('reset')
     },
 
-    fetch(keyValues: any, options: any = {}) {
+    memo(
+      keyValues: any,
+      fn: () => any | Promise<any>,
+      options?: { ttl?: number; size?: number; isPermanet?: boolean }
+    ) {
       const keyHash = hash(keyValues)
-      options.status = { method: keyValues._method, keyHash }
-      const response = self.cache.fetch(keyHash, options)
-      logger(options.status)
+      const response = self.cache.memo(keyHash, fn, options)
+      opt.onEvent && opt.onEvent('memo', keyHash)
       return response
     },
 

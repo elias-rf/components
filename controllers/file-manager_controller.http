@@ -1,0 +1,25 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
+
+
+### DIR
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "fileManager/dir",
+  "args": {"path":"documents/ICM"},
+  "id": "1"
+}
+
+### STAT
+POST {{host}}/api/rpc
+Content-Type: application/json
+
+{
+  "method": "fileManager/stat",
+  "args": {"path":"documents/ICM","name":"RECIBO DE ALUGUEL.pdf"},
+  "id": "1"
+}

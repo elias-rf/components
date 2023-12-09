@@ -9,6 +9,7 @@ import { esterilizacaoInternaController } from './esterilizacao-interna_controll
 import { estoqueController } from './estoque_controller.js'
 import { etiquetaExternaController } from './etiqueta-externa_controller.js'
 import { etiquetaInternaController } from './etiqueta-interna_controller.js'
+import { fileManagerController } from './file-manager_controller.js'
 import { fornecedorController } from './fornecedor_controller.js'
 import { groupSubjectController } from './group-subject_controller.js'
 import { groupController } from './group_controller.js'
@@ -58,6 +59,7 @@ export const module = {
   estoque: { ...estoqueController },
   etiquetaExterna: { ...etiquetaExternaController },
   etiquetaInterna: { ...etiquetaInternaController },
+  fileManager: { ...fileManagerController },
   fornecedor: { ...fornecedorController },
   group: { ...groupController },
   groupSubject: { ...groupSubjectController },
@@ -95,19 +97,19 @@ export const module = {
 type TProcedure<T> = { [K in keyof T]: TProcedure<T[K]> }
 
 function list() {
-  const moduleKeys = Object.keys(module) as unknown as Array<KModule>
-  const response = moduleKeys.reduce<{
-    [mdl: string]: string[]
-  }>((resp, moduleKey) => {
-    const methodKeys = Object.keys(module[moduleKey]) as unknown as Array<
-      keyof TProcedure<TModule[typeof moduleKey]>
-    >
-    const rpcMethods = methodKeys.filter((fnc) => module[moduleKey][fnc].rpc)
+  const moduleKeys = Object.keys(module) as unknown as KModule[]
+  const response = moduleKeys.reduce((resp, moduleKey) => {
+    const methodKeys = Object.keys(module[moduleKey])
+    const rpcMethods = methodKeys.filter((fnc) => {
+      const mdl = module[moduleKey]
+      const method = mdl[fnc as keyof typeof mdl] as any
+      return method.rpc
+    })
     resp[moduleKey] = rpcMethods.map((rpcMethod) => {
       return rpcMethod
     })
     return resp
-  }, {})
+  }, {} as any)
   return response
 }
 

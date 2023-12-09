@@ -3,6 +3,9 @@ import { beforeEach, describe, expect, it } from 'vitest'
 
 describe('MultiKeyCache', () => {
   const status = {}
+  const onEvent = (event: string, metadata: any) => {
+    console.log(event, metadata)
+  }
 
   describe('behaviors', function () {
     let cache: any
@@ -10,9 +13,7 @@ describe('MultiKeyCache', () => {
     beforeEach(function () {
       cache = MultiKeyCache({
         max: 10,
-        logger(args: any) {
-          console.log(args)
-        },
+        onEvent,
       })
     })
 
@@ -67,7 +68,7 @@ describe('MultiKeyCache', () => {
       cache.set({ a: '2', b: '2' }, '2-2')
 
       cache.purge((key: any) => key.a === '1')
-      expect(cache.keys()).toEqual(['{"a":"2","b":"2"}', '{"a":"2","b":"1"}'])
+      expect(cache.keys()).toEqual(['{"a":"2","b":"1"}', '{"a":"2","b":"2"}'])
     })
 
     it('should report when items are in the cache', function () {
@@ -89,11 +90,9 @@ describe('MultiKeyCache', () => {
     it('should properly evict entries', function () {
       const cache = MultiKeyCache({
         max: 1,
-        logger(args: any) {
-          console.log(args)
-        },
+        onEvent,
       })
-      cache.set({ k: 1 }, 'one', { status })
+      cache.set({ k: 1 }, 'one')
       cache.set({ k: 2 }, 'two')
       cache.get({ k: 1 })
       cache.set({ k: 3 }, 'three')
@@ -103,21 +102,17 @@ describe('MultiKeyCache', () => {
     it('should gracefully handle invalid disposals', function () {
       const cache = MultiKeyCache({
         max: 10,
-        logger(args: any) {
-          console.log(args)
-        },
+        onEvent,
       })
-      cache.set({ a: 1 })
-      cache.set({ b: 2 })
+      cache.set({ a: 1 }, undefined)
+      cache.set({ b: 2 }, undefined)
     })
   })
   describe('fetch', function () {
     it('deve gerir depend', function () {
       const cache = MultiKeyCache({
         max: 10,
-        logger(args: any) {
-          console.log(args)
-        },
+        onEvent,
       })
       cache.set(
         {
@@ -136,7 +131,7 @@ describe('MultiKeyCache', () => {
     })
 
     it('deve executar fetch', async () => {
-      const fn = (response: number) => {
+      const fn = (response: number): Promise<number> => {
         return new Promise((resolve) => {
           setTimeout(() => {
             resolve(response)
@@ -144,36 +139,15 @@ describe('MultiKeyCache', () => {
         })
       }
 
-      const fetchFunction = (
-        key: string,
-        staleValue: any,
-        { context }: any
-      ) => {
-        return context.method(JSON.parse(key))
-      }
       const cache = MultiKeyCache({
         max: 10,
-        fetchMethod: fetchFunction,
-        logger(args: any) {
-          console.log(args)
-        },
+        onEvent,
       })
-      expect(
-        await cache.fetch(
-          { id: 1 },
-          { status, context: { method: fn, name: 'teste' } }
-        )
-      ).toEqual({ id: 1 })
 
-      expect(
-        await cache.fetch({ id: 3 }, { context: { method: fn, name: 'teste' } })
-      ).toEqual({ id: 3 })
-      expect(
-        await cache.fetch(
-          { id: 1 },
-          { status, context: { method: fn, name: 'teste' } }
-        )
-      ).toEqual({ id: 1 })
+      expect(await cache.memo({ id: 1 }, () => fn(1))).toEqual(1)
+
+      expect(await cache.memo({ id: 3 }, () => fn(3))).toEqual(3)
+      expect(await cache.memo({ id: 1 }, () => fn(1))).toEqual(1)
 
       expect(cache.keys()).toEqual(['{"id":1}', '{"id":3}'])
     })
@@ -197,8 +171,8 @@ describe('MultiKeyCache', () => {
 
     cache.purgeTable('tbl1')
     expect(cache.keys()).toEqual([
-      '{"_table":"tbl2","a":"2","b":"2"}',
       '{"_table":"tbl2","a":"2","b":"1"}',
+      '{"_table":"tbl2","a":"2","b":"2"}',
     ])
   })
 })
