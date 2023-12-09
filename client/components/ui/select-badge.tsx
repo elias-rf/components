@@ -13,6 +13,7 @@ export type TSelectBadgeProps = {
   value: string[]
   variant?: 'success' | 'error'
   id?: string
+  name?: string
 }
 
 export function SelectBadge({
@@ -23,6 +24,7 @@ export function SelectBadge({
   value,
   variant,
   id,
+  name,
 }: TSelectBadgeProps) {
   const [valueState, setValueState] = useState<string>('')
   const [optionsList, setOptionsList] = useState<{ [key: string]: any }>({})
@@ -71,6 +73,7 @@ export function SelectBadge({
           value={valueState}
           variant={variant}
           id={id}
+          name={name}
         >
           {options.map((option) => (
             <Select.Option

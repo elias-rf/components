@@ -9,6 +9,7 @@ export type TSelectProps = {
   value: string
   variant?: 'success' | 'error'
   id?: string
+  name?: string
   className?: string
   children?: React.ReactNode
 }
@@ -20,6 +21,7 @@ function Select({
   value,
   variant,
   id,
+  name,
   className,
   children,
 }: TSelectProps) {
@@ -31,6 +33,7 @@ function Select({
     <div className="w-full">
       <select
         id={id}
+        name={name}
         disabled={disabled}
         value={value}
         onBlur={onBlur}
