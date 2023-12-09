@@ -46,18 +46,14 @@ const gruposStoreBase = createStore<GruposState>()(
       recordClear: recordClear,
 
       fetchList: async () => {
-        const list = (await cache.fetch(
+        const list = (await cache.memo(
           {
             where: get().where,
             orderBy: get().orderBy,
             _table: tableName,
-            _method: `${tableName}.list`,
           },
-          {
-            context: {
-              method: rpc[tableName].list,
-            },
-          }
+          () =>
+            rpc[tableName].list({ where: get().where, orderBy: get().orderBy })
         )) as TData<TGroupFields>[]
         set(() => ({ list }), false, 'fetchList')
         return list
@@ -66,17 +62,12 @@ const gruposStoreBase = createStore<GruposState>()(
       fetchRecord: async () => {
         const id = get().selection
         if (id.length === 0) return recordClear
-        const record = (await cache.fetch(
+        const record = (await cache.memo(
           {
             where: get().selection,
             _table: tableName,
-            _method: `${tableName}.read`,
           },
-          {
-            context: {
-              method: rpc[tableName].read,
-            },
-          }
+          () => rpc[tableName].read({ where: get().selection })
         )) as TData<TGroupFields>
         set(() => ({ record }), false, 'fetchRecord')
         return record

@@ -1,4 +1,4 @@
-import { Vendas } from '../../features/faturamento/faturamento.js'
+import { Vendas } from '../../features/comercial/faturamento/faturamento.js'
 
 export default function Faturamento() {
   return <Vendas />

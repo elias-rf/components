@@ -1,43 +1,18 @@
 import { Can } from '@/client/components/can.js'
-import { LotesSaidaHead } from '@/client/features/lotes-saida/lotes-saida_head.js'
-import { LotesSaidaTable } from '@/client/features/lotes-saida/lotes-saida_table.js'
-import { Loading } from '@/client/pages/loading.js'
+import { LotesSaidaHead } from '@/client/features/indutrial/lotes-saida/lotes-saida_head.js'
+import { LotesSaidaTable } from '@/client/features/indutrial/lotes-saida/lotes-saida_table.js'
 import { authStore } from '@/client/store/auth_store.js'
-import { rpc } from '@/rpc/rpc-client.js'
-import { useState } from 'react'
-import { useEffectOnce } from 'usehooks-ts'
 
 const permissions = {
-  lotes_saida_permissao: 'Atribuir permissões do cliente',
-  lotes_saida_read: 'Visualizar dados do cliente próprio',
+  industrial_lotesSaida_permissao: 'Atribuir permissões do cliente',
+  industrial_lotesSaida_read: 'Visualizar dados do cliente próprio',
 }
 
-type TPermissions = keyof typeof permissions
-type TCan = { [prm in TPermissions]: boolean }
-
 export default function Clientes() {
-  const [can, setCan] = useState<Partial<TCan>>()
-  const idGroups = authStore.use.user()?.group_ids
-
-  useEffectOnce(() => {
-    async function getData() {
-      const data = await rpc.groupSubject.listPermissions({
-        idGroup: idGroups || '',
-        idSubjectList: Object.keys(permissions),
-      })
-      const can = data.reduce(
-        (acc, cur) => ({ ...acc, [cur.idSubject]: true }),
-        {}
-      ) as TCan
-      setCan(can)
-    }
-    getData()
-  })
-
-  if (can === undefined) return <Loading />
+  const can = authStore.use.can()
 
   return (
-    <Can can={can.lotes_saida_read}>
+    <Can can={can('lotes_saida_read')}>
       <LotesSaidaHead
         can={can}
         permissions={permissions}

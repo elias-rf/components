@@ -100,6 +100,9 @@ export function Navbar() {
             <Dropdown.Item onClick={() => handleLink('/outros/agenda')}>
               Agenda de ramais
             </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleLink('/outros/fileManager')}>
+              Gestor de arquivos
+            </Dropdown.Item>
           </Dropdown>
         </FbNavbar.Collapse>
       </FbNavbar>

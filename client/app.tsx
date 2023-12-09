@@ -35,6 +35,9 @@ const Transferencia = React.lazy(
 
 // outros
 const Agenda = React.lazy(async () => import('./pages/outros/agenda.js'))
+const FileManager = React.lazy(
+  async () => import('./pages/outros/file-manager.js')
+)
 
 // sistema
 const Usuario = React.lazy(async () => import('./pages/sistema/usuarios.js'))
@@ -91,6 +94,9 @@ export function App() {
           </Route>
           <Route path="/outros/agenda">
             <Agenda />
+          </Route>
+          <Route path="/outros/fileManager">
+            <FileManager />
           </Route>
           <Route path="/profile">
             <Profile />

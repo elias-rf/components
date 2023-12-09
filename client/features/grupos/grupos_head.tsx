@@ -21,7 +21,7 @@ export function GruposHead() {
         <Title>Grupos de segurança</Title>
         <Can
           can={can('grupos_permissao')}
-          response={null}
+          elseCan={null}
         >
           <Permissions permissions={permissionsList} />
         </Can>

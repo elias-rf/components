@@ -4,7 +4,7 @@ import { fakerPT_BR as faker } from '@faker-js/faker'
 
 import { Page } from '@/client/components/page/page.js'
 import { StoreViewer } from '@/client/components/ui/store-viewer.js'
-import { agendaTelefoneStore } from '@/client/features/agenda-telefone/agenda-telefone_store.js'
+import { agendaTelefoneStore } from '@/client/features/outros/agenda-telefone/agenda-telefone_store.js'
 import { Story } from '@ladle/react'
 import Agenda from './agenda.js'
 

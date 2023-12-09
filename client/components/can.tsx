@@ -5,11 +5,11 @@ import Page403 from '../pages/page_403.js'
 interface TCanProps {
   children: React.ReactNode
   can?: boolean
-  response?: any
+  elseCan?: any
 }
 
-export function Can({ children, can, response }: TCanProps) {
+export function Can({ children, can, elseCan }: TCanProps) {
   if (can) return <>{children}</>
-  if (response !== undefined) return <>{response}</>
+  if (elseCan !== undefined) return <>{elseCan}</>
   return <Page403 />
 }

@@ -1,4 +1,4 @@
-import { GroupSubject } from '../../features/permissoes/group-subject.js'
+import { GroupSubject } from '../../features/sistema/permissoes/group-subject.js'
 
 export default function Permissoes() {
   return (
