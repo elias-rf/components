@@ -5,12 +5,20 @@ import { DelDocIcon } from '@/client/components/icons/del-doc-icon.js'
 import { ErrorIcon } from '@/client/components/icons/error-icon.js'
 import { FireIcon } from '@/client/components/icons/fire-icon.js'
 import { HamburgerIcon } from '@/client/components/icons/hamburger-icon.js'
+import { HomeIcon } from '@/client/components/icons/home-icon.js'
 import { MoonIcon } from '@/client/components/icons/moon-icon.js'
 import { NewDocIcon } from '@/client/components/icons/new-doc-icon.js'
+import { PathSepIcon } from '@/client/components/icons/path-sep.js'
 import { PenIcon } from '@/client/components/icons/pen-icon.js'
 import { PersonIcon } from '@/client/components/icons/person-icon.js'
 import { SearchIcon } from '@/client/components/icons/search-icon.js'
 import { ShieldIcon } from '@/client/components/icons/shield-icon.js'
+import { SortIcon } from '@/client/components/icons/sort-icon.js'
+import { SpinnerIcon } from '@/client/components/icons/spinner-icon.js'
+import { SunIcon } from '@/client/components/icons/sun-icon.js'
+import { VisiontechIcon } from '@/client/components/icons/visiontech-icon.js'
+import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon.js'
+import { WarningIcon } from '@/client/components/icons/warning-icon.js'
 import type { Story, StoryDefault } from '@ladle/react'
 
 export default {
@@ -56,12 +64,20 @@ export const Default: Story = (props: any) => {
           Hamburger
         </div>
         <div className={classIcon}>
+          <HomeIcon className="w-10 h-10" />
+          Home
+        </div>
+        <div className={classIcon}>
           <MoonIcon className="w-10 h-10" />
           Moon
         </div>
         <div className={classIcon}>
           <NewDocIcon className="w-10 h-10" />
           NewDoc
+        </div>
+        <div className={classIcon}>
+          <PathSepIcon className="w-10 h-10" />
+          PathSep
         </div>
         <div className={classIcon}>
           <PenIcon className="w-10 h-10" />
@@ -78,6 +94,33 @@ export const Default: Story = (props: any) => {
         <div className={classIcon}>
           <ShieldIcon className="w-10 h-10" />
           Shield
+        </div>
+        <div className={classIcon}>
+          <SortIcon
+            direction="both"
+            className="w-10 h-10"
+          />
+          Sort
+        </div>
+        <div className={classIcon}>
+          <SpinnerIcon className="w-10 h-10" />
+          Spinner
+        </div>
+        <div className={classIcon}>
+          <SunIcon className="w-10 h-10" />
+          Sun
+        </div>
+        <div className={classIcon}>
+          <VisiontechIcon className="w-10 h-10" />
+          Visiontech
+        </div>
+        <div className={classIcon}>
+          <VtLogoIcon className="w-10 h-10" />
+          VtLogo
+        </div>
+        <div className={classIcon}>
+          <WarningIcon className="w-10 h-10" />
+          Warning
         </div>
       </div>
     </>
