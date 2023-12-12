@@ -11,7 +11,7 @@
     "dev:server": "cross-env NODE_ENV=development tsx watch ./server/index.ts",
     "prod:client": "cross-env NODE_ENV=production vite client --config ./vite.config.ts",
     "prod:server": "cross-env NODE_ENV=production tsx watch ./server/index.ts",
-    "start": "node dist/index.mjs",
+    "start": "node dist/server/index.js",
     "storybook": "npx ladle serve",
     "test:client": "vitest --dir ./client",
     "test:coverage": "vitest --dir ./ --ui --coverage",
