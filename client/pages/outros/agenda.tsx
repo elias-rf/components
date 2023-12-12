@@ -20,16 +20,23 @@ export default function Agenda() {
   return (
     <div data-name="AgendaTelefone">
       <FormHead
-        title="Agenda de Ramais"
         permissions={permissions}
         editPermissions={can('comercial_cliente_permissao')}
-      />
+      >
+        Agenda de Ramais
+      </FormHead>
       <div className="border border-gray-400 dark:border-gray-500">
-        <AgendaTelefoneTable />
+        <AgendaTelefoneTable
+          store={agendaTelefoneStore}
+          auth={authStore}
+        />
       </div>
       {status !== 'none' ? (
         <div className="p-1 mb-2 border border-gray-400 dark:border-gray-500">
-          <AgendaTelefoneForm />
+          <AgendaTelefoneForm
+            store={agendaTelefoneStore}
+            auth={authStore}
+          />
         </div>
       ) : null}
     </div>

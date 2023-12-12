@@ -1,8 +1,8 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
 import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { clientRpcMock } from '@/mocks/client-rpc.mock.js'
 import { knexMockMsql } from '@/mocks/connections.mock.js'
 import { getTracker } from '@/mocks/database.mock.js'
-import { clientMock } from '@/mocks/prim.js'
 import { beforeEach, describe, expect, test } from 'vitest'
 
 describe('agendaTelefoneRpc', () => {
@@ -19,7 +19,7 @@ describe('agendaTelefoneRpc', () => {
   test('list', async () => {
     tracker.on.select('phonebook').response([{ id: 1 }])
 
-    const rsp = await clientMock.agendaTelefone.list({
+    const rsp = await clientRpcMock.request('agendaTelefone_list', {
       where: [['id', 1]],
       orderBy: [['id', 'asc']],
     })
@@ -33,7 +33,7 @@ describe('agendaTelefoneRpc', () => {
   test('read', async () => {
     tracker.on.select('phonebook').response([{ id: 1 }])
 
-    const rsp = await clientMock.agendaTelefone.read({
+    const rsp = await clientRpcMock.request('agendaTelefone_read', {
       where: [['id', 1]],
       select: ['id'],
     })
@@ -47,7 +47,7 @@ describe('agendaTelefoneRpc', () => {
   test('update', async () => {
     tracker.on.update('phonebook').response(1)
 
-    const rsp = await clientMock.agendaTelefone.update$({
+    const rsp = await clientRpcMock.request('agendaTelefone_update', {
       where: [['id', 1]],
       data: { name: 'test' },
     })
@@ -61,7 +61,7 @@ describe('agendaTelefoneRpc', () => {
   test('create', async () => {
     tracker.on.insert('phonebook').response(1)
 
-    const rsp = await clientMock.agendaTelefone.create$({
+    const rsp = await clientRpcMock.request('agendaTelefone_create', {
       data: { id: 1, name: 'test' },
     })
 
@@ -74,7 +74,7 @@ describe('agendaTelefoneRpc', () => {
   test('del', async () => {
     tracker.on.delete('phonebook').response(1)
 
-    const rsp = await clientMock.agendaTelefone.del$({
+    const rsp = await clientRpcMock.request('agendaTelefone_del', {
       where: [['id', 1]],
     })
 

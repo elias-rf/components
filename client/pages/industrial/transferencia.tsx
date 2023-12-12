@@ -17,9 +17,7 @@ export default function IndustrialTransferencia() {
         can={can}
         permissions={permissions}
       />
-      <div className="p-2">
-        <Transferencia />
-      </div>
+      <Transferencia />
     </Can>
   )
 }

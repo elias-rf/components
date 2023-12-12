@@ -5,6 +5,7 @@ import { StoreViewer } from '@/client/components/ui/store-viewer.js'
 import { AgendaTelefoneForm } from '@/client/features/outros/agenda-telefone/agenda-telefone_form.js'
 import { agendaTelefoneStore } from '@/client/features/outros/agenda-telefone/agenda-telefone_store.js'
 import '@/client/index.css'
+import { authStore } from '@/client/store/auth_store.js'
 import { faker } from '@faker-js/faker/locale/pt_BR'
 import type { Story } from '@ladle/react'
 import { useEffectOnce } from 'usehooks-ts'
@@ -50,7 +51,10 @@ export const Form: Story = () => {
 
   return (
     <Page>
-      <AgendaTelefoneForm />
+      <AgendaTelefoneForm
+        store={agendaTelefoneStore}
+        auth={authStore}
+      />
       <StoreViewer
         store={agendaTelefoneStore}
         properties={['list', 'orderBy', 'selection', 'where', 'record']}

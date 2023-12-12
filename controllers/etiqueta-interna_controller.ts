@@ -17,7 +17,13 @@ export type TEtiquetaInternaKeys =
 function etiquetaInternaControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TEtiquetaInternaFields, TEtiquetaInternaKeys>(db, schema)
   return {
-    ...orm.rpc,
+    etiquetaInterna_list: orm.rpc.list,
+    etiquetaInterna_read: orm.rpc.read,
+    etiquetaInterna_count: orm.rpc.count,
+    etiquetaInterna_update: orm.rpc.update,
+    etiquetaInterna_create: orm.rpc.create,
+    etiquetaInterna_del: orm.rpc.del,
+    etiquetaInterna_increment: orm.rpc.increment,
   }
 }
 

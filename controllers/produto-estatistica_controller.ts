@@ -57,7 +57,13 @@ function produtoEstatisticaControllerFactory(
     schema
   )
   return {
-    ...orm.rpc,
+    produtoEstatistica_list: orm.rpc.list,
+    produtoEstatistica_read: orm.rpc.read,
+    produtoEstatistica_count: orm.rpc.count,
+    produtoEstatistica_update: orm.rpc.update,
+    produtoEstatistica_create: orm.rpc.create,
+    produtoEstatistica_del: orm.rpc.del,
+    produtoEstatistica_increment: orm.rpc.increment,
   }
 }
 

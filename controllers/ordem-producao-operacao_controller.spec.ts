@@ -18,11 +18,12 @@ describe('ordemProducaoOperacaoController', () => {
       .select('tOperacaoOrdemProducao')
       .response([{ dia: '2020-01-01', quantidade: 10 }])
 
-    const rsp = await ordemProducaoOperacaoController.diario({
-      operacao: 1010,
-      inicio: '2020-01-01',
-      fim: '2020-01-31',
-    })
+    const rsp =
+      await ordemProducaoOperacaoController.ordemProducaoOperacao_diario({
+        operacao: 1010,
+        inicio: '2020-01-01',
+        fim: '2020-01-31',
+      })
     expect(rsp).toEqual([
       { dia: '2020-01-01', diaSemana: 'qua', quantidade: 10 },
     ])
@@ -39,10 +40,11 @@ describe('ordemProducaoOperacaoController', () => {
       .select('tOperacaoOrdemProducao')
       .response([{ dia: '2020-01-01', quantidade: 10 }])
 
-    const rsp = await ordemProducaoOperacaoController.mensal({
-      operacao: 1010,
-      mes: '2020-01',
-    })
+    const rsp =
+      await ordemProducaoOperacaoController.ordemProducaoOperacao_mensal({
+        operacao: 1010,
+        mes: '2020-01',
+      })
     expect(rsp).toEqual([{ dia: '2020-01-01', quantidade: 10 }])
     expect(knexMockHistory(tracker)).toEqual([
       {
@@ -57,11 +59,12 @@ describe('ordemProducaoOperacaoController', () => {
       .select('tOperacaoOrdemProducao')
       .response([{ dia: '2020-01-01', quantidade: 10 }])
 
-    const rsp = await ordemProducaoOperacaoController.modelo({
-      operacao: '1010',
-      data: '2020-01-01',
-      produto: 'produto1',
-    })
+    const rsp =
+      await ordemProducaoOperacaoController.ordemProducaoOperacao_modelo({
+        operacao: '1010',
+        data: '2020-01-01',
+        produto: 'produto1',
+      })
     expect(rsp).toEqual([{ dia: '2020-01-01', quantidade: 10 }])
     expect(knexMockHistory(tracker)).toEqual([
       {
@@ -76,10 +79,11 @@ describe('ordemProducaoOperacaoController', () => {
       .select('tOperacaoOrdemProducao')
       .response([{ dia: '2020-01-01', quantidade: 10 }])
 
-    const rsp = await ordemProducaoOperacaoController.produto({
-      operacao: '1010',
-      data: '2020-01-01',
-    })
+    const rsp =
+      await ordemProducaoOperacaoController.ordemProducaoOperacao_produto({
+        operacao: '1010',
+        data: '2020-01-01',
+      })
     expect(rsp).toEqual([{ dia: '2020-01-01', quantidade: 10 }])
     expect(knexMockHistory(tracker)).toEqual([
       {
@@ -94,10 +98,11 @@ describe('ordemProducaoOperacaoController', () => {
       .select('tOperacaoOrdemProducao')
       .response([{ dia: '2020-01-01', quantidade: 10 }])
 
-    const rsp = await ordemProducaoOperacaoController.turno({
-      operacao: '1010',
-      data: '2020-01-01',
-    })
+    const rsp =
+      await ordemProducaoOperacaoController.ordemProducaoOperacao_turno({
+        operacao: '1010',
+        data: '2020-01-01',
+      })
     expect(rsp).toEqual([{ dia: '2020-01-01', quantidade: 10 }])
     expect(knexMockHistory(tracker)).toEqual([
       {

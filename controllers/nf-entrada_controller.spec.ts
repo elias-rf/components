@@ -15,7 +15,7 @@ describe('nfEntradaController', () => {
     tracker.reset()
     tracker.on.select('NfMestre').response([{ NroNf: 1 }])
 
-    const rsp = await nfEntradaController.list({
+    const rsp = await nfEntradaController.nfEntrada_list({
       where: [['NroNf', 1]],
       orderBy: [['NroNf', 'asc']],
       select: ['NroNf'],
@@ -34,7 +34,7 @@ describe('nfEntradaController', () => {
     tracker.reset()
     tracker.on.select('NfMestre').response([{ NroNf: '1' }])
 
-    const rsp = await nfEntradaController.read({
+    const rsp = await nfEntradaController.nfEntrada_read({
       where: [
         ['CdEmpresa', 1],
         ['Modelo', '1'],
@@ -72,7 +72,7 @@ describe('nfEntradaController', () => {
     tracker.on.insert('Lotes').response([])
     tracker.on.insert('NfLogConferencia').response([])
 
-    const rsp = await nfEntradaController.transferenciaCreate$({
+    const rsp = await nfEntradaController.nfEntrada_transferenciaCreate({
       controles: ['000001000017'],
     })
 

@@ -4,29 +4,36 @@ import { Input } from '@/client/components/ui/input/input.js'
 import { Label } from '@/client/components/ui/label.js'
 import { SelectBadge } from '@/client/components/ui/select-badge.js'
 import { Toggle } from '@/client/components/ui/toggle.js'
-import { usuarioStore } from '@/client/features/sistema/usuario/usuario_store.js'
+import { TUsuarioStore } from '@/client/features/sistema/usuario/usuario_store.js'
 import { useForm } from '@/client/lib/hooks/use-form.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
-import { rpc } from '@/rpc/rpc-client.js'
+import { rpc } from '@/client/lib/rpc.js'
+import { TAuthStore } from '@/client/store/auth_store.js'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { useEffectOnce } from 'usehooks-ts'
 
-export function UsuarioForm() {
+export function UsuarioForm({
+  store,
+  auth,
+}: {
+  store: TUsuarioStore
+  auth: TAuthStore
+}) {
   const [listGroups, setListGroups] = useState<
     { label: string; value: string }[]
   >([])
 
-  const status = usuarioStore.use.status()
-  const onCancel = usuarioStore.use.onCancel()
-  const onDelete = usuarioStore.use.onDelete()
-  const onEdit = usuarioStore.use.onEdit()
-  const onSave = usuarioStore.use.onSave()
-  const recordClear = usuarioStore.use.recordClear()
-  const fetchRecord = usuarioStore.use.fetchRecord()
-  const selection = usuarioStore.use.selection()
-  const record = usuarioStore.use.record()
-  const setRecord = usuarioStore.use.setRecord()
+  const status = store.use.status()
+  const onCancel = store.use.onCancel()
+  const onDelete = store.use.onDelete()
+  const onEdit = store.use.onEdit()
+  const onSave = store.use.onSave()
+  const recordClear = store.use.recordClear()
+  const fetchRecord = store.use.fetchRecord()
+  const selection = store.use.selection()
+  const record = store.use.record()
+  const setRecord = store.use.setRecord()
 
   const form = useForm({ value: recordClear })
 
@@ -66,13 +73,15 @@ export function UsuarioForm() {
 
   useEffectOnce(() => {
     async function getData() {
-      const data = await rpc.group.list({
+      const data = await rpc.request('group_list', {
         orderBy: [['NomeGrupo', 'asc']],
       })
-      const list: { label: string; value: string }[] = data.map((item) => ({
-        label: item.NomeGrupo,
-        value: item.kGrupo,
-      }))
+      const list: { label: string; value: string }[] = data.map(
+        (item: any) => ({
+          label: item.NomeGrupo,
+          value: item.kGrupo,
+        })
+      )
       list.unshift({ label: 'Administrador', value: '0' })
       list.unshift({ label: '', value: '' })
       setListGroups(list)

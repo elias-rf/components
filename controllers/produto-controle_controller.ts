@@ -61,7 +61,13 @@ export type TProdutoControleKeys = (typeof Lotes.primary)[number]
 function produtoControleControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TProdutoControleFields, TProdutoControleKeys>(db, schema)
   return {
-    ...orm.rpc,
+    produtoControle_list: orm.rpc.list,
+    produtoControle_read: orm.rpc.read,
+    produtoControle_count: orm.rpc.count,
+    produtoControle_update: orm.rpc.update,
+    produtoControle_create: orm.rpc.create,
+    produtoControle_del: orm.rpc.del,
+    produtoControle_increment: orm.rpc.increment,
   }
 }
 

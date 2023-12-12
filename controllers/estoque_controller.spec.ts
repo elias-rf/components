@@ -16,7 +16,7 @@ describe('EstoqueModel', () => {
   test('increment', async () => {
     tracker.on.update('Estoque').response([{ EstAtual: '1' }])
 
-    const rsp = await estoqueController.increment$({
+    const rsp = await estoqueController.estoque_increment({
       where: [
         ['CdProduto', '1'],
         ['CdEmpresa', 1],

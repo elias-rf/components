@@ -16,14 +16,14 @@ describe('rpc de cliente', () => {
 
   test('lista sem argumentos', async () => {
     tracker.on.select('CadCli').response([{ CdCliente: 1 }])
-    const rsp = await clienteController.list({})
+    const rsp = await clienteController.cliente_list({})
     expect(rsp).toEqual([{ CdCliente: 1 }])
     expect(dbPlano.log()).toEqual(['select top (50) * from [CadCli]'])
   })
 
   test('lista com argumentos', async () => {
     tracker.on.select('CadCli').response([{ CdCliente: 1 }])
-    const rsp = await clienteController.list({
+    const rsp = await clienteController.cliente_list({
       where: [['CdCliente', 1]],
       select: ['CdCliente'],
     })
@@ -35,7 +35,7 @@ describe('rpc de cliente', () => {
 
   test('read', async () => {
     tracker.on.select('CadCli').response([{ CdCliente: 1 }])
-    const rsp = await clienteController.read({
+    const rsp = await clienteController.cliente_read({
       where: [['CdCliente', 1]],
       select: ['CdCliente'],
     })
@@ -55,7 +55,7 @@ describe('rpc de cliente', () => {
     tracker.on.insert('CadCli').response({ CdCliente: 1 })
     tracker.on.delete('CadCli').response(1)
 
-    const crt = await clienteController.create$({
+    const crt = await clienteController.cliente_create({
       data: {
         CdCliente: 1,
         DtCadastro: '2020-01-01',
@@ -69,7 +69,7 @@ describe('rpc de cliente', () => {
       CdCliente: 1,
     })
 
-    const dlt = await clienteController.del$({
+    const dlt = await clienteController.cliente_del({
       where: [['CdCliente', 10]],
     })
     expect(dlt).toEqual(1)
@@ -81,7 +81,7 @@ describe('rpc de cliente', () => {
 
   test('update', async () => {
     tracker.on.update('CadCli').response({ CdCliente: 1 })
-    const rsp = await clienteController.update$({
+    const rsp = await clienteController.cliente_update({
       where: [['CdCliente', 1]],
       data: { EMail: '' },
       returning: ['CdCliente'],
@@ -96,7 +96,7 @@ describe('rpc de cliente', () => {
     tracker.on
       .select('MestreNota')
       .response([{ NmCategoria: 'cat1', anoMes: '2020-01', quantidade: 10 }])
-    const rsp = await clienteController.vendaMensalQuantidade({
+    const rsp = await clienteController.cliente_vendaMensalQuantidade({
       inicio: '2020-01-01',
       fim: '2020-01-01',
       cliente: 1,
@@ -109,20 +109,20 @@ describe('rpc de cliente', () => {
   test('vendaMensalQuantidade erro em argumentos', async () => {
     await expect(() =>
       /* @ts-ignore */
-      clienteController.vendaMensalQuantidade({
+      clienteController.cliente_vendaMensalQuantidade({
         inicio: '2020-01-01',
         fim: '2020-01-01',
       })
     ).rejects.toThrow('cliente deve ser informado')
     await expect(() =>
       /* @ts-ignore */
-      clienteController.vendaMensalQuantidade({
+      clienteController.cliente_vendaMensalQuantidade({
         inicio: '2020-01-01',
         cliente: 1,
       })
     ).rejects.toThrow('fim deve ser informado')
     await expect(() =>
-      clienteController.vendaMensalQuantidade({
+      clienteController.cliente_vendaMensalQuantidade({
         inicio: '2020-01',
         fim: '2020-01-01',
         cliente: 1,

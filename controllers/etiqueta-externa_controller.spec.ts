@@ -15,7 +15,7 @@ describe('ordemProducaoModel', () => {
 
   it('list', async () => {
     tracker.on.select('tEtiqueta').response([{ controle: '1' }])
-    const rsp = await etiquetaExternaController.list({
+    const rsp = await etiquetaExternaController.etiquetaExterna_list({
       where: [['controle', '1']],
       orderBy: [['controle', 'asc']],
     })
@@ -31,7 +31,7 @@ describe('ordemProducaoModel', () => {
 
   it('read', async () => {
     tracker.on.select('tEtiqueta').response([{ controle: '1' }])
-    const rsp = await etiquetaExternaController.read({
+    const rsp = await etiquetaExternaController.etiquetaExterna_read({
       where: [['controle', '1']],
     })
 

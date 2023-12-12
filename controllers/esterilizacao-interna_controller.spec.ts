@@ -18,10 +18,11 @@ describe('esterilizacaoInterna', () => {
       .select('tOperacaoOrdemProducao')
       .response([{ quantidade: 1, dia: new Date('2020-01-01T00:00:00') }])
 
-    const rsp = await esterilizacaoInternaController.diario({
-      inicio: '2020-01-01',
-      fim: '2020-01-31',
-    })
+    const rsp =
+      await esterilizacaoInternaController.esterilizacaoInterna_diario({
+        inicio: '2020-01-01',
+        fim: '2020-01-31',
+      })
 
     expect(rsp).toEqual([
       { quantidade: 1, dia: '2020-01-01', dia_semana: 'qua' },
@@ -39,9 +40,10 @@ describe('esterilizacaoInterna', () => {
     tracker.on
       .select('tOperacaoOrdemProducao')
       .response([{ quantidade: 1, dia: new Date('2020-01-01T00:00:00') }])
-    const rsp = await esterilizacaoInternaController.mensal({
-      mes: '2020-01',
-    })
+    const rsp =
+      await esterilizacaoInternaController.esterilizacaoInterna_mensal({
+        mes: '2020-01',
+      })
 
     expect(rsp).toEqual([
       { quantidade: 1, dia: new Date('2020-01-01T00:00:00') },
@@ -56,10 +58,11 @@ describe('esterilizacaoInterna', () => {
 
   test('modelo', async () => {
     tracker.on.select('tOperacaoOrdemProducao').response([])
-    const rsp = await esterilizacaoInternaController.modelo({
-      data: '2020-01-01',
-      produto: '01',
-    })
+    const rsp =
+      await esterilizacaoInternaController.esterilizacaoInterna_modelo({
+        data: '2020-01-01',
+        produto: '01',
+      })
 
     expect(rsp).toEqual([])
     expect(knexMockHistory(tracker)).toEqual([
@@ -72,9 +75,10 @@ describe('esterilizacaoInterna', () => {
 
   test('produto', async () => {
     tracker.on.select('tOperacaoOrdemProducao').response([])
-    const rsp = await esterilizacaoInternaController.produto({
-      data: '2020-01-01',
-    })
+    const rsp =
+      await esterilizacaoInternaController.esterilizacaoInterna_produto({
+        data: '2020-01-01',
+      })
 
     expect(rsp).toEqual([])
     expect(knexMockHistory(tracker)).toEqual([

@@ -1,7 +1,7 @@
 import { formatDiario } from '@/client/features/comercial/vendas30dias/format-diario.js'
 import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
-import { rpc } from '@/rpc/rpc-client.js'
+import { rpc } from '@/client/lib/rpc.js'
 import { day } from '@/utils/date/day.js'
 import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
@@ -77,7 +77,7 @@ const vendas30DiasStoreBase = createStore<Vendas30DiasState>()(
             _table: 'vendas30dias',
           },
           () =>
-            rpc.nfSaida.vendaDiario({
+            rpc.request('nfSaida_vendaDiario', {
               inicio: get().inicio,
               fim: get().fim,
               uf,
@@ -97,3 +97,5 @@ const vendas30DiasStoreBase = createStore<Vendas30DiasState>()(
 )
 
 export const vendas30DiasStore = createSelectors(vendas30DiasStoreBase)
+
+export type TVendas30DiasStore = typeof vendas30DiasStore

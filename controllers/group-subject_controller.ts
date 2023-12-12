@@ -16,7 +16,7 @@ export type TGroupSubjectKeys = (typeof groupSubject.primary)[number]
 function groupSubjectControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TGroupSubjectFields, TGroupSubjectKeys>(db, schema)
 
-  const listPermissions = async ({
+  const groupSubject_listPermissions = async ({
     idGroup,
     idSubjectList,
   }: {
@@ -39,16 +39,15 @@ function groupSubjectControllerFactory(db: TAdapterKnex, schema: TSchema) {
 
     return resp
   }
-  listPermissions.rpc = true
 
-  const can = async ({
+  const groupSubject_can = async ({
     kUsuario,
     idSubject,
   }: {
     kUsuario: number
     idSubject: string
   }) => {
-    const { idGroup } = await usuarioController.read({
+    const { idGroup } = await usuarioController.usuario_read({
       where: [['kUsuario', kUsuario]],
       select: ['idGroup'],
     })
@@ -68,12 +67,17 @@ function groupSubjectControllerFactory(db: TAdapterKnex, schema: TSchema) {
     })
     return permissions.length > 0
   }
-  can.rpc = true
 
   return {
-    ...orm.rpc,
-    listPermissions,
-    can,
+    groupSubject_list: orm.rpc.list,
+    groupSubject_read: orm.rpc.read,
+    groupSubject_count: orm.rpc.count,
+    groupSubject_update: orm.rpc.update,
+    groupSubject_create: orm.rpc.create,
+    groupSubject_del: orm.rpc.del,
+    groupSubject_increment: orm.rpc.increment,
+    groupSubject_listPermissions,
+    groupSubject_can,
   }
 }
 

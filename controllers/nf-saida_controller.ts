@@ -13,7 +13,7 @@ export const MestreNota: TSchema = {
     itens: {
       method: () =>
         import('./nf-saida-item_controller.js').then(
-          (m) => m.nfSaidaItemController.list
+          (m) => m.nfSaidaItemController.nfSaidaItem_list
         ),
       where: [
         ['CdFilial', 'CdFilial'],
@@ -24,7 +24,9 @@ export const MestreNota: TSchema = {
     },
     cliente: {
       method: () =>
-        import('./cliente_controller.js').then((m) => m.clienteController.read),
+        import('./cliente_controller.js').then(
+          (m) => m.clienteController.cliente_read
+        ),
       where: [['CdCliente', 'CdCliente']],
     },
   },
@@ -133,7 +135,7 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
    * @param param0
    * @returns
    */
-  const transferenciaDiario = async ({
+  const nfSaida_transferenciaDiario = async ({
     inicio,
     fim,
   }: {
@@ -175,14 +177,14 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
     }
     return rsp
   }
-  transferenciaDiario.rpc = true
+  nfSaida_transferenciaDiario.rpc = true
 
   /**
    * TRANSFERENCIA MENSAL
    * @param param0
    * @returns
    */
-  const transferenciaMensal = async ({ mes }: { mes: string }) => {
+  const nfSaida_transferenciaMensal = async ({ mes }: { mes: string }) => {
     parse(string([regex(/^\d{4}-(?:0[1-9]|1[0-2])$/, 'mês inválido')]), mes)
 
     const aux: any = {}
@@ -220,14 +222,14 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
 
     return rsp
   }
-  transferenciaMensal.rpc = true
+  nfSaida_transferenciaMensal.rpc = true
 
   /**
    * TRANSFERENCIA MODELO
    * @param param0
    * @returns
    */
-  const transferenciaModelo = async ({ data }: { data: string }) => {
+  const nfSaida_transferenciaModelo = async ({ data }: { data: string }) => {
     parse(string([isoDate('data inválida')]), data)
 
     const qry = await db({
@@ -250,14 +252,13 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
     })
     return qry
   }
-  transferenciaModelo.rpc = true
 
   /**
    * VENDA ANALITICO
    * @param param0
    * @returns
    */
-  const vendaAnalitico = async ({
+  const nfSaida_vendaAnalitico = async ({
     inicio,
     fim,
   }: {
@@ -312,19 +313,18 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
         ['MestreNota.Tipo', 'in', ['E', 'S']],
       ],
     })
-    const qryFullvision = nfSaidaFvController.vendaAnalitico({
+    const qryFullvision = nfSaidaFvController.nfSaidaFv_vendaAnalitico({
       inicio,
       fim,
     })
     const resp: any = await Promise.all([qryPlano, qryFullvision])
     return resp[0].concat(resp[1])
   }
-  vendaAnalitico.rpc = true
 
   /**
    * VENDA DIARIO
    */
-  const vendaDiario = async ({
+  const nfSaida_vendaDiario = async ({
     inicio,
     fim,
     uf,
@@ -389,12 +389,12 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
     })
     return response
   }
-  vendaDiario.rpc = true
+  nfSaida_vendaDiario.rpc = true
 
   /**
    * VENDA MENSAL CLIENTE
    */
-  const vendaMensalCliente = async ({
+  const nfSaida_vendaMensalCliente = async ({
     inicio,
     fim,
     cliente,
@@ -461,16 +461,21 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
       valor: number
     }[]
   }
-  vendaMensalCliente.rpc = true
 
   return {
-    ...orm.rpc,
-    vendaMensalCliente,
-    vendaDiario,
-    vendaAnalitico,
-    transferenciaDiario,
-    transferenciaMensal,
-    transferenciaModelo,
+    nfSaida_list: orm.rpc.list,
+    nfSaida_read: orm.rpc.read,
+    nfSaida_count: orm.rpc.count,
+    nfSaida_update: orm.rpc.update,
+    nfSaida_create: orm.rpc.create,
+    nfSaida_del: orm.rpc.del,
+    nfSaida_increment: orm.rpc.increment,
+    nfSaida_vendaMensalCliente,
+    nfSaida_vendaDiario,
+    nfSaida_vendaAnalitico,
+    nfSaida_transferenciaDiario,
+    nfSaida_transferenciaMensal,
+    nfSaida_transferenciaModelo,
   }
 }
 

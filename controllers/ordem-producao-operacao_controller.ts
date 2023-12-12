@@ -12,14 +12,14 @@ export const tOperacaoOrdemProducao: TSchema = {
     operacao: {
       method: () =>
         import('./operacao-producao_controller.js').then(
-          (m) => m.operacaoProducaoController.read
+          (m) => m.operacaoProducaoController.operacaoProducao_read
         ),
       where: [['kOperacao', 'fkOperacao']],
     },
     empregado: {
       method: () =>
         import('./empregado_controller.js').then(
-          (m) => m.empregadoController.read
+          (m) => m.empregadoController.empregado_read
         ),
       where: [['kEmpregado', 'fkEmpregado']],
     },
@@ -66,7 +66,7 @@ function ordemProducaoOperacaoControllerFactory(
     TOrdemProducaoOperacaoKeys
   >(db, schema)
 
-  const diario = async ({
+  const ordemProducaoOperacao_diario = async ({
     operacao,
     inicio,
     fim,
@@ -111,9 +111,8 @@ function ordemProducaoOperacaoControllerFactory(
       return item
     })
   }
-  diario.rpc = true
 
-  const mensal = async ({
+  const ordemProducaoOperacao_mensal = async ({
     operacao,
     mes,
   }: {
@@ -143,9 +142,8 @@ function ordemProducaoOperacaoControllerFactory(
     })
     return qry
   }
-  mensal.rpc = true
 
-  const modelo = async ({
+  const ordemProducaoOperacao_modelo = async ({
     operacao,
     data,
     produto,
@@ -189,9 +187,8 @@ function ordemProducaoOperacaoControllerFactory(
       })
     return qry
   }
-  modelo.rpc = true
 
-  const produto = async ({
+  const ordemProducaoOperacao_produto = async ({
     operacao,
     data,
   }: {
@@ -224,9 +221,8 @@ function ordemProducaoOperacaoControllerFactory(
       .where({ fkOperacao: operacao, DataInicio: data })
     return qry as { produto: string; quantidade: number }[]
   }
-  produto.rpc = true
 
-  const turno = async ({
+  const ordemProducaoOperacao_turno = async ({
     operacao,
     data,
   }: {
@@ -262,15 +258,20 @@ function ordemProducaoOperacaoControllerFactory(
       .where({ fkOperacao: operacao, DataInicio: data })
     return qry
   }
-  turno.rpc = true
 
   return {
-    ...orm.rpc,
-    diario,
-    mensal,
-    modelo,
-    produto,
-    turno,
+    ordemProducaoOperacao_list: orm.rpc.list,
+    ordemProducaoOperacao_read: orm.rpc.read,
+    ordemProducaoOperacao_count: orm.rpc.count,
+    ordemProducaoOperacao_update: orm.rpc.update,
+    ordemProducaoOperacao_create: orm.rpc.create,
+    ordemProducaoOperacao_del: orm.rpc.del,
+    ordemProducaoOperacao_increment: orm.rpc.increment,
+    ordemProducaoOperacao_diario,
+    ordemProducaoOperacao_mensal,
+    ordemProducaoOperacao_modelo,
+    ordemProducaoOperacao_produto,
+    ordemProducaoOperacao_turno,
   }
 }
 

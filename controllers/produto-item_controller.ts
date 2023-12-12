@@ -13,7 +13,9 @@ export const tbl_Produto_Item: TSchema = {
   relations: {
     produto: {
       method: () =>
-        import('./produto_controller.js').then((m) => m.produtoController.read),
+        import('./produto_controller.js').then(
+          (m) => m.produtoController.produto_read
+        ),
       where: [['kProduto', 'fkProduto']],
     },
   },
@@ -41,7 +43,7 @@ export type TProdutoItemKeys = (typeof tbl_Produto_Item.primary)[number]
 function produtoItemControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TProdutoItemFields, TProdutoItemKeys>(db, schema)
 
-  const produtoPlano = async ({
+  const produtoItem_produtoPlano = async ({
     id,
     select,
   }: {
@@ -58,18 +60,23 @@ function produtoItemControllerFactory(db: TAdapterKnex, schema: TSchema) {
 
     if (typeof produtoItem.IdVisiontech === 'string') {
       produtoItem.IdVisiontech = produtoItem.IdVisiontech.trim()
-      return produtoPlanoController.read({
+      return produtoPlanoController.produtoPlano_read({
         where: [['CdProduto', produtoItem.IdVisiontech]],
         select,
       })
     }
     return []
   }
-  produtoPlano.rpc = true
 
   return {
-    ...orm.rpc,
-    produtoPlano,
+    produtoItem_list: orm.rpc.list,
+    produtoItem_read: orm.rpc.read,
+    produtoItem_count: orm.rpc.count,
+    produtoItem_update: orm.rpc.update,
+    produtoItem_create: orm.rpc.create,
+    produtoItem_del: orm.rpc.del,
+    produtoItem_increment: orm.rpc.increment,
+    produtoItem_produtoPlano,
   }
 }
 

@@ -1,10 +1,10 @@
 import { GroupSubjectTable } from '@/client/features/sistema/permissoes/group-subject_table.js'
 import { useForm } from '@/client/lib/hooks/use-form.js'
+import { rpc } from '@/client/lib/rpc.js'
 import {
   TGroupSubjectFields,
   TGroupSubjectKeys,
 } from '@/controllers/group-subject_controller.js'
-import { rpc } from '@/rpc/rpc-client.js'
 import type {
   TData,
   TFormStatus,
@@ -46,7 +46,7 @@ export function GroupSubject() {
   // Read Data
   React.useEffect(() => {
     async function getData() {
-      const data = await rpc.groupSubject.read({ where: selection })
+      const data = await rpc.request('groupSubject_read', { where: selection })
       form.reset(data || dataClear)
     }
     if (selection.length > 0) getData()
@@ -56,7 +56,7 @@ export function GroupSubject() {
     where: TWhere<TGroupSubjectFields>,
     orderBy: TOrderBy<TGroupSubjectFields>
   ) {
-    const data = await rpc.groupSubject.list({ where, orderBy })
+    const data = await rpc.request('groupSubject_list', { where, orderBy })
     setList(data)
   }
 
@@ -93,7 +93,7 @@ export function GroupSubject() {
   }
 
   async function handleDel() {
-    await rpc.groupSubject.del$({ where: selection })
+    await rpc.request('groupSubject_del', { where: selection })
     await getList(where, orderBy)
     setStatus('view')
     setSelection([])
@@ -101,13 +101,13 @@ export function GroupSubject() {
 
   async function handleSave() {
     if (status === 'edit') {
-      await rpc.groupSubject.update$({
+      await rpc.request('groupSubject_update', {
         data: form.value,
         where: selection,
       })
     }
     if (status === 'new') {
-      await rpc.groupSubject.create$({ data: form.value })
+      await rpc.request('groupSubject_create', { data: form.value })
     }
     await getList(where, orderBy)
     setStatus('view')

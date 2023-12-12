@@ -25,7 +25,15 @@ export type TlogKeys = (typeof logSchema.primary)[number]
 function logControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TlogFields, TlogKeys>(db, schema)
 
-  return { ...orm.rpc }
+  return {
+    log_list: orm.rpc.list,
+    log_read: orm.rpc.read,
+    log_count: orm.rpc.count,
+    log_update: orm.rpc.update,
+    log_create: orm.rpc.create,
+    log_del: orm.rpc.del,
+    log_increment: orm.rpc.increment,
+  }
 }
 
 export const logController = logControllerFactory(dbLog, logSchema)

@@ -27,7 +27,7 @@ describe('nfSaidaFvController', () => {
         DtEmissao: '2020-01-01',
       },
     ])
-    const rsp = await nfSaidaFvController.vendaDiario({
+    const rsp = await nfSaidaFvController.nfSaidaFv_vendaDiario({
       inicio: '2020-01-01',
       fim: '2020-01-31',
       uf: ['MG'],
@@ -45,7 +45,7 @@ describe('nfSaidaFvController', () => {
         DtEmissao: '2020-01-01',
       },
     ])
-    const rsp = await nfSaidaFvController.vendaMensalCliente({
+    const rsp = await nfSaidaFvController.nfSaidaFv_vendaMensalCliente({
       inicio: '2020-01-01',
       fim: '2020-01-31',
       cliente: 123,
@@ -69,7 +69,7 @@ describe('nfSaidaFvController', () => {
         DtEmissao: '2020-01-01',
       },
     ])
-    const rsp = await nfSaidaFvController.vendaAnalitico({
+    const rsp = await nfSaidaFvController.nfSaidaFv_vendaAnalitico({
       inicio: '2020-01-01',
       fim: '2020-01-31',
     })

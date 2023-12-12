@@ -1,8 +1,8 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
 import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { clientRpcMock } from '@/mocks/client-rpc.mock.js'
 import { knexMockMsql } from '@/mocks/connections.mock.js'
 import { getTracker } from '@/mocks/database.mock.js'
-import { clientMock } from '@/mocks/prim.js'
 import { beforeEach, describe, expect, test } from 'vitest'
 
 describe('cidadeRpc', () => {
@@ -19,7 +19,7 @@ describe('cidadeRpc', () => {
   test('list', async () => {
     tracker.on.select('cidadesERF').response([{ id: '1' }])
 
-    const rsp = await clientMock.cidade.list({
+    const rsp = await clientRpcMock.request('cidade_list', {
       where: [['CdCidadeIBGE', '1']],
       orderBy: [['CdCidadeIBGE', 'asc']],
     })
@@ -33,7 +33,7 @@ describe('cidadeRpc', () => {
   test('read', async () => {
     tracker.on.select('cidadesERF').response([{ id: '1' }])
 
-    const rsp = await clientMock.cidade.read({
+    const rsp = await clientRpcMock.request('cidade_read', {
       where: [['CdCidadeIBGE', '1']],
       select: ['CdCidadeIBGE'],
     })
@@ -47,7 +47,7 @@ describe('cidadeRpc', () => {
   test('update', async () => {
     tracker.on.update('cidadesERF').response(1)
 
-    const rsp = await clientMock.cidade.update$({
+    const rsp = await clientRpcMock.request('cidade_update', {
       where: [['CdCidadeIBGE', '1']],
       data: { NmCidadeIBGE: 'test' },
     })
@@ -61,7 +61,7 @@ describe('cidadeRpc', () => {
   test('create', async () => {
     tracker.on.insert('cidadesERF').response(1)
 
-    const rsp = await clientMock.cidade.create$({
+    const rsp = await clientRpcMock.request('cidade_create', {
       data: { CdCidadeIBGE: '1', NmCidadeIBGE: 'test' },
     })
 
@@ -74,7 +74,7 @@ describe('cidadeRpc', () => {
   test('del', async () => {
     tracker.on.delete('cidadesERF').response(1)
 
-    const rsp = await clientMock.cidade.del$({
+    const rsp = await clientRpcMock.request('cidade_del', {
       where: [['CdCidadeIBGE', '1']],
     })
 

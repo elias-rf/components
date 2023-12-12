@@ -22,7 +22,15 @@ export type TEmpregadoKeys = (typeof empregadoSchema.primary)[number]
 
 function empregadoControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TEmpregadoFields, TEmpregadoKeys>(db, schema)
-  return { ...orm.rpc }
+  return {
+    empregado_list: orm.rpc.list,
+    empregado_read: orm.rpc.read,
+    empregado_count: orm.rpc.count,
+    empregado_update: orm.rpc.update,
+    empregado_create: orm.rpc.create,
+    empregado_del: orm.rpc.del,
+    empregado_increment: orm.rpc.increment,
+  }
 }
 
 export const empregadoController = empregadoControllerFactory(

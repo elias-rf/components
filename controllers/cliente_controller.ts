@@ -213,14 +213,16 @@ export type TClienteKeys = (typeof clienteSchema.primary)[number]
 ;(clienteSchema as TSchema).relations = {
   nfSaida: {
     method: () =>
-      import('./nf-saida_controller.js').then((m) => m.nfSaidaController.list),
+      import('./nf-saida_controller.js').then(
+        (m) => m.nfSaidaController.nfSaida_list
+      ),
     where: [['CdProduto', 'CdProduto']],
   },
 }
 function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TClienteFields, TClienteKeys>(db, schema)
 
-  async function vendaMensalQuantidade(args: {
+  async function cliente_vendaMensalQuantidade(args: {
     inicio: string
     fim: string
     cliente: number
@@ -244,7 +246,7 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
     )
 
     const { nfSaidaController } = await import('./nf-saida_controller.js')
-    const data = await nfSaidaController.vendaMensalCliente(args)
+    const data = await nfSaidaController.nfSaida_vendaMensalCliente(args)
 
     const rsp: any = {}
     data.forEach(
@@ -268,9 +270,9 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
     }
     return resp
   }
-  vendaMensalQuantidade.rpc = true
+  cliente_vendaMensalQuantidade.rpc = true
 
-  const vendaMensalValorMedio = async (args: {
+  const cliente_vendaMensalValorMedio = async (args: {
     inicio: string
     fim: string
     cliente: number
@@ -287,7 +289,7 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
       args
     )
     const { nfSaidaController } = await import('./nf-saida_controller.js')
-    const data = await nfSaidaController.vendaMensalCliente(args)
+    const data = await nfSaidaController.nfSaida_vendaMensalCliente(args)
     const rsp: any = {}
     data.forEach(
       ({
@@ -312,9 +314,9 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
     }
     return resp
   }
-  vendaMensalValorMedio.rpc = true
+  cliente_vendaMensalValorMedio.rpc = true
 
-  const vendaMensalValor = async (args: {
+  const cliente_vendaMensalValor = async (args: {
     inicio: string
     fim: string
     cliente: number
@@ -331,7 +333,7 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
       args
     )
     const { nfSaidaController } = await import('./nf-saida_controller.js')
-    const data = await nfSaidaController.vendaMensalCliente(args)
+    const data = await nfSaidaController.nfSaida_vendaMensalCliente(args)
     const rsp: any = {}
     data.forEach(
       ({
@@ -354,13 +356,18 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
     }
     return resp
   }
-  vendaMensalValor.rpc = true
 
   return {
-    ...orm.rpc,
-    vendaMensalQuantidade,
-    vendaMensalValor,
-    vendaMensalValorMedio,
+    cliente_list: orm.rpc.list,
+    cliente_read: orm.rpc.read,
+    cliente_count: orm.rpc.count,
+    cliente_update: orm.rpc.update,
+    cliente_create: orm.rpc.create,
+    cliente_del: orm.rpc.del,
+    cliente_increment: orm.rpc.increment,
+    cliente_vendaMensalQuantidade,
+    cliente_vendaMensalValor,
+    cliente_vendaMensalValorMedio,
   }
 }
 

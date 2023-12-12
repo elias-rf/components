@@ -1,8 +1,8 @@
 import { Can } from '@/client/components/can.js'
 import { Table } from '@/client/components/table/table.js'
 import { usuarioColumns } from '@/client/features/sistema/usuario/components/usuario_columns.js'
-import { usuarioStore } from '@/client/features/sistema/usuario/usuario_store.js'
-import { authStore } from '@/client/store/auth_store.js'
+import { TUsuarioStore } from '@/client/features/sistema/usuario/usuario_store.js'
+import { TAuthStore } from '@/client/store/auth_store.js'
 import { usePageSize } from '@/client/store/page-size.js'
 import {
   TUsuarioFields,
@@ -12,19 +12,25 @@ import type { TData, TId } from '@/types/index.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
-export function UsuarioTable() {
+export function UsuarioTable({
+  store,
+  auth,
+}: {
+  store: TUsuarioStore
+  auth: TAuthStore
+}) {
   const pageHeight = usePageSize((state) => state.height * 0.7)
 
-  const can = authStore.use.can()
+  const can = auth.use.can()
 
-  const fetchList = usuarioStore.use.fetchList()
-  const list = usuarioStore.use.list()
-  const orderBy = usuarioStore.use.orderBy()
-  const selection = usuarioStore.use.selection()
-  const setOrderBy = usuarioStore.use.setOrderBy()
-  const setSelection = usuarioStore.use.setSelection()
-  const setWhere = usuarioStore.use.setWhere()
-  const where = usuarioStore.use.where()
+  const fetchList = store.use.fetchList()
+  const list = store.use.list()
+  const orderBy = store.use.orderBy()
+  const selection = store.use.selection()
+  const setOrderBy = store.use.setOrderBy()
+  const setSelection = store.use.setSelection()
+  const setWhere = store.use.setWhere()
+  const where = store.use.where()
 
   function getId(row: TData<TUsuarioFields>): TId<TUsuarioKeys> {
     return [['kUsuario', row.kUsuario]]

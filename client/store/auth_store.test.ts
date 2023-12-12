@@ -13,7 +13,7 @@ describe('authStore', () => {
     mockedFetch.add(async (request: any) => {
       const body = JSON.parse(request.options?.body)
       switch (body.method) {
-        case 'usuario/login$':
+        case 'usuario_login':
           return {
             body: {
               id: body.id,
@@ -26,7 +26,7 @@ describe('authStore', () => {
               },
             },
           }
-        case 'groupSubject/list':
+        case 'groupSubject_list':
           return {
             body: {
               id: body.id,
@@ -56,7 +56,7 @@ describe('authStore', () => {
     mockedFetch.add(async (request: any) => {
       const body = JSON.parse(request.options?.body)
       switch (body.method) {
-        case 'usuario/login$':
+        case 'usuario_login':
           return {
             body: {
               id: body.id,
@@ -69,7 +69,7 @@ describe('authStore', () => {
               },
             },
           }
-        case 'groupSubject/list':
+        case 'groupSubject_list':
           return {
             body: {
               id: body.id,
@@ -99,7 +99,7 @@ describe('authStore', () => {
     mockedFetch.add(async (request: any) => {
       const body = JSON.parse(request.options?.body)
       switch (body.method) {
-        case 'usuario/login$':
+        case 'usuario_login':
           return {
             body: {
               id: body.id,
@@ -112,7 +112,7 @@ describe('authStore', () => {
               },
             },
           }
-        case 'groupSubject/list':
+        case 'groupSubject_list':
           return {
             body: {
               id: body.id,

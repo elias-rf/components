@@ -6,11 +6,11 @@ type TFormHeadProps = {
   permissions: { [permission: string]: string }
   editPermissions: boolean
   className?: string
-  title: string
+  children: React.ReactNode
 }
 
 export function FormHead({
-  title,
+  children,
   editPermissions,
   permissions,
 }: TFormHeadProps) {
@@ -19,7 +19,7 @@ export function FormHead({
       data-name="Cliente"
       className="flex flex-row my-1 space-x-2"
     >
-      <Title>{title}</Title>
+      <Title>{children}</Title>
       <Can
         can={editPermissions}
         elseCan={null}

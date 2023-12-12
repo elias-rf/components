@@ -1,5 +1,6 @@
 import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
+import { rpc } from '@/client/lib/rpc.js'
 import {
   TCreateButtonsStore,
   createButtonsStore,
@@ -16,7 +17,6 @@ import {
   TAgendaTelefoneFields,
   TAgendaTelefoneKeys,
 } from '@/controllers/agenda-telefone_controller.js'
-import { rpc } from '@/rpc/rpc-client.js'
 import { TData } from '@/types/index.js'
 import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
@@ -57,7 +57,7 @@ const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
             _table: tableName,
           },
           () =>
-            rpc[tableName].list({
+            rpc.request('agendaTelefone_list', {
               where: get().where,
               orderBy: get().orderBy,
             })
@@ -74,7 +74,7 @@ const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
             where: get().selection,
             _table: tableName,
           },
-          () => rpc[tableName].read({ where: get().selection })
+          () => rpc.request('agendaTelefone_read', { where: get().selection })
         )) as TData<TAgendaTelefoneFields>
 
         set(() => ({ record }), false, 'fetchRecord')
@@ -84,13 +84,15 @@ const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
       onSave: async () => {
         cache.purgeTable(tableName)
         if (get().status === 'edit') {
-          await rpc[tableName].update$({
+          await rpc.request('agendaTelefone_update', {
             data: get().record || {},
             where: get().selection,
           })
         }
         if (get().status === 'new') {
-          await rpc[tableName].create$({ data: get().record || {} })
+          await rpc.request('agendaTelefone_create', {
+            data: get().record || {},
+          })
         }
         await get().fetchList()
         set(() => ({ status: 'view' }), false, 'onSave')
@@ -98,7 +100,7 @@ const agendaTelefoneStoreBase = createStore<AgendaTelefoneState>()(
 
       onDelete: async () => {
         cache.purgeTable(tableName)
-        await rpc[tableName].del$({ where: get().selection })
+        await rpc.request('agendaTelefone_del', { where: get().selection })
         await get().fetchList()
         set(
           () => ({ record: get().recordClear, status: 'none', selection: [] }),
@@ -121,3 +123,5 @@ agendaTelefoneStoreBase
   .setRecord(agendaTelefoneStoreBase.getState().recordClear)
 
 export const agendaTelefoneStore = createSelectors(agendaTelefoneStoreBase)
+
+export type TAgendaTelefoneStore = typeof agendaTelefoneStore

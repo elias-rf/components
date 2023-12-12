@@ -13,7 +13,7 @@ describe('logController', () => {
     tracker.reset()
     tracker.on.select('log').response([{ reqId: '1' }])
 
-    const rsp = await logController.list({
+    const rsp = await logController.log_list({
       where: [['reqId', 1]],
       orderBy: [['reqId', 'asc']],
     })
@@ -31,7 +31,7 @@ describe('logController', () => {
     tracker.reset()
     tracker.on.select('log').response({ reqId: '1' })
 
-    const rsp = await logController.read({
+    const rsp = await logController.log_read({
       where: [['reqId', 1]],
     })
 
@@ -48,7 +48,7 @@ describe('logController', () => {
     tracker.reset()
     tracker.on.delete('log').response(1)
 
-    const rsp = await logController.del$({
+    const rsp = await logController.log_del({
       where: [['reqId', 1]],
     })
 
@@ -66,7 +66,7 @@ describe('logController', () => {
     tracker.on.update('log').response({ reqId: 10 })
     tracker.on.select('log').response([{ reqId: 10 }])
 
-    const rsp = await logController.update$({
+    const rsp = await logController.log_update({
       where: [['reqId', 1]],
       data: { reqId: 10 },
       returning: ['reqId'],
@@ -85,7 +85,7 @@ describe('logController', () => {
     tracker.reset()
     tracker.on.insert('log').response(1)
 
-    const rsp = await logController.create$({
+    const rsp = await logController.log_create({
       data: { reqId: 10 },
     })
 

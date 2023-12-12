@@ -25,7 +25,7 @@ describe('nfSaidaModel', () => {
       .response([
         { dia: '2020-01-01', NmCategoria: 'categoria', quantidade: 10 },
       ])
-    const rsp = await nfSaidaController.transferenciaDiario({
+    const rsp = await nfSaidaController.nfSaida_transferenciaDiario({
       inicio: '2020-01-01',
       fim: '2020-01-31',
     })
@@ -39,7 +39,7 @@ describe('nfSaidaModel', () => {
     tracker.on
       .select('MestreNota')
       .response([{ mes: '2020-01', NmCategoria: 'categoria', quantidade: 10 }])
-    const rsp = await nfSaidaController.transferenciaMensal({
+    const rsp = await nfSaidaController.nfSaida_transferenciaMensal({
       mes: '2020-01',
     })
     expect(rsp).toEqual([{ mes: '2020-01', categoria: 10 }])
@@ -52,7 +52,7 @@ describe('nfSaidaModel', () => {
     tracker.on
       .select('MestreNota')
       .response([{ modelo: 'modelo', quantidade: 10 }])
-    const rsp = await nfSaidaController.transferenciaModelo({
+    const rsp = await nfSaidaController.nfSaida_transferenciaModelo({
       data: '2020-01-01',
     })
     expect(rsp).toEqual([{ modelo: 'modelo', quantidade: 10 }])
@@ -68,7 +68,7 @@ describe('nfSaidaModel', () => {
         DtEmissao: '2020-01-01',
       },
     ])
-    const rsp = await nfSaidaController.vendaDiario({
+    const rsp = await nfSaidaController.nfSaida_vendaDiario({
       inicio: '2020-01-01',
       fim: '2020-01-31',
       uf: ['MG'],
@@ -86,7 +86,7 @@ describe('nfSaidaModel', () => {
         DtEmissao: '2020-01-01',
       },
     ])
-    const rsp = await nfSaidaController.vendaMensalCliente({
+    const rsp = await nfSaidaController.nfSaida_vendaMensalCliente({
       inicio: '2020-01-01',
       fim: '2020-01-31',
       cliente: 123,
@@ -128,7 +128,7 @@ describe('nfSaidaModel', () => {
         DtEmissao: '2020-01-01',
       },
     ])
-    const rsp = await nfSaidaController.vendaAnalitico({
+    const rsp = await nfSaidaController.nfSaida_vendaAnalitico({
       inicio: '2020-01-01',
       fim: '2020-01-31',
     })

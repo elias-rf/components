@@ -1,6 +1,6 @@
 import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
-import { rpc } from '@/rpc/rpc-client.js'
+import { rpc } from '@/client/lib/rpc.js'
 import { day } from '@/utils/date/day.js'
 import { getFieldId } from '@/utils/query/get-field-id.js'
 import { isIdEqual } from '@/utils/query/is-id-equal.js'
@@ -100,7 +100,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
           .format('YYYY-MM-DD'),
       },
       () =>
-        rpc.esterilizacaoExterna.diario({
+        rpc.request('esterilizacaoExterna_diario', {
           inicio: day(getFieldId('mes', get().mes) + '-01')
             .startOf('month')
             .format('YYYY-MM-DD'),
@@ -120,7 +120,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
         mes: getFieldId('mes', get().mesInicio),
       },
       () =>
-        rpc.esterilizacaoExterna.mensal({
+        rpc.request('esterilizacaoExterna_mensal', {
           mes: getFieldId('mes', get().mesInicio),
         })
     )) as any[]
@@ -136,7 +136,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
         produto: getFieldId('produto', get().produto),
       },
       () =>
-        rpc.esterilizacaoExterna.modelo({
+        rpc.request('esterilizacaoExterna_modelo', {
           data: getFieldId('dia', get().dia),
           produto: getFieldId('produto', get().produto),
         })
@@ -152,7 +152,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
         data: getFieldId('dia', get().dia),
       },
       () =>
-        rpc.esterilizacaoExterna.produto({
+        rpc.request('esterilizacaoExterna_produto', {
           data: getFieldId('dia', get().dia),
         })
     )) as any[]
@@ -172,7 +172,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
           .format('YYYY-MM-DD'),
       },
       () =>
-        rpc.esterilizacaoInterna.diario({
+        rpc.request('esterilizacaoInterna_diario', {
           inicio: day(getFieldId('mes', get().mes) + '-01')
             .startOf('month')
             .format('YYYY-MM-DD'),
@@ -192,7 +192,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
         mes: getFieldId('mes', get().mesInicio),
       },
       () =>
-        rpc.esterilizacaoInterna.mensal({
+        rpc.request('esterilizacaoInterna_mensal', {
           mes: getFieldId('mes', get().mesInicio),
         })
     )) as any[]
@@ -208,7 +208,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
         produto: getFieldId('produto', get().produto),
       },
       () =>
-        rpc.esterilizacaoInterna.modelo({
+        rpc.request('esterilizacaoInterna_modelo', {
           data: getFieldId('dia', get().dia),
           produto: getFieldId('produto', get().produto),
         })
@@ -224,7 +224,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
         data: getFieldId('dia', get().dia),
       },
       () =>
-        rpc.esterilizacaoInterna.produto({
+        rpc.request('esterilizacaoInterna_produto', {
           data: getFieldId('dia', get().dia),
         })
     )) as any[]
@@ -245,7 +245,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
           .format('YYYY-MM-DD'),
       },
       () =>
-        rpc.ordemProducaoOperacao.diario({
+        rpc.request('ordemProducaoOperacao_diario', {
           operacao: getFieldId('operacao', get().operacao) || '',
           inicio: day(getFieldId('mes', get().mes) + '-01')
             .startOf('month')
@@ -267,7 +267,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
         mes: getFieldId('mes', get().mesInicio),
       },
       () =>
-        rpc.ordemProducaoOperacao.mensal({
+        rpc.request('ordemProducaoOperacao_mensal', {
           operacao: getFieldId('operacao', get().operacao) || '',
           mes: getFieldId('mes', get().mesInicio),
         })
@@ -284,7 +284,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
         data: getFieldId('dia', get().dia),
       },
       () =>
-        rpc.ordemProducaoOperacao.produto({
+        rpc.request('ordemProducaoOperacao_produto', {
           operacao: getFieldId('operacao', get().operacao) || '',
           data: getFieldId('dia', get().dia),
         })
@@ -302,7 +302,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
         produto: getFieldId('produto', get().produto),
       },
       () =>
-        rpc.ordemProducaoOperacao.modelo({
+        rpc.request('ordemProducaoOperacao_modelo', {
           operacao: getFieldId('operacao', get().operacao) || '',
           data: getFieldId('dia', get().dia),
           produto: getFieldId('produto', get().produto),
@@ -320,7 +320,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
         data: getFieldId('dia', get().dia),
       },
       () =>
-        rpc.ordemProducaoOperacao.turno({
+        rpc.request('ordemProducaoOperacao_turno', {
           operacao: getFieldId('operacao', get().operacao) || '',
           data: getFieldId('dia', get().dia),
         })
@@ -341,7 +341,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
           .format('YYYY-MM-DD'),
       },
       () =>
-        rpc.nfSaida.transferenciaDiario({
+        rpc.request('nfSaida_transferenciaDiario', {
           inicio: day(getFieldId('mes', get().mes) + '-01')
             .startOf('month')
             .format('YYYY-MM-DD'),
@@ -361,7 +361,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
         mes: getFieldId('mes', get().mesInicio),
       },
       () =>
-        rpc.nfSaida.transferenciaMensal({
+        rpc.request('nfSaida_transferenciaMensal', {
           mes: getFieldId('mes', get().mesInicio),
         })
     )) as any[]
@@ -376,7 +376,7 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
         data: getFieldId('dia', get().dia),
       },
       () =>
-        rpc.nfSaida.transferenciaModelo({
+        rpc.request('nfSaida_transferenciaModelo', {
           data: getFieldId('dia', get().dia),
         })
     )) as any[]

@@ -10,7 +10,7 @@ mockedFetch.add(async (request: any) => {
   const body = JSON.parse(request.options?.body)
 
   switch (body.method) {
-    case 'fileManager/dir':
+    case 'fileManager_dir':
       return {
         body: {
           id: body.id,
@@ -20,7 +20,7 @@ mockedFetch.add(async (request: any) => {
           },
         },
       }
-    case 'fileManager/stat':
+    case 'fileManager_stat':
       return {
         body: {
           id: body.id,

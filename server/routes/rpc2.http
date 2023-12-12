@@ -1,0 +1,39 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+@resource = agendaTelefone
+
+
+### Login
+POST {{host}}/api/rpc2
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+	"method": "sys/list",
+	"id": "1"
+}
+
+
+### Login
+# @name login
+POST {{host}}/api/rpc2
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+	"method": "usuario/login$",
+  "params": {"user":"elias","password":"jkl"},
+	"id": "1"
+}
+
+### Me
+POST {{host}}/api/rpc2
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.result.token}}
+
+{
+  "jsonrpc": "2.0",
+	"method": "usuario/me",
+	"id": "1"
+}

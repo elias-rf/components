@@ -5,7 +5,7 @@ import { fakerPT_BR as faker } from '@faker-js/faker'
 import { describe, expect, test } from 'vitest'
 
 fetcherMock({
-  'agendaTelefone/list': () => {
+  agendaTelefone_list: () => {
     return createRecord(
       {
         id: uid(100),
@@ -16,7 +16,7 @@ fetcherMock({
       50
     )
   },
-  'agendaTelefone/read': () => ({
+  agendaTelefone_read: () => ({
     id: '100',
     name: 'Fulano da Silva',
     department: 'Setor de TI',

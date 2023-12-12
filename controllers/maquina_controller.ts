@@ -31,7 +31,13 @@ export type TMaquinaKeys = (typeof tMaquina.primary)[number]
 function maquinaControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TMaquinaFields, TMaquinaKeys>(db, schema)
   return {
-    ...orm.rpc,
+    maquina_list: orm.rpc.list,
+    maquina_read: orm.rpc.read,
+    maquina_count: orm.rpc.count,
+    maquina_update: orm.rpc.update,
+    maquina_create: orm.rpc.create,
+    maquina_del: orm.rpc.del,
+    maquina_increment: orm.rpc.increment,
   }
 }
 

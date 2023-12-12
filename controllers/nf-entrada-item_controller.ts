@@ -92,7 +92,13 @@ export type TNfEntradaItemKeys = (typeof NFItem.primary)[number]
 function nfEntradaItemControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfEntradaItemFields, TNfEntradaItemKeys>(db, schema)
   return {
-    ...orm.rpc,
+    nfEntradaItem_list: orm.rpc.list,
+    nfEntradaItem_read: orm.rpc.read,
+    nfEntradaItem_count: orm.rpc.count,
+    nfEntradaItem_update: orm.rpc.update,
+    nfEntradaItem_create: orm.rpc.create,
+    nfEntradaItem_del: orm.rpc.del,
+    nfEntradaItem_increment: orm.rpc.increment,
   }
 }
 

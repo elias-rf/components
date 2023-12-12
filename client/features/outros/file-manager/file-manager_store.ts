@@ -1,6 +1,6 @@
 import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
-import { rpc } from '@/rpc/rpc-client.js'
+import { rpc } from '@/client/lib/rpc.js'
 import { TData } from '@/types/index.js'
 import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
@@ -51,7 +51,7 @@ const fileManagerStoreBase = createStore<TFileManagerState>()(
             _table: tableName,
           },
           () =>
-            rpc[tableName].dir({
+            rpc.request('fileManager_dir', {
               path: get().path,
             })
         )) as {
@@ -73,7 +73,7 @@ const fileManagerStoreBase = createStore<TFileManagerState>()(
             _table: tableName,
           },
           () =>
-            rpc[tableName].stat({
+            rpc.request('fileManager_stat', {
               path: get().path,
               name: get().selected,
             })

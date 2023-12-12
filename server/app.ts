@@ -43,11 +43,11 @@ const envToLogger = {
       },
     },
   },
-  // production: {
-  //   transport: {
-  //     target: path.join(__dirname, 'lib/db-transport.mjs'),
-  //   },
-  // },
+  production: {
+    transport: {
+      target: path.join(__dirname, 'lib/db-transport.js'),
+    },
+  },
   test: false,
 }
 
@@ -75,7 +75,10 @@ app.register(staticFiles, {
 
 app.addHook('preHandler', function (req, reply, done) {
   if (req.body) {
-    if ((req.body as string).includes('usuario/login')) {
+    if (
+      typeof req.body === 'string' &&
+      (req.body as string).includes('usuario/login')
+    ) {
       const body = JSON.parse(req.body as string)
       body.args.password = '***'
       req.log.info({ body }, 'parsed body for login')

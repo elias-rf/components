@@ -16,7 +16,7 @@ describe('group-subject-model', () => {
     tracker.on.select('tbl_Seguranca_Usuario').response([{ idGroup: '1' }])
     tracker.on.select('groupSubject').response([{ idSubject: 'prm1' }])
 
-    const rsp = await groupSubjectController.can({
+    const rsp = await groupSubjectController.groupSubject_can({
       kUsuario: 1,
       idSubject: 'prm1',
     })
@@ -38,7 +38,7 @@ describe('group-subject-model', () => {
     tracker.reset()
     tracker.on.select('groupSubject').response([{ idSubject: 'prm1' }])
 
-    const rsp = await groupSubjectController.listPermissions({
+    const rsp = await groupSubjectController.groupSubject_listPermissions({
       idGroup: '28',
       idSubjectList: ['prm1', 'prm2'],
     })

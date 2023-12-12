@@ -43,7 +43,7 @@ function esterilizacaoInternaControllerFactory(
     schema
   )
 
-  const diario = async ({
+  const esterilizacaoInterna_diario = async ({
     inicio,
     fim,
   }: {
@@ -71,9 +71,8 @@ function esterilizacaoInternaControllerFactory(
       return rec
     })
   }
-  diario.rpc = true
 
-  const mensal = async ({
+  const esterilizacaoInterna_mensal = async ({
     mes,
   }: {
     mes: string
@@ -93,9 +92,8 @@ function esterilizacaoInternaControllerFactory(
     })
     return qry
   }
-  mensal.rpc = true
 
-  const modelo = async ({
+  const esterilizacaoInterna_modelo = async ({
     data,
     produto,
   }: {
@@ -129,9 +127,8 @@ function esterilizacaoInternaControllerFactory(
       .whereIn('fkOperacao', [3058, 3158])
     return qry as { modelo: string; quantidade: number }[]
   }
-  modelo.rpc = true
 
-  const produto = async ({
+  const esterilizacaoInterna_produto = async ({
     data,
   }: {
     data: string
@@ -153,14 +150,19 @@ function esterilizacaoInternaControllerFactory(
       .whereIn('fkOperacao', [3058, 3158])
     return qry as { produto: string; quantidade: number }[]
   }
-  produto.rpc = true
 
   return {
-    ...orm.rpc,
-    diario,
-    mensal,
-    modelo,
-    produto,
+    esterilizacaoInterna_list: orm.rpc.list,
+    esterilizacaoInterna_read: orm.rpc.read,
+    esterilizacaoInterna_count: orm.rpc.count,
+    esterilizacaoInterna_update: orm.rpc.update,
+    esterilizacaoInterna_create: orm.rpc.create,
+    esterilizacaoInterna_del: orm.rpc.del,
+    esterilizacaoInterna_increment: orm.rpc.increment,
+    esterilizacaoInterna_diario,
+    esterilizacaoInterna_mensal,
+    esterilizacaoInterna_modelo,
+    esterilizacaoInterna_produto,
   }
 }
 

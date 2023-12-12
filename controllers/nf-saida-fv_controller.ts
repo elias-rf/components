@@ -11,7 +11,7 @@ export type TNfSaidaFvKeys = (typeof MestreNota.primary)[number]
 function nfSaidaFvControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfSaidaFvFields, TNfSaidaFvKeys>(db, schema)
 
-  const vendaAnalitico = async ({
+  const nfSaidaFv_vendaAnalitico = async ({
     inicio,
     fim,
   }: {
@@ -74,12 +74,11 @@ function nfSaidaFvControllerFactory(db: TAdapterKnex, schema: TSchema) {
     })
     return qryPlano
   }
-  vendaAnalitico.rpc = true
 
   /**
    * VENDA DIARIO
    */
-  const vendaDiario = async ({
+  const nfSaidaFv_vendaDiario = async ({
     inicio,
     fim,
     uf,
@@ -139,9 +138,8 @@ function nfSaidaFvControllerFactory(db: TAdapterKnex, schema: TSchema) {
       valor: number
     }[]
   }
-  vendaDiario.rpc = true
 
-  const vendaMensalCliente = async ({
+  const nfSaidaFv_vendaMensalCliente = async ({
     inicio,
     fim,
     cliente,
@@ -214,13 +212,18 @@ function nfSaidaFvControllerFactory(db: TAdapterKnex, schema: TSchema) {
     }[]
     return response
   }
-  vendaMensalCliente.rpc = true
 
   return {
-    ...orm.rpc,
-    vendaAnalitico,
-    vendaDiario,
-    vendaMensalCliente,
+    nfSaidaFv_list: orm.rpc.list,
+    nfSaidaFv_read: orm.rpc.read,
+    nfSaidaFv_count: orm.rpc.count,
+    nfSaidaFv_update: orm.rpc.update,
+    nfSaidaFv_create: orm.rpc.create,
+    nfSaidaFv_del: orm.rpc.del,
+    nfSaidaFv_increment: orm.rpc.increment,
+    nfSaidaFv_vendaAnalitico,
+    nfSaidaFv_vendaDiario,
+    nfSaidaFv_vendaMensalCliente,
   }
 }
 

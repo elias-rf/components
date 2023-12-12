@@ -20,14 +20,22 @@ export default function Clientes() {
       <FormHead
         editPermissions={can('comercial_cliente_permissao')}
         permissions={permissions}
-        title="Histórico de Cliente"
-      />
+      >
+        Histórico de Clientes
+      </FormHead>
+
       <div className="border border-gray-400 dark:border-gray-500">
-        <ClienteTable />
+        <ClienteTable
+          store={clienteStore}
+          auth={authStore}
+        />
       </div>
       {status !== 'none' ? (
         <div className="p-1 mb-2 border border-gray-400 dark:border-gray-500">
-          <ClienteForm />
+          <ClienteForm
+            store={clienteStore}
+            auth={authStore}
+          />
         </div>
       ) : null}
     </Can>

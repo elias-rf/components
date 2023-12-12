@@ -2,23 +2,30 @@ import { Button } from '@/client/components/ui/button.js'
 import { FormField } from '@/client/components/ui/form-field/form-field.js'
 import { Input } from '@/client/components/ui/input/input.js'
 import { Label } from '@/client/components/ui/label.js'
-import { agendaTelefoneStore } from '@/client/features/outros/agenda-telefone/agenda-telefone_store.js'
+import { TAgendaTelefoneStore } from '@/client/features/outros/agenda-telefone/agenda-telefone_store.js'
 import { useForm } from '@/client/lib/hooks/use-form.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
+import { TAuthStore } from '@/client/store/auth_store.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
-export const AgendaTelefoneForm = () => {
-  const status = agendaTelefoneStore.use.status()
-  const onCancel = agendaTelefoneStore.use.onCancel()
-  const onDelete = agendaTelefoneStore.use.onDelete()
-  const onEdit = agendaTelefoneStore.use.onEdit()
-  const onSave = agendaTelefoneStore.use.onSave()
-  const recordClear = agendaTelefoneStore.use.recordClear()
-  const fetchRecord = agendaTelefoneStore.use.fetchRecord()
-  const selection = agendaTelefoneStore.use.selection()
-  const record = agendaTelefoneStore.use.record()
-  const setRecord = agendaTelefoneStore.use.setRecord()
+export const AgendaTelefoneForm = ({
+  store,
+  auth,
+}: {
+  store: TAgendaTelefoneStore
+  auth: TAuthStore
+}) => {
+  const status = store.use.status()
+  const onCancel = store.use.onCancel()
+  const onDelete = store.use.onDelete()
+  const onEdit = store.use.onEdit()
+  const onSave = store.use.onSave()
+  const recordClear = store.use.recordClear()
+  const fetchRecord = store.use.fetchRecord()
+  const selection = store.use.selection()
+  const record = store.use.record()
+  const setRecord = store.use.setRecord()
 
   const form = useForm({ value: recordClear })
 

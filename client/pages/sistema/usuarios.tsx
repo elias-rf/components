@@ -21,17 +21,21 @@ export default function Usuarios() {
         editPermissions={can('sistema_usuarios_permissao')}
         permissions={permissions}
         className="print:hidden"
-        title="Preços"
+      >
+        Usuários
+      </FormHead>
+      <UsuarioTable
+        store={usuarioStore}
+        auth={authStore}
       />
-      <div data-name="Usuario">
-        <UsuarioHead />
-        <UsuarioTable />
-        {status !== 'none' ? (
-          <div className="p-1 mb-2 border border-gray-300">
-            <UsuarioForm />
-          </div>
-        ) : null}
-      </div>
+      {status !== 'none' ? (
+        <div className="p-1 mb-2 border border-gray-300">
+          <UsuarioForm
+            store={usuarioStore}
+            auth={authStore}
+          />
+        </div>
+      ) : null}
     </Can>
   )
 }

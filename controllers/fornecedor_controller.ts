@@ -54,7 +54,13 @@ export type TFornecedorKeys = (typeof fornecedorSchema.primary)[number]
 function fornecedorControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TFornecedorFields, TFornecedorKeys>(db, schema)
   return {
-    ...orm.rpc,
+    fornecedor_list: orm.rpc.list,
+    fornecedor_read: orm.rpc.read,
+    fornecedor_count: orm.rpc.count,
+    fornecedor_update: orm.rpc.update,
+    fornecedor_create: orm.rpc.create,
+    fornecedor_del: orm.rpc.del,
+    fornecedor_increment: orm.rpc.increment,
   }
 }
 

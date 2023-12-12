@@ -1,6 +1,7 @@
 import { Table } from '@/client/components/table/table.js'
-import { agendaTelefoneStore } from '@/client/features/outros/agenda-telefone/agenda-telefone_store.js'
+import { TAgendaTelefoneStore } from '@/client/features/outros/agenda-telefone/agenda-telefone_store.js'
 import { agendaTelefoneColumns } from '@/client/features/outros/agenda-telefone/components/agenda-telefone_columns.js'
+import { TAuthStore } from '@/client/store/auth_store.js'
 import { usePageSize } from '@/client/store/page-size.js'
 import {
   TAgendaTelefoneFields,
@@ -13,17 +14,23 @@ import { toast } from 'react-hot-toast'
 /**
  * Agenda de Ramais
  */
-export function AgendaTelefoneTable() {
+export function AgendaTelefoneTable({
+  store,
+  auth,
+}: {
+  store: TAgendaTelefoneStore
+  auth: TAuthStore
+}) {
   const pageHeight = usePageSize((state) => state.height * 0.7)
 
-  const fetchList = agendaTelefoneStore.use.fetchList()
-  const list = agendaTelefoneStore.use.list()
-  const orderBy = agendaTelefoneStore.use.orderBy()
-  const selection = agendaTelefoneStore.use.selection()
-  const setOrderBy = agendaTelefoneStore.use.setOrderBy()
-  const setSelection = agendaTelefoneStore.use.setSelection()
-  const setWhere = agendaTelefoneStore.use.setWhere()
-  const where = agendaTelefoneStore.use.where()
+  const fetchList = store.use.fetchList()
+  const list = store.use.list()
+  const orderBy = store.use.orderBy()
+  const selection = store.use.selection()
+  const setOrderBy = store.use.setOrderBy()
+  const setSelection = store.use.setSelection()
+  const setWhere = store.use.setWhere()
+  const where = store.use.where()
 
   function getId(row: TData<TAgendaTelefoneFields>): TId<TAgendaTelefoneKeys> {
     return [['id', row.id]]

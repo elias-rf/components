@@ -24,7 +24,7 @@ export const Input = React.forwardRef<HTMLInputElement, TInputProps>(
       onChange,
       onInput,
       type = 'text',
-      value,
+      value = '',
       variant,
       id,
     },
@@ -39,7 +39,7 @@ export const Input = React.forwardRef<HTMLInputElement, TInputProps>(
         name={name}
         className={cn(
           themeInput[variant || 'default'],
-          'px-1.5 h-8 border text-sm rounded-lg block w-full',
+          'block h-8 w-full rounded-lg border px-1.5 text-sm',
           disabled ? themeInput.disabled : null,
           className
         )}

@@ -1,5 +1,6 @@
 import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
+import { rpc } from '@/client/lib/rpc.js'
 import {
   TCreateButtonsStore,
   createButtonsStore,
@@ -13,7 +14,6 @@ import {
   createRecordStore,
 } from '@/client/store/create-record-store.js'
 import { TGroupFields, TGroupKeys } from '@/controllers/group_controller.js'
-import { rpc } from '@/rpc/rpc-client.js'
 import { TData } from '@/types/index.js'
 import { omit } from '@/utils/object/omit.js'
 import { devtools } from 'zustand/middleware'
@@ -53,7 +53,10 @@ const gruposStoreBase = createStore<GruposState>()(
             _table: tableName,
           },
           () =>
-            rpc[tableName].list({ where: get().where, orderBy: get().orderBy })
+            rpc.request('group_list', {
+              where: get().where,
+              orderBy: get().orderBy,
+            })
         )) as TData<TGroupFields>[]
         set(() => ({ list }), false, 'fetchList')
         return list
@@ -67,7 +70,7 @@ const gruposStoreBase = createStore<GruposState>()(
             where: get().selection,
             _table: tableName,
           },
-          () => rpc[tableName].read({ where: get().selection })
+          () => rpc.request('group_read', { where: get().selection })
         )) as TData<TGroupFields>
         set(() => ({ record }), false, 'fetchRecord')
         return record
@@ -78,13 +81,13 @@ const gruposStoreBase = createStore<GruposState>()(
         const data = omit(get().record || {}, ['kGrupo'])
 
         if (get().status === 'edit') {
-          await rpc[tableName].update$({
+          await rpc.request('group_update', {
             data,
             where: get().selection,
           })
         }
         if (get().status === 'new') {
-          await rpc[tableName].create$({ data })
+          await rpc.request('group_create', { data })
         }
         await get().fetchList()
         set(() => ({ status: 'view' }), false, 'onSave')
@@ -92,7 +95,7 @@ const gruposStoreBase = createStore<GruposState>()(
 
       onDelete: async () => {
         cache.purgeTable(tableName)
-        await rpc[tableName].del$({ where: get().selection })
+        await rpc.request('group_del', { where: get().selection })
         await get().fetchList()
         set(
           () => ({ record: get().recordClear, status: 'none', selection: [] }),

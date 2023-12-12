@@ -1,5 +1,5 @@
 import { Title } from '@/client/components/ui/title.js'
-import { rpc } from '@/rpc/rpc-client.js'
+import { rpc } from '@/client/lib/rpc.js'
 import { day } from '@/utils/date/day.js'
 import React from 'react'
 
@@ -15,9 +15,12 @@ export function TransferenciaMes() {
 
   React.useEffect(() => {
     async function getData() {
-      const dataTransferenciaMensal = await rpc.nfSaida.transferenciaMensal({
-        mes: mesInicial,
-      })
+      const dataTransferenciaMensal = await rpc.request(
+        'nfSaida_transferenciaMensal',
+        {
+          mes: mesInicial,
+        }
+      )
       setData(dataTransferenciaMensal)
     }
     getData()

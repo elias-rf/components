@@ -16,7 +16,13 @@ export type TGroupKeys = (typeof groupSchema.primary)[number]
 function groupControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TGroupFields, TGroupKeys>(db, schema)
   return {
-    ...orm.rpc,
+    group_list: orm.rpc.list,
+    group_read: orm.rpc.read,
+    group_count: orm.rpc.count,
+    group_update: orm.rpc.update,
+    group_create: orm.rpc.create,
+    group_del: orm.rpc.del,
+    group_increment: orm.rpc.increment,
   }
 }
 

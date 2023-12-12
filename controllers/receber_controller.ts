@@ -81,7 +81,13 @@ export type TReceberKeys = (typeof TitCobr.primary)[number]
 function receberControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TReceberFields, TReceberKeys>(db, schema)
   return {
-    ...orm.rpc,
+    receber_list: orm.rpc.list,
+    receber_read: orm.rpc.read,
+    receber_count: orm.rpc.count,
+    receber_update: orm.rpc.update,
+    receber_create: orm.rpc.create,
+    receber_del: orm.rpc.del,
+    receber_increment: orm.rpc.increment,
   }
 }
 

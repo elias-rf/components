@@ -27,7 +27,13 @@ function nfEntradaControleControllerFactory(db: TAdapterKnex, schema: TSchema) {
     schema
   )
   return {
-    ...orm.rpc,
+    nfEntradaControle_list: orm.rpc.list,
+    nfEntradaControle_read: orm.rpc.read,
+    nfEntradaControle_count: orm.rpc.count,
+    nfEntradaControle_update: orm.rpc.update,
+    nfEntradaControle_create: orm.rpc.create,
+    nfEntradaControle_del: orm.rpc.del,
+    nfEntradaControle_increment: orm.rpc.increment,
   }
 }
 

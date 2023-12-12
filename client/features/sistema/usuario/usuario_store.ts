@@ -1,5 +1,6 @@
 import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
+import { rpc } from '@/client/lib/rpc.js'
 import {
   TCreateButtonsStore,
   createButtonsStore,
@@ -16,7 +17,6 @@ import {
   TUsuarioFields,
   TUsuarioKeys,
 } from '@/controllers/usuario_controller.js'
-import { rpc } from '@/rpc/rpc-client.js'
 import { TData } from '@/types/index.js'
 import { omit } from '@/utils/object/omit.js'
 import { devtools } from 'zustand/middleware'
@@ -61,7 +61,7 @@ const usuarioStoreBase = createStore<TUsuarioState>()(
             _table: tableName,
           },
           () =>
-            rpc[tableName].list({
+            rpc.request('usuario_list', {
               where: get().where,
               orderBy: get().orderBy,
             })
@@ -81,7 +81,7 @@ const usuarioStoreBase = createStore<TUsuarioState>()(
           },
 
           () =>
-            rpc[tableName].read({
+            rpc.request('usuario_read', {
               where: get().selection,
               select: Object.keys(recordClear) as TUsuarioKeys[],
             })
@@ -93,13 +93,13 @@ const usuarioStoreBase = createStore<TUsuarioState>()(
       onSave: async () => {
         cache.purgeTable(tableName)
         if (get().status === 'edit') {
-          await rpc[tableName].update$({
+          await rpc.request('usuario_update', {
             data: omit(get().record, ['kUsuario']),
             where: get().selection,
           })
         }
         if (get().status === 'new') {
-          await rpc[tableName].create$({ data: get().record || {} })
+          await rpc.request('usuario_create', { data: get().record || {} })
         }
         await get().fetchList()
         set(() => ({ status: 'view' }), false, 'onSave')
@@ -107,7 +107,7 @@ const usuarioStoreBase = createStore<TUsuarioState>()(
 
       onDelete: async () => {
         cache.purgeTable(tableName)
-        await rpc[tableName].del$({ where: get().selection })
+        await rpc.request('usuario_del', { where: get().selection })
         await get().fetchList()
         set(
           () => ({ record: get().recordClear, status: 'view', selection: [] }),
@@ -127,3 +127,5 @@ const usuarioStoreBase = createStore<TUsuarioState>()(
 usuarioStoreBase.getState().setOrderBy([['kUsuario', 'asc']])
 
 export const usuarioStore = createSelectors(usuarioStoreBase)
+
+export type TUsuarioStore = typeof usuarioStore

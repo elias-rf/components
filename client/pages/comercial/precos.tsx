@@ -1,5 +1,6 @@
 import { Can } from '@/client/components/can.js'
 import { FormHead } from '@/client/components/ui/form-head.js'
+import { precosStore } from '@/client/features/comercial/precos/precos_store.js'
 import { authStore } from '@/client/store/auth_store.js'
 import { PrecosCliente } from '../../features/comercial/precos/precos-cliente.js'
 
@@ -17,11 +18,10 @@ export default function Precos() {
         editPermissions={can('comercial_precos_permissao')}
         permissions={permissions}
         className="print:hidden"
-        title="Preços"
-      />
-      <div className="p-2">
-        <PrecosCliente />
-      </div>
+      >
+        Preços
+      </FormHead>
+      <PrecosCliente auth={authStore} />
     </Can>
   )
 }

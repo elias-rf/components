@@ -20,7 +20,7 @@ describe('ordemProducaoController', () => {
     tracker.on.select('tOrdemProducao').response([{ kOp: 1, fkTipoOP: 1 }])
     tracker.on.select('tOperacaoOrdemProducao').response([{ fkOp: 1 }])
     tracker.on.select('tTipoDeOP').response([{ kTipoOP: 1 }])
-    const rsp = await ordemProducaoController.list({
+    const rsp = await ordemProducaoController.ordemProducao_list({
       where: [['kOp', 1]],
       select: ['kOp'],
     })
@@ -42,7 +42,7 @@ describe('ordemProducaoController', () => {
       return []
     })
 
-    const rsp = await ordemProducaoController.dataFabricacao({
+    const rsp = await ordemProducaoController.ordemProducao_dataFabricacao({
       id: [['kOp', 1]],
     })
     expect(rsp).toEqual('2020-01-01')
@@ -55,7 +55,7 @@ describe('ordemProducaoController', () => {
   })
 
   it('controle', async () => {
-    const rsp = await ordemProducaoController.controle({
+    const rsp = await ordemProducaoController.ordemProducao_controle({
       id: [['kOp', 100]],
       serie: '1',
     })
@@ -68,7 +68,7 @@ describe('ordemProducaoController', () => {
       .any('tOperacaoOrdemProducao')
       .response([{ DataHoraInicio: '2020-01-01' }])
 
-    const rsp = await ordemProducaoController.dataValidade({
+    const rsp = await ordemProducaoController.ordemProducao_dataValidade({
       id: [['kOp', 1]],
     })
 
@@ -82,7 +82,7 @@ describe('ordemProducaoController', () => {
   })
 
   it('isControleValid true', async () => {
-    const rsp = await ordemProducaoController.ehControleValido({
+    const rsp = await ordemProducaoController.ordemProducao_ehControleValido({
       controle: '000001000017',
     })
 
@@ -90,7 +90,7 @@ describe('ordemProducaoController', () => {
   })
 
   it('isControleValid false', async () => {
-    const rsp = await ordemProducaoController.ehControleValido({
+    const rsp = await ordemProducaoController.ordemProducao_ehControleValido({
       controle: '000101000017',
     })
 
@@ -106,9 +106,10 @@ describe('ordemProducaoController', () => {
         dataFabricacao: '2020-01-01',
       },
     ])
-    const response = await ordemProducaoController.etiquetaExterna({
-      id: [['kOp', 100]],
-    })
+    const response =
+      await ordemProducaoController.ordemProducao_etiquetaExterna({
+        id: [['kOp', 100]],
+      })
 
     expect(knexMockHistory(tracker)).toEqual([
       {
@@ -129,7 +130,7 @@ describe('ordemProducaoController', () => {
   it('produtoItem', async () => {
     tracker.on.select('tOrdemProducao').response([{ fkProdutoItem: 1 }])
     tracker.on.select('tbl_Produto_Item').response([{}])
-    const rsp = await ordemProducaoController.produtoItem({
+    const rsp = await ordemProducaoController.ordemProducao_produtoItem({
       id: [['kOp', 1]],
       select: ['kProdutoItem'],
     })
@@ -154,7 +155,7 @@ describe('ordemProducaoController', () => {
       .response([{ kProdutoItem: 1, fkProduto: 1, IdVisiontech: '1' }])
     tracker.on.select('CadPro').response([{ CdProduto: 1 }])
 
-    const rsp = await ordemProducaoController.produtoPlano({
+    const rsp = await ordemProducaoController.ordemProducao_produtoPlano({
       id: [['kOp', 1]],
       select: ['CdProduto'],
     })
@@ -184,7 +185,7 @@ describe('ordemProducaoController', () => {
     tracker.on.select('tOrdemProducao').response([{ kOp: '1' }, { kOp: '2' }])
     tracker.on.select('tOperacaoOrdemProducao').response([{ fkOp: '1' }])
 
-    const rsp = await ordemProducaoController.list({
+    const rsp = await ordemProducaoController.ordemProducao_list({
       where: [['kOp', 1]],
       orderBy: [['kOp', 'asc']],
       include: { operacoes: ['fkOp'] },
@@ -214,7 +215,7 @@ describe('ordemProducaoController', () => {
     tracker.on.select('tOrdemProducao').response({ kOp: '1' })
     tracker.on.select('tOperacaoOrdemProducao').response([{ fkOp: '1' }])
 
-    const rsp = await ordemProducaoController.read({
+    const rsp = await ordemProducaoController.ordemProducao_read({
       where: [['kOp', 1]],
       include: { operacoes: ['fkOp'] },
     })
@@ -240,7 +241,7 @@ describe('ordemProducaoController', () => {
       .response({ kProdutoItem: 1, fkProduto: 1 })
     tracker.on.select('tbl_Produto').response([{ kProduto: 1 }])
 
-    const rsp = await ordemProducaoController.read({
+    const rsp = await ordemProducaoController.ordemProducao_read({
       where: [['kOp', 1]],
       include: {
         operacoes: ['fkOp'],
@@ -278,7 +279,7 @@ describe('ordemProducaoController', () => {
   it('delete', async () => {
     tracker.on.delete('tOrdemProducao').response(1)
 
-    const rsp = await ordemProducaoController.del$({
+    const rsp = await ordemProducaoController.ordemProducao_del({
       where: [['kOp', 1]],
     })
 
@@ -295,7 +296,7 @@ describe('ordemProducaoController', () => {
     tracker.on.update('tOrdemProducao').response({ id: 10 })
     // tracker.on.select('tOrdemProducao').response([{ id: 10 }])
 
-    const rsp = await ordemProducaoController.update$({
+    const rsp = await ordemProducaoController.ordemProducao_update({
       where: [['kOp', 1]],
       data: { kOp: 10 },
       returning: ['kOp'],
@@ -313,7 +314,7 @@ describe('ordemProducaoController', () => {
   it('create', async () => {
     tracker.on.insert('tOrdemProducao').response(1)
 
-    const rsp = await ordemProducaoController.create$({
+    const rsp = await ordemProducaoController.ordemProducao_create({
       data: { kOp: 10 },
     })
 

@@ -19,7 +19,7 @@ describe('produtoItemController', () => {
 
   it('list', async () => {
     tracker.on.select('tbl_Produto_Item').response([{ kProdutoItem: 1 }])
-    const rsp = await produtoItemController.list({
+    const rsp = await produtoItemController.produtoItem_list({
       where: [['kProdutoItem', 1]],
       orderBy: [['kProdutoItem', 'asc']],
     })
@@ -39,7 +39,7 @@ describe('produtoItemController', () => {
       .response([{ kProdutoItem: 10, IdVisiontech: '1' }])
     tracker.on.select('CadPro').response([{ CdProduto: '1' }])
 
-    const rsp = await produtoItemController.produtoPlano({
+    const rsp = await produtoItemController.produtoItem_produtoPlano({
       id: [['kProdutoItem', 10]],
       select: ['CdProduto'],
     })
@@ -64,7 +64,7 @@ describe('produtoItemController', () => {
 
   it('read', async () => {
     tracker.on.select('tbl_Produto_Item').response([{ kProdutoItem: 1 }])
-    const rsp = await produtoItemController.read({
+    const rsp = await produtoItemController.produtoItem_read({
       where: [['kProdutoItem', 1]],
     })
 
@@ -82,7 +82,7 @@ describe('produtoItemController', () => {
       .select('tbl_Produto_Item')
       .response([{ kProdutoItem: 1, fkProduto: 1 }])
     tracker.on.select('tbl_Produto').response([{ kProduto: 1 }])
-    const rsp = await produtoItemController.read({
+    const rsp = await produtoItemController.produtoItem_read({
       where: [['kProdutoItem', 1]],
       include: { produto: ['kProduto'] },
     })

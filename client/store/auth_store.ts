@@ -1,5 +1,5 @@
 import { createSelectors } from '@/client/lib/create-selectors.js'
-import { rpc } from '@/rpc/rpc-client.js'
+import { rpc } from '@/client/lib/rpc.js'
 import { TCurrentUser } from '@/types/index.js'
 import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
@@ -30,7 +30,7 @@ export const authStoreBase = createStore<AuthState>()(
          * Executa o login no servidor
          */
         login: async (user: any) => {
-          const login = await rpc.usuario.login$(user)
+          const login = await rpc.request('usuario_login', user)
           if (login && login.usuario_id && login.usuario_id > 0) {
             set(() => ({ token: login.token, user: login }), false, 'login')
             await get().fetchPermissions()
@@ -57,14 +57,14 @@ export const authStoreBase = createStore<AuthState>()(
          */
         fetchPermissions: async () => {
           const groups = get().user.group_ids?.split(',')
-          const permissions = await rpc.groupSubject.list({
+          const permissions = await rpc.request('groupSubject_list', {
             select: ['idSubject'],
             where: [['idGroup', 'in', groups]],
           })
           set(
             () => ({
               permissions: permissions.reduce(
-                (acc, cur) => ({ ...acc, [cur.idSubject]: true }),
+                (acc: any, cur: any) => ({ ...acc, [cur.idSubject]: true }),
                 {}
               ),
             }),
@@ -112,3 +112,4 @@ export const authStoreBase = createStore<AuthState>()(
 )
 
 export const authStore = createSelectors(authStoreBase)
+export type TAuthStore = typeof authStore

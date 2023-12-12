@@ -9,7 +9,7 @@ mockedFetch.clear()
 mockedFetch.add(async (request: any) => {
   const body = JSON.parse(request.options?.body)
   switch (body.method) {
-    case 'agendaTelefone/list':
+    case 'agendaTelefone_list':
       return {
         body: {
           id: body.id,
@@ -24,7 +24,7 @@ mockedFetch.add(async (request: any) => {
           ),
         },
       }
-    case 'agendaTelefone/read':
+    case 'agendaTelefone_read':
       return {
         body: {
           id: body.id,

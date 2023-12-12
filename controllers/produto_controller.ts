@@ -53,7 +53,13 @@ export type TProdutoKeys = (typeof tbl_Produto.primary)[number]
 function produtoControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TProdutoFields, TProdutoKeys>(db, schema)
   return {
-    ...orm.rpc,
+    produto_list: orm.rpc.list,
+    produto_read: orm.rpc.read,
+    produto_count: orm.rpc.count,
+    produto_update: orm.rpc.update,
+    produto_create: orm.rpc.create,
+    produto_del: orm.rpc.del,
+    produto_increment: orm.rpc.increment,
   }
 }
 

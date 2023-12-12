@@ -1,5 +1,6 @@
 import { Table } from '@/client/components/table/table.js'
-import { clienteStore } from '@/client/features/comercial/cliente/cliente_store.js'
+import { TClienteStore } from '@/client/features/comercial/cliente/cliente_store.js'
+import { TAuthStore } from '@/client/store/auth_store.js'
 import { usePageSize } from '@/client/store/page-size.js'
 import {
   TClienteFields,
@@ -10,17 +11,23 @@ import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 import { clienteColumns } from './components/cliente_columns.js'
 
-export function ClienteTable() {
+export function ClienteTable({
+  store,
+  auth,
+}: {
+  store: TClienteStore
+  auth: TAuthStore
+}) {
   const pageHeight = usePageSize((state) => state.height * 0.5)
 
-  const fetchList = clienteStore.use.fetchList()
-  const list = clienteStore.use.list()
-  const orderBy = clienteStore.use.orderBy()
-  const selection = clienteStore.use.selection()
-  const setOrderBy = clienteStore.use.setOrderBy()
-  const setSelection = clienteStore.use.setSelection()
-  const setWhere = clienteStore.use.setWhere()
-  const where = clienteStore.use.where()
+  const fetchList = store.use.fetchList()
+  const list = store.use.list()
+  const orderBy = store.use.orderBy()
+  const selection = store.use.selection()
+  const setOrderBy = store.use.setOrderBy()
+  const setSelection = store.use.setSelection()
+  const setWhere = store.use.setWhere()
+  const where = store.use.where()
 
   function getId(row: TData<TClienteFields>): TId<TClienteKeys> {
     return [['CdCliente', row.CdCliente]]

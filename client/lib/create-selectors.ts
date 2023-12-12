@@ -6,6 +6,13 @@ type WithSelectors<S> = S extends { getState: () => infer T }
   ? S & { use: { [K in keyof T]: () => T[K] } }
   : never
 
+/**
+ * Creates selectors for a given zustand store.
+ *
+ * @template S - The type of the store.
+ * @param {S} _store - The store to create selectors for.
+ * @return {WithSelectors<S>} The store with selectors.
+ */
 export const createSelectors = <S extends StoreApi<object>>(_store: S) => {
   const store = _store as WithSelectors<typeof _store>
   store.use = {}

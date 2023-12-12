@@ -106,38 +106,44 @@ export type TNfEntradaKeys = (typeof NfMestre.primary)[number]
 function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfEntradaFields, TNfEntradaKeys>(db, schema)
 
-  async function transferenciaCreate({ controles }: { controles: string[] }) {
+  async function nfEntrada_transferenciaCreate({
+    controles,
+  }: {
+    controles: string[]
+  }) {
     if (controles.length === 0)
       throw new Error(`Controles não foram enviados para a transferência`)
 
-    const kOp = await ordemProducaoController.fromControle({
+    const kOp = await ordemProducaoController.ordemProducao_fromControle({
       controle: controles[0],
     })
 
     // todos controles são válidos e da mesma ordem de produção
     for (const ctrl of controles) {
-      const valid = await ordemProducaoController.ehControleValido({
-        controle: ctrl,
-      })
+      const valid =
+        await ordemProducaoController.ordemProducao_ehControleValido({
+          controle: ctrl,
+        })
       if (!valid) throw new Error(`Controle ${ctrl} inválido`)
-      const op_id = await ordemProducaoController.fromControle({
+      const op_id = await ordemProducaoController.ordemProducao_fromControle({
         controle: ctrl,
       })
       if (kOp !== op_id)
         throw new Error(`Controle ${ctrl} pertence a outra ordem de produção`)
     }
 
-    const { CdProduto } = (await ordemProducaoController.produtoPlano({
-      id: [['kOp', kOp]],
-      select: ['CdProduto'],
-    })) as Record<TProdutoPlanoFields, any>
+    const { CdProduto } =
+      (await ordemProducaoController.ordemProducao_produtoPlano({
+        id: [['kOp', kOp]],
+        select: ['CdProduto'],
+      })) as Record<TProdutoPlanoFields, any>
 
     if (isEmpty(CdProduto)) {
       throw new Error(`Ordem de produção ${kOp} não possui vinculo com Plano`)
     }
 
     const fabricacao = await ordemProducaoController
-      .dataFabricacao({ id: [['kOp', kOp]] })
+      .ordemProducao_dataFabricacao({ id: [['kOp', kOp]] })
       .then((dt: any) => {
         if (isEmpty(dt)) {
           throw new Error(
@@ -147,7 +153,7 @@ function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
         return day(dt).format('YYYY-MM-DD')
       })
 
-    const expiracao = await ordemProducaoController.dataValidade({
+    const expiracao = await ordemProducaoController.ordemProducao_dataValidade({
       id: [['kOp', kOp]],
     })
 
@@ -170,7 +176,7 @@ function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
       throw new Error(`Ordem de produção ${kOp} já está cadastrada`)
     }
 
-    await orm.rpc.create$({
+    await orm.rpc.create({
       data: {
         CdEmpresa: 1,
         NroNf: kOp,
@@ -232,7 +238,7 @@ function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
       },
     })
 
-    await nfEntradaItemController.create$({
+    await nfEntradaItemController.nfEntradaItem_create({
       data: {
         CdBaseCalculoCreditoPISCOFINS: 0,
         CdContribuicaoApuradaPISCOFINS: 0,
@@ -275,7 +281,7 @@ function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
       },
     })
 
-    await estoqueController.increment$({
+    await estoqueController.estoque_increment({
       where: [
         ['CdEmpresa', 1],
         ['CdProduto', CdProduto.toString() || ''],
@@ -283,7 +289,7 @@ function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
       increment: ['EstAtual', quantidade],
     })
 
-    await produtoEstatisticaController.increment$({
+    await produtoEstatisticaController.produtoEstatistica_increment({
       where: [
         ['CdEmpresa', 1],
         ['MesRef', parseInt(day().format('MM'))],
@@ -294,7 +300,7 @@ function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
     })
 
     for (const ctrl of controles) {
-      await produtoControleController.create$({
+      await produtoControleController.produtoControle_create({
         data: {
           CdFilial: 1,
           NumNfEntrada: CdProduto,
@@ -319,7 +325,7 @@ function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
           TipoLote: 'C',
         },
       })
-      await nfEntradaControleController.create$({
+      await nfEntradaControleController.nfEntradaControle_create({
         data: {
           CdFilial: 1,
           NumNota: kOp,
@@ -333,7 +339,7 @@ function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
       })
     }
 
-    await nfEntradaLogController.create$({
+    await nfEntradaLogController.nfEntradaLog_create({
       data: {
         CdFilial: 1,
         NumNota: kOp,
@@ -348,11 +354,16 @@ function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
 
     return true
   }
-  transferenciaCreate.rpc = true
 
   return {
-    ...orm.rpc,
-    transferenciaCreate$: transferenciaCreate,
+    nfEntrada_list: orm.rpc.list,
+    nfEntrada_read: orm.rpc.read,
+    nfEntrada_count: orm.rpc.count,
+    nfEntrada_update: orm.rpc.update,
+    nfEntrada_create: orm.rpc.create,
+    nfEntrada_del: orm.rpc.del,
+    nfEntrada_increment: orm.rpc.increment,
+    nfEntrada_transferenciaCreate,
   }
 }
 

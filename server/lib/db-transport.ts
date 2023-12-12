@@ -51,7 +51,7 @@ export default async function dbTransport() {
         log[logs.reqId].responseTime = logs.responseTime
         log[logs.reqId].status = logs.res.statusCode
         if (!['GET', 'POST', 'OPTIONS'].includes(log[logs.reqId].method)) {
-          await logController.create$({ data: log[logs.reqId] })
+          await logController.log_create({ data: log[logs.reqId] })
         }
         delete log[logs.reqId]
       }

@@ -13,7 +13,7 @@ describe('SysResourceModel', () => {
     tracker.reset()
     tracker.on.select('resource').response([{ resource_id: '1' }])
 
-    const rsp = await sysResourceController.list({
+    const rsp = await sysResourceController.sysResource_list({
       where: [['resource_id', '1']],
       orderBy: [['resource_id', 'asc']],
     })
@@ -31,7 +31,7 @@ describe('SysResourceModel', () => {
     tracker.reset()
     tracker.on.select('resource').response([{ resource_id: '1' }])
 
-    const rsp = await sysResourceController.read({
+    const rsp = await sysResourceController.sysResource_read({
       where: [['resource_id', '1']],
     })
 
@@ -48,7 +48,7 @@ describe('SysResourceModel', () => {
     tracker.reset()
     tracker.on.delete('resource').response(1)
 
-    const rsp = await sysResourceController.del$({
+    const rsp = await sysResourceController.sysResource_del({
       where: [['resource_id', '1']],
     })
 
@@ -66,7 +66,7 @@ describe('SysResourceModel', () => {
     tracker.on.update('resource').response({ resource_id: '10' })
     tracker.on.select('resource').response([{ resource_id: '10' }])
 
-    const rsp = await sysResourceController.update$({
+    const rsp = await sysResourceController.sysResource_update({
       where: [['resource_id', '10']],
       data: { resource_id: '10' },
       returning: ['resource_id'],
@@ -85,7 +85,7 @@ describe('SysResourceModel', () => {
     tracker.reset()
     tracker.on.insert('resource').response(1)
 
-    const rsp = await sysResourceController.create$({
+    const rsp = await sysResourceController.sysResource_create({
       data: { resource_id: '10' },
     })
 

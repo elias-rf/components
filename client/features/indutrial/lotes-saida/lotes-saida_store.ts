@@ -1,5 +1,6 @@
 import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
+import { rpc } from '@/client/lib/rpc.js'
 import {
   TCreateButtonsStore,
   createButtonsStore,
@@ -16,7 +17,6 @@ import {
   TNfSaidaLoteFields,
   TNfSaidaLoteKeys,
 } from '@/controllers/nf-saida-lote_controller.js'
-import { rpc } from '@/rpc/rpc-client.js'
 import { TData } from '@/types/index.js'
 import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
@@ -70,7 +70,7 @@ const lotesSaidaStoreBase = createStore<LotesSaidaState>()(
             _table: tableName,
           },
           () =>
-            rpc[tableName].list({
+            rpc.request('nfSaidaLote_list', {
               where: get().where,
               orderBy: get().orderBy,
               select: [
@@ -100,7 +100,7 @@ const lotesSaidaStoreBase = createStore<LotesSaidaState>()(
             where: get().selection,
             _table: tableName,
           },
-          () => rpc[tableName].read({ where: get().selection })
+          () => rpc.request('nfSaidaLote_read', { where: get().selection })
         )) as TData<TNfSaidaLoteFields>
         set(() => ({ record }), false, 'fetchRecord')
         return record
@@ -109,13 +109,13 @@ const lotesSaidaStoreBase = createStore<LotesSaidaState>()(
       onSave: async () => {
         cache.purgeTable(tableName)
         if (get().status === 'edit') {
-          await rpc[tableName].update$({
+          await rpc.request('nfSaidaLote_update', {
             data: get().record || {},
             where: get().selection,
           })
         }
         if (get().status === 'new') {
-          await rpc[tableName].create$({ data: get().record || {} })
+          await rpc.request('nfSaidaLote_create', { data: get().record || {} })
         }
         await get().fetchList()
         set(() => ({ status: 'view' }), false, 'onSave')
@@ -123,7 +123,7 @@ const lotesSaidaStoreBase = createStore<LotesSaidaState>()(
 
       onDelete: async () => {
         cache.purgeTable(tableName)
-        await rpc[tableName].del$({ where: get().selection })
+        await rpc.request('nfSaidaLote_del', { where: get().selection })
         await get().fetchList()
         set(
           () => ({ record: get().recordClear, status: 'none', selection: [] }),

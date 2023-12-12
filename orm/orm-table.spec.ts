@@ -121,7 +121,7 @@ describe('OrmTable', () => {
 
   it('del', async () => {
     tracker.on.delete('phonebook').response(1)
-    const rsp = await tb.rpc.del$({
+    const rsp = await tb.rpc.del({
       where: [['id', 10]],
     })
     expect(rsp).toEqual(1)
@@ -144,7 +144,7 @@ describe('OrmTable', () => {
 
   it('update', async () => {
     tracker.on.update('phonebook').response([{ id: 10 }])
-    const rsp = await tb.rpc.update$({
+    const rsp = await tb.rpc.update({
       where: [['id', 10]],
       data: { id: 11 },
       returning: ['id'],
@@ -157,7 +157,7 @@ describe('OrmTable', () => {
 
   it('create with select', async () => {
     tracker.on.insert('phonebook').response({ id: 10 })
-    const rsp = await tb.rpc.create$({
+    const rsp = await tb.rpc.create({
       data: { id: 10 },
       returning: ['id'],
     })
@@ -169,7 +169,7 @@ describe('OrmTable', () => {
 
   it('create without select', async () => {
     tracker.on.insert('phonebook').response(1)
-    const rsp = await tb.rpc.create$({
+    const rsp = await tb.rpc.create({
       data: { id: 1 },
     })
     expect(rsp).toEqual(1)
@@ -178,7 +178,7 @@ describe('OrmTable', () => {
 
   it('increment', async () => {
     tracker.on.update('phonebook').response([])
-    const rsp = await tb.rpc.increment$({
+    const rsp = await tb.rpc.increment({
       where: [[`id`, 10]],
       increment: [`id`, 2],
       returning: ['id'],

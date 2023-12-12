@@ -1,9 +1,9 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
 import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { clientRpcMock } from '@/mocks/client-rpc.mock.js'
 import { knexMockMsql } from '@/mocks/connections.mock.js'
 import { getTracker } from '@/mocks/database.mock.js'
 import { knexMockHistory } from '@/mocks/knex-mock-history.js'
-import { clientMock } from '@/mocks/prim.js'
 import { beforeEach, describe, expect, test } from 'vitest'
 
 describe('clienteRpc', () => {
@@ -20,7 +20,7 @@ describe('clienteRpc', () => {
   test('list', async () => {
     tracker.on.select('CadCli').response([{ id: '1' }])
 
-    const rsp = await clientMock.cliente.list({
+    const rsp = await clientRpcMock.request('cliente_list', {
       where: [['CdCliente', 1]],
       orderBy: [['CdCliente', 'asc']],
     })
@@ -34,7 +34,7 @@ describe('clienteRpc', () => {
   test('read', async () => {
     tracker.on.select('CadCli').response([{ id: '1' }])
 
-    const rsp = await clientMock.cliente.read({
+    const rsp = await clientRpcMock.request('cliente_read', {
       where: [['CdCliente', 1]],
       select: ['CdCliente'],
     })
@@ -48,7 +48,7 @@ describe('clienteRpc', () => {
   test('update', async () => {
     tracker.on.update('CadCli').response(1)
 
-    const rsp = await clientMock.cliente.update$({
+    const rsp = await clientRpcMock.request('cliente_update', {
       where: [['CdCliente', 1]],
       data: { RzSocial: 'test' },
     })
@@ -62,7 +62,7 @@ describe('clienteRpc', () => {
   test('create', async () => {
     tracker.on.insert('CadCli').response(1)
 
-    const rsp = await clientMock.cliente.create$({
+    const rsp = await clientRpcMock.request('cliente_create', {
       data: { CdCliente: 1, RzSocial: 'test' },
     })
 
@@ -75,7 +75,7 @@ describe('clienteRpc', () => {
   test('del', async () => {
     tracker.on.delete('CadCli').response(1)
 
-    const rsp = await clientMock.cliente.del$({
+    const rsp = await clientRpcMock.request('cliente_del', {
       where: [['CdCliente', 1]],
     })
 
@@ -90,7 +90,7 @@ describe('clienteRpc', () => {
       .select('MestreNota')
       .response([{ NmCategoria: 'cat1', anoMes: '2020-01', quantidade: 10 }])
 
-    const rsp = await clientMock.cliente.vendaMensalQuantidade({
+    const rsp = await clientRpcMock.request('cliente_vendaMensalQuantidade', {
       inicio: '2020-01-01',
       fim: '2020-01-01',
       cliente: 1,

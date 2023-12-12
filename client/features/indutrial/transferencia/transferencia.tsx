@@ -4,7 +4,7 @@ import { Label } from '@/client/components/ui/label.js'
 import { Title } from '@/client/components/ui/title.js'
 import { cn } from '@/client/lib/cn.js'
 import { useStateArray } from '@/client/lib/hooks/use-state-array.js'
-import { rpc } from '@/rpc/rpc-client.js'
+import { rpc } from '@/client/lib/rpc.js'
 import React from 'react'
 
 // 000001000017 , 000001000025, 000001000033
@@ -25,7 +25,9 @@ export function Transferencia() {
   async function addList(value: string) {
     setSerial(value)
     if (value.length == 0 || quantidade.length == 0) return
-    if (await rpc.ordemProducao.ehControleValido({ controle: value })) {
+    if (
+      await rpc.request('ordemProducao_ehControleValido', { controle: value })
+    ) {
       if (!lista.includes(value)) lista.push(value)
       setMsg('')
     } else {
@@ -41,7 +43,9 @@ export function Transferencia() {
 
   async function transfer() {
     try {
-      await rpc.nfEntrada.transferenciaCreate$({ controles: lista.value })
+      await rpc.request('nfEntrada_transferenciaCreate', {
+        controles: lista.value,
+      })
       setQuantidade('')
       lista.empty()
     } catch (e: any) {

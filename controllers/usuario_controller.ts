@@ -5,7 +5,6 @@ import type { TSchema } from '@/schemas/schema.type.js'
 import type { TCurrentUser } from '@/types/index.js'
 import { day } from '@/utils/date/day.js'
 import { passwordVerify } from '@/utils/string/password-verify.js'
-import { PrimFastifyContext } from '@doseofted/prim-rpc-plugins/fastify'
 
 export const tbl_Seguranca_Usuario = {
   database: 'oftalmo',
@@ -33,27 +32,18 @@ export type TUsuarioKeys = (typeof tbl_Seguranca_Usuario.primary)[number]
 function usuarioControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TUsuarioFields, TUsuarioKeys>(db, schema)
 
-  async function me(this: any) {
-    const resp = this.request.user
+  async function usuario_me(_: void, ctx?: any) {
+    const resp = ctx.user
     if (resp && resp.iat) {
       resp.iat = day.unix(resp.iat).format('YYYY-MM-DDTHH:mm:ss')
       resp.exp = day.unix(resp.exp).format('YYYY-MM-DDTHH:mm:ss')
     }
     return (resp as TCurrentUser) || 'NOT_LOGGED'
   }
-  me.rpc = true
 
-  async function login({
-    user,
-    password,
-  }: {
-    user: string
-    password: string
-  }): Promise<TCurrentUser>
-
-  async function login(
-    this: PrimFastifyContext,
-    { user, password }: { user: string; password: string }
+  async function usuario_login(
+    { user, password }: { user: string; password: string },
+    ctx?: any
   ): Promise<TCurrentUser> {
     if (!user) {
       throw new Error('Usuário não informado')
@@ -87,17 +77,21 @@ function usuarioControllerFactory(db: TAdapterKnex, schema: TSchema) {
       group_ids: record.setor || '',
     }
 
-    resp.token = await this.reply.jwtSign(resp)
+    resp.token = await ctx.reply.jwtSign(resp)
 
     return resp
   }
 
-  login.rpc = true
-
   return {
-    ...orm.rpc,
-    me,
-    login$: login,
+    usuario_list: orm.rpc.list,
+    usuario_read: orm.rpc.read,
+    usuario_count: orm.rpc.count,
+    usuario_update: orm.rpc.update,
+    usuario_create: orm.rpc.create,
+    usuario_del: orm.rpc.del,
+    usuario_increment: orm.rpc.increment,
+    usuario_me,
+    usuario_login,
   }
 }
 

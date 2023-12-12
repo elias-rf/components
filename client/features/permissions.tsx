@@ -4,9 +4,9 @@ import { CheckBox } from '@/client/components/ui/check-box.js'
 import { Label } from '@/client/components/ui/label.js'
 import { ListGroup } from '@/client/components/ui/list-group/list-group.js'
 import { Modal } from '@/client/components/ui/modal.js'
+import { rpc } from '@/client/lib/rpc.js'
 import { TGroupSubjectFields } from '@/controllers/group-subject_controller.js'
 import { TGroupFields } from '@/controllers/group_controller.js'
-import { rpc } from '@/rpc/rpc-client.js'
 import { TData } from '@/types/index.js'
 import React, { useEffect, useState } from 'react'
 
@@ -22,7 +22,7 @@ export function Permissions({
 
   useEffect(() => {
     async function getData() {
-      const data = await rpc.group.list({
+      const data = await rpc.request('group_list', {
         orderBy: [['NomeGrupo', 'asc']],
       })
       setGroupList(data)
@@ -31,7 +31,7 @@ export function Permissions({
   }, [])
 
   async function getPermited(groupCurrent: number) {
-    const data = await rpc.groupSubject.list({
+    const data = await rpc.request('groupSubject_list', {
       where: [['idGroup', groupCurrent.toString()]],
     })
     setPermited(data)
@@ -47,7 +47,7 @@ export function Permissions({
 
   async function handlePermission(permission: string) {
     if (groupCurrent === 0) return
-    const data = await rpc.groupSubject.listPermissions({
+    const data = await rpc.request('groupSubject_listPermissions', {
       idGroup: groupCurrent.toString(),
       idSubjectList: Object.keys(permissions),
     })
@@ -56,14 +56,14 @@ export function Permissions({
       data.findIndex((prm: any) => permission === prm.idSubject) !== -1
 
     if (exist) {
-      await rpc.groupSubject.del$({
+      await rpc.request('groupSubject_del', {
         where: [
           ['idGroup', groupCurrent.toString()],
           ['idSubject', permission],
         ],
       })
     } else {
-      await rpc.groupSubject.create$({
+      await rpc.request('groupSubject_create', {
         data: {
           idGroup: groupCurrent,
           idSubject: permission,

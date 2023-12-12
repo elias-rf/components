@@ -1,5 +1,6 @@
 import { ClienteForm } from '@/client/features/comercial/cliente/cliente_form.js'
 import { clienteStore } from '@/client/features/comercial/cliente/cliente_store.js'
+import { authStore } from '@/client/store/auth_store.js'
 import { fetcherMock } from '@/mocks/fetcher-mock.js'
 import type { Story } from '@ladle/react'
 
@@ -50,5 +51,10 @@ export default {
 }
 
 export const Form: Story = () => {
-  return <ClienteForm />
+  return (
+    <ClienteForm
+      store={clienteStore}
+      auth={authStore}
+    />
+  )
 }

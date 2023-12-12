@@ -10,7 +10,7 @@ export const CadPro: TSchema = {
     fornecedor: {
       method: () =>
         import('./fornecedor_controller.js').then(
-          (m) => m.fornecedorController.read
+          (m) => m.fornecedorController.fornecedor_read
         ),
       where: [['CdFornecedor', 'CdFornecedor']],
     },
@@ -118,7 +118,7 @@ export const CadPro: TSchema = {
     'DescricaoDCB',
     'UnidadePesagem',
     'FgEmbalagem',
-    'Capacidade',
+    'CapaprodutoPlano',
     'FgDescVendedorDireto',
     'PercDescMaxGerente',
     'PercDescMaxVendedor',
@@ -226,7 +226,13 @@ export type TProdutoPlanoKeys = (typeof CadPro.primary)[number]
 function produtoPlanoControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TProdutoPlanoFields, TProdutoPlanoKeys>(db, schema)
   return {
-    ...orm.rpc,
+    produtoPlano_list: orm.rpc.list,
+    produtoPlano_read: orm.rpc.read,
+    produtoPlano_count: orm.rpc.count,
+    produtoPlano_update: orm.rpc.update,
+    produtoPlano_create: orm.rpc.create,
+    produtoPlano_del: orm.rpc.del,
+    produtoPlano_increment: orm.rpc.increment,
   }
 }
 

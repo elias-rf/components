@@ -1,5 +1,6 @@
 import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
+import { rpc } from '@/client/lib/rpc.js'
 import {
   TCreateListStore,
   createListStore,
@@ -12,7 +13,6 @@ import {
   TClienteFields,
   TClienteKeys,
 } from '@/controllers/cliente_controller.js'
-import { rpc } from '@/rpc/rpc-client.js'
 import { TData, TFormStatus } from '@/types/index.js'
 import { day } from '@/utils/date/day.js'
 import { getFieldId } from '@/utils/query/get-field-id.js'
@@ -33,7 +33,7 @@ const recordClear = {
   DtCadastro: '',
 }
 
-type ClienteState = {
+type TClienteState = {
   recordClear: typeof recordClear // form
   record: typeof recordClear // store
   vendaMensalQuantidade: any[]
@@ -50,7 +50,7 @@ type ClienteState = {
 } & TCreateListStore<TClienteFields, TClienteKeys> &
   TCreateRecordStore<TClienteFields>
 
-const clienteStoreBase = createStore<ClienteState>()(
+const clienteStoreBase = createStore<TClienteState>()(
   devtools(
     (set, get) => ({
       ...createListStore<TClienteFields, TClienteKeys>(set, get),
@@ -72,7 +72,7 @@ const clienteStoreBase = createStore<ClienteState>()(
             _table: 'cliente',
           },
           () =>
-            rpc.cliente.list({
+            rpc.request('cliente_list', {
               where: get().where,
               orderBy: get().orderBy,
               select: Object.keys(recordClear) as TClienteKeys[],
@@ -94,7 +94,7 @@ const clienteStoreBase = createStore<ClienteState>()(
             _table: 'cliente',
           },
           () =>
-            rpc.cliente.read({
+            rpc.request('cliente_read', {
               where: id,
               select: Object.keys(recordClear) as TClienteKeys[],
             })
@@ -114,7 +114,7 @@ const clienteStoreBase = createStore<ClienteState>()(
           },
 
           () =>
-            rpc.cliente.vendaMensalQuantidade({
+            rpc.request('cliente_vendaMensalQuantidade', {
               cliente: parseInt(getFieldId('CdCliente', id)),
               inicio: get().inicio,
               fim: get().fim,
@@ -139,7 +139,7 @@ const clienteStoreBase = createStore<ClienteState>()(
             fim: get().fim,
           },
           () =>
-            rpc.cliente.vendaMensalValor({
+            rpc.request('cliente_vendaMensalValor', {
               cliente: parseInt(getFieldId('CdCliente', id)),
               inicio: get().inicio,
               fim: get().fim,
@@ -165,7 +165,7 @@ const clienteStoreBase = createStore<ClienteState>()(
           },
 
           () =>
-            rpc.cliente.vendaMensalValorMedio({
+            rpc.request('cliente_vendaMensalValorMedio', {
               cliente: parseInt(getFieldId('CdCliente', id)),
               inicio: get().inicio,
               fim: get().fim,
@@ -191,3 +191,4 @@ const clienteStoreBase = createStore<ClienteState>()(
 clienteStoreBase.getState().setOrderBy([['CdCliente', 'asc']])
 
 export const clienteStore = createSelectors(clienteStoreBase)
+export type TClienteStore = typeof clienteStore

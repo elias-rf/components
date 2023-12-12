@@ -5,7 +5,7 @@ import pth from 'node:path'
 
 const roots = config.fs.roots
 
-function dir({ path }: { path: string }) {
+function fileManager_dir({ path }: { path: string }) {
   if (path === '/' || path === '') {
     return { dir: Object.keys(roots).map((key) => ({ name: key })), file: [] }
   }
@@ -24,9 +24,7 @@ function dir({ path }: { path: string }) {
   return { dir: [], file: [] }
 }
 
-dir.rpc = true
-
-function stat({ path, name }: { path: string; name: string }) {
+function fileManager_stat({ path, name }: { path: string; name: string }) {
   for (const root in roots) {
     if (path.startsWith(root)) {
       path = path.replace(root, roots[root as keyof typeof roots])
@@ -40,6 +38,4 @@ function stat({ path, name }: { path: string; name: string }) {
   }
 }
 
-stat.rpc = true
-
-export const fileManagerController = { dir, stat }
+export const fileManagerController = { fileManager_dir, fileManager_stat }

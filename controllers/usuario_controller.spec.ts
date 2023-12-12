@@ -14,8 +14,8 @@ describe('usuarioController', () => {
   })
 
   it('me', async () => {
-    const rsp = await usuarioController.me.call({
-      request: { user: { usuario_id: '1' } },
+    const rsp = await usuarioController.usuario_me(undefined, {
+      user: { usuario_id: '1' },
     })
     expect(rsp).toEqual({
       usuario_id: '1',
@@ -30,7 +30,11 @@ describe('usuarioController', () => {
       },
     ])
 
-    const rsp = await usuarioController.login$.call(
+    const rsp = await usuarioController.usuario_login(
+      {
+        user: 'user1',
+        password: '123',
+      },
       {
         reply: {
           jwtSign() {
@@ -38,10 +42,6 @@ describe('usuarioController', () => {
           },
           setCookie() {},
         },
-      },
-      {
-        user: 'user1',
-        password: '123',
       }
     )
 

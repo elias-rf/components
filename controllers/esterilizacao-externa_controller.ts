@@ -36,7 +36,7 @@ function esterilizacaoExternaControllerFactory(
     schema
   )
 
-  const diario = async ({
+  const esterilizacaoExterna_diario = async ({
     inicio,
     fim,
   }: {
@@ -73,9 +73,8 @@ function esterilizacaoExternaControllerFactory(
       return rec
     })
   }
-  diario.rpc = true
 
-  const mensal = async ({
+  const esterilizacaoExterna_mensal = async ({
     mes,
   }: {
     mes: string
@@ -99,9 +98,8 @@ function esterilizacaoExternaControllerFactory(
       )
     return qry
   }
-  mensal.rpc = true
 
-  const modelo = ({
+  const esterilizacaoExterna_modelo = async ({
     data,
     produto,
   }: {
@@ -116,7 +114,7 @@ function esterilizacaoExternaControllerFactory(
       { data, produto }
     )
     const knex = db.getDriver()
-    const qry = knex(
+    const qry = (await knex(
       knex.raw(
         'tEsterilizacaoExterna LEFT JOIN (SELECT tbl_Produto.fkCategoria, tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoExterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt'
       )
@@ -129,13 +127,12 @@ function esterilizacaoExternaControllerFactory(
       .orderBy('NomeProdutoItem', 'desc')
       .groupBy('NomeProdutoItem')
       .where('tEsterilizacaoExterna.Data', data)
-      .where(knex.raw("IsNull([fkCategoria],'Metil')=?", produto))
+      .where(knex.raw("IsNull([fkCategoria],'Metil')=?", produto))) as any
 
     return qry
   }
-  modelo.rpc = true
 
-  const produto = async ({
+  const esterilizacaoExterna_produto = async ({
     data,
   }: {
     data: string
@@ -144,7 +141,7 @@ function esterilizacaoExternaControllerFactory(
       data,
     })
     const knex = db.getDriver()
-    const qry = await knex(
+    const qry = (await knex(
       knex.raw(
         'tEsterilizacaoExterna LEFT JOIN (SELECT tbl_Produto.fkCategoria, tOrdemProducao.fkLoteEstExt, tbl_Produto_Item.NomeProdutoItem, tOrdemProducao.QtdEstExt_tmp FROM (tbl_Produto INNER JOIN tbl_Produto_Item ON tbl_Produto.kProduto = tbl_Produto_Item.fkProduto) INNER JOIN tOrdemProducao ON tbl_Produto_Item.kProdutoItem = tOrdemProducao.fkProdutoItem WHERE (((tOrdemProducao.fkLoteEstExt) Is Not Null))) as Produto_EstExt ON tEsterilizacaoExterna.kLoteEstExt = Produto_EstExt.fkLoteEstExt'
       )
@@ -156,18 +153,23 @@ function esterilizacaoExternaControllerFactory(
       )
       .orderBy('fkCategoria', 'desc')
       .groupBy('fkCategoria')
-      .where(knex.raw('tEsterilizacaoExterna.Data=?', [data]))
+      .where(knex.raw('tEsterilizacaoExterna.Data=?', [data]))) as any
 
-    return qry as { produto: string; quantidade: number }[]
+    return qry
   }
-  produto.rpc = true
 
   return {
-    ...orm.rpc,
-    diario,
-    mensal,
-    modelo,
-    produto,
+    esterilizacaoExterna_list: orm.rpc.list,
+    esterilizacaoExterna_read: orm.rpc.read,
+    esterilizacaoExterna_count: orm.rpc.count,
+    esterilizacaoExterna_update: orm.rpc.update,
+    esterilizacaoExterna_create: orm.rpc.create,
+    esterilizacaoExterna_del: orm.rpc.del,
+    esterilizacaoExterna_increment: orm.rpc.increment,
+    esterilizacaoExterna_diario,
+    esterilizacaoExterna_mensal,
+    esterilizacaoExterna_modelo,
+    esterilizacaoExterna_produto,
   }
 }
 

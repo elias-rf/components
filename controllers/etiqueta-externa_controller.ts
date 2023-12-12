@@ -17,7 +17,13 @@ export type TEtiquetaExternaKeys =
 function etiquetaExternaControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TEtiquetaExternaFields, TEtiquetaExternaKeys>(db, schema)
   return {
-    ...orm.rpc,
+    etiquetaExterna_list: orm.rpc.list,
+    etiquetaExterna_read: orm.rpc.read,
+    etiquetaExterna_count: orm.rpc.count,
+    etiquetaExterna_update: orm.rpc.update,
+    etiquetaExterna_create: orm.rpc.create,
+    etiquetaExterna_del: orm.rpc.del,
+    etiquetaExterna_increment: orm.rpc.increment,
   }
 }
 

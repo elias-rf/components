@@ -4,6 +4,7 @@ import { Page } from '@/client/components/page/page.js'
 import { StoreViewer } from '@/client/components/ui/store-viewer.js'
 import { clienteStore } from '@/client/features/comercial/cliente/cliente_store.js'
 import { ClienteTable } from '@/client/features/comercial/cliente/cliente_table.js'
+import { authStore } from '@/client/store/auth_store.js'
 import { fetcherMock } from '@/mocks/fetcher-mock.js'
 import { Story } from '@ladle/react'
 
@@ -32,9 +33,12 @@ export default {
 
 export const Default: Story = () => {
   return (
-    <div className="w-full h-[800px]">
+    <div className="h-[800px] w-full">
       <Page>
-        <ClienteTable />
+        <ClienteTable
+          store={clienteStore}
+          auth={authStore}
+        />
         <StoreViewer
           store={clienteStore}
           properties={['list', 'orderBy', 'selection', 'where', 'record']}

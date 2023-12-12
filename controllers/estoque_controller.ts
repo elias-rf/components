@@ -67,7 +67,13 @@ export type TEstoqueKeys = (typeof estoqueSchema.primary)[number]
 function estoqueControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TEstoqueFields, TEstoqueKeys>(db, schema)
   return {
-    ...orm.rpc,
+    estoque_list: orm.rpc.list,
+    estoque_read: orm.rpc.read,
+    estoque_count: orm.rpc.count,
+    estoque_update: orm.rpc.update,
+    estoque_create: orm.rpc.create,
+    estoque_del: orm.rpc.del,
+    estoque_increment: orm.rpc.increment,
   }
 }
 

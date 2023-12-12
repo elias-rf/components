@@ -8,23 +8,14 @@ export const LotesNota: TSchema = {
   primary: ['CdFilial', 'Serie', 'Modelo', 'NumNota', 'Sequencia'] as const,
   fields: [
     'CdFilial',
-
     'NumNota',
-
     'Serie',
-
     'Sequencia',
-
     'DtEmissao',
-
     'CdProduto',
-
     'NumLote',
-
     'Quantidade',
-
     'Modelo',
-
     'Cdlote',
   ],
 }
@@ -35,7 +26,7 @@ export type TNfSaidaLoteKeys = (typeof LotesNota.primary)[number]
   nfSaidaItem: {
     method: () =>
       import('./nf-saida-item_controller.js').then(
-        (m) => m.nfSaidaItemController.read
+        (m) => m.nfSaidaItemController.nfSaidaItem_read
       ),
     where: [
       ['CdFilial', 'CdFilial'],
@@ -46,7 +37,9 @@ export type TNfSaidaLoteKeys = (typeof LotesNota.primary)[number]
   },
   nfSaida: {
     method: () =>
-      import('./nf-saida_controller.js').then((m) => m.nfSaidaController.read),
+      import('./nf-saida_controller.js').then(
+        (m) => m.nfSaidaController.nfSaida_read
+      ),
     where: [
       ['CdFilial', 'CdFilial'],
       ['NumNota', 'NumNota'],
@@ -57,7 +50,7 @@ export type TNfSaidaLoteKeys = (typeof LotesNota.primary)[number]
   produto: {
     method: () =>
       import('./produto-plano_controller.js').then(
-        (m) => m.produtoPlanoController.read
+        (m) => m.produtoPlanoController.produtoPlano_read
       ),
     where: [['CdProduto', 'CdProduto']],
   },
@@ -66,7 +59,13 @@ export type TNfSaidaLoteKeys = (typeof LotesNota.primary)[number]
 function nfSaidaLoteControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfSaidaLoteFields, TNfSaidaLoteKeys>(db, schema)
   return {
-    ...orm.rpc,
+    nfSaidaLote_list: orm.rpc.list,
+    nfSaidaLote_read: orm.rpc.read,
+    nfSaidaLote_count: orm.rpc.count,
+    nfSaidaLote_update: orm.rpc.update,
+    nfSaidaLote_create: orm.rpc.create,
+    nfSaidaLote_del: orm.rpc.del,
+    nfSaidaLote_increment: orm.rpc.increment,
   }
 }
 

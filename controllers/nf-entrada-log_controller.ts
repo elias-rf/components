@@ -31,7 +31,13 @@ export type TNfEntradaLogKeys = (typeof NfLogConferencia.primary)[number]
 function nfEntradaLogControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfEntradaLogFields, TNfEntradaLogKeys>(db, schema)
   return {
-    ...orm.rpc,
+    nfEntradaLog_list: orm.rpc.list,
+    nfEntradaLog_read: orm.rpc.read,
+    nfEntradaLog_count: orm.rpc.count,
+    nfEntradaLog_update: orm.rpc.update,
+    nfEntradaLog_create: orm.rpc.create,
+    nfEntradaLog_del: orm.rpc.del,
+    nfEntradaLog_increment: orm.rpc.increment,
   }
 }
 

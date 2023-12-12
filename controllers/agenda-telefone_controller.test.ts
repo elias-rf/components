@@ -16,7 +16,7 @@ describe('agendaTelefoneController', () => {
 
   test('list', async () => {
     tracker.on.select('phonebook').response([{ id: '1' }])
-    const rsp = await agendaTelefoneController.list({
+    const rsp = await agendaTelefoneController.agendaTelefone_list({
       where: [['id', 1]],
       orderBy: [['id', 'asc']],
     })
@@ -29,7 +29,7 @@ describe('agendaTelefoneController', () => {
   test('read', async () => {
     tracker.on.select('phonebook').response({ id: '1' })
 
-    const rsp = await agendaTelefoneController.read({
+    const rsp = await agendaTelefoneController.agendaTelefone_read({
       where: [['id', 1]],
     })
 
@@ -42,7 +42,7 @@ describe('agendaTelefoneController', () => {
   test('delete', async () => {
     tracker.on.delete('phonebook').response(1)
 
-    const rsp = await agendaTelefoneController.del$({
+    const rsp = await agendaTelefoneController.agendaTelefone_del({
       where: [['id', 1]],
     })
 
@@ -56,7 +56,7 @@ describe('agendaTelefoneController', () => {
     tracker.on.update('phonebook').response({ id: 10 })
     tracker.on.select('phonebook').response([{ id: 10 }])
     dbOftalmo.startLog()
-    const rsp = await agendaTelefoneController.update$({
+    const rsp = await agendaTelefoneController.agendaTelefone_update({
       where: [['id', 1]],
       data: { id: 10 },
       returning: ['id'],
@@ -71,7 +71,7 @@ describe('agendaTelefoneController', () => {
   test('create', async () => {
     tracker.on.insert('phonebook').response(1)
 
-    const rsp = await agendaTelefoneController.create$({
+    const rsp = await agendaTelefoneController.agendaTelefone_create({
       data: { id: 10 },
     })
 

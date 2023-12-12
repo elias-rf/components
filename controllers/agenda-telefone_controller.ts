@@ -14,7 +14,15 @@ export type TAgendaTelefoneKeys = (typeof agendaTelefoneSchema.primary)[number]
 
 function agendaTelefoneControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TAgendaTelefoneFields, TAgendaTelefoneKeys>(db, schema)
-  return { ...orm.rpc }
+  return {
+    agendaTelefone_list: orm.rpc.list,
+    agendaTelefone_read: orm.rpc.read,
+    agendaTelefone_count: orm.rpc.count,
+    agendaTelefone_update: orm.rpc.update,
+    agendaTelefone_create: orm.rpc.create,
+    agendaTelefone_del: orm.rpc.del,
+    agendaTelefone_increment: orm.rpc.increment,
+  }
 }
 
 export const agendaTelefoneController = agendaTelefoneControllerFactory(

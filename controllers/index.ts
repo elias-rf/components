@@ -1,4 +1,5 @@
 // @index(['./**/*_controller.ts'], (f, _) => `import { ${_.camelCase(f.name.slice(0,-10))}Controller } from "${f.path}.js";`)
+import { JSONRPCServer } from 'json-rpc-2.0'
 import { agendaTelefoneController } from './agenda-telefone_controller.js'
 import { cidadeController } from './cidade_controller.js'
 import { clienteController } from './cliente_controller.js'
@@ -43,77 +44,64 @@ import { vendedorMetaController } from './vendedor-meta_controller.js'
 import { vendedorController } from './vendedor_controller.js'
 // @endindex
 
-export const module = {
+export const modules = {
   // UTILIDADE
-  sys: {
-    list,
-  },
-  // @index(['./**/*_controller.ts'], (f, _) => `${_.camelCase(f.name.slice(0,-10))}: {...${_.camelCase(f.name.slice(0,-10))}Controller},`)
-  agendaTelefone: { ...agendaTelefoneController },
-  cidade: { ...cidadeController },
-  cliente: { ...clienteController },
-  diamante: { ...diamanteController },
-  empregado: { ...empregadoController },
-  esterilizacaoExterna: { ...esterilizacaoExternaController },
-  esterilizacaoInterna: { ...esterilizacaoInternaController },
-  estoque: { ...estoqueController },
-  etiquetaExterna: { ...etiquetaExternaController },
-  etiquetaInterna: { ...etiquetaInternaController },
-  fileManager: { ...fileManagerController },
-  fornecedor: { ...fornecedorController },
-  group: { ...groupController },
-  groupSubject: { ...groupSubjectController },
-  log: { ...logController },
-  maquina: { ...maquinaController },
-  nfCfop: { ...nfCfopController },
-  nfEntrada: { ...nfEntradaController },
-  nfEntradaControle: { ...nfEntradaControleController },
-  nfEntradaItem: { ...nfEntradaItemController },
-  nfEntradaLog: { ...nfEntradaLogController },
-  nfSaida: { ...nfSaidaController },
-  nfSaidaFv: { ...nfSaidaFvController },
-  nfSaidaItem: { ...nfSaidaItemController },
-  nfSaidaLote: { ...nfSaidaLoteController },
-  operacaoProducao: { ...operacaoProducaoController },
-  ordemProducao: { ...ordemProducaoController },
-  ordemProducaoOperacao: { ...ordemProducaoOperacaoController },
-  pagar: { ...pagarController },
-  pedido: { ...pedidoController },
-  pedidoItem: { ...pedidoItemController },
-  produto: { ...produtoController },
-  produtoCategoria: { ...produtoCategoriaController },
-  produtoControle: { ...produtoControleController },
-  produtoEstatistica: { ...produtoEstatisticaController },
-  produtoItem: { ...produtoItemController },
-  produtoPlano: { ...produtoPlanoController },
-  receber: { ...receberController },
-  sysResource: { ...sysResourceController },
-  usuario: { ...usuarioController },
-  vendedor: { ...vendedorController },
-  vendedorMeta: { ...vendedorMetaController },
+  sys_list: list,
+
+  // @index(['./**/*_controller.ts'], (f, _) => `...${_.camelCase(f.name.slice(0,-10))}Controller,`)
+  ...agendaTelefoneController,
+  ...cidadeController,
+  ...clienteController,
+  ...diamanteController,
+  ...empregadoController,
+  ...esterilizacaoExternaController,
+  ...esterilizacaoInternaController,
+  ...estoqueController,
+  ...etiquetaExternaController,
+  ...etiquetaInternaController,
+  ...fileManagerController,
+  ...fornecedorController,
+  ...groupController,
+  ...groupSubjectController,
+  ...logController,
+  ...maquinaController,
+  ...nfCfopController,
+  ...nfEntradaController,
+  ...nfEntradaControleController,
+  ...nfEntradaItemController,
+  ...nfEntradaLogController,
+  ...nfSaidaController,
+  ...nfSaidaFvController,
+  ...nfSaidaItemController,
+  ...nfSaidaLoteController,
+  ...operacaoProducaoController,
+  ...ordemProducaoController,
+  ...ordemProducaoOperacaoController,
+  ...pagarController,
+  ...pedidoController,
+  ...pedidoItemController,
+  ...produtoController,
+  ...produtoCategoriaController,
+  ...produtoControleController,
+  ...produtoEstatisticaController,
+  ...produtoItemController,
+  ...produtoPlanoController,
+  ...receberController,
+  ...sysResourceController,
+  ...usuarioController,
+  ...vendedorController,
+  ...vendedorMetaController,
   // @endindex
 }
 
-type TProcedure<T> = { [K in keyof T]: TProcedure<T[K]> }
-
 function list() {
-  const moduleKeys = Object.keys(module) as unknown as KModule[]
-  const response = moduleKeys.reduce((resp, moduleKey) => {
-    const methodKeys = Object.keys(module[moduleKey])
-    const rpcMethods = methodKeys.filter((fnc) => {
-      const mdl = module[moduleKey]
-      const method = mdl[fnc as keyof typeof mdl] as any
-      return method.rpc
-    })
-    resp[moduleKey] = rpcMethods.map((rpcMethod) => {
-      return rpcMethod
-    })
-    return resp
-  }, {} as any)
-  return response
+  return Object.keys(modules)
 }
 
-list.rpc = true
+export type TModules = typeof modules
 
-export type TModule = typeof module
-type KModule = keyof TModule
+export function registerController(server: JSONRPCServer) {
+  for (const [moduleKey, module] of Object.entries(modules)) {
+    server.addMethod(moduleKey, module)
+  }
+}

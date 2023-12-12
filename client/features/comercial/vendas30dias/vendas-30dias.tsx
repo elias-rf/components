@@ -1,4 +1,5 @@
-import { vendas30DiasStore } from '@/client/features/comercial/vendas30dias/vendas-30dias.store.js'
+import { TVendas30DiasStore } from '@/client/features/comercial/vendas30dias/vendas-30dias.store.js'
+import { TAuthStore } from '@/client/store/auth_store.js'
 import { formatMoney } from '@/utils/format/format-money.js'
 import { toast } from 'react-hot-toast'
 import {
@@ -16,9 +17,15 @@ import { useEffectOnce } from 'usehooks-ts'
  *
  * @returns {*} componente react
  */
-export function Vendas30dias() {
-  const list = vendas30DiasStore.use.list()
-  const fetchList = vendas30DiasStore.use.fetchList()
+export function Vendas30dias({
+  store,
+  auth,
+}: {
+  store: TVendas30DiasStore
+  auth: TAuthStore
+}) {
+  const list = store.use.list()
+  const fetchList = store.use.fetchList()
 
   useEffectOnce(() => {
     toast.promise(

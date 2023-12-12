@@ -121,7 +121,13 @@ export type TNfCfopKeys = (typeof NatOpe.primary)[number]
 function nfCfopControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TNfCfopFields, TNfCfopKeys>(db, schema)
   return {
-    ...orm.rpc,
+    nfCfop_list: orm.rpc.list,
+    nfCfop_read: orm.rpc.read,
+    nfCfop_count: orm.rpc.count,
+    nfCfop_update: orm.rpc.update,
+    nfCfop_create: orm.rpc.create,
+    nfCfop_del: orm.rpc.del,
+    nfCfop_increment: orm.rpc.increment,
   }
 }
 

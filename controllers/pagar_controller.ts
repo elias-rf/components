@@ -83,7 +83,13 @@ export type TPagarKeys = (typeof ArqDup.primary)[number]
 function pagarControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TPagarFields, TPagarKeys>(db, schema)
   return {
-    ...orm.rpc,
+    pagar_list: orm.rpc.list,
+    pagar_read: orm.rpc.read,
+    pagar_count: orm.rpc.count,
+    pagar_update: orm.rpc.update,
+    pagar_create: orm.rpc.create,
+    pagar_del: orm.rpc.del,
+    pagar_increment: orm.rpc.increment,
   }
 }
 

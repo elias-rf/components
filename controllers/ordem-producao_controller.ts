@@ -21,14 +21,14 @@ export const tOrdemProducao: TSchema = {
     operacoes: {
       method: () =>
         import('./ordem-producao-operacao_controller.js').then(
-          (m) => m.ordemProducaoOperacaoController.list
+          (m) => m.ordemProducaoOperacaoController.ordemProducaoOperacao_list
         ),
       where: [['fkOp', 'kOp']],
     },
     produtoItem: {
       method: () =>
         import('./produto-item_controller.js').then(
-          (m) => m.produtoItemController.read
+          (m) => m.produtoItemController.produtoItem_read
         ),
 
       where: [['kProdutoItem', 'fkProdutoItem']],
@@ -102,7 +102,7 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
    * @param {string} args.serie - A serie
    * @return {Promise<string>} A string containing a serial concatenated with a dv
    */
-  const controle = async ({
+  const ordemProducao_controle = async ({
     id,
     serie,
   }: {
@@ -118,7 +118,6 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
     const dv = module10(serial)
     return serial.concat(dv)
   }
-  controle.rpc = true
 
   /**
    * Async function to fetch the manufacturing date of an order based on its id.
@@ -130,46 +129,54 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
    * @return {Promise<string>} The manufacturing date of the order, in the
    *   format "YYYY-MM-DD", or an empty string if it could not be found.
    */
-  async function dataFabricacao({ id }: { id: [['kOp', number]] }) {
+  async function ordemProducao_dataFabricacao({
+    id,
+  }: {
+    id: [['kOp', number]]
+  }) {
     const [[_, value]] = id
-    let response = await ordemProducaoOperacaoController.list({
-      where: [
-        ['fkOperacao', 3059],
-        ['fkOp', value],
-      ],
-      orderBy: [['DataHoraInicio', 'desc']],
-      select: ['DataHoraInicio'],
-    })
+    let response =
+      await ordemProducaoOperacaoController.ordemProducaoOperacao_list({
+        where: [
+          ['fkOperacao', 3059],
+          ['fkOp', value],
+        ],
+        orderBy: [['DataHoraInicio', 'desc']],
+        select: ['DataHoraInicio'],
+      })
 
     if (response.length === 0 || isEmpty(response[0].DataHoraInicio)) {
-      response = await ordemProducaoOperacaoController.list({
-        where: [
-          ['fkOperacao', 3060],
-          ['fkOp', value],
-        ],
-        orderBy: [['DataHoraInicio', 'desc']],
-        select: ['DataHoraInicio'],
-      })
+      response =
+        await ordemProducaoOperacaoController.ordemProducaoOperacao_list({
+          where: [
+            ['fkOperacao', 3060],
+            ['fkOp', value],
+          ],
+          orderBy: [['DataHoraInicio', 'desc']],
+          select: ['DataHoraInicio'],
+        })
     }
     if (response.length === 0 || isEmpty(response[0].DataHoraInicio)) {
-      response = await ordemProducaoOperacaoController.list({
-        where: [
-          ['fkOperacao', 4020],
-          ['fkOp', value],
-        ],
-        orderBy: [['DataHoraInicio', 'desc']],
-        select: ['DataHoraInicio'],
-      })
+      response =
+        await ordemProducaoOperacaoController.ordemProducaoOperacao_list({
+          where: [
+            ['fkOperacao', 4020],
+            ['fkOp', value],
+          ],
+          orderBy: [['DataHoraInicio', 'desc']],
+          select: ['DataHoraInicio'],
+        })
     }
     if (response.length === 0 || isEmpty(response[0].DataHoraInicio)) {
-      response = await ordemProducaoOperacaoController.list({
-        where: [
-          ['fkOperacao', 3160],
-          ['fkOp', value],
-        ],
-        orderBy: [['DataHoraInicio', 'desc']],
-        select: ['DataHoraInicio'],
-      })
+      response =
+        await ordemProducaoOperacaoController.ordemProducaoOperacao_list({
+          where: [
+            ['fkOperacao', 3160],
+            ['fkOp', value],
+          ],
+          orderBy: [['DataHoraInicio', 'desc']],
+          select: ['DataHoraInicio'],
+        })
     }
     if (response.length === 0 || isEmpty(response[0].DataHoraInicio)) {
       throw new Error('Ordem de produção não possui 3059, 3060, 4020 ou 3160')
@@ -180,7 +187,6 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
     }
     return ''
   }
-  dataFabricacao.rpc = true
 
   /**
    * Validates if the given id is valid and retrieves the data fabricacao for it.
@@ -190,15 +196,18 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
    * @throws {Error} When the data fabricacao is blank for the given id.
    * @return {string} The validade date in the format 'YYYY-MM-DD'.
    */
-  const dataValidade = async ({ id }: { id: [['kOp', number]] }) => {
-    const fabricacao = await dataFabricacao({ id })
+  const ordemProducao_dataValidade = async ({
+    id,
+  }: {
+    id: [['kOp', number]]
+  }) => {
+    const fabricacao = await ordemProducao_dataFabricacao({ id })
     if (fabricacao === '') {
       throw new Error('Ordem de produção não possui 3059, 3060, 4020 ou 3160')
     }
     const validade = day(fabricacao).add(5, 'y').format('YYYY-MM-DD')
     return validade
   }
-  dataValidade.rpc = true
 
   /**
    * Checks whether the provided control string is valid.
@@ -207,7 +216,11 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
    * @return {Promise<boolean>} a promise that resolves to true if the provided
    * control string is valid, otherwise false
    */
-  const ehControleValido = async ({ controle }: { controle: string }) => {
+  const ordemProducao_ehControleValido = async ({
+    controle,
+  }: {
+    controle: string
+  }) => {
     if (!controle) return false
 
     if (controle.length === 12) {
@@ -219,7 +232,6 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
     }
     return false
   }
-  ehControleValido.rpc = true
 
   /**
    * Asynchronously retrieves a list of external labels given an id.
@@ -228,10 +240,14 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
    * @param {TId} args.id - The id of the external label.
    * @return {Promise<Array>} A promise that resolves to an array of external labels.
    */
-  const etiquetaExterna = async ({ id }: { id: [['kOp', number]] }) => {
+  const ordemProducao_etiquetaExterna = async ({
+    id,
+  }: {
+    id: [['kOp', number]]
+  }) => {
     const [[_, value]] = id
     if (isUndefined(value)) return []
-    return etiquetaExternaController.list({
+    return etiquetaExternaController.etiquetaExterna_list({
       where: [
         ['controle', 'like', ('000000' + value.toString()).slice(-8, -2) + '%'],
       ],
@@ -239,7 +255,6 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
       limit: 1000,
     })
   }
-  etiquetaExterna.rpc = true
 
   /**
    * Asynchronously generates a new string by slicing the first 6 characters of the input
@@ -250,10 +265,13 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
    * @return {Promise<string>} - A promise that resolves to a string representing the
    *      modified input string.
    */
-  const fromControle = async ({ controle }: { controle: string }) => {
+  const ordemProducao_fromControle = async ({
+    controle,
+  }: {
+    controle: string
+  }) => {
     return parseInt(controle.slice(0, 6) + '00')
   }
-  fromControle.rpc = true
 
   /**
    * Retrieves a specific product item based on its ID.
@@ -263,7 +281,7 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
    * @param {TSelect} [args.select] - An optional array of fields to select.
    * @return {Promise<Object>} - A promise that resolves to the product item object with the specified ID and selected fields (if provided).
    */
-  const produtoItem = async ({
+  const ordemProducao_produtoItem = async ({
     id,
     select,
   }: {
@@ -278,12 +296,11 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
     if (ordemProducao.fkProdutoItem === undefined) {
       return {}
     }
-    return produtoItemController.read({
+    return produtoItemController.produtoItem_read({
       where: [['kProdutoItem', ordemProducao.fkProdutoItem]],
       select,
     })
   }
-  produtoItem.rpc = true
   /**
    * Retrieves a product plan by its ID from the database.
    *
@@ -293,14 +310,14 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
    * @param {TSelect} [args.select] - The fields to select.
    * @return {Promise<unknown>} The product plan.
    */
-  const produtoPlano = async ({
+  const ordemProducao_produtoPlano = async ({
     id,
     select,
   }: {
     id: [['kOp', number]]
     select?: Array<TProdutoPlanoFields>
   }): Promise<Record<TProdutoPlanoFields, any> | object> => {
-    const { kProdutoItem } = (await produtoItem({
+    const { kProdutoItem } = (await ordemProducao_produtoItem({
       id: [['kOp', id[0][1]]],
       select: ['kProdutoItem'],
     })) as Record<TProdutoItemFields, any>
@@ -308,23 +325,28 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
     if (kProdutoItem === undefined) {
       return {}
     }
-    return await produtoItemController.produtoPlano({
+    return await produtoItemController.produtoItem_produtoPlano({
       id: [['kProdutoItem', kProdutoItem]],
       select,
     })
   }
-  produtoPlano.rpc = true
 
   return {
-    ...orm.rpc,
-    controle,
-    dataFabricacao,
-    dataValidade,
-    ehControleValido,
-    etiquetaExterna,
-    produtoItem,
-    produtoPlano,
-    fromControle,
+    ordemProducao_list: orm.rpc.list,
+    ordemProducao_read: orm.rpc.read,
+    ordemProducao_count: orm.rpc.count,
+    ordemProducao_update: orm.rpc.update,
+    ordemProducao_create: orm.rpc.create,
+    ordemProducao_del: orm.rpc.del,
+    ordemProducao_increment: orm.rpc.increment,
+    ordemProducao_controle,
+    ordemProducao_dataFabricacao,
+    ordemProducao_dataValidade,
+    ordemProducao_ehControleValido,
+    ordemProducao_etiquetaExterna,
+    ordemProducao_produtoItem,
+    ordemProducao_produtoPlano,
+    ordemProducao_fromControle,
   }
 }
 
