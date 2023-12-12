@@ -24,7 +24,7 @@ export default defineConfig({
       '/api': 'http://localhost:' + serverPort,
     },
   },
-  build: { outDir: '../public', emptyOutDir: true, target: 'esnext' },
+  build: { outDir: '../dist/public', emptyOutDir: true, target: 'esnext' },
   resolve: { alias: { '@': path.resolve(__dirname, './') } },
   plugins: [react()],
   test: {

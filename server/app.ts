@@ -44,9 +44,9 @@ const envToLogger = {
     },
   },
   production: {
-    transport: {
-      target: path.join(__dirname, 'lib/db-transport.js'),
-    },
+    // transport: {
+    //   target: path.join(__dirname, 'lib/db-transport.js'),
+    // },
   },
   test: false,
 }
