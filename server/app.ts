@@ -1,15 +1,12 @@
 import { config } from '@/config/index.js'
-import { logger } from '@/server/lib/logger.js'
 import { authMiddle } from '@/server/middles/auth-middle.js'
+import { loggerMiddle } from '@/server/middles/logger-middle.js'
 import { routes } from '@/server/routes/index.js'
-import { deepCopy } from '@/utils/deep-copy.js'
 import compression from 'compression'
 import history from 'connect-history-api-fallback'
 import cors from 'cors'
 import express from 'express'
-import { nanoid } from 'nanoid'
 import * as path from 'path'
-import { pinoHttp } from 'pino-http'
 import * as url from 'url'
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
@@ -56,7 +53,7 @@ app.use(cors()) // cliente não precisa de estar no mesmo endereço
 
 app.use(
   history({
-    verbose: true,
+    verbose: false,
     index: '/index.html',
   })
 )
@@ -65,41 +62,6 @@ app.use(compression()) // compressão de dados ao enviar para o cliente
 app.use(express.static(path.join(__dirname, '../public'))) // pasta pública
 app.use(express.json()) // decodifica body.json
 app.use(express.urlencoded({ extended: false })) // decodifica query
-app.use(
-  pinoHttp({
-    logger,
-    genReqId: () => nanoid(),
-    serializers: {
-      res(res) {
-        return {
-          statusCode: res.statusCode,
-        }
-      },
-      req(req) {
-        if (req.method === 'OPTION') return { method: req.method }
-        let body = deepCopy(req.raw.body)
-        if (body) {
-          if (body.params && body.params.password) {
-            body.params.password = '********'
-          }
-          delete body.jsonrpc
-          delete body.id
-        }
-        const response = {
-          id: req.id,
-          method: req.method,
-          url: req.url,
-          path: req.path,
-          parameters: req.parameters,
-          user: req.headers.user,
-          origin: req.headers.origin,
-          rpc: body.method,
-          params: body.params,
-        }
-        return response
-      },
-    },
-  })
-)
+app.use(loggerMiddle)
 app.use(authMiddle)
 app.map(routes)
