@@ -3,7 +3,6 @@ import { logger } from '@/server/lib/logger.js'
 import { authMiddle } from '@/server/middles/auth-middle.js'
 import { routes } from '@/server/routes/index.js'
 import { deepCopy } from '@/utils/deep-copy.js'
-import { pick } from '@/utils/object/pick.js'
 import compression from 'compression'
 import history from 'connect-history-api-fallback'
 import cors from 'cors'
@@ -104,48 +103,3 @@ app.use(
 )
 app.use(authMiddle)
 app.map(routes)
-
-// const envToLogger = {
-//   development: {
-//     transport: {
-//       target: 'pino-pretty',
-//       options: {
-//         translateTime: 'HH:MM:ss Z',
-//         ignore: 'pid,hostname',
-//         colorize: true,
-//       },
-//     },
-//     serializers: {
-//       res(res: any) {
-//         // The default
-//         return {
-//           statusCode: res.statusCode,
-//         }
-//       },
-//       req(req: any) {
-//         if (req.method === 'OPTION') return { method: req.method }
-//         return {
-//           method: req.method,
-//           url: req.url,
-//           path: req.path,
-//           parameters: req.parameters,
-//           headers: pick(req.headers, ['origin', 'user']),
-//         }
-//       },
-//     },
-//   },
-//   production: {
-//     // transport: {
-//     //   target: path.join(__dirname, 'lib/db-transport.js'),
-//     // },
-//   },
-//   test: false,
-// }
-
-// const environment: string = process.env.NODE_ENV || 'production'
-
-// export const app = Fastify({
-//   maxParamLength: 5000,
-//   genReqId: () => nanoid(),
-//   logger: envToLogger[environment as keyof typeof envToLogger] ?? true,
-// })

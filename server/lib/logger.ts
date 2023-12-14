@@ -3,7 +3,7 @@ import { pino } from 'pino'
 
 export let logger = pino()
 
-if (config.app.env !== 'test') {
+if (config.app.env === 'development') {
   const transport = pino.transport({
     target: 'pino-pretty',
     options: {
