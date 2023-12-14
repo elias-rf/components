@@ -1,11 +1,10 @@
 import { config } from '@/config/index.js'
 import { omit } from '@/utils/object/omit.js'
-import { pick } from '@/utils/object/pick.js'
-import { FastifyPluginCallback } from 'fastify'
+import { Request, Response } from 'express'
 
-export const systemRoute: FastifyPluginCallback = (fastify, options, done) => {
-  fastify.get('/system', (request, reply) => {
-    reply.send({
+export const systemRoute = {
+  get: (req: Request, res: Response) => {
+    res.send({
       enviroment: process.env.NODE_ENV,
       config: omit(config, [
         'auth.secret',
@@ -16,8 +15,7 @@ export const systemRoute: FastifyPluginCallback = (fastify, options, done) => {
         'db.plano.connection.password',
         'db.oftalmo.connection.password',
       ]),
-      token: request.cookies.token || '',
+      token: req.cookies.token || '',
     })
-  })
-  done()
+  },
 }

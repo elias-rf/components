@@ -77,7 +77,6 @@ describe('authStore', () => {
             },
           }
         default:
-          console.log(request)
           return {
             body: {
               result: [],

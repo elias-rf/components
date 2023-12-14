@@ -144,10 +144,8 @@ export class Caixa {
 
     // adiciona na coluna p2
     if (!added) {
-      console.log(produto.pos)
       // produto.rotate('p2')
       produto.rotate90()
-      console.log(produto.pos)
 
       added = this._add(produto)
       // if (added) console.log(this.ordem.length, 'added col p2', added)

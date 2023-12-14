@@ -1,101 +1,151 @@
-// fastify-jwt.d.ts
 import { config } from '@/config/index.js'
+import { logger } from '@/server/lib/logger.js'
+import { authMiddle } from '@/server/middles/auth-middle.js'
+import { routes } from '@/server/routes/index.js'
+import { deepCopy } from '@/utils/deep-copy.js'
 import { pick } from '@/utils/object/pick.js'
-import cookie from '@fastify/cookie'
-import cors from '@fastify/cors'
-import jwt from '@fastify/jwt'
-import staticFiles from '@fastify/static'
-import Fastify from 'fastify'
+import compression from 'compression'
+import history from 'connect-history-api-fallback'
+import cors from 'cors'
+import express from 'express'
 import { nanoid } from 'nanoid'
-import path from 'node:path'
+import * as path from 'path'
+import { pinoHttp } from 'pino-http'
 import * as url from 'url'
-import { routes } from './routes/index.js'
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 // const __filename = url.fileURLToPath(import.meta.url)
 
-const envToLogger = {
-  development: {
-    transport: {
-      target: 'pino-pretty',
-      options: {
-        translateTime: 'HH:MM:ss Z',
-        ignore: 'pid,hostname',
-        colorize: true,
-      },
-    },
+export const app = express()
+
+app.map = (mapRoute: { [key: string]: any }, route: string) => {
+  route = route || ''
+
+  function getRoute(path: string, route: string) {
+    if (path === '/') {
+      return '/' + route
+    }
+    if (route.startsWith('/')) {
+      return path + route
+    }
+    return path + '/' + route
+  }
+
+  for (const itemRoute in mapRoute) {
+    switch (typeof mapRoute[itemRoute]) {
+      // { '/path': { ... }}
+      case 'object':
+        app.map(mapRoute[itemRoute], getRoute(route, itemRoute))
+        break
+      // get: function(){ ... }
+      case 'function':
+        console.log('%s %s', itemRoute, route)
+        app[itemRoute as 'get' | 'put' | 'post' | 'delete'](
+          route,
+          mapRoute[itemRoute]
+        )
+        break
+      default:
+        console.log('%s %s não reconhecido!', itemRoute, route)
+        break
+    }
+  }
+}
+
+app.set('config', config)
+app.use(cors()) // cliente não precisa de estar no mesmo endereço
+
+app.use(
+  history({
+    verbose: true,
+    index: '/index.html',
+  })
+)
+app.use(compression()) // compressão de dados ao enviar para o cliente
+
+app.use(express.static(path.join(__dirname, '../public'))) // pasta pública
+app.use(express.json()) // decodifica body.json
+app.use(express.urlencoded({ extended: false })) // decodifica query
+app.use(
+  pinoHttp({
+    logger,
+    genReqId: () => nanoid(),
     serializers: {
-      res(res: any) {
-        // The default
+      res(res) {
         return {
           statusCode: res.statusCode,
         }
       },
-      req(req: any) {
+      req(req) {
         if (req.method === 'OPTION') return { method: req.method }
-        return {
+        let body = deepCopy(req.raw.body)
+        if (body) {
+          if (body.params && body.params.password) {
+            body.params.password = '********'
+          }
+          delete body.jsonrpc
+          delete body.id
+        }
+        const response = {
+          id: req.id,
           method: req.method,
           url: req.url,
           path: req.path,
           parameters: req.parameters,
-          headers: pick(req.headers, ['origin', 'user']),
+          user: req.headers.user,
+          origin: req.headers.origin,
+          rpc: body.method,
+          params: body.params,
         }
+        return response
       },
     },
-  },
-  production: {
-    // transport: {
-    //   target: path.join(__dirname, 'lib/db-transport.js'),
-    // },
-  },
-  test: false,
-}
+  })
+)
+app.use(authMiddle)
+app.map(routes)
 
-const environment: string = process.env.NODE_ENV || 'production'
+// const envToLogger = {
+//   development: {
+//     transport: {
+//       target: 'pino-pretty',
+//       options: {
+//         translateTime: 'HH:MM:ss Z',
+//         ignore: 'pid,hostname',
+//         colorize: true,
+//       },
+//     },
+//     serializers: {
+//       res(res: any) {
+//         // The default
+//         return {
+//           statusCode: res.statusCode,
+//         }
+//       },
+//       req(req: any) {
+//         if (req.method === 'OPTION') return { method: req.method }
+//         return {
+//           method: req.method,
+//           url: req.url,
+//           path: req.path,
+//           parameters: req.parameters,
+//           headers: pick(req.headers, ['origin', 'user']),
+//         }
+//       },
+//     },
+//   },
+//   production: {
+//     // transport: {
+//     //   target: path.join(__dirname, 'lib/db-transport.js'),
+//     // },
+//   },
+//   test: false,
+// }
 
-export const app = Fastify({
-  maxParamLength: 5000,
-  genReqId: () => nanoid(),
-  logger: envToLogger[environment as keyof typeof envToLogger] ?? true,
-})
+// const environment: string = process.env.NODE_ENV || 'production'
 
-app.register(cors, { origin: '*' })
-app.register(cookie)
-app.register(jwt, {
-  secret: config.auth.secret,
-  sign: { expiresIn: config.auth.expiration },
-  cookie: {
-    cookieName: 'token',
-    signed: false,
-  },
-})
-app.register(staticFiles, {
-  root: path.join(__dirname, '../public'),
-})
-
-app.addHook('preHandler', function (req, reply, done) {
-  if (req.body) {
-    if (
-      typeof req.body === 'string' &&
-      (req.body as string).includes('usuario/login')
-    ) {
-      const body = JSON.parse(req.body as string)
-      body.args.password = '***'
-      req.log.info({ body }, 'parsed body for login')
-    } else {
-      req.log.info({ body: req.body }, 'parsed body')
-    }
-  }
-  done()
-})
-
-app.addHook('onRequest', async (request) => {
-  try {
-    await request.jwtVerify()
-  } catch (err) {
-    // app.log.error(err);
-    // mesmo com erro deve prosseguir
-  }
-})
-
-app.register(routes)
+// export const app = Fastify({
+//   maxParamLength: 5000,
+//   genReqId: () => nanoid(),
+//   logger: envToLogger[environment as keyof typeof envToLogger] ?? true,
+// })

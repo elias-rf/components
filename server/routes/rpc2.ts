@@ -1,5 +1,6 @@
 import { registerController, type TModules } from '@/controllers/index.js'
-import { FastifyPluginCallback } from 'fastify'
+import { RequestAuth } from '@/server/middles/auth-middle.js'
+import { Response } from 'express'
 import {
   JSONRPCRequest,
   JSONRPCServer,
@@ -9,23 +10,21 @@ import {
 const server: TypedJSONRPCServer<TModules> = new JSONRPCServer()
 registerController(server)
 
-export const rpcRoute: FastifyPluginCallback = (fastify, options, done) => {
-  fastify.post('/rpc2', async (request, reply) => {
-    const jsonRPCRequest = request.body as JSONRPCRequest
+export const rpcRoute = {
+  post: async (req: RequestAuth, res: Response) => {
+    const jsonRPCRequest = req.body as JSONRPCRequest
+
     const context: any = {
-      request,
-      reply,
-      user: request.user,
+      request: req,
+      reply: res,
+      user: req.auth,
     }
+
     const jsonRPCResponse = await server.receive(jsonRPCRequest, context)
     if (jsonRPCResponse) {
-      reply.send(jsonRPCResponse)
+      res.send(jsonRPCResponse)
     } else {
-      reply.send(204)
+      res.send(204)
     }
-  })
-  fastify.get('/rpc2', (request, reply) => {
-    reply.send('rpc2')
-  })
-  done()
+  },
 }

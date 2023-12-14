@@ -1,9 +1,7 @@
 import type { TModules } from '@/controllers/index.js'
 import { registerController } from '@/controllers/index.js'
-import { FastifyPluginCallback } from 'fastify'
 import {
   JSONRPCClient,
-  JSONRPCRequest,
   JSONRPCServer,
   TypedJSONRPCClient,
   type TypedJSONRPCServer,

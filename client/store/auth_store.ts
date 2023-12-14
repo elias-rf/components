@@ -16,6 +16,7 @@ interface AuthState {
     [permission: string]: boolean
   }
   can: (permission: string) => boolean
+  me: () => Promise<TCurrentUser>
 }
 
 export const authStoreBase = createStore<AuthState>()(
@@ -72,6 +73,7 @@ export const authStoreBase = createStore<AuthState>()(
             'fetchPermissions'
           )
         },
+
         /**
          * Retorna uma lista boolean para cada permission informada
          */
@@ -100,6 +102,14 @@ export const authStoreBase = createStore<AuthState>()(
 
           return response
         },
+
+        me: async () => {
+          const user = await rpc.request('usuario_me')
+          if (!user) {
+            get().logout()
+          }
+          return user
+        },
       }),
       { name: 'intranet', store: 'auth', serialize: { options: true } }
     ),
@@ -110,6 +120,8 @@ export const authStoreBase = createStore<AuthState>()(
     }
   )
 )
+
+authStoreBase.getState().me()
 
 export const authStore = createSelectors(authStoreBase)
 export type TAuthStore = typeof authStore

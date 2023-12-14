@@ -22,7 +22,7 @@ Content-Type: application/json
 
 {
   "jsonrpc": "2.0",
-	"method": "usuario/login$",
+	"method": "usuario_login",
   "params": {"user":"elias","password":"jkl"},
 	"id": "1"
 }
@@ -34,6 +34,6 @@ Authorization: Bearer {{login.response.body.result.token}}
 
 {
   "jsonrpc": "2.0",
-	"method": "usuario/me",
+	"method": "usuario_me",
 	"id": "1"
 }

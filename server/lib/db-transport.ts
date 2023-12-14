@@ -39,7 +39,6 @@ export default async function dbTransport() {
           user: logs.req.headers?.user || 0,
           origin: logs.req.headers.origin,
         }
-        console.log()
       }
       if (logs.msg === 'parsed body') {
         const body = JSON.parse(logs.body)

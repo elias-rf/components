@@ -1,3 +1,4 @@
+import { config } from '@/config/index.js'
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
 import { TAdapterKnex } from '@/orm/adapter-knex.js'
 import { ormTable } from '@/orm/index.js'
@@ -5,6 +6,7 @@ import type { TSchema } from '@/schemas/schema.type.js'
 import type { TCurrentUser } from '@/types/index.js'
 import { day } from '@/utils/date/day.js'
 import { passwordVerify } from '@/utils/string/password-verify.js'
+import jwtService from 'jsonwebtoken'
 
 export const tbl_Seguranca_Usuario = {
   database: 'oftalmo',
@@ -77,8 +79,9 @@ function usuarioControllerFactory(db: TAdapterKnex, schema: TSchema) {
       group_ids: record.setor || '',
     }
 
-    resp.token = await ctx.reply.jwtSign(resp)
-
+    resp.token = jwtService.sign(resp, config.auth.secret, {
+      expiresIn: config.auth.expiration,
+    })
     return resp
   }
 
