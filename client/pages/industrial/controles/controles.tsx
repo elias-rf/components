@@ -1,6 +1,6 @@
 import { Can } from '@/client/components/can.js'
+import { FormHead } from '@/client/components/ui/form-head.js'
 import { Tabs } from '@/client/components/ui/tabs/tabs.js'
-import { ControlesHead } from '@/client/pages/industrial/controles/controles_head.js'
 import { EstExt } from '@/client/pages/industrial/controles/est-ext.js'
 import { EstInt } from '@/client/pages/industrial/controles/est-int.js'
 import { Operacao } from '@/client/pages/industrial/controles/operacao.js'
@@ -14,16 +14,20 @@ const permissions = {
   industrial_controles_read: 'Visualizar controles de produção',
 }
 
+type TCan = (name: keyof typeof permissions) => boolean
+
 export default function Controles() {
   const [select, setSelect] = useState('profile')
-  const can = authStore.use.can()
+  const can: TCan = authStore.use.can()
 
   return (
-    <Can can={can('controle_read')}>
-      <ControlesHead
-        can={can}
+    <Can can={can('industrial_controles_read')}>
+      <FormHead
+        editPermissions={can('industrial_controles_permissao')}
         permissions={permissions}
-      />
+      >
+        Controles de Produção
+      </FormHead>
       <Tabs
         selected={select}
         onChange={setSelect}

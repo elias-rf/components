@@ -4,21 +4,28 @@ import { Input } from '@/client/components/ui/input/input.js'
 import { Label } from '@/client/components/ui/label.js'
 import { useForm } from '@/client/lib/hooks/use-form.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
-import { gruposStore } from '@/client/pages/sistema/grupos/grupos_store.js'
+import { TGruposStore } from '@/client/pages/sistema/grupos/grupos_store.js'
+import { TAuthStore } from '@/client/store/auth_store.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
-export const GruposForm = () => {
-  const status = gruposStore.use.status()
-  const onCancel = gruposStore.use.onCancel()
-  const onDelete = gruposStore.use.onDelete()
-  const onEdit = gruposStore.use.onEdit()
-  const onSave = gruposStore.use.onSave()
-  const recordClear = gruposStore.use.recordClear()
-  const fetchRecord = gruposStore.use.fetchRecord()
-  const selection = gruposStore.use.selection()
-  const record = gruposStore.use.record()
-  const setRecord = gruposStore.use.setRecord()
+export const GruposForm = ({
+  store,
+  auth,
+}: {
+  store: TGruposStore
+  auth: TAuthStore
+}) => {
+  const status = store.use.status()
+  const onCancel = store.use.onCancel()
+  const onDelete = store.use.onDelete()
+  const onEdit = store.use.onEdit()
+  const onSave = store.use.onSave()
+  const recordClear = store.use.recordClear()
+  const fetchRecord = store.use.fetchRecord()
+  const selection = store.use.selection()
+  const record = store.use.record()
+  const setRecord = store.use.setRecord()
 
   const form = useForm({ value: recordClear })
 
@@ -35,7 +42,7 @@ export const GruposForm = () => {
         error: 'Erro ao carregar cadastro!',
       },
       {
-        id: 'agenda-telefone-form',
+        id: 'grupos-form',
       }
     )
   }, [selection])

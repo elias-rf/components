@@ -5,15 +5,16 @@ import { Permissions } from '@/client/features/permissions.js'
 import { gruposStore } from '@/client/pages/sistema/grupos/grupos_store.js'
 import { authStore } from '@/client/store/auth_store.js'
 
-const permissionsList = {
+const permissions = {
   grupos_permissao: 'Atribuir permissões de acesso para usuários',
   grupos_read: 'Visualizar dados do usuário',
   grupos_update: 'Alterar dados do usuário',
 }
+type TCan = (name: keyof typeof permissions) => boolean
 
 export function GruposHead() {
   const onNew = gruposStore.use.onNew()
-  const can = authStore.use.can()
+  const can: TCan = authStore.use.can()
 
   return (
     <div className="align-center my-1 flex flex-row justify-between">
@@ -23,7 +24,7 @@ export function GruposHead() {
           can={can('grupos_permissao')}
           elseCan={null}
         >
-          <Permissions permissions={permissionsList} />
+          <Permissions permissions={permissions} />
         </Can>
       </div>
       <div className="flex flex-row space-x-2">

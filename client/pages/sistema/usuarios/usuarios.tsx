@@ -9,10 +9,11 @@ const permissions = {
   sistema_usuarios_permissao: 'Atribuir permissões de preços',
   sistema_usuarios_read: 'Calcular preços',
 }
+type TCan = (name: keyof typeof permissions) => boolean
 
 export default function Usuarios() {
   const status = usuarioStore.use.status()
-  const can = authStore.use.can()
+  const can: TCan = authStore.use.can()
 
   return (
     <Can can={can('sistema_usuarios_read')}>

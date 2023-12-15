@@ -10,13 +10,14 @@ const permissions = {
   // comercial_cliente_read: 'Visualizar dados dos clientes próprios',
   comercial_cliente_read_all: 'Visualizar dados de todos os clientes',
 }
+type TCan = (name: keyof typeof permissions) => boolean
 
 export default function Clientes() {
   const status = clienteStore.use.status()
-  const can = authStore.use.can()
+  const can: TCan = authStore.use.can()
 
   return (
-    <Can can={can('comercial_cliente_read') || can('cliente_read_all')}>
+    <Can can={can('comercial_cliente_read_all')}>
       <FormHead
         editPermissions={can('comercial_cliente_permissao')}
         permissions={permissions}

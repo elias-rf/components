@@ -8,9 +8,10 @@ const permissions = {
   comercial_precos_permissao: 'Atribuir permissões de preços',
   comercial_precos_read: 'Calcular preços',
 }
+type TCan = (name: keyof typeof permissions) => boolean
 
 export default function Precos() {
-  const can = authStore.use.can()
+  const can: TCan = authStore.use.can()
 
   return (
     <Can can={can('comercial_precos_read')}>

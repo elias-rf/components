@@ -1,4 +1,3 @@
-import { Can } from '@/client/components/can.js'
 import { Table } from '@/client/components/table/table.js'
 import { usuarioColumns } from '@/client/pages/sistema/usuarios/components/usuario_columns.js'
 import { TUsuarioStore } from '@/client/pages/sistema/usuarios/usuarios_store.js'
@@ -20,8 +19,6 @@ export function UsuarioTable({
   auth: TAuthStore
 }) {
   const pageHeight = usePageSize((state) => state.height * 0.6)
-
-  const can = auth.use.can()
 
   const fetchList = store.use.fetchList()
   const list = store.use.list()
@@ -51,19 +48,17 @@ export function UsuarioTable({
   }, [where, orderBy])
 
   return (
-    <Can can={can('usuario_read')}>
-      <Table
-        columns={usuarioColumns}
-        getId={getId}
-        height={`${pageHeight}px`}
-        onOrderBy={setOrderBy}
-        onSelection={setSelection}
-        onWhere={setWhere}
-        orderBy={orderBy}
-        rows={list ?? []}
-        selection={selection}
-        where={where}
-      />
-    </Can>
+    <Table
+      columns={usuarioColumns}
+      getId={getId}
+      height={`${pageHeight}px`}
+      onOrderBy={setOrderBy}
+      onSelection={setSelection}
+      onWhere={setWhere}
+      orderBy={orderBy}
+      rows={list ?? []}
+      selection={selection}
+      where={where}
+    />
   )
 }

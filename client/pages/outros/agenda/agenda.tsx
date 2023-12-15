@@ -9,19 +9,20 @@ const permissions = {
   outros_agenda_edit: 'Alterar ramais',
   outros_agenda_create: 'Lançar novos ramais',
 }
+type TCan = (name: keyof typeof permissions) => boolean
 
 /**
  * Agenda de Ramais
  */
 export default function Agenda() {
   const status = agendaTelefoneStore.use.status()
-  const can = authStore.use.can()
+  const can: TCan = authStore.use.can()
 
   return (
     <div data-name="AgendaTelefone">
       <FormHead
         permissions={permissions}
-        editPermissions={can('comercial_cliente_permissao')}
+        editPermissions={can('outros_agenda_permissao')}
       >
         Agenda de Ramais
       </FormHead>

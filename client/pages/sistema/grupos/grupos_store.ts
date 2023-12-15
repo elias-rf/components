@@ -115,3 +115,5 @@ const gruposStoreBase = createStore<GruposState>()(
 gruposStoreBase.getState().setOrderBy([['NomeGrupo', 'asc']])
 
 export const gruposStore = createSelectors(gruposStoreBase)
+
+export type TGruposStore = typeof gruposStore

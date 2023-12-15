@@ -8,12 +8,13 @@ const permissions = {
   outros_file_manager_edit: 'Alterar arquivos',
   outros_file_manager_create: 'Lançar novos arquivos',
 }
+type TCan = (name: keyof typeof permissions) => boolean
 
 /**
  * Agenda de Ramais
  */
 export default function FileManager() {
-  const can = authStore.use.can()
+  const can: TCan = authStore.use.can()
 
   return (
     <div data-name="FileManager">
