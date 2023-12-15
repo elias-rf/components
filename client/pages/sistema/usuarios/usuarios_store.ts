@@ -95,14 +95,18 @@ const usuarioStoreBase = createStore<TUsuarioState>()(
 
       onSave: async () => {
         cache.purgeTable(tableName)
+        const record = omit(get().record, ['kUsuario'])
+        if (record.fkFuncionario === '') {
+          record.fkFuncionario = null
+        }
         if (get().status === 'edit') {
           await rpc.request('usuario_update', {
-            data: omit(get().record, ['kUsuario']),
+            data: record,
             where: get().selection,
           })
         }
         if (get().status === 'new') {
-          await rpc.request('usuario_create', { data: get().record || {} })
+          await rpc.request('usuario_create', { data: record })
         }
         await get().fetchList()
         set(() => ({ status: 'view' }), false, 'onSave')
