@@ -12,40 +12,47 @@ import { Logout } from './pages/logout.js'
 const Page404 = React.lazy(async () => import('./pages/page_404.js'))
 
 // comercial
-const Clientes = React.lazy(async () => import('./pages/comercial/clientes.js'))
+const Clientes = React.lazy(
+  async () => import('./pages/comercial/clientes/clientes.js')
+)
 // const Faturamento = React.lazy(
 //   async () => import('./pages/comercial/faturamento')
 // )
-const Precos = React.lazy(async () => import('./pages/comercial/precos.js'))
+const Precos = React.lazy(
+  async () => import('./pages/comercial/precos/precos.js')
+)
 const Vendas30Dias = React.lazy(
-  async () => import('./pages/comercial/vendas-30dias.js')
+  async () => import('./pages/comercial/vendas-30dias/vendas-30dias.js')
 )
 
 // industrial
 const Controles = React.lazy(
-  async () => import('./pages/industrial/controles.js')
+  async () => import('./pages/industrial/controles/controles.js')
 )
 const LotesSaida = React.lazy(
-  async () => import('./pages/industrial/lotes-saida.js')
+  async () => import('./pages/industrial/lotes-saida/lotes-saida.js')
 )
 
 const Transferencia = React.lazy(
-  async () => import('./pages/industrial/transferencia.js')
+  async () => import('./pages/industrial/transferencia/transferencia.js')
 )
 
 // outros
-const Agenda = React.lazy(async () => import('./pages/outros/agenda.js'))
+const Agenda = React.lazy(async () => import('./pages/outros/agenda/agenda.js'))
 const FileManager = React.lazy(
-  async () => import('./pages/outros/file-manager.js')
+  async () => import('./pages/outros/file-manager/file-manager.js')
 )
 
 // sistema
-const Usuario = React.lazy(async () => import('./pages/sistema/usuarios.js'))
-const Permissao = React.lazy(
-  async () => import('./pages/sistema/permissoes.js')
+const Usuario = React.lazy(
+  async () => import('./pages/sistema/usuarios/usuarios.js')
 )
-const Grupos = React.lazy(async () => import('./pages/sistema/grupos.js'))
-const Profile = React.lazy(async () => import('./pages/profile.js'))
+const Permissao = React.lazy(
+  async () => import('./pages/sistema/permissoes/permissoes.js')
+)
+const Grupos = React.lazy(
+  async () => import('./pages/sistema/grupos/grupos.js')
+)
 
 /** Componente com todas a rotas da aplicativo */
 export function App() {
@@ -98,9 +105,7 @@ export function App() {
           <Route path="/outros/fileManager">
             <FileManager />
           </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
+
           <Route path="/login">
             <Login />
           </Route>

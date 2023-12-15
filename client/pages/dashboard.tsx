@@ -1,4 +1,4 @@
-import { TransferenciaMes } from '../features/dashboard/transferencia_mes.js'
+import { TransferenciaMes } from './dashboard/transferencia_mes.js'
 
 export function Dashboard() {
   return (
