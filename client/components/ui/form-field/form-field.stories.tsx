@@ -40,7 +40,7 @@ export const Default: Story = (props: any) => {
       <div className="flex flex-wrap gap-4">
         <FormField className="w-60">
           <Label
-            id="label1"
+            name="label1"
             required
             variant={props.variant}
           >
@@ -58,7 +58,7 @@ export const Default: Story = (props: any) => {
 
         <FormField className="w-40">
           <Label
-            id="label2"
+            name="label2"
             variant={props.variant}
           >
             L[a]bel 2
@@ -75,7 +75,7 @@ export const Default: Story = (props: any) => {
 
         <FormField className="w-60">
           <Label
-            id="label3"
+            name="label3"
             variant={props.variant}
           >
             La[b]el 2
@@ -97,7 +97,7 @@ export const Default: Story = (props: any) => {
 
         <FormField className="w-60">
           <Label
-            id="label6"
+            name="label6"
             variant={props.variant}
           >
             Label [6]
@@ -118,7 +118,7 @@ export const Default: Story = (props: any) => {
 
         <FormField className="w-40">
           <Label
-            id="label4"
+            name="label4"
             variant={props.variant}
           >
             Lab[e]l 2
@@ -135,7 +135,7 @@ export const Default: Story = (props: any) => {
 
         <FormField className="w-full">
           <Label
-            id="label5"
+            name="label5"
             variant={props.variant}
           >
             Label [5]

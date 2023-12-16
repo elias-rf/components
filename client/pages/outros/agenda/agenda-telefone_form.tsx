@@ -88,7 +88,7 @@ export const AgendaTelefoneForm = ({
           <FormField>
             <Label
               required
-              id="id"
+              name="id"
             >
               Ramal
             </Label>
@@ -103,7 +103,7 @@ export const AgendaTelefoneForm = ({
         </div>
         <div className="col-span-12 sm:col-span-10 lg:col-span-5">
           <FormField>
-            <Label id="name">Nome</Label>
+            <Label name="name">Nome</Label>
             <Input
               name="name"
               id="name"
@@ -115,7 +115,7 @@ export const AgendaTelefoneForm = ({
         </div>
         <div className="col-span-12 sm:col-span-4 lg:col-span-2">
           <FormField>
-            <Label id="id">Setor</Label>
+            <Label name="id">Setor</Label>
             <Input
               name="department"
               disabled={['none', 'view'].includes(status)}
@@ -126,7 +126,7 @@ export const AgendaTelefoneForm = ({
         </div>
         <div className="col-span-12 sm:col-span-8 lg:col-span-4">
           <FormField>
-            <Label id="id">Email</Label>
+            <Label name="id">Email</Label>
             <Input
               name="email"
               id="email"

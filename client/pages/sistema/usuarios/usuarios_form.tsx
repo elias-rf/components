@@ -114,7 +114,7 @@ export function UsuarioForm({
           <FormField>
             <Label
               required
-              id="kUsuario"
+              name="kUsuario"
             >
               Código
             </Label>
@@ -131,7 +131,7 @@ export function UsuarioForm({
           <FormField>
             <Label
               required
-              id="nome"
+              name="nome"
             >
               Usuario
             </Label>
@@ -148,7 +148,7 @@ export function UsuarioForm({
           <FormField>
             <Label
               required
-              id="NomeUsuario"
+              name="NomeUsuario"
             >
               Login
             </Label>
@@ -165,7 +165,7 @@ export function UsuarioForm({
           <FormField>
             <Label
               required
-              id="email"
+              name="email"
             >
               Email
             </Label>
@@ -182,7 +182,7 @@ export function UsuarioForm({
           <FormField>
             <Label
               required
-              id="Ativo"
+              name="Ativo"
             >
               Ativo
             </Label>
@@ -199,7 +199,7 @@ export function UsuarioForm({
           <FormField>
             <Label
               required
-              id="setor"
+              name="setor"
             >
               Grupo
             </Label>

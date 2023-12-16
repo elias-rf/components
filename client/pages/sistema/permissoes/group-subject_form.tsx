@@ -14,7 +14,7 @@ export function GroupSubjectForm({ form, disabled }: TGroupSubjectFormProps) {
         <FormField>
           <Label
             required
-            id="idGroup"
+            name="idGroup"
           >
             Grupo
           </Label>
@@ -29,7 +29,7 @@ export function GroupSubjectForm({ form, disabled }: TGroupSubjectFormProps) {
         <FormField>
           <Label
             required
-            id="idSubject"
+            name="idSubject"
           >
             Recurso
           </Label>

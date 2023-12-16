@@ -53,7 +53,7 @@ export function ClienteForm({
       <div className="grid grid-cols-12 gap-3">
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
           <FormField>
-            <Label id="CdCliente">Cód.</Label>
+            <Label name="CdCliente">Cód.</Label>
             <Input
               disabled={['none', 'edit', 'new'].includes(status)}
               id="CdCliente"
@@ -65,7 +65,7 @@ export function ClienteForm({
         </div>
         <div className="col-span-12 sm:col-span-10 lg:col-span-6">
           <FormField>
-            <Label id="RzSocial">Nome</Label>
+            <Label name="RzSocial">Nome</Label>
             <Input
               id="RzSocial"
               name="RzSocial"
@@ -77,7 +77,7 @@ export function ClienteForm({
         </div>
         <div className="col-span-12 sm:col-span-6 lg:col-span-4">
           <FormField>
-            <Label id="Cidade">Cidade</Label>
+            <Label name="Cidade">Cidade</Label>
             <Input
               id="Cidade"
               name="Cidade"
@@ -89,7 +89,7 @@ export function ClienteForm({
         </div>
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
           <FormField>
-            <Label id="Uf">UF</Label>
+            <Label name="Uf">UF</Label>
             <Input
               id="Uf"
               name="Uf"
@@ -101,7 +101,7 @@ export function ClienteForm({
         </div>
         <div className="col-span-12 sm:col-span-4 lg:col-span-2">
           <FormField>
-            <Label id="CGC">CNPJ</Label>
+            <Label name="CGC">CNPJ</Label>
             <Input
               id="CGC"
               name="CGC"
@@ -113,7 +113,7 @@ export function ClienteForm({
         </div>
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
           <FormField>
-            <Label id="CdVendedor">Vend</Label>
+            <Label name="CdVendedor">Vend</Label>
             <Input
               id="CdVendedor"
               name="CdVendedor"
@@ -125,7 +125,7 @@ export function ClienteForm({
         </div>
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
           <FormField>
-            <Label id="FgAtivo">Ativo</Label>
+            <Label name="FgAtivo">Ativo</Label>
             <Input
               id="FgAtivo"
               name="FgAtivo"
@@ -137,7 +137,7 @@ export function ClienteForm({
         </div>
         <div className="col-span-12 sm:col-span-8 lg:col-span-4">
           <FormField>
-            <Label id="EMail">EMail</Label>
+            <Label name="EMail">EMail</Label>
             <Input
               id="EMail"
               name="EMail"
@@ -149,7 +149,7 @@ export function ClienteForm({
         </div>
         <div className="col-span-12 sm:col-span-6 lg:col-span-4">
           <FormField>
-            <Label id="NumIdentidade">Identidade</Label>
+            <Label name="NumIdentidade">Identidade</Label>
             <Input
               id="NumIdentidade"
               name="NumIdentidade"
@@ -161,7 +161,7 @@ export function ClienteForm({
         </div>
         <div className="col-span-12 sm:col-span-6 lg:col-span-4">
           <FormField>
-            <Label id="DtCadastro">Data Cadastro</Label>
+            <Label name="DtCadastro">Data Cadastro</Label>
             <Input
               id="DtCadastro"
               name="DtCadastro"

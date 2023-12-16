@@ -21,7 +21,7 @@ export function Operacao() {
     <>
       <div className={'my-2 max-w-md'}>
         <FormField>
-          <Label id="operacao">Operação</Label>
+          <Label name="operacao">Operação</Label>
           <Select
             value={getFieldId('operacao', operacao) || ''}
             onChange={handleSelect}

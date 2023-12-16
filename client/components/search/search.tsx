@@ -143,7 +143,7 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
       <div className="flex flex-wrap items-end space-x-2 sm:flex-nowrap">
         <div className="basis-full">
           <FormField>
-            <Label id="field">Campo</Label>
+            <Label name="field">Campo</Label>
             <Select
               id="field"
               value={fieldSelect}
@@ -162,7 +162,7 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
         </div>
         <div className="basis-full">
           <FormField>
-            <Label id="equality">Igualdade</Label>
+            <Label name="equality">Igualdade</Label>
             <Select
               id="equality"
               value={equalitySelect}
@@ -183,7 +183,7 @@ export function Search({ schema = [], where = [], onWhere }: TSearchProps) {
         </div>
         <div className="basis-full">
           <FormField>
-            <Label id="value">Valor</Label>
+            <Label name="value">Valor</Label>
             <Input
               id="value"
               value={valueInput}

@@ -26,30 +26,21 @@ describe('usuarioController', () => {
     tracker.on.select('tbl_Seguranca_Usuario').response([
       {
         NomeUsuario: 'nome',
+        nome: 'Nome',
         hash: 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',
       },
     ])
 
-    const rsp = await usuarioController.usuario_login(
-      {
-        user: 'user1',
-        password: '123',
-      },
-      {
-        reply: {
-          jwtSign() {
-            return 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3'
-          },
-          setCookie() {},
-        },
-      }
-    )
+    const rsp = await usuarioController.usuario_login({
+      user: 'user1',
+      password: '123',
+    })
 
     expect(rsp).toEqual({
       group_ids: '',
-      nome: '',
+      nome: 'Nome',
       nome_login: 'nome',
-      token: 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',
+      token: expect.anything(),
       usuario_id: 0,
     })
 

@@ -57,7 +57,7 @@ export function Transferencia() {
     <>
       <div className="justifyContent-start alignItems-center flex flex-row space-x-2">
         <div>
-          <Label id="quantidade">Quantidade Física</Label>
+          <Label name="quantidade">Quantidade Física</Label>
           <Input
             id="quantidade"
             name="quantidade"
@@ -69,7 +69,7 @@ export function Transferencia() {
       </div>
       <div className="justifyContent-start alignItems-center flex flex-row space-x-2">
         <div>
-          <Label id="serial">Serial</Label>
+          <Label name="serial">Serial</Label>
           <Input
             value={serial}
             onInput={addList}

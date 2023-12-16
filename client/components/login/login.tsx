@@ -24,11 +24,11 @@ export function Login({ onInput }: TLoginProps) {
       title="Login"
       closeable={false}
     >
-      <div className="flex flex-col gap-4 pb-4 m-4 w-60 alignItems-center">
+      <div className="alignItems-center m-4 flex w-60 flex-col gap-4 pb-4">
         <FormField>
           <Label
             required
-            id="user"
+            name="user"
           >
             Usuário
           </Label>
@@ -43,7 +43,7 @@ export function Login({ onInput }: TLoginProps) {
         <FormField>
           <Label
             required
-            id="password"
+            name="password"
           >
             Senha
           </Label>

@@ -37,7 +37,7 @@ export function Textarea({
   return (
     <div>
       <Label
-        id={id}
+        name={id}
         required={required}
         disabled={disabled}
         variant={variant}
@@ -47,17 +47,17 @@ export function Textarea({
       <textarea
         rows={rows}
         className={cn(
-          'p-1.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500',
+          'block w-full rounded-lg border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500',
           {
-            'text-gray-600 bg-gray-100 cursor-not-allowed dark:text-gray-400':
+            'cursor-not-allowed bg-gray-100 text-gray-600 dark:text-gray-400':
               disabled,
           },
           {
-            'bg-green-50 border-green-500 text-green-900 placeholder-green-700 focus:ring-green-500 focus:border-green-500 dark:bg-green-100 dark:border-green-400':
+            'border-green-500 bg-green-50 text-green-900 placeholder-green-700 focus:border-green-500 focus:ring-green-500 dark:border-green-400 dark:bg-green-100':
               variant === 'success',
           },
           {
-            'bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:bg-red-100 dark:border-red-400':
+            'border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-400 dark:bg-red-100':
               variant === 'error',
           }
         )}

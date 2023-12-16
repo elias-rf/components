@@ -88,13 +88,13 @@ export function Permissions({
         show={show}
         title="Segurança"
       >
-        <div className="flex p-4 space-x-4">
+        <div className="flex space-x-4 p-4">
           <div>
             <p>Grupos</p>
             {groupList?.map((group) => (
               <ListGroup
                 key={group.kGrupo}
-                className="overflow-y-auto max-h-96"
+                className="max-h-96 overflow-y-auto"
               >
                 <ListGroup.Item
                   active={group.kGrupo === groupCurrent}
@@ -126,7 +126,7 @@ export function Permissions({
                     />
                     <Label
                       className="align-middle"
-                      id={permission}
+                      name={permission}
                     >
                       {permissions[permission]}
                     </Label>

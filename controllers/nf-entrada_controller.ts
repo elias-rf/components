@@ -13,6 +13,8 @@ import type { TSchema } from '@/schemas/schema.type.js'
 import { day } from '@/utils/date/day.js'
 import { isEmpty } from '@/utils/identify/is-empty.js'
 
+// verificar: falso já lançado 20311000
+
 export const NfMestre: TSchema = {
   table: 'NfMestre',
   primary: ['CdEmpresa', 'Modelo', 'NroNf', 'Serie'] as const,

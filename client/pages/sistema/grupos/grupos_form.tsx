@@ -88,7 +88,7 @@ export const GruposForm = ({
           <FormField>
             <Label
               required
-              id="kGrupo"
+              name="kGrupo"
             >
               Ramal
             </Label>
@@ -103,7 +103,7 @@ export const GruposForm = ({
           <FormField>
             <Label
               required
-              id="NomeGrupo"
+              name="NomeGrupo"
             >
               Nome
             </Label>

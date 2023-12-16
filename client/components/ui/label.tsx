@@ -7,14 +7,14 @@ type TLabelProps = {
   required?: boolean
   disabled?: boolean
   variant?: 'success' | 'error' | 'none'
-  id: string
+  name: string
   className?: string
   accessKey?: string
 }
 export function Label({
   children,
   required,
-  id,
+  name,
   disabled,
   variant,
   className,
@@ -22,10 +22,10 @@ export function Label({
   if (!children) return null
   return (
     <label
-      htmlFor={id}
+      htmlFor={name}
       accessKey={getAccessKey(children).accessKey}
       className={cn(
-        'pl-1.5 block text-sm text-gray-500 dark:text-gray-400',
+        'block pl-1.5 text-sm text-gray-500 dark:text-gray-400',
         { 'text-gray-400 dark:text-gray-500': disabled },
         { 'text-green-700 dark:text-green-500': variant === 'success' },
         { 'text-red-700 dark:text-red-500': variant === 'error' },

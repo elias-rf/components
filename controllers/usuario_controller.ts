@@ -34,6 +34,7 @@ export type TUsuarioKeys = (typeof tbl_Seguranca_Usuario.primary)[number]
 function usuarioControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TUsuarioFields, TUsuarioKeys>(db, schema)
 
+  /** ME */
   async function usuario_me(_: void, ctx?: any) {
     const resp = ctx.user
     if (resp && resp.iat) {
@@ -43,6 +44,7 @@ function usuarioControllerFactory(db: TAdapterKnex, schema: TSchema) {
     return (resp as TCurrentUser) || 'NOT_LOGGED'
   }
 
+  /** LOGIN */
   async function usuario_login(
     { user, password }: { user: string; password: string },
     ctx?: any
