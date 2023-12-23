@@ -1,5 +1,5 @@
 import { Table } from '@/client/components/table/table.js'
-import { Button } from '@/client/components/ui/button.js'
+import { Button } from '@/client/components/ui/button/button.js'
 import { Title } from '@/client/components/ui/title.js'
 import { formButtonStatus } from '@/client/lib/form-button-status.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
@@ -109,7 +109,7 @@ export function GroupSubjectTable({
   return (
     <>
       <div className="flex flex-col space-y-2">
-        <div className="container flex flex-row justify-between align-center">
+        <div className="align-center container flex flex-row justify-between">
           <Title>Permissões</Title>
           <div className="flex flex-row space-x-2">
             {status === 'new' ? (
@@ -151,7 +151,7 @@ export function GroupSubjectTable({
         >
           {() => (
             <div className="border-b-2 border-black dark:border-white">
-              <div className="flex my-2 space-x-2 flex-rows">
+              <div className="flex-rows my-2 flex space-x-2">
                 <Button
                   onClick={onEdit}
                   disabled={frmStatus.editDisabled}
@@ -175,7 +175,7 @@ export function GroupSubjectTable({
                   disabled={frmStatus.formDisabled}
                 />
               </div>
-              <div className="flex justify-end my-2 space-x-2 flex-rows align-center">
+              <div className="flex-rows align-center my-2 flex justify-end space-x-2">
                 <ButtonsSaveCancel
                   onSave={onSave}
                   onCancel={onCancel}

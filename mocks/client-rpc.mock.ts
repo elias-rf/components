@@ -1,14 +1,11 @@
 import type { TModules } from '@/controllers/index.js'
-import { registerController } from '@/controllers/index.js'
+import { rpcServer } from '@/controllers/index.js'
 import {
   JSONRPCClient,
   JSONRPCServer,
   TypedJSONRPCClient,
   type TypedJSONRPCServer,
 } from 'json-rpc-2.0'
-
-const server: TypedJSONRPCServer<TModules> = new JSONRPCServer()
-registerController(server)
 
 let endpoint = '/api/rpc2'
 
@@ -27,7 +24,7 @@ export const clientRpcMock: TypedJSONRPCClient<TModules> = new JSONRPCClient(
       user: {},
     }
 
-    const jsonRPCResponse = await server.receive(jsonRPCRequest, context)
+    const jsonRPCResponse = await rpcServer.receive(jsonRPCRequest, context)
     if (jsonRPCResponse) {
       return clientRpcMock.receive(jsonRPCResponse)
     } else if (jsonRPCRequest.id !== undefined) {

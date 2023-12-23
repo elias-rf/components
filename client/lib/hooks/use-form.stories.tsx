@@ -1,5 +1,5 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
-import { Button } from '@/client/components/ui/button.js'
+import { Button } from '@/client/components/ui/button/button.js'
 import { FormField } from '@/client/components/ui/form-field/form-field.js'
 import { Helper } from '@/client/components/ui/helper.js'
 import { Input } from '@/client/components/ui/input/input.js'

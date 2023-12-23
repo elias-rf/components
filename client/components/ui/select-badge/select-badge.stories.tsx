@@ -2,7 +2,7 @@ import { JsonView } from '@/client/components/json-view/json-view.js'
 import {
   SelectBadge,
   TSelectBadgeProps,
-} from '@/client/components/ui/select-badge.js'
+} from '@/client/components/ui/select-badge/select-badge.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 import React from 'react'
@@ -36,7 +36,7 @@ export default {
 export const Default: Story<TSelectBadgeProps> = (props: TSelectBadgeProps) => {
   const [vlr, setVlr] = React.useState<string[]>([])
   return (
-    <div className="flex flex-col w-full space-y-4">
+    <div className="flex w-full flex-col space-y-4">
       <SelectBadge
         {...props}
         value={vlr}

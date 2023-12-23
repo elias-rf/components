@@ -2,6 +2,7 @@ import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
 import { knexMockMsql } from '@/mocks/connections.mock.js'
 import { getTracker } from '@/mocks/database.mock.js'
 import { knexMockHistory } from '@/mocks/knex-mock-history.js'
+import { TRpcContext } from '@/server/routes/rpc2.js'
 import { beforeEach, describe, expect, it, test } from 'vitest'
 import { usuarioController } from './usuario_controller.js'
 
@@ -15,10 +16,12 @@ describe('usuarioController', () => {
 
   it('me', async () => {
     const rsp = await usuarioController.usuario_me(undefined, {
-      user: { usuario_id: '1' },
-    })
+      user: { usuario_id: 1 },
+      req: {},
+      res: {},
+    } as TRpcContext)
     expect(rsp).toEqual({
-      usuario_id: '1',
+      usuario_id: 1,
     })
   })
 

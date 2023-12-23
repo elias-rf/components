@@ -2,7 +2,7 @@ import { Table } from '@/client/components/table/table.js'
 import { usuarioColumns } from '@/client/pages/sistema/usuarios/components/usuario_columns.js'
 import { TUsuarioStore } from '@/client/pages/sistema/usuarios/usuarios_store.js'
 import { TAuthStore } from '@/client/store/auth_store.js'
-import { usePageSize } from '@/client/store/page-size.js'
+import { pageSizeState } from '@/client/store/page-size-store.js'
 import {
   TUsuarioFields,
   TUsuarioKeys,
@@ -18,7 +18,7 @@ export function UsuarioTable({
   store: TUsuarioStore
   auth: TAuthStore
 }) {
-  const pageHeight = usePageSize((state) => state.height * 0.6)
+  const pageHeight = pageSizeState.value.height * 0.6
 
   const fetchList = store.use.fetchList()
   const list = store.use.list()

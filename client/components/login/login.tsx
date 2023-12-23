@@ -1,9 +1,9 @@
-import { Button } from '@/client/components/ui/button.js'
+import { Button } from '@/client/components/ui/button/button.js'
 import { FormField } from '@/client/components/ui/form-field/form-field.js'
-import { Input } from '@/client/components/ui/input/input.js'
+import { InputForm } from '@/client/components/ui/input/input-form.js'
 import { Label } from '@/client/components/ui/label.js'
 import { Modal } from '@/client/components/ui/modal.js'
-import { useForm } from '@/client/lib/hooks/use-form.js'
+import { useForm } from 'react-hook-form'
 
 export type TLoginProps = {
   onInput: ({ user, password }: { user: string; password: string }) => void
@@ -11,12 +11,8 @@ export type TLoginProps = {
 
 export function Login({ onInput }: TLoginProps) {
   const form = useForm({
-    value: { user: '', password: '' },
+    defaultValues: { user: '', password: '' },
   })
-
-  function handleInput() {
-    onInput(form.value)
-  }
 
   return (
     <Modal
@@ -32,12 +28,7 @@ export function Login({ onInput }: TLoginProps) {
           >
             Usuário
           </Label>
-          <Input
-            id="user"
-            name="user"
-            value={form.value.user}
-            onInput={form.handleChange}
-          />
+          <InputForm {...form.register('user')} />
         </FormField>
 
         <FormField>
@@ -47,16 +38,13 @@ export function Login({ onInput }: TLoginProps) {
           >
             Senha
           </Label>
-          <Input
-            id="password"
-            name="password"
+          <InputForm
+            {...form.register('password')}
             type="password"
-            value={form.value.password}
-            onInput={form.handleChange}
           />
         </FormField>
 
-        <Button onClick={handleInput}>Entrar</Button>
+        <Button onClick={form.handleSubmit(onInput)}>Entrar</Button>
       </div>
     </Modal>
   )

@@ -1,4 +1,3 @@
-import { fetcherMock } from '@/mocks/fetcher-mock.js'
 import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
 
 import { authStore } from '@/client/store/auth_store.js'

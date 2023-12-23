@@ -1,6 +1,6 @@
 import { MoonIcon } from '@/client/components/icons/moon-icon.js'
 import { SunIcon } from '@/client/components/icons/sun-icon.js'
-import { Button } from '@/client/components/ui/button.js'
+import { Button } from '@/client/components/ui/button/button.js'
 import { useEffect, useState } from 'react'
 import { useEffectOnce } from 'usehooks-ts'
 
@@ -35,8 +35,8 @@ export function DarkToggle() {
     <>
       <Button
         onClick={handleToggle}
-        color="light"
-        className="p-1 bg-transparent"
+        color="ghost"
+        className="bg-transparent p-1"
       >
         {dark ? <MoonIcon /> : <SunIcon />}
       </Button>

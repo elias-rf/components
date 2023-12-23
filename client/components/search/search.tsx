@@ -1,4 +1,4 @@
-import { Button } from '@/client/components/ui/button.js'
+import { Button } from '@/client/components/ui/button/button.js'
 import { Chip } from '@/client/components/ui/chip.js'
 import { FormField } from '@/client/components/ui/form-field/index.js'
 import { Input } from '@/client/components/ui/input/index.js'

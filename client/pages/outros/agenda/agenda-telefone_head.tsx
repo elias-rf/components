@@ -1,4 +1,4 @@
-import { Button } from '@/client/components/ui/button.js'
+import { Button } from '@/client/components/ui/button/button.js'
 import { Title } from '@/client/components/ui/title.js'
 import { agendaTelefoneStore } from '@/client/pages/outros/agenda/agenda-telefone_store.js'
 

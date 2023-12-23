@@ -1,4 +1,4 @@
-import { Button } from '@/client/components/ui/button.js'
+import { Button } from '@/client/components/ui/button/button.js'
 import { Input } from '@/client/components/ui/input/input.js'
 import { Label } from '@/client/components/ui/label.js'
 import { Title } from '@/client/components/ui/title.js'

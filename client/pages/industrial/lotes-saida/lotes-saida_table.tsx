@@ -2,7 +2,7 @@ import { Table } from '@/client/components/table/table.js'
 import { Input } from '@/client/components/ui/input/input.js'
 import { lotesSaidaColumns } from '@/client/pages/industrial/lotes-saida/components/lotes-saida_columns.js'
 import { lotesSaidaStore } from '@/client/pages/industrial/lotes-saida/lotes-saida_store.js'
-import { usePageSize } from '@/client/store/page-size.js'
+import { pageSizeState } from '@/client/store/page-size-store.js'
 import {
   TNfSaidaLoteFields,
   TNfSaidaLoteKeys,
@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 
 export function LotesSaidaTable() {
-  const pageHeight = usePageSize((state) => state.height * 0.9)
+  const pageHeight = pageSizeState.value.height * 0.9
   const [controle, setControle] = useState('')
   const fetchList = lotesSaidaStore.use.fetchList()
   const list = lotesSaidaStore.use.list()

@@ -37,7 +37,7 @@ export const Default: Story = () => {
       <Page>
         <ClienteTable
           store={clienteStore}
-          auth={authStore}
+          height={'300px'}
         />
         <StoreViewer
           store={clienteStore}

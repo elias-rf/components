@@ -1,5 +1,6 @@
-import { registerController, type TModules } from '@/controllers/index.js'
+import { rpcServer } from '@/controllers/index.js'
 import { RequestAuth } from '@/server/middles/auth-middle.js'
+import { TCurrentUser } from '@/types/index.js'
 import { Response } from 'express'
 import {
   JSONRPCRequest,
@@ -7,20 +8,25 @@ import {
   type TypedJSONRPCServer,
 } from 'json-rpc-2.0'
 
-const server: TypedJSONRPCServer<TModules> = new JSONRPCServer()
-registerController(server)
+export type TRpcContext = {
+  req: RequestAuth
+  res: Response
+  user: TCurrentUser & { iat?: number; exp?: number }
+}
 
 export const rpcRoute = {
   post: async (req: RequestAuth, res: Response) => {
     const jsonRPCRequest = req.body as JSONRPCRequest
 
+    console.log('req', req.cookies)
+
     const context: any = {
-      request: req,
-      reply: res,
+      req,
+      res,
       user: req.auth,
     }
 
-    const jsonRPCResponse = await server.receive(jsonRPCRequest, context)
+    const jsonRPCResponse = await rpcServer.receive(jsonRPCRequest, context)
     if (jsonRPCResponse) {
       res.send(jsonRPCResponse)
     } else {

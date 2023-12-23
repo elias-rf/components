@@ -1,0 +1,26 @@
+@hostname = http://localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+
+
+
+### LOGIN
+POST {{host}}/api/rpc2
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "id": "1",
+  "method": "usuario_login",
+  "params":{"user":"elias","password":"jkl"}
+}
+
+### ordemProducaoOperacao/produto
+POST {{host}}/api/rpc2
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "method": "usuario_list",
+  "id": "1"
+}

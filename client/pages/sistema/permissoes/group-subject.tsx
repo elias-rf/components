@@ -1,4 +1,3 @@
-import { useForm } from '@/client/lib/hooks/use-form.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { GroupSubjectTable } from '@/client/pages/sistema/permissoes/group-subject_table.js'
 import {
@@ -15,6 +14,7 @@ import type {
 } from '@/types/index.js'
 import { deepEqual } from '@/utils/object/deep-equal.js'
 import React from 'react'
+import { useForm } from 'react-hook-form'
 
 export type TGroupSubjectList = any
 
@@ -30,7 +30,7 @@ const dataClear = {
  */
 export function GroupSubject() {
   // Form
-  const form = useForm({ value: dataClear })
+  const form = useForm({ defaultValues: dataClear })
   const [status, setStatus] = React.useState<TFormStatus>('view')
   // List
   const [selection, setSelection] = React.useState<
@@ -102,12 +102,12 @@ export function GroupSubject() {
   async function handleSave() {
     if (status === 'edit') {
       await rpc.request('groupSubject_update', {
-        data: form.value,
+        data: form.getValues(),
         where: selection,
       })
     }
     if (status === 'new') {
-      await rpc.request('groupSubject_create', { data: form.value })
+      await rpc.request('groupSubject_create', { data: form.getValues() })
     }
     await getList(where, orderBy)
     setStatus('view')

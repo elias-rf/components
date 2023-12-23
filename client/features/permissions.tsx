@@ -1,6 +1,6 @@
 import { ShieldIcon } from '@/client/components/icons/shield-icon.js'
-import { Button } from '@/client/components/ui/button.js'
-import { CheckBox } from '@/client/components/ui/check-box.js'
+import { Button } from '@/client/components/ui/button/button.js'
+import { CheckBox } from '@/client/components/ui/check-box/check-box.js'
 import { Label } from '@/client/components/ui/label.js'
 import { ListGroup } from '@/client/components/ui/list-group/list-group.js'
 import { Modal } from '@/client/components/ui/modal.js'
@@ -76,7 +76,7 @@ export function Permissions({
   return (
     <>
       <Button
-        color="light"
+        color="ghost"
         onClick={() => setShow(true)}
         className="px-2"
         size="sm"

@@ -1,16 +1,23 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
-import { CheckBox } from '@/client/components/ui/check-box.js'
-import { Combobox } from '@/client/components/ui/combobox/combobox.js'
+import { CheckBoxForm } from '@/client/components/ui/check-box/check-box-form.js'
+import { CheckBox } from '@/client/components/ui/check-box/check-box.js'
+import { ComboboxForm } from '@/client/components/ui/combo-box/combo-box-form.js'
+import { Combobox } from '@/client/components/ui/combo-box/combo-box.js'
 import { FormField } from '@/client/components/ui/form-field/form-field.js'
 import { Helper } from '@/client/components/ui/helper.js'
+import { InputForm } from '@/client/components/ui/input/input-form.js'
 import { Input } from '@/client/components/ui/input/input.js'
 import { Label } from '@/client/components/ui/label.js'
-import { SelectBadge } from '@/client/components/ui/select-badge.js'
+import { SelectBadgeForm } from '@/client/components/ui/select-badge/select-badge-form.js'
+import { SelectBadge } from '@/client/components/ui/select-badge/select-badge.js'
+import { SelectForm } from '@/client/components/ui/select/select-form.js'
 import { Select } from '@/client/components/ui/select/select.js'
-import { Toggle } from '@/client/components/ui/toggle.js'
+import { ToggleForm } from '@/client/components/ui/toggle/toggle-form.js'
+import { Toggle } from '@/client/components/ui/toggle/toggle.js'
 import '@/client/index.css'
 import { useStateMutable } from '@/client/lib/hooks/use-state-mutable.js'
 import type { Story } from '@ladle/react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 export default {
   title: 'Components/UI/form field',
@@ -28,143 +35,129 @@ export default {
 }
 
 export const Default: Story = (props: any) => {
-  const fld1 = useStateMutable({ value: '' })
-  const fld2 = useStateMutable({ value: true })
-  const fld3 = useStateMutable({ value: '' })
-  const fld4 = useStateMutable({ value: true })
-  const fld5 = useStateMutable({ value: [] })
-  const fld6 = useStateMutable({ value: '' })
+  const form = useForm<{
+    fld1: string
+    fld2: boolean
+    fld3: string
+    fld4: boolean
+    fld5: string
+    fld6: string
+  }>({
+    defaultValues: {
+      fld1: '',
+      fld2: true,
+      fld3: '',
+      fld4: true,
+      fld5: '',
+      fld6: '',
+    },
+  })
 
   return (
     <>
       <div className="flex flex-wrap gap-4">
         <FormField className="w-60">
           <Label
-            name="label1"
+            name="fld1"
             required
             variant={props.variant}
           >
             [L]abel 1
           </Label>
-          <Input
-            id="label1"
-            value={fld1.value}
-            onInput={(e: any) => (fld1.value = e)}
-            variant={props.variant}
-            disabled={props.disabled}
-          />
+          <InputForm {...form.register('fld1')} />
           <Helper variant={props.variant}>{props.helper}</Helper>
         </FormField>
 
         <FormField className="w-40">
           <Label
-            name="label2"
+            name="fld2"
             variant={props.variant}
           >
             L[a]bel 2
           </Label>
-          <Toggle
-            id="label2"
-            value={fld2.value}
-            onChange={(e: any) => (fld2.value = e)}
-            variant={props.variant}
-            disabled={props.disabled}
-          />
+          <ToggleForm {...form.register('fld2')} />
           <Helper variant={props.variant}>{props.helper}</Helper>
         </FormField>
 
-        <FormField className="w-60">
-          <Label
-            name="label3"
-            variant={props.variant}
-          >
-            La[b]el 2
-          </Label>
-          <Combobox
-            id="label3"
-            value={fld3.value}
-            variant={props.variant}
-            onChange={(e: any) => (fld3.value = e)}
-            options={[
-              { label: 'Option 1', value: '1' },
-              { label: 'Option 2', value: '2' },
-              { label: 'Option 3', value: '3' },
-            ]}
-            disabled={props.disabled}
-          ></Combobox>
-          <Helper variant={props.variant}>{props.helper}</Helper>
-        </FormField>
+        {
+          <FormField className="w-60">
+            <Label
+              name="fld3"
+              variant={props.variant}
+            >
+              La[b]el 2
+            </Label>
+            <ComboboxForm
+              {...form.register('fld3')}
+              options={[
+                ['Option 1', '1'],
+                ['Option 2', '2'],
+                ['Option 3', '3'],
+              ]}
+              disabled={props.disabled}
+            ></ComboboxForm>
+            <Helper variant={props.variant}>{props.helper}</Helper>
+          </FormField>
+        }
 
         <FormField className="w-60">
           <Label
-            name="label6"
+            name="fld6"
             variant={props.variant}
           >
             Label [6]
           </Label>
-          <Select
-            id="label6"
-            value={fld6.value}
+          <SelectForm
+            {...form.register('fld6')}
             variant={props.variant}
-            onChange={(e: any) => (fld6.value = e)}
             disabled={props.disabled}
           >
             <Select.Option value="US">United States</Select.Option>
             <Select.Option value="CA">Canada</Select.Option>
             <Select.Option value="FR">France</Select.Option>
-          </Select>
+          </SelectForm>
           <Helper variant={props.variant}>{props.helper}</Helper>
         </FormField>
 
         <FormField className="w-40">
           <Label
-            name="label4"
+            name="fld4"
             variant={props.variant}
           >
             Lab[e]l 2
           </Label>
-          <CheckBox
-            id="label4"
-            value={fld4.value}
+          <CheckBoxForm
+            {...form.register('fld4')}
             variant={props.variant}
             disabled={props.disabled}
-            onChange={(e: any) => (fld4.value = e)}
-          ></CheckBox>
+          ></CheckBoxForm>
           <Helper variant={props.variant}>{props.helper}</Helper>
         </FormField>
 
         <FormField className="w-full">
           <Label
-            name="label5"
+            name="fld5"
             variant={props.variant}
           >
             Label [5]
           </Label>
-          <SelectBadge
-            id="label5"
+          <SelectBadgeForm
             options={[
-              { label: '', value: '' },
-              { label: 'Option 1', value: '1' },
-              { label: 'Option 2', value: '2' },
-              { label: 'Option 3', value: '3' },
+              ['Option 1', '1'],
+              ['Option 2', '2'],
+              ['Option 3', '3'],
             ]}
-            value={fld5.value}
+            {...form.register('fld5')}
             variant={props.variant}
             disabled={props.disabled}
-            onChange={(e: any) => (fld5.value = e.sort())}
-          ></SelectBadge>
+          ></SelectBadgeForm>
           <Helper variant={props.variant}>{props.helper}</Helper>
         </FormField>
       </div>
       <JsonView
         data={{
           props,
-          fld1: fld1.value,
-          fld2: fld2.value,
-          fld3: fld3.value,
-          fld4: fld4.value,
-          fld5: fld5.value,
-          fld6: fld6.value,
+          vlr: form.watch(),
         }}
       />
     </>

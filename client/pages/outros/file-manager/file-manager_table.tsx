@@ -1,7 +1,6 @@
 import { BreadCrumb } from '@/client/components/ui/bread-crumb.js'
 import { cn } from '@/client/lib/cn.js'
 import { fileManagerStore } from '@/client/pages/outros/file-manager/file-manager_store.js'
-import { usePageSize } from '@/client/store/page-size.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
@@ -9,8 +8,6 @@ import { toast } from 'react-hot-toast'
  * Agenda de Ramais
  */
 export function FileManagerTable() {
-  const pageHeight = usePageSize((state) => state.height * 0.7)
-
   const dirList = fileManagerStore.use.dirList()
   const fetchDir = fileManagerStore.use.fetchDir()
   const fetchStat = fileManagerStore.use.fetchStat()

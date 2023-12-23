@@ -4,6 +4,7 @@ import { loggerMiddle } from '@/server/middles/logger-middle.js'
 import { routes } from '@/server/routes/index.js'
 import compression from 'compression'
 import history from 'connect-history-api-fallback'
+import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import express from 'express'
 import * as path from 'path'
@@ -14,6 +15,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
 export const app = express()
 
+app.use(cookieParser())
 app.map = (mapRoute: { [key: string]: any }, route: string) => {
   route = route || ''
 
@@ -49,7 +51,7 @@ app.map = (mapRoute: { [key: string]: any }, route: string) => {
 }
 
 app.set('config', config)
-app.use(cors()) // cliente não precisa de estar no mesmo endereço
+app.use(cors({ origin: '*', credentials: true })) // cliente não precisa de estar no mesmo endereço
 
 app.use(
   history({

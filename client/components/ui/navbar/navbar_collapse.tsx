@@ -12,7 +12,7 @@ export function NavbarCollapse({ children }: { children: ReactNode }) {
       })}
       id="navbar-default"
     >
-      <ul className="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg md:p-0 md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+      <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 font-medium dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0 md:dark:bg-gray-900">
         {children}
       </ul>
     </div>

@@ -1,12 +1,12 @@
-import { Button } from '@/client/components/ui/button.js'
+import { Button } from '@/client/components/ui/button/button.js'
 import { FormField } from '@/client/components/ui/form-field/form-field.js'
-import { Input } from '@/client/components/ui/input/input.js'
+import { InputForm } from '@/client/components/ui/input/input-form.js'
 import { Label } from '@/client/components/ui/label.js'
-import { useForm } from '@/client/lib/hooks/use-form.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/agenda-telefone_store.js'
 import { TAuthStore } from '@/client/store/auth_store.js'
 import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 
 export const AgendaTelefoneForm = ({
@@ -27,7 +27,7 @@ export const AgendaTelefoneForm = ({
   const record = store.use.record()
   const setRecord = store.use.setRecord()
 
-  const form = useForm({ value: recordClear })
+  const form = useForm({ defaultValues: recordClear })
 
   useEffect(() => {
     form.reset(record)
@@ -56,7 +56,7 @@ export const AgendaTelefoneForm = ({
 
   async function handleDel() {
     const response = await confirm(
-      'Tem certeza que deseja apagar ' + form?.value.name
+      'Tem certeza que deseja apagar ' + form?.getValues('name')
     )
     if (response === 'option1') {
       onDelete()
@@ -92,47 +92,36 @@ export const AgendaTelefoneForm = ({
             >
               Ramal
             </Label>
-            <Input
-              id="id"
-              name="id"
+            <InputForm
               disabled={['none', 'view'].includes(status)}
-              onInput={form.handleChange}
-              value={form.value.id}
+              {...form.register('id')}
             />
           </FormField>
         </div>
         <div className="col-span-12 sm:col-span-10 lg:col-span-5">
           <FormField>
             <Label name="name">Nome</Label>
-            <Input
-              name="name"
-              id="name"
+            <InputForm
               disabled={['none', 'view'].includes(status)}
-              value={form.value.name}
-              onInput={form.handleChange}
+              {...form.register('name')}
             />
           </FormField>
         </div>
         <div className="col-span-12 sm:col-span-4 lg:col-span-2">
           <FormField>
             <Label name="id">Setor</Label>
-            <Input
-              name="department"
+            <InputForm
               disabled={['none', 'view'].includes(status)}
-              value={form.value.department}
-              onInput={form.handleChange}
+              {...form.register('department')}
             />
           </FormField>
         </div>
         <div className="col-span-12 sm:col-span-8 lg:col-span-4">
           <FormField>
             <Label name="id">Email</Label>
-            <Input
-              name="email"
-              id="email"
+            <InputForm
               disabled={['none', 'view'].includes(status)}
-              value={form.value.email}
-              onInput={form.handleChange}
+              {...form.register('email')}
             />
           </FormField>
         </div>
@@ -140,7 +129,7 @@ export const AgendaTelefoneForm = ({
       <div className="flex-rows align-center my-2 flex justify-end space-x-2">
         <Button
           onClick={() => {
-            setRecord(form.value)
+            setRecord(form.getValues())
             onSave()
           }}
           disabled={['none', 'view'].includes(status)}

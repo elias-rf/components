@@ -18,8 +18,8 @@ export const InputForm = React.forwardRef<HTMLInputElement, TInputProps>(
       className,
       disabled = false,
       name,
-      onChange,
       onBlur,
+      onChange,
       type = 'text',
       variant,
     },
@@ -27,19 +27,19 @@ export const InputForm = React.forwardRef<HTMLInputElement, TInputProps>(
   ) => {
     return (
       <input
-        type={type}
-        id={name}
-        name={name}
         className={cn(
           themeInput[variant || 'default'],
           'block h-8 w-full rounded-lg border px-1.5 text-sm',
           disabled ? themeInput.disabled : null,
           className
         )}
-        onChange={onChange}
-        onBlur={onBlur}
         disabled={disabled}
+        id={name}
+        name={name}
+        onBlur={onBlur}
+        onChange={onChange}
         ref={ref}
+        type={type}
       />
     )
   }

@@ -3,6 +3,7 @@ import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
 import { TAdapterKnex } from '@/orm/adapter-knex.js'
 import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
+import { TRpcContext } from '@/server/routes/rpc2.js'
 import type { TCurrentUser } from '@/types/index.js'
 import { day } from '@/utils/date/day.js'
 import { passwordVerify } from '@/utils/string/password-verify.js'
@@ -35,8 +36,8 @@ function usuarioControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TUsuarioFields, TUsuarioKeys>(db, schema)
 
   /** ME */
-  async function usuario_me(_: void, ctx?: any) {
-    const resp = ctx.user
+  async function usuario_me(_: void, ctx?: TRpcContext) {
+    const resp: any = { ...ctx?.user }
     if (resp && resp.iat) {
       resp.iat = day.unix(resp.iat).format('YYYY-MM-DDTHH:mm:ss')
       resp.exp = day.unix(resp.exp).format('YYYY-MM-DDTHH:mm:ss')
@@ -47,7 +48,7 @@ function usuarioControllerFactory(db: TAdapterKnex, schema: TSchema) {
   /** LOGIN */
   async function usuario_login(
     { user, password }: { user: string; password: string },
-    ctx?: any
+    ctx?: TRpcContext
   ): Promise<TCurrentUser> {
     if (!user) {
       throw new Error('Usuário não informado')
@@ -84,6 +85,14 @@ function usuarioControllerFactory(db: TAdapterKnex, schema: TSchema) {
     resp.token = jwtService.sign(resp, config.auth.secret, {
       expiresIn: config.auth.expiration,
     })
+
+    ctx?.res.cookie('token', resp.token, {
+      httpOnly: true,
+      sameSite: 'none',
+      // secure: true,
+      maxAge: config.auth.expiration * 1000,
+    })
+
     return resp
   }
 

@@ -2,7 +2,7 @@ import { Table } from '@/client/components/table/table.js'
 import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/agenda-telefone_store.js'
 import { agendaTelefoneColumns } from '@/client/pages/outros/agenda/components/agenda-telefone_columns.js'
 import { TAuthStore } from '@/client/store/auth_store.js'
-import { usePageSize } from '@/client/store/page-size.js'
+import { pageSizeState } from '@/client/store/page-size-store.js'
 import {
   TAgendaTelefoneFields,
   TAgendaTelefoneKeys,
@@ -21,7 +21,7 @@ export function AgendaTelefoneTable({
   store: TAgendaTelefoneStore
   auth: TAuthStore
 }) {
-  const pageHeight = usePageSize((state) => state.height * 0.7)
+  const pageHeight = pageSizeState.value.height * 0.7
 
   const fetchList = store.use.fetchList()
   const list = store.use.list()

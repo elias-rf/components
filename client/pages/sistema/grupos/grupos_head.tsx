@@ -1,5 +1,5 @@
 import { Can } from '@/client/components/can.js'
-import { Button } from '@/client/components/ui/button.js'
+import { Button } from '@/client/components/ui/button/button.js'
 import { Title } from '@/client/components/ui/title.js'
 import { Permissions } from '@/client/features/permissions.js'
 import { gruposStore } from '@/client/pages/sistema/grupos/grupos_store.js'

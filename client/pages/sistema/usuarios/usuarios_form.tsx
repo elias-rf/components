@@ -1,15 +1,16 @@
-import { Button } from '@/client/components/ui/button.js'
+import { Button } from '@/client/components/ui/button/button.js'
 import { FormField } from '@/client/components/ui/form-field/form-field.js'
-import { Input } from '@/client/components/ui/input/input.js'
+import { InputForm } from '@/client/components/ui/input/input-form.js'
 import { Label } from '@/client/components/ui/label.js'
-import { SelectBadge } from '@/client/components/ui/select-badge.js'
-import { Toggle } from '@/client/components/ui/toggle.js'
-import { useForm } from '@/client/lib/hooks/use-form.js'
+import { SelectBadgeForm } from '@/client/components/ui/select-badge/select-badge-form.js'
+import { SelectBadge } from '@/client/components/ui/select-badge/select-badge.js'
+import { ToggleForm } from '@/client/components/ui/toggle/toggle-form.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { TUsuarioStore } from '@/client/pages/sistema/usuarios/usuarios_store.js'
 import { TAuthStore } from '@/client/store/auth_store.js'
 import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 import { useEffectOnce } from 'usehooks-ts'
 
@@ -21,7 +22,7 @@ export function UsuarioForm({
   auth: TAuthStore
 }) {
   const [listGroups, setListGroups] = useState<
-    { label: string; value: string }[]
+    [label: string, value: string][]
   >([])
 
   const status = store.use.status()
@@ -35,7 +36,7 @@ export function UsuarioForm({
   const record = store.use.record()
   const setRecord = store.use.setRecord()
 
-  const form = useForm({ value: recordClear })
+  const form = useForm({ defaultValues: recordClear })
 
   useEffect(() => {
     form.reset(record)
@@ -64,7 +65,7 @@ export function UsuarioForm({
 
   async function handleDel() {
     const response = await confirm(
-      'Tem certeza que deseja apagar ' + form.value.nome + '?'
+      'Tem certeza que deseja apagar ' + form.getValues('nome') + '?'
     )
     if (response === 'option1') {
       onDelete()
@@ -76,14 +77,12 @@ export function UsuarioForm({
       const data = await rpc.request('group_list', {
         orderBy: [['NomeGrupo', 'asc']],
       })
-      const list: { label: string; value: string }[] = data.map(
-        (item: any) => ({
-          label: item.NomeGrupo,
-          value: item.kGrupo,
-        })
-      )
-      list.unshift({ label: 'Administrador', value: '0' })
-      list.unshift({ label: '', value: '' })
+      const list: [label: string, value: string][] = data.map((item: any) => [
+        item.NomeGrupo,
+        item.kGrupo,
+      ])
+      list.unshift(['Administrador', '0'])
+      list.unshift(['', ''])
       setListGroups(list)
     }
     getData()
@@ -118,12 +117,9 @@ export function UsuarioForm({
             >
               Código
             </Label>
-            <Input
-              id="kUsuario"
-              name="kUsuario"
+            <InputForm
               disabled={['none', 'view'].includes(status)}
-              value={form.value.kUsuario}
-              onInput={form.handleChange}
+              {...form.register('kUsuario')}
             />
           </FormField>
         </div>
@@ -135,12 +131,9 @@ export function UsuarioForm({
             >
               Usuario
             </Label>
-            <Input
-              id="nome"
-              name="nome"
+            <InputForm
               disabled={['none', 'view'].includes(status)}
-              value={form.value.nome}
-              onInput={form.handleChange}
+              {...form.register('nome')}
             />
           </FormField>
         </div>
@@ -152,12 +145,9 @@ export function UsuarioForm({
             >
               Login
             </Label>
-            <Input
-              id="NomeUsuario"
-              name="NomeUsuario"
+            <InputForm
               disabled={['none', 'view'].includes(status)}
-              value={form.value.NomeUsuario}
-              onInput={form.handleChange}
+              {...form.register('NomeUsuario')}
             />
           </FormField>
         </div>
@@ -169,12 +159,9 @@ export function UsuarioForm({
             >
               Email
             </Label>
-            <Input
-              id="email"
-              name="email"
+            <InputForm
               disabled={['none', 'view'].includes(status)}
-              value={form.value.email}
-              onInput={form.handleChange}
+              {...form.register('email')}
             />
           </FormField>
         </div>
@@ -186,12 +173,9 @@ export function UsuarioForm({
             >
               Ativo
             </Label>
-            <Toggle
-              id="Ativo"
-              name="Ativo"
+            <ToggleForm
               disabled={['none', 'view'].includes(status)}
-              value={form.value.Ativo}
-              onInput={form.handleChange}
+              {...form.register('Ativo')}
             />
           </FormField>
         </div>
@@ -203,12 +187,9 @@ export function UsuarioForm({
             >
               Grupo
             </Label>
-            <SelectBadge
-              id="setor"
-              name="setor"
+            <SelectBadgeForm
               disabled={['none', 'view'].includes(status)}
-              value={form.value.setor ? form.value.setor.split(',') : []}
-              onInput={(value) => form.handleChange(value.join(','), 'setor')}
+              {...form.register('setor')}
               options={listGroups}
             />
           </FormField>
@@ -218,7 +199,7 @@ export function UsuarioForm({
         {onSave ? (
           <Button
             onClick={() => {
-              setRecord(form.value)
+              setRecord(form.getValues())
               onSave()
             }}
             disabled={['none', 'view'].includes(status)}

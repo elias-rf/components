@@ -1,14 +1,14 @@
 import { FormField } from '@/client/components/ui/form-field/form-field.js'
-import { Input } from '@/client/components/ui/input/input.js'
+import { InputForm } from '@/client/components/ui/input/input-form.js'
 import { Label } from '@/client/components/ui/label.js'
 import { Tabs } from '@/client/components/ui/tabs/tabs.js'
-import { useForm } from '@/client/lib/hooks/use-form.js'
 import type { TClienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
 import { ClienteQuantidade } from '@/client/pages/comercial/clientes/components/cliente-quantidade.js'
 import { ClienteValorMedio } from '@/client/pages/comercial/clientes/components/cliente-valor-medio.js'
 import { ClienteValor } from '@/client/pages/comercial/clientes/components/cliente-valor.js'
 import type { TAuthStore } from '@/client/store/auth_store.js'
 import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 
 export function ClienteForm({
@@ -25,7 +25,7 @@ export function ClienteForm({
   const record = store.use.record()
 
   const [tab, setTab] = useState('')
-  const form = useForm({ value: recordClear })
+  const form = useForm({ defaultValues: recordClear })
 
   useEffect(() => {
     form.reset(record)
@@ -51,126 +51,76 @@ export function ClienteForm({
   return (
     <>
       <div className="grid grid-cols-12 gap-3">
-        <div className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <FormField>
-            <Label name="CdCliente">Cód.</Label>
-            <Input
-              disabled={['none', 'edit', 'new'].includes(status)}
-              id="CdCliente"
-              name="CdCliente"
-              onInput={form.handleChange}
-              value={form.value.CdCliente}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-10 lg:col-span-6">
-          <FormField>
-            <Label name="RzSocial">Nome</Label>
-            <Input
-              id="RzSocial"
-              name="RzSocial"
-              disabled={['none', 'edit', 'new'].includes(status)}
-              value={form.value.RzSocial}
-              onInput={form.handleChange}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-6 lg:col-span-4">
-          <FormField>
-            <Label name="Cidade">Cidade</Label>
-            <Input
-              id="Cidade"
-              name="Cidade"
-              disabled={['none', 'edit', 'new'].includes(status)}
-              value={form.value.Cidade}
-              onInput={form.handleChange}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <FormField>
-            <Label name="Uf">UF</Label>
-            <Input
-              id="Uf"
-              name="Uf"
-              disabled={['none', 'edit', 'new'].includes(status)}
-              value={form.value.Uf}
-              onInput={form.handleChange}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-4 lg:col-span-2">
-          <FormField>
-            <Label name="CGC">CNPJ</Label>
-            <Input
-              id="CGC"
-              name="CGC"
-              disabled={['none', 'edit', 'new'].includes(status)}
-              value={form.value.CGC}
-              onInput={form.handleChange}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <FormField>
-            <Label name="CdVendedor">Vend</Label>
-            <Input
-              id="CdVendedor"
-              name="CdVendedor"
-              disabled={['none', 'edit', 'new'].includes(status)}
-              value={form.value.CdVendedor}
-              onInput={form.handleChange}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <FormField>
-            <Label name="FgAtivo">Ativo</Label>
-            <Input
-              id="FgAtivo"
-              name="FgAtivo"
-              disabled={['none', 'edit', 'new'].includes(status)}
-              value={form.value.FgAtivo}
-              onInput={form.handleChange}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-8 lg:col-span-4">
-          <FormField>
-            <Label name="EMail">EMail</Label>
-            <Input
-              id="EMail"
-              name="EMail"
-              disabled={['none', 'edit', 'new'].includes(status)}
-              value={form.value.EMail}
-              onInput={form.handleChange}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-6 lg:col-span-4">
-          <FormField>
-            <Label name="NumIdentidade">Identidade</Label>
-            <Input
-              id="NumIdentidade"
-              name="NumIdentidade"
-              disabled={['none', 'edit', 'new'].includes(status)}
-              value={form.value.NumIdentidade}
-              onInput={form.handleChange}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-6 lg:col-span-4">
-          <FormField>
-            <Label name="DtCadastro">Data Cadastro</Label>
-            <Input
-              id="DtCadastro"
-              name="DtCadastro"
-              disabled={['none', 'edit', 'new'].includes(status)}
-              value={form.value.DtCadastro}
-              onInput={form.handleChange}
-            />
-          </FormField>
-        </div>
+        <FormField className="col-span-2 sm:col-span-2 lg:col-span-1">
+          <Label name="CdCliente">Cód.</Label>
+          <InputForm
+            disabled={['none', 'edit', 'new'].includes(status)}
+            {...form.register('CdCliente')}
+          />
+        </FormField>
+        <FormField className="col-span-10 sm:col-span-10 lg:col-span-6">
+          <Label name="RzSocial">Nome</Label>
+          <InputForm
+            disabled={['none', 'edit', 'new'].includes(status)}
+            {...form.register('RzSocial')}
+          />
+        </FormField>
+        <FormField className="col-span-10 sm:col-span-6 lg:col-span-4">
+          <Label name="Cidade">Cidade</Label>
+          <InputForm
+            disabled={['none', 'edit', 'new'].includes(status)}
+            {...form.register('Cidade')}
+          />
+        </FormField>
+        <FormField className="col-span-2 sm:col-span-2 lg:col-span-1">
+          <Label name="Uf">UF</Label>
+          <InputForm
+            disabled={['none', 'edit', 'new'].includes(status)}
+            {...form.register('Uf')}
+          />
+        </FormField>
+        <FormField className="col-span-8 sm:col-span-4 lg:col-span-2">
+          <Label name="CGC">CNPJ</Label>
+          <InputForm
+            disabled={['none', 'edit', 'new'].includes(status)}
+            {...form.register('CGC')}
+          />
+        </FormField>
+        <FormField className="col-span-2 sm:col-span-2 lg:col-span-1">
+          <Label name="CdVendedor">Vend</Label>
+          <InputForm
+            disabled={['none', 'edit', 'new'].includes(status)}
+            {...form.register('CdVendedor')}
+          />
+        </FormField>
+        <FormField className="col-span-2 sm:col-span-2 lg:col-span-1">
+          <Label name="FgAtivo">Ativo</Label>
+          <InputForm
+            disabled={['none', 'edit', 'new'].includes(status)}
+            {...form.register('FgAtivo')}
+          />
+        </FormField>
+        <FormField className="col-span-12 sm:col-span-8 lg:col-span-4">
+          <Label name="EMail">EMail</Label>
+          <InputForm
+            disabled={['none', 'edit', 'new'].includes(status)}
+            {...form.register('EMail')}
+          />
+        </FormField>
+        <FormField className="col-span-6 sm:col-span-6 lg:col-span-4">
+          <Label name="NumIdentidade">Identidade</Label>
+          <InputForm
+            disabled={['none', 'edit', 'new'].includes(status)}
+            {...form.register('NumIdentidade')}
+          />
+        </FormField>
+        <FormField className="col-span-6 sm:col-span-6 lg:col-span-4">
+          <Label name="DtCadastro">Data Cadastro</Label>
+          <InputForm
+            disabled={['none', 'edit', 'new'].includes(status)}
+            {...form.register('DtCadastro')}
+          />
+        </FormField>
         <div className="col-span-12">
           <Tabs
             selected={tab}

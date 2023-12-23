@@ -3,11 +3,11 @@ import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon.js'
 import { Avatar } from '@/client/components/ui/avatar.js'
 import { DarkToggle } from '@/client/components/ui/dark-toggle.js'
 import { Dropdown } from '@/client/components/ui/dropdown/dropdown.js'
-import { Navbar as FbNavbar } from '@/client/components/ui/navbar/navbar.js'
+import { Navbar } from '@/client/components/ui/navbar/navbar.js'
 import { authStore } from '@/client/store/auth_store.js'
 import { useLocation } from 'wouter'
 
-export function Navbar() {
+export function NavbarApp() {
   const [_, setLocation] = useLocation()
   const user = authStore.use.user()
 
@@ -17,19 +17,19 @@ export function Navbar() {
 
   return (
     <>
-      <FbNavbar
+      <Navbar
         data-name="Navbar"
-        className="z-20 bg-gray-100 border-gray-200 dark:border-gray-700"
+        className="z-20 border-gray-200 bg-gray-100 dark:border-gray-700"
       >
-        <FbNavbar.Brand
+        <Navbar.Brand
           onClick={() => handleLink('/')}
-          className="cursor-pointer"
+          className="cursor-pointer p-1"
         >
-          <VtLogoIcon className="w-8 h-8" />
-          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+          <VtLogoIcon className="h-8 w-8" />
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
             Visiontech
           </span>
-        </FbNavbar.Brand>
+        </Navbar.Brand>
         <div className="flex items-center space-x-2 md:order-2">
           <Dropdown
             arrowIcon={false}
@@ -53,10 +53,10 @@ export function Navbar() {
               logout
             </Dropdown.Item>
           </Dropdown>
-          <FbNavbar.Toggle />
+          <Navbar.Toggle />
           <DarkToggle />
         </div>
-        <FbNavbar.Collapse>
+        <Navbar.Collapse>
           <Dropdown label={<div className="dark:text-gray-200">Comercial</div>}>
             <Dropdown.Item onClick={() => handleLink('/comercial/precos')}>
               Calculadora de preços
@@ -104,8 +104,8 @@ export function Navbar() {
               Gestor de arquivos
             </Dropdown.Item>
           </Dropdown>
-        </FbNavbar.Collapse>
-      </FbNavbar>
+        </Navbar.Collapse>
+      </Navbar>
     </>
   )
 }

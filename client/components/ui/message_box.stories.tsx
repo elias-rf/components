@@ -1,5 +1,5 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
-import { Button } from '@/client/components/ui/button.js'
+import { Button } from '@/client/components/ui/button/button.js'
 import { MessageBox } from '@/client/components/ui/message_box.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'

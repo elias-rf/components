@@ -3,7 +3,7 @@ import { JSONRPCClient, TypedJSONRPCClient } from 'json-rpc-2.0'
 
 let endpoint = '/api/rpc2'
 
-if (process.env.NODE_ENV === 'development')
+if (process.env.NODE_ENV !== 'production')
   endpoint = 'http://localhost:3333/api/rpc2'
 
 export const rpc: TypedJSONRPCClient<TModules> = new JSONRPCClient(

@@ -18,9 +18,9 @@ function Navbar({
   return (
     <ShowContext.Provider value={{ show, setShow }}>
       <nav
-        className={cn('bg-white border-gray-200 dark:bg-gray-900', className)}
+        className={cn('border-gray-200 bg-white dark:bg-gray-900', className)}
       >
-        <div className="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
+        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-1">
           {children}
         </div>
       </nav>

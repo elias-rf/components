@@ -1,5 +1,5 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
-import { TToggleProps, Toggle } from '@/client/components/ui/toggle.js'
+import { TToggleProps, Toggle } from '@/client/components/ui/toggle/toggle.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'
 import React from 'react'

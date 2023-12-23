@@ -34,7 +34,7 @@ function Dropdown({
         className="relative w-fit"
       >
         <button
-          className="md:border-0  md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent  md:hover:bg-transparent  justify-between text-gray-700 hover:bg-gray-100   focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+          className="inline-flex items-center justify-between rounded-lg px-5 text-center text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:text-white md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
           onClick={() => setDropdownOpen(!dropdownOpen)}
         >
           {typeof label === 'string' ? <>{label}</> : <>{label}</>}
@@ -44,7 +44,7 @@ function Dropdown({
         <div
           id="dropdown"
           className={cn(
-            'z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44  dark:bg-gray-700 ',
+            'absolute z-10 w-44 divide-y divide-gray-100 rounded-lg bg-white shadow  dark:bg-gray-700 ',
             { hidden: !dropdownOpen, 'end-0': position === 'right' }
           )}
         >

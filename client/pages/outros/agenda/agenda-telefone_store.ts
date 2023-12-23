@@ -18,6 +18,7 @@ import {
   TAgendaTelefoneKeys,
 } from '@/controllers/agenda-telefone_controller.js'
 import { TData } from '@/types/index.js'
+import { hookstate } from '@hookstate/core'
 import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
 

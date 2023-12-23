@@ -1,5 +1,5 @@
 // @index(['./**/*_controller.ts'], (f, _) => `import { ${_.camelCase(f.name.slice(0,-10))}Controller } from "${f.path}.js";`)
-import { JSONRPCServer } from 'json-rpc-2.0'
+import { JSONRPCServer, TypedJSONRPCServer } from 'json-rpc-2.0'
 import { agendaTelefoneController } from './agenda-telefone_controller.js'
 import { cidadeController } from './cidade_controller.js'
 import { clienteController } from './cliente_controller.js'
@@ -100,8 +100,12 @@ function list() {
 
 export type TModules = typeof modules
 
-export function registerController(server: JSONRPCServer) {
+function registerController(server: TypedJSONRPCServer<TModules>) {
   for (const [moduleKey, module] of Object.entries(modules)) {
-    server.addMethod(moduleKey, module)
+    server.addMethod(moduleKey as keyof TModules, module as any)
   }
 }
+
+export const rpcServer: TypedJSONRPCServer<TModules> = new JSONRPCServer()
+
+registerController(rpcServer)

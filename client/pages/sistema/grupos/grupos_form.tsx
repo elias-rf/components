@@ -1,12 +1,12 @@
-import { Button } from '@/client/components/ui/button.js'
+import { Button } from '@/client/components/ui/button/button.js'
 import { FormField } from '@/client/components/ui/form-field/form-field.js'
-import { Input } from '@/client/components/ui/input/input.js'
+import { InputForm } from '@/client/components/ui/input/input-form.js'
 import { Label } from '@/client/components/ui/label.js'
-import { useForm } from '@/client/lib/hooks/use-form.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { TGruposStore } from '@/client/pages/sistema/grupos/grupos_store.js'
 import { TAuthStore } from '@/client/store/auth_store.js'
 import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 
 export const GruposForm = ({
@@ -27,7 +27,7 @@ export const GruposForm = ({
   const record = store.use.record()
   const setRecord = store.use.setRecord()
 
-  const form = useForm({ value: recordClear })
+  const form = useForm({ defaultValues: recordClear })
 
   useEffect(() => {
     form.reset(record)
@@ -56,7 +56,7 @@ export const GruposForm = ({
 
   async function handleDel() {
     const response = await confirm(
-      'Tem certeza que deseja apagar ' + form.value.NomeGrupo + '?'
+      'Tem certeza que deseja apagar ' + form.getValues('NomeGrupo') + '?'
     )
     if (response === 'option1') {
       onDelete()
@@ -84,41 +84,35 @@ export const GruposForm = ({
         </Button>
       </div>
       <div className="grid grid-cols-12 gap-3">
-        <div className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <FormField>
-            <Label
-              required
-              name="kGrupo"
-            >
-              Ramal
-            </Label>
-            <Input
-              disabled={['none', 'view'].includes(status)}
-              onInput={form.handleChange}
-              value={form.value.kGrupo}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-10 lg:col-span-5">
-          <FormField>
-            <Label
-              required
-              name="NomeGrupo"
-            >
-              Nome
-            </Label>
-            <Input
-              disabled={['none', 'view'].includes(status)}
-              value={form.value.NomeGrupo}
-              onInput={form.handleChange}
-            />
-          </FormField>
-        </div>
+        <FormField className="col-span-12 sm:col-span-2 lg:col-span-1">
+          <Label
+            required
+            name="kGrupo"
+          >
+            Ramal
+          </Label>
+          <InputForm
+            disabled={['none', 'view'].includes(status)}
+            {...form.register('kGrupo')}
+          />
+        </FormField>
+        <FormField className="col-span-12 sm:col-span-10 lg:col-span-5">
+          <Label
+            required
+            name="NomeGrupo"
+          >
+            Nome
+          </Label>
+          <InputForm
+            disabled={['none', 'view'].includes(status)}
+            {...form.register('NomeGrupo')}
+          />
+        </FormField>
       </div>
       <div className="flex-rows align-center my-2 flex justify-end space-x-2">
         <Button
           onClick={() => {
-            setRecord(form.value)
+            setRecord(form.getValues())
             onSave()
           }}
           disabled={['none', 'view'].includes(status)}

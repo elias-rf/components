@@ -1,4 +1,4 @@
-import { Button } from '@/client/components/ui/button.js'
+import { Button } from '@/client/components/ui/button/button.js'
 import { Toast, TToastProps } from '@/client/components/ui/toast.js'
 import '@/client/index.css'
 import type { Story } from '@ladle/react'

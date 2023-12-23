@@ -27,9 +27,9 @@ export function Toggle({
   }
 
   return (
-    <div className="flex items-center h-8">
+    <div className="flex h-8 items-center">
       <div
-        className={cn('relative inline-flex items-center cursor-pointer', {
+        className={cn('relative inline-flex cursor-pointer items-center', {
           'cursor-not-allowed': disabled,
         })}
         onClick={handleChange}
@@ -37,7 +37,7 @@ export function Toggle({
         <input
           type="checkbox"
           onChange={handleChange}
-          className="sr-only peer"
+          className="peer sr-only"
           checked={value}
           disabled={disabled}
           id={id}
@@ -45,9 +45,9 @@ export function Toggle({
         />
         <div
           className={cn(
-            "w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600",
+            "peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-4 peer-focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800",
             {
-              'dark:peer-checked:bg-gray-500 peer-checked:bg-gray-300':
+              'peer-checked:bg-gray-300 dark:peer-checked:bg-gray-500':
                 disabled,
             },
             className

@@ -1,4 +1,4 @@
-import { Combobox } from '@/client/components/ui/combobox/combobox.js'
+import { Combobox } from '@/client/components/ui/combo-box/combo-box.js'
 import '@/client/index.css'
 import { useState } from '@/client/lib/hooks/use-state.js'
 import { Story, action } from '@ladle/react'

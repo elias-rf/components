@@ -55,7 +55,7 @@ export function SelectBadge({
 
   return (
     <>
-      <div className="flex flex-row w-full h-8 gap-2">
+      <div className="flex h-8 w-full flex-row gap-2">
         <div className="flex content-center gap-2">
           {value.map((vlr) => (
             <Chip
