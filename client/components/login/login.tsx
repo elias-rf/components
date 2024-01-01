@@ -1,8 +1,8 @@
-import { Button } from '@/client/components/ui/button/button.js'
-import { FormField } from '@/client/components/ui/form-field/form-field.js'
-import { InputForm } from '@/client/components/ui/input/input-form.js'
-import { Label } from '@/client/components/ui/label.js'
-import { Modal } from '@/client/components/ui/modal.js'
+import { Button } from '@/client/components/ui-old/button/button.js'
+import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
+import { InputForm } from '@/client/components/ui-old/input/input-form.js'
+import { Label } from '@/client/components/ui-old/label.js'
+import { Modal } from '@/client/components/ui-old/modal.js'
 import { useForm } from 'react-hook-form'
 
 export type TLoginProps = {

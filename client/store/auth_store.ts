@@ -1,127 +1,122 @@
-import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { TCurrentUser } from '@/types/index.js'
-import { createJSONStorage, devtools, persist } from 'zustand/middleware'
-import { createStore } from 'zustand/vanilla'
+import { proxy, subscribe } from 'valtio'
+import { subscribeKey } from 'valtio/utils'
 
-interface AuthState {
+type TAuthState = {
   token: string
   user: TCurrentUser
   permissions: { [perm: string]: boolean }
-  login: (user: any) => Promise<TCurrentUser>
-  logout: () => void
-  isAuthenticated: () => boolean
-  fetchPermissions: () => void
-  canList: (permissions: { [permission: string]: any }) => {
-    [permission: string]: boolean
-  }
-  can: (permission: string) => boolean
-  me: () => Promise<TCurrentUser>
 }
 
-export const authStoreBase = createStore<AuthState>()(
-  persist(
-    devtools(
-      (set, get) => ({
-        token: '',
-        user: {},
-        permissions: {},
+const storage = sessionStorage.getItem('auth')
+const initialState = storage ? JSON.parse(storage) : null
 
-        /**
-         * Executa o login no servidor
-         */
-        login: async (user: any) => {
-          const login = await rpc.request('usuario_login', user)
-          if (login && login.usuario_id && login.usuario_id > 0) {
-            set(() => ({ token: login.token, user: login }), false, 'login')
-            await get().fetchPermissions()
-          }
-          return login
-        },
-
-        /**
-         * Apaga as informações de login no cliente
-         */
-        logout: () => {
-          set({ token: '', user: {}, permissions: {} }, false, 'logout')
-        },
-
-        /**
-         * Retorna true se existe usuario logado
-         */
-        isAuthenticated: () => {
-          return get().token !== ''
-        },
-
-        /**
-         * Busca todas as permissoes do usuario
-         */
-        fetchPermissions: async () => {
-          const groups = get().user.group_ids?.split(',')
-          const permissions = await rpc.request('groupSubject_list', {
-            select: ['idSubject'],
-            where: [['idGroup', 'in', groups]],
-          })
-          set(
-            () => ({
-              permissions: permissions.reduce(
-                (acc: any, cur: any) => ({ ...acc, [cur.idSubject]: true }),
-                {}
-              ),
-            }),
-            false,
-            'fetchPermissions'
-          )
-        },
-
-        /**
-         * Retorna uma lista boolean para cada permission informada
-         */
-        canList: (permissions) => {
-          const response = {} as { [permission: string]: any }
-          const groups = get().user.group_ids?.split(',')
-          Object.keys(permissions).forEach((permission) => {
-            if (groups?.includes('0')) {
-              response[permission] = true
-            } else {
-              response[permission] = get().permissions[permission] || false
-            }
-          })
-          return response
-        },
-
-        /**
-         * Retorna true se o usuario tem a permissão
-         */
-        can: (permission) => {
-          const groups = get().user.group_ids?.split(',')
-          let response = get().canList({ [permission]: false })[permission]
-          if (groups?.includes('0')) {
-            response = true
-          }
-
-          return response
-        },
-
-        me: async () => {
-          const user = await rpc.request('usuario_me')
-          if (!user) {
-            get().logout()
-          }
-          return user
-        },
-      }),
-      { name: 'intranet', store: 'auth', serialize: { options: true } }
-    ),
-    {
-      name: 'auth',
-      partialize: (state) => ({ token: state.token, user: state.user }),
-      storage: createJSONStorage(() => sessionStorage),
-    }
-  )
+const state = proxy<TAuthState>(
+  initialState || {
+    token: '',
+    user: {} as TCurrentUser,
+    permissions: {} as { [perm: string]: boolean },
+  }
 )
 
-authStoreBase.getState().me()
+/**
+ * Executa o login no servidor
+ */
+const login = async (user: { user: string; password: string }) => {
+  const login = await rpc.request('usuario_login', user)
+  if (login && login.usuario_id && login.usuario_id > 0) {
+    state.token = login.token || ''
+    state.user = login
+    await fetchPermissions()
+  }
+  return login
+}
 
-export const authStore = createSelectors(authStoreBase)
-export type TAuthStore = typeof authStore
+/**
+ * Apaga as informações de login no cliente
+ */
+const logout = () => {
+  state.token = ''
+  state.user = {}
+  state.permissions = {}
+}
+
+/**
+ * Retorna true se existe usuario logado
+ */
+const isAuthenticated = () => {
+  return state.token !== ''
+}
+
+/**
+ * Busca todas as permissoes do usuario
+ */
+const fetchPermissions = async () => {
+  const groups = state.user.group_ids?.split(',')
+  const permissions = await rpc.request('groupSubject_list', {
+    select: ['idSubject'],
+    where: [['idGroup', 'in', groups]],
+  })
+  state.permissions = permissions.reduce(
+    (acc: any, cur: any) => ({ ...acc, [cur.idSubject]: true }),
+    {}
+  )
+}
+
+/**
+ * Retorna uma lista boolean para cada permission informada
+ */
+const canList = (permissions: { [permission: string]: any }) => {
+  const response = {} as { [permission: string]: any }
+  const groups = state.user.group_ids?.split(',')
+  Object.keys(permissions).forEach((permission) => {
+    if (groups?.includes('0')) {
+      response[permission] = true
+    } else {
+      response[permission] = state.permissions[permission] || false
+    }
+  })
+  return response
+}
+
+/**
+ * Retorna true se o usuario tem a permissão
+ */
+const can = (permission: string) => {
+  const groups = state.user.group_ids?.split(',')
+  let response = canList({ [permission]: false })[permission]
+  if (groups?.includes('0')) {
+    response = true
+  }
+
+  return response
+}
+
+const me = async () => {
+  const user = await rpc.request('usuario_me')
+  if (!user) {
+    logout()
+  }
+  return user
+}
+
+me()
+
+subscribe(state, () => {
+  sessionStorage.setItem('auth', JSON.stringify(state))
+})
+
+export const authStore = {
+  state,
+  login,
+  logout,
+  isAuthenticated,
+  fetchPermissions,
+  can,
+  me,
+  canList,
+  subscribeKey,
+  subscribe,
+  proxy,
+}

@@ -1,4 +1,3 @@
-import { State } from '@hookstate/core'
 import { useCallback, useState } from 'react'
 
 import { useEventListener, useIsomorphicLayoutEffect } from 'usehooks-ts'
@@ -10,12 +9,14 @@ interface Size {
   height: number
 }
 
-export function useElementSize<T extends HTMLElement = HTMLDivElement>(
-  pageSizeState: State<
-    { left: number; top: number; width: number; height: number },
-    {}
-  >
-): [(node: T | null) => void, Size] {
+export function useElementSize<
+  T extends HTMLElement = HTMLDivElement,
+>(pageSizeState: {
+  left: number
+  top: number
+  width: number
+  height: number
+}): [(node: T | null) => void, Size] {
   // Mutable values like 'ref.current' aren't valid dependencies
   // because mutating them doesn't re-render the component.
   // Instead, we use a state as a ref to be reactive.
@@ -35,7 +36,7 @@ export function useElementSize<T extends HTMLElement = HTMLDivElement>(
       width: ref?.offsetWidth || 0,
       height: ref?.offsetHeight || 0,
     }
-    pageSizeState.set(size)
+    pageSizeState = size
     setSize(size)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

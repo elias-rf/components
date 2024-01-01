@@ -1,6 +1,6 @@
-import { FormField } from '@/client/components/ui/form-field/form-field.js'
-import { Input } from '@/client/components/ui/input/input.js'
-import { Label } from '@/client/components/ui/label.js'
+import { FormField } from '@/client/components/ui-old/old/form-field/form-field.js'
+import { Input } from '@/client/components/ui-old/old/input/input.js'
+import { Label } from '@/client/components/ui-old/old/label.js'
 
 type TGroupSubjectFormProps = {
   form: any

@@ -1,11 +1,11 @@
-import { createRecord, fetcherMock, uid } from '@/mocks/fetcher-mock.js'
+import { createRecord, uid } from '@/mocks/fetcher-mock.js'
 import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
 
 import { agendaTelefoneStore } from '@/client/pages/outros/agenda/agenda-telefone_store.js'
 import { fakerPT_BR as faker } from '@faker-js/faker'
 import { describe, expect, test } from 'vitest'
 
-mockedFetch.clear()
+mockedFetch.reset()
 mockedFetch.add(async (request: any) => {
   const body = JSON.parse(request.options?.body)
   switch (body.method) {
@@ -20,7 +20,7 @@ mockedFetch.add(async (request: any) => {
               department: faker.commerce.department,
               email: faker.internet.email,
             },
-            50
+            5
           ),
         },
       }
@@ -48,25 +48,52 @@ mockedFetch.add(async (request: any) => {
 
 describe('useAgendaTelefone', () => {
   test('fetchList', async () => {
-    const agenda = await agendaTelefoneStore.getState().fetchList()
-    expect(agenda.length).toEqual(50)
+    mockedFetch.clearHistory()
+    const agenda = await agendaTelefoneStore.fetchList()
+    expect(agenda.length).toEqual(5)
+    expect(mockedFetch.history().length).toEqual(1)
+    expect(mockedFetch.history()[0].request).toEqual({
+      options: {
+        body: '{"jsonrpc":"2.0","id":1,"method":"agendaTelefone_list","params":{"where":[],"orderBy":[["id","asc"]]}}',
+        headers: {
+          Authorization: 'Bearer ',
+          'content-type': 'application/json',
+          user: '',
+        },
+        method: 'POST',
+      },
+      url: 'http://localhost:3333/api/rpc2',
+    })
   })
   test('fetchRecord', async () => {
-    agendaTelefoneStore.setState({
-      selection: [['id', 100]],
-    })
-    const agenda = await agendaTelefoneStore.getState().fetchRecord()
+    mockedFetch.clearHistory()
+    agendaTelefoneStore.state.selection = [['id', 100]]
+    const agenda = await agendaTelefoneStore.fetchRecord()
     expect(agenda).toEqual({
       id: '100',
       name: 'Fulano da Silva',
       department: 'Setor de TI',
       email: 'fulano@mail.com',
     })
+    expect(mockedFetch.history().length).toEqual(1)
+    expect(mockedFetch.history()[0].request).toEqual({
+      options: {
+        body: '{"jsonrpc":"2.0","id":2,"method":"agendaTelefone_read","params":{"where":[["id",100]]}}',
+        headers: {
+          Authorization: 'Bearer ',
+          'content-type': 'application/json',
+          user: '',
+        },
+        method: 'POST',
+      },
+      url: 'http://localhost:3333/api/rpc2',
+    })
   })
   test('onSave', async () => {
-    expect(agendaTelefoneStore.getState().status).toEqual('none')
-    await agendaTelefoneStore.getState().onSave()
-    expect(agendaTelefoneStore.getState().status).toEqual('view')
-    expect(agendaTelefoneStore.getState().list.length).toEqual(50)
+    mockedFetch.clearHistory()
+    expect(agendaTelefoneStore.state.status).toEqual('none')
+    await agendaTelefoneStore.onSave()
+    expect(agendaTelefoneStore.state.status).toEqual('view')
+    expect(agendaTelefoneStore.state.list.length).toEqual(5)
   })
 })

@@ -1,8 +1,8 @@
 import { Can } from '@/client/components/can.js'
-import { FormHead } from '@/client/components/ui/form-head.js'
+import { FormHead } from '@/client/components/ui-old/form-head.js'
 import { vendas30DiasStore } from '@/client/pages/comercial/vendas-30dias/vendas-30dias.store.js'
 import { Vendas30dias as Vendas } from '@/client/pages/comercial/vendas-30dias/vendas-30dias_form.js'
-import { authStore } from '@/client/store/auth_store.js'
+import { can } from '@/client/store/auth_store.js'
 
 const permissions = {
   comercial_vendas30dias_permissao: 'Atribuir permissões de vendas 30 dias',
@@ -15,8 +15,6 @@ type TCan = (name: keyof typeof permissions) => boolean
  * @returns {*} componente react
  */
 export default function Vendas30dias() {
-  const can: TCan = authStore.use.can()
-
   return (
     <Can can={can('comercial_vendas30dias_read')}>
       <FormHead
@@ -26,10 +24,7 @@ export default function Vendas30dias() {
       >
         Vendas dos últimos 30 dias
       </FormHead>
-      <Vendas
-        store={vendas30DiasStore}
-        auth={authStore}
-      />
+      <Vendas store={vendas30DiasStore} />
     </Can>
   )
 }

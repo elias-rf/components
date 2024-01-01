@@ -1,7 +1,7 @@
 import { clienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
 import { ClienteValorMedio } from '@/client/pages/comercial/clientes/components/cliente-valor-medio.js'
 import { fetcherMock } from '@/mocks/fetcher-mock.js'
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 fetcherMock({
   'cliente/vendaMensalValorMedio': [
@@ -17,13 +17,15 @@ clienteStore.setState(() => ({
 }))
 clienteStore.getState().fetchVendaMensalValorMedio()
 
-export default {
-  title: 'features/cliente/cliente-valor-medio',
-  args: {
-    id: 1,
-  },
+const meta: Meta<typeof ClienteValorMedio> = {
+  component: ClienteValorMedio,
 }
 
-export const ValorMedio: Story = () => {
-  return <ClienteValorMedio />
+export default meta
+type Story = StoryObj<typeof ClienteValorMedio>
+
+export const ValorMedio: Story = {
+  render: () => {
+    return <ClienteValorMedio />
+  },
 }

@@ -1,15 +1,20 @@
 import { NavbarApp } from '@/client/features/navbar-app.js'
 import '@/client/index.css'
-import type { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-export default {
-  title: 'features/navbar',
+const meta: Meta<typeof NavbarApp> = {
+  component: NavbarApp,
 }
 
-export const Default: Story = () => {
-  return (
-    <>
-      <NavbarApp />
-    </>
-  )
+export default meta
+type Story = StoryObj<typeof NavbarApp>
+
+export const Default: Story = {
+  render: () => {
+    return (
+      <>
+        <NavbarApp />
+      </>
+    )
+  },
 }

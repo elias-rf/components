@@ -1,21 +1,27 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
-import { Button } from '@/client/components/ui/button/button.js'
-import { Story, StoryDefault } from '@ladle/react'
+import { Button } from '@/client/components/ui-old/button/button.js'
+import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 import { Login } from './login.js'
 
-export default {
-  title: 'components / login',
-} satisfies StoryDefault
+const meta: Meta<typeof Login> = {
+  component: Login,
+  args: {},
+}
 
-export const Default: Story<any> = () => {
-  const [user, setUser] = useState({ user: '_' })
+export default meta
+type Story = StoryObj<typeof Login>
 
-  return (
-    <>
-      <Button onClick={() => setUser({ user: '' })}>Login</Button>
-      <JsonView data={user} />
-      {user.user === '' ? <Login onInput={(user) => setUser(user)} /> : null}
-    </>
-  )
+export const Geral: Story = {
+  render: () => {
+    const [user, setUser] = useState({ user: '_' })
+
+    return (
+      <>
+        <Button onClick={() => setUser({ user: '' })}>Login</Button>
+        <JsonView data={user} />
+        {user.user === '' ? <Login onInput={(user) => setUser(user)} /> : null}
+      </>
+    )
+  },
 }

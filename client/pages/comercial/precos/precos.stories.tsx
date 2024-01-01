@@ -1,8 +1,11 @@
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import Precos from './precos.js'
 
-export default {
-  title: 'pages/comercial/precos',
+const meta: Meta<typeof Precos> = {
+  component: Precos,
 }
 
-export const Default: Story = () => <Precos />
+export default meta
+type Story = StoryObj<typeof Precos>
+
+export const Default: Story = { render: () => <Precos /> }

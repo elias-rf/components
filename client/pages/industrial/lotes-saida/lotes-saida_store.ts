@@ -1,25 +1,12 @@
 import { cache } from '@/client/lib/cache.js'
-import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
-import {
-  TCreateButtonsStore,
-  createButtonsStore,
-} from '@/client/store/create-buttons-store.js'
-import {
-  TCreateListStore,
-  createListStore,
-} from '@/client/store/create-list-store.js'
-import {
-  TCreateRecordStore,
-  createRecordStore,
-} from '@/client/store/create-record-store.js'
 import {
   TNfSaidaLoteFields,
   TNfSaidaLoteKeys,
 } from '@/controllers/nf-saida-lote_controller.js'
-import { TData } from '@/types/index.js'
-import { devtools } from 'zustand/middleware'
-import { createStore } from 'zustand/vanilla'
+import { TData, TFormStatus, TId, TOrderBy, TWhere } from '@/types/index.js'
+import { deepEqual } from '@/utils/object/deep-equal.js'
+import { proxy } from 'valtio'
 
 const tableName = 'nfSaidaLote' as const
 
@@ -31,29 +18,91 @@ const recordClear = {
 } as TData<TNfSaidaLoteFields>
 
 type LotesSaidaState = {
-  fetchList: () => Promise<TData<TNfSaidaLoteFields>[]>
-  fetchRecord: () => Promise<TData<TNfSaidaLoteFields>>
-  onDelete: () => void
-  onSave: () => void
-  recordClear: TData<TNfSaidaLoteFields>
-} & TCreateButtonsStore &
-  TCreateListStore<TNfSaidaLoteFields, TNfSaidaLoteKeys> &
-  TCreateRecordStore<TNfSaidaLoteFields>
+  state: {
+    recordClear: TData<TNfSaidaLoteFields>
+    list: TData<TNfSaidaLoteFields>[]
+    orderBy: TOrderBy<TNfSaidaLoteFields>
+    record: TData<TNfSaidaLoteFields>
+    selection: TId<TNfSaidaLoteKeys>
+    status: TFormStatus
+    where: TWhere<TNfSaidaLoteFields>
+  }
+  action: {
+    fetchList: () => Promise<TData<TNfSaidaLoteFields>[]>
+    fetchRecord: () => Promise<TData<TNfSaidaLoteFields>>
+    onDelete: () => void
+    onSave: () => void
+    onCancel: () => void
+    onEdit: () => void
+    onNew: () => void
+    setSelection: (selection: TId<TNfSaidaLoteKeys>) => void
+  }
+}
 
-const lotesSaidaStoreBase = createStore<LotesSaidaState>()(
-  devtools(
-    (set, get) => ({
-      ...createListStore<TNfSaidaLoteFields, TNfSaidaLoteKeys>(set, get),
-      ...createRecordStore(set),
-      ...createButtonsStore(set, get),
+const store: LotesSaidaState = {
+  state: proxy({
+    recordClear: recordClear,
+    list: [] as TData<TNfSaidaLoteFields>[],
+    orderBy: [['NumLote', 'desc']] as TOrderBy<TNfSaidaLoteFields>,
+    record: recordClear,
+    selection: [] as TId<TNfSaidaLoteKeys>,
+    status: 'none' as TFormStatus,
+    where: [] as TWhere<TNfSaidaLoteFields>,
+  }),
+  action: {
+    onNew: () => {
+      store.state.record = store.state.recordClear.value
+      store.state.status = 'new'
+      store.state.selection = []
+    },
+    onEdit: () => {
+      store.state.status = 'edit'
+    },
 
-      recordClear: recordClear,
+    onCancel: () => {
+      if (store.state.status === 'new') {
+        store.state.status = 'none'
+        return
+      }
+      store.state.status = 'view'
+    },
+    setSelection: (selection) => {
+      if (deepEqual(selection, store.state.selection)) {
+        store.state.selection = []
+        store.state.status = 'none'
+        return
+      }
+      store.state.selection = selection
+      store.state.status = 'view'
+    },
 
-      fetchList: async () => {
-        const list = (await cache.memo(
-          {
-            where: get().where,
-            orderBy: get().orderBy,
+    fetchList: async () => {
+      const where = store.state.where as TWhere<TNfSaidaLoteFields>
+      const orderBy = store.state.orderBy as TOrderBy<TNfSaidaLoteFields>
+
+      const list = (await cache.memo(
+        {
+          where,
+          orderBy,
+          select: [
+            'CdFilial',
+            'NumNota',
+            'DtEmissao',
+            'CdProduto',
+            'NumLote',
+            'Sequencia',
+          ],
+          include: {
+            produto: ['Descricao'],
+            nfSaida: ['CdCliente', 'Tipo'],
+            'nfSaida.cliente': ['RzSocial', 'Uf'],
+          },
+          _table: tableName,
+        },
+        () =>
+          rpc.request('nfSaidaLote_list', {
+            where,
+            orderBy,
             select: [
               'CdFilial',
               'NumNota',
@@ -67,79 +116,56 @@ const lotesSaidaStoreBase = createStore<LotesSaidaState>()(
               nfSaida: ['CdCliente', 'Tipo'],
               'nfSaida.cliente': ['RzSocial', 'Uf'],
             },
-            _table: tableName,
-          },
-          () =>
-            rpc.request('nfSaidaLote_list', {
-              where: get().where,
-              orderBy: get().orderBy,
-              select: [
-                'CdFilial',
-                'NumNota',
-                'DtEmissao',
-                'CdProduto',
-                'NumLote',
-                'Sequencia',
-              ],
-              include: {
-                produto: ['Descricao'],
-                nfSaida: ['CdCliente', 'Tipo'],
-                'nfSaida.cliente': ['RzSocial', 'Uf'],
-              },
-            })
-        )) as TData<TNfSaidaLoteFields>[]
-        set(() => ({ list }), false, 'fetchList')
-        return list
-      },
-
-      fetchRecord: async () => {
-        const id = get().selection
-        if (id.length === 0) return recordClear
-        const record = (await cache.memo(
-          {
-            where: get().selection,
-            _table: tableName,
-          },
-          () => rpc.request('nfSaidaLote_read', { where: get().selection })
-        )) as TData<TNfSaidaLoteFields>
-        set(() => ({ record }), false, 'fetchRecord')
-        return record
-      },
-
-      onSave: async () => {
-        cache.purgeTable(tableName)
-        if (get().status === 'edit') {
-          await rpc.request('nfSaidaLote_update', {
-            data: get().record || {},
-            where: get().selection,
           })
-        }
-        if (get().status === 'new') {
-          await rpc.request('nfSaidaLote_create', { data: get().record || {} })
-        }
-        await get().fetchList()
-        set(() => ({ status: 'view' }), false, 'onSave')
-      },
+      )) as TData<TNfSaidaLoteFields>[]
+      store.state.list = list
+      return list
+    },
 
-      onDelete: async () => {
-        cache.purgeTable(tableName)
-        await rpc.request('nfSaidaLote_del', { where: get().selection })
-        await get().fetchList()
-        set(
-          () => ({ record: get().recordClear, status: 'none', selection: [] }),
-          false,
-          'onDelete'
-        )
-      },
-    }),
-    {
-      name: 'intranet',
-      store: tableName,
-      serialize: { options: true },
-    }
-  )
-)
+    fetchRecord: async () => {
+      const where = store.state.selection as TId<TNfSaidaLoteKeys>
+      if (where.length === 0) return recordClear
+      const record = (await cache.memo(
+        {
+          where,
+          _table: tableName,
+        },
+        () => rpc.request('nfSaidaLote_read', { where })
+      )) as TData<TNfSaidaLoteFields>
+      store.state.record.set(record)
+      return record
+    },
 
-lotesSaidaStoreBase.getState().setOrderBy([['NumLote', 'desc']])
+    onSave: async () => {
+      cache.purgeTable(tableName)
+      if ((store.state.status = 'edit')) {
+        await rpc.request('nfSaidaLote_update', {
+          data: store.state.record as TData<TNfSaidaLoteFields>,
+          where: store.state.selection as TId<TNfSaidaLoteKeys>,
+        })
+      }
+      if ((store.state.status = 'new')) {
+        await rpc.request('nfSaidaLote_create', {
+          data: store.state.record as TData<TNfSaidaLoteFields>,
+        })
+      }
+      await store.action.fetchList()
+      store.state.status = 'view'
+    },
 
-export const lotesSaidaStore = createSelectors(lotesSaidaStoreBase)
+    onDelete: async () => {
+      cache.purgeTable(tableName)
+      await rpc.request('nfSaidaLote_del', {
+        where: store.state.selection as TId<TNfSaidaLoteKeys>,
+      })
+      await store.action.fetchList()
+      ;(store.state.record = store.state.recordClear),
+        (store.state.selection = [])
+      store.state.status = 'none'
+    },
+  },
+}
+
+export const lotesSaidaStore = store
+
+export type TLotesSaidaStore = typeof lotesSaidaStore

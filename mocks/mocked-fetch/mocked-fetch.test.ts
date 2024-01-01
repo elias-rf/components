@@ -8,17 +8,9 @@ describe('mockedFetch', () => {
   })
 
   test('deve retornar 404 para path inexistente', async () => {
-    mockedFetch.clear()
-    const url = 'http://skillrazr.com'
-    mockedFetch.add(async (request: any) => {
-      if (request.url.indexOf(url) >= 0) {
-        return { body: { todos: [] } }
-      }
-    })
-
+    mockedFetch.reset()
     const response = await fetch('http://teste.com')
     const body = await response.json()
-
     expect(mockedFetch.history()).toEqual([
       {
         request: { url: 'http://teste.com', options: {} },
@@ -30,7 +22,7 @@ describe('mockedFetch', () => {
   })
 
   test('deve mockar um path', async () => {
-    mockedFetch.clear()
+    mockedFetch.reset()
     const url = 'http://skillrazr.com/todos'
     mockedFetch.add(async (request: any) => {
       if (request.url.indexOf(url) >= 0) {
@@ -52,7 +44,7 @@ describe('mockedFetch', () => {
   })
 
   test('deve mockar várias chamadas', async () => {
-    mockedFetch.clear()
+    mockedFetch.reset()
     const url = 'http://skillrazr.com'
     mockedFetch.add(async (request: any) => {
       if (

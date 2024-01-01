@@ -1,8 +1,8 @@
-import { StoreViewer } from '@/client/components/ui/store-viewer.js'
+import { StoreViewer } from '@/client/components/ui-old/store-viewer.js'
 import { clienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
 import { ClienteQuantidade } from '@/client/pages/comercial/clientes/components/cliente-quantidade.js'
 import { fetcherMock } from '@/mocks/fetcher-mock.js'
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 fetcherMock({
   'cliente/vendaMensalQuantidade': () => {
@@ -20,15 +20,20 @@ clienteStore.setState(() => ({
 }))
 clienteStore.getState().fetchVendaMensalQuantidade()
 
-export default {
-  title: 'features/cliente/cliente-quantidade',
+const meta: Meta<typeof ClienteQuantidade> = {
+  component: ClienteQuantidade,
 }
 
-export const Quantidade: Story = () => {
-  return (
-    <>
-      <ClienteQuantidade />
-      <StoreViewer store={clienteStore} />
-    </>
-  )
+export default meta
+type Story = StoryObj<typeof ClienteQuantidade>
+
+export const Quantidade: Story = {
+  render: () => {
+    return (
+      <>
+        <ClienteQuantidade />
+        <StoreViewer store={clienteStore} />
+      </>
+    )
+  },
 }

@@ -1,12 +1,15 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
 import type { TWhere } from '@/types/index.js'
-import { Story, StoryDefault } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { Search } from './search.js'
 
-export default {
-  title: 'components / search',
-} satisfies StoryDefault
+const meta: Meta<typeof Search> = {
+  component: Search,
+}
+
+export default meta
+type Story = StoryObj<typeof Search>
 
 const schema = [
   {
@@ -41,10 +44,10 @@ function SearchStory(props: any) {
       />
       <JsonView
         data={where}
-        className="p-2 mt-4 border-2 border-gray-500"
+        className="mt-4 border-2 border-gray-500 p-2"
       />
     </div>
   )
 }
 
-export const Default: Story = (props) => <SearchStory {...props} />
+export const Default: Story = { render: (props) => <SearchStory {...props} /> }

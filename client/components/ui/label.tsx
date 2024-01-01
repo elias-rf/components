@@ -1,40 +1,24 @@
-import { AccessLabel } from '@/client/components/ui/access-label.js'
-import { cn } from '@/client/lib/cn.js'
-import { getAccessKey } from '@/utils/string/get-access-key.js'
+import * as React from "react"
+import * as LabelPrimitive from "@radix-ui/react-label"
+import { cva, type VariantProps } from "class-variance-authority"
 
-type TLabelProps = {
-  children?: React.ReactNode
-  required?: boolean
-  disabled?: boolean
-  variant?: 'success' | 'error' | 'none'
-  name: string
-  className?: string
-  accessKey?: string
-}
-export function Label({
-  children,
-  required,
-  name,
-  disabled,
-  variant,
-  className,
-}: TLabelProps) {
-  if (!children) return null
-  return (
-    <label
-      htmlFor={name}
-      accessKey={getAccessKey(children).accessKey}
-      className={cn(
-        'block pl-1.5 text-sm text-gray-500 dark:text-gray-400',
-        { 'text-gray-400 dark:text-gray-500': disabled },
-        { 'text-green-700 dark:text-green-500': variant === 'success' },
-        { 'text-red-700 dark:text-red-500': variant === 'error' },
-        className
-      )}
-    >
-      <span className="whitespace-nowrap">
-        <AccessLabel>{children}</AccessLabel> {required ? '*' : null}
-      </span>
-    </label>
-  )
-}
+import { cn } from "@/client/lib/utils.js"
+
+const labelVariants = cva(
+  "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+)
+
+const Label = React.forwardRef<
+  React.ElementRef<typeof LabelPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
+    VariantProps<typeof labelVariants>
+>(({ className, ...props }, ref) => (
+  <LabelPrimitive.Root
+    ref={ref}
+    className={cn(labelVariants(), className)}
+    {...props}
+  />
+))
+Label.displayName = LabelPrimitive.Root.displayName
+
+export { Label }

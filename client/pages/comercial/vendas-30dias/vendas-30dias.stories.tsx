@@ -1,11 +1,14 @@
 import '@/client/index.css'
 import '@/mocks/fetcher-mock'
 
-import type { Story, StoryDefault } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import Vendas30dias from './vendas-30dias.js'
 
-export default {
-  title: 'Pages/Comercial/vendas_30dias',
-} satisfies StoryDefault
+const meta: Meta<typeof Vendas30dias> = {
+  component: Vendas30dias,
+}
 
-export const Default: Story = () => <Vendas30dias />
+export default meta
+type Story = StoryObj<typeof Vendas30dias>
+
+export const Default: Story = { render: () => <Vendas30dias /> }

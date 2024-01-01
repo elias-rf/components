@@ -1,21 +1,14 @@
-import { Button } from '@/client/components/ui/button/button.js'
-import { FormField } from '@/client/components/ui/form-field/form-field.js'
-import { InputForm } from '@/client/components/ui/input/input-form.js'
-import { Label } from '@/client/components/ui/label.js'
+import { Button } from '@/client/components/ui-old/button/button.js'
+import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
+import { InputForm } from '@/client/components/ui-old/input/input-form.js'
+import { Label } from '@/client/components/ui-old/label.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { TGruposStore } from '@/client/pages/sistema/grupos/grupos_store.js'
-import { TAuthStore } from '@/client/store/auth_store.js'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 
-export const GruposForm = ({
-  store,
-  auth,
-}: {
-  store: TGruposStore
-  auth: TAuthStore
-}) => {
+export const GruposForm = ({ store }: { store: TGruposStore }) => {
   const status = store.use.status()
   const onCancel = store.use.onCancel()
   const onDelete = store.use.onDelete()

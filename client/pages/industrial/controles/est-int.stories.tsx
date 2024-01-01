@@ -1,15 +1,18 @@
 import '@/client/pages/industrial/controles/controles_store.mock.js'
 import { EstInt } from '@/client/pages/industrial/controles/est-int.js'
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-export default {
-  title: 'features/controles/est_int/est-int',
+const meta: Meta<typeof EstInt> = {
+  component: EstInt,
 }
 
-export const Default: Story = () => {
-  return (
+export default meta
+type Story = StoryObj<typeof EstInt>
+
+export const Default: Story = {
+  render: () => (
     <>
       <EstInt />
     </>
-  )
+  ),
 }

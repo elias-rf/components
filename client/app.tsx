@@ -1,4 +1,4 @@
-import { authStore } from '@/client/store/auth_store.js'
+import { isAuthenticated } from '@/client/store/auth_store.js'
 import React, { Suspense } from 'react'
 import { Route, Switch, useLocation } from 'wouter'
 import { Layout } from './features/layout.js'
@@ -57,12 +57,12 @@ const Grupos = React.lazy(
 /** Componente com todas a rotas da aplicativo */
 export function App() {
   const [location, setLocation] = useLocation()
-  const isAuthenticated = authStore.use.isAuthenticated()
 
   React.useEffect(() => {
     if (!isAuthenticated() && location !== '/login') {
       setLocation('/login')
     }
+    console.log(location)
   }, [location, setLocation, isAuthenticated])
 
   return (
@@ -105,7 +105,6 @@ export function App() {
           <Route path="/outros/fileManager">
             <FileManager />
           </Route>
-
           <Route path="/login">
             <Login />
           </Route>

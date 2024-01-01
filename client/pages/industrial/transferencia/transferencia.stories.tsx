@@ -1,10 +1,15 @@
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { Transferencia } from './transferencia_form.js'
 
-export default {
-  title: 'features/transferencia',
+const meta: Meta<typeof Transferencia> = {
+  component: Transferencia,
 }
 
-export const Default: Story = () => {
-  return <Transferencia />
+export default meta
+type Story = StoryObj<typeof Transferencia>
+
+export const Default: Story = {
+  render: () => {
+    return <Transferencia />
+  },
 }

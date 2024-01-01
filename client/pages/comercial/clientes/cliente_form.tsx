@@ -1,23 +1,16 @@
-import { FormField } from '@/client/components/ui/form-field/form-field.js'
-import { InputForm } from '@/client/components/ui/input/input-form.js'
-import { Label } from '@/client/components/ui/label.js'
-import { Tabs } from '@/client/components/ui/tabs/tabs.js'
+import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
+import { InputForm } from '@/client/components/ui-old/input/input-form.js'
+import { Label } from '@/client/components/ui-old/label.js'
+import { Tabs } from '@/client/components/ui-old/tabs/tabs.js'
 import type { TClienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
 import { ClienteQuantidade } from '@/client/pages/comercial/clientes/components/cliente-quantidade.js'
 import { ClienteValorMedio } from '@/client/pages/comercial/clientes/components/cliente-valor-medio.js'
 import { ClienteValor } from '@/client/pages/comercial/clientes/components/cliente-valor.js'
-import type { TAuthStore } from '@/client/store/auth_store.js'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 
-export function ClienteForm({
-  store,
-  auth,
-}: {
-  store: TClienteStore
-  auth: TAuthStore
-}) {
+export function ClienteForm({ store }: { store: TClienteStore }) {
   const status = store.use.status()
   const recordClear = store.use.recordClear()
   const fetchRecord = store.use.fetchRecord()

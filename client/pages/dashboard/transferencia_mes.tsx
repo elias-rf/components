@@ -1,4 +1,4 @@
-import { Title } from '@/client/components/ui/title.js'
+import { Title } from '@/client/components/ui-old/title.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { day } from '@/utils/date/day.js'
 import React from 'react'

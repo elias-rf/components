@@ -1,12 +1,11 @@
-import type { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { Login } from './login.js'
 
-export default {
-  title: 'features/login',
+const meta: Meta<typeof Login> = {
+  component: Login,
 }
 
-function LoginStory() {
-  return <Login />
-}
+export default meta
+type Story = StoryObj<typeof Login>
 
-export const Form: Story = () => <LoginStory />
+export const Form: Story = { render: () => <Login /> }

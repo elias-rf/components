@@ -5,10 +5,11 @@ import { describe, expect, test } from 'vitest'
 
 describe('authStore', () => {
   test('initial', () => {
-    expect(authStore.getState().token).toBe('')
+    expect(authStore.state.token).toBe('')
   })
+
   test('login', async () => {
-    mockedFetch.clear()
+    mockedFetch.reset()
     mockedFetch.add(async (request: any) => {
       const body = JSON.parse(request.options?.body)
       switch (body.method) {
@@ -41,17 +42,15 @@ describe('authStore', () => {
       }
     })
 
-    await authStore.getState().login({ user: 'fulano', password: '123' })
-    expect(authStore.getState().token).toBe(
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
-    )
-    expect(authStore.getState().permissions).toEqual({
+    await authStore.login({ user: 'fulano', password: '123' })
+    expect(authStore.state.token).toBe('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9')
+    expect(authStore.state.permissions).toEqual({
       teste: true,
     })
   })
 
   test('can for administrator', async () => {
-    mockedFetch.clear()
+    mockedFetch.reset()
     mockedFetch.add(async (request: any) => {
       const body = JSON.parse(request.options?.body)
       switch (body.method) {
@@ -76,6 +75,7 @@ describe('authStore', () => {
             },
           }
         default:
+          console.log(body)
           return {
             body: {
               result: [],
@@ -83,17 +83,16 @@ describe('authStore', () => {
           }
       }
     })
-
-    await authStore.getState().login({ user: 'fulano', password: '123' })
-    expect(authStore.getState().token).toBe(
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
-    )
-    expect(
-      authStore.getState().canList({ teste1: '', teste2: '', test3: '' })
-    ).toEqual({ teste1: true, teste2: true, test3: true })
+    await authStore.login({ user: 'fulano', password: '123' })
+    expect(authStore.state.token).toBe('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9')
+    expect(authStore.canList({ teste1: '', teste2: '', test3: '' })).toEqual({
+      teste1: true,
+      teste2: true,
+      test3: true,
+    })
   })
   test('can for others', async () => {
-    mockedFetch.clear()
+    mockedFetch.reset()
     mockedFetch.add(async (request: any) => {
       const body = JSON.parse(request.options?.body)
       switch (body.method) {
@@ -130,12 +129,12 @@ describe('authStore', () => {
       }
     })
 
-    await authStore.getState().login({ user: 'fulano', password: '123' })
-    expect(authStore.getState().token).toBe(
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
-    )
-    expect(
-      authStore.getState().canList({ teste1: '', teste2: '', test3: '' })
-    ).toEqual({ teste1: true, teste2: true, test3: false })
+    await authStore.login({ user: 'fulano', password: '123' })
+    expect(authStore.state.token).toBe('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9')
+    expect(authStore.canList({ teste1: '', teste2: '', test3: '' })).toEqual({
+      teste1: true,
+      teste2: true,
+      test3: false,
+    })
   })
 })

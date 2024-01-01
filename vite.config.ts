@@ -6,6 +6,7 @@
 import react from '@vitejs/plugin-react'
 import dotenv from 'dotenv-flow'
 import * as path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitest/config'
 import { day } from './utils/date/day.js'
 
@@ -13,6 +14,11 @@ dotenv.config()
 
 const serverPort = process.env.PORT || 3000
 console.log('PROXY http://localhost:' + serverPort)
+
+// console.log(
+//   path.resolve(__dirname, './'),
+//   fileURLToPath(new URL('./', import.meta.url))
+// )
 
 // https://vitejs.dev/config/
 export default defineConfig({

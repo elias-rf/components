@@ -5,7 +5,7 @@ import { fakerPT_BR as faker } from '@faker-js/faker'
 import { describe, expect, test } from 'vitest'
 import { fileManagerStore } from './file-manager_store.js'
 
-mockedFetch.clear()
+mockedFetch.reset()
 mockedFetch.add(async (request: any) => {
   const body = JSON.parse(request.options?.body)
 

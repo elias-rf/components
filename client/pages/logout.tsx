@@ -1,5 +1,5 @@
 import { SpinnerIcon } from '@/client/components/icons/spinner-icon.js'
-import { authStore } from '@/client/store/auth_store.js'
+import { logout } from '@/client/store/auth_store.js'
 import React from 'react'
 import { useLocation } from 'wouter'
 
@@ -11,7 +11,6 @@ import { useLocation } from 'wouter'
 export function Logout() {
   // const logout = useAuth((state) => state.logout)
   const [_, setLocation] = useLocation()
-  const logout = authStore.use.logout()
 
   React.useEffect(() => {
     logout()

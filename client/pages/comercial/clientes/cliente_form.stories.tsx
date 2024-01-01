@@ -1,8 +1,7 @@
 import { ClienteForm } from '@/client/pages/comercial/clientes/cliente_form.js'
 import { clienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
-import { authStore } from '@/client/store/auth_store.js'
 import { fetcherMock } from '@/mocks/fetcher-mock.js'
-import type { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 fetcherMock({
   'cliente/read': () => {
@@ -46,15 +45,15 @@ clienteStore.setState(() => ({
 }))
 clienteStore.getState().fetchRecord()
 
-export default {
-  title: 'features/cliente/cliente-form',
+const meta: Meta<typeof ClienteForm> = {
+  component: ClienteForm,
 }
 
-export const Form: Story = () => {
-  return (
-    <ClienteForm
-      store={clienteStore}
-      auth={authStore}
-    />
-  )
+export default meta
+type Story = StoryObj<typeof ClienteForm>
+
+export const Form: Story = {
+  render: () => {
+    return <ClienteForm store={clienteStore} />
+  },
 }

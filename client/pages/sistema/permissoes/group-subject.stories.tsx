@@ -1,14 +1,17 @@
 import { GroupSubject } from '@/client/pages/sistema/permissoes/group-subject.js'
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-export default {
-  title: 'features/permissoes/group-subject',
+const meta: Meta<typeof GroupSubject> = {
+  component: GroupSubject,
 }
 
-export const Default: Story = () => {
-  return (
+export default meta
+type Story = StoryObj<typeof GroupSubject>
+
+export const Default: Story = {
+  render: () => (
     <>
       <GroupSubject />
     </>
-  )
+  ),
 }

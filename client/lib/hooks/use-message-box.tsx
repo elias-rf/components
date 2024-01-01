@@ -1,4 +1,4 @@
-import { MessageBox } from '@/client/components/ui/message_box.js'
+import { MessageBox } from '@/client/components/ui-old/message_box.js'
 import { useState } from 'react'
 
 export function useMessageBox({

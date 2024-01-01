@@ -1,20 +1,13 @@
 import { Table } from '@/client/components/table/table.js'
 import { gruposColumns } from '@/client/pages/sistema/grupos/grupos_columns.js'
 import { TGruposStore } from '@/client/pages/sistema/grupos/grupos_store.js'
-import { TAuthStore } from '@/client/store/auth_store.js'
 import { pageSizeState } from '@/client/store/page-size-store.js'
 import { TGroupFields, TGroupKeys } from '@/controllers/group_controller.js'
 import type { TData, TId } from '@/types/index.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
-export function GruposTable({
-  store,
-  auth,
-}: {
-  store: TGruposStore
-  auth: TAuthStore
-}) {
+export function GruposTable({ store }: { store: TGruposStore }) {
   const pageHeight = pageSizeState.value.height * 0.7
 
   const fetchList = store.use.fetchList()

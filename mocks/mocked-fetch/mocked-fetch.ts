@@ -1,5 +1,4 @@
 import { sleep } from '@/utils/sleep.js'
-// import { Response } from 'node-fetch'
 
 type TMiddle = (request: {
   url: string
@@ -19,7 +18,6 @@ export async function mockedFetch(
   url: string,
   options: Record<string, string | any> = {}
 ): Promise<any> {
-  // const Response = global.Response
   const newUrl = removeTrailingSlash(url)
   const request = { url: newUrl, options }
   for (const middle of middles) {
@@ -40,13 +38,21 @@ mockedFetch.add = (middle: TMiddle) => {
   middles.push(middle)
 }
 
-mockedFetch.clear = () => {
+mockedFetch.reset = () => {
   middles.length = 0
+  history.length = 0
+}
+
+mockedFetch.clearHistory = () => {
   history.length = 0
 }
 
 mockedFetch.history = () => {
   return history
+}
+
+mockedFetch.middles = () => {
+  return middles
 }
 
 const g: any =

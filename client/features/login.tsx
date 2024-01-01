@@ -1,4 +1,4 @@
-import { authStore } from '@/client/store/auth_store.js'
+import { login as saveLogin } from '@/client/store/auth_store.js'
 import { toast } from 'react-hot-toast'
 import { useLocation } from 'wouter'
 import { Login as LoginComponent } from '../components/login/login.js'
@@ -10,8 +10,6 @@ import { Login as LoginComponent } from '../components/login/login.js'
  */
 export function Login() {
   const [_, setLocation] = useLocation()
-
-  const saveLogin = authStore.use.login()
 
   async function handleInput(user: { user: string; password: string }) {
     try {

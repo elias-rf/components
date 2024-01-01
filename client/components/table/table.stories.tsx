@@ -8,13 +8,17 @@ import {
   TWhere,
 } from '@/types/index.js'
 import { deepEqual } from '@/utils/object/deep-equal.js'
-import type { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { Table } from './table.js'
 
-export default {
-  title: 'components/table',
+const meta: Meta<typeof Table> = {
+  component: Table,
+  args: {},
 }
+
+export default meta
+type Story = StoryObj<typeof Table>
 
 function createData(
   dessert: string,
@@ -59,65 +63,67 @@ const schema: TColumn[] = [
   { label: 'Protein (g)', name: 'protein', align: 'right', width: '90px' },
 ]
 
-export const Default: Story = () => {
-  return (
+export const Default: Story = {
+  render: () => (
     <>
       <Table
         columns={schema}
         rows={data}
       ></Table>
     </>
-  )
+  ),
 }
 
-export const Full: Story = () => {
-  const [selection, setSelection] = React.useState<TSelection<string>>([])
-  const [sort, setSort] = React.useState<TOrderBy<string>>([])
-  const [filter, onFilter] = React.useState<TWhere<string>>([
-    ['dessert', '>', 'Eclair'],
-  ] as TWhere<string>)
-  const getId = (row: TRow) => [['dessert', row.dessert]] as TId<string>
+export const Full: Story = {
+  render: () => {
+    const [selection, setSelection] = React.useState<TSelection<string>>([])
+    const [sort, setSort] = React.useState<TOrderBy<string>>([])
+    const [filter, onFilter] = React.useState<TWhere<string>>([
+      ['dessert', '>', 'Eclair'],
+    ] as TWhere<string>)
+    const getId = (row: TRow) => [['dessert', row.dessert]] as TId<string>
 
-  function onSelection(selected: TSelection<string>) {
-    if (deepEqual(selected, selection)) return setSelection([])
-    setSelection(selected)
-  }
+    function onSelection(selected: TSelection<string>) {
+      if (deepEqual(selected, selection)) return setSelection([])
+      setSelection(selected)
+    }
 
-  return (
-    <>
-      <Table
-        rows={data}
-        columns={schema}
-        selection={selection}
-        onSelection={onSelection}
-        orderBy={sort}
-        onOrderBy={setSort}
-        where={filter}
-        onWhere={onFilter}
-        getId={getId}
-      >
-        {({ row }) => {
-          return (
-            <tr>
-              <td colSpan={100}>
-                <JsonView
-                  data={{
-                    row,
-                  }}
-                />
-              </td>
-            </tr>
-          )
-        }}
-      </Table>
+    return (
+      <>
+        <Table
+          rows={data}
+          columns={schema}
+          selection={selection}
+          onSelection={onSelection}
+          orderBy={sort}
+          onOrderBy={setSort}
+          where={filter}
+          onWhere={onFilter}
+          getId={getId}
+        >
+          {({ row }) => {
+            return (
+              <tr>
+                <td colSpan={100}>
+                  <JsonView
+                    data={{
+                      row,
+                    }}
+                  />
+                </td>
+              </tr>
+            )
+          }}
+        </Table>
 
-      <JsonView
-        data={{
-          selection,
-          sort,
-          filter,
-        }}
-      />
-    </>
-  )
+        <JsonView
+          data={{
+            selection,
+            sort,
+            filter,
+          }}
+        />
+      </>
+    )
+  },
 }

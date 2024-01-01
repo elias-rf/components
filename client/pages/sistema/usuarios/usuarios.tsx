@@ -1,9 +1,9 @@
 import { Can } from '@/client/components/can.js'
-import { FormHead } from '@/client/components/ui/form-head.js'
+import { FormHead } from '@/client/components/ui-old/form-head.js'
 import { UsuarioForm } from '@/client/pages/sistema/usuarios/usuarios_form.js'
 import { usuarioStore } from '@/client/pages/sistema/usuarios/usuarios_store.js'
 import { UsuarioTable } from '@/client/pages/sistema/usuarios/usuarios_table.js'
-import { authStore } from '@/client/store/auth_store.js'
+import { can } from '@/client/store/auth_store.js'
 
 const permissions = {
   sistema_usuarios_permissao: 'Atribuir permissões de preços',
@@ -13,7 +13,6 @@ type TCan = (name: keyof typeof permissions) => boolean
 
 export default function Usuarios() {
   const status = usuarioStore.use.status()
-  const can: TCan = authStore.use.can()
 
   return (
     <Can can={can('sistema_usuarios_read')}>
@@ -24,16 +23,10 @@ export default function Usuarios() {
       >
         Usuários
       </FormHead>
-      <UsuarioTable
-        store={usuarioStore}
-        auth={authStore}
-      />
+      <UsuarioTable store={usuarioStore} />
       {status !== 'none' ? (
-        <div className="mb-2 border border-gray-300 p-1">
-          <UsuarioForm
-            store={usuarioStore}
-            auth={authStore}
-          />
+        <div className="p-1 mb-2 border border-gray-300">
+          <UsuarioForm store={usuarioStore} />
         </div>
       ) : null}
     </Can>

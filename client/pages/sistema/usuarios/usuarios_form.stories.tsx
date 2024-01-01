@@ -1,17 +1,14 @@
 import { usuarioStore } from '@/client/pages/sistema/usuarios/usuarios_store.js'
-import { authStore } from '@/client/store/auth_store.js'
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { UsuarioForm } from './usuarios_form.js'
 
-export default {
-  title: 'features/usuario/usuario_form',
+const meta: Meta<typeof UsuarioForm> = {
+  component: UsuarioForm,
 }
 
-export const Form: Story = () => {
-  return (
-    <UsuarioForm
-      store={usuarioStore}
-      auth={authStore}
-    />
-  )
+export default meta
+type Story = StoryObj<typeof UsuarioForm>
+
+export const Form: Story = {
+  render: () => <UsuarioForm store={usuarioStore} />,
 }

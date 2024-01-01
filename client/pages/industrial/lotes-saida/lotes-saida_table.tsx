@@ -1,30 +1,28 @@
 import { Table } from '@/client/components/table/table.js'
-import { Input } from '@/client/components/ui/input/input.js'
+import { Input } from '@/client/components/ui-old/input/input.js'
 import { lotesSaidaColumns } from '@/client/pages/industrial/lotes-saida/components/lotes-saida_columns.js'
-import { lotesSaidaStore } from '@/client/pages/industrial/lotes-saida/lotes-saida_store.js'
+import {
+  TLotesSaidaStore,
+  lotesSaidaStore,
+} from '@/client/pages/industrial/lotes-saida/lotes-saida_store.js'
 import { pageSizeState } from '@/client/store/page-size-store.js'
 import {
   TNfSaidaLoteFields,
   TNfSaidaLoteKeys,
 } from '@/controllers/nf-saida-lote_controller.js'
-import type { TData, TId } from '@/types/index.js'
+import type { TData, TId, TOrderBy } from '@/types/index.js'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
+import { useSnapshot } from 'valtio'
 
-export function LotesSaidaTable() {
-  const pageHeight = pageSizeState.value.height * 0.9
+export function LotesSaidaTable({ store }: { store: TLotesSaidaStore }) {
+  const pageHeight = useSnapshot(pageSizeState).height * 0.9
   const [controle, setControle] = useState('')
-  const fetchList = lotesSaidaStore.use.fetchList()
-  const list = lotesSaidaStore.use.list()
-  const orderBy = lotesSaidaStore.use.orderBy()
-  const selection = lotesSaidaStore.use.selection()
-  const setOrderBy = lotesSaidaStore.use.setOrderBy()
-  const setSelection = lotesSaidaStore.use.setSelection()
-  const setWhere = lotesSaidaStore.use.setWhere()
-  const where = lotesSaidaStore.use.where()
+  const { where, orderBy, list, selection } = useHookstate(store.state)
+  const { setSelection, fetchList } = store.action
 
   function handleInput(e: string) {
-    setWhere([['NumLote', 'like', e + '%']])
+    where.set([['NumLote', 'like', e + '%']])
     setControle(e)
     fetchList()
   }
@@ -55,7 +53,7 @@ export function LotesSaidaTable() {
 
   return (
     <div data-name="AgendaTelefoneTable">
-      <div className="mx-2 my-1 flex flex-row">
+      <div className="flex flex-row mx-2 my-1">
         Controle para rastrear
         <div className="ml-2 w-60">
           <Input
@@ -68,11 +66,11 @@ export function LotesSaidaTable() {
         columns={lotesSaidaColumns}
         getId={getId}
         height={`${pageHeight}px`}
-        onOrderBy={setOrderBy}
+        onOrderBy={(e) => orderBy.set(e)}
         onSelection={setSelection}
-        orderBy={orderBy}
-        rows={list ?? []}
-        selection={selection}
+        orderBy={orderBy.value as TOrderBy<TNfSaidaLoteFields>}
+        rows={list.value as TData<TNfSaidaLoteFields>[]}
+        selection={selection.value as TId<TNfSaidaLoteKeys>}
       />
     </div>
   )

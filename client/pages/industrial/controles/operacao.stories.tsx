@@ -1,10 +1,13 @@
 import '@/client/pages/industrial/controles/controles_store.mock.js'
 import { Operacao } from '@/client/pages/industrial/controles/operacao.js'
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-export default {
-  title: 'features/controles/operacao/operacao',
+const meta: Meta<typeof OperacaoStory> = {
+  component: OperacaoStory,
 }
+
+export default meta
+type Story = StoryObj<typeof OperacaoStory>
 
 function OperacaoStory() {
   return (
@@ -14,4 +17,4 @@ function OperacaoStory() {
   )
 }
 
-export const Default: Story = () => <OperacaoStory />
+export const Default: Story = { render: () => <OperacaoStory /> }

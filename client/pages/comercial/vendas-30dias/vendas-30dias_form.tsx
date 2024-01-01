@@ -1,5 +1,4 @@
 import { TVendas30DiasStore } from '@/client/pages/comercial/vendas-30dias/vendas-30dias.store.js'
-import { TAuthStore } from '@/client/store/auth_store.js'
 import { formatMoney } from '@/utils/format/format-money.js'
 import { toast } from 'react-hot-toast'
 import {
@@ -17,13 +16,7 @@ import { useEffectOnce } from 'usehooks-ts'
  *
  * @returns {*} componente react
  */
-export function Vendas30dias({
-  store,
-  auth,
-}: {
-  store: TVendas30DiasStore
-  auth: TAuthStore
-}) {
+export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
   const list = store.use.list()
   const fetchList = store.use.fetchList()
 

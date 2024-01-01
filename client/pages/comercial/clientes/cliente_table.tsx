@@ -1,6 +1,5 @@
 import { Table } from '@/client/components/table/table.js'
 import { TClienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
-import { TAuthStore } from '@/client/store/auth_store.js'
 import {
   TClienteFields,
   TClienteKeys,

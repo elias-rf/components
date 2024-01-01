@@ -9,18 +9,18 @@ if (process.env.NODE_ENV !== 'production')
 export const rpc: TypedJSONRPCClient<TModules> = new JSONRPCClient(
   async (jsonRPCRequest: any) => {
     const auth = JSON.parse(
-      sessionStorage.getItem('auth') || '{"state":{"token":"","user":{}}}'
+      sessionStorage.getItem('auth') || '{"token":"","user":{}}'
     )
-
-    const response = await fetch(endpoint, {
+    const options = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        Authorization: `Bearer ${auth.state.token}`,
-        user: auth.state.user.usuario_id,
+        Authorization: `Bearer ${auth.token}`,
+        user: auth.user.usuario_id || '',
       },
       body: JSON.stringify(jsonRPCRequest),
-    })
+    }
+    const response = await fetch(endpoint, options)
 
     if (response.status === 200) {
       // Use client.receive when you received a JSON-RPC response.

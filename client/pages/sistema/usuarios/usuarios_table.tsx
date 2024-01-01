@@ -1,7 +1,6 @@
 import { Table } from '@/client/components/table/table.js'
 import { usuarioColumns } from '@/client/pages/sistema/usuarios/components/usuario_columns.js'
 import { TUsuarioStore } from '@/client/pages/sistema/usuarios/usuarios_store.js'
-import { TAuthStore } from '@/client/store/auth_store.js'
 import { pageSizeState } from '@/client/store/page-size-store.js'
 import {
   TUsuarioFields,
@@ -11,13 +10,7 @@ import type { TData, TId } from '@/types/index.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
-export function UsuarioTable({
-  store,
-  auth,
-}: {
-  store: TUsuarioStore
-  auth: TAuthStore
-}) {
+export function UsuarioTable({ store }: { store: TUsuarioStore }) {
   const pageHeight = pageSizeState.value.height * 0.6
 
   const fetchList = store.use.fetchList()

@@ -1,26 +1,18 @@
-import { Button } from '@/client/components/ui/button/button.js'
-import { FormField } from '@/client/components/ui/form-field/form-field.js'
-import { InputForm } from '@/client/components/ui/input/input-form.js'
-import { Label } from '@/client/components/ui/label.js'
-import { SelectBadgeForm } from '@/client/components/ui/select-badge/select-badge-form.js'
-import { SelectBadge } from '@/client/components/ui/select-badge/select-badge.js'
-import { ToggleForm } from '@/client/components/ui/toggle/toggle-form.js'
+import { Button } from '@/client/components/ui-old/button/button.js'
+import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
+import { InputForm } from '@/client/components/ui-old/input/input-form.js'
+import { Label } from '@/client/components/ui-old/label.js'
+import { SelectBadgeForm } from '@/client/components/ui-old/select-badge/select-badge-form.js'
+import { ToggleForm } from '@/client/components/ui-old/toggle/toggle-form.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { TUsuarioStore } from '@/client/pages/sistema/usuarios/usuarios_store.js'
-import { TAuthStore } from '@/client/store/auth_store.js'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 import { useEffectOnce } from 'usehooks-ts'
 
-export function UsuarioForm({
-  store,
-  auth,
-}: {
-  store: TUsuarioStore
-  auth: TAuthStore
-}) {
+export function UsuarioForm({ store }: { store: TUsuarioStore }) {
   const [listGroups, setListGroups] = useState<
     [label: string, value: string][]
   >([])

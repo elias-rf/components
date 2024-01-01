@@ -1,41 +1,30 @@
-import { Button } from '@/client/components/ui/button/button.js'
-import { FormField } from '@/client/components/ui/form-field/form-field.js'
-import { InputForm } from '@/client/components/ui/input/input-form.js'
-import { Label } from '@/client/components/ui/label.js'
+import { Button } from '@/client/components/ui-old/button/button.js'
+import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
+import { InputForm } from '@/client/components/ui-old/input/input-form.js'
+import { Label } from '@/client/components/ui-old/label.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/agenda-telefone_store.js'
-import { TAuthStore } from '@/client/store/auth_store.js'
+import { useHookstate } from '@hookstate/core'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 
 export const AgendaTelefoneForm = ({
   store,
-  auth,
 }: {
   store: TAgendaTelefoneStore
-  auth: TAuthStore
 }) => {
-  const status = store.use.status()
-  const onCancel = store.use.onCancel()
-  const onDelete = store.use.onDelete()
-  const onEdit = store.use.onEdit()
-  const onSave = store.use.onSave()
-  const recordClear = store.use.recordClear()
-  const fetchRecord = store.use.fetchRecord()
-  const selection = store.use.selection()
-  const record = store.use.record()
-  const setRecord = store.use.setRecord()
-
-  const form = useForm({ defaultValues: recordClear })
+  const form = useForm({ defaultValues: store.state.recordClear.value })
+  const { record, selection, status } = useHookstate(store.state)
+  const action = store.action
 
   useEffect(() => {
-    form.reset(record)
+    form.reset(record.value)
   }, [record])
 
   useEffect(() => {
     toast.promise(
-      fetchRecord(),
+      action.fetchRecord(),
       {
         loading: 'lendo...',
         success: 'sucesso!',
@@ -59,7 +48,7 @@ export const AgendaTelefoneForm = ({
       'Tem certeza que deseja apagar ' + form?.getValues('name')
     )
     if (response === 'option1') {
-      onDelete()
+      action.onDelete()
     }
   }
 
@@ -67,8 +56,8 @@ export const AgendaTelefoneForm = ({
     <div data-name="AgendaTelefoneForm">
       <div className="flex-rows my-2 flex space-x-2">
         <Button
-          onClick={onEdit}
-          disabled={['none', 'edit', 'new'].includes(status)}
+          onClick={action.onEdit}
+          disabled={['none', 'edit', 'new'].includes(status.value)}
           size="sm"
           outline
         >
@@ -76,7 +65,7 @@ export const AgendaTelefoneForm = ({
         </Button>
         <Button
           onClick={handleDel}
-          disabled={['none', 'edit', 'new'].includes(status)}
+          disabled={['none', 'edit', 'new'].includes(status.value)}
           size="sm"
           outline
         >
@@ -93,7 +82,7 @@ export const AgendaTelefoneForm = ({
               Ramal
             </Label>
             <InputForm
-              disabled={['none', 'view'].includes(status)}
+              disabled={['none', 'view'].includes(status.value)}
               {...form.register('id')}
             />
           </FormField>
@@ -102,7 +91,7 @@ export const AgendaTelefoneForm = ({
           <FormField>
             <Label name="name">Nome</Label>
             <InputForm
-              disabled={['none', 'view'].includes(status)}
+              disabled={['none', 'view'].includes(status.value)}
               {...form.register('name')}
             />
           </FormField>
@@ -111,7 +100,7 @@ export const AgendaTelefoneForm = ({
           <FormField>
             <Label name="id">Setor</Label>
             <InputForm
-              disabled={['none', 'view'].includes(status)}
+              disabled={['none', 'view'].includes(status.value)}
               {...form.register('department')}
             />
           </FormField>
@@ -120,7 +109,7 @@ export const AgendaTelefoneForm = ({
           <FormField>
             <Label name="id">Email</Label>
             <InputForm
-              disabled={['none', 'view'].includes(status)}
+              disabled={['none', 'view'].includes(status.value)}
               {...form.register('email')}
             />
           </FormField>
@@ -129,10 +118,10 @@ export const AgendaTelefoneForm = ({
       <div className="flex-rows align-center my-2 flex justify-end space-x-2">
         <Button
           onClick={() => {
-            setRecord(form.getValues())
-            onSave()
+            record.set(form.getValues())
+            action.onSave()
           }}
-          disabled={['none', 'view'].includes(status)}
+          disabled={['none', 'view'].includes(status.value)}
           size="sm"
           outline
         >
@@ -141,9 +130,9 @@ export const AgendaTelefoneForm = ({
         <Button
           onClick={() => {
             form.reset()
-            onCancel()
+            action.onCancel()
           }}
-          disabled={['none', 'view'].includes(status)}
+          disabled={['none', 'view'].includes(status.value)}
           size="sm"
           outline
         >

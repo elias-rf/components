@@ -1,6 +1,6 @@
 import { EsterilizacaoExternaModelo } from '@/client/pages/industrial/controles/components/est-ext-modelo.js'
 import { fetcherMock } from '@/mocks/fetcher-mock.js'
-import type { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 fetcherMock({
   'esterilizacaoExterna/modelo': () => {
@@ -17,10 +17,15 @@ fetcherMock({
   },
 })
 
-export default {
-  title: 'features/controles/est_ext/est-ext-modelo',
+const meta: Meta<typeof EsterilizacaoExternaModelo> = {
+  component: EsterilizacaoExternaModelo,
 }
 
-export const Default: Story = () => {
-  return <EsterilizacaoExternaModelo />
+export default meta
+type Story = StoryObj<typeof EsterilizacaoExternaModelo>
+
+export const Default: Story = {
+  render: () => {
+    return <EsterilizacaoExternaModelo />
+  },
 }

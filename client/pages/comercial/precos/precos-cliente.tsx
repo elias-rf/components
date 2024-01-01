@@ -1,5 +1,4 @@
 import { inteiro, moeda } from '@/client/lib/text-box-formats.js'
-import { TAuthStore } from '@/client/store/auth_store.js'
 import React from 'react'
 import { PrecosVendedor, TGrupos } from './components/precos-vendedor.js'
 import { Textbox } from './components/textbox.js'
@@ -91,7 +90,7 @@ function Produto({
   )
 }
 
-export function PrecosCliente({ auth }: { auth: TAuthStore }) {
+export function PrecosCliente() {
   const [snap, setValue] = usePrecosState() as any
 
   function recalc({ field, value }: { field: string; value: any }) {

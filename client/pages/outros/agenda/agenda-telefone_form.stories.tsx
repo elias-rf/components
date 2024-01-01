@@ -1,16 +1,15 @@
-import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
-
+import { JsonView } from '@/client/components/json-view/json-view.js'
 import { Page } from '@/client/components/page/page.js'
-import { StoreViewer } from '@/client/components/ui/store-viewer.js'
 import '@/client/index.css'
 import { AgendaTelefoneForm } from '@/client/pages/outros/agenda/agenda-telefone_form.js'
 import { agendaTelefoneStore } from '@/client/pages/outros/agenda/agenda-telefone_store.js'
-import { authStore } from '@/client/store/auth_store.js'
+import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
 import { faker } from '@faker-js/faker/locale/pt_BR'
-import type { Story } from '@ladle/react'
-import { useEffectOnce } from 'usehooks-ts'
+import { useHookstate } from '@hookstate/core'
+import type { Meta, StoryObj } from '@storybook/react'
+import React from 'react'
 
-mockedFetch.clear()
+mockedFetch.reset()
 mockedFetch.add(async (request: any) => {
   const body = JSON.parse(request.options?.body)
   switch (body.method) {
@@ -36,29 +35,29 @@ mockedFetch.add(async (request: any) => {
   }
 })
 
-export default {
-  title: 'features/agenda-telefone/agenda-telefone_form',
+const meta: Meta<typeof AgendaTelefoneForm> = {
+  component: AgendaTelefoneForm,
 }
 
-export const Form: Story = () => {
-  const setSelection = agendaTelefoneStore.use.setSelection()
-  const fetchRecord = agendaTelefoneStore.use.fetchRecord()
+export default meta
+type Story = StoryObj<typeof AgendaTelefoneForm>
 
-  useEffectOnce(() => {
-    setSelection([['id', '100']])
-    fetchRecord()
-  })
+export const Form: Story = {
+  render: () => {
+    const { record, selection, status } = useHookstate(
+      agendaTelefoneStore.state
+    )
 
-  return (
-    <Page>
-      <AgendaTelefoneForm
-        store={agendaTelefoneStore}
-        auth={authStore}
-      />
-      <StoreViewer
-        store={agendaTelefoneStore}
-        properties={['list', 'orderBy', 'selection', 'where', 'record']}
-      />
-    </Page>
-  )
+    React.useEffect(() => {
+      agendaTelefoneStore.action.setSelection([['id', '100']])
+      agendaTelefoneStore.action.fetchRecord()
+    }, [])
+
+    return (
+      <Page>
+        <AgendaTelefoneForm store={agendaTelefoneStore} />
+        <JsonView data={{ selection, status, record }} />
+      </Page>
+    )
+  },
 }

@@ -1,10 +1,10 @@
-import pg403 from '../assets/images/403.gif'
+import pg403 from '@/client/assets/images/403.gif'
 import { Anchor } from '../components/anchor.js'
 
 export default function Page403() {
   return (
-    <div className={'flex items-center justify-center w-full h-full'}>
-      <div className={'text-3xl text-center'}>
+    <div className={'flex h-full w-full items-center justify-center'}>
+      <div className={'text-center text-3xl'}>
         Você não possui permissão!{' '}
         <Anchor
           className={'text-blue-500'}

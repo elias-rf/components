@@ -1,4 +1,4 @@
-import { Title } from '@/client/components/ui/title.js'
+import { Title } from '@/client/components/ui-old/title.js'
 import { vendasPeriodoStore } from '@/client/pages/comercial/vendas-periodo/vendas-periodo.store.js'
 import { toast } from 'react-hot-toast'
 

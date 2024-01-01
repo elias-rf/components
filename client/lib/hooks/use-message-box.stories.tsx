@@ -1,37 +1,42 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
-import type { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { useMessageBox } from './use-message-box.js'
 
-export default {
-  title: 'lib/hooks/useMessageBox',
+const meta: Meta<typeof JsonView> = {
+  component: JsonView,
 }
 
-export const Default: Story = () => {
-  const [state, setState] = React.useState('none')
-  const { MsgBox, confirm } = useMessageBox({
-    title: 'Teste',
-    message: 'Teste de uso',
-    option1: 'Confirma',
-    option2: 'Cancela',
-  })
+export default meta
+type Story = StoryObj<typeof JsonView>
 
-  async function showState() {
-    const response = await confirm('Teste de confirmação')
-    console.log('showState', response)
-    setState(response)
-  }
+export const Default: Story = {
+  render: () => {
+    const [state, setState] = React.useState('none')
+    const { MsgBox, confirm } = useMessageBox({
+      title: 'Teste',
+      message: 'Teste de uso',
+      option1: 'Confirma',
+      option2: 'Cancela',
+    })
 
-  return (
-    <>
-      <button onClick={showState}>Show Msg</button>
-      Response {state}
-      <MsgBox />
-      <JsonView
-        data={{
-          state,
-        }}
-      />
-    </>
-  )
+    async function showState() {
+      const response = await confirm('Teste de confirmação')
+      console.log('showState', response)
+      setState(response)
+    }
+
+    return (
+      <>
+        <button onClick={showState}>Show Msg</button>
+        Response {state}
+        <MsgBox />
+        <JsonView
+          data={{
+            state,
+          }}
+        />
+      </>
+    )
+  },
 }

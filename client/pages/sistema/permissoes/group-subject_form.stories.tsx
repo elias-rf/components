@@ -1,19 +1,24 @@
 import { useForm } from '@/client/lib/hooks/use-form.js'
 import { GroupSubjectForm } from '@/client/pages/sistema/permissoes/group-subject_form.js'
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-export default {
-  title: 'features/permissoes/group-subject_form',
+const meta: Meta<typeof GroupSubjectForm> = {
+  component: GroupSubjectForm,
 }
 
-export const Form: Story = () => {
-  const form = useForm({
-    value: { agenda_telefone_id: '', nome: '', setor: '', email: '' },
-  })
-  return (
-    <GroupSubjectForm
-      form={form}
-      disabled={false}
-    />
-  )
+export default meta
+type Story = StoryObj<typeof GroupSubjectForm>
+
+export const Form: Story = {
+  render: () => {
+    const form = useForm({
+      value: { agenda_telefone_id: '', nome: '', setor: '', email: '' },
+    })
+    return (
+      <GroupSubjectForm
+        form={form}
+        disabled={false}
+      />
+    )
+  },
 }

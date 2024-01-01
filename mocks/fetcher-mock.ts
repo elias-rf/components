@@ -42,5 +42,5 @@ export function fetcherMock(
   })
 }
 
-fetcherMock.reset = mockedFetch.clear
+fetcherMock.reset = mockedFetch.reset
 fetcherMock.history = mockedFetch.history

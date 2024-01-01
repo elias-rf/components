@@ -1,21 +1,20 @@
 import { usuarioStore } from '@/client/pages/sistema/usuarios/usuarios_store.js'
-import { authStore } from '@/client/store/auth_store.js'
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { UsuarioTable } from './usuarios_table.js'
 
-export default {
-  title: 'features/usuario/usuario',
+const meta: Meta<typeof UsuarioTable> = {
+  component: UsuarioTable,
 }
 
-export const Default: Story = () => {
-  return (
+export default meta
+type Story = StoryObj<typeof UsuarioTable>
+
+export const Default: Story = {
+  render: () => (
     <>
       <div className="p-2">
-        <UsuarioTable
-          store={usuarioStore}
-          auth={authStore}
-        />
+        <UsuarioTable store={usuarioStore} />
       </div>
     </>
-  )
+  ),
 }

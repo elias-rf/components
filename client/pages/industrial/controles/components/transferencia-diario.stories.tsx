@@ -1,11 +1,16 @@
 import { TransferenciaDiario } from '@/client/pages/industrial/controles/components/transferencia-diario.js'
 import '@/client/pages/industrial/controles/controles_store.mock.js'
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-export default {
-  title: 'features/controles/transferencia/transferencia-diario',
+const meta: Meta<typeof TransferenciaDiario> = {
+  component: TransferenciaDiario,
 }
 
-export const Transferencia_Diario: Story = () => {
-  return <TransferenciaDiario />
+export default meta
+type Story = StoryObj<typeof TransferenciaDiario>
+
+export const Transferencia_Diario: Story = {
+  render: () => {
+    return <TransferenciaDiario />
+  },
 }

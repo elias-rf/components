@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function useState(valueDefault: any) {
+export function useState<T>(valueDefault: T) {
   const [get, set] = React.useState(valueDefault)
   return {
     get: () => get,

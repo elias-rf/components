@@ -1,14 +1,19 @@
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { VendasPeriodo } from './vendas-periodo_table.js'
 
-export default {
-  title: 'features/vendas/vendas periodo',
+const meta: Meta<typeof VendasPeriodo> = {
+  component: VendasPeriodo,
 }
 
-export const Default: Story = () => {
-  return (
-    <>
-      <VendasPeriodo />
-    </>
-  )
+export default meta
+type Story = StoryObj<typeof VendasPeriodo>
+
+export const Default: Story = {
+  render: () => {
+    return (
+      <>
+        <VendasPeriodo />
+      </>
+    )
+  },
 }

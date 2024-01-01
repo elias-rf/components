@@ -1,11 +1,16 @@
 import { OperacaoDiario } from '@/client/pages/industrial/controles/components/operacao-diario.js'
 import '@/client/pages/industrial/controles/controles_store.mock.js'
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-export default {
-  title: 'features/controles/operacao/operacao-diario',
+const meta: Meta<typeof OperacaoDiario> = {
+  component: OperacaoDiario,
 }
 
-export const Operacao_Diario: Story = () => {
-  return <OperacaoDiario />
+export default meta
+type Story = StoryObj<typeof OperacaoDiario>
+
+export const Operacao_Diario: Story = {
+  render: () => {
+    return <OperacaoDiario />
+  },
 }

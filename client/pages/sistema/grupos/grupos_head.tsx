@@ -1,9 +1,9 @@
 import { Can } from '@/client/components/can.js'
-import { Button } from '@/client/components/ui/button/button.js'
-import { Title } from '@/client/components/ui/title.js'
+import { Button } from '@/client/components/ui-old/old/old/button/button.js'
+import { Title } from '@/client/components/ui-old/old/old/title.js'
 import { Permissions } from '@/client/features/permissions.js'
 import { gruposStore } from '@/client/pages/sistema/grupos/grupos_store.js'
-import { authStore } from '@/client/store/auth_store.js'
+import { can } from '@/client/store/auth_store.js'
 
 const permissions = {
   grupos_permissao: 'Atribuir permissões de acesso para usuários',
@@ -14,10 +14,9 @@ type TCan = (name: keyof typeof permissions) => boolean
 
 export function GruposHead() {
   const onNew = gruposStore.use.onNew()
-  const can: TCan = authStore.use.can()
 
   return (
-    <div className="align-center my-1 flex flex-row justify-between">
+    <div className="flex flex-row justify-between my-1 align-center">
       <div className="flex flex-row space-x-1">
         <Title>Grupos de segurança</Title>
         <Can

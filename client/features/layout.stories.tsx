@@ -1,12 +1,17 @@
 import { Layout } from '@/client/features/layout.js'
-import type { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
-export default {
-  title: 'features/layout',
+const meta: Meta<typeof Layout> = {
+  component: Layout,
 }
 
-export const Default: Story = () => {
-  const [path] = React.useState('/main')
-  return <Layout>Página de dados - {path}</Layout>
+export default meta
+type Story = StoryObj<typeof Layout>
+
+export const Default: Story = {
+  render: () => {
+    const [path] = React.useState('/main')
+    return <Layout>Página de dados - {path}</Layout>
+  },
 }

@@ -1,10 +1,11 @@
 import { Can } from '@/client/components/can.js'
-import { FormHead } from '@/client/components/ui/form-head.js'
+import { FormHead } from '@/client/components/ui-old/form-head.js'
 import { ClienteForm } from '@/client/pages/comercial/clientes/cliente_form.js'
 import { clienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
 import { ClienteTable } from '@/client/pages/comercial/clientes/cliente_table.js'
-import { authStore } from '@/client/store/auth_store.js'
+import { can } from '@/client/store/auth_store.js'
 import { pageSizeState } from '@/client/store/page-size-store.js'
+import { useSnapshot } from 'valtio'
 
 const permissions = {
   comercial_cliente_permissao: 'Atribuir permissões do cliente',
@@ -14,10 +15,9 @@ const permissions = {
 type TCan = (name: keyof typeof permissions) => boolean
 
 export default function Clientes() {
-  const pageHeight = pageSizeState.value.height
+  const pageHeight = useSnapshot(pageSizeState).height
 
   const status = clienteStore.use.status()
-  const can: TCan = authStore.use.can()
 
   return (
     <Can can={can('comercial_cliente_read_all')}>
@@ -35,11 +35,8 @@ export default function Clientes() {
         />
       </div>
       {status !== 'none' ? (
-        <div className="mb-2 border border-gray-400 p-1 dark:border-gray-500">
-          <ClienteForm
-            store={clienteStore}
-            auth={authStore}
-          />
+        <div className="p-1 mb-2 border border-gray-400 dark:border-gray-500">
+          <ClienteForm store={clienteStore} />
         </div>
       ) : null}
     </Can>

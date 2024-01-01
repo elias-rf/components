@@ -1,11 +1,11 @@
 import { Can } from '@/client/components/can.js'
-import { FormHead } from '@/client/components/ui/form-head.js'
-import { Tabs } from '@/client/components/ui/tabs/tabs.js'
+import { FormHead } from '@/client/components/ui-old/form-head.js'
+import { Tabs } from '@/client/components/ui-old/tabs/tabs.js'
 import { EstExt } from '@/client/pages/industrial/controles/est-ext.js'
 import { EstInt } from '@/client/pages/industrial/controles/est-int.js'
 import { Operacao } from '@/client/pages/industrial/controles/operacao.js'
 import { Transferencia } from '@/client/pages/industrial/controles/transferencia.js'
-import { authStore } from '@/client/store/auth_store.js'
+import { can } from '@/client/store/auth_store.js'
 import { useState } from 'react'
 
 const permissions = {
@@ -18,7 +18,6 @@ type TCan = (name: keyof typeof permissions) => boolean
 
 export default function Controles() {
   const [select, setSelect] = useState('profile')
-  const can: TCan = authStore.use.can()
 
   return (
     <Can can={can('industrial_controles_read')}>

@@ -1,6 +1,6 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
 import '@/client/index.css'
-import type { Story, StoryDefault } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const jsonData = {
   'string property': 'my string',
@@ -22,17 +22,23 @@ const jsonData = {
   },
 }
 
-export default {
-  title: 'Components / JsonView',
-} satisfies StoryDefault
+const meta: Meta<typeof JsonView> = {
+  component: JsonView,
+  args: {
+    className: 'w-10 h-10',
+  },
+}
 
-export const Padrao: Story = () => {
-  return (
+export default meta
+type Story = StoryObj<typeof JsonView>
+
+export const Padrao: Story = {
+  render: () => (
     <>
       <JsonView data={1} />
       <JsonView data={[1, 2]} />
       <JsonView data={{ a: 1, b: 2 }} />
       <JsonView data={jsonData} />
     </>
-  )
+  ),
 }

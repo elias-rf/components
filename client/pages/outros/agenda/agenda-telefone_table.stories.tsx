@@ -1,28 +1,42 @@
-import { createRecord, uid } from '@/mocks/fetcher-mock.js'
-import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
-
+import { JsonView } from '@/client/components/json-view/json-view.js'
 import { Page } from '@/client/components/page/page.js'
-import { StoreViewer } from '@/client/components/ui/store-viewer.js'
 import { agendaTelefoneStore } from '@/client/pages/outros/agenda/agenda-telefone_store.js'
 import { AgendaTelefoneTable } from '@/client/pages/outros/agenda/agenda-telefone_table.js'
-import { authStore } from '@/client/store/auth_store.js'
-import { db } from '@/utils/record/database-mock.js'
-import { fakerPT_BR as faker } from '@faker-js/faker'
-import type { Story } from '@ladle/react'
+import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
+import { faker } from '@faker-js/faker/locale/pt_BR'
+import { useHookstate } from '@hookstate/core'
+import { logged } from '@hookstate/logged'
+import type { Meta, StoryObj } from '@storybook/react'
 
-mockedFetch.clear()
+mockedFetch.reset()
 mockedFetch.add(async (request: any) => {
   const body = JSON.parse(request.options?.body)
-
+  console.log(body)
   switch (body.method) {
-    case 'agendaTelefone/list':
+    case 'agendaTelefone_list':
       return {
         body: {
           id: body.id,
-          result: await db
-            .from('agenda_telefone')
-            .where(body.args[0].where)
-            .orderBy(body.args[0].orderBy),
+          result: [
+            {
+              id: 100,
+              name: faker.person.fullName(),
+              department: faker.commerce.department(),
+              email: faker.internet.email(),
+            },
+            {
+              id: 101,
+              name: faker.person.fullName(),
+              department: faker.commerce.department(),
+              email: faker.internet.email(),
+            },
+            {
+              id: 102,
+              name: faker.person.fullName(),
+              department: faker.commerce.department(),
+              email: faker.internet.email(),
+            },
+          ],
         },
       }
     default:
@@ -35,24 +49,34 @@ mockedFetch.add(async (request: any) => {
   }
 })
 
-export default {
-  title: 'features/agenda-telefone/agenda telefone table',
+const meta: Meta<typeof AgendaTelefoneTable> = {
+  component: AgendaTelefoneTable,
 }
 
-export const Default: Story = () => {
-  return (
-    <div className="h-[800px] w-full">
-      <Page>
-        <AgendaTelefoneTable
-          store={agendaTelefoneStore}
-          auth={authStore}
-        />
-        <StoreViewer
-          store={agendaTelefoneStore}
-          properties={['orderBy', 'selection', 'where', 'record', 'list']}
-          className="text-xs"
-        />
-      </Page>
-    </div>
-  )
+export default meta
+type Story = StoryObj<typeof AgendaTelefoneTable>
+
+export const Default: Story = {
+  render: () => {
+    const { list, selection, status, orderBy, where } = useHookstate(
+      agendaTelefoneStore.state
+    )
+
+    return (
+      <div className="h-[800px] w-full">
+        <Page>
+          <AgendaTelefoneTable store={agendaTelefoneStore} />
+          <JsonView
+            data={{
+              where: where.value,
+              orderBy: orderBy.value,
+              selection: selection.value,
+              status: status.value,
+              list: list.value,
+            }}
+          />
+        </Page>
+      </div>
+    )
+  },
 }

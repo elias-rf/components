@@ -1,7 +1,7 @@
-import { FormHead } from '@/client/components/ui/form-head.js'
+import { FormHead } from '@/client/components/ui-old/form-head.js'
 import { fileManagerStore } from '@/client/pages/outros/file-manager/file-manager_store.js'
 import { FileManagerTable } from '@/client/pages/outros/file-manager/file-manager_table.js'
-import { authStore } from '@/client/store/auth_store.js'
+import { can } from '@/client/store/auth_store.js'
 
 const permissions = {
   outros_file_manager_permissao: 'Atribuir permissões',
@@ -14,8 +14,6 @@ type TCan = (name: keyof typeof permissions) => boolean
  * Agenda de Ramais
  */
 export default function FileManager() {
-  const can: TCan = authStore.use.can()
-
   return (
     <div data-name="FileManager">
       <FormHead

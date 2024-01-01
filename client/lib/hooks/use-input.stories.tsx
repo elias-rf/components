@@ -1,9 +1,12 @@
-import type { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { useInput } from './use-input.js'
 
-export default {
-  title: 'lib/hooks/use-input',
+const meta: Meta<typeof InputAux> = {
+  component: InputAux,
 }
+
+export default meta
+type Story = StoryObj<typeof InputAux>
 
 function InputAux({
   onInput,
@@ -51,22 +54,8 @@ function InputAux({
   )
 }
 
-export const Default: Story<{
-  onInput: () => void
-  onChange: () => void
-  onBlur: () => void
-}> = (props) => {
-  return <InputAux {...props} />
-}
-
-Default.argTypes = {
-  onInput: {
-    action: 'clicked',
-  },
-  onChange: {
-    action: 'clicked',
-  },
-  onBlur: {
-    action: 'clicked',
+export const Default: Story = {
+  render: (props) => {
+    return <InputAux {...props} />
   },
 }

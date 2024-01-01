@@ -1,11 +1,16 @@
 import { EsterilizacaoInternaModelo } from '@/client/pages/industrial/controles/components/est-int-modelo.js'
 import '@/client/pages/industrial/controles/controles_store.mock.js'
-import type { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-export default {
-  title: 'features/controles/est_int/est-int-modelo',
+const meta: Meta<typeof EsterilizacaoInternaModelo> = {
+  component: EsterilizacaoInternaModelo,
 }
 
-export const Default: Story = () => {
-  return <EsterilizacaoInternaModelo />
+export default meta
+type Story = StoryObj<typeof EsterilizacaoInternaModelo>
+
+export const Default: Story = {
+  render: () => {
+    return <EsterilizacaoInternaModelo />
+  },
 }

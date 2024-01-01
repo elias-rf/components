@@ -1,6 +1,6 @@
 import { Table } from '@/client/components/table/table.js'
-import { Button } from '@/client/components/ui/button/button.js'
-import { Title } from '@/client/components/ui/title.js'
+import { Button } from '@/client/components/ui-old/button/button.js'
+import { Title } from '@/client/components/ui-old/title.js'
 import { formButtonStatus } from '@/client/lib/form-button-status.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import {

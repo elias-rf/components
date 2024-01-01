@@ -1,5 +1,5 @@
 import { Can } from '@/client/components/can.js'
-import { Title } from '@/client/components/ui/title.js'
+import { Title } from '@/client/components/ui-old/title.js'
 import { Permissions } from '@/client/features/permissions.js'
 
 type TClienteHeadProps = {

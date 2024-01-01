@@ -1,12 +1,11 @@
 import '@/mocks/fetcher-mock'
 
 import { Page } from '@/client/components/page/page.js'
-import { StoreViewer } from '@/client/components/ui/store-viewer.js'
+import { StoreViewer } from '@/client/components/ui-old/store-viewer.js'
 import { clienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
 import { ClienteTable } from '@/client/pages/comercial/clientes/cliente_table.js'
-import { authStore } from '@/client/store/auth_store.js'
 import { fetcherMock } from '@/mocks/fetcher-mock.js'
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 fetcherMock({
   'cliente/list': () => {
@@ -27,23 +26,28 @@ fetcherMock({
   },
 })
 
-export default {
-  title: 'features/cliente/cliente Table',
+const meta: Meta<typeof ClienteTable> = {
+  component: ClienteTable,
 }
 
-export const Default: Story = () => {
-  return (
-    <div className="h-[800px] w-full">
-      <Page>
-        <ClienteTable
-          store={clienteStore}
-          height={'300px'}
-        />
-        <StoreViewer
-          store={clienteStore}
-          properties={['list', 'orderBy', 'selection', 'where', 'record']}
-        />
-      </Page>
-    </div>
-  )
+export default meta
+type Story = StoryObj<typeof ClienteTable>
+
+export const Default: Story = {
+  render: () => {
+    return (
+      <div className="h-[800px] w-full">
+        <Page>
+          <ClienteTable
+            store={clienteStore}
+            height={'300px'}
+          />
+          <StoreViewer
+            store={clienteStore}
+            properties={['list', 'orderBy', 'selection', 'where', 'record']}
+          />
+        </Page>
+      </div>
+    )
+  },
 }

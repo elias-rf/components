@@ -1,9 +1,12 @@
-import { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { Permissions } from './permissions.js'
 
-export default {
-  title: 'features/permissions',
+const meta: Meta<typeof Permissions> = {
+  component: Permissions,
 }
+
+export default meta
+type Story = StoryObj<typeof Permissions>
 
 const permissions = {
   prm1: 'Editar formulário criado por você.',
@@ -12,6 +15,8 @@ const permissions = {
   prm4: 'Adicionar formulário',
 }
 
-export const Form: Story = () => {
-  return <Permissions permissions={permissions} />
+export const Form: Story = {
+  render: () => {
+    return <Permissions permissions={permissions} />
+  },
 }

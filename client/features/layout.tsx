@@ -1,5 +1,5 @@
 import { Page } from '@/client/components/page/page.js'
-import { NoPrint } from '@/client/components/ui/no-print.js'
+import { NoPrint } from '@/client/components/ui-old/no-print.js'
 import { NavbarApp } from '@/client/features/navbar-app.js'
 
 /** feature Layout com menu de páginas do aplicativo */

@@ -2,7 +2,7 @@ import '@/mocks/fetcher-mock'
 
 import { EsterilizacaoInternaMensal } from '@/client/pages/industrial/controles/components/est-int-mensal.js'
 import { fetcherMock } from '@/mocks/fetcher-mock.js'
-import type { Story } from '@ladle/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 fetcherMock({
   'esterilizacaoInterna/mensal': () => {
@@ -15,10 +15,15 @@ fetcherMock({
   },
 })
 
-export default {
-  title: 'features/controles/est_int/est-int-mensal',
+const meta: Meta<typeof EsterilizacaoInternaMensal> = {
+  component: EsterilizacaoInternaMensal,
 }
 
-export const Default: Story = () => {
-  return <EsterilizacaoInternaMensal />
+export default meta
+type Story = StoryObj<typeof EsterilizacaoInternaMensal>
+
+export const Default: Story = {
+  render: () => {
+    return <EsterilizacaoInternaMensal />
+  },
 }
