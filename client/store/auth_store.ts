@@ -1,7 +1,7 @@
+import { authStorage } from '@/client/lib/auth-storage.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { TCurrentUser } from '@/types/index.js'
 import { proxy, subscribe } from 'valtio'
-import { subscribeKey } from 'valtio/utils'
 
 type TAuthState = {
   token: string
@@ -9,7 +9,7 @@ type TAuthState = {
   permissions: { [perm: string]: boolean }
 }
 
-const storage = sessionStorage.getItem('auth')
+const storage = authStorage.getItem()
 const initialState = storage ? JSON.parse(storage) : null
 
 const state = proxy<TAuthState>(
@@ -58,10 +58,12 @@ const fetchPermissions = async () => {
     select: ['idSubject'],
     where: [['idGroup', 'in', groups]],
   })
-  state.permissions = permissions.reduce(
+  const response = permissions.reduce(
     (acc: any, cur: any) => ({ ...acc, [cur.idSubject]: true }),
     {}
   )
+  state.permissions = response
+  return response
 }
 
 /**
@@ -93,6 +95,9 @@ const can = (permission: string) => {
   return response
 }
 
+/**
+ * Retorna o usuario logado
+ */
 const me = async () => {
   const user = await rpc.request('usuario_me')
   if (!user) {
@@ -101,10 +106,10 @@ const me = async () => {
   return user
 }
 
-me()
+// me() // causa erro no test
 
 subscribe(state, () => {
-  sessionStorage.setItem('auth', JSON.stringify(state))
+  authStorage.setItem(JSON.stringify(state))
 })
 
 export const authStore = {
@@ -116,7 +121,4 @@ export const authStore = {
   can,
   me,
   canList,
-  subscribeKey,
-  subscribe,
-  proxy,
 }

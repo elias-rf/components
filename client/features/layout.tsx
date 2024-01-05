@@ -6,15 +6,14 @@ import { NavbarApp } from '@/client/features/navbar-app.js'
 export function Layout({ children }: { children?: any }) {
   return (
     <div
-      className="flex h-screen w-full flex-col dark:bg-gray-900"
+      className="flex flex-col w-full h-full dark:bg-gray-900"
       data-name="Layout"
     >
       <NoPrint>
         <NavbarApp />
       </NoPrint>
-      <div className="h-full overflow-y-auto">
-        <Page>{children}</Page>
-      </div>
+
+      {children}
     </div>
   )
 }

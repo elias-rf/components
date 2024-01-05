@@ -1,12 +1,11 @@
 import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
 import { TAdapterKnex } from '@/orm/adapter-knex.js'
 import { ormTable } from '@/orm/index.js'
-
 import type { TSchema } from '@/schemas/schema.type.js'
 
-export const groupSchema: TSchema = {
+export const groupSchema = {
   table: 'tbl_Seguranca_Grupo',
-  primary: ['kGrupo'],
+  primary: ['kGrupo'] as const,
   fields: ['kGrupo', 'NomeGrupo'] as const,
 }
 

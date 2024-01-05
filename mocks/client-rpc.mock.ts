@@ -1,3 +1,4 @@
+import { authStorage } from '@/client/lib/auth-storage.js'
 import type { TModules } from '@/controllers/index.js'
 import { rpcServer } from '@/controllers/index.js'
 import {
@@ -15,7 +16,7 @@ if (process.env.NODE_ENV === 'development')
 export const clientRpcMock: TypedJSONRPCClient<TModules> = new JSONRPCClient(
   async (jsonRPCRequest: any) => {
     const auth = JSON.parse(
-      sessionStorage.getItem('auth') || '{"state":{"token":"","user":{}}}'
+      authStorage.getItem() || '{"state":{"token":"","user":{}}}'
     )
 
     const context: any = {

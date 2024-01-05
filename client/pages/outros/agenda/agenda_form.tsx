@@ -3,28 +3,27 @@ import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { InputForm } from '@/client/components/ui-old/input/input-form.js'
 import { Label } from '@/client/components/ui-old/label.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
-import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/agenda-telefone_store.js'
-import { useHookstate } from '@hookstate/core'
+import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda_store.js'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
+import { useSnapshot } from 'valtio'
 
 export const AgendaTelefoneForm = ({
   store,
 }: {
   store: TAgendaTelefoneStore
 }) => {
-  const form = useForm({ defaultValues: store.state.recordClear.value })
-  const { record, selection, status } = useHookstate(store.state)
-  const action = store.action
+  const state = useSnapshot(store.state)
+  const form = useForm({ defaultValues: state.recordClear })
 
   useEffect(() => {
-    form.reset(record.value)
-  }, [record])
+    form.reset(state.record)
+  }, [state.record])
 
   useEffect(() => {
     toast.promise(
-      action.fetchRecord(),
+      store.fetchRecord(),
       {
         loading: 'lendo...',
         success: 'sucesso!',
@@ -34,7 +33,7 @@ export const AgendaTelefoneForm = ({
         id: 'agenda-telefone-form',
       }
     )
-  }, [selection])
+  }, [state.selection])
 
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',
@@ -48,16 +47,16 @@ export const AgendaTelefoneForm = ({
       'Tem certeza que deseja apagar ' + form?.getValues('name')
     )
     if (response === 'option1') {
-      action.onDelete()
+      store.onDelete()
     }
   }
 
   return (
-    <div data-name="AgendaTelefoneForm">
-      <div className="flex-rows my-2 flex space-x-2">
+    <div>
+      <div className="flex my-2 space-x-2 flex-rows">
         <Button
-          onClick={action.onEdit}
-          disabled={['none', 'edit', 'new'].includes(status.value)}
+          onClick={store.onEdit}
+          disabled={['none', 'edit', 'new'].includes(state.status)}
           size="sm"
           outline
         >
@@ -65,7 +64,7 @@ export const AgendaTelefoneForm = ({
         </Button>
         <Button
           onClick={handleDel}
-          disabled={['none', 'edit', 'new'].includes(status.value)}
+          disabled={['none', 'edit', 'new'].includes(state.status)}
           size="sm"
           outline
         >
@@ -82,7 +81,7 @@ export const AgendaTelefoneForm = ({
               Ramal
             </Label>
             <InputForm
-              disabled={['none', 'view'].includes(status.value)}
+              disabled={['none', 'view'].includes(state.status)}
               {...form.register('id')}
             />
           </FormField>
@@ -91,52 +90,52 @@ export const AgendaTelefoneForm = ({
           <FormField>
             <Label name="name">Nome</Label>
             <InputForm
-              disabled={['none', 'view'].includes(status.value)}
+              disabled={['none', 'view'].includes(state.status)}
               {...form.register('name')}
             />
           </FormField>
         </div>
         <div className="col-span-12 sm:col-span-4 lg:col-span-2">
           <FormField>
-            <Label name="id">Setor</Label>
+            <Label name="department">Setor</Label>
             <InputForm
-              disabled={['none', 'view'].includes(status.value)}
+              disabled={['none', 'view'].includes(state.status)}
               {...form.register('department')}
             />
           </FormField>
         </div>
         <div className="col-span-12 sm:col-span-8 lg:col-span-4">
           <FormField>
-            <Label name="id">Email</Label>
+            <Label name="email">Email</Label>
             <InputForm
-              disabled={['none', 'view'].includes(status.value)}
+              disabled={['none', 'view'].includes(state.status)}
               {...form.register('email')}
             />
           </FormField>
         </div>
       </div>
-      <div className="flex-rows align-center my-2 flex justify-end space-x-2">
+      <div className="flex justify-end my-2 space-x-2 flex-rows align-center">
         <Button
           onClick={() => {
-            record.set(form.getValues())
-            action.onSave()
+            store.setRecord(form.getValues())
+            store.onSave()
           }}
-          disabled={['none', 'view'].includes(status.value)}
+          disabled={['none', 'view'].includes(state.status)}
           size="sm"
           outline
         >
-          [S]AVE
+          [S]ALVAR
         </Button>
         <Button
           onClick={() => {
             form.reset()
-            action.onCancel()
+            store.onCancel()
           }}
-          disabled={['none', 'view'].includes(status.value)}
+          disabled={['none', 'view'].includes(state.status)}
           size="sm"
           outline
         >
-          [C]ANCEL
+          [C]ANCELAR
         </Button>
       </div>
       <MsgBox />

@@ -1,12 +1,11 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
 import { Page } from '@/client/components/page/page.js'
-import { agendaTelefoneStore } from '@/client/pages/outros/agenda/agenda-telefone_store.js'
-import { AgendaTelefoneTable } from '@/client/pages/outros/agenda/agenda-telefone_table.js'
+import { AgendaTelefoneTable } from '@/client/pages/outros/agenda/agenda_table.js'
+import { agendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda_store.js'
 import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
 import { faker } from '@faker-js/faker/locale/pt_BR'
-import { useHookstate } from '@hookstate/core'
-import { logged } from '@hookstate/logged'
 import type { Meta, StoryObj } from '@storybook/react'
+import { useSnapshot } from 'valtio'
 
 mockedFetch.reset()
 mockedFetch.add(async (request: any) => {
@@ -58,9 +57,7 @@ type Story = StoryObj<typeof AgendaTelefoneTable>
 
 export const Default: Story = {
   render: () => {
-    const { list, selection, status, orderBy, where } = useHookstate(
-      agendaTelefoneStore.state
-    )
+    const snap = useSnapshot(agendaTelefoneStore.state)
 
     return (
       <div className="h-[800px] w-full">
@@ -68,11 +65,11 @@ export const Default: Story = {
           <AgendaTelefoneTable store={agendaTelefoneStore} />
           <JsonView
             data={{
-              where: where.value,
-              orderBy: orderBy.value,
-              selection: selection.value,
-              status: status.value,
-              list: list.value,
+              where: snap.where,
+              orderBy: snap.orderBy,
+              selection: snap.selection,
+              status: snap.status,
+              list: snap.list,
             }}
           />
         </Page>

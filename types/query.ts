@@ -1,10 +1,11 @@
-export type TId<TKeys> = Array<[field: TKeys, value: any]>
-export type TWhere<TFields> = Array<
+export type TId<TKeys> = [field: TKeys, value: any][]
+export type TWhere<TFields> = (
   | [field: TFields, value: any]
   | [field: TFields, equalitity: string, value: any]
->
-export type TSelect<TFields> = Array<TFields | '*'>
-export type TOrderBy<TFields> = Array<[TFields, 'asc' | 'desc']>
+)[]
+
+export type TSelect<TFields> = (TFields | '*')[]
+export type TOrderBy<TFields> = [TFields, 'asc' | 'desc'][]
 export type TData<TFields extends string> = {
   [fields in TFields]: any
 } & Record<TFields, any>

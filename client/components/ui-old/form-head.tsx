@@ -1,6 +1,7 @@
 import { Can } from '@/client/components/can.js'
 import { Title } from '@/client/components/ui-old/title.js'
 import { Permissions } from '@/client/features/permissions.js'
+import { cn } from '@/client/lib/cn.js'
 
 type TFormHeadProps = {
   permissions: { [permission: string]: string }
@@ -13,11 +14,12 @@ export function FormHead({
   children,
   editPermissions,
   permissions,
+  className,
 }: TFormHeadProps) {
   return (
     <div
       data-name="Cliente"
-      className="my-1 flex flex-row space-x-2"
+      className={cn('my-1 flex flex-row space-x-2', className)}
     >
       <Title>{children}</Title>
       <Can

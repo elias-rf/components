@@ -15,7 +15,8 @@ export function authMiddle(req: Request, res: Response, next: NextFunction) {
       const userInfo: any = jwtService.verify(token, config.auth.secret)
       ;(req as RequestAuth).auth = userInfo
     } catch (err) {
-      next(err)
+      ;(req as RequestAuth).auth = {}
+      next()
       return
     }
   }

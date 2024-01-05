@@ -5,27 +5,27 @@
 
 
 ### ordemProducaoOperacao/produto
-POST {{host}}/api/rpc
+POST {{host}}/api/rpc2
 Content-Type: application/json
 
 {
-  "method": "cliente/list",
-  "args": [    {      "id": [  [    "CdCliente",    2  ]]    }  ],
-  "id": "1"
+  "method": "cliente_list",
+  "params": {"where":[["CdCliente",3331]]},
+  "id": "1",
+  "jsonrpc":"2.0"
 }
 
 ### ordemProducaoOperacao/produto
-POST {{host}}/api/rpc
+POST {{host}}/api/rpc2
 Content-Type: application/json
 
 {
-  "method": "cliente/vendaMensalValorMedio",
-  "args": [
-    {
-      "inicio": "2019-02-01",
-      "fim": "2020-01-31",
-      "cliente": 1
-    }
-  ],
-  "id": "1"
+  "method": "cliente_vendaMensalQuantidade",
+  "params": {
+      "inicio": "2021-01-01",
+      "fim": "2021-01-31",
+      "cliente": 3331
+    },
+  "id": "3331",
+  "jsonrpc":"2.0"
 }

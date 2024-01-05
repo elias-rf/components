@@ -21,7 +21,6 @@ export type TTableProps = {
   children?: (args: { row: TRow; columns: TColumn[] }) => React.ReactNode
   columns: TColumn[]
   getId?: (row: any) => TId<any>
-  height?: string
   onOrderBy?: (e: TOrderBy<any>) => void
   onSelection?: (e: TSelection<any>) => void
   onWhere?: (e: TWhere<any>) => void
@@ -46,7 +45,6 @@ export function Table({
   children,
   columns,
   getId = getIdDefault,
-  height,
   onOrderBy,
   onSelection,
   onWhere,
@@ -110,17 +108,14 @@ export function Table({
   }
 
   return (
-    <div
-      className="overflow-auto"
-      style={{ height }}
-    >
+    <div className="h-full overflow-auto">
       <table className="relative w-full text-sm text-left text-gray-500 whitespace-no-wrap border-blue-400 table-auto dark:text-gray-400">
         <thead className="sticky top-0">
           <tr>
             {columns.map((col: TColumn) => (
               <th
                 className={cn(
-                  'px-2 py-1 bg-gray-50 dark:bg-gray-800',
+                  'bg-gray-50 px-2 py-1 dark:bg-gray-800',
                   align[col.align || 'left'],
                   {
                     'cursor-pointer': isSortable(col),
@@ -165,7 +160,7 @@ export function Table({
             <React.Fragment key={getId(row).toString()}>
               <tr
                 className={cn(
-                  'bg-white border-b dark:bg-gray-900 dark:border-gray-700',
+                  'border-b bg-white dark:border-gray-700 dark:bg-gray-900',
 
                   {
                     'bg-gray-200 dark:bg-gray-700': isSelected(row, selection),

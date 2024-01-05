@@ -1,13 +1,14 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
 import { Page } from '@/client/components/page/page.js'
 import '@/client/index.css'
-import { AgendaTelefoneForm } from '@/client/pages/outros/agenda/agenda-telefone_form.js'
-import { agendaTelefoneStore } from '@/client/pages/outros/agenda/agenda-telefone_store.js'
+import { useState } from '@/client/lib/hooks/use-state.js'
+import { AgendaTelefoneForm } from '@/client/pages/outros/agenda/agenda_form.js'
+import { agendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda_store.js'
 import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
 import { faker } from '@faker-js/faker/locale/pt_BR'
-import { useHookstate } from '@hookstate/core'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
+import { useSnapshot } from 'valtio'
 
 mockedFetch.reset()
 mockedFetch.add(async (request: any) => {
@@ -44,19 +45,23 @@ type Story = StoryObj<typeof AgendaTelefoneForm>
 
 export const Form: Story = {
   render: () => {
-    const { record, selection, status } = useHookstate(
-      agendaTelefoneStore.state
-    )
+    const snap = useSnapshot(agendaTelefoneStore.state)
 
     React.useEffect(() => {
-      agendaTelefoneStore.action.setSelection([['id', '100']])
-      agendaTelefoneStore.action.fetchRecord()
+      agendaTelefoneStore.setSelection([['id', '100']])
+      agendaTelefoneStore.fetchRecord()
     }, [])
 
     return (
       <Page>
         <AgendaTelefoneForm store={agendaTelefoneStore} />
-        <JsonView data={{ selection, status, record }} />
+        <JsonView
+          data={{
+            selection: snap.selection,
+            statue: snap.status,
+            record: snap.record,
+          }}
+        />
       </Page>
     )
   },

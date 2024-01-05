@@ -1,22 +1,18 @@
 import { Table } from '@/client/components/table/table.js'
-import { clienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
+import { clienteStore } from '@/client/pages/comercial/clientes/components/clientes_store.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
+import { useSnapshot } from 'valtio'
 import { getSchema } from './get-shema.js'
 
 export function ClienteQuantidade() {
-  const vendaMensalQuantidade = clienteStore.use.vendaMensalQuantidade()
-  const inicio = clienteStore.use.inicio()
-  const fim = clienteStore.use.fim()
-  const fetchVendaMensalQuantidade =
-    clienteStore.use.fetchVendaMensalQuantidade()
-  const selection = clienteStore.use.selection()
+  const state = useSnapshot(clienteStore.state) as typeof clienteStore.state
 
-  const columns = getSchema({ inicio, fim })
+  const columns = getSchema({ inicio: state.inicio, fim: state.fim })
 
   useEffect(() => {
     toast.promise(
-      fetchVendaMensalQuantidade(),
+      clienteStore.fetchVendaMensalQuantidade(),
       {
         loading: 'Carregando quantidade...',
         success: 'Quantidade carregado com sucesso!',
@@ -29,11 +25,11 @@ export function ClienteQuantidade() {
         },
       }
     )
-  }, [selection])
+  }, [state.selection])
 
   return (
     <Table
-      rows={vendaMensalQuantidade ?? []}
+      rows={state.vendaMensalQuantidade ?? []}
       columns={columns}
     />
   )

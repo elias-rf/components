@@ -1,6 +1,6 @@
 import { StoreViewer } from '@/client/components/ui-old/store-viewer.js'
-import { clienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
 import { ClienteQuantidade } from '@/client/pages/comercial/clientes/components/cliente-quantidade.js'
+import { clienteStore } from '@/client/pages/comercial/clientes/components/clientes_store.js'
 import { fetcherMock } from '@/mocks/fetcher-mock.js'
 import type { Meta, StoryObj } from '@storybook/react'
 
@@ -13,12 +13,10 @@ fetcherMock({
   },
 })
 
-clienteStore.setState(() => ({
-  inicio: '2020-01-01',
-  fim: '2020-06-30',
-  selection: [['CdCliente', 1]],
-}))
-clienteStore.getState().fetchVendaMensalQuantidade()
+clienteStore.state.inicio = '2020-01-01'
+clienteStore.state.fim = '2020-06-30'
+clienteStore.state.selection = [['CdCliente', 1]]
+clienteStore.fetchVendaMensalQuantidade()
 
 const meta: Meta<typeof ClienteQuantidade> = {
   component: ClienteQuantidade,

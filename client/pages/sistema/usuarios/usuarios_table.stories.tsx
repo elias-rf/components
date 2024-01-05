@@ -1,4 +1,4 @@
-import { usuarioStore } from '@/client/pages/sistema/usuarios/usuarios_store.js'
+import { usuarioStore } from '@/client/pages/sistema/usuarios/components/usuario_store.js'
 import type { Meta, StoryObj } from '@storybook/react'
 import { UsuarioTable } from './usuarios_table.js'
 

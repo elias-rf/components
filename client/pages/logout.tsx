@@ -1,5 +1,5 @@
 import { SpinnerIcon } from '@/client/components/icons/spinner-icon.js'
-import { logout } from '@/client/store/auth_store.js'
+import { authStore } from '@/client/store/auth_store.js'
 import React from 'react'
 import { useLocation } from 'wouter'
 
@@ -9,13 +9,12 @@ import { useLocation } from 'wouter'
  * @returns {*} componente <LoginView />
  */
 export function Logout() {
-  // const logout = useAuth((state) => state.logout)
   const [_, setLocation] = useLocation()
 
   React.useEffect(() => {
-    logout()
+    authStore.logout()
     setLocation('/')
-  }, [setLocation, logout])
+  }, [setLocation, authStore.logout])
 
   return (
     <div className={'flex justify-center'}>

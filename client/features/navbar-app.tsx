@@ -4,13 +4,13 @@ import { Avatar } from '@/client/components/ui-old/avatar.js'
 import { DarkToggle } from '@/client/components/ui-old/dark-toggle.js'
 import { Dropdown } from '@/client/components/ui-old/dropdown/dropdown.js'
 import { Navbar } from '@/client/components/ui-old/navbar/navbar.js'
-import { authState } from '@/client/store/auth_store.js'
+import { authStore } from '@/client/store/auth_store.js'
 import { useSnapshot } from 'valtio'
 import { useLocation } from 'wouter'
 
 export function NavbarApp() {
   const [_, setLocation] = useLocation()
-  const auth = useSnapshot(authState)
+  const auth = useSnapshot(authStore.state)
 
   function handleLink(to: string) {
     setLocation(to)

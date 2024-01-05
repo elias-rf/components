@@ -1,6 +1,5 @@
 import { sleep } from '@/utils/sleep.js'
-import Assert from 'assert'
-import { beforeAll, describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { Cache } from './cache.js'
 
 describe('Cache Test', function () {

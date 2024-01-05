@@ -2,8 +2,8 @@ import '@/mocks/fetcher-mock'
 
 import { Page } from '@/client/components/page/page.js'
 import { StoreViewer } from '@/client/components/ui-old/store-viewer.js'
-import { clienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
-import { ClienteTable } from '@/client/pages/comercial/clientes/cliente_table.js'
+import { ClienteTable } from '@/client/pages/comercial/clientes/clientes_table.js'
+import { clienteStore } from '@/client/pages/comercial/clientes/components/clientes_store.js'
 import { fetcherMock } from '@/mocks/fetcher-mock.js'
 import type { Meta, StoryObj } from '@storybook/react'
 
@@ -38,10 +38,7 @@ export const Default: Story = {
     return (
       <div className="h-[800px] w-full">
         <Page>
-          <ClienteTable
-            store={clienteStore}
-            height={'300px'}
-          />
+          <ClienteTable store={clienteStore} />
           <StoreViewer
             store={clienteStore}
             properties={['list', 'orderBy', 'selection', 'where', 'record']}

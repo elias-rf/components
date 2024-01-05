@@ -3,6 +3,7 @@ import { ComboboxItem } from '@/client/components/ui-old/combo-box/combo-box-ite
 import { useCombobox } from '@/client/components/ui-old/combo-box/use-combo-box.js'
 import { themeInput } from '@/client/components/ui-old/theme-input.js'
 import { cn } from '@/client/lib/cn.js'
+import { useState } from '@/client/lib/hooks/use-state.js'
 import React, { useRef } from 'react'
 import { useOnClickOutside } from 'usehooks-ts'
 
@@ -61,9 +62,9 @@ export const ComboboxForm = React.forwardRef<HTMLInputElement, TComboboxProps>(
     ref
   ) => {
     const comboRef = useRef<HTMLInputElement>(null)
-    const showOptions = useHookstate(false)
-    const valueInput = useHookstate('')
-    const labelInput = useHookstate('')
+    const showOptions = useState(false)
+    const valueInput = useState('')
+    const labelInput = useState('')
 
     React.useImperativeHandle(
       ref,
@@ -124,12 +125,12 @@ export const ComboboxForm = React.forwardRef<HTMLInputElement, TComboboxProps>(
               )}
               disabled={disabled}
               id={name}
-              value={labelInput.value}
+              value={labelInput.get()}
               onChange={(e) => handleChange(e.target.value)}
             />
             <span
               className=""
-              onClick={() => showOptions.set(!showOptions.value)}
+              onClick={() => showOptions.set(!showOptions.get())}
             >
               <SortIcon direction="both" />
             </span>
@@ -139,7 +140,7 @@ export const ComboboxForm = React.forwardRef<HTMLInputElement, TComboboxProps>(
             className={cn(
               'absolute z-10 w-full divide-y divide-gray-100 rounded-lg bg-white shadow  dark:bg-gray-700 ',
               {
-                hidden: !showOptions.value,
+                hidden: !showOptions.get(),
                 'end-0': position === 'right',
               }
             )}

@@ -1,9 +1,9 @@
 import { FormHead } from '@/client/components/ui-old/form-head.js'
-import { AgendaTelefoneForm } from '@/client/pages/outros/agenda/agenda-telefone_form.js'
-import { agendaTelefoneStore } from '@/client/pages/outros/agenda/agenda-telefone_store.js'
-import { AgendaTelefoneTable } from '@/client/pages/outros/agenda/agenda-telefone_table.js'
-import { can } from '@/client/store/auth_store.js'
-import { useHookstate } from '@hookstate/core'
+import { AgendaTelefoneForm } from '@/client/pages/outros/agenda/agenda_form.js'
+import { AgendaTelefoneTable } from '@/client/pages/outros/agenda/agenda_table.js'
+import { agendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda_store.js'
+import { authStore } from '@/client/store/auth_store.js'
+import { useSnapshot } from 'valtio'
 
 const permissions = {
   outros_agenda_permissao: 'Atribuir permissões',
@@ -16,20 +16,21 @@ type TCan = (name: keyof typeof permissions) => boolean
  * Agenda de Ramais
  */
 export default function Agenda() {
-  const status = useHookstate(agendaTelefoneStore.state.status)
+  const status = useSnapshot(agendaTelefoneStore.state).status
   return (
-    <div data-name="AgendaTelefone">
+    <div className="flex flex-col h-full px-2">
       <FormHead
         permissions={permissions}
-        editPermissions={can('outros_agenda_permissao')}
+        editPermissions={authStore.can('outros_agenda_permissao')}
+        className="flex-none"
       >
         Agenda de Ramais
       </FormHead>
-      <div className="border border-gray-400 dark:border-gray-500">
+      <div className="flex-auto h-64 border border-gray-400 dark:border-gray-500">
         <AgendaTelefoneTable store={agendaTelefoneStore} />
       </div>
-      {status.value !== 'none' ? (
-        <div className="mb-2 border border-gray-400 p-1 dark:border-gray-500">
+      {status !== 'none' ? (
+        <div className="flex-auto max-h-56">
           <AgendaTelefoneForm store={agendaTelefoneStore} />
         </div>
       ) : null}

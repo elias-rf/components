@@ -3,32 +3,24 @@ import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { InputForm } from '@/client/components/ui-old/input/input-form.js'
 import { Label } from '@/client/components/ui-old/label.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
-import { TGruposStore } from '@/client/pages/sistema/grupos/grupos_store.js'
+import { TGroupStore } from '@/client/pages/sistema/grupos/components/grupos_store.js'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
+import { useSnapshot } from 'valtio'
 
-export const GruposForm = ({ store }: { store: TGruposStore }) => {
-  const status = store.use.status()
-  const onCancel = store.use.onCancel()
-  const onDelete = store.use.onDelete()
-  const onEdit = store.use.onEdit()
-  const onSave = store.use.onSave()
-  const recordClear = store.use.recordClear()
-  const fetchRecord = store.use.fetchRecord()
-  const selection = store.use.selection()
-  const record = store.use.record()
-  const setRecord = store.use.setRecord()
+export const GruposForm = ({ store }: { store: TGroupStore }) => {
+  const state = useSnapshot(store.state)
 
-  const form = useForm({ defaultValues: recordClear })
+  const form = useForm({ defaultValues: state.recordClear })
 
   useEffect(() => {
-    form.reset(record)
-  }, [record])
+    form.reset(state.record)
+  }, [state.record])
 
   useEffect(() => {
     toast.promise(
-      fetchRecord(),
+      store.fetchRecord(),
       {
         loading: 'lendo...',
         success: 'sucesso!',
@@ -38,7 +30,7 @@ export const GruposForm = ({ store }: { store: TGruposStore }) => {
         id: 'grupos-form',
       }
     )
-  }, [selection])
+  }, [state.selection])
 
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',
@@ -52,15 +44,15 @@ export const GruposForm = ({ store }: { store: TGruposStore }) => {
       'Tem certeza que deseja apagar ' + form.getValues('NomeGrupo') + '?'
     )
     if (response === 'option1') {
-      onDelete()
+      store.onDelete()
     }
   }
 
   return (
     <div data-name="AgendaTelefoneForm">
-      <div className="flex-rows my-2 flex space-x-2">
+      <div className="flex my-2 space-x-2 flex-rows">
         <Button
-          onClick={onEdit}
+          onClick={store.onEdit}
           disabled={['none', 'edit', 'new'].includes(status)}
           size="sm"
           outline
@@ -102,11 +94,11 @@ export const GruposForm = ({ store }: { store: TGruposStore }) => {
           />
         </FormField>
       </div>
-      <div className="flex-rows align-center my-2 flex justify-end space-x-2">
+      <div className="flex justify-end my-2 space-x-2 flex-rows align-center">
         <Button
           onClick={() => {
-            setRecord(form.getValues())
-            onSave()
+            store.setRecord(form.getValues())
+            store.onSave()
           }}
           disabled={['none', 'view'].includes(status)}
           size="sm"
@@ -117,7 +109,7 @@ export const GruposForm = ({ store }: { store: TGruposStore }) => {
         <Button
           onClick={() => {
             form.reset()
-            onCancel()
+            store.onCancel()
           }}
           disabled={['none', 'view'].includes(status)}
           size="sm"

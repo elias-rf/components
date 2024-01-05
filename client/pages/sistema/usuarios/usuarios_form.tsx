@@ -6,37 +6,29 @@ import { SelectBadgeForm } from '@/client/components/ui-old/select-badge/select-
 import { ToggleForm } from '@/client/components/ui-old/toggle/toggle-form.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { rpc } from '@/client/lib/rpc.js'
-import { TUsuarioStore } from '@/client/pages/sistema/usuarios/usuarios_store.js'
+import { TUsuarioStore } from '@/client/pages/sistema/usuarios/components/usuario_store.js'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 import { useEffectOnce } from 'usehooks-ts'
+import { useSnapshot } from 'valtio'
 
 export function UsuarioForm({ store }: { store: TUsuarioStore }) {
   const [listGroups, setListGroups] = useState<
     [label: string, value: string][]
   >([])
 
-  const status = store.use.status()
-  const onCancel = store.use.onCancel()
-  const onDelete = store.use.onDelete()
-  const onEdit = store.use.onEdit()
-  const onSave = store.use.onSave()
-  const recordClear = store.use.recordClear()
-  const fetchRecord = store.use.fetchRecord()
-  const selection = store.use.selection()
-  const record = store.use.record()
-  const setRecord = store.use.setRecord()
+  const state = useSnapshot(store.state)
 
-  const form = useForm({ defaultValues: recordClear })
+  const form = useForm({ defaultValues: state.recordClear })
 
   useEffect(() => {
-    form.reset(record)
-  }, [record])
+    form.reset(state.record)
+  }, [state.record])
 
   useEffect(() => {
     toast.promise(
-      fetchRecord(),
+      store.fetchRecord(),
       {
         loading: 'lendo...',
         success: 'sucesso!',
@@ -46,7 +38,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
         id: 'usuario-form',
       }
     )
-  }, [selection])
+  }, [state.selection])
 
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',
@@ -60,7 +52,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
       'Tem certeza que deseja apagar ' + form.getValues('nome') + '?'
     )
     if (response === 'option1') {
-      onDelete()
+      store.onDelete()
     }
   }
 
@@ -82,10 +74,10 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
 
   return (
     <div data-name="UsuarioForm">
-      <div className="flex-rows my-2 flex space-x-2">
+      <div className="flex my-2 space-x-2 flex-rows">
         <Button
-          onClick={onEdit}
-          disabled={['none', 'edit', 'new'].includes(status)}
+          onClick={store.onEdit}
+          disabled={['none', 'edit', 'new'].includes(state.status)}
           size="sm"
           outline
         >
@@ -93,7 +85,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
         </Button>
         <Button
           onClick={handleDel}
-          disabled={['none', 'edit', 'new'].includes(status)}
+          disabled={['none', 'edit', 'new'].includes(state.status)}
           size="sm"
           outline
         >
@@ -110,7 +102,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
               Código
             </Label>
             <InputForm
-              disabled={['none', 'view'].includes(status)}
+              disabled={['none', 'view'].includes(state.status)}
               {...form.register('kUsuario')}
             />
           </FormField>
@@ -124,7 +116,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
               Usuario
             </Label>
             <InputForm
-              disabled={['none', 'view'].includes(status)}
+              disabled={['none', 'view'].includes(state.status)}
               {...form.register('nome')}
             />
           </FormField>
@@ -138,7 +130,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
               Login
             </Label>
             <InputForm
-              disabled={['none', 'view'].includes(status)}
+              disabled={['none', 'view'].includes(state.status)}
               {...form.register('NomeUsuario')}
             />
           </FormField>
@@ -152,7 +144,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
               Email
             </Label>
             <InputForm
-              disabled={['none', 'view'].includes(status)}
+              disabled={['none', 'view'].includes(state.status)}
               {...form.register('email')}
             />
           </FormField>
@@ -166,7 +158,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
               Ativo
             </Label>
             <ToggleForm
-              disabled={['none', 'view'].includes(status)}
+              disabled={['none', 'view'].includes(state.status)}
               {...form.register('Ativo')}
             />
           </FormField>
@@ -180,37 +172,33 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
               Grupo
             </Label>
             <SelectBadgeForm
-              disabled={['none', 'view'].includes(status)}
+              disabled={['none', 'view'].includes(state.status)}
               {...form.register('setor')}
               options={listGroups}
             />
           </FormField>
         </div>
       </div>
-      <div className="flex-rows my-2 flex justify-end space-x-2">
-        {onSave ? (
-          <Button
-            onClick={() => {
-              setRecord(form.getValues())
-              onSave()
-            }}
-            disabled={['none', 'view'].includes(status)}
-            size="sm"
-            outline
-          >
-            [S]AVE
-          </Button>
-        ) : null}
-        {onCancel ? (
-          <Button
-            onClick={onCancel}
-            disabled={['none', 'view'].includes(status)}
-            size="sm"
-            outline
-          >
-            [C]ANCEL
-          </Button>
-        ) : null}
+      <div className="flex justify-end my-2 space-x-2 flex-rows">
+        <Button
+          onClick={() => {
+            store.setRecord(form.getValues())
+            store.onSave()
+          }}
+          disabled={['none', 'view'].includes(state.status)}
+          size="sm"
+          outline
+        >
+          [S]AVE
+        </Button>
+        <Button
+          onClick={store.onCancel}
+          disabled={['none', 'view'].includes(state.status)}
+          size="sm"
+          outline
+        >
+          [C]ANCEL
+        </Button>
       </div>
       <MsgBox />
     </div>

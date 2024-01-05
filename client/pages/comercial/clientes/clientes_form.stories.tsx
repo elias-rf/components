@@ -1,5 +1,5 @@
-import { ClienteForm } from '@/client/pages/comercial/clientes/cliente_form.js'
-import { clienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
+import { ClienteForm } from '@/client/pages/comercial/clientes/clientes_form.js'
+import { clienteStore } from '@/client/pages/comercial/clientes/components/clientes_store.js'
 import { fetcherMock } from '@/mocks/fetcher-mock.js'
 import type { Meta, StoryObj } from '@storybook/react'
 
@@ -38,12 +38,10 @@ fetcherMock({
   },
 })
 
-clienteStore.setState(() => ({
-  inicio: '2020-01-01',
-  fim: '2020-06-30',
-  selection: [['CdCliente', 100]],
-}))
-clienteStore.getState().fetchRecord()
+clienteStore.state.inicio = '2020-01-01'
+clienteStore.state.fim = '2020-06-30'
+clienteStore.state.selection = [['CdCliente', 100]]
+clienteStore.fetchRecord()
 
 const meta: Meta<typeof ClienteForm> = {
   component: ClienteForm,

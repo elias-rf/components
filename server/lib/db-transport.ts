@@ -24,7 +24,6 @@ const log: { [reqId: string]: any } = {}
 // This source code is licensed under the MIT license.
 
 /* eslint-env browser */
-import build from 'pino-abstract-transport'
 
 export default async function dbTransport() {
   async function insertLogs(logs: TLog) {
@@ -58,17 +57,4 @@ export default async function dbTransport() {
       console.error(e)
     }
   }
-
-  return build(
-    async function (source) {
-      for await (const obj of source) {
-        insertLogs(obj)
-      }
-    },
-    {
-      async close(err, cb) {
-        process.nextTick(cb, err)
-      },
-    }
-  )
 }

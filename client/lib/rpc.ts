@@ -1,3 +1,4 @@
+import { authStorage } from '@/client/lib/auth-storage.js'
 import type { TModules } from '@/controllers/index.js'
 import { JSONRPCClient, TypedJSONRPCClient } from 'json-rpc-2.0'
 
@@ -8,9 +9,7 @@ if (process.env.NODE_ENV !== 'production')
 
 export const rpc: TypedJSONRPCClient<TModules> = new JSONRPCClient(
   async (jsonRPCRequest: any) => {
-    const auth = JSON.parse(
-      sessionStorage.getItem('auth') || '{"token":"","user":{}}'
-    )
+    const auth = JSON.parse(authStorage.getItem() || '{"token":"","user":{}}')
     const options = {
       method: 'POST',
       headers: {

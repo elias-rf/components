@@ -1,22 +1,17 @@
 import { Table } from '@/client/components/table/table.js'
-import { clienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
+import { clienteStore } from '@/client/pages/comercial/clientes/components/clientes_store.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
+import { useSnapshot } from 'valtio'
 import { getSchema } from './get-shema.js'
 
 export function ClienteValorMedio() {
-  const vendaMensalValorMedio = clienteStore.use.vendaMensalValorMedio()
-  const inicio = clienteStore.use.inicio()
-  const fim = clienteStore.use.fim()
-  const selection = clienteStore.use.selection()
-  const fetchVendaMensalValorMedio =
-    clienteStore.use.fetchVendaMensalValorMedio()
-
-  const columns = getSchema({ inicio, fim })
+  const state = useSnapshot(clienteStore.state) as typeof clienteStore.state
+  const columns = getSchema({ inicio: state.inicio, fim: state.fim })
 
   useEffect(() => {
     toast.promise(
-      fetchVendaMensalValorMedio(),
+      clienteStore.fetchVendaMensalValorMedio(),
       {
         loading: 'Carregando valor médio...',
         success: 'Valor médio carregado com sucesso!',
@@ -29,11 +24,11 @@ export function ClienteValorMedio() {
         },
       }
     )
-  }, [selection])
+  }, [state.selection])
 
   return (
     <Table
-      rows={vendaMensalValorMedio ?? []}
+      rows={state.vendaMensalValorMedio ?? []}
       columns={columns}
     />
   )

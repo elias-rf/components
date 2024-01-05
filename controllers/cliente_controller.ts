@@ -219,6 +219,12 @@ export type TClienteKeys = (typeof clienteSchema.primary)[number]
     where: [['CdProduto', 'CdProduto']],
   },
 }
+
+type TVendaMensal = {
+  categoria: any
+  [month: string]: any
+}
+
 function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
   const orm = ormTable<TClienteFields, TClienteKeys>(db, schema)
 
@@ -248,7 +254,11 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
     const { nfSaidaController } = await import('./nf-saida_controller.js')
     const data = await nfSaidaController.nfSaida_vendaMensalCliente(args)
 
-    const rsp: any = {}
+    const rsp = {} as {
+      [category: string]: {
+        [month: string]: number
+      }
+    }
     data.forEach(
       ({
         anoMes,
@@ -258,19 +268,22 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
         anoMes: string
         NmCategoria: string
         quantidade: number
-        valor: number
+        // valor: number
       }) => {
         rsp[NmCategoria] = rsp[NmCategoria] || {}
         rsp[NmCategoria][anoMes] = quantidade
       }
     )
-    const resp = []
+    const resp = [] as TVendaMensal[]
     for (const item in rsp) {
-      resp.push({ categoria: item, ...rsp[item] })
+      const it = {
+        ...rsp[item],
+        categoria: item,
+      }
+      resp.push(it)
     }
-    return resp
+    return resp as TVendaMensal[]
   }
-  cliente_vendaMensalQuantidade.rpc = true
 
   const cliente_vendaMensalValorMedio = async (args: {
     inicio: string
@@ -312,9 +325,8 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
     for (const item in rsp) {
       resp.push({ categoria: item, ...rsp[item] })
     }
-    return resp
+    return resp as TVendaMensal[]
   }
-  cliente_vendaMensalValorMedio.rpc = true
 
   const cliente_vendaMensalValor = async (args: {
     inicio: string
@@ -354,7 +366,7 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
     for (const item in rsp) {
       resp.push({ categoria: item, ...rsp[item] })
     }
-    return resp
+    return resp as TVendaMensal[]
   }
 
   return {

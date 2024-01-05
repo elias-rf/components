@@ -1,11 +1,7 @@
 import { Table } from '@/client/components/table/table.js'
 import { Input } from '@/client/components/ui-old/input/input.js'
 import { lotesSaidaColumns } from '@/client/pages/industrial/lotes-saida/components/lotes-saida_columns.js'
-import {
-  TLotesSaidaStore,
-  lotesSaidaStore,
-} from '@/client/pages/industrial/lotes-saida/lotes-saida_store.js'
-import { pageSizeState } from '@/client/store/page-size-store.js'
+import { TLotesSaidaStore } from '@/client/pages/industrial/lotes-saida/components/lotes-saida_store.js'
 import {
   TNfSaidaLoteFields,
   TNfSaidaLoteKeys,
@@ -16,13 +12,12 @@ import { toast } from 'react-hot-toast'
 import { useSnapshot } from 'valtio'
 
 export function LotesSaidaTable({ store }: { store: TLotesSaidaStore }) {
-  const pageHeight = useSnapshot(pageSizeState).height * 0.9
   const [controle, setControle] = useState('')
-  const { where, orderBy, list, selection } = useHookstate(store.state)
-  const { setSelection, fetchList } = store.action
+  const state = useSnapshot(store.state)
+  const { setSelection, fetchList } = store
 
   function handleInput(e: string) {
-    where.set([['NumLote', 'like', e + '%']])
+    store.state.where = [['NumLote', 'like', e + '%']]
     setControle(e)
     fetchList()
   }
@@ -49,10 +44,10 @@ export function LotesSaidaTable({ store }: { store: TLotesSaidaStore }) {
         id: 'nf-saida-lote-table',
       }
     )
-  }, [where, orderBy])
+  }, [state.where, state.orderBy])
 
   return (
-    <div data-name="AgendaTelefoneTable">
+    <div>
       <div className="flex flex-row mx-2 my-1">
         Controle para rastrear
         <div className="ml-2 w-60">
@@ -65,12 +60,11 @@ export function LotesSaidaTable({ store }: { store: TLotesSaidaStore }) {
       <Table
         columns={lotesSaidaColumns}
         getId={getId}
-        height={`${pageHeight}px`}
-        onOrderBy={(e) => orderBy.set(e)}
+        onOrderBy={(e) => (store.state.orderBy = e)}
         onSelection={setSelection}
-        orderBy={orderBy.value as TOrderBy<TNfSaidaLoteFields>}
-        rows={list.value as TData<TNfSaidaLoteFields>[]}
-        selection={selection.value as TId<TNfSaidaLoteKeys>}
+        orderBy={state.orderBy as TOrderBy<TNfSaidaLoteFields>}
+        rows={state.list as TData<TNfSaidaLoteFields>[]}
+        selection={state.selection as TId<TNfSaidaLoteKeys>}
       />
     </div>
   )

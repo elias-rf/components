@@ -5,8 +5,10 @@ import {
   TAgendaTelefoneKeys,
 } from '@/controllers/agenda-telefone_controller.js'
 import { TData, TFormStatus, TId, TOrderBy, TWhere } from '@/types/index.js'
+import { copyProperties } from '@/utils/object/copy-properties.js'
 import { deepEqual } from '@/utils/object/deep-equal.js'
 import { proxy } from 'valtio'
+import { devtools } from 'valtio/utils'
 
 const tableName = 'agendaTelefone' as const
 
@@ -17,7 +19,17 @@ const recordClear = {
   department: '',
 } as TData<TAgendaTelefoneFields>
 
-const state = proxy({
+type TState = {
+  recordClear: TData<TAgendaTelefoneFields>
+  list: TData<TAgendaTelefoneFields>[]
+  orderBy: TOrderBy<TAgendaTelefoneFields>
+  record: TData<TAgendaTelefoneFields>
+  selection: TId<TAgendaTelefoneKeys>
+  status: TFormStatus
+  where: TWhere<TAgendaTelefoneFields>
+}
+
+const initialState: TState = {
   recordClear: recordClear,
   list: [] as TData<TAgendaTelefoneFields>[],
   orderBy: [['id', 'asc']] as TOrderBy<TAgendaTelefoneFields>,
@@ -25,35 +37,10 @@ const state = proxy({
   selection: [] as TId<TAgendaTelefoneKeys>,
   status: 'none' as TFormStatus,
   where: [] as TWhere<TAgendaTelefoneFields>,
-})
-
-const onNew = () => {
-  state.record = state.recordClear
-  state.status = 'new'
-  state.selection = []
 }
 
-const onEdit = () => {
-  state.status = 'edit'
-}
-
-const onCancel = () => {
-  if (state.status === 'new') {
-    state.status = 'none'
-    return
-  }
-  state.status = 'view'
-}
-const setSelection = (selection: TId<TAgendaTelefoneKeys>) => {
-  if (deepEqual(selection, state.selection)) {
-    state.selection = []
-    state.status = 'none'
-
-    return
-  }
-  state.selection = selection
-  state.status = 'view'
-}
+const state = proxy(initialState)
+devtools(state, { name: 'agenda', enabled: true })
 
 const fetchList = async () => {
   const where = state.where as TWhere<TAgendaTelefoneFields>
@@ -80,12 +67,46 @@ const fetchRecord = async () => {
   const record = (await cache.memo(
     {
       where,
+      select: Object.keys(recordClear),
       _table: tableName,
     },
-    () => rpc.request('agendaTelefone_read', { where })
+    () =>
+      rpc.request('agendaTelefone_read', {
+        where,
+        select: Object.keys(recordClear) as TAgendaTelefoneKeys[],
+      })
   )) as TData<TAgendaTelefoneFields>
   state.record = record
   return record
+}
+
+const onCancel = () => {
+  if (state.status === 'new') {
+    state.status = 'none'
+    return
+  }
+  state.status = 'view'
+}
+
+const onDelete = async () => {
+  cache.purgeTable(tableName)
+  await rpc.request('agendaTelefone_del', {
+    where: state.selection,
+  })
+  await fetchList()
+  state.record = state.recordClear
+  state.selection = []
+  state.status = 'none'
+}
+
+const onEdit = () => {
+  state.status = 'edit'
+}
+
+const onNew = () => {
+  state.record = state.recordClear
+  state.status = 'new'
+  state.selection = []
 }
 
 const onSave = async () => {
@@ -105,27 +126,49 @@ const onSave = async () => {
   state.status = 'view'
 }
 
-const onDelete = async () => {
-  cache.purgeTable(tableName)
-  await rpc.request('agendaTelefone_del', {
-    where: state.selection as TId<TAgendaTelefoneKeys>,
-  })
-  await fetchList()
-  state.record = state.recordClear
-  state.selection = []
-  state.status = 'none'
+const reset = () => {
+  const resetState = structuredClone(initialState)
+  copyProperties(resetState, state)
+}
+
+const setOrderBy = (orderBy: TOrderBy<TAgendaTelefoneFields>) => {
+  state.orderBy = orderBy
+}
+
+const setRecord = (record: TData<TAgendaTelefoneFields>) => {
+  state.record = record
+}
+
+const setSelection = (selection: TId<TAgendaTelefoneKeys>) => {
+  if (deepEqual(selection, state.selection)) {
+    state.selection = []
+    state.status = 'none'
+
+    return
+  }
+  state.selection = selection
+  state.status = 'view'
+}
+
+const setWhere = (where: TWhere<TAgendaTelefoneFields>) => {
+  // where = whereType(where, 'id', 'int')
+  state.where = where
 }
 
 export const agendaTelefoneStore = {
   state,
   fetchList,
   fetchRecord,
-  onDelete,
-  onSave,
   onCancel,
+  onDelete,
   onEdit,
   onNew,
+  onSave,
+  reset,
+  setOrderBy,
+  setRecord,
   setSelection,
+  setWhere,
 }
 
 export type TAgendaTelefoneStore = typeof agendaTelefoneStore

@@ -1,4 +1,4 @@
-import { isAuthenticated } from '@/client/store/auth_store.js'
+import { authStore } from '@/client/store/auth_store.js'
 import React, { Suspense } from 'react'
 import { Route, Switch, useLocation } from 'wouter'
 import { Layout } from './features/layout.js'
@@ -59,11 +59,10 @@ export function App() {
   const [location, setLocation] = useLocation()
 
   React.useEffect(() => {
-    if (!isAuthenticated() && location !== '/login') {
+    if (!authStore.isAuthenticated() && location !== '/login') {
       setLocation('/login')
     }
-    console.log(location)
-  }, [location, setLocation, isAuthenticated])
+  }, [location, setLocation, authStore.isAuthenticated])
 
   return (
     <Layout>

@@ -1,4 +1,4 @@
-import { login as saveLogin } from '@/client/store/auth_store.js'
+import { authStore } from '@/client/store/auth_store.js'
 import { toast } from 'react-hot-toast'
 import { useLocation } from 'wouter'
 import { Login as LoginComponent } from '../components/login/login.js'
@@ -13,7 +13,7 @@ export function Login() {
 
   async function handleInput(user: { user: string; password: string }) {
     try {
-      const login = await saveLogin(user)
+      const login = await authStore.login(user)
       if (login && login.usuario_id && login.usuario_id > 0) {
         setLocation('/')
       }

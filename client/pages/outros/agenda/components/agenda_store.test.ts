@@ -1,7 +1,7 @@
 import { createRecord, uid } from '@/mocks/fetcher-mock.js'
 import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
 
-import { agendaTelefoneStore } from '@/client/pages/outros/agenda/agenda-telefone_store.js'
+import { agendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda_store.js'
 import { fakerPT_BR as faker } from '@faker-js/faker'
 import { describe, expect, test } from 'vitest'
 

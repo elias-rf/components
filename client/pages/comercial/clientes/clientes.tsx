@@ -1,9 +1,9 @@
 import { Can } from '@/client/components/can.js'
 import { FormHead } from '@/client/components/ui-old/form-head.js'
-import { ClienteForm } from '@/client/pages/comercial/clientes/cliente_form.js'
-import { clienteStore } from '@/client/pages/comercial/clientes/cliente_store.js'
-import { ClienteTable } from '@/client/pages/comercial/clientes/cliente_table.js'
-import { can } from '@/client/store/auth_store.js'
+import { ClienteForm } from '@/client/pages/comercial/clientes/clientes_form.js'
+import { ClienteTable } from '@/client/pages/comercial/clientes/clientes_table.js'
+import { clienteStore } from '@/client/pages/comercial/clientes/components/clientes_store.js'
+import { authStore } from '@/client/store/auth_store.js'
 import { pageSizeState } from '@/client/store/page-size-store.js'
 import { useSnapshot } from 'valtio'
 
@@ -17,28 +17,28 @@ type TCan = (name: keyof typeof permissions) => boolean
 export default function Clientes() {
   const pageHeight = useSnapshot(pageSizeState).height
 
-  const status = clienteStore.use.status()
+  const status = useSnapshot(clienteStore.state).status
 
   return (
-    <Can can={can('comercial_cliente_read_all')}>
-      <FormHead
-        editPermissions={can('comercial_cliente_permissao')}
-        permissions={permissions}
-      >
-        Histórico de Clientes
-      </FormHead>
+    <Can can={authStore.can('comercial_cliente_read_all')}>
+      <div className="flex flex-col h-full px-2">
+        <FormHead
+          editPermissions={authStore.can('comercial_cliente_permissao')}
+          permissions={permissions}
+          className="flex-none"
+        >
+          Histórico de Clientes
+        </FormHead>
 
-      <div className="border border-gray-400 dark:border-gray-500">
-        <ClienteTable
-          store={clienteStore}
-          height={`${status !== 'none' ? pageHeight - 400 : pageHeight}px`}
-        />
-      </div>
-      {status !== 'none' ? (
-        <div className="p-1 mb-2 border border-gray-400 dark:border-gray-500">
-          <ClienteForm store={clienteStore} />
+        <div className="flex-auto border border-gray-400 min-h-40 dark:border-gray-500">
+          <ClienteTable store={clienteStore} />
         </div>
-      ) : null}
+        {status !== 'none' ? (
+          <div className="flex-auto max-h-96">
+            <ClienteForm store={clienteStore} />
+          </div>
+        ) : null}
+      </div>
     </Can>
   )
 }
