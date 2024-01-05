@@ -6,7 +6,7 @@ import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import {
   TGroupSubjectFields,
   TGroupSubjectKeys,
-} from '@/controllers/group-subject_controller.js'
+} from '@/core/group-subject_controller.js'
 import {
   TData,
   TFormStatus,

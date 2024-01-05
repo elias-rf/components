@@ -1,5 +1,5 @@
-import { dbOftalmo } from '@/controllers/db/db-oftalmo.db.js'
-import { dbPlano } from '@/controllers/db/db-plano.db.js'
+import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
+import { dbPlano } from '@/core/db/db-plano.db.js'
 import { clientRpcMock } from '@/mocks/client-rpc.mock.js'
 import { knexMockMsql } from '@/mocks/connections.mock.js'
 import { getTracker } from '@/mocks/database.mock.js'

@@ -5,7 +5,7 @@ import { TLotesSaidaStore } from '@/client/pages/industrial/lotes-saida/componen
 import {
   TNfSaidaLoteFields,
   TNfSaidaLoteKeys,
-} from '@/controllers/nf-saida-lote_controller.js'
+} from '@/core/nf-saida-lote_controller.js'
 import type { TData, TId, TOrderBy } from '@/types/index.js'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
@@ -48,7 +48,7 @@ export function LotesSaidaTable({ store }: { store: TLotesSaidaStore }) {
 
   return (
     <div>
-      <div className="flex flex-row mx-2 my-1">
+      <div className="mx-2 my-1 flex flex-row">
         Controle para rastrear
         <div className="ml-2 w-60">
           <Input

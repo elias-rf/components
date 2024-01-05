@@ -3,7 +3,7 @@ import { GroupSubjectTable } from '@/client/pages/sistema/permissoes/group-subje
 import {
   TGroupSubjectFields,
   TGroupSubjectKeys,
-} from '@/controllers/group-subject_controller.js'
+} from '@/core/group-subject_controller.js'
 import type {
   TData,
   TFormStatus,

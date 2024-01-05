@@ -1,4 +1,4 @@
-import { logController } from '@/controllers/log_controller.js'
+import { logController } from '@/core/log_controller.js'
 import { day } from '@/utils/date/day.js'
 
 type TLog = {

@@ -1,5 +1,5 @@
 import { authStorage } from '@/client/lib/auth-storage.js'
-import type { TModules } from '@/controllers/index.js'
+import type { TModules } from '@/core/index.js'
 import { JSONRPCClient, TypedJSONRPCClient } from 'json-rpc-2.0'
 
 let endpoint = '/api/rpc2'

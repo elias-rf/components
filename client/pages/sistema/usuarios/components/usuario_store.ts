@@ -1,9 +1,6 @@
 import { cache } from '@/client/lib/cache.js'
 import { rpc } from '@/client/lib/rpc.js'
-import {
-  TUsuarioFields,
-  TUsuarioKeys,
-} from '@/controllers/usuario_controller.js'
+import { TUsuarioFields, TUsuarioKeys } from '@/core/usuario_controller.js'
 import { TData, TFormStatus, TId, TOrderBy, TWhere } from '@/types/index.js'
 import { copyProperties } from '@/utils/object/copy-properties.js'
 import { deepEqual } from '@/utils/object/deep-equal.js'

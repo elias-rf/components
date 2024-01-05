@@ -1,7 +1,7 @@
 import { Table } from '@/client/components/table/table.js'
 import { TGroupStore } from '@/client/pages/sistema/grupos/components/grupos_store.js'
 import { gruposColumns } from '@/client/pages/sistema/grupos/grupos_columns.js'
-import { TGroupFields, TGroupKeys } from '@/controllers/group_controller.js'
+import { TGroupFields, TGroupKeys } from '@/core/group_controller.js'
 import type { TData, TId, TOrderBy, TWhere } from '@/types/index.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'

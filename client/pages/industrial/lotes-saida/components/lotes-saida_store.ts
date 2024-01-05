@@ -3,7 +3,7 @@ import { rpc } from '@/client/lib/rpc.js'
 import {
   TNfSaidaLoteFields,
   TNfSaidaLoteKeys,
-} from '@/controllers/nf-saida-lote_controller.js'
+} from '@/core/nf-saida-lote_controller.js'
 import { TData, TFormStatus, TId, TOrderBy, TWhere } from '@/types/index.js'
 import { copyProperties } from '@/utils/object/copy-properties.js'
 import { deepEqual } from '@/utils/object/deep-equal.js'

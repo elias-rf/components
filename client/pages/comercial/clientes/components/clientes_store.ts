@@ -1,9 +1,6 @@
 import { cache } from '@/client/lib/cache.js'
 import { rpc } from '@/client/lib/rpc.js'
-import {
-  TClienteFields,
-  TClienteKeys,
-} from '@/controllers/cliente_controller.js'
+import { TClienteFields, TClienteKeys } from '@/core/cliente_controller.js'
 import { TData, TFormStatus, TId, TOrderBy, TWhere } from '@/types/index.js'
 import { day } from '@/utils/date/day.js'
 import { copyProperties } from '@/utils/object/copy-properties.js'

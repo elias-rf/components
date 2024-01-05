@@ -1,6 +1,6 @@
 import { authStorage } from '@/client/lib/auth-storage.js'
-import type { TModules } from '@/controllers/index.js'
-import { rpcServer } from '@/controllers/index.js'
+import type { TModules } from '@/core/index.js'
+import { rpcServer } from '@/core/index.js'
 import {
   JSONRPCClient,
   JSONRPCServer,

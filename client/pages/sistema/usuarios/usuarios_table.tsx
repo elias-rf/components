@@ -2,10 +2,7 @@ import { Table } from '@/client/components/table/table.js'
 import { usuarioColumns } from '@/client/pages/sistema/usuarios/components/usuario_columns.js'
 import { TUsuarioStore } from '@/client/pages/sistema/usuarios/components/usuario_store.js'
 import { pageSizeState } from '@/client/store/page-size-store.js'
-import {
-  TUsuarioFields,
-  TUsuarioKeys,
-} from '@/controllers/usuario_controller.js'
+import { TUsuarioFields, TUsuarioKeys } from '@/core/usuario_controller.js'
 import type { TData, TId, TOrderBy, TWhere } from '@/types/index.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'

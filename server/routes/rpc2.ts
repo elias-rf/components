@@ -1,4 +1,4 @@
-import { rpcServer } from '@/controllers/index.js'
+import { rpcServer } from '@/core/index.js'
 import { RequestAuth } from '@/server/middles/auth-middle.js'
 import { TCurrentUser } from '@/types/index.js'
 import { Response } from 'express'

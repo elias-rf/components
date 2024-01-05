@@ -1,9 +1,6 @@
 import { Table } from '@/client/components/table/table.js'
 import { TClienteStore } from '@/client/pages/comercial/clientes/components/clientes_store.js'
-import {
-  TClienteFields,
-  TClienteKeys,
-} from '@/controllers/cliente_controller.js'
+import { TClienteFields, TClienteKeys } from '@/core/cliente_controller.js'
 import type { TData, TId } from '@/types/index.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'

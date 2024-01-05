@@ -4,7 +4,7 @@ import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/components/ag
 import {
   TAgendaTelefoneFields,
   TAgendaTelefoneKeys,
-} from '@/controllers/agenda-telefone_controller.js'
+} from '@/core/agenda-telefone_controller.js'
 import type { TData, TId, TOrderBy, TWhere } from '@/types/index.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
