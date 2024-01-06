@@ -6,12 +6,12 @@ import {
   produtoItemController,
 } from '@/core/produto-item_controller.js'
 import { TProdutoPlanoFields } from '@/core/produto-plano_controller.js'
-import { TAdapterKnex } from '@/orm/adapter-knex.js'
-import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { day } from '@/utils/date/day.js'
 import { isEmpty } from '@/utils/identify/is-empty.js'
 import { isUndefined } from '@/utils/identify/is-undefined.js'
+import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
+import { ormTable } from '@/utils/orm/index.js'
 import { module10 } from '@/utils/string/module10.js'
 
 export const tOrdemProducao: TSchema = {

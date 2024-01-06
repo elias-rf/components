@@ -74,14 +74,14 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
 
   return (
     <div data-name="UsuarioForm">
-      <div className="flex my-2 space-x-2 flex-rows">
+      <div className="flex-rows my-2 flex space-x-2">
         <Button
           onClick={store.onEdit}
           disabled={['none', 'edit', 'new'].includes(state.status)}
           size="sm"
           outline
         >
-          [E]DITAR
+          EDITAR
         </Button>
         <Button
           onClick={handleDel}
@@ -89,7 +89,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
           size="sm"
           outline
         >
-          E[X]CLUIR
+          EXCLUIR
         </Button>
       </div>
       <div className="grid grid-cols-12 gap-3">
@@ -179,7 +179,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
           </FormField>
         </div>
       </div>
-      <div className="flex justify-end my-2 space-x-2 flex-rows">
+      <div className="flex-rows my-2 flex justify-end space-x-2">
         <Button
           onClick={() => {
             store.setRecord(form.getValues())
@@ -189,7 +189,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
           size="sm"
           outline
         >
-          [S]AVE
+          SAVE
         </Button>
         <Button
           onClick={store.onCancel}
@@ -197,7 +197,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
           size="sm"
           outline
         >
-          [C]ANCEL
+          CANCEL
         </Button>
       </div>
       <MsgBox />

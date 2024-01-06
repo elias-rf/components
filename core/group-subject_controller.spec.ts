@@ -1,9 +1,9 @@
 import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
 import { dbSys } from '@/core/db/db-sys.db.js'
 import { groupSubjectController } from '@/core/group-subject_controller.js'
-import { knexMockMsql } from '@/mocks/connections.mock.js'
-import { getTracker } from '@/mocks/database.mock.js'
-import { knexMockHistory } from '@/mocks/knex-mock-history.js'
+import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
+import { getTracker } from '@/utils/mocks/database.mock.js'
+import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'
 import { describe, expect, it } from 'vitest'
 
 describe('group-subject-model', () => {

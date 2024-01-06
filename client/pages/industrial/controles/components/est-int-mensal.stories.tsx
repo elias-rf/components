@@ -1,7 +1,7 @@
 import '@/mocks/fetcher-mock'
 
 import { EsterilizacaoInternaMensal } from '@/client/pages/industrial/controles/components/est-int-mensal.js'
-import { fetcherMock } from '@/mocks/fetcher-mock.js'
+import { fetcherMock } from '@/utils/mocks/fetcher-mock.js'
 import type { Meta, StoryObj } from '@storybook/react'
 
 fetcherMock({

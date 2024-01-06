@@ -9,7 +9,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 const meta: Meta<typeof Button> = {
   component: Button,
   args: {
-    children: '[B]utton text',
+    children: 'Button text',
     size: 'md',
   },
   argTypes: {

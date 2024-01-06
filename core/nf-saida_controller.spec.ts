@@ -1,9 +1,9 @@
 import { dbFullvision } from '@/core/db/db-fullvision.db.js'
 import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
 import { dbPlano } from '@/core/db/db-plano.db.js'
-import { knexMockMsql } from '@/mocks/connections.mock.js'
-import { getTracker } from '@/mocks/database.mock.js'
-import { knexMockHistory } from '@/mocks/knex-mock-history.js'
+import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
+import { getTracker } from '@/utils/mocks/database.mock.js'
+import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { nfSaidaController } from './nf-saida_controller.js'
 

@@ -1,7 +1,7 @@
 import { StoreViewer } from '@/client/components/ui-old/store-viewer.js'
 import { ClienteQuantidade } from '@/client/pages/comercial/clientes/components/cliente-quantidade.js'
 import { clienteStore } from '@/client/pages/comercial/clientes/components/clientes_store.js'
-import { fetcherMock } from '@/mocks/fetcher-mock.js'
+import { fetcherMock } from '@/utils/mocks/fetcher-mock.js'
 import type { Meta, StoryObj } from '@storybook/react'
 
 fetcherMock({

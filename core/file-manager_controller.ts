@@ -1,4 +1,4 @@
-import { config } from '@/config/index.js'
+import { config } from '@/utils/config/index.js'
 import { dir as fsdir } from '@/utils/filesystem/dir.js'
 import { stat as fsstat } from '@/utils/filesystem/stat.js'
 import pth from 'node:path'

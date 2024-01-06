@@ -1,5 +1,5 @@
 import { EsterilizacaoExternaModelo } from '@/client/pages/industrial/controles/components/est-ext-modelo.js'
-import { fetcherMock } from '@/mocks/fetcher-mock.js'
+import { fetcherMock } from '@/utils/mocks/fetcher-mock.js'
 import type { Meta, StoryObj } from '@storybook/react'
 
 fetcherMock({

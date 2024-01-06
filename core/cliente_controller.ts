@@ -1,8 +1,8 @@
 import { dbPlano } from '@/core/db/db-plano.db.js'
-import { TAdapterKnex } from '@/orm/adapter-knex.js'
-import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { formatMoney } from '@/utils/format/format-money.js'
+import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
+import { ormTable } from '@/utils/orm/index.js'
 import {
   isoDate,
   nonOptional,

@@ -1,5 +1,5 @@
-import { createRecord, uid } from '@/mocks/fetcher-mock.js'
-import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
+import { createRecord, uid } from '@/utils/mocks/fetcher-mock.js'
+import { mockedFetch } from '@/utils/mocks/mocked-fetch/mocked-fetch.js'
 
 import { agendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda_store.js'
 import { fakerPT_BR as faker } from '@faker-js/faker'
@@ -78,7 +78,7 @@ describe('useAgendaTelefone', () => {
     expect(mockedFetch.history().length).toEqual(1)
     expect(mockedFetch.history()[0].request).toEqual({
       options: {
-        body: '{"jsonrpc":"2.0","id":2,"method":"agendaTelefone_read","params":{"where":[["id",100]]}}',
+        body: '{"jsonrpc":"2.0","id":2,"method":"agendaTelefone_read","params":{"where":[["id",100]],"select":["id","name","email","department"]}}',
         headers: {
           Authorization: 'Bearer ',
           'content-type': 'application/json',

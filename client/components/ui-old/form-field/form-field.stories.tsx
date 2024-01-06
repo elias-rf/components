@@ -55,7 +55,7 @@ export const Default: Story = {
               required
               variant={props.variant}
             >
-              [L]abel 1
+              Label 1
             </Label>
             <InputForm {...form.register('fld1')} />
             <Helper variant={props.variant}>{props.helper}</Helper>

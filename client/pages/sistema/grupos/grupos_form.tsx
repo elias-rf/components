@@ -35,13 +35,13 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',
     message: 'Confirma a exclusão do registro ?',
-    option1: '[S]im',
-    option2: '[N]ão',
+    option1: 'Sim',
+    option2: 'Não',
   })
 
   async function handleDel() {
     const response = await confirm(
-      'Tem certeza que deseja apagar ' + form.getValues('NomeGrupo') + '?'
+      `Tem certeza que deseja apagar ${form.getValues('NomeGrupo')} ?`
     )
     if (response === 'option1') {
       store.onDelete()
@@ -50,14 +50,14 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
 
   return (
     <div data-name="AgendaTelefoneForm">
-      <div className="flex my-2 space-x-2 flex-rows">
+      <div className="flex-rows my-2 flex space-x-2">
         <Button
           onClick={store.onEdit}
           disabled={['none', 'edit', 'new'].includes(status)}
           size="sm"
           outline
         >
-          [E]DITAR
+          EDITAR
         </Button>
         <Button
           onClick={handleDel}
@@ -65,7 +65,7 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
           size="sm"
           outline
         >
-          E[X]CLUIR
+          EXCLUIR
         </Button>
       </div>
       <div className="grid grid-cols-12 gap-3">
@@ -94,7 +94,7 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
           />
         </FormField>
       </div>
-      <div className="flex justify-end my-2 space-x-2 flex-rows align-center">
+      <div className="flex-rows align-center my-2 flex justify-end space-x-2">
         <Button
           onClick={() => {
             store.setRecord(form.getValues())
@@ -104,7 +104,7 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
           size="sm"
           outline
         >
-          [S]AVE
+          SALVAR
         </Button>
         <Button
           onClick={() => {
@@ -115,7 +115,7 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
           size="sm"
           outline
         >
-          [C]ANCEL
+          CANCELAR
         </Button>
       </div>
       <MsgBox />

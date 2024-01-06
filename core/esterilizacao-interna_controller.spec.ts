@@ -1,7 +1,7 @@
 import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
-import { knexMockMsql } from '@/mocks/connections.mock.js'
-import { getTracker } from '@/mocks/database.mock.js'
-import { knexMockHistory } from '@/mocks/knex-mock-history.js'
+import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
+import { getTracker } from '@/utils/mocks/database.mock.js'
+import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'
 import { beforeEach, describe, expect, test } from 'vitest'
 import { esterilizacaoInternaController } from './esterilizacao-interna_controller.js'
 

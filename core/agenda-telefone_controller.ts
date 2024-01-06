@@ -1,7 +1,7 @@
 import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
-import { TAdapterKnex } from '@/orm/adapter-knex.js'
-import { ormTable } from '@/orm/orm-table.js'
 import type { TSchema } from '@/schemas/schema.type.js'
+import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
+import { ormTable } from '@/utils/orm/orm-table.js'
 
 export const agendaTelefoneSchema = {
   table: 'phonebook',

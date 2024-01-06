@@ -4,7 +4,7 @@
  * @description usa fastify, trpc
  */
 
-import { config } from '@/config/index.js'
+import { config } from '@/utils/config/index.js'
 import { app } from './app.js'
 import { logger } from './lib/logger.js'
 

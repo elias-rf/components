@@ -7,11 +7,11 @@ import { ordemProducaoController } from '@/core/ordem-producao_controller.js'
 import { produtoControleController } from '@/core/produto-controle_controller.js'
 import { produtoEstatisticaController } from '@/core/produto-estatistica_controller.js'
 import { TProdutoPlanoFields } from '@/core/produto-plano_controller.js'
-import { TAdapterKnex } from '@/orm/adapter-knex.js'
-import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { day } from '@/utils/date/day.js'
 import { isEmpty } from '@/utils/identify/is-empty.js'
+import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
+import { ormTable } from '@/utils/orm/index.js'
 
 // verificar: falso já lançado 20311000
 

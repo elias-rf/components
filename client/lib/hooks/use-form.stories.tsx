@@ -44,7 +44,7 @@ export const Default: Story = {
     return (
       <>
         <FormField>
-          <Label name="nome">[N]ome</Label>
+          <Label name="nome">Nome</Label>
           <Input
             name="nome"
             id="nome"
@@ -54,7 +54,7 @@ export const Default: Story = {
           <Helper variant="error">{form.error.nome}</Helper>
         </FormField>
         <FormField>
-          <Label name="idade">[I]dade</Label>
+          <Label name="idade">Idade</Label>
           <Input
             name="idade"
             id="idade"
@@ -64,7 +64,7 @@ export const Default: Story = {
           <Helper variant="error">{form.error.idade}</Helper>
         </FormField>
         <FormField>
-          <Label name="email">[E]mail</Label>
+          <Label name="email">Email</Label>
           <Input
             name="email"
             id="email"

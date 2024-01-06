@@ -1,5 +1,6 @@
 import { cache } from '@/client/lib/cache.js'
 import { rpc } from '@/client/lib/rpc.js'
+import { locationPlugin } from '@/client/store/location_plugin.js'
 import {
   TAgendaTelefoneFields,
   TAgendaTelefoneKeys,
@@ -7,7 +8,7 @@ import {
 import { TData, TFormStatus, TId, TOrderBy, TWhere } from '@/types/index.js'
 import { copyProperties } from '@/utils/object/copy-properties.js'
 import { deepEqual } from '@/utils/object/deep-equal.js'
-import { proxy } from 'valtio'
+import { proxy, subscribe } from 'valtio'
 import { devtools } from 'valtio/utils'
 
 const tableName = 'agendaTelefone' as const
@@ -154,6 +155,10 @@ const setWhere = (where: TWhere<TAgendaTelefoneFields>) => {
   // where = whereType(where, 'id', 'int')
   state.where = where
 }
+
+locationPlugin(state, 'selection')
+locationPlugin(state, 'orderBy')
+locationPlugin(state, 'where')
 
 export const agendaTelefoneStore = {
   state,

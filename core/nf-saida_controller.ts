@@ -1,9 +1,9 @@
 import { dbPlano } from '@/core/db/db-plano.db.js'
 import { nfSaidaFvController } from '@/core/nf-saida-fv_controller.js'
-import { TAdapterKnex, TQueryKnex } from '@/orm/adapter-knex.js'
-import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { day } from '@/utils/date/day.js'
+import { TAdapterKnex, TQueryKnex } from '@/utils/orm/adapter-knex.js'
+import { ormTable } from '@/utils/orm/index.js'
 import { array, isoDate, number, parse, regex, string, union } from 'valibot'
 
 export const MestreNota: TSchema = {

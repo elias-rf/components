@@ -1,9 +1,10 @@
-import { day } from '@/utils/date/day.js'
 import { round } from '@/utils/number/round.js'
+import { format, parse, subDays } from 'date-fns/fp'
+import { flowRight } from 'lodash'
 
-function getSum(lista: any[], produto: string, data: day.Dayjs) {
-  const dataInicial = data.add(-30, 'day').format('YYYY-MM-DD')
-  const dataFinal = data.format('YYYY-MM-DD')
+function getSum(lista: any[], produto: string, data: Date) {
+  const dataInicial = flowRight([format('yyyy-MM-dd'), subDays(30)])(data)
+  const dataFinal = format('yyyy-MM-dd')(data)
   const produtoArray = lista.filter((item: any) => {
     return (
       item.NmCategoria === produto &&
@@ -21,7 +22,7 @@ function getSum(lista: any[], produto: string, data: day.Dayjs) {
     { quantidade: 0, valor: 0 }
   )
   return {
-    dia: data.format('YYYY-MM-DD'),
+    dia: format('yyyy-MM-dd')(data),
     quantidade: sum.quantidade,
     fat: sum.valor,
     valor: round(sum.valor / sum.quantidade, 2), // valor médio
@@ -55,7 +56,9 @@ export function formatDiario(origem: any[], fim: string): TFormatDiarios {
   }
 
   for (let dia = 45; dia >= 0; dia--) {
-    const diaFinal = day(fim).subtract(dia, 'day')
+    const diaFinal = flowRight([subDays(dia), parse(new Date(), 'yyyy-MM-dd')])(
+      fim
+    )
     destino.liteflex.push(getSum(origem, 'LITEFLEX', diaFinal))
     destino.metil.push(getSum(origem, 'METILCELULOSE', diaFinal))
     destino.enlite.push(getSum(origem, 'ENLITE', diaFinal))

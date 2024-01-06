@@ -1,6 +1,5 @@
 import { AccessLabel } from '@/client/components/ui-old/access-label.js'
 import { cn } from '@/client/lib/cn.js'
-import { getAccessKey } from '@/utils/string/get-access-key.js'
 
 type TLabelProps = {
   children?: React.ReactNode
@@ -23,7 +22,6 @@ export function Label({
   return (
     <label
       htmlFor={name}
-      accessKey={getAccessKey(children).accessKey}
       className={cn(
         'block pl-1.5 text-sm text-gray-500 dark:text-gray-400',
         { 'text-gray-400 dark:text-gray-500': disabled },
@@ -33,7 +31,7 @@ export function Label({
       )}
     >
       <span className="whitespace-nowrap">
-        <AccessLabel>{children}</AccessLabel> {required ? '*' : null}
+        {children} {required ? '*' : null}
       </span>
     </label>
   )

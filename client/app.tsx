@@ -1,5 +1,6 @@
 import { authStore } from '@/client/store/auth_store.js'
 import React, { Suspense } from 'react'
+import { useSnapshot } from 'valtio'
 import { Route, Switch, useLocation } from 'wouter'
 import { Layout } from './features/layout.js'
 import { Home } from './pages/home.js'

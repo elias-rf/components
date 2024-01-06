@@ -14,7 +14,7 @@ type TCan = (name: keyof typeof permissions) => boolean
 
 export function GruposHead() {
   return (
-    <div className="flex flex-row justify-between my-1 align-center">
+    <div className="align-center my-1 flex flex-row justify-between">
       <div className="flex flex-row space-x-1">
         <Title>Grupos de segurança</Title>
         <Can
@@ -31,7 +31,7 @@ export function GruposHead() {
           size="sm"
           outline
         >
-          [N]OVO
+          NOVO
         </Button>
       </div>
     </div>

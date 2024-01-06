@@ -2,11 +2,18 @@ import { cache } from '@/client/lib/cache.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { TClienteFields, TClienteKeys } from '@/core/cliente_controller.js'
 import { TData, TFormStatus, TId, TOrderBy, TWhere } from '@/types/index.js'
-import { day } from '@/utils/date/day.js'
 import { copyProperties } from '@/utils/object/copy-properties.js'
 import { deepEqual } from '@/utils/object/deep-equal.js'
 import { getFieldId } from '@/utils/query/get-field-id.js'
 import { ms } from '@/utils/string/ms.js'
+import {
+  endOfMonth,
+  format,
+  startOfMonth,
+  subMonths,
+  subYears,
+} from 'date-fns/fp'
+import { flowRight } from 'lodash'
 import { proxy } from 'valtio'
 
 const recordClear = {
@@ -45,8 +52,12 @@ const initialState: TState = {
   record: {} as TData<TClienteFields>,
   status: 'none',
   recordClear: recordClear,
-  inicio: day().subtract(1, 'year').startOf('month').format('YYYY-MM-DD'),
-  fim: day().subtract(1, 'month').endOf('month').format('YYYY-MM-DD'),
+  inicio: flowRight([format('yyyy-MM-dd'), startOfMonth(), subYears(1)])(
+    new Date()
+  ),
+  fim: flowRight([format('yyyy-MM-dd'), endOfMonth(), subMonths(1)])(
+    new Date()
+  ),
   vendaMensalQuantidade: [],
   vendaMensalValor: [],
   vendaMensalValorMedio: [],

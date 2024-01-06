@@ -1,5 +1,5 @@
 import { authStore } from '@/client/store/auth_store.js'
-import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
+import { mockedFetch } from '@/utils/mocks/mocked-fetch/mocked-fetch.js'
 import { describe, expect, test } from 'vitest'
 
 describe('authStore', () => {

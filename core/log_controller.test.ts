@@ -1,7 +1,7 @@
 import { dbLog } from '@/core/db/db-log.db.js'
-import { knexMockMsql } from '@/mocks/connections.mock.js'
-import { getTracker } from '@/mocks/database.mock.js'
-import { knexMockHistory } from '@/mocks/knex-mock-history.js'
+import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
+import { getTracker } from '@/utils/mocks/database.mock.js'
+import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'
 import { describe, expect, it } from 'vitest'
 import { logController } from './log_controller.js'
 

@@ -1,5 +1,5 @@
-import { createRecord, fetcherMock, uid } from '@/mocks/fetcher-mock.js'
-import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
+import { createRecord, fetcherMock, uid } from '@/utils/mocks/fetcher-mock.js'
+import { mockedFetch } from '@/utils/mocks/mocked-fetch/mocked-fetch.js'
 
 import { fakerPT_BR as faker } from '@faker-js/faker'
 import { describe, expect, test } from 'vitest'

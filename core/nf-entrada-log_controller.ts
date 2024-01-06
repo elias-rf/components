@@ -1,26 +1,19 @@
 import { dbPlano } from '@/core/db/db-plano.db.js'
-import { TAdapterKnex } from '@/orm/adapter-knex.js'
-import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
+import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
+import { ormTable } from '@/utils/orm/index.js'
 
 export const NfLogConferencia: TSchema = {
   table: 'NfLogConferencia',
   primary: ['NumNota', 'Serie', 'Modelo'] as const,
   fields: [
     'CdFilial',
-
     'NumNota',
-
     'Serie',
-
     'CdFornecedor',
-
     'Data',
-
     'Usuario',
-
     'Operacao',
-
     'Modelo',
   ],
 }

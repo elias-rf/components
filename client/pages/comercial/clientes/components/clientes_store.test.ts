@@ -1,6 +1,6 @@
 import { clienteStore } from '@/client/pages/comercial/clientes/components/clientes_store.js'
-import { mockedFetch } from '@/mocks/mocked-fetch/mocked-fetch.js'
 import { TId, TOrderBy, TWhere } from '@/types/index.js'
+import { mockedFetch } from '@/utils/mocks/mocked-fetch/mocked-fetch.js'
 import { describe, expect, test } from 'vitest'
 
 describe('clienteStore', () => {

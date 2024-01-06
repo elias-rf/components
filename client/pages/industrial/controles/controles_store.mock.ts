@@ -1,4 +1,4 @@
-import { fetcherMock } from '@/mocks/fetcher-mock.js'
+import { fetcherMock } from '@/utils/mocks/fetcher-mock.js'
 
 fetcherMock({
   'esterilizacaoExterna/mensal': () => {

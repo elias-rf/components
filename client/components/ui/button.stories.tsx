@@ -5,7 +5,7 @@ import { Button } from './button.js'
 const meta: Meta<typeof Button> = {
   component: Button,
   args: {
-    children: '[B]utton text',
+    children: 'Button text',
     size: 'default',
   },
   argTypes: {

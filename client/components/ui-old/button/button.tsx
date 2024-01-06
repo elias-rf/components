@@ -1,8 +1,7 @@
-import { cn } from '@/client/lib/cn.js'
-import { getAccessKey } from '@/utils/string/get-access-key.js'
-import type { VariantProps } from 'class-variance-authority'
-import { cva } from 'class-variance-authority'
-import { ReactNode } from 'react'
+import { cn } from "@/client/lib/cn.js";
+import type { VariantProps } from "class-variance-authority";
+import { cva } from "class-variance-authority";
+import { ReactNode } from "react";
 
 // https://uicolors.app/create
 const colors = {
@@ -10,33 +9,33 @@ const colors = {
   default: {
     white: {
       solid: {
-        default: 'bg-gray-500 text-white',
-        hover: 'hover:bg-gray-600 hover:text-white',
-        focus: 'focus:bg-gray-700 focus:text-white',
-        disabled: 'bg-gray-200/50 text-gray-700/50',
+        default: "bg-gray-500 text-white",
+        hover: "hover:bg-gray-600 hover:text-white",
+        focus: "focus:bg-gray-700 focus:text-white",
+        disabled: "bg-gray-200/50 text-gray-700/50",
       },
       outline: {
-        default: 'bg-white text-gray-700 border-gray-700',
-        hover: 'hover:bg-gray-50 hover:text-gray-700 border-gray-700',
-        focus: 'focus:bg-gray-100 focus:text-gray-700 border-gray-700',
-        disabled: 'bg-white text-gray-700/50 border-gray-700/50',
+        default: "bg-white text-gray-700 border-gray-700",
+        hover: "hover:bg-gray-50 hover:text-gray-700 border-gray-700",
+        focus: "focus:bg-gray-100 focus:text-gray-700 border-gray-700",
+        disabled: "bg-white text-gray-700/50 border-gray-700/50",
       },
     },
     dark: {
       solid: {
-        default: 'dark:bg-gray-400 dark:text-gray-950',
-        hover: 'dark:hover:bg-gray-300 dark:hover:text-gray-950',
-        focus: 'dark:focus:bg-gray-500 dark:focus:text-gray-950',
-        disabled: 'dark:bg-gray-800/50 dark:text-gray-100/50',
+        default: "dark:bg-gray-400 dark:text-gray-950",
+        hover: "dark:hover:bg-gray-300 dark:hover:text-gray-950",
+        focus: "dark:focus:bg-gray-500 dark:focus:text-gray-950",
+        disabled: "dark:bg-gray-800/50 dark:text-gray-100/50",
       },
       outline: {
-        default: 'dark:bg-transparent dark:text-gray-300 dark:border-gray-300',
+        default: "dark:bg-transparent dark:text-gray-300 dark:border-gray-300",
         hover:
-          'dark:hover:bg-gray-950 dark:hover:text-gray-300 dark:border-gray-300',
+          "dark:hover:bg-gray-950 dark:hover:text-gray-300 dark:border-gray-300",
         focus:
-          'dark:focus:bg-gray-900 dark:focus:text-gray-300 dark:border-gray-300',
+          "dark:focus:bg-gray-900 dark:focus:text-gray-300 dark:border-gray-300",
         disabled:
-          'dark:bg-transparent dark:text-gray-300/50 dark:border-gray-300/50',
+          "dark:bg-transparent dark:text-gray-300/50 dark:border-gray-300/50",
       },
     },
   },
@@ -44,33 +43,33 @@ const colors = {
   primary: {
     white: {
       solid: {
-        default: 'bg-blue-500 text-white',
-        hover: 'hover:bg-blue-600 hover:text-white',
-        focus: 'focus:bg-blue-700 focus:text-white',
-        disabled: 'bg-blue-200/50 text-blue-700/50',
+        default: "bg-blue-500 text-white",
+        hover: "hover:bg-blue-600 hover:text-white",
+        focus: "focus:bg-blue-700 focus:text-white",
+        disabled: "bg-blue-200/50 text-blue-700/50",
       },
       outline: {
-        default: 'bg-white text-blue-700 border-blue-700',
-        hover: 'hover:bg-blue-50 hover:text-blue-700 border-blue-700',
-        focus: 'focus:bg-blue-100 focus:text-blue-700 border-blue-700',
-        disabled: 'bg-white text-blue-700/50 border-blue-700/50',
+        default: "bg-white text-blue-700 border-blue-700",
+        hover: "hover:bg-blue-50 hover:text-blue-700 border-blue-700",
+        focus: "focus:bg-blue-100 focus:text-blue-700 border-blue-700",
+        disabled: "bg-white text-blue-700/50 border-blue-700/50",
       },
     },
     dark: {
       solid: {
-        default: 'dark:bg-blue-400 dark:text-blue-950',
-        hover: 'dark:hover:bg-blue-300 dark:hover:text-blue-950',
-        focus: 'dark:focus:bg-blue-500 dark:focus:text-blue-950',
-        disabled: 'dark:bg-blue-800/50 dark:text-blue-100/50',
+        default: "dark:bg-blue-400 dark:text-blue-950",
+        hover: "dark:hover:bg-blue-300 dark:hover:text-blue-950",
+        focus: "dark:focus:bg-blue-500 dark:focus:text-blue-950",
+        disabled: "dark:bg-blue-800/50 dark:text-blue-100/50",
       },
       outline: {
-        default: 'dark:bg-transparent dark:text-blue-300 dark:border-blue-300',
+        default: "dark:bg-transparent dark:text-blue-300 dark:border-blue-300",
         hover:
-          'dark:hover:bg-blue-950 dark:hover:text-blue-300 dark:border-blue-300',
+          "dark:hover:bg-blue-950 dark:hover:text-blue-300 dark:border-blue-300",
         focus:
-          'dark:focus:bg-blue-900 dark:focus:text-blue-300 dark:border-blue-300',
+          "dark:focus:bg-blue-900 dark:focus:text-blue-300 dark:border-blue-300",
         disabled:
-          'dark:bg-transparent dark:text-blue-300/50 dark:border-blue-300/50',
+          "dark:bg-transparent dark:text-blue-300/50 dark:border-blue-300/50",
       },
     },
   },
@@ -78,34 +77,34 @@ const colors = {
   success: {
     white: {
       solid: {
-        default: 'bg-green-500 text-white',
-        hover: 'hover:bg-green-600 hover:text-white',
-        focus: 'focus:bg-green-700 focus:text-white',
-        disabled: 'bg-green-200/50 text-green-700/50',
+        default: "bg-green-500 text-white",
+        hover: "hover:bg-green-600 hover:text-white",
+        focus: "focus:bg-green-700 focus:text-white",
+        disabled: "bg-green-200/50 text-green-700/50",
       },
       outline: {
-        default: 'bg-white text-green-700 border-green-700',
-        hover: 'hover:bg-green-50 hover:text-green-700 border-green-700',
-        focus: 'focus:bg-green-100 focus:text-green-700 border-green-700',
-        disabled: 'bg-white text-green-700/50 border-green-700/50',
+        default: "bg-white text-green-700 border-green-700",
+        hover: "hover:bg-green-50 hover:text-green-700 border-green-700",
+        focus: "focus:bg-green-100 focus:text-green-700 border-green-700",
+        disabled: "bg-white text-green-700/50 border-green-700/50",
       },
     },
     dark: {
       solid: {
-        default: 'dark:bg-green-400 dark:text-green-950',
-        hover: 'dark:hover:bg-green-300 dark:hover:text-green-950',
-        focus: 'dark:focus:bg-green-500 dark:focus:text-green-950',
-        disabled: 'dark:bg-green-800/50 dark:text-green-100/50',
+        default: "dark:bg-green-400 dark:text-green-950",
+        hover: "dark:hover:bg-green-300 dark:hover:text-green-950",
+        focus: "dark:focus:bg-green-500 dark:focus:text-green-950",
+        disabled: "dark:bg-green-800/50 dark:text-green-100/50",
       },
       outline: {
         default:
-          'dark:bg-transparent dark:text-green-300 dark:border-green-300',
+          "dark:bg-transparent dark:text-green-300 dark:border-green-300",
         hover:
-          'dark:hover:bg-green-950 dark:hover:text-green-300 dark:border-green-300',
+          "dark:hover:bg-green-950 dark:hover:text-green-300 dark:border-green-300",
         focus:
-          'dark:focus:bg-green-900 dark:focus:text-green-300 dark:border-green-300',
+          "dark:focus:bg-green-900 dark:focus:text-green-300 dark:border-green-300",
         disabled:
-          'dark:bg-transparent dark:text-green-300/50 dark:border-green-300/50',
+          "dark:bg-transparent dark:text-green-300/50 dark:border-green-300/50",
       },
     },
   },
@@ -113,33 +112,33 @@ const colors = {
   info: {
     white: {
       solid: {
-        default: 'bg-cyan-500 text-white',
-        hover: 'hover:bg-cyan-600 hover:text-white',
-        focus: 'focus:bg-cyan-700 focus:text-white',
-        disabled: 'bg-cyan-200/50 text-cyan-700/50',
+        default: "bg-cyan-500 text-white",
+        hover: "hover:bg-cyan-600 hover:text-white",
+        focus: "focus:bg-cyan-700 focus:text-white",
+        disabled: "bg-cyan-200/50 text-cyan-700/50",
       },
       outline: {
-        default: 'bg-white text-cyan-700 border-cyan-700',
-        hover: 'hover:bg-cyan-50 hover:text-cyan-700 border-cyan-700',
-        focus: 'focus:bg-cyan-100 focus:text-cyan-700 border-cyan-700',
-        disabled: 'bg-white text-cyan-700/50 border-cyan-700/50',
+        default: "bg-white text-cyan-700 border-cyan-700",
+        hover: "hover:bg-cyan-50 hover:text-cyan-700 border-cyan-700",
+        focus: "focus:bg-cyan-100 focus:text-cyan-700 border-cyan-700",
+        disabled: "bg-white text-cyan-700/50 border-cyan-700/50",
       },
     },
     dark: {
       solid: {
-        default: 'dark:bg-cyan-400 dark:text-cyan-950',
-        hover: 'dark:hover:bg-cyan-300 dark:hover:text-cyan-950',
-        focus: 'dark:focus:bg-cyan-500 dark:focus:text-cyan-950',
-        disabled: 'dark:bg-cyan-800/50 dark:text-cyan-100/50',
+        default: "dark:bg-cyan-400 dark:text-cyan-950",
+        hover: "dark:hover:bg-cyan-300 dark:hover:text-cyan-950",
+        focus: "dark:focus:bg-cyan-500 dark:focus:text-cyan-950",
+        disabled: "dark:bg-cyan-800/50 dark:text-cyan-100/50",
       },
       outline: {
-        default: 'dark:bg-transparent dark:text-cyan-300 dark:border-cyan-300',
+        default: "dark:bg-transparent dark:text-cyan-300 dark:border-cyan-300",
         hover:
-          'dark:hover:bg-cyan-950 dark:hover:text-cyan-300 dark:border-cyan-300',
+          "dark:hover:bg-cyan-950 dark:hover:text-cyan-300 dark:border-cyan-300",
         focus:
-          'dark:focus:bg-cyan-900 dark:focus:text-cyan-300 dark:border-cyan-300',
+          "dark:focus:bg-cyan-900 dark:focus:text-cyan-300 dark:border-cyan-300",
         disabled:
-          'dark:bg-transparent dark:text-cyan-300/50 dark:border-cyan-300/50',
+          "dark:bg-transparent dark:text-cyan-300/50 dark:border-cyan-300/50",
       },
     },
   },
@@ -147,34 +146,34 @@ const colors = {
   warning: {
     white: {
       solid: {
-        default: 'bg-yellow-500 text-white',
-        hover: 'hover:bg-yellow-600 hover:text-white',
-        focus: 'focus:bg-yellow-700 focus:text-white',
-        disabled: 'bg-yellow-200/50 text-yellow-700/50',
+        default: "bg-yellow-500 text-white",
+        hover: "hover:bg-yellow-600 hover:text-white",
+        focus: "focus:bg-yellow-700 focus:text-white",
+        disabled: "bg-yellow-200/50 text-yellow-700/50",
       },
       outline: {
-        default: 'bg-white text-yellow-700 border-yellow-700',
-        hover: 'hover:bg-yellow-50 hover:text-yellow-700 border-yellow-700',
-        focus: 'focus:bg-yellow-100 focus:text-yellow-700 border-yellow-700',
-        disabled: 'bg-white text-yellow-700/50 border-yellow-700/50',
+        default: "bg-white text-yellow-700 border-yellow-700",
+        hover: "hover:bg-yellow-50 hover:text-yellow-700 border-yellow-700",
+        focus: "focus:bg-yellow-100 focus:text-yellow-700 border-yellow-700",
+        disabled: "bg-white text-yellow-700/50 border-yellow-700/50",
       },
     },
     dark: {
       solid: {
-        default: 'dark:bg-yellow-400 dark:text-yellow-950',
-        hover: 'dark:hover:bg-yellow-300 dark:hover:text-yellow-950',
-        focus: 'dark:focus:bg-yellow-500 dark:focus:text-yellow-950',
-        disabled: 'dark:bg-yellow-800/50 dark:text-yellow-100/50',
+        default: "dark:bg-yellow-400 dark:text-yellow-950",
+        hover: "dark:hover:bg-yellow-300 dark:hover:text-yellow-950",
+        focus: "dark:focus:bg-yellow-500 dark:focus:text-yellow-950",
+        disabled: "dark:bg-yellow-800/50 dark:text-yellow-100/50",
       },
       outline: {
         default:
-          'dark:bg-transparent dark:text-yellow-300 dark:border-yellow-300',
+          "dark:bg-transparent dark:text-yellow-300 dark:border-yellow-300",
         hover:
-          'dark:hover:bg-yellow-950 dark:hover:text-yellow-300 dark:border-yellow-300',
+          "dark:hover:bg-yellow-950 dark:hover:text-yellow-300 dark:border-yellow-300",
         focus:
-          'dark:focus:bg-yellow-900 dark:focus:text-yellow-300 dark:border-yellow-300',
+          "dark:focus:bg-yellow-900 dark:focus:text-yellow-300 dark:border-yellow-300",
         disabled:
-          'dark:bg-transparent dark:text-yellow-300/50 dark:border-yellow-300/50',
+          "dark:bg-transparent dark:text-yellow-300/50 dark:border-yellow-300/50",
       },
     },
   },
@@ -182,51 +181,51 @@ const colors = {
   danger: {
     white: {
       solid: {
-        default: 'bg-red-500 text-white',
-        hover: 'hover:bg-red-600 hover:text-white',
-        focus: 'focus:bg-red-700 focus:text-white',
-        disabled: 'bg-red-200/50 text-red-700/50',
+        default: "bg-red-500 text-white",
+        hover: "hover:bg-red-600 hover:text-white",
+        focus: "focus:bg-red-700 focus:text-white",
+        disabled: "bg-red-200/50 text-red-700/50",
       },
       outline: {
-        default: 'bg-white text-red-700 border-red-700',
-        hover: 'hover:bg-red-50 hover:text-red-700 border-red-700',
-        focus: 'focus:bg-red-100 focus:text-red-700 border-red-700',
-        disabled: 'bg-white text-red-700/50 border-red-700/50',
+        default: "bg-white text-red-700 border-red-700",
+        hover: "hover:bg-red-50 hover:text-red-700 border-red-700",
+        focus: "focus:bg-red-100 focus:text-red-700 border-red-700",
+        disabled: "bg-white text-red-700/50 border-red-700/50",
       },
     },
     dark: {
       solid: {
-        default: 'dark:bg-red-400 dark:text-red-950',
-        hover: 'dark:hover:bg-red-300 dark:hover:text-red-950',
-        focus: 'dark:focus:bg-red-500 dark:focus:text-red-950',
-        disabled: 'dark:bg-red-800/50 dark:text-red-100/50',
+        default: "dark:bg-red-400 dark:text-red-950",
+        hover: "dark:hover:bg-red-300 dark:hover:text-red-950",
+        focus: "dark:focus:bg-red-500 dark:focus:text-red-950",
+        disabled: "dark:bg-red-800/50 dark:text-red-100/50",
       },
       outline: {
-        default: 'dark:bg-transparent dark:text-red-300 dark:border-red-300',
+        default: "dark:bg-transparent dark:text-red-300 dark:border-red-300",
         hover:
-          'dark:hover:bg-red-950 dark:hover:text-red-300 dark:border-red-300',
+          "dark:hover:bg-red-950 dark:hover:text-red-300 dark:border-red-300",
         focus:
-          'dark:focus:bg-red-900 dark:focus:text-red-300 dark:border-red-300',
+          "dark:focus:bg-red-900 dark:focus:text-red-300 dark:border-red-300",
         disabled:
-          'dark:bg-transparent dark:text-red-300/50 dark:border-red-300/50',
+          "dark:bg-transparent dark:text-red-300/50 dark:border-red-300/50",
       },
     },
   },
-}
+};
 
 const cvaButton = cva(
-  'focus:ring-2 font-medium rounded-lg text-sm focus:outline-none',
+  "focus:ring-2 font-medium rounded-lg text-sm focus:outline-none",
   {
     variants: {
       size: {
-        xs: 'px-3 py-1.5 text-xs',
-        sm: 'px-3 py-1.5 text-sm',
-        md: 'px-4 py-2 text-base',
-        lg: 'px-5 py-3 text-base',
-        xl: 'px-6 py-3.5 text-lg',
+        xs: "px-3 py-1.5 text-xs",
+        sm: "px-3 py-1.5 text-sm",
+        md: "px-4 py-2 text-base",
+        lg: "px-5 py-3 text-base",
+        xl: "px-6 py-3.5 text-lg",
       },
-      outline: { true: 'border', false: '' },
-      disabled: { true: 'cursor-not-allowed', false: '' },
+      outline: { true: "border", false: "" },
+      disabled: { true: "cursor-not-allowed", false: "" },
       color: {
         default: [],
         primary: [],
@@ -234,14 +233,14 @@ const cvaButton = cva(
         info: [],
         warning: [],
         danger: [],
-        link: 'bg-transparent text-blue-600 border-0 hover:underline',
-        ghost: 'bg-transparent text-gray-600 dark:text-gray-300 border-0',
+        link: "bg-transparent text-blue-600 border-0 hover:underline",
+        ghost: "bg-transparent text-gray-600 dark:text-gray-300 border-0",
       },
     },
     compoundVariants: [
       // default solid
       {
-        color: 'default',
+        color: "default",
         outline: false,
         disabled: false,
         class: [
@@ -255,7 +254,7 @@ const cvaButton = cva(
       },
       // default outline
       {
-        color: 'default',
+        color: "default",
         outline: true,
         disabled: false,
         class: [
@@ -269,7 +268,7 @@ const cvaButton = cva(
       },
       // default solid disabled
       {
-        color: 'default',
+        color: "default",
         disabled: true,
         class: [
           colors.default.white.solid.disabled,
@@ -278,7 +277,7 @@ const cvaButton = cva(
       },
       // default outline disabled
       {
-        color: 'default',
+        color: "default",
         disabled: true,
         outline: true,
         class: [
@@ -288,7 +287,7 @@ const cvaButton = cva(
       },
       // primary solid
       {
-        color: 'primary',
+        color: "primary",
         outline: false,
         disabled: false,
         class: [
@@ -302,7 +301,7 @@ const cvaButton = cva(
       },
       // primary outline
       {
-        color: 'primary',
+        color: "primary",
         outline: true,
         disabled: false,
         class: [
@@ -316,7 +315,7 @@ const cvaButton = cva(
       },
       // primary solid disabled
       {
-        color: 'primary',
+        color: "primary",
         disabled: true,
         class: [
           colors.primary.white.solid.disabled,
@@ -325,7 +324,7 @@ const cvaButton = cva(
       },
       // primary outline disabled
       {
-        color: 'primary',
+        color: "primary",
         disabled: true,
         outline: true,
         class: [
@@ -335,7 +334,7 @@ const cvaButton = cva(
       },
       // success solid
       {
-        color: 'success',
+        color: "success",
         outline: false,
         disabled: false,
         class: [
@@ -349,7 +348,7 @@ const cvaButton = cva(
       },
       // success outline
       {
-        color: 'success',
+        color: "success",
         outline: true,
         disabled: false,
         class: [
@@ -363,7 +362,7 @@ const cvaButton = cva(
       },
       // success solid disabled
       {
-        color: 'success',
+        color: "success",
         disabled: true,
         class: [
           colors.success.white.solid.disabled,
@@ -372,7 +371,7 @@ const cvaButton = cva(
       },
       // success outline disabled
       {
-        color: 'success',
+        color: "success",
         disabled: true,
         outline: true,
         class: [
@@ -382,7 +381,7 @@ const cvaButton = cva(
       },
       // info solid
       {
-        color: 'info',
+        color: "info",
         outline: false,
         disabled: false,
         class: [
@@ -396,7 +395,7 @@ const cvaButton = cva(
       },
       // info outline
       {
-        color: 'info',
+        color: "info",
         outline: true,
         disabled: false,
         class: [
@@ -410,7 +409,7 @@ const cvaButton = cva(
       },
       // info solid disabled
       {
-        color: 'info',
+        color: "info",
         disabled: true,
         class: [
           colors.info.white.solid.disabled,
@@ -419,7 +418,7 @@ const cvaButton = cva(
       },
       // info outline disabled
       {
-        color: 'info',
+        color: "info",
         disabled: true,
         outline: true,
         class: [
@@ -429,7 +428,7 @@ const cvaButton = cva(
       },
       // warning solid
       {
-        color: 'warning',
+        color: "warning",
         outline: false,
         disabled: false,
         class: [
@@ -443,7 +442,7 @@ const cvaButton = cva(
       },
       // warning outline
       {
-        color: 'warning',
+        color: "warning",
         outline: true,
         disabled: false,
         class: [
@@ -457,7 +456,7 @@ const cvaButton = cva(
       },
       // warning solid disabled
       {
-        color: 'warning',
+        color: "warning",
         disabled: true,
         class: [
           colors.warning.white.solid.disabled,
@@ -466,7 +465,7 @@ const cvaButton = cva(
       },
       // warning outline disabled
       {
-        color: 'warning',
+        color: "warning",
         disabled: true,
         outline: true,
         class: [
@@ -476,7 +475,7 @@ const cvaButton = cva(
       },
       // danger solid
       {
-        color: 'danger',
+        color: "danger",
         outline: false,
         disabled: false,
         class: [
@@ -490,7 +489,7 @@ const cvaButton = cva(
       },
       // danger outline
       {
-        color: 'danger',
+        color: "danger",
         outline: true,
         disabled: false,
         class: [
@@ -504,7 +503,7 @@ const cvaButton = cva(
       },
       // danger solid disabled
       {
-        color: 'danger',
+        color: "danger",
         disabled: true,
         class: [
           colors.danger.white.solid.disabled,
@@ -513,7 +512,7 @@ const cvaButton = cva(
       },
       // danger outline disabled
       {
-        color: 'danger',
+        color: "danger",
         disabled: true,
         outline: true,
         class: [
@@ -523,69 +522,50 @@ const cvaButton = cva(
       },
       // link outline disabled
       {
-        color: 'link',
+        color: "link",
         outline: true,
         disabled: true,
-        class: 'text-blue-600/50 border-0',
+        class: "text-blue-600/50 border-0",
       },
       // link  disabled
       {
-        color: 'link',
+        color: "link",
         outline: false,
         disabled: true,
-        class: 'text-blue-600/50 border-0',
+        class: "text-blue-600/50 border-0",
       },
       // ghost outline disabled
       {
-        color: 'link',
+        color: "link",
         outline: true,
         disabled: true,
-        class: 'text-gray-600/50 border-0',
+        class: "text-gray-600/50 border-0",
       },
       // ghost  disabled
       {
-        color: 'link',
+        color: "link",
         outline: false,
         disabled: true,
-        class: 'text-gray-600/50 border-0',
+        class: "text-gray-600/50 border-0",
       },
     ],
     defaultVariants: {
-      size: 'md',
-      color: 'default',
+      size: "md",
+      color: "default",
       outline: false,
       disabled: false,
     },
-  }
-)
+  },
+);
 
-export type CvaButtonProps = VariantProps<typeof cvaButton>
+export type CvaButtonProps = VariantProps<typeof cvaButton>;
 
 export type TButtonProps = CvaButtonProps & {
-  children: ReactNode
-  className?: string
-  disabled?: boolean
-  onClick?: () => void
-}
-
-function AccessLabel({
-  children,
-}: {
-  accessKey?: string
-  children: ReactNode
-}) {
-  if (typeof children !== 'string') return <span>{children}</span>
-
-  const chd = getAccessKey(children)
-
-  return (
-    <span>
-      {chd.initial}
-      <span className="font-bold underline">{chd.middle}</span>
-      {chd.final}
-    </span>
-  )
-}
+  children: ReactNode;
+  className?: string;
+  disabled?: boolean;
+  onClick?: () => void;
+};
 
 export function Button({
   children,
@@ -598,12 +578,12 @@ export function Button({
 }: TButtonProps) {
   return (
     <button
+      type="button"
       className={cn(cvaButton({ size, outline, color, disabled }), className)}
       disabled={disabled}
       onClick={onClick}
-      accessKey={getAccessKey(children).accessKey}
     >
-      <AccessLabel>{children}</AccessLabel>
+      {children}
     </button>
-  )
+  );
 }

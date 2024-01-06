@@ -1,8 +1,8 @@
 import { dbFullvision } from '@/core/db/db-fullvision.db.js'
 import { MestreNota } from '@/core/nf-saida_controller.js'
-import { TAdapterKnex, TQueryKnex } from '@/orm/adapter-knex.js'
-import { ormTable } from '@/orm/index.js'
 import type { TSchema } from '@/schemas/schema.type.js'
+import { TAdapterKnex, TQueryKnex } from '@/utils/orm/adapter-knex.js'
+import { ormTable } from '@/utils/orm/index.js'
 import { array, isoDate, number, object, parse, string, union } from 'valibot'
 
 export type TNfSaidaFvFields = (typeof MestreNota.fields)[number]

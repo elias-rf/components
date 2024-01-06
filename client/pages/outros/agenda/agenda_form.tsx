@@ -38,8 +38,8 @@ export const AgendaTelefoneForm = ({
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',
     message: 'Confirma a exclusão do registro ?',
-    option1: '[S]im',
-    option2: '[N]ão',
+    option1: 'Sim',
+    option2: 'Não',
   })
 
   async function handleDel() {
@@ -53,14 +53,14 @@ export const AgendaTelefoneForm = ({
 
   return (
     <div>
-      <div className="flex my-2 space-x-2 flex-rows">
+      <div className="flex-rows my-2 flex space-x-2">
         <Button
           onClick={store.onEdit}
           disabled={['none', 'edit', 'new'].includes(state.status)}
           size="sm"
           outline
         >
-          [E]DITAR
+          EDITAR
         </Button>
         <Button
           onClick={handleDel}
@@ -68,7 +68,7 @@ export const AgendaTelefoneForm = ({
           size="sm"
           outline
         >
-          E[X]CLUIR
+          EXCLUIR
         </Button>
       </div>
       <div className="grid grid-cols-12 gap-3">
@@ -114,7 +114,7 @@ export const AgendaTelefoneForm = ({
           </FormField>
         </div>
       </div>
-      <div className="flex justify-end my-2 space-x-2 flex-rows align-center">
+      <div className="flex-rows align-center my-2 flex justify-end space-x-2">
         <Button
           onClick={() => {
             store.setRecord(form.getValues())
@@ -124,7 +124,7 @@ export const AgendaTelefoneForm = ({
           size="sm"
           outline
         >
-          [S]ALVAR
+          SALVAR
         </Button>
         <Button
           onClick={() => {
@@ -135,7 +135,7 @@ export const AgendaTelefoneForm = ({
           size="sm"
           outline
         >
-          [C]ANCELAR
+          CANCELAR
         </Button>
       </div>
       <MsgBox />

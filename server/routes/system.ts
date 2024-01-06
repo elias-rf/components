@@ -1,4 +1,4 @@
-import { config } from '@/config/index.js'
+import { config } from '@/utils/config/index.js'
 import { omit } from '@/utils/object/omit.js'
 import { Request, Response } from 'express'
 

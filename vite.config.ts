@@ -4,11 +4,11 @@
 /** @type {import('vite').UserConfig} */
 
 import react from '@vitejs/plugin-react'
+import { format } from 'date-fns/fp'
 import dotenv from 'dotenv-flow'
 import * as path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitest/config'
-import { day } from './utils/date/day.js'
 
 dotenv.config()
 
@@ -50,11 +50,10 @@ export default defineConfig({
       '**/.{idea,git,cache,output,temp}/**',
       '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
       '**/client-ng/**',
-      'tests/**',
-      'texts-examples/**',
+      './tests/**',
     ],
   },
   define: {
-    __APP_VERSION__: JSON.stringify(day().format('YY-MM-DD.HH:mm')),
+    __APP_VERSION__: format('yy-MM-dd.HH:mm')(new Date()),
   },
 })

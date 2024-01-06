@@ -1,7 +1,0 @@
-import { describe, expect, it } from 'vitest'
-import { formatDate } from './formatDate.js'
-describe('formatDateBr', () => {
-  it('dever receber uma string', () => {
-    expect(formatDate(new Date(2000, 1, 1), 'DD/MM/YYYY')).toBe('01/02/2000')
-  })
-})
