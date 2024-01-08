@@ -1,5 +1,5 @@
-import { minLength, string } from 'valibot'
+import * as v from 'valibot'
 
 export const isRequired = (message = 'Valor deve ser informado') => {
-  return string(message, [minLength(1, message)])
+  return v.string(message, [v.minLength(1, message)])
 }

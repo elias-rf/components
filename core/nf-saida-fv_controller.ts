@@ -3,7 +3,7 @@ import { MestreNota } from '@/core/nf-saida_controller.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { TAdapterKnex, TQueryKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
-import { array, isoDate, number, object, parse, string, union } from 'valibot'
+import * as v from 'valibot'
 
 export type TNfSaidaFvFields = (typeof MestreNota.fields)[number]
 export type TNfSaidaFvKeys = (typeof MestreNota.primary)[number]
@@ -18,10 +18,10 @@ function nfSaidaFvControllerFactory(db: TAdapterKnex, schema: TSchema) {
     inicio: string
     fim: string
   }) => {
-    parse(
-      object({
-        inicio: string([isoDate('data inicial inválida')]),
-        fim: string([isoDate('data final inválida')]),
+    v.parse(
+      v.object({
+        inicio: v.string([v.isoDate('data inicial inválida')]),
+        fim: v.string([v.isoDate('data final inválida')]),
       }),
       {
         inicio,
@@ -94,9 +94,9 @@ function nfSaidaFvControllerFactory(db: TAdapterKnex, schema: TSchema) {
       quantidade: number
     }[]
   > => {
-    parse(string([isoDate('data inicial inválida')]), inicio)
-    parse(string([isoDate('data final inválida')]), fim)
-    parse(array(string('uf deve ser string')), uf)
+    v.parse(v.string([v.isoDate('data inicial inválida')]), inicio)
+    v.parse(v.string([v.isoDate('data final inválida')]), fim)
+    v.parse(v.array(v.string('uf deve ser string')), uf)
 
     let qry: TQueryKnex = {
       fromRaw: [
@@ -148,11 +148,11 @@ function nfSaidaFvControllerFactory(db: TAdapterKnex, schema: TSchema) {
     fim: string
     cliente: number
   }) => {
-    parse(
-      object({
-        inicio: string([isoDate('data inicial inválida')]),
-        fim: string([isoDate('data final inválida')]),
-        cliente: union([number(), string()]),
+    v.parse(
+      v.object({
+        inicio: v.string([v.isoDate('data inicial inválida')]),
+        fim: v.string([v.isoDate('data final inválida')]),
+        cliente: v.union([v.number(), v.string()]),
       }),
       { inicio, fim, cliente }
     )

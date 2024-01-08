@@ -1,12 +1,19 @@
-import { format } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
+import * as v from 'valibot'
 
-const date = new Date()
+const dt = (args) => {
+  v.parse(
+    v.object({
+      inicio: v.string('deve ser string', [
+        v.isoDate(`inicio deve ser uma data mas foi passado`),
+      ]),
 
-console.log(format(date, 'yyyy-MM-dd'))
-console.log(format(date, 'EEEEEE', { locale: ptBR }))
-console.log(format(date, 'iiiiii', { locale: ptBR }))
-console.log(format(date, 'eeeeee', { locale: ptBR }))
-console.log(format(date, 'cccccc', { locale: ptBR }))
-console.log(format(date, 'PPP', { locale: ptBR }))
-console.log(format(date, 'PPP', { locale: ptBR }))
+      fim: v.string([v.isoDate(`fim deve ser uma string mas foi passado`)]),
+    }),
+    args
+  )
+  return args
+}
+
+console.log(dt({ inicio: '2020-01-01', fim: '2020-01-01' }))
+console.log(dt({ inicio: 2020, fim: '2020-01-01' }))
+console.log(dt({ inicio: '20-01-01', fim: '2020-01-01' }))

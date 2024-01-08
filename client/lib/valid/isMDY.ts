@@ -1,5 +1,5 @@
-import { isoDate, string } from 'valibot'
+import * as v from 'valibot'
 
 export const isMDY = (message = 'Valor deve ser ano-mes-dia') => {
-  return string(message, [isoDate(message)])
+  return v.string(message, [v.isoDate(message)])
 }

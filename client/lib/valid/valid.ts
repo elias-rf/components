@@ -1,7 +1,7 @@
-import { BaseSchema, safeParse } from 'valibot'
+import * as v from 'valibot'
 
-export const valid = (schema: BaseSchema<any, any>) => (value: any) => {
-  const resp = safeParse(schema, value)
+export const valid = (schema: v.BaseSchema<any, any>) => (value: any) => {
+  const resp = v.safeParse(schema, value)
   if (resp.success) {
     return ''
   }

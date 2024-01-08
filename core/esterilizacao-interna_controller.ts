@@ -4,7 +4,7 @@ import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
 import { format, formatWithOptions } from 'date-fns/fp'
 import { ptBR } from 'date-fns/locale'
-import { isoDate, object, parse, regex, string } from 'valibot'
+import * as v from 'valibot'
 
 export const esterilizacaoInternaSchema: TSchema = {
   table: 'tEsterilizacaoInterna',
@@ -51,10 +51,10 @@ function esterilizacaoInternaControllerFactory(
     inicio: string
     fim: string
   }): Promise<{ dia: string; dia_semana: string; quantidade: number }[]> => {
-    parse(
-      object({
-        inicio: string([isoDate('data inicial inválida')]),
-        fim: string([isoDate('data final inválida')]),
+    v.parse(
+      v.object({
+        inicio: v.string([v.isoDate('data inicial inválida')]),
+        fim: v.string([v.isoDate('data final inválida')]),
       }),
       { inicio, fim }
     )
@@ -78,7 +78,10 @@ function esterilizacaoInternaControllerFactory(
   }: {
     mes: string
   }): Promise<{ mes: string; quantidade: number }[]> => {
-    parse(string([regex(/^\d{4}-(?:0[1-9]|1[0-2])$/, 'mês inválido')]), mes)
+    v.parse(
+      v.string([v.regex(/^\d{4}-(?:0[1-9]|1[0-2])$/, 'mês inválido')]),
+      mes
+    )
     const qry = await db({
       from: 'tOperacaoOrdemProducao',
       selectRaw: [
@@ -101,10 +104,10 @@ function esterilizacaoInternaControllerFactory(
     data: string
     produto: string
   }): Promise<{ modelo: string; quantidade: number }[]> => {
-    parse(
-      object({
-        data: string([isoDate('data inválida')]),
-        produto: string(),
+    v.parse(
+      v.object({
+        data: v.string([v.isoDate('data inválida')]),
+        produto: v.string(),
       }),
       { data, produto }
     )
@@ -134,9 +137,12 @@ function esterilizacaoInternaControllerFactory(
   }: {
     data: string
   }): Promise<{ produto: string; quantidade: number }[]> => {
-    parse(object({ data: string([isoDate('data inicial inválida')]) }), {
-      data,
-    })
+    v.parse(
+      v.object({ data: v.string([v.isoDate('data inicial inválida')]) }),
+      {
+        data,
+      }
+    )
     const knex = db.getDriver()
     const qry = await knex(
       knex.raw(

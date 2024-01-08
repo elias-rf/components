@@ -3,15 +3,7 @@ import type { TSchema } from '@/schemas/schema.type.js'
 import { formatMoney } from '@/utils/format/format-money.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
-import {
-  isoDate,
-  nonOptional,
-  number,
-  object,
-  parse,
-  string,
-  union,
-} from 'valibot'
+import * as v from 'valibot'
 
 export const clienteSchema = {
   table: 'CadCli',
@@ -233,18 +225,21 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
     fim: string
     cliente: number
   }) {
-    parse(
-      object({
-        inicio: nonOptional(
-          string([isoDate('data inicial inválida')]),
+    v.parse(
+      v.object({
+        inicio: v.nonOptional(
+          v.string([v.isoDate('data inicial inválida')]),
           'inicio deve ser informado'
         ),
-        fim: nonOptional(
-          string([isoDate('data final inválida')]),
+        fim: v.nonOptional(
+          v.string([v.isoDate('data final inválida')]),
           'fim deve ser informado'
         ),
-        cliente: nonOptional(
-          union([number(), string()], 'cliente deve ser number ou string'),
+        cliente: v.nonOptional(
+          v.union(
+            [v.number(), v.string()],
+            'cliente deve ser number ou string'
+          ),
           'cliente deve ser informado'
         ),
       }),
@@ -290,12 +285,12 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
     fim: string
     cliente: number
   }) => {
-    parse(
-      object({
-        inicio: string([isoDate('data inicial inválida')]),
-        fim: string([isoDate('data final inválida')]),
-        cliente: union(
-          [number(), string()],
+    v.parse(
+      v.object({
+        inicio: v.string([v.isoDate('data inicial inválida')]),
+        fim: v.string([v.isoDate('data final inválida')]),
+        cliente: v.union(
+          [v.number(), v.string()],
           'cliente deve ser number ou string'
         ),
       }),
@@ -333,12 +328,12 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
     fim: string
     cliente: number
   }) => {
-    parse(
-      object({
-        inicio: string([isoDate('data inicial inválida')]),
-        fim: string([isoDate('data final inválida')]),
-        cliente: union(
-          [number(), string()],
+    v.parse(
+      v.object({
+        inicio: v.string([v.isoDate('data inicial inválida')]),
+        fim: v.string([v.isoDate('data final inválida')]),
+        cliente: v.union(
+          [v.number(), v.string()],
           'cliente deve ser number ou string'
         ),
       }),

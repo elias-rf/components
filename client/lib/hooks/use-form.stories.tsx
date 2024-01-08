@@ -7,7 +7,7 @@ import { Label } from '@/client/components/ui-old/label.js'
 import { valid } from '@/client/lib/valid/valid.js'
 import { action } from '@storybook/addon-actions'
 import type { Meta, StoryObj } from '@storybook/react'
-import { coerce, email, minLength, minValue, number, string } from 'valibot'
+import * as v from 'valibot'
 import { useForm } from './use-form.js'
 
 const meta: Meta<typeof FormField> = {
@@ -18,13 +18,16 @@ export default meta
 type Story = StoryObj<typeof FormField>
 
 const schema = {
-  nome: valid(string([minLength(3, 'Nome deve ter pelo menos 3 caracteres')])),
+  nome: valid(
+    v.string([v.minLength(3, 'Nome deve ter pelo menos 3 caracteres')])
+  ),
   idade: valid(
-    coerce(number([minValue(18, 'Deve ter pelo menos 18 anos')]), (v: any) =>
-      parseInt(v)
+    v.coerce(
+      v.number([v.minValue(18, 'Deve ter pelo menos 18 anos')]),
+      (v: any) => parseInt(v)
     )
   ),
-  email: valid(string([email('Email inválido')])),
+  email: valid(v.string([v.email('Email inválido')])),
 }
 
 const clearRecord = {

@@ -5,7 +5,7 @@ import { ormTable } from '@/utils/orm/index.js'
 import { UTCDateMini } from '@date-fns/utc'
 import { format, formatWithOptions } from 'date-fns/fp'
 import { ptBR } from 'date-fns/locale'
-import { isoDate, number, object, parse, regex, string, union } from 'valibot'
+import * as v from 'valibot'
 
 export const tOperacaoOrdemProducao: TSchema = {
   table: 'tOperacaoOrdemProducao',
@@ -79,14 +79,14 @@ function ordemProducaoOperacaoControllerFactory(
   }): Promise<
     Array<{ dia: string; diaSemana: string; quantidade: number }>
   > => {
-    parse(
-      object({
-        operacao: union(
-          [number(), string()],
+    v.parse(
+      v.object({
+        operacao: v.union(
+          [v.number(), v.string()],
           'operacao dever ser number ou string'
         ),
-        inicio: string([isoDate('data inicial inválida')]),
-        fim: string([isoDate('data final inválida')]),
+        inicio: v.string([v.isoDate('data inicial inválida')]),
+        fim: v.string([v.isoDate('data final inválida')]),
       }),
       {
         operacao,
@@ -122,13 +122,13 @@ function ordemProducaoOperacaoControllerFactory(
     operacao: number
     mes: string
   }) => {
-    parse(
-      object({
-        operacao: union(
-          [number(), string()],
+    v.parse(
+      v.object({
+        operacao: v.union(
+          [v.number(), v.string()],
           'operacao dever ser number ou string'
         ),
-        mes: string([regex(/^\d{4}-(?:0[1-9]|1[0-2])$/, 'mês inválido')]),
+        mes: v.string([v.regex(/^\d{4}-(?:0[1-9]|1[0-2])$/, 'mês inválido')]),
       }),
       { operacao, mes }
     )
@@ -155,11 +155,11 @@ function ordemProducaoOperacaoControllerFactory(
     data: string
     produto: string
   }) => {
-    parse(
-      object({
-        operacao: union([string(), number()]),
-        data: string([isoDate('data inicial inválida')]),
-        produto: union([string(), number()]),
+    v.parse(
+      v.object({
+        operacao: v.union([v.string(), v.number()]),
+        data: v.string([v.isoDate('data inicial inválida')]),
+        produto: v.union([v.string(), v.number()]),
       }),
       {
         operacao,
@@ -198,10 +198,10 @@ function ordemProducaoOperacaoControllerFactory(
     operacao: string
     data: string
   }) => {
-    parse(
-      object({
-        operacao: union([string(), number()]),
-        data: string([isoDate('data inicial inválida')]),
+    v.parse(
+      v.object({
+        operacao: v.union([v.string(), v.number()]),
+        data: v.string([v.isoDate('data inicial inválida')]),
       }),
       {
         operacao,
@@ -232,10 +232,10 @@ function ordemProducaoOperacaoControllerFactory(
     operacao: string
     data: string
   }) => {
-    parse(
-      object({
-        operacao: union([string(), number()]),
-        data: string([isoDate('data inicial inválida')]),
+    v.parse(
+      v.object({
+        operacao: v.union([v.string(), v.number()]),
+        data: v.string([v.isoDate('data inicial inválida')]),
       }),
       {
         operacao,

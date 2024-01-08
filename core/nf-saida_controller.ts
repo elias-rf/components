@@ -5,7 +5,7 @@ import { TAdapterKnex, TQueryKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
 import { UTCDateMini } from '@date-fns/utc'
 import { format } from 'date-fns/fp'
-import { array, isoDate, number, parse, regex, string, union } from 'valibot'
+import * as v from 'valibot'
 
 export const MestreNota: TSchema = {
   table: 'MestreNota',
@@ -143,8 +143,8 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
     inicio: string
     fim: string
   }) => {
-    parse(string([isoDate('data inicial inválida')]), inicio)
-    parse(string([isoDate('data final inválida')]), fim)
+    v.parse(v.string([v.isoDate('data inicial inválida')]), inicio)
+    v.parse(v.string([v.isoDate('data final inválida')]), fim)
 
     const aux: any = {}
     const rsp = []
@@ -186,7 +186,10 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
    * @returns
    */
   const nfSaida_transferenciaMensal = async ({ mes }: { mes: string }) => {
-    parse(string([regex(/^\d{4}-(?:0[1-9]|1[0-2])$/, 'mês inválido')]), mes)
+    v.parse(
+      v.string([v.regex(/^\d{4}-(?:0[1-9]|1[0-2])$/, 'mês inválido')]),
+      mes
+    )
 
     const aux: any = {}
     const rsp = []
@@ -231,7 +234,7 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
    * @returns
    */
   const nfSaida_transferenciaModelo = async ({ data }: { data: string }) => {
-    parse(string([isoDate('data inválida')]), data)
+    v.parse(v.string([v.isoDate('data inválida')]), data)
 
     const qry = await db({
       fromRaw: [
@@ -266,8 +269,8 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
     inicio: string
     fim: string
   }) => {
-    parse(string([isoDate('data inicial inválida')]), inicio)
-    parse(string([isoDate('data final inválida')]), fim)
+    v.parse(v.string([v.isoDate('data inicial inválida')]), inicio)
+    v.parse(v.string([v.isoDate('data final inválida')]), fim)
 
     const qryPlano = await db({
       from: 'MestreNota',
@@ -341,9 +344,9 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
       quantidade: number
     }[]
   > => {
-    parse(string([isoDate('data inicial inválida')]), inicio)
-    parse(string([isoDate('data final inválida')]), fim)
-    parse(array(string('uf deve ser string')), uf)
+    v.parse(v.string([v.isoDate('data inicial inválida')]), inicio)
+    v.parse(v.string([v.isoDate('data final inválida')]), fim)
+    v.parse(v.array(v.string('uf deve ser string')), uf)
 
     let qry: TQueryKnex = {
       fromRaw: [
@@ -404,9 +407,9 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
     fim: string
     cliente: number
   }) => {
-    parse(string([isoDate('data inicial inválida')]), inicio)
-    parse(string([isoDate('data final inválida')]), fim)
-    parse(union([string(), number()]), cliente)
+    v.parse(v.string([v.isoDate('data inicial inválida')]), inicio)
+    v.parse(v.string([v.isoDate('data final inválida')]), fim)
+    v.parse(v.union([v.string(), v.number()]), cliente)
 
     const rsp: TQueryKnex = {
       from: 'MestreNota',

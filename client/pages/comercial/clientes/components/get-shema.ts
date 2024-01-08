@@ -1,13 +1,13 @@
 import { TColumn } from '@/types/index.js'
 import { addMonths, parse as dateParse, format } from 'date-fns/fp'
 import { flowRight } from 'lodash'
-import { isoDate, object, parse, string } from 'valibot'
+import * as v from 'valibot'
 
 export function getSchema(args: { inicio: string; fim: string }): TColumn[] {
-  parse(
-    object({
-      inicio: string([isoDate('data inicial inválida')]),
-      fim: string([isoDate('data final inválida')]),
+  v.parse(
+    v.object({
+      inicio: v.string([v.isoDate('data inicial inválida')]),
+      fim: v.string([v.isoDate('data final inválida')]),
     }),
     args
   )

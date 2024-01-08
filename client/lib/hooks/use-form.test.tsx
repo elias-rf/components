@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks'
-import { minLength, safeParse, string } from 'valibot'
+import * as v from 'valibot'
 import { describe, expect, it } from 'vitest'
 import { useForm } from './use-form.js'
 
@@ -62,8 +62,10 @@ describe('useForm hook', () => {
         value: { testField: 'default 1' },
         schema: {
           testField: (value: string) => {
-            const resp = safeParse(
-              string([minLength(3, 'Nome deve ter pelo menos 3 caracteres')]),
+            const resp = v.safeParse(
+              v.string([
+                v.minLength(3, 'Nome deve ter pelo menos 3 caracteres'),
+              ]),
               value
             )
             return resp.success ? '' : resp.issues[0].message

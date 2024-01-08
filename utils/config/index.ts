@@ -1,7 +1,7 @@
 import dotenv from 'dotenv-flow'
 import type { Knex } from 'knex'
 import tls from 'tls'
-import { boolean, coerce, number, object, parse, string } from 'valibot'
+import * as v from 'valibot'
 
 dotenv.config({
   silent: true,
@@ -48,19 +48,19 @@ interface Config {
   }
 }
 
-const schemaSqlConnection = object({
-  client: string(),
-  debug: boolean(),
-  useNullAsDefault: boolean(),
-  connection: object({
-    database: string(),
-    host: string(),
-    user: string(),
-    password: string(),
-    options: object({
-      trustServerCertificate: boolean(),
-      enableArithAbort: boolean(),
-      tdsVersion: string(),
+const schemaSqlConnection = v.object({
+  client: v.string(),
+  debug: v.boolean(),
+  useNullAsDefault: v.boolean(),
+  connection: v.object({
+    database: v.string(),
+    host: v.string(),
+    user: v.string(),
+    password: v.string(),
+    options: v.object({
+      trustServerCertificate: v.boolean(),
+      enableArithAbort: v.boolean(),
+      tdsVersion: v.string(),
     }),
   }),
 })
@@ -93,15 +93,15 @@ export const config: Config = {
         filename: './log.sqlite',
       },
     },
-    oftalmo: parse(
+    oftalmo: v.parse(
       schemaSqlConnection,
       JSON.parse(process.env.db_oftalmo as string)
     ),
-    plano: parse(
+    plano: v.parse(
       schemaSqlConnection,
       JSON.parse(process.env.db_plano as string)
     ),
-    fullvision: parse(
+    fullvision: v.parse(
       schemaSqlConnection,
       JSON.parse(process.env.db_fullvision as string)
     ),
