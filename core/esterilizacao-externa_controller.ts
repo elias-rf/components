@@ -1,8 +1,9 @@
 import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
 import type { TSchema } from '@/schemas/schema.type.js'
-import { day } from '@/utils/date/day.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
+import { format, formatWithOptions } from 'date-fns/fp'
+import { ptBR } from 'date-fns/locale'
 import { isoDate, object, parse, regex, string } from 'valibot'
 
 export const esterilizacaoExternaSchema: TSchema = {
@@ -68,8 +69,8 @@ function esterilizacaoExternaControllerFactory(
       )
 
     return qry.map((rec: any) => {
-      rec.dia_semana = day(rec.dia).format('ddd')
-      rec.dia = rec.dia.toISOString().substring(0, 10)
+      rec.dia_semana = formatWithOptions({ locale: ptBR }, 'EEEEEE')(rec.dia)
+      rec.dia = format('yyyy-MM-dd')(rec.dia)
       return rec
     })
   }

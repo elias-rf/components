@@ -1,8 +1,10 @@
 import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
 import type { TSchema } from '@/schemas/schema.type.js'
-import { day } from '@/utils/date/day.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
+import { UTCDateMini } from '@date-fns/utc'
+import { format, formatWithOptions } from 'date-fns/fp'
+import { ptBR } from 'date-fns/locale'
 import { isoDate, number, object, parse, regex, string, union } from 'valibot'
 
 export const tOperacaoOrdemProducao: TSchema = {
@@ -106,8 +108,9 @@ function ordemProducaoOperacaoControllerFactory(
     })
 
     return data.map((item: any) => {
-      item.diaSemana = day.utc(item.dia).format('ddd')
-      item.dia = day.utc(item.dia).format('YYYY-MM-DD')
+      const itemDia = new UTCDateMini(item.dia)
+      item.diaSemana = formatWithOptions({ locale: ptBR }, 'EEEEEE')(itemDia)
+      item.dia = format('yyyy-MM-dd')(itemDia)
       return item
     })
   }

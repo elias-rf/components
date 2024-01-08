@@ -7,12 +7,13 @@ import {
 } from '@/core/produto-item_controller.js'
 import { TProdutoPlanoFields } from '@/core/produto-plano_controller.js'
 import type { TSchema } from '@/schemas/schema.type.js'
-import { day } from '@/utils/date/day.js'
 import { isEmpty } from '@/utils/identify/is-empty.js'
-import { isUndefined } from '@/utils/identify/is-undefined.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
 import { module10 } from '@/utils/string/module10.js'
+import { UTCDateMini } from '@date-fns/utc'
+import { addYears, format } from 'date-fns/fp'
+import { flowRight } from 'lodash'
 
 export const tOrdemProducao: TSchema = {
   table: 'tOrdemProducao',
@@ -183,7 +184,7 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
     }
 
     if (Array.isArray(response) && response.length > 0) {
-      return day(response[0].DataHoraInicio).format('YYYY-MM-DD')
+      return format('yyyy-MM-dd')(new UTCDateMini(response[0].DataHoraInicio))
     }
     return ''
   }
@@ -205,7 +206,9 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
     if (fabricacao === '') {
       throw new Error('Ordem de produção não possui 3059, 3060, 4020 ou 3160')
     }
-    const validade = day(fabricacao).add(5, 'y').format('YYYY-MM-DD')
+    const validade = flowRight([format('yyyy-MM-dd'), addYears(5)])(
+      new UTCDateMini(fabricacao)
+    )
     return validade
   }
 
@@ -246,7 +249,7 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
     id: [['kOp', number]]
   }) => {
     const [[_, value]] = id
-    if (isUndefined(value)) return []
+    if (value === undefined) return []
     return etiquetaExternaController.etiquetaExterna_list({
       where: [
         ['controle', 'like', ('000000' + value.toString()).slice(-8, -2) + '%'],

@@ -2,7 +2,8 @@ import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { formatDiario } from '@/client/pages/comercial/vendas-30dias/format-diario.js'
-import { day } from '@/utils/date/day.js'
+import { format, subDays } from 'date-fns/fp'
+import { flowRight } from 'lodash'
 import { devtools } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
 
@@ -66,8 +67,8 @@ const vendas30DiasStoreBase = createStore<Vendas30DiasState>()(
   devtools(
     (set, get) => ({
       list: {} as TList,
-      inicio: day().subtract(90, 'days').format('YYYY-MM-DD'),
-      fim: day().format('YYYY-MM-DD'),
+      inicio: flowRight([format('yyyy-MM-dd'), subDays(90)])(new Date()), // day().subtract(90, 'days').format('YYYY-MM-DD'),
+      fim: format('yyyy-MM-dd')(new Date()), // day().format('YYYY-MM-DD'),
       fetchList: async () => {
         const list = (await cache.memo(
           {

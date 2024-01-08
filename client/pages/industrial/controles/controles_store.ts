@@ -1,9 +1,10 @@
 import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
-import { day } from '@/utils/date/day.js'
 import { getFieldId } from '@/utils/query/get-field-id.js'
 import { isIdEqual } from '@/utils/query/is-id-equal.js'
+import { endOfMonth, format, parse, startOfMonth, subMonths } from 'date-fns/fp'
+import { flowRight } from 'lodash'
 import { create } from 'zustand'
 
 interface ControlesState {
@@ -60,7 +61,9 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
   dia: [],
   operacao: [['operacao', '3058']],
   produto: [],
-  mesInicio: [['mes', day().subtract(13, 'month').format('YYYY-MM')]],
+  mesInicio: [
+    ['mes', flowRight([format('yyyy-MM'), subMonths(13)])(new Date())],
+  ],
   setMes: (mes: ['mes', string][]) => {
     if (isIdEqual(get().mes, mes)) {
       set({ mes: [] })
@@ -90,23 +93,25 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
   },
 
   fetchEsterilizacaoExternaDiario: async () => {
+    const inicio = flowRight([
+      format('yyyy-MM-dd'),
+      startOfMonth(),
+      parse('yyyy-MM-dd'),
+    ])(getFieldId('mes', get().mes) + '-01')
+    const fim = flowRight([
+      format('yyyy-MM-dd'),
+      endOfMonth,
+      parse('yyyy-MM-dd'),
+    ])(getFieldId('mes', get().mes) + '-01')
     const data = (await cache.memo(
       {
-        inicio: day(getFieldId('mes', get().mes) + '-01')
-          .startOf('month')
-          .format('YYYY-MM-DD'),
-        fim: day(getFieldId('mes', get().mes) + '-01')
-          .endOf('month')
-          .format('YYYY-MM-DD'),
+        inicio,
+        fim,
       },
       () =>
         rpc.request('esterilizacaoExterna_diario', {
-          inicio: day(getFieldId('mes', get().mes) + '-01')
-            .startOf('month')
-            .format('YYYY-MM-DD'),
-          fim: day(getFieldId('mes', get().mes) + '-01')
-            .endOf('month')
-            .format('YYYY-MM-DD'),
+          inicio,
+          fim,
         })
     )) as any[]
     set({ esterilizacaoExternaDiario: data })
@@ -162,23 +167,25 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
   esterilizacaoExternaProduto: [],
 
   fetchEsterilizacaoInternaDiario: async () => {
+    const inicio = flowRight([
+      format('yyyy-MM-dd'),
+      startOfMonth(),
+      parse('yyyy-MM-dd'),
+    ])(getFieldId('mes', get().mes) + '-01')
+    const fim = flowRight([
+      format('yyyy-MM-dd'),
+      endOfMonth,
+      parse('yyyy-MM-dd'),
+    ])(getFieldId('mes', get().mes) + '-01')
     const data = (await cache.memo(
       {
-        inicio: day(getFieldId('mes', get().mes) + '-01')
-          .startOf('month')
-          .format('YYYY-MM-DD'),
-        fim: day(getFieldId('mes', get().mes) + '-01')
-          .endOf('month')
-          .format('YYYY-MM-DD'),
+        inicio,
+        fim,
       },
       () =>
         rpc.request('esterilizacaoInterna_diario', {
-          inicio: day(getFieldId('mes', get().mes) + '-01')
-            .startOf('month')
-            .format('YYYY-MM-DD'),
-          fim: day(getFieldId('mes', get().mes) + '-01')
-            .endOf('month')
-            .format('YYYY-MM-DD'),
+          inicio,
+          fim,
         })
     )) as any[]
     set({ esterilizacaoInternaDiario: data })
@@ -234,25 +241,28 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
   esterilizacaoInternaProduto: [],
 
   fetchOperacaoDiario: async () => {
+    const inicio = flowRight([
+      format('yyyy-MM-dd'),
+      startOfMonth(),
+      parse('yyyy-MM-dd'),
+    ])(getFieldId('mes', get().mes) + '-01')
+    const fim = flowRight([
+      format('yyyy-MM-dd'),
+      endOfMonth,
+      parse('yyyy-MM-dd'),
+    ])(getFieldId('mes', get().mes) + '-01')
+
     const data = (await cache.memo(
       {
         operacao: getFieldId('operacao', get().operacao) || '',
-        inicio: day(getFieldId('mes', get().mes) + '-01')
-          .startOf('month')
-          .format('YYYY-MM-DD'),
-        fim: day(getFieldId('mes', get().mes) + '-01')
-          .endOf('month')
-          .format('YYYY-MM-DD'),
+        inicio,
+        fim,
       },
       () =>
         rpc.request('ordemProducaoOperacao_diario', {
           operacao: getFieldId('operacao', get().operacao) || '',
-          inicio: day(getFieldId('mes', get().mes) + '-01')
-            .startOf('month')
-            .format('YYYY-MM-DD'),
-          fim: day(getFieldId('mes', get().mes) + '-01')
-            .endOf('month')
-            .format('YYYY-MM-DD'),
+          inicio,
+          fim,
         })
     )) as any[]
     set({ operacaoDiario: data })
@@ -331,23 +341,25 @@ const useControlesBase = create<ControlesState>()((set, get) => ({
   operacaoTurno: [],
 
   fetchTransferenciaDiario: async () => {
+    const inicio = flowRight([
+      format('yyyy-MM-dd'),
+      startOfMonth(),
+      parse('yyyy-MM-dd'),
+    ])(getFieldId('mes', get().mes) + '-01')
+    const fim = flowRight([
+      format('yyyy-MM-dd'),
+      endOfMonth,
+      parse('yyyy-MM-dd'),
+    ])(getFieldId('mes', get().mes) + '-01')
     const data = (await cache.memo(
       {
-        inicio: day(getFieldId('mes', get().mes) + '-01')
-          .startOf('month')
-          .format('YYYY-MM-DD'),
-        fim: day(getFieldId('mes', get().mes) + '-01')
-          .endOf('month')
-          .format('YYYY-MM-DD'),
+        inicio,
+        fim,
       },
       () =>
         rpc.request('nfSaida_transferenciaDiario', {
-          inicio: day(getFieldId('mes', get().mes) + '-01')
-            .startOf('month')
-            .format('YYYY-MM-DD'),
-          fim: day(getFieldId('mes', get().mes) + '-01')
-            .endOf('month')
-            .format('YYYY-MM-DD'),
+          inicio,
+          fim,
         })
     )) as any[]
     set({ transferenciaDiario: data })

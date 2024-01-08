@@ -1,9 +1,10 @@
 import { dbPlano } from '@/core/db/db-plano.db.js'
 import { nfSaidaFvController } from '@/core/nf-saida-fv_controller.js'
 import type { TSchema } from '@/schemas/schema.type.js'
-import { day } from '@/utils/date/day.js'
 import { TAdapterKnex, TQueryKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
+import { UTCDateMini } from '@date-fns/utc'
+import { format } from 'date-fns/fp'
 import { array, isoDate, number, parse, regex, string, union } from 'valibot'
 
 export const MestreNota: TSchema = {
@@ -384,7 +385,7 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
     }[]
 
     const response = result.map((item) => {
-      item.DtEmissao = day(item.DtEmissao).format('YYYY-MM-DD')
+      item.DtEmissao = format('yyyy-MM-dd')(new UTCDateMini(item.DtEmissao))
       return item
     })
     return response

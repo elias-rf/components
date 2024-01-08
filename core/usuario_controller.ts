@@ -3,11 +3,12 @@ import type { TSchema } from '@/schemas/schema.type.js'
 import { TRpcContext } from '@/server/routes/rpc2.js'
 import type { TCurrentUser } from '@/types/index.js'
 import { config } from '@/utils/config/index.js'
-import { day } from '@/utils/date/day.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
 import { passwordVerify } from '@/utils/string/password-verify.js'
+import { format, fromUnixTime } from 'date-fns/fp'
 import jwtService from 'jsonwebtoken'
+import { flowRight } from 'lodash'
 
 export const tbl_Seguranca_Usuario = {
   database: 'oftalmo',
@@ -39,8 +40,12 @@ function usuarioControllerFactory(db: TAdapterKnex, schema: TSchema) {
   async function usuario_me(_: void, ctx?: TRpcContext) {
     const resp: any = { ...ctx?.user }
     if (resp && resp.iat) {
-      resp.iat = day.unix(resp.iat).format('YYYY-MM-DDTHH:mm:ss')
-      resp.exp = day.unix(resp.exp).format('YYYY-MM-DDTHH:mm:ss')
+      resp.iat = flowRight([format('yyyy-MM-ddTHH:mm:ss'), fromUnixTime()])(
+        resp.iat
+      )
+      resp.exp = flowRight([format('yyyy-MM-ddTHH:mm:ss'), fromUnixTime()])(
+        resp.exp
+      )
     }
     return (resp as TCurrentUser) || 'NOT_LOGGED'
   }

@@ -1,3 +1,4 @@
+import { snapshot } from 'valtio'
 import { subscribeKey } from 'valtio/utils'
 
 const getLocation = () => {
@@ -52,27 +53,27 @@ const subscribeToLocationUpdates = (callback: any) => {
   }
 }
 
-export function locationPlugin(state: any, key: string) {
+export function globalPlugin(state: any, key: string) {
+  // Connection to a broadcast channel
+  const bc = new BroadcastChannel(key)
+
   // valor inicial do state
-  const value = getLocation()[key]
-  if (value) {
-    state[key] = JSON.parse(value)
-  }
+  bc.postMessage(null)
 
   // alterações no state devem ser copiados para url
-  const unsubscribe = subscribeKey(state, key, (vlr) => {
-    const value = JSON.stringify(vlr)
-    applyLocation(key, value)
+  const unsubscribe = subscribeKey(state, key, (value) => {
+    bc.postMessage(JSON.stringify(value))
   })
 
   // alterações na url devem ser copiadas para state
-  subscribeToLocationUpdates(() => {
-    const value = getLocation()[key]
-    const stateValue = JSON.stringify(state[key])
-    if (stateValue !== value) {
-      state[key] = JSON.parse(value)
+  bc.onmessage = (event) => {
+    if (event.data === null) {
+      bc.postMessage(JSON.stringify(state[key]))
+    } else {
+      if (JSON.stringify(state[key]) !== event.data)
+        state[key] = JSON.parse(event.data)
     }
-  })
+  }
 
   return () => {
     unsubscribe()

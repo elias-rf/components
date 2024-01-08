@@ -7,8 +7,8 @@ import react from '@vitejs/plugin-react'
 import { format } from 'date-fns/fp'
 import dotenv from 'dotenv-flow'
 import * as path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitest/config'
+// import { fileURLToPath } from 'node:url'
 
 dotenv.config()
 
@@ -54,6 +54,6 @@ export default defineConfig({
     ],
   },
   define: {
-    __APP_VERSION__: format('yy-MM-dd.HH:mm')(new Date()),
+    // __APP_VERSION__: format('yy-MM-dd.HH:mm')(new Date()),
   },
 })

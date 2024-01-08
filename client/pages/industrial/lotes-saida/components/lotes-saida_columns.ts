@@ -1,5 +1,5 @@
 import { TColumn } from '@/types/index.js'
-import { day } from '@/utils/date/day.js'
+import { format } from 'date-fns/fp'
 
 export const lotesSaidaColumns: TColumn[] = [
   { name: 'NumLote', label: 'Controle', width: '1%', sortable: false },
@@ -15,7 +15,7 @@ export const lotesSaidaColumns: TColumn[] = [
     label: 'Data',
     width: '1%',
     sortable: false,
-    format: (dt) => day(dt).format('DD/MM/YYYY'),
+    format: (dt) => format('dd/MM/yyyy')(dt),
   },
   { name: 'CdProduto', label: 'Cod Prod', width: '1%', sortable: false },
   {

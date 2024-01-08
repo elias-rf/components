@@ -1,5 +1,6 @@
 import { authStorage } from '@/client/lib/auth-storage.js'
 import { rpc } from '@/client/lib/rpc.js'
+import { globalPlugin } from '@/client/store/global_plugin.js'
 import { TCurrentUser } from '@/types/index.js'
 import { proxy, subscribe } from 'valtio'
 
@@ -106,7 +107,9 @@ const me = async () => {
   return user
 }
 
-// me() // causa erro no test
+globalPlugin(state, 'token')
+globalPlugin(state, 'user')
+globalPlugin(state, 'permissions')
 
 subscribe(state, () => {
   authStorage.setItem(JSON.stringify(state))

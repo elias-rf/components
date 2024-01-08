@@ -1,7 +1,7 @@
 import type { TSchema } from '@/schemas/schema.type.js'
 import { TData, TInclude, TWhere } from '@/types/index.js'
-import { clone } from '@/utils/array/clone.js'
 import { isEmpty } from '@/utils/identify/is-empty.js'
+import * as _ from 'lodash'
 
 function setWhere(data: TData<string>, where: TWhere<string>): TWhere<string> {
   return where.map((whr) => {
@@ -25,7 +25,7 @@ export async function getIncludeData(
   for (const includeName in include) {
     if (schema.relations) {
       if (schema.relations[includeName]) {
-        let where = clone(schema.relations[includeName].where)
+        let where = _.cloneDeep(schema.relations[includeName].where)
         where = setWhere(data, where)
         where = [
           ...where,

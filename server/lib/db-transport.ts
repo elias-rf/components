@@ -1,5 +1,5 @@
 import { logController } from '@/core/log_controller.js'
-import { day } from '@/utils/date/day.js'
+import { format } from 'date-fns/fp'
 
 type TLog = {
   msg: string
@@ -29,12 +29,12 @@ export default async function dbTransport() {
   async function insertLogs(logs: TLog) {
     try {
       if (logs.msg === 'incoming request') {
-        const dateTime = day(logs.time)
+        const dateTime = new Date(logs.time)
         log[logs.reqId] = {
           method: logs.req.method,
           reqId: logs.reqId,
-          date: dateTime.format('YYYY-MM-DD'),
-          time: dateTime.format('HH:mm:ss'),
+          date: format('YYYY-MM-DD')(dateTime),
+          time: format('HH:mm:ss')(dateTime),
           user: logs.req.headers?.user || 0,
           origin: logs.req.headers.origin,
         }
