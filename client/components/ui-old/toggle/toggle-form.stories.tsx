@@ -1,7 +1,7 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
+import { Label } from '@/client/components/label/label.js'
+import { Title } from '@/client/components/title/title.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
-import { Label } from '@/client/components/ui-old/label.js'
-import { Title } from '@/client/components/ui-old/title.js'
 import {
   TToggleProps,
   ToggleForm,
@@ -34,7 +34,7 @@ export const Default: Story = {
         <Title>Toggle Form</Title>
         <div className="flex flex-col space-y-4">
           <FormField>
-            <Label name="input1">Input [1]</Label>
+            <Label htmlFor="input1">Input [1]</Label>
             <ToggleForm {...form.register('input1')} />
           </FormField>
 

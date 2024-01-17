@@ -1,6 +1,7 @@
-import { Table } from '@/client/components/table/table.js'
-import { useTransferencia } from '@/client/pages/industrial/controles/transferencia_store.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { transferenciaStore } from '@/client/pages/industrial/controles/transferencia_store.js'
 import React from 'react'
+import { useSnapshot } from 'valtio'
 import { transferenciaMensalSchema } from './transferencia-mensal_schema.js'
 
 type TransferenciaMensalProps = {
@@ -8,22 +9,21 @@ type TransferenciaMensalProps = {
 }
 
 export function TransferenciaMensal({ children }: TransferenciaMensalProps) {
-  const mes = useTransferencia.use.mes()
-  const mesInicial = useTransferencia.use.mesInicio()
-  const setMes = useTransferencia.use.setMes()
-  const fetchTransferenciaMensal =
-    useTransferencia.use.fetchTransferenciaMensal()
-  const transferenciaMensal = useTransferencia.use.transferenciaMensal()
+  const { mes, mesInicio, transferenciaMensal } = useSnapshot(
+    transferenciaStore.state
+  )
+  const setMes = transferenciaStore.setMes
+  const fetchTransferenciaMensal = transferenciaStore.fetchTransferenciaMensal
 
   React.useEffect(() => {
     fetchTransferenciaMensal()
-  }, [mesInicial])
+  }, [mesInicio])
 
   return (
     <Table
-      rows={transferenciaMensal || []}
+      rows={transferenciaMensal as any}
       columns={transferenciaMensalSchema}
-      selection={mes}
+      selection={mes as any}
       onSelection={setMes}
       getId={(rec: any) => [['mes', rec.mes]]}
     >

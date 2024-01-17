@@ -1,22 +1,21 @@
 import { BreadCrumb } from '@/client/components/ui-old/bread-crumb.js'
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 import { fileManagerStore } from '@/client/pages/outros/file-manager/file-manager_store.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
+import { useSnapshot } from 'valtio'
 
 /**
  * Agenda de Ramais
  */
 export function FileManagerTable() {
-  const dirList = fileManagerStore.use.dirList()
-  const fetchDir = fileManagerStore.use.fetchDir()
-  const fetchStat = fileManagerStore.use.fetchStat()
-  const fileList = fileManagerStore.use.fileList()
-  const path = fileManagerStore.use.path()
-  const selected = fileManagerStore.use.selected()
-  const setPath = fileManagerStore.use.setPath()
-  const setSelected = fileManagerStore.use.setSelected()
-  const stat = fileManagerStore.use.stat()
+  const { dirList, fileList, path, selected, stat } = useSnapshot(
+    fileManagerStore.state
+  )
+  const fetchDir = fileManagerStore.fetchDir
+  const fetchStat = fileManagerStore.fetchStat
+  const setPath = fileManagerStore.setPath
+  const setSelected = fileManagerStore.setSelected
 
   useEffect(() => {
     toast.promise(

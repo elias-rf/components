@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 import { ReactNode } from 'react'
 
 export function ComboboxItem({
@@ -14,7 +14,7 @@ export function ComboboxItem({
     <li
       onClick={onClick}
       className={cn(
-        'block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white',
+        'block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white',
         { 'bg-gray-200 dark:bg-gray-500': selected }
       )}
     >

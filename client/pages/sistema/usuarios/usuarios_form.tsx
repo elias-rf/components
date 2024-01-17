@@ -1,7 +1,7 @@
-import { Button } from '@/client/components/ui-old/button/button.js'
+import { Button } from '@/client/components/button/button.js'
+import { Label } from '@/client/components/label/label.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { InputForm } from '@/client/components/ui-old/input/input-form.js'
-import { Label } from '@/client/components/ui-old/label.js'
 import { SelectBadgeForm } from '@/client/components/ui-old/select-badge/select-badge-form.js'
 import { ToggleForm } from '@/client/components/ui-old/toggle/toggle-form.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
@@ -79,7 +79,6 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
           onClick={store.onEdit}
           disabled={['none', 'edit', 'new'].includes(state.status)}
           size="sm"
-          outline
         >
           EDITAR
         </Button>
@@ -87,7 +86,6 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
           onClick={handleDel}
           disabled={['none', 'edit', 'new'].includes(state.status)}
           size="sm"
-          outline
         >
           EXCLUIR
         </Button>
@@ -95,12 +93,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
       <div className="grid grid-cols-12 gap-3">
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
           <FormField>
-            <Label
-              required
-              name="kUsuario"
-            >
-              Código
-            </Label>
+            <Label htmlFor="kUsuario">Código *</Label>
             <InputForm
               disabled={['none', 'view'].includes(state.status)}
               {...form.register('kUsuario')}
@@ -109,12 +102,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
         </div>
         <div className="col-span-12 sm:col-span-10 lg:col-span-5">
           <FormField>
-            <Label
-              required
-              name="nome"
-            >
-              Usuario
-            </Label>
+            <Label htmlFor="nome">Usuario</Label>
             <InputForm
               disabled={['none', 'view'].includes(state.status)}
               {...form.register('nome')}
@@ -123,12 +111,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
         </div>
         <div className="col-span-12 sm:col-span-4 lg:col-span-2">
           <FormField>
-            <Label
-              required
-              name="NomeUsuario"
-            >
-              Login
-            </Label>
+            <Label htmlFor="NomeUsuario">Login *</Label>
             <InputForm
               disabled={['none', 'view'].includes(state.status)}
               {...form.register('NomeUsuario')}
@@ -137,12 +120,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
         </div>
         <div className="col-span-10 sm:col-span-6 lg:col-span-3">
           <FormField>
-            <Label
-              required
-              name="email"
-            >
-              Email
-            </Label>
+            <Label htmlFor="email">Email *</Label>
             <InputForm
               disabled={['none', 'view'].includes(state.status)}
               {...form.register('email')}
@@ -151,12 +129,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
         </div>
         <div className="col-span-2 sm:col-span-2 lg:col-span-1">
           <FormField>
-            <Label
-              required
-              name="Ativo"
-            >
-              Ativo
-            </Label>
+            <Label htmlFor="Ativo">Ativo *</Label>
             <ToggleForm
               disabled={['none', 'view'].includes(state.status)}
               {...form.register('Ativo')}
@@ -165,12 +138,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
         </div>
         <div className="col-span-12">
           <FormField>
-            <Label
-              required
-              name="setor"
-            >
-              Grupo
-            </Label>
+            <Label htmlFor="setor">Grupo *</Label>
             <SelectBadgeForm
               disabled={['none', 'view'].includes(state.status)}
               {...form.register('setor')}
@@ -187,7 +155,6 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
           }}
           disabled={['none', 'view'].includes(state.status)}
           size="sm"
-          outline
         >
           SAVE
         </Button>
@@ -195,7 +162,6 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
           onClick={store.onCancel}
           disabled={['none', 'view'].includes(state.status)}
           size="sm"
-          outline
         >
           CANCEL
         </Button>

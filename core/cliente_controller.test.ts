@@ -18,7 +18,7 @@ describe('rpc de cliente', () => {
     tracker.on.select('CadCli').response([{ CdCliente: 1 }])
     const rsp = await clienteController.cliente_list({})
     expect(rsp).toEqual([{ CdCliente: 1 }])
-    expect(dbPlano.log()).toEqual(['select top (50) * from [CadCli]'])
+    expect(dbPlano.log()).toEqual(['select * from [CadCli]'])
   })
 
   test('lista com argumentos', async () => {
@@ -29,7 +29,7 @@ describe('rpc de cliente', () => {
     })
     expect(rsp).toEqual([{ CdCliente: 1 }])
     expect(dbPlano.log()).toEqual([
-      'select top (50) [CdCliente] from [CadCli] where [CdCliente] = 1',
+      'select [CdCliente] from [CadCli] where [CdCliente] = 1',
     ])
   })
 

@@ -1,6 +1,6 @@
 import { TColumn } from '@/types/index.js'
 import { addMonths, parse as dateParse, format } from 'date-fns/fp'
-import { flowRight } from 'lodash'
+import { flowRight } from 'lodash-es'
 import * as v from 'valibot'
 
 export function getSchema(args: { inicio: string; fim: string }): TColumn[] {

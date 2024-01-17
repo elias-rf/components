@@ -24,9 +24,8 @@ export default function Controles() {
       <FormHead
         editPermissions={authStore.can('industrial_controles_permissao')}
         permissions={permissions}
-      >
-        Controles de Produção
-      </FormHead>
+        title="Controles de Produção"
+      ></FormHead>
       <Tabs
         selected={select}
         onChange={setSelect}

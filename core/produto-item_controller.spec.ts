@@ -27,8 +27,8 @@ describe('produtoItemController', () => {
     expect(rsp).toEqual([{ kProdutoItem: 1 }])
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: [50, 1],
-        sql: 'select top (@p0) * from [tbl_Produto_Item] where [kProdutoItem] = @p1 order by [kProdutoItem] asc',
+        bindings: [1],
+        sql: 'select * from [tbl_Produto_Item] where [kProdutoItem] = @p0 order by [kProdutoItem] asc',
       },
     ])
   })

@@ -1,7 +1,7 @@
-import { Button } from '@/client/components/ui-old/button/button.js'
+import { Button } from '@/client/components/button/button.js'
+import { Label } from '@/client/components/label/label.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { InputForm } from '@/client/components/ui-old/input/input-form.js'
-import { Label } from '@/client/components/ui-old/label.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda_store.js'
 import { useEffect } from 'react'
@@ -58,7 +58,6 @@ export const AgendaTelefoneForm = ({
           onClick={store.onEdit}
           disabled={['none', 'edit', 'new'].includes(state.status)}
           size="sm"
-          outline
         >
           EDITAR
         </Button>
@@ -66,7 +65,6 @@ export const AgendaTelefoneForm = ({
           onClick={handleDel}
           disabled={['none', 'edit', 'new'].includes(state.status)}
           size="sm"
-          outline
         >
           EXCLUIR
         </Button>
@@ -74,12 +72,7 @@ export const AgendaTelefoneForm = ({
       <div className="grid grid-cols-12 gap-3">
         <div className="col-span-12 sm:col-span-2 lg:col-span-1">
           <FormField>
-            <Label
-              required
-              name="id"
-            >
-              Ramal
-            </Label>
+            <Label htmlFor="id">Ramal *</Label>
             <InputForm
               disabled={['none', 'view'].includes(state.status)}
               {...form.register('id')}
@@ -88,7 +81,7 @@ export const AgendaTelefoneForm = ({
         </div>
         <div className="col-span-12 sm:col-span-10 lg:col-span-5">
           <FormField>
-            <Label name="name">Nome</Label>
+            <Label htmlFor="name">Nome</Label>
             <InputForm
               disabled={['none', 'view'].includes(state.status)}
               {...form.register('name')}
@@ -97,7 +90,7 @@ export const AgendaTelefoneForm = ({
         </div>
         <div className="col-span-12 sm:col-span-4 lg:col-span-2">
           <FormField>
-            <Label name="department">Setor</Label>
+            <Label htmlFor="department">Setor</Label>
             <InputForm
               disabled={['none', 'view'].includes(state.status)}
               {...form.register('department')}
@@ -106,7 +99,7 @@ export const AgendaTelefoneForm = ({
         </div>
         <div className="col-span-12 sm:col-span-8 lg:col-span-4">
           <FormField>
-            <Label name="email">Email</Label>
+            <Label htmlFor="email">Email</Label>
             <InputForm
               disabled={['none', 'view'].includes(state.status)}
               {...form.register('email')}
@@ -122,7 +115,6 @@ export const AgendaTelefoneForm = ({
           }}
           disabled={['none', 'view'].includes(state.status)}
           size="sm"
-          outline
         >
           SALVAR
         </Button>
@@ -133,7 +125,6 @@ export const AgendaTelefoneForm = ({
           }}
           disabled={['none', 'view'].includes(state.status)}
           size="sm"
-          outline
         >
           CANCELAR
         </Button>

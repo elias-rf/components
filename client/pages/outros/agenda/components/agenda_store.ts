@@ -8,7 +8,8 @@ import {
 import { TData, TFormStatus, TId, TOrderBy, TWhere } from '@/types/index.js'
 import { copyProperties } from '@/utils/object/copy-properties.js'
 import { deepEqual } from '@/utils/object/deep-equal.js'
-import { proxy, subscribe } from 'valtio'
+import { filterNullProperties } from '@/utils/object/filter-null-properties.js'
+import { proxy } from 'valtio'
 import { devtools } from 'valtio/utils'
 
 const tableName = 'agendaTelefone' as const
@@ -41,7 +42,7 @@ const initialState: TState = {
 }
 
 const state = proxy(initialState)
-devtools(state, { name: 'agenda', enabled: true })
+devtools(state, { name: tableName, enabled: true })
 
 const fetchList = async () => {
   const where = state.where as TWhere<TAgendaTelefoneFields>
@@ -112,15 +113,18 @@ const onNew = () => {
 
 const onSave = async () => {
   cache.purgeTable(tableName)
+  const data = filterNullProperties(
+    state.record
+  ) as TData<TAgendaTelefoneFields>
   if (state.status === 'edit') {
     await rpc.request('agendaTelefone_update', {
-      data: state.record as TData<TAgendaTelefoneFields>,
+      data,
       where: state.selection as TId<TAgendaTelefoneKeys>,
     })
   }
   if (state.status === 'new') {
     await rpc.request('agendaTelefone_create', {
-      data: state.record as TData<TAgendaTelefoneFields>,
+      data,
     })
   }
   await fetchList()

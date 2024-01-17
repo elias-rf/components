@@ -16,9 +16,8 @@ export default function Precos() {
         editPermissions={authStore.can('comercial_precos_permissao')}
         permissions={permissions}
         className="print:hidden"
-      >
-        Preços
-      </FormHead>
+        title="Preços"
+      ></FormHead>
       <PrecosCliente />
     </Can>
   )

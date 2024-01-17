@@ -22,7 +22,7 @@ describe('agendaTelefoneController', () => {
     })
     expect(rsp).toEqual([{ id: '1' }])
     expect(dbOftalmo.log()).toEqual([
-      'select top (50) * from [phonebook] where [id] = 1 order by [id] asc',
+      'select * from [phonebook] where [id] = 1 order by [id] asc',
     ])
   })
 

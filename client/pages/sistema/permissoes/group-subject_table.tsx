@@ -1,6 +1,6 @@
-import { Table } from '@/client/components/table/table.js'
-import { Button } from '@/client/components/ui-old/button/button.js'
-import { Title } from '@/client/components/ui-old/title.js'
+import { Button } from '@/client/components/button/button.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { Title } from '@/client/components/title/title.js'
 import { formButtonStatus } from '@/client/lib/form-button-status.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import {
@@ -52,7 +52,6 @@ function ButtonsSaveCancel({
           onClick={onSave}
           disabled={status.saveDisabled}
           size="sm"
-          outline
         >
           SALVAR
         </Button>
@@ -62,7 +61,6 @@ function ButtonsSaveCancel({
           onClick={onCancel}
           disabled={status.cancelDisabled}
           size="sm"
-          outline
         >
           CANCELAR
         </Button>
@@ -123,7 +121,6 @@ export function GroupSubjectTable({
                 onClick={onNew}
                 disabled={frmStatus.createDisabled}
                 size="sm"
-                outline
               >
                 NOVO
               </Button>
@@ -156,7 +153,6 @@ export function GroupSubjectTable({
                   onClick={onEdit}
                   disabled={frmStatus.editDisabled}
                   size="sm"
-                  outline
                 >
                   EDITAR
                 </Button>
@@ -164,7 +160,6 @@ export function GroupSubjectTable({
                   onClick={handleDel}
                   disabled={frmStatus.delDisabled}
                   size="sm"
-                  outline
                 >
                   EXCLUIR
                 </Button>

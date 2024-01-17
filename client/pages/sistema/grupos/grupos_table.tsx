@@ -1,4 +1,4 @@
-import { Table } from '@/client/components/table/table.js'
+import { Table } from '@/client/components/table-full/table.js'
 import { TGroupStore } from '@/client/pages/sistema/grupos/components/grupos_store.js'
 import { gruposColumns } from '@/client/pages/sistema/grupos/grupos_columns.js'
 import { TGroupFields, TGroupKeys } from '@/core/group_controller.js'

@@ -1,8 +1,8 @@
+import { Button } from '@/client/components/button/button.js'
+import { Checkbox } from '@/client/components/checkbox/checkbox.js'
 import { ShieldIcon } from '@/client/components/icons/shield-icon.js'
-import { Button } from '@/client/components/ui-old/button/button.js'
-import { CheckBox } from '@/client/components/ui-old/check-box/check-box.js'
-import { Label } from '@/client/components/ui-old/label.js'
-import { ListGroup } from '@/client/components/ui-old/list-group/list-group.js'
+import { Label } from '@/client/components/label/label.js'
+import { ListGroup } from '@/client/components/list-group/list-group.js'
 import { Modal } from '@/client/components/ui-old/modal.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { TGroupSubjectFields } from '@/core/group-subject_controller.js'
@@ -76,10 +76,9 @@ export function Permissions({
   return (
     <>
       <Button
-        color="ghost"
+        variant="ghost"
         onClick={() => setShow(true)}
-        className="px-2"
-        size="sm"
+        size="icon"
       >
         <ShieldIcon />
       </Button>
@@ -114,9 +113,9 @@ export function Permissions({
                   onClick={() => handlePermission(permission)}
                 >
                   <div className="flex flex-row items-center gap-x-2">
-                    <CheckBox
+                    <Checkbox
                       id={permission}
-                      value={
+                      checked={
                         permited
                           ? permited.findIndex(
                               (prm) => permission === prm.idSubject
@@ -126,7 +125,7 @@ export function Permissions({
                     />
                     <Label
                       className="align-middle"
-                      name={permission}
+                      htmlFor={permission}
                     >
                       {permissions[permission]}
                     </Label>

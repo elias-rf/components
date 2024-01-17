@@ -3,8 +3,15 @@
 @host = {{hostname}}:{{port}}
 
 ### LIST
-GET {{host}}/api/trpc/agendaTelefone.list
-?input={"sort":{"agenda_telefone_id":"asc"}}
+POST {{host}}/api/rpc2
+Content-Type: application/json
+
+{
+  "method": "agendaTelefone_list",
+  "params": {"where":[["id",182]]},
+  "id": "1",
+  "jsonrpc":"2.0"
+}
 
 ### READ
 GET {{host}}/api/trpc/agendaTelefone.read

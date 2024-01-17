@@ -1,6 +1,6 @@
+import { Label } from '@/client/components/label/label.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { Input } from '@/client/components/ui-old/input/input.js'
-import { Label } from '@/client/components/ui-old/label.js'
 
 type TGroupSubjectFormProps = {
   form: any
@@ -12,12 +12,7 @@ export function GroupSubjectForm({ form, disabled }: TGroupSubjectFormProps) {
     <div className="grid grid-cols-12 gap-3">
       <div className="col-span-6">
         <FormField>
-          <Label
-            required
-            name="idGroup"
-          >
-            Grupo
-          </Label>
+          <Label htmlFor="idGroup">Grupo *</Label>
           <Input
             disabled={disabled}
             value={form.value.idGroup}
@@ -27,12 +22,7 @@ export function GroupSubjectForm({ form, disabled }: TGroupSubjectFormProps) {
       </div>
       <div className="col-span-6">
         <FormField>
-          <Label
-            required
-            name="idSubject"
-          >
-            Recurso
-          </Label>
+          <Label htmlFor="idSubject">Recurso *</Label>
           <Input
             id="idSubject"
             name="idSubject"

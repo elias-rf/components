@@ -1,6 +1,6 @@
 import { formatMoney } from '@/utils/format/format-money.js'
 import { format, parse } from 'date-fns/fp'
-import { flowRight } from 'lodash'
+import { flowRight } from 'lodash-es'
 
 export type Record = {
   origem: string

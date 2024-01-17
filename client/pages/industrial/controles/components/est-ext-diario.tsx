@@ -1,6 +1,7 @@
-import { Table } from '@/client/components/table/table.js'
-import { useControles } from '@/client/pages/industrial/controles/controles_store.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { controlesStore } from '@/client/pages/industrial/controles/controles_store.js'
 import React from 'react'
+import { useSnapshot } from 'valtio'
 import { esterilizacaoExternaDiarioSchema } from './est-ext-diario_schema.js'
 
 type TEsterilizacaoExternaDiarioProp = {
@@ -10,13 +11,12 @@ type TEsterilizacaoExternaDiarioProp = {
 export function EsterilizacaoExternaDiario({
   children,
 }: TEsterilizacaoExternaDiarioProp) {
-  const mes = useControles.use.mes()
-  const dia = useControles.use.dia()
-  const setDia = useControles.use.setDia()
+  const { mes, dia, esterilizacaoExternaDiario } = useSnapshot(
+    controlesStore.state
+  )
+  const setDia = controlesStore.setDia
   const fetchEsterilizacaoExternaDiario =
-    useControles.use.fetchEsterilizacaoExternaDiario()
-  const esterilizacaoExternaDiario =
-    useControles.use.esterilizacaoExternaDiario()
+    controlesStore.fetchEsterilizacaoExternaDiario
 
   React.useEffect(() => {
     fetchEsterilizacaoExternaDiario()
@@ -24,9 +24,9 @@ export function EsterilizacaoExternaDiario({
 
   return (
     <Table
-      rows={esterilizacaoExternaDiario || []}
+      rows={esterilizacaoExternaDiario as any}
       columns={esterilizacaoExternaDiarioSchema}
-      selection={dia || []}
+      selection={dia as any}
       onSelection={setDia}
       getId={(rec: any) => [['dia', rec.dia]]}
     >

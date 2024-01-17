@@ -13,7 +13,7 @@ import {
   subMonths,
   subYears,
 } from 'date-fns/fp'
-import { flowRight } from 'lodash'
+import { flowRight } from 'lodash-es'
 import { proxy } from 'valtio'
 
 const recordClear = {

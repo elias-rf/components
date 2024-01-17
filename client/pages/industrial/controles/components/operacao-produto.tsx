@@ -1,6 +1,7 @@
-import { Table } from '@/client/components/table/table.js'
-import { useControles } from '@/client/pages/industrial/controles/controles_store.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { controlesStore } from '@/client/pages/industrial/controles/controles_store.js'
 import React, { ReactNode } from 'react'
+import { useSnapshot } from 'valtio'
 import { operacaoProdutoSchema } from './operacao-produto_schema.js'
 
 type OperacaoProdutoProps = {
@@ -8,12 +9,11 @@ type OperacaoProdutoProps = {
 }
 
 export function OperacaoProduto({ children }: OperacaoProdutoProps) {
-  const operacao = useControles.use.operacao()
-  const dia = useControles.use.dia()
-  const produto = useControles.use.produto()
-  const setProduto = useControles.use.setProduto()
-  const fetchOperacaoProduto = useControles.use.fetchOperacaoProduto()
-  const operacaoProduto = useControles.use.operacaoProduto()
+  const { operacao, dia, produto, operacaoProduto } = useSnapshot(
+    controlesStore.state
+  )
+  const setProduto = controlesStore.setProduto
+  const fetchOperacaoProduto = controlesStore.fetchOperacaoProduto
 
   React.useEffect(() => {
     fetchOperacaoProduto()
@@ -21,9 +21,9 @@ export function OperacaoProduto({ children }: OperacaoProdutoProps) {
 
   return (
     <Table
-      rows={operacaoProduto || []}
+      rows={operacaoProduto as any}
       columns={operacaoProdutoSchema}
-      selection={produto}
+      selection={produto as any}
       onSelection={setProduto}
       getId={(rec: any) => [['produto', rec.produto]]}
     >

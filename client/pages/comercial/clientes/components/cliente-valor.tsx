@@ -1,4 +1,4 @@
-import { Table } from '@/client/components/table/table.js'
+import { Table } from '@/client/components/table-full/table.js'
 import { clienteStore } from '@/client/pages/comercial/clientes/components/clientes_store.js'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'

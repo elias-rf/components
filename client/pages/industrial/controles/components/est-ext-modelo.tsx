@@ -1,15 +1,15 @@
-import { Table } from '@/client/components/table/table.js'
-import { useControles } from '@/client/pages/industrial/controles/controles_store.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { controlesStore } from '@/client/pages/industrial/controles/controles_store.js'
 import React from 'react'
+import { useSnapshot } from 'valtio'
 import { esterilizacaoExternaModeloSchema } from './est-ext-modelo_schema.js'
 
 export function EsterilizacaoExternaModelo() {
-  const dia = useControles.use.dia()
-  const produto = useControles.use.produto()
+  const { dia, produto, esterilizacaoExternaModelo } = useSnapshot(
+    controlesStore.state
+  )
   const fetchEsterilizacaoExternaModelo =
-    useControles.use.fetchEsterilizacaoExternaModelo()
-  const esterilizacaoExternaModelo =
-    useControles.use.esterilizacaoExternaModelo()
+    controlesStore.fetchEsterilizacaoExternaModelo
 
   React.useEffect(() => {
     fetchEsterilizacaoExternaModelo()
@@ -17,7 +17,7 @@ export function EsterilizacaoExternaModelo() {
 
   return (
     <Table
-      rows={esterilizacaoExternaModelo || []}
+      rows={esterilizacaoExternaModelo as any}
       columns={esterilizacaoExternaModeloSchema}
     />
   )

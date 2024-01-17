@@ -5,74 +5,41 @@ import { ormTable } from '@/utils/orm/index.js'
 
 export const ArqDup: TSchema = {
   table: 'ArqDup',
-  primary: [],
+  primary: ['CdEmpresa', 'NumDoc', 'CodFor', 'SeqDoc'],
   fields: [
     'CdEmpresa',
-
     'NumDoc',
-
     'CodFor',
-
     'SeqDoc',
-
     'Serie',
-
     'DatEmi',
-
     'DatVen',
-
     'DatPag',
-
     'TipInd',
-
     'Aceite',
-
     'NumFat',
-
     'CdBanco',
-
     'CdAgencia',
-
     'NumConta',
-
     'NumCheque',
-
     'FgSituacao',
-
     'DtUltAlteracao',
-
     'TpMovimentoBanco',
-
     'NumLancamento',
-
     'NumNota',
-
     'CdTipoPagamento',
-
     'CdFontePagamento',
-
     'DtLancamento',
-
     'Modelo',
-
     'NumAuxiliar',
-
     'VlAmortizado',
-
     'PercJuroDiario',
-
     'VlMultaAtraso',
-
     'VlDocumento',
-
     'VlDeducao',
-
     'VlAcrescimo',
-
     'VlJurosPago',
-
     'ObsDocumento',
-
     'FgTipoCustoDRE',
   ],
 }

@@ -28,15 +28,15 @@ describe('ordemProducaoController', () => {
     expect(rsp).toEqual([{ kOp: 1, fkTipoOP: 1 }])
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: [50, 1],
-        sql: 'select top (@p0) [kOp] from [tOrdemProducao] where [kOp] = @p1',
+        bindings: [1],
+        sql: 'select [kOp] from [tOrdemProducao] where [kOp] = @p0',
       },
     ])
   })
 
   it('dataFabricacao em 3059', async () => {
     tracker.on.select('tOperacaoOrdemProducao').response((sql) => {
-      if (sql.bindings[1] === 3059) {
+      if (sql.bindings.includes(3059)) {
         return [{ DataHoraInicio: '2020-01-01' }]
       }
       return []
@@ -48,8 +48,8 @@ describe('ordemProducaoController', () => {
     expect(rsp).toEqual('2020-01-01')
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: [50, 3059, 1],
-        sql: 'select top (@p0) [DataHoraInicio] from [tOperacaoOrdemProducao] where [fkOperacao] = @p1 and [fkOp] = @p2 order by [DataHoraInicio] desc',
+        bindings: [3059, 1],
+        sql: 'select [DataHoraInicio] from [tOperacaoOrdemProducao] where [fkOperacao] = @p0 and [fkOp] = @p1 order by [DataHoraInicio] desc',
       },
     ])
   })
@@ -75,8 +75,8 @@ describe('ordemProducaoController', () => {
     expect(rsp).toEqual('2025-01-01')
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: [50, 3059, 1],
-        sql: 'select top (@p0) [DataHoraInicio] from [tOperacaoOrdemProducao] where [fkOperacao] = @p1 and [fkOp] = @p2 order by [DataHoraInicio] desc',
+        bindings: [3059, 1],
+        sql: 'select [DataHoraInicio] from [tOperacaoOrdemProducao] where [fkOperacao] = @p0 and [fkOp] = @p1 order by [DataHoraInicio] desc',
       },
     ])
   })
@@ -193,16 +193,16 @@ describe('ordemProducaoController', () => {
 
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: [50, 1],
-        sql: 'select top (@p0) * from [tOrdemProducao] where [kOp] = @p1 order by [kOp] asc',
+        bindings: [1],
+        sql: 'select [kOp] from [tOrdemProducao] where [kOp] = @p0 order by [kOp] asc',
       },
       {
-        bindings: [50, '1'],
-        sql: 'select top (@p0) [fkOp] from [tOperacaoOrdemProducao] where [fkOp] = @p1',
+        bindings: ['1'],
+        sql: 'select [fkOp] from [tOperacaoOrdemProducao] where [fkOp] = @p0',
       },
       {
-        bindings: [50, '2'],
-        sql: 'select top (@p0) [fkOp] from [tOperacaoOrdemProducao] where [fkOp] = @p1',
+        bindings: ['2'],
+        sql: 'select [fkOp] from [tOperacaoOrdemProducao] where [fkOp] = @p0',
       },
     ])
     expect(rsp).toEqual([
@@ -227,8 +227,8 @@ describe('ordemProducaoController', () => {
         sql: 'select top (@p0) [kOp] from [tOrdemProducao] where [kOp] = @p1',
       },
       {
-        bindings: [50, '1'],
-        sql: 'select top (@p0) [fkOp] from [tOperacaoOrdemProducao] where [fkOp] = @p1',
+        bindings: ['1'],
+        sql: 'select [fkOp] from [tOperacaoOrdemProducao] where [fkOp] = @p0',
       },
     ])
   })
@@ -256,8 +256,8 @@ describe('ordemProducaoController', () => {
         sql: 'select top (@p0) [kOp], [fkProdutoItem] from [tOrdemProducao] where [kOp] = @p1',
       },
       {
-        bindings: [50, 1],
-        sql: 'select top (@p0) [fkOp] from [tOperacaoOrdemProducao] where [fkOp] = @p1',
+        bindings: [1],
+        sql: 'select [fkOp] from [tOperacaoOrdemProducao] where [fkOp] = @p0',
       },
       {
         bindings: [1, 1],

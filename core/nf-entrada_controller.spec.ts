@@ -24,8 +24,8 @@ describe('nfEntradaController', () => {
     expect(rsp).toEqual([{ NroNf: 1 }])
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: [50, 1],
-        sql: 'select top (@p0) [NroNf] from [NfMestre] where [NroNf] = @p1 order by [NroNf] asc',
+        bindings: [1],
+        sql: 'select [NroNf] from [NfMestre] where [NroNf] = @p0 order by [NroNf] asc',
       },
     ])
   })
@@ -91,10 +91,10 @@ describe('nfEntradaController', () => {
         sql: 'select top (@p0) [CdProduto] from [CadPro] where [CdProduto] = @p1',
       },
       {
-        sql: 'select top (@p0) [DataHoraInicio] from [tOperacaoOrdemProducao] where [fkOperacao] = @p1 and [fkOp] = @p2 order by [DataHoraInicio] desc',
+        sql: 'select [DataHoraInicio] from [tOperacaoOrdemProducao] where [fkOperacao] = @p0 and [fkOp] = @p1 order by [DataHoraInicio] desc',
       },
       {
-        sql: 'select top (@p0) [DataHoraInicio] from [tOperacaoOrdemProducao] where [fkOperacao] = @p1 and [fkOp] = @p2 order by [DataHoraInicio] desc',
+        sql: 'select [DataHoraInicio] from [tOperacaoOrdemProducao] where [fkOperacao] = @p0 and [fkOp] = @p1 order by [DataHoraInicio] desc',
       },
       {
         sql: 'select top (@p0) [NroNf] from [NfMestre] where [CdEmpresa] = @p1 and [NroNf] = @p2 and [Serie] = @p3 and [Modelo] = @p4',

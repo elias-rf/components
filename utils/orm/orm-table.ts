@@ -50,10 +50,10 @@ export function ormTable<TFields extends string, TKeys extends string>(
    * LIST
    */
   const list = async ({
-    select = ['*'],
+    select,
     where = [],
     orderBy = [],
-    limit = 50,
+    limit,
     groupBy = [],
     sum,
     min,
@@ -71,7 +71,7 @@ export function ormTable<TFields extends string, TKeys extends string>(
     include?: any
   } = {}) => {
     if (include) {
-      select = selectFromInclude(select, include, schema)
+      select = selectFromInclude(select || [], include, schema)
     }
     const qry: any = {
       from: getTableName(),

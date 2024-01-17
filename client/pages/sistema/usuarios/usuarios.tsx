@@ -1,3 +1,4 @@
+import { Button } from '@/client/components/button/button.js'
 import { Can } from '@/client/components/can.js'
 import { FormHead } from '@/client/components/ui-old/form-head.js'
 import { usuarioStore } from '@/client/pages/sistema/usuarios/components/usuario_store.js'
@@ -22,12 +23,20 @@ export default function Usuarios() {
           editPermissions={authStore.can('sistema_usuarios_permissao')}
           permissions={permissions}
           className="flex-none print:hidden"
+          title="Usuários"
         >
-          Usuários
+          <Button
+            size={'sm'}
+            onClick={usuarioStore.onNew}
+          >
+            NOVO
+          </Button>
         </FormHead>
-        <UsuarioTable store={usuarioStore} />
+        <div className="h-64 flex-auto border border-gray-400 dark:border-gray-500">
+          <UsuarioTable store={usuarioStore} />
+        </div>
         {status !== 'none' ? (
-          <div className="mb-2 border border-gray-300 p-1">
+          <div className="max-h-56 flex-auto">
             <UsuarioForm store={usuarioStore} />
           </div>
         ) : null}

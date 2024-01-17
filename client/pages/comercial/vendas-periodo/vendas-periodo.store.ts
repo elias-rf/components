@@ -1,11 +1,10 @@
 import { cache } from '@/client/lib/cache.js'
-import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { formatDiario } from '@/client/pages/comercial/vendas-periodo/format-diario.js'
 import { format, subDays } from 'date-fns/fp'
-import { flowRight } from 'lodash'
-import { devtools } from 'zustand/middleware'
-import { createStore } from 'zustand/vanilla'
+import { flowRight } from 'lodash-es'
+import { proxy } from 'valtio'
+import { devtools } from 'valtio/utils'
 
 type TFormatDiario = {
   dia: string
@@ -23,48 +22,46 @@ type TList = {
   enliteLiteflex: TFormatDiario[]
 }
 
-type VendasPeriodoState = {
+type TState = {
   inicio: string
   fim: string
   list: TList
-  fetchList: () => Promise<TList>
 }
 
 const uf: string[] = []
 
-const vendasPeriodoStoreBase = createStore<VendasPeriodoState>()(
-  devtools(
-    (set, get) => ({
-      list: {} as TList,
-      inicio: flowRight([format('yyyy-MM-dd'), subDays(30)])(new Date()), //format(subDays(new Date(), 30), 'yyyy-MM-dd'),
-      fim: format('yyyy-MM-dd')(new Date()),
-      fetchList: async () => {
-        const list = (await cache.memo(
-          {
-            inicio: get().inicio,
-            fim: get().fim,
-            uf,
-            _table: 'vendasPeriodo',
-          },
-          () =>
-            rpc.request('nfSaida_vendaDiario', {
-              inicio: get().inicio,
-              fim: get().fim,
-              uf,
-            })
-        )) as any[]
-        const response = formatDiario(list) as TList
+const initialState: TState = {
+  list: {} as TList,
+  inicio: flowRight([format('yyyy-MM-dd'), subDays(30)])(new Date()), //format(subDays(new Date(), 30), 'yyyy-MM-dd'),
+  fim: format('yyyy-MM-dd')(new Date()),
+}
 
-        set(() => ({ list: response }), false, 'fetchList')
-        return response
-      },
-    }),
+const state = proxy(initialState)
+devtools(state, { name: 'vendasPeriodo', enabled: true })
+
+const fetchList = async () => {
+  const list = (await cache.memo(
     {
-      name: 'intranet',
-      store: 'vendasPeriodo',
-      serialize: { options: true },
-    }
-  )
-)
+      inicio: state.inicio,
+      fim: state.fim,
+      uf,
+      _table: 'vendasPeriodo',
+    },
+    () =>
+      rpc.request('nfSaida_vendaDiario', {
+        inicio: state.inicio,
+        fim: state.fim,
+        uf,
+      })
+  )) as any[]
+  const response = formatDiario(list) as TList
 
-export const vendasPeriodoStore = createSelectors(vendasPeriodoStoreBase)
+  state.list = response
+  return response
+}
+
+export const vendasPeriodoStore = {
+  state,
+  fetchList,
+}
+export type TVendasPeriodoStore = typeof vendasPeriodoStore

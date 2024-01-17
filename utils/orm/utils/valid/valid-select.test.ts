@@ -9,7 +9,7 @@ const phonebook = {
 
 describe('validSelect', () => {
   test('válido vazio', () => {
-    expect(validSelect([], phonebook)).toEqual({ select: ['*'] })
+    expect(validSelect([], phonebook)).toEqual({ select: [] })
   })
 
   test('válido', () => {

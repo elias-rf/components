@@ -1,15 +1,15 @@
-import { Table } from '@/client/components/table/table.js'
-import { useControles } from '@/client/pages/industrial/controles/controles_store.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { controlesStore } from '@/client/pages/industrial/controles/controles_store.js'
 import React from 'react'
+import { useSnapshot } from 'valtio'
 import { esterilizacaoInternaModeloSchema } from './est-int-modelo_schema.js'
 
 export function EsterilizacaoInternaModelo() {
-  const dia = useControles.use.dia()
-  const produto = useControles.use.produto()
+  const { dia, produto, esterilizacaoInternaModelo } = useSnapshot(
+    controlesStore.state
+  )
   const fetchEsterilizacaoInternaModelo =
-    useControles.use.fetchEsterilizacaoInternaModelo()
-  const esterilizacaoInternaModelo =
-    useControles.use.esterilizacaoInternaModelo()
+    controlesStore.fetchEsterilizacaoInternaModelo
 
   React.useEffect(() => {
     fetchEsterilizacaoInternaModelo()
@@ -17,7 +17,7 @@ export function EsterilizacaoInternaModelo() {
 
   return (
     <Table
-      rows={esterilizacaoInternaModelo || []}
+      rows={esterilizacaoInternaModelo as any}
       columns={esterilizacaoInternaModeloSchema}
     ></Table>
   )

@@ -21,8 +21,8 @@ describe('SysResourceModel', () => {
     expect(rsp).toEqual([{ resource_id: '1' }])
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: [50, '1'],
-        sql: 'select top (@p0) * from [resource] where [resource_id] = @p1 order by [resource_id] asc',
+        bindings: ['1'],
+        sql: 'select * from [resource] where [resource_id] = @p0 order by [resource_id] asc',
       },
     ])
   })

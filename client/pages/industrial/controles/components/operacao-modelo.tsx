@@ -1,14 +1,14 @@
-import { Table } from '@/client/components/table/table.js'
-import { useControles } from '@/client/pages/industrial/controles/controles_store.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { controlesStore } from '@/client/pages/industrial/controles/controles_store.js'
 import React from 'react'
+import { useSnapshot } from 'valtio'
 import { operacaoModeloSchema } from './operacao-modelo_schema.js'
 
 export function OperacaoModelo() {
-  const operacao = useControles.use.operacao()
-  const dia = useControles.use.dia()
-  const produto = useControles.use.produto()
-  const fetchOperacaoModelo = useControles.use.fetchOperacaoModelo()
-  const operacaoModelo = useControles.use.operacaoModelo()
+  const { operacao, dia, produto, operacaoModelo } = useSnapshot(
+    controlesStore.state
+  )
+  const fetchOperacaoModelo = controlesStore.fetchOperacaoModelo
 
   React.useEffect(() => {
     fetchOperacaoModelo()
@@ -16,7 +16,7 @@ export function OperacaoModelo() {
 
   return (
     <Table
-      rows={operacaoModelo}
+      rows={operacaoModelo as any}
       columns={operacaoModeloSchema}
     ></Table>
   )

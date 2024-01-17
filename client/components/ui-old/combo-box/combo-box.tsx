@@ -2,7 +2,7 @@ import { SortIcon } from '@/client/components/icons/sort-icon.js'
 import { ComboboxItem } from '@/client/components/ui-old/combo-box/combo-box-item.js'
 import { useCombobox } from '@/client/components/ui-old/combo-box/use-combo-box.js'
 import { themeInput } from '@/client/components/ui-old/theme-input.js'
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 import { useRef } from 'react'
 import { useOnClickOutside } from 'usehooks-ts'
 

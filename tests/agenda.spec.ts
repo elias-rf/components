@@ -13,19 +13,44 @@ test.describe('agenda', () => {
     await page.getByText('Agenda de ramais').click()
   })
 
-  test('edit agenda', async ({ page }) => {
+  test('edit', async ({ page }) => {
     const mail = ` teste.${Math.trunc(Math.random() * 1000)}@mail.com`
-    // await expect(
-    //   page.getByText('Agenda de Ramais', { exact: true })
-    // ).toBeVisible()
-    // await expect(page.getByText('Brenda Gomes')).toBeVisible()
     page.getByRole('row', { name: '103 vago' }).click()
     await page.getByRole('button', { name: 'EDITAR' }).click()
-    // await expect(page.getByRole('button', { name: 'EDITAR' })).toBeVisible()
     await page.getByLabel('Email').fill(mail)
     await page.getByRole('button', { name: 'SALVAR' }).click()
     await expect(
       page.getByRole('row', { name: '103' }).getByRole('cell').nth(3)
     ).toHaveText(mail)
+  })
+
+  test('cancel edit', async ({ page }) => {
+    const mail = `teste.${Math.trunc(Math.random() * 1000)}@mail.com`
+    page.getByRole('row', { name: '103 vago' }).click()
+    await page.getByRole('button', { name: 'EDITAR' }).click()
+    await page.getByLabel('Email').fill(mail)
+    await page.getByRole('button', { name: 'CANCELAR' }).click()
+    await expect(
+      page.getByRole('row', { name: '103' }).getByRole('cell').nth(3)
+    ).not.toHaveText(mail)
+  })
+
+  test('create and delete', async ({ page }) => {
+    const mail = `teste.${Math.trunc(Math.random() * 1000)}@mail.com`
+    await page.getByRole('button', { name: 'NOVO' }).click()
+    await page.getByLabel('Ramal *').fill('99')
+    await page.getByLabel('Nome').fill('Fulano')
+    await page.getByLabel('Setor').fill('outros')
+    await page.getByLabel('Email').fill(mail)
+    await page.getByRole('button', { name: 'SALVAR' }).click()
+    await expect(
+      page.getByRole('row', { name: '99' }).getByRole('cell').nth(1)
+    ).toHaveText('Fulano')
+    await page.getByRole('button', { name: 'EXCLUIR' }).click()
+    await page.getByRole('button', { name: 'Sim' }).click()
+    await page.getByRole('table').locator('input[name="id"]').fill('99')
+    await page.getByRole('table').locator('input[name="id"]').blur()
+    await page.waitForResponse('api/rpc2')
+    await expect(page.getByRole('row', { name: '99' })).toBeUndefined()
   })
 })

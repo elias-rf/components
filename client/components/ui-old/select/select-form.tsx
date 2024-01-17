@@ -1,6 +1,6 @@
 import { SelectOption } from '@/client/components/ui-old/select/select-option.js'
 import { themeInput } from '@/client/components/ui-old/theme-input.js'
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 import React from 'react'
 
 export type TSelectProps = {

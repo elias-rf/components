@@ -28,8 +28,8 @@ describe('group-subject-model', () => {
         sql: 'select top (@p0) [idGroup] from [tbl_Seguranca_Usuario] where [kUsuario] = @p1',
       },
       {
-        bindings: [50, '1', 'prm1'],
-        sql: 'select top (@p0) [idSubject] from [groupSubject] where [idGroup] in (@p1) and [idSubject] = @p2',
+        bindings: ['1', 'prm1'],
+        sql: 'select [idSubject] from [groupSubject] where [idGroup] in (@p0) and [idSubject] = @p1',
       },
     ])
   })
@@ -46,8 +46,8 @@ describe('group-subject-model', () => {
     expect(rsp).toEqual([{ idSubject: 'prm1' }])
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: [50, '28', 'prm1', 'prm2'],
-        sql: 'select top (@p0) [idSubject] from [groupSubject] where [idGroup] in (@p1) and [idSubject] in (@p2, @p3)',
+        bindings: ['28', 'prm1', 'prm2'],
+        sql: 'select [idSubject] from [groupSubject] where [idGroup] in (@p0) and [idSubject] in (@p1, @p2)',
       },
     ])
   })

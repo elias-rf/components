@@ -21,8 +21,8 @@ describe('logController', () => {
     expect(rsp).toEqual([{ reqId: '1' }])
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: [50, 1],
-        sql: 'select top (@p0) * from [log] where [reqId] = @p1 order by [reqId] asc',
+        bindings: [1],
+        sql: 'select * from [log] where [reqId] = @p0 order by [reqId] asc',
       },
     ])
   })

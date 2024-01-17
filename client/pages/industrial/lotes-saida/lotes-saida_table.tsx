@@ -1,4 +1,4 @@
-import { Table } from '@/client/components/table/table.js'
+import { Table } from '@/client/components/table-full/table.js'
 import { Input } from '@/client/components/ui-old/input/input.js'
 import { lotesSaidaColumns } from '@/client/pages/industrial/lotes-saida/components/lotes-saida_columns.js'
 import { TLotesSaidaStore } from '@/client/pages/industrial/lotes-saida/components/lotes-saida_store.js'

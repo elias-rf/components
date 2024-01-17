@@ -1,7 +1,7 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
+import { Title } from '@/client/components/title/title.js'
 import { SelectForm } from '@/client/components/ui-old/select/select-form.js'
 import { Select } from '@/client/components/ui-old/select/select.js'
-import { Title } from '@/client/components/ui-old/title.js'
 import '@/client/index.css'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useForm } from 'react-hook-form'

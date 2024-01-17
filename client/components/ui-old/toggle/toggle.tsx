@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 
 export type TToggleProps = {
   className?: string

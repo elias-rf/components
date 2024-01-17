@@ -1,5 +1,5 @@
 import { ChevronIcon } from '@/client/components/icons/chevron-icon.js'
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 import { ReactNode, useRef, useState } from 'react'
 import { useOnClickOutside } from 'usehooks-ts'
 
@@ -21,7 +21,7 @@ export function DropdownSub({
       <button
         id="dropdownDefaultButton"
         data-dropdown-toggle="dropdown"
-        className="flex items-center justify-between w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        className="flex w-full items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
         type="button"
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
@@ -32,7 +32,7 @@ export function DropdownSub({
       <div
         id="dropdown"
         className={cn(
-          'ml-4 z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700',
+          'absolute z-10 ml-4 w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700',
           { hidden: !dropdownOpen }
         )}
       >

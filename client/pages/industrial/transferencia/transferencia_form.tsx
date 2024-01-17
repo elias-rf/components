@@ -1,10 +1,9 @@
-import { Button } from '@/client/components/ui-old/button/button.js'
+import { Button } from '@/client/components/button/button.js'
+import { Label } from '@/client/components/label/label.js'
 import { Input } from '@/client/components/ui-old/input/input.js'
-import { Label } from '@/client/components/ui-old/label.js'
-import { Title } from '@/client/components/ui-old/title.js'
-import { cn } from '@/client/lib/cn.js'
 import { useStateArray } from '@/client/lib/hooks/use-state-array.js'
 import { rpc } from '@/client/lib/rpc.js'
+import { cn } from '@/client/lib/utils.js'
 import React from 'react'
 
 // 000001000017 , 000001000025, 000001000033
@@ -57,7 +56,7 @@ export function Transferencia() {
     <>
       <div className="justifyContent-start alignItems-center flex flex-row space-x-2">
         <div>
-          <Label name="quantidade">Quantidade Física</Label>
+          <Label htmlFor="quantidade">Quantidade Física</Label>
           <Input
             id="quantidade"
             name="quantidade"
@@ -69,7 +68,7 @@ export function Transferencia() {
       </div>
       <div className="justifyContent-start alignItems-center flex flex-row space-x-2">
         <div>
-          <Label name="serial">Serial</Label>
+          <Label htmlFor="serial">Serial</Label>
           <Input
             value={serial}
             onInput={addList}
@@ -99,13 +98,7 @@ export function Transferencia() {
       <div className={'flex flex-wrap space-x-2'}>
         {lista.value.map((serie, idx) => (
           <React.Fragment key={idx + serie}>
-            <Button
-              size="xs"
-              outline
-              onClick={() => delList(idx)}
-            >
-              {serie}
-            </Button>
+            <Button onClick={() => delList(idx)}>{serie}</Button>
           </React.Fragment>
         ))}
       </div>

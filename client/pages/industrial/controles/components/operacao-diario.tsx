@@ -1,6 +1,7 @@
-import { Table } from '@/client/components/table/table.js'
-import { useControles } from '@/client/pages/industrial/controles/controles_store.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { controlesStore } from '@/client/pages/industrial/controles/controles_store.js'
 import React from 'react'
+import { useSnapshot } from 'valtio'
 import { operacaoDiarioSchema } from './operacao-diario_schema.js'
 
 type OperacaoDiarioProp = {
@@ -8,12 +9,11 @@ type OperacaoDiarioProp = {
 }
 
 export function OperacaoDiario({ children }: OperacaoDiarioProp) {
-  const mes = useControles.use.mes()
-  const dia = useControles.use.dia()
-  const operacao = useControles.use.operacao()
-  const setDia = useControles.use.setDia()
-  const fetchOperacaoDiario = useControles.use.fetchOperacaoDiario()
-  const operacaoDiario = useControles.use.operacaoDiario()
+  const { mes, dia, operacao, operacaoDiario } = useSnapshot(
+    controlesStore.state
+  )
+  const setDia = controlesStore.setDia
+  const fetchOperacaoDiario = controlesStore.fetchOperacaoDiario
 
   React.useEffect(() => {
     fetchOperacaoDiario()
@@ -21,9 +21,9 @@ export function OperacaoDiario({ children }: OperacaoDiarioProp) {
 
   return (
     <Table
-      rows={operacaoDiario || []}
+      rows={operacaoDiario as any}
       columns={operacaoDiarioSchema}
-      selection={dia}
+      selection={dia as any}
       onSelection={setDia}
       getId={(rec: any) => [['dia', rec.dia]]}
     >

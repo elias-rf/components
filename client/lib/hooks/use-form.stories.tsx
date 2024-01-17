@@ -1,9 +1,9 @@
+import { Button } from '@/client/components/button/button.js'
 import { JsonView } from '@/client/components/json-view/json-view.js'
-import { Button } from '@/client/components/ui-old/button/button.js'
+import { Label } from '@/client/components/label/label.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { Helper } from '@/client/components/ui-old/helper.js'
 import { Input } from '@/client/components/ui-old/input/input.js'
-import { Label } from '@/client/components/ui-old/label.js'
 import { valid } from '@/client/lib/valid/valid.js'
 import { action } from '@storybook/addon-actions'
 import type { Meta, StoryObj } from '@storybook/react'
@@ -47,7 +47,7 @@ export const Default: Story = {
     return (
       <>
         <FormField>
-          <Label name="nome">Nome</Label>
+          <Label htmlFor="nome">Nome</Label>
           <Input
             name="nome"
             id="nome"
@@ -57,7 +57,7 @@ export const Default: Story = {
           <Helper variant="error">{form.error.nome}</Helper>
         </FormField>
         <FormField>
-          <Label name="idade">Idade</Label>
+          <Label htmlFor="idade">Idade</Label>
           <Input
             name="idade"
             id="idade"
@@ -67,7 +67,7 @@ export const Default: Story = {
           <Helper variant="error">{form.error.idade}</Helper>
         </FormField>
         <FormField>
-          <Label name="email">Email</Label>
+          <Label htmlFor="email">Email</Label>
           <Input
             name="email"
             id="email"
@@ -79,7 +79,7 @@ export const Default: Story = {
         <Button onClick={() => action('validAll')(form.validAll())}>
           ValidAll
         </Button>
-        <Button onClick={form.reset}>Reset</Button>
+        <Button onClick={() => form.reset()}>Reset</Button>
         <Button
           onClick={() =>
             form.reset({ nome: '', idade: '0', email: '', habil: true })

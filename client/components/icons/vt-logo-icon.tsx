@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 
 const colorProp = {
   black: '#000',
@@ -10,7 +10,7 @@ export function VtLogoIcon({
   className,
   color = 'blue',
 }: {
-  className: string
+  className?: string
   color?: 'black' | 'white' | 'blue'
 }) {
   return (

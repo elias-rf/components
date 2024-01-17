@@ -3,7 +3,7 @@ import { DropdownDivider } from '@/client/components/ui-old/dropdown/dropdown_di
 import { DropdownHeader } from '@/client/components/ui-old/dropdown/dropdown_header.js'
 import { DropdownItem } from '@/client/components/ui-old/dropdown/dropdown_item.js'
 import { DropdownSub } from '@/client/components/ui-old/dropdown/dropdown_sub.js'
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 import { ReactNode, useRef, useState } from 'react'
 import { useOnClickOutside } from 'usehooks-ts'
 import { ShowContext } from './dropdown_context.js'
@@ -34,7 +34,7 @@ function Dropdown({
         className="relative w-fit"
       >
         <button
-          className="inline-flex items-center justify-between px-5 text-sm font-medium text-center text-gray-700 rounded-lg hover:bg-gray-100 focus:outline-none md:w-auto md:border-0 md:p-0 md:hover:bg-transparent dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:text-white md:dark:hover:bg-transparent"
+          className="inline-flex items-center justify-between rounded-lg px-5 text-center text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:text-white md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
           onClick={() => setDropdownOpen(!dropdownOpen)}
         >
           {typeof label === 'string' ? <>{label}</> : <>{label}</>}

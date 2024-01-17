@@ -1,11 +1,11 @@
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 import { ReactNode } from 'react'
 
 export function NavbarMenu({ children }: { children: ReactNode }) {
   return (
     <div
       className={cn(
-        'flex flex-row items-center space-x-2 flex-nowrap md:order-2'
+        'flex flex-row flex-nowrap items-center space-x-2 md:order-2'
       )}
     >
       {children}

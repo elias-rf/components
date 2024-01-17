@@ -21,20 +21,19 @@ export default function Clientes() {
 
   return (
     <Can can={authStore.can('comercial_cliente_read_all')}>
-      <div className="flex flex-col h-full px-2">
+      <div className="flex h-full flex-col px-2">
         <FormHead
           editPermissions={authStore.can('comercial_cliente_permissao')}
           permissions={permissions}
           className="flex-none"
-        >
-          Histórico de Clientes
-        </FormHead>
+          title="Histórico de Clientes"
+        ></FormHead>
 
-        <div className="flex-auto border border-gray-400 min-h-40 dark:border-gray-500">
+        <div className="min-h-40 flex-auto border border-gray-400 dark:border-gray-500">
           <ClienteTable store={clienteStore} />
         </div>
         {status !== 'none' ? (
-          <div className="flex-auto max-h-96">
+          <div className="max-h-96 flex-auto">
             <ClienteForm store={clienteStore} />
           </div>
         ) : null}

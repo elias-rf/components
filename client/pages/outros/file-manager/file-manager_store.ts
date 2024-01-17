@@ -2,12 +2,12 @@ import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { TData } from '@/types/index.js'
-import { devtools } from 'zustand/middleware'
-import { createStore } from 'zustand/vanilla'
+import { proxy } from 'valtio'
+import { devtools } from 'valtio/utils'
 
 const tableName = 'fileManager' as const
 
-type TFileManagerState = {
+type TState = {
   path: string
   dirList: TData<'name'>[]
   fileList: TData<'name'>[]
@@ -17,81 +17,71 @@ type TFileManagerState = {
     size: number
     mtime: string
   }
-  fetchDir: () => Promise<{
+}
+
+const initialState: TState = {
+  path: '',
+  dirList: [],
+  fileList: [],
+  selected: '',
+  stat: {} as TState['stat'],
+}
+
+const state = proxy(initialState)
+devtools(state, { name: tableName, enabled: true })
+
+const setPath = (path: string) => {
+  state.path = path
+}
+
+const setSelected = (name: string) => {
+  state.selected = name
+}
+
+const fetchDir = async () => {
+  const list = (await cache.memo(
+    {
+      path: state.path,
+      _table: tableName,
+    },
+    () =>
+      rpc.request('fileManager_dir', {
+        path: state.path,
+      })
+  )) as {
     dir: TData<'name'>[]
     file: TData<'name'>[]
-  }>
-  fetchStat: () => Promise<{
+  }
+  state.dirList = list.dir
+  state.fileList = list.file
+  return list
+}
+
+const fetchStat = async () => {
+  const stat = (await cache.memo(
+    {
+      path: state.path,
+      name: state.selected,
+      _table: tableName,
+    },
+    () =>
+      rpc.request('fileManager_stat', {
+        path: state.path,
+        name: state.selected,
+      })
+  )) as {
     hsize: string
     size: number
     mtime: string
-  }>
-  setPath: (path: string) => void
-  setSelected: (name: string) => void
+  }
+  state.stat = stat
+  return stat
 }
 
-const fileManagerStoreBase = createStore<TFileManagerState>()(
-  devtools(
-    (set, get) => ({
-      path: '',
-      dirList: [],
-      fileList: [],
-      selected: '',
-      stat: {} as TFileManagerState['stat'],
-      setPath: (path) => {
-        set(() => ({ path }), false, 'setPath')
-      },
-      setSelected: (name) => {
-        set(() => ({ selected: name }), false, 'setSelected')
-      },
-      fetchDir: async () => {
-        const list = (await cache.memo(
-          {
-            path: get().path,
-            _table: tableName,
-          },
-          () =>
-            rpc.request('fileManager_dir', {
-              path: get().path,
-            })
-        )) as {
-          dir: TData<'name'>[]
-          file: TData<'name'>[]
-        }
-        set(
-          () => ({ dirList: list.dir, fileList: list.file }),
-          false,
-          'fetchList'
-        )
-        return list
-      },
-      fetchStat: async () => {
-        const stat = (await cache.memo(
-          {
-            path: get().path,
-            name: get().selected,
-            _table: tableName,
-          },
-          () =>
-            rpc.request('fileManager_stat', {
-              path: get().path,
-              name: get().selected,
-            })
-        )) as {
-          hsize: string
-          size: number
-          mtime: string
-        }
-        set(() => ({ stat }), false, 'fetchList')
-        return stat
-      },
-    }),
-    {
-      name: 'intranet',
-      store: tableName,
-      serialize: { options: true },
-    }
-  )
-)
-
-export const fileManagerStore = createSelectors(fileManagerStoreBase)
+export const fileManagerStore = {
+  state,
+  setPath,
+  setSelected,
+  fetchDir,
+  fetchStat,
+}

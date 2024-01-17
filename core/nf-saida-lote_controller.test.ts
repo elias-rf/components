@@ -22,7 +22,7 @@ describe('agendaTelefoneController', () => {
     })
     expect(rsp).toEqual([{ NumNota: '1' }])
     expect(dbPlano.log()).toEqual([
-      'select top (50) * from [LotesNota] where [NumNota] = 1 order by [NumNota] asc',
+      'select * from [LotesNota] where [NumNota] = 1 order by [NumNota] asc',
     ])
   })
 

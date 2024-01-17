@@ -4,7 +4,7 @@ import { ShowContext } from '@/client/components/ui-old/navbar/navbar_context.js
 import { NavbarItem } from '@/client/components/ui-old/navbar/navbar_item.js'
 import { NavbarMenu } from '@/client/components/ui-old/navbar/navbar_menu.js'
 import { NavbarToggle } from '@/client/components/ui-old/navbar/navbar_toggle.js'
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 import { useState } from 'react'
 
 function Navbar({

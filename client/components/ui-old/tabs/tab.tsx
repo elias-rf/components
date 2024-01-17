@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 import { ReactNode, useContext, useEffect } from 'react'
 import { TabsContext } from './tabs_context.js'
 
@@ -36,12 +36,12 @@ export function Tab({
         id={name}
         onClick={handleSelect}
         className={cn(
-          'inline-block py-2 px-4 rounded-t-lg cursor-pointer',
+          'inline-block cursor-pointer rounded-t-lg px-4 py-2',
           name !== selected.value &&
-            'hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300',
+            'hover:bg-gray-50 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-300',
           name === selected.value &&
-            'border-b-2 text-blue-600 bg-gray-100 border-blue-600 dark:bg-gray-800 dark:text-blue-500 dark:border-blue-500',
-          disabled && 'text-gray-400 cursor-not-allowed dark:text-gray-500'
+            'border-b-2 border-blue-600 bg-gray-100 text-blue-600 dark:border-blue-500 dark:bg-gray-800 dark:text-blue-500',
+          disabled && 'cursor-not-allowed text-gray-400 dark:text-gray-500'
         )}
       >
         {label}

@@ -1,5 +1,5 @@
+import { Button } from '@/client/components/button/button.js'
 import { JsonView } from '@/client/components/json-view/json-view.js'
-import { Button } from '@/client/components/ui-old/button/button.js'
 import { SelectBadgeForm } from '@/client/components/ui-old/select-badge/select-badge-form.js'
 import '@/client/index.css'
 import type { Meta, StoryObj } from '@storybook/react'

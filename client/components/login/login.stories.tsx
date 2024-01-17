@@ -1,5 +1,5 @@
+import { Button } from '@/client/components/button/button.js'
 import { JsonView } from '@/client/components/json-view/json-view.js'
-import { Button } from '@/client/components/ui-old/button/button.js'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 import { Login } from './login.js'

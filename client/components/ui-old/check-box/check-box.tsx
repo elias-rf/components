@@ -1,5 +1,5 @@
 import { themeInput } from '@/client/components/ui-old/theme-input.js'
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 
 export type TCheckBoxProps = {
   disabled?: boolean

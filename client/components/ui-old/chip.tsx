@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 
 export type TChipProps = {
   name?: string
@@ -94,8 +94,8 @@ export function Chip({
       <div className="inline-flex rounded-md shadow-sm">
         <button
           className={cn(
-            'whitespace-nowrap focus:ring-4 font-medium rounded-l-lg px-2 text-sm focus:outline-none',
-            { 'bg-transparent border': outline },
+            'whitespace-nowrap rounded-l-lg px-2 text-sm font-medium focus:outline-none focus:ring-4',
+            { 'border bg-transparent': outline },
             { [colorClass[color]]: !outline && !disabled },
             { [outlineClass[color]]: outline && !disabled },
             { 'cursor-not-allowed': disabled },
@@ -110,8 +110,8 @@ export function Chip({
         </button>
         <button
           className={cn(
-            'focus:ring-4 font-medium rounded-r-lg px-1 text-sm focus:outline-none',
-            { 'bg-transparent border': outline },
+            'rounded-r-lg px-1 text-sm font-medium focus:outline-none focus:ring-4',
+            { 'border bg-transparent': outline },
             { [colorClass[color]]: !outline && !disabled },
             { [outlineClass[color]]: outline && !disabled },
             { 'cursor-not-allowed': disabled },
@@ -123,7 +123,7 @@ export function Chip({
           onClick={() => onClose && onClose(name)}
         >
           <svg
-            className="w-2 h-2"
+            className="h-2 w-2"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 14 14"

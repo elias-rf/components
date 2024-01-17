@@ -10,14 +10,29 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    backgrounds: {
+      default: 'white',
+      values: [
+        {
+          name: 'white',
+          value: '#fff',
+        },
+        {
+          name: 'black',
+          value: '#000',
+        },
+      ],
+    },
   },
   decorators: [
     (Story, args) => {
-      // console.log(args.globals.backgrounds.value)
-      if (args.globals.backgrounds.value === '#333333') {
-        document.documentElement.classList.add('dark')
+      if (
+        args.globals.backgrounds &&
+        args.globals.backgrounds.value === '#000'
+      ) {
+        document.body.classList.add('dark')
       } else {
-        document.documentElement.classList.remove('dark')
+        document.body.classList.remove('dark')
       }
       return <Story />
     },

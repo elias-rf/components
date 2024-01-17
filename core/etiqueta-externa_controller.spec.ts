@@ -23,8 +23,8 @@ describe('ordemProducaoModel', () => {
     expect(rsp).toEqual([{ controle: '1' }])
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: [50, '1'],
-        sql: 'select top (@p0) * from [tEtiqueta] where [controle] = @p1 order by [controle] asc',
+        bindings: ['1'],
+        sql: 'select * from [tEtiqueta] where [controle] = @p0 order by [controle] asc',
       },
     ])
   })

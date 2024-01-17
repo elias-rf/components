@@ -1,7 +1,13 @@
-import { Button } from '@/client/components/ui-old/button/button.js'
-import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
-import { InputForm } from '@/client/components/ui-old/input/input-form.js'
-import { Label } from '@/client/components/ui-old/label.js'
+import { Button } from '@/client/components/button/button.js'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/client/components/form/form.js'
+import { Input } from '@/client/components/input/input.js'
 import { Modal } from '@/client/components/ui-old/modal.js'
 import { useForm } from 'react-hook-form'
 
@@ -20,32 +26,44 @@ export function Login({ onInput }: TLoginProps) {
       title="Login"
       closeable={false}
     >
-      <div className="alignItems-center m-4 flex w-60 flex-col gap-4 pb-4">
-        <FormField>
-          <Label
-            required
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onInput)}
+          className="alignItems-center m-4 flex w-60 flex-col gap-4 pb-4"
+        >
+          <FormField
+            control={form.control}
             name="user"
-          >
-            Usuário
-          </Label>
-          <InputForm {...form.register('user')} />
-        </FormField>
-
-        <FormField>
-          <Label
-            required
-            name="password"
-          >
-            Senha
-          </Label>
-          <InputForm
-            {...form.register('password')}
-            type="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Usuário *</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </FormField>
 
-        <Button onClick={form.handleSubmit(onInput)}>Entrar</Button>
-      </div>
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Senha *</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit">Entrar</Button>
+        </form>
+      </Form>
     </Modal>
   )
 }

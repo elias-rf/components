@@ -3,9 +3,9 @@ import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { formatDiario } from '@/client/pages/comercial/vendas-30dias/format-diario.js'
 import { format, subDays } from 'date-fns/fp'
-import { flowRight } from 'lodash'
-import { devtools } from 'zustand/middleware'
-import { createStore } from 'zustand/vanilla'
+import { flowRight } from 'lodash-es'
+import { proxy } from 'valtio'
+import { devtools } from 'valtio/utils'
 
 type TFormatDiario = {
   dia: string
@@ -23,11 +23,10 @@ type TList = {
   enliteLiteflex: TFormatDiario[]
 }
 
-type Vendas30DiasState = {
+type TState = {
   inicio: string
   fim: string
   list: TList
-  fetchList: () => Promise<TList>
 }
 
 const uf = [
@@ -63,40 +62,38 @@ const uf = [
   'FV',
 ]
 
-const vendas30DiasStoreBase = createStore<Vendas30DiasState>()(
-  devtools(
-    (set, get) => ({
-      list: {} as TList,
-      inicio: flowRight([format('yyyy-MM-dd'), subDays(90)])(new Date()), // day().subtract(90, 'days').format('YYYY-MM-DD'),
-      fim: format('yyyy-MM-dd')(new Date()), // day().format('YYYY-MM-DD'),
-      fetchList: async () => {
-        const list = (await cache.memo(
-          {
-            inicio: get().inicio,
-            fim: get().fim,
-            uf,
-            _table: 'vendas30dias',
-          },
-          () =>
-            rpc.request('nfSaida_vendaDiario', {
-              inicio: get().inicio,
-              fim: get().fim,
-              uf,
-            })
-        )) as any[]
-        const response = formatDiario(list, get().fim) as TList
-        set(() => ({ list: response }), false, 'fetchList')
-        return response
-      },
-    }),
-    {
-      name: 'intranet',
-      store: 'vendas30dias',
-      serialize: { options: true },
-    }
-  )
-)
+const initialState: TState = {
+  list: {} as TList,
+  inicio: flowRight([format('yyyy-MM-dd'), subDays(90)])(new Date()), // day().subtract(90, 'days').format('YYYY-MM-DD'),
+  fim: format('yyyy-MM-dd')(new Date()), // day().format('YYYY-MM-DD'),
+}
 
-export const vendas30DiasStore = createSelectors(vendas30DiasStoreBase)
+const state = proxy(initialState)
+devtools(state, { name: 'vendas30dias', enabled: true })
+
+const fetchList = async () => {
+  const list = (await cache.memo(
+    {
+      inicio: state.inicio,
+      fim: state.fim,
+      uf,
+      _table: 'vendas30dias',
+    },
+    () =>
+      rpc.request('nfSaida_vendaDiario', {
+        inicio: state.inicio,
+        fim: state.fim,
+        uf,
+      })
+  )) as any[]
+  const response = formatDiario(list, state.fim) as TList
+  state.list = response
+  return response
+}
+
+export const vendas30DiasStore = {
+  state,
+  fetchList,
+}
 
 export type TVendas30DiasStore = typeof vendas30DiasStore

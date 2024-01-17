@@ -3,9 +3,9 @@ import { precosStore } from './precos_store.js'
 
 describe('usefileManager', () => {
   test('inital values', () => {
-    expect(precosStore.getState().path).toEqual('')
-    expect(precosStore.getState().dirList).toEqual([])
-    expect(precosStore.getState().fileList).toEqual([])
-    expect(precosStore.getState().stat).toEqual({})
+    expect(precosStore.state.path).toEqual('')
+    expect(precosStore.state.dirList).toEqual([])
+    expect(precosStore.state.fileList).toEqual([])
+    expect(precosStore.state.stat).toEqual({})
   })
 })

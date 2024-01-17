@@ -1,6 +1,7 @@
-import { Table } from '@/client/components/table/table.js'
-import { useControles } from '@/client/pages/industrial/controles/controles_store.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { controlesStore } from '@/client/pages/industrial/controles/controles_store.js'
 import React from 'react'
+import { useSnapshot } from 'valtio'
 import { EsterilizacaoInternaProdutoSchema } from './est-int-produto_schema.js'
 
 type EsterilizacaoInternaProdutoProp = {
@@ -10,13 +11,12 @@ type EsterilizacaoInternaProdutoProp = {
 export function EsterilizacaoInternaProduto({
   children,
 }: EsterilizacaoInternaProdutoProp) {
-  const produto = useControles.use.produto()
-  const setProduto = useControles.use.setProduto()
-  const dia = useControles.use.dia()
+  const { produto, dia, esterilizacaoInternaProduto } = useSnapshot(
+    controlesStore.state
+  )
+  const setProduto = controlesStore.setProduto
   const fetchEsterilizacaoInternaProduto =
-    useControles.use.fetchEsterilizacaoInternaProduto()
-  const esterilizacaoInternaProduto =
-    useControles.use.esterilizacaoInternaProduto()
+    controlesStore.fetchEsterilizacaoInternaProduto
 
   React.useEffect(() => {
     fetchEsterilizacaoInternaProduto()
@@ -24,9 +24,9 @@ export function EsterilizacaoInternaProduto({
 
   return (
     <Table
-      rows={esterilizacaoInternaProduto || []}
+      rows={esterilizacaoInternaProduto as any}
       columns={EsterilizacaoInternaProdutoSchema}
-      selection={produto || []}
+      selection={produto as any}
       onSelection={setProduto}
       getId={(rec: any) => [['produto', rec.produto]]}
     >

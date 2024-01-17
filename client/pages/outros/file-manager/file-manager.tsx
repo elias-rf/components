@@ -19,9 +19,8 @@ export default function FileManager() {
       <FormHead
         permissions={permissions}
         editPermissions={authStore.can('outros_file_manager_permissao')}
-      >
-        Gestor de arquivos
-      </FormHead>
+        title="Gestor de arquivos"
+      ></FormHead>
       <div className="border border-gray-400 dark:border-gray-500">
         <FileManagerTable />
       </div>

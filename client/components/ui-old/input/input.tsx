@@ -1,6 +1,6 @@
 import { useInput } from '@/client/components/ui-old/input/use-input.js'
 import { themeInput } from '@/client/components/ui-old/theme-input.js'
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 import React from 'react'
 
 type TInputProps = {
@@ -53,5 +53,3 @@ export const Input = React.forwardRef<HTMLInputElement, TInputProps>(
     )
   }
 )
-
-Input.displayName = 'Input'

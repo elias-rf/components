@@ -1,4 +1,4 @@
-import { Table } from '@/client/components/table/table.js'
+import { Table } from '@/client/components/table-full/table.js'
 import { agendaTelefoneColumns } from '@/client/pages/outros/agenda/components/agenda_columns.js'
 import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda_store.js'
 import {

@@ -1,6 +1,7 @@
-import { Table } from '@/client/components/table/table.js'
-import { useTransferencia } from '@/client/pages/industrial/controles/transferencia_store.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { transferenciaStore } from '@/client/pages/industrial/controles/transferencia_store.js'
 import React, { ReactNode } from 'react'
+import { useSnapshot } from 'valtio'
 import { transferenciaDiarioSchema } from './transferencia-diario_schema.js'
 
 type TransferenciaDiarioProps = {
@@ -8,12 +9,11 @@ type TransferenciaDiarioProps = {
 }
 
 export function TransferenciaDiario({ children }: TransferenciaDiarioProps) {
-  const mes = useTransferencia.use.mes()
-  const dia = useTransferencia.use.dia()
-  const setDia = useTransferencia.use.setDia()
-  const fetchTransferenciaDiario =
-    useTransferencia.use.fetchTransferenciaDiario()
-  const transferenciaDiario = useTransferencia.use.transferenciaDiario()
+  const { mes, dia, transferenciaDiario } = useSnapshot(
+    transferenciaStore.state
+  )
+  const setDia = transferenciaStore.setDia
+  const fetchTransferenciaDiario = transferenciaStore.fetchTransferenciaDiario
 
   React.useEffect(() => {
     fetchTransferenciaDiario()
@@ -21,9 +21,9 @@ export function TransferenciaDiario({ children }: TransferenciaDiarioProps) {
 
   return (
     <Table
-      rows={transferenciaDiario || []}
+      rows={transferenciaDiario as any}
       columns={transferenciaDiarioSchema}
-      selection={dia}
+      selection={dia as any}
       onSelection={setDia}
       getId={(rec: any) => [['dia', rec.dia]]}
     >

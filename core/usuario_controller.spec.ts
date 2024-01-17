@@ -49,8 +49,8 @@ describe('usuarioController', () => {
 
     expect(knexMockHistory(tracker)).toEqual([
       {
-        bindings: [50, 'user1'],
-        sql: `select top (@p0) * from [tbl_Seguranca_Usuario] where [NomeUsuario] = @p1`,
+        bindings: ['user1'],
+        sql: `select * from [tbl_Seguranca_Usuario] where [NomeUsuario] = @p0`,
       },
     ])
   })

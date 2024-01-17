@@ -1,8 +1,10 @@
+import { Label } from '@/client/components/label/label.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
-import { Label } from '@/client/components/ui-old/label.js'
 import { Select } from '@/client/components/ui-old/select/select.js'
-import { useControles } from '@/client/pages/industrial/controles/controles_store.js'
+import { controlesStore } from '@/client/pages/industrial/controles/controles_store.js'
+import { TId } from '@/types/index.js'
 import { getFieldId } from '@/utils/query/get-field-id.js'
+import { useSnapshot } from 'valtio'
 import { OperacaoDiario } from './components/operacao-diario.js'
 import { OperacaoMensal } from './components/operacao-mensal.js'
 import { OperacaoModelo } from './components/operacao-modelo.js'
@@ -10,8 +12,8 @@ import { OperacaoProduto } from './components/operacao-produto.js'
 import { OperacaoTurno } from './components/operacao-turno.js'
 
 export function Operacao() {
-  const operacao = useControles.use.operacao()
-  const setOperacao = useControles.use.setOperacao()
+  const { operacao } = useSnapshot(controlesStore.state)
+  const setOperacao = controlesStore.setOperacao
 
   function handleSelect(value: string) {
     setOperacao([['operacao', value]])
@@ -21,9 +23,9 @@ export function Operacao() {
     <>
       <div className={'my-2 max-w-md'}>
         <FormField>
-          <Label name="operacao">Operação</Label>
+          <Label htmlFor="operacao">Operação</Label>
           <Select
-            value={getFieldId('operacao', operacao) || ''}
+            value={getFieldId('operacao', operacao as TId<'operacao'>) || ''}
             onChange={handleSelect}
           >
             <Select.Option value="1010">1010 - Montagem lado 1</Select.Option>

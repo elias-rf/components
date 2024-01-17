@@ -21,14 +21,12 @@ export default function Grupos() {
       <FormHead
         editPermissions={authStore.can('sistema_grupos_permissao')}
         permissions={permissions}
-        className="print:hidden"
-      >
-        Grupos
-      </FormHead>
+        title="Grupos"
+      ></FormHead>
       <div>
         <GruposTable store={groupStore} />
         {status !== 'none' ? (
-          <div className="p-1 mb-2 border border-gray-300">
+          <div className="mb-2 border border-gray-300 p-1">
             <GruposForm store={groupStore} />
           </div>
         ) : null}

@@ -1,9 +1,9 @@
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 
 export function ErrorIcon({ className }: { className?: string }) {
   return (
     <svg
-      className={cn('w-5 h-5 inline-block', className)}
+      className={cn('inline-block h-5 w-5', className)}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
     >

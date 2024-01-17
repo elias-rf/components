@@ -1,6 +1,6 @@
 import { round } from '@/utils/number/round.js'
 import { format, parse, subDays } from 'date-fns/fp'
-import { flowRight } from 'lodash'
+import { flowRight } from 'lodash-es'
 
 function getSum(lista: any[], produto: string, data: Date) {
   const dataInicial = flowRight([format('yyyy-MM-dd'), subDays(30)])(data)

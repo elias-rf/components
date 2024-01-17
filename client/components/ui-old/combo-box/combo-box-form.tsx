@@ -2,8 +2,8 @@ import { SortIcon } from '@/client/components/icons/sort-icon.js'
 import { ComboboxItem } from '@/client/components/ui-old/combo-box/combo-box-item.js'
 import { useCombobox } from '@/client/components/ui-old/combo-box/use-combo-box.js'
 import { themeInput } from '@/client/components/ui-old/theme-input.js'
-import { cn } from '@/client/lib/cn.js'
 import { useState } from '@/client/lib/hooks/use-state.js'
+import { cn } from '@/client/lib/utils.js'
 import React, { useRef } from 'react'
 import { useOnClickOutside } from 'usehooks-ts'
 
@@ -28,10 +28,10 @@ const Item = ({
   return (
     <div
       onClick={onClick}
-      className="w-full border-b border-gray-100 rounded-t cursor-pointer hover:bg-teal-100"
+      className="w-full cursor-pointer rounded-t border-b border-gray-100 hover:bg-teal-100"
     >
-      <div className="relative flex items-center w-full p-2 pl-2 border-l-2 border-transparent hover:border-teal-100">
-        <div className="flex items-center w-full">
+      <div className="relative flex w-full items-center border-l-2 border-transparent p-2 pl-2 hover:border-teal-100">
+        <div className="flex w-full items-center">
           <div className="mx-2 leading-6 ">{children}</div>
         </div>
       </div>
@@ -41,8 +41,8 @@ const Item = ({
 
 const List = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="absolute left-0 z-40 w-full overflow-y-auto bg-white rounded shadow max-h-select mt-14">
-      <div className="flex flex-col w-full">{children}</div>
+    <div className="max-h-select absolute left-0 z-40 mt-14 w-full overflow-y-auto rounded bg-white shadow">
+      <div className="flex w-full flex-col">{children}</div>
     </div>
   )
 }

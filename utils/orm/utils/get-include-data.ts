@@ -1,7 +1,7 @@
 import type { TSchema } from '@/schemas/schema.type.js'
 import { TData, TInclude, TWhere } from '@/types/index.js'
 import { isEmpty } from '@/utils/identify/is-empty.js'
-import * as _ from 'lodash'
+import * as _ from 'lodash-es'
 
 function setWhere(data: TData<string>, where: TWhere<string>): TWhere<string> {
   return where.map((whr) => {

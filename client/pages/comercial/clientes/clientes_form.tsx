@@ -1,6 +1,6 @@
+import { Label } from '@/client/components/label/label.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { InputForm } from '@/client/components/ui-old/input/input-form.js'
-import { Label } from '@/client/components/ui-old/label.js'
 import { Tabs } from '@/client/components/ui-old/tabs/tabs.js'
 import { ClienteQuantidade } from '@/client/pages/comercial/clientes/components/cliente-quantidade.js'
 import { ClienteValorMedio } from '@/client/pages/comercial/clientes/components/cliente-valor-medio.js'
@@ -41,70 +41,70 @@ export function ClienteForm({ store }: { store: TClienteStore }) {
   return (
     <div className="grid grid-cols-12 gap-3">
       <FormField className="col-span-2 sm:col-span-2 lg:col-span-1">
-        <Label name="CdCliente">Cód.</Label>
+        <Label htmlFor="CdCliente">Cód.</Label>
         <InputForm
           disabled={['none', 'edit', 'new'].includes(status)}
           {...form.register('CdCliente')}
         />
       </FormField>
       <FormField className="col-span-10 sm:col-span-10 lg:col-span-6">
-        <Label name="RzSocial">Nome</Label>
+        <Label htmlFor="RzSocial">Nome</Label>
         <InputForm
           disabled={['none', 'edit', 'new'].includes(status)}
           {...form.register('RzSocial')}
         />
       </FormField>
       <FormField className="col-span-10 sm:col-span-6 lg:col-span-4">
-        <Label name="Cidade">Cidade</Label>
+        <Label htmlFor="Cidade">Cidade</Label>
         <InputForm
           disabled={['none', 'edit', 'new'].includes(status)}
           {...form.register('Cidade')}
         />
       </FormField>
       <FormField className="col-span-2 sm:col-span-2 lg:col-span-1">
-        <Label name="Uf">UF</Label>
+        <Label htmlFor="Uf">UF</Label>
         <InputForm
           disabled={['none', 'edit', 'new'].includes(status)}
           {...form.register('Uf')}
         />
       </FormField>
       <FormField className="col-span-8 sm:col-span-4 lg:col-span-2">
-        <Label name="CGC">CNPJ</Label>
+        <Label htmlFor="CGC">CNPJ</Label>
         <InputForm
           disabled={['none', 'edit', 'new'].includes(status)}
           {...form.register('CGC')}
         />
       </FormField>
       <FormField className="col-span-2 sm:col-span-2 lg:col-span-1">
-        <Label name="CdVendedor">Vend</Label>
+        <Label htmlFor="CdVendedor">Vend</Label>
         <InputForm
           disabled={['none', 'edit', 'new'].includes(status)}
           {...form.register('CdVendedor')}
         />
       </FormField>
       <FormField className="col-span-2 sm:col-span-2 lg:col-span-1">
-        <Label name="FgAtivo">Ativo</Label>
+        <Label htmlFor="FgAtivo">Ativo</Label>
         <InputForm
           disabled={['none', 'edit', 'new'].includes(status)}
           {...form.register('FgAtivo')}
         />
       </FormField>
       <FormField className="col-span-12 sm:col-span-8 lg:col-span-4">
-        <Label name="EMail">EMail</Label>
+        <Label htmlFor="EMail">EMail</Label>
         <InputForm
           disabled={['none', 'edit', 'new'].includes(status)}
           {...form.register('EMail')}
         />
       </FormField>
       <FormField className="col-span-6 sm:col-span-6 lg:col-span-4">
-        <Label name="NumIdentidade">Identidade</Label>
+        <Label htmlFor="NumIdentidade">Identidade</Label>
         <InputForm
           disabled={['none', 'edit', 'new'].includes(status)}
           {...form.register('NumIdentidade')}
         />
       </FormField>
       <FormField className="col-span-6 sm:col-span-6 lg:col-span-4">
-        <Label name="DtCadastro">Data Cadastro</Label>
+        <Label htmlFor="DtCadastro">Data Cadastro</Label>
         <InputForm
           disabled={['none', 'edit', 'new'].includes(status)}
           {...form.register('DtCadastro')}

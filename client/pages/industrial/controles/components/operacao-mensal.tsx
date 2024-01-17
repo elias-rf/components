@@ -1,6 +1,7 @@
-import { Table } from '@/client/components/table/table.js'
-import { useControles } from '@/client/pages/industrial/controles/controles_store.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { controlesStore } from '@/client/pages/industrial/controles/controles_store.js'
 import React from 'react'
+import { useSnapshot } from 'valtio'
 import { operacaoMensalSchema } from './operacao-mensal_schema.js'
 
 type OperacaoMensalProps = {
@@ -8,23 +9,22 @@ type OperacaoMensalProps = {
 }
 
 export function OperacaoMensal({ children }: OperacaoMensalProps) {
-  const mes = useControles.use.mes()
-  const mesInicial = useControles.use.mesInicio()
-  const operacao = useControles.use.operacao()
-  const setMes = useControles.use.setMes()
-  const fetchOperacaoMensal = useControles.use.fetchOperacaoMensal()
-  const operacaoMensal = useControles.use.operacaoMensal()
+  const { mes, operacao, operacaoMensal, mesInicio } = useSnapshot(
+    controlesStore.state
+  )
+  const setMes = controlesStore.setMes
+  const fetchOperacaoMensal = controlesStore.fetchOperacaoMensal
 
   React.useEffect(() => {
     fetchOperacaoMensal()
-  }, [mesInicial, operacao])
+  }, [mesInicio, operacao])
 
   return (
     <>
       <Table
-        rows={operacaoMensal || []}
+        rows={operacaoMensal as any}
         columns={operacaoMensalSchema}
-        selection={mes}
+        selection={mes as any}
         onSelection={setMes}
         getId={(rec: any) => [['mes', rec.mes]]}
       >

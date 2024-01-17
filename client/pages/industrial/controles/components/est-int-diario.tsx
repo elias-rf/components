@@ -1,6 +1,7 @@
-import { Table } from '@/client/components/table/table.js'
-import { useControles } from '@/client/pages/industrial/controles/controles_store.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { controlesStore } from '@/client/pages/industrial/controles/controles_store.js'
 import React from 'react'
+import { useSnapshot } from 'valtio'
 import { esterilizacaoInternaDiarioSchema } from './est-int-diario_schema.js'
 
 type EsterilizacaoInternaDiarioProps = {
@@ -10,13 +11,12 @@ type EsterilizacaoInternaDiarioProps = {
 export function EsterilizacaoInternaDiario({
   children,
 }: EsterilizacaoInternaDiarioProps) {
-  const dia = useControles.use.dia()
-  const setDia = useControles.use.setDia()
-  const mes = useControles.use.mes()
+  const { dia, esterilizacaoInternaDiario, mes } = useSnapshot(
+    controlesStore.state
+  )
+  const setDia = controlesStore.setDia
   const fetchEsterilizacaoInternaDiario =
-    useControles.use.fetchEsterilizacaoInternaDiario()
-  const esterilizacaoInternaDiario =
-    useControles.use.esterilizacaoInternaDiario()
+    controlesStore.fetchEsterilizacaoInternaDiario
 
   React.useEffect(() => {
     fetchEsterilizacaoInternaDiario()
@@ -24,9 +24,9 @@ export function EsterilizacaoInternaDiario({
 
   return (
     <Table
-      rows={esterilizacaoInternaDiario || []}
+      rows={esterilizacaoInternaDiario as any}
       columns={esterilizacaoInternaDiarioSchema}
-      selection={dia || []}
+      selection={dia as any}
       onSelection={setDia}
       getId={(rec: any) => [['dia', rec.dia]]}
     >

@@ -20,10 +20,8 @@ export default function Vendas30dias() {
       <FormHead
         editPermissions={authStore.can('comercial_vendas30dias_permissao')}
         permissions={permissions}
-        className="print:hidden"
-      >
-        Vendas dos últimos 30 dias
-      </FormHead>
+        title="Vendas dos primeiros 30 dias"
+      ></FormHead>
       <Vendas store={vendas30DiasStore} />
     </Can>
   )

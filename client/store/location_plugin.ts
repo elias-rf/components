@@ -68,6 +68,8 @@ export function locationPlugin(state: any, key: string) {
   // alterações na url devem ser copiadas para state
   subscribeToLocationUpdates(() => {
     const value = getLocation()[key]
+    if (value === undefined) return
+
     const stateValue = JSON.stringify(state[key])
     if (stateValue !== value) {
       state[key] = JSON.parse(value)

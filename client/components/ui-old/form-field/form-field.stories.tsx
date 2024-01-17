@@ -1,23 +1,17 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
+import { Label } from '@/client/components/label/label.js'
 import { CheckBoxForm } from '@/client/components/ui-old/check-box/check-box-form.js'
-import { CheckBox } from '@/client/components/ui-old/check-box/check-box.js'
 import { ComboboxForm } from '@/client/components/ui-old/combo-box/combo-box-form.js'
-import { Combobox } from '@/client/components/ui-old/combo-box/combo-box.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { Helper } from '@/client/components/ui-old/helper.js'
 import { InputForm } from '@/client/components/ui-old/input/input-form.js'
-import { Input } from '@/client/components/ui-old/input/input.js'
-import { Label } from '@/client/components/ui-old/label.js'
 import { SelectBadgeForm } from '@/client/components/ui-old/select-badge/select-badge-form.js'
-import { SelectBadge } from '@/client/components/ui-old/select-badge/select-badge.js'
 import { SelectForm } from '@/client/components/ui-old/select/select-form.js'
 import { Select } from '@/client/components/ui-old/select/select.js'
 import { ToggleForm } from '@/client/components/ui-old/toggle/toggle-form.js'
-import { Toggle } from '@/client/components/ui-old/toggle/toggle.js'
 import '@/client/index.css'
-import { useStateMutable } from '@/client/lib/hooks/use-state-mutable.js'
 import type { Meta, StoryObj } from '@storybook/react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 const meta: Meta<typeof FormField> = {
   component: FormField,
@@ -50,36 +44,20 @@ export const Default: Story = {
       <>
         <div className="flex flex-wrap gap-4">
           <FormField className="w-60">
-            <Label
-              name="fld1"
-              required
-              variant={props.variant}
-            >
-              Label 1
-            </Label>
+            <Label htmlFor="fld1">Label 1 *</Label>
             <InputForm {...form.register('fld1')} />
             <Helper variant={props.variant}>{props.helper}</Helper>
           </FormField>
 
           <FormField className="w-40">
-            <Label
-              name="fld2"
-              variant={props.variant}
-            >
-              L[a]bel 2
-            </Label>
+            <Label htmlFor="fld2">L[a]bel 2</Label>
             <ToggleForm {...form.register('fld2')} />
             <Helper variant={props.variant}>{props.helper}</Helper>
           </FormField>
 
           {
             <FormField className="w-60">
-              <Label
-                name="fld3"
-                variant={props.variant}
-              >
-                La[b]el 2
-              </Label>
+              <Label htmlFor="fld3">Label 2</Label>
               <ComboboxForm
                 {...form.register('fld3')}
                 options={[
@@ -94,12 +72,7 @@ export const Default: Story = {
           }
 
           <FormField className="w-60">
-            <Label
-              name="fld6"
-              variant={props.variant}
-            >
-              Label [6]
-            </Label>
+            <Label htmlFor="fld6">Label [6]</Label>
             <SelectForm
               {...form.register('fld6')}
               variant={props.variant}
@@ -113,12 +86,7 @@ export const Default: Story = {
           </FormField>
 
           <FormField className="w-40">
-            <Label
-              name="fld4"
-              variant={props.variant}
-            >
-              Lab[e]l 2
-            </Label>
+            <Label htmlFor="fld4">Lab[e]l 2</Label>
             <CheckBoxForm
               {...form.register('fld4')}
               variant={props.variant}
@@ -128,12 +96,7 @@ export const Default: Story = {
           </FormField>
 
           <FormField className="w-full">
-            <Label
-              name="fld5"
-              variant={props.variant}
-            >
-              Label [5]
-            </Label>
+            <Label htmlFor="fld5">Label [5]</Label>
             <SelectBadgeForm
               options={[
                 ['Option 1', '1'],

@@ -1,7 +1,7 @@
-import { Button } from '@/client/components/ui-old/button/button.js'
+import { Button } from '@/client/components/button/button.js'
+import { Label } from '@/client/components/label/label.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { InputForm } from '@/client/components/ui-old/input/input-form.js'
-import { Label } from '@/client/components/ui-old/label.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { TGroupStore } from '@/client/pages/sistema/grupos/components/grupos_store.js'
 import { useEffect } from 'react'
@@ -55,7 +55,6 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
           onClick={store.onEdit}
           disabled={['none', 'edit', 'new'].includes(status)}
           size="sm"
-          outline
         >
           EDITAR
         </Button>
@@ -63,31 +62,20 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
           onClick={handleDel}
           disabled={['none', 'edit', 'new'].includes(status)}
           size="sm"
-          outline
         >
           EXCLUIR
         </Button>
       </div>
       <div className="grid grid-cols-12 gap-3">
         <FormField className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <Label
-            required
-            name="kGrupo"
-          >
-            Ramal
-          </Label>
+          <Label htmlFor="kGrupo">Ramal *</Label>
           <InputForm
             disabled={['none', 'view'].includes(status)}
             {...form.register('kGrupo')}
           />
         </FormField>
         <FormField className="col-span-12 sm:col-span-10 lg:col-span-5">
-          <Label
-            required
-            name="NomeGrupo"
-          >
-            Nome
-          </Label>
+          <Label htmlFor="NomeGrupo">Nome *</Label>
           <InputForm
             disabled={['none', 'view'].includes(status)}
             {...form.register('NomeGrupo')}
@@ -102,7 +90,6 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
           }}
           disabled={['none', 'view'].includes(status)}
           size="sm"
-          outline
         >
           SALVAR
         </Button>
@@ -113,7 +100,6 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
           }}
           disabled={['none', 'view'].includes(status)}
           size="sm"
-          outline
         >
           CANCELAR
         </Button>

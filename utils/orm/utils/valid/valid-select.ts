@@ -16,7 +16,8 @@ export function validSelect<TFields>(
   const fieldsInvalidos = []
   let fieldsLivres = nameList
 
-  if (typeof select === 'undefined' || isEmpty(select)) return { select: ['*'] }
+  if (typeof select === 'undefined' || isEmpty(select)) return { select: [] }
+  // if (typeof select === 'undefined' || isEmpty(select)) return { select: ['*'] }
   if (!Array.isArray(select)) throw new Error('select deve ser Array<string>')
   if (select.includes('*')) return { select: ['*'] }
 

@@ -1,7 +1,7 @@
+import { DarkToggle } from '@/client/components/dark-toggle/dark-toggle.js'
 import { PersonIcon } from '@/client/components/icons/person-icon.js'
 import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon.js'
 import { Avatar } from '@/client/components/ui-old/avatar.js'
-import { DarkToggle } from '@/client/components/ui-old/dark-toggle.js'
 import { Dropdown } from '@/client/components/ui-old/dropdown/dropdown.js'
 import { Navbar } from '@/client/components/ui-old/navbar/navbar.js'
 import { action } from '@storybook/addon-actions'

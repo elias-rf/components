@@ -10,6 +10,7 @@ import {
   YAxis,
 } from 'recharts'
 import { useEffectOnce } from 'usehooks-ts'
+import { useSnapshot } from 'valtio'
 
 /**
  * Componente para manipular Agenda de Ramais
@@ -17,12 +18,11 @@ import { useEffectOnce } from 'usehooks-ts'
  * @returns {*} componente react
  */
 export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
-  const list = store.use.list()
-  const fetchList = store.use.fetchList()
+  const { list } = useSnapshot(store.state)
 
   useEffectOnce(() => {
     toast.promise(
-      fetchList(),
+      store.fetchList(),
       {
         loading: 'lendo...',
         success: 'sucesso!',
@@ -46,7 +46,7 @@ export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
           height={height}
         >
           <LineChart
-            data={list?.liteflex}
+            data={list?.liteflex as any}
             syncId="implante"
           >
             <Line
@@ -85,7 +85,7 @@ export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
           width={width}
           height={height}
         >
-          <LineChart data={list?.hilite}>
+          <LineChart data={list?.hilite as any}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -121,7 +121,7 @@ export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
           height={height}
         >
           <LineChart
-            data={list?.enlite}
+            data={list?.enlite as any}
             syncId="implante"
           >
             <Line
@@ -158,7 +158,7 @@ export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
           width={width}
           height={height}
         >
-          <LineChart data={list?.metil}>
+          <LineChart data={list?.metil as any}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -195,7 +195,7 @@ export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
           width={width}
           height={height}
         >
-          <LineChart data={list?.anel}>
+          <LineChart data={list?.anel as any}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -232,7 +232,7 @@ export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
           width={width}
           height={height}
         >
-          <LineChart data={list?.enliteLiteflex}>
+          <LineChart data={list?.enliteLiteflex as any}>
             <Line
               type="monotone"
               yAxisId="right"

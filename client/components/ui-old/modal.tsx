@@ -1,4 +1,4 @@
-import { Button } from '@/client/components/ui-old/button/button.js'
+import { Button } from '@/client/components/button/button.js'
 import React from 'react'
 
 export type TModalProps = {

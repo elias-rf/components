@@ -43,23 +43,23 @@ mockedFetch.add(async (request: any) => {
 
 describe('usefileManager', () => {
   test('inital values', () => {
-    expect(fileManagerStore.getState().path).toEqual('')
-    expect(fileManagerStore.getState().dirList).toEqual([])
-    expect(fileManagerStore.getState().fileList).toEqual([])
-    expect(fileManagerStore.getState().stat).toEqual({})
+    expect(fileManagerStore.state.path).toEqual('')
+    expect(fileManagerStore.state.dirList).toEqual([])
+    expect(fileManagerStore.state.fileList).toEqual([])
+    expect(fileManagerStore.state.stat).toEqual({})
   })
 
   test('fetchList', async () => {
-    const dir = await fileManagerStore.getState().fetchDir()
+    const dir = await fileManagerStore.fetchDir()
     expect(dir).toEqual({
       dir: ['dir1', 'dir2'],
       file: ['file1', 'file2'],
     })
-    expect(fileManagerStore.getState().dirList).toEqual(['dir1', 'dir2'])
-    expect(fileManagerStore.getState().fileList).toEqual(['file1', 'file2'])
+    expect(fileManagerStore.state.dirList).toEqual(['dir1', 'dir2'])
+    expect(fileManagerStore.state.fileList).toEqual(['file1', 'file2'])
   })
   test('fetchRecord', async () => {
-    const agenda = await fileManagerStore.getState().fetchStat()
+    const agenda = await fileManagerStore.fetchStat()
     expect(agenda).toEqual({
       hsize: '0 B',
       size: 0,

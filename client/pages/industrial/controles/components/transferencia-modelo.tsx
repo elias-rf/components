@@ -1,6 +1,7 @@
-import { Table } from '@/client/components/table/table.js'
-import { useTransferencia } from '@/client/pages/industrial/controles/transferencia_store.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { transferenciaStore } from '@/client/pages/industrial/controles/transferencia_store.js'
 import React from 'react'
+import { useSnapshot } from 'valtio'
 import { transferenciaModeloSchema } from './transferencia-modelo_schema.js'
 
 type TransferenciaModeloProps = {
@@ -8,10 +9,8 @@ type TransferenciaModeloProps = {
 }
 
 export function TransferenciaModelo({ children }: TransferenciaModeloProps) {
-  const dia = useTransferencia.use.dia()
-  const fetchTransferenciaModelo =
-    useTransferencia.use.fetchTransferenciaModelo()
-  const transferenciaModelo = useTransferencia.use.transferenciaModelo()
+  const { dia, transferenciaModelo } = useSnapshot(transferenciaStore.state)
+  const fetchTransferenciaModelo = transferenciaStore.fetchTransferenciaModelo
 
   React.useEffect(() => {
     fetchTransferenciaModelo()
@@ -19,7 +18,7 @@ export function TransferenciaModelo({ children }: TransferenciaModeloProps) {
 
   return (
     <Table
-      rows={transferenciaModelo}
+      rows={transferenciaModelo as any}
       columns={transferenciaModeloSchema}
     >
       {() => <>{children}</>}

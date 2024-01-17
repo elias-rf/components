@@ -1,6 +1,7 @@
-import { Table } from '@/client/components/table/table.js'
-import { useControles } from '@/client/pages/industrial/controles/controles_store.js'
+import { Table } from '@/client/components/table-full/table.js'
+import { controlesStore } from '@/client/pages/industrial/controles/controles_store.js'
 import React from 'react'
+import { useSnapshot } from 'valtio'
 import { esterilizacaoInternaMensalSchema } from './est-int-mensal_schema.js'
 
 type EsterilizacaoInternaMensalProp = {
@@ -10,23 +11,22 @@ type EsterilizacaoInternaMensalProp = {
 export function EsterilizacaoInternaMensal({
   children,
 }: EsterilizacaoInternaMensalProp) {
-  const mes = useControles.use.mes()
-  const setMes = useControles.use.setMes()
-  const mesInicial = useControles.use.mesInicio()
+  const { mes, esterilizacaoInternaMensal, mesInicio } = useSnapshot(
+    controlesStore.state
+  )
+  const setMes = controlesStore.setMes
   const fetchEsterilizacaoInternaMensal =
-    useControles.use.fetchEsterilizacaoInternaMensal()
-  const esterilizacaoInternaMensal =
-    useControles.use.esterilizacaoInternaMensal()
+    controlesStore.fetchEsterilizacaoInternaMensal
 
   React.useEffect(() => {
     fetchEsterilizacaoInternaMensal()
-  }, [mesInicial])
+  }, [mesInicio])
 
   return (
     <Table
-      rows={esterilizacaoInternaMensal || []}
+      rows={esterilizacaoInternaMensal as any}
       columns={esterilizacaoInternaMensalSchema}
-      selection={mes}
+      selection={mes as any}
       onSelection={setMes}
       getId={(rec: any) => [['mes', rec.mes]]}
     >

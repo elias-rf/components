@@ -16,9 +16,8 @@ export default function Clientes() {
       <FormHead
         editPermissions={authStore.can('industrial_lotesSaida_permissao')}
         permissions={permissions}
-      >
-        Rastreamento de produtos
-      </FormHead>
+        title="Rastreamento de produtos"
+      ></FormHead>
       <div className="border border-gray-400 dark:border-gray-500">
         <LotesSaidaTable store={lotesSaidaStore} />
       </div>

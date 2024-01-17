@@ -1,4 +1,4 @@
-import { Button } from '@/client/components/ui-old/button/button.js'
+import { Button } from '@/client/components/button/button.js'
 import { Toast, TToastProps } from '@/client/components/ui-old/toast.js'
 import '@/client/index.css'
 import type { Meta, StoryObj } from '@storybook/react'

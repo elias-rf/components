@@ -1,6 +1,6 @@
+import { Label } from '@/client/components/label/label.js'
 import { Helper } from '@/client/components/ui-old/helper.js'
-import { Label } from '@/client/components/ui-old/label.js'
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 import React from 'react'
 
 type TTextareaProps = {
@@ -36,14 +36,7 @@ export function Textarea({
 
   return (
     <div>
-      <Label
-        name={id}
-        required={required}
-        disabled={disabled}
-        variant={variant}
-      >
-        {label}
-      </Label>
+      <Label htmlFor={id}>{label}</Label>
       <textarea
         rows={rows}
         className={cn(

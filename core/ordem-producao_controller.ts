@@ -13,7 +13,7 @@ import { ormTable } from '@/utils/orm/index.js'
 import { module10 } from '@/utils/string/module10.js'
 import { UTCDateMini } from '@date-fns/utc'
 import { addYears, format } from 'date-fns/fp'
-import { flowRight } from 'lodash'
+import { flowRight } from 'lodash-es'
 
 export const tOrdemProducao: TSchema = {
   table: 'tOrdemProducao',

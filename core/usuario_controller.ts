@@ -8,7 +8,7 @@ import { ormTable } from '@/utils/orm/index.js'
 import { passwordVerify } from '@/utils/string/password-verify.js'
 import { format, fromUnixTime } from 'date-fns/fp'
 import jwtService from 'jsonwebtoken'
-import { flowRight } from 'lodash'
+import { flowRight } from 'lodash-es'
 
 export const tbl_Seguranca_Usuario = {
   database: 'oftalmo',

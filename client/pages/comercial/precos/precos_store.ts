@@ -1,12 +1,10 @@
-import { createSelectors } from '@/client/lib/create-selectors.js'
 import { TData } from '@/types/index.js'
-import { round } from '@/utils/number/round.js'
-import { devtools } from 'zustand/middleware'
-import { createStore } from 'zustand/vanilla'
+import { proxy } from 'valtio'
+import { devtools } from 'valtio/utils'
 
 const tableName = 'precos' as const
 
-type TPrecosState = {
+type TState = {
   path: string
   dirList: TData<'name'>[]
   fileList: TData<'name'>[]
@@ -16,33 +14,30 @@ type TPrecosState = {
     size: number
     mtime: string
   }
-  setPath: (path: string) => void
-  setSelected: (name: string) => void
 }
 
-const fileManagerStoreBase = createStore<TPrecosState>()(
-  devtools(
-    (set, get) => ({
-      path: '',
-      dirList: [],
-      fileList: [],
-      selected: '',
-      stat: {} as TPrecosState['stat'],
-      setPath: (path) => {
-        set(() => ({ path }), false, 'setPath')
-      },
-      setSelected: (name) => {
-        set(() => ({ selected: name }), false, 'setSelected')
-      },
-    }),
-    {
-      name: 'intranet',
-      store: tableName,
-      serialize: { options: true },
-    }
-  )
-)
+const initialState: TState = {
+  path: '',
+  dirList: [],
+  fileList: [],
+  selected: '',
+  stat: {} as TState['stat'],
+}
 
-export const precosStore = createSelectors(fileManagerStoreBase)
+const state = proxy(initialState)
+devtools(state, { name: tableName, enabled: true })
+
+const setPath = (path: string) => {
+  state.path = path
+}
+const setSelected = (name: string) => {
+  state.selected = name
+}
+
+export const precosStore = {
+  state,
+  setPath,
+  setSelected,
+}
 
 export type TPrecosStore = typeof precosStore

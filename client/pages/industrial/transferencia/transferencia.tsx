@@ -15,9 +15,8 @@ export default function IndustrialTransferencia() {
       <FormHead
         editPermissions={authStore.can('industrial_transferencia_permissao')}
         permissions={permissions}
-      >
-        Transferências para Filial
-      </FormHead>
+        title="Transferência para Filial"
+      ></FormHead>
       <Transferencia />
     </Can>
   )

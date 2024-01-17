@@ -22,7 +22,7 @@ describe('OrmTable', () => {
   })
 
   it('deve validar select', () => {
-    expect(tb.util.validSelect()).toEqual({ select: ['*'] })
+    expect(tb.util.validSelect()).toEqual({ select: [] })
     expect(tb.util.validSelect(['name'])).toEqual({ select: ['name'] })
     expect(tb.util.validSelect(['id', 'name'])).toEqual({
       select: ['id', 'name'],

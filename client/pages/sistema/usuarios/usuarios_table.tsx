@@ -1,4 +1,4 @@
-import { Table } from '@/client/components/table/table.js'
+import { Table } from '@/client/components/table-full/table.js'
 import { usuarioColumns } from '@/client/pages/sistema/usuarios/components/usuario_columns.js'
 import { TUsuarioStore } from '@/client/pages/sistema/usuarios/components/usuario_store.js'
 import { pageSizeState } from '@/client/store/page-size-store.js'

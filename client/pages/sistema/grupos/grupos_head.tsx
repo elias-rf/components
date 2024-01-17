@@ -1,6 +1,6 @@
+import { Button } from '@/client/components/button/button.js'
 import { Can } from '@/client/components/can.js'
-import { Button } from '@/client/components/ui-old/button/button.js'
-import { Title } from '@/client/components/ui-old/title.js'
+import { Title } from '@/client/components/title/title.js'
 import { Permissions } from '@/client/features/permissions.js'
 import { groupStore } from '@/client/pages/sistema/grupos/components/grupos_store.js'
 import { authStore } from '@/client/store/auth_store.js'
@@ -29,7 +29,6 @@ export function GruposHead() {
           onClick={groupStore.onNew}
           disabled={false}
           size="sm"
-          outline
         >
           NOVO
         </Button>

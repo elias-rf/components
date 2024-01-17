@@ -61,7 +61,6 @@ export function adapterKnex(driver: Knex) {
             'select',
             'offset',
             'limit',
-
             'update',
             'insert',
             'delete',

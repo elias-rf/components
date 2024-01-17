@@ -1,9 +1,9 @@
-import { cn } from '@/client/lib/cn.js'
+import { cn } from '@/client/lib/utils.js'
 
 export function HamburgerIcon({ className }: { className?: string }) {
   return (
     <svg
-      className={cn('w-5 h-5 inline-block', className)}
+      className={cn('inline-block h-5 w-5', className)}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
