@@ -1,6 +1,6 @@
 import { Page } from '@/client/components/page/page.js'
 import { StoreViewer } from '@/client/components/ui-old/store-viewer.js'
-import { agendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda_store.js'
+import { agendaTelefoneStore } from '@/client/pages/outros/agenda/agenda.store.js'
 import { createRecord, uid } from '@/utils/mocks/fetcher-mock.js'
 import { mockedFetch } from '@/utils/mocks/mocked-fetch/mocked-fetch.js'
 import { fakerPT_BR as faker } from '@faker-js/faker'

@@ -2,7 +2,7 @@ import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
-import { format, formatWithOptions } from 'date-fns/fp'
+import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import * as v from 'valibot'
 
@@ -67,8 +67,8 @@ function esterilizacaoInternaControllerFactory(
       whereRaw: ['fkOperacao in (3058, 3158)'],
     })
     return qry.map((rec: any) => {
-      rec.dia_semana = formatWithOptions({ locale: ptBR }, 'EEEEEE')(rec.dia)
-      rec.dia = format('yyyy-MM-dd')(rec.dia)
+      rec.dia_semana = format(rec.dia, 'EEEEEE', { locale: ptBR })
+      rec.dia = format(rec.dia, 'yyyy-MM-dd')
       return rec
     })
   }

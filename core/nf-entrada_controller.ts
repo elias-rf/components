@@ -11,7 +11,7 @@ import type { TSchema } from '@/schemas/schema.type.js'
 import { isEmpty } from '@/utils/identify/is-empty.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
-import { format } from 'date-fns/fp'
+import { format } from 'date-fns'
 
 // verificar: falso já lançado 20311000
 
@@ -152,7 +152,7 @@ function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
             `Ordem de produção ${kOp} não possui data de fabricação`
           )
         }
-        return format('yyyy-MM-dd')(dt)
+        return format(dt, 'yyyy-MM-dd')
       })
 
     const expiracao = await ordemProducaoController.ordemProducao_dataValidade({
@@ -161,8 +161,8 @@ function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
 
     const quantidade = controles.length
 
-    const hoje = format('yyyy-MM-dd')(new Date())
-    const agora = format('HH:mm:ss')(new Date())
+    const hoje = format(new Date(), 'yyyy-MM-dd')
+    const agora = format(new Date(), 'HH:mm:ss')
 
     const nf = await orm.rpc.read({
       where: [
@@ -294,8 +294,8 @@ function nfEntradaControllerFactory(db: TAdapterKnex, schema: TSchema) {
     await produtoEstatisticaController.produtoEstatistica_increment({
       where: [
         ['CdEmpresa', 1],
-        ['MesRef', parseInt(format('MM')(new Date()))],
-        ['AnoRef', parseInt(format('yy')(new Date()))],
+        ['MesRef', parseInt(format(new Date(), 'MM'))],
+        ['AnoRef', parseInt(format(new Date(), 'yy'))],
         ['CdProduto', CdProduto.toString() || ''],
       ],
       increment: ['QtdCompras', quantidade],

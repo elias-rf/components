@@ -1,3 +1,4 @@
+import '@/utils/mocks/core.mock.js'
 import type { Meta, StoryObj } from '@storybook/react'
 import { Permissions } from './permissions.js'
 

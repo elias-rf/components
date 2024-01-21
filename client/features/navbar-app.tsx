@@ -1,9 +1,13 @@
 import { DarkToggle } from '@/client/components/dark-toggle/dark-toggle.js'
-import { PersonIcon } from '@/client/components/icons/person-icon.js'
 import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon.js'
-import { Avatar } from '@/client/components/ui-old/avatar.js'
-import { Dropdown } from '@/client/components/ui-old/dropdown/dropdown.js'
-import { Navbar } from '@/client/components/ui-old/navbar/navbar.js'
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarTrigger,
+} from '@/client/components/menubar/menubar.js'
 import { authStore } from '@/client/store/auth_store.js'
 import { useSnapshot } from 'valtio'
 import { useLocation } from 'wouter'
@@ -18,95 +22,77 @@ export function NavbarApp() {
 
   return (
     <>
-      <Navbar
-        data-name="Navbar"
-        className="z-20 border-gray-200 bg-gray-100 dark:border-gray-700"
-      >
-        <Navbar.Brand
-          onClick={() => handleLink('/')}
-          className="cursor-pointer p-1"
-        >
-          <VtLogoIcon className="h-8 w-8" />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Visiontech
-          </span>
-        </Navbar.Brand>
-        <div className="flex items-center space-x-2 md:order-2">
-          <Dropdown
-            arrowIcon={false}
-            label={
-              <Avatar>
-                <PersonIcon />
-              </Avatar>
-            }
-            position="right"
-          >
-            <Dropdown.Header>
-              <div className="px-4 py-1 text-sm text-gray-900 dark:text-white">
-                <span className="block text-sm">{auth.user.nome}</span>
-              </div>
-            </Dropdown.Header>
-            <Dropdown.Item onClick={() => handleLink('/profile')}>
-              alterar senha
-            </Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item onClick={() => handleLink('/logout')}>
-              logout
-            </Dropdown.Item>
-          </Dropdown>
-          <Navbar.Toggle />
-          <DarkToggle />
+      <Menubar>
+        <div onClick={() => handleLink('/')}>
+          <VtLogoIcon />
         </div>
-        <Navbar.Collapse>
-          <Dropdown label={<div className="dark:text-gray-200">Comercial</div>}>
-            <Dropdown.Item onClick={() => handleLink('/comercial/precos')}>
+        <MenubarMenu>
+          <MenubarTrigger>Comercial</MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem onSelect={() => handleLink('/comercial/precos')}>
               Calculadora de preços
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => handleLink('/comercial/vendas30dias')}
-            >
+            </MenubarItem>
+            <MenubarItem onSelect={() => handleLink('/comercial/vendas30dias')}>
               Vendas 30 dias
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => handleLink('/comercial/cliente')}>
+            </MenubarItem>
+            <MenubarItem onSelect={() => handleLink('/comercial/cliente')}>
               Clientes
-            </Dropdown.Item>
-          </Dropdown>
-          <Dropdown
-            label={<div className="dark:text-gray-200">Industrial</div>}
-          >
-            <Dropdown.Item onClick={() => handleLink('/industrial/controles')}>
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+
+        <MenubarMenu>
+          <MenubarTrigger>Industrial</MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem onSelect={() => handleLink('/industrial/controles')}>
               Controles de produção
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => handleLink('/industrial/transferencia')}
+            </MenubarItem>
+            <MenubarItem
+              onSelect={() => handleLink('/industrial/transferencia')}
             >
               Transferência
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => handleLink('/industrial/lotesSaida')}>
+            </MenubarItem>
+            <MenubarItem onSelect={() => handleLink('/industrial/lotesSaida')}>
               Rastreamento de produtos
-            </Dropdown.Item>
-          </Dropdown>
-          <Dropdown label={<div className="dark:text-gray-200">Sistema</div>}>
-            <Dropdown.Item onClick={() => handleLink('/sistema/usuario')}>
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+
+        <MenubarMenu>
+          <MenubarTrigger>Sistema</MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem onSelect={() => handleLink('/profile')}>
+              Alterar senha
+            </MenubarItem>
+            <MenubarItem onSelect={() => handleLink('/logout')}>
+              Logout
+            </MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem onSelect={() => handleLink('/sistema/usuario')}>
               Usuários
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => handleLink('/sistema/permissao')}>
+            </MenubarItem>
+            <MenubarItem onSelect={() => handleLink('/sistema/permissao')}>
               Permissões
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => handleLink('/sistema/grupos')}>
+            </MenubarItem>
+            <MenubarItem onSelect={() => handleLink('/sistema/grupos')}>
               Grupos
-            </Dropdown.Item>
-          </Dropdown>
-          <Dropdown label={<div className="dark:text-gray-200">Outros</div>}>
-            <Dropdown.Item onClick={() => handleLink('/outros/agenda')}>
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+
+        <MenubarMenu>
+          <MenubarTrigger>Outros</MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem onSelect={() => handleLink('/outros/agenda')}>
               Agenda de ramais
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => handleLink('/outros/fileManager')}>
+            </MenubarItem>
+            <MenubarItem onSelect={() => handleLink('/outros/fileManager')}>
               Gestor de arquivos
-            </Dropdown.Item>
-          </Dropdown>
-        </Navbar.Collapse>
-      </Navbar>
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+        <DarkToggle />
+      </Menubar>
     </>
   )
 }

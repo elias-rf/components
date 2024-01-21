@@ -135,7 +135,7 @@ export function MultiKeyCache(options: TCacheOptions = {}) {
     },
 
     memo(
-      keyValues: any,
+      keyValues: { tables: string[]; rpc: string; params: any },
       fn: () => any | Promise<any>,
       options?: { ttl?: number; size?: number; isPermanet?: boolean }
     ) {

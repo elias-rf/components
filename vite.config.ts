@@ -4,7 +4,6 @@
 /** @type {import('vite').UserConfig} */
 
 import react from '@vitejs/plugin-react'
-import { format } from 'date-fns/fp'
 import dotenv from 'dotenv-flow'
 import * as path from 'node:path'
 import { defineConfig } from 'vitest/config'

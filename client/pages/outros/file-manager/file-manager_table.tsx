@@ -1,4 +1,4 @@
-import { BreadCrumb } from '@/client/components/ui-old/bread-crumb.js'
+import { BreadCrumb } from '@/client/components/ui-old/bread-crumb/bread-crumb.js'
 import { cn } from '@/client/lib/utils.js'
 import { fileManagerStore } from '@/client/pages/outros/file-manager/file-manager_store.js'
 import { useEffect } from 'react'

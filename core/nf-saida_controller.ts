@@ -4,7 +4,7 @@ import type { TSchema } from '@/schemas/schema.type.js'
 import { TAdapterKnex, TQueryKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
 import { UTCDateMini } from '@date-fns/utc'
-import { format } from 'date-fns/fp'
+import { format } from 'date-fns'
 import * as v from 'valibot'
 
 export const MestreNota: TSchema = {
@@ -388,7 +388,7 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
     }[]
 
     const response = result.map((item) => {
-      item.DtEmissao = format('yyyy-MM-dd')(new UTCDateMini(item.DtEmissao))
+      item.DtEmissao = format(new UTCDateMini(item.DtEmissao), 'yyyy-MM-dd')
       return item
     })
     return response

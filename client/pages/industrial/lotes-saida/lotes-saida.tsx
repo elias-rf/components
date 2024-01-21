@@ -1,7 +1,7 @@
 import { Can } from '@/client/components/can.js'
-import { FormHead } from '@/client/components/ui-old/form-head.js'
-import { lotesSaidaStore } from '@/client/pages/industrial/lotes-saida/components/lotes-saida_store.js'
-import { LotesSaidaTable } from '@/client/pages/industrial/lotes-saida/lotes-saida_table.js'
+import { FormHead } from '@/client/components/form-head/form-head.js'
+import { LotesSaidaTable } from '@/client/pages/industrial/lotes-saida/components/lotes-saida.table.js'
+import { lotesSaidaStore } from '@/client/pages/industrial/lotes-saida/lotes-saida.store.js'
 import { authStore } from '@/client/store/auth_store.js'
 
 const permissions = {

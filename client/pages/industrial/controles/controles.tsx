@@ -1,12 +1,16 @@
 import { Can } from '@/client/components/can.js'
-import { FormHead } from '@/client/components/ui-old/form-head.js'
-import { Tabs } from '@/client/components/ui-old/tabs/tabs.js'
-import { EstExt } from '@/client/pages/industrial/controles/est-ext.js'
-import { EstInt } from '@/client/pages/industrial/controles/est-int.js'
-import { Operacao } from '@/client/pages/industrial/controles/operacao.js'
-import { Transferencia } from '@/client/pages/industrial/controles/transferencia.js'
+import { FormHead } from '@/client/components/form-head/form-head.js'
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/client/components/tabs/tabs.js'
+import { EstExt } from '@/client/pages/industrial/controles/components/est-ext/est-ext.js'
+import { EstInt } from '@/client/pages/industrial/controles/components/est-int/est-int.js'
+import { Operacao } from '@/client/pages/industrial/controles/components/operacao/operacao.js'
+import { Transferencia } from '@/client/pages/industrial/controles/components/transferencia/transferencia.js'
 import { authStore } from '@/client/store/auth_store.js'
-import { useState } from 'react'
 
 const permissions = {
   industrial_controles_permissao:
@@ -17,8 +21,6 @@ const permissions = {
 type TCan = (name: keyof typeof permissions) => boolean
 
 export default function Controles() {
-  const [select, setSelect] = useState('profile')
-
   return (
     <Can can={authStore.can('industrial_controles_read')}>
       <FormHead
@@ -26,34 +28,25 @@ export default function Controles() {
         permissions={permissions}
         title="Controles de Produção"
       ></FormHead>
-      <Tabs
-        selected={select}
-        onChange={setSelect}
-      >
-        <Tabs.Tab
-          name="operacao"
-          label="Operação"
-        >
+      <Tabs defaultValue="profile">
+        <TabsList className="grid w-full grid-cols-4">
+          <TabsTrigger value="operacao">Operação</TabsTrigger>
+          <TabsTrigger value="estint">Esterilização Int</TabsTrigger>
+          <TabsTrigger value="estext">Esterilização Ext</TabsTrigger>
+          <TabsTrigger value="transferencia">Transferência</TabsTrigger>
+        </TabsList>
+        <TabsContent value="operacao">
           <Operacao />
-        </Tabs.Tab>
-        <Tabs.Tab
-          name="estint"
-          label="Esterilização Int"
-        >
+        </TabsContent>
+        <TabsContent value="estint">
           <EstInt />
-        </Tabs.Tab>
-        <Tabs.Tab
-          name="estext"
-          label="Esterilização Ext"
-        >
+        </TabsContent>
+        <TabsContent value="estext">
           <EstExt />
-        </Tabs.Tab>
-        <Tabs.Tab
-          name="transferencia"
-          label="Transferência"
-        >
+        </TabsContent>
+        <TabsContent value="transferencia">
           <Transferencia />
-        </Tabs.Tab>
+        </TabsContent>
       </Tabs>
     </Can>
   )

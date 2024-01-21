@@ -1,5 +1,5 @@
 import '@/client/index.css'
-import '@/mocks/fetcher-mock'
+import '@/utils/mocks/core.mock.js'
 
 import type { Meta, StoryObj } from '@storybook/react'
 import Vendas30dias from './vendas-30dias.js'

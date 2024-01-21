@@ -1,7 +1,7 @@
+import { Combobox } from '@/client/components/combobox/combobox.js'
 import { JsonView } from '@/client/components/json-view/json-view.js'
 import { Label } from '@/client/components/label/label.js'
 import { CheckBoxForm } from '@/client/components/ui-old/check-box/check-box-form.js'
-import { ComboboxForm } from '@/client/components/ui-old/combo-box/combo-box-form.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { Helper } from '@/client/components/ui-old/helper.js'
 import { InputForm } from '@/client/components/ui-old/input/input-form.js'
@@ -58,15 +58,15 @@ export const Default: Story = {
           {
             <FormField className="w-60">
               <Label htmlFor="fld3">Label 2</Label>
-              <ComboboxForm
+              <Combobox
                 {...form.register('fld3')}
                 options={[
-                  ['Option 1', '1'],
-                  ['Option 2', '2'],
-                  ['Option 3', '3'],
+                  { label: 'Option 1', value: '1' },
+                  { label: 'Option 2', value: '2' },
+                  { label: 'Option 3', value: '3' },
                 ]}
                 disabled={props.disabled}
-              ></ComboboxForm>
+              ></Combobox>
               <Helper variant={props.variant}>{props.helper}</Helper>
             </FormField>
           }

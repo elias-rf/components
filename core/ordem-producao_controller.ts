@@ -12,8 +12,8 @@ import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
 import { module10 } from '@/utils/string/module10.js'
 import { UTCDateMini } from '@date-fns/utc'
-import { addYears, format } from 'date-fns/fp'
-import { flowRight } from 'lodash-es'
+import { addYears, format } from 'date-fns'
+import { flow } from 'lodash-es'
 
 export const tOrdemProducao: TSchema = {
   table: 'tOrdemProducao',
@@ -184,7 +184,7 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
     }
 
     if (Array.isArray(response) && response.length > 0) {
-      return format('yyyy-MM-dd')(new UTCDateMini(response[0].DataHoraInicio))
+      return format(new UTCDateMini(response[0].DataHoraInicio), 'yyyy-MM-dd')
     }
     return ''
   }
@@ -206,9 +206,10 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
     if (fabricacao === '') {
       throw new Error('Ordem de produção não possui 3059, 3060, 4020 ou 3160')
     }
-    const validade = flowRight([format('yyyy-MM-dd'), addYears(5)])(
-      new UTCDateMini(fabricacao)
-    )
+    const validade = flow([
+      ($) => addYears($, 5),
+      ($) => format($, 'yyyy-MM-dd'),
+    ])(new UTCDateMini(fabricacao))
     return validade
   }
 

@@ -39,15 +39,16 @@ const setSelected = (name: string) => {
 }
 
 const fetchDir = async () => {
+  const params = {
+    path: state.path,
+  }
   const list = (await cache.memo(
     {
-      path: state.path,
-      _table: tableName,
+      params,
+      tables: [tableName],
+      rpc: 'fileManager_dir',
     },
-    () =>
-      rpc.request('fileManager_dir', {
-        path: state.path,
-      })
+    () => rpc.request('fileManager_dir', params)
   )) as {
     dir: TData<'name'>[]
     file: TData<'name'>[]
@@ -58,17 +59,17 @@ const fetchDir = async () => {
 }
 
 const fetchStat = async () => {
+  const params = {
+    path: state.path,
+    name: state.selected,
+  }
   const stat = (await cache.memo(
     {
-      path: state.path,
-      name: state.selected,
-      _table: tableName,
+      params,
+      tables: [tableName],
+      rpc: 'fileManager_stat',
     },
-    () =>
-      rpc.request('fileManager_stat', {
-        path: state.path,
-        name: state.selected,
-      })
+    () => rpc.request('fileManager_stat', params)
   )) as {
     hsize: string
     size: number

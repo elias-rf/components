@@ -3,7 +3,7 @@ import type { TSchema } from '@/schemas/schema.type.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
 import { UTCDateMini } from '@date-fns/utc'
-import { format, formatWithOptions } from 'date-fns/fp'
+import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import * as v from 'valibot'
 
@@ -109,8 +109,8 @@ function ordemProducaoOperacaoControllerFactory(
 
     return data.map((item: any) => {
       const itemDia = new UTCDateMini(item.dia)
-      item.diaSemana = formatWithOptions({ locale: ptBR }, 'EEEEEE')(itemDia)
-      item.dia = format('yyyy-MM-dd')(itemDia)
+      item.diaSemana = format(itemDia, 'EEEEEE', { locale: ptBR })
+      item.dia = format(itemDia, 'yyyy-MM-dd')
       return item
     })
   }

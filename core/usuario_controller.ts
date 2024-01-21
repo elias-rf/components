@@ -6,9 +6,9 @@ import { config } from '@/utils/config/index.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
 import { passwordVerify } from '@/utils/string/password-verify.js'
-import { format, fromUnixTime } from 'date-fns/fp'
+import { format, fromUnixTime } from 'date-fns'
 import jwtService from 'jsonwebtoken'
-import { flowRight } from 'lodash-es'
+import { flow } from 'lodash-es'
 
 export const tbl_Seguranca_Usuario = {
   database: 'oftalmo',
@@ -40,10 +40,10 @@ function usuarioControllerFactory(db: TAdapterKnex, schema: TSchema) {
   async function usuario_me(_: void, ctx?: TRpcContext) {
     const resp: any = { ...ctx?.user }
     if (resp && resp.iat) {
-      resp.iat = flowRight([format('yyyy-MM-ddTHH:mm:ss'), fromUnixTime()])(
+      resp.iat = flow([fromUnixTime, ($) => format($, 'yyyy-MM-ddTHH:mm:ss')])(
         resp.iat
       )
-      resp.exp = flowRight([format('yyyy-MM-ddTHH:mm:ss'), fromUnixTime()])(
+      resp.exp = flow([fromUnixTime, ($) => format($, 'yyyy-MM-ddTHH:mm:ss')])(
         resp.exp
       )
     }

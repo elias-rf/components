@@ -1,6 +1,6 @@
 import { Title } from '@/client/components/title/title.js'
 import { rpc } from '@/client/lib/rpc.js'
-import { format } from 'date-fns/fp'
+import { format } from 'date-fns'
 import React from 'react'
 
 function quantidadeProduto(data: any[] | undefined, prod: string) {
@@ -11,7 +11,7 @@ function quantidadeProduto(data: any[] | undefined, prod: string) {
 
 export function TransferenciaMes() {
   const [data, setData] = React.useState<any[]>([])
-  const mesInicial = format('yyyy-MM-dd')(new Date())
+  const mesInicial = format(new Date(), 'yyyy-MM-dd')
 
   React.useEffect(() => {
     async function getData() {

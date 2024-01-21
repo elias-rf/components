@@ -8,7 +8,7 @@ import {
   FormMessage,
 } from '@/client/components/form/form.js'
 import { Input } from '@/client/components/input/input.js'
-import { Modal } from '@/client/components/ui-old/modal.js'
+import { Modal } from '@/client/components/ui-old/modal/modal.js'
 import { useForm } from 'react-hook-form'
 
 export type TLoginProps = {

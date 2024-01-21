@@ -1,6 +1,5 @@
 import { authStore } from '@/client/store/auth_store.js'
 import React, { Suspense } from 'react'
-import { useSnapshot } from 'valtio'
 import { Route, Switch, useLocation } from 'wouter'
 import { Layout } from './features/layout.js'
 import { Home } from './pages/home.js'
@@ -14,7 +13,7 @@ const Page404 = React.lazy(async () => import('./pages/page_404.js'))
 
 // comercial
 const Clientes = React.lazy(
-  async () => import('./pages/comercial/clientes/clientes.js')
+  async () => import('./pages/comercial/cliente/cliente.js')
 )
 // const Faturamento = React.lazy(
 //   async () => import('./pages/comercial/faturamento')

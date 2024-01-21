@@ -8,7 +8,7 @@ export type TSelect<TFields> = (TFields | '*')[]
 export type TOrderBy<TFields> = [TFields, 'asc' | 'desc'][]
 export type TData<TFields extends string> = {
   [fields in TFields]: any
-} & Record<TFields, any>
+}
 
 /** Lista de registros selecionados */
 export type TSelection<T> = TId<T>

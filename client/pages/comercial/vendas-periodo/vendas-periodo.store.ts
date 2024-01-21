@@ -1,8 +1,8 @@
 import { cache } from '@/client/lib/cache.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { formatDiario } from '@/client/pages/comercial/vendas-periodo/format-diario.js'
-import { format, subDays } from 'date-fns/fp'
-import { flowRight } from 'lodash-es'
+import { format, subDays } from 'date-fns'
+import { flow } from 'lodash-es'
 import { proxy } from 'valtio'
 import { devtools } from 'valtio/utils'
 
@@ -32,27 +32,28 @@ const uf: string[] = []
 
 const initialState: TState = {
   list: {} as TList,
-  inicio: flowRight([format('yyyy-MM-dd'), subDays(30)])(new Date()), //format(subDays(new Date(), 30), 'yyyy-MM-dd'),
-  fim: format('yyyy-MM-dd')(new Date()),
+  inicio: flow([($) => subDays($, 30), ($) => format($, 'yyyy-MM-dd')])(
+    new Date()
+  ), //format(subDays(new Date(), 30), 'yyyy-MM-dd'),
+  fim: format(new Date(), 'yyyy-MM-dd'),
 }
 
 const state = proxy(initialState)
 devtools(state, { name: 'vendasPeriodo', enabled: true })
 
 const fetchList = async () => {
+  const params = {
+    inicio: state.inicio,
+    fim: state.fim,
+    uf,
+  }
   const list = (await cache.memo(
     {
-      inicio: state.inicio,
-      fim: state.fim,
-      uf,
-      _table: 'vendasPeriodo',
+      params,
+      tables: ['vendas'],
+      rpc: 'nfSaida_vendaDiario',
     },
-    () =>
-      rpc.request('nfSaida_vendaDiario', {
-        inicio: state.inicio,
-        fim: state.fim,
-        uf,
-      })
+    () => rpc.request('nfSaida_vendaDiario', params)
   )) as any[]
   const response = formatDiario(list) as TList
 

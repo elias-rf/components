@@ -1,4 +1,4 @@
-import { Chip } from '@/client/components/ui-old/chip.js'
+import { Chip } from '@/client/components/ui-old/chip/chip.js'
 import { Select } from '@/client/components/ui-old/select/select.js'
 import { useEffect, useState } from 'react'
 

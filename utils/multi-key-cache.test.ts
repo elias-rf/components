@@ -144,10 +144,22 @@ describe('MultiKeyCache', () => {
         onEvent,
       })
 
-      expect(await cache.memo({ id: 1 }, () => fn(1))).toEqual(1)
+      expect(
+        await cache.memo({ tables: [], rpc: '', params: { id: 1 } }, () =>
+          fn(1)
+        )
+      ).toEqual(1)
 
-      expect(await cache.memo({ id: 3 }, () => fn(3))).toEqual(3)
-      expect(await cache.memo({ id: 1 }, () => fn(1))).toEqual(1)
+      expect(
+        await cache.memo({ tables: [], rpc: '', params: { id: 3 } }, () =>
+          fn(3)
+        )
+      ).toEqual(3)
+      expect(
+        await cache.memo({ tables: [], rpc: '', params: { id: 1 } }, () =>
+          fn(1)
+        )
+      ).toEqual(1)
 
       expect(cache.keys()).toEqual(['{"id":1}', '{"id":3}'])
     })

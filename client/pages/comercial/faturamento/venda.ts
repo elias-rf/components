@@ -1,6 +1,6 @@
 import { formatMoney } from '@/utils/format/format-money.js'
-import { format, parse } from 'date-fns/fp'
-import { flowRight } from 'lodash-es'
+import { format, parse } from 'date-fns'
+import { flow } from 'lodash-es'
 
 export type Record = {
   origem: string
@@ -39,9 +39,10 @@ export function mensal(data?: Record[]) {
   if (data === undefined) return []
   const rsp = data.reduce(
     (previous, current) => {
-      const mes = flowRight([format('yyyy-MM'), parse('yyyy-MM-dd')])(
-        current.DtEmissao
-      )
+      const mes = flow([
+        ($) => parse($, 'yyyy-MM-dd', new Date()),
+        ($) => format($, 'yyyy-MM'),
+      ])(current.DtEmissao)
       const sinal = current.Tipo === 'S' ? 1 : -1
 
       const valor = sinal * current.VlTotal + (previous[mes] ?? 0)
@@ -67,9 +68,10 @@ export function mensalProduto(mesCorrente: string[], data?: Record[]) {
   if (data === undefined) return []
   const rsp = data.reduce(
     (previous, current) => {
-      const mes = flowRight([format('yyyy-MM'), parse('yyyy-MM-dd')])(
-        current.DtEmissao
-      ) // day(current.DtEmissao).format('YYYY-MM')
+      const mes = flow([
+        ($) => parse($, 'yyyy-MM-dd', new Date()),
+        ($) => format($, 'yyyy-MM'),
+      ])(current.DtEmissao) // day(current.DtEmissao).format('YYYY-MM')
       if (mes === mesCorrente[0]) {
         const produto = current.NmCategoria
         if (!Object.hasOwn(previous, produto)) {
@@ -106,9 +108,10 @@ export function mensalVendedor(mesCorrente: string[], data?: Record[]) {
   if (data === undefined) return []
   const rsp = data.reduce(
     (previous, current) => {
-      const mes = flowRight([format('yyyy-MM'), parse('yyyy-MM-dd')])(
-        current.DtEmissao
-      ) // day(current.DtEmissao).format('YYYY-MM')
+      const mes = flow([
+        ($) => parse($, 'yyyy-MM-dd', new Date()),
+        ($) => format($, 'yyyy-MM'),
+      ])(current.DtEmissao) // day(current.DtEmissao).format('YYYY-MM')
       if (mes === mesCorrente[0]) {
         const vendedor = current.NmVendedor
         if (!Object.hasOwn(previous, vendedor)) {
@@ -139,9 +142,10 @@ export function mensalVendedorProduto(
   if (data === undefined) return []
   const rsp = data.reduce(
     (previous, current) => {
-      const mes = flowRight([format('yyyy-MM'), parse('yyyy-MM-dd')])(
-        current.DtEmissao
-      ) // day(current.DtEmissao).format('YYYY-MM')
+      const mes = flow([
+        ($) => parse($, 'yyyy-MM-dd', new Date()),
+        ($) => format($, 'yyyy-MM'),
+      ])(current.DtEmissao) // day(current.DtEmissao).format('YYYY-MM')
       if (
         mes === mesCorrente[0] &&
         current.NmVendedor === vendedorCorrente[0]
@@ -185,9 +189,10 @@ export function mensalVendedorUf(
   if (data === undefined) return []
   const rsp = data.reduce(
     (previous, current) => {
-      const mes = flowRight([format('yyyy-MM'), parse('yyyy-MM-dd')])(
-        current.DtEmissao
-      ) // day(current.DtEmissao).format('YYYY-MM')
+      const mes = flow([
+        ($) => parse($, 'yyyy-MM-dd', new Date()),
+        ($) => format($, 'yyyy-MM'),
+      ])(current.DtEmissao) // day(current.DtEmissao).format('YYYY-MM')
       if (
         mes === mesCorrente[0] &&
         current.NmVendedor === vendedorCorrente[0]

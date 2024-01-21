@@ -1,9 +1,9 @@
 import { Button } from '@/client/components/button/button.js'
 import { Can } from '@/client/components/can.js'
-import { FormHead } from '@/client/components/ui-old/form-head.js'
-import { usuarioStore } from '@/client/pages/sistema/usuarios/components/usuario_store.js'
-import { UsuarioForm } from '@/client/pages/sistema/usuarios/usuarios_form.js'
-import { UsuarioTable } from '@/client/pages/sistema/usuarios/usuarios_table.js'
+import { FormHead } from '@/client/components/form-head/form-head.js'
+import { UsuarioForm } from '@/client/pages/sistema/usuarios/components/usuarios_form.js'
+import { UsuarioTable } from '@/client/pages/sistema/usuarios/components/usuarios_table.js'
+import { usuarioStore } from '@/client/pages/sistema/usuarios/usuario.store.js'
 import { authStore } from '@/client/store/auth_store.js'
 import { useSnapshot } from 'valtio'
 

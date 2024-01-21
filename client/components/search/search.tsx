@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/client/components/select/select.js'
-import { Chip } from '@/client/components/ui-old/chip.js'
+import { Chip } from '@/client/components/ui-old/chip/chip.js'
 import { FormField } from '@/client/components/ui-old/form-field/index.js'
 import { TWhere } from '@/types/index.js'
 import React, { useState } from 'react'
