@@ -8,13 +8,11 @@ import {
   MenubarSeparator,
   MenubarTrigger,
 } from '@/client/components/menubar/menubar.js'
-import { authStore } from '@/client/store/auth_store.js'
-import { useSnapshot } from 'valtio'
 import { useLocation } from 'wouter'
 
 export function NavbarApp() {
   const [_, setLocation] = useLocation()
-  const auth = useSnapshot(authStore.state)
+  // const auth = authStore.state(state=>state)
 
   function handleLink(to: string) {
     setLocation(to)

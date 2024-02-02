@@ -1,7 +1,7 @@
 import { Table } from '@/client/components/table-full/table.js'
 import { TOperacaoStore } from '@/client/pages/industrial/controles/components/operacao/operacao.store.js'
+import { useQuery } from '@tanstack/react-query'
 import React from 'react'
-import { useSnapshot } from 'valtio'
 import { operacaoMensalSchema } from './operacao-mensal.schema.js'
 
 type OperacaoMensalProps = {
@@ -10,19 +10,19 @@ type OperacaoMensalProps = {
 }
 
 export function OperacaoMensal({ children, store }: OperacaoMensalProps) {
-  const { mes, operacao, operacaoMensal, mesInicio } = useSnapshot(store.state)
+  const mes = store.state((state) => state.mes)
+  const operacao = store.state((state) => state.operacao)
+  const mesInicio = store.state((state) => state.mesInicio)
 
-  React.useEffect(() => {
-    store.fetchOperacaoMensal(
-      mesInicio as ['mes', string][],
-      operacao as ['operacao', string][]
-    )
-  }, [mesInicio, operacao])
+  const query = useQuery({
+    queryKey: ['operacaoMensal', { mesInicio, operacao }],
+    queryFn: () => store.fetchOperacaoMensal(mesInicio, operacao),
+  })
 
   return (
     <>
       <Table
-        rows={operacaoMensal as any}
+        rows={query.data || []}
         columns={operacaoMensalSchema}
         selection={mes as any}
         onSelection={store.setMes}

@@ -1,5 +1,4 @@
 import { Title } from '@/client/components/title/title.js'
-import '@/client/index.css'
 import type { Meta, StoryObj } from '@storybook/react'
 
 export const Default: Story = {

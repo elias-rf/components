@@ -1,4 +1,4 @@
-import { vendas30DiasStore } from '@/client/pages/comercial/vendas-30dias/vendas-30dias.store.js'
+import { vendas30DiasStore } from '@/client/pages/comercial/vendas-30dias/components/vendas-30dias.store.js'
 import type { Meta, StoryObj } from '@storybook/react'
 import { Vendas30dias } from './vendas-30dias_form.js'
 

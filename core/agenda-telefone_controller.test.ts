@@ -1,7 +1,6 @@
 import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
 import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
 import { getTracker } from '@/utils/mocks/database.mock.js'
-import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'
 import { beforeEach, describe, expect, test } from 'vitest'
 import { agendaTelefoneController } from './agenda-telefone_controller.js'
 
@@ -60,7 +59,7 @@ describe('agendaTelefoneController', () => {
       where: [['id', 1]],
       data: { id: 10 },
       returning: ['id'],
-      debug: true,
+      debug: false,
     })
     expect(rsp).toEqual({ id: 10 })
     expect(dbOftalmo.log()).toEqual([

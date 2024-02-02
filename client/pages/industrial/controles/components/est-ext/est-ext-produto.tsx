@@ -1,7 +1,6 @@
 import { Table } from '@/client/components/table-full/table.js'
 import { TEsterilizacaoExternaStore } from '@/client/pages/industrial/controles/components/est-ext/est-ext.store.js'
-import React from 'react'
-import { useSnapshot } from 'valtio'
+import { useQuery } from '@tanstack/react-query'
 import { EsterilizacaoExternaProdutoSchema } from './est-ext-produto.schema.js'
 
 type EsterilizacaoExternaProdutoProp = {
@@ -13,21 +12,20 @@ export function EsterilizacaoExternaProduto({
   children,
   store,
 }: EsterilizacaoExternaProdutoProp) {
-  const { dia, produto, esterilizacaoExternaProduto } = useSnapshot(store.state)
-  const setProduto = store.setProduto
-  const fetchEsterilizacaoExternaProduto =
-    store.fetchEsterilizacaoExternaProduto
+  const produto = store.state((state) => state.produto)
+  const dia = store.state((state) => state.dia)
 
-  React.useEffect(() => {
-    fetchEsterilizacaoExternaProduto(dia as ['dia', string][])
-  }, [dia])
+  const query = useQuery({
+    queryKey: ['esterilizacaoExternaProduto', { dia }],
+    queryFn: () => store.fetchEsterilizacaoExternaProduto(dia),
+  })
 
   return (
     <Table
-      rows={esterilizacaoExternaProduto as any}
+      rows={query.data || []}
       columns={EsterilizacaoExternaProdutoSchema}
       selection={produto as any}
-      onSelection={setProduto}
+      onSelection={store.setProduto}
       getId={(rec: any) => [['produto', rec.produto]]}
     >
       {() => <>{children}</>}

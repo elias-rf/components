@@ -2,9 +2,10 @@ import { Can } from '@/client/components/can.js'
 import { Title } from '@/client/components/title/title.js'
 import { Permissions } from '@/client/features/permissions.js'
 import { cn } from '@/client/lib/utils.js'
+import { TPermissions } from '@/types/index.js'
 
 type TFormHeadProps = {
-  permissions: { [permission: string]: string }
+  permissions: TPermissions
   editPermissions: boolean
   className?: string
   children?: React.ReactNode

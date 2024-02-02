@@ -1,5 +1,5 @@
 import { Chip, TChipProps } from '@/client/components/ui-old/chip/chip.js'
-import '@/client/index.css'
+
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Chip> = {

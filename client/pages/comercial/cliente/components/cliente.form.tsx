@@ -12,39 +12,26 @@ import {
   TabsList,
   TabsTrigger,
 } from '@/client/components/tabs/tabs.js'
-import type { TClienteStore } from '@/client/pages/comercial/cliente/cliente.store.js'
+import type { TClienteStore } from '@/client/pages/comercial/cliente/components/cliente.store.js'
 import { ClienteQuantidade } from '@/client/pages/comercial/cliente/components/quantidade/cliente-quantidade.js'
 import { ClienteValorMedio } from '@/client/pages/comercial/cliente/components/valor-medio/cliente-valor-medio.js'
 import { ClienteValor } from '@/client/pages/comercial/cliente/components/valor/cliente-valor.js'
+import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-hot-toast'
-import { useSnapshot } from 'valtio'
 
 export function ClienteForm({ store }: { store: TClienteStore }) {
-  const { record, selection, recordClear } = useSnapshot(store.state)
-  const form = useForm({ defaultValues: recordClear })
+  const selection = store.state((state) => state.selection)
+  const status = store.state((state) => state.status)
+  const form = useForm({ defaultValues: store.recordClear })
+  const query = useQuery({
+    queryKey: ['agendaTelefone', { selection }],
+    queryFn: () => store.fetchRecord({ selection }),
+  })
 
   useEffect(() => {
-    form.reset(record)
-  }, [record])
-
-  // useEffect(() => {
-  //   toast.promise(
-  //     store.fetchRecord(),
-  //     {
-  //       loading: 'Carregando cliente...',
-  //       success: 'Cliente carregado com sucesso!',
-  //       error: 'Erro ao carregar cliente!',
-  //     },
-  //     {
-  //       id: 'cliente-form',
-  //       style: {
-  //         minWidth: '350px',
-  //       },
-  //     }
-  //   )
-  // }, [selection])
+    form.reset(query.data || store.recordClear)
+  }, [query.data])
 
   return (
     <div className="grid grid-cols-12 gap-3">

@@ -1,5 +1,5 @@
 import { authStore } from '@/client/store/auth_store.js'
-import '@/utils/mocks/core.mock.js'
+
 import type { Meta, StoryObj } from '@storybook/react'
 import Controles from './controles.js'
 
@@ -7,7 +7,7 @@ const meta: Meta<typeof Controles> = {
   component: Controles,
 }
 
-authStore.state.user.group_ids = '0'
+authStore.state.getState().user.group_ids = '0'
 
 export default meta
 type Story = StoryObj<typeof Controles>

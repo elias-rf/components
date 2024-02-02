@@ -11,7 +11,6 @@ import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { operacaoStore } from '@/client/pages/industrial/controles/components/operacao/operacao.store.js'
 import { TId } from '@/types/index.js'
 import { getFieldId } from '@/utils/query/get-field-id.js'
-import { useSnapshot } from 'valtio'
 import { OperacaoDiario } from './operacao-diario.js'
 import { OperacaoMensal } from './operacao-mensal.js'
 import { OperacaoModelo } from './operacao-modelo.js'
@@ -19,11 +18,10 @@ import { OperacaoProduto } from './operacao-produto.js'
 import { OperacaoTurno } from './operacao-turno.js'
 
 export function Operacao() {
-  const { operacao } = useSnapshot(operacaoStore.state)
-  const setOperacao = operacaoStore.setOperacao
+  const operacao = operacaoStore.state((state) => state.operacao)
 
   function handleSelect(value: string) {
-    setOperacao([['operacao', value]])
+    operacaoStore.setOperacao([['operacao', value]])
   }
 
   return (

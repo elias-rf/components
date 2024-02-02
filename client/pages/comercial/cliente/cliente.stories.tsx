@@ -1,6 +1,6 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
-import { clienteStore } from '@/client/pages/comercial/cliente/cliente.store.js'
-import '@/utils/mocks/core.mock.js'
+import { clienteStore } from '@/client/pages/comercial/cliente/components/cliente.store.js'
+import { authStore } from '@/client/store/auth_store.js'
 import type { Meta, StoryObj } from '@storybook/react'
 import Cliente from './cliente.js'
 
@@ -11,12 +11,16 @@ const meta: Meta<typeof Cliente> = {
 export default meta
 type Story = StoryObj<typeof Cliente>
 
-clienteStore.fetchList()
+authStore.state.getState().user.group_ids = '0'
 
 export const Default: Story = {
-  render: () => (
-    <>
-      <Cliente /> <JsonView data={clienteStore.state} />
-    </>
-  ),
+  render: () => {
+    const state = clienteStore.state((state) => state)
+    return (
+      <>
+        <Cliente />
+        <JsonView data={state} />
+      </>
+    )
+  },
 }

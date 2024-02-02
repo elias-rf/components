@@ -3,7 +3,7 @@ import {
   TToggleProps,
   Toggle,
 } from '@/client/components/ui-old/toggle/toggle.js'
-import '@/client/index.css'
+
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 

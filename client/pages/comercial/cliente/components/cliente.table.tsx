@@ -1,34 +1,27 @@
 import { Table } from '@/client/components/table-full/table.js'
-import { TClienteStore } from '@/client/pages/comercial/cliente/cliente.store.js'
+import { TClienteStore } from '@/client/pages/comercial/cliente/components/cliente.store.js'
 import { TClienteFields, TClienteKeys } from '@/core/cliente_controller.js'
-import type { TData, TId } from '@/types/index.js'
-import { useEffect } from 'react'
-import { toast } from 'react-hot-toast'
-import { useSnapshot } from 'valtio'
+import type { TData, TId, TSelect } from '@/types/index.js'
+import { useQuery } from '@tanstack/react-query'
 import { clienteColumns } from './cliente.columns.js'
 
+// cliente 3695
+
+const select = clienteColumns.map((col) => col.name) as TSelect<TClienteFields>
+
 export function ClienteTable({ store }: { store: TClienteStore }) {
-  const { where, orderBy, list, selection } = useSnapshot(
-    store.state
-  ) as typeof store.state
+  const where = store.state((state) => state.where)
+  const orderBy = store.state((state) => state.orderBy)
+  const selection = store.state((state) => state.selection)
+
+  const query = useQuery({
+    queryKey: ['cliente', { where, orderBy }],
+    queryFn: () => store.fetchList({ where, orderBy, select }),
+  })
 
   function getId(row: TData<TClienteFields>): TId<TClienteKeys> {
     return [['CdCliente', row.CdCliente]]
   }
-
-  // useEffect(() => {
-  //   toast.promise(
-  //     store.fetchList(),
-  //     {
-  //       loading: 'lendo...',
-  //       success: 'sucesso!',
-  //       error: 'Erro ao carregar lista!',
-  //     },
-  //     {
-  //       id: 'cliente-table',
-  //     }
-  //   )
-  // }, [where, orderBy])
 
   return (
     <div
@@ -41,8 +34,8 @@ export function ClienteTable({ store }: { store: TClienteStore }) {
         onOrderBy={store.setOrderBy}
         onSelection={store.setSelection}
         onWhere={store.setWhere}
-        orderBy={store.state.orderBy}
-        rows={list ?? []}
+        orderBy={orderBy}
+        rows={query.data || []}
         selection={selection}
         where={where}
       />

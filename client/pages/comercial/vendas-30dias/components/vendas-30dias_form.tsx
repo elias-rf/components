@@ -1,6 +1,6 @@
-import { TVendas30DiasStore } from '@/client/pages/comercial/vendas-30dias/vendas-30dias.store.js'
+import { TVendas30DiasStore } from '@/client/pages/comercial/vendas-30dias/components/vendas-30dias.store.js'
 import { formatMoney } from '@/utils/format/format-money.js'
-import { toast } from 'react-hot-toast'
+import { useQuery } from '@tanstack/react-query'
 import {
   Line,
   LineChart,
@@ -9,8 +9,6 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
-import { useEffectOnce } from 'usehooks-ts'
-import { useSnapshot } from 'valtio'
 
 /**
  * Componente para manipular Agenda de Ramais
@@ -18,20 +16,11 @@ import { useSnapshot } from 'valtio'
  * @returns {*} componente react
  */
 export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
-  const { list } = useSnapshot(store.state)
-
-  useEffectOnce(() => {
-    toast.promise(
-      store.fetchList(),
-      {
-        loading: 'lendo...',
-        success: 'sucesso!',
-        error: 'Erro ao carregar vendas!',
-      },
-      {
-        id: 'vendas30dias-table',
-      }
-    )
+  const inicio = store.state((state) => state.inicio)
+  const fim = store.state((state) => state.fim)
+  const query = useQuery({
+    queryKey: ['vendas-30dias', { inicio, fim }],
+    queryFn: () => store.fetchList({ inicio, fim }),
   })
 
   const width = '100%'
@@ -46,7 +35,7 @@ export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
           height={height}
         >
           <LineChart
-            data={list?.liteflex as any}
+            data={query.data?.liteflex as any}
             syncId="implante"
           >
             <Line
@@ -85,7 +74,7 @@ export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
           width={width}
           height={height}
         >
-          <LineChart data={list?.hilite as any}>
+          <LineChart data={query.data?.hilite as any}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -121,7 +110,7 @@ export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
           height={height}
         >
           <LineChart
-            data={list?.enlite as any}
+            data={query.data?.enlite as any}
             syncId="implante"
           >
             <Line
@@ -158,7 +147,7 @@ export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
           width={width}
           height={height}
         >
-          <LineChart data={list?.metil as any}>
+          <LineChart data={query.data?.metil as any}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -195,7 +184,7 @@ export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
           width={width}
           height={height}
         >
-          <LineChart data={list?.anel as any}>
+          <LineChart data={query.data?.anel as any}>
             <Line
               type="monotone"
               yAxisId="right"
@@ -232,7 +221,7 @@ export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
           width={width}
           height={height}
         >
-          <LineChart data={list?.enliteLiteflex as any}>
+          <LineChart data={query.data?.enliteLiteflex as any}>
             <Line
               type="monotone"
               yAxisId="right"

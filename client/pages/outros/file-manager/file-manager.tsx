@@ -1,6 +1,6 @@
 import { FormHead } from '@/client/components/form-head/form-head.js'
-import { fileManagerStore } from '@/client/pages/outros/file-manager/file-manager_store.js'
-import { FileManagerTable } from '@/client/pages/outros/file-manager/file-manager_table.js'
+import { fileManagerStore } from '@/client/pages/outros/file-manager/components/file-manager_store.js'
+import { FileManagerTable } from '@/client/pages/outros/file-manager/components/file-manager_table.js'
 import { authStore } from '@/client/store/auth_store.js'
 
 const permissions = {

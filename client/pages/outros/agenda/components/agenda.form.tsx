@@ -1,39 +1,62 @@
 import { Button } from '@/client/components/button/button.js'
-import { Label } from '@/client/components/label/label.js'
-import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
-import { InputForm } from '@/client/components/ui-old/input/input-form.js'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from '@/client/components/form/form.js'
+import { Input } from '@/client/components/input/input.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
-import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/agenda.store.js'
+import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda.store.js'
+import {
+  TAgendaTelefoneFields,
+  TAgendaTelefoneKeys,
+} from '@/core/agenda-telefone_controller.js'
+import { TData, TId } from '@/types/index.js'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-hot-toast'
-import { useSnapshot } from 'valtio'
 
 export const AgendaTelefoneForm = ({
   store,
 }: {
   store: TAgendaTelefoneStore
 }) => {
-  const state = useSnapshot(store.state)
-  const form = useForm({ defaultValues: state.recordClear })
+  const status = store.state((state) => state.status)
+  const selection = store.state((state) => state.selection)
+  const form = useForm({ defaultValues: store.recordClear })
+  const query = useQuery({
+    queryKey: ['agendaTelefone', { selection }],
+    queryFn: () => store.fetchRecord({ selection }),
+  })
+  const queryClient = useQueryClient()
+  const onSave = useMutation({
+    mutationFn: (record: TData<TAgendaTelefoneFields>) => {
+      return store.onSave(record)
+    },
+    onSuccess: () => {
+      return queryClient.invalidateQueries({
+        queryKey: ['agendaTelefone'],
+        type: 'active',
+      })
+    },
+  })
+
+  const onDelete = useMutation({
+    mutationFn: (selection: TId<TAgendaTelefoneKeys>) => {
+      return store.onDelete(selection)
+    },
+    onSuccess: () => {
+      return queryClient.invalidateQueries({
+        queryKey: ['agendaTelefone'],
+      })
+    },
+  })
 
   useEffect(() => {
-    form.reset(state.record)
-  }, [state.record])
-
-  useEffect(() => {
-    toast.promise(
-      store.fetchRecord(),
-      {
-        loading: 'lendo...',
-        success: 'sucesso!',
-        error: 'Erro ao carregar cadastro!',
-      },
-      {
-        id: 'agenda-telefone-form',
-      }
-    )
-  }, [state.selection])
+    form.reset(query.data || store.recordClear)
+  }, [query.data])
 
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',
@@ -47,73 +70,98 @@ export const AgendaTelefoneForm = ({
       'Tem certeza que deseja apagar ' + form?.getValues('name')
     )
     if (response === 'option1') {
-      store.onDelete()
+      onDelete.mutate(selection)
     }
   }
 
   return (
-    <div>
+    <>
       <div className="flex-rows my-2 flex space-x-2">
         <Button
           onClick={store.onEdit}
-          disabled={['none', 'edit', 'new'].includes(state.status)}
+          disabled={['none', 'edit', 'new'].includes(status)}
           size="sm"
         >
           EDITAR
         </Button>
         <Button
           onClick={handleDel}
-          disabled={['none', 'edit', 'new'].includes(state.status)}
+          disabled={['none', 'edit', 'new'].includes(status)}
           size="sm"
         >
           EXCLUIR
         </Button>
       </div>
       <div className="grid grid-cols-12 gap-3">
-        <div className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <FormField>
-            <Label htmlFor="id">Ramal *</Label>
-            <InputForm
-              disabled={['none', 'view'].includes(state.status)}
-              {...form.register('id')}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-10 lg:col-span-5">
-          <FormField>
-            <Label htmlFor="name">Nome</Label>
-            <InputForm
-              disabled={['none', 'view'].includes(state.status)}
-              {...form.register('name')}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-4 lg:col-span-2">
-          <FormField>
-            <Label htmlFor="department">Setor</Label>
-            <InputForm
-              disabled={['none', 'view'].includes(state.status)}
-              {...form.register('department')}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-8 lg:col-span-4">
-          <FormField>
-            <Label htmlFor="email">Email</Label>
-            <InputForm
-              disabled={['none', 'view'].includes(state.status)}
-              {...form.register('email')}
-            />
-          </FormField>
-        </div>
+        <Form {...form}>
+          <FormField
+            control={form.control}
+            name="id"
+            render={({ field }) => (
+              <FormItem className="col-span-12 sm:col-span-2 lg:col-span-1">
+                <FormLabel>Ramal *</FormLabel>
+                <FormControl>
+                  <Input
+                    disabled={['none', 'view'].includes(status)}
+                    {...form.register('id')}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem className="col-span-12 sm:col-span-10 lg:col-span-5">
+                <FormLabel>Nome</FormLabel>
+                <FormControl>
+                  <Input
+                    disabled={['none', 'view'].includes(status)}
+                    {...form.register('name')}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="department"
+            render={({ field }) => (
+              <FormItem className="col-span-12 sm:col-span-4 lg:col-span-2">
+                <FormLabel>Setor</FormLabel>
+                <FormControl>
+                  <Input
+                    disabled={['none', 'view'].includes(status)}
+                    {...form.register('department')}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="col-span-12 sm:col-span-8 lg:col-span-4">
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input
+                    disabled={['none', 'view'].includes(status)}
+                    {...form.register('email')}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+        </Form>
       </div>
       <div className="flex-rows align-center my-2 flex justify-end space-x-2">
         <Button
           onClick={() => {
-            store.setRecord(form.getValues())
-            store.onSave()
+            onSave.mutate(form.getValues())
           }}
-          disabled={['none', 'view'].includes(state.status)}
+          disabled={['none', 'view'].includes(status)}
           size="sm"
         >
           SALVAR
@@ -123,13 +171,13 @@ export const AgendaTelefoneForm = ({
             form.reset()
             store.onCancel()
           }}
-          disabled={['none', 'view'].includes(state.status)}
+          disabled={['none', 'view'].includes(status)}
           size="sm"
         >
           CANCELAR
         </Button>
       </div>
       <MsgBox />
-    </div>
+    </>
   )
 }

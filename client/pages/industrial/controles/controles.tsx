@@ -11,14 +11,7 @@ import { EstInt } from '@/client/pages/industrial/controles/components/est-int/e
 import { Operacao } from '@/client/pages/industrial/controles/components/operacao/operacao.js'
 import { Transferencia } from '@/client/pages/industrial/controles/components/transferencia/transferencia.js'
 import { authStore } from '@/client/store/auth_store.js'
-
-const permissions = {
-  industrial_controles_permissao:
-    'Atribuir permissões para controles de produção',
-  industrial_controles_read: 'Visualizar controles de produção',
-}
-
-type TCan = (name: keyof typeof permissions) => boolean
+import { permissions } from './components/constants.js'
 
 export default function Controles() {
   return (

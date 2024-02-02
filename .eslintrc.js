@@ -12,8 +12,8 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:promise/recommended',
     'plugin:storybook/recommended',
-    'plugin:valtio/recommended',
     'plugin:vitest/recommended',
+    'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {

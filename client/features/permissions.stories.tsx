@@ -1,4 +1,3 @@
-import '@/utils/mocks/core.mock.js'
 import type { Meta, StoryObj } from '@storybook/react'
 import { Permissions } from './permissions.js'
 
@@ -10,10 +9,10 @@ export default meta
 type Story = StoryObj<typeof Permissions>
 
 const permissions = {
-  prm1: 'Editar formulário criado por você.',
-  prm2: 'Editar formulário criado por todos',
-  prm3: 'Excluir formulário',
-  prm4: 'Adicionar formulário',
+  PRM1: { key: 'prm1', description: 'Editar formulário criado por você.' },
+  PRM2: { key: 'prm2', description: 'Editar formulário criado por todos' },
+  PRM3: { key: 'prm3', description: 'Excluir formulário' },
+  PRM4: { key: 'prm4', description: 'Adicionar formulário' },
 }
 
 export const Form: Story = {

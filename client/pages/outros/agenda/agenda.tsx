@@ -1,11 +1,10 @@
 import { Button } from '@/client/components/button/button.js'
 import { Can } from '@/client/components/can.js'
 import { FormHead } from '@/client/components/form-head/form-head.js'
-import { agendaTelefoneStore } from '@/client/pages/outros/agenda/agenda.store.js'
 import { AgendaTelefoneForm } from '@/client/pages/outros/agenda/components/agenda.form.js'
+import { agendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda.store.js'
 import { AgendaTelefoneTable } from '@/client/pages/outros/agenda/components/agenda.table.js'
 import { authStore } from '@/client/store/auth_store.js'
-import { useSnapshot } from 'valtio'
 
 const permissions = {
   outros_agenda_permissao: 'Atribuir permissões',
@@ -19,7 +18,7 @@ type TCan = (name: keyof typeof permissions) => boolean
  * Agenda de Ramais
  */
 export default function Agenda() {
-  const { status } = useSnapshot(agendaTelefoneStore.state)
+  const status = agendaTelefoneStore.state((state) => state.status)
 
   return (
     <Can can={true}>

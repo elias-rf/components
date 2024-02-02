@@ -8,6 +8,7 @@ function getSum(lista: any[], produto: string, data: Date) {
     ($) => format($, 'yyyy-MM-dd'),
   ])(data)
   const dataFinal = format(data, 'yyyy-MM-dd')
+
   const produtoArray = lista.filter((item: any) => {
     return (
       item.NmCategoria === produto &&
@@ -24,6 +25,7 @@ function getSum(lista: any[], produto: string, data: Date) {
     },
     { quantidade: 0, valor: 0 }
   )
+
   return {
     dia: format(data, 'yyyy-MM-dd'),
     quantidade: sum.quantidade,
@@ -49,6 +51,8 @@ export type TFormatDiarios = {
 }
 
 export function formatDiario(origem: any[], fim: string): TFormatDiarios {
+  console.log(`🚀 ~ formatDiario ~ fim:`, fim)
+
   const destino: any = {
     liteflex: [],
     metil: [],
@@ -60,9 +64,10 @@ export function formatDiario(origem: any[], fim: string): TFormatDiarios {
 
   for (let dia = 45; dia >= 0; dia--) {
     const diaFinal = flow([
-      ($) => subDays($, dia),
       ($) => parse($, 'yyyy-MM-dd', new Date()),
+      ($) => subDays($, dia),
     ])(fim)
+
     destino.liteflex.push(getSum(origem, 'LITEFLEX', diaFinal))
     destino.metil.push(getSum(origem, 'METILCELULOSE', diaFinal))
     destino.enlite.push(getSum(origem, 'ENLITE', diaFinal))
@@ -82,5 +87,6 @@ export function formatDiario(origem: any[], fim: string): TFormatDiarios {
     }
   })
 
+  console.log(`🚀 ~ formatDiario ~ destino:`, destino)
   return destino
 }

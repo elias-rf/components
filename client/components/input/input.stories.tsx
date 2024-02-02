@@ -1,5 +1,4 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
-import '@/client/index.css'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { Input } from './input.js'

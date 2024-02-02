@@ -1,145 +1,45 @@
-import { rpc } from '@/client/lib/rpc.js'
-import { GroupSubjectTable } from '@/client/pages/sistema/permissoes/group-subject_table.js'
-import {
-  TGroupSubjectFields,
-  TGroupSubjectKeys,
-} from '@/core/group-subject_controller.js'
-import type {
-  TData,
-  TFormStatus,
-  TId,
-  TOrderBy,
-  TSelection,
-  TWhere,
-} from '@/types/index.js'
-import { deepEqual } from '@/utils/object/deep-equal.js'
-import React from 'react'
-import { useForm } from 'react-hook-form'
-
-export type TGroupSubjectList = any
-
-const dataClear = {
-  idGroup: '',
-  idSubject: '',
-}
+import { Button } from '@/client/components/button/button.js'
+import { Can } from '@/client/components/can.js'
+import { FormHead } from '@/client/components/form-head/form-head.js'
+import { groupSubjectStore } from '@/client/pages/sistema/permissoes/components/group-subject.store.js'
+import { GroupSubjectForm } from '@/client/pages/sistema/permissoes/components/group-subject_form.js'
+import { GroupSubjectTable } from '@/client/pages/sistema/permissoes/components/group-subject_table.js'
+import { authStore } from '@/client/store/auth_store.js'
+import { permissions } from './components/constants.js'
 
 /**
  * Componente para manipular Agenda de Ramais
  *
  * @returns {*} componente react
  */
-export function GroupSubject() {
-  // Form
-  const form = useForm({ defaultValues: dataClear })
-  const [status, setStatus] = React.useState<TFormStatus>('view')
-  // List
-  const [selection, setSelection] = React.useState<
-    TSelection<TGroupSubjectKeys>
-  >([])
-  const [where, setWhere] = React.useState<TWhere<TGroupSubjectFields>>([])
-  const [orderBy, setOrderBy] = React.useState<TOrderBy<TGroupSubjectFields>>(
-    []
-  )
-  // Data
-  const [list, setList] = React.useState<TData<TGroupSubjectFields>[]>([])
-
-  // Read Data
-  React.useEffect(() => {
-    async function getData() {
-      const data = await rpc.request('groupSubject_read', { where: selection })
-      form.reset(data || dataClear)
-    }
-    if (selection.length > 0) getData()
-  }, [form, selection])
-
-  async function getList(
-    where: TWhere<TGroupSubjectFields>,
-    orderBy: TOrderBy<TGroupSubjectFields>
-  ) {
-    const data = await rpc.request('groupSubject_list', { where, orderBy })
-    setList(data)
-  }
-
-  React.useEffect(() => {
-    getList(where, orderBy)
-  }, [where, orderBy])
-
-  function getId(row: TData<TGroupSubjectFields>): TId<TGroupSubjectKeys> {
-    return [
-      ['idGroup', row.idGroup],
-      ['idSubject', row.idSubject],
-    ]
-  }
-
-  function handleSelection(selected: TSelection<TGroupSubjectKeys>) {
-    if (deepEqual(selected, selection)) return setSelection([])
-    setSelection(selected)
-    setStatus('view')
-  }
-
-  function handleWhere(where: TWhere<TGroupSubjectFields>) {
-    // where = whereType(where, 'id', 'int')
-    setWhere(where)
-  }
-
-  function handleOrderBy(orderBy: TOrderBy<TGroupSubjectFields>) {
-    setOrderBy(orderBy)
-  }
-
-  function handleNew() {
-    setStatus('new')
-    form.reset(dataClear)
-    setSelection([])
-  }
-
-  async function handleDel() {
-    await rpc.request('groupSubject_del', { where: selection })
-    await getList(where, orderBy)
-    setStatus('view')
-    setSelection([])
-  }
-
-  async function handleSave() {
-    if (status === 'edit') {
-      await rpc.request('groupSubject_update', {
-        data: form.getValues(),
-        where: selection,
-      })
-    }
-    if (status === 'new') {
-      await rpc.request('groupSubject_create', { data: form.getValues() })
-    }
-    await getList(where, orderBy)
-    setStatus('view')
-  }
-
-  function handleCancel() {
-    setStatus('view')
-  }
-
-  function handleEdit() {
-    setStatus('edit')
-  }
+export default function GroupSubject() {
+  const status = groupSubjectStore.state((state) => state.status)
 
   return (
-    <>
-      <GroupSubjectTable
-        form={form}
-        getId={getId}
-        onCancel={handleCancel}
-        onDel={handleDel}
-        onEdit={handleEdit}
-        onNew={handleNew}
-        onOrderBy={handleOrderBy}
-        onSave={handleSave}
-        onSelection={handleSelection}
-        onWhere={handleWhere}
-        orderBy={orderBy}
-        rows={list}
-        selection={selection}
-        status={status}
-        where={where}
-      />
-    </>
+    <Can can={authStore.can(permissions.PERMISSAO.key)}>
+      <div className="flex h-full flex-col px-2">
+        <FormHead
+          className="flex-none"
+          editPermissions={authStore.can(permissions.PERMISSAO.key)}
+          permissions={permissions}
+          title="Permissões"
+        >
+          <Button
+            size={'sm'}
+            onClick={groupSubjectStore.onNew}
+          >
+            NOVO
+          </Button>
+        </FormHead>
+        <div className="h-64 flex-auto border border-gray-400 dark:border-gray-500">
+          <GroupSubjectTable store={groupSubjectStore} />
+        </div>
+        {status !== 'none' ? (
+          <div className="max-h-56 flex-auto">
+            <GroupSubjectForm store={groupSubjectStore} />
+          </div>
+        ) : null}
+      </div>
+    </Can>
   )
 }

@@ -4,8 +4,8 @@ import { getFieldId } from '@/utils/query/get-field-id.js'
 import { isIdEqual } from '@/utils/query/is-id-equal.js'
 import { endOfMonth, format, parse, startOfMonth, subMonths } from 'date-fns'
 import { flow } from 'lodash-es'
-import { proxy } from 'valtio'
-import { devtools } from 'valtio/utils'
+import { create } from 'zustand'
+import { devtools } from 'zustand/middleware'
 
 type TState = {
   mes: ['mes', string][]
@@ -13,10 +13,6 @@ type TState = {
   operacao: ['operacao', string][]
   produto: ['produto', string][]
   mesInicio: ['mes', string][]
-  esterilizacaoExternaDiario: any[]
-  esterilizacaoExternaMensal: any[]
-  esterilizacaoExternaModelo: any[]
-  esterilizacaoExternaProduto: any[]
 }
 
 const initialState: TState = {
@@ -33,50 +29,37 @@ const initialState: TState = {
       flow([($) => subMonths($, 13), ($) => format($, 'yyyy-MM')])(new Date()),
     ],
   ],
-  esterilizacaoExternaDiario: [],
-  esterilizacaoExternaMensal: [],
-  esterilizacaoExternaModelo: [],
-  esterilizacaoExternaProduto: [],
 }
 
-const state = proxy(initialState)
-devtools(state, {
-  name: 'controles',
-  enabled: true,
-})
+const state = create(devtools(() => initialState))
 
 const setMes = (mes: ['mes', string][]) => {
-  if (isIdEqual(state.mes, mes)) {
-    state.mes = []
+  if (isIdEqual(state.getState().mes, mes)) {
+    state.setState({ mes: [] })
     return
   }
-  state.mes = mes
-  // fetchEsterilizacaoExternaDiario(mes)
+  state.setState({ mes })
 }
 
 const setDia = (dia: ['dia', string][]) => {
-  if (isIdEqual(state.dia, dia)) {
-    state.dia = []
+  if (isIdEqual(state.getState().dia, dia)) {
+    state.setState({ dia: [] })
     return
   }
-  state.dia = dia
-  // fetchEsterilizacaoExternaProduto(dia)
-  // fetchEsterilizacaoExternaModelo(dia, state.produto)
+  state.setState({ dia })
 }
 
 const setProduto = (produto: ['produto', string][]) => {
-  if (isIdEqual(state.produto, produto)) {
-    state.produto = []
+  if (isIdEqual(state.getState().produto, produto)) {
+    state.setState({ produto: [] })
     return
   }
-  state.produto = produto
-  // fetchEsterilizacaoExternaModelo(state.dia, produto)
+  state.setState({ produto })
 }
 
 const fetchEsterilizacaoExternaDiario = async (mes: ['mes', string][]) => {
   const dia = getFieldId('mes', mes) + '-01'
   if (dia.length !== 10) {
-    state.esterilizacaoExternaDiario = []
     return []
   }
   const inicio = flow([
@@ -99,7 +82,6 @@ const fetchEsterilizacaoExternaDiario = async (mes: ['mes', string][]) => {
     },
     () => rpc.request('esterilizacaoExterna_diario', params)
   )) as any[]
-  state.esterilizacaoExternaDiario = data
   return data
 }
 
@@ -117,7 +99,6 @@ const fetchEsterilizacaoExternaMensal = async (
     },
     () => rpc.request('esterilizacaoExterna_mensal', params)
   )) as any[]
-  state.esterilizacaoExternaMensal = data
   return data
 }
 
@@ -137,7 +118,6 @@ const fetchEsterilizacaoExternaModelo = async (
     },
     () => rpc.request('esterilizacaoExterna_modelo', params)
   )) as any[]
-  state.esterilizacaoExternaModelo = data
   return data
 }
 
@@ -153,7 +133,6 @@ const fetchEsterilizacaoExternaProduto = async (dia: ['dia', string][]) => {
     },
     () => rpc.request('esterilizacaoExterna_produto', params)
   )) as any[]
-  state.esterilizacaoExternaProduto = data
   return data
 }
 

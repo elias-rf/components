@@ -1,11 +1,10 @@
 import { Button } from '@/client/components/button/button.js'
 import { Can } from '@/client/components/can.js'
 import { FormHead } from '@/client/components/form-head/form-head.js'
+import { usuarioStore } from '@/client/pages/sistema/usuarios/components/usuario.store.js'
 import { UsuarioForm } from '@/client/pages/sistema/usuarios/components/usuarios_form.js'
 import { UsuarioTable } from '@/client/pages/sistema/usuarios/components/usuarios_table.js'
-import { usuarioStore } from '@/client/pages/sistema/usuarios/usuario.store.js'
 import { authStore } from '@/client/store/auth_store.js'
-import { useSnapshot } from 'valtio'
 
 const permissions = {
   sistema_usuarios_permissao: 'Atribuir permissões de preços',
@@ -14,7 +13,7 @@ const permissions = {
 type TCan = (name: keyof typeof permissions) => boolean
 
 export default function Usuarios() {
-  const status = useSnapshot(usuarioStore.state).status
+  const status = usuarioStore.state((state) => state.status)
 
   return (
     <Can can={authStore.can('sistema_usuarios_read')}>

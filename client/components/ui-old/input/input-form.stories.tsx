@@ -4,7 +4,7 @@ import { Label } from '@/client/components/label/label.js'
 import { Title } from '@/client/components/title/title.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { InputForm } from '@/client/components/ui-old/input/input-form.js'
-import '@/client/index.css'
+
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'

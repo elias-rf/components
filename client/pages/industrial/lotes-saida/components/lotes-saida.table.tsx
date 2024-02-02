@@ -1,25 +1,38 @@
 import { Table } from '@/client/components/table-full/table.js'
 import { Input } from '@/client/components/ui-old/input/input.js'
 import { lotesSaidaColumns } from '@/client/pages/industrial/lotes-saida/components/lotes-saida.columns.js'
-import { TLotesSaidaStore } from '@/client/pages/industrial/lotes-saida/lotes-saida.store.js'
+import { TLotesSaidaStore } from '@/client/pages/industrial/lotes-saida/components/lotes-saida.store.js'
 import {
   TNfSaidaLoteFields,
   TNfSaidaLoteKeys,
 } from '@/core/nf-saida-lote_controller.js'
-import type { TData, TId, TOrderBy } from '@/types/index.js'
-import { useEffect, useState } from 'react'
-import { toast } from 'react-hot-toast'
-import { useSnapshot } from 'valtio'
+import type { TData, TId } from '@/types/index.js'
+import { useQuery } from '@tanstack/react-query'
+import { useState } from 'react'
+
+const select = [
+  'NumLote',
+  'CdFilial',
+  'NumNota',
+  'DtEmissao',
+  'CdProduto',
+  'Sequencia',
+]
 
 export function LotesSaidaTable({ store }: { store: TLotesSaidaStore }) {
   const [controle, setControle] = useState('')
-  const state = useSnapshot(store.state)
-  const { setSelection, fetchList } = store
+  const where = store.state((state) => state.where)
+  const orderBy = store.state((state) => state.orderBy)
+  const selection = store.state((state) => state.selection)
+
+  const query = useQuery({
+    queryKey: ['nfSaidaLote', { where, orderBy }],
+    queryFn: () => store.fetchList({ where, orderBy, select }),
+  })
 
   function handleInput(e: string) {
-    store.state.where = [['NumLote', 'like', e + '%']]
+    store.setWhere([['NumLote', 'like', e + '%']])
     setControle(e)
-    fetchList()
   }
 
   function getId(row: TData<TNfSaidaLoteFields>): TId<TNfSaidaLoteKeys> {
@@ -31,20 +44,6 @@ export function LotesSaidaTable({ store }: { store: TLotesSaidaStore }) {
       ['Sequencia', row.Sequencia],
     ]
   }
-
-  useEffect(() => {
-    toast.promise(
-      fetchList(),
-      {
-        loading: 'lendo...',
-        success: 'sucesso!',
-        error: 'Erro ao carregar lista!',
-      },
-      {
-        id: 'nf-saida-lote-table',
-      }
-    )
-  }, [state.where, state.orderBy])
 
   return (
     <div>
@@ -60,11 +59,11 @@ export function LotesSaidaTable({ store }: { store: TLotesSaidaStore }) {
       <Table
         columns={lotesSaidaColumns}
         getId={getId}
-        onOrderBy={(e) => (store.state.orderBy = e)}
-        onSelection={setSelection}
-        orderBy={state.orderBy as TOrderBy<TNfSaidaLoteFields>}
-        rows={state.list as TData<TNfSaidaLoteFields>[]}
-        selection={state.selection as TId<TNfSaidaLoteKeys>}
+        onOrderBy={store.setOrderBy}
+        onSelection={store.setSelection}
+        orderBy={orderBy}
+        rows={query.data || []}
+        selection={selection}
       />
     </div>
   )

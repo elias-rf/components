@@ -1,7 +1,7 @@
 import { Button } from '@/client/components/button/button.js'
 import { JsonView } from '@/client/components/json-view/json-view.js'
 import { MessageBox } from '@/client/components/ui-old/message_box.js'
-import '@/client/index.css'
+
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 

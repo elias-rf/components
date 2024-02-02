@@ -26,17 +26,16 @@ Content-Type: application/json
 }
 
 ###
-POST {{host}}/api/rpc
+POST {{host}}/api/rpc2
 Content-Type: application/json
 
 {
-  "method": "nfSaida/vendaDiario",
-  "args": [
-    {
-      "inicio": "2023-10-01",
-      "fim": "2023-10-14",
+  "jsonrpc":"2.0",
+  "method": "nfSaida_vendaDiario",
+  "params": {
+      "inicio": "2023-10-24",
+      "fim": "2024-01-22",
       "uf": []
-    }
-  ],
+    },
   "id": "1"
 }

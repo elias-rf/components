@@ -1,14 +1,9 @@
 import { Can } from '@/client/components/can.js'
 import { FormHead } from '@/client/components/form-head/form-head.js'
+import { permissions } from '@/client/pages/comercial/vendas-30dias/components/constants.js'
+import { vendas30DiasStore } from '@/client/pages/comercial/vendas-30dias/components/vendas-30dias.store.js'
 import { Vendas30dias as Vendas } from '@/client/pages/comercial/vendas-30dias/components/vendas-30dias_form.js'
-import { vendas30DiasStore } from '@/client/pages/comercial/vendas-30dias/vendas-30dias.store.js'
 import { authStore } from '@/client/store/auth_store.js'
-
-const permissions = {
-  comercial_vendas30dias_permissao: 'Atribuir permissões de vendas 30 dias',
-  comercial_vendas30dias_read: 'Visualizar Vendas 30 dias',
-}
-type TCan = (name: keyof typeof permissions) => boolean
 
 /**
  * Componente para manipular Agenda de Ramais

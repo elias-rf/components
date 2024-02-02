@@ -1,5 +1,16 @@
 import type { Preview } from '@storybook/react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { setupWorker } from 'msw/browser'
 import '../client/index.css'
+import { handlers } from '../utils/mocks/core-msw/handlers.js'
+
+const worker = setupWorker(...handlers)
+worker.start({ onUnhandledRequest: 'bypass' })
+
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { staleTime: 5000 } },
+})
 
 const preview: Preview = {
   parameters: {
@@ -34,7 +45,12 @@ const preview: Preview = {
       } else {
         document.body.classList.remove('dark')
       }
-      return <Story />
+      return (
+        <QueryClientProvider client={queryClient}>
+          <ReactQueryDevtools />
+          <Story />
+        </QueryClientProvider>
+      )
     },
   ],
 }

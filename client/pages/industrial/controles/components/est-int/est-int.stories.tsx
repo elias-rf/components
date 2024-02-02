@@ -1,5 +1,5 @@
 import { EstInt } from '@/client/pages/industrial/controles/components/est-int/est-int.js'
-import '@/utils/mocks/core.mock.js'
+
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EstInt> = {

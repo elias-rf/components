@@ -3,34 +3,49 @@ import { Label } from '@/client/components/label/label.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { InputForm } from '@/client/components/ui-old/input/input-form.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
-import { TGroupStore } from '@/client/pages/sistema/grupos/grupos.store.js'
+import { TGroupStore } from '@/client/pages/sistema/grupos/components/grupos.store.js'
+import { TGroupFields, TGroupKeys } from '@/core/group_controller.js'
+import { TData, TId } from '@/types/index.js'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-hot-toast'
-import { useSnapshot } from 'valtio'
 
 export const GruposForm = ({ store }: { store: TGroupStore }) => {
-  const state = useSnapshot(store.state)
+  const status = store.state((state) => state.status)
+  const selection = store.state((state) => state.selection)
 
-  const form = useForm({ defaultValues: state.recordClear })
+  const form = useForm({ defaultValues: store.recordClear })
+  const query = useQuery({
+    queryKey: ['usuario', { selection }],
+    queryFn: () => store.fetchRecord({ selection }),
+  })
+  const queryClient = useQueryClient()
+  const onSave = useMutation({
+    mutationFn: (record: TData<TGroupFields>) => {
+      return store.onSave(record)
+    },
+    onSuccess: () => {
+      return queryClient.invalidateQueries({
+        queryKey: ['usuario'],
+        type: 'active',
+      })
+    },
+  })
+
+  const onDelete = useMutation({
+    mutationFn: (selection: TId<TGroupKeys>) => {
+      return store.onDelete(selection)
+    },
+    onSuccess: () => {
+      return queryClient.invalidateQueries({
+        queryKey: ['grupo'],
+      })
+    },
+  })
 
   useEffect(() => {
-    form.reset(state.record)
-  }, [state.record])
-
-  useEffect(() => {
-    toast.promise(
-      store.fetchRecord(),
-      {
-        loading: 'lendo...',
-        success: 'sucesso!',
-        error: 'Erro ao carregar cadastro!',
-      },
-      {
-        id: 'grupos-form',
-      }
-    )
-  }, [state.selection])
+    form.reset(query.data || store.recordClear)
+  }, [query.data])
 
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',
@@ -44,7 +59,7 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
       `Tem certeza que deseja apagar ${form.getValues('NomeGrupo')} ?`
     )
     if (response === 'option1') {
-      store.onDelete()
+      onDelete.mutate(selection)
     }
   }
 
@@ -85,8 +100,7 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
       <div className="flex-rows align-center my-2 flex justify-end space-x-2">
         <Button
           onClick={() => {
-            store.setRecord(form.getValues())
-            store.onSave()
+            onSave.mutate(form.getValues())
           }}
           disabled={['none', 'view'].includes(status)}
           size="sm"
@@ -94,10 +108,7 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
           SALVAR
         </Button>
         <Button
-          onClick={() => {
-            form.reset()
-            store.onCancel()
-          }}
+          onClick={store.onCancel}
           disabled={['none', 'view'].includes(status)}
           size="sm"
         >

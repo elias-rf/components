@@ -1,7 +1,7 @@
 import { Table } from '@/client/components/table-full/table.js'
 import { TEsterilizacaoInternaStore } from '@/client/pages/industrial/controles/components/est-int/est-int-store.js'
+import { useQuery } from '@tanstack/react-query'
 import React from 'react'
-import { useSnapshot } from 'valtio'
 import { esterilizacaoInternaMensalSchema } from './est-int-mensal.schema.js'
 
 type EsterilizacaoInternaMensalProp = {
@@ -13,22 +13,20 @@ export function EsterilizacaoInternaMensal({
   children,
   store,
 }: EsterilizacaoInternaMensalProp) {
-  const { mes, esterilizacaoInternaMensal, mesInicio } = useSnapshot(
-    store.state
-  )
-  const setMes = store.setMes
-  const fetchEsterilizacaoInternaMensal = store.fetchEsterilizacaoInternaMensal
+  const mes = store.state((state) => state.mes)
+  const mesInicio = store.state((state) => state.mesInicio)
 
-  React.useEffect(() => {
-    fetchEsterilizacaoInternaMensal(mesInicio as ['mes', string][])
-  }, [mesInicio])
+  const query = useQuery({
+    queryKey: ['esterilizacaoInternaMensal', { mesInicio }],
+    queryFn: () => store.fetchEsterilizacaoInternaMensal(mesInicio),
+  })
 
   return (
     <Table
-      rows={esterilizacaoInternaMensal as any}
+      rows={query.data || []}
       columns={esterilizacaoInternaMensalSchema}
       selection={mes as any}
-      onSelection={setMes}
+      onSelection={store.setMes}
       getId={(rec: any) => [['mes', rec.mes]]}
     >
       {() => <>{children}</>}

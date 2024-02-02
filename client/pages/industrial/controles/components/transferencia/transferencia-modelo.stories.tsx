@@ -1,6 +1,6 @@
 import { TransferenciaModelo } from '@/client/pages/industrial/controles/components/transferencia/transferencia-modelo.js'
 import { transferenciaStore } from '@/client/pages/industrial/controles/components/transferencia/transferencia.store.js'
-import '@/utils/mocks/core.mock.js'
+
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof TransferenciaModelo> = {

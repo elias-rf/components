@@ -18,6 +18,7 @@ describe('Button', () => {
         Content
       </Button>
     )
+
     const title = screen.getByText('Content')
     fireEvent.click(title)
     expect(screen.getByText('Content')).toBeDefined()

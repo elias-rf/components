@@ -1,6 +1,6 @@
-import { clienteStore } from '@/client/pages/comercial/cliente/cliente.store.js'
+import { JsonView } from '@/client/components/json-view/json-view.js'
 import { ClienteForm } from '@/client/pages/comercial/cliente/components/cliente.form.js'
-import '@/utils/mocks/core.mock.js'
+import { clienteStore } from '@/client/pages/comercial/cliente/components/cliente.store.js'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof ClienteForm> = {
@@ -10,10 +10,17 @@ const meta: Meta<typeof ClienteForm> = {
 export default meta
 type Story = StoryObj<typeof ClienteForm>
 
-clienteStore.setSelection([['CdCliente', '2']])
+if (clienteStore.state.getState().selection.length === 0)
+  clienteStore.setSelection([['CdCliente', '100']])
 
 export const Form: Story = {
   render: () => {
-    return <ClienteForm store={clienteStore} />
+    const state = clienteStore.state((state) => state)
+    return (
+      <>
+        <ClienteForm store={clienteStore} />
+        <JsonView data={state} />
+      </>
+    )
   },
 }

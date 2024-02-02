@@ -1,44 +1,65 @@
 import { Button } from '@/client/components/button/button.js'
-import { Label } from '@/client/components/label/label.js'
-import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
-import { InputForm } from '@/client/components/ui-old/input/input-form.js'
-import { SelectBadgeForm } from '@/client/components/ui-old/select-badge/select-badge-form.js'
-import { ToggleForm } from '@/client/components/ui-old/toggle/toggle-form.js'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from '@/client/components/form/form.js'
+import { Input } from '@/client/components/input/input.js'
+import { SelectBadge } from '@/client/components/select-badge/select-badge.js'
+import { Toggle } from '@/client/components/toggle/toggle.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { rpc } from '@/client/lib/rpc.js'
-import { TUsuarioStore } from '@/client/pages/sistema/usuarios/usuario.store.js'
+import { TUsuarioStore } from '@/client/pages/sistema/usuarios/components/usuario.store.js'
+import { TUsuarioFields, TUsuarioKeys } from '@/core/usuario_controller.js'
+import { TData, TId } from '@/types/index.js'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-hot-toast'
 import { useEffectOnce } from 'usehooks-ts'
-import { useSnapshot } from 'valtio'
 
 export function UsuarioForm({ store }: { store: TUsuarioStore }) {
   const [listGroups, setListGroups] = useState<
     [label: string, value: string][]
   >([])
 
-  const state = useSnapshot(store.state)
+  const status = store.state((state) => state.status)
+  const selection = store.state((state) => state.selection)
 
-  const form = useForm({ defaultValues: state.recordClear })
+  const form = useForm({ defaultValues: store.recordClear })
+  const query = useQuery({
+    queryKey: ['usuario', { selection }],
+    queryFn: () => store.fetchRecord({ selection }),
+  })
+  const queryClient = useQueryClient()
+
+  const onSave = useMutation({
+    mutationFn: (record: TData<TUsuarioFields>) => {
+      return store.onSave(record)
+    },
+    onSuccess: () => {
+      return queryClient.invalidateQueries({
+        queryKey: ['usuario'],
+        type: 'active',
+      })
+    },
+  })
+
+  const onDelete = useMutation({
+    mutationFn: (selection: TId<TUsuarioKeys>) => {
+      return store.onDelete(selection)
+    },
+    onSuccess: () => {
+      return queryClient.invalidateQueries({
+        queryKey: ['usuario'],
+      })
+    },
+  })
 
   useEffect(() => {
-    form.reset(state.record)
-  }, [state.record])
-
-  useEffect(() => {
-    toast.promise(
-      store.fetchRecord(),
-      {
-        loading: 'lendo...',
-        success: 'sucesso!',
-        error: 'Erro ao carregar cadastro!',
-      },
-      {
-        id: 'usuario-form',
-      }
-    )
-  }, [state.selection])
+    form.reset(query.data || store.recordClear)
+  }, [query.data])
 
   const { MsgBox, confirm } = useMessageBox({
     title: 'Excluir',
@@ -52,7 +73,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
       'Tem certeza que deseja apagar ' + form.getValues('nome') + '?'
     )
     if (response === 'option1') {
-      store.onDelete()
+      onDelete.mutate(selection)
     }
   }
 
@@ -73,100 +94,137 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
   })
 
   return (
-    <div data-name="UsuarioForm">
+    <>
       <div className="flex-rows my-2 flex space-x-2">
         <Button
           onClick={store.onEdit}
-          disabled={['none', 'edit', 'new'].includes(state.status)}
+          disabled={['none', 'edit', 'new'].includes(status)}
           size="sm"
         >
           EDITAR
         </Button>
         <Button
           onClick={handleDel}
-          disabled={['none', 'edit', 'new'].includes(state.status)}
+          disabled={['none', 'edit', 'new'].includes(status)}
           size="sm"
         >
           EXCLUIR
         </Button>
       </div>
       <div className="grid grid-cols-12 gap-3">
-        <div className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <FormField>
-            <Label htmlFor="kUsuario">Código *</Label>
-            <InputForm
-              disabled={['none', 'view'].includes(state.status)}
-              {...form.register('kUsuario')}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-10 lg:col-span-5">
-          <FormField>
-            <Label htmlFor="nome">Usuario</Label>
-            <InputForm
-              disabled={['none', 'view'].includes(state.status)}
-              {...form.register('nome')}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12 sm:col-span-4 lg:col-span-2">
-          <FormField>
-            <Label htmlFor="NomeUsuario">Login *</Label>
-            <InputForm
-              disabled={['none', 'view'].includes(state.status)}
-              {...form.register('NomeUsuario')}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-10 sm:col-span-6 lg:col-span-3">
-          <FormField>
-            <Label htmlFor="email">Email *</Label>
-            <InputForm
-              disabled={['none', 'view'].includes(state.status)}
-              {...form.register('email')}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-2 sm:col-span-2 lg:col-span-1">
-          <FormField>
-            <Label htmlFor="Ativo">Ativo *</Label>
-            <ToggleForm
-              disabled={['none', 'view'].includes(state.status)}
-              {...form.register('Ativo')}
-            />
-          </FormField>
-        </div>
-        <div className="col-span-12">
-          <FormField>
-            <Label htmlFor="setor">Grupo *</Label>
-            <SelectBadgeForm
-              disabled={['none', 'view'].includes(state.status)}
-              {...form.register('setor')}
-              options={listGroups}
-            />
-          </FormField>
-        </div>
+        <Form {...form}>
+          <FormField
+            control={form.control}
+            name="kUsuario"
+            render={({ field }) => (
+              <FormItem className="col-span-12 sm:col-span-2 lg:col-span-1">
+                <FormLabel>Código *</FormLabel>
+                <FormControl>
+                  <Input
+                    disabled={['none', 'view'].includes(status)}
+                    {...field}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="nome"
+            render={({ field }) => (
+              <FormItem className="col-span-12 sm:col-span-10 lg:col-span-5">
+                <FormLabel>Usuario</FormLabel>
+                <FormControl>
+                  <Input
+                    disabled={['none', 'view'].includes(status)}
+                    {...field}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="NomeUsuario"
+            render={({ field }) => (
+              <FormItem className="col-span-12 sm:col-span-4 lg:col-span-2">
+                <FormLabel>Login *</FormLabel>
+                <FormControl>
+                  <Input
+                    disabled={['none', 'view'].includes(status)}
+                    {...field}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="col-span-10 sm:col-span-6 lg:col-span-3">
+                <FormLabel htmlFor="email">Email *</FormLabel>
+                <FormControl>
+                  <Input
+                    disabled={['none', 'view'].includes(status)}
+                    {...field}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="Ativo"
+            render={({ field }) => (
+              <FormItem className="col-span-2 sm:col-span-2 lg:col-span-1">
+                <FormLabel>Ativo *</FormLabel>
+                <FormControl>
+                  <Toggle
+                    disabled={['none', 'view'].includes(status)}
+                    {...field}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="setor"
+            render={({ field }) => (
+              <FormItem className="col-span-12">
+                <FormLabel>Grupo *</FormLabel>
+                <FormControl>
+                  <SelectBadge
+                    disabled={['none', 'view'].includes(status)}
+                    {...field}
+                    options={listGroups}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+        </Form>
       </div>
       <div className="flex-rows my-2 flex justify-end space-x-2">
         <Button
           onClick={() => {
-            store.setRecord(form.getValues())
-            store.onSave()
+            onSave.mutate(form.getValues())
           }}
-          disabled={['none', 'view'].includes(state.status)}
+          disabled={['none', 'view'].includes(status)}
           size="sm"
         >
-          SAVE
+          SALVAR
         </Button>
         <Button
           onClick={store.onCancel}
-          disabled={['none', 'view'].includes(state.status)}
+          disabled={['none', 'view'].includes(status)}
           size="sm"
         >
-          CANCEL
+          CANCELAR
         </Button>
       </div>
       <MsgBox />
-    </div>
+    </>
   )
 }

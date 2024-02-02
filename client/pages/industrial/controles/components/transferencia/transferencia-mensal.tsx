@@ -1,7 +1,7 @@
 import { Table } from '@/client/components/table-full/table.js'
 import { TTransferenciaStore } from '@/client/pages/industrial/controles/components/transferencia/transferencia.store.js'
+import { useQuery } from '@tanstack/react-query'
 import React from 'react'
-import { useSnapshot } from 'valtio'
 import { transferenciaMensalSchema } from './transferencia-mensal.schema.js'
 
 type TransferenciaMensalProps = {
@@ -13,15 +13,18 @@ export function TransferenciaMensal({
   children,
   store,
 }: TransferenciaMensalProps) {
-  const { mes, mesInicio, transferenciaMensal } = useSnapshot(store.state)
+  const mesInicio = store.state((state) => state.mesInicio)
+  const mes = store.state((state) => state.mes)
+  const operacao = store.state((state) => state.operacao)
 
-  React.useEffect(() => {
-    store.fetchTransferenciaMensal(mesInicio as ['mes', string][])
-  }, [mesInicio])
+  const query = useQuery({
+    queryKey: ['operacaoDiario', { mesInicio, operacao }],
+    queryFn: () => store.fetchTransferenciaMensal(mesInicio),
+  })
 
   return (
     <Table
-      rows={transferenciaMensal as any}
+      rows={query.data || []}
       columns={transferenciaMensalSchema}
       selection={mes as any}
       onSelection={store.setMes}

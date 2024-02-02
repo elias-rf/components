@@ -1,6 +1,5 @@
 import { Checkbox } from '@/client/components/checkbox/checkbox.js'
 import { ListGroup } from '@/client/components/list-group/list-group.js'
-import '@/client/index.css'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 

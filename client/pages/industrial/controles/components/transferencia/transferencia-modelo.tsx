@@ -1,7 +1,7 @@
 import { Table } from '@/client/components/table-full/table.js'
 import { TTransferenciaStore } from '@/client/pages/industrial/controles/components/transferencia/transferencia.store.js'
+import { useQuery } from '@tanstack/react-query'
 import React from 'react'
-import { useSnapshot } from 'valtio'
 import { transferenciaModeloSchema } from './transferencia-modelo.schema.js'
 
 type TransferenciaModeloProps = {
@@ -13,7 +13,12 @@ export function TransferenciaModelo({
   children,
   store,
 }: TransferenciaModeloProps) {
-  const { dia, transferenciaModelo } = useSnapshot(store.state)
+  const dia = store.state((state) => state.dia)
+
+  const query = useQuery({
+    queryKey: ['operacaoDiario', { dia }],
+    queryFn: () => store.fetchTransferenciaModelo(dia),
+  })
 
   React.useEffect(() => {
     store.fetchTransferenciaModelo(dia as ['dia', string][])
@@ -21,7 +26,7 @@ export function TransferenciaModelo({
 
   return (
     <Table
-      rows={transferenciaModelo as any}
+      rows={query.data || []}
       columns={transferenciaModeloSchema}
     >
       {() => <>{children}</>}

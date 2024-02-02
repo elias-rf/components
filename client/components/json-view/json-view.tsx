@@ -1,3 +1,4 @@
+import { cn } from '@/client/lib/utils.js'
 import DataRender, { StyleProps } from './data-render.js'
 
 export interface Props {
@@ -33,7 +34,7 @@ export const JsonView = ({
   className,
 }: Props) => {
   return (
-    <div className={className}>
+    <div className={cn('text-xs', className)}>
       <DataRender
         value={data}
         style={style}

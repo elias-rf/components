@@ -1,14 +1,9 @@
 import { Can } from '@/client/components/can.js'
 import { FormHead } from '@/client/components/form-head/form-head.js'
+import { permissions } from '@/client/pages/industrial/lotes-saida/components/constants.js'
+import { lotesSaidaStore } from '@/client/pages/industrial/lotes-saida/components/lotes-saida.store.js'
 import { LotesSaidaTable } from '@/client/pages/industrial/lotes-saida/components/lotes-saida.table.js'
-import { lotesSaidaStore } from '@/client/pages/industrial/lotes-saida/lotes-saida.store.js'
 import { authStore } from '@/client/store/auth_store.js'
-
-const permissions = {
-  industrial_lotesSaida_permissao: 'Atribuir permissões do cliente',
-  industrial_lotesSaida_read: 'Visualizar dados do cliente próprio',
-}
-type TCan = (name: keyof typeof permissions) => boolean
 
 export default function Clientes() {
   return (

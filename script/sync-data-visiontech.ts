@@ -1,7 +1,7 @@
 import { printAt } from '@/script/screen.js'
-import { omit } from '@/utils/object/omit.js'
-import { eachOfLimit } from 'async'
 import Knex from 'knex'
+import * as _ from 'lodash-es'
+import { Writable } from 'stream'
 import { table } from 'table'
 
 const source = Knex({
@@ -57,39 +57,34 @@ function objToTable(obj: any) {
 
 async function copy(table: string, key: string, exc: string[] = []) {
   obj[table] = { count: 0, id: 0, updated: 0, jumped: 0 } as any
-  const data = await source(table).select('*').limit(5000).orderBy(key, 'desc')
-  await eachOfLimit(
-    data,
-    5,
-    async (row, index) => {
+  const data = source(table)
+    .select('*')
+    .limit(5000)
+    .orderBy(key, 'desc')
+    .stream()
+
+  const writable = new Writable({
+    objectMode: true,
+    write: async (row, encoding, callback) => {
+      // console.log(row)
       const resp = await dest(table).where(key, row[key])
-      obj[table].count = index
-      obj[table].id = row[key]
+      if (row[key]) obj[table].id = row[key]
 
       if (resp.length === 0) {
-        try {
-          await dest(table).insert(omit(row, exc))
-          obj[table].updated++
-        } catch (e: any) {
-          console.log(
-            `🚀 ~ file: sync-data-visiontech.ts:75 ~ e:`,
-            row,
-            e.message
-          )
-        }
+        await dest(table).insert(_.omit(row, exc))
+        obj[table].updated++
       } else {
         obj[table].jumped++
       }
       printAt(1, 1, objToTable(obj))
+
+      callback()
     },
-    (err: any) => {
-      if (err) {
-        printAt(20, 1, err.message + ' #####')
-      } else {
-        obj[table] = 'done'
-      }
-    }
-  )
+  })
+  data.pipe(writable)
+  return new Promise((resolve, reject) => {
+    data.on('end', () => resolve(true))
+  })
 }
 
 async function main() {

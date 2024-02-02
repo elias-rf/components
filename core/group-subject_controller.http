@@ -3,17 +3,13 @@
 @host = {{hostname}}:{{port}}
 
 
-### ordemProducaoOperacao/produto
-POST {{host}}/api/rpc
+###
+POST {{host}}/api/rpc2
 Content-Type: application/json
 
 {
-  "method": "groupSubject/listPermissions",
-  "args": [
-    {
-      "idGroup": "28,0",
-      "idSubjectList": ["prm1","prm2"]
-    }
-  ],
+  "jsonrpc":"2.0",
+  "method": "groupSubject_list",
+  "params": {"select": ["idSubject"],"where": [["idGroup", "in", ["20","42"]]]},
   "id": "1"
 }

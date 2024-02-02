@@ -1,6 +1,6 @@
 import { EsterilizacaoInternaDiario } from '@/client/pages/industrial/controles/components/est-int/est-int-diario.js'
 import { esterilizacaoInternaStore } from '@/client/pages/industrial/controles/components/est-int/est-int-store.js'
-import '@/utils/mocks/core.mock.js'
+
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EsterilizacaoInternaDiario> = {

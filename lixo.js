@@ -1,10 +1,29 @@
-import { endOfMonth, format, parse, startOfMonth, subMonths } from 'date-fns'
-import { flow } from 'lodash-es'
+import { isMatch } from 'lodash-es'
 
-const inicio = flow([
-  ($) => parse($, 'yyyy-MM-dd', new Date()),
-  startOfMonth,
-  ($) => format($, 'yyyy-MM-dd'),
-])('2022-12-01')
+const body = {
+  method: 'me',
+  id: 1,
+  jsonrpc: '2.0',
+  params: {
+    user: 'cicrano',
+    address: {
+      city: 'São Paulo',
+      state: 'SP',
+    },
+  },
+}
 
-console.log(inicio.toString())
+console.log(isMatch(body, { method: 'me' }))
+console.log(isMatch(body, { method: 'me', params: { user: 'cicrano' } }))
+console.log(
+  isMatch(body, {
+    method: 'me',
+    params: { address: { state: 'SP' } },
+  })
+)
+console.log(
+  isMatch(body, {
+    method: 'me',
+    params: { address: { city: 'São Paulo', state: 'MG' } },
+  })
+)

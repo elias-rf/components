@@ -161,7 +161,10 @@ describe('MultiKeyCache', () => {
         )
       ).toEqual(1)
 
-      expect(cache.keys()).toEqual(['{"id":1}', '{"id":3}'])
+      expect(cache.keys()).toEqual([
+        '{"params":{"id":1},"rpc":"","tables":[]}',
+        '{"params":{"id":3},"rpc":"","tables":[]}',
+      ])
     })
   })
 

@@ -34,7 +34,7 @@ function fileManager_stat({ path, name }: { path: string; name: string }) {
   return {} as {
     hsize: string
     size: number
-    mtime: string
+    mtime: Date
   }
 }
 

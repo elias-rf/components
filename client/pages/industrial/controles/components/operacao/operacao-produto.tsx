@@ -1,7 +1,7 @@
 import { Table } from '@/client/components/table-full/table.js'
 import { TOperacaoStore } from '@/client/pages/industrial/controles/components/operacao/operacao.store.js'
+import { useQuery } from '@tanstack/react-query'
 import React, { ReactNode } from 'react'
-import { useSnapshot } from 'valtio'
 import { operacaoProdutoSchema } from './operacao-produto.schema.js'
 
 type OperacaoProdutoProps = {
@@ -10,7 +10,15 @@ type OperacaoProdutoProps = {
 }
 
 export function OperacaoProduto({ children, store }: OperacaoProdutoProps) {
-  const { operacao, dia, produto, operacaoProduto } = useSnapshot(store.state)
+  const mes = store.state((state) => state.mes)
+  const operacao = store.state((state) => state.operacao)
+  const dia = store.state((state) => state.dia)
+  const produto = store.state((state) => state.produto)
+
+  const query = useQuery({
+    queryKey: ['operacaoProduto', { mes, operacao }],
+    queryFn: () => store.fetchOperacaoProduto(dia, operacao),
+  })
 
   React.useEffect(() => {
     store.fetchOperacaoProduto(
@@ -21,9 +29,9 @@ export function OperacaoProduto({ children, store }: OperacaoProdutoProps) {
 
   return (
     <Table
-      rows={operacaoProduto as any}
+      rows={query.data || []}
       columns={operacaoProdutoSchema}
-      selection={produto as any}
+      selection={produto}
       onSelection={store.setProduto}
       getId={(rec: any) => [['produto', rec.produto]]}
     >

@@ -1,11 +1,17 @@
 import { Table } from '@/client/components/table-full/table.js'
 import { TOperacaoStore } from '@/client/pages/industrial/controles/components/operacao/operacao.store.js'
+import { useQuery } from '@tanstack/react-query'
 import React from 'react'
-import { useSnapshot } from 'valtio'
 import { operacaoTurnoSchema } from './operacao-turno.schema.js'
 
 export function OperacaoTurno({ store }: { store: TOperacaoStore }) {
-  const { operacao, dia, operacaoTurno } = useSnapshot(store.state)
+  const operacao = store.state((state) => state.operacao)
+  const dia = store.state((state) => state.dia)
+
+  const query = useQuery({
+    queryKey: ['operacaoTurno', { dia, operacao }],
+    queryFn: () => store.fetchOperacaoTurno(dia, operacao),
+  })
 
   React.useEffect(() => {
     store.fetchOperacaoTurno(
@@ -16,7 +22,7 @@ export function OperacaoTurno({ store }: { store: TOperacaoStore }) {
 
   return (
     <Table
-      rows={operacaoTurno as any}
+      rows={query.data || []}
       columns={operacaoTurnoSchema}
     ></Table>
   )

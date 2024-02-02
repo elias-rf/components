@@ -1,4 +1,6 @@
 import { authStore } from '@/client/store/auth_store.js'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import React, { Suspense } from 'react'
 import { Route, Switch, useLocation } from 'wouter'
 import { Layout } from './features/layout.js'
@@ -6,6 +8,10 @@ import { Home } from './pages/home.js'
 import { Loading } from './pages/loading.js'
 import { Login } from './pages/login.js'
 import { Logout } from './pages/logout.js'
+
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { staleTime: 5000 } },
+})
 
 // utilidades
 // const Page403 = React.lazy(async () => import('./pages/page_403'))
@@ -48,7 +54,7 @@ const Usuario = React.lazy(
   async () => import('./pages/sistema/usuarios/usuarios.js')
 )
 const Permissao = React.lazy(
-  async () => import('./pages/sistema/permissoes/permissoes.js')
+  async () => import('./pages/sistema/permissoes/group-subject.js')
 )
 const Grupos = React.lazy(
   async () => import('./pages/sistema/grupos/grupos.js')
@@ -66,55 +72,58 @@ export function App() {
 
   return (
     <Layout>
-      <Suspense fallback={<Loading />}>
-        <Switch>
-          <Route path="/">
-            <Home />
-          </Route>
-          <Route path="/comercial/precos">
-            <Precos />
-          </Route>
-          <Route path="/comercial/vendas30dias">
-            <Vendas30Dias />
-          </Route>
-          <Route path="/comercial/cliente">
-            <Clientes />
-          </Route>
-          <Route path="/industrial/controles">
-            <Controles />
-          </Route>
-          <Route path="/industrial/lotesSaida">
-            <LotesSaida />
-          </Route>
-          <Route path="/industrial/transferencia">
-            <Transferencia />
-          </Route>
-          <Route path="/sistema/usuario">
-            <Usuario />
-          </Route>
-          <Route path="/sistema/permissao">
-            <Permissao />
-          </Route>
-          <Route path="/sistema/grupos">
-            <Grupos />
-          </Route>
-          <Route path="/outros/agenda">
-            <Agenda />
-          </Route>
-          <Route path="/outros/fileManager">
-            <FileManager />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/logout">
-            <Logout />
-          </Route>
-          <Route>
-            <Page404 />
-          </Route>
-        </Switch>
-      </Suspense>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools />
+        <Suspense fallback={<Loading />}>
+          <Switch>
+            <Route path="/">
+              <Home />
+            </Route>
+            <Route path="/comercial/precos">
+              <Precos />
+            </Route>
+            <Route path="/comercial/vendas30dias">
+              <Vendas30Dias />
+            </Route>
+            <Route path="/comercial/cliente">
+              <Clientes />
+            </Route>
+            <Route path="/industrial/controles">
+              <Controles />
+            </Route>
+            <Route path="/industrial/lotesSaida">
+              <LotesSaida />
+            </Route>
+            <Route path="/industrial/transferencia">
+              <Transferencia />
+            </Route>
+            <Route path="/sistema/usuario">
+              <Usuario />
+            </Route>
+            <Route path="/sistema/permissao">
+              <Permissao />
+            </Route>
+            <Route path="/sistema/grupos">
+              <Grupos />
+            </Route>
+            <Route path="/outros/agenda">
+              <Agenda />
+            </Route>
+            <Route path="/outros/fileManager">
+              <FileManager />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/logout">
+              <Logout />
+            </Route>
+            <Route>
+              <Page404 />
+            </Route>
+          </Switch>
+        </Suspense>
+      </QueryClientProvider>
     </Layout>
   )
 }

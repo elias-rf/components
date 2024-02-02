@@ -1,6 +1,6 @@
-import { clienteStore } from '@/client/pages/comercial/cliente/cliente.store.js'
+import { JsonView } from '@/client/components/json-view/json-view.js'
+import { clienteStore } from '@/client/pages/comercial/cliente/components/cliente.store.js'
 import { ClienteValorMedio } from '@/client/pages/comercial/cliente/components/valor-medio/cliente-valor-medio.js'
-import '@/utils/mocks/core.mock.js'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof ClienteValorMedio> = {
@@ -10,10 +10,16 @@ const meta: Meta<typeof ClienteValorMedio> = {
 export default meta
 type Story = StoryObj<typeof ClienteValorMedio>
 
-clienteStore.setSelection([['CdCliente', '1']])
+if (clienteStore.state.getState().selection.length === 0)
+  clienteStore.setSelection([['CdCliente', '100']])
 
 export const ValorMedio: Story = {
   render: () => {
-    return <ClienteValorMedio store={clienteStore} />
+    return (
+      <>
+        <ClienteValorMedio store={clienteStore} />
+        <JsonView data={clienteStore.state} />
+      </>
+    )
   },
 }

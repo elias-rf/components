@@ -1,7 +1,6 @@
 import { Table } from '@/client/components/table-full/table.js'
 import { TEsterilizacaoInternaStore } from '@/client/pages/industrial/controles/components/est-int/est-int-store.js'
-import React from 'react'
-import { useSnapshot } from 'valtio'
+import { useQuery } from '@tanstack/react-query'
 import { esterilizacaoInternaModeloSchema } from './est-int-modelo.schema.js'
 
 export function EsterilizacaoInternaModelo({
@@ -9,19 +8,17 @@ export function EsterilizacaoInternaModelo({
 }: {
   store: TEsterilizacaoInternaStore
 }) {
-  const { dia, produto, esterilizacaoInternaModelo } = useSnapshot(store.state)
-  const fetchEsterilizacaoInternaModelo = store.fetchEsterilizacaoInternaModelo
+  const produto = store.state((state) => state.produto)
+  const dia = store.state((state) => state.dia)
 
-  React.useEffect(() => {
-    fetchEsterilizacaoInternaModelo(
-      dia as ['dia', string][],
-      produto as ['produto', string][]
-    )
-  }, [dia, produto])
+  const query = useQuery({
+    queryKey: ['esterilizacaoInternaModelo', { dia, produto }],
+    queryFn: () => store.fetchEsterilizacaoInternaModelo(dia, produto),
+  })
 
   return (
     <Table
-      rows={esterilizacaoInternaModelo as any}
+      rows={query.data || []}
       columns={esterilizacaoInternaModeloSchema}
     ></Table>
   )

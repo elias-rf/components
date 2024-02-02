@@ -1,6 +1,6 @@
 import { OperacaoDiario } from '@/client/pages/industrial/controles/components/operacao/operacao-diario.js'
 import { operacaoStore } from '@/client/pages/industrial/controles/components/operacao/operacao.store.js'
-import '@/utils/mocks/core.mock.js'
+
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof OperacaoDiario> = {

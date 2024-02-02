@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Transferencia } from './transferencia_form.js'
+import { Transferencia } from './components/transferencia_form.js'
 
 const meta: Meta<typeof Transferencia> = {
   component: Transferencia,

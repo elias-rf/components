@@ -1,6 +1,8 @@
 import { authStorage } from '@/client/lib/auth-storage.js'
 import type { TModules } from '@/core/index.js'
+import { TCurrentUser } from '@/types/index.js'
 import { JSONRPCClient, TypedJSONRPCClient } from 'json-rpc-2.0'
+import { isEmpty } from 'lodash-es'
 
 let endpoint = '/api/rpc2'
 
@@ -9,13 +11,19 @@ if (process.env.NODE_ENV !== 'production')
 
 export const rpc: TypedJSONRPCClient<TModules> = new JSONRPCClient(
   async (jsonRPCRequest: any) => {
-    const auth = JSON.parse(authStorage.getItem() || '{"token":"","user":{}}')
+    let authString = authStorage.getItem()
+    let auth: { token: string; user: TCurrentUser } = { token: '', user: {} }
+
+    if (authString && authString !== 'undefined' && !isEmpty(authString)) {
+      auth = JSON.parse(authString)
+    }
+
     const options = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${auth.token}`,
-        user: auth.user.usuario_id || '',
+        user: auth.user?.usuario_id?.toString() || '',
       },
       body: JSON.stringify(jsonRPCRequest),
     }

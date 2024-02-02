@@ -27,7 +27,7 @@ export function ormTable<TFields extends string, TKeys extends string>(
     where: TId<TKeys>
     select?: TSelect<TFields>
     include?: any
-  }) => {
+  }): Promise<TData<TFields>> => {
     if (include) {
       select = selectFromInclude(select, include, schema)
     }
@@ -44,7 +44,6 @@ export function ormTable<TFields extends string, TKeys extends string>(
 
     return response
   }
-  read.rpc = true
 
   /**
    * LIST
@@ -69,7 +68,7 @@ export function ormTable<TFields extends string, TKeys extends string>(
     min?: any
     max?: any
     include?: any
-  } = {}) => {
+  } = {}): Promise<TData<TFields>[]> => {
     if (include) {
       select = selectFromInclude(select || [], include, schema)
     }
@@ -94,7 +93,6 @@ export function ormTable<TFields extends string, TKeys extends string>(
 
     return response
   }
-  list.rpc = true
 
   /**
    * COUNT
@@ -107,7 +105,7 @@ export function ormTable<TFields extends string, TKeys extends string>(
     select?: Array<TFields | '*'>
     count: (TFields | string)[]
     where?: TWhere<TFields>
-  }) => {
+  }): Promise<TData<TFields> | number> => {
     const qry = {
       from: getTableName(),
       ...validWhere(where),
@@ -117,7 +115,6 @@ export function ormTable<TFields extends string, TKeys extends string>(
 
     return db(qry as TQueryKnex) as Promise<TData<TFields> | number>
   }
-  count.rpc = true
 
   /**
    * UPDATE
@@ -132,7 +129,7 @@ export function ormTable<TFields extends string, TKeys extends string>(
     data: Partial<TData<TFields>>
     returning?: TSelect<TFields>
     debug?: boolean
-  }) => {
+  }): Promise<TData<TFields> | number> => {
     const qry = {
       from: getTableName(),
       update: validData(data),
@@ -143,7 +140,6 @@ export function ormTable<TFields extends string, TKeys extends string>(
 
     return db(qry) as Promise<TData<TFields> | number>
   }
-  update.rpc = true
 
   /**
    * CREATE

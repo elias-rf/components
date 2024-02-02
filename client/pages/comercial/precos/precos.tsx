@@ -1,13 +1,8 @@
 import { Can } from '@/client/components/can.js'
 import { FormHead } from '@/client/components/form-head/form-head.js'
 import { authStore } from '@/client/store/auth_store.js'
+import { permissions } from './components/constants.js'
 import { PrecosCliente } from './components/precos-cliente.js'
-
-const permissions = {
-  comercial_precos_permissao: 'Atribuir permissões de preços',
-  comercial_precos_read: 'Calcular preços',
-}
-type TCan = (name: keyof typeof permissions) => boolean
 
 export default function Precos() {
   return (

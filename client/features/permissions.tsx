@@ -4,73 +4,81 @@ import { ShieldIcon } from '@/client/components/icons/shield-icon.js'
 import { Label } from '@/client/components/label/label.js'
 import { ListGroup } from '@/client/components/list-group/list-group.js'
 import { Modal } from '@/client/components/ui-old/modal/modal.js'
+import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { TGroupSubjectFields } from '@/core/group-subject_controller.js'
 import { TGroupFields } from '@/core/group_controller.js'
-import { TData } from '@/types/index.js'
-import React, { useEffect, useState } from 'react'
+import { TData, TPermissions } from '@/types/index.js'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import React, { useState } from 'react'
 
 export function Permissions({
   permissions = {},
 }: {
-  permissions: { [id: string]: string }
+  permissions: TPermissions
 }) {
   const [show, setShow] = useState(false)
-  const [groupList, setGroupList] = useState<TData<TGroupFields>[]>([])
-  const [permited, setPermited] = useState<TData<TGroupSubjectFields>[]>([])
   const [groupCurrent, setGroupCurrent] = useState(0)
 
-  useEffect(() => {
-    async function getData() {
-      const data = await rpc.request('group_list', {
+  const groupListQuery = useQuery({
+    queryKey: ['group'],
+    queryFn: () =>
+      rpc.request('group_list', {
         orderBy: [['NomeGrupo', 'asc']],
-      })
-      setGroupList(data)
-    }
-    getData()
-  }, [])
-
-  async function getPermited(groupCurrent: number) {
-    const data = await rpc.request('groupSubject_list', {
-      where: [['idGroup', groupCurrent.toString()]],
-    })
-    setPermited(data)
-  }
-
-  React.useEffect(() => {
-    getPermited(groupCurrent)
-  }, [groupCurrent])
+      }) as unknown as Promise<TData<TGroupFields>[]>,
+  })
+  const permitedQuery = useQuery({
+    queryKey: ['groupSubject', groupCurrent],
+    queryFn: () =>
+      rpc.request('groupSubject_list', {
+        where: [['idGroup', groupCurrent.toString()]],
+      }) as unknown as Promise<TData<TGroupSubjectFields>[]>,
+  })
+  const queryClient = useQueryClient()
 
   function handleGroup(group: number) {
     setGroupCurrent(group)
   }
 
+  const { MsgBox, confirm } = useMessageBox({
+    title: 'Escolha um grupo',
+    message: 'Um grupo deve ser escolhido anter de definir as permissões',
+    option1: 'Ok',
+  })
+
   async function handlePermission(permission: string) {
-    if (groupCurrent === 0) return
-    const data = await rpc.request('groupSubject_listPermissions', {
+    const permissionKey = permissions[permission].key
+    if (groupCurrent === 0) {
+      await confirm()
+      return
+    }
+    const params = {
       idGroup: groupCurrent.toString(),
-      idSubjectList: Object.keys(permissions),
-    })
+      idSubjectList: Object.values(permissions).map(
+        (permission) => permission.key
+      ),
+    }
+    const data = await rpc.request('groupSubject_listPermissions', params)
 
     const exist =
-      data.findIndex((prm: any) => permission === prm.idSubject) !== -1
+      data.findIndex((prm: any) => permissionKey === prm.idSubject) !== -1
 
     if (exist) {
       await rpc.request('groupSubject_del', {
         where: [
           ['idGroup', groupCurrent.toString()],
-          ['idSubject', permission],
+          ['idSubject', permissionKey],
         ],
       })
     } else {
       await rpc.request('groupSubject_create', {
         data: {
           idGroup: groupCurrent,
-          idSubject: permission,
+          idSubject: permissionKey,
         },
       })
     }
-    getPermited(groupCurrent)
+    permitedQuery.refetch()
   }
 
   return (
@@ -87,13 +95,13 @@ export function Permissions({
         show={show}
         title="Segurança"
       >
-        <div className="flex p-4 space-x-4">
+        <div className="flex space-x-4 p-4">
           <div>
             <p>Grupos</p>
-            {groupList?.map((group) => (
+            {groupListQuery.data?.map((group) => (
               <ListGroup
                 key={group.kGrupo}
-                className="overflow-y-auto max-h-96"
+                className="max-h-96 overflow-y-auto"
               >
                 <ListGroup.Item
                   active={group.kGrupo === groupCurrent}
@@ -116,8 +124,8 @@ export function Permissions({
                     <Checkbox
                       id={permission}
                       checked={
-                        permited
-                          ? permited.findIndex(
+                        permitedQuery.data
+                          ? permitedQuery.data.findIndex(
                               (prm) => permission === prm.idSubject
                             ) !== -1
                           : false
@@ -127,7 +135,7 @@ export function Permissions({
                       className="align-middle"
                       htmlFor={permission}
                     >
-                      {permissions[permission]}
+                      {permissions[permission].description}
                     </Label>
                   </div>
                 </ListGroup.Item>
@@ -136,6 +144,7 @@ export function Permissions({
           </div>
         </div>
       </Modal>
+      <MsgBox />
     </>
   )
 }

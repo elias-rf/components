@@ -1,15 +1,12 @@
 import { Combobox } from '@/client/components/combobox/combobox.js'
 import { JsonView } from '@/client/components/json-view/json-view.js'
 import { Label } from '@/client/components/label/label.js'
-import { CheckBoxForm } from '@/client/components/ui-old/check-box/check-box-form.js'
+import { SelectBadge } from '@/client/components/select-badge/select-badge.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { Helper } from '@/client/components/ui-old/helper.js'
 import { InputForm } from '@/client/components/ui-old/input/input-form.js'
-import { SelectBadgeForm } from '@/client/components/ui-old/select-badge/select-badge-form.js'
-import { SelectForm } from '@/client/components/ui-old/select/select-form.js'
-import { Select } from '@/client/components/ui-old/select/select.js'
 import { ToggleForm } from '@/client/components/ui-old/toggle/toggle-form.js'
-import '@/client/index.css'
+
 import type { Meta, StoryObj } from '@storybook/react'
 import { useForm } from 'react-hook-form'
 
@@ -71,33 +68,9 @@ export const Default: Story = {
             </FormField>
           }
 
-          <FormField className="w-60">
-            <Label htmlFor="fld6">Label [6]</Label>
-            <SelectForm
-              {...form.register('fld6')}
-              variant={props.variant}
-              disabled={props.disabled}
-            >
-              <Select.Option value="US">United States</Select.Option>
-              <Select.Option value="CA">Canada</Select.Option>
-              <Select.Option value="FR">France</Select.Option>
-            </SelectForm>
-            <Helper variant={props.variant}>{props.helper}</Helper>
-          </FormField>
-
-          <FormField className="w-40">
-            <Label htmlFor="fld4">Lab[e]l 2</Label>
-            <CheckBoxForm
-              {...form.register('fld4')}
-              variant={props.variant}
-              disabled={props.disabled}
-            ></CheckBoxForm>
-            <Helper variant={props.variant}>{props.helper}</Helper>
-          </FormField>
-
           <FormField className="w-full">
             <Label htmlFor="fld5">Label [5]</Label>
-            <SelectBadgeForm
+            <SelectBadge
               options={[
                 ['Option 1', '1'],
                 ['Option 2', '2'],
@@ -106,7 +79,7 @@ export const Default: Story = {
               {...form.register('fld5')}
               variant={props.variant}
               disabled={props.disabled}
-            ></SelectBadgeForm>
+            ></SelectBadge>
             <Helper variant={props.variant}>{props.helper}</Helper>
           </FormField>
         </div>

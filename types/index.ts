@@ -14,6 +14,14 @@ export type TCan = {
   [permission: string]: boolean
 }
 
+export type TPermissions = {
+  [permission: string]: {
+    key: string
+    description: string
+    can?: boolean
+  }
+}
+
 /** Tipos aceitos por Input */
 export type TInputType =
   | 'button'
@@ -61,3 +69,7 @@ export type TColumn = {
 }
 
 export type TRow = { [field: string]: any }
+
+export type DeepWritable<T> = {
+  -readonly [P in keyof T]: DeepWritable<T[P]>
+}

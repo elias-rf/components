@@ -1,7 +1,7 @@
 import { Table } from '@/client/components/table-full/table.js'
 import { TOperacaoStore } from '@/client/pages/industrial/controles/components/operacao/operacao.store.js'
+import { useQuery } from '@tanstack/react-query'
 import React from 'react'
-import { useSnapshot } from 'valtio'
 import { operacaoDiarioSchema } from './operacao-diario.schema.js'
 
 type OperacaoDiarioProp = {
@@ -10,20 +10,20 @@ type OperacaoDiarioProp = {
 }
 
 export function OperacaoDiario({ children, store }: OperacaoDiarioProp) {
-  const { mes, dia, operacao, operacaoDiario } = useSnapshot(store.state)
+  const mes = store.state((state) => state.mes)
+  const operacao = store.state((state) => state.operacao)
+  const dia = store.state((state) => state.dia)
 
-  React.useEffect(() => {
-    store.fetchOperacaoDiario(
-      mes as ['mes', string][],
-      operacao as ['operacao', string][]
-    )
-  }, [mes, operacao])
+  const query = useQuery({
+    queryKey: ['operacaoDiario', { mes, operacao }],
+    queryFn: () => store.fetchOperacaoDiario(mes, operacao),
+  })
 
   return (
     <Table
-      rows={operacaoDiario as any}
+      rows={query.data || []}
       columns={operacaoDiarioSchema}
-      selection={dia as any}
+      selection={dia}
       onSelection={store.setDia}
       getId={(rec: any) => [['dia', rec.dia]]}
     >

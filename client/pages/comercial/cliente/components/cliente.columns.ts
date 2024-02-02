@@ -38,11 +38,6 @@ export const clienteColumns: TColumn[] = [
     width: '5%',
   },
   {
-    label: 'Email',
-    name: 'EMail',
-    width: '10%',
-  },
-  {
     label: 'Data de Cadastro',
     name: 'DtCadastro',
     width: '5%',

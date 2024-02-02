@@ -1,5 +1,5 @@
 import { Modal, TModalProps } from '@/client/components/ui-old/modal/modal.js'
-import '@/client/index.css'
+
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 

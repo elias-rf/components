@@ -380,12 +380,14 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
     if (uf.length > 0) {
       qry.where?.push(['cidadeserf.uf', 'in', uf])
     }
+    db.startLog()
     const result = (await db(qry)) as unknown as {
       NmCategoria: string
       DtEmissao: string
       quantidade: number
       valor: number
     }[]
+    console.log(db.log())
 
     const response = result.map((item) => {
       item.DtEmissao = format(new UTCDateMini(item.DtEmissao), 'yyyy-MM-dd')

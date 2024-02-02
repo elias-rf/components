@@ -1,11 +1,10 @@
-import { cache } from '@/client/lib/cache.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { getFieldId } from '@/utils/query/get-field-id.js'
 import { isIdEqual } from '@/utils/query/is-id-equal.js'
 import { endOfMonth, format, parse, startOfMonth, subMonths } from 'date-fns'
 import { flow } from 'lodash-es'
-import { proxy } from 'valtio'
-import { devtools } from 'valtio/utils'
+import { create } from 'zustand'
+import { devtools } from 'zustand/middleware'
 
 type TState = {
   mes: ['mes', string][]
@@ -13,10 +12,6 @@ type TState = {
   operacao: ['operacao', string][]
   produto: ['produto', string][]
   mesInicio: ['mes', string][]
-  esterilizacaoInternaDiario: any[]
-  esterilizacaoInternaMensal: any[]
-  esterilizacaoInternaModelo: any[]
-  esterilizacaoInternaProduto: any[]
 }
 
 const initialState: TState = {
@@ -33,46 +28,37 @@ const initialState: TState = {
       flow([($) => subMonths($, 13), ($) => format($, 'yyyy-MM')])(new Date()),
     ],
   ],
-  esterilizacaoInternaDiario: [],
-  esterilizacaoInternaMensal: [],
-  esterilizacaoInternaModelo: [],
-  esterilizacaoInternaProduto: [],
 }
 
-const state = proxy(initialState)
-devtools(state, {
-  name: 'controles',
-  enabled: true,
-})
+const state = create(devtools(() => initialState))
 
 const setMes = (mes: ['mes', string][]) => {
-  if (isIdEqual(state.mes, mes)) {
-    state.mes = []
+  if (isIdEqual(state.getState().mes, mes)) {
+    state.setState({ mes: [] })
     return
   }
-  state.mes = mes
+  state.setState({ mes })
 }
 
 const setDia = (dia: ['dia', string][]) => {
-  if (isIdEqual(state.dia, dia)) {
-    state.dia = []
+  if (isIdEqual(state.getState().dia, dia)) {
+    state.setState({ dia: [] })
     return
   }
-  state.dia = dia
+  state.setState({ dia })
 }
 
 const setProduto = (produto: ['produto', string][]) => {
-  if (isIdEqual(state.produto, produto)) {
-    state.produto = []
+  if (isIdEqual(state.getState().produto, produto)) {
+    state.setState({ produto: [] })
     return
   }
-  state.produto = produto
+  state.setState({ produto })
 }
 
 const fetchEsterilizacaoInternaDiario = async (mes: ['mes', string][]) => {
   const dia = getFieldId('mes', mes) + '-01'
   if (dia.length !== 10) {
-    state.esterilizacaoInternaDiario = []
     return []
   }
   const inicio = flow([
@@ -86,15 +72,7 @@ const fetchEsterilizacaoInternaDiario = async (mes: ['mes', string][]) => {
     ($) => format($, 'yyyy-MM-dd'),
   ])(dia)
   const params = { inicio, fim }
-  const data = (await cache.memo(
-    {
-      params,
-      tables: ['esterilizacaoInterna'],
-      rpc: 'esterilizacaoExterna_diario',
-    },
-    () => rpc.request('esterilizacaoInterna_diario', params)
-  )) as any[]
-  state.esterilizacaoInternaDiario = data
+  const data = await rpc.request('esterilizacaoInterna_diario', params)
   return data
 }
 
@@ -104,15 +82,7 @@ const fetchEsterilizacaoInternaMensal = async (
   const params = {
     mes: getFieldId('mes', mesInicio),
   }
-  const data = (await cache.memo(
-    {
-      params,
-      tables: ['esterilizacaoInterna'],
-      rpc: 'esterilizacaoExterna_mensal',
-    },
-    () => rpc.request('esterilizacaoInterna_mensal', params)
-  )) as any[]
-  state.esterilizacaoInternaMensal = data
+  const data = await rpc.request('esterilizacaoInterna_mensal', params)
   return data
 }
 
@@ -124,15 +94,7 @@ const fetchEsterilizacaoInternaModelo = async (
     data: getFieldId('dia', dia),
     produto: getFieldId('produto', produto),
   }
-  const data = (await cache.memo(
-    {
-      params,
-      tables: ['esterilizacaoInterna'],
-      rpc: 'esterilizacaoExterna_modelo',
-    },
-    () => rpc.request('esterilizacaoInterna_modelo', params)
-  )) as any[]
-  state.esterilizacaoInternaModelo = data
+  const data = await rpc.request('esterilizacaoInterna_modelo', params)
   return data
 }
 
@@ -140,15 +102,7 @@ const fetchEsterilizacaoInternaProduto = async (dia: ['dia', string][]) => {
   const params = {
     data: getFieldId('dia', dia),
   }
-  const data = (await cache.memo(
-    {
-      params,
-      tables: ['esterilizacaoInterna'],
-      rpc: 'esterilizacaoExterna_produto',
-    },
-    () => rpc.request('esterilizacaoInterna_produto', params)
-  )) as any[]
-  state.esterilizacaoInternaProduto = data
+  const data = await rpc.request('esterilizacaoInterna_produto', params)
   return data
 }
 

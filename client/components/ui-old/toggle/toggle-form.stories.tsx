@@ -6,7 +6,7 @@ import {
   TToggleProps,
   ToggleForm,
 } from '@/client/components/ui-old/toggle/toggle-form.js'
-import '@/client/index.css'
+
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'

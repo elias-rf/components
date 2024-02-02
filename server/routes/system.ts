@@ -1,12 +1,12 @@
 import { config } from '@/utils/config/index.js'
-import { omit } from '@/utils/object/omit.js'
 import { Request, Response } from 'express'
+import * as _ from 'lodash-es'
 
 export const systemRoute = {
   get: (req: Request, res: Response) => {
     res.send({
       enviroment: process.env.NODE_ENV,
-      config: omit(config, [
+      config: _.omit(config, [
         'auth.secret',
         'db.fullvision.connection.user',
         'db.plano.connection.user',

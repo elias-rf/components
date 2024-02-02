@@ -1,6 +1,4 @@
 import { Button } from '@/client/components/button/button.js'
-import { Title } from '@/client/components/title/title.js'
-import { RocketIcon } from '@radix-ui/react-icons'
 import type { Meta, StoryObj } from '@storybook/react'
 import {
   AlertDialog,
