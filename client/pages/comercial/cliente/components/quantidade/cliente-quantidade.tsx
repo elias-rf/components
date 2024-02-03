@@ -4,9 +4,9 @@ import { useQuery } from '@tanstack/react-query'
 import { getSchema } from '../get-shema.js'
 
 export function ClienteQuantidade({ store }: { store: TClienteStore }) {
-  const inicio = store.state((state) => state.inicio)
-  const fim = store.state((state) => state.fim)
-  const selection = store.state((state) => state.selection)
+  const inicio = store.state.use.inicio()
+  const fim = store.state.use.fim()
+  const selection = store.state.use.selection()
   const query = useQuery({
     queryKey: ['cliente', 'vendaMensalQuantidade', { inicio, fim, selection }],
     queryFn: () => store.fetchVendaMensalQuantidade({ inicio, fim, selection }),

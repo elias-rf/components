@@ -8,9 +8,9 @@ import { useQuery } from '@tanstack/react-query'
 const select = usuarioColumns.map((col) => col.name) as TSelect<TUsuarioFields>
 
 export function UsuarioTable({ store }: { store: TUsuarioStore }) {
-  const where = store.state((state) => state.where)
-  const orderBy = store.state((state) => state.orderBy)
-  const selection = store.state((state) => state.selection)
+  const where = store.state.use.where()
+  const orderBy = store.state.use.orderBy()
+  const selection = store.state.use.selection()
 
   const query = useQuery({
     queryKey: ['usuario', { where, orderBy }],

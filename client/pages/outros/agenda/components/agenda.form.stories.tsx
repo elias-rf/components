@@ -41,8 +41,8 @@ type Story = StoryObj<typeof AgendaTelefoneForm>
 
 export const Form: Story = {
   render: () => {
-    const selection = agendaTelefoneStore.state((state) => state.selection)
-    const status = agendaTelefoneStore.state((state) => state.status)
+    const selection = agendaTelefoneStore.state.use.selection()
+    const status = agendaTelefoneStore.state.use.status()
 
     return (
       <>

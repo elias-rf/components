@@ -15,7 +15,7 @@ export const rpc: TypedJSONRPCClient<TModules> = new JSONRPCClient(
     let auth: { token: string; user: TCurrentUser } = { token: '', user: {} }
 
     if (authString && authString !== 'undefined' && !isEmpty(authString)) {
-      auth = JSON.parse(authString)
+      auth = JSON.parse(authString).state
     }
 
     const options = {

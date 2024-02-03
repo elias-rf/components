@@ -1,3 +1,4 @@
+import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { locationState } from '@/client/store/location_state.js'
 import { TClienteFields, TClienteKeys } from '@/core/cliente_controller.js'
@@ -56,7 +57,7 @@ const initialState: TState = {
   ])(new Date()),
 }
 
-const state = create(devtools(() => initialState))
+const state = createSelectors(create(devtools(() => initialState)))
 
 const fetchList = async ({
   where,

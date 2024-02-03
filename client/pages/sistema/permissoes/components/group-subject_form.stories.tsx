@@ -12,8 +12,8 @@ type Story = StoryObj<typeof GroupSubjectForm>
 
 export const Form: Story = {
   render: () => {
-    const selection = groupSubjectStore.state((state) => state.selection)
-    const status = groupSubjectStore.state((state) => state.status)
+    const selection = groupSubjectStore.state.use.selection()
+    const status = groupSubjectStore.state.use.status()
     return (
       <>
         <GroupSubjectForm store={groupSubjectStore} />

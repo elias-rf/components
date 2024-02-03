@@ -5,16 +5,10 @@ import { GruposForm } from '@/client/pages/sistema/grupos/components/grupos.form
 import { groupStore } from '@/client/pages/sistema/grupos/components/grupos.store.js'
 import { GruposTable } from '@/client/pages/sistema/grupos/components/grupos.table.js'
 import { authStore } from '@/client/store/auth_store.js'
-
-const permissions = {
-  sistema_grupos_permissao: 'Atribuir permissões de grupos',
-  sistema_grupos_read: 'Visualizar grupos',
-}
-
-type TCan = (name: keyof typeof permissions) => boolean
+import { permissions } from './components/constants.js'
 
 export default function Grupos() {
-  const status = groupStore.state((state) => state.status)
+  const status = groupStore.state.use.status()
 
   return (
     <Can can={authStore.can('sistema_grupos_read')}>

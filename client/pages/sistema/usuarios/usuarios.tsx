@@ -5,15 +5,10 @@ import { usuarioStore } from '@/client/pages/sistema/usuarios/components/usuario
 import { UsuarioForm } from '@/client/pages/sistema/usuarios/components/usuarios_form.js'
 import { UsuarioTable } from '@/client/pages/sistema/usuarios/components/usuarios_table.js'
 import { authStore } from '@/client/store/auth_store.js'
-
-const permissions = {
-  sistema_usuarios_permissao: 'Atribuir permissões de preços',
-  sistema_usuarios_read: 'Calcular preços',
-}
-type TCan = (name: keyof typeof permissions) => boolean
+import { permissions } from './components/constants.js'
 
 export default function Usuarios() {
-  const status = usuarioStore.state((state) => state.status)
+  const status = usuarioStore.state.use.status()
 
   return (
     <Can can={authStore.can('sistema_usuarios_read')}>

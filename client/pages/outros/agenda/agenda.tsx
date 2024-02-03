@@ -5,20 +5,13 @@ import { AgendaTelefoneForm } from '@/client/pages/outros/agenda/components/agen
 import { agendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda.store.js'
 import { AgendaTelefoneTable } from '@/client/pages/outros/agenda/components/agenda.table.js'
 import { authStore } from '@/client/store/auth_store.js'
-
-const permissions = {
-  outros_agenda_permissao: 'Atribuir permissões',
-  outros_agenda_edit: 'Alterar ramais',
-  outros_agenda_create: 'Lançar novos ramais',
-}
-
-type TCan = (name: keyof typeof permissions) => boolean
+import { permissions } from './components/constants.js'
 
 /**
  * Agenda de Ramais
  */
 export default function Agenda() {
-  const status = agendaTelefoneStore.state((state) => state.status)
+  const status = agendaTelefoneStore.state.use.status()
 
   return (
     <Can can={true}>

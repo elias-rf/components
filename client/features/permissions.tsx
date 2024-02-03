@@ -9,8 +9,8 @@ import { rpc } from '@/client/lib/rpc.js'
 import { TGroupSubjectFields } from '@/core/group-subject_controller.js'
 import { TGroupFields } from '@/core/group_controller.js'
 import { TData, TPermissions } from '@/types/index.js'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
-import React, { useState } from 'react'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useState } from 'react'
 
 export function Permissions({
   permissions = {},
@@ -20,25 +20,53 @@ export function Permissions({
   const [show, setShow] = useState(false)
   const [groupCurrent, setGroupCurrent] = useState(0)
 
-  const groupListQuery = useQuery({
+  const groupList = useQuery({
     queryKey: ['group'],
     queryFn: () =>
       rpc.request('group_list', {
         orderBy: [['NomeGrupo', 'asc']],
       }) as unknown as Promise<TData<TGroupFields>[]>,
   })
-  const permitedQuery = useQuery({
+
+  const groupSubjectList = useQuery({
     queryKey: ['groupSubject', groupCurrent],
     queryFn: () =>
       rpc.request('groupSubject_list', {
         where: [['idGroup', groupCurrent.toString()]],
       }) as unknown as Promise<TData<TGroupSubjectFields>[]>,
   })
-  const queryClient = useQueryClient()
 
-  function handleGroup(group: number) {
-    setGroupCurrent(group)
-  }
+  const queryClient = useQueryClient()
+  const onCreate = useMutation({
+    mutationFn: (permissionKey: string) => {
+      return rpc.request('groupSubject_create', {
+        data: {
+          idGroup: groupCurrent,
+          idSubject: permissionKey,
+        },
+      }) as unknown as Promise<TData<TGroupSubjectFields>>
+    },
+    onSuccess: () => {
+      return queryClient.invalidateQueries({
+        queryKey: ['groupSubject'],
+      })
+    },
+  })
+  const onDelete = useMutation({
+    mutationFn: (permissionKey: string) => {
+      return rpc.request('groupSubject_del', {
+        where: [
+          ['idSubject', permissionKey],
+          ['idGroup', groupCurrent.toString()],
+        ],
+      }) as unknown as Promise<TData<TGroupSubjectFields>>
+    },
+    onSuccess: () => {
+      return queryClient.invalidateQueries({
+        queryKey: ['groupSubject'],
+      })
+    },
+  })
 
   const { MsgBox, confirm } = useMessageBox({
     title: 'Escolha um grupo',
@@ -53,32 +81,18 @@ export function Permissions({
       return
     }
     const params = {
+      idSubject: permissionKey,
       idGroup: groupCurrent.toString(),
-      idSubjectList: Object.values(permissions).map(
-        (permission) => permission.key
-      ),
     }
-    const data = await rpc.request('groupSubject_listPermissions', params)
-
+    // const data = await rpc.request('groupSubject_listPermissions', params)
+    const data = groupSubjectList.data || []
     const exist =
       data.findIndex((prm: any) => permissionKey === prm.idSubject) !== -1
-
     if (exist) {
-      await rpc.request('groupSubject_del', {
-        where: [
-          ['idGroup', groupCurrent.toString()],
-          ['idSubject', permissionKey],
-        ],
-      })
+      await onDelete.mutateAsync(permissionKey)
     } else {
-      await rpc.request('groupSubject_create', {
-        data: {
-          idGroup: groupCurrent,
-          idSubject: permissionKey,
-        },
-      })
+      await onCreate.mutateAsync(permissionKey)
     }
-    permitedQuery.refetch()
   }
 
   return (
@@ -98,14 +112,14 @@ export function Permissions({
         <div className="flex space-x-4 p-4">
           <div>
             <p>Grupos</p>
-            {groupListQuery.data?.map((group) => (
+            {groupList.data?.map((group) => (
               <ListGroup
                 key={group.kGrupo}
                 className="max-h-96 overflow-y-auto"
               >
                 <ListGroup.Item
                   active={group.kGrupo === groupCurrent}
-                  onClick={() => handleGroup(group.kGrupo || 0)}
+                  onClick={() => setGroupCurrent(group.kGrupo || 0)}
                 >
                   {group.NomeGrupo}
                 </ListGroup.Item>
@@ -115,31 +129,34 @@ export function Permissions({
           <div>
             <p>Permissões</p>
             <ListGroup>
-              {Object.keys(permissions).map((permission) => (
-                <ListGroup.Item
-                  key={permission}
-                  onClick={() => handlePermission(permission)}
-                >
-                  <div className="flex flex-row items-center gap-x-2">
-                    <Checkbox
-                      id={permission}
-                      checked={
-                        permitedQuery.data
-                          ? permitedQuery.data.findIndex(
-                              (prm) => permission === prm.idSubject
-                            ) !== -1
-                          : false
-                      }
-                    />
-                    <Label
-                      className="align-middle"
-                      htmlFor={permission}
-                    >
-                      {permissions[permission].description}
-                    </Label>
-                  </div>
-                </ListGroup.Item>
-              ))}
+              {Object.keys(permissions).map((permission) => {
+                return (
+                  <ListGroup.Item
+                    key={permission}
+                    onClick={() => handlePermission(permission)}
+                  >
+                    <div className="flex flex-row items-center gap-x-2">
+                      <Checkbox
+                        id={permission}
+                        checked={
+                          groupSubjectList.data
+                            ? groupSubjectList.data.findIndex(
+                                (prm) =>
+                                  permissions[permission].key === prm.idSubject
+                              ) !== -1
+                            : false
+                        }
+                      />
+                      <Label
+                        className="align-middle"
+                        htmlFor={permission}
+                      >
+                        {permissions[permission].description}
+                      </Label>
+                    </div>
+                  </ListGroup.Item>
+                )
+              })}
             </ListGroup>
           </div>
         </div>

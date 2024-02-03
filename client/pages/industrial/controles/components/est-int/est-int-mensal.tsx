@@ -13,8 +13,8 @@ export function EsterilizacaoInternaMensal({
   children,
   store,
 }: EsterilizacaoInternaMensalProp) {
-  const mes = store.state((state) => state.mes)
-  const mesInicio = store.state((state) => state.mesInicio)
+  const mes = store.state.use.mes()
+  const mesInicio = store.state.use.mesInicio()
 
   const query = useQuery({
     queryKey: ['esterilizacaoInternaMensal', { mesInicio }],

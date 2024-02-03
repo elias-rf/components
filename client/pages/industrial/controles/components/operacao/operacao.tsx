@@ -18,7 +18,7 @@ import { OperacaoProduto } from './operacao-produto.js'
 import { OperacaoTurno } from './operacao-turno.js'
 
 export function Operacao() {
-  const operacao = operacaoStore.state((state) => state.operacao)
+  const operacao = operacaoStore.state.use.operacao()
 
   function handleSelect(value: string) {
     operacaoStore.setOperacao([['operacao', value]])
@@ -59,15 +59,15 @@ export function Operacao() {
       </div>
       <div className="max-w-md">
         <OperacaoMensal store={operacaoStore}>
-          <div className="w-full p-4 border-2 border-gray-200">
+          <div className="w-full border-2 border-gray-200 p-4">
             <OperacaoDiario store={operacaoStore}>
-              <div className="p-4 space-y-4 border-2 border-gray-200">
+              <div className="space-y-4 border-2 border-gray-200 p-4">
                 <OperacaoProduto store={operacaoStore}>
-                  <div className="p-4 border-2 border-gray-200">
+                  <div className="border-2 border-gray-200 p-4">
                     <OperacaoModelo store={operacaoStore} />
                   </div>
                 </OperacaoProduto>
-                <div className="p-4 border-2 border-gray-200 ">
+                <div className="border-2 border-gray-200 p-4 ">
                   <OperacaoTurno store={operacaoStore} />
                 </div>
               </div>

@@ -4,10 +4,10 @@ import { useQuery } from '@tanstack/react-query'
 import { operacaoModeloSchema } from './operacao-modelo.schema.js'
 
 export function OperacaoModelo({ store }: { store: TOperacaoStore }) {
-  const mes = store.state((state) => state.mes)
-  const operacao = store.state((state) => state.operacao)
-  const dia = store.state((state) => state.dia)
-  const produto = store.state((state) => state.produto)
+  const mes = store.state.use.mes()
+  const operacao = store.state.use.operacao()
+  const dia = store.state.use.dia()
+  const produto = store.state.use.produto()
 
   const query = useQuery({
     queryKey: ['operacaoModelo', { mes }],

@@ -1,9 +1,10 @@
-import { authStorage } from '@/client/lib/auth-storage.js'
+// import { authStorage } from '@/client/lib/auth-storage.js'
+import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { globalPlugin } from '@/client/store/global_plugin.js'
 import { TCurrentUser } from '@/types/index.js'
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 
 type TAuthState = {
   token: string
@@ -11,16 +12,23 @@ type TAuthState = {
   permissions: { [perm: string]: boolean }
 }
 
-const storage = authStorage.getItem()
-const initialState: TAuthState = storage
-  ? JSON.parse(storage)
-  : {
-      token: '',
-      user: {} as TCurrentUser,
-      permissions: {} as { [perm: string]: boolean },
-    }
+let initialState: TAuthState = {
+  token: '',
+  user: {} as TCurrentUser,
+  permissions: {} as { [perm: string]: boolean },
+}
 
-const state = create(devtools(() => initialState))
+const state = createSelectors(
+  create(
+    persist(
+      devtools(() => initialState),
+      {
+        name: 'auth',
+        storage: createJSONStorage(() => sessionStorage),
+      }
+    )
+  )
+)
 
 /**
  * Executa o login no servidor
@@ -118,10 +126,6 @@ const me = async () => {
 globalPlugin(state, 'token')
 globalPlugin(state, 'user')
 globalPlugin(state, 'permissions')
-
-state.subscribe(() => {
-  authStorage.setItem(JSON.stringify(state))
-})
 
 export const authStore = {
   state,

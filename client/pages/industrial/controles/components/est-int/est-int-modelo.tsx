@@ -8,8 +8,8 @@ export function EsterilizacaoInternaModelo({
 }: {
   store: TEsterilizacaoInternaStore
 }) {
-  const produto = store.state((state) => state.produto)
-  const dia = store.state((state) => state.dia)
+  const produto = store.state.use.produto()
+  const dia = store.state.use.dia()
 
   const query = useQuery({
     queryKey: ['esterilizacaoInternaModelo', { dia, produto }],

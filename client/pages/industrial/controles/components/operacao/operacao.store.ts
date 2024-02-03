@@ -1,3 +1,4 @@
+import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { getFieldId } from '@/utils/query/get-field-id.js'
 import { isIdEqual } from '@/utils/query/is-id-equal.js'
@@ -30,7 +31,7 @@ const initialState: TState = {
   ],
 }
 
-const state = create(devtools(() => initialState))
+const state = createSelectors(create(devtools(() => initialState)))
 
 const setMes = (mes: ['mes', string][]) => {
   if (isIdEqual(state.getState().mes, mes)) {

@@ -13,7 +13,7 @@ import { permissions } from './components/constants.js'
  * @returns {*} componente react
  */
 export default function GroupSubject() {
-  const status = groupSubjectStore.state((state) => state.status)
+  const status = groupSubjectStore.state.use.status()
 
   return (
     <Can can={authStore.can(permissions.PERMISSAO.key)}>

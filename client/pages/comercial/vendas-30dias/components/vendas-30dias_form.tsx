@@ -16,8 +16,8 @@ import {
  * @returns {*} componente react
  */
 export function Vendas30dias({ store }: { store: TVendas30DiasStore }) {
-  const inicio = store.state((state) => state.inicio)
-  const fim = store.state((state) => state.fim)
+  const inicio = store.state.use.inicio()
+  const fim = store.state.use.fim()
   const query = useQuery({
     queryKey: ['vendas-30dias', { inicio, fim }],
     queryFn: () => store.fetchList({ inicio, fim }),

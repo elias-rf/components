@@ -17,9 +17,9 @@ export function AgendaTelefoneTable({
 }: {
   store: TAgendaTelefoneStore
 }) {
-  const where = store.state((state) => state.where)
-  const orderBy = store.state((state) => state.orderBy)
-  const selection = store.state((state) => state.selection)
+  const where = store.state.use.where()
+  const orderBy = store.state.use.orderBy()
+  const selection = store.state.use.selection()
 
   const query = useQuery({
     queryKey: ['agendaTelefone', { where, orderBy }],

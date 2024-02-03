@@ -13,7 +13,7 @@ export function TransferenciaModelo({
   children,
   store,
 }: TransferenciaModeloProps) {
-  const dia = store.state((state) => state.dia)
+  const dia = store.state.use.dia()
 
   const query = useQuery({
     queryKey: ['operacaoDiario', { dia }],

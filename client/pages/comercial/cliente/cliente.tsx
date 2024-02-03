@@ -7,11 +7,11 @@ import { permissions } from '@/client/pages/comercial/cliente/components/constan
 import { authStore } from '@/client/store/auth_store.js'
 
 export default function Clientes() {
-  const status = clienteStore.state((state) => state.status)
+  const status = clienteStore.state.use.status()
 
   return (
     <Can can={authStore.can('comercial_cliente_read_all')}>
-      <div className="flex flex-col h-full px-2">
+      <div className="flex h-full flex-col px-2">
         <FormHead
           className="flex-none"
           editPermissions={authStore.can('comercial_cliente_permissao')}
@@ -19,7 +19,7 @@ export default function Clientes() {
           title="Histórico de Clientes"
         ></FormHead>
 
-        <div className="flex-auto h-64 border border-gray-400 dark:border-gray-500">
+        <div className="h-64 flex-auto border border-gray-400 dark:border-gray-500">
           <ClienteTable store={clienteStore} />
         </div>
         {status !== 'none' ? (

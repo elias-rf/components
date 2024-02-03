@@ -1,3 +1,4 @@
+import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { formatDiario } from '@/client/pages/comercial/vendas-30dias/components/format-diario.js'
 import { format, subDays } from 'date-fns'
@@ -66,7 +67,7 @@ const initialState: TState = {
   fim: format(new Date(), 'yyyy-MM-dd'),
 }
 
-const state = create(devtools(() => initialState))
+const state = createSelectors(create(devtools(() => initialState)))
 
 const fetchList = async ({ inicio, fim }: { inicio: string; fim: string }) => {
   const params = {

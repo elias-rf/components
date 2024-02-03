@@ -13,9 +13,9 @@ export function TransferenciaDiario({
   children,
   store,
 }: TransferenciaDiarioProps) {
-  const mes = store.state((state) => state.mes)
-  const operacao = store.state((state) => state.operacao)
-  const dia = store.state((state) => state.dia)
+  const mes = store.state.use.mes()
+  const operacao = store.state.use.operacao()
+  const dia = store.state.use.dia()
 
   const query = useQuery({
     queryKey: ['operacaoDiario', { mes }],

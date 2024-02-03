@@ -6,8 +6,8 @@ import { query } from './util.js'
 const url = 'http://localhost:3333/api/rpc2'
 
 let data = [
-  { idSubject: 'teste1', idGroup: '1' },
-  { idSubject: 'teste2', idGroup: '2' },
+  { idSubject: 'prm1', idGroup: '17' },
+  { idSubject: 'prm2', idGroup: '2' },
 ]
 
 export const groupSubjectHandlers = [
@@ -63,8 +63,8 @@ export const groupSubjectHandlers = [
       const recordIndex = data.findIndex((item) =>
         isIdEqual(
           [
-            ['idGroup', item.idGroup],
             ['idSubject', item.idSubject],
+            ['idGroup', item.idGroup],
           ],
           body.params.where
         )
@@ -91,13 +91,12 @@ export const groupSubjectHandlers = [
         (item) =>
           !isIdEqual(
             [
-              ['idGroup', item.idGroup],
+              ['idGroup', item.idGroup.toString()],
               ['idSubject', item.idSubject],
             ],
             body.params.where
           )
       )
-
       const response = {
         id: body.id,
         result: 1,

@@ -1,3 +1,4 @@
+import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { locationState } from '@/client/store/location_state.js'
 import {
@@ -38,7 +39,7 @@ const initialState: TState = {
   where: [] as TWhere<TAgendaTelefoneFields>,
 }
 
-const state = create(devtools(() => initialState))
+const state = createSelectors(create(devtools(() => initialState)))
 
 const fetchList = async ({
   where,

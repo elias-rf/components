@@ -5,8 +5,8 @@ import React from 'react'
 import { operacaoTurnoSchema } from './operacao-turno.schema.js'
 
 export function OperacaoTurno({ store }: { store: TOperacaoStore }) {
-  const operacao = store.state((state) => state.operacao)
-  const dia = store.state((state) => state.dia)
+  const operacao = store.state.use.operacao()
+  const dia = store.state.use.dia()
 
   const query = useQuery({
     queryKey: ['operacaoTurno', { dia, operacao }],

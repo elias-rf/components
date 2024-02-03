@@ -56,10 +56,10 @@ type Story = StoryObj<typeof AgendaTelefoneTable>
 
 export const Default: Story = {
   render: () => {
-    const where = agendaTelefoneStore.state((state) => state.where)
-    const orderBy = agendaTelefoneStore.state((state) => state.orderBy)
-    const selection = agendaTelefoneStore.state((state) => state.selection)
-    const status = agendaTelefoneStore.state((state) => state.status)
+    const where = agendaTelefoneStore.state.use.where()
+    const orderBy = agendaTelefoneStore.state.use.orderBy()
+    const selection = agendaTelefoneStore.state.use.selection()
+    const status = agendaTelefoneStore.state.use.status()
 
     return (
       <div className="h-[800px] w-full">

@@ -21,8 +21,9 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 export function ClienteForm({ store }: { store: TClienteStore }) {
-  const selection = store.state((state) => state.selection)
-  const status = store.state((state) => state.status)
+  const selection = store.state.use.selection()
+  const status = store.state.use.status()
+
   const form = useForm({ defaultValues: store.recordClear })
   const query = useQuery({
     queryKey: ['agendaTelefone', { selection }],

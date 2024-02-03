@@ -1,3 +1,4 @@
+import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
@@ -14,7 +15,7 @@ const initialState: TState = {
   selected: '',
 }
 
-const state = create(devtools(() => initialState))
+const state = createSelectors(create(devtools(() => initialState)))
 
 const setPath = (path: string) => {
   state.setState({ path }, false, 'fileManager/setPath')

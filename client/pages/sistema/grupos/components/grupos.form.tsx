@@ -11,8 +11,8 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 export const GruposForm = ({ store }: { store: TGroupStore }) => {
-  const status = store.state((state) => state.status)
-  const selection = store.state((state) => state.selection)
+  const status = store.state.use.status()
+  const selection = store.state.use.selection()
 
   const form = useForm({ defaultValues: store.recordClear })
   const query = useQuery({

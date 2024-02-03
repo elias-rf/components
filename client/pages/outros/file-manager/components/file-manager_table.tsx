@@ -7,8 +7,8 @@ import { useQuery } from '@tanstack/react-query'
  * Agenda de Ramais
  */
 export function FileManagerTable() {
-  const path = fileManagerStore.state((state) => state.path)
-  const selected = fileManagerStore.state((state) => state.selected)
+  const path = fileManagerStore.state.use.path()
+  const selected = fileManagerStore.state.use.selected()
 
   const queryFiles = useQuery({
     queryKey: ['fileManager', { path }],

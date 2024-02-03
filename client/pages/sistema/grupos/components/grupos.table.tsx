@@ -8,9 +8,9 @@ import { useQuery } from '@tanstack/react-query'
 const select = gruposColumns.map((col) => col.name) as TSelect<TGroupFields>
 
 export function GruposTable({ store }: { store: TGroupStore }) {
-  const where = store.state((state) => state.where)
-  const orderBy = store.state((state) => state.orderBy)
-  const selection = store.state((state) => state.selection)
+  const where = store.state.use.where()
+  const orderBy = store.state.use.orderBy()
+  const selection = store.state.use.selection()
 
   const query = useQuery({
     queryKey: ['grupo', { where, orderBy }],

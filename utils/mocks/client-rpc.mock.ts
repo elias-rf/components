@@ -10,10 +10,6 @@ if (process.env.NODE_ENV === 'development')
 
 export const clientRpcMock: TypedJSONRPCClient<TModules> = new JSONRPCClient(
   async (jsonRPCRequest: any) => {
-    const auth = JSON.parse(
-      authStorage.getItem() || '{"state":{"token":"","user":{}}}'
-    )
-
     const context: any = {
       request: {},
       reply: {},

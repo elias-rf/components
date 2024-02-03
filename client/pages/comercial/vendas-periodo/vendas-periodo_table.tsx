@@ -11,8 +11,8 @@ import { useEffectOnce } from 'usehooks-ts'
  * @returns {*} componente react
  */
 export function VendasPeriodo() {
-  const inicio = vendasPeriodoStore.state((state) => state.inicio)
-  const fim = vendasPeriodoStore.state((state) => state.fim)
+  const inicio = vendasPeriodoStore.state.use.inicio()
+  const fim = vendasPeriodoStore.state.use.fim()
 
   const query = useQuery({
     queryKey: ['vendasPeriodo', { inicio, fim }],

@@ -23,8 +23,8 @@ export const AgendaTelefoneForm = ({
 }: {
   store: TAgendaTelefoneStore
 }) => {
-  const status = store.state((state) => state.status)
-  const selection = store.state((state) => state.selection)
+  const status = store.state.use.status()
+  const selection = store.state.use.selection()
   const form = useForm({ defaultValues: store.recordClear })
   const query = useQuery({
     queryKey: ['agendaTelefone', { selection }],
@@ -38,7 +38,6 @@ export const AgendaTelefoneForm = ({
     onSuccess: () => {
       return queryClient.invalidateQueries({
         queryKey: ['agendaTelefone'],
-        type: 'active',
       })
     },
   })

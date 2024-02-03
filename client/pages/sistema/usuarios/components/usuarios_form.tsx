@@ -24,8 +24,8 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
     [label: string, value: string][]
   >([])
 
-  const status = store.state((state) => state.status)
-  const selection = store.state((state) => state.selection)
+  const status = store.state.use.status()
+  const selection = store.state.use.selection()
 
   const form = useForm({ defaultValues: store.recordClear })
   const query = useQuery({

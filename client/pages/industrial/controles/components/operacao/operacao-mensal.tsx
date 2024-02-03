@@ -10,9 +10,9 @@ type OperacaoMensalProps = {
 }
 
 export function OperacaoMensal({ children, store }: OperacaoMensalProps) {
-  const mes = store.state((state) => state.mes)
-  const operacao = store.state((state) => state.operacao)
-  const mesInicio = store.state((state) => state.mesInicio)
+  const mes = store.state.use.mes()
+  const operacao = store.state.use.operacao()
+  const mesInicio = store.state.use.mesInicio()
 
   const query = useQuery({
     queryKey: ['operacaoMensal', { mesInicio, operacao }],
