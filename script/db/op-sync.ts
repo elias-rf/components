@@ -2,8 +2,6 @@ import { dest } from './dest.js'
 import { source } from './source.js'
 
 async function copyOPItem(kop: string) {
-  console.log(`🚀 ~ file: op-sync.ts:6 ~ copyOPItem ~ kop:`, kop)
-
   const table = 'tOperacaoOrdemProducao'
   const key = 'kOperacaoOP'
   const data = await source(table)

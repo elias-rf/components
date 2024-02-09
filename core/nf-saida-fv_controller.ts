@@ -1,5 +1,5 @@
 import { dbFullvision } from '@/core/db/db-fullvision.db.js'
-import { MestreNota } from '@/core/nf-saida_controller.js'
+import { MestreNota } from '@/core/nf-saida/nf-saida_controller.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { TAdapterKnex, TQueryKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'

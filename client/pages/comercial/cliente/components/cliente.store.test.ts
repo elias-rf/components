@@ -1,10 +1,16 @@
 import { clienteStore } from '@/client/pages/comercial/cliente/components/cliente.store.js'
 import { TId, TOrderBy, TWhere } from '@/types/index.js'
-import { handlers } from '@/utils/mocks/core-msw/handlers.js'
-import { setupServer } from 'msw/node'
-import { afterAll, afterEach, beforeAll, describe, expect, test } from 'vitest'
+import { server } from '@/utils/mocks/core-msw/server.js'
 
-const server = setupServer(...handlers)
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  test,
+  vi,
+} from 'vitest'
 
 describe('clienteStore', () => {
   beforeAll(() => server.listen())
@@ -12,10 +18,12 @@ describe('clienteStore', () => {
   afterAll(() => server.close())
 
   test('initial value', () => {
+    vi.useFakeTimers()
+    vi.setSystemTime(new Date('2020-01-01'))
     clienteStore.reset()
     expect(clienteStore.state.getState()).toEqual({
-      fim: '2023-12-31',
-      inicio: '2023-01-01',
+      fim: '2019-11-30',
+      inicio: '2018-12-01',
       orderBy: [['CdCliente', 'asc']],
       selection: [],
       status: 'none',

@@ -35,7 +35,7 @@ describe('usuarioController', () => {
     ])
 
     const rsp = await usuarioController.usuario_login({
-      user: 'user1',
+      userName: 'user1',
       password: '123',
     })
 

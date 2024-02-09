@@ -9,15 +9,28 @@ import {
 } from '@/client/components/form/form.js'
 import { Input } from '@/client/components/input/input.js'
 import { Modal } from '@/client/components/ui-old/modal/modal.js'
+import { valibotResolver } from '@hookform/resolvers/valibot'
 import { useForm } from 'react-hook-form'
+import * as v from 'valibot'
+
+type TLoginParams = {
+  userName: string
+  password: string
+}
 
 export type TLoginProps = {
-  onInput: ({ user, password }: { user: string; password: string }) => void
+  onInput: ({ userName, password }: TLoginParams) => void
 }
 
 export function Login({ onInput }: TLoginProps) {
   const form = useForm({
-    defaultValues: { user: '', password: '' },
+    defaultValues: { userName: '', password: '' },
+    resolver: valibotResolver(
+      v.object({
+        userName: v.string([v.minLength(3, 'Mínimo 3 caracteres')]),
+        password: v.string([v.minLength(3, 'Mínimo 3 caracteres')]),
+      })
+    ),
   })
 
   return (
@@ -33,7 +46,7 @@ export function Login({ onInput }: TLoginProps) {
         >
           <FormField
             control={form.control}
-            name="user"
+            name="userName"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Usuário *</FormLabel>

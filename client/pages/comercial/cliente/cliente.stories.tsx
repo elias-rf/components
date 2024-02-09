@@ -11,7 +11,7 @@ const meta: Meta<typeof Cliente> = {
 export default meta
 type Story = StoryObj<typeof Cliente>
 
-authStore.state.getState().user.group_ids = '0'
+authStore.state.getState().currentUser.group_ids = '0'
 
 export const Default: Story = {
   render: () => {

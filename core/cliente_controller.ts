@@ -205,7 +205,7 @@ export type TClienteKeys = (typeof clienteSchema.primary)[number]
 ;(clienteSchema as TSchema).relations = {
   nfSaida: {
     method: () =>
-      import('./nf-saida_controller.js').then(
+      import('./nf-saida/nf-saida_controller.js').then(
         (m) => m.nfSaidaController.nfSaida_list
       ),
     where: [['CdProduto', 'CdProduto']],
@@ -246,7 +246,9 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
       args
     )
 
-    const { nfSaidaController } = await import('./nf-saida_controller.js')
+    const { nfSaidaController } = await import(
+      './nf-saida/nf-saida_controller.js'
+    )
     const data = await nfSaidaController.nfSaida_vendaMensalCliente(args)
 
     const rsp = {} as {
@@ -296,7 +298,9 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
       }),
       args
     )
-    const { nfSaidaController } = await import('./nf-saida_controller.js')
+    const { nfSaidaController } = await import(
+      './nf-saida/nf-saida_controller.js'
+    )
     const data = await nfSaidaController.nfSaida_vendaMensalCliente(args)
     const rsp: any = {}
     data.forEach(
@@ -339,7 +343,9 @@ function clienteControllerFactory(db: TAdapterKnex, schema: TSchema) {
       }),
       args
     )
-    const { nfSaidaController } = await import('./nf-saida_controller.js')
+    const { nfSaidaController } = await import(
+      './nf-saida/nf-saida_controller.js'
+    )
     const data = await nfSaidaController.nfSaida_vendaMensalCliente(args)
     const rsp: any = {}
     data.forEach(

@@ -11,13 +11,25 @@ import { EstInt } from '@/client/pages/industrial/controles/components/est-int/e
 import { Operacao } from '@/client/pages/industrial/controles/components/operacao/operacao.js'
 import { Transferencia } from '@/client/pages/industrial/controles/components/transferencia/transferencia.js'
 import { authStore } from '@/client/store/auth_store.js'
+import { useQuery } from '@tanstack/react-query'
 import { permissions } from './components/constants.js'
 
+const permissionsList = Object.values(permissions).map(
+  (permission) => permission.key
+)
+
 export default function Controles() {
+  const currentUser = authStore.state.use.currentUser()
+  const canList = useQuery({
+    queryKey: ['canList'],
+    queryFn: () =>
+      authStore.canList(currentUser.group_ids || '', permissionsList),
+  })
+
   return (
-    <Can can={authStore.can('industrial_controles_read')}>
+    <Can can={canList.data?.[permissions.READ.key]}>
       <FormHead
-        editPermissions={authStore.can('industrial_controles_permissao')}
+        editPermissions={canList.data?.[permissions.PERMISSAO.key] || false}
         permissions={permissions}
         title="Controles de Produção"
       ></FormHead>

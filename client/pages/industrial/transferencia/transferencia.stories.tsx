@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Transferencia } from './components/transferencia_form.js'
+import { TransferenciaForm } from './components/transferencia_form.js'
 
-const meta: Meta<typeof Transferencia> = {
-  component: Transferencia,
+const meta: Meta<typeof TransferenciaForm> = {
+  component: TransferenciaForm,
 }
 
 export default meta
-type Story = StoryObj<typeof Transferencia>
+type Story = StoryObj<typeof TransferenciaForm>
 
 export const Default: Story = {
   render: () => {
-    return <Transferencia />
+    return <TransferenciaForm />
   },
 }

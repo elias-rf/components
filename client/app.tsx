@@ -45,6 +45,9 @@ const Transferencia = React.lazy(
 
 // outros
 const Agenda = React.lazy(async () => import('./pages/outros/agenda/agenda.js'))
+const Dashboard = React.lazy(
+  async () => import('./pages/outros/dashboard/dashboard.js')
+)
 const FileManager = React.lazy(
   async () => import('./pages/outros/file-manager/file-manager.js')
 )
@@ -73,7 +76,7 @@ export function App() {
   return (
     <Layout>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools />
+        <ReactQueryDevtools buttonPosition="bottom-left" />
         <Suspense fallback={<Loading />}>
           <Switch>
             <Route path="/">
@@ -111,6 +114,9 @@ export function App() {
             </Route>
             <Route path="/outros/fileManager">
               <FileManager />
+            </Route>
+            <Route path="/outros/dashboard">
+              <Dashboard />
             </Route>
             <Route path="/login">
               <Login />

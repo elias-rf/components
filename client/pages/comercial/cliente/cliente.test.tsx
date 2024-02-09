@@ -1,6 +1,5 @@
 import { authStore } from '@/client/store/auth_store.js'
 import { handlers } from '@/utils/mocks/core-msw/handlers.js'
-import { saveDebug } from '@/utils/show-debug.js'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { render, screen } from '@testing-library/react'
 import { setupServer } from 'msw/node'
@@ -24,7 +23,7 @@ describe('Cliente', () => {
     expect(screen.getByText('Voltar ao início')).toBeDefined()
   })
   test('deve montar tela se permitido', () => {
-    authStore.state.getState().user.group_ids = '0'
+    authStore.state.getState().currentUser.group_ids = '0'
     render(
       <QueryClientProvider client={queryClient}>
         <Clientes />

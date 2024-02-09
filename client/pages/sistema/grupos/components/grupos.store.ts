@@ -1,4 +1,3 @@
-import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { locationState } from '@/client/store/location_state.js'
@@ -11,10 +10,8 @@ import {
   TSelect,
   TWhere,
 } from '@/types/index.js'
-import { copyProperties } from '@/utils/object/copy-properties.js'
-import { deepEqual } from '@/utils/object/deep-equal.js'
 import { filterNullProperties } from '@/utils/object/filter-null-properties.js'
-import { omit } from 'lodash-es'
+import { isEqual } from 'lodash-es'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
@@ -127,7 +124,7 @@ const setOrderBy = (orderBy: TOrderBy<TGroupFields>) => {
 }
 
 const setSelection = (selection: TId<TGroupKeys>) => {
-  if (deepEqual(selection, state.getState().selection)) {
+  if (isEqual(selection, state.getState().selection)) {
     state.setState({ status: 'none', selection: [] }, false, {
       type: 'grupo/setSelection',
       selection,

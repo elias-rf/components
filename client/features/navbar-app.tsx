@@ -81,6 +81,9 @@ export function NavbarApp() {
         <MenubarMenu>
           <MenubarTrigger>Outros</MenubarTrigger>
           <MenubarContent>
+            <MenubarItem onSelect={() => handleLink('/outros/dashboard')}>
+              Dashboard
+            </MenubarItem>
             <MenubarItem onSelect={() => handleLink('/outros/agenda')}>
               Agenda de ramais
             </MenubarItem>

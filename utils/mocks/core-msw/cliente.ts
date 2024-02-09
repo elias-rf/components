@@ -49,10 +49,7 @@ export const clienteHandlers = [
     withRpcMethod({ method: 'cliente_list' }, async ({ request }) => {
       const body: any = await request.json()
       const result = query(data, body.params)
-      const response = {
-        id: body.id,
-        result,
-      }
+      const response = { jsonrpc: '2.0', id: body.id, result }
       return HttpResponse.json(response)
     })
   ),
@@ -63,10 +60,7 @@ export const clienteHandlers = [
       const body: any = await request.json()
       const result = query(data, body.params)[0] || {}
 
-      const response = {
-        id: body.id,
-        result,
-      }
+      const response = { jsonrpc: '2.0', id: body.id, result }
       return HttpResponse.json(response)
     })
   ),
@@ -79,6 +73,7 @@ export const clienteHandlers = [
         const body: any = await request.json()
         const params = body.params
         const response = {
+          jsonrpc: '2.0',
           id: body.id,
           result: [
             {
@@ -104,6 +99,7 @@ export const clienteHandlers = [
         const body: any = await request.json()
         const params = body.params
         const response = {
+          jsonrpc: '2.0',
           id: body.id,
           result: [
             {
@@ -129,6 +125,7 @@ export const clienteHandlers = [
         const body: any = await request.json()
         const params = body.params
         const response = {
+          jsonrpc: '2.0',
           id: body.id,
           result: [
             {

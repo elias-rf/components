@@ -1,3 +1,4 @@
+import { JsonView } from '@/client/components/json-view/json-view.js'
 import { OperacaoMensal } from '@/client/pages/industrial/controles/components/operacao/operacao-mensal.js'
 import { operacaoStore } from '@/client/pages/industrial/controles/components/operacao/operacao.store.js'
 
@@ -12,6 +13,13 @@ type Story = StoryObj<typeof OperacaoMensal>
 
 export const Default: Story = {
   render: () => {
-    return <OperacaoMensal store={operacaoStore} />
+    const state = operacaoStore.state((state) => state)
+
+    return (
+      <>
+        <OperacaoMensal store={operacaoStore} />
+        <JsonView data={state} />
+      </>
+    )
   },
 }

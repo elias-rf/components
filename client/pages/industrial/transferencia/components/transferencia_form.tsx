@@ -1,6 +1,7 @@
 import { Button } from '@/client/components/button/button.js'
 import { Label } from '@/client/components/label/label.js'
 import { Input } from '@/client/components/ui-old/input/input.js'
+import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { useStateArray } from '@/client/lib/hooks/use-state-array.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { cn } from '@/client/lib/utils.js'
@@ -8,12 +9,18 @@ import React from 'react'
 
 // 000001000017 , 000001000025, 000001000033
 
-export function Transferencia() {
+export function TransferenciaForm() {
   const [quantidade, setQuantidade] = React.useState('')
   const [serial, setSerial] = React.useState('')
   const lista = useStateArray<string>([])
   const [msg, setMsg] = React.useState<string>('')
   const quantidadeRef = React.useRef<HTMLInputElement>(null)
+
+  const { MsgBox, confirm } = useMessageBox({
+    title: 'Transferência',
+    message: 'Transferência para filial concluida',
+    option1: 'Ok',
+  })
 
   function handleQuantidade(value: string) {
     if (isNaN(parseInt(value))) return
@@ -24,9 +31,11 @@ export function Transferencia() {
   async function addList(value: string) {
     setSerial(value)
     if (value.length == 0 || quantidade.length == 0) return
-    if (
-      await rpc.request('ordemProducao_ehControleValido', { controle: value })
-    ) {
+    const isValid = await rpc.request('ordemProducao_ehControleValido', {
+      controle: value,
+    })
+
+    if (isValid) {
       if (!lista.includes(value)) lista.push(value)
       setMsg('')
     } else {
@@ -42,11 +51,14 @@ export function Transferencia() {
 
   async function transfer() {
     try {
-      await rpc.request('nfEntrada_transferenciaCreate', {
+      const response = await rpc.request('nfEntrada_transferenciaCreate', {
         controles: lista.value,
       })
-      setQuantidade('')
-      lista.empty()
+      if (response) {
+        setQuantidade('')
+        lista.empty()
+        await confirm()
+      }
     } catch (e: any) {
       setMsg(e.message)
     }
@@ -102,6 +114,7 @@ export function Transferencia() {
           </React.Fragment>
         ))}
       </div>
+      <MsgBox />
     </>
   )
 }

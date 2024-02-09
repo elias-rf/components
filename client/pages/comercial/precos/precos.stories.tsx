@@ -6,7 +6,7 @@ const meta: Meta<typeof Precos> = {
   component: Precos,
 }
 
-authStore.state.getState().user.group_ids = '0'
+authStore.state.getState().currentUser.group_ids = '0'
 
 export default meta
 type Story = StoryObj<typeof Precos>

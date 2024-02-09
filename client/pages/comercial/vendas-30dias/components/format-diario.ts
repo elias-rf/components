@@ -51,8 +51,6 @@ export type TFormatDiarios = {
 }
 
 export function formatDiario(origem: any[], fim: string): TFormatDiarios {
-  console.log(`🚀 ~ formatDiario ~ fim:`, fim)
-
   const destino: any = {
     liteflex: [],
     metil: [],
@@ -87,6 +85,5 @@ export function formatDiario(origem: any[], fim: string): TFormatDiarios {
     }
   })
 
-  console.log(`🚀 ~ formatDiario ~ destino:`, destino)
   return destino
 }

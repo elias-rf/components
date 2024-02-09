@@ -1,4 +1,5 @@
 import { inteiro, moeda } from '@/client/lib/text-box-formats.js'
+import { cn } from '@/client/lib/utils.js'
 import React from 'react'
 import { PrecosVendedor, TGrupos } from './precos-vendedor.js'
 import { Textbox } from './textbox.js'
@@ -63,7 +64,7 @@ function Produto({
             autoComplete={'off'}
           />
         </td>
-        <td className="bg-yellow-400 text-xl font-bold">
+        <td className="text-xl font-bold bg-yellow-400">
           <Textbox
             onDoubleClick={() =>
               recalc({
@@ -83,14 +84,14 @@ function Produto({
       <tr>
         <td
           colSpan={4}
-          className="border-0 border-t-2 border-solid border-gray-400 py-1"
+          className="py-1 border-0 border-t-2 border-gray-400 border-solid"
         />
       </tr>
     </React.Fragment>
   )
 }
 
-export function PrecosCliente() {
+export function PrecosCliente({ className }: { className?: string }) {
   const [snap, setValue] = usePrecosState() as any
 
   function recalc({ field, value }: { field: string; value: any }) {
@@ -100,7 +101,7 @@ export function PrecosCliente() {
 
   return (
     <>
-      <div className="flex flex-col">
+      <div className={cn('flex flex-col', className)}>
         <p className="dark:text-gray-100">
           <span className="text-2xl font-bold text-blue-600 ">Combos</span>
           {' >>> Lentes + Metilcelulose + Injetores'}
@@ -108,7 +109,7 @@ export function PrecosCliente() {
         <p className={'text-lg font-bold dark:text-gray-100'}>
           Descontos por quantidades e pacotes
         </p>
-        <div className="my-2 w-min border border-solid border-black bg-gray-200 p-4">
+        <div className="p-4 my-2 bg-gray-100 border border-black border-solid w-min">
           <table className="text-right">
             <tbody>
               <tr>
@@ -128,7 +129,7 @@ export function PrecosCliente() {
                   className="min-w-[150px] border-2 border-solid border-gray-400 bg-white px-4 text-center align-top font-bold"
                   rowSpan={9}
                 >
-                  <p className="mb-3 mt-1 text-xl">Combo 1</p>
+                  <p className="mt-1 mb-3 text-xl">Combo 1</p>
                   <p className="text-sm">
                     {snap.hilite.quantidade > 0
                       ? 'HiLite'
@@ -154,7 +155,7 @@ export function PrecosCliente() {
                   className="w-96 min-w-[150px] border-2 border-solid border-gray-400 bg-white px-4 text-center align-top font-bold"
                   rowSpan={9}
                 >
-                  <p className="mb-3 mt-1 text-xl">Combo 2</p>
+                  <p className="mt-1 mb-3 text-xl">Combo 2</p>
                   <p className="text-sm">
                     {snap.hilite.quantidade > 0
                       ? 'HiLite'
@@ -191,15 +192,15 @@ export function PrecosCliente() {
                 >
                   Totais
                 </td>
-                <td className="border border-black bg-yellow-50 px-2 font-bold">
+                <td className="px-2 font-bold border border-black bg-yellow-50">
                   {moeda.format(snap.total.tabela)}
                 </td>
-                <td className="border border-black bg-yellow-600 px-2 text-xl font-bold text-white">
+                <td className="px-2 text-xl font-bold text-white bg-yellow-600 border border-black">
                   {moeda.format(snap.total.ofertado)}
                 </td>
                 <td
                   colSpan={3}
-                  className="mt-2 border-2 border-gray-400 bg-white text-center text-2xl font-bold text-blue-700"
+                  className="mt-2 text-2xl font-bold text-center text-blue-700 bg-white border-2 border-gray-400"
                 >
                   {moeda.format(
                     snap.combo1.totalTabela + snap.combo2.totalTabela
@@ -214,12 +215,12 @@ export function PrecosCliente() {
                   Desconto
                   {' >'}
                 </td>
-                <td className="border border-black bg-gray-600 px-2 text-xl font-bold text-white line-through">
+                <td className="px-2 text-xl font-bold text-white line-through bg-gray-600 border border-black">
                   {moeda.format(snap.desconto.ofertado)}
                 </td>
                 <td
                   colSpan={3}
-                  className="border border-black bg-gray-600 px-2 text-center text-xl font-bold text-white line-through"
+                  className="px-2 text-xl font-bold text-center text-white line-through bg-gray-600 border border-black"
                 >
                   {moeda.format(
                     snap.total.tabela -
@@ -232,8 +233,8 @@ export function PrecosCliente() {
         </div>
 
         <div className="print:hidden">
-          <div className="m-4">
-            <div className="my-2 w-min border border-black bg-gray-300 px-4 pb-4">
+          <div className="">
+            <div className="px-4 pb-4 my-2 bg-gray-300 border border-black w-min">
               <PrecosVendedor
                 dados={snap}
                 produtos={produtos}

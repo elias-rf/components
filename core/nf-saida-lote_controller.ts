@@ -37,7 +37,7 @@ export type TNfSaidaLoteKeys = (typeof LotesNota.primary)[number]
   },
   nfSaida: {
     method: () =>
-      import('./nf-saida_controller.js').then(
+      import('./nf-saida/nf-saida_controller.js').then(
         (m) => m.nfSaidaController.nfSaida_read
       ),
     where: [

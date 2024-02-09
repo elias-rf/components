@@ -28,7 +28,7 @@ describe('isIdEqual', () => {
         ],
         [
           ['id2', 2],
-          ['id1', 1],
+          ['id3', 1],
         ]
       )
     ).toBe(false)

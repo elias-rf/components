@@ -31,10 +31,7 @@ export const agendaTelefoneHandlers = [
     withRpcMethod({ method: 'agendaTelefone_list' }, async ({ request }) => {
       const body: any = await request.json()
       const result = query(data, body.params)
-      const response = {
-        id: body.id,
-        result,
-      }
+      const response = { jsonrpc: '2.0', id: body.id, result }
       return HttpResponse.json(response)
     })
   ),
@@ -45,10 +42,7 @@ export const agendaTelefoneHandlers = [
       const body: any = await request.json()
       const result = query(data, body.params)[0] || {}
 
-      const response = {
-        id: body.id,
-        result,
-      }
+      const response = { jsonrpc: '2.0', id: body.id, result }
       return HttpResponse.json(response)
     })
   ),
@@ -66,6 +60,7 @@ export const agendaTelefoneHandlers = [
       }
 
       const response = {
+        jsonrpc: '2.0',
         id: body.id,
         result: data[recordIndex],
       }
@@ -79,10 +74,7 @@ export const agendaTelefoneHandlers = [
       const body: any = await request.json()
       data = data.filter((item) => item.id !== body.params.where[0][1])
 
-      const response = {
-        id: body.id,
-        result: 1,
-      }
+      const response = { jsonrpc: '2.0', id: body.id, result: 1 }
       return HttpResponse.json(response)
     })
   ),
@@ -93,10 +85,7 @@ export const agendaTelefoneHandlers = [
       const body: any = await request.json()
       data.push(body.params.data)
 
-      const response = {
-        id: body.id,
-        result: body.params.data,
-      }
+      const response = { jsonrpc: '2.0', id: body.id, result: body.params.data }
       return HttpResponse.json(response)
     })
   ),

@@ -1,4 +1,3 @@
-import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { formatDiario } from '@/client/pages/comercial/vendas-periodo/format-diario.js'

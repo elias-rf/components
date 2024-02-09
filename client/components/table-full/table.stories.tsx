@@ -7,8 +7,8 @@ import {
   TSelection,
   TWhere,
 } from '@/types/index.js'
-import { deepEqual } from '@/utils/object/deep-equal.js'
 import type { Meta, StoryObj } from '@storybook/react'
+import { isEqual } from 'lodash-es'
 import React from 'react'
 import { Table } from './table.js'
 
@@ -84,7 +84,7 @@ export const Full: Story = {
     const getId = (row: TRow) => [['dessert', row.dessert]] as TId<string>
 
     function onSelection(selected: TSelection<string>) {
-      if (deepEqual(selected, selection)) return setSelection([])
+      if (isEqual(selected, selection)) return setSelection([])
       setSelection(selected)
     }
 

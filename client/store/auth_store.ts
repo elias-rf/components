@@ -1,4 +1,3 @@
-// import { authStorage } from '@/client/lib/auth-storage.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { globalPlugin } from '@/client/store/global_plugin.js'
@@ -8,14 +7,12 @@ import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 
 type TAuthState = {
   token: string
-  user: TCurrentUser
-  permissions: { [perm: string]: boolean }
+  currentUser: TCurrentUser
 }
 
 let initialState: TAuthState = {
   token: '',
-  user: {} as TCurrentUser,
-  permissions: {} as { [perm: string]: boolean },
+  currentUser: {} as TCurrentUser,
 }
 
 const state = createSelectors(
@@ -31,18 +28,20 @@ const state = createSelectors(
 )
 
 /**
- * Executa o login no servidor
+ * Executa o login no servidor e salva as informações do usuario no cliente
  */
-const login = async (user: { user: string; password: string }) => {
-  const login = await rpc.request('usuario_login', user)
+const login = async (
+  userName: string,
+  password: string
+): Promise<TCurrentUser> => {
+  const login = await rpc.request('usuario_login', { userName, password })
 
   if (login && login.usuario_id && login.usuario_id > 0) {
     state.setState(
-      { token: login.token || '', user: login },
+      { token: login.token || '', currentUser: login },
       false,
       'auth/login'
     )
-    await fetchPermissions()
   }
   return login
 }
@@ -50,50 +49,52 @@ const login = async (user: { user: string; password: string }) => {
 /**
  * Apaga as informações de login no cliente
  */
-const logout = () => {
-  state.setState({ token: '', user: {}, permissions: {} }, false, 'auth/logout')
+const logout = (): void => {
+  state.setState({ token: '', currentUser: {} }, false, 'auth/logout')
 }
 
 /**
  * Retorna true se existe usuario logado
  */
-const isAuthenticated = () => {
+const isAuthenticated = (): boolean => {
   return state.getState().token !== ''
 }
 
 /**
  * Busca todas as permissoes do usuario
  */
-const fetchPermissions = async () => {
-  const groups = state
-    .getState()
-    .user.group_ids?.split(',')
-    .map((item) => item.toString())
+const fetchPermissions = async (
+  group_ids: string
+): Promise<{ [permission: string]: boolean }> => {
+  const groups = group_ids?.split(',').map((item) => item.toString())
 
   const permissions = await rpc.request('groupSubject_list', {
     select: ['idSubject'],
     where: [['idGroup', 'in', groups]],
   })
 
-  const response = permissions.reduce(
+  const response: { [permission: string]: boolean } = permissions.reduce(
     (acc: any, cur: any) => ({ ...acc, [cur.idSubject]: true }),
     {}
   )
-  state.setState({ permissions: response }, false, 'auth/fetchPermissions')
   return response
 }
 
 /**
  * Retorna uma lista boolean para cada permission informada
  */
-const canList = (permissions: { [permission: string]: any }) => {
+const canList = async (
+  group_ids: string,
+  permissions: string[]
+): Promise<{ [permission: string]: boolean }> => {
   const response = {} as { [permission: string]: any }
-  const groups = state.getState().user.group_ids?.split(',')
-  Object.keys(permissions).forEach((permission) => {
+  const permissionsList = await fetchPermissions(group_ids)
+  const groups = group_ids.split(',')
+  permissions.forEach((permission) => {
     if (groups?.includes('0')) {
       response[permission] = true
     } else {
-      response[permission] = state.getState().permissions[permission] || false
+      response[permission] = permissionsList[permission] || false
     }
   })
   return response
@@ -102,20 +103,19 @@ const canList = (permissions: { [permission: string]: any }) => {
 /**
  * Retorna true se o usuario tem a permissão
  */
-const can = (permission: string) => {
-  const groups = state.getState().user.group_ids?.split(',')
-  let response = canList({ [permission]: false })[permission]
+const can = async (group_ids: string, permission: string): Promise<boolean> => {
+  const groups = group_ids.split(',')
   if (groups?.includes('0')) {
-    response = true
+    return true
   }
-
-  return response
+  let response = await canList(group_ids, [permission])
+  return response[permission]
 }
 
 /**
  * Retorna o usuario logado
  */
-const me = async () => {
+const me = async (): Promise<TCurrentUser> => {
   const user = await rpc.request('usuario_me')
   if (!user) {
     logout()

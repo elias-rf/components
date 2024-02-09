@@ -52,10 +52,10 @@ function usuarioControllerFactory(db: TAdapterKnex, schema: TSchema) {
 
   /** LOGIN */
   async function usuario_login(
-    { user, password }: { user: string; password: string },
+    { userName, password }: { userName: string; password: string },
     ctx?: TRpcContext
   ): Promise<TCurrentUser> {
-    if (!user) {
+    if (!userName) {
       throw new Error('Usuário não informado')
     }
 
@@ -64,7 +64,7 @@ function usuarioControllerFactory(db: TAdapterKnex, schema: TSchema) {
     }
 
     const [record] = await orm.rpc.list({
-      where: [['NomeUsuario', user]],
+      where: [['NomeUsuario', userName]],
     })
 
     if (!record) {

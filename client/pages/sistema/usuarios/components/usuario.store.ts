@@ -10,8 +10,8 @@ import {
   TSelect,
   TWhere,
 } from '@/types/index.js'
-import { deepEqual } from '@/utils/object/deep-equal.js'
 import { filterNullProperties } from '@/utils/object/filter-null-properties.js'
+import { isEqual } from 'lodash-es'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
@@ -127,7 +127,7 @@ const setOrderBy = (orderBy: TOrderBy<TUsuarioFields>) => {
 }
 
 const setSelection = (selection: TId<TUsuarioKeys>) => {
-  if (deepEqual(selection, state.getState().selection)) {
+  if (isEqual(selection, state.getState().selection)) {
     state.setState({ status: 'none', selection: [] }, false, {
       type: 'usuario/setSelection',
       selection,

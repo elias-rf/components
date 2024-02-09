@@ -1,6 +1,6 @@
 import { createSelectors } from '@/client/lib/create-selectors.js'
+import { paramStorage } from '@/client/lib/param-storage.js'
 import { rpc } from '@/client/lib/rpc.js'
-import { locationState } from '@/client/store/location_state.js'
 import { TClienteFields, TClienteKeys } from '@/core/cliente_controller.js'
 import {
   TData,
@@ -10,13 +10,12 @@ import {
   TSelect,
   TWhere,
 } from '@/types/index.js'
-import { deepEqual } from '@/utils/object/deep-equal.js'
 import { getFieldId } from '@/utils/query/get-field-id.js'
 import { UTCDateMini } from '@date-fns/utc'
 import { endOfMonth, format, startOfMonth, subMonths, subYears } from 'date-fns'
-import { flow } from 'lodash-es'
+import { flow, isEqual } from 'lodash-es'
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 
 const recordClear = {
   CdCliente: '',
@@ -57,7 +56,17 @@ const initialState: TState = {
   ])(new Date()),
 }
 
-const state = createSelectors(create(devtools(() => initialState)))
+const state = createSelectors(
+  create(
+    persist(
+      devtools(() => initialState),
+      {
+        name: 'cliente',
+        storage: createJSONStorage(() => paramStorage),
+      }
+    )
+  )
+)
 
 const fetchList = async ({
   where,
@@ -160,6 +169,18 @@ const fetchVendaMensalValorMedio = async ({
 
 const reset = () => {
   const resetState = structuredClone(initialState)
+
+  resetState.inicio = flow([
+    ($) => subYears($, 1),
+    startOfMonth,
+    ($) => format($, 'yyyy-MM-dd'),
+  ])(new Date())
+  resetState.fim = flow([
+    ($) => subMonths($, 1),
+    endOfMonth,
+    ($) => format($, 'yyyy-MM-dd'),
+  ])(new Date())
+
   state.setState(resetState, false, 'cliente/reset')
 }
 
@@ -168,7 +189,7 @@ const setOrderBy = (orderBy: TOrderBy<TClienteFields>) => {
 }
 
 const setSelection = (selection: TId<TClienteKeys>) => {
-  if (deepEqual(selection, state.getState().selection)) {
+  if (isEqual(selection, state.getState().selection)) {
     state.setState({ status: 'none', selection: [] }, false, {
       type: 'cliente/setSelection',
       selection,
@@ -184,8 +205,6 @@ const setSelection = (selection: TId<TClienteKeys>) => {
 const setWhere = (where: TWhere<TClienteFields>) => {
   state.setState({ where }, false, { type: 'cliente/setWhere', where })
 }
-
-locationState(state, ['selection', 'status', 'orderBy', 'where'])
 
 export const clienteStore = {
   state,

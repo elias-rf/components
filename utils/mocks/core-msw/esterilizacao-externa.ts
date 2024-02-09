@@ -12,6 +12,7 @@ export const esterilizacaoExternaHandlers = [
         const body: any = await request.json()
         const params = body.params
         const response = {
+          jsonrpc: '2.0',
           id: body.id,
           result: [
             {
@@ -33,6 +34,7 @@ export const esterilizacaoExternaHandlers = [
         const body: any = await request.json()
         const params = body.params
         const response = {
+          jsonrpc: '2.0',
           id: body.id,
           result: [
             {
@@ -52,6 +54,7 @@ export const esterilizacaoExternaHandlers = [
       async ({ request }) => {
         const body: any = await request.json()
         const response = {
+          jsonrpc: '2.0',
           id: body.id,
           result: [
             {
@@ -75,6 +78,7 @@ export const esterilizacaoExternaHandlers = [
       async ({ request }) => {
         const body: any = await request.json()
         const response = {
+          jsonrpc: '2.0',
           id: body.id,
           result: [
             {

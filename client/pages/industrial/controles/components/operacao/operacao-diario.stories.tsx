@@ -1,3 +1,4 @@
+import { JsonView } from '@/client/components/json-view/json-view.js'
 import { OperacaoDiario } from '@/client/pages/industrial/controles/components/operacao/operacao-diario.js'
 import { operacaoStore } from '@/client/pages/industrial/controles/components/operacao/operacao.store.js'
 
@@ -10,10 +11,16 @@ const meta: Meta<typeof OperacaoDiario> = {
 export default meta
 type Story = StoryObj<typeof OperacaoDiario>
 
-operacaoStore.setMes([['mes', '2020-01']])
+// operacaoStore.setMes([['mes', '2020-01']])
 
 export const Operacao_Diario: Story = {
   render: () => {
-    return <OperacaoDiario store={operacaoStore} />
+    const state = operacaoStore.state((state) => state)
+    return (
+      <>
+        <OperacaoDiario store={operacaoStore} />
+        <JsonView data={state} />
+      </>
+    )
   },
 }

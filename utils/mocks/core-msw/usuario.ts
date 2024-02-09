@@ -9,19 +9,19 @@ let data = [
     kUsuario: 1,
     nome: 'fulano',
     NomeUsuario: 'FULANO',
-    setor: '42,20,0',
+    setor: '0',
   },
   {
     kUsuario: 2,
     nome: 'beltrano',
     NomeUsuario: 'BELTRANO',
-    setor: '42,20',
+    setor: '42,20,0',
   },
   {
     kUsuario: 3,
     nome: 'sicrano',
     NomeUsuario: 'SICRANO',
-    setor: '42,20,0',
+    setor: '42,20',
   },
 ]
 
@@ -74,11 +74,12 @@ export const usuarioHandlers = [
   http.post(
     url,
     withRpcMethod(
-      { method: 'usuario_login', params: { user: 'cicrano' } },
+      { method: 'usuario_login', params: { user: 'sicrano' } },
       async ({ request }) => {
         const body: any = await request.json()
         const response = { id: body.id, result: user }
         response.result.group_ids = '42,20'
+        response.result.nome_login = 'sicrano'
         return HttpResponse.json(response)
       }
     )

@@ -1,4 +1,3 @@
-import { cache } from '@/client/lib/cache.js'
 import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { getFieldId } from '@/utils/query/get-field-id.js'
@@ -75,14 +74,7 @@ const fetchEsterilizacaoExternaDiario = async (mes: ['mes', string][]) => {
     ($) => format($, 'yyyy-MM-dd'),
   ])(dia)
   const params = { inicio, fim }
-  const data = (await cache.memo(
-    {
-      params,
-      tables: ['esterilizacaoExterna'],
-      rpc: 'esterilizacaoExterna_diario',
-    },
-    () => rpc.request('esterilizacaoExterna_diario', params)
-  )) as any[]
+  const data = await rpc.request('esterilizacaoExterna_diario', params)
   return data
 }
 
@@ -92,14 +84,7 @@ const fetchEsterilizacaoExternaMensal = async (
   const params = {
     mes: getFieldId('mes', mesInicio),
   }
-  const data = (await cache.memo(
-    {
-      params,
-      tables: ['esterilizacaoExterna'],
-      rpc: 'esterilizacaoExterna_mensal',
-    },
-    () => rpc.request('esterilizacaoExterna_mensal', params)
-  )) as any[]
+  const data = await rpc.request('esterilizacaoExterna_mensal', params)
   return data
 }
 
@@ -111,14 +96,7 @@ const fetchEsterilizacaoExternaModelo = async (
     data: getFieldId('dia', dia),
     produto: getFieldId('produto', produto),
   }
-  const data = (await cache.memo(
-    {
-      params,
-      tables: ['esterilizacaoExterna'],
-      rpc: 'esterilizacaoExterna_modelo',
-    },
-    () => rpc.request('esterilizacaoExterna_modelo', params)
-  )) as any[]
+  const data = await rpc.request('esterilizacaoExterna_modelo', params)
   return data
 }
 
@@ -126,14 +104,7 @@ const fetchEsterilizacaoExternaProduto = async (dia: ['dia', string][]) => {
   const params = {
     data: getFieldId('dia', dia),
   }
-  const data = (await cache.memo(
-    {
-      params,
-      tables: ['esterilizacaoExterna'],
-      rpc: 'esterilizacaoExterna_produto',
-    },
-    () => rpc.request('esterilizacaoExterna_produto', params)
-  )) as any[]
+  const data = await rpc.request('esterilizacaoExterna_produto', params)
   return data
 }
 

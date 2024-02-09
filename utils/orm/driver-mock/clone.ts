@@ -1,4 +1,4 @@
-import { deepCopy } from '@/utils/deep-copy.js'
+import { cloneDeep } from 'lodash-es'
 import { TQuery } from './driver-mock.js'
 
 export function fnClone({
@@ -8,5 +8,5 @@ export function fnClone({
   data: Record<string, any>[]
   query: TQuery
 }) {
-  return { data: deepCopy(data), query }
+  return { data: cloneDeep(data), query }
 }

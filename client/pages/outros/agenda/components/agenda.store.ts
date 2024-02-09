@@ -1,6 +1,6 @@
 import { createSelectors } from '@/client/lib/create-selectors.js'
+import { paramStorage } from '@/client/lib/param-storage.js'
 import { rpc } from '@/client/lib/rpc.js'
-import { locationState } from '@/client/store/location_state.js'
 import {
   TAgendaTelefoneFields,
   TAgendaTelefoneKeys,
@@ -13,10 +13,10 @@ import {
   TSelect,
   TWhere,
 } from '@/types/index.js'
-import { deepEqual } from '@/utils/object/deep-equal.js'
 import { filterNullProperties } from '@/utils/object/filter-null-properties.js'
+import { isEqual } from 'lodash-es'
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 
 const recordClear = {
   id: '',
@@ -39,8 +39,17 @@ const initialState: TState = {
   where: [] as TWhere<TAgendaTelefoneFields>,
 }
 
-const state = createSelectors(create(devtools(() => initialState)))
-
+const state = createSelectors(
+  create(
+    persist(
+      devtools(() => initialState),
+      {
+        name: 'agenda',
+        storage: createJSONStorage(() => paramStorage),
+      }
+    )
+  )
+)
 const fetchList = async ({
   where,
   orderBy,
@@ -129,7 +138,7 @@ const setOrderBy = (orderBy: TOrderBy<TAgendaTelefoneFields>) => {
 }
 
 const setSelection = (selection: TId<TAgendaTelefoneKeys>) => {
-  if (deepEqual(selection, state.getState().selection)) {
+  if (isEqual(selection, state.getState().selection)) {
     state.setState({ status: 'none', selection: [] }, false, {
       type: 'agenda/setSelection',
       selection,
@@ -145,8 +154,6 @@ const setSelection = (selection: TId<TAgendaTelefoneKeys>) => {
 const setWhere = (where: TWhere<TAgendaTelefoneFields>) => {
   state.setState({ where }, false, { type: 'agenda/setWhere', where })
 }
-
-locationState(state, ['selection', 'status', 'orderBy', 'where'])
 
 export const agendaTelefoneStore = {
   state,

@@ -1,5 +1,4 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
-import { pick } from '@/utils/object/pick.js'
 import { useEffect, useState } from 'react'
 
 export function StoreViewer({

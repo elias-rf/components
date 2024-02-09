@@ -7,7 +7,7 @@ const url = 'http://localhost:3333/api/rpc2'
 
 let data = [
   { idSubject: 'prm1', idGroup: '17' },
-  { idSubject: 'prm2', idGroup: '2' },
+  { idSubject: 'prm2', idGroup: '20' },
 ]
 
 export const groupSubjectHandlers = [
@@ -33,7 +33,15 @@ export const groupSubjectHandlers = [
     url,
     withRpcMethod({ method: 'groupSubject_list' }, async ({ request }) => {
       const body: any = await request.json()
-      const result = query(data, body.params)
+      const groups = body.params.where[0][2]
+
+      let result = []
+      if (Array.isArray(groups)) {
+        result = data.filter((item: any) => groups.includes(item.idGroup))
+      } else {
+        result = query(data, body.params)
+      }
+
       const response = {
         id: body.id,
         result,

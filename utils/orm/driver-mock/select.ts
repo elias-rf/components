@@ -1,4 +1,4 @@
-import { pick } from '@/utils/object/pick.js'
+import { pick } from 'lodash-es'
 import { TQuery } from './driver-mock.js'
 
 export function fnSelect({

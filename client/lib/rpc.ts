@@ -27,11 +27,13 @@ export const rpc: TypedJSONRPCClient<TModules> = new JSONRPCClient(
       },
       body: JSON.stringify(jsonRPCRequest),
     }
+
     const response = await fetch(endpoint, options)
 
     if (response.status === 200) {
       // Use client.receive when you received a JSON-RPC response.
       const jsonRPCResponse = await response.json()
+
       return rpc.receive(jsonRPCResponse)
     } else if (jsonRPCRequest.id !== undefined) {
       throw new Error(response.statusText)

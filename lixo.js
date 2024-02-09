@@ -1,29 +1,7 @@
-import { isMatch } from 'lodash-es'
+import { parse } from 'date-fns'
 
-const body = {
-  method: 'me',
-  id: 1,
-  jsonrpc: '2.0',
-  params: {
-    user: 'cicrano',
-    address: {
-      city: 'São Paulo',
-      state: 'SP',
-    },
-  },
-}
+console.log(parse('2022-01-01', 'yyyy-MM-dd', new Date()))
 
-console.log(isMatch(body, { method: 'me' }))
-console.log(isMatch(body, { method: 'me', params: { user: 'cicrano' } }))
-console.log(
-  isMatch(body, {
-    method: 'me',
-    params: { address: { state: 'SP' } },
-  })
-)
-console.log(
-  isMatch(body, {
-    method: 'me',
-    params: { address: { city: 'São Paulo', state: 'MG' } },
-  })
-)
+const rsp = parse('01/01/2022', 'dd-MM-yyyy', new Date())
+console.log(rsp.toString() === 'Invalid Date')
+console.log(rsp.toString())

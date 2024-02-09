@@ -14,13 +14,15 @@ type Story = StoryObj<typeof Login>
 
 export const Geral: Story = {
   render: () => {
-    const [user, setUser] = useState({ user: '_' })
+    const [user, setUser] = useState({ userName: '_' })
 
     return (
       <>
-        <Button onClick={() => setUser({ user: '' })}>Login</Button>
+        <Button onClick={() => setUser({ userName: '' })}>Login</Button>
         <JsonView data={user} />
-        {user.user === '' ? <Login onInput={(user) => setUser(user)} /> : null}
+        {user.userName === '' ? (
+          <Login onInput={(user) => setUser(user)} />
+        ) : null}
       </>
     )
   },

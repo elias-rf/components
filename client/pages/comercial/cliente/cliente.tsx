@@ -5,16 +5,35 @@ import { clienteStore } from '@/client/pages/comercial/cliente/components/client
 import { ClienteTable } from '@/client/pages/comercial/cliente/components/cliente.table.js'
 import { permissions } from '@/client/pages/comercial/cliente/components/constants.js'
 import { authStore } from '@/client/store/auth_store.js'
+import { useQuery } from '@tanstack/react-query'
+
+const permissionsList = Object.values(permissions).map(
+  (permission) => permission.key
+)
 
 export default function Clientes() {
   const status = clienteStore.state.use.status()
+  const currentUser = authStore.state.use.currentUser()
+  const canList = useQuery({
+    queryKey: ['canList'],
+    queryFn: () =>
+      authStore.canList(currentUser.group_ids || '', permissionsList),
+  })
 
+  if (!canList.data) {
+    return null
+  }
+  console.log(
+    currentUser.group_ids,
+    canList.data?.[permissions.READ.key],
+    canList.data
+  )
   return (
-    <Can can={authStore.can('comercial_cliente_read_all')}>
+    <Can can={canList.data?.[permissions.READ.key]}>
       <div className="flex h-full flex-col px-2">
         <FormHead
           className="flex-none"
-          editPermissions={authStore.can('comercial_cliente_permissao')}
+          editPermissions={canList.data?.[permissions.PERMISSAO.key] || false}
           permissions={permissions}
           title="Histórico de Clientes"
         ></FormHead>

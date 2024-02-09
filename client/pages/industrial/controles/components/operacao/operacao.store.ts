@@ -96,7 +96,9 @@ const fetchOperacaoMensal = async (
     operacao: getFieldId('operacao', operacao) || '',
     mes: getFieldId('mes', mesInicio),
   }
+
   const data = await rpc.request('ordemProducaoOperacao_mensal', params)
+
   return data
 }
 
