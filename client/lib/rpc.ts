@@ -23,7 +23,7 @@ export const rpc: TypedJSONRPCClient<TModules> = new JSONRPCClient(
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${auth.token}`,
-        user: auth.user?.usuario_id?.toString() || '',
+        user: auth.user?.id?.toString() || '',
       },
       body: JSON.stringify(jsonRPCRequest),
     }

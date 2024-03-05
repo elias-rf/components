@@ -1,5 +1,5 @@
-import { dbPlano } from '@/core/db/db-plano.db.js'
 import { estoqueController } from '@/core/estoque_controller.js'
+import { planoDb } from '@/data/plano/plano.db.js'
 import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
 import { getTracker } from '@/utils/mocks/database.mock.js'
 import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'
@@ -7,7 +7,7 @@ import { beforeEach, describe, expect, test } from 'vitest'
 
 describe('EstoqueModel', () => {
   const tracker = getTracker()
-  dbPlano.setDriver(knexMockMsql)
+  planoDb.setDriver(knexMockMsql)
 
   beforeEach(() => {
     tracker.reset()

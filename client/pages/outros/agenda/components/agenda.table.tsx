@@ -2,15 +2,15 @@ import { Table } from '@/client/components/table-full/table.js'
 import { agendaTelefoneColumns } from '@/client/pages/outros/agenda/components/agenda.columns.js'
 import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda.store.js'
 import {
-  TAgendaTelefoneFields,
-  TAgendaTelefoneKeys,
-} from '@/core/agenda-telefone_controller.js'
+  TAgendaTelefoneDtoFields,
+  TAgendaTelefoneDtoKeys,
+} from '@/core/agenda-telefone/agenda-telefone.type.js'
 import type { TData, TId, TSelect } from '@/types/index.js'
 import { useQuery } from '@tanstack/react-query'
 
 const select = agendaTelefoneColumns.map(
   (col) => col.name
-) as TSelect<TAgendaTelefoneFields>
+) as TSelect<TAgendaTelefoneDtoFields>
 
 export function AgendaTelefoneTable({
   store,
@@ -26,7 +26,9 @@ export function AgendaTelefoneTable({
     queryFn: () => store.fetchList({ where, orderBy, select }),
   })
 
-  function getId(row: TData<TAgendaTelefoneFields>): TId<TAgendaTelefoneKeys> {
+  function getId(
+    row: TData<TAgendaTelefoneDtoFields>
+  ): TId<TAgendaTelefoneDtoKeys> {
     return [['id', row.id]]
   }
 

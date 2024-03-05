@@ -36,7 +36,7 @@ const login = async (
 ): Promise<TCurrentUser> => {
   const login = await rpc.request('usuario_login', { userName, password })
 
-  if (login && login.usuario_id && login.usuario_id > 0) {
+  if (login && login.id && login.id > 0) {
     state.setState(
       { token: login.token || '', currentUser: login },
       false,

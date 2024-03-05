@@ -1,0 +1,12 @@
+export type TClienteDtoKeys = 'id'
+export type TClienteDtoFields =
+  | 'id'
+  | 'razaoSocial'
+  | 'cidadeId'
+  | 'uf'
+  | 'vendedorId'
+  | 'cnpj'
+  | 'cidade'
+  | 'cadastroData'
+  | 'email'
+  | 'ativo'

@@ -15,8 +15,8 @@ export function Faturamento({
   inicial,
   final,
 }: {
-  inicial: Date
-  final: Date
+  inicial: string
+  final: string
 }) {
   return (
     <div

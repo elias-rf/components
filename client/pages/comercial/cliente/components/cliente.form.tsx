@@ -39,7 +39,7 @@ export function ClienteForm({ store }: { store: TClienteStore }) {
       <Form {...form}>
         <FormField
           control={form.control}
-          name="CdCliente"
+          name="id"
           render={({ field }) => (
             <FormItem className="col-span-3 space-y-0 sm:col-span-2 lg:col-span-1">
               <FormLabel>Código</FormLabel>
@@ -51,7 +51,7 @@ export function ClienteForm({ store }: { store: TClienteStore }) {
         />
         <FormField
           control={form.control}
-          name="RzSocial"
+          name="razaoSocial"
           render={({ field }) => (
             <FormItem className="col-span-10 space-y-0 sm:col-span-10 lg:col-span-6">
               <FormLabel>Nome</FormLabel>
@@ -66,7 +66,7 @@ export function ClienteForm({ store }: { store: TClienteStore }) {
         />
         <FormField
           control={form.control}
-          name="Cidade"
+          name="cidade"
           render={({ field }) => (
             <FormItem className="col-span-10 space-y-0 sm:col-span-6 lg:col-span-4">
               <FormLabel>Cidade</FormLabel>
@@ -81,7 +81,7 @@ export function ClienteForm({ store }: { store: TClienteStore }) {
         />
         <FormField
           control={form.control}
-          name="CGC"
+          name="cnpj"
           render={({ field }) => (
             <FormItem className="col-span-10 space-y-0 sm:col-span-6 lg:col-span-4">
               <FormLabel>CNPJ</FormLabel>
@@ -96,7 +96,7 @@ export function ClienteForm({ store }: { store: TClienteStore }) {
         />
         <FormField
           control={form.control}
-          name="CdVendedor"
+          name="vendedorId"
           render={({ field }) => (
             <FormItem className="col-span-2 space-y-0 sm:col-span-2 lg:col-span-1">
               <FormLabel>Vendedor</FormLabel>
@@ -111,7 +111,7 @@ export function ClienteForm({ store }: { store: TClienteStore }) {
         />
         <FormField
           control={form.control}
-          name="FgAtivo"
+          name="ativo"
           render={({ field }) => (
             <FormItem className="col-span-2 space-y-0 sm:col-span-2 lg:col-span-1">
               <FormLabel>Ativo</FormLabel>
@@ -126,7 +126,7 @@ export function ClienteForm({ store }: { store: TClienteStore }) {
         />
         <FormField
           control={form.control}
-          name="EMail"
+          name="email"
           render={({ field }) => (
             <FormItem className="col-span-12 space-y-0 sm:col-span-8 lg:col-span-4">
               <FormLabel>EMail</FormLabel>
@@ -139,24 +139,10 @@ export function ClienteForm({ store }: { store: TClienteStore }) {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
-          name="NumIdentidade"
-          render={({ field }) => (
-            <FormItem className="col-span-6 space-y-0 sm:col-span-6 lg:col-span-4">
-              <FormLabel>Identidade</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  disabled={['none', 'edit', 'new'].includes(status)}
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="DtCadastro"
+          name="cadastroData"
           render={({ field }) => (
             <FormItem className="col-span-6 space-y-0 sm:col-span-6 lg:col-span-4">
               <FormLabel>Data Cadastro</FormLabel>

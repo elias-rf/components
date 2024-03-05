@@ -5,7 +5,7 @@ import { TLotesSaidaStore } from '@/client/pages/industrial/lotes-saida/componen
 import {
   TNfSaidaLoteFields,
   TNfSaidaLoteKeys,
-} from '@/core/nf-saida-lote_controller.js'
+} from '@/core/nf-saida/nf-saida-lote_controller.js'
 import type { TData, TId } from '@/types/index.js'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'

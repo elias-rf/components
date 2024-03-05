@@ -7,20 +7,20 @@ const url = 'http://localhost:3333/api/rpc2'
 let data = [
   {
     id: 100,
-    name: 'Brenda Gomes',
-    department: 'Comercial',
+    nome: 'Brenda Gomes',
+    setor: 'Comercial',
     email: 'brenda.gomes@visiontech.com.br',
   },
   {
     id: 101,
-    name: 'Vago',
-    department: 'Dev',
+    nome: 'Vago',
+    setor: 'Dev',
     email: '',
   },
   {
     id: 102,
-    name: 'Ana Ferreira',
-    department: 'Comercial',
+    nome: 'Ana Ferreira',
+    setor: 'Comercial',
     email: 'ana.ferreira@visiontech.com.br',
   },
 ]

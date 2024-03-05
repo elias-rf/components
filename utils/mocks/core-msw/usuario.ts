@@ -6,31 +6,31 @@ const url = 'http://localhost:3333/api/rpc2'
 
 let data = [
   {
-    kUsuario: 1,
+    id: 1,
     nome: 'fulano',
-    NomeUsuario: 'FULANO',
+    usuario: 'FULANO',
     setor: '0',
   },
   {
-    kUsuario: 2,
+    id: 2,
     nome: 'beltrano',
-    NomeUsuario: 'BELTRANO',
+    usuario: 'BELTRANO',
     setor: '42,20,0',
   },
   {
-    kUsuario: 3,
+    id: 3,
     nome: 'sicrano',
-    NomeUsuario: 'SICRANO',
+    usuario: 'SICRANO',
     setor: '42,20',
   },
 ]
 
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
 const user = {
-  usuario_id: 1,
-  nome_login: 'fulano',
+  id: 1,
+  usuario: 'fulano',
   nome: 'FULANO',
-  group_ids: '42,20,0',
+  grupoIds: '42,20,0',
   token,
 }
 
@@ -78,8 +78,8 @@ export const usuarioHandlers = [
       async ({ request }) => {
         const body: any = await request.json()
         const response = { id: body.id, result: user }
-        response.result.group_ids = '42,20'
-        response.result.nome_login = 'sicrano'
+        response.result.grupoIds = '42,20'
+        response.result.usuario = 'sicrano'
         return HttpResponse.json(response)
       }
     )

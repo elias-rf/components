@@ -1,5 +1,5 @@
-import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
-import { dbPlano } from '@/core/db/db-plano.db.js'
+import { oftalmoDb } from '@/data/oftalmo/oftalmo.db.js'
+import { planoDb } from '@/data/plano/plano.db.js'
 import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
 import { getTracker } from '@/utils/mocks/database.mock.js'
 import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'
@@ -8,11 +8,11 @@ import { ordemProducaoController } from './ordem-producao_controller.js'
 
 describe('ordemProducaoController', () => {
   const tracker = getTracker()
-  dbOftalmo.setDriver(knexMockMsql)
-  dbPlano.setDriver(knexMockMsql)
+  oftalmoDb.setDriver(knexMockMsql)
+  planoDb.setDriver(knexMockMsql)
 
   beforeEach(() => {
-    dbOftalmo.startLog()
+    oftalmoDb.startLog()
     tracker.reset()
   })
 

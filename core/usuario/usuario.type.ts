@@ -1,0 +1,10 @@
+export type TUsuarioDtoKeys = 'id'
+export type TUsuarioDtoFields =
+  | 'id'
+  | 'nome'
+  | 'email'
+  | 'setor'
+  | 'usuario'
+  | 'senha'
+  | 'ativo'
+  | 'grupoId'

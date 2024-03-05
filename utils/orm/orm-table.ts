@@ -220,7 +220,7 @@ export function ormTable<TFields extends string, TKeys extends string>(
   }
 
   const validReturning = (returning?: TSelect<TFields>) => {
-    return vldReturning<TFields>(returning, schema)
+    return vldReturning(returning, schema)
   }
 
   const validFirst = (first?: TSelect<TFields>) => {

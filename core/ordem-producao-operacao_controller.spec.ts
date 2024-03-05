@@ -1,4 +1,4 @@
-import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
+import { oftalmoDb } from '@/data/oftalmo/oftalmo.db.js'
 import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
 import { getTracker } from '@/utils/mocks/database.mock.js'
 import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'
@@ -7,7 +7,7 @@ import { ordemProducaoOperacaoController } from './ordem-producao-operacao_contr
 
 describe('ordemProducaoOperacaoController', () => {
   const tracker = getTracker()
-  dbOftalmo.setDriver(knexMockMsql)
+  oftalmoDb.setDriver(knexMockMsql)
 
   beforeEach(() => {
     tracker.reset()

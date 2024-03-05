@@ -1,6 +1,6 @@
-import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
-import { dbSys } from '@/core/db/db-sys.db.js'
 import { groupSubjectController } from '@/core/group-subject_controller.js'
+import { oftalmoDb } from '@/data/oftalmo/oftalmo.db.js'
+import { dbSys } from '@/data/sys/db-sys.db.js'
 import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
 import { getTracker } from '@/utils/mocks/database.mock.js'
 import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'
@@ -8,7 +8,7 @@ import { describe, expect, it } from 'vitest'
 
 describe('group-subject-model', () => {
   const tracker = getTracker()
-  dbOftalmo.setDriver(knexMockMsql)
+  oftalmoDb.setDriver(knexMockMsql)
   dbSys.setDriver(knexMockMsql)
 
   it('deve validar permissao', async () => {

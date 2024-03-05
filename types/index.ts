@@ -3,10 +3,10 @@ export * from './query.js'
 
 /** Dados do usuário logado */
 export type TCurrentUser = {
-  usuario_id?: number
-  nome_login?: string
+  id?: number
+  usuario?: string
   nome?: string
-  group_ids?: string
+  grupoIds?: string
   token?: string
 }
 

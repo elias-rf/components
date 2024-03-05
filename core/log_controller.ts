@@ -1,4 +1,4 @@
-import { dbLog } from '@/core/db/db-log.db.js'
+import { dbLog } from '@/data/log/db-log.db.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'

@@ -1,4 +1,4 @@
-import { dbPlano } from '@/core/db/db-plano.db.js'
+import { planoDb } from '@/data/plano/plano.db.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
@@ -72,6 +72,6 @@ function produtoControleControllerFactory(db: TAdapterKnex, schema: TSchema) {
 }
 
 export const produtoControleController = produtoControleControllerFactory(
-  dbPlano,
+  planoDb,
   Lotes
 )

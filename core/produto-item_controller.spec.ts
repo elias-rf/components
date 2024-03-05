@@ -1,5 +1,5 @@
-import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
-import { dbPlano } from '@/core/db/db-plano.db.js'
+import { oftalmoDb } from '@/data/oftalmo/oftalmo.db.js'
+import { planoDb } from '@/data/plano/plano.db.js'
 import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
 import { getTracker } from '@/utils/mocks/database.mock.js'
 import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'
@@ -8,12 +8,12 @@ import { produtoItemController } from './produto-item_controller.js'
 
 describe('produtoItemController', () => {
   const tracker = getTracker()
-  dbOftalmo.setDriver(knexMockMsql)
-  dbPlano.setDriver(knexMockMsql)
+  oftalmoDb.setDriver(knexMockMsql)
+  planoDb.setDriver(knexMockMsql)
 
   beforeEach(() => {
-    dbPlano.startLog()
-    dbOftalmo.startLog()
+    planoDb.startLog()
+    oftalmoDb.startLog()
     tracker.reset()
   })
 
@@ -43,10 +43,10 @@ describe('produtoItemController', () => {
       id: [['kProdutoItem', 10]],
       select: ['CdProduto'],
     })
-    expect(dbOftalmo.log()).toEqual([
+    expect(oftalmoDb.log()).toEqual([
       'select top (1) [IdVisiontech] from [tbl_Produto_Item] where [kProdutoItem] = 10',
     ])
-    expect(dbPlano.log()).toEqual([
+    expect(planoDb.log()).toEqual([
       "select top (1) [CdProduto] from [CadPro] where [CdProduto] = '1'",
     ])
     expect(rsp).toEqual({ CdProduto: '1' })

@@ -10,9 +10,9 @@ import { Input } from '@/client/components/input/input.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/components/agenda.store.js'
 import {
-  TAgendaTelefoneFields,
-  TAgendaTelefoneKeys,
-} from '@/core/agenda-telefone_controller.js'
+  TAgendaTelefoneDtoFields,
+  TAgendaTelefoneDtoKeys,
+} from '@/core/agenda-telefone/agenda-telefone.type.js'
 import { TData, TId } from '@/types/index.js'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
@@ -32,7 +32,7 @@ export const AgendaTelefoneForm = ({
   })
   const queryClient = useQueryClient()
   const onSave = useMutation({
-    mutationFn: (record: TData<TAgendaTelefoneFields>) => {
+    mutationFn: (record: TData<TAgendaTelefoneDtoFields>) => {
       return store.onSave(record)
     },
     onSuccess: () => {
@@ -43,7 +43,7 @@ export const AgendaTelefoneForm = ({
   })
 
   const onDelete = useMutation({
-    mutationFn: (selection: TId<TAgendaTelefoneKeys>) => {
+    mutationFn: (selection: TId<TAgendaTelefoneDtoKeys>) => {
       return store.onDelete(selection)
     },
     onSuccess: () => {
@@ -66,7 +66,7 @@ export const AgendaTelefoneForm = ({
 
   async function handleDel() {
     const response = await confirm(
-      'Tem certeza que deseja apagar ' + form?.getValues('name')
+      'Tem certeza que deseja apagar ' + form?.getValues('nome')
     )
     if (response === 'option1') {
       onDelete.mutate(selection)
@@ -110,14 +110,14 @@ export const AgendaTelefoneForm = ({
           />
           <FormField
             control={form.control}
-            name="name"
+            name="nome"
             render={({ field }) => (
               <FormItem className="col-span-12 sm:col-span-10 lg:col-span-5">
                 <FormLabel>Nome</FormLabel>
                 <FormControl>
                   <Input
                     disabled={['none', 'view'].includes(status)}
-                    {...form.register('name')}
+                    {...form.register('nome')}
                   />
                 </FormControl>
               </FormItem>
@@ -125,14 +125,14 @@ export const AgendaTelefoneForm = ({
           />
           <FormField
             control={form.control}
-            name="department"
+            name="setor"
             render={({ field }) => (
               <FormItem className="col-span-12 sm:col-span-4 lg:col-span-2">
                 <FormLabel>Setor</FormLabel>
                 <FormControl>
                   <Input
                     disabled={['none', 'view'].includes(status)}
-                    {...form.register('department')}
+                    {...form.register('setor')}
                   />
                 </FormControl>
               </FormItem>

@@ -4,10 +4,10 @@ import { afterAll, afterEach, beforeAll, describe, expect, test } from 'vitest'
 
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
 const user = {
-  usuario_id: 1,
-  nome_login: 'fulano',
+  id: 1,
+  usuario: 'fulano',
   nome: 'FULANO',
-  group_ids: '42,20,0',
+  grupoIds: '42,20,0',
   token,
 }
 

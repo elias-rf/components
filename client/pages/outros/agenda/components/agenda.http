@@ -14,11 +14,12 @@ Content-Type: application/json
 }
 
 ### READ
-GET {{host}}/api/trpc/agendaTelefone.read
-?input={"id":{"agenda_telefone_id":"1"}}
-
-### CREATE
-POST {{host}}/api/trpc/agendaTelefone.create
+POST {{host}}/api/rpc2
 Content-Type: application/json
 
-{"agenda_telefone_id":"1", "nome":"Fulano"}
+{
+  "method": "agendaTelefone_read",
+  "params": {"where":[["id",182]]},
+  "id": "1",
+  "jsonrpc":"2.0"
+}

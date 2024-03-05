@@ -1,4 +1,4 @@
-import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
+import { oftalmoDb } from '@/data/oftalmo/oftalmo.db.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
@@ -64,6 +64,6 @@ function produtoControllerFactory(db: TAdapterKnex, schema: TSchema) {
 }
 
 export const produtoController = produtoControllerFactory(
-  dbOftalmo,
+  oftalmoDb,
   tbl_Produto
 )

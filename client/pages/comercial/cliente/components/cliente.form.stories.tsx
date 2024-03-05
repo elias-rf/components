@@ -11,7 +11,7 @@ export default meta
 type Story = StoryObj<typeof ClienteForm>
 
 if (clienteStore.state.getState().selection.length === 0)
-  clienteStore.setSelection([['CdCliente', '100']])
+  clienteStore.setSelection([['id', '100']])
 
 export const Form: Story = {
   render: () => {

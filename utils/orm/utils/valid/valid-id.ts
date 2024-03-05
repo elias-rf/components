@@ -3,7 +3,7 @@ import { getFields } from '@/utils/orm/utils/schema/get-fields.js'
 import { getPrimary } from '@/utils/orm/utils/schema/get-primary.js'
 import { getTable } from '@/utils/orm/utils/schema/get-table.js'
 
-export function validId<T>(id: Array<[T, any]>, schema: TSchema) {
+export function validId<T>(id: any[][], schema: TSchema) {
   const idColumns = getPrimary(schema)
   const fieldColumns = getFields(schema)
   const fieldsInvalidos: string[] = []

@@ -1,5 +1,5 @@
-import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
-import { usuarioController } from '@/core/usuario_controller.js'
+import { usuarioController } from '@/core/usuario/usuario_controller.js'
+import { oftalmoDb } from '@/data/oftalmo/oftalmo.db.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
@@ -47,12 +47,12 @@ function groupSubjectControllerFactory(db: TAdapterKnex, schema: TSchema) {
     kUsuario: number
     idSubject: string
   }) => {
-    const { idGroup } = await usuarioController.usuario_read({
-      where: [['kUsuario', kUsuario]],
-      select: ['idGroup'],
+    const { grupoId } = await usuarioController.usuario_read({
+      where: [['id', kUsuario]],
+      select: ['grupoId'],
     })
 
-    const idGroupList = idGroup.split(',')
+    const idGroupList = grupoId.split(',')
 
     if (idGroupList.includes('0')) {
       return true
@@ -82,6 +82,6 @@ function groupSubjectControllerFactory(db: TAdapterKnex, schema: TSchema) {
 }
 
 export const groupSubjectController = groupSubjectControllerFactory(
-  dbOftalmo,
+  oftalmoDb,
   groupSubject
 )

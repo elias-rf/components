@@ -15,7 +15,7 @@ export default function Clientes() {
   const canList = useQuery({
     queryKey: ['canList'],
     queryFn: () =>
-      authStore.canList(currentUser.group_ids || '', permissionsList),
+      authStore.canList(currentUser.grupoIds || '', permissionsList),
   })
 
   return (

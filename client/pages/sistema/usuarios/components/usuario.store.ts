@@ -1,7 +1,10 @@
 import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { locationState } from '@/client/store/location_state.js'
-import { TUsuarioFields, TUsuarioKeys } from '@/core/usuario_controller.js'
+import {
+  TUsuarioDtoFields,
+  TUsuarioDtoKeys,
+} from '@/core/usuario/usuario.type.js'
 import {
   TData,
   TFormStatus,
@@ -16,27 +19,26 @@ import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
 const recordClear = {
-  kUsuario: '',
+  id: '',
   nome: '',
   email: '',
   setor: '',
-  fkFuncionario: '',
-  NomeUsuario: '',
-  Ativo: true,
-} as TData<TUsuarioFields>
+  usuario: '',
+  ativo: true,
+} as TData<TUsuarioDtoFields>
 
 type TState = {
-  orderBy: TOrderBy<TUsuarioFields>
-  selection: TId<TUsuarioKeys>
+  orderBy: TOrderBy<TUsuarioDtoFields>
+  selection: TId<TUsuarioDtoKeys>
   status: TFormStatus
-  where: TWhere<TUsuarioFields>
+  where: TWhere<TUsuarioDtoFields>
 }
 
 const initialState: TState = {
-  orderBy: [['nome', 'asc']] as TOrderBy<TUsuarioFields>,
-  selection: [] as TId<TUsuarioKeys>,
+  orderBy: [['nome', 'asc']] as TOrderBy<TUsuarioDtoFields>,
+  selection: [] as TId<TUsuarioDtoKeys>,
   status: 'none' as TFormStatus,
-  where: [] as TWhere<TUsuarioFields>,
+  where: [] as TWhere<TUsuarioDtoFields>,
 }
 
 const state = createSelectors(create(devtools(() => initialState)))
@@ -46,9 +48,9 @@ const fetchList = async ({
   orderBy,
   select,
 }: {
-  where: TWhere<TUsuarioFields>
-  orderBy: TOrderBy<TUsuarioFields>
-  select: TSelect<TUsuarioFields>
+  where: TWhere<TUsuarioDtoFields>
+  orderBy: TOrderBy<TUsuarioDtoFields>
+  select: TSelect<TUsuarioDtoFields>
 }) => {
   const params = {
     where,
@@ -60,15 +62,19 @@ const fetchList = async ({
   return list
 }
 
-const fetchRecord = async ({ selection }: { selection: TId<TUsuarioKeys> }) => {
+const fetchRecord = async ({
+  selection,
+}: {
+  selection: TId<TUsuarioDtoKeys>
+}) => {
   if (selection.length === 0) return recordClear
   const params = {
     where: selection,
-    select: Object.keys(recordClear) as TUsuarioKeys[],
+    select: Object.keys(recordClear) as TUsuarioDtoKeys[],
   }
   const record = await rpc.request('usuario_read', params)
   for (const key in record) {
-    record[key as TUsuarioFields] = record[key as TUsuarioFields] ?? ''
+    record[key as TUsuarioDtoFields] = record[key as TUsuarioDtoFields] ?? ''
   }
   return record
 }
@@ -81,7 +87,7 @@ const onCancel = () => {
   state.setState({ status: 'view' }, false, 'usuario/onCancel')
 }
 
-const onDelete = async (selection: TId<TUsuarioKeys>) => {
+const onDelete = async (selection: TId<TUsuarioDtoKeys>) => {
   await rpc.request('usuario_del', {
     where: selection,
   })
@@ -99,13 +105,13 @@ const onNew = () => {
   state.setState({ status: 'new', selection: [] }, false, 'usuario/onNew')
 }
 
-const onSave = async (record: TData<TUsuarioFields>) => {
-  const data = filterNullProperties(record) as TData<TUsuarioFields>
+const onSave = async (record: TData<TUsuarioDtoFields>) => {
+  const data = filterNullProperties(record) as TData<TUsuarioDtoFields>
   let response = {}
   if (state.getState().status === 'edit') {
     response = await rpc.request('usuario_update', {
       data,
-      where: state.getState().selection as TId<TUsuarioKeys>,
+      where: state.getState().selection as TId<TUsuarioDtoKeys>,
     })
   }
   if (state.getState().status === 'new') {
@@ -122,11 +128,11 @@ const reset = () => {
   state.setState(resetState, false, 'usuario/reset')
 }
 
-const setOrderBy = (orderBy: TOrderBy<TUsuarioFields>) => {
+const setOrderBy = (orderBy: TOrderBy<TUsuarioDtoFields>) => {
   state.setState({ orderBy }, false, { type: 'usuario/setOrderBy', orderBy })
 }
 
-const setSelection = (selection: TId<TUsuarioKeys>) => {
+const setSelection = (selection: TId<TUsuarioDtoKeys>) => {
   if (isEqual(selection, state.getState().selection)) {
     state.setState({ status: 'none', selection: [] }, false, {
       type: 'usuario/setSelection',
@@ -140,7 +146,7 @@ const setSelection = (selection: TId<TUsuarioKeys>) => {
   })
 }
 
-const setWhere = (where: TWhere<TUsuarioFields>) => {
+const setWhere = (where: TWhere<TUsuarioDtoFields>) => {
   state.setState({ where }, false, { type: 'usuario/setWhere', where })
 }
 

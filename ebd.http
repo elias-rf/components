@@ -1,6 +1,6 @@
-# @contribuicao = "<p>Nossa vida espiritual depende do sangue que nos revela o querer do Senhor</p>"
-@contribuicao = "<p>A revelação de Jesus estava selada no Velho Testamento.</p>"
-@ebd_id = "3881"
+@contribuicao = "<p>Nossa vida espiritual depende do sangue que nos revela o querer do Senhor</p>"
+# @contribuicao = "<p>A revelação de Jesus estava selada no Velho Testamento.</p>"
+@ebd_id = "3941"
 
 ###
 POST https://intregracao-site.presbiterio.org.br/api-ebd/cadastro-contribuicao

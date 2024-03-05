@@ -41,3 +41,32 @@ Instrutor
 Líder Manutenção
 Líder Produção
 TI
+
+```mermaid
+flowchart TB
+    subgraph core
+      subgraph resource
+        controller-->index
+        entity
+        subgraph useCases
+          index-->count
+          index-->create
+          index-->del
+          index-->list
+          index-->read
+          index-->update
+        end
+      end
+    end
+    subgraph data
+      subgraph database
+        controller
+        entity
+        subgraph table
+          dataSource
+        end
+      end
+    end
+
+
+```

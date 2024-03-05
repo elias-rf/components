@@ -17,14 +17,14 @@ export default function Clientes() {
   const canList = useQuery({
     queryKey: ['canList'],
     queryFn: () =>
-      authStore.canList(currentUser.group_ids || '', permissionsList),
+      authStore.canList(currentUser.grupoIds || '', permissionsList),
   })
 
   if (!canList.data) {
     return null
   }
   console.log(
-    currentUser.group_ids,
+    currentUser.grupoIds,
     canList.data?.[permissions.READ.key],
     canList.data
   )

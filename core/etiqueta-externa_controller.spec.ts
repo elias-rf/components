@@ -1,5 +1,5 @@
-import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
 import { etiquetaExternaController } from '@/core/etiqueta-externa_controller.js'
+import { oftalmoDb } from '@/data/oftalmo/oftalmo.db.js'
 import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
 import { getTracker } from '@/utils/mocks/database.mock.js'
 import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'
@@ -7,7 +7,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 
 describe('ordemProducaoModel', () => {
   const tracker = getTracker()
-  dbOftalmo.setDriver(knexMockMsql)
+  oftalmoDb.setDriver(knexMockMsql)
 
   beforeEach(() => {
     tracker.reset()

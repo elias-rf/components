@@ -19,7 +19,6 @@ export type TQueryKnex = {
     | [table: string, first: string, second: string, method?: string]
     | [table: string, first: { [field: string]: string }]
   )[]
-
   limit?: number
   max?: string[]
   min?: string[]

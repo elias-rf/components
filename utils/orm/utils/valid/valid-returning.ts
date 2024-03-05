@@ -4,10 +4,10 @@ import { isEmpty } from '@/utils/identify/is-empty.js'
 import { getFields } from '@/utils/orm/utils/schema/get-fields.js'
 import { getTable } from '@/utils/orm/utils/schema/get-table.js'
 
-export function validReturning<TFields>(
-  returning: TSelect<TFields> | undefined,
+export function validReturning(
+  returning: TSelect<string> | undefined,
   schema: TSchema
-): { returning?: TSelect<TFields> } {
+): { returning?: TSelect<string> } {
   const nameList = getFields(schema)
   const fieldsInvalidos = []
   let fieldsLivres = nameList

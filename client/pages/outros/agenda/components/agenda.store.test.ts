@@ -25,8 +25,8 @@ describe('useAgendaTelefone', () => {
     })
     expect(agenda).toEqual({
       id: 100,
-      name: 'Brenda Gomes',
-      department: 'Comercial',
+      nome: 'Brenda Gomes',
+      setor: 'Comercial',
       email: 'brenda.gomes@visiontech.com.br',
     })
   })
@@ -35,9 +35,9 @@ describe('useAgendaTelefone', () => {
     expect(agendaTelefoneStore.state.getState().status).toEqual('none')
     await agendaTelefoneStore.onSave({
       id: '100',
-      name: 'Fulano da Silva',
+      nome: 'Fulano da Silva',
       email: 'fulano@mail.com',
-      department: 'Setor de TI',
+      setor: 'Setor de TI',
     })
     expect(agendaTelefoneStore.state.getState().status).toEqual('view')
   })

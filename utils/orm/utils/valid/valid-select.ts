@@ -8,7 +8,7 @@ function fieldName(field: string) {
   return field.split(' ')[0]
 }
 
-export function validSelect<TFields>(
+export function validSelect<TFields extends string = string>(
   select: TSelect<TFields> | undefined,
   schema: TSchema
 ): { select: TSelect<TFields> } {

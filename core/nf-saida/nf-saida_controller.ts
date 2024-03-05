@@ -1,5 +1,5 @@
-import { dbPlano } from '@/core/db/db-plano.db.js'
-import { nfSaidaFvController } from '@/core/nf-saida-fv_controller.js'
+import { nfSaidaFvController } from '@/core/nf-saida/nf-saida-fv_controller.js'
+import { planoDb } from '@/data/plano/plano.db.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { TAdapterKnex, TQueryKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
@@ -13,7 +13,7 @@ export const MestreNota: TSchema = {
   relations: {
     itens: {
       method: () =>
-        import('../nf-saida-item_controller.js').then(
+        import('../nf-saida/nf-saida-item_controller.js').then(
           (m) => m.nfSaidaItemController.nfSaidaItem_list
         ),
       where: [
@@ -25,7 +25,7 @@ export const MestreNota: TSchema = {
     },
     cliente: {
       method: () =>
-        import('../cliente_controller.js').then(
+        import('../cliente/cliente_controller.js').then(
           (m) => m.clienteController.cliente_read
         ),
       where: [['CdCliente', 'CdCliente']],
@@ -514,4 +514,4 @@ function nfSaidaControllerFactory(db: TAdapterKnex, schema: TSchema) {
   }
 }
 
-export const nfSaidaController = nfSaidaControllerFactory(dbPlano, MestreNota)
+export const nfSaidaController = nfSaidaControllerFactory(planoDb, MestreNota)

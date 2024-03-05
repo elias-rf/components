@@ -1,4 +1,4 @@
-import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
+import { oftalmoDb } from '@/data/oftalmo/oftalmo.db.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
 import { ormTable } from '@/utils/orm/index.js'
@@ -181,4 +181,4 @@ function esterilizacaoExternaControllerFactory(
 }
 
 export const esterilizacaoExternaController =
-  esterilizacaoExternaControllerFactory(dbOftalmo, esterilizacaoExternaSchema)
+  esterilizacaoExternaControllerFactory(oftalmoDb, esterilizacaoExternaSchema)

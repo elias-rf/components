@@ -6,25 +6,37 @@ import {
   PopoverTrigger,
 } from '@/client/components/popover/popover.js'
 import { cn } from '@/client/lib/utils.js'
+import { getDateFormat } from '@/utils/date/get-date-format.js'
 import { CalendarIcon } from '@radix-ui/react-icons'
 import { format, parse } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import React from 'react'
 
 type TDatePickerProps = {
-  value?: Date
-  onChange: (date: Date | undefined) => void
-  required?: boolean
+  value: string
+  onChange: (date: string) => void
 }
 
-export function DatePicker({ value, onChange, required }: TDatePickerProps) {
-  const [date, setDate] = React.useState<Date | undefined>(new Date())
+export function DatePicker({ value, onChange }: TDatePickerProps) {
+  const [selected, setSelected] = React.useState<Date | undefined>(new Date())
 
   React.useEffect(() => {
-    if (value) {
-      setDate(parse(value, 'dd/MM/yyyy', new Date()))
+    const format = getDateFormat(value)
+    if (format) {
+      setSelected(parse(value, format, new Date()))
+    } else {
+      setSelected(undefined)
     }
   }, [value])
+
+  function handleChange(event?: Date) {
+    setSelected(event)
+    if (event) {
+      onChange(format(event, 'dd/MM/yyyy'))
+      return
+    }
+    onChange('')
+  }
 
   return (
     <Popover>
@@ -39,11 +51,11 @@ export function DatePicker({ value, onChange, required }: TDatePickerProps) {
       <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single"
-          selected={date}
-          onSelect={onChange}
+          defaultMonth={selected}
+          selected={selected}
+          onSelect={handleChange}
           initialFocus
           locale={ptBR}
-          required={required}
         />
       </PopoverContent>
     </Popover>

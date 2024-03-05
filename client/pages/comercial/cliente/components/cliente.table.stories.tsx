@@ -11,7 +11,7 @@ const meta: Meta<typeof ClienteTable> = {
 export default meta
 type Story = StoryObj<typeof ClienteTable>
 
-clienteStore.setOrderBy([['CdCliente', 'desc']])
+clienteStore.setOrderBy([['id', 'desc']])
 
 export const Table: Story = {
   render: () => {

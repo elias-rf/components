@@ -1,7 +1,10 @@
 import { createSelectors } from '@/client/lib/create-selectors.js'
 import { paramStorage } from '@/client/lib/param-storage.js'
 import { rpc } from '@/client/lib/rpc.js'
-import { TClienteFields, TClienteKeys } from '@/core/cliente_controller.js'
+import {
+  TClienteDtoFields,
+  TClienteDtoKeys,
+} from '@/core/cliente/cliente.type.js'
 import {
   TData,
   TFormStatus,
@@ -18,22 +21,21 @@ import { create } from 'zustand'
 import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 
 const recordClear = {
-  CdCliente: '',
-  RzSocial: '',
-  Cidade: '',
-  Uf: '',
-  CGC: '',
-  CdVendedor: '',
-  FgAtivo: '',
-  NumIdentidade: '',
-  DtCadastro: '',
-  EMail: '',
-} as TData<TClienteFields>
+  id: '',
+  razaoSocial: '',
+  cidade: '',
+  uf: '',
+  cnpj: '',
+  vendedorId: '',
+  ativo: '',
+  cadastroData: '',
+  email: '',
+} as TData<TClienteDtoFields>
 
 type TState = {
-  where: TWhere<TClienteFields>
-  orderBy: TOrderBy<TClienteFields>
-  selection: TId<TClienteKeys>
+  where: TWhere<TClienteDtoFields>
+  orderBy: TOrderBy<TClienteDtoFields>
+  selection: TId<TClienteDtoKeys>
   status: TFormStatus
   inicio: string
   fim: string
@@ -41,7 +43,7 @@ type TState = {
 
 const initialState: TState = {
   where: [],
-  orderBy: [['CdCliente', 'asc']],
+  orderBy: [['id', 'asc']],
   selection: [],
   status: 'none',
   inicio: flow([
@@ -73,9 +75,9 @@ const fetchList = async ({
   orderBy,
   select,
 }: {
-  where: TWhere<TClienteFields>
-  orderBy: TOrderBy<TClienteFields>
-  select: TSelect<TClienteFields>
+  where: TWhere<TClienteDtoFields>
+  orderBy: TOrderBy<TClienteDtoFields>
+  select: TSelect<TClienteDtoFields>
 }) => {
   const params = {
     where,
@@ -86,30 +88,34 @@ const fetchList = async ({
   const response = await rpc.request('cliente_list', params)
 
   const resp = response.map((record) => {
-    if (record.DtCadastro)
-      record.DtCadastro = flow([
+    if (record.cadastroData)
+      record.cadastroData = flow([
         ($) => new UTCDateMini($),
         ($) => format($, 'dd/MM/yyyy'),
-      ])(record.DtCadastro)
+      ])(record.cadastroData)
     return record
   })
 
   return resp
 }
 
-const fetchRecord = async ({ selection }: { selection: TId<TClienteKeys> }) => {
+const fetchRecord = async ({
+  selection,
+}: {
+  selection: TId<TClienteDtoKeys>
+}) => {
   if (selection.length === 0) return recordClear
 
   const params = {
     where: selection,
-    select: Object.keys(recordClear) as TClienteKeys[],
+    select: Object.keys(recordClear) as TClienteDtoKeys[],
   }
   const record = await rpc.request('cliente_read', params)
-  if (record.DtCadastro)
-    record.DtCadastro = flow([
+  if (record.cadastroData)
+    record.cadastroData = flow([
       ($) => new UTCDateMini($),
       ($) => format($, 'dd/MM/yyyy'),
-    ])(record.DtCadastro)
+    ])(record.cadastroData)
   return record
 }
 
@@ -118,13 +124,13 @@ const fetchVendaMensalQuantidade = async ({
   inicio,
   fim,
 }: {
-  selection: TId<TClienteKeys>
+  selection: TId<TClienteDtoKeys>
   inicio: string
   fim: string
 }) => {
   if (selection.length === 0) return []
   const params = {
-    cliente: parseInt(getFieldId('CdCliente', selection)),
+    cliente: parseInt(getFieldId('id', selection)),
     inicio,
     fim,
   }
@@ -136,13 +142,13 @@ const fetchVendaMensalValor = async ({
   inicio,
   fim,
 }: {
-  selection: TId<TClienteKeys>
+  selection: TId<TClienteDtoKeys>
   inicio: string
   fim: string
 }) => {
   if (selection.length === 0) return []
   const params = {
-    cliente: parseInt(getFieldId('CdCliente', selection)),
+    cliente: parseInt(getFieldId('id', selection)),
     inicio,
     fim,
   }
@@ -154,13 +160,13 @@ const fetchVendaMensalValorMedio = async ({
   inicio,
   fim,
 }: {
-  selection: TId<TClienteKeys>
+  selection: TId<TClienteDtoKeys>
   inicio: string
   fim: string
 }) => {
   if (selection.length === 0) return []
   const params = {
-    cliente: parseInt(getFieldId('CdCliente', selection)),
+    cliente: parseInt(getFieldId('id', selection)),
     inicio,
     fim,
   }
@@ -184,11 +190,11 @@ const reset = () => {
   state.setState(resetState, false, 'cliente/reset')
 }
 
-const setOrderBy = (orderBy: TOrderBy<TClienteFields>) => {
+const setOrderBy = (orderBy: TOrderBy<TClienteDtoFields>) => {
   state.setState({ orderBy }, false, { type: 'cliente/setOrderBy', orderBy })
 }
 
-const setSelection = (selection: TId<TClienteKeys>) => {
+const setSelection = (selection: TId<TClienteDtoKeys>) => {
   if (isEqual(selection, state.getState().selection)) {
     state.setState({ status: 'none', selection: [] }, false, {
       type: 'cliente/setSelection',
@@ -202,7 +208,7 @@ const setSelection = (selection: TId<TClienteKeys>) => {
   })
 }
 
-const setWhere = (where: TWhere<TClienteFields>) => {
+const setWhere = (where: TWhere<TClienteDtoFields>) => {
   state.setState({ where }, false, { type: 'cliente/setWhere', where })
 }
 

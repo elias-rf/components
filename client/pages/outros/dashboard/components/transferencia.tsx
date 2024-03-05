@@ -15,8 +15,8 @@ export function TransferenciaMes({
   inicial,
   final,
 }: {
-  inicial: Date
-  final: Date
+  inicial: string
+  final: string
 }) {
   const query = useQuery({
     queryKey: ['nfSaida', { inicial, final }],

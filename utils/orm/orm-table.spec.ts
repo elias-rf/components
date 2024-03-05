@@ -29,7 +29,7 @@ describe('OrmTable', () => {
     })
   })
 
-  it('deve invalidar select', () => {
+  it('deve invalidar select 2', () => {
     expect(() => tb.util.validSelect(['names'])).toThrow(
       '[names] não é um campo válido para select em phonebook use: id,name,department,email'
     )

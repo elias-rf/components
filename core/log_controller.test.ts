@@ -1,4 +1,4 @@
-import { dbLog } from '@/core/db/db-log.db.js'
+import { dbLog } from '@/data/log/db-log.db.js'
 import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
 import { getTracker } from '@/utils/mocks/database.mock.js'
 import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'

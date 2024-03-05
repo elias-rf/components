@@ -21,7 +21,7 @@ export function Login() {
     try {
       const login = await authStore.login(userName, password)
 
-      if (login && login.usuario_id && login.usuario_id > 0) {
+      if (login && login.id && login.id > 0) {
         setLocation('/')
       }
     } catch (error: any) {

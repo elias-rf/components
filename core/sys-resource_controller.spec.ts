@@ -1,5 +1,5 @@
-import { dbSys } from '@/core/db/db-sys.db.js'
 import { sysResourceController } from '@/core/sys-resource_controller.js'
+import { dbSys } from '@/data/sys/db-sys.db.js'
 import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
 import { getTracker } from '@/utils/mocks/database.mock.js'
 import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'

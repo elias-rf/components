@@ -12,12 +12,14 @@ import { Toggle } from '@/client/components/toggle/toggle.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { TUsuarioStore } from '@/client/pages/sistema/usuarios/components/usuario.store.js'
-import { TUsuarioFields, TUsuarioKeys } from '@/core/usuario_controller.js'
+import {
+  TUsuarioDtoFields,
+  TUsuarioDtoKeys,
+} from '@/core/usuario/usuario.type.js'
 import { TData, TId } from '@/types/index.js'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useEffectOnce } from 'usehooks-ts'
 
 export function UsuarioForm({ store }: { store: TUsuarioStore }) {
   const [listGroups, setListGroups] = useState<
@@ -35,7 +37,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
   const queryClient = useQueryClient()
 
   const onSave = useMutation({
-    mutationFn: (record: TData<TUsuarioFields>) => {
+    mutationFn: (record: TData<TUsuarioDtoFields>) => {
       return store.onSave(record)
     },
     onSuccess: () => {
@@ -47,7 +49,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
   })
 
   const onDelete = useMutation({
-    mutationFn: (selection: TId<TUsuarioKeys>) => {
+    mutationFn: (selection: TId<TUsuarioDtoKeys>) => {
       return store.onDelete(selection)
     },
     onSuccess: () => {
@@ -77,7 +79,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
     }
   }
 
-  useEffectOnce(() => {
+  useEffect(() => {
     async function getData() {
       const data = await rpc.request('group_list', {
         orderBy: [['NomeGrupo', 'asc']],
@@ -91,7 +93,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
       setListGroups(list)
     }
     getData()
-  })
+  }, [])
 
   return (
     <>
@@ -115,7 +117,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
         <Form {...form}>
           <FormField
             control={form.control}
-            name="kUsuario"
+            name="id"
             render={({ field }) => (
               <FormItem className="col-span-12 sm:col-span-2 lg:col-span-1">
                 <FormLabel>Código *</FormLabel>
@@ -145,7 +147,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
           />
           <FormField
             control={form.control}
-            name="NomeUsuario"
+            name="usuario"
             render={({ field }) => (
               <FormItem className="col-span-12 sm:col-span-4 lg:col-span-2">
                 <FormLabel>Login *</FormLabel>
@@ -175,7 +177,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
           />
           <FormField
             control={form.control}
-            name="Ativo"
+            name="ativo"
             render={({ field }) => (
               <FormItem className="col-span-2 sm:col-span-2 lg:col-span-1">
                 <FormLabel>Ativo *</FormLabel>

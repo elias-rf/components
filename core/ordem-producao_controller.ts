@@ -1,4 +1,3 @@
-import { dbOftalmo } from '@/core/db/db-oftalmo.db.js'
 import { etiquetaExternaController } from '@/core/etiqueta-externa_controller.js'
 import { ordemProducaoOperacaoController } from '@/core/ordem-producao-operacao_controller.js'
 import {
@@ -6,6 +5,7 @@ import {
   produtoItemController,
 } from '@/core/produto-item_controller.js'
 import { TProdutoPlanoFields } from '@/core/produto-plano_controller.js'
+import { oftalmoDb } from '@/data/oftalmo/oftalmo.db.js'
 import type { TSchema } from '@/schemas/schema.type.js'
 import { isEmpty } from '@/utils/identify/is-empty.js'
 import { TAdapterKnex } from '@/utils/orm/adapter-knex.js'
@@ -355,6 +355,6 @@ function ordemProducaoControllerFactory(db: TAdapterKnex, schema: TSchema) {
 }
 
 export const ordemProducaoController = ordemProducaoControllerFactory(
-  dbOftalmo,
+  oftalmoDb,
   tOrdemProducao
 )

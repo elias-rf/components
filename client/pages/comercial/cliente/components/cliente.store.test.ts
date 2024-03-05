@@ -24,7 +24,7 @@ describe('clienteStore', () => {
     expect(clienteStore.state.getState()).toEqual({
       fim: '2019-11-30',
       inicio: '2018-12-01',
-      orderBy: [['CdCliente', 'asc']],
+      orderBy: [['id', 'asc']],
       selection: [],
       status: 'none',
       where: [],
@@ -36,13 +36,9 @@ describe('clienteStore', () => {
     const data = await clienteStore.fetchList({
       where: [],
       orderBy: [],
-      select: ['CdCliente'],
+      select: ['id'],
     })
-    expect(data).toEqual([
-      { CdCliente: 100 },
-      { CdCliente: 200 },
-      { CdCliente: 300 },
-    ])
+    expect(data).toEqual([{ id: 100 }, { id: 200 }, { id: 300 }])
   })
 
   test('fetchVendaMensalQuantidade', async () => {
@@ -50,31 +46,33 @@ describe('clienteStore', () => {
     const data = await clienteStore.fetchVendaMensalQuantidade({
       inicio: '2020-01-01',
       fim: '2020-03-31',
-      selection: [['CdCliente', '100']],
+      selection: [['id', '100']],
     })
     expect(data).toEqual([
       { '2020-01': 100, categoria: 'LITEFLEX' },
       { '2020-03': 200, categoria: 'LITEFLEX' },
     ])
   })
+
   test('fetchVendaMensalValor', async () => {
     clienteStore.reset()
     const data = await clienteStore.fetchVendaMensalValor({
       inicio: '2020-01-01',
       fim: '2020-03-31',
-      selection: [['CdCliente', '100']],
+      selection: [['id', '100']],
     })
     expect(data).toEqual([
       { '2020-01': '1000,10', categoria: 'LITEFLEX' },
       { '2020-03': '2000,20', categoria: 'LITEFLEX' },
     ])
   })
+
   test('fetchVendaMensalValorMedio', async () => {
     clienteStore.reset()
     const data = await clienteStore.fetchVendaMensalValorMedio({
       inicio: '2020-01-01',
       fim: '2020-03-31',
-      selection: [['CdCliente', '100']],
+      selection: [['id', '100']],
     })
     expect(data).toEqual([
       { '2020-01': '100,10', categoria: 'LITEFLEX' },
@@ -85,39 +83,38 @@ describe('clienteStore', () => {
   test('fetchRecord', async () => {
     clienteStore.reset()
     const data = await clienteStore.fetchRecord({
-      selection: [['CdCliente', '100']],
+      selection: [['id', '100']],
     })
     expect(data).toEqual({
-      CdCliente: 100,
-      RzSocial: 'Fulano de tal',
-      Cidade: 'São Paulo',
-      Uf: 'SP',
-      CGC: '10.100.100/0001-01',
-      CdVendedor: '10',
-      FgAtivo: 'S',
-      EMail: 'fulano@example.com',
-      NumIdentidade: '123456789',
-      DtCadastro: '01/01/2020',
+      id: 100,
+      razaoSocial: 'Fulano de tal',
+      cidade: 'São Paulo',
+      uf: 'SP',
+      cnpj: '10.100.100/0001-01',
+      vendedorId: '10',
+      ativo: 'S',
+      email: 'fulano@example.com',
+      cadastroData: '01/01/2020',
     })
   })
 
   test('setWhere', () => {
     clienteStore.reset()
-    const where = [['CdCliente', '>', 0]] as TWhere<any>
+    const where = [['id', '>', 0]] as TWhere<any>
     clienteStore.setWhere(where)
     expect(clienteStore.state.getState().where).toEqual(where)
   })
 
   test('setOrderBy', () => {
     clienteStore.reset()
-    const orderBy = [['CdCliente', 'desc']] as TOrderBy<any>
+    const orderBy = [['id', 'desc']] as TOrderBy<any>
     clienteStore.setOrderBy(orderBy)
     expect(clienteStore.state.getState().orderBy).toEqual(orderBy)
   })
 
   test('setSelection', () => {
     clienteStore.reset()
-    const selection = [['CdCliente', '1']] as TId<any>
+    const selection = [['id', '1']] as TId<any>
     // set selection
     clienteStore.setSelection(selection)
     expect(clienteStore.state.getState().selection).toEqual(selection)

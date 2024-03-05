@@ -2,9 +2,9 @@ import { createSelectors } from '@/client/lib/create-selectors.js'
 import { paramStorage } from '@/client/lib/param-storage.js'
 import { rpc } from '@/client/lib/rpc.js'
 import {
-  TAgendaTelefoneFields,
-  TAgendaTelefoneKeys,
-} from '@/core/agenda-telefone_controller.js'
+  TAgendaTelefoneDtoFields,
+  TAgendaTelefoneDtoKeys,
+} from '@/core/agenda-telefone/agenda-telefone.type.js'
 import {
   TData,
   TFormStatus,
@@ -20,23 +20,23 @@ import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 
 const recordClear = {
   id: '',
-  name: '',
+  nome: '',
   email: '',
-  department: '',
-} as TData<TAgendaTelefoneFields>
+  setor: '',
+} as TData<TAgendaTelefoneDtoFields>
 
 export type TState = {
-  orderBy: TOrderBy<TAgendaTelefoneFields>
-  selection: TId<TAgendaTelefoneKeys>
+  orderBy: TOrderBy<TAgendaTelefoneDtoFields>
+  selection: TId<TAgendaTelefoneDtoKeys>
   status: TFormStatus
-  where: TWhere<TAgendaTelefoneFields>
+  where: TWhere<TAgendaTelefoneDtoFields>
 }
 
 const initialState: TState = {
-  orderBy: [['id', 'asc']] as TOrderBy<TAgendaTelefoneFields>,
-  selection: [] as TId<TAgendaTelefoneKeys>,
+  orderBy: [['id', 'asc']] as TOrderBy<TAgendaTelefoneDtoFields>,
+  selection: [] as TId<TAgendaTelefoneDtoKeys>,
   status: 'none' as TFormStatus,
-  where: [] as TWhere<TAgendaTelefoneFields>,
+  where: [] as TWhere<TAgendaTelefoneDtoFields>,
 }
 
 const state = createSelectors(
@@ -55,9 +55,9 @@ const fetchList = async ({
   orderBy,
   select,
 }: {
-  where: TWhere<TAgendaTelefoneFields>
-  orderBy: TOrderBy<TAgendaTelefoneFields>
-  select: TSelect<TAgendaTelefoneFields>
+  where: TWhere<TAgendaTelefoneDtoFields>
+  orderBy: TOrderBy<TAgendaTelefoneDtoFields>
+  select: TSelect<TAgendaTelefoneDtoFields>
 }) => {
   const params = {
     where,
@@ -73,13 +73,13 @@ const fetchList = async ({
 const fetchRecord = async ({
   selection,
 }: {
-  selection: TId<TAgendaTelefoneKeys>
+  selection: TId<TAgendaTelefoneDtoKeys>
 }) => {
   if (selection.length === 0) return recordClear
 
   const params = {
     where: selection,
-    select: Object.keys(recordClear) as TAgendaTelefoneKeys[],
+    select: Object.keys(recordClear) as TAgendaTelefoneDtoKeys[],
   }
   return rpc.request('agendaTelefone_read', params)
 }
@@ -92,7 +92,7 @@ const onCancel = () => {
   state.setState({ status: 'view' }, false, 'agenda/onCancel')
 }
 
-const onDelete = async (selection: TId<TAgendaTelefoneKeys>) => {
+const onDelete = async (selection: TId<TAgendaTelefoneDtoKeys>) => {
   await rpc.request('agendaTelefone_del', {
     where: selection,
   })
@@ -110,13 +110,13 @@ const onNew = () => {
   state.setState({ status: 'new', selection: [] }, false, 'agenda/onNew')
 }
 
-const onSave = async (record: TData<TAgendaTelefoneFields>) => {
-  const data = filterNullProperties(record) as TData<TAgendaTelefoneFields>
+const onSave = async (record: TData<TAgendaTelefoneDtoFields>) => {
+  const data = filterNullProperties(record) as TData<TAgendaTelefoneDtoFields>
   let response = {}
   if (state.getState().status === 'edit') {
     response = await rpc.request('agendaTelefone_update', {
       data,
-      where: state.getState().selection as TId<TAgendaTelefoneKeys>,
+      where: state.getState().selection as TId<TAgendaTelefoneDtoKeys>,
     })
   }
   if (state.getState().status === 'new') {
@@ -133,11 +133,11 @@ const reset = () => {
   state.setState(resetState, false, 'agenda/reset')
 }
 
-const setOrderBy = (orderBy: TOrderBy<TAgendaTelefoneFields>) => {
+const setOrderBy = (orderBy: TOrderBy<TAgendaTelefoneDtoFields>) => {
   state.setState({ orderBy }, false, { type: 'agenda/setOrderBy', orderBy })
 }
 
-const setSelection = (selection: TId<TAgendaTelefoneKeys>) => {
+const setSelection = (selection: TId<TAgendaTelefoneDtoKeys>) => {
   if (isEqual(selection, state.getState().selection)) {
     state.setState({ status: 'none', selection: [] }, false, {
       type: 'agenda/setSelection',
@@ -151,7 +151,7 @@ const setSelection = (selection: TId<TAgendaTelefoneKeys>) => {
   })
 }
 
-const setWhere = (where: TWhere<TAgendaTelefoneFields>) => {
+const setWhere = (where: TWhere<TAgendaTelefoneDtoFields>) => {
   state.setState({ where }, false, { type: 'agenda/setWhere', where })
 }
 

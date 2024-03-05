@@ -4,7 +4,7 @@ import { locationState } from '@/client/store/location_state.js'
 import {
   TNfSaidaLoteFields,
   TNfSaidaLoteKeys,
-} from '@/core/nf-saida-lote_controller.js'
+} from '@/core/nf-saida/nf-saida-lote_controller.js'
 import {
   TData,
   TFormStatus,
