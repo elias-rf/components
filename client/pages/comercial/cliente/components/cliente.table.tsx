@@ -3,7 +3,7 @@ import { TClienteStore } from '@/client/pages/comercial/cliente/components/clien
 import {
   TClienteDtoFields,
   TClienteDtoKeys,
-} from '@/core/cliente/cliente.type.js'
+} from '@/data/plano/cliente/cliente.type.js'
 import type { TData, TId, TSelect } from '@/types/index.js'
 import { useQuery } from '@tanstack/react-query'
 import { clienteColumns } from './cliente.columns.js'

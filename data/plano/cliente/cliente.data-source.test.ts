@@ -69,7 +69,7 @@ describe('clienteDataSource', () => {
     })
     expect(rsp).toEqual([])
     expect(db.log()).toEqual([
-      'update [CadCli] set [id] = [id] + 2 output inserted.[CdCliente] where [CdCliente] = 10',
+      'update [CadCli] set [CdCliente] = [CdCliente] + 2 output inserted.[CdCliente] where [CdCliente] = 10',
     ])
   })
 

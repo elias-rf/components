@@ -1,4 +1,4 @@
-import { agendaTelefoneSchema } from '@/data/oftalmo/agenda-telelefone/agenda-telefone.schema.js'
+import { agendaTelefoneSchema } from '@/data/oftalmo/agenda-telefone/agenda-telefone.schema.js'
 import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
 import { getTracker } from '@/utils/mocks/database.mock.js'
 import { beforeEach, describe, expect, it } from 'vitest'

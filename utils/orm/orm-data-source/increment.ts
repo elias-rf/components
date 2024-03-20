@@ -18,5 +18,5 @@ export const increment =
       ...util.validReturning(returning),
     } as unknown as TQueryKnex
 
-    return db(qry) as Promise<TData | number>
+    return db(qry) as Promise<TData[] | number>
   }

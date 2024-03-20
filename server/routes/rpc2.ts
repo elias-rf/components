@@ -2,11 +2,7 @@ import { rpcServer } from '@/core/index.js'
 import { RequestAuth } from '@/server/middles/auth-middle.js'
 import { TCurrentUser } from '@/types/index.js'
 import { Response } from 'express'
-import {
-  JSONRPCRequest,
-  JSONRPCServer,
-  type TypedJSONRPCServer,
-} from 'json-rpc-2.0'
+import { JSONRPCRequest } from 'json-rpc-2.0'
 
 export type TRpcContext = {
   req: RequestAuth
@@ -17,8 +13,6 @@ export type TRpcContext = {
 export const rpcRoute = {
   post: async (req: RequestAuth, res: Response) => {
     const jsonRPCRequest = req.body as JSONRPCRequest
-
-    console.log('req', req.cookies)
 
     const context: any = {
       req,

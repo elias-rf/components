@@ -3,11 +3,9 @@ import {
   TUsuarioDtoKeys,
 } from '@/core/usuario/usuario.type.js'
 import { usuarioMapFields } from '@/data/oftalmo/usuario/usuario.map-fields.js'
-import {
-  TUsuarioFields,
-  usuarioSchema,
-} from '@/data/oftalmo/usuario/usuario.schema.js'
+import { usuarioSchema } from '@/data/oftalmo/usuario/usuario.schema.js'
 import { usuarioToDto } from '@/data/oftalmo/usuario/usuario.to-dto.js'
+import { TUsuarioFields } from '@/data/oftalmo/usuario/usuario.type.js'
 import {
   TCount,
   TCreate,
@@ -66,6 +64,7 @@ export function usuarioDataSource(ds: TAdapterKnex) {
   }
 
   return {
+    orm,
     list,
     read,
     count,

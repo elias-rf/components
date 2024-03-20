@@ -2,12 +2,11 @@ import { Button } from '@/client/components/button/button.js'
 import { MoonIcon } from '@/client/components/icons/moon-icon.js'
 import { SunIcon } from '@/client/components/icons/sun-icon.js'
 import { useEffect, useState } from 'react'
-import { useEffectOnce } from 'usehooks-ts'
 
 export function DarkToggle() {
   const [dark, setDark] = useState(false)
 
-  useEffectOnce(() => {
+  useEffect(() => {
     if (
       localStorage.getItem('color-theme') === 'dark' ||
       (!('color-theme' in localStorage) &&
@@ -15,7 +14,7 @@ export function DarkToggle() {
     ) {
       setDark(true)
     }
-  })
+  }, [])
 
   useEffect(() => {
     if (dark) {

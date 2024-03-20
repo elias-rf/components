@@ -1,13 +1,17 @@
 import { clienteUseCases } from '@/core/cliente/use-cases/index.js'
+import { nfSaidaController } from '@/core/nf-saida/nf-saida_controller.js'
+import { dataSource } from '@/data/index.js'
+
+const useCases = clienteUseCases(dataSource, { nfSaidaController })
 
 export const clienteController = {
-  cliente_list: clienteUseCases.list,
-  cliente_read: clienteUseCases.read,
-  cliente_count: clienteUseCases.count,
-  cliente_update: clienteUseCases.update,
-  cliente_create: clienteUseCases.create,
-  cliente_del: clienteUseCases.del,
-  cliente_vendaMensalQuantidade: clienteUseCases.vendaMensalQuantidade,
-  cliente_vendaMensalValor: clienteUseCases.vendaMensalValor,
-  cliente_vendaMensalValorMedio: clienteUseCases.vendaMensalValorMedio,
+  cliente_list: useCases.list,
+  cliente_read: useCases.read,
+  cliente_count: useCases.count,
+  cliente_update: useCases.update,
+  cliente_create: useCases.create,
+  cliente_del: useCases.del,
+  cliente_vendaMensalQuantidade: useCases.vendaMensalQuantidade,
+  cliente_vendaMensalValor: useCases.vendaMensalValor,
+  cliente_vendaMensalValorMedio: useCases.vendaMensalValorMedio,
 }

@@ -1,4 +1,4 @@
-import { MestreNota } from '@/core/nf-saida/nf-saida_controller.js'
+import { nfSaidaSchema } from '@/data/plano/nf-saida/nf-saida.schema.js'
 import { validId } from '@/utils/orm/utils/valid/valid-id.js'
 import { describe, expect, test } from 'vitest'
 
@@ -23,7 +23,7 @@ describe('validId', () => {
           ['Modelo', '1'],
           ['CdCliente', 1],
         ],
-        MestreNota
+        nfSaidaSchema
       )
     ).toEqual({
       where: [
@@ -37,13 +37,13 @@ describe('validId', () => {
   })
 
   test('campo inexistente', () => {
-    expect(() => validId([['ids', 1]], MestreNota)).toThrow(
+    expect(() => validId([['ids', 1]], nfSaidaSchema)).toThrow(
       '[ids] não é id válido em MestreNota use: CdFilial,Modelo,NumNota,Serie'
     )
   })
 
   test('id composto incompleto', () => {
-    expect(() => validId([['CdFilial', 1]], MestreNota)).toThrow(
+    expect(() => validId([['CdFilial', 1]], nfSaidaSchema)).toThrow(
       '[Modelo,NumNota,Serie] não foram usados em MestreNota use: Modelo,NumNota,Serie'
     )
   })
@@ -58,7 +58,7 @@ describe('validId', () => {
           ['Modelo', '1'],
           ['CdFornecedor', 1],
         ],
-        MestreNota
+        nfSaidaSchema
       )
     ).toThrow('[CdFornecedor] não é id válido')
   })

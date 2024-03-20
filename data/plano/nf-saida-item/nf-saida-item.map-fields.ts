@@ -1,0 +1,15 @@
+export const nfSaidaItemMapFields = {
+  empresaId: 'CdFilial',
+  modelo: 'Modelo',
+  numero: 'NumNota',
+  serie: 'Serie',
+  sequencial: 'Sequencia',
+  produtoId: 'CdProduto',
+  quantidade: 'Quantidade',
+  valorUnitario: 'VlUnitario',
+  valorTotal: 'VlTotal',
+  descontoPercentual: 'PercDesconto',
+  valorLiquido: 'VlLiquido',
+  flagEstoque: 'FgEstoque',
+  vendedorId: 'CdVendedor',
+}

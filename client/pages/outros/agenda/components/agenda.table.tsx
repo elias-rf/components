@@ -4,7 +4,7 @@ import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/components/ag
 import {
   TAgendaTelefoneDtoFields,
   TAgendaTelefoneDtoKeys,
-} from '@/core/agenda-telefone/agenda-telefone.type.js'
+} from '@/data/oftalmo/agenda-telefone/agenda-telefone.type.js'
 import type { TData, TId, TSelect } from '@/types/index.js'
 import { useQuery } from '@tanstack/react-query'
 

@@ -4,7 +4,7 @@ import { rpc } from '@/client/lib/rpc.js'
 import {
   TAgendaTelefoneDtoFields,
   TAgendaTelefoneDtoKeys,
-} from '@/core/agenda-telefone/agenda-telefone.type.js'
+} from '@/data/oftalmo/agenda-telefone/agenda-telefone.type.js'
 import {
   TData,
   TFormStatus,

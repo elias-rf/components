@@ -1,9 +1,9 @@
-import { TClienteDtoFields } from '@/core/cliente/cliente.type.js'
 import { TDataSource } from '@/data/index.js'
+import { TClienteDtoFields } from '@/data/plano/cliente/cliente.type.js'
 import { TUpdate } from '@/types/query.js'
 
 export const update =
-  (dataSource: TDataSource['plano']['cliente']): TUpdate<TClienteDtoFields> =>
+  (dataSource: TDataSource): TUpdate<TClienteDtoFields> =>
   async (args) => {
-    return dataSource.update(args)
+    return dataSource.plano.cliente.update(args)
   }

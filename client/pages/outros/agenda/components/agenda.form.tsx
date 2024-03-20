@@ -12,7 +12,7 @@ import { TAgendaTelefoneStore } from '@/client/pages/outros/agenda/components/ag
 import {
   TAgendaTelefoneDtoFields,
   TAgendaTelefoneDtoKeys,
-} from '@/core/agenda-telefone/agenda-telefone.type.js'
+} from '@/data/oftalmo/agenda-telefone/agenda-telefone.type.js'
 import { TData, TId } from '@/types/index.js'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'

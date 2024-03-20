@@ -4,7 +4,7 @@ import { locationState } from '@/client/store/location_state.js'
 import {
   TGroupSubjectFields,
   TGroupSubjectKeys,
-} from '@/core/group-subject_controller.js'
+} from '@/core/group-subject/group-subject_controller.js'
 import {
   TData,
   TFormStatus,

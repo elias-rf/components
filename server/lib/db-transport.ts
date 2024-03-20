@@ -1,4 +1,4 @@
-import { logController } from '@/core/log_controller.js'
+import { logController } from '@/core/log/log_controller.js'
 import { format } from 'date-fns'
 
 type TLog = {

@@ -7,16 +7,21 @@ import { update } from '@/core/cliente/use-cases/update.js'
 import { vendaMensalQuantidade } from '@/core/cliente/use-cases/venda-mensal-quantidade.js'
 import { vendaMensalValorMedio } from '@/core/cliente/use-cases/venda-mensal-valor-medio.js'
 import { vendaMensalValor } from '@/core/cliente/use-cases/venda-mensal-valor.js'
-import { dataSource } from '@/data/index.js'
+import { modules } from '@/core/index.js'
+import { TNfSaidaController } from '@/core/nf-saida/nf-saida_controller.js'
+import { TDataSource } from '@/data/index.js'
 
-export const clienteUseCases = {
-  list: list(dataSource.plano.cliente),
-  read: read(dataSource.plano.cliente),
-  count: count(dataSource.plano.cliente),
-  update: update(dataSource.plano.cliente),
-  create: create(dataSource.plano.cliente),
-  del: del(dataSource.plano.cliente),
-  vendaMensalQuantidade: vendaMensalQuantidade(dataSource.plano.cliente),
-  vendaMensalValor: vendaMensalValor(dataSource.plano.cliente),
-  vendaMensalValorMedio: vendaMensalValorMedio(dataSource.plano.cliente),
-}
+export const clienteUseCases = (
+  dataSource: TDataSource,
+  { nfSaidaController }: { nfSaidaController: TNfSaidaController }
+) => ({
+  list: list(dataSource),
+  read: read(dataSource),
+  count: count(dataSource),
+  update: update(dataSource),
+  create: create(dataSource),
+  del: del(dataSource),
+  vendaMensalQuantidade: vendaMensalQuantidade({ nfSaidaController }),
+  vendaMensalValor: vendaMensalValor({ nfSaidaController }),
+  vendaMensalValorMedio: vendaMensalValorMedio({ nfSaidaController }),
+})

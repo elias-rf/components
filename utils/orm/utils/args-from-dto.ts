@@ -52,11 +52,23 @@ export function argsFromDto(data: TArgs, fields: { [fld: string]: string }) {
     response.include = data.include
   }
   if (data.increment) {
-    response.increment = data.increment
+    response.increment = incrementArgs(data.increment, fields)
   }
   if (data.data) {
     response.data = dataArgs(data.data, fields)
   }
+  return response
+}
+
+function incrementArgs(
+  data: TArgs['increment'],
+  fields: { [fld: string]: string }
+) {
+  if (!data) {
+    return data
+  }
+  const response: TArgs['increment'] = [...data]
+  response[0] = fields[data[0]]
   return response
 }
 

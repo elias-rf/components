@@ -4,7 +4,7 @@ import { rpc } from '@/client/lib/rpc.js'
 import {
   TClienteDtoFields,
   TClienteDtoKeys,
-} from '@/core/cliente/cliente.type.js'
+} from '@/data/plano/cliente/cliente.type.js'
 import {
   TData,
   TFormStatus,

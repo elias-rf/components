@@ -1,6 +1,8 @@
-import { TClienteDtoFields } from '@/core/cliente/cliente.type.js'
-import { TClienteFields } from '@/data/plano/cliente/cliente.data-source.js'
 import { clienteMapFields } from '@/data/plano/cliente/cliente.map-fields.js'
+import {
+  TClienteDtoFields,
+  TClienteFields,
+} from '@/data/plano/cliente/cliente.type.js'
 import { TData } from '@/types/query.js'
 import { isEmpty } from 'lodash-es'
 

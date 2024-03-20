@@ -6,8 +6,8 @@ import { ListGroup } from '@/client/components/list-group/list-group.js'
 import { Modal } from '@/client/components/ui-old/modal/modal.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { rpc } from '@/client/lib/rpc.js'
-import { TGroupSubjectFields } from '@/core/group-subject_controller.js'
-import { TGroupFields } from '@/core/group_controller.js'
+import { TGroupSubjectFields } from '@/core/group-subject/group-subject_controller.js'
+import { TGroupFields } from '@/core/group/group_controller.js'
 import { TData, TPermissions } from '@/types/index.js'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
@@ -109,13 +109,13 @@ export function Permissions({
         show={show}
         title="Segurança"
       >
-        <div className="flex space-x-4 p-4">
+        <div className="flex p-4 space-x-4">
           <div>
             <p>Grupos</p>
             {groupList.data?.map((group) => (
               <ListGroup
                 key={group.kGrupo}
-                className="max-h-96 overflow-y-auto"
+                className="overflow-y-auto max-h-96"
               >
                 <ListGroup.Item
                   active={group.kGrupo === groupCurrent}

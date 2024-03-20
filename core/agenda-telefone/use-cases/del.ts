@@ -1,14 +1,14 @@
+import { TDataSource } from '@/data/index.js'
 import {
   TAgendaTelefoneDtoFields,
   TAgendaTelefoneDtoKeys,
-} from '@/core/agenda-telefone/agenda-telefone.type.js'
-import { TDataSource } from '@/data/index.js'
+} from '@/data/oftalmo/agenda-telefone/agenda-telefone.type.js'
 import { TDel } from '@/types/index.js'
 
 export const del =
   (
-    dataSource: TDataSource['oftalmo']['agendaTelefone']
+    dataSource: TDataSource
   ): TDel<TAgendaTelefoneDtoFields, TAgendaTelefoneDtoKeys> =>
   async (args) => {
-    return dataSource.del(args)
+    return dataSource.oftalmo.agendaTelefone.del(args)
   }

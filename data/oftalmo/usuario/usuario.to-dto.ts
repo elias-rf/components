@@ -1,8 +1,8 @@
 import { TUsuarioDtoFields } from '@/core/usuario/usuario.type.js'
 import { usuarioMapFields } from '@/data/oftalmo/usuario/usuario.map-fields.js'
+import { TUsuarioFields } from '@/data/oftalmo/usuario/usuario.type.js'
 import { TData } from '@/types/query.js'
 import { isEmpty } from 'lodash-es'
-import { TUsuarioFields } from './usuario.schema.js'
 
 export const usuarioToDto = (
   data: TData<TUsuarioFields>

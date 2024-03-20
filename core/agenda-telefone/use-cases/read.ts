@@ -1,14 +1,14 @@
+import { TDataSource } from '@/data/index.js'
 import {
   TAgendaTelefoneDtoFields,
   TAgendaTelefoneDtoKeys,
-} from '@/core/agenda-telefone/agenda-telefone.type.js'
-import { TDataSource } from '@/data/index.js'
+} from '@/data/oftalmo/agenda-telefone/agenda-telefone.type.js'
 import { TRead } from '@/types/index.js'
 
 export const read =
   (
-    dataSource: TDataSource['oftalmo']['agendaTelefone']
+    dataSource: TDataSource
   ): TRead<TAgendaTelefoneDtoFields, TAgendaTelefoneDtoKeys> =>
   async (args) => {
-    return dataSource.read(args)
+    return dataSource.oftalmo.agendaTelefone.read(args)
   }

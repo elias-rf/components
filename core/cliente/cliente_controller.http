@@ -9,7 +9,7 @@ Content-Type: application/json
 
 {
   "method": "cliente_list",
-  "params": {"where":[["CdCliente",3331]]},
+  "params": {"where":[["id",3331]]},
   "id": "1",
   "jsonrpc":"2.0"
 }

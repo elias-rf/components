@@ -3,7 +3,7 @@ import { TGroupSubjectStore } from '@/client/pages/sistema/permissoes/components
 import {
   TGroupSubjectFields,
   TGroupSubjectKeys,
-} from '@/core/group-subject_controller.js'
+} from '@/core/group-subject/group-subject_controller.js'
 import { TData, TId, TSelect } from '@/types/index.js'
 import { useQuery } from '@tanstack/react-query'
 import { groupSubjectColumns } from './group-subject_columns.js'

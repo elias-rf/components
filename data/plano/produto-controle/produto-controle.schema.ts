@@ -1,0 +1,31 @@
+import { TSchema } from '@/schemas/schema.type.js'
+
+export const produtoControleSchema: TSchema = {
+  table: 'Lotes',
+  primary: ['CdProduto', 'CdLote'] as const,
+  fields: [
+    'Aspecto',
+    'CdFilial',
+    'CdFornecedor',
+    'CdLote',
+    'CdNRA',
+    'CdProduto',
+    'Densidade',
+    'DtAnalise',
+    'DtEntrada',
+    'DtFabricacao',
+    'DtLimiteUso',
+    'DtValidade',
+    'FatorCorrecao',
+    'IdReduzido',
+    'Modelo',
+    'NumLote',
+    'NumNfEntrada',
+    'PercentualDiluicao',
+    'QtdeAdquirida',
+    'SaldoPeso',
+    'SerieNfEntrada',
+    'SituacaoLote',
+    'TipoLote',
+  ] as const,
+}

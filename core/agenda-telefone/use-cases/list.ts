@@ -1,11 +1,9 @@
-import { TAgendaTelefoneDtoFields } from '@/core/agenda-telefone/agenda-telefone.type.js'
 import { TDataSource } from '@/data/index.js'
+import { TAgendaTelefoneDtoFields } from '@/data/oftalmo/agenda-telefone/agenda-telefone.type.js'
 import { TList } from '@/types/index.js'
 
 export const list =
-  (
-    dataSource: TDataSource['oftalmo']['agendaTelefone']
-  ): TList<TAgendaTelefoneDtoFields> =>
+  (dataSource: TDataSource): TList<TAgendaTelefoneDtoFields> =>
   async (args) => {
-    return dataSource.list(args)
+    return dataSource.oftalmo.agendaTelefone.list(args)
   }

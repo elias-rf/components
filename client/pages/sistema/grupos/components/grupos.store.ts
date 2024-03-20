@@ -1,7 +1,7 @@
 import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { locationState } from '@/client/store/location_state.js'
-import { TGroupFields, TGroupKeys } from '@/core/group_controller.js'
+import { TGroupFields, TGroupKeys } from '@/core/group/group_controller.js'
 import {
   TData,
   TFormStatus,

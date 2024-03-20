@@ -1,9 +1,9 @@
-import { TClienteDtoFields } from '@/core/cliente/cliente.type.js'
 import { TDataSource } from '@/data/index.js'
+import { TClienteDtoFields } from '@/data/plano/cliente/cliente.type.js'
 import { TCreate } from '@/types/index.js'
 
 export const create =
-  (dataSource: TDataSource['plano']['cliente']): TCreate<TClienteDtoFields> =>
+  (dataSource: TDataSource): TCreate<TClienteDtoFields> =>
   async (args) => {
-    return dataSource.create(args)
+    return dataSource.plano.cliente.create(args)
   }

@@ -16,6 +16,3 @@ export const usuarioSchema = {
     'idGroup',
   ] as const,
 }
-
-export type TUsuarioKeys = (typeof usuarioSchema.primary)[number]
-export type TUsuarioFields = (typeof usuarioSchema.fields)[number]

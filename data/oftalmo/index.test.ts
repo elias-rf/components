@@ -5,13 +5,14 @@ describe('oftalmo', () => {
   it('phonebook', () => {
     expect(oftalmoDataSource.agendaTelefone).toBeDefined()
     expect(Object.keys(oftalmoDataSource.agendaTelefone)).toEqual([
-      'list',
-      'read',
+      'orm',
       'count',
-      'update',
       'create',
       'del',
       'increment',
+      'list',
+      'read',
+      'update',
     ])
   })
 })

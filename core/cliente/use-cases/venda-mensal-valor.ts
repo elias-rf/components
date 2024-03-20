@@ -1,3 +1,5 @@
+import { TModules } from '@/core/index.js'
+import { TNfSaidaController } from '@/core/nf-saida/nf-saida_controller.js'
 import { TDataSource } from '@/data/index.js'
 import { formatMoney } from '@/utils/format/format-money.js'
 import * as v from 'valibot'
@@ -10,11 +12,15 @@ type TVendaMensal = {
 type TVendaMensalValor = (args: {
   inicio: string
   fim: string
-  cliente: number
+  clienteId: number
 }) => Promise<TVendaMensal[]>
 
 export const vendaMensalValor =
-  (dataSource: TDataSource['plano']['cliente']): TVendaMensalValor =>
+  ({
+    nfSaidaController,
+  }: {
+    nfSaidaController: TNfSaidaController
+  }): TVendaMensalValor =>
   async (args) => {
     v.parse(
       v.object({
@@ -26,7 +32,7 @@ export const vendaMensalValor =
           v.string([v.isoDate('data final inválida')]),
           'fim deve ser informado'
         ),
-        cliente: v.nonOptional(
+        clienteId: v.nonOptional(
           v.union(
             [v.number(), v.string()],
             'cliente deve ser number ou string'
@@ -37,9 +43,6 @@ export const vendaMensalValor =
       args
     )
 
-    const { nfSaidaController } = await import(
-      '../../nf-saida/nf-saida_controller.js'
-    )
     const data = await nfSaidaController.nfSaida_vendaMensalCliente(args)
 
     const rsp = {} as {

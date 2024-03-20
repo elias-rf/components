@@ -1,10 +1,13 @@
-import { agendaTelefoneUseCases } from '@/core/agenda-telefone/use-cases/index.js'
+import { dataSource } from '@/data/index.js'
+import { agendaTelefoneUseCases } from './use-cases/index.js'
+
+const useCases = agendaTelefoneUseCases(dataSource)
 
 export const agendaTelefoneController = {
-  agendaTelefone_list: agendaTelefoneUseCases.list,
-  agendaTelefone_read: agendaTelefoneUseCases.read,
-  agendaTelefone_count: agendaTelefoneUseCases.count,
-  agendaTelefone_update: agendaTelefoneUseCases.update,
-  agendaTelefone_create: agendaTelefoneUseCases.create,
-  agendaTelefone_del: agendaTelefoneUseCases.del,
+  agendaTelefone_list: useCases.list,
+  agendaTelefone_read: useCases.read,
+  agendaTelefone_count: useCases.count,
+  agendaTelefone_update: useCases.update,
+  agendaTelefone_create: useCases.create,
+  agendaTelefone_del: useCases.del,
 }

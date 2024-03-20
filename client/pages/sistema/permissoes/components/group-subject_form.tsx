@@ -12,7 +12,7 @@ import { TGroupSubjectStore } from '@/client/pages/sistema/permissoes/components
 import {
   TGroupSubjectFields,
   TGroupSubjectKeys,
-} from '@/core/group-subject_controller.js'
+} from '@/core/group-subject/group-subject_controller.js'
 import { TData, TId } from '@/types/index.js'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'

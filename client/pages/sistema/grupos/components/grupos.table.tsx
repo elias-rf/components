@@ -1,7 +1,7 @@
 import { Table } from '@/client/components/table-full/table.js'
 import { TGroupStore } from '@/client/pages/sistema/grupos/components/grupos.store.js'
 import { gruposColumns } from '@/client/pages/sistema/grupos/components/grupos_columns.js'
-import { TGroupFields, TGroupKeys } from '@/core/group_controller.js'
+import { TGroupFields, TGroupKeys } from '@/core/group/group_controller.js'
 import type { TData, TId, TSelect } from '@/types/index.js'
 import { useQuery } from '@tanstack/react-query'
 
