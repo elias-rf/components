@@ -31,7 +31,7 @@ export const groupSubjectHandlers = [
 
   http.post(
     url,
-    withRpcMethod({ method: 'groupSubject_list' }, async ({ request }) => {
+    withRpcMethod({ method: 'grupoSujeito_list' }, async ({ request }) => {
       const body: any = await request.json()
       const groups = body.params.where[0][2]
 
@@ -52,7 +52,7 @@ export const groupSubjectHandlers = [
 
   http.post(
     url,
-    withRpcMethod({ method: 'groupSubject_read' }, async ({ request }) => {
+    withRpcMethod({ method: 'grupoSujeito_read' }, async ({ request }) => {
       const body: any = await request.json()
       const result = query(data, body.params)[0] || {}
 
@@ -66,7 +66,7 @@ export const groupSubjectHandlers = [
 
   http.post(
     url,
-    withRpcMethod({ method: 'groupSubject_update' }, async ({ request }) => {
+    withRpcMethod({ method: 'grupoSujeito_update' }, async ({ request }) => {
       const body: any = await request.json()
       const recordIndex = data.findIndex((item) =>
         isIdEqual(
@@ -93,7 +93,7 @@ export const groupSubjectHandlers = [
 
   http.post(
     url,
-    withRpcMethod({ method: 'groupSubject_del' }, async ({ request }) => {
+    withRpcMethod({ method: 'grupoSujeito_del' }, async ({ request }) => {
       const body: any = await request.json()
       data = data.filter(
         (item) =>
@@ -115,7 +115,7 @@ export const groupSubjectHandlers = [
 
   http.post(
     url,
-    withRpcMethod({ method: 'groupSubject_create' }, async ({ request }) => {
+    withRpcMethod({ method: 'grupoSujeito_create' }, async ({ request }) => {
       const body: any = await request.json()
       data.push(body.params.data)
 

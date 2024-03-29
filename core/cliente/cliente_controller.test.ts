@@ -3,7 +3,7 @@ import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
 import { getTracker } from '@/utils/mocks/database.mock.js'
 import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'
 import { beforeEach, describe, expect, test } from 'vitest'
-import { clienteController } from './cliente_controller.js'
+import { clienteController } from './cliente.controller.js'
 
 describe('rpc de cliente', () => {
   const tracker = getTracker()

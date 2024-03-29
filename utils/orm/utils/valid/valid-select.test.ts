@@ -1,30 +1,39 @@
 import { validSelect } from '@/utils/orm/utils/valid/valid-select.js'
 import { describe, expect, test } from 'vitest'
 
-const phonebook = {
+const schema = {
   table: 'phonebook',
-  primary: ['id'] as const,
-  fields: ['id', 'name', 'department', 'email'] as const,
+  primary: ['idphonebook'] as const,
+  fields: ['idphonebook', 'name', 'department', 'mail'] as const,
+}
+
+export const mapFields = {
+  id: 'idphonebook',
+  email: 'mail',
+  nome: 'name',
+  setor: 'department',
 }
 
 describe('validSelect', () => {
   test('válido vazio', () => {
-    expect(validSelect([], phonebook)).toEqual({ select: [] })
+    expect(validSelect([], schema)).toEqual({ select: [] })
   })
 
   test('válido', () => {
-    expect(validSelect(['id'], phonebook)).toEqual({ select: ['id'] })
+    expect(validSelect(['idphonebook'], schema, mapFields)).toEqual({
+      select: ['idphonebook'],
+    })
   })
 
   test('válido com alias', () => {
-    expect(validSelect(['id as key'], phonebook)).toEqual({
-      select: ['id as key'],
+    expect(validSelect(['idphonebook as key'], schema, mapFields)).toEqual({
+      select: ['idphonebook as key'],
     })
   })
 
   test('campo inválido', () => {
-    expect(() => validSelect(['ids'], phonebook)).toThrow(
-      '[ids] não é um campo válido para select em phonebook use: id,name,department,email'
+    expect(() => validSelect(['ids'], schema, mapFields)).toThrow(
+      '[ids] não é um campo válido para select em phonebook use: id,nome,setor,email'
     )
   })
 })

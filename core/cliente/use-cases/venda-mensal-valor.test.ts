@@ -1,5 +1,5 @@
 import { modules } from '@/core/index.js'
-import { nfSaidaController } from '@/core/nf-saida/nf-saida_controller.js'
+import { nfSaidaController } from '@/core/nf-saida/nf-saida.controller.js'
 import { oftalmoDb } from '@/data/oftalmo/oftalmo.db.js'
 import { planoDb } from '@/data/plano/plano.db.js'
 import { knexMockMsql } from '@/utils/mocks/connections.mock.js'

@@ -4,5 +4,10 @@ import { nfSaidaLoteSchema } from '@/data/plano/nf-saida-lote/nf-saida-lote.sche
 export type TNfSaidaLoteFields = (typeof nfSaidaLoteSchema.fields)[number]
 export type TNfSaidaLoteKeys = (typeof nfSaidaLoteSchema.primary)[number]
 
-export type TNfSaidaLoteDtoKeys = 'empresaId' | 'modelo' | 'numero' | 'serie'
+export type TNfSaidaLoteDtoKeys =
+  | 'empresaId'
+  | 'modelo'
+  | 'numero'
+  | 'serie'
+  | 'sequencial'
 export type TNfSaidaLoteDtoFields = keyof typeof nfSaidaLoteMapFields

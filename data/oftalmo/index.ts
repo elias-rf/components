@@ -1,15 +1,17 @@
-import { agendaTelefoneDataSource } from '@/data/oftalmo/agenda-telefone/agenda-telefone.data-source.js'
-import { esterilizacaoExternaDataSource } from '@/data/oftalmo/esterilizacao-externa/esterilizacao-externa.data-source.js'
-import { esterilizacaoInternaDataSource } from '@/data/oftalmo/esterilizacao-interna/esterilizacao-interna.data-source.js'
-import { etiquetaExternaDataSource } from '@/data/oftalmo/etiqueta-externa/etiqueta-externa.data-source.js'
-import { etiquetaInternaDataSource } from '@/data/oftalmo/etiqueta-interna/etiqueta-interna.data-source.js'
-import { groupDataSource } from '@/data/oftalmo/group/group.data-source.js'
-import { ordemProducaoOperacaoDataSource } from '@/data/oftalmo/ordem-producao-operacao/ordem-producao-operacao.data-source.js'
-import { ordemProducaoDataSource } from '@/data/oftalmo/ordem-producao/ordem-producao.data-source.js'
-import { produtoItemDataSource } from '@/data/oftalmo/produto-item/produto-item.data-source.js'
-import { produtoDataSource } from '@/data/oftalmo/produto/produto.data-source.js'
-import { usuarioDataSource } from '@/data/oftalmo/usuario/usuario.data-source.js'
+import { agendaTelefoneDataSource } from './agenda-telefone/agenda-telefone.data-source.js'
+import { esterilizacaoExternaDataSource } from './esterilizacao-externa/esterilizacao-externa.data-source.js'
+import { esterilizacaoInternaDataSource } from './esterilizacao-interna/esterilizacao-interna.data-source.js'
+import { etiquetaExternaDataSource } from './etiqueta-externa/etiqueta-externa.data-source.js'
+import { etiquetaInternaDataSource } from './etiqueta-interna/etiqueta-interna.data-source.js'
+import { grupoSujeitoDataSource } from './grupo-sujeito/grupo-sujeito.data-source.js'
+import { groupDataSource } from './grupo/group.data-source.js'
 import { oftalmoDb } from './oftalmo.db.js'
+import { operacaoProducaoDataSource } from './operacao-producao/operacao-producao.data-source.js'
+import { ordemProducaoOperacaoDataSource } from './ordem-producao-operacao/ordem-producao-operacao.data-source.js'
+import { ordemProducaoDataSource } from './ordem-producao/ordem-producao.data-source.js'
+import { produtoItemDataSource } from './produto-item/produto-item.data-source.js'
+import { produtoDataSource } from './produto/produto.data-source.js'
+import { usuarioDataSource } from './usuario/usuario.data-source.js'
 
 export const oftalmoDataSource = {
   ds: oftalmoDb,
@@ -19,6 +21,8 @@ export const oftalmoDataSource = {
   etiquetaExterna: { ...etiquetaExternaDataSource(oftalmoDb) },
   etiquetaInterna: { ...etiquetaInternaDataSource(oftalmoDb) },
   group: { ...groupDataSource(oftalmoDb) },
+  grupoSujeito: { ...grupoSujeitoDataSource(oftalmoDb) },
+  operacaoProducao: { ...operacaoProducaoDataSource(oftalmoDb) },
   ordemProducao: { ...ordemProducaoDataSource(oftalmoDb) },
   ordemProducaoOperacao: { ...ordemProducaoOperacaoDataSource(oftalmoDb) },
   produto: { ...produtoDataSource(oftalmoDb) },

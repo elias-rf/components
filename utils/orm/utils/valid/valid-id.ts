@@ -1,9 +1,14 @@
 import type { TSchema } from '@/schemas/schema.type.js'
+import { getName } from '@/utils/orm/utils/map-fields/get-name.js'
 import { getFields } from '@/utils/orm/utils/schema/get-fields.js'
 import { getPrimary } from '@/utils/orm/utils/schema/get-primary.js'
 import { getTable } from '@/utils/orm/utils/schema/get-table.js'
 
-export function validId<T>(id: any[][], schema: TSchema) {
+export function validId<T>(
+  id: any[][],
+  schema: TSchema,
+  mapFields?: Record<string, string>
+) {
   const idColumns = getPrimary(schema)
   const fieldColumns = getFields(schema)
   const fieldsInvalidos: string[] = []
@@ -38,15 +43,15 @@ export function validId<T>(id: any[][], schema: TSchema) {
         fieldsInvalidos.length === 1 ? 'é id válido' : 'são ids válidos'
       }${
         fieldsLivres.length > 0 ? ` em ${getTable(schema)} use: ` : ''
-      }${fieldsLivres}`
+      }${fieldsLivres.map((f) => getName(f, mapFields || {}))}`
     )
   }
 
   if (fieldsLivres.length > 0) {
     throw new Error(
-      `[${fieldsLivres}] não ${
+      `[${fieldsLivres.map((f) => getName(f, mapFields || {}))}] não ${
         fieldsLivres.length === 1 ? 'foi usado' : 'foram usados'
-      } em ${getTable(schema)} use: ${fieldsLivres}`
+      } em ${getTable(schema)} use: ${fieldsLivres.map((f) => getName(f, mapFields || {}))}`
     )
   }
   return { where: id }

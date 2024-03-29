@@ -6,9 +6,7 @@ import { list } from './list.js'
 import { read } from './read.js'
 import { update } from './update.js'
 
-export const agendaTelefoneUseCases = (
-  dataSource: TDataSource['oftalmo']['agendaTelefone']
-) => ({
+export const receberUseCases = (dataSource: TDataSource) => ({
   list: list(dataSource),
   read: read(dataSource),
   count: count(dataSource),

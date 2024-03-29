@@ -51,7 +51,7 @@ export function TransferenciaForm() {
 
   async function transfer() {
     try {
-      const response = await rpc.request('nfEntrada_transferenciaCreate', {
+      const response = await rpc.request('nfEntrada_createTransferencia', {
         controles: lista.value,
       })
       if (response) {

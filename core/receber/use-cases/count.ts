@@ -1,11 +1,9 @@
 import { TDataSource } from '@/data/index.js'
-import { TAgendaTelefoneDtoFields } from '@/data/oftalmo/agenda-telefone/agenda-telefone.type.js'
+import { TReceberDtoFields } from '@/data/plano/receber/receber.type.js'
 import { TCount } from '@/types/index.js'
 
 export const count =
-  (
-    dataSource: TDataSource['oftalmo']['agendaTelefone']
-  ): TCount<TAgendaTelefoneDtoFields> =>
+  (dataSource: TDataSource): TCount<TReceberDtoFields> =>
   async (args) => {
-    return dataSource.count(args)
+    return dataSource.plano.receber.count(args)
   }

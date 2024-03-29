@@ -1,4 +1,4 @@
-import { dataSource } from '@/data/index.js'
+import { TDataSource } from '@/data/index.js'
 import { count } from './count.js'
 import { create } from './create.js'
 import { del } from './del.js'
@@ -8,7 +8,7 @@ import { me } from './me.js'
 import { read } from './read.js'
 import { update } from './update.js'
 
-export const usuarioUseCases = {
+export const usuarioUseCases = (dataSource: TDataSource) => ({
   list: list(dataSource.oftalmo.usuario),
   read: read(dataSource.oftalmo.usuario),
   count: count(dataSource.oftalmo.usuario),
@@ -17,4 +17,4 @@ export const usuarioUseCases = {
   del: del(dataSource.oftalmo.usuario),
   me: me(dataSource.oftalmo.usuario),
   login: login(dataSource.oftalmo.usuario),
-}
+})

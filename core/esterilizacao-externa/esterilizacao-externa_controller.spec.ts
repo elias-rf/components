@@ -3,7 +3,7 @@ import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
 import { getTracker } from '@/utils/mocks/database.mock.js'
 import { knexMockHistory } from '@/utils/mocks/knex-mock-history.js'
 import { beforeEach, describe, expect, test } from 'vitest'
-import { esterilizacaoExternaController } from './esterilizacao-externa_controller.js'
+import { esterilizacaoExternaController } from './esterilizacao-externa.controller.js'
 
 describe('esterilizacaoExterna', () => {
   const tracker = getTracker()

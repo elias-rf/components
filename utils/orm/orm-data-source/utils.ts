@@ -10,6 +10,12 @@ import { validSelect as vldSelect } from '@/utils/orm/utils/valid/valid-select.j
 import { validWhere as vldWhere } from '@/utils/orm/utils/valid/valid-where.js'
 import { TAdapterKnex, TQueryKnex } from '../adapter-knex.js'
 
+/**
+ * Generates a set of utility functions for working with a given schema.
+ *
+ * @param {TSchema} schema - The schema to generate utility functions for.
+ * @return {Object} An object containing various utility functions.
+ */
 export function ormUtils(schema: TSchema) {
   const validWhere = (where: TWhere) => {
     return vldWhere(where, schema) as TWhere

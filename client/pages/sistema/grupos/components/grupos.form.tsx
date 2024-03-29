@@ -4,7 +4,10 @@ import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { InputForm } from '@/client/components/ui-old/input/input-form.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { TGroupStore } from '@/client/pages/sistema/grupos/components/grupos.store.js'
-import { TGroupFields, TGroupKeys } from '@/core/group/group_controller.js'
+import {
+  TGroupDtoFields,
+  TGroupDtoKeys,
+} from '@/data/oftalmo/grupo/group.type.js'
 import { TData, TId } from '@/types/index.js'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
@@ -21,7 +24,7 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
   })
   const queryClient = useQueryClient()
   const onSave = useMutation({
-    mutationFn: (record: TData<TGroupFields>) => {
+    mutationFn: (record: TData<TGroupDtoFields>) => {
       return store.onSave(record)
     },
     onSuccess: () => {
@@ -33,7 +36,7 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
   })
 
   const onDelete = useMutation({
-    mutationFn: (selection: TId<TGroupKeys>) => {
+    mutationFn: (selection: TId<TGroupDtoKeys>) => {
       return store.onDelete(selection)
     },
     onSuccess: () => {
@@ -56,7 +59,7 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
 
   async function handleDel() {
     const response = await confirm(
-      `Tem certeza que deseja apagar ${form.getValues('NomeGrupo')} ?`
+      `Tem certeza que deseja apagar ${form.getValues('nome')} ?`
     )
     if (response === 'option1') {
       onDelete.mutate(selection)
@@ -86,14 +89,14 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
           <Label htmlFor="kGrupo">Ramal *</Label>
           <InputForm
             disabled={['none', 'view'].includes(status)}
-            {...form.register('kGrupo')}
+            {...form.register('id')}
           />
         </FormField>
         <FormField className="col-span-12 sm:col-span-10 lg:col-span-5">
           <Label htmlFor="NomeGrupo">Nome *</Label>
           <InputForm
             disabled={['none', 'view'].includes(status)}
-            {...form.register('NomeGrupo')}
+            {...form.register('nome')}
           />
         </FormField>
       </div>

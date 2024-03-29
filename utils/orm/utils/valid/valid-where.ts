@@ -1,10 +1,20 @@
 import type { TSchema } from '@/schemas/schema.type.js'
+import { getName } from '@/utils/orm/utils/map-fields/get-name.js'
 import { getFields } from '@/utils/orm/utils/schema/get-fields.js'
 import { getTable } from '@/utils/orm/utils/schema/get-table.js'
 
+/**
+ * Validates the given 'where' array against the provided schema and returns an object with the valid 'where' array.
+ *
+ * @param {Array<[string, any?, any?]>} where - The array of conditions to be validated.
+ * @param {TSchema} schema - The schema to validate against.
+ * @return {{ where?: Array<[string, any?, any?]> }} - An object containing the valid 'where' array.
+ * @throws {Error} - If the 'where' array is not in the correct format or contains invalid fields.
+ */
 export function validWhere(
   where: Array<[string, any?, any?]>,
-  schema: TSchema
+  schema: TSchema,
+  mapFields?: Record<string, string>
 ): { where?: Array<[string, any?, any?]> } {
   const nameList = getFields(schema)
   const fieldsInvalidos = []
@@ -24,13 +34,14 @@ export function validWhere(
 
     fieldsLivres = fieldsLivres.filter((f) => f !== field)
   }
+
   if (fieldsInvalidos.length > 0) {
     throw new Error(
-      `[${fieldsInvalidos}] não ${
+      `[${fieldsInvalidos.map((f) => getName(f, mapFields || {}))}] não ${
         fieldsInvalidos.length === 1
           ? 'é um campo válido'
           : 'são campos válidos'
-      } para where em ${getTable(schema)} use: ${fieldsLivres}`
+      } para where em ${getTable(schema)} use: ${fieldsLivres.map((f) => getName(f, mapFields || {}))}`
     )
   }
   return { where }

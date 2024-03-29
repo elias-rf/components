@@ -1,5 +1,5 @@
 import { TModules } from '@/core/index.js'
-import { TNfSaidaController } from '@/core/nf-saida/nf-saida_controller.js'
+import { TNfSaidaController } from '@/core/nf-saida/nf-saida.controller.js'
 import * as v from 'valibot'
 
 type TVendaMensal = {

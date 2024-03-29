@@ -68,9 +68,9 @@ const fetchPermissions = async (
 ): Promise<{ [permission: string]: boolean }> => {
   const groups = group_ids?.split(',').map((item) => item.toString())
 
-  const permissions = await rpc.request('groupSubject_list', {
-    select: ['idSubject'],
-    where: [['idGroup', 'in', groups]],
+  const permissions = await rpc.request('grupoSujeito_list', {
+    select: ['sujeitoId'],
+    where: [['grupoId', 'in', groups]],
   })
 
   const response: { [permission: string]: boolean } = permissions.reduce(

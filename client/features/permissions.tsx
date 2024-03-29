@@ -6,8 +6,8 @@ import { ListGroup } from '@/client/components/list-group/list-group.js'
 import { Modal } from '@/client/components/ui-old/modal/modal.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { rpc } from '@/client/lib/rpc.js'
-import { TGroupSubjectFields } from '@/core/group-subject/group-subject_controller.js'
-import { TGroupFields } from '@/core/group/group_controller.js'
+import { TGrupoSujeitoDtoFields } from '@/data/oftalmo/grupo-sujeito/grupo-sujeito.type.js'
+import { TGroupDtoFields } from '@/data/oftalmo/grupo/group.type.js'
 import { TData, TPermissions } from '@/types/index.js'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
@@ -24,46 +24,46 @@ export function Permissions({
     queryKey: ['group'],
     queryFn: () =>
       rpc.request('group_list', {
-        orderBy: [['NomeGrupo', 'asc']],
-      }) as unknown as Promise<TData<TGroupFields>[]>,
+        orderBy: [['nome', 'asc']],
+      }) as unknown as Promise<TData<TGroupDtoFields>[]>,
   })
 
-  const groupSubjectList = useQuery({
-    queryKey: ['groupSubject', groupCurrent],
+  const grupoSujeitoList = useQuery({
+    queryKey: ['grupoSujeito', groupCurrent],
     queryFn: () =>
-      rpc.request('groupSubject_list', {
-        where: [['idGroup', groupCurrent.toString()]],
-      }) as unknown as Promise<TData<TGroupSubjectFields>[]>,
+      rpc.request('grupoSujeito_list', {
+        where: [['grupoId', groupCurrent.toString()]],
+      }) as unknown as Promise<TData<TGrupoSujeitoDtoFields>[]>,
   })
 
   const queryClient = useQueryClient()
   const onCreate = useMutation({
     mutationFn: (permissionKey: string) => {
-      return rpc.request('groupSubject_create', {
+      return rpc.request('grupoSujeito_create', {
         data: {
-          idGroup: groupCurrent,
-          idSubject: permissionKey,
+          grupoId: groupCurrent,
+          sujeitoId: permissionKey,
         },
-      }) as unknown as Promise<TData<TGroupSubjectFields>>
+      }) as unknown as Promise<TData<TGrupoSujeitoDtoFields>>
     },
     onSuccess: () => {
       return queryClient.invalidateQueries({
-        queryKey: ['groupSubject'],
+        queryKey: ['grupoSujeito'],
       })
     },
   })
   const onDelete = useMutation({
     mutationFn: (permissionKey: string) => {
-      return rpc.request('groupSubject_del', {
+      return rpc.request('grupoSujeito_del', {
         where: [
-          ['idSubject', permissionKey],
-          ['idGroup', groupCurrent.toString()],
+          ['sujeitoId', permissionKey],
+          ['grupoId', groupCurrent.toString()],
         ],
-      }) as unknown as Promise<TData<TGroupSubjectFields>>
+      }) as unknown as Promise<TData<TGrupoSujeitoDtoFields>>
     },
     onSuccess: () => {
       return queryClient.invalidateQueries({
-        queryKey: ['groupSubject'],
+        queryKey: ['grupoSujeito'],
       })
     },
   })
@@ -84,8 +84,8 @@ export function Permissions({
       idSubject: permissionKey,
       idGroup: groupCurrent.toString(),
     }
-    // const data = await rpc.request('groupSubject_listPermissions', params)
-    const data = groupSubjectList.data || []
+    // const data = await rpc.request('grupoSujeito_listPermissions', params)
+    const data = grupoSujeitoList.data || []
     const exist =
       data.findIndex((prm: any) => permissionKey === prm.idSubject) !== -1
     if (exist) {
@@ -109,19 +109,19 @@ export function Permissions({
         show={show}
         title="Segurança"
       >
-        <div className="flex p-4 space-x-4">
+        <div className="flex space-x-4 p-4">
           <div>
             <p>Grupos</p>
             {groupList.data?.map((group) => (
               <ListGroup
-                key={group.kGrupo}
-                className="overflow-y-auto max-h-96"
+                key={group.id}
+                className="max-h-96 overflow-y-auto"
               >
                 <ListGroup.Item
-                  active={group.kGrupo === groupCurrent}
-                  onClick={() => setGroupCurrent(group.kGrupo || 0)}
+                  active={group.id === groupCurrent}
+                  onClick={() => setGroupCurrent(group.id || 0)}
                 >
-                  {group.NomeGrupo}
+                  {group.nome}
                 </ListGroup.Item>
               </ListGroup>
             ))}
@@ -139,10 +139,10 @@ export function Permissions({
                       <Checkbox
                         id={permission}
                         checked={
-                          groupSubjectList.data
-                            ? groupSubjectList.data.findIndex(
+                          grupoSujeitoList.data
+                            ? grupoSujeitoList.data.findIndex(
                                 (prm) =>
-                                  permissions[permission].key === prm.idSubject
+                                  permissions[permission].key === prm.sujeitoId
                               ) !== -1
                             : false
                         }

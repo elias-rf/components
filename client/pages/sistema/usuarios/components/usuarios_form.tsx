@@ -82,7 +82,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
   useEffect(() => {
     async function getData() {
       const data = await rpc.request('group_list', {
-        orderBy: [['NomeGrupo', 'asc']],
+        orderBy: [['nome', 'asc']],
       })
       const list: [label: string, value: string][] = data.map((item: any) => [
         item.NomeGrupo,

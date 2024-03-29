@@ -5,7 +5,7 @@ export const nfSaidaLoteMapFields = {
   serie: 'Serie',
   sequencial: 'Sequencia',
   produtoId: 'CdProduto',
-  dataEmissao: 'DtEmissao',
+  emissaoData: 'DtEmissao',
   controle: 'NumLote',
   quantidade: 'Quantidade',
 }

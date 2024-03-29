@@ -1,11 +1,9 @@
 import { TDataSource } from '@/data/index.js'
-import { TAgendaTelefoneDtoFields } from '@/data/oftalmo/agenda-telefone/agenda-telefone.type.js'
+import { TReceberDtoFields } from '@/data/plano/receber/receber.type.js'
 import { TUpdate } from '@/types/query.js'
 
 export const update =
-  (
-    dataSource: TDataSource['oftalmo']['agendaTelefone']
-  ): TUpdate<TAgendaTelefoneDtoFields> =>
+  (dataSource: TDataSource): TUpdate<TReceberDtoFields> =>
   async (args) => {
-    return dataSource.update(args)
+    return dataSource.plano.receber.update(args)
   }

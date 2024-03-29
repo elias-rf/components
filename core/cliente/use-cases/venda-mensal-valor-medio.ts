@@ -1,5 +1,5 @@
 import { TModules } from '@/core/index.js'
-import { TNfSaidaController } from '@/core/nf-saida/nf-saida_controller.js'
+import { TNfSaidaController } from '@/core/nf-saida/nf-saida.controller.js'
 import { TDataSource } from '@/data/index.js'
 import { formatMoney } from '@/utils/format/format-money.js'
 import * as v from 'valibot'

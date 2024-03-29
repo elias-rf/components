@@ -8,17 +8,17 @@ import {
 } from '@/client/components/form/form.js'
 import { Input } from '@/client/components/input/input.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
-import { TGroupSubjectStore } from '@/client/pages/sistema/permissoes/components/group-subject.store.js'
+import { TGrupoSujeitoStore } from '@/client/pages/sistema/permissoes/components/group-subject.store.js'
 import {
-  TGroupSubjectFields,
-  TGroupSubjectKeys,
-} from '@/core/group-subject/group-subject_controller.js'
+  TGrupoSujeitoDtoFields,
+  TGrupoSujeitoDtoKeys,
+} from '@/data/oftalmo/grupo-sujeito/grupo-sujeito.type.js'
 import { TData, TId } from '@/types/index.js'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
-export const GroupSubjectForm = ({ store }: { store: TGroupSubjectStore }) => {
+export const GrupoSujeitoForm = ({ store }: { store: TGrupoSujeitoStore }) => {
   const status = store.state.use.status()
   const selection = store.state.use.selection()
   const form = useForm({ defaultValues: store.recordClear })
@@ -28,7 +28,7 @@ export const GroupSubjectForm = ({ store }: { store: TGroupSubjectStore }) => {
   })
   const queryClient = useQueryClient()
   const onSave = useMutation({
-    mutationFn: (record: TData<TGroupSubjectFields>) => {
+    mutationFn: (record: TData<TGrupoSujeitoDtoFields>) => {
       return store.onSave(record)
     },
     onSuccess: () => {
@@ -40,7 +40,7 @@ export const GroupSubjectForm = ({ store }: { store: TGroupSubjectStore }) => {
   })
 
   const onDelete = useMutation({
-    mutationFn: (selection: TId<TGroupSubjectKeys>) => {
+    mutationFn: (selection: TId<TGrupoSujeitoDtoKeys>) => {
       return store.onDelete(selection)
     },
     onSuccess: () => {
@@ -92,7 +92,7 @@ export const GroupSubjectForm = ({ store }: { store: TGroupSubjectStore }) => {
         <Form {...form}>
           <FormField
             control={form.control}
-            name="idGroup"
+            name="grupoId"
             render={({ field }) => (
               <FormItem className="col-span-6">
                 <FormLabel>Grupo</FormLabel>
@@ -104,7 +104,7 @@ export const GroupSubjectForm = ({ store }: { store: TGroupSubjectStore }) => {
           />
           <FormField
             control={form.control}
-            name="idSubject"
+            name="sujeitoId"
             render={({ field }) => (
               <FormItem className="col-span-6">
                 <FormLabel>Recurso</FormLabel>

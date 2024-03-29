@@ -6,7 +6,7 @@ import { list } from './list.js'
 import { read } from './read.js'
 import { update } from './update.js'
 
-export const nfSaidaUseCases = (dataSource: TDataSource) => ({
+export const nfSaidaLoteUseCases = (dataSource: TDataSource) => ({
   list: list(dataSource),
   read: read(dataSource),
   count: count(dataSource),

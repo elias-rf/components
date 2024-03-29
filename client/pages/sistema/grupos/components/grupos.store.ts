@@ -1,7 +1,11 @@
 import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { locationState } from '@/client/store/location_state.js'
-import { TGroupFields, TGroupKeys } from '@/core/group/group_controller.js'
+import {
+  TGroupDtoFields,
+  TGroupDtoKeys,
+} from '@/data/oftalmo/grupo/group.type.js'
+
 import {
   TData,
   TFormStatus,
@@ -18,22 +22,22 @@ import { devtools } from 'zustand/middleware'
 const tableName = 'group' as const
 
 const recordClear = {
-  kGrupo: '',
-  NomeGrupo: '',
-} as TData<TGroupFields>
+  id: '',
+  nome: '',
+} as TData<TGroupDtoFields>
 
 type TState = {
-  orderBy: TOrderBy<TGroupFields>
-  selection: TId<TGroupKeys>
+  orderBy: TOrderBy<TGroupDtoFields>
+  selection: TId<TGroupDtoKeys>
   status: TFormStatus
-  where: TWhere<TGroupFields>
+  where: TWhere<TGroupDtoFields>
 }
 
 const initialState: TState = {
-  orderBy: [['NomeGrupo', 'asc']] as TOrderBy<TGroupFields>,
-  selection: [] as TId<TGroupKeys>,
+  orderBy: [['nome', 'asc']] as TOrderBy<TGroupDtoFields>,
+  selection: [] as TId<TGroupDtoKeys>,
   status: 'none' as TFormStatus,
-  where: [] as TWhere<TGroupFields>,
+  where: [] as TWhere<TGroupDtoFields>,
 }
 
 const state = createSelectors(create(devtools(() => initialState)))
@@ -43,9 +47,9 @@ const fetchList = async ({
   orderBy,
   select,
 }: {
-  where: TWhere<TGroupFields>
-  orderBy: TOrderBy<TGroupFields>
-  select: TSelect<TGroupFields>
+  where: TWhere<TGroupDtoFields>
+  orderBy: TOrderBy<TGroupDtoFields>
+  select: TSelect<TGroupDtoFields>
 }) => {
   const params = {
     where,
@@ -57,15 +61,19 @@ const fetchList = async ({
   return list
 }
 
-const fetchRecord = async ({ selection }: { selection: TId<TGroupKeys> }) => {
+const fetchRecord = async ({
+  selection,
+}: {
+  selection: TId<TGroupDtoKeys>
+}) => {
   if (selection.length === 0) return recordClear
   const params = {
     where: selection,
-    select: Object.keys(recordClear) as TGroupKeys[],
+    select: Object.keys(recordClear) as TGroupDtoKeys[],
   }
   const record = await rpc.request('group_read', params)
   for (const key in record) {
-    record[key as TGroupFields] = record[key as TGroupFields] ?? ''
+    record[key as TGroupDtoFields] = record[key as TGroupDtoFields] ?? ''
   }
   return record
 }
@@ -78,7 +86,7 @@ const onCancel = () => {
   state.setState({ status: 'view' }, false, 'usuario/onCancel')
 }
 
-const onDelete = async (selection: TId<TGroupKeys>) => {
+const onDelete = async (selection: TId<TGroupDtoKeys>) => {
   await rpc.request('group_del', {
     where: selection,
   })
@@ -96,13 +104,13 @@ const onNew = () => {
   state.setState({ status: 'new', selection: [] }, false, 'group/onNew')
 }
 
-const onSave = async (record: TData<TGroupFields>) => {
-  const data = filterNullProperties(record) as TData<TGroupFields>
+const onSave = async (record: TData<TGroupDtoFields>) => {
+  const data = filterNullProperties(record) as TData<TGroupDtoFields>
   let response = {}
   if (state.getState().status === 'edit') {
     response = await rpc.request('group_update', {
       data,
-      where: state.getState().selection as TId<TGroupKeys>,
+      where: state.getState().selection as TId<TGroupDtoKeys>,
     })
   }
   if (state.getState().status === 'new') {
@@ -119,11 +127,11 @@ const reset = () => {
   state.setState(resetState, false, 'grupo/reset')
 }
 
-const setOrderBy = (orderBy: TOrderBy<TGroupFields>) => {
+const setOrderBy = (orderBy: TOrderBy<TGroupDtoFields>) => {
   state.setState({ orderBy }, false, { type: 'grupo/setOrderBy', orderBy })
 }
 
-const setSelection = (selection: TId<TGroupKeys>) => {
+const setSelection = (selection: TId<TGroupDtoKeys>) => {
   if (isEqual(selection, state.getState().selection)) {
     state.setState({ status: 'none', selection: [] }, false, {
       type: 'grupo/setSelection',
@@ -137,7 +145,7 @@ const setSelection = (selection: TId<TGroupKeys>) => {
   })
 }
 
-const setWhere = (where: TWhere<TGroupFields>) => {
+const setWhere = (where: TWhere<TGroupDtoFields>) => {
   state.setState({ where }, false, { type: 'usuario/setWhere', where })
 }
 

@@ -13,7 +13,10 @@ export const nfEntradaController = {
   nfEntrada_list: useCases.list,
   nfEntrada_read: useCases.read,
   nfEntrada_update: useCases.update,
+  nfEntrada_createTransferencia: useCases.createTransferencia,
 }
+
+export type TNfEntradaController = typeof nfEntradaController
 
 // import { nfEntradaControleController } from '@/core/nf-entrada/nf-entrada-controle_controller.js'
 // import { nfEntradaItemController } from '@/core/nf-entrada/nf-entrada-item_controller.js'

@@ -1,10 +1,12 @@
 import type { TSchema } from '@/schemas/schema.type.js'
+import { getName } from '@/utils/orm/utils/map-fields/get-name.js'
 import { getFields } from '@/utils/orm/utils/schema/get-fields.js'
 import { getTable } from '@/utils/orm/utils/schema/get-table.js'
 
 export function validOrderBy(
   orderBy: Array<[string, 'asc' | 'desc']>,
-  schema: TSchema
+  schema: TSchema,
+  mapFields?: Record<string, string>
 ): { orderBy?: Array<[string, 'asc' | 'desc']> } {
   const nameList = getFields(schema)
   const fieldsInvalidos = []
@@ -28,11 +30,11 @@ export function validOrderBy(
 
   if (fieldsInvalidos.length > 0) {
     throw new Error(
-      `[${fieldsInvalidos}] não ${
+      `[${fieldsInvalidos.map((f) => getName(f, mapFields || {}))}] não ${
         fieldsInvalidos.length === 1
           ? 'é um campo válido'
           : 'são campos válidos'
-      } para where em ${getTable(schema)} use: ${fieldsLivres}`
+      } para where em ${getTable(schema)} use: ${fieldsLivres.map((f) => getName(f, mapFields || {}))}`
     )
   }
   return { orderBy }

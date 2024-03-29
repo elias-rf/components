@@ -2,9 +2,10 @@ import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { locationState } from '@/client/store/location_state.js'
 import {
-  TGroupSubjectFields,
-  TGroupSubjectKeys,
-} from '@/core/group-subject/group-subject_controller.js'
+  TGrupoSujeitoDtoFields,
+  TGrupoSujeitoDtoKeys,
+} from '@/data/oftalmo/grupo-sujeito/grupo-sujeito.type.js'
+
 import {
   TData,
   TFormStatus,
@@ -19,22 +20,22 @@ import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
 const recordClear = {
-  idGroup: '',
-  idSubject: '',
-} as TData<TGroupSubjectFields>
+  grupoId: '',
+  sujeitoId: '',
+} as TData<TGrupoSujeitoDtoFields>
 
 export type TState = {
-  orderBy: TOrderBy<TGroupSubjectFields>
-  selection: TId<TGroupSubjectKeys>
+  orderBy: TOrderBy<TGrupoSujeitoDtoFields>
+  selection: TId<TGrupoSujeitoDtoKeys>
   status: TFormStatus
-  where: TWhere<TGroupSubjectFields>
+  where: TWhere<TGrupoSujeitoDtoFields>
 }
 
 const initialState: TState = {
-  orderBy: [['idGroup', 'asc']] as TOrderBy<TGroupSubjectFields>,
-  selection: [] as TId<TGroupSubjectKeys>,
+  orderBy: [['grupoId', 'asc']] as TOrderBy<TGrupoSujeitoDtoFields>,
+  selection: [] as TId<TGrupoSujeitoDtoKeys>,
   status: 'none' as TFormStatus,
-  where: [] as TWhere<TGroupSubjectFields>,
+  where: [] as TWhere<TGrupoSujeitoDtoFields>,
 }
 
 const state = createSelectors(create(devtools(() => initialState)))
@@ -44,9 +45,9 @@ const fetchList = async ({
   orderBy,
   select,
 }: {
-  where: TWhere<TGroupSubjectFields>
-  orderBy: TOrderBy<TGroupSubjectFields>
-  select: TSelect<TGroupSubjectFields>
+  where: TWhere<TGrupoSujeitoDtoFields>
+  orderBy: TOrderBy<TGrupoSujeitoDtoFields>
+  select: TSelect<TGrupoSujeitoDtoFields>
 }) => {
   const params = {
     where,
@@ -54,7 +55,7 @@ const fetchList = async ({
     select,
     limit: 100,
   }
-  const response = await rpc.request('groupSubject_list', params)
+  const response = await rpc.request('grupoSujeito_list', params)
 
   return response
 }
@@ -62,94 +63,94 @@ const fetchList = async ({
 const fetchRecord = async ({
   selection,
 }: {
-  selection: TId<TGroupSubjectKeys>
+  selection: TId<TGrupoSujeitoDtoKeys>
 }) => {
   if (selection.length === 0) return recordClear
 
   const params = {
     where: selection,
-    select: Object.keys(recordClear) as TGroupSubjectKeys[],
+    select: Object.keys(recordClear) as TGrupoSujeitoDtoKeys[],
   }
-  return rpc.request('groupSubject_read', params)
+  return rpc.request('grupoSujeito_read', params)
 }
 
 const onCancel = () => {
   if (state.getState().status === 'new') {
-    state.setState({ status: 'none' }, false, 'groupSubject/onCancel')
+    state.setState({ status: 'none' }, false, 'grupoSujeito/onCancel')
     return
   }
-  state.setState({ status: 'view' }, false, 'groupSubject/onCancel')
+  state.setState({ status: 'view' }, false, 'grupoSujeito/onCancel')
 }
 
-const onDelete = async (selection: TId<TGroupSubjectKeys>) => {
-  await rpc.request('groupSubject_del', {
+const onDelete = async (selection: TId<TGrupoSujeitoDtoKeys>) => {
+  await rpc.request('grupoSujeito_del', {
     where: selection,
   })
   state.setState({ selection: [], status: 'none' }, false, {
-    type: 'groupSubject/onDelete',
+    type: 'grupoSujeito/onDelete',
     selection,
   })
 }
 
 const onEdit = () => {
-  state.setState({ status: 'edit' }, false, 'groupSubject/onEdit')
+  state.setState({ status: 'edit' }, false, 'grupoSujeito/onEdit')
 }
 
 const onNew = () => {
-  state.setState({ status: 'new', selection: [] }, false, 'groupSubject/onNew')
+  state.setState({ status: 'new', selection: [] }, false, 'grupoSujeito/onNew')
 }
 
-const onSave = async (record: TData<TGroupSubjectFields>) => {
-  const data = filterNullProperties(record) as TData<TGroupSubjectFields>
+const onSave = async (record: TData<TGrupoSujeitoDtoFields>) => {
+  const data = filterNullProperties(record) as TData<TGrupoSujeitoDtoFields>
   let response = {}
   if (state.getState().status === 'edit') {
-    response = await rpc.request('groupSubject_update', {
+    response = await rpc.request('grupoSujeito_update', {
       data,
-      where: state.getState().selection as TId<TGroupSubjectKeys>,
+      where: state.getState().selection as TId<TGrupoSujeitoDtoKeys>,
     })
   }
   if (state.getState().status === 'new') {
-    response = await rpc.request('groupSubject_create', {
+    response = await rpc.request('grupoSujeito_create', {
       data,
     })
   }
-  state.setState({ status: 'view' }, false, 'groupSubject/onSave')
+  state.setState({ status: 'view' }, false, 'grupoSujeito/onSave')
   return response
 }
 
 const reset = () => {
   const resetState = structuredClone(initialState)
-  state.setState(resetState, false, 'groupSubject/reset')
+  state.setState(resetState, false, 'grupoSujeito/reset')
 }
 
-const setOrderBy = (orderBy: TOrderBy<TGroupSubjectFields>) => {
+const setOrderBy = (orderBy: TOrderBy<TGrupoSujeitoDtoFields>) => {
   state.setState({ orderBy }, false, {
-    type: 'groupSubject/setOrderBy',
+    type: 'grupoSujeito/setOrderBy',
     orderBy,
   })
 }
 
-const setSelection = (selection: TId<TGroupSubjectKeys>) => {
+const setSelection = (selection: TId<TGrupoSujeitoDtoKeys>) => {
   if (isEqual(selection, state.getState().selection)) {
     state.setState({ status: 'none', selection: [] }, false, {
-      type: 'groupSubject/setSelection',
+      type: 'grupoSujeito/setSelection',
       selection,
     })
     return
   }
   state.setState({ status: 'view', selection }, false, {
-    type: 'groupSubject/setSelection',
+    type: 'grupoSujeito/setSelection',
     selection,
   })
 }
 
-const setWhere = (where: TWhere<TGroupSubjectFields>) => {
-  state.setState({ where }, false, { type: 'groupSubject/setWhere', where })
+const setWhere = (where: TWhere<TGrupoSujeitoDtoFields>) => {
+  state.setState({ where }, false, { type: 'grupoSujeito/setWhere', where })
 }
 
 locationState(state, ['selection', 'status', 'orderBy', 'where'])
 
-export const groupSubjectStore = {
+export const grupoSujeitoStore = {
   state,
   recordClear,
   fetchList,
@@ -165,4 +166,4 @@ export const groupSubjectStore = {
   setWhere,
 }
 
-export type TGroupSubjectStore = typeof groupSubjectStore
+export type TGrupoSujeitoStore = typeof grupoSujeitoStore

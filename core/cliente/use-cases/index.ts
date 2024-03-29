@@ -8,7 +8,7 @@ import { vendaMensalQuantidade } from '@/core/cliente/use-cases/venda-mensal-qua
 import { vendaMensalValorMedio } from '@/core/cliente/use-cases/venda-mensal-valor-medio.js'
 import { vendaMensalValor } from '@/core/cliente/use-cases/venda-mensal-valor.js'
 import { modules } from '@/core/index.js'
-import { TNfSaidaController } from '@/core/nf-saida/nf-saida_controller.js'
+import { TNfSaidaController } from '@/core/nf-saida/nf-saida.controller.js'
 import { TDataSource } from '@/data/index.js'
 
 export const clienteUseCases = (

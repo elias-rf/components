@@ -1,19 +1,28 @@
 import { validData } from '@/utils/orm/utils/valid/valid-data.js'
 import { describe, expect, test } from 'vitest'
 
-const phonebook = {
+const schema = {
   table: 'phonebook',
-  primary: ['id'] as const,
-  fields: ['id', 'name', 'department', 'email'] as const,
+  primary: ['idphonebook'] as const,
+  fields: ['idphonebook', 'name', 'department', 'mail'] as const,
+}
+
+export const mapFields = {
+  id: 'idphonebook',
+  email: 'mail',
+  nome: 'name',
+  setor: 'department',
 }
 
 describe('validData', () => {
   test('válido', () => {
-    expect(validData({ id: 1 }, phonebook)).toEqual({ id: 1 })
+    expect(validData({ idphonebook: 1 }, schema, mapFields)).toEqual({
+      idphonebook: 1,
+    })
   })
   test('campo inválido', () => {
-    expect(() => validData({ ids: 1 }, phonebook)).toThrow(
-      '[ids] não é um campo válido para data em phonebook use: id,name,department,email'
+    expect(() => validData({ ids: 1 }, schema, mapFields)).toThrow(
+      '[ids] não é um campo válido para data em phonebook use: id,nome,setor,email'
     )
   })
 })

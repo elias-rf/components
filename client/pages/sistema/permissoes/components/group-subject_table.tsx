@@ -1,31 +1,33 @@
 import { Table } from '@/client/components/table-full/table.js'
-import { TGroupSubjectStore } from '@/client/pages/sistema/permissoes/components/group-subject.store.js'
+import { TGrupoSujeitoStore } from '@/client/pages/sistema/permissoes/components/group-subject.store.js'
 import {
-  TGroupSubjectFields,
-  TGroupSubjectKeys,
-} from '@/core/group-subject/group-subject_controller.js'
+  TGrupoSujeitoDtoFields,
+  TGrupoSujeitoDtoKeys,
+} from '@/data/oftalmo/grupo-sujeito/grupo-sujeito.type.js'
 import { TData, TId, TSelect } from '@/types/index.js'
 import { useQuery } from '@tanstack/react-query'
-import { groupSubjectColumns } from './group-subject_columns.js'
+import { grupoSujeitoColumns } from './group-subject_columns.js'
 
-const select = groupSubjectColumns.map(
+const select = grupoSujeitoColumns.map(
   (col) => col.name
-) as TSelect<TGroupSubjectFields>
+) as TSelect<TGrupoSujeitoDtoFields>
 
-export function GroupSubjectTable({ store }: { store: TGroupSubjectStore }) {
+export function GrupoSujeitoTable({ store }: { store: TGrupoSujeitoStore }) {
   const where = store.state.use.where()
   const orderBy = store.state.use.orderBy()
   const selection = store.state.use.selection()
 
   const query = useQuery({
-    queryKey: ['groupSubject', { where, orderBy }],
+    queryKey: ['grupoSujeito', { where, orderBy }],
     queryFn: () => store.fetchList({ where, orderBy, select }),
   })
 
-  function getId(row: TData<TGroupSubjectFields>): TId<TGroupSubjectKeys> {
+  function getId(
+    row: TData<TGrupoSujeitoDtoFields>
+  ): TId<TGrupoSujeitoDtoKeys> {
     return [
-      ['idGroup', row.idGroup],
-      ['idSubject', row.idSubject],
+      ['grupoId', row.grupoId],
+      ['sujeitoId', row.sujeitoId],
     ]
   }
 
@@ -33,7 +35,7 @@ export function GroupSubjectTable({ store }: { store: TGroupSubjectStore }) {
     <>
       <div className="h-full">
         <Table
-          columns={groupSubjectColumns}
+          columns={grupoSujeitoColumns}
           getId={getId}
           onOrderBy={store.setOrderBy}
           onSelection={store.setSelection}

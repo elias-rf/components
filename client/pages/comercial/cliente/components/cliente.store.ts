@@ -130,10 +130,11 @@ const fetchVendaMensalQuantidade = async ({
 }) => {
   if (selection.length === 0) return []
   const params = {
-    cliente: parseInt(getFieldId('id', selection)),
+    clienteId: parseInt(getFieldId('id', selection)),
     inicio,
     fim,
   }
+
   return rpc.request('cliente_vendaMensalQuantidade', params)
 }
 
@@ -148,7 +149,7 @@ const fetchVendaMensalValor = async ({
 }) => {
   if (selection.length === 0) return []
   const params = {
-    cliente: parseInt(getFieldId('id', selection)),
+    clienteId: parseInt(getFieldId('id', selection)),
     inicio,
     fim,
   }
@@ -166,7 +167,7 @@ const fetchVendaMensalValorMedio = async ({
 }) => {
   if (selection.length === 0) return []
   const params = {
-    cliente: parseInt(getFieldId('id', selection)),
+    clienteId: parseInt(getFieldId('id', selection)),
     inicio,
     fim,
   }

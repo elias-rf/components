@@ -2,9 +2,9 @@ import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { locationState } from '@/client/store/location_state.js'
 import {
-  TNfSaidaLoteFields,
-  TNfSaidaLoteKeys,
-} from '@/core/nf-saida-lote/nf-saida-lote_controller.js'
+  TNfSaidaLoteDtoFields,
+  TNfSaidaLoteDtoKeys,
+} from '@/data/plano/nf-saida-lote/nf-saida-lote.type.js'
 import {
   TData,
   TFormStatus,
@@ -20,24 +20,24 @@ import { devtools } from 'zustand/middleware'
 const tableName = 'nfSaidaLote' as const
 
 const recordClear = {
-  CdFilial: '',
-  NumNota: '',
-  Serie: '',
-  Modelo: '',
-} as TData<TNfSaidaLoteFields>
+  empresaId: '',
+  numero: '',
+  serie: '',
+  modelo: '',
+} as TData<TNfSaidaLoteDtoFields>
 
 type TState = {
-  orderBy: TOrderBy<TNfSaidaLoteFields>
-  selection: TId<TNfSaidaLoteKeys>
+  orderBy: TOrderBy<TNfSaidaLoteDtoFields>
+  selection: TId<TNfSaidaLoteDtoKeys>
   status: TFormStatus
-  where: TWhere<TNfSaidaLoteFields>
+  where: TWhere<TNfSaidaLoteDtoFields>
 }
 
 const initialState: TState = {
-  orderBy: [['NumLote', 'desc']] as TOrderBy<TNfSaidaLoteFields>,
-  selection: [] as TId<TNfSaidaLoteKeys>,
+  orderBy: [['controle', 'desc']] as TOrderBy<TNfSaidaLoteDtoFields>,
+  selection: [] as TId<TNfSaidaLoteDtoKeys>,
   status: 'none' as TFormStatus,
-  where: [] as TWhere<TNfSaidaLoteFields>,
+  where: [] as TWhere<TNfSaidaLoteDtoFields>,
 }
 
 const state = createSelectors(create(devtools(() => initialState)))
@@ -47,19 +47,19 @@ const fetchList = async ({
   orderBy,
   select,
 }: {
-  where: TWhere<TNfSaidaLoteFields>
-  orderBy: TOrderBy<TNfSaidaLoteFields>
-  select: TSelect<TNfSaidaLoteFields>
+  where: TWhere<TNfSaidaLoteDtoFields>
+  orderBy: TOrderBy<TNfSaidaLoteDtoFields>
+  select: TSelect<TNfSaidaLoteDtoFields>
 }) => {
   const params = {
     where,
     orderBy,
     select,
-    include: {
-      produto: ['Descricao'],
-      nfSaida: ['CdCliente', 'Tipo'],
-      'nfSaida.cliente': ['RzSocial', 'Uf'],
-    },
+    // include: {
+    //   produto: ['Descricao'],
+    //   nfSaida: ['clientId', 'Tipo'],
+    //   'nfSaida.cliente': ['RzSocial', 'Uf'],
+    // },
     limit: 1500,
   }
   const list = await rpc.request('nfSaidaLote_list', params)
@@ -71,14 +71,14 @@ const reset = () => {
   state.setState(resetState, false, 'nfSaidaLote/reset')
 }
 
-const setOrderBy = (orderBy: TOrderBy<TNfSaidaLoteFields>) => {
+const setOrderBy = (orderBy: TOrderBy<TNfSaidaLoteDtoFields>) => {
   state.setState({ orderBy }, false, {
     type: 'nfSaidaLote/setOrderBy',
     orderBy,
   })
 }
 
-const setSelection = (selection: TId<TNfSaidaLoteKeys>) => {
+const setSelection = (selection: TId<TNfSaidaLoteDtoKeys>) => {
   if (isEqual(selection, state.getState().selection)) {
     state.setState({ status: 'none', selection: [] }, false, {
       type: 'nfSaidaLote/setSelection',
@@ -92,7 +92,7 @@ const setSelection = (selection: TId<TNfSaidaLoteKeys>) => {
   })
 }
 
-const setWhere = (where: TWhere<TNfSaidaLoteFields>) => {
+const setWhere = (where: TWhere<TNfSaidaLoteDtoFields>) => {
   state.setState({ where }, false, { type: 'nfSaidaLote/setWhere', where })
 }
 

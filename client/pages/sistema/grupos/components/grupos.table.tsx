@@ -1,11 +1,14 @@
 import { Table } from '@/client/components/table-full/table.js'
 import { TGroupStore } from '@/client/pages/sistema/grupos/components/grupos.store.js'
 import { gruposColumns } from '@/client/pages/sistema/grupos/components/grupos_columns.js'
-import { TGroupFields, TGroupKeys } from '@/core/group/group_controller.js'
+import {
+  TGroupDtoFields,
+  TGroupDtoKeys,
+} from '@/data/oftalmo/grupo/group.type.js'
 import type { TData, TId, TSelect } from '@/types/index.js'
 import { useQuery } from '@tanstack/react-query'
 
-const select = gruposColumns.map((col) => col.name) as TSelect<TGroupFields>
+const select = gruposColumns.map((col) => col.name) as TSelect<TGroupDtoFields>
 
 export function GruposTable({ store }: { store: TGroupStore }) {
   const where = store.state.use.where()
@@ -17,8 +20,8 @@ export function GruposTable({ store }: { store: TGroupStore }) {
     queryFn: () => store.fetchList({ where, orderBy, select }),
   })
 
-  function getId(row: TData<TGroupFields>): TId<TGroupKeys> {
-    return [['kGrupo', row.kGrupo]]
+  function getId(row: TData<TGroupDtoFields>): TId<TGroupDtoKeys> {
+    return [['id', row.id]]
   }
 
   return (

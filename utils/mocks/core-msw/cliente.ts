@@ -76,11 +76,11 @@ export const clienteHandlers = [
           result: [
             {
               categoria: 'LITEFLEX',
-              [params.inicio.substring(0, 7)]: params.cliente * 1,
+              [params.inicio.substring(0, 7)]: params.clienteId * 1,
             },
             {
               categoria: 'LITEFLEX',
-              [params.fim.substring(0, 7)]: params.cliente * 2,
+              [params.fim.substring(0, 7)]: params.clienteId * 2,
             },
           ],
         }
@@ -102,11 +102,11 @@ export const clienteHandlers = [
           result: [
             {
               categoria: 'LITEFLEX',
-              [params.inicio.substring(0, 7)]: params.cliente * 10 + ',10',
+              [params.inicio.substring(0, 7)]: params.clienteId * 10 + ',10',
             },
             {
               categoria: 'LITEFLEX',
-              [params.fim.substring(0, 7)]: params.cliente * 20 + ',20',
+              [params.fim.substring(0, 7)]: params.clienteId * 20 + ',20',
             },
           ],
         }
@@ -128,11 +128,11 @@ export const clienteHandlers = [
           result: [
             {
               categoria: 'LITEFLEX',
-              [params.inicio.substring(0, 7)]: params.cliente * 1 + ',10',
+              [params.inicio.substring(0, 7)]: params.clienteId * 1 + ',10',
             },
             {
               categoria: 'LITEFLEX',
-              [params.fim.substring(0, 7)]: params.cliente * 2 + ',20',
+              [params.fim.substring(0, 7)]: params.clienteId * 2 + ',20',
             },
           ],
         }

@@ -2,49 +2,59 @@ import { nfSaidaSchema } from '@/data/plano/nf-saida/nf-saida.schema.js'
 import { validId } from '@/utils/orm/utils/valid/valid-id.js'
 import { describe, expect, test } from 'vitest'
 
+const schema = {
+  table: 'phonebook',
+  primary: ['idphonebook', 'name'] as const,
+  fields: ['idphonebook', 'name', 'department', 'mail'] as const,
+}
+
+const schema1 = {
+  table: 'phonebook',
+  primary: [] as const,
+  fields: ['idphonebook', 'name', 'department', 'mail'] as const,
+}
+
+export const mapFields = {
+  id: 'idphonebook',
+  email: 'mail',
+  nome: 'name',
+  setor: 'department',
+}
+
 describe('validId', () => {
   test('schema incompleto', () => {
-    expect(() =>
-      validId([['CdFilial', 1]], {
-        table: 'MestreNota',
-        primary: [],
-        fields: [],
-      })
-    ).toThrow('MestreNota não possui primary keys')
+    expect(() => validId([['idphonebook', 1]], schema1, mapFields)).toThrow(
+      'phonebook não possui primary keys'
+    )
   })
 
   test('válido', () => {
     expect(
       validId(
         [
-          ['CdFilial', 1],
-          ['NumNota', 1],
-          ['Serie', '1'],
-          ['Modelo', '1'],
-          ['CdCliente', 1],
+          ['idphonebook', 1],
+          ['name', 1],
         ],
-        nfSaidaSchema
+        schema,
+        mapFields
       )
     ).toEqual({
       where: [
-        ['CdFilial', 1],
-        ['NumNota', 1],
-        ['Serie', '1'],
-        ['Modelo', '1'],
-        ['CdCliente', 1],
+        ['idphonebook', 1],
+        ['name', 1],
       ],
     })
   })
 
   test('campo inexistente', () => {
-    expect(() => validId([['ids', 1]], nfSaidaSchema)).toThrow(
-      '[ids] não é id válido em MestreNota use: CdFilial,Modelo,NumNota,Serie'
+    expect(() => validId([['ids', 1]], schema, mapFields)).toThrow(
+      '[ids] não é id válido em phonebook use: id,nome'
     )
   })
 
   test('id composto incompleto', () => {
-    expect(() => validId([['CdFilial', 1]], nfSaidaSchema)).toThrow(
-      '[Modelo,NumNota,Serie] não foram usados em MestreNota use: Modelo,NumNota,Serie'
+    expect(() => validId([['idphonebook', 1]], schema, mapFields)).toThrow(
+      '[nome] não foi usado em phonebook use: nome'
     )
   })
 
@@ -52,14 +62,13 @@ describe('validId', () => {
     expect(() =>
       validId(
         [
-          ['CdFilial', 1],
-          ['NumNota', 1],
-          ['Serie', '1'],
-          ['Modelo', '1'],
-          ['CdFornecedor', 1],
+          ['idphonebook', 1],
+          ['name', 1],
+          ['titulo', 1],
         ],
-        nfSaidaSchema
+        schema,
+        mapFields
       )
-    ).toThrow('[CdFornecedor] não é id válido')
+    ).toThrow('[titulo] não é id válido')
   })
 })

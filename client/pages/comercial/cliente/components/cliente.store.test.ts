@@ -46,7 +46,7 @@ describe('clienteStore', () => {
     const data = await clienteStore.fetchVendaMensalQuantidade({
       inicio: '2020-01-01',
       fim: '2020-03-31',
-      selection: [['id', '100']],
+      selection: [['id', 100]],
     })
     expect(data).toEqual([
       { '2020-01': 100, categoria: 'LITEFLEX' },

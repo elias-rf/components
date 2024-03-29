@@ -1,11 +1,13 @@
 import type { TSchema } from '@/schemas/schema.type.js'
 import { TData } from '@/types/index.js'
+import { getName } from '@/utils/orm/utils/map-fields/get-name.js'
 import { getFields } from '@/utils/orm/utils/schema/get-fields.js'
 import { getTable } from '@/utils/orm/utils/schema/get-table.js'
 
 export function validData<TFields extends string>(
   data: Partial<TData<TFields>> | undefined,
-  schema: TSchema
+  schema: TSchema,
+  mapFields?: Record<string, string>
 ) {
   const nameList = getFields(schema)
   const fieldsInvalidos = []
@@ -23,11 +25,11 @@ export function validData<TFields extends string>(
 
   if (fieldsInvalidos.length > 0) {
     throw new Error(
-      `[${fieldsInvalidos}] não ${
+      `[${fieldsInvalidos.map((f) => getName(f, mapFields || {}))}] não ${
         fieldsInvalidos.length === 1
           ? 'é um campo válido'
           : 'são campos válidos'
-      } para data em ${getTable(schema)} use: ${fieldsLivres}`
+      } para data em ${getTable(schema)} use: ${fieldsLivres.map((f) => getName(f, mapFields || {}))}`
     )
   }
   return data as TData<TFields>
