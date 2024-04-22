@@ -6,7 +6,7 @@ import { list } from './list.js'
 import { read } from './read.js'
 import { update } from './update.js'
 
-export const groupUseCases = (dataSource: TDataSource) => ({
+export const grupoUseCases = (dataSource: TDataSource) => ({
   list: list(dataSource),
   read: read(dataSource),
   count: count(dataSource),

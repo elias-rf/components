@@ -1,6 +1,5 @@
 import { ChevronIcon } from '@/client/components/icons/chevron-icon.js'
 import { CloseIcon } from '@/client/components/icons/close-icon.js'
-import { useState } from '@/client/lib/hooks/use-state.js'
 import React from 'react'
 
 type TSelectBadgeProps = {
@@ -66,9 +65,11 @@ const List = ({ children }: { children: React.ReactNode }) => {
 const InputPills = ({
   children,
   showList,
+  setShowList,
 }: {
   children: React.ReactNode
   showList: any
+  setShowList: any
 }) => {
   return (
     <div className="w-full">
@@ -77,12 +78,12 @@ const InputPills = ({
         <div className="flex w-8 items-center border-l border-gray-200 py-1 pl-2 pr-1 text-gray-300">
           <button
             onClick={() => {
-              showList.set(!showList.value)
+              setShowList(!showList)
             }}
             className="h-6 w-6 cursor-pointer text-gray-600 outline-none focus:outline-none"
           >
             <ChevronIcon
-              variant={showList.value ? 'up' : 'down'}
+              variant={showList ? 'up' : 'down'}
               className="h-5 w-5"
             />
           </button>
@@ -95,12 +96,12 @@ const InputPills = ({
 export const SelectBadge = React.forwardRef<
   HTMLInputElement,
   TSelectBadgeProps
->(({ name, onChange, onBlur, options }, ref) => {
+>(({ name, onChange, options }, ref) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
-  const showList = useState(false)
-  const valueFilter = useState('')
-  const valueInput = useState('')
-  const arrayInput = useState([] as string[])
+  const [showList, setShowList] = React.useState(false)
+  const [valueFilter, setValueFilter] = React.useState('')
+  const [valueInput, setValueInput] = React.useState('')
+  const [arrayInput, setArrayInput] = React.useState([] as string[])
 
   React.useImperativeHandle(
     ref,
@@ -109,51 +110,47 @@ export const SelectBadge = React.forwardRef<
   )
 
   React.useEffect(() => {
-    if (valueInput.get() === '') {
-      arrayInput.set([])
-      return
+    if (valueInput === '') {
+      setArrayInput([])
+    } else {
+      setArrayInput(valueInput.split(',').map((item) => item.trim()))
     }
-    arrayInput.set(
-      valueInput
-        .get()
-        .split(',')
-        .map((item) => item.trim())
-    )
-  }, [valueInput.get()])
+    onChange({
+      target: { value: valueInput, name },
+    } as React.ChangeEvent<HTMLInputElement>)
+  }, [valueInput])
 
   React.useEffect(() => {
-    if (inputRef.current) valueInput.set(inputRef.current?.value)
+    if (inputRef.current) setValueInput(inputRef.current?.value)
   }, [inputRef.current?.value])
-
-  function handleValue() {
-    onChange({
-      target: { value: valueInput.get(), name },
-    } as React.ChangeEvent<HTMLInputElement>)
-  }
 
   return (
     <div className="w-full ">
+      <div> showList: {showList.toString()}</div>
+      <div>valueFilter: {valueFilter.toString()}</div>
+      <div>valueInput: {valueInput.toString()}</div>
+      <div>arrayInput: {arrayInput.toString()}</div>
       <input
         className="hidden"
         name={name}
         ref={inputRef}
       />
       <div className="relative flex flex-col ">
-        <InputPills showList={showList}>
+        <InputPills
+          showList={showList}
+          setShowList={setShowList}
+        >
           <>
-            {arrayInput.get().map((item) => {
+            {arrayInput.map((item) => {
               const [label, value] =
                 options.find(([_, value]) => value === item) || []
               return (
                 <Pill
                   key={value}
                   onClick={() => {
-                    const array = arrayInput
-                      .get()
-                      .filter((item) => item !== value)
-                    valueInput.set(array.join(','))
-                    showList.set(false)
-                    handleValue()
+                    const array = arrayInput.filter((item) => item !== value)
+                    setValueInput(array.join(','))
+                    setShowList(false)
                   }}
                 >
                   {label}
@@ -162,36 +159,35 @@ export const SelectBadge = React.forwardRef<
             })}
             <div className="flex-1">
               <input
-                value={valueFilter.get()}
+                value={valueFilter}
                 onChange={(e) => {
-                  showList.set(true)
-                  valueFilter.set(e.target.value)
+                  setShowList(true)
+                  setValueFilter(e.target.value)
                 }}
                 className="h-full w-full appearance-none bg-transparent p-1 px-2 text-gray-800 outline-none"
               />
             </div>
           </>
         </InputPills>
-        {showList.get() ? (
+        {showList ? (
           <List>
             {options
               .filter(([label, value]) => {
                 return (
-                  !arrayInput.get().includes(value) &&
-                  label.toLowerCase().includes(valueFilter.get().toLowerCase())
+                  !arrayInput.includes(value) &&
+                  label.toLowerCase().includes(valueFilter.toLowerCase())
                 )
               })
               .map(([label, value]) => (
                 <Item
                   key={value}
                   onClick={() => {
-                    const array = [...arrayInput.get()]
+                    const array = [...arrayInput]
                     if (!array.includes(value)) {
                       array.push(value)
-                      valueInput.set(array.join(','))
+                      setValueInput(array.join(','))
                     }
-                    showList.set(false)
-                    handleValue()
+                    setShowList(false)
                   }}
                 >
                   {label}

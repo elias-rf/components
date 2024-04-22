@@ -57,7 +57,7 @@ const Usuario = React.lazy(
   async () => import('./pages/sistema/usuarios/usuarios.js')
 )
 const Permissao = React.lazy(
-  async () => import('./pages/sistema/permissoes/group-subject.js')
+  async () => import('./pages/sistema/permissoes/grupo-sujeito.js')
 )
 const Grupos = React.lazy(
   async () => import('./pages/sistema/grupos/grupos.js')

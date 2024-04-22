@@ -3,7 +3,7 @@ export type TUsuarioDtoFields =
   | 'id'
   | 'nome'
   | 'email'
-  | 'setor'
+  | 'grupos'
   | 'usuario'
   | 'senha'
   | 'ativo'

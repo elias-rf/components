@@ -22,7 +22,7 @@ const recordClear = {
   id: '',
   nome: '',
   email: '',
-  setor: '',
+  grupos: '',
   usuario: '',
   ativo: true,
 } as TData<TUsuarioDtoFields>

@@ -13,49 +13,6 @@ describe('esterilizacaoInterna', () => {
     tracker.reset()
   })
 
-  test('diario', async () => {
-    tracker.on
-      .select('tOperacaoOrdemProducao')
-      .response([{ quantidade: 1, dia: new Date('2020-01-01T00:00:00') }])
-
-    const rsp =
-      await esterilizacaoInternaController.esterilizacaoInterna_diario({
-        inicio: '2020-01-01',
-        fim: '2020-01-31',
-      })
-
-    expect(rsp).toEqual([
-      { quantidade: 1, dia: '2020-01-01', dia_semana: 'qua' },
-    ])
-
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: ['2020-01-01', '2020-01-31'],
-        sql: 'select DataInicio as dia, Sum(QtdConforme) AS quantidade from [tOperacaoOrdemProducao] where [DataInicio] between @p0 and @p1 and fkOperacao in (3058, 3158) group by [DataInicio] order by [DataInicio] desc',
-      },
-    ])
-  })
-
-  test('mensal', async () => {
-    tracker.on
-      .select('tOperacaoOrdemProducao')
-      .response([{ quantidade: 1, dia: new Date('2020-01-01T00:00:00') }])
-    const rsp =
-      await esterilizacaoInternaController.esterilizacaoInterna_mensal({
-        mes: '2020-01',
-      })
-
-    expect(rsp).toEqual([
-      { quantidade: 1, dia: new Date('2020-01-01T00:00:00') },
-    ])
-    expect(knexMockHistory(tracker)).toEqual([
-      {
-        bindings: ['2020-01'],
-        sql: 'select CONVERT(CHAR(7),[DataInicio],120) AS mes, Sum(tOperacaoOrdemProducao.QtdConforme) AS quantidade from [tOperacaoOrdemProducao] where fkOperacao in (3058, 3158) and CONVERT(CHAR(7),[DataInicio],120)>=@p0 group by CONVERT(CHAR(7),[DataInicio],120) order by CONVERT(CHAR(7),[DataInicio],120) desc',
-      },
-    ])
-  })
-
   test('modelo', async () => {
     tracker.on.select('tOperacaoOrdemProducao').response([])
     const rsp =

@@ -3,7 +3,7 @@ import { TColumn } from '@/types/index.js'
 export const usuarioColumns: TColumn[] = [
   {
     label: 'Usuario',
-    name: 'kUsuario',
+    name: 'id',
     width: '1%',
   },
   {
@@ -12,7 +12,7 @@ export const usuarioColumns: TColumn[] = [
   },
   {
     label: 'Login',
-    name: 'NomeUsuario',
+    name: 'usuario',
   },
   {
     label: 'Email',
@@ -20,11 +20,11 @@ export const usuarioColumns: TColumn[] = [
   },
   {
     label: 'Grupos',
-    name: 'setor',
+    name: 'grupos',
   },
   {
     label: 'Ativo',
-    name: 'Ativo',
+    name: 'ativo',
     width: '1%',
     format: (v) => (v ? 'S' : 'N'),
     parse: (v) => (v.toUpperCase() === 'S' ? '1' : '0'),

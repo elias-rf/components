@@ -1,6 +1,6 @@
 import { JsonView } from '@/client/components/json-view/json-view.js'
-import { grupoSujeitoStore } from '@/client/pages/sistema/permissoes/components/group-subject.store.js'
-import { GrupoSujeitoForm } from '@/client/pages/sistema/permissoes/components/group-subject_form.js'
+import { grupoSujeitoStore } from '@/client/pages/sistema/permissoes/components/grupo-sujeito.store.js'
+import { GrupoSujeitoForm } from '@/client/pages/sistema/permissoes/components/grupo-sujeito_form.js'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof GrupoSujeitoForm> = {

@@ -4,42 +4,39 @@
 
 
 ###
-POST {{host}}/api/rpc
+POST {{host}}/api/rpc2
 Content-Type: application/json
 
 {
-"method": "esterilizacaoExterna/mensal",
-  "args": [
-    {
-      "mes": "2022-09"
-    }
-  ],
-  "id": "1"
+"method": "esterilizacaoExterna_mensal",
+  "params": {
+      "mes": "2024-01"
+    },
+  "id": "1",
+  "jsonrpc": "2.0"
 }
 
 ###
-POST {{host}}/api/rpc
+POST {{host}}/api/rpc2
 Content-Type: application/json
 
 {
-  "method": "esterilizacaoExterna/diario",
-  "args": [
-    {
-      "inicio": "2021-01-01",
-      "fim": "2022-01-31"
-    }
-  ],
-  "id": "1"
+  "method": "esterilizacaoExterna_diario",
+  "params":     {
+      "inicio": "2024-01-23",
+      "fim": "2024-01-23"
+    },
+  "id": "1",
+  "jsonrpc": "2.0"
 }
 
 ###
-POST {{host}}/api/rpc
+POST {{host}}/api/rpc2
 Content-Type: application/json
 
 {
-  "method": "esterilizacaoExterna/produto",
-  "args": [
-    {"data": "2022-01-18"}
-  ],
-  "id": "1"
+  "method": "esterilizacaoExterna_produto",
+  "params": {"data": "2024-01-23"},
+  "id": "1",
+  "jsonrpc": "2.0"
 }

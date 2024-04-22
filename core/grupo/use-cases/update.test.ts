@@ -18,8 +18,7 @@ describe('update', () => {
   })
 
   test('update', async () => {
-    tracker.on.update('phonebook').response([{ id: 10 }])
-    tracker.on.select('phonebook').response([{ id: 10 }])
+    tracker.on.update('tbl_Seguranca_Grupo').response([{ kGrupo: 10 }])
     oftalmoDb.startLog()
     const rsp = await useCase({
       where: [['id', 1]],
@@ -27,9 +26,9 @@ describe('update', () => {
       returning: ['id'],
       debug: false,
     })
-    expect(rsp).toEqual([{ id: 10 }])
     expect(oftalmoDb.log()).toEqual([
-      'update [phonebook] set [id] = 10 output inserted.[id] where [id] = 1',
+      'update [tbl_Seguranca_Grupo] set [kGrupo] = 10 output inserted.[kGrupo] where [kGrupo] = 1',
     ])
+    expect(rsp).toEqual([{ id: 10 }])
   })
 })

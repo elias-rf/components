@@ -1,9 +1,9 @@
 import { TColumn } from '@/types/index.js'
 
 export const grupoSujeitoColumns: TColumn[] = [
-  { name: 'idGroup', label: 'Grupo' },
+  { name: 'grupoId', label: 'Grupo' },
   {
-    name: 'idSubject',
+    name: 'sujeitoId',
     label: 'Recurso',
   },
 ]

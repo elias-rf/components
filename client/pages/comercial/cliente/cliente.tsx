@@ -23,11 +23,7 @@ export default function Clientes() {
   if (!canList.data) {
     return null
   }
-  console.log(
-    currentUser.grupoIds,
-    canList.data?.[permissions.READ.key],
-    canList.data
-  )
+
   return (
     <Can can={canList.data?.[permissions.READ.key]}>
       <div className="flex h-full flex-col px-2">

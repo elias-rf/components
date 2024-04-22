@@ -8,5 +8,5 @@ import { TRead } from '@/types/index.js'
 export const read =
   (dataSource: TDataSource): TRead<TGroupDtoFields, TGroupDtoKeys> =>
   async (args) => {
-    return dataSource.oftalmo.agendaTelefone.read(args)
+    return dataSource.oftalmo.group.read(args)
   }

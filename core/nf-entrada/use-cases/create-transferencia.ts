@@ -7,6 +7,7 @@ import { produtoPlanoControleController } from '@/core/produto-plano-controle/pr
 import { produtoEstatisticaController } from '@/core/produto-plano-estatistica/produto-estatistica_controller.js'
 import { TDataSource } from '@/data/index.js'
 import { TProdutoDtoFields } from '@/data/plano/produto/produto.type.js'
+import { now } from '@/utils/date/now.js'
 import { isEmpty } from '@/utils/identify/is-empty.js'
 import { format } from 'date-fns'
 import { create } from './create.js'
@@ -76,8 +77,8 @@ export const createTransferencia = (
 
     const quantidade = controles.length
 
-    const hoje = format(new Date(), 'yyyy-MM-dd')
-    const agora = format(new Date(), 'HH:mm:ss')
+    const hoje = format(now(), 'yyyy-MM-dd')
+    const agora = format(now(), 'HH:mm:ss')
 
     const readUseCase = read(dataSource)
 
@@ -212,8 +213,8 @@ export const createTransferencia = (
     await produtoEstatisticaController.produtoEstatistica_increment({
       where: [
         ['CdEmpresa', 1],
-        ['MesRef', parseInt(format(new Date(), 'MM'))],
-        ['AnoRef', parseInt(format(new Date(), 'yy'))],
+        ['MesRef', parseInt(format(now(), 'MM'))],
+        ['AnoRef', parseInt(format(now(), 'yy'))],
         ['CdProduto', cdProduto.id.toString() || ''],
       ],
       increment: ['QtdCompras', quantidade],

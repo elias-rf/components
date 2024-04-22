@@ -5,5 +5,5 @@ import { TUpdate } from '@/types/query.js'
 export const update =
   (dataSource: TDataSource): TUpdate<TGroupDtoFields> =>
   async (args) => {
-    return dataSource.oftalmo.agendaTelefone.update(args)
+    return dataSource.oftalmo.group.update(args)
   }

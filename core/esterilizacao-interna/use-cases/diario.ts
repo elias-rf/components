@@ -1,4 +1,5 @@
 import { TDataSource } from '@/data/index.js'
+import { UTCDateMini } from '@date-fns/utc'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import * as v from 'valibot'
@@ -29,7 +30,7 @@ export const diario =
     })
     return qry.map((rec: any) => {
       rec.dia_semana = format(rec.dia, 'EEEEEE', { locale: ptBR })
-      rec.dia = format(rec.dia, 'yyyy-MM-dd')
+      rec.dia = format(new UTCDateMini(rec.dia), 'yyyy-MM-dd')
       return rec
     })
   }

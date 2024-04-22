@@ -18,15 +18,15 @@ describe('read', () => {
   })
 
   test('read', async () => {
-    tracker.on.select('phonebook').response([{ id: '1' }])
+    tracker.on.select('tbl_Seguranca_Grupo').response([{ kGrupo: '1' }])
 
     const rsp = await useCase({
       where: [['id', 10]],
       select: ['id', 'nome'],
     })
-    expect(rsp).toEqual({ id: '1' })
     expect(oftalmoDb.log()).toEqual([
-      'select top (1) [id], [name] from [phonebook] where [id] = 10',
+      'select top (1) [kGrupo], [NomeGrupo] from [tbl_Seguranca_Grupo] where [kGrupo] = 10',
     ])
+    expect(rsp).toEqual({ id: '1' })
   })
 })

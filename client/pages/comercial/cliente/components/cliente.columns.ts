@@ -3,43 +3,43 @@ import { TColumn } from '@/types/index.js'
 export const clienteColumns: TColumn[] = [
   {
     label: 'Código',
-    name: 'CdCliente',
+    name: 'id',
     align: 'right',
     width: '3%',
   },
   {
     label: 'Nome',
-    name: 'RzSocial',
+    name: 'razaoSocial',
     width: '25%',
   },
   {
     label: 'Cidade',
-    name: 'Cidade',
+    name: 'cidade',
     width: '10%',
   },
   {
     label: 'UF',
-    name: 'Uf',
+    name: 'uf',
     width: '3%',
   },
   {
     label: 'CNPJ',
-    name: 'CGC',
+    name: 'cnpj',
     width: '8%',
   },
   {
     label: 'Cód Vendedor',
-    name: 'CdVendedor',
+    name: 'vendedorId',
     width: '5%',
   },
   {
     label: 'Habilitado',
-    name: 'FgAtivo',
+    name: 'ativo',
     width: '5%',
   },
   {
     label: 'Data de Cadastro',
-    name: 'DtCadastro',
+    name: 'cadastroData',
     width: '5%',
   },
 ]

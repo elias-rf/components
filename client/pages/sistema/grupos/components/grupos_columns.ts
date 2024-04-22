@@ -3,13 +3,13 @@ import { TColumn } from '@/types/index.js'
 export const gruposColumns: TColumn[] = [
   {
     label: 'Código',
-    name: 'kGrupo',
+    name: 'id',
     align: 'right',
     width: '5%',
   },
   {
     label: 'Nome',
-    name: 'NomeGrupo',
+    name: 'nome',
     width: '50%',
   },
 ]

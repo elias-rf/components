@@ -40,7 +40,7 @@ export const login =
       id: record.id || 0,
       usuario: record.usuario || '',
       nome: record.nome || '',
-      grupoIds: record.setor || '',
+      grupoIds: record.grupos || '',
     }
 
     resp.token = jwtService.sign(resp, config.auth.secret, {

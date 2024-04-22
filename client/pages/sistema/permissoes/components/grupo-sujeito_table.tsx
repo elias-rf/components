@@ -1,12 +1,12 @@
 import { Table } from '@/client/components/table-full/table.js'
-import { TGrupoSujeitoStore } from '@/client/pages/sistema/permissoes/components/group-subject.store.js'
+import { TGrupoSujeitoStore } from '@/client/pages/sistema/permissoes/components/grupo-sujeito.store.js'
 import {
   TGrupoSujeitoDtoFields,
   TGrupoSujeitoDtoKeys,
 } from '@/data/oftalmo/grupo-sujeito/grupo-sujeito.type.js'
 import { TData, TId, TSelect } from '@/types/index.js'
 import { useQuery } from '@tanstack/react-query'
-import { grupoSujeitoColumns } from './group-subject_columns.js'
+import { grupoSujeitoColumns } from './grupo-sujeito_columns.js'
 
 const select = grupoSujeitoColumns.map(
   (col) => col.name

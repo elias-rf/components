@@ -5,5 +5,6 @@ import { TCreate } from '@/types/index.js'
 export const create =
   (dataSource: TDataSource['oftalmo']['usuario']): TCreate<TUsuarioDtoFields> =>
   async (args) => {
+    delete args.data?.id
     return dataSource.create(args)
   }

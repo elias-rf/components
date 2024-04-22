@@ -10,6 +10,15 @@ import { getTracker } from '@/utils/mocks/database.mock.js'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import { createTransferencia } from './create-transferencia.js'
 
+vi.mock('@/utils/date/now.js', async (importOriginal) => {
+  const mod = await importOriginal<typeof import('@/utils/date/now.js')>()
+  return {
+    ...mod,
+    // replace some exports
+    now: vi.fn(() => new Date(2020, 1, 1, 12)),
+  }
+})
+
 describe('createTransferencia', () => {
   const tracker = getTracker()
   oftalmoDb.setDriver(knexMockMsql)
@@ -26,6 +35,8 @@ describe('createTransferencia', () => {
     oftalmoDb.startLog()
     tracker.reset()
   })
+
+  afterEach(() => {})
 
   test('transferenciaCreate', async () => {
     tracker.reset()
@@ -68,50 +79,17 @@ describe('createTransferencia', () => {
       'select [DataHoraInicio] from [tOperacaoOrdemProducao] where [fkOperacao] = 3059 and [fkOp] = 100 order by [DataHoraInicio] desc'
     )
 
-    const logPlano = planoDb.log()
-    expect(logPlano.length).toBe(9)
-    expect(logPlano[0]).toEqual(
-      "select top (1) [CdProduto] from [CadPro] where [CdProduto] = '3'"
-    )
-    expect(logPlano[1]).toEqual(
-      "select top (1) [NroNf] from [NfMestre] where [CdEmpresa] = 1 and [NroNf] = 100 and [Serie] = 'XX' and [Modelo] = '1'"
-    )
-    expect(
-      logPlano[2]
-        .replaceAll(/\d\d\d\d-\d\d-\d\d/g, '1900-01-01')
-        .replaceAll(/\d\d:\d\d:\d\d/g, '00:00:00')
-    ).toBe(
-      "insert into [NfMestre] ([BaseSubstituicao], [CdEmpresa], [CdFornecedor], [ConPag], [DtConferencia], [DtEmi], [DtEntr], [DtValidacao], [FgConferencia], [FgDespesasCompoeBaseICMS], [FgDespesasCompoeBaseIPI], [FgDespesasCompoeTotal], [FgDespesasCompoeVlProdutos], [FgEstoque], [FgFreteCompoeBaseICMS], [FgFreteCompoeBaseIPI], [FgFreteCompoeTotal], [FgFreteCompoeVlProdutos], [FgGNRE], [FgIPICompoeBase], [FgIPICompoeBaseSub], [FgSeguroCompoeBaseICMS], [FgSeguroCompoeBaseIPI], [FgSeguroCompoeTotal], [FgSeguroCompoeVlProdutos], [FgSomaICMSSub], [FgUtilizaPercRedBCIcms], [FgXML], [Frete], [GrupoFiscal], [Horario], [ICMSBasCalc], [ICMSFrete], [ICMSOperPropria], [ICMSRetido], [ICMSVlr], [IPIBasCalc], [IPIFrete], [IPIVlr], [IdParametro], [Modelo], [Nop], [NopFiscal], [NroNf], [NumChaveNfe], [NumNotaRelacionada], [Seguro], [Serie], [SgUsuario], [Tipo], [TotNF], [VlDespAcessorias], [VlMercadorias], [VlNfComplementar], [VlNotaRelacionada], [VlRepasseICMS], [dsObservacao]) values (0, 1, 1, 'P', '1900-01-01 00:00:00', '1900-01-01 00:00:00', '1900-01-01 00:00:00', '1900-01-01', 'P', 'N', 'N', 'N', 'N', 'S', 'N', 'N', 'N', 'N', 'A', 'N', 'N', 'N', 'N', 'N', 'N', 'S', 'N', 'N', 0, 0, '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, '1', 1102, 1102, 100, ' ', 0, 0, 'XX', 'ERIBEIRO', 'N', 2, 0, 2, 0, 0, 0, ' ')"
-    )
-    expect(
-      logPlano[3]
-        .replaceAll(/\d\d\d\d-\d\d-\d\d/g, '1900-01-01')
-        .replaceAll(/\d\d:\d\d:\d\d/g, '00:00:00')
-    ).toEqual(
-      "insert into [NFItem] ([CdBaseCalculoCreditoPISCOFINS], [CdContribuicaoApuradaPISCOFINS], [CdEmpresa], [CdFornecedor], [CdProduto], [CdTipoCreditoPISCOFINS], [DtEntr], [FgCompoeBaseSub], [FgConferido], [FgCusto], [FgEstoque], [FgEtiqueta], [FgICMSJaRecolhido], [Modelo], [Nop], [NopfiscalItem], [NroNF], [PercICMS], [PercIPI], [PrecPMC], [Quantidade], [Sequencia], [Serie], [TipoMovimentacao], [TipoTributacao], [VlAcrescItem], [VlBaseCalculoICMS], [VlBaseCalculoIPI], [VlBaseSub], [VlBrutoUnitario], [VlDescItem], [VlICMSSub], [VlLiquidoUnitario], [VlRelacionado], [VlRepasseICMSItem], [VlTotItem], [VlrICMS], [VlrIPI]) values (0, 0, 1, 1, '1', 0, '1900-01-01 00:00:00', 'S', ' ', 'S', 'S', 'N', '0', '1', 0, 0, 100, 0, 0, 0, 1, 1, 'XX', 'N', 'T', 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0)"
-    )
-    expect(logPlano[4]).toEqual(
-      "update [Estoque] set [EstAtual] = [EstAtual] + 1 where [CdEmpresa] = 1 and [CdProduto] = '1';select @@rowcount"
-    )
-    expect(logPlano[5]).toEqual(
-      "update [EstatPro] set [QtdCompras] = [QtdCompras] + 1 where [CdEmpresa] = 1 and [MesRef] = 3 and [AnoRef] = 24 and [CdProduto] = '1';select @@rowcount"
-    )
-    expect(
-      logPlano[6]
-        .replaceAll(/\d\d\d\d-\d\d-\d\d/g, '1900-01-01')
-        .replaceAll(/\d\d:\d\d:\d\d/g, '00:00:00')
-    ).toEqual(
-      "insert into [Lotes] ([Aspecto], [CdFilial], [CdFornecedor], [CdLote], [CdNRA], [CdProduto], [Densidade], [DtAnalise], [DtEntrada], [DtFabricacao], [DtLimiteUso], [DtValidade], [FatorCorrecao], [Modelo], [NumNfEntrada], [PercentualDiluicao], [QtdeAdquirida], [SaldoPeso], [SerieNfEntrada], [SituacaoLote], [TipoLote]) values (' ', 1, 1, '000001000017', ' ', '1', 0, '1900-01-01', '1900-01-01', '1900-01-01', '1900-01-01', '1900-01-01', 0, '1', 1, 0, 1, 1, 'XX', 'A', 'C')"
-    )
-    expect(logPlano[7]).toEqual(
-      "insert into [LotesNotaEntrada] ([CdFilial], [CdFornecedor], [CdProduto], [Modelo], [NumLote], [NumNota], [Quantidade], [Serie]) values (1, 1, '1', '1', '000001000017', 100, 1, 'XX')"
-    )
-    expect(
-      logPlano[8]
-        .replaceAll(/\d\d\d\d-\d\d-\d\d/g, '1900-01-01')
-        .replaceAll(/\d\d:\d\d:\d\d/g, '00:00:00')
-    ).toEqual(
-      "insert into [NfLogConferencia] ([CdFilial], [CdFornecedor], [Data], [Modelo], [NumNota], [Operacao], [Serie], [Usuario]) values (1, 1, '1900-01-01 00:00:00', '1', 100, 'INCLUSAO DA CONFERENCIA', 'XX', 'ERIBEIRO')"
-    )
+    expect(planoDb.log().length).toBe(9)
+    expect(planoDb.log()).toEqual([
+      "select top (1) [CdProduto] from [CadPro] where [CdProduto] = '3'",
+      "select top (1) [NroNf] from [NfMestre] where [CdEmpresa] = 1 and [NroNf] = 100 and [Serie] = 'XX' and [Modelo] = '1'",
+      "insert into [NfMestre] ([BaseSubstituicao], [CdEmpresa], [CdFornecedor], [ConPag], [DtConferencia], [DtEmi], [DtEntr], [DtValidacao], [FgConferencia], [FgDespesasCompoeBaseICMS], [FgDespesasCompoeBaseIPI], [FgDespesasCompoeTotal], [FgDespesasCompoeVlProdutos], [FgEstoque], [FgFreteCompoeBaseICMS], [FgFreteCompoeBaseIPI], [FgFreteCompoeTotal], [FgFreteCompoeVlProdutos], [FgGNRE], [FgIPICompoeBase], [FgIPICompoeBaseSub], [FgSeguroCompoeBaseICMS], [FgSeguroCompoeBaseIPI], [FgSeguroCompoeTotal], [FgSeguroCompoeVlProdutos], [FgSomaICMSSub], [FgUtilizaPercRedBCIcms], [FgXML], [Frete], [GrupoFiscal], [Horario], [ICMSBasCalc], [ICMSFrete], [ICMSOperPropria], [ICMSRetido], [ICMSVlr], [IPIBasCalc], [IPIFrete], [IPIVlr], [IdParametro], [Modelo], [Nop], [NopFiscal], [NroNf], [NumChaveNfe], [NumNotaRelacionada], [Seguro], [Serie], [SgUsuario], [Tipo], [TotNF], [VlDespAcessorias], [VlMercadorias], [VlNfComplementar], [VlNotaRelacionada], [VlRepasseICMS], [dsObservacao]) values (0, 1, 1, 'P', '1900-01-01 00:00:00', '2020-02-01 12:00:00', '2020-02-01 12:00:00', '2020-02-01', 'P', 'N', 'N', 'N', 'N', 'S', 'N', 'N', 'N', 'N', 'A', 'N', 'N', 'N', 'N', 'N', 'N', 'S', 'N', 'N', 0, 0, '12:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, '1', 1102, 1102, 100, ' ', 0, 0, 'XX', 'ERIBEIRO', 'N', 2, 0, 2, 0, 0, 0, ' ')",
+      "insert into [NFItem] ([CdBaseCalculoCreditoPISCOFINS], [CdContribuicaoApuradaPISCOFINS], [CdEmpresa], [CdFornecedor], [CdProduto], [CdTipoCreditoPISCOFINS], [DtEntr], [FgCompoeBaseSub], [FgConferido], [FgCusto], [FgEstoque], [FgEtiqueta], [FgICMSJaRecolhido], [Modelo], [Nop], [NopfiscalItem], [NroNF], [PercICMS], [PercIPI], [PrecPMC], [Quantidade], [Sequencia], [Serie], [TipoMovimentacao], [TipoTributacao], [VlAcrescItem], [VlBaseCalculoICMS], [VlBaseCalculoIPI], [VlBaseSub], [VlBrutoUnitario], [VlDescItem], [VlICMSSub], [VlLiquidoUnitario], [VlRelacionado], [VlRepasseICMSItem], [VlTotItem], [VlrICMS], [VlrIPI]) values (0, 0, 1, 1, '1', 0, '2020-02-01 12:00:00', 'S', ' ', 'S', 'S', 'N', '0', '1', 0, 0, 100, 0, 0, 0, 1, 1, 'XX', 'N', 'T', 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0)",
+      "update [Estoque] set [EstAtual] = [EstAtual] + 1 where [CdEmpresa] = 1 and [CdProduto] = '1';select @@rowcount",
+      "update [EstatPro] set [QtdCompras] = [QtdCompras] + 1 where [CdEmpresa] = 1 and [MesRef] = 2 and [AnoRef] = 20 and [CdProduto] = '1';select @@rowcount",
+      "insert into [Lotes] ([Aspecto], [CdFilial], [CdFornecedor], [CdLote], [CdNRA], [CdProduto], [Densidade], [DtAnalise], [DtEntrada], [DtFabricacao], [DtLimiteUso], [DtValidade], [FatorCorrecao], [Modelo], [NumNfEntrada], [PercentualDiluicao], [QtdeAdquirida], [SaldoPeso], [SerieNfEntrada], [SituacaoLote], [TipoLote]) values (' ', 1, 1, '000001000017', ' ', '1', 0, '2019-12-31', '2020-02-01', '2019-12-31', '2025-01-01', '2025-01-01', 0, '1', 1, 0, 1, 1, 'XX', 'A', 'C')",
+      "insert into [LotesNotaEntrada] ([CdFilial], [CdFornecedor], [CdProduto], [Modelo], [NumLote], [NumNota], [Quantidade], [Serie]) values (1, 1, '1', '1', '000001000017', 100, 1, 'XX')",
+      "insert into [NfLogConferencia] ([CdFilial], [CdFornecedor], [Data], [Modelo], [NumNota], [Operacao], [Serie], [Usuario]) values (1, 1, '2020-02-01 12:00:00', '1', 100, 'INCLUSAO DA CONFERENCIA', 'XX', 'ERIBEIRO')",
+    ])
   })
 })

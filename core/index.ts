@@ -14,7 +14,7 @@ import { etiquetaInternaController } from './etiqueta-interna/etiqueta-interna_c
 import { fileManagerController } from './file-manager/file-manager_controller.js'
 import { fornecedorController } from './fornecedor/fornecedor_controller.js'
 import { grupoSujeitoController } from './grupo-sujeito/grupo-sujeito_controller.js'
-import { groupController } from './grupo/group_controller.js'
+import { grupoController } from './grupo/grupo_controller.js'
 import { logController } from './log/log_controller.js'
 import { maquinaController } from './maquina_controller.js'
 import { nfCfopController } from './nf-cfop/nf-cfop_controller.js'
@@ -58,7 +58,7 @@ export const modules = {
   ...etiquetaInternaController,
   ...fileManagerController,
   ...fornecedorController,
-  ...groupController,
+  ...grupoController,
   ...grupoSujeitoController,
   ...logController,
   ...maquinaController,

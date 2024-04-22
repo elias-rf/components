@@ -84,14 +84,16 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
       const data = await rpc.request('group_list', {
         orderBy: [['nome', 'asc']],
       })
+
       const list: [label: string, value: string][] = data.map((item: any) => [
-        item.NomeGrupo,
-        item.kGrupo,
+        item.nome,
+        item.id,
       ])
       list.unshift(['Administrador', '0'])
       list.unshift(['', ''])
       setListGroups(list)
     }
+
     getData()
   }, [])
 
@@ -192,7 +194,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
           />
           <FormField
             control={form.control}
-            name="setor"
+            name="grupos"
             render={({ field }) => (
               <FormItem className="col-span-12">
                 <FormLabel>Grupo *</FormLabel>

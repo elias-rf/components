@@ -13,3 +13,15 @@ Content-Type: application/json
   "params": {},
   "id": "1"
 }
+
+
+###
+POST {{host}}/api/rpc2
+Content-Type: application/json
+
+{
+  "jsonrpc":"2.0",
+  "method": "group_read",
+  "params": {"where": [["id", 36]], "select": ["id", "nome"]},
+  "id": "1"
+}

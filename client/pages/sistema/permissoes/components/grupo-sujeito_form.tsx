@@ -8,7 +8,7 @@ import {
 } from '@/client/components/form/form.js'
 import { Input } from '@/client/components/input/input.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
-import { TGrupoSujeitoStore } from '@/client/pages/sistema/permissoes/components/group-subject.store.js'
+import { TGrupoSujeitoStore } from '@/client/pages/sistema/permissoes/components/grupo-sujeito.store.js'
 import {
   TGrupoSujeitoDtoFields,
   TGrupoSujeitoDtoKeys,

@@ -2,7 +2,7 @@ export const usuarioMapFields = {
   id: 'kUsuario',
   nome: 'nome',
   email: 'email',
-  setor: 'setor',
+  grupos: 'setor',
   usuario: 'NomeUsuario',
   senha: 'hash',
   ativo: 'Ativo',

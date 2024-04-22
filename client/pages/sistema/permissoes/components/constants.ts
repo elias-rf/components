@@ -1,12 +1,16 @@
 import { TPermissions } from '@/types/index.js'
 
-export const KEYNAME = 'groupSubject'
+export const KEYNAME = 'grupoSujeito'
 
 export const permissions: TPermissions = {
   PERMISSAO: {
-    key: 'groupSubject_permissao',
+    key: 'grupoSujeito_permissao',
     description: 'Atribuir permissões',
   },
-  EDIT: { key: 'group_subject_edit', description: 'Alterar ramais' },
-  CREATE: { key: 'group_subject_create', description: 'Lançar novos ramais' },
+  READ: { key: 'grupoSujeito_read', description: 'Ver permissões' },
+  EDIT: { key: 'grupoSujeito_edit', description: 'Alterar permissões' },
+  CREATE: {
+    key: 'grupoSujeito_create',
+    description: 'Lançar novas permissões',
+  },
 }

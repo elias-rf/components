@@ -86,7 +86,7 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
       </div>
       <div className="grid grid-cols-12 gap-3">
         <FormField className="col-span-12 sm:col-span-2 lg:col-span-1">
-          <Label htmlFor="kGrupo">Ramal *</Label>
+          <Label htmlFor="kGrupo">Código *</Label>
           <InputForm
             disabled={['none', 'view'].includes(status)}
             {...form.register('id')}

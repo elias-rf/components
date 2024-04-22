@@ -48,7 +48,7 @@ export const diario =
     return data.map((item: any) => {
       const itemDia = new UTCDateMini(item.dia)
       item.diaSemana = format(itemDia, 'EEEEEE', { locale: ptBR })
-      item.dia = format(itemDia, 'yyyy-MM-dd')
+      item.dia = format(new UTCDateMini(itemDia), 'yyyy-MM-dd')
       return item
     })
   }
