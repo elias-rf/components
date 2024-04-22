@@ -1,8 +1,8 @@
-import { now } from '@/utils/date/now.js'
+import { now } from '@/utils/date/now.mjs'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-vi.mock('@/utils/date/now.js', async (importOriginal) => {
-  const mod = await importOriginal<typeof import('@/utils/date/now.js')>()
+vi.mock('@/utils/date/now.mjs', async (importOriginal) => {
+  const mod = await importOriginal()
   return {
     ...mod,
     // replace some exports

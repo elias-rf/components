@@ -1,6 +1,6 @@
 import { TOrderBy, TSelect, TWhere } from '@/types/index.js'
 import { pipe } from '@/utils/orm/utils/pipe.js'
-import { fnClone } from './clone.js'
+import { fnClone } from './clone.mjs'
 import { fnDelete } from './delete.js'
 import { fnOrderBy } from './orderBy.js'
 import { fnSelect } from './select.js'

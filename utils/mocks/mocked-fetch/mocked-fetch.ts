@@ -1,4 +1,4 @@
-import { sleep } from '@/utils/sleep.js'
+import { sleep } from '@/utils/sleep.mjs'
 
 type TMiddle = (request: {
   url: string

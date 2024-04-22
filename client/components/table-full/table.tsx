@@ -8,7 +8,7 @@ import {
   TSelection,
   TWhere,
 } from '@/types/index.js'
-import { filterNonEmptyProperties } from '@/utils/object/filter-non-empty-properties.js'
+import { filterNonEmptyProperties } from '@/utils/object/filter-non-empty-properties.mjs'
 import { formatWhere } from '@/utils/query/format-where.js'
 import { parseWhere } from '@/utils/query/parse-where.js'
 import { get } from 'lodash-es'
@@ -109,7 +109,7 @@ export function Table({
 
   return (
     <div className="h-full overflow-auto">
-      <table className="relative w-full text-sm text-left text-gray-500 whitespace-no-wrap border-blue-400 table-auto dark:text-gray-400">
+      <table className="whitespace-no-wrap relative w-full table-auto border-blue-400 text-left text-sm text-gray-500 dark:text-gray-400">
         <thead className="sticky top-0">
           <tr>
             {columns.map((col: TColumn) => (
@@ -139,10 +139,10 @@ export function Table({
             <tr className="bg-gray-50">
               {columns.map((col: TColumn) => (
                 <td
-                  className="p-0 bg-gray-50 dark:border-gray-500"
+                  className="bg-gray-50 p-0 dark:border-gray-500"
                   key={`whr-${col.name}`}
                 >
-                  <div className="flex border border-gray-300 flex-nowrap dark:bg-gray-700">
+                  <div className="flex flex-nowrap border border-gray-300 dark:bg-gray-700">
                     <InputFilter
                       name={col.name}
                       value={defaultValues[col.name] || ''}

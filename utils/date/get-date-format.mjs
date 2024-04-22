@@ -9,7 +9,13 @@ const formats = [
   'dd/MM',
 ]
 
-export function getDateFormat(date: string): string | null {
+/**
+ * Returns the date format that matches the given date string.
+ *
+ * @param {string} date - The date string to match against the formats.
+ * @return {string | null} The matching date format or null if no match is found.
+ */
+export function getDateFormat(date) {
   for (const format of formats) {
     const parsed = parse(date, format, new Date())
     if (isValid(parsed)) {

@@ -4,7 +4,7 @@
  * @param {any|Array<any>} value - The value or array of values to append.
  * @returns {Array} - A new array with unique values appended.
  */
-export function pushUnique(arr: any[], value: any | any[]) {
+export function pushUnique(arr, value) {
   const response = [...arr]
   if (Array.isArray(value)) {
     for (const valueItem of value) {

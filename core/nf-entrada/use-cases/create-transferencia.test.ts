@@ -10,8 +10,8 @@ import { getTracker } from '@/utils/mocks/database.mock.js'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import { createTransferencia } from './create-transferencia.js'
 
-vi.mock('@/utils/date/now.js', async (importOriginal) => {
-  const mod = await importOriginal<typeof import('@/utils/date/now.js')>()
+vi.mock('@/utils/date/now.mjs', async (importOriginal) => {
+  const mod = await importOriginal<typeof import('@/utils/date/now.mjs')>()
   return {
     ...mod,
     // replace some exports

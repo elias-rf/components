@@ -13,7 +13,7 @@ import {
   TSelect,
   TWhere,
 } from '@/types/index.js'
-import { filterNullProperties } from '@/utils/object/filter-null-properties.js'
+import { filterNullProperties } from '@/utils/object/filter-null-properties.mjs'
 import { isEqual } from 'lodash-es'
 import { create } from 'zustand'
 import { createJSONStorage, devtools, persist } from 'zustand/middleware'

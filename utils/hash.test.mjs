@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { hash } from './hash.js'
+import { hash } from './hash.mjs'
 
 it('md5 abc', async () => {
   expect(await hash('abc', 'md5')).toBe('900150983cd24fb0d6963f7d28e17f72')

@@ -1,4 +1,4 @@
-import { config } from '@/utils/config/index.js'
+import { config } from '@/utils/config/index.mjs'
 import { Request, Response } from 'express'
 import * as _ from 'lodash-es'
 

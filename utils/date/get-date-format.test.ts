@@ -1,4 +1,4 @@
-import { getDateFormat } from '@/utils/date/get-date-format.js'
+import { getDateFormat } from '@/utils/date/get-date-format.mjs'
 import { describe, expect, test } from 'vitest'
 
 describe('getDateFormat', () => {

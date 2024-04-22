@@ -1,4 +1,4 @@
-import { round } from '@/utils/number/round.js'
+import { round } from '@/utils/number/round.mjs'
 
 // Calculadora de preços do comercial
 

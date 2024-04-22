@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { round } from './round.js'
+import { round } from './round.mjs'
 describe('Arredondamento de números', () => {
   it('deve arredondar retirando dígitos', () => {
     expect(round(1.234, 2)).toBe(1.23)

@@ -1,4 +1,4 @@
-import { round } from '@/utils/number/round.js'
+import { round } from '@/utils/number/round.mjs'
 import { format, parse, subDays } from 'date-fns'
 import { flow } from 'lodash-es'
 

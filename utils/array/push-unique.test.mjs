@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { pushUnique } from './push-unique.js'
+import { pushUnique } from './push-unique.mjs'
 
 describe('pushUnique', () => {
   test('deve receber valor unico', () => {

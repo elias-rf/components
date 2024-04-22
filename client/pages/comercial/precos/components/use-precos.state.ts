@@ -1,4 +1,4 @@
-import { round } from '@/utils/number/round.js'
+import { round } from '@/utils/number/round.mjs'
 import React from 'react'
 import { inteiro, moeda } from '../../../../lib/text-box-formats.js'
 import { calculadora } from './calculadora.js'

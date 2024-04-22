@@ -1,4 +1,4 @@
-import { config } from '@/utils/config/index.js'
+import { config } from '@/utils/config/index.mjs'
 import type { NextFunction, Request, Response } from 'express'
 import jwtService from 'jsonwebtoken'
 

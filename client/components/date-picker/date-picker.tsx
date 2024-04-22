@@ -6,7 +6,7 @@ import {
   PopoverTrigger,
 } from '@/client/components/popover/popover.js'
 import { cn } from '@/client/lib/utils.js'
-import { getDateFormat } from '@/utils/date/get-date-format.js'
+import { getDateFormat } from '@/utils/date/get-date-format.mjs'
 import { CalendarIcon } from '@radix-ui/react-icons'
 import { format, parse } from 'date-fns'
 import { ptBR } from 'date-fns/locale'

@@ -1,4 +1,4 @@
-import { fnClone } from './clone.js'
+import { fnClone } from './clone.mjs'
 import { TQuery } from './driver-mock.js'
 import { fnWhere } from './where.js'
 

@@ -1,7 +1,7 @@
 import { TDataSource } from '@/data/index.js'
 import { TRpcContext } from '@/server/routes/rpc2.js'
 import type { TCurrentUser } from '@/types/index.js'
-import { config } from '@/utils/config/index.js'
+import { config } from '@/utils/config/index.mjs'
 import { passwordVerify } from '@/utils/string/password-verify.js'
 import jwtService from 'jsonwebtoken'
 

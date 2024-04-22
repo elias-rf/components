@@ -1,4 +1,4 @@
-import { round } from '@/utils/number/round.js'
+import { round } from '@/utils/number/round.mjs'
 import { Enlite } from './enlite.js'
 import { Flex } from './flex.js'
 import { Produto } from './produto.js'

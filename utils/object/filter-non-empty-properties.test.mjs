@@ -1,5 +1,5 @@
-import { filterNonEmptyProperties } from '@/utils/object/filter-non-empty-properties.js'
 import { describe, expect, it } from 'vitest'
+import { filterNonEmptyProperties } from './filter-non-empty-properties.mjs'
 
 describe('filterNonEmptyProperties', () => {
   it('deve retornar todas as properties !== ""', () => {

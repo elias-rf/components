@@ -1,4 +1,4 @@
-import { config } from '@/utils/config/index.js'
+import { config } from '@/utils/config/index.mjs'
 import winston from 'winston'
 
 const { combine, timestamp, json, printf } = winston.format

@@ -1,7 +1,7 @@
 import { authMiddle } from '@/server/middles/auth-middle.js'
 import { loggerMiddle } from '@/server/middles/logger-middle.js'
 import { routes } from '@/server/routes/index.js'
-import { config } from '@/utils/config/index.js'
+import { config } from '@/utils/config/index.mjs'
 import compression from 'compression'
 import history from 'connect-history-api-fallback'
 import cookieParser from 'cookie-parser'
