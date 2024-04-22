@@ -81,7 +81,7 @@ export function UsuarioForm({ store }: { store: TUsuarioStore }) {
 
   useEffect(() => {
     async function getData() {
-      const data = await rpc.request('group_list', {
+      const data = await rpc.request('grupo_list', {
         orderBy: [['nome', 'asc']],
       })
 

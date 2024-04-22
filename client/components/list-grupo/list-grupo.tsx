@@ -1,8 +1,8 @@
 import { cn } from '@/client/lib/utils.js'
 import { ReactNode } from 'react'
-import { ListGroupItem } from './list-group-item.js'
+import { ListGrupoItem } from './list-grupo-item.js'
 
-function ListGroup({
+function ListGrupo({
   children,
   className,
 }: {
@@ -21,6 +21,6 @@ function ListGroup({
   )
 }
 
-ListGroup.Item = ListGroupItem
+ListGrupo.Item = ListGrupoItem
 
-export { ListGroup }
+export { ListGrupo }

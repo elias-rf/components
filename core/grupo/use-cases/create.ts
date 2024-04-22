@@ -1,9 +1,9 @@
 import { TDataSource } from '@/data/index.js'
-import { TGroupDtoFields } from '@/data/oftalmo/grupo/group.type.js'
+import { TGrupoDtoFields } from '@/data/oftalmo/grupo/grupo.type.js'
 import { TCreate } from '@/types/index.js'
 
 export const create =
-  (dataSource: TDataSource): TCreate<TGroupDtoFields> =>
+  (dataSource: TDataSource): TCreate<TGrupoDtoFields> =>
   async (args) => {
-    return dataSource.oftalmo.group.create(args)
+    return dataSource.oftalmo.grupo.create(args)
   }

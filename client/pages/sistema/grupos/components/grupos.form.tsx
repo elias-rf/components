@@ -3,17 +3,17 @@ import { Label } from '@/client/components/label/label.js'
 import { FormField } from '@/client/components/ui-old/form-field/form-field.js'
 import { InputForm } from '@/client/components/ui-old/input/input-form.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
-import { TGroupStore } from '@/client/pages/sistema/grupos/components/grupos.store.js'
+import { TGrupoStore } from '@/client/pages/sistema/grupos/components/grupos.store.js'
 import {
-  TGroupDtoFields,
-  TGroupDtoKeys,
-} from '@/data/oftalmo/grupo/group.type.js'
+  TGrupoDtoFields,
+  TGrupoDtoKeys,
+} from '@/data/oftalmo/grupo/grupo.type.js'
 import { TData, TId } from '@/types/index.js'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
-export const GruposForm = ({ store }: { store: TGroupStore }) => {
+export const GruposForm = ({ store }: { store: TGrupoStore }) => {
   const status = store.state.use.status()
   const selection = store.state.use.selection()
 
@@ -24,7 +24,7 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
   })
   const queryClient = useQueryClient()
   const onSave = useMutation({
-    mutationFn: (record: TData<TGroupDtoFields>) => {
+    mutationFn: (record: TData<TGrupoDtoFields>) => {
       return store.onSave(record)
     },
     onSuccess: () => {
@@ -36,7 +36,7 @@ export const GruposForm = ({ store }: { store: TGroupStore }) => {
   })
 
   const onDelete = useMutation({
-    mutationFn: (selection: TId<TGroupDtoKeys>) => {
+    mutationFn: (selection: TId<TGrupoDtoKeys>) => {
       return store.onDelete(selection)
     },
     onSuccess: () => {

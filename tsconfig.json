@@ -2,6 +2,7 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "allowJs": true,
     "baseUrl": ".",
     "composite": false,
     "declaration": false,
@@ -35,5 +36,5 @@
       "@/*": ["./*"]
     }
   },
-  "exclude": ["node_modules/*"]
+  "exclude": ["node_modules/*", "dist/*", "public/*"]
 }

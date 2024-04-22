@@ -2,12 +2,12 @@ import { Button } from '@/client/components/button/button.js'
 import { Checkbox } from '@/client/components/checkbox/checkbox.js'
 import { ShieldIcon } from '@/client/components/icons/shield-icon.js'
 import { Label } from '@/client/components/label/label.js'
-import { ListGroup } from '@/client/components/list-group/list-group.js'
+import { ListGrupo } from '@/client/components/list-grupo/list-grupo.js'
 import { Modal } from '@/client/components/ui-old/modal/modal.js'
 import { useMessageBox } from '@/client/lib/hooks/use-message-box.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { TGrupoSujeitoDtoFields } from '@/data/oftalmo/grupo-sujeito/grupo-sujeito.type.js'
-import { TGroupDtoFields } from '@/data/oftalmo/grupo/group.type.js'
+import { TGrupoDtoFields } from '@/data/oftalmo/grupo/grupo.type.js'
 import { TData, TPermissions } from '@/types/index.js'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
@@ -18,21 +18,21 @@ export function Permissions({
   permissions: TPermissions
 }) {
   const [show, setShow] = useState(false)
-  const [groupCurrent, setGroupCurrent] = useState(0)
+  const [grupoCurrent, setGrupoCurrent] = useState(0)
 
-  const groupList = useQuery({
-    queryKey: ['group'],
+  const grupoList = useQuery({
+    queryKey: ['grupo'],
     queryFn: () =>
-      rpc.request('group_list', {
+      rpc.request('grupo_list', {
         orderBy: [['nome', 'asc']],
-      }) as unknown as Promise<TData<TGroupDtoFields>[]>,
+      }) as unknown as Promise<TData<TGrupoDtoFields>[]>,
   })
 
   const grupoSujeitoList = useQuery({
-    queryKey: ['grupoSujeito', groupCurrent],
+    queryKey: ['grupoSujeito', grupoCurrent],
     queryFn: () =>
       rpc.request('grupoSujeito_list', {
-        where: [['grupoId', groupCurrent.toString()]],
+        where: [['grupoId', grupoCurrent.toString()]],
       }) as unknown as Promise<TData<TGrupoSujeitoDtoFields>[]>,
   })
 
@@ -41,7 +41,7 @@ export function Permissions({
     mutationFn: (permissionKey: string) => {
       return rpc.request('grupoSujeito_create', {
         data: {
-          grupoId: groupCurrent,
+          grupoId: grupoCurrent,
           sujeitoId: permissionKey,
         },
       }) as unknown as Promise<TData<TGrupoSujeitoDtoFields>>
@@ -57,7 +57,7 @@ export function Permissions({
       return rpc.request('grupoSujeito_del', {
         where: [
           ['sujeitoId', permissionKey],
-          ['grupoId', groupCurrent.toString()],
+          ['grupoId', grupoCurrent.toString()],
         ],
       }) as unknown as Promise<TData<TGrupoSujeitoDtoFields>>
     },
@@ -76,13 +76,13 @@ export function Permissions({
 
   async function handlePermission(permission: string) {
     const permissionKey = permissions[permission].key
-    if (groupCurrent === 0) {
+    if (grupoCurrent === 0) {
       await confirm()
       return
     }
     const params = {
       idSubject: permissionKey,
-      idGroup: groupCurrent.toString(),
+      idGrupo: grupoCurrent.toString(),
     }
     // const data = await rpc.request('grupoSujeito_listPermissions', params)
     const data = grupoSujeitoList.data || []
@@ -112,26 +112,26 @@ export function Permissions({
         <div className="flex space-x-4 p-4">
           <div>
             <p>Grupos</p>
-            {groupList.data?.map((group) => (
-              <ListGroup
-                key={group.id}
+            {grupoList.data?.map((grupo) => (
+              <ListGrupo
+                key={grupo.id}
                 className="max-h-96 overflow-y-auto"
               >
-                <ListGroup.Item
-                  active={group.id === groupCurrent}
-                  onClick={() => setGroupCurrent(group.id || 0)}
+                <ListGrupo.Item
+                  active={grupo.id === grupoCurrent}
+                  onClick={() => setGrupoCurrent(grupo.id || 0)}
                 >
-                  {group.nome}
-                </ListGroup.Item>
-              </ListGroup>
+                  {grupo.nome}
+                </ListGrupo.Item>
+              </ListGrupo>
             ))}
           </div>
           <div>
             <p>Permissões</p>
-            <ListGroup>
+            <ListGrupo>
               {Object.keys(permissions).map((permission) => {
                 return (
-                  <ListGroup.Item
+                  <ListGrupo.Item
                     key={permission}
                     onClick={() => handlePermission(permission)}
                   >
@@ -154,10 +154,10 @@ export function Permissions({
                         {permissions[permission].description}
                       </Label>
                     </div>
-                  </ListGroup.Item>
+                  </ListGrupo.Item>
                 )
               })}
-            </ListGroup>
+            </ListGrupo>
           </div>
         </div>
       </Modal>

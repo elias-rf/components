@@ -1,7 +1,7 @@
 import { cn } from '@/client/lib/utils.js'
 import { ReactNode } from 'react'
 
-export function ListGroupItem({
+export function ListGrupoItem({
   children,
   onClick,
   className,

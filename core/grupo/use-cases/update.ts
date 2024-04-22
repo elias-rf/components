@@ -1,9 +1,9 @@
 import { TDataSource } from '@/data/index.js'
-import { TGroupDtoFields } from '@/data/oftalmo/grupo/group.type.js'
+import { TGrupoDtoFields } from '@/data/oftalmo/grupo/grupo.type.js'
 import { TUpdate } from '@/types/query.js'
 
 export const update =
-  (dataSource: TDataSource): TUpdate<TGroupDtoFields> =>
+  (dataSource: TDataSource): TUpdate<TGrupoDtoFields> =>
   async (args) => {
-    return dataSource.oftalmo.group.update(args)
+    return dataSource.oftalmo.grupo.update(args)
   }

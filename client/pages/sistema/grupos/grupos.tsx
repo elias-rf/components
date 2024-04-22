@@ -2,7 +2,7 @@ import { Button } from '@/client/components/button/button.js'
 import { Can } from '@/client/components/can.js'
 import { FormHead } from '@/client/components/form-head/form-head.js'
 import { GruposForm } from '@/client/pages/sistema/grupos/components/grupos.form.js'
-import { groupStore } from '@/client/pages/sistema/grupos/components/grupos.store.js'
+import { grupoStore } from '@/client/pages/sistema/grupos/components/grupos.store.js'
 import { GruposTable } from '@/client/pages/sistema/grupos/components/grupos.table.js'
 import { authStore } from '@/client/store/auth_store.js'
 import { useQuery } from '@tanstack/react-query'
@@ -13,7 +13,7 @@ const permissionsList = Object.values(permissions).map(
 )
 
 export default function Grupos() {
-  const status = groupStore.state.use.status()
+  const status = grupoStore.state.use.status()
   const currentUser = authStore.state.use.currentUser()
   const canList = useQuery({
     queryKey: ['canList'],
@@ -32,18 +32,18 @@ export default function Grupos() {
         >
           <Button
             size={'sm'}
-            onClick={groupStore.onNew}
+            onClick={grupoStore.onNew}
           >
             NOVO
           </Button>
         </FormHead>
         <div>
           <div className="h-64 flex-auto border border-gray-400 dark:border-gray-500">
-            <GruposTable store={groupStore} />
+            <GruposTable store={grupoStore} />
           </div>
           {status !== 'none' ? (
             <div className="max-h-56 flex-auto">
-              <GruposForm store={groupStore} />
+              <GruposForm store={grupoStore} />
             </div>
           ) : null}
         </div>

@@ -4,7 +4,7 @@ import { esterilizacaoInternaDataSource } from './esterilizacao-interna/esterili
 import { etiquetaExternaDataSource } from './etiqueta-externa/etiqueta-externa.data-source.js'
 import { etiquetaInternaDataSource } from './etiqueta-interna/etiqueta-interna.data-source.js'
 import { grupoSujeitoDataSource } from './grupo-sujeito/grupo-sujeito.data-source.js'
-import { groupDataSource } from './grupo/group.data-source.js'
+import { grupoDataSource } from './grupo/grupo.data-source.js'
 import { oftalmoDb } from './oftalmo.db.js'
 import { operacaoProducaoDataSource } from './operacao-producao/operacao-producao.data-source.js'
 import { ordemProducaoOperacaoDataSource } from './ordem-producao-operacao/ordem-producao-operacao.data-source.js'
@@ -20,7 +20,7 @@ export const oftalmoDataSource = {
   esterilizacaoInterna: { ...esterilizacaoInternaDataSource(oftalmoDb) },
   etiquetaExterna: { ...etiquetaExternaDataSource(oftalmoDb) },
   etiquetaInterna: { ...etiquetaInternaDataSource(oftalmoDb) },
-  group: { ...groupDataSource(oftalmoDb) },
+  grupo: { ...grupoDataSource(oftalmoDb) },
   grupoSujeito: { ...grupoSujeitoDataSource(oftalmoDb) },
   operacaoProducao: { ...operacaoProducaoDataSource(oftalmoDb) },
   ordemProducao: { ...ordemProducaoDataSource(oftalmoDb) },

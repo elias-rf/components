@@ -2,12 +2,12 @@ import { knexMockMsql } from '@/utils/mocks/connections.mock.js'
 import { getTracker } from '@/utils/mocks/database.mock.js'
 import { adapterKnex } from '@/utils/orm/adapter-knex.js'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { groupDataSource } from './group.data-source.js'
+import { grupoDataSource } from './grupo.data-source.js'
 
-describe('groupDataSource', () => {
+describe('grupoDataSource', () => {
   const tracker = getTracker()
   const db = adapterKnex(knexMockMsql)
-  const tb = groupDataSource(db)
+  const tb = grupoDataSource(db)
   db.startLog()
 
   beforeEach(() => {

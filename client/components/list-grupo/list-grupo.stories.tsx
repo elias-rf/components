@@ -1,14 +1,14 @@
 import { Checkbox } from '@/client/components/checkbox/checkbox.js'
-import { ListGroup } from '@/client/components/list-group/list-group.js'
+import { ListGrupo } from '@/client/components/list-grupo/list-grupo.js'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
-const meta: Meta<typeof ListGroup> = {
-  component: ListGroup,
+const meta: Meta<typeof ListGrupo> = {
+  component: ListGrupo,
 }
 
 export default meta
-type Story = StoryObj<typeof ListGroup>
+type Story = StoryObj<typeof ListGrupo>
 
 export const Default: Story = {
   render: () => {
@@ -16,8 +16,8 @@ export const Default: Story = {
     const [data, setData] = React.useState([true, false, false])
     return (
       <>
-        <ListGroup>
-          <ListGroup.Item
+        <ListGrupo>
+          <ListGrupo.Item
             key={1}
             onClick={() => {
               setActive('1')
@@ -29,8 +29,8 @@ export const Default: Story = {
               <Checkbox checked={data[0]} />
               <div>Teste 1</div>
             </div>
-          </ListGroup.Item>
-          <ListGroup.Item
+          </ListGrupo.Item>
+          <ListGrupo.Item
             key={11}
             onClick={() => {
               setActive('11')
@@ -42,8 +42,8 @@ export const Default: Story = {
               <Checkbox checked={data[1]} />
               <div>Teste 11</div>
             </div>
-          </ListGroup.Item>
-          <ListGroup.Item
+          </ListGrupo.Item>
+          <ListGrupo.Item
             key={111}
             onClick={() => {
               setActive('111')
@@ -55,8 +55,8 @@ export const Default: Story = {
               <Checkbox checked={data[2]} />
               <div>Teste 111</div>
             </div>
-          </ListGroup.Item>
-        </ListGroup>
+          </ListGrupo.Item>
+        </ListGrupo>
       </>
     )
   },

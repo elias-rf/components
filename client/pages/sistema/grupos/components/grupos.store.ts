@@ -2,9 +2,9 @@ import { createSelectors } from '@/client/lib/create-selectors.js'
 import { rpc } from '@/client/lib/rpc.js'
 import { locationState } from '@/client/store/location_state.js'
 import {
-  TGroupDtoFields,
-  TGroupDtoKeys,
-} from '@/data/oftalmo/grupo/group.type.js'
+  TGrupoDtoFields,
+  TGrupoDtoKeys,
+} from '@/data/oftalmo/grupo/grupo.type.js'
 
 import {
   TData,
@@ -19,25 +19,25 @@ import { isEqual } from 'lodash-es'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-const tableName = 'group' as const
+const tableName = 'grupo' as const
 
 const recordClear = {
   id: '',
   nome: '',
-} as TData<TGroupDtoFields>
+} as TData<TGrupoDtoFields>
 
 type TState = {
-  orderBy: TOrderBy<TGroupDtoFields>
-  selection: TId<TGroupDtoKeys>
+  orderBy: TOrderBy<TGrupoDtoFields>
+  selection: TId<TGrupoDtoKeys>
   status: TFormStatus
-  where: TWhere<TGroupDtoFields>
+  where: TWhere<TGrupoDtoFields>
 }
 
 const initialState: TState = {
-  orderBy: [['nome', 'asc']] as TOrderBy<TGroupDtoFields>,
-  selection: [] as TId<TGroupDtoKeys>,
+  orderBy: [['nome', 'asc']] as TOrderBy<TGrupoDtoFields>,
+  selection: [] as TId<TGrupoDtoKeys>,
   status: 'none' as TFormStatus,
-  where: [] as TWhere<TGroupDtoFields>,
+  where: [] as TWhere<TGrupoDtoFields>,
 }
 
 const state = createSelectors(create(devtools(() => initialState)))
@@ -47,9 +47,9 @@ const fetchList = async ({
   orderBy,
   select,
 }: {
-  where: TWhere<TGroupDtoFields>
-  orderBy: TOrderBy<TGroupDtoFields>
-  select: TSelect<TGroupDtoFields>
+  where: TWhere<TGrupoDtoFields>
+  orderBy: TOrderBy<TGrupoDtoFields>
+  select: TSelect<TGrupoDtoFields>
 }) => {
   const params = {
     where,
@@ -57,23 +57,23 @@ const fetchList = async ({
     select,
     limit: 100,
   }
-  const list = await rpc.request('group_list', params)
+  const list = await rpc.request('grupo_list', params)
   return list
 }
 
 const fetchRecord = async ({
   selection,
 }: {
-  selection: TId<TGroupDtoKeys>
+  selection: TId<TGrupoDtoKeys>
 }) => {
   if (selection.length === 0) return recordClear
   const params = {
     where: selection,
-    select: Object.keys(recordClear) as TGroupDtoKeys[],
+    select: Object.keys(recordClear) as TGrupoDtoKeys[],
   }
-  const record = await rpc.request('group_read', params)
+  const record = await rpc.request('grupo_read', params)
   for (const key in record) {
-    record[key as TGroupDtoFields] = record[key as TGroupDtoFields] ?? ''
+    record[key as TGrupoDtoFields] = record[key as TGrupoDtoFields] ?? ''
   }
   return record
 }
@@ -86,35 +86,35 @@ const onCancel = () => {
   state.setState({ status: 'view' }, false, 'usuario/onCancel')
 }
 
-const onDelete = async (selection: TId<TGroupDtoKeys>) => {
-  await rpc.request('group_del', {
+const onDelete = async (selection: TId<TGrupoDtoKeys>) => {
+  await rpc.request('grupo_del', {
     where: selection,
   })
   state.setState({ selection: [], status: 'none' }, false, {
-    type: 'group/onDelete',
+    type: 'grupo/onDelete',
     selection,
   })
 }
 
 const onEdit = () => {
-  state.setState({ status: 'edit' }, false, 'group/onEdit')
+  state.setState({ status: 'edit' }, false, 'grupo/onEdit')
 }
 
 const onNew = () => {
-  state.setState({ status: 'new', selection: [] }, false, 'group/onNew')
+  state.setState({ status: 'new', selection: [] }, false, 'grupo/onNew')
 }
 
-const onSave = async (record: TData<TGroupDtoFields>) => {
-  const data = filterNullProperties(record) as TData<TGroupDtoFields>
+const onSave = async (record: TData<TGrupoDtoFields>) => {
+  const data = filterNullProperties(record) as TData<TGrupoDtoFields>
   let response = {}
   if (state.getState().status === 'edit') {
-    response = await rpc.request('group_update', {
+    response = await rpc.request('grupo_update', {
       data,
-      where: state.getState().selection as TId<TGroupDtoKeys>,
+      where: state.getState().selection as TId<TGrupoDtoKeys>,
     })
   }
   if (state.getState().status === 'new') {
-    response = await rpc.request('group_create', {
+    response = await rpc.request('grupo_create', {
       data,
     })
   }
@@ -127,11 +127,11 @@ const reset = () => {
   state.setState(resetState, false, 'grupo/reset')
 }
 
-const setOrderBy = (orderBy: TOrderBy<TGroupDtoFields>) => {
+const setOrderBy = (orderBy: TOrderBy<TGrupoDtoFields>) => {
   state.setState({ orderBy }, false, { type: 'grupo/setOrderBy', orderBy })
 }
 
-const setSelection = (selection: TId<TGroupDtoKeys>) => {
+const setSelection = (selection: TId<TGrupoDtoKeys>) => {
   if (isEqual(selection, state.getState().selection)) {
     state.setState({ status: 'none', selection: [] }, false, {
       type: 'grupo/setSelection',
@@ -145,13 +145,13 @@ const setSelection = (selection: TId<TGroupDtoKeys>) => {
   })
 }
 
-const setWhere = (where: TWhere<TGroupDtoFields>) => {
+const setWhere = (where: TWhere<TGrupoDtoFields>) => {
   state.setState({ where }, false, { type: 'usuario/setWhere', where })
 }
 
 locationState(state, ['selection', 'status', 'orderBy', 'where'])
 
-export const groupStore = {
+export const grupoStore = {
   state,
   recordClear,
   fetchList,
@@ -167,4 +167,4 @@ export const groupStore = {
   setWhere,
 }
 
-export type TGroupStore = typeof groupStore
+export type TGrupoStore = typeof grupoStore
