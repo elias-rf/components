@@ -1,0 +1,3 @@
+- mercado facil
+- cupom facil
+- polegar para cima segurando o cupom
