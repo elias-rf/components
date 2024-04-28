@@ -1,0 +1,1 @@
+Ações que recebam string como principal argumento
