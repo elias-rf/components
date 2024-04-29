@@ -1,0 +1,21 @@
+import { validate } from './index.mjs'
+import { isNumeric } from './isNumeric.mjs'
+import { expect, test, describe } from 'vitest'
+
+describe('validate isNumeric', () => {
+  test('validar Alpha', () => {
+    const teste = ['1', '-2', '2.3', '-3.7']
+    for (const vlr of teste) {
+      expect(validate(vlr, [isNumeric])).toBe(null)
+      expect(validate(vlr, 'Campo', [isNumeric])).toBe(null)
+    }
+  })
+
+  test('não validar isNumeric', () => {
+    const teste = ['a ', '445 ', 'a.b', 'a-']
+    for (const vlr of teste) {
+      expect(validate(vlr, [isNumeric])).toBe(`${vlr} não é numérico`)
+      expect(validate(vlr, 'Campo', [isNumeric])).toBe(`Campo não é numérico`)
+    }
+  })
+})
