@@ -1,4 +1,4 @@
-import { sleep } from '../../sleep.mjs'
+import { sleep } from '../../../utils/sleep.mjs'
 
 const middles = []
 const middlesRpc = []
