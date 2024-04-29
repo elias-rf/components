@@ -1,0 +1,19 @@
+import { validate } from './index.mjs'
+import { isAlpha } from './isAlpha.mjs'
+import { isUppercase } from './isUppercase.mjs'
+import { expect, test, describe } from 'vitest'
+
+describe('validate', () => {
+  test('validar 1 função', () => {
+    expect(validate('a', [isAlpha])).toBe(null)
+    expect(validate('2', 'Campo', [isAlpha])).toBe('Campo não é alfabético')
+    expect(validate('.', 'Campo', [isAlpha])).toBe('Campo não é alfabético')
+  })
+
+  test('validar 2 funções', () => {
+    expect(validate('A', [isAlpha, isUppercase])).toBe(null)
+    expect(validate('b', 'Campo', [isAlpha, isUppercase])).toBe(
+      'Campo não é maiúsculo'
+    )
+  })
+})
