@@ -1,1 +1,0 @@
-Ações que recebam array como principal argumento
