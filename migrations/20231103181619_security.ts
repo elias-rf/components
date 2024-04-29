@@ -1,6 +1,6 @@
 import { Knex } from 'knex'
 
-export async function up(knex: Knex): Promise<void> {
+export async function up(knex: Knex) {
   return knex.schema
     .createTable('group', (table) => {
       table.integer('id_group')
@@ -14,7 +14,7 @@ export async function up(knex: Knex): Promise<void> {
     })
 }
 
-export async function down(knex: Knex): Promise<void> {
+export async function down(knex: Knex) {
   return knex.schema
     .dropTableIfExists('group')
     .dropTableIfExists('group_subject')

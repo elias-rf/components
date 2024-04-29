@@ -1,0 +1,29 @@
+import { UTCDateMini } from '@date-fns/utc'
+import { format } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import * as v from 'valibot'
+
+export const diario =
+  (dataSource) =>
+  async ({ inicio, fim }) => {
+    v.parse(
+      v.object({
+        inicio: v.string([v.isoDate('data inicial inválida')]),
+        fim: v.string([v.isoDate('data final inválida')]),
+      }),
+      { inicio, fim }
+    )
+    const qry = await dataSource.oftalmo.ds({
+      from: 'tOperacaoOrdemProducao',
+      selectRaw: ['DataInicio as dia, Sum(QtdConforme) AS quantidade'],
+      orderBy: [['DataInicio', 'desc']],
+      groupBy: ['DataInicio'],
+      where: [['DataInicio', 'between', [inicio, fim]]],
+      whereRaw: ['fkOperacao in (3058, 3158)'],
+    })
+    return qry.map((rec) => {
+      rec.dia_semana = format(rec.dia, 'EEEEEE', { locale: ptBR })
+      rec.dia = format(new UTCDateMini(rec.dia), 'yyyy-MM-dd')
+      return rec
+    })
+  }
