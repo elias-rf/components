@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { Can } from '../../../components/can.jsx'
-import { FormHead } from '../../../components/form-head/form-head.jsx'
+import { Can } from '../../../components_/can.jsx'
+import { FormHead } from '../../../components_/form-head/form-head.jsx'
 import { authStore } from '../../../store/auth_store.mjs'
 import { permissions } from './components/constants.mjs'
 import { PrecosCliente } from './components/precos-cliente.jsx'

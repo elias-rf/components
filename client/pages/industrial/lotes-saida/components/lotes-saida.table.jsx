@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
-import { Table } from '../../../../components/table-full/table.jsx'
-import { Input } from '../../../../components/ui-old/input/input.jsx'
+import { Table } from '../../../../components_/table-full/table.jsx'
+import { Input } from '../../../../components_/ui-old/input/input.jsx'
 import { lotesSaidaColumns } from '../../../../pages/industrial/lotes-saida/components/lotes-saida.columns.mjs'
 
 const select = [

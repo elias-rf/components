@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { Table } from '../../../../../components/table-full/table.jsx'
+import { Table } from '../../../../../components_/table-full/table.jsx'
 import { esterilizacaoInternaModeloSchema } from './est-int-modelo.schema.mjs'
 
 export function EsterilizacaoInternaModelo({ store }) {

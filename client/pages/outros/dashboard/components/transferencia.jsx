@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { format } from 'date-fns'
-import { Title } from '../../../../components/title/title.jsx'
+import { Title } from '../../../../components_/title/title.jsx'
 import { rpc } from '../../../../lib/rpc.mjs'
 
 export function TransferenciaMes({ inicial, final }) {

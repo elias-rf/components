@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation } from 'wouter'
-import { SpinnerIcon } from '../components/icons/spinner-icon.jsx'
+import { SpinnerIcon } from '../components_/icons/spinner-icon.jsx'
 import { authStore } from '../store/auth_store.mjs'
 
 /**

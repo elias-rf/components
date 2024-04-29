@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { Can } from '../../../components/can.jsx'
-import { FormHead } from '../../../components/form-head/form-head.jsx'
+import { Can } from '../../../components_/can.jsx'
+import { FormHead } from '../../../components_/form-head/form-head.jsx'
 import { permissions } from '../../../pages/industrial/lotes-saida/components/constants.mjs'
 import { lotesSaidaStore } from '../../../pages/industrial/lotes-saida/components/lotes-saida.store.mjs'
 import { LotesSaidaTable } from '../../../pages/industrial/lotes-saida/components/lotes-saida.table.jsx'

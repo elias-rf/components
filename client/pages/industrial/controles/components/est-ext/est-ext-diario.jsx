@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { Table } from '../../../../../components/table-full/table.jsx'
+import { Table } from '../../../../../components_/table-full/table.jsx'
 import { esterilizacaoExternaDiarioSchema } from './est-ext-diario.schema.mjs'
 
 export function EsterilizacaoExternaDiario({ children, store }) {

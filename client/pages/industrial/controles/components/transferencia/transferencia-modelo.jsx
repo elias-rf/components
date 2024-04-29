@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
-import { Table } from '../../../../../components/table-full/table.jsx'
+import { Table } from '../../../../../components_/table-full/table.jsx'
 import { transferenciaModeloSchema } from './transferencia-modelo.schema.mjs'
 
 export function TransferenciaModelo({ children, store }) {

@@ -1,4 +1,4 @@
-import { Label } from '../../../../../components/label/label.jsx'
+import { Label } from '../../../../../components_/label/label.jsx'
 import {
   Select,
   SelectContent,
@@ -6,8 +6,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../../../../../components/select/select.jsx'
-import { FormField } from '../../../../../components/ui-old/form-field/form-field.jsx'
+} from '../../../../../components_/select/select.jsx'
+import { FormField } from '../../../../../components_/ui-old/form-field/form-field.jsx'
 import { operacaoStore } from '../../../../../pages/industrial/controles/components/operacao/operacao.store.mjs'
 import { getFieldId } from '../../../../../utils/query/get-field-id.mjs'
 import { OperacaoDiario } from './operacao-diario.jsx'

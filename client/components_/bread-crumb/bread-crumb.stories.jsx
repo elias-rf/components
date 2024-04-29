@@ -1,5 +1,5 @@
-import { BreadCrumb } from '../../components/bread-crumb/bread-crumb.jsx'
-import { HomeIcon } from '../../components/icons/home-icon.jsx'
+import { HomeIcon } from '../icons/home-icon.jsx'
+import { BreadCrumb } from './bread-crumb.jsx'
 
 const meta = {
   component: BreadCrumb,

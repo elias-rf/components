@@ -7,14 +7,14 @@ import {
   FormField,
   FormItem,
   FormLabel,
-} from '../../../../components/form/form.jsx'
-import { Input } from '../../../../components/input/input.jsx'
+} from '../../../../components_/form/form.jsx'
+import { Input } from '../../../../components_/input/input.jsx'
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from '../../../../components/tabs/tabs.jsx'
+} from '../../../../components_/tabs/tabs.jsx'
 import { ClienteQuantidade } from '../../../../pages/comercial/cliente/components/quantidade/cliente-quantidade.jsx'
 import { ClienteValorMedio } from '../../../../pages/comercial/cliente/components/valor-medio/cliente-valor-medio.jsx'
 import { ClienteValor } from '../../../../pages/comercial/cliente/components/valor/cliente-valor.jsx'

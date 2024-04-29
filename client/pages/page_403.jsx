@@ -1,5 +1,5 @@
 import pg403 from '../assets/images/403.gif'
-import { Anchor } from '../components/anchor.jsx'
+import { Anchor } from '../components_/anchor.jsx'
 
 export default function Page403() {
   return (

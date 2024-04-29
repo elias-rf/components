@@ -1,4 +1,4 @@
-import { Title } from '../../components/title/title.jsx'
+import { Title } from '../title/title.jsx'
 import { Button } from './button.jsx'
 
 const meta = {

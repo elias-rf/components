@@ -1,6 +1,6 @@
 import { useLocation } from 'wouter'
-import { DarkToggle } from '../components/dark-toggle/dark-toggle.jsx'
-import { VtLogoIcon } from '../components/icons/vt-logo-icon.jsx'
+import { DarkToggle } from '../components_/dark-toggle/dark-toggle.jsx'
+import { VtLogoIcon } from '../components_/icons/vt-logo-icon.jsx'
 import {
   Menubar,
   MenubarContent,
@@ -8,7 +8,7 @@ import {
   MenubarMenu,
   MenubarSeparator,
   MenubarTrigger,
-} from '../components/menubar/menubar.jsx'
+} from '../components_/menubar/menubar.jsx'
 
 export function NavbarApp() {
   const [_, setLocation] = useLocation()

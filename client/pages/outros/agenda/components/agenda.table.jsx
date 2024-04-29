@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { Table } from '../../../../components/table-full/table.jsx'
+import { Table } from '../../../../components_/table-full/table.jsx'
 import { agendaTelefoneColumns } from '../../../../pages/outros/agenda/components/agenda.columns.mjs'
 
 const select = agendaTelefoneColumns.map((col) => col.name)

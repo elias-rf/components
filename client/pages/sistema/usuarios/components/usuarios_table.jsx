@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { Table } from '../../../../components/table-full/table.jsx'
+import { Table } from '../../../../components_/table-full/table.jsx'
 import { usuarioColumns } from '../../../../pages/sistema/usuarios/components/usuario_columns.mjs'
 
 const select = usuarioColumns.map((col) => col.name)

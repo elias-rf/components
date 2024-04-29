@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MessageBox } from '../../components/ui-old/message_box.jsx'
+import { MessageBox } from '../../components_/ui-old/message_box.jsx'
 
 export function useMessageBox({ title, message, option1, option2, option3 }) {
   const [promise, setPromise] = useState()

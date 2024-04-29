@@ -1,5 +1,5 @@
 import pg404 from '../assets/images/404.gif'
-import { Anchor } from '../components/anchor.jsx'
+import { Anchor } from '../components_/anchor.jsx'
 
 export default function Page404() {
   return (

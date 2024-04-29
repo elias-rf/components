@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
-import { Button } from '../../../components/button/button.jsx'
-import { Can } from '../../../components/can.jsx'
-import { FormHead } from '../../../components/form-head/form-head.jsx'
+import { Button } from '../../../components_/button/button.jsx'
+import { Can } from '../../../components_/can.jsx'
+import { FormHead } from '../../../components_/form-head/form-head.jsx'
 import { AgendaTelefoneForm } from '../../../pages/outros/agenda/components/agenda.form.jsx'
 import { agendaTelefoneStore } from '../../../pages/outros/agenda/components/agenda.store.mjs'
 import { AgendaTelefoneTable } from '../../../pages/outros/agenda/components/agenda.table.jsx'
@@ -26,7 +26,7 @@ export default function Agenda() {
 
   return (
     <Can can={true}>
-      <div className="flex flex-col h-full px-2">
+      <div className="flex h-full flex-col px-2">
         <FormHead
           className="flex-none"
           editPermissions={canList.data?.[permissions.PERMISSAO.key] || false}
@@ -40,11 +40,11 @@ export default function Agenda() {
             NOVO
           </Button>
         </FormHead>
-        <div className="flex-auto h-64 border border-gray-400 dark:border-gray-500">
+        <div className="h-64 flex-auto border border-gray-400 dark:border-gray-500">
           <AgendaTelefoneTable store={agendaTelefoneStore} />
         </div>
         {status !== 'none' ? (
-          <div className="flex-auto max-h-56">
+          <div className="max-h-56 flex-auto">
             <AgendaTelefoneForm store={agendaTelefoneStore} />
           </div>
         ) : null}

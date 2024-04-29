@@ -1,6 +1,6 @@
 import { toast, Toaster } from 'react-hot-toast'
 import { useLocation } from 'wouter'
-import { Login as LoginComponent } from '../components/login/login.jsx'
+import { Login as LoginComponent } from '../components_/login/login.jsx'
 import { authStore } from '../store/auth_store.mjs'
 
 /**

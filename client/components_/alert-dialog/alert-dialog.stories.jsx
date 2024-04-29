@@ -1,4 +1,4 @@
-import { Button } from '../../components/button/button.jsx'
+import { Button } from '../button/button.jsx'
 
 import {
   AlertDialog,

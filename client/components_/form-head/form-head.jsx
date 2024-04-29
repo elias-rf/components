@@ -1,7 +1,7 @@
-import { Can } from '../../components/can.jsx'
-import { Title } from '../../components/title/title.jsx'
 import { Permissions } from '../../features/permissions.jsx'
 import { cn } from '../../lib/utils.mjs'
+import { Can } from '../can.jsx'
+import { Title } from '../title/title.jsx'
 
 export function FormHead({
   children,

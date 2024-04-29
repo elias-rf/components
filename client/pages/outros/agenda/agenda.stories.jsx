@@ -1,4 +1,4 @@
-import { JsonView } from '../../../components/json-view/json-view.jsx'
+import { JsonView } from '../../../components_/json-view/json-view.jsx'
 import { agendaTelefoneStore } from '../../../pages/outros/agenda/components/agenda.store.mjs'
 import Agenda from './agenda.jsx'
 

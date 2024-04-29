@@ -1,17 +1,17 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Button } from '../../../../components/button/button.jsx'
+import { Button } from '../../../../components_/button/button.jsx'
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-} from '../../../../components/form/form.jsx'
-import { Input } from '../../../../components/input/input.jsx'
-import { SelectBadge } from '../../../../components/select-badge/select-badge.jsx'
-import { Toggle } from '../../../../components/toggle/toggle.jsx'
+} from '../../../../components_/form/form.jsx'
+import { Input } from '../../../../components_/input/input.jsx'
+import { SelectBadge } from '../../../../components_/select-badge/select-badge.jsx'
+import { Toggle } from '../../../../components_/toggle/toggle.jsx'
 import { useMessageBox } from '../../../../lib/hooks/use-message-box.jsx'
 import { rpc } from '../../../../lib/rpc.mjs'
 

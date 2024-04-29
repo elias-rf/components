@@ -1,9 +1,9 @@
-import { VisiontechIcon } from '../components/icons/visiontech-icon.jsx'
+import { VisiontechIcon } from '../components_/icons/visiontech-icon.jsx'
 
 export function Home() {
   return (
-    <div className="flex items-center justify-center h-full p-2">
-      <VisiontechIcon className="w-auto h-auto dark:fill-gray-50" />
+    <div className="flex h-full items-center justify-center p-2">
+      <VisiontechIcon className="h-auto w-auto dark:fill-gray-50" />
     </div>
   )
 }

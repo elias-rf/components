@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
-import { Button } from '../../../components/button/button.jsx'
-import { Can } from '../../../components/can.jsx'
-import { FormHead } from '../../../components/form-head/form-head.jsx'
+import { Button } from '../../../components_/button/button.jsx'
+import { Can } from '../../../components_/can.jsx'
+import { FormHead } from '../../../components_/form-head/form-head.jsx'
 import { usuarioStore } from '../../../pages/sistema/usuarios/components/usuario.store.mjs'
 import { UsuarioForm } from '../../../pages/sistema/usuarios/components/usuarios_form.jsx'
 import { UsuarioTable } from '../../../pages/sistema/usuarios/components/usuarios_table.jsx'
@@ -23,7 +23,7 @@ export default function Usuarios() {
 
   return (
     <Can can={canList.data?.[permissions.READ.key]}>
-      <div className="flex flex-col h-full px-2">
+      <div className="flex h-full flex-col px-2">
         <FormHead
           editPermissions={canList.data?.[permissions.PERMISSAO.key] || false}
           permissions={permissions}
@@ -37,11 +37,11 @@ export default function Usuarios() {
             NOVO
           </Button>
         </FormHead>
-        <div className="flex-auto h-64 border border-gray-400 dark:border-gray-500">
+        <div className="h-64 flex-auto border border-gray-400 dark:border-gray-500">
           <UsuarioTable store={usuarioStore} />
         </div>
         {status !== 'none' ? (
-          <div className="flex-auto max-h-56">
+          <div className="max-h-56 flex-auto">
             <UsuarioForm store={usuarioStore} />
           </div>
         ) : null}

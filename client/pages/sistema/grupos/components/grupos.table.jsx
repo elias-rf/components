@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { Table } from '../../../../components/table-full/table.jsx'
+import { Table } from '../../../../components_/table-full/table.jsx'
 import { gruposColumns } from '../../../../pages/sistema/grupos/components/grupos_columns.mjs'
 
 const select = gruposColumns.map((col) => col.name)

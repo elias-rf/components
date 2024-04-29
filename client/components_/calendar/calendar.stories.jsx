@@ -1,6 +1,6 @@
 import { ptBR } from 'date-fns/locale'
 import React from 'react'
-import { JsonView } from '../../components/json-view/json-view.jsx'
+import { JsonView } from '../json-view/json-view.jsx'
 import { Calendar } from './calendar.jsx'
 
 const meta = {

@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
-import { Can } from '../../../components/can.jsx'
-import { FormHead } from '../../../components/form-head/form-head.jsx'
+import { Can } from '../../../components_/can.jsx'
+import { FormHead } from '../../../components_/form-head/form-head.jsx'
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from '../../../components/tabs/tabs.jsx'
+} from '../../../components_/tabs/tabs.jsx'
 import { EstExt } from '../../../pages/industrial/controles/components/est-ext/est-ext.jsx'
 import { EstInt } from '../../../pages/industrial/controles/components/est-int/est-int.jsx'
 import { Operacao } from '../../../pages/industrial/controles/components/operacao/operacao.jsx'

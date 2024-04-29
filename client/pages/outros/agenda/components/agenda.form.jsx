@@ -1,15 +1,15 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Button } from '../../../../components/button/button.jsx'
+import { Button } from '../../../../components_/button/button.jsx'
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-} from '../../../../components/form/form.jsx'
-import { Input } from '../../../../components/input/input.jsx'
+} from '../../../../components_/form/form.jsx'
+import { Input } from '../../../../components_/input/input.jsx'
 import { useMessageBox } from '../../../../lib/hooks/use-message-box.jsx'
 
 export const AgendaTelefoneForm = ({ store }) => {

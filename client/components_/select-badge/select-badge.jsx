@@ -1,6 +1,6 @@
 import React from 'react'
-import { ChevronIcon } from '../../components/icons/chevron-icon.jsx'
-import { CloseIcon } from '../../components/icons/close-icon.jsx'
+import { ChevronIcon } from '../icons/chevron-icon.jsx'
+import { CloseIcon } from '../icons/close-icon.jsx'
 
 const Pill = ({ children, onClick }) => {
   return (

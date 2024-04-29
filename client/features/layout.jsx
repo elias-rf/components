@@ -1,11 +1,11 @@
-import { NoPrint } from '../components/no-print/no-print.jsx'
+import { NoPrint } from '../components_/no-print/no-print.jsx'
 import { NavbarApp } from '../features/navbar-app.jsx'
 
 /** feature Layout com menu de páginas do aplicativo */
 export function Layout({ children }) {
   return (
     <div
-      className="flex flex-col w-full h-full dark:bg-gray-900"
+      className="flex h-full w-full flex-col dark:bg-gray-900"
       data-name="Layout"
     >
       <NoPrint>

@@ -1,8 +1,8 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons'
 import { ptBR } from 'date-fns/locale'
 import { DayPicker } from 'react-day-picker'
-import { buttonVariants } from '../../components/button/button.jsx'
 import { cn } from '../../lib/utils.mjs'
+import { buttonVariants } from '../button/button.jsx'
 
 function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
   return (

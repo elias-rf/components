@@ -1,5 +1,5 @@
 import { Children, Fragment } from 'react'
-import { ChevronIcon } from '../../components/icons/chevron-icon.jsx'
+import { ChevronIcon } from '../icons/chevron-icon.jsx'
 
 function BreadCrumbItem({ children, path }) {
   return (

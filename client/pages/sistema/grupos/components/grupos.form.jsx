@@ -1,10 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Button } from '../../../../components/button/button.jsx'
-import { Label } from '../../../../components/label/label.jsx'
-import { FormField } from '../../../../components/ui-old/form-field/form-field.jsx'
-import { InputForm } from '../../../../components/ui-old/input/input-form.jsx'
+import { Button } from '../../../../components_/button/button.jsx'
+import { Label } from '../../../../components_/label/label.jsx'
+import { FormField } from '../../../../components_/ui-old/form-field/form-field.jsx'
+import { InputForm } from '../../../../components_/ui-old/input/input-form.jsx'
 import { useMessageBox } from '../../../../lib/hooks/use-message-box.jsx'
 
 export const GruposForm = ({ store }) => {
