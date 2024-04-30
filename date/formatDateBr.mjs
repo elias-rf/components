@@ -1,4 +1,4 @@
-import dateFormat from './formatDate.mjs'
+import { format } from 'date-fns'
 
 /**
  *
@@ -7,8 +7,6 @@ import dateFormat from './formatDate.mjs'
  * @param {date} date
  * @returns {string} data formatada
  */
-function formatDateBr(date: Date): string {
-  return dateFormat(date, 'DD/MM/YYYY')
+export function formatDateBr(date) {
+  return format(date, 'dd/MM/yyyy')
 }
-
-export default formatDateBr

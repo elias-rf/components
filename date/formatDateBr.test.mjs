@@ -1,4 +1,4 @@
-import formatDateBr from '../formatDateBr.mjs'
+import { formatDateBr } from './formatDateBr.mjs'
 import { test, it, describe, expect } from 'vitest'
 
 describe('formatDateBr', () => {
