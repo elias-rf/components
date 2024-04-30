@@ -7,11 +7,9 @@
  * @example
  * calcMultiplicatorio([2,3],[4,5]) // [8,15]
  */
-function calcMultiplicatorio(array1: number[], array2: number[]): number[] {
+export function calcMultiplicatorio(array1, array2) {
   if (array1.length <= array2.length) {
-    return array1.map((valor, index) => valor * array2[index]);
+    return array1.map((valor, index) => valor * array2[index])
   }
-  return array2.map((valor, index) => valor * array1[index]);
+  return array2.map((valor, index) => valor * array1[index])
 }
-
-export default calcMultiplicatorio;
