@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, test } from "vitest";
 import { sysDb } from "../../data/sys/sys.db.mjs";
-import { knexMockMsql } from "../../utils/mocks/connections.mock.mjs";
-import { getTracker } from "../../utils/mocks/database.mock.mjs";
-import { knexMockHistory } from "../../utils/mocks/knex-mock-history.mjs";
+import { knexMockMsql } from "../../../utils/mocks/connections.mock.mjs";
+import { getTracker } from "../../../utils/mocks/database.mock.mjs";
+import { knexMockHistory } from "../../../utils/mocks/knex-mock-history.mjs";
 import { usuarioController } from "./usuario_controller.mjs";
 
 describe("usuarioController", () => {

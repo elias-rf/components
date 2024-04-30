@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { usuarioSchema } from "../../../data/sys/usuario/usuario.schema.mjs";
-import { knexMockMsql } from "../../../utils/mocks/connections.mock.mjs";
-import { getTracker } from "../../../utils/mocks/database.mock.mjs";
-import { adapterKnex } from "../../../utils/orm/index.mjs";
-import { ormTableDataSource } from "../../../utils/orm/orm-data-source/index.mjs";
+import { knexMockMsql } from "../../../../utils/mocks/connections.mock.mjs";
+import { getTracker } from "../../../../utils/mocks/database.mock.mjs";
+import { adapterKnex } from "../../../../utils/orm/index.mjs";
+import { ormTableDataSource } from "../../../../utils/orm/orm-data-source/index.mjs";
 
 describe("read", () => {
   const tracker = getTracker();

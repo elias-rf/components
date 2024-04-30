@@ -13,14 +13,14 @@
 // function  false
 
 export function isEmpty(input) {
-  if (typeof input === 'undefined' || input === null) {
-    return true
+  if (typeof input === "undefined" || input === null) {
+    return true;
   }
-  if (typeof input === 'string' || Array.isArray(input)) {
-    return input.length === 0
+  if (typeof input === "string" || Array.isArray(input)) {
+    return input.length === 0;
   }
-  if (typeof input === 'object') {
-    return Object.keys(input).length === 0
+  if (typeof input === "object") {
+    return Object.keys(input).length === 0;
   }
-  return false
+  return false;
 }

@@ -1,6 +1,6 @@
 import jwtService from "jsonwebtoken";
 import { config } from "../../../config/index.mjs";
-import { passwordVerify } from "../../../utils/string/password-verify.mjs";
+import { passwordVerify } from "../../../../utils/string/password-verify.mjs";
 
 export const login =
   (dataSource) =>

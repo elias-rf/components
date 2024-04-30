@@ -2,8 +2,8 @@ import { usuarioMapFields } from "./usuario.map-fields.mjs";
 import { usuarioSchema } from "./usuario.schema.mjs";
 import { usuarioToDto } from "./usuario.to-dto.mjs";
 
-import { ormTableDataSource } from "../../../utils/orm/orm-data-source/index.mjs";
-import { argsFromDto } from "../../../utils/orm/utils/args-from-dto.mjs";
+import { ormTableDataSource } from "../../../../utils/orm/orm-data-source/index.mjs";
+import { argsFromDto } from "../../../../utils/orm/utils/args-from-dto.mjs";
 
 export function usuarioDataSource(ds) {
   const orm = ormTableDataSource(ds, usuarioSchema);
