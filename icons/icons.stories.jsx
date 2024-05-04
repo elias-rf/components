@@ -1,24 +1,24 @@
-import { CheckIcon } from '@/client/components/icons/check-icon.jsx'
-import { ChevronIcon } from '@/client/components/icons/chevron-icon.jsx'
-import { CloseIcon } from '@/client/components/icons/close-icon.jsx'
-import { DelDocIcon } from '@/client/components/icons/del-doc-icon.jsx'
-import { ErrorIcon } from '@/client/components/icons/error-icon.jsx'
-import { FireIcon } from '@/client/components/icons/fire-icon.jsx'
-import { HamburgerIcon } from '@/client/components/icons/hamburger-icon.jsx'
-import { HomeIcon } from '@/client/components/icons/home-icon.jsx'
-import { MoonIcon } from '@/client/components/icons/moon-icon.jsx'
-import { NewDocIcon } from '@/client/components/icons/new-doc-icon.jsx'
-import { PathSepIcon } from '@/client/components/icons/path-sep.jsx'
-import { PenIcon } from '@/client/components/icons/pen-icon.jsx'
-import { PersonIcon } from '@/client/components/icons/person-icon.jsx'
-import { SearchIcon } from '@/client/components/icons/search-icon.jsx'
-import { ShieldIcon } from '@/client/components/icons/shield-icon.jsx'
-import { SortIcon } from '@/client/components/icons/sort-icon.jsx'
-import { SpinnerIcon } from '@/client/components/icons/spinner-icon.jsx'
-import { SunIcon } from '@/client/components/icons/sun-icon.jsx'
-import { VisiontechIcon } from '@/client/components/icons/visiontech-icon.jsx'
-import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon.jsx'
-import { WarningIcon } from '@/client/components/icons/warning-icon.jsx'
+import { CheckIcon } from './check-icon.jsx'
+import { ChevronIcon } from './chevron-icon.jsx'
+import { CloseIcon } from './close-icon.jsx'
+import { DelDocIcon } from './del-doc-icon.jsx'
+import { ErrorIcon } from './error-icon.jsx'
+import { FireIcon } from './fire-icon.jsx'
+import { HamburgerIcon } from './hamburger-icon.jsx'
+import { HomeIcon } from './home-icon.jsx'
+import { MoonIcon } from './moon-icon.jsx'
+import { NewDocIcon } from './new-doc-icon.jsx'
+import { PathSepIcon } from './path-sep.jsx'
+import { PenIcon } from './pen-icon.jsx'
+import { PersonIcon } from './person-icon.jsx'
+import { SearchIcon } from './search-icon.jsx'
+import { ShieldIcon } from './shield-icon.jsx'
+import { SortIcon } from './sort-icon.jsx'
+import { SpinnerIcon } from './spinner-icon.jsx'
+import { SunIcon } from './sun-icon.jsx'
+import { VisiontechIcon } from './visiontech-icon.jsx'
+import { VtLogoIcon } from './vt-logo-icon.jsx'
+import { WarningIcon } from './warning-icon.jsx'
 
 const meta = {
   component: CheckIcon,
@@ -99,10 +99,7 @@ export const Lista = {
             Shield
           </div>
           <div className={classIcon}>
-            <SortIcon
-              direction="both"
-              className="h-10 w-10"
-            />
+            <SortIcon direction="both" className="h-10 w-10" />
             Sort
           </div>
           <div className={classIcon}>

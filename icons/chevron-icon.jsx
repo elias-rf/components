@@ -1,8 +1,18 @@
-import { cn } from '../../lib/utils.mjs'
+import { cn } from '../utils.mjs'
 
 // https://icon-sets.iconify.design/material-symbols/chevron-right-rounded/
 
-export function ChevronIcon({ variant, className }) {
+/**
+ * @typedef {Object} ChevronIconProps
+ * @property {string} [className]
+ * @property {"down" | "left" | "up"} [variant]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ChevronIconProps>}
+ */
+export const ChevronIcon = ({ variant, className }) => {
   let rotate = 0
   if (variant === 'down') rotate = 90
   if (variant === 'left') rotate = 180

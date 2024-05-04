@@ -1,10 +1,21 @@
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
 import { ChevronDownIcon } from '@radix-ui/react-icons'
 import React from 'react'
-import { cn } from '../../lib/utils.mjs'
+import { cn } from '../utils.mjs'
 
 const Accordion = AccordionPrimitive.Root
 
+/**
+ * @typedef {Object} AccordionItemProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {string} value
+ * @property {any} children
+ */
+
+/**
+ * @type {React.FC<AccordionItemProps>}
+ */
 const AccordionItem = React.forwardRef(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
@@ -14,6 +25,16 @@ const AccordionItem = React.forwardRef(({ className, ...props }, ref) => (
 ))
 AccordionItem.displayName = 'AccordionItem'
 
+/**
+ * @typedef {Object} AccordionTriggerProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {any} children
+ */
+
+/**
+ * @type {React.FC<AccordionTriggerProps>}
+ */
 const AccordionTrigger = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <AccordionPrimitive.Header className="flex">
@@ -26,13 +47,23 @@ const AccordionTrigger = React.forwardRef(
         {...props}
       >
         {children}
-        <ChevronDownIcon className="h-4 w-4 shrink-0 text-slate-500 transition-transform duration-200 dark:text-slate-400" />
+        <ChevronDownIcon className="w-4 h-4 transition-transform duration-200 shrink-0 text-slate-500 dark:text-slate-400" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )
 )
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
 
+/**
+ * @typedef {Object} AccordionContentProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {any} children
+ */
+
+/**
+ * @type {React.FC<AccordionContentProps>}
+ */
 const AccordionContent = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <AccordionPrimitive.Content

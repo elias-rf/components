@@ -1,5 +1,5 @@
-import { Button } from '@/client/components/button/button.jsx'
-import { JsonView } from '@/client/components/json-view/json-view.jsx'
+import { Button } from '../button/button.jsx'
+import { JsonView } from '../json-view/json-view.jsx'
 import { useState } from 'react'
 import { Login } from './login.jsx'
 

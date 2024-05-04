@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/utils.mjs'
+import { cn } from '../utils.mjs'
 import * as React from 'react'
 
 const Table = React.forwardRef(({ className, ...props }, ref) => (
@@ -13,11 +13,7 @@ const Table = React.forwardRef(({ className, ...props }, ref) => (
 Table.displayName = 'Table'
 
 const TableHeader = React.forwardRef(({ className, ...props }, ref) => (
-  <thead
-    ref={ref}
-    className={cn('[&_tr]:border-b', className)}
-    {...props}
-  />
+  <thead ref={ref} className={cn('[&_tr]:border-b', className)} {...props} />
 ))
 TableHeader.displayName = 'TableHeader'
 

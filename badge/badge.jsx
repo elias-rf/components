@@ -1,5 +1,7 @@
+// @ts-check
+
 import { cva } from 'class-variance-authority'
-import { cn } from '../../lib/utils.mjs'
+import { cn } from '../utils.mjs'
 
 const badgeVariants = cva(
   'inline-flex items-center rounded-md border border-slate-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 dark:border-slate-800 dark:focus:ring-slate-300',
@@ -21,13 +23,19 @@ const badgeVariants = cva(
   }
 )
 
-function Badge({ className, variant, ...props }) {
+/**
+ * @typedef {Object} BadgeProps
+ * @extends {React.HTMLAttributes<HTMLDivElement>}
+ * @property {string} [className]
+ * @property {"default" | "secondary" | "destructive" | "outline"} [variant]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<BadgeProps>}
+ */
+export const Badge = ({ className, variant, ...props }) => {
   return (
-    <div
-      className={cn(badgeVariants({ variant }), className)}
-      {...props}
-    />
+    <div className={cn(badgeVariants({ variant }), className)} {...props} />
   )
 }
-
-export { Badge, badgeVariants }

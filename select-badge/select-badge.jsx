@@ -4,13 +4,10 @@ import { CloseIcon } from '../icons/close-icon.jsx'
 
 const Pill = ({ children, onClick }) => {
   return (
-    <div className="m-1 flex items-center justify-center rounded-full border border-blue-300 bg-blue-100 px-2 text-blue-700 ">
-      <div className="max-w-full flex-initial text-xs ">{children}</div>
-      <div
-        onClick={onClick}
-        className="flex"
-      >
-        <CloseIcon className="ml-2 h-4 w-4 cursor-pointer hover:text-blue-400" />
+    <div className="flex items-center justify-center px-2 m-1 text-blue-700 bg-blue-100 border border-blue-300 rounded-full ">
+      <div className="flex-initial max-w-full text-xs ">{children}</div>
+      <div onClick={onClick} className="flex">
+        <CloseIcon className="w-4 h-4 ml-2 cursor-pointer hover:text-blue-400" />
       </div>
     </div>
   )
@@ -20,10 +17,10 @@ const Item = ({ children, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="w-full cursor-pointer rounded-t border-b border-gray-100 hover:bg-blue-100"
+      className="w-full border-b border-gray-100 rounded-t cursor-pointer hover:bg-blue-100"
     >
-      <div className="relative flex w-full items-center border-l-2 border-transparent p-2 pl-2 hover:border-blue-100">
-        <div className="flex w-full items-center">
+      <div className="relative flex items-center w-full p-2 pl-2 border-l-2 border-transparent hover:border-blue-100">
+        <div className="flex items-center w-full">
           <div className="mx-2 leading-6 ">{children}</div>
         </div>
       </div>
@@ -33,8 +30,8 @@ const Item = ({ children, onClick }) => {
 
 const List = ({ children }) => {
   return (
-    <div className="max-h-select absolute left-0 z-40 mt-14 w-full overflow-y-auto rounded bg-white shadow">
-      <div className="flex w-full flex-col">{children}</div>
+    <div className="absolute left-0 z-40 w-full overflow-y-auto bg-white rounded shadow max-h-select mt-14">
+      <div className="flex flex-col w-full">{children}</div>
     </div>
   )
 }
@@ -42,18 +39,18 @@ const List = ({ children }) => {
 const InputPills = ({ children, showList, setShowList }) => {
   return (
     <div className="w-full">
-      <div className="my-1 flex rounded border border-gray-200 bg-white ">
-        <div className="flex flex-auto flex-wrap">{children}</div>
-        <div className="flex w-8 items-center border-l border-gray-200 py-1 pl-2 pr-1 text-gray-300">
+      <div className="flex my-1 bg-white border border-gray-200 rounded ">
+        <div className="flex flex-wrap flex-auto">{children}</div>
+        <div className="flex items-center w-8 py-1 pl-2 pr-1 text-gray-300 border-l border-gray-200">
           <button
             onClick={() => {
               setShowList(!showList)
             }}
-            className="h-6 w-6 cursor-pointer text-gray-600 outline-none focus:outline-none"
+            className="w-6 h-6 text-gray-600 outline-none cursor-pointer focus:outline-none"
           >
             <ChevronIcon
               variant={showList ? 'up' : 'down'}
-              className="h-5 w-5"
+              className="w-5 h-5"
             />
           </button>
         </div>
@@ -64,7 +61,7 @@ const InputPills = ({ children, showList, setShowList }) => {
 
 export const SelectBadge = React.forwardRef(
   ({ name, onChange, options }, ref) => {
-    const inputRef = React.useRef < HTMLInputElement > null
+    const inputRef = React.useRef(null)
     const [showList, setShowList] = React.useState(false)
     const [valueFilter, setValueFilter] = React.useState('')
     const [valueInput, setValueInput] = React.useState('')
@@ -93,16 +90,9 @@ export const SelectBadge = React.forwardRef(
         <div>valueFilter: {valueFilter.toString()}</div>
         <div>valueInput: {valueInput.toString()}</div>
         <div>arrayInput: {arrayInput.toString()}</div>
-        <input
-          className="hidden"
-          name={name}
-          ref={inputRef}
-        />
+        <input className="hidden" name={name} ref={inputRef} />
         <div className="relative flex flex-col ">
-          <InputPills
-            showList={showList}
-            setShowList={setShowList}
-          >
+          <InputPills showList={showList} setShowList={setShowList}>
             <>
               {arrayInput.map((item) => {
                 const [label, value] =
@@ -127,7 +117,7 @@ export const SelectBadge = React.forwardRef(
                     setShowList(true)
                     setValueFilter(e.target.value)
                   }}
-                  className="h-full w-full appearance-none bg-transparent p-1 px-2 text-gray-800 outline-none"
+                  className="w-full h-full p-1 px-2 text-gray-800 bg-transparent outline-none appearance-none"
                 />
               </div>
             </>

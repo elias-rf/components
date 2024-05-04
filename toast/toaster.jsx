@@ -5,8 +5,8 @@ import {
   ToastProvider,
   ToastTitle,
   ToastViewport,
-} from '@/client/components/toast/toast.jsx'
-import { useToast } from '@/client/components/toast/use-toast.jsx'
+} from './toast.jsx'
+import { useToast } from './use-toast.js'
 
 export function Toaster() {
   const { toasts } = useToast()
@@ -15,10 +15,7 @@ export function Toaster() {
     <ToastProvider>
       {toasts.map(function ({ id, title, description, action, ...props }) {
         return (
-          <Toast
-            key={id}
-            {...props}
-          >
+          <Toast key={id} {...props}>
             <div className="grid gap-1">
               {title && <ToastTitle>{title}</ToastTitle>}
               {description && (

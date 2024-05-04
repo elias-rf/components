@@ -1,7 +1,7 @@
-import { CheckIcon } from '@/client/components/icons/check-icon.jsx'
-import { CloseIcon } from '@/client/components/icons/close-icon.jsx'
-import { ErrorIcon } from '@/client/components/icons/error-icon.jsx'
-import { WarningIcon } from '@/client/components/icons/warning-icon.jsx'
+import { CheckIcon } from '../icons/check-icon.jsx'
+import { CloseIcon } from '../icons/close-icon.jsx'
+import { ErrorIcon } from '../icons/error-icon.jsx'
+import { WarningIcon } from '../icons/warning-icon.jsx'
 
 function Icon({ severity }) {
   const className =

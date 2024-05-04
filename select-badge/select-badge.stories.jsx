@@ -1,6 +1,6 @@
-import { Button } from '@/client/components/button/button.jsx'
-import { JsonView } from '@/client/components/json-view/json-view.jsx'
-import { SelectBadge } from '@/client/components/select-badge/select-badge.jsx'
+import { Button } from '../button/button.jsx'
+import { JsonView } from '../json-view/json-view.jsx'
+import { SelectBadge } from '../select-badge/select-badge.jsx'
 import { useForm } from 'react-hook-form'
 
 const meta = {
@@ -19,7 +19,7 @@ export default meta
 
 export const Default = {
   render: () => {
-    const form = useForm < { slc } > { defaultValues: { slc: 'BR' } }
+    const form = useForm({ defaultValues: { slc: 'BR' } })
     const onSubmit = (data) => console.log(data)
 
     return (

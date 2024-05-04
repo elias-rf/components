@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/utils.mjs'
+import { cn } from '../../utils.mjs'
 
 export function Toggle({
   value = false,
@@ -16,7 +16,7 @@ export function Toggle({
   }
 
   return (
-    <div className="flex h-8 items-center">
+    <div className="flex items-center h-8">
       <div
         className={cn('relative inline-flex cursor-pointer items-center', {
           'cursor-not-allowed': disabled,
@@ -26,7 +26,7 @@ export function Toggle({
         <input
           type="checkbox"
           onChange={handleChange}
-          className="peer sr-only"
+          className="sr-only peer"
           checked={value}
           disabled={disabled}
           id={id}

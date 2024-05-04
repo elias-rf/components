@@ -3,7 +3,7 @@ import * as ToastPrimitives from '@radix-ui/react-toast'
 import { cva } from 'class-variance-authority'
 import * as React from 'react'
 
-import { cn } from '@/client/lib/utils.mjs'
+import { cn } from '../utils.mjs'
 
 const ToastProvider = ToastPrimitives.Provider
 

@@ -1,5 +1,5 @@
-import { Input } from '@/client/components/input/input.jsx'
-import { JsonView } from '@/client/components/json-view/json-view.jsx'
+import { Input } from '../input/input.jsx'
+import { JsonView } from '../json-view/json-view.jsx'
 import { format } from 'date-fns'
 import React from 'react'
 import { DatePicker } from './date-picker.jsx'
@@ -27,14 +27,8 @@ export const Default = {
     return (
       <>
         <div className="flex flex-row">
-          <Input
-            value={vlr}
-            onChange={handleVlr}
-          />
-          <DatePicker
-            value={vlr}
-            onChange={handleVlr}
-          ></DatePicker>
+          <Input value={vlr} onChange={handleVlr} />
+          <DatePicker value={vlr} onChange={handleVlr}></DatePicker>
         </div>
         <JsonView data={{ vlr }} />
       </>

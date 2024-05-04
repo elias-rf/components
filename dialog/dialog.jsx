@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/utils.mjs'
+import { cn } from '../utils.mjs'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { Cross2Icon } from '@radix-ui/react-icons'
 import * as React from 'react'

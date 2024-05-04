@@ -1,5 +1,5 @@
 import React from 'react'
-import { cn } from '../../../lib/utils.mjs'
+import { cn } from '../../utils.mjs'
 import { themeInput } from '../theme-input.mjs'
 
 export const InputForm = React.forwardRef(

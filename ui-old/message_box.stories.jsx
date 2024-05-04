@@ -1,6 +1,6 @@
-import { Button } from '@/client/components/button/button.jsx'
-import { JsonView } from '@/client/components/json-view/json-view.jsx'
-import { MessageBox } from '@/client/components/ui-old/message_box.jsx'
+import { Button } from '../button/button.jsx'
+import { JsonView } from '../json-view/json-view.jsx'
+import { MessageBox } from '../ui-old/message_box.jsx'
 import { useState } from 'react'
 
 const meta = {

@@ -1,4 +1,4 @@
-import { DarkToggle } from '@/client/components/dark-toggle/dark-toggle.jsx'
+import { DarkToggle } from '../dark-toggle/dark-toggle.jsx'
 
 const meta = {
   component: DarkToggle,

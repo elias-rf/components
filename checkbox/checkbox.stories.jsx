@@ -9,16 +9,13 @@ export default meta
 
 export const Default = {
   render: (props) => {
-    const [vlr, setVlr] = React.useState < CheckedState > true
+    const [vlr, setVlr] = React.useState(true)
     return (
       <>
-        <div className="bg-white p-4 ">
-          <Checkbox
-            checked={vlr}
-            onCheckedChange={(e) => setVlr(e)}
-          />
+        <div className="p-4 bg-white ">
+          <Checkbox checked={vlr} onCheckedChange={(e) => setVlr(e)} />
         </div>
-        <div className="dark bg-black p-4">
+        <div className="p-4 bg-black dark">
           <Checkbox />
         </div>
       </>

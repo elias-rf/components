@@ -1,4 +1,4 @@
-import { Label } from '@/client/components/label/label.jsx'
+import { Label } from '../label/label.jsx'
 import { Switch } from './switch.jsx'
 
 const meta = {

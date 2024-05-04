@@ -1,5 +1,5 @@
 import * as React from 'react'
-import DataRender, { ExpandableRenderProps } from './data-render.jsx'
+import DataRender from './data-render.jsx'
 import { useBool } from './hooks.mjs'
 
 export function ExpandableObject({
@@ -38,10 +38,7 @@ export function ExpandableObject({
   }
 
   return (
-    <div
-      className={style.basicChildStyle}
-      role="list"
-    >
+    <div className={style.basicChildStyle} role="list">
       <span
         className={expanderIconStyle}
         role="button"

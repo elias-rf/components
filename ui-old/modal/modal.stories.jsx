@@ -1,4 +1,4 @@
-import { Modal, TModalProps } from '@/client/components/ui-old/modal/modal.jsx'
+import { Modal, TModalProps } from './modal.jsx'
 import { useState } from 'react'
 
 const meta = {

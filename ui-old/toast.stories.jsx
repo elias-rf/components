@@ -1,6 +1,6 @@
-import { Button } from '@/client/components/button/button.jsx'
-import { Toast, TToastProps } from '@/client/components/ui-old/toast.jsx'
 import React from 'react'
+import { Button } from '../button/button.jsx'
+import { Toast } from '../ui-old/toast.jsx'
 
 const meta = {
   component: Toast,

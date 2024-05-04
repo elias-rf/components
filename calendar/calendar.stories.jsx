@@ -11,7 +11,7 @@ export default meta
 
 export const Default = {
   render: (props) => {
-    const [vlr, serVlr] = (React.useState < Date) | (undefined > new Date())
+    const [vlr, serVlr] = React.useState(new Date())
     return (
       <>
         <Calendar

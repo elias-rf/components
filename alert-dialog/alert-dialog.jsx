@@ -1,6 +1,6 @@
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog'
 import * as React from 'react'
-import { cn } from '../../lib/utils.mjs'
+import { cn } from '../utils.mjs'
 import { buttonVariants } from '../button/button.jsx'
 
 const AlertDialog = AlertDialogPrimitive.Root
@@ -9,6 +9,16 @@ const AlertDialogTrigger = AlertDialogPrimitive.Trigger
 
 const AlertDialogPortal = AlertDialogPrimitive.Portal
 
+/**
+ * @typedef {Object} AlertDialogOverlayProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {any} [children]
+ */
+
+/**
+ * @type {React.FC<AlertDialogOverlayProps>}
+ */
 const AlertDialogOverlay = React.forwardRef(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Overlay
     className={cn(
@@ -21,6 +31,16 @@ const AlertDialogOverlay = React.forwardRef(({ className, ...props }, ref) => (
 ))
 AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName
 
+/**
+ * @typedef {Object} AlertDialogContentProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {any} children
+ */
+
+/**
+ * @type {React.FC<AlertDialogContentProps>}
+ */
 const AlertDialogContent = React.forwardRef(({ className, ...props }, ref) => (
   <AlertDialogPortal>
     <AlertDialogOverlay />
@@ -36,6 +56,16 @@ const AlertDialogContent = React.forwardRef(({ className, ...props }, ref) => (
 ))
 AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName
 
+/**
+ * @typedef {Object} AlertDialogHeaderProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {any} children
+ */
+
+/**
+ * @type {React.FC<AlertDialogHeaderProps>}
+ */
 const AlertDialogHeader = ({ className, ...props }) => (
   <div
     className={cn(
@@ -47,6 +77,16 @@ const AlertDialogHeader = ({ className, ...props }) => (
 )
 AlertDialogHeader.displayName = 'AlertDialogHeader'
 
+/**
+ * @typedef {Object} AlertDialogFooterProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {any} children
+ */
+
+/**
+ * @type {React.FC<AlertDialogFooterProps>}
+ */
 const AlertDialogFooter = ({ className, ...props }) => (
   <div
     className={cn(
@@ -58,6 +98,16 @@ const AlertDialogFooter = ({ className, ...props }) => (
 )
 AlertDialogFooter.displayName = 'AlertDialogFooter'
 
+/**
+ * @typedef {Object} AlertDialogTitleProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {any} [children]
+ */
+
+/**
+ * @type {React.FC<AlertDialogTitleProps>}
+ */
 const AlertDialogTitle = React.forwardRef(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Title
     ref={ref}
@@ -67,6 +117,16 @@ const AlertDialogTitle = React.forwardRef(({ className, ...props }, ref) => (
 ))
 AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName
 
+/**
+ * @typedef {Object} AlertDialogDescriptionProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {any} [children]
+ */
+
+/**
+ * @type {React.FC<AlertDialogDescriptionProps>}
+ */
 const AlertDialogDescription = React.forwardRef(
   ({ className, ...props }, ref) => (
     <AlertDialogPrimitive.Description
@@ -79,6 +139,16 @@ const AlertDialogDescription = React.forwardRef(
 AlertDialogDescription.displayName =
   AlertDialogPrimitive.Description.displayName
 
+/**
+ * @typedef {Object} AlertDialogActionProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {any} [children]
+ */
+
+/**
+ * @type {React.FC<AlertDialogActionProps>}
+ */
 const AlertDialogAction = React.forwardRef(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Action
     ref={ref}
@@ -88,6 +158,16 @@ const AlertDialogAction = React.forwardRef(({ className, ...props }, ref) => (
 ))
 AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName
 
+/**
+ * @typedef {Object} AlertDialogCancelProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {any} [children]
+ */
+
+/**
+ * @type {React.FC<AlertDialogCancelProps>}
+ */
 const AlertDialogCancel = React.forwardRef(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Cancel
     ref={ref}

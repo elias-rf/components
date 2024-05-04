@@ -1,9 +1,9 @@
-import { Button } from '@/client/components/button/button.jsx'
-import { JsonView } from '@/client/components/json-view/json-view.jsx'
-import { Label } from '@/client/components/label/label.jsx'
-import { Title } from '@/client/components/title/title.jsx'
-import { FormField } from '@/client/components/ui-old/form-field/form-field.jsx'
-import { InputForm } from '@/client/components/ui-old/input/input-form.jsx'
+import { Button } from '../button/button.jsx'
+import { JsonView } from '../json-view/json-view.jsx'
+import { Label } from '../label/label.jsx'
+import { Title } from '../title/title.jsx'
+import { FormField } from '../ui-old/form-field/form-field.jsx'
+import { InputForm } from '../ui-old/input/input-form.jsx'
 import { useForm } from 'react-hook-form'
 
 const meta = {

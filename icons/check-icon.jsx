@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/utils.mjs'
+import { cn } from '../utils.mjs'
 
 export function CheckIcon({ className }) {
   return (

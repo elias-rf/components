@@ -1,4 +1,4 @@
-import { cn } from '../../lib/utils.mjs'
+import { cn } from '../utils.mjs'
 import { ListGrupoItem } from './list-grupo-item.jsx'
 
 function ListGrupo({ children, className }) {

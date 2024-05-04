@@ -1,10 +1,6 @@
-import { Button } from '@/client/components/button/button.jsx'
-import { Calendar } from '@/client/components/calendar/calendar.jsx'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/client/components/popover/popover.jsx'
+import { Button } from '../button/button.jsx'
+import { Calendar } from '../calendar/calendar.jsx'
+import { Popover, PopoverContent, PopoverTrigger } from '../popover/popover.jsx'
 import { getDateFormat } from '@/utils/date/get-date-format.mjs'
 import { CalendarIcon } from '@radix-ui/react-icons'
 import { format, parse } from 'date-fns'
@@ -36,10 +32,7 @@ export function DatePicker({ value, onChange }) {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button
-          variant={'ghost'}
-          size={'icon'}
-        >
+        <Button variant={'ghost'} size={'icon'}>
           <CalendarIcon className="h-4 w-4" />
         </Button>
       </PopoverTrigger>

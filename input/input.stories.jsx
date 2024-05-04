@@ -1,4 +1,4 @@
-import { JsonView } from '@/client/components/json-view/json-view.jsx'
+import { JsonView } from '../json-view/json-view.jsx'
 import React from 'react'
 import { Input } from './input.jsx'
 
@@ -22,11 +22,7 @@ export const Default = {
           value={vlr}
           onChange={(e) => setVlr(e.target.value)}
         />
-        <Input
-          {...props}
-          value={vlr}
-          onInput={(e) => setVlr(e.target.value)}
-        />
+        <Input {...props} value={vlr} onInput={(e) => setVlr(e.target.value)} />
         <JsonView data={{ props, vlr }} />
       </div>
     )

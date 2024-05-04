@@ -1,4 +1,4 @@
-import { VtLogoIcon } from '@/client/components/icons/vt-logo-icon.jsx'
+import { VtLogoIcon } from '../icons/vt-logo-icon.jsx'
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -88,10 +88,7 @@ export const Default = {
             <MenubarItem inset>
               Reload <MenubarShortcut>⌘R</MenubarShortcut>
             </MenubarItem>
-            <MenubarItem
-              disabled
-              inset
-            >
+            <MenubarItem disabled inset>
               Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
             </MenubarItem>
             <MenubarSeparator />

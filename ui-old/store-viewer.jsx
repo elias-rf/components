@@ -1,4 +1,4 @@
-import { JsonView } from '@/client/components/json-view/json-view.jsx'
+import { JsonView } from '../json-view/json-view.jsx'
 import { useEffect, useState } from 'react'
 
 export function StoreViewer({ store, properties, className }) {
@@ -19,10 +19,5 @@ export function StoreViewer({ store, properties, className }) {
     return () => unsubscribe()
   }, [])
 
-  return (
-    <JsonView
-      data={value}
-      className={className}
-    />
-  )
+  return <JsonView data={value} className={className} />
 }

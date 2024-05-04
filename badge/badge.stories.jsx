@@ -7,7 +7,7 @@ const meta = {
 export default meta
 
 export const Default = {
-  render: (props) => (
+  render: () => (
     <>
       <Badge>Teste</Badge>
     </>

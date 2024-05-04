@@ -1,7 +1,17 @@
 import { Children, Fragment } from 'react'
 import { ChevronIcon } from '../icons/chevron-icon.jsx'
 
-function BreadCrumbItem({ children, path }) {
+/**
+ * @typedef {Object} BreadCrumbItemProps
+ * @extends {React.HTMLAttributes<HTMLDivElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<BreadCrumbItemProps>}
+ */
+export const BreadCrumbItem = ({ children, path }) => {
   return (
     <div
       key={path}
@@ -12,7 +22,17 @@ function BreadCrumbItem({ children, path }) {
   )
 }
 
-export function BreadCrumb({ onClick, children }) {
+/**
+ * @typedef {Object} BreadCrumbProps
+ * @extends {React.HTMLAttributes<HTMLDivElement>}
+ * @property {string} [className]
+ * @property {React.FC<BreadCrumbItemProps>} [children]
+ */
+
+/**
+ * @type {React.FC<BreadCrumbProps>}
+ */
+export const BreadCrumb = ({ onClick, children }) => {
   const childrenArray = Children.toArray(children)
 
   const childrenWtihSeperator = childrenArray.map((child, index) => {
@@ -20,14 +40,14 @@ export function BreadCrumb({ onClick, children }) {
       return (
         <Fragment key={index}>
           <li
-            className="inline-flex cursor-pointer items-center"
+            className="inline-flex items-center cursor-pointer"
             onClick={() => {
               onClick(child.props.path)
             }}
           >
             {child}
           </li>
-          <ChevronIcon className="mx-1 h-7 w-7 text-gray-400 " />
+          <ChevronIcon className="mx-1 text-gray-400 h-7 w-7 " />
         </Fragment>
       )
     }
@@ -36,10 +56,7 @@ export function BreadCrumb({ onClick, children }) {
 
   return (
     <>
-      <nav
-        className="flex"
-        aria-label="Breadcrumb"
-      >
+      <nav className="flex" aria-label="Breadcrumb">
         <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
           {childrenWtihSeperator}
         </ol>
@@ -47,5 +64,3 @@ export function BreadCrumb({ onClick, children }) {
     </>
   )
 }
-
-BreadCrumb.Item = BreadCrumbItem

@@ -1,4 +1,4 @@
-import { JsonView } from '@/client/components/json-view/json-view.jsx'
+import { JsonView } from '../json-view/json-view.jsx'
 import React from 'react'
 import {
   Select,
@@ -25,10 +25,7 @@ export const Default = {
     const [vlr, setVlr] = React.useState('')
     return (
       <div className="flex flex-col space-y-4">
-        <Select
-          value={vlr}
-          onValueChange={(e) => setVlr(e)}
-        >
+        <Select value={vlr} onValueChange={(e) => setVlr(e)}>
           <SelectTrigger className="w-[180px]">
             <SelectValue />
           </SelectTrigger>

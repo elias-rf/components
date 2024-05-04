@@ -1,4 +1,4 @@
-import { JsonView } from '@/client/components/json-view/json-view.jsx'
+import { JsonView } from '../json-view/json-view.jsx'
 import React from 'react'
 import { Search } from './search.jsx'
 
@@ -25,7 +25,7 @@ const schema = [
 ]
 
 function SearchStory(props) {
-  const [where, setWhere] = React.useState < TWhere < 'id' >> [['id', '<', '4']]
+  const [where, setWhere] = React.useState([['id', '<', '4']])
 
   function handleOnWhere(where) {
     setWhere(where)
@@ -34,15 +34,8 @@ function SearchStory(props) {
 
   return (
     <div>
-      <Search
-        where={where}
-        schema={schema}
-        onWhere={handleOnWhere}
-      />
-      <JsonView
-        data={where}
-        className="mt-4 border-2 border-gray-500 p-2"
-      />
+      <Search where={where} schema={schema} onWhere={handleOnWhere} />
+      <JsonView data={where} className="p-2 mt-4 border-2 border-gray-500" />
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority'
 import * as React from 'react'
-import { cn } from '../../lib/utils.mjs'
+import { cn } from '../utils.mjs'
 
 const alertVariants = cva(
   'relative w-full rounded-lg border border-slate-200 px-4 py-3 text-sm [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-slate-950 [&>svg~*]:pl-7 dark:border-slate-800 dark:[&>svg]:text-slate-50',
@@ -18,6 +18,17 @@ const alertVariants = cva(
   }
 )
 
+/**
+ * @typedef {Object} AlertProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {"default" | "destructive"} [variant]
+ * @property {any} children
+ */
+
+/**
+ * @type {React.FC<AlertProps>}
+ */
 const Alert = React.forwardRef(({ className, variant, ...props }, ref) => (
   <div
     ref={ref}
@@ -28,6 +39,16 @@ const Alert = React.forwardRef(({ className, variant, ...props }, ref) => (
 ))
 Alert.displayName = 'Alert'
 
+/**
+ * @typedef {Object} AlertTitleProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {any} children
+ */
+
+/**
+ * @type {React.FC<AlertTitleProps>}
+ */
 const AlertTitle = React.forwardRef(({ className, ...props }, ref) => (
   <h5
     ref={ref}
@@ -37,6 +58,16 @@ const AlertTitle = React.forwardRef(({ className, ...props }, ref) => (
 ))
 AlertTitle.displayName = 'AlertTitle'
 
+/**
+ * @typedef {Object} AlertDescriptionProps
+ * @property {any} [ref]
+ * @property {string} [className]
+ * @property {any} children
+ */
+
+/**
+ * @type {React.FC<AlertDescriptionProps>}
+ */
 const AlertDescription = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}

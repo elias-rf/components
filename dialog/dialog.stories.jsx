@@ -1,6 +1,6 @@
-import { Button } from '@/client/components/button/button.jsx'
-import { Input } from '@/client/components/input/input.jsx'
-import { Label } from '@/client/components/label/label.jsx'
+import { Button } from '../button/button.jsx'
+import { Input } from '../input/input.jsx'
+import { Label } from '../label/label.jsx'
 import {
   Dialog,
   DialogContent,
@@ -33,30 +33,16 @@ export const Default = {
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label
-                htmlFor="name"
-                className="text-right"
-              >
+              <Label htmlFor="name" className="text-right">
                 Name
               </Label>
-              <Input
-                id="name"
-                value="Pedro Duarte"
-                className="col-span-3"
-              />
+              <Input id="name" value="Pedro Duarte" className="col-span-3" />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label
-                htmlFor="username"
-                className="text-right"
-              >
+              <Label htmlFor="username" className="text-right">
                 Username
               </Label>
-              <Input
-                id="username"
-                value="@peduarte"
-                className="col-span-3"
-              />
+              <Input id="username" value="@peduarte" className="col-span-3" />
             </div>
           </div>
           <DialogFooter>

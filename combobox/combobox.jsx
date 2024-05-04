@@ -4,17 +4,13 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-} from '@/client/components/command/command.jsx'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/client/components/popover/popover.jsx'
+} from '../command/command.jsx'
+import { Popover, PopoverContent, PopoverTrigger } from '../popover/popover.jsx'
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
 import * as React from 'react'
 
-import { Button } from '@/client/components/button/button.jsx'
-import { cn } from '@/client/lib/utils.mjs'
+import { Button } from '../button/button.jsx'
+import { cn } from '../utils.mjs'
 
 const Combobox = ({
   options,
@@ -28,10 +24,7 @@ const Combobox = ({
   const [vlr, setVlr] = React.useState(value)
 
   return (
-    <Popover
-      open={open}
-      onOpenChange={setOpen}
-    >
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
@@ -48,10 +41,7 @@ const Combobox = ({
       </PopoverTrigger>
       <PopoverContent className="p-0">
         <Command>
-          <CommandInput
-            placeholder={inputPlaceholder || ''}
-            className="h-9"
-          />
+          <CommandInput placeholder={inputPlaceholder || ''} className="h-9" />
           <CommandEmpty>Não encontrado</CommandEmpty>
           <CommandGroup>
             {options.map((option) => (

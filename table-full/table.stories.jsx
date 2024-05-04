@@ -1,4 +1,4 @@
-import { JsonView } from '@/client/components/json-view/json-view.jsx'
+import { JsonView } from '../json-view/json-view.jsx'
 
 import { isEqual } from 'lodash-es'
 import React from 'react'
@@ -52,20 +52,16 @@ const schema = [
 export const Default = {
   render: () => (
     <>
-      <Table
-        columns={schema}
-        rows={data}
-      ></Table>
+      <Table columns={schema} rows={data}></Table>
     </>
   ),
 }
 
 export const Full = {
   render: () => {
-    const [selection, setSelection] = React.useState < TSelection < string >> []
-    const [sort, setSort] = React.useState < TOrderBy < string >> []
-    const [filter, onFilter] =
-      React.useState < TWhere < string >> [['dessert', '>', 'Eclair']]
+    const [selection, setSelection] = React.useState([])
+    const [sort, setSort] = React.useState([])
+    const [filter, onFilter] = React.useState([['dessert', '>', 'Eclair']])
     const getId = (row) => [['dessert', row.dessert]]
 
     function onSelection(selected) {

@@ -2,7 +2,7 @@
 import { Slot } from '@radix-ui/react-slot'
 import { cva } from 'class-variance-authority'
 import * as React from 'react'
-import { cn } from '../../lib/utils.mjs'
+import { cn } from '../utils.mjs'
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-slate-300',
@@ -35,6 +35,21 @@ const buttonVariants = cva(
   }
 )
 
+/**
+ * @typedef {Object} AlertDialogFooterProps
+ * @property {any} [ref]
+ * @property {boolean} [disabled]
+ * @property {string} [className]
+ * @property {"default" | "destructive" | "outline" | "secondary" | "ghost" | "link"} [variant]
+ * @property {"default" | "sm" | "lg" | "icon"} [size]
+ * @property {string} [asChild]
+ * @property {(e:any)=>void} [onClick]
+ * @property {any} children
+ */
+
+/**
+ * @type {React.FC<AlertDialogFooterProps>}
+ */
 const Button = React.forwardRef(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button'

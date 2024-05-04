@@ -1,8 +1,19 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { CheckIcon } from '@radix-ui/react-icons'
 import * as React from 'react'
-import { cn } from '../../lib/utils.mjs'
+import { cn } from '../utils.mjs'
 
+/**
+ * @typedef {Object} Props
+ * @property {import('react').LegacyRef<HTMLButtonElement>} [ref]
+ * @property {string} [className]
+ * @property {boolean} [checked]
+ * @property {(e:any)=>void} [onCheckedChange]
+ */
+
+/**
+ * @type {React.FC<Props>}
+ */
 const Checkbox = React.forwardRef(({ className, ...props }, ref) => (
   <CheckboxPrimitive.Root
     ref={ref}
@@ -15,7 +26,7 @@ const Checkbox = React.forwardRef(({ className, ...props }, ref) => (
     <CheckboxPrimitive.Indicator
       className={cn('flex items-center justify-center text-current')}
     >
-      <CheckIcon className="h-4 w-4" />
+      <CheckIcon className="w-4 h-4" />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ))

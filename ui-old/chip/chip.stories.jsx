@@ -1,4 +1,4 @@
-import { Chip, TChipProps } from '@/client/components/ui-old/chip/chip.jsx'
+import { Chip } from './chip.jsx'
 
 const meta = {
   component: Chip,

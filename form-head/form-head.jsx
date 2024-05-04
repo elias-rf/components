@@ -1,5 +1,5 @@
 import { Permissions } from '../../features/permissions.jsx'
-import { cn } from '../../lib/utils.mjs'
+import { cn } from '../utils.mjs'
 import { Can } from '../can.jsx'
 import { Title } from '../title/title.jsx'
 
@@ -17,10 +17,7 @@ export function FormHead({
     >
       <div className="flex space-x-2">
         <Title>{title}</Title>
-        <Can
-          can={editPermissions}
-          elseCan={null}
-        >
+        <Can can={editPermissions} elseCan={null}>
           <Permissions permissions={permissions} />
         </Can>
       </div>

@@ -1,5 +1,5 @@
 import { Link } from 'wouter'
-import { cn } from '../lib/utils.mjs'
+import { cn } from './utils.mjs'
 
 export function Anchor({
   href,

@@ -1,9 +1,9 @@
 import { get } from 'lodash-es'
 import React from 'react'
-import { filterNonEmptyProperties } from '../../../utils/object/filter-non-empty-properties.mjs'
-import { formatWhere } from '../../../utils/query/format-where.mjs'
-import { parseWhere } from '../../../utils/query/parse-where.mjs'
-import { cn } from '../../lib/utils.mjs'
+import { filterNonEmptyProperties } from './filter-non-empty-properties.mjs'
+import { formatWhere } from './format-where.mjs'
+import { parseWhere } from './parse-where.mjs'
+import { cn } from '../utils.mjs'
 import { SearchIcon } from '../icons/search-icon.jsx'
 import { getIdDefault } from './get-id-default.mjs'
 import { InputFilter } from './input-filter.jsx'
@@ -81,7 +81,7 @@ export function Table({
 
   return (
     <div className="h-full overflow-auto">
-      <table className="whitespace-no-wrap relative w-full table-auto border-blue-400 text-left text-sm text-gray-500 dark:text-gray-400">
+      <table className="relative w-full text-sm text-left text-gray-500 whitespace-no-wrap border-blue-400 table-auto dark:text-gray-400">
         <thead className="sticky top-0">
           <tr>
             {columns.map((col) => (
@@ -99,10 +99,7 @@ export function Table({
               >
                 {col.label}
                 {isSortable(col) && (
-                  <ShowSortIcon
-                    col={col}
-                    orderBy={orderBy}
-                  />
+                  <ShowSortIcon col={col} orderBy={orderBy} />
                 )}
               </th>
             ))}
@@ -111,10 +108,10 @@ export function Table({
             <tr className="bg-gray-50">
               {columns.map((col) => (
                 <td
-                  className="bg-gray-50 p-0 dark:border-gray-500"
+                  className="p-0 bg-gray-50 dark:border-gray-500"
                   key={`whr-${col.name}`}
                 >
-                  <div className="flex flex-nowrap border border-gray-300 dark:bg-gray-700">
+                  <div className="flex border border-gray-300 flex-nowrap dark:bg-gray-700">
                     <InputFilter
                       name={col.name}
                       value={defaultValues[col.name] || ''}

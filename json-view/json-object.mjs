@@ -1,4 +1,3 @@
-import { JsonRenderProps } from './data-render.jsx'
 import { ExpandableObject } from './expandable-object.jsx'
 
 export function JsonObject({

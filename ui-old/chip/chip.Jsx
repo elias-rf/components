@@ -1,4 +1,4 @@
-import { cn } from '@/client/lib/utils.mjs'
+import { cn } from '../../utils.mjs'
 
 const colorClass = {
   primary:
@@ -104,7 +104,7 @@ export function Chip({
           onClick={() => onClose && onClose(name)}
         >
           <svg
-            className="h-2 w-2"
+            className="w-2 h-2"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 14 14"

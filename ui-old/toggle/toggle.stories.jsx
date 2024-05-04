@@ -1,5 +1,5 @@
-import { JsonView } from '@/client/components/json-view/json-view.jsx'
-import { Toggle } from '@/client/components/ui-old/toggle/toggle.jsx'
+import { JsonView } from '../../json-view/json-view.jsx'
+import { Toggle } from './toggle.jsx'
 
 import React from 'react'
 
@@ -21,11 +21,7 @@ export const Default = {
     const [vlr, setVlr] = React.useState(true)
     return (
       <div className="flex flex-col space-y-4">
-        <Toggle
-          {...props}
-          value={vlr}
-          onChange={(e) => setVlr(e)}
-        ></Toggle>
+        <Toggle {...props} value={vlr} onChange={(e) => setVlr(e)}></Toggle>
         <JsonView data={{ props, vlr }} />
       </div>
     )

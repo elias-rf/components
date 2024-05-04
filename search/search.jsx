@@ -1,15 +1,15 @@
-import { Button } from '@/client/components/button/button.jsx'
-import { Input } from '@/client/components/input/input.jsx'
-import { Label } from '@/client/components/label/label.jsx'
+import { Button } from '../button/button.jsx'
+import { Input } from '../input/input.jsx'
+import { Label } from '../label/label.jsx'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/client/components/select/select.jsx'
-import { Chip } from '@/client/components/ui-old/chip/chip.jsx'
-import { FormField } from '@/client/components/ui-old/form-field/index.mjs'
+} from '../select/select.jsx'
+import { Chip } from '../ui-old/chip/chip.jsx'
+import { FormField } from '../ui-old/form-field/index.mjs'
 
 import React, { useState } from 'react'
 
@@ -64,9 +64,9 @@ function getEqualityName(equality) {
 }
 
 export function Search({ schema = [], where = [], onWhere }) {
-  const [whr, setWhr] = useState < TWhere < any >> [] // where de trabalho
+  const [whr, setWhr] = useState([]) // where de trabalho
   const [fieldSelect, setFieldSelect] = useState(schema[0]?.name) // campo selecionado, default 1o campo.
-  const [equalitySelect, setEqualitySelect] = useState < string > '=' // igualdade selecionada, default =
+  const [equalitySelect, setEqualitySelect] = useState('=') // igualdade selecionada, default =
   const [valueInput, setValueInput] = useState('') // valor selecionado, default ""
 
   React.useEffect(() => {
@@ -119,10 +119,7 @@ export function Search({ schema = [], where = [], onWhere }) {
     <div className="flex flex-col space-y-2">
       <div className="flex flex-wrap items-center gap-2">
         {whr.map((item, idx) => (
-          <div
-            className=""
-            key={idx}
-          >
+          <div className="" key={idx}>
             <Chip
               onClose={() => handleDel(idx)}
               onClick={() => handleEdit(idx)}
@@ -138,22 +135,13 @@ export function Search({ schema = [], where = [], onWhere }) {
         <div className="basis-full">
           <FormField>
             <Label htmlFor="field">Campo</Label>
-            <Select
-              value={fieldSelect}
-              onValueChange={handleSelectField}
-            >
-              <SelectTrigger
-                className="w-full"
-                id="field"
-              >
+            <Select value={fieldSelect} onValueChange={handleSelectField}>
+              <SelectTrigger className="w-full" id="field">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 {schema.map((item) => (
-                  <SelectItem
-                    key={item.name}
-                    value={item.name}
-                  >
+                  <SelectItem key={item.name} value={item.name}>
                     {item.label}
                   </SelectItem>
                 ))}
@@ -168,19 +156,13 @@ export function Search({ schema = [], where = [], onWhere }) {
               value={equalitySelect}
               onValueChange={(value) => setEqualitySelect(value || '')}
             >
-              <SelectTrigger
-                className="w-full"
-                id="equality"
-              >
+              <SelectTrigger className="w-full" id="equality">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 {Object.entries(getEqualitys(fieldSelect, schema)).map(
                   ([key, value]) => (
-                    <SelectItem
-                      key={key}
-                      value={key}
-                    >
+                    <SelectItem key={key} value={key}>
                       {value}
                     </SelectItem>
                   )
@@ -192,18 +174,11 @@ export function Search({ schema = [], where = [], onWhere }) {
         <div className="basis-full">
           <FormField>
             <Label htmlFor="value">Valor</Label>
-            <Input
-              id="value"
-              value={valueInput}
-              onChange={handleInput}
-            />
+            <Input id="value" value={valueInput} onChange={handleInput} />
           </FormField>
         </div>
         <div className="basis-32">
-          <Button
-            onClick={handleAdd}
-            size="sm"
-          >
+          <Button onClick={handleAdd} size="sm">
             FILTRAR
           </Button>
         </div>

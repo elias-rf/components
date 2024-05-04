@@ -5,8 +5,8 @@ import {
 } from '@radix-ui/react-icons'
 import * as React from 'react'
 
-import { buttonVariants } from '@/client/components/button/button.jsx'
-import { cn } from '@/client/lib/utils.mjs'
+import { buttonVariants } from '../button/button.jsx'
+import { cn } from '../utils.mjs'
 
 const Pagination = ({ className, ...props }) => (
   <nav
@@ -27,11 +27,7 @@ const PaginationContent = React.forwardRef(({ className, ...props }, ref) => (
 PaginationContent.displayName = 'PaginationContent'
 
 const PaginationItem = React.forwardRef(({ className, ...props }, ref) => (
-  <li
-    ref={ref}
-    className={cn('', className)}
-    {...props}
-  />
+  <li ref={ref} className={cn('', className)} {...props} />
 ))
 PaginationItem.displayName = 'PaginationItem'
 
