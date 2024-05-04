@@ -1,4 +1,4 @@
-import { formatWhere } from '@/utils/query/format-where.js'
+import { formatWhere } from './format-where.mjs'
 import { describe, expect, test } from 'vitest'
 
 const columns = [

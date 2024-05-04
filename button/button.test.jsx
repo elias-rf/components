@@ -7,6 +7,7 @@ describe('Button', () => {
     render(<Button>Content</Button>)
     expect(screen.getByText('Content')).toBeDefined()
   })
+
   test('deve aceitar click', () => {
     let clicked = false
     render(

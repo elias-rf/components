@@ -1,5 +1,5 @@
 import { HomeIcon } from '../icons/home-icon.jsx'
-import { BreadCrumb } from './bread-crumb.jsx'
+import { BreadCrumb, BreadCrumbItem } from './bread-crumb.jsx'
 
 const meta = {
   component: BreadCrumb,
@@ -12,12 +12,12 @@ export const Default = {
   render: () => (
     <>
       <BreadCrumb onClick={(path) => console.log('clicked', path)}>
-        <BreadCrumb.Item path="/">
-          <HomeIcon className="mr-2 h-3 w-3" />
+        <BreadCrumbItem path="/">
+          <HomeIcon className="w-3 h-3 mr-2" />
           Home
-        </BreadCrumb.Item>
-        <BreadCrumb.Item path="/projects">Projects</BreadCrumb.Item>
-        <BreadCrumb.Item path="/projects/project_1">Project 1</BreadCrumb.Item>
+        </BreadCrumbItem>
+        <BreadCrumbItem path="/projects">Projects</BreadCrumbItem>
+        <BreadCrumbItem path="/projects/project_1">Project 1</BreadCrumbItem>
       </BreadCrumb>
     </>
   ),

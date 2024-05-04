@@ -35,7 +35,9 @@ export const BreadCrumbItem = ({ children, path }) => {
 export const BreadCrumb = ({ onClick, children }) => {
   const childrenArray = Children.toArray(children)
 
-  const childrenWtihSeperator = childrenArray.map((child, index) => {
+  const childrenWtihSeperator = childrenArray.map(
+    /** @type {(child: React.ReactElement, index: number)=>React.ReactNode} */
+    (child, index) => {
     if (index !== childrenArray.length - 1) {
       return (
         <Fragment key={index}>

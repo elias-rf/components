@@ -1,5 +1,5 @@
-import { Modal, TModalProps } from './modal.jsx'
 import { useState } from 'react'
+import { Modal } from './modal.jsx'
 
 const meta = {
   component: Modal,

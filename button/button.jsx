@@ -1,5 +1,5 @@
 // Cores alteradas
-import { Slot } from '@radix-ui/react-slot'
+import { Slot } from '../radix/slot/slot.jsx'
 import { cva } from 'class-variance-authority'
 import * as React from 'react'
 import { cn } from '../utils.mjs'
@@ -36,7 +36,8 @@ const buttonVariants = cva(
 )
 
 /**
- * @typedef {Object} AlertDialogFooterProps
+ * @typedef {Object} ButtonProps
+ * @extends {React.HTMLAttributes<HTMLButtonElement>}
  * @property {any} [ref]
  * @property {boolean} [disabled]
  * @property {string} [className]
@@ -44,11 +45,10 @@ const buttonVariants = cva(
  * @property {"default" | "sm" | "lg" | "icon"} [size]
  * @property {string} [asChild]
  * @property {(e:any)=>void} [onClick]
- * @property {any} children
  */
 
 /**
- * @type {React.FC<AlertDialogFooterProps>}
+ * @type {React.FC<ButtonProps>}
  */
 const Button = React.forwardRef(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
