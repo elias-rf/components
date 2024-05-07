@@ -60,7 +60,18 @@ const disabledOutlineClass = {
     'text-purple-700/50 border-purple-700/50 dark:border-purple-400/50 dark:text-purple-400/50',
 }
 
-export function Chip({
+/**
+ * @typedef {Object} ChipProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {string} [name]
+ * @property {React.Element} [children]
+ * @property {(any[][])=>void} [onWhere]
+ */
+
+/**
+ * @type {React.FC<ChipProps>}
+ */
+export const Chip = ({
   name = '',
   children,
   onClick,
@@ -69,7 +80,7 @@ export function Chip({
   outline = false,
   color = 'primary',
   className,
-}) {
+}) => {
   return (
     <>
       <div className="inline-flex rounded-md shadow-sm">

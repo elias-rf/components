@@ -1,10 +1,12 @@
 import PropType from 'prop-types'
 
 /**
- * Renders a component that hides its content when printed.
- *
- * @param {JSX.Element} children - The content to be rendered inside the component.
- * @return {JSX.Element} The rendered component with hidden print styling.
+ * @typedef {Object} NoPrintProps
+ * @property {React.ReactElement} [children]
+ */
+
+/**
+ * @type {React.FC<NoPrintProps>}
  */
 export function NoPrint({ children }) {
   return (

@@ -4,6 +4,21 @@ import * as React from 'react'
 
 import { cn } from '../utils.mjs'
 
+/**
+ * @typedef {Object} RadioGroupProps
+ * @extends {RadioGroupPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {boolean} [disabled]
+ * @property {string} [className]
+ * @property {string} [align]
+ * @property {"default" | "sm" | "lg" | "icon"} [size]
+ * @property {string} [asChild]
+ * @property {(e:any)=>void} [onClick]
+ */
+
+/**
+ * @type {React.FC<RadioGroupProps>}
+ */
 const RadioGroup = React.forwardRef(({ className, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Root
@@ -15,6 +30,21 @@ const RadioGroup = React.forwardRef(({ className, ...props }, ref) => {
 })
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
 
+/**
+ * @typedef {Object} RadioGroupItemProps
+ * @extends {RadioGroupPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {boolean} [disabled]
+ * @property {string} [className]
+ * @property {string} [align]
+ * @property {"default" | "sm" | "lg" | "icon"} [size]
+ * @property {string} [asChild]
+ * @property {(e:any)=>void} [onClick]
+ */
+
+/**
+ * @type {React.FC<RadioGroupItemProps>}
+ */
 const RadioGroupItem = React.forwardRef(({ className, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Item

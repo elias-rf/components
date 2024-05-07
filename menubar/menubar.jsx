@@ -17,6 +17,16 @@ const MenubarSub = MenubarPrimitive.Sub
 
 const MenubarRadioGroup = MenubarPrimitive.RadioGroup
 
+/**
+ * @typedef {Object} MenubarProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<MenubarProps>}
+ */
 const Menubar = React.forwardRef(({ className, ...props }, ref) => (
   <MenubarPrimitive.Root
     component-name="Menubar"
@@ -30,6 +40,16 @@ const Menubar = React.forwardRef(({ className, ...props }, ref) => (
 ))
 Menubar.displayName = MenubarPrimitive.Root.displayName
 
+/**
+ * @typedef {Object} MenubarTriggerProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<MenubarTriggerProps>}
+ */
 const MenubarTrigger = React.forwardRef(({ className, ...props }, ref) => (
   <MenubarPrimitive.Trigger
     ref={ref}
@@ -42,6 +62,16 @@ const MenubarTrigger = React.forwardRef(({ className, ...props }, ref) => (
 ))
 MenubarTrigger.displayName = MenubarPrimitive.Trigger.displayName
 
+/**
+ * @typedef {Object} MenubarSubTriggerProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<MenubarSubTriggerProps>}
+ */
 const MenubarSubTrigger = React.forwardRef(
   ({ className, inset, children, ...props }, ref) => (
     <MenubarPrimitive.SubTrigger
@@ -54,11 +84,22 @@ const MenubarSubTrigger = React.forwardRef(
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto h-4 w-4" />
+      <ChevronRightIcon className="w-4 h-4 ml-auto" />
     </MenubarPrimitive.SubTrigger>
   )
 )
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName
+
+/**
+ * @typedef {Object} MenubarSubContentProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<MenubarSubContentProps>}
+ */
 
 const MenubarSubContent = React.forwardRef(({ className, ...props }, ref) => (
   <MenubarPrimitive.SubContent
@@ -71,6 +112,17 @@ const MenubarSubContent = React.forwardRef(({ className, ...props }, ref) => (
   />
 ))
 MenubarSubContent.displayName = MenubarPrimitive.SubContent.displayName
+
+/**
+ * @typedef {Object} MenubarContentProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<MenubarContentProps>}
+ */
 
 const MenubarContent = React.forwardRef(
   (
@@ -94,6 +146,17 @@ const MenubarContent = React.forwardRef(
 )
 MenubarContent.displayName = MenubarPrimitive.Content.displayName
 
+/**
+ * @typedef {Object} MenubarItemProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<MenubarItemProps>}
+ */
+
 const MenubarItem = React.forwardRef(({ className, inset, ...props }, ref) => (
   <MenubarPrimitive.Item
     ref={ref}
@@ -106,6 +169,17 @@ const MenubarItem = React.forwardRef(({ className, inset, ...props }, ref) => (
   />
 ))
 MenubarItem.displayName = MenubarPrimitive.Item.displayName
+
+/**
+ * @typedef {Object} MenubarCheckboxItemProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<MenubarCheckboxItemProps>}
+ */
 
 const MenubarCheckboxItem = React.forwardRef(
   ({ className, children, checked, ...props }, ref) => (
@@ -120,7 +194,7 @@ const MenubarCheckboxItem = React.forwardRef(
     >
       <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
-          <CheckIcon className="h-4 w-4" />
+          <CheckIcon className="w-4 h-4" />
         </MenubarPrimitive.ItemIndicator>
       </span>
       {children}
@@ -128,6 +202,17 @@ const MenubarCheckboxItem = React.forwardRef(
   )
 )
 MenubarCheckboxItem.displayName = MenubarPrimitive.CheckboxItem.displayName
+
+/**
+ * @typedef {Object} MenubarRadioItemProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<MenubarRadioItemProps>}
+ */
 
 const MenubarRadioItem = React.forwardRef(
   ({ className, children, ...props }, ref) => (
@@ -141,7 +226,7 @@ const MenubarRadioItem = React.forwardRef(
     >
       <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
-          <DotFilledIcon className="h-4 w-4 fill-current" />
+          <DotFilledIcon className="w-4 h-4 fill-current" />
         </MenubarPrimitive.ItemIndicator>
       </span>
       {children}
@@ -149,6 +234,17 @@ const MenubarRadioItem = React.forwardRef(
   )
 )
 MenubarRadioItem.displayName = MenubarPrimitive.RadioItem.displayName
+
+/**
+ * @typedef {Object} MenubarLabelProps
+ * @extends {MenubarPrimitive.LabelProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<MenubarLabelProps>}
+ */
 
 const MenubarLabel = React.forwardRef(({ className, inset, ...props }, ref) => (
   <MenubarPrimitive.Label
@@ -163,6 +259,17 @@ const MenubarLabel = React.forwardRef(({ className, inset, ...props }, ref) => (
 ))
 MenubarLabel.displayName = MenubarPrimitive.Label.displayName
 
+/**
+ * @typedef {Object} MenubarSeparatorProps
+ * @extends {MenubarPrimitive.SeparatorProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<MenubarSeparatorProps>}
+ */
+
 const MenubarSeparator = React.forwardRef(({ className, ...props }, ref) => (
   <MenubarPrimitive.Separator
     ref={ref}
@@ -172,6 +279,15 @@ const MenubarSeparator = React.forwardRef(({ className, ...props }, ref) => (
 ))
 MenubarSeparator.displayName = MenubarPrimitive.Separator.displayName
 
+/**
+ * @typedef {Object} MenubarShortcutProps
+ * @extends {React.HTMLAttributes<HTMLSpanElement>}
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<MenubarShortcutProps>}
+ */
 const MenubarShortcut = ({ className, ...props }) => {
   return (
     <span
@@ -183,7 +299,7 @@ const MenubarShortcut = ({ className, ...props }) => {
     />
   )
 }
-MenubarShortcut.displayname = 'MenubarShortcut'
+MenubarShortcut.displayName = 'MenubarShortcut'
 
 export {
   Menubar,

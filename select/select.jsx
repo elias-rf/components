@@ -15,6 +15,16 @@ const SelectGroup = SelectPrimitive.Group
 
 const SelectValue = SelectPrimitive.Value
 
+/**
+ * @typedef {Object} SelectTriggerProps
+ * @extends {SelectPrimitive.TriggerProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<SelectTriggerProps>}
+ */
 const SelectTrigger = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <SelectPrimitive.Trigger
@@ -27,13 +37,23 @@ const SelectTrigger = React.forwardRef(
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <CaretSortIcon className="h-4 w-4 opacity-50" />
+        <CaretSortIcon className="w-4 h-4 opacity-50" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   )
 )
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName
 
+/**
+ * @typedef {Object} SelectScrollUpButtonProps
+ * @extends {SelectPrimitive.TriggerProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<SelectScrollUpButtonProps>}
+ */
 const SelectScrollUpButton = React.forwardRef(
   ({ className, ...props }, ref) => (
     <SelectPrimitive.ScrollUpButton
@@ -50,6 +70,16 @@ const SelectScrollUpButton = React.forwardRef(
 )
 SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName
 
+/**
+ * @typedef {Object} SelectScrollDownButtonProps
+ * @extends {SelectPrimitive.TriggerProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<SelectScrollDownButtonProps>}
+ */
 const SelectScrollDownButton = React.forwardRef(
   ({ className, ...props }, ref) => (
     <SelectPrimitive.ScrollDownButton
@@ -67,6 +97,16 @@ const SelectScrollDownButton = React.forwardRef(
 SelectScrollDownButton.displayName =
   SelectPrimitive.ScrollDownButton.displayName
 
+/**
+ * @typedef {Object} SelectContentProps
+ * @extends {SelectPrimitive.TriggerProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<SelectContentProps>}
+ */
 const SelectContent = React.forwardRef(
   ({ className, children, position = 'popper', ...props }, ref) => (
     <SelectPrimitive.Portal>
@@ -98,6 +138,16 @@ const SelectContent = React.forwardRef(
 )
 SelectContent.displayName = SelectPrimitive.Content.displayName
 
+/**
+ * @typedef {Object} SelectLabelProps
+ * @extends {SelectPrimitive.TriggerProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<SelectLabelProps>}
+ */
 const SelectLabel = React.forwardRef(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
@@ -107,6 +157,16 @@ const SelectLabel = React.forwardRef(({ className, ...props }, ref) => (
 ))
 SelectLabel.displayName = SelectPrimitive.Label.displayName
 
+/**
+ * @typedef {Object} SelectItemProps
+ * @extends {SelectPrimitive.TriggerProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<SelectItemProps>}
+ */
 const SelectItem = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <SelectPrimitive.Item
@@ -119,7 +179,7 @@ const SelectItem = React.forwardRef(
     >
       <span className="absolute right-2 flex h-3.5 w-3.5 items-center justify-center">
         <SelectPrimitive.ItemIndicator>
-          <CheckIcon className="h-4 w-4" />
+          <CheckIcon className="w-4 h-4" />
         </SelectPrimitive.ItemIndicator>
       </span>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
@@ -128,6 +188,16 @@ const SelectItem = React.forwardRef(
 )
 SelectItem.displayName = SelectPrimitive.Item.displayName
 
+/**
+ * @typedef {Object} SelectSeparatorProps
+ * @extends {SelectPrimitive.TriggerProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<SelectSeparatorProps>}
+ */
 const SelectSeparator = React.forwardRef(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}

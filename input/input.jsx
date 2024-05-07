@@ -2,6 +2,16 @@ import * as React from 'react'
 
 import { cn } from '../utils.mjs'
 
+/**
+ * @typedef {Object} InputProps
+ * @extends {LabelPrimitive.RootProps}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<InputProps>}
+ */
 const Input = React.forwardRef(({ className, type, ...props }, ref) => {
   return (
     <input

@@ -9,6 +9,21 @@ const PopoverTrigger = PopoverPrimitive.Trigger
 
 const PopoverAnchor = PopoverPrimitive.Anchor
 
+/**
+ * @typedef {Object} PopoverContentProps
+ * @extends {PopoverPrimitive.PopoverContentProps}
+ * @property {any} [ref]
+ * @property {boolean} [disabled]
+ * @property {string} [className]
+ * @property {string} [align]
+ * @property {"default" | "sm" | "lg" | "icon"} [size]
+ * @property {string} [asChild]
+ * @property {(e:any)=>void} [onClick]
+ */
+
+/**
+ * @type {React.FC<PopoverContentProps>}
+ */
 const PopoverContent = React.forwardRef(
   ({ className, align = 'center', sideOffset = 4, ...props }, ref) => (
     <PopoverPrimitive.Portal>

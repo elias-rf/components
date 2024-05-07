@@ -3,6 +3,16 @@ import * as React from 'react'
 
 import { cn } from '../utils.mjs'
 
+/**
+ * @typedef {Object} ScrollAreaProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<ScrollAreaProps>}
+ */
 const ScrollArea = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <ScrollAreaPrimitive.Root
@@ -20,6 +30,16 @@ const ScrollArea = React.forwardRef(
 )
 ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName
 
+/**
+ * @typedef {Object} ScrollBarAreaProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<ScrollBarAreaProps>}
+ */
 const ScrollBar = React.forwardRef(
   ({ className, orientation = 'vertical', ...props }, ref) => (
     <ScrollAreaPrimitive.ScrollAreaScrollbar

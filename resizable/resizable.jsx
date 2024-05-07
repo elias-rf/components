@@ -1,8 +1,17 @@
 import { DragHandleDots2Icon } from '@radix-ui/react-icons'
 import * as ResizablePrimitive from 'react-resizable-panels'
-
 import { cn } from '../utils.mjs'
 
+/**
+ * @typedef {Object} ResizablePanelGroupProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<ResizablePanelGroupProps>}
+ */
 const ResizablePanelGroup = ({ className, ...props }) => (
   <ResizablePrimitive.PanelGroup
     className={cn(
@@ -15,6 +24,16 @@ const ResizablePanelGroup = ({ className, ...props }) => (
 
 const ResizablePanel = ResizablePrimitive.Panel
 
+/**
+ * @typedef {Object} ResizableHandleProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<ResizableHandleProps>}
+ */
 const ResizableHandle = ({ withHandle, className, ...props }) => (
   <ResizablePrimitive.PanelResizeHandle
     className={cn(
@@ -24,7 +43,7 @@ const ResizableHandle = ({ withHandle, className, ...props }) => (
     {...props}
   >
     {withHandle && (
-      <div className="z-10 flex h-4 w-3 items-center justify-center rounded-sm border border-slate-200 bg-slate-200 dark:border-slate-800 dark:bg-slate-800">
+      <div className="z-10 flex items-center justify-center w-3 h-4 border rounded-sm border-slate-200 bg-slate-200 dark:border-slate-800 dark:bg-slate-800">
         <DragHandleDots2Icon className="h-2.5 w-2.5" />
       </div>
     )}

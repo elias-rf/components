@@ -20,6 +20,16 @@ export const defaultStyles = {
 export const allExpanded = () => true
 export const collapseAllNested = (level) => level < 1
 
+/**
+ * @typedef {Object} InputProps
+ * @extends {LabelPrimitive.RootProps}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<InputProps>}
+ */
 export const JsonView = ({
   data,
   style = defaultStyles,

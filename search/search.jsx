@@ -13,7 +13,13 @@ import { FormField } from '../ui-old/form-field/index.mjs'
 
 import React, { useState } from 'react'
 
-// retorna uma lista de igualdades de acordo como o tipo do campoß
+/**
+ * Retrieves the available equality options for a given field based on the schema.
+ *
+ * @param {string} field - The name of the field.
+ * @param {object[]} schema - The schema object containing field information.
+ * @returns {object} An object mapping equality names to their corresponding display names.
+ */
 function getEqualitys(field, schema) {
   const equalitys = {
     '=': 'igual a',
@@ -47,14 +53,25 @@ function getEqualitys(field, schema) {
   }
 }
 
-// retorna o nome do campo
+/**
+ * Returns the label for the given field in the provided schema.
+ *
+ * @param {string} field - The name of the field to get the label for.
+ * @param {object[]} schema - The schema object containing the field definitions.
+ * @returns {string} The label for the given field, or an empty string if not found.
+ */
 function getFieldTitle(field, schema) {
   const aux = schema.find((col) => col.name === field)
   const rsp = aux?.label
   return rsp || ''
 }
 
-// retorna o nome da igualdade
+/**
+ * Converts an equality operator string to a display-friendly symbol.
+ *
+ * @param {string} equality - The equality operator, such as '=', '!=', 'like', etc.
+ * @returns {string} The display-friendly symbol for the given equality operator.
+ */
 function getEqualityName(equality) {
   let rsp = equality
   if (rsp === 'like') {
@@ -63,7 +80,18 @@ function getEqualityName(equality) {
   return rsp || ''
 }
 
-export function Search({ schema = [], where = [], onWhere }) {
+/**
+ * @typedef {Object} SearchProps
+ * @extends {ScrollAreaPrimitive.RootProps}
+ * @property {any[]} [schema]
+ * @property {any[][]} [where]
+ * @property {(any[][])=>void} [onWhere]
+ */
+
+/**
+ * @type {React.FC<SearchProps>}
+ */
+export const Search = ({ schema = [], where = [], onWhere }) => {
   const [whr, setWhr] = useState([]) // where de trabalho
   const [fieldSelect, setFieldSelect] = useState(schema[0]?.name) // campo selecionado, default 1o campo.
   const [equalitySelect, setEqualitySelect] = useState('=') // igualdade selecionada, default =
@@ -119,7 +147,10 @@ export function Search({ schema = [], where = [], onWhere }) {
     <div className="flex flex-col space-y-2">
       <div className="flex flex-wrap items-center gap-2">
         {whr.map((item, idx) => (
-          <div className="" key={idx}>
+          <div
+            className=""
+            key={idx}
+          >
             <Chip
               onClose={() => handleDel(idx)}
               onClick={() => handleEdit(idx)}
@@ -135,13 +166,22 @@ export function Search({ schema = [], where = [], onWhere }) {
         <div className="basis-full">
           <FormField>
             <Label htmlFor="field">Campo</Label>
-            <Select value={fieldSelect} onValueChange={handleSelectField}>
-              <SelectTrigger className="w-full" id="field">
+            <Select
+              value={fieldSelect}
+              onValueChange={handleSelectField}
+            >
+              <SelectTrigger
+                className="w-full"
+                id="field"
+              >
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 {schema.map((item) => (
-                  <SelectItem key={item.name} value={item.name}>
+                  <SelectItem
+                    key={item.name}
+                    value={item.name}
+                  >
                     {item.label}
                   </SelectItem>
                 ))}
@@ -156,13 +196,19 @@ export function Search({ schema = [], where = [], onWhere }) {
               value={equalitySelect}
               onValueChange={(value) => setEqualitySelect(value || '')}
             >
-              <SelectTrigger className="w-full" id="equality">
+              <SelectTrigger
+                className="w-full"
+                id="equality"
+              >
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 {Object.entries(getEqualitys(fieldSelect, schema)).map(
                   ([key, value]) => (
-                    <SelectItem key={key} value={key}>
+                    <SelectItem
+                      key={key}
+                      value={key}
+                    >
                       {value}
                     </SelectItem>
                   )
@@ -174,11 +220,18 @@ export function Search({ schema = [], where = [], onWhere }) {
         <div className="basis-full">
           <FormField>
             <Label htmlFor="value">Valor</Label>
-            <Input id="value" value={valueInput} onChange={handleInput} />
+            <Input
+              id="value"
+              value={valueInput}
+              onChange={handleInput}
+            />
           </FormField>
         </div>
         <div className="basis-32">
-          <Button onClick={handleAdd} size="sm">
+          <Button
+            onClick={handleAdd}
+            size="sm"
+          >
             FILTRAR
           </Button>
         </div>

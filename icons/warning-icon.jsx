@@ -1,5 +1,9 @@
 import { cn } from '../utils.mjs'
 
+/**
+ * @property {object} [props]
+ * @property {string} [props.className]
+ */
 export function WarningIcon({ className }) {
   return (
     <svg

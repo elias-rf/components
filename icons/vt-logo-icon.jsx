@@ -6,6 +6,11 @@ const colorProp = {
   blue: '#008bd1',
 }
 
+/**
+ * @property {object} [props]
+ * @property {string} [props.className]
+ * @property {'black'|'white'|'blue'} [props.color]
+ */
 export function VtLogoIcon({ className, color = 'blue' }) {
   return (
     <svg
