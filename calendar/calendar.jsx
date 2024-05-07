@@ -1,10 +1,30 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons'
 import { ptBR } from 'date-fns/locale'
 import { DayPicker } from 'react-day-picker'
-import { cn } from '../utils.mjs'
 import { buttonVariants } from '../button/button.jsx'
+import { cn } from '../utils.mjs'
 
-function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
+/**
+ * @typedef {Object} CalendarPropsTmp
+ * @property {string} [className] - Additional CSS class names to apply to the calendar.
+ * @property {Object} [classNames] - Custom CSS class names for the calendar elements.
+ * @property {boolean} [showOutsideDays=true] - Whether to show days from the previous and next months.
+ * @property {any} [mode] - The calendar mode, either 'single' or 'range'.
+ * @returns {JSX.Element} - The rendered calendar component.
+ * @typedef {import('react-day-picker').DayPickerProps & CalendarPropsTmp} CalendarProps
+ */
+
+/**
+ * A React component that renders a calendar using the DayPicker library.
+ *
+ * @type {React.FC<CalendarProps>}
+ */
+export const Calendar = ({
+  className,
+  classNames,
+  showOutsideDays = true,
+  ...props
+}) => {
   return (
     <>
       <DayPicker
@@ -63,5 +83,3 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
   )
 }
 Calendar.displayName = 'Calendar'
-
-export { Calendar }

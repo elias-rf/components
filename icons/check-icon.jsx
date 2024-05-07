@@ -1,6 +1,10 @@
 import { cn } from '../utils.mjs'
 
-export function CheckIcon({ className }) {
+/**
+ * @property {object} [props]
+ * @property {string} [props.className]
+ */
+export const CheckIcon = ({ className }) => {
   return (
     <svg
       className={cn('inline-block h-5 w-5', className)}

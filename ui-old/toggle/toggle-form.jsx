@@ -1,13 +1,23 @@
 import React from 'react'
 
+/**
+ * @typedef {Object} ToggleFormProps
+ * @extends {React.HTMLAttributes<HTMLInputElement>}
+ * @property {any} [ref]
+ * @property {string} [name]
+ */
+
+/**
+ * @type {React.FC<ToggleFormProps>}
+ */
 export const ToggleForm = React.forwardRef(
   ({ className, disabled = false, name, onBlur, onChange }, ref) => {
     return (
       <>
-        <label className="relative inline-flex cursor-pointer items-center">
+        <label className="relative inline-flex items-center cursor-pointer">
           <input
             type="checkbox"
-            className="peer sr-only"
+            className="sr-only peer"
             ref={ref}
             onBlur={onBlur}
             onChange={onChange}
