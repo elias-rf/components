@@ -2,10 +2,14 @@
 import { cn } from '../lib/utils.mjs'
 
 /**
- * @property {object} [props]
- * @property {string} [props.className]
+ * @typedef {object} SpinnerIconProps
+ * @property {string} [className]
  */
-export function SpinnerIcon({ className }) {
+
+/**
+ * @type {React.FC<SpinnerIconProps>}
+ */
+export const SpinnerIcon = ({ className }) => {
   return (
     <svg
       viewBox="0 0 24 24"
