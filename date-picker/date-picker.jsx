@@ -1,15 +1,14 @@
 import { Button } from '../button/button.jsx'
 import { Calendar } from '../calendar/calendar.jsx'
 import { Popover, PopoverContent, PopoverTrigger } from '../popover/popover.jsx'
-import { getDateFormat } from '@/utils/date/get-date-format.mjs'
+import { getDateFormat } from '../lib/get-date-format.mjs'
 import { CalendarIcon } from '@radix-ui/react-icons'
 import { format, parse } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import React from 'react'
 
-export function DatePicker({ value, onChange }) {
-  const [selected, setSelected] =
-    (React.useState < Date) | (undefined > new Date())
+export const DatePicker = ({ value, onChange }) => {
+  const [selected, setSelected] = React.useState(new Date())
 
   React.useEffect(() => {
     const format = getDateFormat(value)
@@ -33,7 +32,7 @@ export function DatePicker({ value, onChange }) {
     <Popover>
       <PopoverTrigger asChild>
         <Button variant={'ghost'} size={'icon'}>
-          <CalendarIcon className="h-4 w-4" />
+          <CalendarIcon className="w-4 h-4" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">

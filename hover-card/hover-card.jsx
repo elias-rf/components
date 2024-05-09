@@ -1,12 +1,24 @@
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card'
 import * as React from 'react'
 
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
 const HoverCard = HoverCardPrimitive.Root
 
 const HoverCardTrigger = HoverCardPrimitive.Trigger
 
+/**
+ * @typedef {Object} HoverCardContentProps
+ * @extends {HoverCardPrimitive.ContentProps}
+ * @property {string} [className]
+ * @property {'left' | 'right' | 'top' | 'bottom' | 'center'} [align]
+ * @property {number} [sideOffset]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<HoverCardContentProps>}
+ */
 const HoverCardContent = React.forwardRef(
   ({ className, align = 'center', sideOffset = 4, ...props }, ref) => (
     <HoverCardPrimitive.Content

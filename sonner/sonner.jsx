@@ -1,6 +1,16 @@
 import { useTheme } from 'next-themes'
 import { Toaster as Sonner } from 'sonner'
 
+/**
+ * @typedef {Object} ToastViewportProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ToastViewportProps>}
+ */
 const Toaster = ({ ...props }) => {
   const { theme = 'system' } = useTheme()
 

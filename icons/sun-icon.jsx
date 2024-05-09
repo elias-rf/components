@@ -1,6 +1,15 @@
-import { cn } from '../utils.mjs'
+// @ts-check
+import { cn } from '../lib/utils.mjs'
 
-export function SunIcon({ className }) {
+/**
+ * @typedef {object} SunIconProps
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<SunIconProps>}
+ */
+export const SunIcon = ({ className }) => {
   return (
     <svg
       className={cn('inline-block h-5 w-5', className)}

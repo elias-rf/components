@@ -2,9 +2,17 @@ import { ChevronDownIcon } from '@radix-ui/react-icons'
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
 import { cva } from 'class-variance-authority'
 import * as React from 'react'
+import { cn } from '../lib/utils.mjs'
 
-import { cn } from '../utils.mjs'
+/**
+ * @typedef {Object} NavigationMenuProps
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
 
+/**
+ * @type {React.FC<NavigationMenuProps>}
+ */
 const NavigationMenu = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <NavigationMenuPrimitive.Root
@@ -22,6 +30,15 @@ const NavigationMenu = React.forwardRef(
 )
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
 
+/**
+ * @typedef {Object} NavigationMenuListProps
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<NavigationMenuListProps>}
+ */
 const NavigationMenuList = React.forwardRef(({ className, ...props }, ref) => (
   <NavigationMenuPrimitive.List
     ref={ref}
@@ -40,6 +57,15 @@ const navigationMenuTriggerStyle = cva(
   'group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-slate-100 hover:text-slate-900 focus:bg-slate-100 focus:text-slate-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-slate-100/50 data-[state=open]:bg-slate-100/50 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50 dark:focus:bg-slate-800 dark:focus:text-slate-50 dark:data-[active]:bg-slate-800/50 dark:data-[state=open]:bg-slate-800/50'
 )
 
+/**
+ * @typedef {Object} NavigationMenuTriggerProps
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<NavigationMenuTriggerProps>}
+ */
 const NavigationMenuTrigger = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <NavigationMenuPrimitive.Trigger
@@ -58,6 +84,15 @@ const NavigationMenuTrigger = React.forwardRef(
 )
 NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName
 
+/**
+ * @typedef {Object} NavigationMenuContentProps
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<NavigationMenuContentProps>}
+ */
 const NavigationMenuContent = React.forwardRef(
   ({ className, ...props }, ref) => (
     <NavigationMenuPrimitive.Content
@@ -74,6 +109,15 @@ NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName
 
 const NavigationMenuLink = NavigationMenuPrimitive.Link
 
+/**
+ * @typedef {Object} NavigationMenuViewportProps
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<NavigationMenuViewportProps>}
+ */
 const NavigationMenuViewport = React.forwardRef(
   ({ className, ...props }, ref) => (
     <div className={cn('absolute left-0 top-full flex justify-center')}>
@@ -91,6 +135,15 @@ const NavigationMenuViewport = React.forwardRef(
 NavigationMenuViewport.displayName =
   NavigationMenuPrimitive.Viewport.displayName
 
+/**
+ * @typedef {Object} NavigationMenuIndicatorProps
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<NavigationMenuIndicatorProps>}
+ */
 const NavigationMenuIndicator = React.forwardRef(
   ({ className, ...props }, ref) => (
     <NavigationMenuPrimitive.Indicator

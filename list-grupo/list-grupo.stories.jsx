@@ -1,5 +1,6 @@
 import { Checkbox } from '../checkbox/checkbox.jsx'
 import { ListGrupo } from '../list-grupo/list-grupo.jsx'
+import { ListGrupoItem } from '../list-grupo/list-grupo-item.jsx'
 import React from 'react'
 
 const meta = {
@@ -15,7 +16,7 @@ export const Default = {
     return (
       <>
         <ListGrupo>
-          <ListGrupo.Item
+          <ListGrupoItem
             key={1}
             onClick={() => {
               setActive('1')
@@ -27,8 +28,8 @@ export const Default = {
               <Checkbox checked={data[0]} />
               <div>Teste 1</div>
             </div>
-          </ListGrupo.Item>
-          <ListGrupo.Item
+          </ListGrupoItem>
+          <ListGrupoItem
             key={11}
             onClick={() => {
               setActive('11')
@@ -40,8 +41,8 @@ export const Default = {
               <Checkbox checked={data[1]} />
               <div>Teste 11</div>
             </div>
-          </ListGrupo.Item>
-          <ListGrupo.Item
+          </ListGrupoItem>
+          <ListGrupoItem
             key={111}
             onClick={() => {
               setActive('111')
@@ -53,7 +54,7 @@ export const Default = {
               <Checkbox checked={data[2]} />
               <div>Teste 111</div>
             </div>
-          </ListGrupo.Item>
+          </ListGrupoItem>
         </ListGrupo>
       </>
     )

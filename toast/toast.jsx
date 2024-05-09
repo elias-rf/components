@@ -3,10 +3,20 @@ import * as ToastPrimitives from '@radix-ui/react-toast'
 import { cva } from 'class-variance-authority'
 import * as React from 'react'
 
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
 const ToastProvider = ToastPrimitives.Provider
 
+/**
+ * @typedef {Object} ToastViewportProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ToastViewportProps>}
+ */
 const ToastViewport = React.forwardRef(({ className, ...props }, ref) => (
   <ToastPrimitives.Viewport
     ref={ref}
@@ -35,7 +45,16 @@ const toastVariants = cva(
     },
   }
 )
+/**
+ * @typedef {Object} ToastProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
 
+/**
+ * @type {React.FC<ToastProps>}
+ */
 const Toast = React.forwardRef(({ className, variant, ...props }, ref) => {
   return (
     <ToastPrimitives.Root
@@ -47,6 +66,16 @@ const Toast = React.forwardRef(({ className, variant, ...props }, ref) => {
 })
 Toast.displayName = ToastPrimitives.Root.displayName
 
+/**
+ * @typedef {Object} ToastActionProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ToastActionProps>}
+ */
 const ToastAction = React.forwardRef(({ className, ...props }, ref) => (
   <ToastPrimitives.Action
     ref={ref}
@@ -59,6 +88,16 @@ const ToastAction = React.forwardRef(({ className, ...props }, ref) => (
 ))
 ToastAction.displayName = ToastPrimitives.Action.displayName
 
+/**
+ * @typedef {Object} ToastCloseProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ToastCloseProps>}
+ */
 const ToastClose = React.forwardRef(({ className, ...props }, ref) => (
   <ToastPrimitives.Close
     ref={ref}
@@ -69,11 +108,21 @@ const ToastClose = React.forwardRef(({ className, ...props }, ref) => (
     toast-close=""
     {...props}
   >
-    <Cross2Icon className="h-4 w-4" />
+    <Cross2Icon className="w-4 h-4" />
   </ToastPrimitives.Close>
 ))
 ToastClose.displayName = ToastPrimitives.Close.displayName
 
+/**
+ * @typedef {Object} ToastTitleProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ToastTitleProps>}
+ */
 const ToastTitle = React.forwardRef(({ className, ...props }, ref) => (
   <ToastPrimitives.Title
     ref={ref}
@@ -83,6 +132,16 @@ const ToastTitle = React.forwardRef(({ className, ...props }, ref) => (
 ))
 ToastTitle.displayName = ToastPrimitives.Title.displayName
 
+/**
+ * @typedef {Object} ToastDescriptionProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ToastDescriptionProps>}
+ */
 const ToastDescription = React.forwardRef(({ className, ...props }, ref) => (
   <ToastPrimitives.Description
     ref={ref}

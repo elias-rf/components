@@ -6,7 +6,7 @@ import {
 } from '@radix-ui/react-icons'
 import * as React from 'react'
 
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 
@@ -20,6 +20,16 @@ const DropdownMenuSub = DropdownMenuPrimitive.Sub
 
 const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup
 
+/**
+ * @typedef {Object} DropdownMenuSubTriggerProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DropdownMenuSubTriggerProps>}
+ */
 const DropdownMenuSubTrigger = React.forwardRef(
   ({ className, inset, children, ...props }, ref) => (
     <DropdownMenuPrimitive.SubTrigger
@@ -32,13 +42,23 @@ const DropdownMenuSubTrigger = React.forwardRef(
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto h-4 w-4" />
+      <ChevronRightIcon className="w-4 h-4 ml-auto" />
     </DropdownMenuPrimitive.SubTrigger>
   )
 )
 DropdownMenuSubTrigger.displayName =
   DropdownMenuPrimitive.SubTrigger.displayName
 
+/**
+ * @typedef {Object} DropdownMenuSubContentProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DropdownMenuSubContentProps>}
+ */
 const DropdownMenuSubContent = React.forwardRef(
   ({ className, ...props }, ref) => (
     <DropdownMenuPrimitive.SubContent
@@ -54,6 +74,16 @@ const DropdownMenuSubContent = React.forwardRef(
 DropdownMenuSubContent.displayName =
   DropdownMenuPrimitive.SubContent.displayName
 
+/**
+ * @typedef {Object} DropdownMenuContentProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DropdownMenuContentProps>}
+ */
 const DropdownMenuContent = React.forwardRef(
   ({ className, sideOffset = 4, ...props }, ref) => (
     <DropdownMenuPrimitive.Portal>
@@ -72,6 +102,16 @@ const DropdownMenuContent = React.forwardRef(
 )
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
 
+/**
+ * @typedef {Object} DropdownMenuItemProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DropdownMenuItemProps>}
+ */
 const DropdownMenuItem = React.forwardRef(
   ({ className, inset, ...props }, ref) => (
     <DropdownMenuPrimitive.Item
@@ -87,6 +127,16 @@ const DropdownMenuItem = React.forwardRef(
 )
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
 
+/**
+ * @typedef {Object} DropdownMenuCheckboxItemProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DropdownMenuCheckboxItemProps>}
+ */
 const DropdownMenuCheckboxItem = React.forwardRef(
   ({ className, children, checked, ...props }, ref) => (
     <DropdownMenuPrimitive.CheckboxItem
@@ -100,7 +150,7 @@ const DropdownMenuCheckboxItem = React.forwardRef(
     >
       <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
-          <CheckIcon className="h-4 w-4" />
+          <CheckIcon className="w-4 h-4" />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -110,6 +160,16 @@ const DropdownMenuCheckboxItem = React.forwardRef(
 DropdownMenuCheckboxItem.displayName =
   DropdownMenuPrimitive.CheckboxItem.displayName
 
+/**
+ * @typedef {Object} DropdownMenuRadioItemProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DropdownMenuRadioItemProps>}
+ */
 const DropdownMenuRadioItem = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <DropdownMenuPrimitive.RadioItem
@@ -122,7 +182,7 @@ const DropdownMenuRadioItem = React.forwardRef(
     >
       <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
-          <DotFilledIcon className="h-4 w-4 fill-current" />
+          <DotFilledIcon className="w-4 h-4 fill-current" />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -131,6 +191,16 @@ const DropdownMenuRadioItem = React.forwardRef(
 )
 DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName
 
+/**
+ * @typedef {Object} DropdownMenuLabelProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DropdownMenuLabelProps>}
+ */
 const DropdownMenuLabel = React.forwardRef(
   ({ className, inset, ...props }, ref) => (
     <DropdownMenuPrimitive.Label
@@ -146,6 +216,16 @@ const DropdownMenuLabel = React.forwardRef(
 )
 DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName
 
+/**
+ * @typedef {Object} DropdownMenuSeparatorProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DropdownMenuSeparatorProps>}
+ */
 const DropdownMenuSeparator = React.forwardRef(
   ({ className, ...props }, ref) => (
     <DropdownMenuPrimitive.Separator
@@ -160,6 +240,16 @@ const DropdownMenuSeparator = React.forwardRef(
 )
 DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName
 
+/**
+ * @typedef {Object} DropdownMenuShortcutProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DropdownMenuShortcutProps>}
+ */
 const DropdownMenuShortcut = ({ className, ...props }) => {
   return (
     <span

@@ -1,8 +1,13 @@
-import { cn } from '../utils.mjs'
+// @ts-check
+import { cn } from '../lib/utils.mjs'
 
 /**
- * @property {object} [props]
- * @property {string} [props.className]
+ * @typedef {object} CheckIconProps
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<CheckIconProps>}
  */
 export const CheckIcon = ({ className }) => {
   return (

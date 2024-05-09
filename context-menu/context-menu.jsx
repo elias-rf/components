@@ -6,7 +6,7 @@ import {
 } from '@radix-ui/react-icons'
 import * as React from 'react'
 
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
 const ContextMenu = ContextMenuPrimitive.Root
 
@@ -20,6 +20,16 @@ const ContextMenuSub = ContextMenuPrimitive.Sub
 
 const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup
 
+/**
+ * @typedef {Object} ContextMenuSubTriggerProps
+ * @extends {ContextMenuPrimitive.SubTriggerProps}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ContextMenuSubTriggerProps>}
+ */
 const ContextMenuSubTrigger = React.forwardRef(
   ({ className, inset, children, ...props }, ref) => (
     <ContextMenuPrimitive.SubTrigger
@@ -32,12 +42,22 @@ const ContextMenuSubTrigger = React.forwardRef(
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto h-4 w-4" />
+      <ChevronRightIcon className="w-4 h-4 ml-auto" />
     </ContextMenuPrimitive.SubTrigger>
   )
 )
 ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName
 
+/**
+ * @typedef {Object} ContextMenuSubContentProps
+ * @extends {ContextMenuPrimitive.SubTriggerProps}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ContextMenuSubContentProps>}
+ */
 const ContextMenuSubContent = React.forwardRef(
   ({ className, ...props }, ref) => (
     <ContextMenuPrimitive.SubContent
@@ -52,6 +72,16 @@ const ContextMenuSubContent = React.forwardRef(
 )
 ContextMenuSubContent.displayName = ContextMenuPrimitive.SubContent.displayName
 
+/**
+ * @typedef {Object} ContextMenuContentProps
+ * @extends {ContextMenuPrimitive.SubTriggerProps}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ContextMenuContentProps>}
+ */
 const ContextMenuContent = React.forwardRef(({ className, ...props }, ref) => (
   <ContextMenuPrimitive.Portal>
     <ContextMenuPrimitive.Content
@@ -66,6 +96,16 @@ const ContextMenuContent = React.forwardRef(({ className, ...props }, ref) => (
 ))
 ContextMenuContent.displayName = ContextMenuPrimitive.Content.displayName
 
+/**
+ * @typedef {Object} ContextMenuItemProps
+ * @extends {ContextMenuPrimitive.SubTriggerProps}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ContextMenuItemProps>}
+ */
 const ContextMenuItem = React.forwardRef(
   ({ className, inset, ...props }, ref) => (
     <ContextMenuPrimitive.Item
@@ -81,6 +121,16 @@ const ContextMenuItem = React.forwardRef(
 )
 ContextMenuItem.displayName = ContextMenuPrimitive.Item.displayName
 
+/**
+ * @typedef {Object} ContextMenuCheckboxItemProps
+ * @extends {ContextMenuPrimitive.SubTriggerProps}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ContextMenuCheckboxItemProps>}
+ */
 const ContextMenuCheckboxItem = React.forwardRef(
   ({ className, children, checked, ...props }, ref) => (
     <ContextMenuPrimitive.CheckboxItem
@@ -94,7 +144,7 @@ const ContextMenuCheckboxItem = React.forwardRef(
     >
       <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
         <ContextMenuPrimitive.ItemIndicator>
-          <CheckIcon className="h-4 w-4" />
+          <CheckIcon className="w-4 h-4" />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -104,6 +154,16 @@ const ContextMenuCheckboxItem = React.forwardRef(
 ContextMenuCheckboxItem.displayName =
   ContextMenuPrimitive.CheckboxItem.displayName
 
+/**
+ * @typedef {Object} ContextMenuRadioItemProps
+ * @extends {ContextMenuPrimitive.SubTriggerProps}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ContextMenuRadioItemProps>}
+ */
 const ContextMenuRadioItem = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <ContextMenuPrimitive.RadioItem
@@ -116,7 +176,7 @@ const ContextMenuRadioItem = React.forwardRef(
     >
       <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
         <ContextMenuPrimitive.ItemIndicator>
-          <DotFilledIcon className="h-4 w-4 fill-current" />
+          <DotFilledIcon className="w-4 h-4 fill-current" />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -125,6 +185,16 @@ const ContextMenuRadioItem = React.forwardRef(
 )
 ContextMenuRadioItem.displayName = ContextMenuPrimitive.RadioItem.displayName
 
+/**
+ * @typedef {Object} ContextMenuLabelProps
+ * @extends {ContextMenuPrimitive.SubTriggerProps}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ContextMenuLabelProps>}
+ */
 const ContextMenuLabel = React.forwardRef(
   ({ className, inset, ...props }, ref) => (
     <ContextMenuPrimitive.Label
@@ -140,6 +210,16 @@ const ContextMenuLabel = React.forwardRef(
 )
 ContextMenuLabel.displayName = ContextMenuPrimitive.Label.displayName
 
+/**
+ * @typedef {Object} ContextMenuSeparatorProps
+ * @extends {ContextMenuPrimitive.SubTriggerProps}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ContextMenuSeparatorProps>}
+ */
 const ContextMenuSeparator = React.forwardRef(
   ({ className, ...props }, ref) => (
     <ContextMenuPrimitive.Separator

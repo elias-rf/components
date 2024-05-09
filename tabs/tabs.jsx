@@ -1,10 +1,20 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import * as React from 'react'
 
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
 const Tabs = TabsPrimitive.Root
 
+/**
+ * @typedef {Object} TabsListProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<TabsListProps>}
+ */
 const TabsList = React.forwardRef(({ className, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
@@ -16,7 +26,16 @@ const TabsList = React.forwardRef(({ className, ...props }, ref) => (
   />
 ))
 TabsList.displayName = TabsPrimitive.List.displayName
+/**
+ * @typedef {Object} TabsTriggerProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
 
+/**
+ * @type {React.FC<TabsTriggerProps>}
+ */
 const TabsTrigger = React.forwardRef(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
@@ -28,7 +47,16 @@ const TabsTrigger = React.forwardRef(({ className, ...props }, ref) => (
   />
 ))
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
+/**
+ * @typedef {Object} TabsContentProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
 
+/**
+ * @type {React.FC<TabsContentProps>}
+ */
 const TabsContent = React.forwardRef(({ className, ...props }, ref) => (
   <TabsPrimitive.Content
     ref={ref}

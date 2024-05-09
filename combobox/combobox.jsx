@@ -10,8 +10,22 @@ import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
 import * as React from 'react'
 
 import { Button } from '../button/button.jsx'
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
+/**
+ * @typedef {Object} ComboboxProps
+ * @property {{value:string, label:string}[]} [options]
+ * @property {string} [value]
+ * @property {string} [placeholder]
+ * @property {string} [inputPlaceholder]
+ * @property {(event:any)=>void} [onValueChange]
+ * @property {boolean} [disabled]
+ * @property {(e:any)=>void} [onCheckedChange]
+ */
+
+/**
+ * @type {React.FC<ComboboxProps>}
+ */
 const Combobox = ({
   options,
   value,
@@ -36,7 +50,7 @@ const Combobox = ({
           {vlr
             ? options.find((option) => option.value === vlr)?.label
             : placeholder || ''}
-          <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          <CaretSortIcon className="w-4 h-4 ml-2 opacity-50 shrink-0" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="p-0">

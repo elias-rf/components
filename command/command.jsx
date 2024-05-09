@@ -3,8 +3,18 @@ import { Command as CommandPrimitive } from 'cmdk'
 import * as React from 'react'
 
 import { Dialog, DialogContent } from '../dialog/dialog.jsx'
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
+/**
+ * @typedef {Object} CommandProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<CommandProps>}
+ */
 const Command = React.forwardRef(({ className, ...props }, ref) => (
   <CommandPrimitive
     ref={ref}
@@ -17,10 +27,20 @@ const Command = React.forwardRef(({ className, ...props }, ref) => (
 ))
 Command.displayName = CommandPrimitive.displayName
 
+/**
+ * @typedef {Object} CommandDialogProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<CommandDialogProps>}
+ */
 const CommandDialog = ({ children, ...props }) => {
   return (
     <Dialog {...props}>
-      <DialogContent className="overflow-hidden p-0">
+      <DialogContent className="p-0 overflow-hidden">
         <Command className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-slate-500 dark:[&_[cmdk-group-heading]]:text-slate-400 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
           {children}
         </Command>
@@ -29,9 +49,19 @@ const CommandDialog = ({ children, ...props }) => {
   )
 }
 
+/**
+ * @typedef {Object} CommandInputProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<CommandInputProps>}
+ */
 const CommandInput = React.forwardRef(({ className, ...props }, ref) => (
-  <div className="flex items-center border-b px-3" cmdk-input-wrapper="">
-    <MagnifyingGlassIcon className="mr-2 h-4 w-4 shrink-0 opacity-50" />
+  <div className="flex items-center px-3 border-b" cmdk-input-wrapper="">
+    <MagnifyingGlassIcon className="w-4 h-4 mr-2 opacity-50 shrink-0" />
     <CommandPrimitive.Input
       ref={ref}
       className={cn(
@@ -45,6 +75,16 @@ const CommandInput = React.forwardRef(({ className, ...props }, ref) => (
 
 CommandInput.displayName = CommandPrimitive.Input.displayName
 
+/**
+ * @typedef {Object} CommandListProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<CommandListProps>}
+ */
 const CommandList = React.forwardRef(({ className, ...props }, ref) => (
   <CommandPrimitive.List
     ref={ref}
@@ -55,16 +95,36 @@ const CommandList = React.forwardRef(({ className, ...props }, ref) => (
 
 CommandList.displayName = CommandPrimitive.List.displayName
 
+/**
+ * @typedef {Object} CommandEmptyProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<CommandEmptyProps>}
+ */
 const CommandEmpty = React.forwardRef((props, ref) => (
   <CommandPrimitive.Empty
     ref={ref}
-    className="py-6 text-center text-sm"
+    className="py-6 text-sm text-center"
     {...props}
   />
 ))
 
 CommandEmpty.displayName = CommandPrimitive.Empty.displayName
 
+/**
+ * @typedef {Object} CommandGroupProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<CommandGroupProps>}
+ */
 const CommandGroup = React.forwardRef(({ className, ...props }, ref) => (
   <CommandPrimitive.Group
     ref={ref}
@@ -78,6 +138,16 @@ const CommandGroup = React.forwardRef(({ className, ...props }, ref) => (
 
 CommandGroup.displayName = CommandPrimitive.Group.displayName
 
+/**
+ * @typedef {Object} CommandSeparatorProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<CommandSeparatorProps>}
+ */
 const CommandSeparator = React.forwardRef(({ className, ...props }, ref) => (
   <CommandPrimitive.Separator
     ref={ref}
@@ -87,6 +157,16 @@ const CommandSeparator = React.forwardRef(({ className, ...props }, ref) => (
 ))
 CommandSeparator.displayName = CommandPrimitive.Separator.displayName
 
+/**
+ * @typedef {Object} CommandItemProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<CommandItemProps>}
+ */
 const CommandItem = React.forwardRef(({ className, ...props }, ref) => (
   <CommandPrimitive.Item
     ref={ref}

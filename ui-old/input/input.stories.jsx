@@ -1,5 +1,5 @@
-import { JsonView } from '../json-view/json-view.jsx'
-import { Input } from '../ui-old/input/input.jsx'
+import { JsonView } from '../../json-view/json-view.jsx'
+import { Input } from '../input/input.jsx'
 
 import React from 'react'
 

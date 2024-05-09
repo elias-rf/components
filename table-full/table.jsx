@@ -3,7 +3,7 @@ import React from 'react'
 import { filterNonEmptyProperties } from './filter-non-empty-properties.mjs'
 import { formatWhere } from './format-where.mjs'
 import { parseWhere } from './parse-where.mjs'
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 import { SearchIcon } from '../icons/search-icon.jsx'
 import { getIdDefault } from './get-id-default.mjs'
 import { InputFilter } from './input-filter.jsx'
@@ -15,8 +15,24 @@ const align = {
   center: 'text-center',
   justify: 'text-justify',
 }
+/**
+ * @typedef {Object} TableProps
+ * @property {{name:string, label:string, sortable?:boolean, align?:string, width?:string, format?:any}[]} [columns]
+ * @property {()=>any} [getId]
+ * @property {string[]} [orderBy]
+ * @property {Record<string, any>[]} [rows]
+ * @property {any[]} [selection]
+ * @property {any[]} [where]
+ * @property {any} [onOrderBy]
+ * @property {any} [onSelection]
+ * @property {(e:any)=>void} [onWhere]
+ * @property {(dados:any)=>React.ReactElement} [children]
+ */
 
-export function Table({
+/**
+ * @type {React.FC<TableProps>}
+ */
+export const Table = ({
   children,
   columns,
   getId = getIdDefault,
@@ -27,7 +43,7 @@ export function Table({
   rows = [],
   selection = [],
   where,
-}) {
+}) => {
   const defaultValues = formatWhere(where || [], columns)
 
   function handleWhere(value, name) {

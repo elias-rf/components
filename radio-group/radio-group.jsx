@@ -2,7 +2,7 @@ import { CheckIcon } from '@radix-ui/react-icons'
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import * as React from 'react'
 
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
 /**
  * @typedef {Object} RadioGroupProps

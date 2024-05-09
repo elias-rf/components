@@ -17,7 +17,7 @@ export default meta
 
 export const Default = {
   render: ({ open, severity, message }) => {
-    const [show, setShow] = React.useState < boolean > open
+    const [show, setShow] = React.useState(open)
 
     return (
       <>

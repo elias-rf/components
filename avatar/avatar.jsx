@@ -1,6 +1,6 @@
 import * as AvatarPrimitive from '../radix/avatar/avatar.jsx'
 import * as React from 'react'
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
 /**
  * @typedef {Object} AvatarProps

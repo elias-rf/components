@@ -1,14 +1,29 @@
 import { Slot } from '@radix-ui/react-slot'
-import * as React from 'react'
+import React from 'react'
 import { Controller, FormProvider, useFormContext } from 'react-hook-form'
-
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 import { Label } from '../label/label.jsx'
+import { id } from 'date-fns/locale.js'
 
 const Form = FormProvider
 
-const FormFieldContext = React.createContext({})
+/**
+ * React context for providing form field-level information.
+ * This context is used by the `FormField` component and the `useFormField` hook
+ * to access and share field-level data within the form.
+ */
+const FormFieldContext = React.createContext({ name: '' })
 
+/**
+ * @typedef {Object} FormFieldProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<FormFieldProps>}
+ */
 const FormField = ({ ...props }) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
@@ -40,8 +55,18 @@ const useFormField = () => {
   }
 }
 
-const FormItemContext = React.createContext({})
+const FormItemContext = React.createContext({ id: '' })
 
+/**
+ * @typedef {Object} FormItemProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<FormItemProps>}
+ */
 const FormItem = React.forwardRef(({ className, ...props }, ref) => {
   const id = React.useId()
 
@@ -53,6 +78,16 @@ const FormItem = React.forwardRef(({ className, ...props }, ref) => {
 })
 FormItem.displayName = 'FormItem'
 
+/**
+ * @typedef {Object} FormLabelProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<FormLabelProps>}
+ */
 const FormLabel = React.forwardRef(({ className, ...props }, ref) => {
   const { error, formItemId } = useFormField()
 
@@ -67,6 +102,16 @@ const FormLabel = React.forwardRef(({ className, ...props }, ref) => {
 })
 FormLabel.displayName = 'FormLabel'
 
+/**
+ * @typedef {Object} FormControlProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<FormControlProps>}
+ */
 const FormControl = React.forwardRef(({ ...props }, ref) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
@@ -86,6 +131,16 @@ const FormControl = React.forwardRef(({ ...props }, ref) => {
 })
 FormControl.displayName = 'FormControl'
 
+/**
+ * @typedef {Object} FormDescriptionProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<FormDescriptionProps>}
+ */
 const FormDescription = React.forwardRef(({ className, ...props }, ref) => {
   const { formDescriptionId } = useFormField()
 
@@ -103,6 +158,16 @@ const FormDescription = React.forwardRef(({ className, ...props }, ref) => {
 })
 FormDescription.displayName = 'FormDescription'
 
+/**
+ * @typedef {Object} FormMessageProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<FormMessageProps>}
+ */
 const FormMessage = React.forwardRef(
   ({ className, children, ...props }, ref) => {
     const { error, formMessageId } = useFormField()

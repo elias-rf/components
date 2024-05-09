@@ -1,10 +1,15 @@
-import { cn } from '../utils.mjs'
+// @ts-check
+import { cn } from '../lib/utils.mjs'
 
 /**
- * @property {object} [props]
- * @property {string} [props.className]
+ * @typedef {object} WarningIconProps
+ * @property {string} [className]
  */
-export function WarningIcon({ className }) {
+
+/**
+ * @type {React.FC<WarningIconProps>}
+ */
+export const WarningIcon = ({ className }) => {
   return (
     <svg
       className={cn('inline-block h-5 w-5', className)}

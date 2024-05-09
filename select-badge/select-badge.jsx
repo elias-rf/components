@@ -1,7 +1,16 @@
 import React from 'react'
 import { ChevronIcon } from '../icons/chevron-icon.jsx'
 import { CloseIcon } from '../icons/close-icon.jsx'
+/**
+ * @typedef {Object} PillProps
+ * @property {string} [className]
+ * @property {(e:any)=>void} [onClick]
+ * @property {React.ReactNode} [children]
+ */
 
+/**
+ * @type {React.FC<PillProps>}
+ */
 const Pill = ({ children, onClick }) => {
   return (
     <div className="flex items-center justify-center px-2 m-1 text-blue-700 bg-blue-100 border border-blue-300 rounded-full ">
@@ -13,6 +22,16 @@ const Pill = ({ children, onClick }) => {
   )
 }
 
+/**
+ * @typedef {Object} ItemProps
+ * @property {string} [className]
+ * @property {(e:any)=>void} [onClick]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ItemProps>}
+ */
 const Item = ({ children, onClick }) => {
   return (
     <div
@@ -59,6 +78,19 @@ const InputPills = ({ children, showList, setShowList }) => {
   )
 }
 
+/**
+ * @typedef {Object} SelectBadgeProps
+ * @property {string} [name]
+ * @property {string} [variant]
+ * @property {boolean} [disabled]
+ * @property {[label:string, value:string][]} [options]
+ * @property {(e:any)=>void} [onChange]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<SelectBadgeProps>}
+ */
 export const SelectBadge = React.forwardRef(
   ({ name, onChange, options }, ref) => {
     const inputRef = React.useRef(null)

@@ -1,7 +1,17 @@
 import * as React from 'react'
 
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
+/**
+ * @typedef {Object} ToastViewportProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ToastViewportProps>}
+ */
 const Textarea = React.forwardRef(({ className, ...props }, ref) => {
   return (
     <textarea

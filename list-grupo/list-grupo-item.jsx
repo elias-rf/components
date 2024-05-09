@@ -1,6 +1,17 @@
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
-export function ListGrupoItem({ children, onClick, className, active }) {
+/**
+ * @typedef {Object} ListGrupoItemProps
+ * @property {string} [className]
+ * @property {boolean} [active]
+ * @property {(e:any)=>void} [onClick]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ListGrupoItemProps>}
+ */
+export const ListGrupoItem = ({ children, onClick, className, active }) => {
   return (
     <li
       onClick={onClick}

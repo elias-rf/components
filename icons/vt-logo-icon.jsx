@@ -1,4 +1,5 @@
-import { cn } from '../utils.mjs'
+// @ts-check
+import { cn } from '../lib/utils.mjs'
 
 const colorProp = {
   black: '#000',
@@ -7,11 +8,16 @@ const colorProp = {
 }
 
 /**
- * @property {object} [props]
- * @property {string} [props.className]
+ * @typedef {Object} VtLogoIconProps
+ * @property {string} [className]
  * @property {'black'|'white'|'blue'} [props.color]
+ * @property {React.ReactNode} [children]
  */
-export function VtLogoIcon({ className, color = 'blue' }) {
+
+/**
+ * @type {React.FC<VtLogoIconProps>}
+ */
+export const VtLogoIcon = ({ className, color = 'blue' }) => {
   return (
     <svg
       viewBox="0 0 365 470"

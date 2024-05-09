@@ -1,4 +1,4 @@
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 import * as SheetPrimitive from '@radix-ui/react-dialog'
 import { Cross2Icon } from '@radix-ui/react-icons'
 import { cva } from 'class-variance-authority'
@@ -11,7 +11,16 @@ const SheetTrigger = SheetPrimitive.Trigger
 const SheetClose = SheetPrimitive.Close
 
 const SheetPortal = SheetPrimitive.Portal
+/**
+ * @typedef {Object} SheetOverlayProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
 
+/**
+ * @type {React.FC<SheetOverlayProps>}
+ */
 const SheetOverlay = React.forwardRef(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(
@@ -43,6 +52,16 @@ const sheetVariants = cva(
   }
 )
 
+/**
+ * @typedef {Object} SheetContentProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<SheetContentProps>}
+ */
 const SheetContent = React.forwardRef(
   ({ side = 'right', className, children, ...props }, ref) => (
     <SheetPortal>
@@ -54,7 +73,7 @@ const SheetContent = React.forwardRef(
       >
         {children}
         <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-slate-100 dark:ring-offset-slate-950 dark:focus:ring-slate-300 dark:data-[state=open]:bg-slate-800">
-          <Cross2Icon className="h-4 w-4" />
+          <Cross2Icon className="w-4 h-4" />
           <span className="sr-only">Close</span>
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>
@@ -85,6 +104,16 @@ const SheetFooter = ({ className, ...props }) => (
 )
 SheetFooter.displayName = 'SheetFooter'
 
+/**
+ * @typedef {Object} SheetTitleProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<SheetTitleProps>}
+ */
 const SheetTitle = React.forwardRef(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
@@ -97,6 +126,16 @@ const SheetTitle = React.forwardRef(({ className, ...props }, ref) => (
 ))
 SheetTitle.displayName = SheetPrimitive.Title.displayName
 
+/**
+ * @typedef {Object} SheetDescriptionProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<SheetDescriptionProps>}
+ */
 const SheetDescription = React.forwardRef(({ className, ...props }, ref) => (
   <SheetPrimitive.Description
     ref={ref}

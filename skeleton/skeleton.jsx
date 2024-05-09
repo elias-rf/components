@@ -1,4 +1,4 @@
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
 function Skeleton({ className, ...props }) {
   return (

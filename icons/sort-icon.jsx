@@ -1,7 +1,13 @@
-import { cn } from '../utils.mjs'
+// @ts-check
+import { cn } from '../lib/utils.mjs'
 
 // https://icon-sets.iconify.design/material-symbols/chevron-right-rounded/
 
+/**
+ * @property {object} [props]
+ * @property {string} [props.className]
+ * @property {'up' | 'down' | 'both' | 'none'} [props.direction]
+ */
 export function SortIcon({ direction = 'none', className }) {
   if (direction === 'up')
     return (

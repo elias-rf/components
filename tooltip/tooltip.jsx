@@ -1,7 +1,7 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import * as React from 'react'
 
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
 const TooltipProvider = TooltipPrimitive.Provider
 
@@ -9,6 +9,16 @@ const Tooltip = TooltipPrimitive.Root
 
 const TooltipTrigger = TooltipPrimitive.Trigger
 
+/**
+ * @typedef {Object} ToastViewportProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ToastViewportProps>}
+ */
 const TooltipContent = React.forwardRef(
   ({ className, sideOffset = 4, ...props }, ref) => (
     <TooltipPrimitive.Content

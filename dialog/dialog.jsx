@@ -1,4 +1,4 @@
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { Cross2Icon } from '@radix-ui/react-icons'
 import * as React from 'react'
@@ -11,6 +11,16 @@ const DialogPortal = DialogPrimitive.Portal
 
 const DialogClose = DialogPrimitive.Close
 
+/**
+ * @typedef {Object} DialogOverlayProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DialogOverlayProps>}
+ */
 const DialogOverlay = React.forwardRef(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     ref={ref}
@@ -23,6 +33,16 @@ const DialogOverlay = React.forwardRef(({ className, ...props }, ref) => (
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
+/**
+ * @typedef {Object} DialogContentProps
+ * @extends {DialogContentProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DialogContentProps>}
+ */
 const DialogContent = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <DialogPortal>
@@ -37,7 +57,7 @@ const DialogContent = React.forwardRef(
       >
         {children}
         <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-slate-100 data-[state=open]:text-slate-500 dark:ring-offset-slate-950 dark:focus:ring-slate-300 dark:data-[state=open]:bg-slate-800 dark:data-[state=open]:text-slate-400">
-          <Cross2Icon className="h-4 w-4" />
+          <Cross2Icon className="w-4 h-4" />
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
@@ -46,6 +66,16 @@ const DialogContent = React.forwardRef(
 )
 DialogContent.displayName = DialogPrimitive.Content.displayName
 
+/**
+ * @typedef {Object} DialogHeaderProps
+ * @extends {DialogContentProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DialogHeaderProps>}
+ */
 const DialogHeader = ({ className, ...props }) => (
   <div
     className={cn(
@@ -57,6 +87,16 @@ const DialogHeader = ({ className, ...props }) => (
 )
 DialogHeader.displayName = 'DialogHeader'
 
+/**
+ * @typedef {Object} DialogFooterProps
+ * @extends {DialogContentProps}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DialogFooterProps>}
+ */
 const DialogFooter = ({ className, ...props }) => (
   <div
     className={cn(
@@ -68,6 +108,16 @@ const DialogFooter = ({ className, ...props }) => (
 )
 DialogFooter.displayName = 'DialogFooter'
 
+/**
+ * @typedef {Object} DialogTitleProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DialogTitleProps>}
+ */
 const DialogTitle = React.forwardRef(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
@@ -80,6 +130,16 @@ const DialogTitle = React.forwardRef(({ className, ...props }, ref) => (
 ))
 DialogTitle.displayName = DialogPrimitive.Title.displayName
 
+/**
+ * @typedef {Object} DialogDescriptionProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DialogDescriptionProps>}
+ */
 const DialogDescription = React.forwardRef(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}

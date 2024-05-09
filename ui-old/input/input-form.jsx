@@ -1,7 +1,17 @@
 import React from 'react'
-import { cn } from '../../utils.mjs'
+import { cn } from '../../lib/utils.mjs'
 import { themeInput } from '../theme-input.mjs'
 
+/**
+ * @typedef {Object} ToastViewportProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ToastViewportProps>}
+ */
 export const InputForm = React.forwardRef(
   (
     {

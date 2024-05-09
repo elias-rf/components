@@ -2,16 +2,17 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons'
 import { ptBR } from 'date-fns/locale'
 import { DayPicker } from 'react-day-picker'
 import { buttonVariants } from '../button/button.jsx'
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
 /**
- * @typedef {Object} CalendarPropsTmp
+ * @typedef {import('react-day-picker').DayPickerProps } DayPickerProps
+ * @typedef {Object} CalendarProps
+ * @extends {DayPickerProps}
  * @property {string} [className] - Additional CSS class names to apply to the calendar.
  * @property {Object} [classNames] - Custom CSS class names for the calendar elements.
  * @property {boolean} [showOutsideDays=true] - Whether to show days from the previous and next months.
  * @property {any} [mode] - The calendar mode, either 'single' or 'range'.
  * @returns {JSX.Element} - The rendered calendar component.
- * @typedef {import('react-day-picker').DayPickerProps & CalendarPropsTmp} CalendarProps
  */
 
 /**
@@ -73,8 +74,8 @@ export const Calendar = ({
           ...classNames,
         }}
         components={{
-          IconLeft: ({ ...props }) => <ChevronLeftIcon className="h-4 w-4" />,
-          IconRight: ({ ...props }) => <ChevronRightIcon className="h-4 w-4" />,
+          IconLeft: ({ ...props }) => <ChevronLeftIcon className="w-4 h-4" />,
+          IconRight: ({ ...props }) => <ChevronRightIcon className="w-4 h-4" />,
         }}
         locale={ptBR}
         {...props}

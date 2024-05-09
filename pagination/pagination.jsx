@@ -6,7 +6,7 @@ import {
 import * as React from 'react'
 
 import { buttonVariants } from '../button/button.jsx'
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
 /**
  * @typedef {Object} PaginationProps
@@ -57,11 +57,7 @@ PaginationContent.displayName = 'PaginationContent'
  * @type {React.FC<PaginationItemProps>}
  */
 const PaginationItem = React.forwardRef(({ className, ...props }, ref) => (
-  <li
-    ref={ref}
-    className={cn('', className)}
-    {...props}
-  />
+  <li ref={ref} className={cn('', className)} {...props} />
 ))
 PaginationItem.displayName = 'PaginationItem'
 

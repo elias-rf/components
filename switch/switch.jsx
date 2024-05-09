@@ -1,8 +1,17 @@
 import * as SwitchPrimitives from '@radix-ui/react-switch'
 import * as React from 'react'
+import { cn } from '../lib/utils.mjs'
 
-import { cn } from '../utils.mjs'
+/**
+ * @typedef {Object} ToastViewportProps
+ * @extends {React.HTMLAttributes<HTMLTableElement>}
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
 
+/**
+ * @type {React.FC<ToastViewportProps>}
+ */
 const Switch = React.forwardRef(({ className, ...props }, ref) => (
   <SwitchPrimitives.Root
     className={cn(

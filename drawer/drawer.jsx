@@ -1,8 +1,18 @@
 import * as React from 'react'
 import { Drawer as DrawerPrimitive } from 'vaul'
 
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
+/**
+ * @typedef {Object} DrawerProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DrawerProps>}
+ */
 const Drawer = ({ shouldScaleBackground = true, ...props }) => (
   <DrawerPrimitive.Root
     shouldScaleBackground={shouldScaleBackground}
@@ -17,6 +27,16 @@ const DrawerPortal = DrawerPrimitive.Portal
 
 const DrawerClose = DrawerPrimitive.Close
 
+/**
+ * @typedef {Object} DrawerOverlayProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DrawerOverlayProps>}
+ */
 const DrawerOverlay = React.forwardRef(({ className, ...props }, ref) => (
   <DrawerPrimitive.Overlay
     ref={ref}
@@ -26,6 +46,16 @@ const DrawerOverlay = React.forwardRef(({ className, ...props }, ref) => (
 ))
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName
 
+/**
+ * @typedef {Object} DrawerContentProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DrawerContentProps>}
+ */
 const DrawerContent = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <DrawerPortal>
@@ -46,6 +76,16 @@ const DrawerContent = React.forwardRef(
 )
 DrawerContent.displayName = 'DrawerContent'
 
+/**
+ * @typedef {Object} DrawerHeaderProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DrawerHeaderProps>}
+ */
 const DrawerHeader = ({ className, ...props }) => (
   <div
     className={cn('grid gap-1.5 p-4 text-center sm:text-left', className)}
@@ -54,6 +94,16 @@ const DrawerHeader = ({ className, ...props }) => (
 )
 DrawerHeader.displayName = 'DrawerHeader'
 
+/**
+ * @typedef {Object} DrawerFooterProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DrawerFooterProps>}
+ */
 const DrawerFooter = ({ className, ...props }) => (
   <div
     className={cn('mt-auto flex flex-col gap-2 p-4', className)}
@@ -62,6 +112,16 @@ const DrawerFooter = ({ className, ...props }) => (
 )
 DrawerFooter.displayName = 'DrawerFooter'
 
+/**
+ * @typedef {Object} DrawerTitleProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DrawerTitleProps>}
+ */
 const DrawerTitle = React.forwardRef(({ className, ...props }, ref) => (
   <DrawerPrimitive.Title
     ref={ref}
@@ -74,6 +134,16 @@ const DrawerTitle = React.forwardRef(({ className, ...props }, ref) => (
 ))
 DrawerTitle.displayName = DrawerPrimitive.Title.displayName
 
+/**
+ * @typedef {Object} DrawerDescriptionProps
+ * @extends {CommandPrimitive}
+ * @property {any} [ref]
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<DrawerDescriptionProps>}
+ */
 const DrawerDescription = React.forwardRef(({ className, ...props }, ref) => (
   <DrawerPrimitive.Description
     ref={ref}
@@ -85,16 +155,10 @@ DrawerDescription.displayName = DrawerPrimitive.Description.displayName
 
 export {
   Drawer,
-  Drawer,
-  DrawerClose,
   DrawerClose,
   DrawerContent,
-  DrawerContent,
-  DrawerDescription,
   DrawerDescription,
   DrawerFooter,
-  DrawerFooter,
-  DrawerHeader,
   DrawerHeader,
   DrawerOverlay,
   DrawerPortal,

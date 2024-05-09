@@ -1,6 +1,15 @@
-import { cn } from '../utils.mjs'
+// @ts-check
+import { cn } from '../lib/utils.mjs'
 
-export function MoonIcon({ className }) {
+/**
+ * @typedef {object} MoonIconProps
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<MoonIconProps>}
+ */
+export const MoonIcon = ({ className }) => {
   return (
     <svg
       className={cn('inline-block h-5 w-5', className)}

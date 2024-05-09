@@ -1,4 +1,5 @@
-import { cn } from '../utils.mjs'
+// @ts-check
+import { cn } from '../lib/utils.mjs'
 
 // https://icon-sets.iconify.design/material-symbols/chevron-right-rounded/
 

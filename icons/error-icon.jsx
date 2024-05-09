@@ -1,6 +1,15 @@
-import { cn } from '../utils.mjs'
+// @ts-check
+import { cn } from '../lib/utils.mjs'
 
-export function ErrorIcon({ className }) {
+/**
+ * @typedef {object} ErrorIconProps
+ * @property {string} [className]
+ */
+
+/**
+ * @type {React.FC<ErrorIconProps>}
+ */
+export const ErrorIcon = ({ className }) => {
   return (
     <svg
       className={cn('inline-block h-5 w-5', className)}

@@ -1,8 +1,20 @@
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 import * as React from 'react'
 
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
+/**
+ * @typedef {Object} ItemProps
+ * @extends {SeparatorPrimitive.SeparatorProps}
+ * @property {string} [className]
+ * @property {boolean} [decorative]
+ * @property {'horizontal' | 'vertical'} [orientation]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ItemProps>}
+ */
 const Separator = React.forwardRef(
   (
     { className, orientation = 'horizontal', decorative = true, ...props },

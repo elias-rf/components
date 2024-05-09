@@ -2,7 +2,7 @@
 import * as ProgressPrimitive from '@radix-ui/react-progress'
 import * as React from 'react'
 
-import { cn } from '../utils.mjs'
+import { cn } from '../lib/utils.mjs'
 
 /**
  * @typedef {Object} ProgressProps

@@ -1,4 +1,5 @@
-import { cn } from '../utils.mjs'
+// @ts-check
+import { cn } from '../lib/utils.mjs'
 
 /**
  * @property {object} [props]

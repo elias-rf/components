@@ -1,7 +1,15 @@
-import { cn } from '../utils.mjs'
-import { ListGrupoItem } from './list-grupo-item.jsx'
+import { cn } from '../lib/utils.mjs'
 
-function ListGrupo({ children, className }) {
+/**
+ * @typedef {Object} ListGrupoProps
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/**
+ * @type {React.FC<ListGrupoProps>}
+ */
+export const ListGrupo = ({ children, className }) => {
   return (
     <ul
       className={cn(
@@ -13,7 +21,3 @@ function ListGrupo({ children, className }) {
     </ul>
   )
 }
-
-ListGrupo.Item = ListGrupoItem
-
-export { ListGrupo }
