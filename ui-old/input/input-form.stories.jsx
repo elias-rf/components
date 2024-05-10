@@ -1,10 +1,10 @@
+import { useForm } from 'react-hook-form'
 import { Button } from '../../button/button.jsx'
 import { JsonView } from '../../json-view/json-view.jsx'
 import { Label } from '../../label/label.jsx'
 import { Title } from '../../title/title.jsx'
 import { FormField } from '../form-field/form-field.jsx'
-import { InputForm } from '../input/input-form.jsx'
-import { useForm } from 'react-hook-form'
+import { InputForm } from './input-form.jsx'
 
 const meta = {
   component: InputForm,

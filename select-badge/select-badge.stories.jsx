@@ -1,7 +1,7 @@
+import { useForm } from 'react-hook-form'
 import { Button } from '../button/button.jsx'
 import { JsonView } from '../json-view/json-view.jsx'
-import { SelectBadge } from '../select-badge/select-badge.jsx'
-import { useForm } from 'react-hook-form'
+import { SelectBadge } from './select-badge.jsx'
 
 const meta = {
   component: SelectBadge,

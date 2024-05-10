@@ -1,12 +1,12 @@
+import { useForm } from 'react-hook-form'
 import { Combobox } from '../../combobox/combobox.jsx'
 import { JsonView } from '../../json-view/json-view.jsx'
 import { Label } from '../../label/label.jsx'
 import { SelectBadge } from '../../select-badge/select-badge.jsx'
-import { FormField } from '../form-field/form-field.jsx'
 import { Helper } from '../helper.jsx'
 import { InputForm } from '../input/input-form.jsx'
 import { ToggleForm } from '../toggle/toggle-form.jsx'
-import { useForm } from 'react-hook-form'
+import { FormField } from './form-field.jsx'
 
 const meta = {
   component: FormField,

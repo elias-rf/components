@@ -1,5 +1,5 @@
 import { JsonView } from '../../json-view/json-view.jsx'
-import { Input } from '../input/input.jsx'
+import { Input } from './input.jsx'
 
 import React from 'react'
 
@@ -23,8 +23,16 @@ export const Default = {
     const [vlr, setVlr] = React.useState('')
     return (
       <div className="flex flex-col space-y-4">
-        <Input {...props} value={vlr} onChange={(e) => setVlr(e)} />
-        <Input {...props} value={vlr} onInput={(e) => setVlr(e)} />
+        <Input
+          {...props}
+          value={vlr}
+          onChange={(e) => setVlr(e)}
+        />
+        <Input
+          {...props}
+          value={vlr}
+          onInput={(e) => setVlr(e)}
+        />
         <JsonView data={{ props, vlr }} />
       </div>
     )

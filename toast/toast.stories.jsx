@@ -1,8 +1,8 @@
+import React from 'react'
 import { Button } from '../button/button.jsx'
 import { JsonView } from '../json-view/json-view.jsx'
-import { Toaster } from '../toast/toaster.jsx'
-import { useToast } from '../toast/use-toast.js'
-import React from 'react'
+import { Toaster } from './toaster.jsx'
+import { useToast } from './use-toast.js'
 
 const meta = {
   component: Toaster,

@@ -1,7 +1,7 @@
+import { useState } from 'react'
 import { Button } from '../button/button.jsx'
 import { JsonView } from '../json-view/json-view.jsx'
-import { MessageBox } from '../ui-old/message_box.jsx'
-import { useState } from 'react'
+import { MessageBox } from './message_box.jsx'
 
 const meta = {
   component: MessageBox,

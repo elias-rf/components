@@ -1,4 +1,4 @@
-import { JsonView } from '../json-view/json-view.jsx'
+import { JsonView } from './json-view.jsx'
 
 const jsonData = {
   'string property': 'my string',

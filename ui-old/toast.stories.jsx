@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '../button/button.jsx'
-import { Toast } from '../ui-old/toast.jsx'
+import { Toast } from './toast.jsx'
 
 const meta = {
   component: Toast,

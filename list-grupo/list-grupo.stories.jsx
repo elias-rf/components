@@ -1,7 +1,7 @@
-import { Checkbox } from '../checkbox/checkbox.jsx'
-import { ListGrupo } from '../list-grupo/list-grupo.jsx'
-import { ListGrupoItem } from '../list-grupo/list-grupo-item.jsx'
 import React from 'react'
+import { Checkbox } from '../checkbox/checkbox.jsx'
+import { ListGrupoItem } from './list-grupo-item.jsx'
+import { ListGrupo } from './list-grupo.jsx'
 
 const meta = {
   component: ListGrupo,
