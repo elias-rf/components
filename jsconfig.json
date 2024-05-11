@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx"
-  }
+    "jsx": "react-jsx",
+    "module": "NodeNext"
+  },
+  "exclude": ["node_modules"]
 }
