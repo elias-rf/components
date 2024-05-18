@@ -25,24 +25,3 @@ export const Primary = {
     children: 'Button',
   },
 }
-
-export const Secondary = {
-  args: {
-    variant: 'secondary',
-    children: 'Button',
-  },
-}
-
-export const Large = {
-  args: {
-    size: 'lg',
-    children: 'Button',
-  },
-}
-
-export const Small = {
-  args: {
-    size: 'sm',
-    children: 'Button',
-  },
-}
