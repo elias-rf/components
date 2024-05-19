@@ -1,4 +1,7 @@
 import * as React from 'react'
+import { Input } from '../input/input.jsx'
+import { Label } from '../label/label.jsx'
+import { Button } from '../button/button.jsx'
 
 /**
  * @typedef {Object} LoginProps
@@ -11,85 +14,79 @@ import * as React from 'react'
  * Renders a login form with email and password inputs, as well as buttons for creating a new user account and logging in.
  * @type {React.FC<LoginProps>}
  */
-export function Login({ onInput, onNewUser, onLostPassword }) {
+export function LoginAdd({ onInput, onNewUser, onLostPassword }) {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
 
   return (
-    <div className="flex flex-col justify-center min-h-full px-6 py-12">
+    <div className="flex flex-col justify-center min-h-full p-6">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-center text-gray-900 w-60 ">
+        <h2 className="mt-2 text-2xl font-bold text-center text-gray-900 w-60 ">
           Entrar no sistema
         </h2>
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <div>
-          <label
+        <div className="my-4">
+          <Label
             htmlFor="email"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
             Email
-          </label>
-          <div className="mt-2">
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
-          </div>
+          </Label>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="block w-full px-2 py-1.5 text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
         </div>
 
-        <div>
+        <div className="my-4">
           <div className="flex items-center justify-between">
-            <label
+            <Label
               htmlFor="password"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
               Senha
-            </label>
+            </Label>
             <div className="text-sm">
               <a
-                href="#"
-                className="font-semibold text-indigo-600 hover:text-indigo-500"
+                className="font-semibold text-indigo-600 cursor-pointer hover:text-indigo-500"
                 onClick={onLostPassword}
               >
                 Esqueceu a sua senha?
               </a>
             </div>
           </div>
-          <div className="mt-2">
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
-          </div>
+          <Input
+            id="password"
+            name="password"
+            type="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
         </div>
 
         <div className="flex items-center justify-between space-x-4">
-          <button
-            onClick={onNewUser}
-            type="submit"
+          <Button
+            onClick={() => onNewUser({ email, password })}
+            variant="outline"
             className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Criar conta
-          </button>
-          <button
-            onClick={onInput(email, password)}
-            type="submit"
+          </Button>
+          <Button
+            onClick={() => onInput({ email, password })}
             className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Entrar
-          </button>
+          </Button>
         </div>
       </div>
     </div>

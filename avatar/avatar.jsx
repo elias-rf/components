@@ -4,13 +4,12 @@ import { cn } from '../lib/utils.mjs'
 
 /**
  * @typedef {Object} AvatarProps
- * @extends {AvatarPrimitive.AvatarProps}
  * @property {string} [className]
  * @property {React.ReactNode} [children]
  */
 
 /**
- * @type {React.FC<AvatarProps>}
+ * @type {React.FC<AvatarProps & React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>>}
  */
 export const Avatar = React.forwardRef(({ className, ...props }, ref) => (
   <AvatarPrimitive.Root
@@ -26,13 +25,12 @@ Avatar.displayName = AvatarPrimitive.Root.displayName
 
 /**
  * @typedef {Object} AvatarImageProps
- * @extends {AvatarPrimitive.AvatarProps}
  * @property {string} [className]
  * @property {React.ReactNode} [children]
  */
 
 /**
- * @type {React.FC<AvatarImageProps>}
+ * @type {React.FC<AvatarImageProps & React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>>}
  */
 export const AvatarImage = React.forwardRef(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image
@@ -45,13 +43,12 @@ AvatarImage.displayName = AvatarPrimitive.Image.displayName
 
 /**
  * @typedef {Object} AvatarFallbackProps
- * @extends {AvatarPrimitive.AvatarProps}
  * @property {string} [className]
  * @property {React.ReactNode} [children]
  */
 
 /**
- * @type {React.FC<AvatarFallbackProps>}
+ * @type {React.FC<AvatarFallbackProps & React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>>}
  */
 export const AvatarFallback = React.forwardRef(
   ({ className, ...props }, ref) => (

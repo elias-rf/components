@@ -1,10 +1,11 @@
 import { fn } from '@storybook/test'
-import { Login } from './login-add.jsx'
+import { LoginAdd } from './login-add.jsx'
+import React from 'react'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Components/Login',
-  component: Login,
+  title: 'Components/LoginAdd',
+  component: LoginAdd,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
@@ -19,9 +20,16 @@ export default {
   args: { onClick: fn() },
 }
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary = {
-  args: {
-    children: 'Button',
+export const Geral = {
+  render: () => {
+    return (
+      <>
+        <LoginAdd
+          onInput={(user) => console.log(user)}
+          onNewUser={(user) => console.log(user)}
+          onLostPassword={() => console.log('lost password')}
+        />
+      </>
+    )
   },
 }

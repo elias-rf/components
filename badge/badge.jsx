@@ -25,24 +25,20 @@ const badgeVariants = cva(
 
 /**
  * @typedef {Object} BadgeProps
- * @extends {React.HTMLAttributes<HTMLDivElement>}
  * @property {any} [ref]
  * @property {boolean} [disabled]
  * @property {string} [className]
- * @property {"default" | "destructive" | "outline" | "secondary" | "ghost" | "link"} [variant]
+ * @property {"default" | "destructive" | "outline" | "secondary" } [variant]
  * @property {"default" | "sm" | "lg" | "icon"} [size]
  * @property {string} [asChild]
  * @property {(e:any)=>void} [onClick]
  */
 
 /**
- * @type {React.FC<BadgeProps>}
+ * @type {React.FC<BadgeProps & React.HTMLAttributes<HTMLDivElement>>}
  */
 export const Badge = ({ className, variant, ...props }) => {
   return (
-    <div
-      className={cn(badgeVariants({ variant }), className)}
-      {...props}
-    />
+    <div className={cn(badgeVariants({ variant }), className)} {...props} />
   )
 }

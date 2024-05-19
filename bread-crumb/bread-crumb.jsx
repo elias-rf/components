@@ -3,13 +3,12 @@ import { ChevronIcon } from '../icons/chevron-icon.jsx'
 
 /**
  * @typedef {Object} BreadCrumbItemProps
- * @extends {React.HTMLAttributes<HTMLDivElement>}
  * @property {string} [className]
  * @property {React.ReactNode} [children]
  */
 
 /**
- * @type {React.FC<BreadCrumbItemProps>}
+ * @type {React.FC<BreadCrumbItemProps & React.HTMLAttributes<HTMLDivElement>>}
  */
 export const BreadCrumbItem = ({ children, path }) => {
   return (
@@ -24,8 +23,7 @@ export const BreadCrumbItem = ({ children, path }) => {
 
 /**
  * @typedef {Object} BreadCrumbProps
- * @extends {React.HTMLAttributes<HTMLDivElement>}
- * @property {string} [className]
+ * @property {(path:string)=>void} [onClick]
  * @property {React.FC<BreadCrumbItemProps>} [children]
  */
 
@@ -38,23 +36,24 @@ export const BreadCrumb = ({ onClick, children }) => {
   const childrenWtihSeperator = childrenArray.map(
     /** @type {(child: React.ReactElement, index: number)=>React.ReactNode} */
     (child, index) => {
-    if (index !== childrenArray.length - 1) {
-      return (
-        <Fragment key={index}>
-          <li
-            className="inline-flex items-center cursor-pointer"
-            onClick={() => {
-              onClick(child.props.path)
-            }}
-          >
-            {child}
-          </li>
-          <ChevronIcon className="mx-1 text-gray-400 h-7 w-7 " />
-        </Fragment>
-      )
+      if (index !== childrenArray.length - 1) {
+        return (
+          <Fragment key={index}>
+            <li
+              className="inline-flex items-center cursor-pointer"
+              onClick={() => {
+                onClick(child.props.path)
+              }}
+            >
+              {child}
+            </li>
+            <ChevronIcon className="mx-1 text-gray-400 h-7 w-7 " />
+          </Fragment>
+        )
+      }
+      return <li key={index}>{child}</li>
     }
-    return <li key={index}>{child}</li>
-  })
+  )
 
   return (
     <>
