@@ -4,8 +4,8 @@ import {
   ChevronRightIcon,
   DotFilledIcon,
 } from '@radix-ui/react-icons'
+import PropTypes from 'prop-types'
 import * as React from 'react'
-
 import { cn } from '../lib/utils.mjs'
 
 const DropdownMenu = DropdownMenuPrimitive.Root
@@ -46,6 +46,12 @@ const DropdownMenuSubTrigger = React.forwardRef(
     </DropdownMenuPrimitive.SubTrigger>
   )
 )
+DropdownMenuSubTrigger.propTypes = {
+  ref: PropTypes.any,
+  className: PropTypes.string,
+  inset: PropTypes.bool,
+  children: PropTypes.node,
+}
 DropdownMenuSubTrigger.displayName =
   DropdownMenuPrimitive.SubTrigger.displayName
 
@@ -71,6 +77,10 @@ const DropdownMenuSubContent = React.forwardRef(
     />
   )
 )
+DropdownMenuSubContent.propTypes = {
+  ref: PropTypes.any,
+  className: PropTypes.string,
+}
 DropdownMenuSubContent.displayName =
   DropdownMenuPrimitive.SubContent.displayName
 
@@ -100,6 +110,11 @@ const DropdownMenuContent = React.forwardRef(
     </DropdownMenuPrimitive.Portal>
   )
 )
+DropdownMenuContent.propTypes = {
+  ref: PropTypes.any,
+  className: PropTypes.string,
+  sideOffset: PropTypes.number,
+}
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
 
 /**
@@ -125,6 +140,11 @@ const DropdownMenuItem = React.forwardRef(
     />
   )
 )
+DropdownMenuItem.propTypes = {
+  ref: PropTypes.any,
+  className: PropTypes.string,
+  inset: PropTypes.bool,
+}
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
 
 /**
@@ -157,6 +177,12 @@ const DropdownMenuCheckboxItem = React.forwardRef(
     </DropdownMenuPrimitive.CheckboxItem>
   )
 )
+DropdownMenuCheckboxItem.propTypes = {
+  ref: PropTypes.any,
+  className: PropTypes.string,
+  children: PropTypes.node,
+  checked: PropTypes.bool,
+}
 DropdownMenuCheckboxItem.displayName =
   DropdownMenuPrimitive.CheckboxItem.displayName
 
@@ -189,6 +215,11 @@ const DropdownMenuRadioItem = React.forwardRef(
     </DropdownMenuPrimitive.RadioItem>
   )
 )
+DropdownMenuRadioItem.propTypes = {
+  ref: PropTypes.any,
+  className: PropTypes.string,
+  children: PropTypes.node,
+}
 DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName
 
 /**
@@ -214,6 +245,11 @@ const DropdownMenuLabel = React.forwardRef(
     />
   )
 )
+DropdownMenuLabel.propTypes = {
+  ref: PropTypes.any,
+  className: PropTypes.string,
+  inset: PropTypes.bool,
+}
 DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName
 
 /**
@@ -238,6 +274,10 @@ const DropdownMenuSeparator = React.forwardRef(
     />
   )
 )
+DropdownMenuSeparator.propTypes = {
+  ref: PropTypes.any,
+  className: PropTypes.string,
+}
 DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName
 
 /**
@@ -257,6 +297,10 @@ const DropdownMenuShortcut = ({ className, ...props }) => {
       {...props}
     />
   )
+}
+DropdownMenuShortcut.propTypes = {
+  ref: PropTypes.any,
+  className: PropTypes.string,
 }
 DropdownMenuShortcut.displayName = 'DropdownMenuShortcut'
 

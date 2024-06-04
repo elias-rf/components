@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types'
 import { Children, Fragment } from 'react'
 import { ChevronIcon } from '../icons/chevron-icon.jsx'
 
 /**
  * @typedef {Object} BreadCrumbItemProps
- * @property {string} [className]
+ * @property {string} [path]
  * @property {React.ReactNode} [children]
  */
 
@@ -20,11 +21,15 @@ export const BreadCrumbItem = ({ children, path }) => {
     </div>
   )
 }
+BreadCrumbItem.propTypes = {
+  path: PropTypes.string,
+  children: PropTypes.any,
+}
 
 /**
  * @typedef {Object} BreadCrumbProps
  * @property {(path:string)=>void} [onClick]
- * @property {React.FC<BreadCrumbItemProps>} [children]
+ * @property {React.ReactNode} [children]
  */
 
 /**
@@ -33,7 +38,7 @@ export const BreadCrumbItem = ({ children, path }) => {
 export const BreadCrumb = ({ onClick, children }) => {
   const childrenArray = Children.toArray(children)
 
-  const childrenWtihSeperator = childrenArray.map(
+  const childrenWithSeparetor = childrenArray.map(
     /** @type {(child: React.ReactElement, index: number)=>React.ReactNode} */
     (child, index) => {
       if (index !== childrenArray.length - 1) {
@@ -47,7 +52,7 @@ export const BreadCrumb = ({ onClick, children }) => {
             >
               {child}
             </li>
-            <ChevronIcon className="mx-1 text-gray-400 h-7 w-7 " />
+            <ChevronIcon className="mx-1 text-gray-400 h-7 w-7" />
           </Fragment>
         )
       }
@@ -57,11 +62,18 @@ export const BreadCrumb = ({ onClick, children }) => {
 
   return (
     <>
-      <nav className="flex" aria-label="Breadcrumb">
+      <nav
+        className="flex"
+        aria-label="Breadcrumb"
+      >
         <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-          {childrenWtihSeperator}
+          {childrenWithSeparetor}
         </ol>
       </nav>
     </>
   )
+}
+BreadCrumb.propTypes = {
+  onClick: PropTypes.func,
+  children: PropTypes.any,
 }

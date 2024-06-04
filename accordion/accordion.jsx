@@ -1,5 +1,7 @@
+// @ts-ignore
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
 import { ChevronDownIcon } from '@radix-ui/react-icons'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { cn } from '../lib/utils.mjs'
 
@@ -23,6 +25,10 @@ const AccordionItem = React.forwardRef(({ className, ...props }, ref) => (
     {...props}
   />
 ))
+
+AccordionItem.propTypes = {
+  className: PropTypes.string,
+}
 AccordionItem.displayName = 'AccordionItem'
 
 /**
@@ -52,6 +58,10 @@ const AccordionTrigger = React.forwardRef(
     </AccordionPrimitive.Header>
   )
 )
+AccordionTrigger.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+}
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
 
 /**
@@ -68,13 +78,17 @@ const AccordionContent = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <AccordionPrimitive.Content
       ref={ref}
-      className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+      className="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
       {...props}
     >
       <div className={cn('pb-4 pt-0', className)}>{children}</div>
     </AccordionPrimitive.Content>
   )
 )
+AccordionContent.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+}
 AccordionContent.displayName = AccordionPrimitive.Content.displayName
 
 export { Accordion, AccordionContent, AccordionItem, AccordionTrigger }

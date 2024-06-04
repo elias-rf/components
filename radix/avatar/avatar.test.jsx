@@ -13,7 +13,8 @@ describe('given an Avatar with fallback and a working image', () => {
   const orignalGlobalImage = window.Image
 
   beforeAll(() => {
-    /** @type {any} */ window.Image = class MockImage {
+    // @ts-ignore
+    window.Image = class MockImage {
       onload = () => {}
       src = ''
       constructor() {

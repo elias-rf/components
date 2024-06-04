@@ -1,6 +1,7 @@
 import { ChevronDownIcon } from '@radix-ui/react-icons'
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
 import { cva } from 'class-variance-authority'
+import PropTypes from 'prop-types'
 import * as React from 'react'
 import { cn } from '../lib/utils.mjs'
 
@@ -28,6 +29,10 @@ const NavigationMenu = React.forwardRef(
     </NavigationMenuPrimitive.Root>
   )
 )
+NavigationMenu.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+}
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
 
 /**
@@ -49,6 +54,10 @@ const NavigationMenuList = React.forwardRef(({ className, ...props }, ref) => (
     {...props}
   />
 ))
+NavigationMenuList.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+}
 NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 
 const NavigationMenuItem = NavigationMenuPrimitive.Item
@@ -82,6 +91,10 @@ const NavigationMenuTrigger = React.forwardRef(
     </NavigationMenuPrimitive.Trigger>
   )
 )
+NavigationMenuTrigger.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+}
 NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName
 
 /**
@@ -105,6 +118,10 @@ const NavigationMenuContent = React.forwardRef(
     />
   )
 )
+NavigationMenuContent.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+}
 NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName
 
 const NavigationMenuLink = NavigationMenuPrimitive.Link
@@ -132,6 +149,10 @@ const NavigationMenuViewport = React.forwardRef(
     </div>
   )
 )
+NavigationMenuViewport.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+}
 NavigationMenuViewport.displayName =
   NavigationMenuPrimitive.Viewport.displayName
 
@@ -158,6 +179,10 @@ const NavigationMenuIndicator = React.forwardRef(
     </NavigationMenuPrimitive.Indicator>
   )
 )
+NavigationMenuIndicator.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+}
 NavigationMenuIndicator.displayName =
   NavigationMenuPrimitive.Indicator.displayName
 

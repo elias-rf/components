@@ -1,6 +1,7 @@
-import { valibotResolver } from '@hookform/resolvers/valibot'
+import { zodResolver } from '@hookform/resolvers/zod'
+import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
-import * as v from 'valibot'
+import { z } from 'zod'
 import { Button } from '../button/button.jsx'
 import {
   Form,
@@ -16,10 +17,10 @@ import { Modal } from '../ui-old/modal/modal.jsx'
 export function Login({ onInput }) {
   const form = useForm({
     defaultValues: { userName: '', password: '' },
-    resolver: valibotResolver(
-      v.object({
-        userName: v.string([v.minLength(3, 'Mínimo 3 caracteres')]),
-        password: v.string([v.minLength(3, 'Mínimo 3 caracteres')]),
+    resolver: zodResolver(
+      z.object({
+        userName: z.string().min(3, 'Mínimo 3 caracteres'),
+        password: z.string().min(3, 'Mínimo 3 caracteres'),
       })
     ),
   })
@@ -33,7 +34,7 @@ export function Login({ onInput }) {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onInput)}
-          className="alignItems-center m-4 flex w-60 flex-col gap-4 pb-4"
+          className="flex flex-col gap-4 pb-4 m-4 alignItems-center w-60"
         >
           <FormField
             control={form.control}
@@ -65,9 +66,13 @@ export function Login({ onInput }) {
               </FormItem>
             )}
           />
-          <Button type="submit">Entrar</Button>
+          <Button>Entrar</Button>
         </form>
       </Form>
     </Modal>
   )
+}
+
+Login.propTypes = {
+  onInput: PropTypes.func,
 }
