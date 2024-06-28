@@ -1,4 +1,4 @@
-import { afterEach, assert, beforeEach, describe, test } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import { parseWhere } from './parse-where.mjs'
 
 const columns = [
@@ -20,7 +20,7 @@ describe('parseWhere', () => {
       },
       columns
     )
-    assert.deepEqual(where, [
+    expect(where).toEqual([
       ['id', '>=', '1'],
       ['name', '=', 'elias'],
     ])

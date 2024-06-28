@@ -1,12 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import React from 'react'
-import { afterEach, assert, beforeEach, describe, test } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import { Button } from './button.jsx'
 
 describe('Button', () => {
   test('deve mostrar label', () => {
     render(<Button>Content</Button>)
-    assert.deepEqual(screen.getByText('Content')).toBeDefined()
+    expect(screen.getByText('Content')).toBeDefined()
   })
 
   test('deve aceitar click', () => {
@@ -23,8 +22,8 @@ describe('Button', () => {
 
     const title = screen.getByText('Content')
     fireEvent.click(title)
-    assert.deepEqual(screen.getByText('Content')).toBeDefined()
-    assert.deepEqual(clicked).toBe(true)
+    expect(screen.getByText('Content')).toBeDefined()
+    expect(clicked).toBe(true)
   })
   test('deve recusar click on disabled', () => {
     let clicked = false
@@ -40,7 +39,7 @@ describe('Button', () => {
     )
     const title = screen.getByText('Content')
     fireEvent.click(title)
-    assert.deepEqual(screen.getByText('Content')).toBeDefined()
-    assert.deepEqual(clicked).toBe(false)
+    expect(screen.getByText('Content')).toBeDefined()
+    expect(clicked).toBe(false)
   })
 })

@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import { afterEach, assert, beforeEach, describe, test } from 'vitest'
+import { afterAll, beforeAll, beforeEach, describe, expect, test } from 'vitest'
 import * as Avatar from './avatar.jsx'
 
 const ROOT_TEST_ID = 'avatar-root'
@@ -13,7 +13,7 @@ describe('given an Avatar with fallback and a working image', () => {
   const orignalGlobalImage = window.Image
 
   beforeAll(() => {
-    //-------------------------------------------------- @ts-ignore
+    // @ts-ignore
     window.Image = class MockImage {
       onload = () => {}
       src = ''
@@ -44,22 +44,22 @@ describe('given an Avatar with fallback and a working image', () => {
 
   test('should render the fallback initially', () => {
     const fallback = rendered.queryByText(FALLBACK_TEXT)
-    assert.deepEqual(fallback).toBeInTheDocument()
+    expect(fallback).toBeInTheDocument()
   })
 
   test('should not render the image initially', () => {
     image = rendered.queryByRole('img')
-    assert.deepEqual(image).not.toBeInTheDocument()
+    expect(image).not.toBeInTheDocument()
   })
 
   test('should render the image after it has loaded', async () => {
     image = await rendered.findByRole('img')
-    assert.deepEqual(image).toBeInTheDocument()
+    expect(image).toBeInTheDocument()
   })
 
   test('should have alt text on the image', async () => {
     image = await rendered.findByAltText(IMAGE_ALT_TEXT)
-    assert.deepEqual(image).toBeInTheDocument()
+    expect(image).toBeInTheDocument()
   })
 })
 
@@ -77,13 +77,13 @@ describe('given an Avatar with fallback and delayed render', () => {
 
   test('should not render a fallback immediately', () => {
     fallback = rendered.queryByText(FALLBACK_TEXT)
-    assert.deepEqual(fallback).not.toBeInTheDocument()
+    expect(fallback).not.toBeInTheDocument()
   })
 
   test('should render a fallback after the delay', async () => {
     fallback = rendered.queryByText(FALLBACK_TEXT)
-    assert.deepEqual(fallback).not.toBeInTheDocument()
+    expect(fallback).not.toBeInTheDocument()
     fallback = await rendered.findByText(FALLBACK_TEXT)
-    assert.deepEqual(fallback).toBeInTheDocument()
+    expect(fallback).toBeInTheDocument()
   })
 })
