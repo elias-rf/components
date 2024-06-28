@@ -159,13 +159,13 @@ const Image = AvatarImage
 const Fallback = AvatarFallback
 
 export {
-  //
+  //--------------------------------------------------
   Avatar,
   AvatarFallback,
   AvatarImage,
   Fallback,
   Image,
-  //
+  //--------------------------------------------------
   Root,
   createAvatarScope,
 }

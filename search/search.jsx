@@ -41,7 +41,7 @@ function getEqualitys(field, schema) {
     case 'boolean':
       return { '=': 'igual a' }
     case 'string':
-      // eslint-disable-next-line no-case-declarations
+      //-------------------------------------------------- eslint-disable-next-line no-case-declarations
       const rsp = { ...equalitys }
       delete rsp['<']
       delete rsp['<=']

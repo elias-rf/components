@@ -24,7 +24,7 @@ export function ExpandableObject({
     } else {
       setExpanded(shouldExpandNode(level, value, field))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    //-------------------------------------------------- eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldExpandNode])
 
   const expanderIconStyle = expanded ? style.collapseIcon : style.expandIcon
@@ -38,7 +38,10 @@ export function ExpandableObject({
   }
 
   return (
-    <div className={style.basicChildStyle} role="list">
+    <div
+      className={style.basicChildStyle}
+      role="list"
+    >
       <span
         className={expanderIconStyle}
         role="button"

@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, assert, beforeEach, describe, test } from 'vitest'
 import { Slot, Slottable } from './slot.jsx'
 
 describe('given a slotted Trigger', () => {
@@ -10,7 +10,7 @@ describe('given a slotted Trigger', () => {
     beforeEach(() => {
       handleClick.mockReset()
       render(
-        // @ts-ignore
+        //-------------------------------------------------- @ts-ignore
         <Trigger
           as={Slot}
           onClick={handleClick}
@@ -21,8 +21,8 @@ describe('given a slotted Trigger', () => {
       fireEvent.click(screen.getByRole('button'))
     })
 
-    it('should call the onClick passed to the Trigger', async () => {
-      expect(handleClick).toHaveBeenCalledTimes(1)
+    test('should call the onClick passed to the Trigger', async () => {
+      assert.deepEqual(handleClick).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -32,7 +32,7 @@ describe('given a slotted Trigger', () => {
     beforeEach(() => {
       handleClick.mockReset()
       render(
-        // @ts-ignore
+        //-------------------------------------------------- @ts-ignore
         <Trigger as={Slot}>
           <button
             type="button"
@@ -45,8 +45,8 @@ describe('given a slotted Trigger', () => {
       fireEvent.click(screen.getByRole('button'))
     })
 
-    it("should call the child's onClick", async () => {
-      expect(handleClick).toHaveBeenCalledTimes(1)
+    test("should call the child's onClick", async () => {
+      assert.deepEqual(handleClick).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -58,7 +58,7 @@ describe('given a slotted Trigger', () => {
       handleTriggerClick.mockReset()
       handleChildClick.mockReset()
       render(
-        // @ts-ignore
+        //-------------------------------------------------- @ts-ignore
         <Trigger
           as={Slot}
           onClick={handleTriggerClick}
@@ -74,12 +74,12 @@ describe('given a slotted Trigger', () => {
       fireEvent.click(screen.getByRole('button'))
     })
 
-    it("should call the Trigger's onClick", async () => {
-      expect(handleTriggerClick).toHaveBeenCalledTimes(1)
+    test("should call the Trigger's onClick", async () => {
+      assert.deepEqual(handleTriggerClick).toHaveBeenCalledTimes(1)
     })
 
-    it("should call the child's onClick", async () => {
-      expect(handleChildClick).toHaveBeenCalledTimes(1)
+    test("should call the child's onClick", async () => {
+      assert.deepEqual(handleChildClick).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -89,7 +89,7 @@ describe('given a slotted Trigger', () => {
     beforeEach(() => {
       handleTriggerClick.mockReset()
       render(
-        // @ts-ignore
+        //-------------------------------------------------- @ts-ignore
         <Trigger
           as={Slot}
           onClick={handleTriggerClick}
@@ -105,8 +105,8 @@ describe('given a slotted Trigger', () => {
       fireEvent.click(screen.getByRole('button'))
     })
 
-    it("should call the Trigger's onClick", async () => {
-      expect(handleTriggerClick).toHaveBeenCalledTimes(1)
+    test("should call the Trigger's onClick", async () => {
+      assert.deepEqual(handleTriggerClick).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -116,7 +116,7 @@ describe('given a slotted Trigger', () => {
     beforeEach(() => {
       handleChildClick.mockReset()
       render(
-        // @ts-ignore
+        //-------------------------------------------------- @ts-ignore
         <Trigger
           as={Slot}
           onClick={undefined}
@@ -132,15 +132,15 @@ describe('given a slotted Trigger', () => {
       fireEvent.click(screen.getByRole('button'))
     })
 
-    it("should call the child's onClick", async () => {
-      expect(handleChildClick).toHaveBeenCalledTimes(1)
+    test("should call the child's onClick", async () => {
+      assert.deepEqual(handleChildClick).toHaveBeenCalledTimes(1)
     })
   })
 })
 
 describe('given a Button with Slottable', () => {
   describe('without asChild', () => {
-    it('should render a button with icon on the left/right', async () => {
+    test('should render a button with icon on the left/right', async () => {
       const tree = render(
         <Button
           iconLeft={<span>left</span>}
@@ -150,12 +150,12 @@ describe('given a Button with Slottable', () => {
         </Button>
       )
 
-      expect(tree.container).toMatchSnapshot()
+      assert.deepEqual(tree.container).toMatchSnapshot()
     })
   })
 
   describe('with asChild', () => {
-    it('should render a link with icon on the left/right', async () => {
+    test('should render a link with icon on the left/right', async () => {
       const tree = render(
         <Button
           iconLeft={<span>left</span>}
@@ -168,7 +168,7 @@ describe('given a Button with Slottable', () => {
         </Button>
       )
 
-      expect(tree.container).toMatchSnapshot()
+      assert.deepEqual(tree.container).toMatchSnapshot()
     })
   })
 })

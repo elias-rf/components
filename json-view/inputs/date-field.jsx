@@ -6,7 +6,7 @@ export const DateField = ({ onChange, onBlur, value, required, disabled }) => {
       format="##/##/####"
       valueIsNumericString
       value={value}
-      // customInput={MuiTextField}
+      //-------------------------------------------------- customInput={MuiTextField}
       onValueChange={(values) => onChange(values.value)}
       onBlur={onBlur}
       required={required}

@@ -16,7 +16,7 @@ export const NumberField = ({
       decimalScale={decimals}
       valueIsNumericString
       value={value}
-      // customInput={input}
+      //-------------------------------------------------- customInput={input}
       onValueChange={(values) => onChange(values.value)}
       onBlur={onBlur}
       required={required}

@@ -1,5 +1,5 @@
+import { afterEach, assert, beforeEach, describe, test } from 'vitest'
 import { formatWhere } from './format-where.mjs'
-import { describe, expect, test } from 'vitest'
 
 const columns = [
   { name: 'id', label: 'ID' },
@@ -20,7 +20,7 @@ describe('formatWhere', () => {
       ],
       columns
     )
-    expect(where).toEqual({
+    assert.deepEqual(where, {
       id: '1',
       name: '= ELIAS',
     })
