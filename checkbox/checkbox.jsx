@@ -1,5 +1,6 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { CheckIcon } from '@radix-ui/react-icons'
+import PropTypes from 'prop-types'
 import * as React from 'react'
 import { cn } from '../lib/utils.mjs'
 
@@ -14,7 +15,7 @@ import { cn } from '../lib/utils.mjs'
 /**
  * @type {React.FC<Props>}
  */
-const Checkbox = React.forwardRef(({ className, ...props }, ref) => (
+export const Checkbox = React.forwardRef(({ className, ...props }, ref) => (
   <CheckboxPrimitive.Root
     ref={ref}
     className={cn(
@@ -32,4 +33,6 @@ const Checkbox = React.forwardRef(({ className, ...props }, ref) => (
 ))
 Checkbox.displayName = CheckboxPrimitive.Root.displayName
 
-export { Checkbox }
+Checkbox.propTypes = {
+  className: PropTypes.string,
+}

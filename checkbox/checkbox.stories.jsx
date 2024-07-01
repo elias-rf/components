@@ -12,8 +12,11 @@ export const Default = {
     const [vlr, setVlr] = React.useState(true)
     return (
       <>
-        <div className="p-4 bg-white ">
-          <Checkbox checked={vlr} onCheckedChange={(e) => setVlr(e)} />
+        <div className="p-4 bg-white">
+          <Checkbox
+            checked={vlr}
+            onCheckedChange={(e) => setVlr(e)}
+          />
         </div>
         <div className="p-4 bg-black dark">
           <Checkbox />
