@@ -1,9 +1,7 @@
-import { JsonView } from '../json-view/json-view.jsx'
-
 import { isEqual } from 'lodash-es'
 import React from 'react'
-
-import { Table } from './table.jsx'
+import { JsonView } from '../json-view/json-view.jsx'
+import { Table, initReducer, tableReducer } from './table.jsx'
 
 const meta = {
   component: Table,
@@ -52,21 +50,30 @@ const schema = [
 export const Default = {
   render: () => (
     <>
-      <Table columns={schema} rows={data}></Table>
+      <Table
+        columns={schema}
+        rows={data}
+      ></Table>
     </>
   ),
 }
 
 export const Full = {
   render: () => {
-    const [selection, setSelection] = React.useState([])
-    const [sort, setSort] = React.useState([])
-    const [filter, onFilter] = React.useState([['dessert', '>', 'Eclair']])
     const getId = (row) => [['dessert', row.dessert]]
+    const [stateTable, dispatchTable] = React.useReducer(
+      tableReducer,
+      null,
+      initReducer
+    )
 
-    function onSelection(selected) {
-      if (isEqual(selected, selection)) return setSelection([])
-      setSelection(selected)
+    function dispatch(action) {
+      if (action.type === 'setSelection') {
+        if (isEqual(action.value, stateTable.selection)) {
+          action.value = []
+        }
+      }
+      dispatchTable(action)
     }
 
     return (
@@ -74,13 +81,9 @@ export const Full = {
         <Table
           rows={data}
           columns={schema}
-          selection={selection}
-          onSelection={onSelection}
-          orderBy={sort}
-          onOrderBy={setSort}
-          where={filter}
-          onWhere={onFilter}
+          state={stateTable}
           getId={getId}
+          dispatch={dispatch}
         >
           {({ row }) => {
             return (
@@ -99,9 +102,7 @@ export const Full = {
 
         <JsonView
           data={{
-            selection,
-            sort,
-            filter,
+            stateTable,
           }}
         />
       </>

@@ -23,6 +23,7 @@ export const VtLogoIcon = ({ className, color = 'blue' }) => {
       viewBox="0 0 365 470"
       xmlns="http://www.w3.org/2000/svg"
       className={cn('inline-block h-5 w-5', className)}
+      fill="currentColor"
     >
       <title>VT Logo</title>
       <path

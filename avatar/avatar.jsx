@@ -1,6 +1,14 @@
-import * as AvatarPrimitive from '../radix/avatar/avatar.jsx'
 import * as React from 'react'
 import { cn } from '../lib/utils.mjs'
+import * as AvatarPrimitive from '../radix/avatar/avatar.jsx'
+
+function iniciais(nome) {
+  if (!nome) return '?'
+  const [primeiro, segundo] = nome.split(' ')
+  if (!segundo)
+    return primeiro.charAt(0).toUpperCase() + primeiro.charAt(1).toLowerCase()
+  return primeiro.charAt(0).toUpperCase() + segundo.charAt(0).toUpperCase()
+}
 
 /**
  * @typedef {Object} AvatarProps
@@ -22,7 +30,7 @@ export const Avatar = React.forwardRef(({ className, ...props }, ref) => (
   />
 ))
 Avatar.displayName = AvatarPrimitive.Root.displayName
-
+/* -------------------------------------------------------------------------- */
 /**
  * @typedef {Object} AvatarImageProps
  * @property {string} [className]
@@ -40,7 +48,7 @@ export const AvatarImage = React.forwardRef(({ className, ...props }, ref) => (
   />
 ))
 AvatarImage.displayName = AvatarPrimitive.Image.displayName
-
+/* -------------------------------------------------------------------------- */
 /**
  * @typedef {Object} AvatarFallbackProps
  * @property {string} [className]
@@ -51,15 +59,19 @@ AvatarImage.displayName = AvatarPrimitive.Image.displayName
  * @type {React.FC<AvatarFallbackProps & React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>>}
  */
 export const AvatarFallback = React.forwardRef(
-  ({ className, ...props }, ref) => (
-    <AvatarPrimitive.Fallback
-      ref={ref}
-      className={cn(
-        'flex h-full w-full items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800',
-        className
-      )}
-      {...props}
-    />
-  )
+  ({ className, ...props }, ref) => {
+    props.children = iniciais(props.children)
+    return (
+      <AvatarPrimitive.Fallback
+        ref={ref}
+        className={cn(
+          'flex h-full w-full items-center justify-center rounded-full bg-black/5 text-black/90 dark:bg-white/30 dark:text-white/80',
+          className
+        )}
+        {...props}
+      />
+    )
+  }
 )
+
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName

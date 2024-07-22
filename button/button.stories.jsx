@@ -31,59 +31,7 @@ export const Default = {
         <Button size={'lg'}>lg</Button>
         <Button size={'icon'}>icon</Button>
       </div>
-      <div className="bg-white p-4">
-        <Title>white</Title>
-        <Title>variant</Title>
-        <div className="flex flex-row space-x-2">
-          <Button variant={'default'}>default</Button>
-          <Button variant={'destructive'}>destructive</Button>
-          <Button variant={'outline'}>outline</Button>
-          <Button variant={'secondary'}>secondary</Button>
-          <Button variant={'ghost'}>ghost</Button>
-          <Button variant={'link'}>link</Button>
-        </div>
-        <Title>disabled</Title>
-        <div className="flex flex-row space-x-2">
-          <Button
-            disabled
-            variant={'default'}
-          >
-            default
-          </Button>
-          <Button
-            disabled
-            variant={'destructive'}
-          >
-            destructive
-          </Button>
-          <Button
-            disabled
-            variant={'outline'}
-          >
-            outline
-          </Button>
-          <Button
-            disabled
-            variant={'secondary'}
-          >
-            secondary
-          </Button>
-          <Button
-            disabled
-            variant={'ghost'}
-          >
-            ghost
-          </Button>
-          <Button
-            disabled
-            variant={'link'}
-          >
-            link
-          </Button>
-        </div>
-      </div>
-      <div className="dark bg-black p-4">
-        <Title>dark</Title>
+      <div className="p-4">
         <Title>variant</Title>
         <div className="flex flex-row space-x-2">
           <Button variant={'default'}>default</Button>

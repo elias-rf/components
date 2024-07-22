@@ -1,3 +1,7 @@
+import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
+import PropTypes from 'prop-types'
+import * as React from 'react'
+import { Button } from '../button/button.jsx'
 import {
   Command,
   CommandEmpty,
@@ -5,12 +9,8 @@ import {
   CommandInput,
   CommandItem,
 } from '../command/command.jsx'
-import { Popover, PopoverContent, PopoverTrigger } from '../popover/popover.jsx'
-import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
-import * as React from 'react'
-
-import { Button } from '../button/button.jsx'
 import { cn } from '../lib/utils.mjs'
+import { Popover, PopoverContent, PopoverTrigger } from '../popover/popover.jsx'
 
 /**
  * @typedef {Object} ComboboxProps
@@ -26,7 +26,7 @@ import { cn } from '../lib/utils.mjs'
 /**
  * @type {React.FC<ComboboxProps>}
  */
-const Combobox = ({
+export const Combobox = ({
   options,
   value,
   onValueChange,
@@ -38,7 +38,10 @@ const Combobox = ({
   const [vlr, setVlr] = React.useState(value)
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover
+      open={open}
+      onOpenChange={setOpen}
+    >
       <PopoverTrigger asChild>
         <Button
           variant="outline"
@@ -55,19 +58,22 @@ const Combobox = ({
       </PopoverTrigger>
       <PopoverContent className="p-0">
         <Command>
-          <CommandInput placeholder={inputPlaceholder || ''} className="h-9" />
+          <CommandInput
+            placeholder={inputPlaceholder || ''}
+            className="h-9"
+          />
           <CommandEmpty>Não encontrado</CommandEmpty>
           <CommandGroup>
             {options.map((option) => (
               <CommandItem
                 key={option.value}
                 value={option.value}
-                onSelect={(currentValue) => {
-                  const v = currentValue === vlr ? '' : currentValue
-                  setVlr(v)
-                  onValueChange && onValueChange(v)
-                  setOpen(false)
-                }}
+                // onSelect={(currentValue) => {
+                //   const v = currentValue === vlr ? '' : currentValue
+                //   setVlr(v)
+                //   onValueChange && onValueChange(v)
+                //   setOpen(false)
+                // }}
               >
                 {option.label}
                 <CheckIcon
@@ -85,4 +91,11 @@ const Combobox = ({
   )
 }
 
-export { Combobox }
+Combobox.propTypes = {
+  options: PropTypes.array,
+  value: PropTypes.string,
+  onValueChange: PropTypes.func,
+  placeholder: PropTypes.string,
+  inputPlaceholder: PropTypes.string,
+  disabled: PropTypes.bool,
+}

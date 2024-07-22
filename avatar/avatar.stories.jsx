@@ -1,13 +1,11 @@
 import { Avatar, AvatarFallback } from './avatar.jsx'
 
-const meta = {
+export default {
   component: Avatar,
 }
 
-export default meta
-
 export const Default = {
-  render: (props) => (
+  render: () => (
     <>
       <Avatar>
         <AvatarFallback>A</AvatarFallback>

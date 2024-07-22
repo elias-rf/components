@@ -1,5 +1,5 @@
+import PropTypes from 'prop-types'
 import * as React from 'react'
-
 import { cn } from '../lib/utils.mjs'
 
 /**
@@ -12,7 +12,7 @@ import { cn } from '../lib/utils.mjs'
 /**
  * @type {React.FC<InputProps>}
  */
-const Input = React.forwardRef(({ className, type, ...props }, ref) => {
+export const Input = React.forwardRef(({ className, type, ...props }, ref) => {
   return (
     <input
       type={type}
@@ -27,4 +27,7 @@ const Input = React.forwardRef(({ className, type, ...props }, ref) => {
 })
 Input.displayName = 'Input'
 
-export { Input }
+Input.propTypes = {
+  className: PropTypes.string,
+  type: PropTypes.string,
+}

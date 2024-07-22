@@ -2,16 +2,24 @@ import { RocketIcon } from '@radix-ui/react-icons'
 
 import { Alert, AlertDescription, AlertTitle } from './alert.jsx'
 
-const meta = {
+export default {
   component: Alert,
+  argTypes: {
+    variant: {
+      control: { type: 'select' },
+      options: ['default', 'destructive'],
+    },
+  },
 }
 
-export default meta
-
 export const Default = {
-  render: (props) => (
+  args: {
+    variant: 'default',
+  },
+
+  render: (args) => (
     <>
-      <Alert>
+      <Alert {...args}>
         <RocketIcon className="w-4 h-4" />
         <AlertTitle>Heads up!</AlertTitle>
         <AlertDescription>

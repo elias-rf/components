@@ -1,12 +1,13 @@
 import { get } from 'lodash-es'
+import PropTypes from 'prop-types'
 import React from 'react'
+import { SearchIcon } from '../icons/search-icon.jsx'
+import { cn } from '../lib/utils.mjs'
 import { filterNonEmptyProperties } from './filter-non-empty-properties.mjs'
 import { formatWhere } from './format-where.mjs'
-import { parseWhere } from './parse-where.mjs'
-import { cn } from '../lib/utils.mjs'
-import { SearchIcon } from '../icons/search-icon.jsx'
 import { getIdDefault } from './get-id-default.mjs'
 import { InputFilter } from './input-filter.jsx'
+import { parseWhere } from './parse-where.mjs'
 import { ShowSortIcon } from './show-sort-icon.jsx'
 
 const align = {
@@ -19,13 +20,13 @@ const align = {
  * @typedef {Object} TableProps
  * @property {{name:string, label:string, sortable?:boolean, align?:string, width?:string, format?:any}[]} [columns]
  * @property {()=>any} [getId]
- * @property {string[]} [orderBy]
  * @property {Record<string, any>[]} [rows]
  * @property {any[]} [selection]
  * @property {any[]} [where]
- * @property {any} [onOrderBy]
- * @property {any} [onSelection]
- * @property {(e:any)=>void} [onWhere]
+ * @property {any[]} [orderBy]
+ * @property {(selection:any[]) => void} [onSelection]
+ * @property {(where:any[]) => void} [onWhere]
+ * @property {(orderBy:any[]) => void} [onOrderBy]
  * @property {(dados:any)=>React.ReactElement} [children]
  */
 
@@ -35,14 +36,14 @@ const align = {
 export const Table = ({
   children,
   columns,
-  getId = getIdDefault,
-  onOrderBy,
-  onSelection,
-  onWhere,
-  orderBy,
   rows = [],
-  selection = [],
+  getId = getIdDefault,
   where,
+  orderBy,
+  selection,
+  onSelection,
+  onOrderBy,
+  onWhere,
 }) => {
   const defaultValues = formatWhere(where || [], columns)
 
@@ -53,24 +54,24 @@ export const Table = ({
       filterNonEmptyProperties(defaultValues),
       columns
     )
-    onWhere && onWhere(filteredObj)
+    onWhere(filteredObj)
   }
 
   const handleOnSelection = (row) => {
-    onSelection && onSelection(getId(row))
+    onSelection(getId(row))
   }
 
   function isSortable(col) {
-    if (!orderBy || !onOrderBy) return false
+    if (!orderBy) return false
     if (col.sortable === false) return false
     return true
   }
 
   function handleOnSort(col) {
-    if (!orderBy || !onOrderBy) return
+    if (!orderBy) return
     if (col.sortable === false) return
     if (orderBy.length === 0) {
-      onOrderBy && onOrderBy([[col.name, 'asc']])
+      onOrderBy([[col.name, 'asc']])
       return
     }
     const field = orderBy[0][0]
@@ -81,7 +82,7 @@ export const Table = ({
     } else {
       ord = 'asc'
     }
-    onOrderBy && onOrderBy([[col.name, ord]])
+    onOrderBy([[col.name, ord]])
   }
 
   function isSelected(row, selection) {
@@ -115,7 +116,10 @@ export const Table = ({
               >
                 {col.label}
                 {isSortable(col) && (
-                  <ShowSortIcon col={col} orderBy={orderBy} />
+                  <ShowSortIcon
+                    col={col}
+                    orderBy={orderBy}
+                  />
                 )}
               </th>
             ))}
@@ -133,7 +137,7 @@ export const Table = ({
                       value={defaultValues[col.name] || ''}
                       onInput={handleWhere}
                     />
-                    <SearchIcon className="w-3 " />
+                    <SearchIcon className="w-3" />
                   </div>
                 </td>
               ))}
@@ -180,4 +184,17 @@ export const Table = ({
       </table>
     </div>
   )
+}
+
+Table.propTypes = {
+  children: PropTypes.func,
+  columns: PropTypes.array,
+  rows: PropTypes.array,
+  getId: PropTypes.func,
+  selection: PropTypes.any,
+  orderBy: PropTypes.any,
+  where: PropTypes.any,
+  onSelection: PropTypes.func,
+  onOrderBy: PropTypes.func,
+  onWhere: PropTypes.func,
 }

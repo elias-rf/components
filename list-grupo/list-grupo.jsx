@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { cn } from '../lib/utils.mjs'
 
 /**
@@ -20,4 +21,9 @@ export const ListGrupo = ({ children, className }) => {
       {children}
     </ul>
   )
+}
+
+ListGrupo.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
 }

@@ -37,89 +37,92 @@ export const Lista = {
     return (
       <>
         <p className="mb-4 text-2xl font-bold">Icons List</p>
-        <div className="flex flex-row flex-wrap">
+        <div className="flex flex-row flex-wrap text-black/80 dark:text-white/80">
           <div className={classIcon}>
-            <CheckIcon className="h-10 w-10" />
+            <CheckIcon className="w-10 h-10" />
             Check
           </div>
           <div className={classIcon}>
-            <ChevronIcon className="h-10 w-10" />
+            <ChevronIcon className="w-10 h-10" />
             Chevron
           </div>
           <div className={classIcon}>
-            <CloseIcon className="h-10 w-10" />
+            <CloseIcon className="w-10 h-10" />
             Close
           </div>
           <div className={classIcon}>
-            <DelDocIcon className="h-10 w-10" />
+            <DelDocIcon className="w-10 h-10" />
             DelDoc
           </div>
           <div className={classIcon}>
-            <ErrorIcon className="h-10 w-10" />
+            <ErrorIcon className="w-10 h-10" />
             Error
           </div>
           <div className={classIcon}>
-            <FireIcon className="h-10 w-10" />
+            <FireIcon className="w-10 h-10" />
             Fire
           </div>
           <div className={classIcon}>
-            <HamburgerIcon className="h-10 w-10" />
+            <HamburgerIcon className="w-10 h-10" />
             Hamburger
           </div>
           <div className={classIcon}>
-            <HomeIcon className="h-10 w-10" />
+            <HomeIcon className="w-10 h-10" />
             Home
           </div>
           <div className={classIcon}>
-            <MoonIcon className="h-10 w-10" />
+            <MoonIcon className="w-10 h-10" />
             Moon
           </div>
           <div className={classIcon}>
-            <NewDocIcon className="h-10 w-10" />
+            <NewDocIcon className="w-10 h-10" />
             NewDoc
           </div>
           <div className={classIcon}>
-            <PathSepIcon className="h-10 w-10" />
+            <PathSepIcon className="w-10 h-10" />
             PathSep
           </div>
           <div className={classIcon}>
-            <PenIcon className="h-10 w-10" />
+            <PenIcon className="w-10 h-10" />
             Pen
           </div>
           <div className={classIcon}>
-            <PersonIcon className="h-10 w-10" />
+            <PersonIcon className="w-10 h-10" />
             Person
           </div>
           <div className={classIcon}>
-            <SearchIcon className="h-10 w-10" />
+            <SearchIcon className="w-10 h-10" />
             Search
           </div>
           <div className={classIcon}>
-            <ShieldIcon className="h-10 w-10" />
+            <ShieldIcon className="w-10 h-10" />
             Shield
           </div>
           <div className={classIcon}>
-            <SortIcon direction="both" className="h-10 w-10" />
+            <SortIcon
+              direction="both"
+              className="w-10 h-10"
+            />
             Sort
           </div>
           <div className={classIcon}>
-            <SpinnerIcon className="h-10 w-10" />
+            <SpinnerIcon className="w-10 h-10" />
             Spinner
           </div>
           <div className={classIcon}>
-            <SunIcon className="h-10 w-10" />
+            <SunIcon className="w-10 h-10" />
             Sun
           </div>
           <div className={classIcon}>
-            <VisiontechIcon className="h-10 w-10" />
+            <VisiontechIcon className="w-10 h-10" />
             Visiontech
           </div>
           <div className={classIcon}>
-            <VtLogoIcon className="h-10 w-10" />
+            <VtLogoIcon className="w-10 h-10" />
             VtLogo
           </div>
           <div className={classIcon}>
-            <WarningIcon className="h-10 w-10" />
+            <WarningIcon className="w-10 h-10" />
             Warning
           </div>
         </div>

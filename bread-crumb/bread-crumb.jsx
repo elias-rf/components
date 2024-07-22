@@ -26,6 +26,8 @@ BreadCrumbItem.propTypes = {
   children: PropTypes.any,
 }
 
+/* -------------------------------------------------------------------------- */
+
 /**
  * @typedef {Object} BreadCrumbProps
  * @property {(path:string)=>void} [onClick]
@@ -52,7 +54,7 @@ export const BreadCrumb = ({ onClick, children }) => {
             >
               {child}
             </li>
-            <ChevronIcon className="mx-1 text-gray-400 h-7 w-7" />
+            <ChevronIcon className="mx-1 text-gray-400 h-7 w-7 dark:text-white/80" />
           </Fragment>
         )
       }

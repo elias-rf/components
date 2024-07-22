@@ -11,7 +11,7 @@ export function HamburgerIcon({ className }) {
       className={cn('inline-block h-5 w-5', className)}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
-      fill="none"
+      fill="currentColor"
       viewBox="0 0 17 14"
     >
       <path

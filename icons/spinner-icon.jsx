@@ -15,6 +15,7 @@ export const SpinnerIcon = ({ className }) => {
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       className={cn('inline-block h-5 w-5 animate-spin', className)}
+      fill="currentColor"
     >
       <title>spinner</title>
       <path

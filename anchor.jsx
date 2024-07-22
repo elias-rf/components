@@ -1,4 +1,4 @@
-import { Link } from 'wouter'
+import { Link } from 'react-router-dom'
 import { cn } from './lib/utils.mjs'
 
 export function Anchor({
@@ -10,7 +10,7 @@ export function Anchor({
 }) {
   return (
     <Link
-      href={href}
+      to={href}
       onClick={onClickEvent}
       className={cn('block w-full', className)}
       {...others}

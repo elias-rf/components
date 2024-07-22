@@ -24,6 +24,7 @@ export const ChevronIcon = ({ variant, className }) => {
       xmlns="http://www.w3.org/2000/svg"
       className={cn('inline-block h-5 w-5', className)}
       viewBox="0 0 24 24"
+      fill="currentColor"
     >
       <g transform={`rotate(${rotate} 12 12)`}>
         <path

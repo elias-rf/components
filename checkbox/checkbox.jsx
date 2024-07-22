@@ -9,6 +9,7 @@ import { cn } from '../lib/utils.mjs'
  * @property {import('react').LegacyRef<HTMLButtonElement>} [ref]
  * @property {string} [className]
  * @property {boolean} [checked]
+ * @property {boolean} [disabled]
  * @property {(e:any)=>void} [onCheckedChange]
  */
 
@@ -35,4 +36,5 @@ Checkbox.displayName = CheckboxPrimitive.Root.displayName
 
 Checkbox.propTypes = {
   className: PropTypes.string,
+  disabled: PropTypes.bool,
 }
