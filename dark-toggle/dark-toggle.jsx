@@ -39,7 +39,11 @@ export const DarkToggle = () => {
 
   return (
     <>
-      <Button onClick={handleToggle} variant="ghost" size="icon">
+      <Button
+        onClick={handleToggle}
+        variant="ghost"
+        size="icon"
+      >
         {dark ? <MoonIcon /> : <SunIcon />}
       </Button>
     </>

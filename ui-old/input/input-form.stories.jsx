@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form'
 import { Button } from '../../button/button.jsx'
+import { FormInput } from '../../form/form-input.jsx'
+import { FormLabel } from '../../form/form-label.jsx'
 import { JsonView } from '../../json-view/json-view.jsx'
-import { Label } from '../../label/label.jsx'
 import { Title } from '../../title/title.jsx'
-import { FormField } from '../form-field/form-field.jsx'
 import { InputForm } from './input-form.jsx'
 
 const meta = {
@@ -30,14 +30,14 @@ export const Default = {
       <>
         <Title>Input Form</Title>
         <div className="flex flex-col space-y-4">
-          <FormField>
-            <Label htmlFor="input1">Input [1]</Label>
+          <FormInput>
+            <FormLabel htmlFor="input1">Input [1]</FormLabel>
             <InputForm {...form.register('input1')} />
-          </FormField>
-          <FormField>
-            <Label htmlFor="input2">Input [2]</Label>
+          </FormInput>
+          <FormInput>
+            <FormLabel htmlFor="input2">Input [2]</FormLabel>
             <InputForm {...form.register('input2')} />
-          </FormField>
+          </FormInput>
           <Button onClick={() => form.reset({ input1: '1', input2: '2' })}>
             Reset
           </Button>

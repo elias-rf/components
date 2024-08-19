@@ -1,29 +1,16 @@
+import * as Ariakit from '@ariakit/react'
 import PropTypes from 'prop-types'
-import { useController } from 'react-hook-form'
-import { Checkbox } from '../aria/forms/checkbox/checkbox.jsx'
-import { Description } from '../aria/forms/description.jsx'
-import { FieldError } from '../aria/forms/field-error.jsx'
 
 /**
  * @param {Object} props
  */
-export const FormCheckbox = ({ name, control, rules, ...props }) => {
-  const ctrl = useController({ name, control, rules })
+export const FormCheckbox = ({ name, ...props }) => {
   return (
     <>
-      <Checkbox
-        onChange={ctrl.field.onChange}
-        onBlur={ctrl.field.onBlur}
-        checked={ctrl.field.value}
-        name={ctrl.field.name}
-        isSelected={ctrl.field.value}
-        ref={ctrl.field.ref}
+      <Ariakit.FormCheckbox
+        name={name}
         {...props}
-      >
-        {ctrl.field.name}
-      </Checkbox>
-      {props.description && <Description>{props.description}</Description>}
-      <FieldError>{props.errorMessage}</FieldError>{' '}
+      ></Ariakit.FormCheckbox>
     </>
   )
 }

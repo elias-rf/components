@@ -1,16 +1,7 @@
-import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
+import * as Ariakit from '@ariakit/react'
 import PropTypes from 'prop-types'
-import * as React from 'react'
-import { Button } from '../button/button.jsx'
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from '../command/command.jsx'
 import { cn } from '../lib/utils.mjs'
-import { Popover, PopoverContent, PopoverTrigger } from '../popover/popover.jsx'
+import './combobox.css'
 
 /**
  * @typedef {Object} ComboboxProps
@@ -26,68 +17,30 @@ import { Popover, PopoverContent, PopoverTrigger } from '../popover/popover.jsx'
 /**
  * @type {React.FC<ComboboxProps>}
  */
-export const Combobox = ({
-  options,
-  value,
-  onValueChange,
-  placeholder,
-  inputPlaceholder,
-  disabled,
-}) => {
-  const [open, setOpen] = React.useState(false)
-  const [vlr, setVlr] = React.useState(value)
-
+export const Combobox = ({ value, label, options }) => {
   return (
-    <Popover
-      open={open}
-      onOpenChange={setOpen}
-    >
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="justify-between"
-          disabled={disabled}
-        >
-          {vlr
-            ? options.find((option) => option.value === vlr)?.label
-            : placeholder || ''}
-          <CaretSortIcon className="w-4 h-4 ml-2 opacity-50 shrink-0" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="p-0">
-        <Command>
-          <CommandInput
-            placeholder={inputPlaceholder || ''}
-            className="h-9"
-          />
-          <CommandEmpty>Não encontrado</CommandEmpty>
-          <CommandGroup>
-            {options.map((option) => (
-              <CommandItem
-                key={option.value}
-                value={option.value}
-                // onSelect={(currentValue) => {
-                //   const v = currentValue === vlr ? '' : currentValue
-                //   setVlr(v)
-                //   onValueChange && onValueChange(v)
-                //   setOpen(false)
-                // }}
-              >
-                {option.label}
-                <CheckIcon
-                  className={cn(
-                    'ml-auto h-4 w-4',
-                    vlr === option.value ? 'opacity-100' : 'opacity-0'
-                  )}
-                />
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </Command>
-      </PopoverContent>
-    </Popover>
+    <Ariakit.ComboboxProvider>
+      <Ariakit.ComboboxLabel className="label">{label}</Ariakit.ComboboxLabel>
+      <Ariakit.Combobox
+        placeholder="e.g., Apple"
+        className="combobox"
+      />
+      <Ariakit.ComboboxPopover
+        gutter={4}
+        sameWidth
+        className="popover"
+      >
+        {options.map(({ value, label }) => (
+          <Ariakit.ComboboxItem
+            className="combobox-item"
+            value={value}
+            key={value}
+          >
+            {label}
+          </Ariakit.ComboboxItem>
+        ))}
+      </Ariakit.ComboboxPopover>
+    </Ariakit.ComboboxProvider>
   )
 }
 

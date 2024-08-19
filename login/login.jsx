@@ -1,11 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Button } from '@radix-ui/themes'
 import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { TextForm } from '../aria/forms/text/text-form.jsx'
-import { Button } from '../button/button.jsx'
-import { Input } from '../input/input.jsx'
-import { Modal } from '../ui-old/modal/modal.jsx'
+import { TextForm } from '../forms/text/text-form.jsx'
+import { Modal } from '../modal/modal.jsx'
 
 export function Login({ onInput }) {
   const form = useForm({

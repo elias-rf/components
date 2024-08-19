@@ -1,6 +1,7 @@
 import { Button } from '../button/button.jsx'
+import { Chip } from '../chip/chip.jsx'
+import { FormLabel } from '../form/form-label.jsx'
 import { Input } from '../input/input.jsx'
-import { Label } from '../label/label.jsx'
 import {
   Select,
   SelectContent,
@@ -8,8 +9,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../select/select.jsx'
-import { Chip } from '../ui-old/chip/chip.jsx'
-import { FormField } from '../ui-old/form-field/index.mjs'
 
 import React, { useState } from 'react'
 
@@ -36,13 +35,12 @@ function getEqualitys(field, schema) {
   const aux = schema.find((item) => item.name === field)
 
   const tipo = aux?.typeField || 'string'
-
+  let rsp
   switch (tipo) {
     case 'boolean':
       return { '=': 'igual a' }
     case 'string':
-      //-------------------------------------------------- eslint-disable-next-line no-case-declarations
-      const rsp = { ...equalitys }
+      rsp = { ...equalitys }
       delete rsp['<']
       delete rsp['<=']
       delete rsp['>']
@@ -164,8 +162,8 @@ export const Search = ({ schema = [], where = [], onWhere }) => {
 
       <div className="flex flex-wrap items-end space-x-2 sm:flex-nowrap">
         <div className="basis-full">
-          <FormField>
-            <Label htmlFor="field">Campo</Label>
+          <div>
+            <FormLabel htmlFor="field">Campo</FormLabel>
             <Select
               value={fieldSelect}
               onValueChange={handleSelectField}
@@ -187,11 +185,11 @@ export const Search = ({ schema = [], where = [], onWhere }) => {
                 ))}
               </SelectContent>
             </Select>
-          </FormField>
+          </div>
         </div>
         <div className="basis-full">
-          <FormField>
-            <Label htmlFor="equality">Igualdade</Label>
+          <div>
+            <FormLabel htmlFor="equality">Igualdade</FormLabel>
             <Select
               value={equalitySelect}
               onValueChange={(value) => setEqualitySelect(value || '')}
@@ -215,17 +213,17 @@ export const Search = ({ schema = [], where = [], onWhere }) => {
                 )}
               </SelectContent>
             </Select>
-          </FormField>
+          </div>
         </div>
         <div className="basis-full">
-          <FormField>
-            <Label htmlFor="value">Valor</Label>
+          <div>
+            <FormLabel htmlFor="value">Valor</FormLabel>
             <Input
               id="value"
               value={valueInput}
               onChange={handleInput}
             />
-          </FormField>
+          </div>
         </div>
         <div className="basis-32">
           <Button

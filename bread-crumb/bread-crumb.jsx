@@ -75,6 +75,7 @@ export const BreadCrumb = ({ onClick, children }) => {
     </>
   )
 }
+
 BreadCrumb.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.any,

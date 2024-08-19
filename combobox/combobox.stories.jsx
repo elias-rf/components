@@ -1,5 +1,5 @@
-import { JsonView } from '../json-view/json-view.jsx'
 import React from 'react'
+import { JsonView } from '../json-view/json-view.jsx'
 import { Combobox } from './combobox.jsx'
 
 const meta = {
@@ -8,26 +8,26 @@ const meta = {
 
 export default meta
 
-const frameworks = [
+const fruits = [
   {
-    value: 'next.jsx',
-    label: 'Next.jsx',
+    value: 'Apple',
+    label: '🍎 Apple',
   },
   {
-    value: 'sveltekit',
-    label: 'SvelteKit',
+    value: 'Grape',
+    label: ' 🍇 Grape',
   },
   {
-    value: 'nuxt.jsx',
-    label: 'Nuxt.jsx',
+    value: 'Orange',
+    label: '🍊 Orange',
   },
   {
-    value: 'remix',
-    label: 'Remix',
+    value: 'Strawberry',
+    label: '🍓 Strawberry',
   },
   {
-    value: 'astro',
-    label: 'Astro',
+    value: 'Watermelon',
+    label: '🍉 Watermelon',
   },
 ]
 
@@ -37,11 +37,10 @@ export const Default = {
     return (
       <div className="flex w-60 flex-col space-y-4">
         <Combobox
-          options={frameworks}
+          options={fruits}
           value={vlr}
           onValueChange={(e) => setVlr(e)}
-          placeholder="Selecione framework..."
-          inputPlaceholder="Digite framework..."
+          label="Your favorite fruit"
         ></Combobox>
         <JsonView data={{ props, vlr }} />
       </div>

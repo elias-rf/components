@@ -1,66 +1,44 @@
-// Cores alteradas
-import { Slot } from '../radix/slot/slot.jsx'
-import { cva } from 'class-variance-authority'
-import * as React from 'react'
-import { cn } from '../lib/utils.mjs'
+import { Button as ButtonBase } from '@ariakit/react'
+import PropTypes from 'prop-types'
+import { tv } from 'tailwind-variants'
+import { cn } from '../utils'
+import './button.css'
 
-const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-slate-300',
-  {
-    variants: {
-      variant: {
-        default:
-          'bg-slate-900 text-slate-50 shadow hover:bg-slate-900/90 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90',
-        destructive:
-          'bg-red-500 text-slate-50 shadow-sm hover:bg-red-500/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90',
-        outline:
-          'dark:text-slate-50 border border-slate-200 bg-white shadow-sm hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50',
-        secondary:
-          'bg-slate-100 text-slate-900 shadow-sm hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80',
-        ghost:
-          'dark:text-slate-50 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50',
-        link: 'text-slate-900 underline-offset-4 hover:underline dark:text-slate-50',
-      },
-      size: {
-        default: 'h-9 px-4 py-2',
-        sm: 'h-8 rounded-md px-3 text-xs',
-        lg: 'h-10 rounded-md px-8',
-        icon: 'h-9 w-9',
-      },
+const styles = tv({
+  base: 'bg-blue-400 p-2 text-white data-[disabled]:bg-gray-100 data-[selected]:bg-blue-500',
+  variants: {
+    color: {
+      blue: 'bg-blue-500 text-blue-100 hover:bg-blue-700',
+      red: 'bg-red-500 text-red-100 hover:bg-red-700',
+      green: 'bg-green-500 text-green-50 hover:bg-green-700',
+      yellow: 'bg-yellow-500 text-yellow-50 hover:bg-yellow-700',
+      gray: 'bg-gray-500 text-gray-50 hover:bg-gray-700',
+      ghost: 'bg-transparent text-black hover:bg-gray-100',
     },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default',
+    size: {
+      sm: 'px-2 py-1 text-sm',
+      default: 'px-4 py-2 text-base',
+      lg: 'p-3 text-lg',
+      icon: 'p-0 text-base',
     },
-  }
-)
+  },
+  defaultVariants: {
+    color: 'blue',
+    size: 'default',
+  },
+})
 
-/**
- * @typedef {Object} ButtonProps
- * @property {any} [ref]
- * @property {boolean} [disabled]
- * @property {string} [className]
- * @property {"default" | "destructive" | "outline" | "secondary" | "ghost" | "link"} [variant]
- * @property {"default" | "sm" | "lg" | "icon"} [size]
- * @property {string} [asChild]
- * @property {(e:any)=>void} [onClick]
- */
+export const Button = ({ className, size, color, ...props }) => {
+  return (
+    <ButtonBase
+      {...props}
+      className={cn(styles({ size, color }), className)}
+    />
+  )
+}
 
-/**
- * @type {React.FC<ButtonProps & React.HTMLAttributes<HTMLButtonElement>>}
- */
-const Button = React.forwardRef(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : 'button'
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
-Button.displayName = 'Button'
-
-export { Button, buttonVariants }
+Button.propTypes = {
+  className: PropTypes.string,
+  size: PropTypes.oneOf(['sm', 'default', 'lg', 'icon']),
+  color: PropTypes.oneOf(['blue', 'red', 'green', 'yellow', 'gray', 'ghost']),
+}
